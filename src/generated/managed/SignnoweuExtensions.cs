@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction DeleteDocGroupEmbeddedInvites(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -23,26 +23,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem[]>> inviteinvites = null, Expression<Func<inviteadvancedInputItem[]>> inviteadvanced = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             if (inviteinvites != null)
             {
-                invite["invites"] = ExpressionConverter.ConvertO(inviteinvites);
+                invite["invites"] = CSharpExpressionConverter.ConvertToken(inviteinvites);
                 invitepropCount++;
             }
 
             if (inviteadvanced != null)
             {
-                invite["advanced"] = ExpressionConverter.ConvertO(inviteadvanced);
+                invite["advanced"] = CSharpExpressionConverter.ConvertToken(inviteadvanced);
                 invitepropCount++;
             }
 
             if (inviteqESSignature != null)
             {
-                invite["signature"] = ExpressionConverter.ConvertO(inviteqESSignature);
+                invite["signature"] = CSharpExpressionConverter.Convert(inviteqESSignature);
                 invitepropCount++;
             }
 
@@ -57,22 +57,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> inviteemail, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(inviteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inviteId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             invitepropCount++;
-            invite["email"] = ExpressionConverter.ConvertO(inviteemail);
+            invite["email"] = CSharpExpressionConverter.ConvertToken(inviteemail);
             if (invitelinkExpiration != null)
             {
-                invite["link_expiration"] = ExpressionConverter.ConvertO(invitelinkExpiration);
+                invite["link_expiration"] = CSharpExpressionConverter.ConvertToken(invitelinkExpiration);
                 invitepropCount++;
             }
 
             if (invitesessionExpiration != null)
             {
-                invite["session_expiration"] = ExpressionConverter.ConvertO(invitesessionExpiration);
+                invite["session_expiration"] = CSharpExpressionConverter.ConvertToken(invitesessionExpiration);
                 invitepropCount++;
             }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction DeleteEmbeddedInvites(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -96,32 +96,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem2[]>> inviteinvites = null, Expression<Func<string>> invitenameFormula = null, Expression<Func<inviteinviteAdvancedParametersInputItem[]>> inviteinviteAdvancedParameters = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var apiCallPath = String.Format("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             if (inviteinvites != null)
             {
-                invite["invites"] = ExpressionConverter.ConvertO(inviteinvites);
+                invite["invites"] = CSharpExpressionConverter.ConvertToken(inviteinvites);
                 invitepropCount++;
             }
 
             if (invitenameFormula != null)
             {
-                invite["name_formula"] = ExpressionConverter.ConvertO(invitenameFormula);
+                invite["name_formula"] = CSharpExpressionConverter.ConvertToken(invitenameFormula);
                 invitepropCount++;
             }
 
             if (inviteinviteAdvancedParameters != null)
             {
-                invite["advanced_params"] = ExpressionConverter.ConvertO(inviteinviteAdvancedParameters);
+                invite["advanced_params"] = CSharpExpressionConverter.ConvertToken(inviteinviteAdvancedParameters);
                 invitepropCount++;
             }
 
             if (inviteqESSignature != null)
             {
-                invite["signature"] = ExpressionConverter.ConvertO(inviteqESSignature);
+                invite["signature"] = CSharpExpressionConverter.Convert(inviteqESSignature);
                 invitepropCount++;
             }
 
@@ -136,20 +136,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
-            var apiCallPath = String.Format("/v2/documents/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldInviteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldInviteId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             if (invitelinkExpiration != null)
             {
-                invite["link_expiration"] = ExpressionConverter.ConvertO(invitelinkExpiration);
+                invite["link_expiration"] = CSharpExpressionConverter.ConvertToken(invitelinkExpiration);
                 invitepropCount++;
             }
 
             if (invitesessionExpiration != null)
             {
-                invite["session_expiration"] = ExpressionConverter.ConvertO(invitesessionExpiration);
+                invite["session_expiration"] = CSharpExpressionConverter.ConvertToken(invitesessionExpiration);
                 invitepropCount++;
             }
 
@@ -167,11 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var apiCallPath = "/documentgroups";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+            callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<DocumentGroupsResponse>(callPayload);
         }
 
@@ -184,10 +184,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["group_name"] = ExpressionConverter.ConvertO(bodydocumentGroupName);
+            body["group_name"] = CSharpExpressionConverter.ConvertToken(bodydocumentGroupName);
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
@@ -202,24 +202,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentGroupProperties> GetDocumentGroup(Expression<Func<string>> docGroupId, Expression<Func<bool>> template)
         {
-            var apiCallPath = String.Format("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(docGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+            callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             return new ApiConnectionAction<DocumentGroupProperties>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateFromTemplateGroupResponse> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<string>> bodydocumentGroupName = null)
         {
-            var apiCallPath = String.Format("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(docGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentGroupName != null)
             {
-                body["group_name"] = ExpressionConverter.ConvertO(bodydocumentGroupName);
+                body["group_name"] = CSharpExpressionConverter.ConvertToken(bodydocumentGroupName);
                 bodypropCount++;
             }
 
@@ -234,22 +234,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateGroupFieldValuesResponse> UpdateGroupFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(templateGroupId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Queries["template_group_id"] = CSharpExpressionConverter.ConvertO(templateGroupId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<UpdateGroupFieldValuesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse> UpdateGroupSmartFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(docGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/smartfields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(templateGroupId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Queries["template_group_id"] = CSharpExpressionConverter.ConvertO(templateGroupId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<UpdateGroupSmartFieldValuesResponse>(callPayload);
         }
 
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (template != null)
-                callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+                callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             if (includeDefaultTemplate != null)
-                callPayload.Queries["includeDefaultTemplate"] = ExpressionConverter.Convert(includeDefaultTemplate);
+                callPayload.Queries["includeDefaultTemplate"] = CSharpExpressionConverter.ConvertO(includeDefaultTemplate);
             callPayload.Queries["excludeDocumentRelations"] = Convert.ToString(false);
             return new ApiConnectionAction<DocumentProperties[]>(callPayload);
         }
@@ -279,17 +279,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentProperties> GetDoc(Expression<Func<bool>> template, Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+            callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             return new ApiConnectionAction<DocumentProperties>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DeleteDocResponse> DeleteDoc(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteDocResponse>(callPayload);
@@ -298,14 +298,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateFromTemplateResponse> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<string>> bodydocumentName = null)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentName != null)
             {
-                body["document_name"] = ExpressionConverter.ConvertO(bodydocumentName);
+                body["document_name"] = CSharpExpressionConverter.ConvertToken(bodydocumentName);
                 bodypropCount++;
             }
 
@@ -320,70 +320,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateSigningLinkResponse> CreateSigningLink(Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/document/{0}/link", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<CreateSigningLinkResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/document/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/invite", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template"] = ExpressionConverter.Convert(template);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(templateGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateGroupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template"] = ExpressionConverter.Convert(template);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
         {
-            var apiCallPath = String.Format("/document/{0}/invite-user-defined-schema", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-user-defined-schema", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyrole != null)
             {
-                body["Role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["Role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
                 bodypropCount++;
             }
 
             if (bodycC != null)
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycC);
+                body["cc"] = CSharpExpressionConverter.ConvertToken(bodycC);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodyemailAllPartiesOnCompletion != null)
             {
-                body["on_complete"] = ExpressionConverter.ConvertO(bodyemailAllPartiesOnCompletion);
+                body["on_complete"] = CSharpExpressionConverter.ConvertToken(bodyemailAllPartiesOnCompletion);
                 bodypropCount++;
             }
 
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> CancelInvite(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}/invite-cancel", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -407,30 +407,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> docId, Expression<Func<string>> mode = null)
         {
-            var apiCallPath = String.Format("/document/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/download", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["mode"] = Convert.ToString("Collapsed");
             if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                callPayload.Queries["mode"] = CSharpExpressionConverter.ConvertO(mode);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction PrefillSmartFields(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/document/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/smartfields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GetInviteStatusResponse> GetInviteStatus(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/document/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetInviteStatusResponse>(callPayload);
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse> GetDocumentGroupInviteStatus(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/documentgroups/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}/invite-status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentGroupInviteStatusResponse>(callPayload);
@@ -448,20 +448,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<replaceToreplaceToInputItem[]>> replaceToreplaceTo = null, Expression<Func<replaceToadvancedParametersInputItem[]>> replaceToadvancedParameters = null)
         {
-            var apiCallPath = String.Format("/document/{0}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/replace-recipients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var replaceTo = new JObject();
             var replaceTopropCount = 0;
             if (replaceToreplaceTo != null)
             {
-                replaceTo["replace_to"] = ExpressionConverter.ConvertO(replaceToreplaceTo);
+                replaceTo["replace_to"] = CSharpExpressionConverter.ConvertToken(replaceToreplaceTo);
                 replaceTopropCount++;
             }
 
             if (replaceToadvancedParameters != null)
             {
-                replaceTo["advanced"] = ExpressionConverter.ConvertO(replaceToadvancedParameters);
+                replaceTo["advanced"] = CSharpExpressionConverter.ConvertToken(replaceToadvancedParameters);
                 replaceTopropCount++;
             }
 
@@ -476,26 +476,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepID = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/invite/{1}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(inviteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inviteId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var replaceTo = new JObject();
             var replaceTopropCount = 0;
             if (replaceTostepID != null)
             {
-                replaceTo["step_id"] = ExpressionConverter.ConvertO(replaceTostepID);
+                replaceTo["step_id"] = CSharpExpressionConverter.ConvertToken(replaceTostepID);
                 replaceTopropCount++;
             }
 
             if (replaceTorecipientToReplace != null)
             {
-                replaceTo["recipient_to_update"] = ExpressionConverter.ConvertO(replaceTorecipientToReplace);
+                replaceTo["recipient_to_update"] = CSharpExpressionConverter.ConvertToken(replaceTorecipientToReplace);
                 replaceTopropCount++;
             }
 
             if (replaceTonewRecipient != null)
             {
-                replaceTo["new_recipient"] = ExpressionConverter.ConvertO(replaceTonewRecipient);
+                replaceTo["new_recipient"] = CSharpExpressionConverter.ConvertToken(replaceTonewRecipient);
                 replaceTopropCount++;
             }
 
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             {
                 if (replaceToexpirationDays != null)
                 {
-                    replaceTo["expiration_days"] = ExpressionConverter.ConvertO(replaceToexpirationDays);
+                    replaceTo["expiration_days"] = CSharpExpressionConverter.ConvertToken(replaceToexpirationDays);
                     replaceTopropCount++;
                 }
 
@@ -517,13 +517,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
             if (replaceToreminder != null)
             {
-                replaceTo["reminder"] = ExpressionConverter.ConvertO(replaceToreminder);
+                replaceTo["reminder"] = CSharpExpressionConverter.ConvertToken(replaceToreminder);
                 replaceTopropCount++;
             }
 
             if (replaceToinviteActionAttributes != null)
             {
-                replaceTo["invite_action_attributes"] = ExpressionConverter.ConvertO(replaceToinviteActionAttributes);
+                replaceTo["invite_action_attributes"] = CSharpExpressionConverter.ConvertToken(replaceToinviteActionAttributes);
                 replaceTopropCount++;
             }
 
@@ -538,20 +538,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
-            var apiCallPath = String.Format("/v2/documents/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-sending", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var inviteSettings = new JObject();
             var inviteSettingspropCount = 0;
             if (inviteSettingstype != null)
             {
-                inviteSettings["type"] = ExpressionConverter.ConvertO(inviteSettingstype);
+                inviteSettings["type"] = CSharpExpressionConverter.Convert(inviteSettingstype);
                 inviteSettingspropCount++;
             }
 
             if (inviteSettingsredirectUri != null)
             {
-                inviteSettings["redirect_uri"] = ExpressionConverter.ConvertO(inviteSettingsredirectUri);
+                inviteSettings["redirect_uri"] = CSharpExpressionConverter.ConvertToken(inviteSettingsredirectUri);
                 inviteSettingspropCount++;
             }
 
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             {
                 if (inviteSettingslinkExpiration != null)
                 {
-                    inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                    inviteSettings["link_expiration"] = CSharpExpressionConverter.ConvertToken(inviteSettingslinkExpiration);
                     inviteSettingspropCount++;
                 }
 
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
             if (inviteSettingsredirectTarget != null)
             {
-                inviteSettings["redirect_target"] = ExpressionConverter.ConvertO(inviteSettingsredirectTarget);
+                inviteSettings["redirect_target"] = CSharpExpressionConverter.Convert(inviteSettingsredirectTarget);
                 inviteSettingspropCount++;
             }
 
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-sending", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var inviteSettings = new JObject();
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             {
                 if (inviteSettingstype != null)
                 {
-                    inviteSettings["type"] = ExpressionConverter.ConvertO(inviteSettingstype);
+                    inviteSettings["type"] = CSharpExpressionConverter.Convert(inviteSettingstype);
                     inviteSettingspropCount++;
                 }
 
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
             if (inviteSettingsredirectUri != null)
             {
-                inviteSettings["redirect_uri"] = ExpressionConverter.ConvertO(inviteSettingsredirectUri);
+                inviteSettings["redirect_uri"] = CSharpExpressionConverter.ConvertToken(inviteSettingsredirectUri);
                 inviteSettingspropCount++;
             }
 
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             {
                 if (inviteSettingslinkExpiration != null)
                 {
-                    inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                    inviteSettings["link_expiration"] = CSharpExpressionConverter.ConvertToken(inviteSettingslinkExpiration);
                     inviteSettingspropCount++;
                 }
 
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
             if (inviteSettingsredirectTarget != null)
             {
-                inviteSettings["redirect_target"] = ExpressionConverter.ConvertO(inviteSettingsredirectTarget);
+                inviteSettings["redirect_target"] = CSharpExpressionConverter.Convert(inviteSettingsredirectTarget);
                 inviteSettingspropCount++;
             }
 
@@ -648,98 +648,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<InviteToSignAllOptionsResponse> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<invitesignersInputItem[]>> invitesigners = null, Expression<Func<invitesignerAdvancedPropertiesInputItem[]>> invitesignerAdvancedProperties = null, Expression<Func<inviteviewersInputItem[]>> inviteviewers = null, Expression<Func<inviteviewerAdvancedPropertiesInputItem[]>> inviteviewerAdvancedProperties = null, Expression<Func<inviteapproversInputItem[]>> inviteapprovers = null, Expression<Func<inviteapproverAdvancedPropertiesInputItem[]>> inviteapproverAdvancedProperties = null, Expression<Func<string>> invitefrom = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<invitecCStepsInputItem[]>> invitecCSteps = null, Expression<Func<string>> invitesubject = null, Expression<Func<string>> invitemessage = null, Expression<Func<string>> invitecCSubject = null, Expression<Func<string>> invitecCMessage = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var apiCallPath = String.Format("/document/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-all-options", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             if (invitesigners != null)
             {
-                invite["signers"] = ExpressionConverter.ConvertO(invitesigners);
+                invite["signers"] = CSharpExpressionConverter.ConvertToken(invitesigners);
                 invitepropCount++;
             }
 
             if (invitesignerAdvancedProperties != null)
             {
-                invite["signers_advanced"] = ExpressionConverter.ConvertO(invitesignerAdvancedProperties);
+                invite["signers_advanced"] = CSharpExpressionConverter.ConvertToken(invitesignerAdvancedProperties);
                 invitepropCount++;
             }
 
             if (inviteviewers != null)
             {
-                invite["viewers"] = ExpressionConverter.ConvertO(inviteviewers);
+                invite["viewers"] = CSharpExpressionConverter.ConvertToken(inviteviewers);
                 invitepropCount++;
             }
 
             if (inviteviewerAdvancedProperties != null)
             {
-                invite["viewers_advanced"] = ExpressionConverter.ConvertO(inviteviewerAdvancedProperties);
+                invite["viewers_advanced"] = CSharpExpressionConverter.ConvertToken(inviteviewerAdvancedProperties);
                 invitepropCount++;
             }
 
             if (inviteapprovers != null)
             {
-                invite["approvers"] = ExpressionConverter.ConvertO(inviteapprovers);
+                invite["approvers"] = CSharpExpressionConverter.ConvertToken(inviteapprovers);
                 invitepropCount++;
             }
 
             if (inviteapproverAdvancedProperties != null)
             {
-                invite["approver_advanced"] = ExpressionConverter.ConvertO(inviteapproverAdvancedProperties);
+                invite["approver_advanced"] = CSharpExpressionConverter.ConvertToken(inviteapproverAdvancedProperties);
                 invitepropCount++;
             }
 
             if (invitefrom != null)
             {
-                invite["from"] = ExpressionConverter.ConvertO(invitefrom);
+                invite["from"] = CSharpExpressionConverter.ConvertToken(invitefrom);
                 invitepropCount++;
             }
 
             if (inviteemailGroups != null)
             {
-                invite["email_groups"] = ExpressionConverter.ConvertO(inviteemailGroups);
+                invite["email_groups"] = CSharpExpressionConverter.ConvertToken(inviteemailGroups);
                 invitepropCount++;
             }
 
             if (invitecC != null)
             {
-                invite["cc"] = ExpressionConverter.ConvertO(invitecC);
+                invite["cc"] = CSharpExpressionConverter.ConvertToken(invitecC);
                 invitepropCount++;
             }
 
             if (invitecCSteps != null)
             {
-                invite["cc_step"] = ExpressionConverter.ConvertO(invitecCSteps);
+                invite["cc_step"] = CSharpExpressionConverter.ConvertToken(invitecCSteps);
                 invitepropCount++;
             }
 
             if (invitesubject != null)
             {
-                invite["subject"] = ExpressionConverter.ConvertO(invitesubject);
+                invite["subject"] = CSharpExpressionConverter.ConvertToken(invitesubject);
                 invitepropCount++;
             }
 
             if (invitemessage != null)
             {
-                invite["message"] = ExpressionConverter.ConvertO(invitemessage);
+                invite["message"] = CSharpExpressionConverter.ConvertToken(invitemessage);
                 invitepropCount++;
             }
 
             if (invitecCSubject != null)
             {
-                invite["cc_subject"] = ExpressionConverter.ConvertO(invitecCSubject);
+                invite["cc_subject"] = CSharpExpressionConverter.ConvertToken(invitecCSubject);
                 invitepropCount++;
             }
 
             if (invitecCMessage != null)
             {
-                invite["cc_message"] = ExpressionConverter.ConvertO(invitecCMessage);
+                invite["cc_message"] = CSharpExpressionConverter.ConvertToken(invitecCMessage);
                 invitepropCount++;
             }
 
             if (inviteqESSignature != null)
             {
-                invite["signature"] = ExpressionConverter.ConvertO(inviteqESSignature);
+                invite["signature"] = CSharpExpressionConverter.Convert(inviteqESSignature);
                 invitepropCount++;
             }
 
@@ -754,56 +754,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem2[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var apiCallPath = String.Format("/documentgroup/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite-all-options", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var invite = new JObject();
             var invitepropCount = 0;
             if (inviteinviteSteps != null)
             {
-                invite["invite_steps"] = ExpressionConverter.ConvertO(inviteinviteSteps);
+                invite["invite_steps"] = CSharpExpressionConverter.ConvertToken(inviteinviteSteps);
                 invitepropCount++;
             }
 
             if (inviteinviteEmails != null)
             {
-                invite["Email"] = ExpressionConverter.ConvertO(inviteinviteEmails);
+                invite["Email"] = CSharpExpressionConverter.ConvertToken(inviteinviteEmails);
                 invitepropCount++;
             }
 
             if (inviteemailGroups != null)
             {
-                invite["email_groups"] = ExpressionConverter.ConvertO(inviteemailGroups);
+                invite["email_groups"] = CSharpExpressionConverter.ConvertToken(inviteemailGroups);
                 invitepropCount++;
             }
 
             if (invitecompletionEmails != null)
             {
-                invite["completion_emails"] = ExpressionConverter.ConvertO(invitecompletionEmails);
+                invite["completion_emails"] = CSharpExpressionConverter.ConvertToken(invitecompletionEmails);
                 invitepropCount++;
             }
 
             if (invitesignAsMerged != null)
             {
-                invite["sign_as_merged"] = ExpressionConverter.ConvertO(invitesignAsMerged);
+                invite["sign_as_merged"] = CSharpExpressionConverter.ConvertToken(invitesignAsMerged);
                 invitepropCount++;
             }
 
             if (inviteclientTimestamp != null)
             {
-                invite["client_timestamp"] = ExpressionConverter.ConvertO(inviteclientTimestamp);
+                invite["client_timestamp"] = CSharpExpressionConverter.ConvertToken(inviteclientTimestamp);
                 invitepropCount++;
             }
 
             if (invitecC != null)
             {
-                invite["cc"] = ExpressionConverter.ConvertO(invitecC);
+                invite["cc"] = CSharpExpressionConverter.ConvertToken(invitecC);
                 invitepropCount++;
             }
 
             if (inviteqESSignature != null)
             {
-                invite["signature"] = ExpressionConverter.ConvertO(inviteqESSignature);
+                invite["signature"] = CSharpExpressionConverter.Convert(inviteqESSignature);
                 invitepropCount++;
             }
 
@@ -818,21 +818,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> GetDocFields(Expression<Func<string>> templateId, Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<UpdateFieldValuesV2Response>(callPayload);
         }
     }
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["event"] = CSharpExpressionConverter.ConvertToken(bodyevent);
             body["entity_id"] = "00000000-0000-0000-0000-000000000000";
             bodypropCount++;
             body["action"] = "callback";

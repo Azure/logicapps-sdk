@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallPath = "/send";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idempotency"] = ExpressionConverter.Convert(idempotency);
+            callPayload.Queries["idempotency"] = CSharpExpressionConverter.ConvertO(idempotency);
             var body = new JObject();
             var bodypropCount = 0;
             var messageObject = new JObject();
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var contentObjectpropCount = 0;
             if (bodymessagecontenttitle != null)
             {
-                contentObject["title"] = ExpressionConverter.ConvertO(bodymessagecontenttitle);
+                contentObject["title"] = CSharpExpressionConverter.ConvertToken(bodymessagecontenttitle);
                 contentObjectpropCount++;
             }
 
             if (bodymessagecontentbody != null)
             {
-                contentObject["body"] = ExpressionConverter.ConvertO(bodymessagecontentbody);
+                contentObject["body"] = CSharpExpressionConverter.ConvertToken(bodymessagecontentbody);
                 contentObjectpropCount++;
             }
 
@@ -46,37 +46,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var toObjectpropCount = 0;
             if (bodymessagetouserId != null)
             {
-                toObject["user_id"] = ExpressionConverter.ConvertO(bodymessagetouserId);
+                toObject["user_id"] = CSharpExpressionConverter.ConvertToken(bodymessagetouserId);
                 toObjectpropCount++;
             }
 
             if (bodymessagetolistId != null)
             {
-                toObject["list_id"] = ExpressionConverter.ConvertO(bodymessagetolistId);
+                toObject["list_id"] = CSharpExpressionConverter.ConvertToken(bodymessagetolistId);
                 toObjectpropCount++;
             }
 
             if (bodymessagetoaudienceId != null)
             {
-                toObject["audience_id"] = ExpressionConverter.ConvertO(bodymessagetoaudienceId);
+                toObject["audience_id"] = CSharpExpressionConverter.ConvertToken(bodymessagetoaudienceId);
                 toObjectpropCount++;
             }
 
             if (bodymessagetoemail != null)
             {
-                toObject["email"] = ExpressionConverter.ConvertO(bodymessagetoemail);
+                toObject["email"] = CSharpExpressionConverter.ConvertToken(bodymessagetoemail);
                 toObjectpropCount++;
             }
 
             if (bodymessagetophoneNumber != null)
             {
-                toObject["phone_number"] = ExpressionConverter.ConvertO(bodymessagetophoneNumber);
+                toObject["phone_number"] = CSharpExpressionConverter.ConvertToken(bodymessagetophoneNumber);
                 toObjectpropCount++;
             }
 
             if (bodymessagetolocale != null)
             {
-                toObject["locale"] = ExpressionConverter.ConvertO(bodymessagetolocale);
+                toObject["locale"] = CSharpExpressionConverter.ConvertToken(bodymessagetolocale);
                 toObjectpropCount++;
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceGetResponse> AudienceGet(Expression<Func<string>> audienceId)
         {
-            var apiCallPath = String.Format("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(audienceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audiences/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AudienceGetResponse>(callPayload);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> AudienceDelete(Expression<Func<string>> audienceId)
         {
-            var apiCallPath = String.Format("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(audienceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audiences/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -137,14 +137,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudiencePutResponse> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilterOperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
         {
-            var apiCallPath = String.Format("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(audienceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audiences/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -152,25 +152,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var filterObjectpropCount = 0;
             if (bodyfilterpath != null)
             {
-                filterObject["path"] = ExpressionConverter.ConvertO(bodyfilterpath);
+                filterObject["path"] = CSharpExpressionConverter.ConvertToken(bodyfilterpath);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterOperator != null)
             {
-                filterObject["operator"] = ExpressionConverter.ConvertO(bodyfilterOperator);
+                filterObject["operator"] = CSharpExpressionConverter.ConvertToken(bodyfilterOperator);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltervalue != null)
             {
-                filterObject["value"] = ExpressionConverter.ConvertO(bodyfiltervalue);
+                filterObject["value"] = CSharpExpressionConverter.ConvertToken(bodyfiltervalue);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterfilters != null)
             {
-                filterObject["filters"] = ExpressionConverter.ConvertO(bodyfilterfilters);
+                filterObject["filters"] = CSharpExpressionConverter.ConvertToken(bodyfilterfilters);
                 filterObjectpropCount++;
             }
 
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceMembersGetResponse> AudienceMembersGet(Expression<Func<string>> audienceId, Expression<Func<string>> cursor = null)
         {
-            var apiCallPath = String.Format("/audiences/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(audienceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audiences/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<AudienceMembersGetResponse>(callPayload);
         }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<AudiencesGetResponse>(callPayload);
         }
 
@@ -217,14 +217,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<AuditEventsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AuditEventGetResponse> AuditEventGet(Expression<Func<string>> auditEventId)
         {
-            var apiCallPath = String.Format("/audit-events/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditEventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audit-events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditEventId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AuditEventGetResponse>(callPayload);
@@ -233,26 +233,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AutomationTemplatedPostResponse> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
         {
-            var apiCallPath = String.Format("/automations/{0}/invoke", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/automations/{0}/invoke", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodybrand != null)
             {
-                body["brand"] = ExpressionConverter.ConvertO(bodybrand);
+                body["brand"] = CSharpExpressionConverter.ConvertToken(bodybrand);
                 bodypropCount++;
             }
 
             if (bodytemplate != null)
             {
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
                 bodypropCount++;
             }
 
             if (bodyrecipient != null)
             {
-                body["recipient"] = ExpressionConverter.ConvertO(bodyrecipient);
+                body["recipient"] = CSharpExpressionConverter.ConvertToken(bodyrecipient);
                 bodypropCount++;
             }
 
@@ -292,13 +292,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var automationObjectpropCount = 0;
             if (bodyautomationsteps != null)
             {
-                automationObject["steps"] = ExpressionConverter.ConvertO(bodyautomationsteps);
+                automationObject["steps"] = CSharpExpressionConverter.ConvertToken(bodyautomationsteps);
                 automationObjectpropCount++;
             }
 
             if (bodyautomationcancelationToken != null)
             {
-                automationObject["cancelation_token"] = ExpressionConverter.ConvertO(bodyautomationcancelationToken);
+                automationObject["cancelation_token"] = CSharpExpressionConverter.ConvertToken(bodyautomationcancelationToken);
                 automationObjectpropCount++;
             }
 
@@ -310,19 +310,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodybrand != null)
             {
-                body["brand"] = ExpressionConverter.ConvertO(bodybrand);
+                body["brand"] = CSharpExpressionConverter.ConvertToken(bodybrand);
                 bodypropCount++;
             }
 
             if (bodytemplate != null)
             {
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
                 bodypropCount++;
             }
 
             if (bodyrecipient != null)
             {
-                body["recipient"] = ExpressionConverter.ConvertO(bodyrecipient);
+                body["recipient"] = CSharpExpressionConverter.ConvertToken(bodyrecipient);
                 bodypropCount++;
             }
 
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<BrandsGetResponse>(callPayload);
         }
 
@@ -371,31 +371,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
             var colorsObject = new JObject();
             var colorsObjectpropCount = 0;
             if (bodysettingscolorsprimary != null)
             {
-                colorsObject["primary"] = ExpressionConverter.ConvertO(bodysettingscolorsprimary);
+                colorsObject["primary"] = CSharpExpressionConverter.ConvertToken(bodysettingscolorsprimary);
                 colorsObjectpropCount++;
             }
 
             if (bodysettingscolorssecondary != null)
             {
-                colorsObject["secondary"] = ExpressionConverter.ConvertO(bodysettingscolorssecondary);
+                colorsObject["secondary"] = CSharpExpressionConverter.ConvertToken(bodysettingscolorssecondary);
                 colorsObjectpropCount++;
             }
 
             if (bodysettingscolorstertiary != null)
             {
-                colorsObject["tertiary"] = ExpressionConverter.ConvertO(bodysettingscolorstertiary);
+                colorsObject["tertiary"] = CSharpExpressionConverter.ConvertToken(bodysettingscolorstertiary);
                 colorsObjectpropCount++;
             }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var headerObjectpropCount = 0;
             if (bodysettingsemailheaderbarColor != null)
             {
-                headerObject["barColor"] = ExpressionConverter.ConvertO(bodysettingsemailheaderbarColor);
+                headerObject["barColor"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailheaderbarColor);
                 headerObjectpropCount++;
             }
 
@@ -419,13 +419,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var logoObjectpropCount = 0;
             if (bodysettingsemailheaderlogohref != null)
             {
-                logoObject["href"] = ExpressionConverter.ConvertO(bodysettingsemailheaderlogohref);
+                logoObject["href"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailheaderlogohref);
                 logoObjectpropCount++;
             }
 
             if (bodysettingsemailheaderlogoimage != null)
             {
-                logoObject["image"] = ExpressionConverter.ConvertO(bodysettingsemailheaderlogoimage);
+                logoObject["image"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailheaderlogoimage);
                 logoObjectpropCount++;
             }
 
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var footerObjectpropCount = 0;
             if (bodysettingsemailfootermarkdown != null)
             {
-                footerObject["markdown"] = ExpressionConverter.ConvertO(bodysettingsemailfootermarkdown);
+                footerObject["markdown"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootermarkdown);
                 footerObjectpropCount++;
             }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var facebookObjectpropCount = 0;
             if (bodysettingsemailfootersocialfacebookurl != null)
             {
-                facebookObject["url"] = ExpressionConverter.ConvertO(bodysettingsemailfootersocialfacebookurl);
+                facebookObject["url"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootersocialfacebookurl);
                 facebookObjectpropCount++;
             }
 
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var instagramObjectpropCount = 0;
             if (bodysettingsemailfootersocialinstagramurl != null)
             {
-                instagramObject["url"] = ExpressionConverter.ConvertO(bodysettingsemailfootersocialinstagramurl);
+                instagramObject["url"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootersocialinstagramurl);
                 instagramObjectpropCount++;
             }
 
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var linkedinObjectpropCount = 0;
             if (bodysettingsemailfootersociallinkedinurl != null)
             {
-                linkedinObject["url"] = ExpressionConverter.ConvertO(bodysettingsemailfootersociallinkedinurl);
+                linkedinObject["url"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootersociallinkedinurl);
                 linkedinObjectpropCount++;
             }
 
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var mediumObjectpropCount = 0;
             if (bodysettingsemailfootersocialmediumurl != null)
             {
-                mediumObject["url"] = ExpressionConverter.ConvertO(bodysettingsemailfootersocialmediumurl);
+                mediumObject["url"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootersocialmediumurl);
                 mediumObjectpropCount++;
             }
 
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var twitterObjectpropCount = 0;
             if (bodysettingsemailfootersocialtwitterurl != null)
             {
-                twitterObject["url"] = ExpressionConverter.ConvertO(bodysettingsemailfootersocialtwitterurl);
+                twitterObject["url"] = CSharpExpressionConverter.ConvertToken(bodysettingsemailfootersocialtwitterurl);
                 twitterObjectpropCount++;
             }
 
@@ -543,13 +543,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var inappObjectpropCount = 0;
             if (bodysettingsinappdisableMessageIcon != null)
             {
-                inappObject["disableMessageIcon"] = ExpressionConverter.ConvertO(bodysettingsinappdisableMessageIcon);
+                inappObject["disableMessageIcon"] = CSharpExpressionConverter.ConvertToken(bodysettingsinappdisableMessageIcon);
                 inappObjectpropCount++;
             }
 
             if (bodysettingsinappplacement != null)
             {
-                inappObject["placement"] = ExpressionConverter.ConvertO(bodysettingsinappplacement);
+                inappObject["placement"] = CSharpExpressionConverter.ConvertToken(bodysettingsinappplacement);
                 inappObjectpropCount++;
             }
 
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var snippetsObjectpropCount = 0;
             if (bodysnippetsitems != null)
             {
-                snippetsObject["items"] = ExpressionConverter.ConvertO(bodysnippetsitems);
+                snippetsObject["items"] = CSharpExpressionConverter.ConvertToken(bodysnippetsitems);
                 snippetsObjectpropCount++;
             }
 
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BrandGetResponse> BrandGet(Expression<Func<string>> brandId)
         {
-            var apiCallPath = String.Format("/brands/{0}", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/brands/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BrandGetResponse>(callPayload);
@@ -616,13 +616,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var messageObjectpropCount = 0;
             if (bodymessageEvent != null)
             {
-                messageObject["event"] = ExpressionConverter.ConvertO(bodymessageEvent);
+                messageObject["event"] = CSharpExpressionConverter.ConvertToken(bodymessageEvent);
                 messageObjectpropCount++;
             }
 
             if (bodymessagebrand != null)
             {
-                messageObject["brand"] = ExpressionConverter.ConvertO(bodymessagebrand);
+                messageObject["brand"] = CSharpExpressionConverter.ConvertToken(bodymessagebrand);
                 messageObjectpropCount++;
             }
 
@@ -644,13 +644,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodymessagetemplate != null)
             {
-                messageObject["template"] = ExpressionConverter.ConvertO(bodymessagetemplate);
+                messageObject["template"] = CSharpExpressionConverter.ConvertToken(bodymessagetemplate);
                 messageObjectpropCount++;
             }
 
             if (bodymessagebrandId != null)
             {
-                messageObject["brand_id"] = ExpressionConverter.ConvertO(bodymessagebrandId);
+                messageObject["brand_id"] = CSharpExpressionConverter.ConvertToken(bodymessagebrandId);
                 messageObjectpropCount++;
             }
 
@@ -658,13 +658,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var routingObjectpropCount = 0;
             if (bodymessageroutingmethod != null)
             {
-                routingObject["method"] = ExpressionConverter.ConvertO(bodymessageroutingmethod);
+                routingObject["method"] = CSharpExpressionConverter.ConvertToken(bodymessageroutingmethod);
                 routingObjectpropCount++;
             }
 
             if (bodymessageroutingchannels != null)
             {
-                routingObject["channels"] = ExpressionConverter.ConvertO(bodymessageroutingchannels);
+                routingObject["channels"] = CSharpExpressionConverter.ConvertToken(bodymessageroutingchannels);
                 routingObjectpropCount++;
             }
 
@@ -694,19 +694,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var metadataObjectpropCount = 0;
             if (bodymessagemetadataEvent != null)
             {
-                metadataObject["event"] = ExpressionConverter.ConvertO(bodymessagemetadataEvent);
+                metadataObject["event"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadataEvent);
                 metadataObjectpropCount++;
             }
 
             if (bodymessagemetadatatags != null)
             {
-                metadataObject["tags"] = ExpressionConverter.ConvertO(bodymessagemetadatatags);
+                metadataObject["tags"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatatags);
                 metadataObjectpropCount++;
             }
 
             if (bodymessagemetadatatraceId != null)
             {
-                metadataObject["trace_id"] = ExpressionConverter.ConvertO(bodymessagemetadatatraceId);
+                metadataObject["trace_id"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatatraceId);
                 metadataObjectpropCount++;
             }
 
@@ -714,31 +714,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var utmObjectpropCount = 0;
             if (bodymessagemetadatautmcampaign != null)
             {
-                utmObject["campaign"] = ExpressionConverter.ConvertO(bodymessagemetadatautmcampaign);
+                utmObject["campaign"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatautmcampaign);
                 utmObjectpropCount++;
             }
 
             if (bodymessagemetadatautmcontent != null)
             {
-                utmObject["content"] = ExpressionConverter.ConvertO(bodymessagemetadatautmcontent);
+                utmObject["content"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatautmcontent);
                 utmObjectpropCount++;
             }
 
             if (bodymessagemetadatautmmedium != null)
             {
-                utmObject["medium"] = ExpressionConverter.ConvertO(bodymessagemetadatautmmedium);
+                utmObject["medium"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatautmmedium);
                 utmObjectpropCount++;
             }
 
             if (bodymessagemetadatautmsource != null)
             {
-                utmObject["source"] = ExpressionConverter.ConvertO(bodymessagemetadatautmsource);
+                utmObject["source"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatautmsource);
                 utmObjectpropCount++;
             }
 
             if (bodymessagemetadatautmterm != null)
             {
-                utmObject["term"] = ExpressionConverter.ConvertO(bodymessagemetadatautmterm);
+                utmObject["term"] = CSharpExpressionConverter.ConvertToken(bodymessagemetadatautmterm);
                 utmObjectpropCount++;
             }
 
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobGetResponse> BulkJobGet(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/bulk/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bulk/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BulkJobGetResponse>(callPayload);
@@ -780,14 +780,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<bodyusersInputItem[]>> bodyusers = null)
         {
-            var apiCallPath = String.Format("/bulk/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bulk/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyusers != null)
             {
-                body["users"] = ExpressionConverter.ConvertO(bodyusers);
+                body["users"] = CSharpExpressionConverter.ConvertToken(bodyusers);
                 bodypropCount++;
             }
 
@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<JToken> BulkJobRun(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/bulk/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bulk/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobUsersGetResponse> BulkJobUsersGet(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/bulk/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bulk/{0}/users", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BulkJobUsersGetResponse>(callPayload);
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListGetResponse>(callPayload);
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListDelete(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -847,14 +847,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListPut(Expression<Func<string>> listId, Expression<Func<string>> bodyname = null)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListRestorePut(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/lists/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/restore", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -902,25 +902,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListSubscriptionsGetResponse> ListSubscriptionsGet(Expression<Func<string>> listId, Expression<Func<string>> cursor = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<ListSubscriptionsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribers(Expression<Func<string>> listId, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyrecipients != null)
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
                 bodypropCount++;
             }
 
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribeDelete(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/lists/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -948,30 +948,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             if (@event != null)
-                callPayload.Queries["event"] = ExpressionConverter.Convert(@event);
+                callPayload.Queries["event"] = CSharpExpressionConverter.ConvertO(@event);
             if (list != null)
-                callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                callPayload.Queries["list"] = CSharpExpressionConverter.ConvertO(list);
             if (messageId != null)
-                callPayload.Queries["messageId"] = ExpressionConverter.Convert(messageId);
+                callPayload.Queries["messageId"] = CSharpExpressionConverter.ConvertO(messageId);
             if (notification != null)
-                callPayload.Queries["notification"] = ExpressionConverter.Convert(notification);
+                callPayload.Queries["notification"] = CSharpExpressionConverter.ConvertO(notification);
             if (recipient != null)
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
+                callPayload.Queries["recipient"] = CSharpExpressionConverter.ConvertO(recipient);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             if (tags != null)
-                callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
+                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
             return new ApiConnectionAction<MessagesGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageGetResponse> MessageGet(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/messages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MessageGetResponse>(callPayload);
@@ -980,18 +980,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageHistoryGetResponse> MessageHistoryGet(Expression<Func<string>> messageId, Expression<Func<string>> type = null)
         {
-            var apiCallPath = String.Format("/messages/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/messages/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             return new ApiConnectionAction<MessageHistoryGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageContentGetResponse> MessageContentGet(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/messages/{0}/output", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/messages/{0}/output", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MessageContentGetResponse>(callPayload);
@@ -1000,7 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> MessagePut(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}/archive", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/archive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1013,14 +1013,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             return new ApiConnectionAction<NotificationsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileGetResponse> ProfileGet(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProfileGetResponse>(callPayload);
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileDeleteResponse> ProfileDelete(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProfileDeleteResponse>(callPayload);
@@ -1038,7 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSID = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerID = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
         {
-            var apiCallPath = String.Format("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -1047,13 +1047,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var profileObjectpropCount = 0;
             if (bodyprofileemail != null)
             {
-                profileObject["email"] = ExpressionConverter.ConvertO(bodyprofileemail);
+                profileObject["email"] = CSharpExpressionConverter.ConvertToken(bodyprofileemail);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilephoneNumber != null)
             {
-                profileObject["phone_number"] = ExpressionConverter.ConvertO(bodyprofilephoneNumber);
+                profileObject["phone_number"] = CSharpExpressionConverter.ConvertToken(bodyprofilephoneNumber);
                 profileObjectpropCount++;
             }
 
@@ -1061,37 +1061,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var addressObjectpropCount = 0;
             if (bodyprofileaddressformatted != null)
             {
-                addressObject["formatted"] = ExpressionConverter.ConvertO(bodyprofileaddressformatted);
+                addressObject["formatted"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddressformatted);
                 addressObjectpropCount++;
             }
 
             if (bodyprofileaddressstreetAddress != null)
             {
-                addressObject["street_address"] = ExpressionConverter.ConvertO(bodyprofileaddressstreetAddress);
+                addressObject["street_address"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddressstreetAddress);
                 addressObjectpropCount++;
             }
 
             if (bodyprofileaddresslocality != null)
             {
-                addressObject["locality"] = ExpressionConverter.ConvertO(bodyprofileaddresslocality);
+                addressObject["locality"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddresslocality);
                 addressObjectpropCount++;
             }
 
             if (bodyprofileaddressregion != null)
             {
-                addressObject["region"] = ExpressionConverter.ConvertO(bodyprofileaddressregion);
+                addressObject["region"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddressregion);
                 addressObjectpropCount++;
             }
 
             if (bodyprofileaddresspostalCode != null)
             {
-                addressObject["postal_code"] = ExpressionConverter.ConvertO(bodyprofileaddresspostalCode);
+                addressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodyprofileaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyprofileaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprofileaddresscountry);
                 addressObjectpropCount++;
             }
 
@@ -1103,91 +1103,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodyprofilebirthdate != null)
             {
-                profileObject["birthdate"] = ExpressionConverter.ConvertO(bodyprofilebirthdate);
+                profileObject["birthdate"] = CSharpExpressionConverter.ConvertToken(bodyprofilebirthdate);
                 profileObjectpropCount++;
             }
 
             if (bodyprofileemailVerified != null)
             {
-                profileObject["email_verified"] = ExpressionConverter.ConvertO(bodyprofileemailVerified);
+                profileObject["email_verified"] = CSharpExpressionConverter.ConvertToken(bodyprofileemailVerified);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilephoneNumberVerified != null)
             {
-                profileObject["phone_number_verified"] = ExpressionConverter.ConvertO(bodyprofilephoneNumberVerified);
+                profileObject["phone_number_verified"] = CSharpExpressionConverter.ConvertToken(bodyprofilephoneNumberVerified);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilegivenName != null)
             {
-                profileObject["given_name"] = ExpressionConverter.ConvertO(bodyprofilegivenName);
+                profileObject["given_name"] = CSharpExpressionConverter.ConvertToken(bodyprofilegivenName);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilemiddleName != null)
             {
-                profileObject["middle_name"] = ExpressionConverter.ConvertO(bodyprofilemiddleName);
+                profileObject["middle_name"] = CSharpExpressionConverter.ConvertToken(bodyprofilemiddleName);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilefamilyName != null)
             {
-                profileObject["family_name"] = ExpressionConverter.ConvertO(bodyprofilefamilyName);
+                profileObject["family_name"] = CSharpExpressionConverter.ConvertToken(bodyprofilefamilyName);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilepreferredName != null)
             {
-                profileObject["preferred_name"] = ExpressionConverter.ConvertO(bodyprofilepreferredName);
+                profileObject["preferred_name"] = CSharpExpressionConverter.ConvertToken(bodyprofilepreferredName);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilegender != null)
             {
-                profileObject["gender"] = ExpressionConverter.ConvertO(bodyprofilegender);
+                profileObject["gender"] = CSharpExpressionConverter.ConvertToken(bodyprofilegender);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilelocale != null)
             {
-                profileObject["locale"] = ExpressionConverter.ConvertO(bodyprofilelocale);
+                profileObject["locale"] = CSharpExpressionConverter.ConvertToken(bodyprofilelocale);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilepicture != null)
             {
-                profileObject["picture"] = ExpressionConverter.ConvertO(bodyprofilepicture);
+                profileObject["picture"] = CSharpExpressionConverter.ConvertToken(bodyprofilepicture);
                 profileObjectpropCount++;
             }
 
             if (bodyprofileprofile != null)
             {
-                profileObject["profile"] = ExpressionConverter.ConvertO(bodyprofileprofile);
+                profileObject["profile"] = CSharpExpressionConverter.ConvertToken(bodyprofileprofile);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilesub != null)
             {
-                profileObject["sub"] = ExpressionConverter.ConvertO(bodyprofilesub);
+                profileObject["sub"] = CSharpExpressionConverter.ConvertToken(bodyprofilesub);
                 profileObjectpropCount++;
             }
 
             if (bodyprofileupdatedAt != null)
             {
-                profileObject["updated_at"] = ExpressionConverter.ConvertO(bodyprofileupdatedAt);
+                profileObject["updated_at"] = CSharpExpressionConverter.ConvertToken(bodyprofileupdatedAt);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilewebsite != null)
             {
-                profileObject["website"] = ExpressionConverter.ConvertO(bodyprofilewebsite);
+                profileObject["website"] = CSharpExpressionConverter.ConvertToken(bodyprofilewebsite);
                 profileObjectpropCount++;
             }
 
             if (bodyprofilezoneinfo != null)
             {
-                profileObject["zoneinfo"] = ExpressionConverter.ConvertO(bodyprofilezoneinfo);
+                profileObject["zoneinfo"] = CSharpExpressionConverter.ConvertToken(bodyprofilezoneinfo);
                 profileObjectpropCount++;
             }
 
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var audienceObjectpropCount = 0;
             if (bodyprofileairshipaudiencenamedUser != null)
             {
-                audienceObject["named_user"] = ExpressionConverter.ConvertO(bodyprofileairshipaudiencenamedUser);
+                audienceObject["named_user"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipaudiencenamedUser);
                 audienceObjectpropCount++;
             }
 
@@ -1217,19 +1217,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodyprofileairshipdeviceTypes != null)
             {
-                airshipObject["device_types"] = ExpressionConverter.ConvertO(bodyprofileairshipdeviceTypes);
+                airshipObject["device_types"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipdeviceTypes);
                 airshipObjectpropCount++;
             }
 
             if (bodyprofileairshipapn != null)
             {
-                airshipObject["apn"] = ExpressionConverter.ConvertO(bodyprofileairshipapn);
+                airshipObject["apn"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipapn);
                 airshipObjectpropCount++;
             }
 
             if (bodyprofileairshiptargetArn != null)
             {
-                airshipObject["target_arn"] = ExpressionConverter.ConvertO(bodyprofileairshiptargetArn);
+                airshipObject["target_arn"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshiptargetArn);
                 airshipObjectpropCount++;
             }
 
@@ -1237,13 +1237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var discordObjectpropCount = 0;
             if (bodyprofileairshipdiscordchannelId != null)
             {
-                discordObject["channel_id"] = ExpressionConverter.ConvertO(bodyprofileairshipdiscordchannelId);
+                discordObject["channel_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipdiscordchannelId);
                 discordObjectpropCount++;
             }
 
             if (bodyprofileairshipdiscorduserId != null)
             {
-                discordObject["user_id"] = ExpressionConverter.ConvertO(bodyprofileairshipdiscorduserId);
+                discordObject["user_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipdiscorduserId);
                 discordObjectpropCount++;
             }
 
@@ -1257,13 +1257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var expoObjectpropCount = 0;
             if (bodyprofileairshipexpotoken != null)
             {
-                expoObject["token"] = ExpressionConverter.ConvertO(bodyprofileairshipexpotoken);
+                expoObject["token"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipexpotoken);
                 expoObjectpropCount++;
             }
 
             if (bodyprofileairshipexpotokens != null)
             {
-                expoObject["tokens"] = ExpressionConverter.ConvertO(bodyprofileairshipexpotokens);
+                expoObject["tokens"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipexpotokens);
                 expoObjectpropCount++;
             }
 
@@ -1275,13 +1275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodyprofileairshipfacebookPSID != null)
             {
-                airshipObject["facebookPSID"] = ExpressionConverter.ConvertO(bodyprofileairshipfacebookPSID);
+                airshipObject["facebookPSID"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipfacebookPSID);
                 airshipObjectpropCount++;
             }
 
             if (bodyprofileairshipfirebaseToken != null)
             {
-                airshipObject["firebaseToken"] = ExpressionConverter.ConvertO(bodyprofileairshipfirebaseToken);
+                airshipObject["firebaseToken"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipfirebaseToken);
                 airshipObjectpropCount++;
             }
 
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var intercomObjectpropCount = 0;
             if (bodyprofileairshipintercomfrom != null)
             {
-                intercomObject["from"] = ExpressionConverter.ConvertO(bodyprofileairshipintercomfrom);
+                intercomObject["from"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipintercomfrom);
                 intercomObjectpropCount++;
             }
 
@@ -1297,7 +1297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var toObjectpropCount = 0;
             if (bodyprofileairshipintercomtoid != null)
             {
-                toObject["id"] = ExpressionConverter.ConvertO(bodyprofileairshipintercomtoid);
+                toObject["id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipintercomtoid);
                 toObjectpropCount++;
             }
 
@@ -1317,25 +1317,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var msTeamsObjectpropCount = 0;
             if (bodyprofileairshipmsTeamsuserId != null)
             {
-                msTeamsObject["user_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsuserId);
+                msTeamsObject["user_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipmsTeamsuserId);
                 msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamsconversationId != null)
             {
-                msTeamsObject["conversation_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsconversationId);
+                msTeamsObject["conversation_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipmsTeamsconversationId);
                 msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamstenantId != null)
             {
-                msTeamsObject["tenant_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamstenantId);
+                msTeamsObject["tenant_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipmsTeamstenantId);
                 msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamsserviceUrl != null)
             {
-                msTeamsObject["service_url"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsserviceUrl);
+                msTeamsObject["service_url"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipmsTeamsserviceUrl);
                 msTeamsObjectpropCount++;
             }
 
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodyprofileairshiponeSignalPlayerID != null)
             {
-                airshipObject["oneSignalPlayerID"] = ExpressionConverter.ConvertO(bodyprofileairshiponeSignalPlayerID);
+                airshipObject["oneSignalPlayerID"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshiponeSignalPlayerID);
                 airshipObjectpropCount++;
             }
 
@@ -1355,25 +1355,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var slackObjectpropCount = 0;
             if (bodyprofileairshipslackaccessToken != null)
             {
-                slackObject["access_token"] = ExpressionConverter.ConvertO(bodyprofileairshipslackaccessToken);
+                slackObject["access_token"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipslackaccessToken);
                 slackObjectpropCount++;
             }
 
             if (bodyprofileairshipslackchannel != null)
             {
-                slackObject["channel"] = ExpressionConverter.ConvertO(bodyprofileairshipslackchannel);
+                slackObject["channel"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipslackchannel);
                 slackObjectpropCount++;
             }
 
             if (bodyprofileairshipslackemail != null)
             {
-                slackObject["email"] = ExpressionConverter.ConvertO(bodyprofileairshipslackemail);
+                slackObject["email"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipslackemail);
                 slackObjectpropCount++;
             }
 
             if (bodyprofileairshipslackuserId != null)
             {
-                slackObject["user_id"] = ExpressionConverter.ConvertO(bodyprofileairshipslackuserId);
+                slackObject["user_id"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipslackuserId);
                 slackObjectpropCount++;
             }
 
@@ -1381,7 +1381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var incomingWebhookObjectpropCount = 0;
             if (bodyprofileairshipslackincomingWebhookurl != null)
             {
-                incomingWebhookObject["url"] = ExpressionConverter.ConvertO(bodyprofileairshipslackincomingWebhookurl);
+                incomingWebhookObject["url"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipslackincomingWebhookurl);
                 incomingWebhookObjectpropCount++;
             }
 
@@ -1401,13 +1401,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var webhookObjectpropCount = 0;
             if (bodyprofileairshipwebhookurl != null)
             {
-                webhookObject["url"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookurl);
+                webhookObject["url"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookurl);
                 webhookObjectpropCount++;
             }
 
             if (bodyprofileairshipwebhookmethod != null)
             {
-                webhookObject["method"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookmethod);
+                webhookObject["method"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookmethod);
                 webhookObjectpropCount++;
             }
 
@@ -1423,25 +1423,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var authenticationObjectpropCount = 0;
             if (bodyprofileairshipwebhookauthenticationmode != null)
             {
-                authenticationObject["mode"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookauthenticationmode);
+                authenticationObject["mode"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookauthenticationmode);
                 authenticationObjectpropCount++;
             }
 
             if (bodyprofileairshipwebhookauthenticationusername != null)
             {
-                authenticationObject["username"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookauthenticationusername);
+                authenticationObject["username"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookauthenticationusername);
                 authenticationObjectpropCount++;
             }
 
             if (bodyprofileairshipwebhookauthenticationpassword != null)
             {
-                authenticationObject["password"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookauthenticationpassword);
+                authenticationObject["password"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookauthenticationpassword);
                 authenticationObjectpropCount++;
             }
 
             if (bodyprofileairshipwebhookauthenticationtoken != null)
             {
-                authenticationObject["token"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookauthenticationtoken);
+                authenticationObject["token"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookauthenticationtoken);
                 authenticationObjectpropCount++;
             }
 
@@ -1453,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             if (bodyprofileairshipwebhookprofile != null)
             {
-                webhookObject["profile"] = ExpressionConverter.ConvertO(bodyprofileairshipwebhookprofile);
+                webhookObject["profile"] = CSharpExpressionConverter.ConvertToken(bodyprofileairshipwebhookprofile);
                 webhookObjectpropCount++;
             }
 
@@ -1486,10 +1486,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfilePatchResponse> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<ProfilePatchResponse>(callPayload);
         }
     }

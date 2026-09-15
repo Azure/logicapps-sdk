@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
             var apiCallPath = "/latest";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+            callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<GetLatestbyCodeResponse>(callPayload);
         }
 
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             return new ApiConnectionAction<GetLatestbyLatLonResponse>(callPayload);
         }
 

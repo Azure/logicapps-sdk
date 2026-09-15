@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
             var apiCallPath = "/sticker/share";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
             var apiCallPath = "/stickers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
             return new ApiConnectionAction<UserStickerGetResponse>(callPayload);
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
             var apiCallPath = "/user/board";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["user"] = ExpressionConverter.Convert(user);
+            callPayload.Queries["user"] = CSharpExpressionConverter.ConvertO(user);
             return new ApiConnectionAction<UserBoardGetResponse>(callPayload);
         }
     }

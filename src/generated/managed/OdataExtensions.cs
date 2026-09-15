@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/getentitydata";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/getschema";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/getsingleschema";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             if (option != null)
-                callPayload.Queries["option"] = ExpressionConverter.Convert(option);
+                callPayload.Queries["option"] = CSharpExpressionConverter.ConvertO(option);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/getentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/createentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/updateentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var apiCallPath = "/deleteentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+            callPayload.Queries["odataUri"] = CSharpExpressionConverter.ConvertO(odataUri);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
         }
 
@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
         }
 
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
         }
 
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
         }
 
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
         }
 
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
         }
 
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
         }
 
@@ -119,11 +119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
         }
 
@@ -134,11 +134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
         }
 
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
+                callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
             if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.Convert(category);
             return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
         }
 
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
         }
 
@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
         }
 
@@ -194,9 +194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
         }
 
@@ -207,11 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
         }
 
@@ -222,9 +222,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
         }
 
@@ -235,11 +235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
         }
 
@@ -250,11 +250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
         }
 
@@ -265,11 +265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
         }
 
@@ -280,9 +280,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
         }
 
@@ -293,9 +293,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
         }
 
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
         }
 
@@ -319,11 +319,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
         }
 
@@ -334,11 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                callPayload.Queries["availableLocales"] = CSharpExpressionConverter.Convert(availableLocales);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
             return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
         }
     }

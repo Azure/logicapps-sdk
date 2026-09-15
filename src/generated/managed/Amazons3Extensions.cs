@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             var apiCallPath = "/buckets/objects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
+            callPayload.Queries["bucketName"] = CSharpExpressionConverter.ConvertO(bucketName);
             if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                callPayload.Queries["bucketRegion"] = CSharpExpressionConverter.ConvertO(bucketRegion);
             callPayload.Queries["maxObjectCount"] = Convert.ToString(100);
             if (maxObjectCount != null)
-                callPayload.Queries["maxObjectCount"] = ExpressionConverter.Convert(maxObjectCount);
+                callPayload.Queries["maxObjectCount"] = CSharpExpressionConverter.ConvertO(maxObjectCount);
             if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                callPayload.Queries["continuationToken"] = CSharpExpressionConverter.ConvertO(continuationToken);
             return new ApiConnectionAction<S3ObjectCollection>(callPayload);
         }
 
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             var apiCallPath = "/buckets/objects/metadata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+            callPayload.Queries["bucketName"] = CSharpExpressionConverter.ConvertO(bucketName);
+            callPayload.Queries["objectKey"] = CSharpExpressionConverter.ConvertO(objectKey);
             if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                callPayload.Queries["bucketRegion"] = CSharpExpressionConverter.ConvertO(bucketRegion);
             return new ApiConnectionAction<S3ObjectDeepMetadata>(callPayload);
         }
 
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             var apiCallPath = "/buckets/objects/content";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+            callPayload.Queries["bucketName"] = CSharpExpressionConverter.ConvertO(bucketName);
+            callPayload.Queries["objectKey"] = CSharpExpressionConverter.ConvertO(objectKey);
             if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                callPayload.Queries["bucketRegion"] = CSharpExpressionConverter.ConvertO(bucketRegion);
             return new ApiConnectionAction<string>(callPayload);
         }
     }
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
             var apiCallPath = "/buckets/objects/onupdate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+            callPayload.Queries["bucketName"] = CSharpExpressionConverter.ConvertO(bucketName);
+            callPayload.Queries["objectKey"] = CSharpExpressionConverter.ConvertO(objectKey);
             if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                callPayload.Queries["bucketRegion"] = CSharpExpressionConverter.ConvertO(bucketRegion);
             return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, triggerName, recurrence);
         }
     }

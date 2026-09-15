@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var sourceDocumentObjectpropCount = 0;
             if (requestsourceDocumentfirstFile != null)
             {
-                sourceDocumentObject["file"] = ExpressionConverter.ConvertO(requestsourceDocumentfirstFile);
+                sourceDocumentObject["file"] = CSharpExpressionConverter.ConvertToken(requestsourceDocumentfirstFile);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var comparisonDocumentObjectpropCount = 0;
             if (requestcomparisonDocumentsecondFile != null)
             {
-                comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(requestcomparisonDocumentsecondFile);
+                comparisonDocumentObject["file"] = CSharpExpressionConverter.ConvertToken(requestcomparisonDocumentsecondFile);
                 comparisonDocumentObjectpropCount++;
             }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var configurationObjectpropCount = 0;
             if (requestconfigurationprofession != null)
             {
-                configurationObject["profession"] = ExpressionConverter.ConvertO(requestconfigurationprofession);
+                configurationObject["profession"] = CSharpExpressionConverter.Convert(requestconfigurationprofession);
                 configurationObjectpropCount++;
             }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var documentObjectpropCount = 0;
             if (requestdocumentfile != null)
             {
-                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentfile);
                 documentObjectpropCount++;
             }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var configurationObjectpropCount = 0;
             if (requestconfigurationtargetWordCount != null)
             {
-                configurationObject["targetWords"] = ExpressionConverter.ConvertO(requestconfigurationtargetWordCount);
+                configurationObject["targetWords"] = CSharpExpressionConverter.ConvertToken(requestconfigurationtargetWordCount);
                 configurationObjectpropCount++;
             }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["description"] = ExpressionConverter.ConvertO(requestdescribeTheDocument1000Chars);
+            request["description"] = CSharpExpressionConverter.ConvertToken(requestdescribeTheDocument1000Chars);
             var configurationObject = new JObject();
             var configurationObjectpropCount = 0;
             var keysObject = new JObject();
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var documentObjectpropCount = 0;
             if (requestdocumentfile != null)
             {
-                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentfile);
                 documentObjectpropCount++;
             }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var configurationObjectpropCount = 0;
             if (requestconfigurationdocumentFormat != null)
             {
-                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                configurationObject["documentResponseFormat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
                 configurationObjectpropCount++;
             }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var templateObjectpropCount = 0;
             if (requesttemplatetemplateFile != null)
             {
-                templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
+                templateObject["file"] = CSharpExpressionConverter.ConvertToken(requesttemplatetemplateFile);
                 templateObjectpropCount++;
             }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var configurationObjectpropCount = 0;
             if (requestconfigurationdocumentFormat != null)
             {
-                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                configurationObject["documentResponseFormat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
                 configurationObjectpropCount++;
             }
 
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var templateObjectpropCount = 0;
             if (requesttemplatetemplateFile != null)
             {
-                templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
+                templateObject["file"] = CSharpExpressionConverter.ConvertToken(requesttemplatetemplateFile);
                 templateObjectpropCount++;
             }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
             if (requestimage != null)
             {
-                request["images"] = ExpressionConverter.ConvertO(requestimage);
+                request["images"] = CSharpExpressionConverter.ConvertToken(requestimage);
                 requestpropCount++;
             }
 
@@ -313,13 +313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
             if (requestdocument != null)
             {
-                request["substituteDocuments"] = ExpressionConverter.ConvertO(requestdocument);
+                request["substituteDocuments"] = CSharpExpressionConverter.ConvertToken(requestdocument);
                 requestpropCount++;
             }
 
             if (requesttable != null)
             {
-                request["tables"] = ExpressionConverter.ConvertO(requesttable);
+                request["tables"] = CSharpExpressionConverter.ConvertToken(requesttable);
                 requestpropCount++;
             }
 
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var configurationObjectpropCount = 0;
             if (requestconfigurationdocumentFormat != null)
             {
-                configurationObject["documentresponseformat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                configurationObject["documentresponseformat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
                 configurationObjectpropCount++;
             }
 
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var documentObjectpropCount = 0;
             if (requestdocumentpDFDocument != null)
             {
-                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentpDFDocument);
+                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentpDFDocument);
                 documentObjectpropCount++;
             }
 
@@ -392,82 +392,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             }
 
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requestdocumentTitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requestdocumentTitle);
             requestpropCount++;
-            request["introduction"] = ExpressionConverter.ConvertO(requestdocumentIntroduction);
+            request["introduction"] = CSharpExpressionConverter.ConvertToken(requestdocumentIntroduction);
             if (requestdocumentLogo != null)
             {
-                request["logoUrl"] = ExpressionConverter.ConvertO(requestdocumentLogo);
+                request["logoUrl"] = CSharpExpressionConverter.ConvertToken(requestdocumentLogo);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["email"] = ExpressionConverter.ConvertO(requestrecipientEmail);
+            request["email"] = CSharpExpressionConverter.ConvertToken(requestrecipientEmail);
             requestpropCount++;
-            request["firstName"] = ExpressionConverter.ConvertO(requestrecipientFirstName);
+            request["firstName"] = CSharpExpressionConverter.ConvertToken(requestrecipientFirstName);
             requestpropCount++;
-            request["lastName"] = ExpressionConverter.ConvertO(requestrecipientLastName);
+            request["lastName"] = CSharpExpressionConverter.ConvertToken(requestrecipientLastName);
             if (requestcheckbox != null)
             {
-                request["checkboxText"] = ExpressionConverter.ConvertO(requestcheckbox);
+                request["checkboxText"] = CSharpExpressionConverter.ConvertToken(requestcheckbox);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["expiry"] = ExpressionConverter.ConvertO(requestexpiryDate);
+            request["expiry"] = CSharpExpressionConverter.ConvertToken(requestexpiryDate);
             requestpropCount++;
-            request["isSignatureRequired"] = ExpressionConverter.ConvertO(requestsignatureRequired);
+            request["isSignatureRequired"] = CSharpExpressionConverter.ConvertToken(requestsignatureRequired);
             requestpropCount++;
-            request["organisationTitle"] = ExpressionConverter.ConvertO(requestorgansiationTitle);
+            request["organisationTitle"] = CSharpExpressionConverter.ConvertToken(requestorgansiationTitle);
             if (requestorganisationWebsite != null)
             {
-                request["organisationWebsite"] = ExpressionConverter.ConvertO(requestorganisationWebsite);
+                request["organisationWebsite"] = CSharpExpressionConverter.ConvertToken(requestorganisationWebsite);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["organisationContactEmail"] = ExpressionConverter.ConvertO(requestorganisationEmail);
+            request["organisationContactEmail"] = CSharpExpressionConverter.ConvertToken(requestorganisationEmail);
             if (requestorganisationPhone != null)
             {
-                request["organisationContactPhone"] = ExpressionConverter.ConvertO(requestorganisationPhone);
+                request["organisationContactPhone"] = CSharpExpressionConverter.ConvertToken(requestorganisationPhone);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["organisationContactName"] = ExpressionConverter.ConvertO(requestorganisationOwner);
+            request["organisationContactName"] = CSharpExpressionConverter.ConvertToken(requestorganisationOwner);
             if (requestoragnisationOwnerTitle != null)
             {
-                request["organisationContactTitle"] = ExpressionConverter.ConvertO(requestoragnisationOwnerTitle);
+                request["organisationContactTitle"] = CSharpExpressionConverter.ConvertToken(requestoragnisationOwnerTitle);
                 requestpropCount++;
             }
 
             if (requestcomments != null)
             {
-                request["commentsEnabled"] = ExpressionConverter.ConvertO(requestcomments);
+                request["commentsEnabled"] = CSharpExpressionConverter.ConvertToken(requestcomments);
                 requestpropCount++;
             }
 
             if (requestprojectID != null)
             {
-                request["projectIdentifier"] = ExpressionConverter.ConvertO(requestprojectID);
+                request["projectIdentifier"] = CSharpExpressionConverter.ConvertToken(requestprojectID);
                 requestpropCount++;
             }
 
             if (requestcompleteButtonLabel != null)
             {
-                request["completeButtonLabel"] = ExpressionConverter.ConvertO(requestcompleteButtonLabel);
+                request["completeButtonLabel"] = CSharpExpressionConverter.ConvertToken(requestcompleteButtonLabel);
                 requestpropCount++;
             }
 
             if (requestcompleteDocumentLabel != null)
             {
-                request["completeStatusLabel"] = ExpressionConverter.ConvertO(requestcompleteDocumentLabel);
+                request["completeStatusLabel"] = CSharpExpressionConverter.ConvertToken(requestcompleteDocumentLabel);
                 requestpropCount++;
             }
 
             if (requestincompleteDocumentLabel != null)
             {
-                request["incompleteStatusLabel"] = ExpressionConverter.ConvertO(requestincompleteDocumentLabel);
+                request["incompleteStatusLabel"] = CSharpExpressionConverter.ConvertToken(requestincompleteDocumentLabel);
                 requestpropCount++;
             }
 

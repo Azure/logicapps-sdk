@@ -20,34 +20,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodytext != null)
             {
-                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodyurl != null)
             {
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             if (bodymediaUrl != null)
             {
-                body["MediaUrl"] = ExpressionConverter.ConvertO(bodymediaUrl);
+                body["MediaUrl"] = CSharpExpressionConverter.ConvertToken(bodymediaUrl);
                 bodypropCount++;
             }
 
             if (bodysource != null)
             {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                body["Source"] = CSharpExpressionConverter.Convert(bodysource);
                 bodypropCount++;
             }
 
             if (bodytargetAudience != null)
             {
-                body["TargetAudience"] = ExpressionConverter.ConvertO(bodytargetAudience);
+                body["TargetAudience"] = CSharpExpressionConverter.ConvertToken(bodytargetAudience);
                 bodypropCount++;
             }
 

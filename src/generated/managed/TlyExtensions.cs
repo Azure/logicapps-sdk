@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
+            body["pixel_id"] = CSharpExpressionConverter.ConvertToken(bodypixelId);
             bodypropCount++;
-            body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
+            body["pixel_type"] = CSharpExpressionConverter.ConvertToken(bodypixelType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> pixelId)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PixelGetResponse>(callPayload);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> PixelDelete(Expression<Func<string>> pixelId)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -63,32 +63,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodypixelId != null)
             {
-                body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
+                body["pixel_id"] = CSharpExpressionConverter.ConvertToken(bodypixelId);
                 bodypropCount++;
             }
 
             if (bodypixelType != null)
             {
-                body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
+                body["pixel_type"] = CSharpExpressionConverter.ConvertToken(bodypixelType);
                 bodypropCount++;
             }
 
@@ -109,28 +109,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
+            body["long_url"] = CSharpExpressionConverter.ConvertToken(bodylongUrl);
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodyexpireAtDatetime != null)
             {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
+                body["expire_at_datetime"] = CSharpExpressionConverter.ConvertToken(bodyexpireAtDatetime);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypublicStats != null)
             {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
+                body["public_stats"] = CSharpExpressionConverter.ConvertToken(bodypublicStats);
                 bodypropCount++;
             }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var metaObjectpropCount = 0;
             if (bodymetasmartUrls != null)
             {
-                metaObject["smart_urls"] = ExpressionConverter.ConvertO(bodymetasmartUrls);
+                metaObject["smart_urls"] = CSharpExpressionConverter.ConvertToken(bodymetasmartUrls);
                 metaObjectpropCount++;
             }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (shortUrl != null)
-                callPayload.Queries["short_url"] = ExpressionConverter.Convert(shortUrl);
+                callPayload.Queries["short_url"] = CSharpExpressionConverter.ConvertO(shortUrl);
             return new ApiConnectionAction<LinkGetResponse>(callPayload);
         }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var bodypropCount = 0;
             if (bodyshortUrl != null)
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                body["short_url"] = CSharpExpressionConverter.ConvertToken(bodyshortUrl);
                 bodypropCount++;
             }
 
@@ -199,67 +199,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var bodypropCount = 0;
             if (bodyshortUrl != null)
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                body["short_url"] = CSharpExpressionConverter.ConvertToken(bodyshortUrl);
                 bodypropCount++;
             }
 
             if (bodylongUrl != null)
             {
-                body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
+                body["long_url"] = CSharpExpressionConverter.ConvertToken(bodylongUrl);
                 bodypropCount++;
             }
 
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodyshortId != null)
             {
-                body["short_id"] = ExpressionConverter.ConvertO(bodyshortId);
+                body["short_id"] = CSharpExpressionConverter.ConvertToken(bodyshortId);
                 bodypropCount++;
             }
 
             if (bodyexpireAtViews != null)
             {
-                body["expire_at_views"] = ExpressionConverter.ConvertO(bodyexpireAtViews);
+                body["expire_at_views"] = CSharpExpressionConverter.ConvertToken(bodyexpireAtViews);
                 bodypropCount++;
             }
 
             if (bodyexpireAtDatetime != null)
             {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
+                body["expire_at_datetime"] = CSharpExpressionConverter.ConvertToken(bodyexpireAtDatetime);
                 bodypropCount++;
             }
 
             if (bodypublicStats != null)
             {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
+                body["public_stats"] = CSharpExpressionConverter.ConvertToken(bodypublicStats);
                 bodypropCount++;
             }
 
             if (bodyqrCodeUrl != null)
             {
-                body["qr_code_url"] = ExpressionConverter.ConvertO(bodyqrCodeUrl);
+                body["qr_code_url"] = CSharpExpressionConverter.ConvertToken(bodyqrCodeUrl);
                 bodypropCount++;
             }
 
             if (bodyqrCodeBase64 != null)
             {
-                body["qr_code_base64"] = ExpressionConverter.ConvertO(bodyqrCodeBase64);
+                body["qr_code_base64"] = CSharpExpressionConverter.ConvertToken(bodyqrCodeBase64);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodypixels != null)
             {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
+                body["pixels"] = CSharpExpressionConverter.ConvertToken(bodypixels);
                 bodypropCount++;
             }
 
@@ -281,13 +281,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var bodypropCount = 0;
             if (bodyshortUrl != null)
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                body["short_url"] = CSharpExpressionConverter.ConvertToken(bodyshortUrl);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
@@ -306,17 +306,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (tagIds != null)
-                callPayload.Queries["tag_ids"] = ExpressionConverter.Convert(tagIds);
+                callPayload.Queries["tag_ids"] = CSharpExpressionConverter.ConvertO(tagIds);
             if (pixelIds != null)
-                callPayload.Queries["pixel_ids"] = ExpressionConverter.Convert(pixelIds);
+                callPayload.Queries["pixel_ids"] = CSharpExpressionConverter.ConvertO(pixelIds);
             if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
             if (domains != null)
-                callPayload.Queries["domains"] = ExpressionConverter.Convert(domains);
+                callPayload.Queries["domains"] = CSharpExpressionConverter.ConvertO(domains);
             return new ApiConnectionAction<LinksGetResponse>(callPayload);
         }
 
@@ -330,25 +330,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var bodypropCount = 0;
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodylinks != null)
             {
-                body["links"] = ExpressionConverter.ConvertO(bodylinks);
+                body["links"] = CSharpExpressionConverter.ConvertToken(bodylinks);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodypixels != null)
             {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
+                body["pixels"] = CSharpExpressionConverter.ConvertToken(bodypixels);
                 bodypropCount++;
             }
 
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var apiCallPath = "/api/v1/link/stats";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["short_link"] = ExpressionConverter.Convert(shortLink);
+            callPayload.Queries["short_link"] = CSharpExpressionConverter.ConvertO(shortLink);
             return new ApiConnectionAction<StatGetResponse>(callPayload);
         }
 
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
+            body["tag"] = CSharpExpressionConverter.ConvertToken(bodytag);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tagId)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> TagDelete(Expression<Func<string>> tagId)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -418,13 +418,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagPutResponse> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
+            body["tag"] = CSharpExpressionConverter.ConvertToken(bodytag);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

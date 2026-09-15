@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (stateId != null)
-                callPayload.Queries["state[id]"] = ExpressionConverter.Convert(stateId);
+                callPayload.Queries["state[id]"] = CSharpExpressionConverter.ConvertO(stateId);
             if (nteeId != null)
-                callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(nteeId);
+                callPayload.Queries["ntee[id]"] = CSharpExpressionConverter.ConvertO(nteeId);
             if (cCodeId != null)
-                callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(cCodeId);
+                callPayload.Queries["c_code[id]"] = CSharpExpressionConverter.ConvertO(cCodeId);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
         {
-            var apiCallPath = String.Format("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<NonprofitGetResponse>(callPayload);

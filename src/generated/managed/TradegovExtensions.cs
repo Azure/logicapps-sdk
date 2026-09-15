@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             if (itaOffices != null)
-                callPayload.Queries["ita_offices"] = ExpressionConverter.Convert(itaOffices);
+                callPayload.Queries["ita_offices"] = CSharpExpressionConverter.ConvertO(itaOffices);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             return new ApiConnectionAction<BSPResponse>(callPayload);
         }
 
@@ -46,29 +46,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (fuzzyName != null)
-                callPayload.Queries["fuzzy_name"] = ExpressionConverter.Convert(fuzzyName);
+                callPayload.Queries["fuzzy_name"] = CSharpExpressionConverter.Convert(fuzzyName);
             if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
+                callPayload.Queries["sources"] = CSharpExpressionConverter.ConvertO(sources);
             if (types != null)
-                callPayload.Queries["types"] = ExpressionConverter.Convert(types);
+                callPayload.Queries["types"] = CSharpExpressionConverter.ConvertO(types);
             if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                callPayload.Queries["countries"] = CSharpExpressionConverter.ConvertO(countries);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (postalCode != null)
-                callPayload.Queries["postal_code"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["postal_code"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (fullAddress != null)
-                callPayload.Queries["full_address"] = ExpressionConverter.Convert(fullAddress);
+                callPayload.Queries["full_address"] = CSharpExpressionConverter.ConvertO(fullAddress);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             return new ApiConnectionAction<ScreeningListSearchResponse>(callPayload);
         }
 
@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
         }
 
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                callPayload.Queries["country_codes"] = CSharpExpressionConverter.ConvertO(countryCodes);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
         }
 
@@ -116,17 +116,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                callPayload.Queries["country_codes"] = CSharpExpressionConverter.ConvertO(countryCodes);
             if (states != null)
-                callPayload.Queries["states"] = ExpressionConverter.Convert(states);
+                callPayload.Queries["states"] = CSharpExpressionConverter.ConvertO(states);
             if (assignedZipCodes != null)
-                callPayload.Queries["assigned_zip_codes"] = ExpressionConverter.Convert(assignedZipCodes);
+                callPayload.Queries["assigned_zip_codes"] = CSharpExpressionConverter.ConvertO(assignedZipCodes);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             return new ApiConnectionAction<ITAOfficeSearchResponse>(callPayload);
         }
 
@@ -146,25 +146,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
+                callPayload.Queries["sources"] = CSharpExpressionConverter.ConvertO(sources);
             if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                callPayload.Queries["countries"] = CSharpExpressionConverter.ConvertO(countries);
             if (eventTypes != null)
-                callPayload.Queries["event_types"] = ExpressionConverter.Convert(eventTypes);
+                callPayload.Queries["event_types"] = CSharpExpressionConverter.ConvertO(eventTypes);
             if (industries != null)
-                callPayload.Queries["industries"] = ExpressionConverter.Convert(industries);
+                callPayload.Queries["industries"] = CSharpExpressionConverter.ConvertO(industries);
             if (states != null)
-                callPayload.Queries["states"] = ExpressionConverter.Convert(states);
+                callPayload.Queries["states"] = CSharpExpressionConverter.ConvertO(states);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (startDateRangeFrom != null)
-                callPayload.Queries["start_date_range[from]"] = ExpressionConverter.Convert(startDateRangeFrom);
+                callPayload.Queries["start_date_range[from]"] = CSharpExpressionConverter.ConvertO(startDateRangeFrom);
             if (startDateRangeTo != null)
-                callPayload.Queries["start_date_range[to]"] = ExpressionConverter.Convert(startDateRangeTo);
+                callPayload.Queries["start_date_range[to]"] = CSharpExpressionConverter.ConvertO(startDateRangeTo);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TradeEventSearchResponse>(callPayload);
         }
 
@@ -184,21 +184,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                callPayload.Queries["country_codes"] = CSharpExpressionConverter.ConvertO(countryCodes);
             if (tenderStartDateRangeFrom != null)
-                callPayload.Queries["tender_start_date_range[from]"] = ExpressionConverter.Convert(tenderStartDateRangeFrom);
+                callPayload.Queries["tender_start_date_range[from]"] = CSharpExpressionConverter.ConvertO(tenderStartDateRangeFrom);
             if (tenderStartDateRangeTo != null)
-                callPayload.Queries["tender_start_date_range[to]"] = ExpressionConverter.Convert(tenderStartDateRangeTo);
+                callPayload.Queries["tender_start_date_range[to]"] = CSharpExpressionConverter.ConvertO(tenderStartDateRangeTo);
             if (contractStartDateRangeFrom != null)
-                callPayload.Queries["contract_start_date_range[from]"] = ExpressionConverter.Convert(contractStartDateRangeFrom);
+                callPayload.Queries["contract_start_date_range[from]"] = CSharpExpressionConverter.ConvertO(contractStartDateRangeFrom);
             if (contractStartDateRangeTo != null)
-                callPayload.Queries["contract_start_date_range[to]"] = ExpressionConverter.Convert(contractStartDateRangeTo);
+                callPayload.Queries["contract_start_date_range[to]"] = CSharpExpressionConverter.ConvertO(contractStartDateRangeTo);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TradeLeadsSearchResponse>(callPayload);
         }
 

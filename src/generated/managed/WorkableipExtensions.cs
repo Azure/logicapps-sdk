@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/spi/v3/candidates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CandidatesIdResponse>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode(Expression<Func<string>> shortcode)
         {
-            var apiCallPath = String.Format("/spi/v3/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(shortcode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(shortcode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JobShortCodeResponse>(callPayload);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobActivitiesResponse> JobActivities(Expression<Func<string>> shortcode)
         {
-            var apiCallPath = String.Format("/spi/v3/jobs/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(shortcode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}/activities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(shortcode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JobActivitiesResponse>(callPayload);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<EventsIdResponse> EventsId(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/spi/v3/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/spi/v3/events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<EventsIdResponse>(callPayload);
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             var bodypropCount = 0;
             if (bodytarget != null)
             {
-                body["target"] = ExpressionConverter.ConvertO(bodytarget);
+                body["target"] = CSharpExpressionConverter.ConvertToken(bodytarget);
                 bodypropCount++;
             }
 
             if (bodyEvent != null)
             {
-                body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+                body["event"] = CSharpExpressionConverter.ConvertToken(bodyEvent);
                 bodypropCount++;
             }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             {
                 if (bodyargsaccountId != null)
                 {
-                    argsObject["account_id"] = ExpressionConverter.ConvertO(bodyargsaccountId);
+                    argsObject["account_id"] = CSharpExpressionConverter.ConvertToken(bodyargsaccountId);
                     argsObjectpropCount++;
                 }
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
 
             if (bodyargsstageSlug != null)
             {
-                argsObject["stage_slug"] = ExpressionConverter.ConvertO(bodyargsstageSlug);
+                argsObject["stage_slug"] = CSharpExpressionConverter.ConvertToken(bodyargsstageSlug);
                 argsObjectpropCount++;
             }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<OfferResponse> Offer(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/spi/v3/candidates/{0}/offer", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}/offer", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OfferResponse>(callPayload);

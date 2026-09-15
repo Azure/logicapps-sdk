@@ -14,15 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         public IBodyWorkflowAction<PredictResponse> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
         {
-            var apiCallPath = String.Format("/luis/v2.0/apps/{0}/", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (desiredIntent != null)
-                callPayload.Queries["desiredIntent"] = ExpressionConverter.Convert(desiredIntent);
+                callPayload.Queries["desiredIntent"] = CSharpExpressionConverter.ConvertO(desiredIntent);
             callPayload.Queries["versionId"] = Convert.ToString("0.1");
             if (versionId != null)
-                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
             callPayload.Queries["verbose"] = Convert.ToString(true);
             return new ApiConnectionAction<PredictResponse>(callPayload);
         }
@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
             var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["app-id"] = ExpressionConverter.Convert(appId);
-            callPayload.Queries["desiredEntity"] = ExpressionConverter.Convert(desiredEntity);
+            callPayload.Queries["app-id"] = CSharpExpressionConverter.ConvertO(appId);
+            callPayload.Queries["desiredEntity"] = CSharpExpressionConverter.ConvertO(desiredEntity);
             callPayload.Queries["versionId"] = Convert.ToString("0.1");
             if (versionId != null)
-                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            callPayload.Body = ExpressionConverter.ConvertO(luisPredictionObject);
+                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(luisPredictionObject);
             return new ApiConnectionAction<GetTopScoringMatchingEntityResponse>(callPayload);
         }
     }

@@ -17,15 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var apiCallPath = "/documents";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Name"] = ExpressionConverter.Convert(name);
-            callPayload.Body = ExpressionConverter.ConvertO(fileContent);
+            callPayload.Headers["Name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileContent);
             return new ApiConnectionAction<CreateDocumentDeprecatedResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/metadata/{0}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/metadata/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentMetadataResponse>(callPayload);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<string> GetDocument(Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/documents/{0}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -49,16 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["modelId"] = ExpressionConverter.ConvertO(requestmodel);
+            request["modelId"] = CSharpExpressionConverter.ConvertToken(requestmodel);
             requestpropCount++;
-            request["documentId"] = ExpressionConverter.ConvertO(requestdocumentID);
+            request["documentId"] = CSharpExpressionConverter.ConvertToken(requestdocumentID);
             var postprocessConfigObject = new JObject();
             var postprocessConfigObjectpropCount = 0;
             if (requestpostprocessingtheOutputFormat != null)
             {
                 if (requestpostprocessingtheOutputFormat != null)
                 {
-                    postprocessConfigObject["outputFormat"] = ExpressionConverter.ConvertO(requestpostprocessingtheOutputFormat);
+                    postprocessConfigObject["outputFormat"] = CSharpExpressionConverter.Convert(requestpostprocessingtheOutputFormat);
                     postprocessConfigObjectpropCount++;
                 }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             {
                 if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
                 {
-                    postprocessConfigObject["strategy"] = ExpressionConverter.ConvertO(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
+                    postprocessConfigObject["strategy"] = CSharpExpressionConverter.Convert(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
                     postprocessConfigObjectpropCount++;
                 }
 
@@ -96,19 +96,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var preprocessConfigObjectpropCount = 0;
             if (requestpreprocessingautoRotate != null)
             {
-                preprocessConfigObject["autoRotate"] = ExpressionConverter.ConvertO(requestpreprocessingautoRotate);
+                preprocessConfigObject["autoRotate"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingautoRotate);
                 preprocessConfigObjectpropCount++;
             }
 
             if (requestpreprocessingmaxPages != null)
             {
-                preprocessConfigObject["maxPages"] = ExpressionConverter.ConvertO(requestpreprocessingmaxPages);
+                preprocessConfigObject["maxPages"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingmaxPages);
                 preprocessConfigObjectpropCount++;
             }
 
             if (requestpreprocessingimageQuality != null)
             {
-                preprocessConfigObject["imageQuality"] = ExpressionConverter.ConvertO(requestpreprocessingimageQuality);
+                preprocessConfigObject["imageQuality"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingimageQuality);
                 preprocessConfigObjectpropCount++;
             }
 
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var apiCallPath = "/agents";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AgentId"] = ExpressionConverter.Convert(agentId);
+            callPayload.Headers["AgentId"] = CSharpExpressionConverter.ConvertO(agentId);
             if (variables != null)
-                callPayload.Headers["variables"] = ExpressionConverter.Convert(variables);
+                callPayload.Headers["variables"] = CSharpExpressionConverter.ConvertO(variables);
             if (title != null)
-                callPayload.Headers["title"] = ExpressionConverter.Convert(title);
-            callPayload.Body = ExpressionConverter.ConvertO(document);
+                callPayload.Headers["title"] = CSharpExpressionConverter.ConvertO(title);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(document);
             return new ApiConnectionAction<CreateRunResponse>(callPayload);
         }
 
@@ -147,8 +147,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var apiCallPath = "/validate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ActionId"] = ExpressionConverter.Convert(actionId);
-            callPayload.Headers["X-Cradl-Shared-Secret"] = ExpressionConverter.Convert(xCradlSharedSecret);
+            callPayload.Headers["ActionId"] = CSharpExpressionConverter.ConvertO(actionId);
+            callPayload.Headers["X-Cradl-Shared-Secret"] = CSharpExpressionConverter.ConvertO(xCradlSharedSecret);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -158,16 +158,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var apiCallPath = "/workflows";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WorkflowId"] = ExpressionConverter.Convert(workflowId);
+            callPayload.Headers["WorkflowId"] = CSharpExpressionConverter.ConvertO(workflowId);
             var request = new JObject();
             var requestpropCount = 0;
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             inputObjectpropCount++;
-            inputObject["documentId"] = ExpressionConverter.ConvertO(requestinputdocumentID);
+            inputObject["documentId"] = CSharpExpressionConverter.ConvertToken(requestinputdocumentID);
             if (requestinputtitle != null)
             {
-                inputObject["title"] = ExpressionConverter.ConvertO(requestinputtitle);
+                inputObject["title"] = CSharpExpressionConverter.ConvertToken(requestinputtitle);
                 inputObjectpropCount++;
             }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var apiCallPath = "/actions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ActionId"] = ExpressionConverter.Convert(actionId);
+            callPayload.Headers["ActionId"] = CSharpExpressionConverter.ConvertO(actionId);
             var body = new JObject();
             var bodypropCount = 0;
             body["enabled"] = true;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
         {
-            var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(postalCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postalCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1), ExpressionConverter.ConvertWithUrlEncoding(city, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(city, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);

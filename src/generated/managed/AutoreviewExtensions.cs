@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (path != null)
-                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             var body = new JObject();
             var bodypropCount = 0;
             var configsObject = new JObject();
@@ -66,25 +66,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var propertiesObjectpropCount = 0;
             if (bodyflowPropertiesdisplayName != null)
             {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                propertiesObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesdisplayName);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesflowId != null)
             {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                propertiesObject["name"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesflowId);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesowner != null)
             {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                propertiesObject["owner"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesowner);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesenvironment != null)
             {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                propertiesObject["environment"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesenvironment);
                 propertiesObjectpropCount++;
             }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
             if (bodyconfigscomplexity != null)
             {
-                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigscomplexity);
+                configsObject["complexity"] = CSharpExpressionConverter.ConvertToken(bodyconfigscomplexity);
                 configsObjectpropCount++;
             }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
             if (bodyconfigsscoring != null)
             {
-                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigsscoring);
+                configsObject["scoring"] = CSharpExpressionConverter.ConvertToken(bodyconfigsscoring);
                 configsObjectpropCount++;
             }
 
@@ -160,25 +160,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var propertiesObjectpropCount = 0;
             if (bodyflowPropertiesdisplayName != null)
             {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                propertiesObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesdisplayName);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesflowId != null)
             {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                propertiesObject["name"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesflowId);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesowner != null)
             {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                propertiesObject["owner"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesowner);
                 propertiesObjectpropCount++;
             }
 
             if (bodyflowPropertiesenvironment != null)
             {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                propertiesObject["environment"] = CSharpExpressionConverter.ConvertToken(bodyflowPropertiesenvironment);
                 propertiesObjectpropCount++;
             }
 
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             {
                 if (bodyconfigfileType != null)
                 {
-                    configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                    configsObject["type"] = CSharpExpressionConverter.Convert(bodyconfigfileType);
                     configsObjectpropCount++;
                 }
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
             if (bodyconfigcomplexity != null)
             {
-                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
+                configsObject["complexity"] = CSharpExpressionConverter.ConvertToken(bodyconfigcomplexity);
                 configsObjectpropCount++;
             }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
             if (bodyconfigscoring != null)
             {
-                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
+                configsObject["scoring"] = CSharpExpressionConverter.ConvertToken(bodyconfigscoring);
                 configsObjectpropCount++;
             }
 
@@ -268,25 +268,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var propertiesObjectpropCount = 0;
             if (bodypropertiesdisplayName != null)
             {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodypropertiesdisplayName);
+                propertiesObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodypropertiesdisplayName);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiesflowId != null)
             {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodypropertiesflowId);
+                propertiesObject["name"] = CSharpExpressionConverter.ConvertToken(bodypropertiesflowId);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiesowner != null)
             {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodypropertiesowner);
+                propertiesObject["owner"] = CSharpExpressionConverter.ConvertToken(bodypropertiesowner);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiesenvironment != null)
             {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodypropertiesenvironment);
+                propertiesObject["environment"] = CSharpExpressionConverter.ConvertToken(bodypropertiesenvironment);
                 propertiesObjectpropCount++;
             }
 

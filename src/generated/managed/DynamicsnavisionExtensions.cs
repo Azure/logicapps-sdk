@@ -23,17 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
         public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
         public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
         public IWorkflowAction DeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
         public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

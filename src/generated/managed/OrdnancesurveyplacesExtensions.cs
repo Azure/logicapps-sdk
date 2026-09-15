@@ -17,26 +17,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/find";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             callPayload.Queries["format"] = Convert.ToString("JSON");
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (maxresults != null)
-                callPayload.Queries["maxresults"] = ExpressionConverter.Convert(maxresults);
+                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (minmatch != null)
-                callPayload.Queries["minmatch"] = ExpressionConverter.Convert(minmatch);
+                callPayload.Queries["minmatch"] = CSharpExpressionConverter.ConvertO(minmatch);
             if (matchprecision != null)
-                callPayload.Queries["matchprecision"] = ExpressionConverter.Convert(matchprecision);
+                callPayload.Queries["matchprecision"] = CSharpExpressionConverter.ConvertO(matchprecision);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             return new ApiConnectionAction<FindResponse>(callPayload);
         }
 
@@ -46,21 +46,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/postcode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
+            callPayload.Queries["postcode"] = CSharpExpressionConverter.ConvertO(postcode);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (maxresults != null)
-                callPayload.Queries["maxresults"] = ExpressionConverter.Convert(maxresults);
+                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             return new ApiConnectionAction<PostcodeResponse>(callPayload);
         }
 
@@ -70,17 +70,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/uprn";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["uprn"] = ExpressionConverter.Convert(uprn);
+            callPayload.Queries["uprn"] = CSharpExpressionConverter.ConvertO(uprn);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             return new ApiConnectionAction<UPRNResponse>(callPayload);
         }
 
@@ -90,21 +90,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/nearest";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["point"] = ExpressionConverter.Convert(point);
+            callPayload.Queries["point"] = CSharpExpressionConverter.ConvertO(point);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
             return new ApiConnectionAction<NearestResponse>(callPayload);
         }
 
@@ -114,23 +114,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/bbox";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bbox"] = ExpressionConverter.Convert(bbox);
+            callPayload.Queries["bbox"] = CSharpExpressionConverter.ConvertO(bbox);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (maxresults != null)
-                callPayload.Queries["maxresults"] = ExpressionConverter.Convert(maxresults);
+                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
             return new ApiConnectionAction<BBoxResponse>(callPayload);
         }
 
@@ -140,26 +140,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallPath = "/places/v1/addresses/radius";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["point"] = ExpressionConverter.Convert(point);
+            callPayload.Queries["point"] = CSharpExpressionConverter.ConvertO(point);
             callPayload.Queries["radius"] = Convert.ToString(100);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (maxresults != null)
-                callPayload.Queries["maxresults"] = ExpressionConverter.Convert(maxresults);
+                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
             return new ApiConnectionAction<RadiusResponse>(callPayload);
         }
 
@@ -170,28 +170,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (referencepoint != null)
-                callPayload.Queries["referencepoint"] = ExpressionConverter.Convert(referencepoint);
+                callPayload.Queries["referencepoint"] = CSharpExpressionConverter.ConvertO(referencepoint);
             if (maxresults != null)
-                callPayload.Queries["maxresults"] = ExpressionConverter.Convert(maxresults);
+                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
             if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
+                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
+                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
             if (fq != null)
-                callPayload.Queries["fq"] = ExpressionConverter.Convert(fq);
+                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
             if (outputSrs != null)
-                callPayload.Queries["output_srs"] = ExpressionConverter.Convert(outputSrs);
+                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
-            callPayload.Headers["Content-type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
+            callPayload.Headers["Content-type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
             bodypropCount++;
-            body["geometry"] = ExpressionConverter.ConvertO(bodygeometry);
+            body["geometry"] = CSharpExpressionConverter.ConvertToken(bodygeometry);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

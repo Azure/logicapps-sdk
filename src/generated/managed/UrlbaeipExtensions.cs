@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<DomainListResponse>(callPayload);
         }
 
@@ -70,16 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+            body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
             if (bodyredirectroot != null)
             {
-                body["redirectroot"] = ExpressionConverter.ConvertO(bodyredirectroot);
+                body["redirectroot"] = CSharpExpressionConverter.ConvertToken(bodyredirectroot);
                 bodypropCount++;
             }
 
             if (bodyredirect404 != null)
             {
-                body["redirect404"] = ExpressionConverter.ConvertO(bodyredirect404);
+                body["redirect404"] = CSharpExpressionConverter.ConvertToken(bodyredirect404);
                 bodypropCount++;
             }
 
@@ -94,20 +94,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainUpdateResponse> DomainUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyredirectroot = null, Expression<Func<string>> bodyredirect404 = null)
         {
-            var apiCallPath = String.Format("/domain/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domain/{0}/update", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyredirectroot != null)
             {
-                body["redirectroot"] = ExpressionConverter.ConvertO(bodyredirectroot);
+                body["redirectroot"] = CSharpExpressionConverter.ConvertToken(bodyredirectroot);
                 bodypropCount++;
             }
 
             if (bodyredirect404 != null)
             {
-                body["redirect404"] = ExpressionConverter.ConvertO(bodyredirect404);
+                body["redirect404"] = CSharpExpressionConverter.ConvertToken(bodyredirect404);
                 bodypropCount++;
             }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainDeleteResponse> DomainDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/domain/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domain/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DomainDeleteResponse>(callPayload);
@@ -135,9 +135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<SplashListResponse>(callPayload);
         }
 
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<CTAListResponse>(callPayload);
         }
 
@@ -161,18 +161,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             return new ApiConnectionAction<LinkListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/url/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<LinkGetResponse>(callPayload);
@@ -187,46 +187,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodycustom != null)
             {
-                body["custom"] = ExpressionConverter.ConvertO(bodycustom);
+                body["custom"] = CSharpExpressionConverter.ConvertToken(bodycustom);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyexpiry != null)
             {
-                body["expiry"] = ExpressionConverter.ConvertO(bodyexpiry);
+                body["expiry"] = CSharpExpressionConverter.ConvertToken(bodyexpiry);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodygeotarget != null)
             {
-                body["geotarget"] = ExpressionConverter.ConvertO(bodygeotarget);
+                body["geotarget"] = CSharpExpressionConverter.ConvertToken(bodygeotarget);
                 bodypropCount++;
             }
 
             if (bodydevicetarget != null)
             {
-                body["devicetarget"] = ExpressionConverter.ConvertO(bodydevicetarget);
+                body["devicetarget"] = CSharpExpressionConverter.ConvertToken(bodydevicetarget);
                 bodypropCount++;
             }
 
             if (bodyparameters != null)
             {
-                body["parameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                body["parameters"] = CSharpExpressionConverter.ConvertToken(bodyparameters);
                 bodypropCount++;
             }
 
@@ -241,56 +241,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkUpdateResponse> LinkUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycustom = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodytype = null, Expression<Func<bodygeotargetInputItem[]>> bodygeotarget = null, Expression<Func<bodydevicetargetInputItem[]>> bodydevicetarget = null, Expression<Func<bodyparametersInputItem[]>> bodyparameters = null)
         {
-            var apiCallPath = String.Format("/url/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/url/{0}/update", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             if (bodycustom != null)
             {
-                body["custom"] = ExpressionConverter.ConvertO(bodycustom);
+                body["custom"] = CSharpExpressionConverter.ConvertToken(bodycustom);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyexpiry != null)
             {
-                body["expiry"] = ExpressionConverter.ConvertO(bodyexpiry);
+                body["expiry"] = CSharpExpressionConverter.ConvertToken(bodyexpiry);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodygeotarget != null)
             {
-                body["geotarget"] = ExpressionConverter.ConvertO(bodygeotarget);
+                body["geotarget"] = CSharpExpressionConverter.ConvertToken(bodygeotarget);
                 bodypropCount++;
             }
 
             if (bodydevicetarget != null)
             {
-                body["devicetarget"] = ExpressionConverter.ConvertO(bodydevicetarget);
+                body["devicetarget"] = CSharpExpressionConverter.ConvertToken(bodydevicetarget);
                 bodypropCount++;
             }
 
             if (bodyparameters != null)
             {
-                body["parameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                body["parameters"] = CSharpExpressionConverter.ConvertToken(bodyparameters);
                 bodypropCount++;
             }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkDeleteResponse> LinkDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/url/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/url/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<LinkDeleteResponse>(callPayload);
@@ -318,9 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<PixelListResponse>(callPayload);
         }
 
@@ -333,11 +333,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
+            body["tag"] = CSharpExpressionConverter.ConvertToken(bodytag);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -349,19 +349,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelUpdateResponse> PixelUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytag, Expression<Func<string>> bodyname = null)
         {
-            var apiCallPath = String.Format("/pixel/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pixel/{0}/update", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
+            body["tag"] = CSharpExpressionConverter.ConvertToken(bodytag);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/pixel/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pixel/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PixelDeleteResponse>(callPayload);
@@ -386,16 +386,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<QRListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/qr/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/qr/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<QRGetResponse>(callPayload);
@@ -411,31 +411,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
             if (bodybackground != null)
             {
-                body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                body["background"] = CSharpExpressionConverter.ConvertToken(bodybackground);
                 bodypropCount++;
             }
 
             if (bodyforeground != null)
             {
-                body["foreground"] = ExpressionConverter.ConvertO(bodyforeground);
+                body["foreground"] = CSharpExpressionConverter.ConvertToken(bodyforeground);
                 bodypropCount++;
             }
 
             if (bodylogo != null)
             {
-                body["logo"] = ExpressionConverter.ConvertO(bodylogo);
+                body["logo"] = CSharpExpressionConverter.ConvertToken(bodylogo);
                 bodypropCount++;
             }
 
@@ -450,34 +450,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRUpdateResponse> QRUpdate(Expression<Func<string>> id, Expression<Func<string>> bodydata, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodybackground = null, Expression<Func<string>> bodyforeground = null, Expression<Func<string>> bodylogo = null)
         {
-            var apiCallPath = String.Format("/qr/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/qr/{0}/update", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodybackground != null)
             {
-                body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                body["background"] = CSharpExpressionConverter.ConvertToken(bodybackground);
                 bodypropCount++;
             }
 
             if (bodyforeground != null)
             {
-                body["foreground"] = ExpressionConverter.ConvertO(bodyforeground);
+                body["foreground"] = CSharpExpressionConverter.ConvertToken(bodyforeground);
                 bodypropCount++;
             }
 
             if (bodylogo != null)
             {
-                body["logo"] = ExpressionConverter.ConvertO(bodylogo);
+                body["logo"] = CSharpExpressionConverter.ConvertToken(bodylogo);
                 bodypropCount++;
             }
 
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRDeleteResponse> QRDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/qr/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/qr/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<QRDeleteResponse>(callPayload);
@@ -510,20 +510,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PlanSubscribeResponse> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyexpiration = null)
         {
-            var apiCallPath = String.Format("/plan/{0}/user/{1}", ExpressionConverter.ConvertWithUrlEncoding(planid, 1), ExpressionConverter.ConvertWithUrlEncoding(userid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/plan/{0}/user/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(planid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
@@ -542,14 +542,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.Convert(filter);
             return new ApiConnectionAction<UserListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserGetResponse> UserGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserGetResponse>(callPayload);
@@ -564,20 +564,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyplanid != null)
             {
-                body["planid"] = ExpressionConverter.ConvertO(bodyplanid);
+                body["planid"] = CSharpExpressionConverter.ConvertToken(bodyplanid);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserDeleteResponse> UserDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/user/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserDeleteResponse>(callPayload);

@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
             var apiCallPath = "/search/v2/articlesearch.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (beginDate != null)
-                callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["begin_date"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
         {
-            var apiCallPath = String.Format("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(section, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TopStoriesResponse>(callPayload);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
         {
-            var apiCallPath = String.Format("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MostViewedResponse>(callPayload);

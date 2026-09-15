@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalIdField, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -32,19 +32,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -74,15 +74,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -93,15 +93,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -112,15 +112,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -131,15 +131,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
@@ -150,22 +150,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var queryParameters = new JObject();
             var queryParameterspropCount = 0;
             queryParameterspropCount++;
-            queryParameters["query"] = ExpressionConverter.ConvertO(queryParameterssOQLQuery);
+            queryParameters["query"] = CSharpExpressionConverter.ConvertToken(queryParameterssOQLQuery);
             var parametersObject = new JObject();
             var parametersObjectpropCount = 0;
             if (parametersObjectpropCount > 0)
@@ -204,31 +204,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (concurrenyMode != null)
-                callPayload.Queries["concurrenyMode"] = ExpressionConverter.Convert(concurrenyMode);
+                callPayload.Queries["concurrenyMode"] = CSharpExpressionConverter.Convert(concurrenyMode);
             if (isPkChunkingEnabled != null)
-                callPayload.Queries["isPkChunkingEnabled"] = ExpressionConverter.Convert(isPkChunkingEnabled);
+                callPayload.Queries["isPkChunkingEnabled"] = CSharpExpressionConverter.ConvertO(isPkChunkingEnabled);
             callPayload.Queries["jobType"] = Convert.ToString("V2Ingest");
             if (jobType != null)
-                callPayload.Queries["jobType"] = ExpressionConverter.Convert(jobType);
+                callPayload.Queries["jobType"] = CSharpExpressionConverter.Convert(jobType);
             if (queryLocator != null)
-                callPayload.Queries["queryLocator"] = ExpressionConverter.Convert(queryLocator);
+                callPayload.Queries["queryLocator"] = CSharpExpressionConverter.ConvertO(queryLocator);
             return new ApiConnectionAction<GetAllJobsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction UploadJobData(Expression<Func<string>> jobId, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}/batches", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/batches", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<CheckJobResponse> GetJobInfo(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CheckJobResponse>(callPayload);
@@ -237,13 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JobInfo> CloseJob(Expression<Func<string>> jobId, Expression<Func<bodystateInput>> bodystate)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["state"] = ExpressionConverter.ConvertO(bodystate);
+            body["state"] = CSharpExpressionConverter.Convert(bodystate);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteJob(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -264,10 +264,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<string> GetJobRecordResults(Expression<Func<string>> jobId, Expression<Func<resultTypeInput>> resultType)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/results", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resultType"] = ExpressionConverter.Convert(resultType);
+            callPayload.Queries["resultType"] = CSharpExpressionConverter.Convert(resultType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallPath = "/codeless/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<SOSLSearchQueryResponse>(callPayload);
         }
 
@@ -287,22 +287,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallPath = "/codeless/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+            callPayload.Headers["Uri"] = CSharpExpressionConverter.ConvertO(uri);
+            callPayload.Headers["Method"] = CSharpExpressionConverter.Convert(method);
             callPayload.Headers["ContentType"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["ContentType"] = CSharpExpressionConverter.ConvertO(contentType);
             if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
+                callPayload.Headers["CustomHeader1"] = CSharpExpressionConverter.ConvertO(customHeader1);
             if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
+                callPayload.Headers["CustomHeader2"] = CSharpExpressionConverter.ConvertO(customHeader2);
             if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
+                callPayload.Headers["CustomHeader3"] = CSharpExpressionConverter.ConvertO(customHeader3);
             if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
+                callPayload.Headers["CustomHeader4"] = CSharpExpressionConverter.ConvertO(customHeader4);
             if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["CustomHeader5"] = CSharpExpressionConverter.ConvertO(customHeader5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -313,24 +313,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             var queryRequest = new JObject();
             var queryRequestpropCount = 0;
             if (queryRequestjsonrpc != null)
             {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                queryRequest["jsonrpc"] = CSharpExpressionConverter.ConvertToken(queryRequestjsonrpc);
                 queryRequestpropCount++;
             }
 
             if (queryRequestid != null)
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                queryRequest["id"] = CSharpExpressionConverter.ConvertToken(queryRequestid);
                 queryRequestpropCount++;
             }
 
             if (queryRequestmethod != null)
             {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                queryRequest["method"] = CSharpExpressionConverter.ConvertToken(queryRequestmethod);
                 queryRequestpropCount++;
             }
 
@@ -375,30 +375,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             var parameters = new JObject();
             var parameterspropCount = 0;
             parameterspropCount++;
-            parameters["object"] = ExpressionConverter.ConvertO(parametersobject);
+            parameters["object"] = CSharpExpressionConverter.ConvertToken(parametersobject);
             parameterspropCount++;
-            parameters["operation"] = ExpressionConverter.ConvertO(parametersoperation);
+            parameters["operation"] = CSharpExpressionConverter.Convert(parametersoperation);
             if (parameterscolumnDelimiter != null)
             {
-                parameters["columnDelimiter"] = ExpressionConverter.ConvertO(parameterscolumnDelimiter);
+                parameters["columnDelimiter"] = CSharpExpressionConverter.ConvertToken(parameterscolumnDelimiter);
                 parameterspropCount++;
             }
 
             if (parametersexternalIDFieldName != null)
             {
-                parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(parametersexternalIDFieldName);
+                parameters["externalIdFieldName"] = CSharpExpressionConverter.ConvertToken(parametersexternalIDFieldName);
                 parameterspropCount++;
             }
 
             if (parameterslineEnding != null)
             {
-                parameters["lineEnding"] = ExpressionConverter.ConvertO(parameterslineEnding);
+                parameters["lineEnding"] = CSharpExpressionConverter.ConvertToken(parameterslineEnding);
                 parameterspropCount++;
             }
 
             if (parameterscontentType != null)
             {
-                parameters["contentType"] = ExpressionConverter.ConvertO(parameterscontentType);
+                parameters["contentType"] = CSharpExpressionConverter.ConvertToken(parameterscontentType);
                 parameterspropCount++;
             }
 
@@ -413,43 +413,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v3/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/datasets/default/tables/{0}/items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalIdField, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -458,29 +458,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     {
         public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onnewitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onupdateditems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
     }

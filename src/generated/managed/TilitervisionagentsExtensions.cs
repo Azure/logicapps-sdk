@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
         public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
         {
-            var apiCallPath = String.Format("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(agentName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var payload = new JObject();
             var payloadpropCount = 0;
             payloadpropCount++;
-            payload["input_file_b64"] = ExpressionConverter.ConvertO(payloadinputFileB64);
+            payload["input_file_b64"] = CSharpExpressionConverter.ConvertToken(payloadinputFileB64);
             if (payloadexpectedText != null)
             {
-                payload["expected_text"] = ExpressionConverter.ConvertO(payloadexpectedText);
+                payload["expected_text"] = CSharpExpressionConverter.ConvertToken(payloadexpectedText);
                 payloadpropCount++;
             }
 
             if (payloadobjectType != null)
             {
-                payload["object_type"] = ExpressionConverter.ConvertO(payloadobjectType);
+                payload["object_type"] = CSharpExpressionConverter.ConvertToken(payloadobjectType);
                 payloadpropCount++;
             }
 
             if (payloadexpectedObjects != null)
             {
-                payload["expected_objects"] = ExpressionConverter.ConvertO(payloadexpectedObjects);
+                payload["expected_objects"] = CSharpExpressionConverter.ConvertToken(payloadexpectedObjects);
                 payloadpropCount++;
             }
 

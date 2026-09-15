@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (course != null)
-                callPayload.Queries["course"] = ExpressionConverter.Convert(course);
+                callPayload.Queries["course"] = CSharpExpressionConverter.ConvertO(course);
             return new ApiConnectionAction<Course[]>(callPayload);
         }
 
@@ -32,25 +32,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var coursepropCount = 0;
             if (courseaudience != null)
             {
-                course["audience"] = ExpressionConverter.ConvertO(courseaudience);
+                course["audience"] = CSharpExpressionConverter.ConvertToken(courseaudience);
                 coursepropCount++;
             }
 
             if (coursecourseName != null)
             {
-                course["courseName"] = ExpressionConverter.ConvertO(coursecourseName);
+                course["courseName"] = CSharpExpressionConverter.ConvertToken(coursecourseName);
                 coursepropCount++;
             }
 
             if (coursedos != null)
             {
-                course["dos"] = ExpressionConverter.ConvertO(coursedos);
+                course["dos"] = CSharpExpressionConverter.ConvertToken(coursedos);
                 coursepropCount++;
             }
 
             if (courseemail != null)
             {
-                course["email"] = ExpressionConverter.ConvertO(courseemail);
+                course["email"] = CSharpExpressionConverter.ConvertToken(courseemail);
                 coursepropCount++;
             }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (studentId != null)
-                callPayload.Queries["studentId"] = ExpressionConverter.Convert(studentId);
+                callPayload.Queries["studentId"] = CSharpExpressionConverter.ConvertO(studentId);
             return new ApiConnectionAction<Student>(callPayload);
         }
 
@@ -105,361 +105,361 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var studentpropCount = 0;
             if (studentacadCareer != null)
             {
-                student["acadCareer"] = ExpressionConverter.ConvertO(studentacadCareer);
+                student["acadCareer"] = CSharpExpressionConverter.ConvertToken(studentacadCareer);
                 studentpropCount++;
             }
 
             if (studentacadOrgDescr != null)
             {
-                student["acadOrgDescr"] = ExpressionConverter.ConvertO(studentacadOrgDescr);
+                student["acadOrgDescr"] = CSharpExpressionConverter.ConvertToken(studentacadOrgDescr);
                 studentpropCount++;
             }
 
             if (studentacadProgram != null)
             {
-                student["acadProgram"] = ExpressionConverter.ConvertO(studentacadProgram);
+                student["acadProgram"] = CSharpExpressionConverter.ConvertToken(studentacadProgram);
                 studentpropCount++;
             }
 
             if (studentaddress1 != null)
             {
-                student["address1"] = ExpressionConverter.ConvertO(studentaddress1);
+                student["address1"] = CSharpExpressionConverter.ConvertToken(studentaddress1);
                 studentpropCount++;
             }
 
             if (studentaddress2 != null)
             {
-                student["address2"] = ExpressionConverter.ConvertO(studentaddress2);
+                student["address2"] = CSharpExpressionConverter.ConvertToken(studentaddress2);
                 studentpropCount++;
             }
 
             if (studentaddress3 != null)
             {
-                student["address3"] = ExpressionConverter.ConvertO(studentaddress3);
+                student["address3"] = CSharpExpressionConverter.ConvertToken(studentaddress3);
                 studentpropCount++;
             }
 
             if (studentaddress4 != null)
             {
-                student["address4"] = ExpressionConverter.ConvertO(studentaddress4);
+                student["address4"] = CSharpExpressionConverter.ConvertToken(studentaddress4);
                 studentpropCount++;
             }
 
             if (studentbarcode != null)
             {
-                student["barcode"] = ExpressionConverter.ConvertO(studentbarcode);
+                student["barcode"] = CSharpExpressionConverter.ConvertToken(studentbarcode);
                 studentpropCount++;
             }
 
             if (studentbirthCountryCode != null)
             {
-                student["birthCountryCode"] = ExpressionConverter.ConvertO(studentbirthCountryCode);
+                student["birthCountryCode"] = CSharpExpressionConverter.ConvertToken(studentbirthCountryCode);
                 studentpropCount++;
             }
 
             if (studentcellTel != null)
             {
-                student["cellTel"] = ExpressionConverter.ConvertO(studentcellTel);
+                student["cellTel"] = CSharpExpressionConverter.ConvertToken(studentcellTel);
                 studentpropCount++;
             }
 
             if (studentcity != null)
             {
-                student["city"] = ExpressionConverter.ConvertO(studentcity);
+                student["city"] = CSharpExpressionConverter.ConvertToken(studentcity);
                 studentpropCount++;
             }
 
             if (studentcollegeAccountNo != null)
             {
-                student["collegeAccountNo"] = ExpressionConverter.ConvertO(studentcollegeAccountNo);
+                student["collegeAccountNo"] = CSharpExpressionConverter.ConvertToken(studentcollegeAccountNo);
                 studentpropCount++;
             }
 
             if (studentcountry != null)
             {
-                student["country"] = ExpressionConverter.ConvertO(studentcountry);
+                student["country"] = CSharpExpressionConverter.ConvertToken(studentcountry);
                 studentpropCount++;
             }
 
             if (studentcountryCitizen != null)
             {
-                student["countryCitizen"] = ExpressionConverter.ConvertO(studentcountryCitizen);
+                student["countryCitizen"] = CSharpExpressionConverter.ConvertToken(studentcountryCitizen);
                 studentpropCount++;
             }
 
             if (studentcountryCitizen2 != null)
             {
-                student["countryCitizen2"] = ExpressionConverter.ConvertO(studentcountryCitizen2);
+                student["countryCitizen2"] = CSharpExpressionConverter.ConvertToken(studentcountryCitizen2);
                 studentpropCount++;
             }
 
             if (studentcrsid != null)
             {
-                student["crsid"] = ExpressionConverter.ConvertO(studentcrsid);
+                student["crsid"] = CSharpExpressionConverter.ConvertToken(studentcrsid);
                 studentpropCount++;
             }
 
             if (studentdegree != null)
             {
-                student["degree"] = ExpressionConverter.ConvertO(studentdegree);
+                student["degree"] = CSharpExpressionConverter.ConvertToken(studentdegree);
                 studentpropCount++;
             }
 
             if (studentdob != null)
             {
-                student["dob"] = ExpressionConverter.ConvertO(studentdob);
+                student["dob"] = CSharpExpressionConverter.ConvertToken(studentdob);
                 studentpropCount++;
             }
 
             if (studentdos != null)
             {
-                student["dos"] = ExpressionConverter.ConvertO(studentdos);
+                student["dos"] = CSharpExpressionConverter.ConvertToken(studentdos);
                 studentpropCount++;
             }
 
             if (studentdosEmail != null)
             {
-                student["dosEmail"] = ExpressionConverter.ConvertO(studentdosEmail);
+                student["dosEmail"] = CSharpExpressionConverter.ConvertToken(studentdosEmail);
                 studentpropCount++;
             }
 
             if (studentdosEmployeeId != null)
             {
-                student["dosEmployeeId"] = ExpressionConverter.ConvertO(studentdosEmployeeId);
+                student["dosEmployeeId"] = CSharpExpressionConverter.ConvertToken(studentdosEmployeeId);
                 studentpropCount++;
             }
 
             if (studentemail != null)
             {
-                student["email"] = ExpressionConverter.ConvertO(studentemail);
+                student["email"] = CSharpExpressionConverter.ConvertToken(studentemail);
                 studentpropCount++;
             }
 
             if (studentemailAddr != null)
             {
-                student["emailAddr"] = ExpressionConverter.ConvertO(studentemailAddr);
+                student["emailAddr"] = CSharpExpressionConverter.ConvertToken(studentemailAddr);
                 studentpropCount++;
             }
 
             if (studentemailPersonal != null)
             {
-                student["emailPersonal"] = ExpressionConverter.ConvertO(studentemailPersonal);
+                student["emailPersonal"] = CSharpExpressionConverter.ConvertToken(studentemailPersonal);
                 studentpropCount++;
             }
 
             if (studentendDate != null)
             {
-                student["endDate"] = ExpressionConverter.ConvertO(studentendDate);
+                student["endDate"] = CSharpExpressionConverter.ConvertToken(studentendDate);
                 studentpropCount++;
             }
 
             if (studentenqGrp != null)
             {
-                student["enqGrp"] = ExpressionConverter.ConvertO(studentenqGrp);
+                student["enqGrp"] = CSharpExpressionConverter.ConvertToken(studentenqGrp);
                 studentpropCount++;
             }
 
             if (studentfirstNames != null)
             {
-                student["firstNames"] = ExpressionConverter.ConvertO(studentfirstNames);
+                student["firstNames"] = CSharpExpressionConverter.ConvertToken(studentfirstNames);
                 studentpropCount++;
             }
 
             if (studentgradTutor != null)
             {
-                student["gradTutor"] = ExpressionConverter.ConvertO(studentgradTutor);
+                student["gradTutor"] = CSharpExpressionConverter.ConvertToken(studentgradTutor);
                 studentpropCount++;
             }
 
             if (studentgradTutorEmail != null)
             {
-                student["gradTutorEmail"] = ExpressionConverter.ConvertO(studentgradTutorEmail);
+                student["gradTutorEmail"] = CSharpExpressionConverter.ConvertToken(studentgradTutorEmail);
                 studentpropCount++;
             }
 
             if (studentgradTutorEmployeeId != null)
             {
-                student["gradTutorEmployeeId"] = ExpressionConverter.ConvertO(studentgradTutorEmployeeId);
+                student["gradTutorEmployeeId"] = CSharpExpressionConverter.ConvertToken(studentgradTutorEmployeeId);
                 studentpropCount++;
             }
 
             if (studentgrp != null)
             {
-                student["grp"] = ExpressionConverter.ConvertO(studentgrp);
+                student["grp"] = CSharpExpressionConverter.ConvertToken(studentgrp);
                 studentpropCount++;
             }
 
             if (studentgrpId != null)
             {
-                student["grpId"] = ExpressionConverter.ConvertO(studentgrpId);
+                student["grpId"] = CSharpExpressionConverter.ConvertToken(studentgrpId);
                 studentpropCount++;
             }
 
             if (studenthomeAddress1 != null)
             {
-                student["homeAddress1"] = ExpressionConverter.ConvertO(studenthomeAddress1);
+                student["homeAddress1"] = CSharpExpressionConverter.ConvertToken(studenthomeAddress1);
                 studentpropCount++;
             }
 
             if (studenthomeAddress2 != null)
             {
-                student["homeAddress2"] = ExpressionConverter.ConvertO(studenthomeAddress2);
+                student["homeAddress2"] = CSharpExpressionConverter.ConvertToken(studenthomeAddress2);
                 studentpropCount++;
             }
 
             if (studenthomeAddress3 != null)
             {
-                student["homeAddress3"] = ExpressionConverter.ConvertO(studenthomeAddress3);
+                student["homeAddress3"] = CSharpExpressionConverter.ConvertToken(studenthomeAddress3);
                 studentpropCount++;
             }
 
             if (studenthomeAddress4 != null)
             {
-                student["homeAddress4"] = ExpressionConverter.ConvertO(studenthomeAddress4);
+                student["homeAddress4"] = CSharpExpressionConverter.ConvertToken(studenthomeAddress4);
                 studentpropCount++;
             }
 
             if (studenthomeAddress5 != null)
             {
-                student["homeAddress5"] = ExpressionConverter.ConvertO(studenthomeAddress5);
+                student["homeAddress5"] = CSharpExpressionConverter.ConvertToken(studenthomeAddress5);
                 studentpropCount++;
             }
 
             if (studenthomeCountry != null)
             {
-                student["homeCountry"] = ExpressionConverter.ConvertO(studenthomeCountry);
+                student["homeCountry"] = CSharpExpressionConverter.ConvertToken(studenthomeCountry);
                 studentpropCount++;
             }
 
             if (studenthomePostal != null)
             {
-                student["homePostal"] = ExpressionConverter.ConvertO(studenthomePostal);
+                student["homePostal"] = CSharpExpressionConverter.ConvertToken(studenthomePostal);
                 studentpropCount++;
             }
 
             if (studenthomeState != null)
             {
-                student["homeState"] = ExpressionConverter.ConvertO(studenthomeState);
+                student["homeState"] = CSharpExpressionConverter.ConvertToken(studenthomeState);
                 studentpropCount++;
             }
 
             if (studenthomeTel != null)
             {
-                student["homeTel"] = ExpressionConverter.ConvertO(studenthomeTel);
+                student["homeTel"] = CSharpExpressionConverter.ConvertToken(studenthomeTel);
                 studentpropCount++;
             }
 
             if (studentmatriculation != null)
             {
-                student["matriculation"] = ExpressionConverter.ConvertO(studentmatriculation);
+                student["matriculation"] = CSharpExpressionConverter.ConvertToken(studentmatriculation);
                 studentpropCount++;
             }
 
             if (studentmobileTel != null)
             {
-                student["mobileTel"] = ExpressionConverter.ConvertO(studentmobileTel);
+                student["mobileTel"] = CSharpExpressionConverter.ConvertToken(studentmobileTel);
                 studentpropCount++;
             }
 
             if (studentnationality != null)
             {
-                student["nationality"] = ExpressionConverter.ConvertO(studentnationality);
+                student["nationality"] = CSharpExpressionConverter.ConvertToken(studentnationality);
                 studentpropCount++;
             }
 
             if (studentpostal != null)
             {
-                student["postal"] = ExpressionConverter.ConvertO(studentpostal);
+                student["postal"] = CSharpExpressionConverter.ConvertToken(studentpostal);
                 studentpropCount++;
             }
 
             if (studentprinSuper != null)
             {
-                student["prinSuper"] = ExpressionConverter.ConvertO(studentprinSuper);
+                student["prinSuper"] = CSharpExpressionConverter.ConvertToken(studentprinSuper);
                 studentpropCount++;
             }
 
             if (studentprinSuperEmail != null)
             {
-                student["prinSuperEmail"] = ExpressionConverter.ConvertO(studentprinSuperEmail);
+                student["prinSuperEmail"] = CSharpExpressionConverter.ConvertToken(studentprinSuperEmail);
                 studentpropCount++;
             }
 
             if (studentprinSuperEmployeeId != null)
             {
-                student["prinSuperEmployeeId"] = ExpressionConverter.ConvertO(studentprinSuperEmployeeId);
+                student["prinSuperEmployeeId"] = CSharpExpressionConverter.ConvertToken(studentprinSuperEmployeeId);
                 studentpropCount++;
             }
 
             if (studentsex != null)
             {
-                student["sex"] = ExpressionConverter.ConvertO(studentsex);
+                student["sex"] = CSharpExpressionConverter.ConvertToken(studentsex);
                 studentpropCount++;
             }
 
             if (studentstartDate != null)
             {
-                student["startDate"] = ExpressionConverter.ConvertO(studentstartDate);
+                student["startDate"] = CSharpExpressionConverter.ConvertToken(studentstartDate);
                 studentpropCount++;
             }
 
             if (studentstudentFeesClass != null)
             {
-                student["studentFeesClass"] = ExpressionConverter.ConvertO(studentstudentFeesClass);
+                student["studentFeesClass"] = CSharpExpressionConverter.ConvertToken(studentstudentFeesClass);
                 studentpropCount++;
             }
 
             if (studentstudyYear != null)
             {
-                student["studyYear"] = ExpressionConverter.ConvertO(studentstudyYear);
+                student["studyYear"] = CSharpExpressionConverter.ConvertToken(studentstudyYear);
                 studentpropCount++;
             }
 
             if (studentsubject != null)
             {
-                student["subject"] = ExpressionConverter.ConvertO(studentsubject);
+                student["subject"] = CSharpExpressionConverter.ConvertToken(studentsubject);
                 studentpropCount++;
             }
 
             if (studentsubjectDescr != null)
             {
-                student["subjectDescr"] = ExpressionConverter.ConvertO(studentsubjectDescr);
+                student["subjectDescr"] = CSharpExpressionConverter.ConvertToken(studentsubjectDescr);
                 studentpropCount++;
             }
 
             if (studentsuperEmail != null)
             {
-                student["superEmail"] = ExpressionConverter.ConvertO(studentsuperEmail);
+                student["superEmail"] = CSharpExpressionConverter.ConvertToken(studentsuperEmail);
                 studentpropCount++;
             }
 
             if (studentsurname != null)
             {
-                student["surname"] = ExpressionConverter.ConvertO(studentsurname);
+                student["surname"] = CSharpExpressionConverter.ConvertToken(studentsurname);
                 studentpropCount++;
             }
 
             if (studenttitle != null)
             {
-                student["title"] = ExpressionConverter.ConvertO(studenttitle);
+                student["title"] = CSharpExpressionConverter.ConvertToken(studenttitle);
                 studentpropCount++;
             }
 
             if (studenttutor != null)
             {
-                student["tutor"] = ExpressionConverter.ConvertO(studenttutor);
+                student["tutor"] = CSharpExpressionConverter.ConvertToken(studenttutor);
                 studentpropCount++;
             }
 
             if (studenttutorEmail != null)
             {
-                student["tutorEmail"] = ExpressionConverter.ConvertO(studenttutorEmail);
+                student["tutorEmail"] = CSharpExpressionConverter.ConvertToken(studenttutorEmail);
                 studentpropCount++;
             }
 
             if (studenttutorEmployeeId != null)
             {
-                student["tutorEmployeeId"] = ExpressionConverter.ConvertO(studenttutorEmployeeId);
+                student["tutorEmployeeId"] = CSharpExpressionConverter.ConvertToken(studenttutorEmployeeId);
                 studentpropCount++;
             }
 

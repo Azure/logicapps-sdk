@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> CreateIssue(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> bodyissueTitle, Expression<Func<bodyissueTypeInput>> bodyissueType, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodycontentdescription = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycomponentcomponent = null, Expression<Func<string>> bodymilestonemilestone = null, Expression<Func<string>> bodyversionversion = null)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/issues", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodyissueTitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodyissueTitle);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             if (bodycontentdescription != null)
             {
-                contentObject["raw"] = ExpressionConverter.ConvertO(bodycontentdescription);
+                contentObject["raw"] = CSharpExpressionConverter.ConvertToken(bodycontentdescription);
                 contentObjectpropCount++;
             }
 
@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             }
 
             bodypropCount++;
-            body["kind"] = ExpressionConverter.ConvertO(bodyissueType);
+            body["kind"] = CSharpExpressionConverter.Convert(bodyissueType);
             bodypropCount++;
-            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+            body["priority"] = CSharpExpressionConverter.Convert(bodypriority);
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var componentObjectpropCount = 0;
             if (bodycomponentcomponent != null)
             {
-                componentObject["name"] = ExpressionConverter.ConvertO(bodycomponentcomponent);
+                componentObject["name"] = CSharpExpressionConverter.ConvertToken(bodycomponentcomponent);
                 componentObjectpropCount++;
             }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var milestoneObjectpropCount = 0;
             if (bodymilestonemilestone != null)
             {
-                milestoneObject["name"] = ExpressionConverter.ConvertO(bodymilestonemilestone);
+                milestoneObject["name"] = CSharpExpressionConverter.ConvertToken(bodymilestonemilestone);
                 milestoneObjectpropCount++;
             }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var versionObjectpropCount = 0;
             if (bodyversionversion != null)
             {
-                versionObject["name"] = ExpressionConverter.ConvertO(bodyversionversion);
+                versionObject["name"] = CSharpExpressionConverter.ConvertToken(bodyversionversion);
                 versionObjectpropCount++;
             }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> GetIssueById(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> issueId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/issues/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IssueResponse>(callPayload);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<ApprovePullRequestResponse> ApprovePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ApprovePullRequestResponse>(callPayload);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> DeclinePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> MergePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var apiCallPath = String.Format("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(pullrequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<UserResponse> GetUserById(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/2.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2.0/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserResponse>(callPayload);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     {
         public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo(Expression<Func<string>> account, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, triggerName, recurrence);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

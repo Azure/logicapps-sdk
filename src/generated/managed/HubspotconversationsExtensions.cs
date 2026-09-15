@@ -18,33 +18,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
+                callPayload.Queries["defaultPageLength"] = CSharpExpressionConverter.ConvertO(defaultPageLength);
             return new ApiConnectionAction<GetConversationsInboxesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetASingleThreadResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<string> ArchivesAThread(Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -53,22 +53,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyarchived = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyarchived != null)
             {
-                body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
+                body["archived"] = CSharpExpressionConverter.ConvertToken(bodyarchived);
                 bodypropCount++;
             }
 
@@ -83,30 +83,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetTheOriginalContentOfASingleMessageResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread(Expression<Func<string>> threadId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetMessageHistoryForAThreadResponse>(callPayload);
         }
 
@@ -117,24 +117,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (channelId != null)
-                callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+                callPayload.Queries["channelId"] = CSharpExpressionConverter.ConvertO(channelId);
             if (inboxId != null)
-                callPayload.Queries["inboxId"] = ExpressionConverter.Convert(inboxId);
+                callPayload.Queries["inboxId"] = CSharpExpressionConverter.ConvertO(inboxId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
+                callPayload.Queries["defaultPageLength"] = CSharpExpressionConverter.ConvertO(defaultPageLength);
             return new ApiConnectionAction<GetChannelAccountsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel(Expression<Func<string>> channelId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/channels/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channels/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetASingleChannelResponse>(callPayload);
@@ -143,11 +143,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetASingleMessageResponse>(callPayload);
         }
 
@@ -158,24 +158,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
+                callPayload.Queries["defaultPageLength"] = CSharpExpressionConverter.ConvertO(defaultPageLength);
             return new ApiConnectionAction<GetChannelsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor(Expression<Func<string>> actorId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/actors/{0}", ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/actors/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetASingleActorResponse>(callPayload);
         }
 
@@ -186,30 +186,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (inboxId != null)
-                callPayload.Queries["inboxId"] = ExpressionConverter.Convert(inboxId);
+                callPayload.Queries["inboxId"] = CSharpExpressionConverter.ConvertO(inboxId);
             if (associatedContactId != null)
-                callPayload.Queries["associatedContactId"] = ExpressionConverter.Convert(associatedContactId);
+                callPayload.Queries["associatedContactId"] = CSharpExpressionConverter.ConvertO(associatedContactId);
             if (threadStatus != null)
-                callPayload.Queries["threadStatus"] = ExpressionConverter.Convert(threadStatus);
+                callPayload.Queries["threadStatus"] = CSharpExpressionConverter.ConvertO(threadStatus);
             if (latestMessageTimestampAfter != null)
-                callPayload.Queries["latestMessageTimestampAfter"] = ExpressionConverter.Convert(latestMessageTimestampAfter);
+                callPayload.Queries["latestMessageTimestampAfter"] = CSharpExpressionConverter.ConvertO(latestMessageTimestampAfter);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["property"] = CSharpExpressionConverter.ConvertO(property);
             return new ApiConnectionAction<GetThreadsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount(Expression<Func<string>> channelAccountId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/channel-accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelAccountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelAccountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetASingleChannelAccountResponse>(callPayload);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox(Expression<Func<string>> inboxId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/inboxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/inboxes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboxId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetASingleConversationsInboxResponse>(callPayload);

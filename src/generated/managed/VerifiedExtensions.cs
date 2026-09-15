@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallPath = "/auth";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["withoutIpLock"] = ExpressionConverter.Convert(withoutIpLock);
+            callPayload.Queries["withoutIpLock"] = CSharpExpressionConverter.ConvertO(withoutIpLock);
             return new ApiConnectionAction<PostAuthenticateResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Company> GetCompaniesCompanyId(Expression<Func<string>> token, Expression<Func<string>> companyId)
         {
-            var apiCallPath = String.Format("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<Company>(callPayload);
         }
@@ -35,64 +35,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Recipient[]> GetEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Recipient[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
+            body["givenName"] = CSharpExpressionConverter.ConvertToken(bodygivenName);
             bodypropCount++;
-            body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
+            body["familyName"] = CSharpExpressionConverter.ConvertToken(bodyfamilyName);
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+            body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
             bodypropCount++;
-            body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
+            body["signingMethod"] = CSharpExpressionConverter.Convert(bodysigningMethod);
             if (bodynotificationMethod != null)
             {
-                body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                body["notificationMethod"] = CSharpExpressionConverter.Convert(bodynotificationMethod);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodytelephone != null)
             {
-                body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                body["telephone"] = CSharpExpressionConverter.ConvertToken(bodytelephone);
                 bodypropCount++;
             }
 
             if (bodyorder != null)
             {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["order"] = CSharpExpressionConverter.ConvertToken(bodyorder);
                 bodypropCount++;
             }
 
             var roleObject = new JObject();
             var roleObjectpropCount = 0;
             roleObjectpropCount++;
-            roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
+            roleObject["action"] = CSharpExpressionConverter.ConvertToken(bodyroleaction);
             roleObjectpropCount++;
-            roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
+            roleObject["label"] = CSharpExpressionConverter.ConvertToken(bodyrolelabel);
             roleObjectpropCount++;
-            roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
+            roleObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrolename);
             if (roleObjectpropCount > 0)
             {
                 body["role"] = roleObject;
@@ -101,25 +101,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
             if (bodysecure != null)
             {
-                body["secure"] = ExpressionConverter.ConvertO(bodysecure);
+                body["secure"] = CSharpExpressionConverter.ConvertToken(bodysecure);
                 bodypropCount++;
             }
 
             if (bodysms != null)
             {
-                body["sms"] = ExpressionConverter.ConvertO(bodysms);
+                body["sms"] = CSharpExpressionConverter.ConvertToken(bodysms);
                 bodypropCount++;
             }
 
             if (bodyssn != null)
             {
-                body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
+                body["ssn"] = CSharpExpressionConverter.ConvertToken(bodyssn);
                 bodypropCount++;
             }
 
             if (bodybank != null)
             {
-                body["bank"] = ExpressionConverter.ConvertO(bodybank);
+                body["bank"] = CSharpExpressionConverter.ConvertToken(bodybank);
                 bodypropCount++;
             }
 
@@ -134,64 +134,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Recipient> GetEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Recipient>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
+            body["givenName"] = CSharpExpressionConverter.ConvertToken(bodygivenName);
             bodypropCount++;
-            body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
+            body["familyName"] = CSharpExpressionConverter.ConvertToken(bodyfamilyName);
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+            body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
             bodypropCount++;
-            body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
+            body["signingMethod"] = CSharpExpressionConverter.Convert(bodysigningMethod);
             if (bodynotificationMethod != null)
             {
-                body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                body["notificationMethod"] = CSharpExpressionConverter.Convert(bodynotificationMethod);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodytelephone != null)
             {
-                body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                body["telephone"] = CSharpExpressionConverter.ConvertToken(bodytelephone);
                 bodypropCount++;
             }
 
             if (bodyorder != null)
             {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["order"] = CSharpExpressionConverter.ConvertToken(bodyorder);
                 bodypropCount++;
             }
 
             var roleObject = new JObject();
             var roleObjectpropCount = 0;
             roleObjectpropCount++;
-            roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
+            roleObject["action"] = CSharpExpressionConverter.ConvertToken(bodyroleaction);
             roleObjectpropCount++;
-            roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
+            roleObject["label"] = CSharpExpressionConverter.ConvertToken(bodyrolelabel);
             roleObjectpropCount++;
-            roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
+            roleObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrolename);
             if (roleObjectpropCount > 0)
             {
                 body["role"] = roleObject;
@@ -200,25 +200,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
             if (bodysecure != null)
             {
-                body["secure"] = ExpressionConverter.ConvertO(bodysecure);
+                body["secure"] = CSharpExpressionConverter.ConvertToken(bodysecure);
                 bodypropCount++;
             }
 
             if (bodysms != null)
             {
-                body["sms"] = ExpressionConverter.ConvertO(bodysms);
+                body["sms"] = CSharpExpressionConverter.ConvertToken(bodysms);
                 bodypropCount++;
             }
 
             if (bodyssn != null)
             {
-                body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
+                body["ssn"] = CSharpExpressionConverter.ConvertToken(bodyssn);
                 bodypropCount++;
             }
 
             if (bodybank != null)
             {
-                body["bank"] = ExpressionConverter.ConvertO(bodybank);
+                body["bank"] = CSharpExpressionConverter.ConvertToken(bodybank);
                 bodypropCount++;
             }
 
@@ -233,25 +233,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> fileId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> asObject = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files/{2}/url", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files/{2}/url", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (asObject != null)
-                callPayload.Queries["asObject"] = ExpressionConverter.Convert(asObject);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["asObject"] = CSharpExpressionConverter.ConvertO(asObject);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Setting> GetCompaniesCompanyIdUsersUserIdSettings(Expression<Func<string>> token, Expression<Func<string>> companyId, Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/companies/{0}/users/{1}/settings", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/companies/{0}/users/{1}/settings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<Setting>(callPayload);
         }
@@ -259,62 +259,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Envelope> GetEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Envelope>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction DeleteEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> bodysequentialSigning = null, Expression<Func<string>> bodygreeting = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<double>> bodyautomaticReminders = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysequentialSigning != null)
             {
-                body["sequentialSigning"] = ExpressionConverter.ConvertO(bodysequentialSigning);
+                body["sequentialSigning"] = CSharpExpressionConverter.ConvertToken(bodysequentialSigning);
                 bodypropCount++;
             }
 
             if (bodygreeting != null)
             {
-                body["greeting"] = ExpressionConverter.ConvertO(bodygreeting);
+                body["greeting"] = CSharpExpressionConverter.ConvertToken(bodygreeting);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodyautomaticReminders != null)
             {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                body["automaticReminders"] = CSharpExpressionConverter.ConvertToken(bodyautomaticReminders);
                 bodypropCount++;
             }
 
@@ -329,17 +329,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdPublishStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<bool>> bodypublished, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/publish-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/publish-status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["published"] = ExpressionConverter.ConvertO(bodypublished);
+            body["published"] = CSharpExpressionConverter.ConvertToken(bodypublished);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -351,13 +351,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/templates/{2}/user-data", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/templates/{2}/user-data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -371,18 +371,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdAbortStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/abort-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/abort-status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
@@ -397,35 +397,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<File[]> GetEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<File[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<File> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyfileType, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyhash = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["fileType"] = ExpressionConverter.ConvertO(bodyfileType);
+            body["fileType"] = CSharpExpressionConverter.ConvertToken(bodyfileType);
             if (bodyhash != null)
             {
-                body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                body["hash"] = CSharpExpressionConverter.ConvertToken(bodyhash);
                 bodypropCount++;
             }
 
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallPath = "/auth/userinfo";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<UserInfo>(callPayload);
         }
@@ -451,31 +451,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/status/aborted", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/status/aborted", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdTrashStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/trash-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/trash-status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
@@ -494,17 +494,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                callPayload.Queries["filters"] = CSharpExpressionConverter.ConvertO(filters);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
         }
 
@@ -515,17 +515,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                callPayload.Queries["filters"] = CSharpExpressionConverter.ConvertO(filters);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
         }
 
@@ -536,82 +536,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["filters"] = CSharpExpressionConverter.ConvertO(filters);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Descriptor[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> GetFlowsFlowIdJobsEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> flowId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/flows/{0}/jobs/{1}", ExpressionConverter.ConvertWithUrlEncoding(flowId, 1), ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/flows/{0}/jobs/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Document> GetEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Document>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction DeleteEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(Expression<Func<string>> token, Expression<Func<string>> envelopeDescriptorId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
         {
-            var apiCallPath = String.Format("/envelope-descriptors/{0}/envelopes", ExpressionConverter.ConvertWithUrlEncoding(envelopeDescriptorId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelope-descriptors/{0}/envelopes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeDescriptorId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             var senderObject = new JObject();
             var senderObjectpropCount = 0;
             if (bodysenderemail != null)
             {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                senderObject["email"] = CSharpExpressionConverter.ConvertToken(bodysenderemail);
                 senderObjectpropCount++;
             }
 
             if (bodysendergivenName != null)
             {
-                senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
+                senderObject["givenName"] = CSharpExpressionConverter.ConvertToken(bodysendergivenName);
                 senderObjectpropCount++;
             }
 
             if (bodysenderfamilyName != null)
             {
-                senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
+                senderObject["familyName"] = CSharpExpressionConverter.ConvertToken(bodysenderfamilyName);
                 senderObjectpropCount++;
             }
 
@@ -623,19 +623,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
             if (bodyautomaticReminders != null)
             {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                body["automaticReminders"] = CSharpExpressionConverter.ConvertToken(bodyautomaticReminders);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
@@ -650,33 +650,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Document[]> GetEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Document[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodyname, Expression<Func<string>> xNamespace = null, Expression<Func<int>> bodydescriptorhash = null, Expression<Func<string>> bodysource = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             var descriptorObject = new JObject();
             var descriptorObjectpropCount = 0;
             if (bodydescriptorhash != null)
             {
-                descriptorObject["hash"] = ExpressionConverter.ConvertO(bodydescriptorhash);
+                descriptorObject["hash"] = CSharpExpressionConverter.ConvertToken(bodydescriptorhash);
                 descriptorObjectpropCount++;
             }
 
@@ -687,10 +687,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodysource != null)
             {
-                body["source"] = ExpressionConverter.ConvertO(bodysource);
+                body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
                 bodypropCount++;
             }
 
@@ -705,20 +705,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> PostEnvelopesEnvelopeIdJobsGetSignLink(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyrecipientid = null, Expression<Func<string>> bodyredirectTo = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/jobs/get.sign.link", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/get.sign.link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             var recipientObject = new JObject();
             var recipientObjectpropCount = 0;
             if (bodyrecipientid != null)
             {
-                recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
+                recipientObject["id"] = CSharpExpressionConverter.ConvertToken(bodyrecipientid);
                 recipientObjectpropCount++;
             }
 
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
             if (bodyredirectTo != null)
             {
-                body["redirectTo"] = ExpressionConverter.ConvertO(bodyredirectTo);
+                body["redirectTo"] = CSharpExpressionConverter.ConvertToken(bodyredirectTo);
                 bodypropCount++;
             }
 
@@ -748,29 +748,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallPath = "/envelope-descriptors/default/envelopes";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             var senderObject = new JObject();
             var senderObjectpropCount = 0;
             if (bodysenderemail != null)
             {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                senderObject["email"] = CSharpExpressionConverter.ConvertToken(bodysenderemail);
                 senderObjectpropCount++;
             }
 
             if (bodysendergivenName != null)
             {
-                senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
+                senderObject["givenName"] = CSharpExpressionConverter.ConvertToken(bodysendergivenName);
                 senderObjectpropCount++;
             }
 
             if (bodysenderfamilyName != null)
             {
-                senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
+                senderObject["familyName"] = CSharpExpressionConverter.ConvertToken(bodysenderfamilyName);
                 senderObjectpropCount++;
             }
 
@@ -782,19 +782,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
             if (bodyautomaticReminders != null)
             {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                body["automaticReminders"] = CSharpExpressionConverter.ConvertToken(bodyautomaticReminders);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
@@ -813,31 +813,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["filters"] = CSharpExpressionConverter.ConvertO(filters);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             return new ApiConnectionAction<Descriptor>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyenvelopegreeting = null, Expression<Func<string>> bodyrecipientid = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/send.notification", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                callPayload.Headers["x-namespace"] = CSharpExpressionConverter.ConvertO(xNamespace);
             var body = new JObject();
             var bodypropCount = 0;
             var envelopeObject = new JObject();
             var envelopeObjectpropCount = 0;
             if (bodyenvelopegreeting != null)
             {
-                envelopeObject["greeting"] = ExpressionConverter.ConvertO(bodyenvelopegreeting);
+                envelopeObject["greeting"] = CSharpExpressionConverter.ConvertToken(bodyenvelopegreeting);
                 envelopeObjectpropCount++;
             }
 
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var recipientObjectpropCount = 0;
             if (bodyrecipientid != null)
             {
-                recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
+                recipientObject["id"] = CSharpExpressionConverter.ConvertToken(bodyrecipientid);
                 recipientObjectpropCount++;
             }
 

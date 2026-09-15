@@ -18,84 +18,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyaccessToApproveDocsOnly != null)
             {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
+                body["AccessToApproveDocsOnly"] = CSharpExpressionConverter.ConvertToken(bodyaccessToApproveDocsOnly);
                 bodypropCount++;
             }
 
             if (bodyallowAccessToReports != null)
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
+                body["AllowAccessToReports"] = CSharpExpressionConverter.ConvertToken(bodyallowAccessToReports);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["Comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyenableMfa != null)
             {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
+                body["EnableMfa"] = CSharpExpressionConverter.ConvertToken(bodyenableMfa);
                 bodypropCount++;
             }
 
             if (bodyenforceMfaForUsers != null)
             {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
+                body["EnforceMfaForUsers"] = CSharpExpressionConverter.ConvertToken(bodyenforceMfaForUsers);
                 bodypropCount++;
             }
 
             if (bodyfirmFlowRoutingNotification != null)
             {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
+                body["FirmFlowRoutingNotification"] = CSharpExpressionConverter.ConvertToken(bodyfirmFlowRoutingNotification);
                 bodypropCount++;
             }
 
             if (bodyfullAccessToDocTracking != null)
             {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
+                body["FullAccessToDocTracking"] = CSharpExpressionConverter.ConvertToken(bodyfullAccessToDocTracking);
                 bodypropCount++;
             }
 
             if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
                 bodypropCount++;
             }
 
             if (bodymfaRequired != null)
             {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
+                body["MfaRequired"] = CSharpExpressionConverter.ConvertToken(bodymfaRequired);
                 bodypropCount++;
             }
 
             if (bodypermissonToApproveDocs != null)
             {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
+                body["PermissonToApproveDocs"] = CSharpExpressionConverter.ConvertToken(bodypermissonToApproveDocs);
                 bodypropCount++;
             }
 
             if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                body["Reports"] = CSharpExpressionConverter.ConvertToken(bodyreports);
                 bodypropCount++;
             }
 
             if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                body["UploadLocation"] = CSharpExpressionConverter.ConvertToken(bodyuploadLocation);
                 bodypropCount++;
             }
 
             if (bodyusers != null)
             {
-                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
+                body["Users"] = CSharpExpressionConverter.ConvertToken(bodyusers);
                 bodypropCount++;
             }
 
@@ -114,30 +114,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycabinetName != null)
             {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
+                body["CabinetName"] = CSharpExpressionConverter.ConvertToken(bodycabinetName);
                 bodypropCount++;
             }
 
             if (bodydocumentSecurity != null)
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
+                body["DocumentSecurity"] = CSharpExpressionConverter.ConvertToken(bodydocumentSecurity);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["DrawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
             if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
                 bodypropCount++;
             }
 
@@ -156,90 +156,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyaccessToApproveDocsOnly != null)
             {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
+                body["AccessToApproveDocsOnly"] = CSharpExpressionConverter.ConvertToken(bodyaccessToApproveDocsOnly);
                 bodypropCount++;
             }
 
             if (bodyallowAccessToReports != null)
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
+                body["AllowAccessToReports"] = CSharpExpressionConverter.ConvertToken(bodyallowAccessToReports);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["Comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyenableMfa != null)
             {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
+                body["EnableMfa"] = CSharpExpressionConverter.ConvertToken(bodyenableMfa);
                 bodypropCount++;
             }
 
             if (bodyenforceMfaForUsers != null)
             {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
+                body["EnforceMfaForUsers"] = CSharpExpressionConverter.ConvertToken(bodyenforceMfaForUsers);
                 bodypropCount++;
             }
 
             if (bodyfirmFlowRoutingNotification != null)
             {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
+                body["FirmFlowRoutingNotification"] = CSharpExpressionConverter.ConvertToken(bodyfirmFlowRoutingNotification);
                 bodypropCount++;
             }
 
             if (bodyfullAccessToDocTracking != null)
             {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
+                body["FullAccessToDocTracking"] = CSharpExpressionConverter.ConvertToken(bodyfullAccessToDocTracking);
                 bodypropCount++;
             }
 
             if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
                 bodypropCount++;
             }
 
             if (bodymfaRequired != null)
             {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
+                body["MfaRequired"] = CSharpExpressionConverter.ConvertToken(bodymfaRequired);
                 bodypropCount++;
             }
 
             if (bodypermissonToApproveDocs != null)
             {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
+                body["PermissonToApproveDocs"] = CSharpExpressionConverter.ConvertToken(bodypermissonToApproveDocs);
                 bodypropCount++;
             }
 
             if (bodyrenameGroup != null)
             {
-                body["RenameGroup"] = ExpressionConverter.ConvertO(bodyrenameGroup);
+                body["RenameGroup"] = CSharpExpressionConverter.ConvertToken(bodyrenameGroup);
                 bodypropCount++;
             }
 
             if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                body["Reports"] = CSharpExpressionConverter.ConvertToken(bodyreports);
                 bodypropCount++;
             }
 
             if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                body["UploadLocation"] = CSharpExpressionConverter.ConvertToken(bodyuploadLocation);
                 bodypropCount++;
             }
 
             if (bodyusers != null)
             {
-                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
+                body["Users"] = CSharpExpressionConverter.ConvertToken(bodyusers);
                 bodypropCount++;
             }
 
@@ -258,9 +258,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (groupName != null)
-                callPayload.Queries["groupName"] = ExpressionConverter.Convert(groupName);
+                callPayload.Queries["groupName"] = CSharpExpressionConverter.ConvertO(groupName);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetGroupPermissionsResponse>(callPayload);
         }
 
@@ -271,12 +271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycabinet != null)
             {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
+                body["Cabinet"] = CSharpExpressionConverter.ConvertToken(bodycabinet);
                 bodypropCount++;
             }
 
@@ -284,37 +284,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var cabinetPermissionObjectpropCount = 0;
             if (bodycabinetPermissionadd != null)
             {
-                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                cabinetPermissionObject["Add"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionadd);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissiondelete != null)
             {
-                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                cabinetPermissionObject["Delete"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissiondelete);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissiondeny != null)
             {
-                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                cabinetPermissionObject["Deny"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissiondeny);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionedit != null)
             {
-                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                cabinetPermissionObject["Edit"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionedit);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionlookUp != null)
             {
-                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                cabinetPermissionObject["LookUp"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionlookUp);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionread != null)
             {
-                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                cabinetPermissionObject["Read"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionread);
                 cabinetPermissionObjectpropCount++;
             }
 
@@ -326,13 +326,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
             if (bodydrawerPermissions != null)
             {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
+                body["DrawerPermissions"] = CSharpExpressionConverter.ConvertToken(bodydrawerPermissions);
                 bodypropCount++;
             }
 
             if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
                 bodypropCount++;
             }
 
@@ -347,11 +347,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity(Expression<Func<string>> groupName, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetGroupDocumentSecurityResponse>(callPayload);
         }
 
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetGroupsResponseItem[]>(callPayload);
         }
 
@@ -374,134 +374,134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["userType"] = Convert.ToString("GFRUSERS");
             if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                callPayload.Queries["userType"] = CSharpExpressionConverter.Convert(userType);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyaccountExpiresDate != null)
             {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
+                body["AccountExpiresDate"] = CSharpExpressionConverter.ConvertToken(bodyaccountExpiresDate);
                 bodypropCount++;
             }
 
             if (bodydisabledComments != null)
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
+                body["DisabledComments"] = CSharpExpressionConverter.ConvertToken(bodydisabledComments);
                 bodypropCount++;
             }
 
             if (bodyfullName != null)
             {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
+                body["FullName"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
                 bodypropCount++;
             }
 
             if (bodygroups != null)
             {
-                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
+                body["Groups"] = CSharpExpressionConverter.ConvertToken(bodygroups);
                 bodypropCount++;
             }
 
             if (bodyisAccountExpires != null)
             {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
+                body["IsAccountExpires"] = CSharpExpressionConverter.ConvertToken(bodyisAccountExpires);
                 bodypropCount++;
             }
 
             if (bodyisAdvanceFlow != null)
             {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
+                body["IsAdvanceFlow"] = CSharpExpressionConverter.ConvertToken(bodyisAdvanceFlow);
                 bodypropCount++;
             }
 
             if (bodyisAllowAccessToReports != null)
             {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
+                body["IsAllowAccessToReports"] = CSharpExpressionConverter.ConvertToken(bodyisAllowAccessToReports);
                 bodypropCount++;
             }
 
             if (bodyisAllowOffline != null)
             {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
+                body["IsAllowOffline"] = CSharpExpressionConverter.ConvertToken(bodyisAllowOffline);
                 bodypropCount++;
             }
 
             if (bodyisDisabled != null)
             {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
+                body["IsDisabled"] = CSharpExpressionConverter.ConvertToken(bodyisDisabled);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlow != null)
             {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
+                body["IsFirmFlow"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlow);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlowNotificationGroup != null)
             {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
+                body["IsFirmFlowNotificationGroup"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlowNotificationGroup);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlowNotificationUser != null)
             {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
+                body["IsFirmFlowNotificationUser"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlowNotificationUser);
                 bodypropCount++;
             }
 
             if (bodyisMfa != null)
             {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
+                body["IsMfa"] = CSharpExpressionConverter.ConvertToken(bodyisMfa);
                 bodypropCount++;
             }
 
             if (bodyisUserAdministration != null)
             {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
+                body["IsUserAdministration"] = CSharpExpressionConverter.ConvertToken(bodyisUserAdministration);
                 bodypropCount++;
             }
 
             if (bodyisWorkflowManagerUser != null)
             {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
+                body["IsWorkflowManagerUser"] = CSharpExpressionConverter.ConvertToken(bodyisWorkflowManagerUser);
                 bodypropCount++;
             }
 
             if (bodylicenseType != null)
             {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
+                body["LicenseType"] = CSharpExpressionConverter.ConvertToken(bodylicenseType);
                 bodypropCount++;
             }
 
             if (bodyloginName != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+                body["LoginName"] = CSharpExpressionConverter.ConvertToken(bodyloginName);
                 bodypropCount++;
             }
 
             if (bodymanagerEmail != null)
             {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
+                body["ManagerEmail"] = CSharpExpressionConverter.ConvertToken(bodymanagerEmail);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                body["Reports"] = CSharpExpressionConverter.ConvertToken(bodyreports);
                 bodypropCount++;
             }
 
             if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                body["UploadLocation"] = CSharpExpressionConverter.ConvertToken(bodyuploadLocation);
                 bodypropCount++;
             }
 
@@ -520,18 +520,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                body["LoginId"] = CSharpExpressionConverter.ConvertToken(bodyloginId);
                 bodypropCount++;
             }
 
             if (bodyuserType != null)
             {
-                body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
+                body["UserType"] = CSharpExpressionConverter.Convert(bodyuserType);
                 bodypropCount++;
             }
 
@@ -550,30 +550,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycabinetName != null)
             {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
+                body["CabinetName"] = CSharpExpressionConverter.ConvertToken(bodycabinetName);
                 bodypropCount++;
             }
 
             if (bodydocumentSecurity != null)
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
+                body["DocumentSecurity"] = CSharpExpressionConverter.ConvertToken(bodydocumentSecurity);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["DrawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
             if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                body["LoginId"] = CSharpExpressionConverter.ConvertToken(bodyloginId);
                 bodypropCount++;
             }
 
@@ -592,13 +592,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+            body["LoginName"] = CSharpExpressionConverter.ConvertToken(bodyloginName);
             bodypropCount++;
-            body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
+            body["UserType"] = CSharpExpressionConverter.ConvertToken(bodyuserType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -614,9 +614,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (license != null)
-                callPayload.Queries["license"] = ExpressionConverter.Convert(license);
+                callPayload.Queries["license"] = CSharpExpressionConverter.Convert(license);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetLicensesResponse>(callPayload);
         }
 
@@ -627,140 +627,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                callPayload.Queries["userType"] = CSharpExpressionConverter.Convert(userType);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyaccountExpiresDate != null)
             {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
+                body["AccountExpiresDate"] = CSharpExpressionConverter.ConvertToken(bodyaccountExpiresDate);
                 bodypropCount++;
             }
 
             if (bodydisabledComments != null)
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
+                body["DisabledComments"] = CSharpExpressionConverter.ConvertToken(bodydisabledComments);
                 bodypropCount++;
             }
 
             if (bodyfullName != null)
             {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
+                body["FullName"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
                 bodypropCount++;
             }
 
             if (bodygroups != null)
             {
-                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
+                body["Groups"] = CSharpExpressionConverter.ConvertToken(bodygroups);
                 bodypropCount++;
             }
 
             if (bodyisAccountExpires != null)
             {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
+                body["IsAccountExpires"] = CSharpExpressionConverter.ConvertToken(bodyisAccountExpires);
                 bodypropCount++;
             }
 
             if (bodyisAdvanceFlow != null)
             {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
+                body["IsAdvanceFlow"] = CSharpExpressionConverter.ConvertToken(bodyisAdvanceFlow);
                 bodypropCount++;
             }
 
             if (bodyisAllowAccessToReports != null)
             {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
+                body["IsAllowAccessToReports"] = CSharpExpressionConverter.ConvertToken(bodyisAllowAccessToReports);
                 bodypropCount++;
             }
 
             if (bodyisAllowOffline != null)
             {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
+                body["IsAllowOffline"] = CSharpExpressionConverter.ConvertToken(bodyisAllowOffline);
                 bodypropCount++;
             }
 
             if (bodyisChangeNextLogin != null)
             {
-                body["IsChangeNextLogin"] = ExpressionConverter.ConvertO(bodyisChangeNextLogin);
+                body["IsChangeNextLogin"] = CSharpExpressionConverter.ConvertToken(bodyisChangeNextLogin);
                 bodypropCount++;
             }
 
             if (bodyisDisabled != null)
             {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
+                body["IsDisabled"] = CSharpExpressionConverter.ConvertToken(bodyisDisabled);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlow != null)
             {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
+                body["IsFirmFlow"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlow);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlowNotificationGroup != null)
             {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
+                body["IsFirmFlowNotificationGroup"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlowNotificationGroup);
                 bodypropCount++;
             }
 
             if (bodyisFirmFlowNotificationUser != null)
             {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
+                body["IsFirmFlowNotificationUser"] = CSharpExpressionConverter.ConvertToken(bodyisFirmFlowNotificationUser);
                 bodypropCount++;
             }
 
             if (bodyisMfa != null)
             {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
+                body["IsMfa"] = CSharpExpressionConverter.ConvertToken(bodyisMfa);
                 bodypropCount++;
             }
 
             if (bodyisUserAdministration != null)
             {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
+                body["IsUserAdministration"] = CSharpExpressionConverter.ConvertToken(bodyisUserAdministration);
                 bodypropCount++;
             }
 
             if (bodyisWorkflowManagerUser != null)
             {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
+                body["IsWorkflowManagerUser"] = CSharpExpressionConverter.ConvertToken(bodyisWorkflowManagerUser);
                 bodypropCount++;
             }
 
             if (bodylicenseType != null)
             {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
+                body["LicenseType"] = CSharpExpressionConverter.ConvertToken(bodylicenseType);
                 bodypropCount++;
             }
 
             if (bodyloginName != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+                body["LoginName"] = CSharpExpressionConverter.ConvertToken(bodyloginName);
                 bodypropCount++;
             }
 
             if (bodymanagerEmail != null)
             {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
+                body["ManagerEmail"] = CSharpExpressionConverter.ConvertToken(bodymanagerEmail);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                body["Reports"] = CSharpExpressionConverter.ConvertToken(bodyreports);
                 bodypropCount++;
             }
 
             if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                body["UploadLocation"] = CSharpExpressionConverter.ConvertToken(bodyuploadLocation);
                 bodypropCount++;
             }
 
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetPasswordPolicyResponse>(callPayload);
         }
 
@@ -790,12 +790,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycabinet != null)
             {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
+                body["Cabinet"] = CSharpExpressionConverter.ConvertToken(bodycabinet);
                 bodypropCount++;
             }
 
@@ -803,37 +803,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var cabinetPermissionObjectpropCount = 0;
             if (bodycabinetPermissionadd != null)
             {
-                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                cabinetPermissionObject["Add"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionadd);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissiondelete != null)
             {
-                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                cabinetPermissionObject["Delete"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissiondelete);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissiondeny != null)
             {
-                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                cabinetPermissionObject["Deny"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissiondeny);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionedit != null)
             {
-                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                cabinetPermissionObject["Edit"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionedit);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionlookUp != null)
             {
-                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                cabinetPermissionObject["LookUp"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionlookUp);
                 cabinetPermissionObjectpropCount++;
             }
 
             if (bodycabinetPermissionread != null)
             {
-                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                cabinetPermissionObject["Read"] = CSharpExpressionConverter.ConvertToken(bodycabinetPermissionread);
                 cabinetPermissionObjectpropCount++;
             }
 
@@ -845,13 +845,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
             if (bodydrawerPermissions != null)
             {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
+                body["DrawerPermissions"] = CSharpExpressionConverter.ConvertToken(bodydrawerPermissions);
                 bodypropCount++;
             }
 
             if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                body["LoginId"] = CSharpExpressionConverter.ConvertToken(bodyloginId);
                 bodypropCount++;
             }
 
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetListOfReportsResponse>(callPayload);
         }
 
@@ -881,29 +881,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetUploadLocationResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity(Expression<Func<string>> loginId, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(loginId, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(loginId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetUserDocumentSecurityResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission(Expression<Func<string>> login, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/user/{0}/permissions", ExpressionConverter.ConvertWithUrlEncoding(login, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/permissions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(login, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetUserPermissionResponse>(callPayload);
         }
 
@@ -914,20 +914,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                callPayload.Queries["userType"] = CSharpExpressionConverter.Convert(userType);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/administration/{0}/clients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetLookupListResponseItem[]>(callPayload);
         }
 
@@ -938,18 +938,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
             if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                body["Indexes"] = CSharpExpressionConverter.ConvertToken(bodyindexes);
                 bodypropCount++;
             }
 
@@ -968,18 +968,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentIds != null)
             {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
+                body["DocumentIds"] = CSharpExpressionConverter.ConvertToken(bodydocumentIds);
                 bodypropCount++;
             }
 
             if (bodyindexValues != null)
             {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
+                body["IndexValues"] = CSharpExpressionConverter.ConvertToken(bodyindexValues);
                 bodypropCount++;
             }
 
@@ -998,8 +998,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<GetDocumentStatusResponseItem[]>(callPayload);
         }
 
@@ -1010,8 +1010,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -1022,18 +1022,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentIds != null)
             {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
+                body["DocumentIds"] = CSharpExpressionConverter.ConvertToken(bodydocumentIds);
                 bodypropCount++;
             }
 
             if (bodyindexValues != null)
             {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
+                body["IndexValues"] = CSharpExpressionConverter.ConvertToken(bodyindexValues);
                 bodypropCount++;
             }
 
@@ -1052,12 +1052,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var filterObjectpropCount = 0;
             if (bodyfilterindexValues != null)
             {
-                filterObject["IndexValues"] = ExpressionConverter.ConvertO(bodyfilterindexValues);
+                filterObject["IndexValues"] = CSharpExpressionConverter.ConvertToken(bodyfilterindexValues);
                 filterObjectpropCount++;
             }
 
@@ -1077,25 +1077,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
             if (bodynumberOfRows != null)
             {
-                body["NumberOfRows"] = ExpressionConverter.ConvertO(bodynumberOfRows);
+                body["NumberOfRows"] = CSharpExpressionConverter.ConvertToken(bodynumberOfRows);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["PageNumber"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodysortField != null)
             {
-                body["SortField"] = ExpressionConverter.ConvertO(bodysortField);
+                body["SortField"] = CSharpExpressionConverter.ConvertToken(bodysortField);
                 bodypropCount++;
             }
 
             if (bodysortOrder != null)
             {
-                body["SortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                body["SortOrder"] = CSharpExpressionConverter.Convert(bodysortOrder);
                 bodypropCount++;
             }
 
@@ -1114,67 +1114,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<TaxsortDocumentResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<DocumentDeleteResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IWorkflowAction GetDocument(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/file", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetDocumentHistoryResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/indexes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetDocumentIndexesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["IsPublished"] = ExpressionConverter.ConvertO(bodyisPublished);
+            body["IsPublished"] = CSharpExpressionConverter.ConvertToken(bodyisPublished);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1190,18 +1190,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetDrawersResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/drawers/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/drawers/{0}/indexes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetDrawerIndexesResponseItem[]>(callPayload);
         }
 
@@ -1212,198 +1212,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                body["Accountable"] = CSharpExpressionConverter.ConvertToken(bodyaccountable);
                 bodypropCount++;
             }
 
             if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                body["AssignedOn"] = CSharpExpressionConverter.ConvertToken(bodyassignedOn);
                 bodypropCount++;
             }
 
             if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                body["AssignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
                 bodypropCount++;
             }
 
             if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                body["AssignmentHistory"] = CSharpExpressionConverter.ConvertToken(bodyassignmentHistory);
                 bodypropCount++;
             }
 
             if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                body["CompletedBy"] = CSharpExpressionConverter.ConvertToken(bodycompletedBy);
                 bodypropCount++;
             }
 
             if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                body["CompletedOn"] = CSharpExpressionConverter.ConvertToken(bodycompletedOn);
                 bodypropCount++;
             }
 
             if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                body["CurrentDueDate"] = CSharpExpressionConverter.ConvertToken(bodycurrentDueDate);
                 bodypropCount++;
             }
 
             if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                body["CurrentStep"] = CSharpExpressionConverter.ConvertToken(bodycurrentStep);
                 bodypropCount++;
             }
 
             if (bodydateExtended != null)
             {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
+                body["DateExtended"] = CSharpExpressionConverter.ConvertToken(bodydateExtended);
                 bodypropCount++;
             }
 
             if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                body["DaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodydaysAtStep);
                 bodypropCount++;
             }
 
             if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = CSharpExpressionConverter.ConvertToken(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
             if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                body["EngagementType"] = CSharpExpressionConverter.ConvertToken(bodyengagementType);
                 bodypropCount++;
             }
 
             if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                body["InProcessOnly"] = CSharpExpressionConverter.ConvertToken(bodyinProcessOnly);
                 bodypropCount++;
             }
 
             if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                body["Indexes"] = CSharpExpressionConverter.ConvertToken(bodyindexes);
                 bodypropCount++;
             }
 
             if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                body["InformationFields"] = CSharpExpressionConverter.ConvertToken(bodyinformationFields);
                 bodypropCount++;
             }
 
             if (bodyoriginalDueDate != null)
             {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
+                body["OriginalDueDate"] = CSharpExpressionConverter.ConvertToken(bodyoriginalDueDate);
                 bodypropCount++;
             }
 
             if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                body["PIC"] = CSharpExpressionConverter.ConvertToken(bodypIC);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["PageNumber"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                body["ReceivedFrom"] = CSharpExpressionConverter.ConvertToken(bodyreceivedFrom);
                 bodypropCount++;
             }
 
             if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                body["ReceivedOn"] = CSharpExpressionConverter.ConvertToken(bodyreceivedOn);
                 bodypropCount++;
             }
 
             if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                body["Responsible"] = CSharpExpressionConverter.ConvertToken(bodyresponsible);
                 bodypropCount++;
             }
 
             if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                body["RoutingDetails"] = CSharpExpressionConverter.ConvertToken(bodyroutingDetails);
                 bodypropCount++;
             }
 
             if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                body["SentOn"] = CSharpExpressionConverter.ConvertToken(bodysentOn);
                 bodypropCount++;
             }
 
             if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                body["SentTo"] = CSharpExpressionConverter.ConvertToken(bodysentTo);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                body["TotalDaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
             if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                body["TotalDaysInProcess"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
             if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                body["Workflow"] = CSharpExpressionConverter.ConvertToken(bodyworkflow);
                 bodypropCount++;
             }
 
             if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                body["WorkflowDescription"] = CSharpExpressionConverter.ConvertToken(bodyworkflowDescription);
                 bodypropCount++;
             }
 
@@ -1422,18 +1422,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
             if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                body["Indexes"] = CSharpExpressionConverter.ConvertToken(bodyindexes);
                 bodypropCount++;
             }
 
@@ -1448,45 +1448,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/dynamicrules", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/dynamicrules", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetDynamicRulesForIndexResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
         {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/lookuplist", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyactionType != null)
             {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
+                body["ActionType"] = CSharpExpressionConverter.Convert(bodyactionType);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["Count"] = ExpressionConverter.ConvertO(bodycount);
+                body["Count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 
             if (bodyindexValue != null)
             {
-                body["IndexValue"] = ExpressionConverter.ConvertO(bodyindexValue);
+                body["IndexValue"] = CSharpExpressionConverter.ConvertToken(bodyindexValue);
                 bodypropCount++;
             }
 
             if (bodysearchType != null)
             {
-                body["SearchType"] = ExpressionConverter.ConvertO(bodysearchType);
+                body["SearchType"] = CSharpExpressionConverter.Convert(bodysearchType);
                 bodypropCount++;
             }
 
@@ -1501,22 +1501,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetListTypeIndexDataResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes(Expression<Func<string>> indexId, Expression<Func<string>> listId, Expression<Func<string>> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/values/childindexlist/{1}", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1), ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<GetChildIndexesResponseItem[]>(callPayload);
         }
 
@@ -1529,9 +1529,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+            body["LoginName"] = CSharpExpressionConverter.ConvertToken(bodyloginName);
             bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1547,7 +1547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<LogoutResponse>(callPayload);
         }
 
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             return new ApiConnectionAction<bool>(callPayload);
         }
 
@@ -1569,24 +1569,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawer != null)
             {
-                body["Drawer"] = ExpressionConverter.ConvertO(bodydrawer);
+                body["Drawer"] = CSharpExpressionConverter.ConvertToken(bodydrawer);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodyfolderId != null)
             {
-                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+                body["folderId"] = CSharpExpressionConverter.ConvertToken(bodyfolderId);
                 bodypropCount++;
             }
 
@@ -1594,37 +1594,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var headersObjectpropCount = 0;
             if (bodyheadersclientName != null)
             {
-                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                headersObject["ClientName"] = CSharpExpressionConverter.ConvertToken(bodyheadersclientName);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersclientNumber != null)
             {
-                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                headersObject["ClientNumber"] = CSharpExpressionConverter.ConvertToken(bodyheadersclientNumber);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersengagementType != null)
             {
-                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                headersObject["EngagementType"] = CSharpExpressionConverter.ConvertToken(bodyheadersengagementType);
                 headersObjectpropCount++;
             }
 
             if (bodyheaderspIC != null)
             {
-                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                headersObject["PIC"] = CSharpExpressionConverter.ConvertToken(bodyheaderspIC);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersyear != null)
             {
-                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                headersObject["Year"] = CSharpExpressionConverter.ConvertToken(bodyheadersyear);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersperiodEnd != null)
             {
-                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                headersObject["PeriodEnd"] = CSharpExpressionConverter.ConvertToken(bodyheadersperiodEnd);
                 headersObjectpropCount++;
             }
 
@@ -1638,19 +1638,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var filingObjectpropCount = 0;
             if (bodyfilingworkflowName != null)
             {
-                filingObject["workflowName"] = ExpressionConverter.ConvertO(bodyfilingworkflowName);
+                filingObject["workflowName"] = CSharpExpressionConverter.ConvertToken(bodyfilingworkflowName);
                 filingObjectpropCount++;
             }
 
             if (bodyfilingdescription != null)
             {
-                filingObject["description"] = ExpressionConverter.ConvertO(bodyfilingdescription);
+                filingObject["description"] = CSharpExpressionConverter.ConvertToken(bodyfilingdescription);
                 filingObjectpropCount++;
             }
 
             if (bodyfilingstatusName != null)
             {
-                filingObject["statusName"] = ExpressionConverter.ConvertO(bodyfilingstatusName);
+                filingObject["statusName"] = CSharpExpressionConverter.ConvertToken(bodyfilingstatusName);
                 filingObjectpropCount++;
             }
 
@@ -1664,25 +1664,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var deliverableObjectpropCount = 0;
             if (bodydeliverableaction != null)
             {
-                deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
+                deliverableObject["action"] = CSharpExpressionConverter.ConvertToken(bodydeliverableaction);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverablecurrentduedate != null)
             {
-                deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
+                deliverableObject["currentduedate"] = CSharpExpressionConverter.ConvertToken(bodydeliverablecurrentduedate);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverableoriginalduedate != null)
             {
-                deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
+                deliverableObject["originalduedate"] = CSharpExpressionConverter.ConvertToken(bodydeliverableoriginalduedate);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverableform != null)
             {
-                deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
+                deliverableObject["form"] = CSharpExpressionConverter.ConvertToken(bodydeliverableform);
                 deliverableObjectpropCount++;
             }
 
@@ -1696,19 +1696,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var deliveryInstructionsObjectpropCount = 0;
             if (bodydeliveryInstructionsdelivery != null)
             {
-                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
+                deliveryInstructionsObject["Delivery"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionsdelivery);
                 deliveryInstructionsObjectpropCount++;
             }
 
             if (bodydeliveryInstructionsdestination != null)
             {
-                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
+                deliveryInstructionsObject["Destination"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionsdestination);
                 deliveryInstructionsObjectpropCount++;
             }
 
             if (bodydeliveryInstructionssourceDocument != null)
             {
-                deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
+                deliveryInstructionsObject["sourceDocument"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionssourceDocument);
                 deliveryInstructionsObjectpropCount++;
             }
 
@@ -1722,19 +1722,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var notesObjectpropCount = 0;
             if (bodynotesaction != null)
             {
-                notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
+                notesObject["action"] = CSharpExpressionConverter.ConvertToken(bodynotesaction);
                 notesObjectpropCount++;
             }
 
             if (bodynotesnoteType != null)
             {
-                notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
+                notesObject["noteType"] = CSharpExpressionConverter.ConvertToken(bodynotesnoteType);
                 notesObjectpropCount++;
             }
 
             if (bodynotesnote != null)
             {
-                notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
+                notesObject["note"] = CSharpExpressionConverter.ConvertToken(bodynotesnote);
                 notesObjectpropCount++;
             }
 
@@ -1748,13 +1748,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var informationFieldsObjectpropCount = 0;
             if (bodyinformationFieldsname != null)
             {
-                informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
+                informationFieldsObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinformationFieldsname);
                 informationFieldsObjectpropCount++;
             }
 
             if (bodyinformationFieldsvalue != null)
             {
-                informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
+                informationFieldsObject["value"] = CSharpExpressionConverter.ConvertToken(bodyinformationFieldsvalue);
                 informationFieldsObjectpropCount++;
             }
 
@@ -1768,13 +1768,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var routingSummaryObjectpropCount = 0;
             if (bodyroutingSummaryresponsibleField != null)
             {
-                routingSummaryObject["ResponsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
+                routingSummaryObject["ResponsibleField"] = CSharpExpressionConverter.ConvertToken(bodyroutingSummaryresponsibleField);
                 routingSummaryObjectpropCount++;
             }
 
             if (bodyroutingSummaryvalue != null)
             {
-                routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
+                routingSummaryObject["value"] = CSharpExpressionConverter.ConvertToken(bodyroutingSummaryvalue);
                 routingSummaryObjectpropCount++;
             }
 
@@ -1799,24 +1799,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["DrawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
             if (bodydeliverableNames != null)
             {
-                body["DeliverableNames"] = ExpressionConverter.ConvertO(bodydeliverableNames);
+                body["DeliverableNames"] = CSharpExpressionConverter.ConvertToken(bodydeliverableNames);
                 bodypropCount++;
             }
 
@@ -1835,12 +1835,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfilingId != null)
             {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                body["filingId"] = CSharpExpressionConverter.ConvertToken(bodyfilingId);
                 bodypropCount++;
             }
 
@@ -1859,66 +1859,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycurrentdeliverableName != null)
             {
-                body["currentdeliverableName"] = ExpressionConverter.ConvertO(bodycurrentdeliverableName);
+                body["currentdeliverableName"] = CSharpExpressionConverter.ConvertToken(bodycurrentdeliverableName);
                 bodypropCount++;
             }
 
             if (bodyupdatedeliverableName != null)
             {
-                body["updatedeliverableName"] = ExpressionConverter.ConvertO(bodyupdatedeliverableName);
+                body["updatedeliverableName"] = CSharpExpressionConverter.ConvertToken(bodyupdatedeliverableName);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodyfirstExtension != null)
             {
-                body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
+                body["firstExtension"] = CSharpExpressionConverter.ConvertToken(bodyfirstExtension);
                 bodypropCount++;
             }
 
             if (bodysecondExtension != null)
             {
-                body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
+                body["secondExtension"] = CSharpExpressionConverter.ConvertToken(bodysecondExtension);
                 bodypropCount++;
             }
 
             if (bodythirdExtension != null)
             {
-                body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
+                body["thirdExtension"] = CSharpExpressionConverter.ConvertToken(bodythirdExtension);
                 bodypropCount++;
             }
 
             if (bodycalenderOrFiscal != null)
             {
-                body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
+                body["calenderOrFiscal"] = CSharpExpressionConverter.ConvertToken(bodycalenderOrFiscal);
                 bodypropCount++;
             }
 
             if (bodyextension != null)
             {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                body["extension"] = CSharpExpressionConverter.ConvertToken(bodyextension);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["serviceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["serviceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["drawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["drawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
@@ -1937,12 +1937,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfilingId != null)
             {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                body["filingId"] = CSharpExpressionConverter.ConvertToken(bodyfilingId);
                 bodypropCount++;
             }
 
@@ -1950,37 +1950,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var headersObjectpropCount = 0;
             if (bodyheadersclientName != null)
             {
-                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                headersObject["ClientName"] = CSharpExpressionConverter.ConvertToken(bodyheadersclientName);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersclientNumber != null)
             {
-                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                headersObject["ClientNumber"] = CSharpExpressionConverter.ConvertToken(bodyheadersclientNumber);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersengagementType != null)
             {
-                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                headersObject["EngagementType"] = CSharpExpressionConverter.ConvertToken(bodyheadersengagementType);
                 headersObjectpropCount++;
             }
 
             if (bodyheaderspIC != null)
             {
-                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                headersObject["PIC"] = CSharpExpressionConverter.ConvertToken(bodyheaderspIC);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersyear != null)
             {
-                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                headersObject["Year"] = CSharpExpressionConverter.ConvertToken(bodyheadersyear);
                 headersObjectpropCount++;
             }
 
             if (bodyheadersperiodEnd != null)
             {
-                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                headersObject["PeriodEnd"] = CSharpExpressionConverter.ConvertToken(bodyheadersperiodEnd);
                 headersObjectpropCount++;
             }
 
@@ -1994,25 +1994,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var deliverableObjectpropCount = 0;
             if (bodydeliverableaction != null)
             {
-                deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
+                deliverableObject["action"] = CSharpExpressionConverter.ConvertToken(bodydeliverableaction);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverablecurrentduedate != null)
             {
-                deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
+                deliverableObject["currentduedate"] = CSharpExpressionConverter.ConvertToken(bodydeliverablecurrentduedate);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverableoriginalduedate != null)
             {
-                deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
+                deliverableObject["originalduedate"] = CSharpExpressionConverter.ConvertToken(bodydeliverableoriginalduedate);
                 deliverableObjectpropCount++;
             }
 
             if (bodydeliverableform != null)
             {
-                deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
+                deliverableObject["form"] = CSharpExpressionConverter.ConvertToken(bodydeliverableform);
                 deliverableObjectpropCount++;
             }
 
@@ -2026,25 +2026,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var notesObjectpropCount = 0;
             if (bodynotesaction != null)
             {
-                notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
+                notesObject["action"] = CSharpExpressionConverter.ConvertToken(bodynotesaction);
                 notesObjectpropCount++;
             }
 
             if (bodynotesnoteType != null)
             {
-                notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
+                notesObject["noteType"] = CSharpExpressionConverter.ConvertToken(bodynotesnoteType);
                 notesObjectpropCount++;
             }
 
             if (bodynotesnoteid != null)
             {
-                notesObject["noteid"] = ExpressionConverter.ConvertO(bodynotesnoteid);
+                notesObject["noteid"] = CSharpExpressionConverter.ConvertToken(bodynotesnoteid);
                 notesObjectpropCount++;
             }
 
             if (bodynotesnote != null)
             {
-                notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
+                notesObject["note"] = CSharpExpressionConverter.ConvertToken(bodynotesnote);
                 notesObjectpropCount++;
             }
 
@@ -2058,13 +2058,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var informationFieldsObjectpropCount = 0;
             if (bodyinformationFieldsname != null)
             {
-                informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
+                informationFieldsObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinformationFieldsname);
                 informationFieldsObjectpropCount++;
             }
 
             if (bodyinformationFieldsvalue != null)
             {
-                informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
+                informationFieldsObject["value"] = CSharpExpressionConverter.ConvertToken(bodyinformationFieldsvalue);
                 informationFieldsObjectpropCount++;
             }
 
@@ -2078,19 +2078,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var deliveryInstructionsObjectpropCount = 0;
             if (bodydeliveryInstructionsdelivery != null)
             {
-                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
+                deliveryInstructionsObject["Delivery"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionsdelivery);
                 deliveryInstructionsObjectpropCount++;
             }
 
             if (bodydeliveryInstructionsdestination != null)
             {
-                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
+                deliveryInstructionsObject["Destination"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionsdestination);
                 deliveryInstructionsObjectpropCount++;
             }
 
             if (bodydeliveryInstructionssourceDocument != null)
             {
-                deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
+                deliveryInstructionsObject["sourceDocument"] = CSharpExpressionConverter.ConvertToken(bodydeliveryInstructionssourceDocument);
                 deliveryInstructionsObjectpropCount++;
             }
 
@@ -2104,13 +2104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var routingSummaryObjectpropCount = 0;
             if (bodyroutingSummaryresponsibleField != null)
             {
-                routingSummaryObject["responsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
+                routingSummaryObject["responsibleField"] = CSharpExpressionConverter.ConvertToken(bodyroutingSummaryresponsibleField);
                 routingSummaryObjectpropCount++;
             }
 
             if (bodyroutingSummaryvalue != null)
             {
-                routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
+                routingSummaryObject["value"] = CSharpExpressionConverter.ConvertToken(bodyroutingSummaryvalue);
                 routingSummaryObjectpropCount++;
             }
 
@@ -2122,7 +2122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
             if (bodyreindexDocs != null)
             {
-                body["reindexDocs"] = ExpressionConverter.ConvertO(bodyreindexDocs);
+                body["reindexDocs"] = CSharpExpressionConverter.ConvertToken(bodyreindexDocs);
                 bodypropCount++;
             }
 
@@ -2141,30 +2141,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["PageNumber"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodypageSize != null)
             {
-                body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                body["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypageSize);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["DrawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
@@ -2183,192 +2183,192 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                body["EngagementType"] = CSharpExpressionConverter.ConvertToken(bodyengagementType);
                 bodypropCount++;
             }
 
             if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                body["Workflow"] = CSharpExpressionConverter.ConvertToken(bodyworkflow);
                 bodypropCount++;
             }
 
             if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                body["CurrentStep"] = CSharpExpressionConverter.ConvertToken(bodycurrentStep);
                 bodypropCount++;
             }
 
             if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                body["PIC"] = CSharpExpressionConverter.ConvertToken(bodypIC);
                 bodypropCount++;
             }
 
             if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                body["AssignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
                 bodypropCount++;
             }
 
             if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                body["AssignedOn"] = CSharpExpressionConverter.ConvertToken(bodyassignedOn);
                 bodypropCount++;
             }
 
             if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                body["WorkflowDescription"] = CSharpExpressionConverter.ConvertToken(bodyworkflowDescription);
                 bodypropCount++;
             }
 
             if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                body["InProcessOnly"] = CSharpExpressionConverter.ConvertToken(bodyinProcessOnly);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                body["Responsible"] = CSharpExpressionConverter.ConvertToken(bodyresponsible);
                 bodypropCount++;
             }
 
             if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                body["AssignmentHistory"] = CSharpExpressionConverter.ConvertToken(bodyassignmentHistory);
                 bodypropCount++;
             }
 
             if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                body["ReceivedFrom"] = CSharpExpressionConverter.ConvertToken(bodyreceivedFrom);
                 bodypropCount++;
             }
 
             if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                body["ReceivedOn"] = CSharpExpressionConverter.ConvertToken(bodyreceivedOn);
                 bodypropCount++;
             }
 
             if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                body["SentTo"] = CSharpExpressionConverter.ConvertToken(bodysentTo);
                 bodypropCount++;
             }
 
             if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                body["SentOn"] = CSharpExpressionConverter.ConvertToken(bodysentOn);
                 bodypropCount++;
             }
 
             if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                body["CompletedBy"] = CSharpExpressionConverter.ConvertToken(bodycompletedBy);
                 bodypropCount++;
             }
 
             if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                body["CompletedOn"] = CSharpExpressionConverter.ConvertToken(bodycompletedOn);
                 bodypropCount++;
             }
 
             if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                body["CurrentDueDate"] = CSharpExpressionConverter.ConvertToken(bodycurrentDueDate);
                 bodypropCount++;
             }
 
             if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                body["DaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodydaysAtStep);
                 bodypropCount++;
             }
 
             if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                body["TotalDaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
             if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = CSharpExpressionConverter.ConvertToken(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
             if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                body["TotalDaysInProcess"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
             if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                body["Accountable"] = CSharpExpressionConverter.ConvertToken(bodyaccountable);
                 bodypropCount++;
             }
 
             if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                body["RoutingDetails"] = CSharpExpressionConverter.ConvertToken(bodyroutingDetails);
                 bodypropCount++;
             }
 
             if (bodylastUpdated != null)
             {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
+                body["LastUpdated"] = CSharpExpressionConverter.ConvertToken(bodylastUpdated);
                 bodypropCount++;
             }
 
             if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                body["InformationFields"] = CSharpExpressionConverter.ConvertToken(bodyinformationFields);
                 bodypropCount++;
             }
 
             if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                body["Indexes"] = CSharpExpressionConverter.ConvertToken(bodyindexes);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["PageNumber"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
@@ -2387,60 +2387,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydeliverableName != null)
             {
-                body["deliverableName"] = ExpressionConverter.ConvertO(bodydeliverableName);
+                body["deliverableName"] = CSharpExpressionConverter.ConvertToken(bodydeliverableName);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodyfirstExtension != null)
             {
-                body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
+                body["firstExtension"] = CSharpExpressionConverter.ConvertToken(bodyfirstExtension);
                 bodypropCount++;
             }
 
             if (bodysecondExtension != null)
             {
-                body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
+                body["secondExtension"] = CSharpExpressionConverter.ConvertToken(bodysecondExtension);
                 bodypropCount++;
             }
 
             if (bodythirdExtension != null)
             {
-                body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
+                body["thirdExtension"] = CSharpExpressionConverter.ConvertToken(bodythirdExtension);
                 bodypropCount++;
             }
 
             if (bodycalenderOrFiscal != null)
             {
-                body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
+                body["calenderOrFiscal"] = CSharpExpressionConverter.ConvertToken(bodycalenderOrFiscal);
                 bodypropCount++;
             }
 
             if (bodyextension != null)
             {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                body["extension"] = CSharpExpressionConverter.ConvertToken(bodyextension);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                body["DrawerName"] = CSharpExpressionConverter.ConvertToken(bodydrawerName);
                 bodypropCount++;
             }
 
@@ -2459,72 +2459,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfilingId != null)
             {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                body["filingId"] = CSharpExpressionConverter.ConvertToken(bodyfilingId);
                 bodypropCount++;
             }
 
             if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                body["CurrentStep"] = CSharpExpressionConverter.ConvertToken(bodycurrentStep);
                 bodypropCount++;
             }
 
             if (bodycomplete != null)
             {
-                body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
+                body["Complete"] = CSharpExpressionConverter.ConvertToken(bodycomplete);
                 bodypropCount++;
             }
 
             if (bodycompletedDate != null)
             {
-                body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
+                body["CompletedDate"] = CSharpExpressionConverter.ConvertToken(bodycompletedDate);
                 bodypropCount++;
             }
 
             if (bodynextStep != null)
             {
-                body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
+                body["NextStep"] = CSharpExpressionConverter.ConvertToken(bodynextStep);
                 bodypropCount++;
             }
 
             if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                body["AssignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
                 bodypropCount++;
             }
 
             if (bodyassignedDate != null)
             {
-                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
+                body["AssignedDate"] = CSharpExpressionConverter.ConvertToken(bodyassignedDate);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyroutingNote != null)
             {
-                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
+                body["RoutingNote"] = CSharpExpressionConverter.ConvertToken(bodyroutingNote);
                 bodypropCount++;
             }
 
             if (bodyemailNotify != null)
             {
-                body["emailNotify"] = ExpressionConverter.ConvertO(bodyemailNotify);
+                body["emailNotify"] = CSharpExpressionConverter.ConvertToken(bodyemailNotify);
                 bodypropCount++;
             }
 
@@ -2543,204 +2543,204 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Headers["X-Authorization"] = CSharpExpressionConverter.ConvertO(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                body["DrawerId"] = CSharpExpressionConverter.ConvertToken(bodydrawerId);
                 bodypropCount++;
             }
 
             if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                body["ServiceType"] = CSharpExpressionConverter.ConvertToken(bodyserviceType);
                 bodypropCount++;
             }
 
             if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                body["EngagementType"] = CSharpExpressionConverter.ConvertToken(bodyengagementType);
                 bodypropCount++;
             }
 
             if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                body["Workflow"] = CSharpExpressionConverter.ConvertToken(bodyworkflow);
                 bodypropCount++;
             }
 
             if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                body["CurrentStep"] = CSharpExpressionConverter.ConvertToken(bodycurrentStep);
                 bodypropCount++;
             }
 
             if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                body["PIC"] = CSharpExpressionConverter.ConvertToken(bodypIC);
                 bodypropCount++;
             }
 
             if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                body["AssignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
                 bodypropCount++;
             }
 
             if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                body["AssignedOn"] = CSharpExpressionConverter.ConvertToken(bodyassignedOn);
                 bodypropCount++;
             }
 
             if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                body["WorkflowDescription"] = CSharpExpressionConverter.ConvertToken(bodyworkflowDescription);
                 bodypropCount++;
             }
 
             if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                body["InProcessOnly"] = CSharpExpressionConverter.ConvertToken(bodyinProcessOnly);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                body["ReceivedOn"] = CSharpExpressionConverter.ConvertToken(bodyreceivedOn);
                 bodypropCount++;
             }
 
             if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                body["CompletedOn"] = CSharpExpressionConverter.ConvertToken(bodycompletedOn);
                 bodypropCount++;
             }
 
             if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                body["SentOn"] = CSharpExpressionConverter.ConvertToken(bodysentOn);
                 bodypropCount++;
             }
 
             if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                body["Responsible"] = CSharpExpressionConverter.ConvertToken(bodyresponsible);
                 bodypropCount++;
             }
 
             if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                body["AssignmentHistory"] = CSharpExpressionConverter.ConvertToken(bodyassignmentHistory);
                 bodypropCount++;
             }
 
             if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                body["ReceivedFrom"] = CSharpExpressionConverter.ConvertToken(bodyreceivedFrom);
                 bodypropCount++;
             }
 
             if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                body["SentTo"] = CSharpExpressionConverter.ConvertToken(bodysentTo);
                 bodypropCount++;
             }
 
             if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                body["CompletedBy"] = CSharpExpressionConverter.ConvertToken(bodycompletedBy);
                 bodypropCount++;
             }
 
             if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                body["Accountable"] = CSharpExpressionConverter.ConvertToken(bodyaccountable);
                 bodypropCount++;
             }
 
             if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                body["CurrentDueDate"] = CSharpExpressionConverter.ConvertToken(bodycurrentDueDate);
                 bodypropCount++;
             }
 
             if (bodyoriginalDueDate != null)
             {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
+                body["OriginalDueDate"] = CSharpExpressionConverter.ConvertToken(bodyoriginalDueDate);
                 bodypropCount++;
             }
 
             if (bodydateExtended != null)
             {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
+                body["DateExtended"] = CSharpExpressionConverter.ConvertToken(bodydateExtended);
                 bodypropCount++;
             }
 
             if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                body["DaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodydaysAtStep);
                 bodypropCount++;
             }
 
             if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                body["TotalDaysAtStep"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
             if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = CSharpExpressionConverter.ConvertToken(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
             if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                body["TotalDaysInProcess"] = CSharpExpressionConverter.ConvertToken(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
             if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                body["RoutingDetails"] = CSharpExpressionConverter.ConvertToken(bodyroutingDetails);
                 bodypropCount++;
             }
 
             if (bodylastUpdated != null)
             {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
+                body["LastUpdated"] = CSharpExpressionConverter.ConvertToken(bodylastUpdated);
                 bodypropCount++;
             }
 
             if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                body["InformationFields"] = CSharpExpressionConverter.ConvertToken(bodyinformationFields);
                 bodypropCount++;
             }
 
             if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                body["Indexes"] = CSharpExpressionConverter.ConvertToken(bodyindexes);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["PageNumber"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 

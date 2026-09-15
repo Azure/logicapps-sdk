@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
+            body["countryCode"] = CSharpExpressionConverter.Convert(bodycountryCode);
             bodypropCount++;
-            body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
+            body["vatNumber"] = CSharpExpressionConverter.ConvertToken(bodyvatNumber);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

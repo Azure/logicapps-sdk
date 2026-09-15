@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             var apiCallPath = "/NotebookExecutions";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["executionId"] = ExpressionConverter.Convert(executionId);
+            callPayload.Queries["executionId"] = CSharpExpressionConverter.ConvertO(executionId);
             callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-            callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+            callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
+            callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
             callPayload.Queries["report"] = Convert.ToString(false);
             if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                callPayload.Queries["report"] = CSharpExpressionConverter.ConvertO(report);
             return new ApiConnectionAction<NotebookResponse>(callPayload);
         }
 
@@ -38,18 +38,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             callPayload.Queries["html"] = Convert.ToString(true);
             callPayload.Queries["report"] = Convert.ToString(false);
             if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                callPayload.Queries["report"] = CSharpExpressionConverter.ConvertO(report);
             var parameters = new JObject();
             var parameterspropCount = 0;
             if (parametersnotebook != null)
             {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                parameters["notebook"] = CSharpExpressionConverter.ConvertToken(parametersnotebook);
                 parameterspropCount++;
             }
 
             if (parametersparameters != null)
             {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                parameters["parameters"] = CSharpExpressionConverter.ConvertToken(parametersparameters);
                 parameterspropCount++;
             }
 
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
             var parameterspropCount = 0;
             if (parametersnotebook != null)
             {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                parameters["notebook"] = CSharpExpressionConverter.ConvertToken(parametersnotebook);
                 parameterspropCount++;
             }
 
             if (parametersparameters != null)
             {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                parameters["parameters"] = CSharpExpressionConverter.ConvertToken(parametersparameters);
                 parameterspropCount++;
             }
 

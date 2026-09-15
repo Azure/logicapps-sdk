@@ -18,40 +18,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tenantId != null)
-                callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+                callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
+                body["TenantFirstName"] = CSharpExpressionConverter.ConvertToken(bodytenantFirstName);
                 bodypropCount++;
             }
 
             if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
+                body["TenantLastName"] = CSharpExpressionConverter.ConvertToken(bodytenantLastName);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -70,40 +70,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tenantId != null)
-                callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+                callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
+                body["TenantFirstName"] = CSharpExpressionConverter.ConvertToken(bodytenantFirstName);
                 bodypropCount++;
             }
 
             if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
+                body["TenantLastName"] = CSharpExpressionConverter.ConvertToken(bodytenantLastName);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -122,40 +122,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tenantId != null)
-                callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+                callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
+                body["TenantFirstName"] = CSharpExpressionConverter.ConvertToken(bodytenantFirstName);
                 bodypropCount++;
             }
 
             if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
+                body["TenantLastName"] = CSharpExpressionConverter.ConvertToken(bodytenantLastName);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -174,40 +174,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tenantId != null)
-                callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+                callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
+                body["TenantFirstName"] = CSharpExpressionConverter.ConvertToken(bodytenantFirstName);
                 bodypropCount++;
             }
 
             if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
+                body["TenantLastName"] = CSharpExpressionConverter.ConvertToken(bodytenantLastName);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 

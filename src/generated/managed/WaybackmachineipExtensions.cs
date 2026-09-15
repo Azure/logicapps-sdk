@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
             var apiCallPath = "/wayback/available";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (timestamp != null)
-                callPayload.Queries["timestamp"] = ExpressionConverter.Convert(timestamp);
+                callPayload.Queries["timestamp"] = CSharpExpressionConverter.ConvertO(timestamp);
             return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
         }
     }

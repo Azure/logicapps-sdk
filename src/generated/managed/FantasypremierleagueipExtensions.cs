@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ManagerUsersHistoryResponse> ManagerUsersHistory(Expression<Func<string>> managerId)
         {
-            var apiCallPath = String.Format("/api/entry/{0}/history/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/history/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(managerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ManagerUsersHistoryResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> ManagerUsersBasicInformation(Expression<Func<string>> managerId)
         {
-            var apiCallPath = String.Format("/api/entry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(managerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(managerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ManagerUsersBasicInformationResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<GameWeekLiveDataResponse> GameWeekLiveData(Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/api/event/{0}/live/", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/event/{0}/live/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GameWeekLiveDataResponse>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<PlayersDetailedDataResponse> PlayersDetailedData(Expression<Func<string>> elementId)
         {
-            var apiCallPath = String.Format("/api/element-summary/{0}/", ExpressionConverter.ConvertWithUrlEncoding(elementId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/element-summary/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(elementId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PlayersDetailedDataResponse>(callPayload);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ClassicLeagueStandingsResponse> ClassicLeagueStandings(Expression<Func<string>> leagueId)
         {
-            var apiCallPath = String.Format("/api/leagues-classic/{0}/standings/", ExpressionConverter.ConvertWithUrlEncoding(leagueId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/leagues-classic/{0}/standings/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(leagueId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ClassicLeagueStandingsResponse>(callPayload);

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+            body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
             body["source"] = "MSPowerAutomate-pc";
             bodypropCount++;
             bodypropCount++;
-            body["file_urls"] = ExpressionConverter.ConvertO(bodyfileUrls);
+            body["file_urls"] = CSharpExpressionConverter.ConvertToken(bodyfileUrls);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

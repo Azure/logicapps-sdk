@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (htmlContent != null)
-                callPayload.Queries["htmlContent"] = ExpressionConverter.Convert(htmlContent);
+                callPayload.Queries["htmlContent"] = CSharpExpressionConverter.ConvertO(htmlContent);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             return new ApiConnectionAction<Response>(callPayload);
         }
 
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (swaggerUrl != null)
-                callPayload.Queries["swaggerUrl"] = ExpressionConverter.Convert(swaggerUrl);
+                callPayload.Queries["swaggerUrl"] = CSharpExpressionConverter.ConvertO(swaggerUrl);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (formula != null)
-                callPayload.Queries["formula"] = ExpressionConverter.Convert(formula);
+                callPayload.Queries["formula"] = CSharpExpressionConverter.ConvertO(formula);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             return new ApiConnectionAction<Response>(callPayload);
         }
 
@@ -57,18 +57,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (input != null)
-                callPayload.Queries["input"] = ExpressionConverter.Convert(input);
+                callPayload.Queries["input"] = CSharpExpressionConverter.ConvertO(input);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             return new ApiConnectionAction<Response>(callPayload);
         }
 
@@ -100,18 +100,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xCustomHost != null)
-                callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                callPayload.Headers["x-custom-host"] = CSharpExpressionConverter.ConvertO(xCustomHost);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodypattern != null)
             {
-                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                body["pattern"] = CSharpExpressionConverter.ConvertToken(bodypattern);
                 bodypropCount++;
             }
 

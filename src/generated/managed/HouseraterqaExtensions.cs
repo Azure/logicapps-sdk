@@ -20,70 +20,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inspectionTemplateId"] = ExpressionConverter.ConvertO(bodyinspectionTemplateId);
+            body["inspectionTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyinspectionTemplateId);
             bodypropCount++;
-            body["builderId"] = ExpressionConverter.ConvertO(bodybuilderId);
+            body["builderId"] = CSharpExpressionConverter.ConvertToken(bodybuilderId);
             if (bodyprograms != null)
             {
-                body["programs"] = ExpressionConverter.ConvertO(bodyprograms);
+                body["programs"] = CSharpExpressionConverter.ConvertToken(bodyprograms);
                 bodypropCount++;
             }
 
             if (bodyraters != null)
             {
-                body["raters"] = ExpressionConverter.ConvertO(bodyraters);
+                body["raters"] = CSharpExpressionConverter.ConvertToken(bodyraters);
                 bodypropCount++;
             }
 
             if (bodysharePointSubscriberId != null)
             {
-                body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(bodysharePointSubscriberId);
+                body["sharePointSubscriberId"] = CSharpExpressionConverter.ConvertToken(bodysharePointSubscriberId);
                 bodypropCount++;
             }
 
             if (bodyoutlookEventId != null)
             {
-                body["outlookEventId"] = ExpressionConverter.ConvertO(bodyoutlookEventId);
+                body["outlookEventId"] = CSharpExpressionConverter.ConvertToken(bodyoutlookEventId);
                 bodypropCount++;
             }
 
             if (bodyaddress1 != null)
             {
-                body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
+                body["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddress1);
                 bodypropCount++;
             }
 
             if (bodyaddress2 != null)
             {
-                body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
+                body["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddress2);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodyzip != null)
             {
-                body["zip"] = ExpressionConverter.ConvertO(bodyzip);
+                body["zip"] = CSharpExpressionConverter.ConvertToken(bodyzip);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+            body["startTime"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
             bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+            body["endTime"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
             if (bodytimeZone != null)
             {
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["timeZone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
                 bodypropCount++;
             }
 

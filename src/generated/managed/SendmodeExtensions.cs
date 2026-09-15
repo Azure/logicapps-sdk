@@ -19,25 +19,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var message = new JObject();
             var messagepropCount = 0;
             if (messagesenderid != null)
             {
-                message["senderid"] = ExpressionConverter.ConvertO(messagesenderid);
+                message["senderid"] = CSharpExpressionConverter.ConvertToken(messagesenderid);
                 messagepropCount++;
             }
 
             messagepropCount++;
-            message["messagetext"] = ExpressionConverter.ConvertO(messagemessagetext);
+            message["messagetext"] = CSharpExpressionConverter.ConvertToken(messagemessagetext);
             if (messagecustomerid != null)
             {
-                message["customerid"] = ExpressionConverter.ConvertO(messagecustomerid);
+                message["customerid"] = CSharpExpressionConverter.ConvertToken(messagecustomerid);
                 messagepropCount++;
             }
 
             messagepropCount++;
-            message["recipients"] = ExpressionConverter.ConvertO(messagerecipients);
+            message["recipients"] = CSharpExpressionConverter.ConvertToken(messagerecipients);
             if (messagepropCount > 0)
             {
                 callPayload.Body = message;
@@ -52,20 +52,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             var apiCallPath = "/v2/optout";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var message = new JObject();
             var messagepropCount = 0;
             messagepropCount++;
-            message["mobilenumber"] = ExpressionConverter.ConvertO(messagemobilenumber);
+            message["mobilenumber"] = CSharpExpressionConverter.ConvertToken(messagemobilenumber);
             if (messageoptoutresponse != null)
             {
-                message["optoutresponse"] = ExpressionConverter.ConvertO(messageoptoutresponse);
+                message["optoutresponse"] = CSharpExpressionConverter.ConvertToken(messageoptoutresponse);
                 messagepropCount++;
             }
 
             if (messagereturnedresponse != null)
             {
-                message["returnedresponse"] = ExpressionConverter.ConvertO(messagereturnedresponse);
+                message["returnedresponse"] = CSharpExpressionConverter.ConvertToken(messagereturnedresponse);
                 messagepropCount++;
             }
 
@@ -85,70 +85,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var importdata = new JObject();
             var importdatapropCount = 0;
             importdatapropCount++;
-            importdata["group"] = ExpressionConverter.ConvertO(importdatagroup);
+            importdata["group"] = CSharpExpressionConverter.ConvertToken(importdatagroup);
             importdatapropCount++;
-            importdata["mobilenumber"] = ExpressionConverter.ConvertO(importdatamobilenumber);
+            importdata["mobilenumber"] = CSharpExpressionConverter.ConvertToken(importdatamobilenumber);
             if (importdatafirstname != null)
             {
-                importdata["firstname"] = ExpressionConverter.ConvertO(importdatafirstname);
+                importdata["firstname"] = CSharpExpressionConverter.ConvertToken(importdatafirstname);
                 importdatapropCount++;
             }
 
             if (importdatasurname != null)
             {
-                importdata["surname"] = ExpressionConverter.ConvertO(importdatasurname);
+                importdata["surname"] = CSharpExpressionConverter.ConvertToken(importdatasurname);
                 importdatapropCount++;
             }
 
             if (importdataaddress != null)
             {
-                importdata["address"] = ExpressionConverter.ConvertO(importdataaddress);
+                importdata["address"] = CSharpExpressionConverter.ConvertToken(importdataaddress);
                 importdatapropCount++;
             }
 
             if (importdatatown != null)
             {
-                importdata["town"] = ExpressionConverter.ConvertO(importdatatown);
+                importdata["town"] = CSharpExpressionConverter.ConvertToken(importdatatown);
                 importdatapropCount++;
             }
 
             if (importdatacounty != null)
             {
-                importdata["county"] = ExpressionConverter.ConvertO(importdatacounty);
+                importdata["county"] = CSharpExpressionConverter.ConvertToken(importdatacounty);
                 importdatapropCount++;
             }
 
             if (importdataemail != null)
             {
-                importdata["email"] = ExpressionConverter.ConvertO(importdataemail);
+                importdata["email"] = CSharpExpressionConverter.ConvertToken(importdataemail);
                 importdatapropCount++;
             }
 
             if (importdatacustom1 != null)
             {
-                importdata["custom1"] = ExpressionConverter.ConvertO(importdatacustom1);
+                importdata["custom1"] = CSharpExpressionConverter.ConvertToken(importdatacustom1);
                 importdatapropCount++;
             }
 
             if (importdatacustom2 != null)
             {
-                importdata["custom2"] = ExpressionConverter.ConvertO(importdatacustom2);
+                importdata["custom2"] = CSharpExpressionConverter.ConvertToken(importdatacustom2);
                 importdatapropCount++;
             }
 
             if (importdatabusinessname != null)
             {
-                importdata["businessname"] = ExpressionConverter.ConvertO(importdatabusinessname);
+                importdata["businessname"] = CSharpExpressionConverter.ConvertToken(importdatabusinessname);
                 importdatapropCount++;
             }
 
             if (importdatadateofbirth != null)
             {
-                importdata["dateofbirth"] = ExpressionConverter.ConvertO(importdatadateofbirth);
+                importdata["dateofbirth"] = CSharpExpressionConverter.ConvertToken(importdatadateofbirth);
                 importdatapropCount++;
             }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<CheckCreditsResponse>(callPayload);
         }
     }

@@ -23,19 +23,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
             var bodypropCount = 0;
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodygroupMsg != null)
             {
-                body["groupMsg"] = ExpressionConverter.ConvertO(bodygroupMsg);
+                body["groupMsg"] = CSharpExpressionConverter.ConvertToken(bodygroupMsg);
                 bodypropCount++;
             }
 
             if (bodymessages != null)
             {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
                 bodypropCount++;
             }
 

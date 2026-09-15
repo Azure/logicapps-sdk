@@ -14,65 +14,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsList(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<bool>> hasActed = null)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}/Actors", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hasActed != null)
-                callPayload.Queries["hasActed"] = ExpressionConverter.Convert(hasActed);
+                callPayload.Queries["hasActed"] = CSharpExpressionConverter.ConvertO(hasActed);
             return new ApiConnectionAction<ExtendedSignerModel[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<actorModelactionInput>> actorModelaction, Expression<Func<string>> actorModelfirstname, Expression<Func<string>> actorModellastname, Expression<Func<string>> actorModelemail, Expression<Func<string>> actorModelmobile, Expression<Func<string>> actorModeldeadline, Expression<Func<actorModellanguageInput>> actorModellanguage, Expression<Func<bool>> actorModelvalidateRealIdentity, Expression<Func<string>> actorModelprefix = null, Expression<Func<int>> actorModeldossierPersonId = null, Expression<Func<string>> actorModelmessage = null, Expression<Func<string>> actorModelfieldName = null, Expression<Func<string>> actorModelplaceholder = null)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}/Actors", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var actorModel = new JObject();
             var actorModelpropCount = 0;
             actorModelpropCount++;
-            actorModel["action"] = ExpressionConverter.ConvertO(actorModelaction);
+            actorModel["action"] = CSharpExpressionConverter.Convert(actorModelaction);
             actorModelpropCount++;
-            actorModel["firstname"] = ExpressionConverter.ConvertO(actorModelfirstname);
+            actorModel["firstname"] = CSharpExpressionConverter.ConvertToken(actorModelfirstname);
             if (actorModelprefix != null)
             {
-                actorModel["prefix"] = ExpressionConverter.ConvertO(actorModelprefix);
+                actorModel["prefix"] = CSharpExpressionConverter.ConvertToken(actorModelprefix);
                 actorModelpropCount++;
             }
 
             actorModelpropCount++;
-            actorModel["lastname"] = ExpressionConverter.ConvertO(actorModellastname);
+            actorModel["lastname"] = CSharpExpressionConverter.ConvertToken(actorModellastname);
             actorModelpropCount++;
-            actorModel["email"] = ExpressionConverter.ConvertO(actorModelemail);
+            actorModel["email"] = CSharpExpressionConverter.ConvertToken(actorModelemail);
             actorModelpropCount++;
-            actorModel["mobile"] = ExpressionConverter.ConvertO(actorModelmobile);
+            actorModel["mobile"] = CSharpExpressionConverter.ConvertToken(actorModelmobile);
             actorModelpropCount++;
-            actorModel["deadline"] = ExpressionConverter.ConvertO(actorModeldeadline);
+            actorModel["deadline"] = CSharpExpressionConverter.ConvertToken(actorModeldeadline);
             actorModelpropCount++;
-            actorModel["language"] = ExpressionConverter.ConvertO(actorModellanguage);
+            actorModel["language"] = CSharpExpressionConverter.Convert(actorModellanguage);
             actorModelpropCount++;
-            actorModel["validateRealIdentity"] = ExpressionConverter.ConvertO(actorModelvalidateRealIdentity);
+            actorModel["validateRealIdentity"] = CSharpExpressionConverter.ConvertToken(actorModelvalidateRealIdentity);
             if (actorModeldossierPersonId != null)
             {
-                actorModel["dossierPersonId"] = ExpressionConverter.ConvertO(actorModeldossierPersonId);
+                actorModel["dossierPersonId"] = CSharpExpressionConverter.ConvertToken(actorModeldossierPersonId);
                 actorModelpropCount++;
             }
 
             if (actorModelmessage != null)
             {
-                actorModel["message"] = ExpressionConverter.ConvertO(actorModelmessage);
+                actorModel["message"] = CSharpExpressionConverter.ConvertToken(actorModelmessage);
                 actorModelpropCount++;
             }
 
             if (actorModelfieldName != null)
             {
-                actorModel["fieldName"] = ExpressionConverter.ConvertO(actorModelfieldName);
+                actorModel["fieldName"] = CSharpExpressionConverter.ConvertToken(actorModelfieldName);
                 actorModelpropCount++;
             }
 
             if (actorModelplaceholder != null)
             {
-                actorModel["placeholder"] = ExpressionConverter.ConvertO(actorModelplaceholder);
+                actorModel["placeholder"] = CSharpExpressionConverter.ConvertToken(actorModelplaceholder);
                 actorModelpropCount++;
             }
 
@@ -95,42 +95,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<actorModelModelactionInput>> actorModelModelaction, Expression<Func<string>> actorModelModelfirstname, Expression<Func<string>> actorModelModellastname, Expression<Func<string>> actorModelModelemail, Expression<Func<string>> actorModelModelmobile, Expression<Func<string>> actorModelModeldeadline, Expression<Func<actorModelModellanguageInput>> actorModelModellanguage, Expression<Func<bool>> actorModelModelvalidateRealIdentity, Expression<Func<string>> actorModelModelprefix = null, Expression<Func<int>> actorModelModeldossierPersonId = null, Expression<Func<string>> actorModelModelmessage = null)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var actorModelModel = new JObject();
             var actorModelModelpropCount = 0;
             actorModelModelpropCount++;
-            actorModelModel["action"] = ExpressionConverter.ConvertO(actorModelModelaction);
+            actorModelModel["action"] = CSharpExpressionConverter.Convert(actorModelModelaction);
             actorModelModelpropCount++;
-            actorModelModel["firstname"] = ExpressionConverter.ConvertO(actorModelModelfirstname);
+            actorModelModel["firstname"] = CSharpExpressionConverter.ConvertToken(actorModelModelfirstname);
             if (actorModelModelprefix != null)
             {
-                actorModelModel["prefix"] = ExpressionConverter.ConvertO(actorModelModelprefix);
+                actorModelModel["prefix"] = CSharpExpressionConverter.ConvertToken(actorModelModelprefix);
                 actorModelModelpropCount++;
             }
 
             actorModelModelpropCount++;
-            actorModelModel["lastname"] = ExpressionConverter.ConvertO(actorModelModellastname);
+            actorModelModel["lastname"] = CSharpExpressionConverter.ConvertToken(actorModelModellastname);
             actorModelModelpropCount++;
-            actorModelModel["email"] = ExpressionConverter.ConvertO(actorModelModelemail);
+            actorModelModel["email"] = CSharpExpressionConverter.ConvertToken(actorModelModelemail);
             actorModelModelpropCount++;
-            actorModelModel["mobile"] = ExpressionConverter.ConvertO(actorModelModelmobile);
+            actorModelModel["mobile"] = CSharpExpressionConverter.ConvertToken(actorModelModelmobile);
             actorModelModelpropCount++;
-            actorModelModel["deadline"] = ExpressionConverter.ConvertO(actorModelModeldeadline);
+            actorModelModel["deadline"] = CSharpExpressionConverter.ConvertToken(actorModelModeldeadline);
             actorModelModelpropCount++;
-            actorModelModel["language"] = ExpressionConverter.ConvertO(actorModelModellanguage);
+            actorModelModel["language"] = CSharpExpressionConverter.Convert(actorModelModellanguage);
             actorModelModelpropCount++;
-            actorModelModel["validateRealIdentity"] = ExpressionConverter.ConvertO(actorModelModelvalidateRealIdentity);
+            actorModelModel["validateRealIdentity"] = CSharpExpressionConverter.ConvertToken(actorModelModelvalidateRealIdentity);
             if (actorModelModeldossierPersonId != null)
             {
-                actorModelModel["dossierPersonId"] = ExpressionConverter.ConvertO(actorModelModeldossierPersonId);
+                actorModelModel["dossierPersonId"] = CSharpExpressionConverter.ConvertToken(actorModelModeldossierPersonId);
                 actorModelModelpropCount++;
             }
 
             if (actorModelModelmessage != null)
             {
-                actorModelModel["message"] = ExpressionConverter.ConvertO(actorModelModelmessage);
+                actorModelModel["message"] = CSharpExpressionConverter.ConvertToken(actorModelModelmessage);
                 actorModelModelpropCount++;
             }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ExtendedSignerModel>(callPayload);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -163,18 +163,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsRequestActors(Expression<Func<string>> requestId, Expression<Func<bool>> hasActed = null)
         {
-            var apiCallPath = String.Format("/requests/{0}/Actors", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hasActed != null)
-                callPayload.Queries["hasActed"] = ExpressionConverter.Convert(hasActed);
+                callPayload.Queries["hasActed"] = CSharpExpressionConverter.ConvertO(hasActed);
             return new ApiConnectionAction<ExtendedSignerModel[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsResendCurrentInvite(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}/Actors/ResendCurrentInvite", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/ResendCurrentInvite", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsWithdrawCurrentInvite(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}/Actors/WithdrawCurrentInvite", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/WithdrawCurrentInvite", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DocumentMetaDataModel>(callPayload);
@@ -201,25 +201,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<metadatadocumentTypeInput>> metadatadocumentType, Expression<Func<string>> metadataname = null, Expression<Func<string>> metadatafilename = null)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var metadata = new JObject();
             var metadatapropCount = 0;
             if (metadataname != null)
             {
-                metadata["name"] = ExpressionConverter.ConvertO(metadataname);
+                metadata["name"] = CSharpExpressionConverter.ConvertToken(metadataname);
                 metadatapropCount++;
             }
 
             if (metadatafilename != null)
             {
-                metadata["filename"] = ExpressionConverter.ConvertO(metadatafilename);
+                metadata["filename"] = CSharpExpressionConverter.ConvertToken(metadatafilename);
                 metadatapropCount++;
             }
 
             metadatapropCount++;
-            metadata["documentType"] = ExpressionConverter.ConvertO(metadatadocumentType);
+            metadata["documentType"] = CSharpExpressionConverter.Convert(metadatadocumentType);
             if (metadatapropCount > 0)
             {
                 callPayload.Body = metadata;
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction DocumentsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroups(Expression<Func<string>> organisationId)
         {
-            var apiCallPath = String.Format("/Organisations/{0}/workgroups", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OrganisationWorkgroup[]>(callPayload);
@@ -249,13 +249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<string>> modelusername)
         {
-            var apiCallPath = String.Format("/Organisations/{0}/workgroups", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["username"] = ExpressionConverter.ConvertO(modelusername);
+            model["username"] = CSharpExpressionConverter.ConvertToken(modelusername);
             if (modelpropCount > 0)
             {
                 callPayload.Body = model;
@@ -273,18 +273,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["name"] = ExpressionConverter.ConvertO(modelname);
+            model["name"] = CSharpExpressionConverter.ConvertToken(modelname);
             if (modelworkgroupId != null)
             {
-                model["workgroupId"] = ExpressionConverter.ConvertO(modelworkgroupId);
+                model["workgroupId"] = CSharpExpressionConverter.ConvertToken(modelworkgroupId);
                 modelpropCount++;
             }
 
             modelpropCount++;
-            model["clearancelevel"] = ExpressionConverter.ConvertO(modelclearancelevel);
+            model["clearancelevel"] = CSharpExpressionConverter.ConvertToken(modelclearancelevel);
             if (modelowner != null)
             {
-                model["owner"] = ExpressionConverter.ConvertO(modelowner);
+                model["owner"] = CSharpExpressionConverter.ConvertToken(modelowner);
                 modelpropCount++;
             }
 
@@ -299,35 +299,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsGet(Expression<Func<string>> requestId, Expression<Func<string>> callbackAuthenticationKey = null)
         {
-            var apiCallPath = String.Format("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (callbackAuthenticationKey != null)
-                callPayload.Queries["callbackAuthenticationKey"] = ExpressionConverter.Convert(callbackAuthenticationKey);
+                callPayload.Queries["callbackAuthenticationKey"] = CSharpExpressionConverter.ConvertO(callbackAuthenticationKey);
             return new ApiConnectionAction<RequestModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
         {
-            var apiCallPath = String.Format("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["name"] = ExpressionConverter.ConvertO(modelname);
+            model["name"] = CSharpExpressionConverter.ConvertToken(modelname);
             if (modelworkgroupId != null)
             {
-                model["workgroupId"] = ExpressionConverter.ConvertO(modelworkgroupId);
+                model["workgroupId"] = CSharpExpressionConverter.ConvertToken(modelworkgroupId);
                 modelpropCount++;
             }
 
             modelpropCount++;
-            model["clearancelevel"] = ExpressionConverter.ConvertO(modelclearancelevel);
+            model["clearancelevel"] = CSharpExpressionConverter.ConvertToken(modelclearancelevel);
             if (modelowner != null)
             {
-                model["owner"] = ExpressionConverter.ConvertO(modelowner);
+                model["owner"] = CSharpExpressionConverter.ConvertToken(modelowner);
                 modelpropCount++;
             }
 
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsDelete(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<object> RequestsDownload(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}/Download", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/Download", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsSend(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/requests/{0}/Send", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/requests/{0}/Send", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -371,13 +371,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     {
         public IBodyWorkflowTrigger<WebhookResponseModel> WebhooksCreateWebhook(Expression<Func<string[]>> modelevents, Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/organisations/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/organisations/{0}/webhooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["Events"] = ExpressionConverter.ConvertO(modelevents);
+            model["Events"] = CSharpExpressionConverter.ConvertToken(modelevents);
             var configObject = new JObject();
             var configObjectpropCount = 0;
             configObject["url"] = "@listCallbackUrl()";

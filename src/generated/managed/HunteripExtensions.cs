@@ -18,19 +18,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (seniority != null)
-                callPayload.Queries["seniority"] = ExpressionConverter.Convert(seniority);
+                callPayload.Queries["seniority"] = CSharpExpressionConverter.ConvertO(seniority);
             if (department != null)
-                callPayload.Queries["department"] = ExpressionConverter.Convert(department);
+                callPayload.Queries["department"] = CSharpExpressionConverter.ConvertO(department);
             return new ApiConnectionAction<DomainResponse>(callPayload);
         }
 
@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (firstName != null)
-                callPayload.Queries["first_name"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["first_name"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["last_name"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["last_name"] = CSharpExpressionConverter.ConvertO(lastName);
             if (fullName != null)
-                callPayload.Queries["full_name"] = ExpressionConverter.Convert(fullName);
+                callPayload.Queries["full_name"] = CSharpExpressionConverter.ConvertO(fullName);
             if (maxDuration != null)
-                callPayload.Queries["max_duration"] = ExpressionConverter.Convert(maxDuration);
+                callPayload.Queries["max_duration"] = CSharpExpressionConverter.ConvertO(maxDuration);
             return new ApiConnectionAction<EmailResponse>(callPayload);
         }
 
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var apiCallPath = "/author-finder";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (maxDuration != null)
-                callPayload.Queries["max_duration"] = ExpressionConverter.Convert(maxDuration);
+                callPayload.Queries["max_duration"] = CSharpExpressionConverter.ConvertO(maxDuration);
             return new ApiConnectionAction<AuthorResponse>(callPayload);
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var apiCallPath = "/email-verifier";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction<EmailVerifyResponse>(callPayload);
         }
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<EmailCountResponse>(callPayload);
         }
     }

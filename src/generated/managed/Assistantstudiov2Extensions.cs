@@ -17,30 +17,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
             var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Headers["actiontype"] = ExpressionConverter.Convert(actiontype);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Headers["actiontype"] = CSharpExpressionConverter.ConvertO(actiontype);
             if (secondaryactiontype != null)
-                callPayload.Headers["secondaryactiontype"] = ExpressionConverter.Convert(secondaryactiontype);
+                callPayload.Headers["secondaryactiontype"] = CSharpExpressionConverter.ConvertO(secondaryactiontype);
             if (regardingobjecttype != null)
-                callPayload.Headers["regardingobjecttype"] = ExpressionConverter.Convert(regardingobjecttype);
+                callPayload.Headers["regardingobjecttype"] = CSharpExpressionConverter.ConvertO(regardingobjecttype);
             if (regardingobjectid != null)
-                callPayload.Headers["regardingobjectid"] = ExpressionConverter.Convert(regardingobjectid);
+                callPayload.Headers["regardingobjectid"] = CSharpExpressionConverter.ConvertO(regardingobjectid);
             if (ownerid != null)
-                callPayload.Headers["ownerid"] = ExpressionConverter.Convert(ownerid);
+                callPayload.Headers["ownerid"] = CSharpExpressionConverter.ConvertO(ownerid);
             if (startdate != null)
-                callPayload.Headers["startdate"] = ExpressionConverter.Convert(startdate);
+                callPayload.Headers["startdate"] = CSharpExpressionConverter.ConvertO(startdate);
             if (expirydate != null)
-                callPayload.Headers["expirydate"] = ExpressionConverter.Convert(expirydate);
+                callPayload.Headers["expirydate"] = CSharpExpressionConverter.ConvertO(expirydate);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["cardname"] = ExpressionConverter.ConvertO(bodycardname);
+            body["cardname"] = CSharpExpressionConverter.ConvertToken(bodycardname);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["dynamicproperties"] = ExpressionConverter.ConvertO(bodydynamicproperties);
+            body["dynamicproperties"] = CSharpExpressionConverter.ConvertToken(bodydynamicproperties);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
             var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Headers["entityname"] = ExpressionConverter.Convert(entityname);
-            callPayload.Headers["customaction"] = ExpressionConverter.Convert(customaction);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Headers["entityname"] = CSharpExpressionConverter.ConvertO(entityname);
+            callPayload.Headers["customaction"] = CSharpExpressionConverter.ConvertO(customaction);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

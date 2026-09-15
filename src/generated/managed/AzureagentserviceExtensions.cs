@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             return new ApiConnectionAction<ListAgentsResponse>(callPayload);
         }
 
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var apiCallPath = "/threads";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             if (requestBodymessages != null)
             {
-                requestBody["messages"] = ExpressionConverter.ConvertO(requestBodymessages);
+                requestBody["messages"] = CSharpExpressionConverter.ConvertToken(requestBodymessages);
                 requestBodypropCount++;
             }
 
@@ -63,41 +63,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["assistant_id"] = ExpressionConverter.ConvertO(requestBodyassistantId);
+            requestBody["assistant_id"] = CSharpExpressionConverter.ConvertToken(requestBodyassistantId);
             if (requestBodymodel != null)
             {
-                requestBody["model"] = ExpressionConverter.ConvertO(requestBodymodel);
+                requestBody["model"] = CSharpExpressionConverter.ConvertToken(requestBodymodel);
                 requestBodypropCount++;
             }
 
             if (requestBodyinstructions != null)
             {
-                requestBody["instructions"] = ExpressionConverter.ConvertO(requestBodyinstructions);
+                requestBody["instructions"] = CSharpExpressionConverter.ConvertToken(requestBodyinstructions);
                 requestBodypropCount++;
             }
 
             if (requestBodyadditionalInstructions != null)
             {
-                requestBody["additional_instructions"] = ExpressionConverter.ConvertO(requestBodyadditionalInstructions);
+                requestBody["additional_instructions"] = CSharpExpressionConverter.ConvertToken(requestBodyadditionalInstructions);
                 requestBodypropCount++;
             }
 
             if (requestBodyadditionalMessages != null)
             {
-                requestBody["additional_messages"] = ExpressionConverter.ConvertO(requestBodyadditionalMessages);
+                requestBody["additional_messages"] = CSharpExpressionConverter.ConvertToken(requestBodyadditionalMessages);
                 requestBodypropCount++;
             }
 
             if (requestBodytools != null)
             {
-                requestBody["tools"] = ExpressionConverter.ConvertO(requestBodytools);
+                requestBody["tools"] = CSharpExpressionConverter.ConvertToken(requestBodytools);
                 requestBodypropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (requestBodytemperature != null)
                 {
-                    requestBody["temperature"] = ExpressionConverter.ConvertO(requestBodytemperature);
+                    requestBody["temperature"] = CSharpExpressionConverter.ConvertToken(requestBodytemperature);
                     requestBodypropCount++;
                 }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (requestBodytopP != null)
                 {
-                    requestBody["top_p"] = ExpressionConverter.ConvertO(requestBodytopP);
+                    requestBody["top_p"] = CSharpExpressionConverter.ConvertToken(requestBodytopP);
                     requestBodypropCount++;
                 }
 
@@ -143,19 +143,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (requestBodystream != null)
             {
-                requestBody["stream"] = ExpressionConverter.ConvertO(requestBodystream);
+                requestBody["stream"] = CSharpExpressionConverter.ConvertToken(requestBodystream);
                 requestBodypropCount++;
             }
 
             if (requestBodymaxPromptTokens != null)
             {
-                requestBody["max_prompt_tokens"] = ExpressionConverter.ConvertO(requestBodymaxPromptTokens);
+                requestBody["max_prompt_tokens"] = CSharpExpressionConverter.ConvertToken(requestBodymaxPromptTokens);
                 requestBodypropCount++;
             }
 
             if (requestBodymaxCompletionTokens != null)
             {
-                requestBody["max_completion_tokens"] = ExpressionConverter.ConvertO(requestBodymaxCompletionTokens);
+                requestBody["max_completion_tokens"] = CSharpExpressionConverter.ConvertToken(requestBodymaxCompletionTokens);
                 requestBodypropCount++;
             }
 
@@ -194,20 +194,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<GetRunResponse> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             return new ApiConnectionAction<GetRunResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<ListMessageResponse> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             return new ApiConnectionAction<ListMessageResponse>(callPayload);
         }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var apiCallPath = "/openai/responses";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+            callPayload.Queries["api-version"] = CSharpExpressionConverter.Convert(apiVersion);
             var body = new JObject();
             var bodypropCount = 0;
             var metadataObject = new JObject();
@@ -230,19 +230,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
             if (bodytopLogprobs != null)
             {
-                body["top_logprobs"] = ExpressionConverter.ConvertO(bodytopLogprobs);
+                body["top_logprobs"] = CSharpExpressionConverter.ConvertToken(bodytopLogprobs);
                 bodypropCount++;
             }
 
             if (bodypreviousResponseId != null)
             {
-                body["previous_response_id"] = ExpressionConverter.ConvertO(bodypreviousResponseId);
+                body["previous_response_id"] = CSharpExpressionConverter.ConvertToken(bodypreviousResponseId);
                 bodypropCount++;
             }
 
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (bodybackground != null)
                 {
-                    body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                    body["background"] = CSharpExpressionConverter.ConvertToken(bodybackground);
                     bodypropCount++;
                 }
 
@@ -264,13 +264,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodymaxOutputTokens != null)
             {
-                body["max_output_tokens"] = ExpressionConverter.ConvertO(bodymaxOutputTokens);
+                body["max_output_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxOutputTokens);
                 bodypropCount++;
             }
 
             if (bodymaxToolCalls != null)
             {
-                body["max_tool_calls"] = ExpressionConverter.ConvertO(bodymaxToolCalls);
+                body["max_tool_calls"] = CSharpExpressionConverter.ConvertToken(bodymaxToolCalls);
                 bodypropCount++;
             }
 
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var formatObjectpropCount = 0;
             if (bodytextformattype != null)
             {
-                formatObject["type"] = ExpressionConverter.ConvertO(bodytextformattype);
+                formatObject["type"] = CSharpExpressionConverter.Convert(bodytextformattype);
                 formatObjectpropCount++;
             }
 
@@ -298,23 +298,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 
             if (bodytoolChoice != null)
             {
-                body["tool_choice"] = ExpressionConverter.ConvertO(bodytoolChoice);
+                body["tool_choice"] = CSharpExpressionConverter.ConvertToken(bodytoolChoice);
                 bodypropCount++;
             }
 
             var promptObject = new JObject();
             var promptObjectpropCount = 0;
             promptObjectpropCount++;
-            promptObject["id"] = ExpressionConverter.ConvertO(bodypromptid);
+            promptObject["id"] = CSharpExpressionConverter.ConvertToken(bodypromptid);
             if (bodypromptversion != null)
             {
-                promptObject["version"] = ExpressionConverter.ConvertO(bodypromptversion);
+                promptObject["version"] = CSharpExpressionConverter.ConvertToken(bodypromptversion);
                 promptObjectpropCount++;
             }
 
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (bodytruncation != null)
                 {
-                    body["truncation"] = ExpressionConverter.ConvertO(bodytruncation);
+                    body["truncation"] = CSharpExpressionConverter.Convert(bodytruncation);
                     bodypropCount++;
                 }
 
@@ -350,13 +350,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodyinput != null)
             {
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
                 bodypropCount++;
             }
 
             if (bodyinclude != null)
             {
-                body["include"] = ExpressionConverter.ConvertO(bodyinclude);
+                body["include"] = CSharpExpressionConverter.ConvertToken(bodyinclude);
                 bodypropCount++;
             }
 
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (bodyparallelToolCalls != null)
                 {
-                    body["parallel_tool_calls"] = ExpressionConverter.ConvertO(bodyparallelToolCalls);
+                    body["parallel_tool_calls"] = CSharpExpressionConverter.ConvertToken(bodyparallelToolCalls);
                     bodypropCount++;
                 }
 
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             {
                 if (bodystore != null)
                 {
-                    body["store"] = ExpressionConverter.ConvertO(bodystore);
+                    body["store"] = CSharpExpressionConverter.ConvertToken(bodystore);
                     bodypropCount++;
                 }
 
@@ -394,18 +394,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             var agentObject = new JObject();
             var agentObjectpropCount = 0;
             agentObjectpropCount++;
-            agentObject["type"] = ExpressionConverter.ConvertO(bodyagenttype);
+            agentObject["type"] = CSharpExpressionConverter.Convert(bodyagenttype);
             agentObjectpropCount++;
-            agentObject["name"] = ExpressionConverter.ConvertO(bodyagentname);
+            agentObject["name"] = CSharpExpressionConverter.ConvertToken(bodyagentname);
             agentObjectpropCount++;
-            agentObject["version"] = ExpressionConverter.ConvertO(bodyagentversion);
+            agentObject["version"] = CSharpExpressionConverter.ConvertToken(bodyagentversion);
             if (agentObjectpropCount > 0)
             {
                 body["agent"] = agentObject;
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivity(Expression<Func<string>> agentId)
         {
-            var apiCallPath = String.Format("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(agentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/agents/{0}/protocols/activityprotocol", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivityApplication(Expression<Func<string>> myApplication)
         {
-            var apiCallPath = String.Format("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(myApplication, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(myApplication, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");

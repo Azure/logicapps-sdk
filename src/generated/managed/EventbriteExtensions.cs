@@ -14,85 +14,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         public IBodyWorkflowAction<CreateEventResponse> CreateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> eventNameHtml, Expression<Func<string>> eventDescriptionHtml, Expression<Func<string>> eventStartUtc, Expression<Func<string>> eventEndUtc, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
-            var apiCallPath = String.Format("/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/organizations/{0}/events/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(eventNameHtml);
-            callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(eventDescriptionHtml);
-            callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(eventStartUtc);
-            callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(eventEndUtc);
-            callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(eventStartTimezone);
-            callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(eventEndTimezone);
-            callPayload.Queries["event.currency"] = ExpressionConverter.Convert(eventCurrency);
+            callPayload.Queries["event.name.html"] = CSharpExpressionConverter.ConvertO(eventNameHtml);
+            callPayload.Queries["event.description.html"] = CSharpExpressionConverter.ConvertO(eventDescriptionHtml);
+            callPayload.Queries["event.start.utc"] = CSharpExpressionConverter.ConvertO(eventStartUtc);
+            callPayload.Queries["event.end.utc"] = CSharpExpressionConverter.ConvertO(eventEndUtc);
+            callPayload.Queries["event.start.timezone"] = CSharpExpressionConverter.Convert(eventStartTimezone);
+            callPayload.Queries["event.end.timezone"] = CSharpExpressionConverter.Convert(eventEndTimezone);
+            callPayload.Queries["event.currency"] = CSharpExpressionConverter.Convert(eventCurrency);
             if (eventOrganizerId != null)
-                callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(eventOrganizerId);
+                callPayload.Queries["event.organizer_id"] = CSharpExpressionConverter.ConvertO(eventOrganizerId);
             if (eventVenueId != null)
-                callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(eventVenueId);
+                callPayload.Queries["event.venue_id"] = CSharpExpressionConverter.ConvertO(eventVenueId);
             if (eventCategoryId != null)
-                callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(eventCategoryId);
+                callPayload.Queries["event.category_id"] = CSharpExpressionConverter.ConvertO(eventCategoryId);
             if (eventPassword != null)
-                callPayload.Queries["event.password"] = ExpressionConverter.Convert(eventPassword);
+                callPayload.Queries["event.password"] = CSharpExpressionConverter.ConvertO(eventPassword);
             if (eventCapacity != null)
-                callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(eventCapacity);
+                callPayload.Queries["event.capacity"] = CSharpExpressionConverter.ConvertO(eventCapacity);
             if (eventShareable != null)
-                callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(eventShareable);
+                callPayload.Queries["event.shareable"] = CSharpExpressionConverter.ConvertO(eventShareable);
             if (eventInviteOnly != null)
-                callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(eventInviteOnly);
+                callPayload.Queries["event.invite_only"] = CSharpExpressionConverter.ConvertO(eventInviteOnly);
             if (eventOnlineEvent != null)
-                callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(eventOnlineEvent);
+                callPayload.Queries["event.online_event"] = CSharpExpressionConverter.ConvertO(eventOnlineEvent);
             if (eventListed != null)
-                callPayload.Queries["event.listed"] = ExpressionConverter.Convert(eventListed);
+                callPayload.Queries["event.listed"] = CSharpExpressionConverter.ConvertO(eventListed);
             if (eventHideStartDate != null)
-                callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(eventHideStartDate);
+                callPayload.Queries["event.hide_start_date"] = CSharpExpressionConverter.ConvertO(eventHideStartDate);
             if (eventHideEndDate != null)
-                callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(eventHideEndDate);
+                callPayload.Queries["event.hide_end_date"] = CSharpExpressionConverter.ConvertO(eventHideEndDate);
             if (eventShowRemaining != null)
-                callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(eventShowRemaining);
+                callPayload.Queries["event.show_remaining"] = CSharpExpressionConverter.ConvertO(eventShowRemaining);
             return new ApiConnectionAction<CreateEventResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         public IBodyWorkflowAction<CreateEventResponse> UpdateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> id, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventNameHtml = null, Expression<Func<string>> eventDescriptionHtml = null, Expression<Func<string>> eventStartUtc = null, Expression<Func<string>> eventEndUtc = null, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
-            var apiCallPath = String.Format("/v2/v3/events/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v3/events/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["organization_id"] = ExpressionConverter.Convert(organizationId);
+            callPayload.Queries["organization_id"] = CSharpExpressionConverter.ConvertO(organizationId);
             if (eventNameHtml != null)
-                callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(eventNameHtml);
+                callPayload.Queries["event.name.html"] = CSharpExpressionConverter.ConvertO(eventNameHtml);
             if (eventDescriptionHtml != null)
-                callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(eventDescriptionHtml);
+                callPayload.Queries["event.description.html"] = CSharpExpressionConverter.ConvertO(eventDescriptionHtml);
             if (eventStartUtc != null)
-                callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(eventStartUtc);
+                callPayload.Queries["event.start.utc"] = CSharpExpressionConverter.ConvertO(eventStartUtc);
             if (eventEndUtc != null)
-                callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(eventEndUtc);
-            callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(eventStartTimezone);
-            callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(eventEndTimezone);
-            callPayload.Queries["event.currency"] = ExpressionConverter.Convert(eventCurrency);
+                callPayload.Queries["event.end.utc"] = CSharpExpressionConverter.ConvertO(eventEndUtc);
+            callPayload.Queries["event.start.timezone"] = CSharpExpressionConverter.Convert(eventStartTimezone);
+            callPayload.Queries["event.end.timezone"] = CSharpExpressionConverter.Convert(eventEndTimezone);
+            callPayload.Queries["event.currency"] = CSharpExpressionConverter.Convert(eventCurrency);
             if (eventOrganizerId != null)
-                callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(eventOrganizerId);
+                callPayload.Queries["event.organizer_id"] = CSharpExpressionConverter.ConvertO(eventOrganizerId);
             if (eventVenueId != null)
-                callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(eventVenueId);
+                callPayload.Queries["event.venue_id"] = CSharpExpressionConverter.ConvertO(eventVenueId);
             if (eventCategoryId != null)
-                callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(eventCategoryId);
+                callPayload.Queries["event.category_id"] = CSharpExpressionConverter.ConvertO(eventCategoryId);
             if (eventPassword != null)
-                callPayload.Queries["event.password"] = ExpressionConverter.Convert(eventPassword);
+                callPayload.Queries["event.password"] = CSharpExpressionConverter.ConvertO(eventPassword);
             if (eventCapacity != null)
-                callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(eventCapacity);
+                callPayload.Queries["event.capacity"] = CSharpExpressionConverter.ConvertO(eventCapacity);
             if (eventShareable != null)
-                callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(eventShareable);
+                callPayload.Queries["event.shareable"] = CSharpExpressionConverter.ConvertO(eventShareable);
             if (eventInviteOnly != null)
-                callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(eventInviteOnly);
+                callPayload.Queries["event.invite_only"] = CSharpExpressionConverter.ConvertO(eventInviteOnly);
             if (eventOnlineEvent != null)
-                callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(eventOnlineEvent);
+                callPayload.Queries["event.online_event"] = CSharpExpressionConverter.ConvertO(eventOnlineEvent);
             if (eventListed != null)
-                callPayload.Queries["event.listed"] = ExpressionConverter.Convert(eventListed);
+                callPayload.Queries["event.listed"] = CSharpExpressionConverter.ConvertO(eventListed);
             if (eventHideStartDate != null)
-                callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(eventHideStartDate);
+                callPayload.Queries["event.hide_start_date"] = CSharpExpressionConverter.ConvertO(eventHideStartDate);
             if (eventHideEndDate != null)
-                callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(eventHideEndDate);
+                callPayload.Queries["event.hide_end_date"] = CSharpExpressionConverter.ConvertO(eventHideEndDate);
             if (eventShowRemaining != null)
-                callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(eventShowRemaining);
+                callPayload.Queries["event.show_remaining"] = CSharpExpressionConverter.ConvertO(eventShowRemaining);
             return new ApiConnectionAction<CreateEventResponse>(callPayload);
         }
     }
@@ -101,20 +101,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     {
         public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/organizations/{0}/events/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(organizerFilter);
+            callPayload.Queries["organizer_filter"] = CSharpExpressionConverter.ConvertO(organizerFilter);
             callPayload.Queries["order_by"] = Convert.ToString("created_desc");
             return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/events/{0}/orders/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["organization_id"] = ExpressionConverter.Convert(organizationId);
+            callPayload.Queries["organization_id"] = CSharpExpressionConverter.ConvertO(organizationId);
             return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, triggerName, recurrence);
         }
     }

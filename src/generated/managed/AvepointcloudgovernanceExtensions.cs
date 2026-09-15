@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/office365/settings";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["actionType"] = CSharpExpressionConverter.ConvertO(actionType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/office365/settings";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["actionType"] = CSharpExpressionConverter.ConvertO(actionType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowGetRequestById(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/flow/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/flow/requests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-            callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
+            callPayload.Queries["serviceType"] = CSharpExpressionConverter.ConvertO(serviceType);
+            callPayload.Queries["serviceId"] = CSharpExpressionConverter.ConvertO(serviceId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/requests";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-            callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
+            callPayload.Queries["serviceType"] = CSharpExpressionConverter.ConvertO(serviceType);
+            callPayload.Queries["serviceId"] = CSharpExpressionConverter.ConvertO(serviceId);
             if (delegateUserPrincipalName != null)
-                callPayload.Queries["DelegateUserPrincipalName"] = ExpressionConverter.Convert(delegateUserPrincipalName);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["DelegateUserPrincipalName"] = CSharpExpressionConverter.ConvertO(delegateUserPrincipalName);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/requests";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-            callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["serviceType"] = CSharpExpressionConverter.ConvertO(serviceType);
+            callPayload.Queries["serviceId"] = CSharpExpressionConverter.ConvertO(serviceId);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -79,25 +79,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["workspaceType"] = Convert.ToString("All");
             if (workspaceType != null)
-                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
+                callPayload.Queries["workspaceType"] = CSharpExpressionConverter.ConvertO(workspaceType);
             callPayload.Queries["primaryContact"] = Convert.ToString("");
             if (primaryContact != null)
-                callPayload.Queries["primaryContact"] = ExpressionConverter.Convert(primaryContact);
+                callPayload.Queries["primaryContact"] = CSharpExpressionConverter.ConvertO(primaryContact);
             callPayload.Queries["status"] = Convert.ToString("All");
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             callPayload.Queries["urlorIdorEmail"] = Convert.ToString("");
             if (urlorIdorEmail != null)
-                callPayload.Queries["urlorIdorEmail"] = ExpressionConverter.Convert(urlorIdorEmail);
+                callPayload.Queries["urlorIdorEmail"] = CSharpExpressionConverter.ConvertO(urlorIdorEmail);
             callPayload.Queries["secondaryContact"] = Convert.ToString("");
             if (secondaryContact != null)
-                callPayload.Queries["secondaryContact"] = ExpressionConverter.Convert(secondaryContact);
+                callPayload.Queries["secondaryContact"] = CSharpExpressionConverter.ConvertO(secondaryContact);
             callPayload.Queries["top"] = Convert.ToString(2000);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["nextLink"] = Convert.ToString("");
             if (nextLink != null)
-                callPayload.Queries["nextLink"] = ExpressionConverter.Convert(nextLink);
+                callPayload.Queries["nextLink"] = CSharpExpressionConverter.ConvertO(nextLink);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/workspace/actions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            callPayload.Queries["workspaceAction"] = ExpressionConverter.Convert(workspaceAction);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["workspaceType"] = CSharpExpressionConverter.ConvertO(workspaceType);
+            callPayload.Queries["workspaceAction"] = CSharpExpressionConverter.ConvertO(workspaceAction);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
     }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var apiCallPath = "/flow/hooks/common";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["flowTriggerType"] = ExpressionConverter.Convert(flowTriggerType);
+            callPayload.Queries["flowTriggerType"] = CSharpExpressionConverter.ConvertO(flowTriggerType);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";

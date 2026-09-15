@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
             var apiCallPath = "/checkDomain/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            callPayload.Queries["endpoint"] = ExpressionConverter.Convert(endpoint);
+            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
+            callPayload.Queries["endpoint"] = CSharpExpressionConverter.Convert(endpoint);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<CheckDomainResponse>(callPayload);
         }

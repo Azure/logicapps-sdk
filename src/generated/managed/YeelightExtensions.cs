@@ -30,25 +30,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             var bodypropCount = 0;
             if (bodydid != null)
             {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
+                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
                 bodypropCount++;
             }
 
             if (bodyon != null)
             {
-                body["on"] = ExpressionConverter.ConvertO(bodyon);
+                body["on"] = CSharpExpressionConverter.ConvertToken(bodyon);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -70,25 +70,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             var bodypropCount = 0;
             if (bodydid != null)
             {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
+                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
                 bodypropCount++;
             }
 
             if (bodyspectrumRGB != null)
             {
-                body["spectrumRGB"] = ExpressionConverter.ConvertO(bodyspectrumRGB);
+                body["spectrumRGB"] = CSharpExpressionConverter.ConvertToken(bodyspectrumRGB);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -110,25 +110,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             var bodypropCount = 0;
             if (bodydid != null)
             {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
+                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
                 bodypropCount++;
             }
 
             if (bodybrightness != null)
             {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                body["brightness"] = CSharpExpressionConverter.ConvertToken(bodybrightness);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -150,25 +150,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             var bodypropCount = 0;
             if (bodydid != null)
             {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
+                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -190,19 +190,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
             var bodypropCount = 0;
             if (bodydid != null)
             {
-                body["did"] = ExpressionConverter.ConvertO(bodydid);
+                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 

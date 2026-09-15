@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
         {
-            var apiCallPath = String.Format("/parcels/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(x, 1), ExpressionConverter.ConvertWithUrlEncoding(y, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
         {
-            var apiCallPath = String.Format("/parcels/{0}/{1}/map.png", ExpressionConverter.ConvertWithUrlEncoding(x, 1), ExpressionConverter.ConvertWithUrlEncoding(y, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["publication"] = ExpressionConverter.Convert(publication);
+            callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
+            callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
+            callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
+            callPayload.Queries["publication"] = CSharpExpressionConverter.ConvertO(publication);
             return new ApiConnectionAction<GetParcelMapResponse>(callPayload);
         }
 
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             var apiCallPath = "/tiles";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x1"] = ExpressionConverter.Convert(x1);
-            callPayload.Queries["x2"] = ExpressionConverter.Convert(x2);
-            callPayload.Queries["y1"] = ExpressionConverter.Convert(y1);
-            callPayload.Queries["y2"] = ExpressionConverter.Convert(y2);
-            callPayload.Queries["include"] = ExpressionConverter.Convert(include);
+            callPayload.Queries["x1"] = CSharpExpressionConverter.ConvertO(x1);
+            callPayload.Queries["x2"] = CSharpExpressionConverter.ConvertO(x2);
+            callPayload.Queries["y1"] = CSharpExpressionConverter.ConvertO(y1);
+            callPayload.Queries["y2"] = CSharpExpressionConverter.ConvertO(y2);
+            callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
             return new ApiConnectionAction<GetTilesResponse>(callPayload);
         }
     }

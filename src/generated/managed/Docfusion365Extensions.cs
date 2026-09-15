@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
             return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(callPayload);
         }
 
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["TemplateId"] = ExpressionConverter.Convert(templateId);
-            callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
-            callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
+            callPayload.Queries["TemplateId"] = CSharpExpressionConverter.ConvertO(templateId);
+            callPayload.Queries["listItemId"] = CSharpExpressionConverter.ConvertO(listItemId);
+            callPayload.Queries["skipPostProcess"] = CSharpExpressionConverter.ConvertO(skipPostProcess);
             return new ApiConnectionAction<ComposeLinkedTemplateResponse>(callPayload);
         }
 
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
             var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
-            callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
+            callPayload.Queries["listItemId"] = CSharpExpressionConverter.ConvertO(listItemId);
+            callPayload.Queries["skipPostProcess"] = CSharpExpressionConverter.ConvertO(skipPostProcess);
             return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(callPayload);
         }
     }

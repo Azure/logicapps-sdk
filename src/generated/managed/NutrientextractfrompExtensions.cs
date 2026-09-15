@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             if (inputPdfDatapageRange != null)
             {
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
                     inputPdfDatapropCount++;
                 }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             if (inputPdfDataoCRLanguage != null)
             {
                 if (inputPdfDataoCRLanguage != null)
                 {
-                    inputPdfData["ocr_language"] = ExpressionConverter.ConvertO(inputPdfDataoCRLanguage);
+                    inputPdfData["ocr_language"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoCRLanguage);
                     inputPdfDatapropCount++;
                 }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatadPI != null)
                 {
-                    inputPdfData["dpi"] = ExpressionConverter.ConvertO(inputPdfDatadPI);
+                    inputPdfData["dpi"] = CSharpExpressionConverter.Convert(inputPdfDatadPI);
                     inputPdfDatapropCount++;
                 }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatakVPOutputFormat != null)
                 {
-                    inputPdfData["kvp_format"] = ExpressionConverter.ConvertO(inputPdfDatakVPOutputFormat);
+                    inputPdfData["kvp_format"] = CSharpExpressionConverter.Convert(inputPdfDatakVPOutputFormat);
                     inputPdfDatapropCount++;
                 }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
                     inputPdfDatapropCount++;
                 }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataautorotate != null)
                 {
-                    inputPdfData["autorotate"] = ExpressionConverter.ConvertO(inputPdfDataautorotate);
+                    inputPdfData["autorotate"] = CSharpExpressionConverter.Convert(inputPdfDataautorotate);
                     inputPdfDatapropCount++;
                 }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatatrimSymbols != null)
                 {
-                    inputPdfData["trim_symbols"] = ExpressionConverter.ConvertO(inputPdfDatatrimSymbols);
+                    inputPdfData["trim_symbols"] = CSharpExpressionConverter.Convert(inputPdfDatatrimSymbols);
                     inputPdfDatapropCount++;
                 }
 
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataincludeKeyBoundingBox != null)
                 {
-                    inputPdfData["include_key_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeKeyBoundingBox);
+                    inputPdfData["include_key_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeKeyBoundingBox);
                     inputPdfDatapropCount++;
                 }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataincludeValueBoundingBox != null)
                 {
-                    inputPdfData["include_value_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeValueBoundingBox);
+                    inputPdfData["include_value_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeValueBoundingBox);
                     inputPdfDatapropCount++;
                 }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataincludePageNumber != null)
                 {
-                    inputPdfData["include_page_number"] = ExpressionConverter.ConvertO(inputPdfDataincludePageNumber);
+                    inputPdfData["include_page_number"] = CSharpExpressionConverter.Convert(inputPdfDataincludePageNumber);
                     inputPdfDatapropCount++;
                 }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataincludeConfidence != null)
                 {
-                    inputPdfData["include_confidence"] = ExpressionConverter.ConvertO(inputPdfDataincludeConfidence);
+                    inputPdfData["include_confidence"] = CSharpExpressionConverter.Convert(inputPdfDataincludeConfidence);
                     inputPdfDatapropCount++;
                 }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataconfidenceThreshold != null)
                 {
-                    inputPdfData["confidence_threshold"] = ExpressionConverter.ConvertO(inputPdfDataconfidenceThreshold);
+                    inputPdfData["confidence_threshold"] = CSharpExpressionConverter.ConvertToken(inputPdfDataconfidenceThreshold);
                     inputPdfDatapropCount++;
                 }
 
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDataincludeType != null)
                 {
-                    inputPdfData["include_type"] = ExpressionConverter.ConvertO(inputPdfDataincludeType);
+                    inputPdfData["include_type"] = CSharpExpressionConverter.Convert(inputPdfDataincludeType);
                     inputPdfDatapropCount++;
                 }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputPdfDataexpectedKeys != null)
             {
-                inputPdfData["expected_keys"] = ExpressionConverter.ConvertO(inputPdfDataexpectedKeys);
+                inputPdfData["expected_keys"] = CSharpExpressionConverter.ConvertToken(inputPdfDataexpectedKeys);
                 inputPdfDatapropCount++;
             }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -328,9 +328,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDatalanguage != null)
                 {
-                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
                     inputDatapropCount++;
                 }
 
@@ -357,25 +357,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatawidth != null)
             {
-                inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+                inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
                 inputDatapropCount++;
             }
 
             if (inputDataheight != null)
             {
-                inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+                inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
                 inputDatapropCount++;
             }
 
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDatapageNumber != null)
                 {
-                    inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                    inputData["page_number"] = CSharpExpressionConverter.ConvertToken(inputDatapageNumber);
                     inputDatapropCount++;
                 }
 
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
                     inputDatapropCount++;
                 }
 
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
                     inputDatapropCount++;
                 }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputDatacharacters != null)
             {
-                inputData["characters"] = ExpressionConverter.ConvertO(inputDatacharacters);
+                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
                 inputDatapropCount++;
             }
 
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
                     inputDatapropCount++;
                 }
 
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 

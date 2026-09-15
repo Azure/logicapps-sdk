@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (publishedFrom != null)
-                callPayload.Queries["PublishedFrom"] = ExpressionConverter.Convert(publishedFrom);
+                callPayload.Queries["PublishedFrom"] = CSharpExpressionConverter.ConvertO(publishedFrom);
             if (publishedTo != null)
-                callPayload.Queries["PublishedTo"] = ExpressionConverter.Convert(publishedTo);
+                callPayload.Queries["PublishedTo"] = CSharpExpressionConverter.ConvertO(publishedTo);
             if (priceFrom != null)
-                callPayload.Queries["PriceFrom"] = ExpressionConverter.Convert(priceFrom);
+                callPayload.Queries["PriceFrom"] = CSharpExpressionConverter.ConvertO(priceFrom);
             if (priceTo != null)
-                callPayload.Queries["PriceTo"] = ExpressionConverter.Convert(priceTo);
+                callPayload.Queries["PriceTo"] = CSharpExpressionConverter.ConvertO(priceTo);
             if (isNew != null)
-                callPayload.Queries["IsNew"] = ExpressionConverter.Convert(isNew);
+                callPayload.Queries["IsNew"] = CSharpExpressionConverter.ConvertO(isNew);
             if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                callPayload.Queries["moreToken"] = CSharpExpressionConverter.ConvertO(moreToken);
             return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                callPayload.Queries["moreToken"] = CSharpExpressionConverter.ConvertO(moreToken);
             return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
         }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                callPayload.Queries["moreToken"] = CSharpExpressionConverter.ConvertO(moreToken);
             return new ApiConnectionAction<MyCoursesResponse>(callPayload);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                callPayload.Queries["moreToken"] = CSharpExpressionConverter.ConvertO(moreToken);
             return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallPath = "/GetCourse";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<CourseDetail>(callPayload);
         }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallPath = "/AddIdeaVote";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(ideaID);
+            callPayload.Queries["IdeaID"] = CSharpExpressionConverter.ConvertO(ideaID);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<InstructorDetail>(callPayload);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var apiCallPath = "/Search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
     }

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
     {
         public IBodyWorkflowTrigger<JToken> FormAnswer(Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/hooks_flow/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/hooks_flow/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

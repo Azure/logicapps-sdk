@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
             var apiCallPath = "/html2text";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(content);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(content);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

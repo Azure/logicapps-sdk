@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetLightResponse> GetLight(Expression<Func<string>> deviceId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetLightResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var metadataObjectpropCount = 0;
             if (bodymetadataname != null)
             {
-                metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
+                metadataObject["name"] = CSharpExpressionConverter.ConvertToken(bodymetadataname);
                 metadataObjectpropCount++;
             }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var onObjectpropCount = 0;
             if (bodyonon != null)
             {
-                onObject["on"] = ExpressionConverter.ConvertO(bodyonon);
+                onObject["on"] = CSharpExpressionConverter.ConvertToken(bodyonon);
                 onObjectpropCount++;
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var dimmingObjectpropCount = 0;
             if (bodydimmingbrightness != null)
             {
-                dimmingObject["brightness"] = ExpressionConverter.ConvertO(bodydimmingbrightness);
+                dimmingObject["brightness"] = CSharpExpressionConverter.ConvertToken(bodydimmingbrightness);
                 dimmingObjectpropCount++;
             }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var colorTemperatureObjectpropCount = 0;
             if (bodycolorTemperaturemirek != null)
             {
-                colorTemperatureObject["mirek"] = ExpressionConverter.ConvertO(bodycolorTemperaturemirek);
+                colorTemperatureObject["mirek"] = CSharpExpressionConverter.ConvertToken(bodycolorTemperaturemirek);
                 colorTemperatureObjectpropCount++;
             }
 
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var xyObjectpropCount = 0;
             if (bodycolorxyx != null)
             {
-                xyObject["x"] = ExpressionConverter.ConvertO(bodycolorxyx);
+                xyObject["x"] = CSharpExpressionConverter.ConvertToken(bodycolorxyx);
                 xyObjectpropCount++;
             }
 
             if (bodycolorxyy != null)
             {
-                xyObject["y"] = ExpressionConverter.ConvertO(bodycolorxyy);
+                xyObject["y"] = CSharpExpressionConverter.ConvertToken(bodycolorxyy);
                 xyObjectpropCount++;
             }
 
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var dynamicsObjectpropCount = 0;
             if (bodydynamicsspeed != null)
             {
-                dynamicsObject["speed"] = ExpressionConverter.ConvertO(bodydynamicsspeed);
+                dynamicsObject["speed"] = CSharpExpressionConverter.ConvertToken(bodydynamicsspeed);
                 dynamicsObjectpropCount++;
             }
 
             if (bodydynamicsduration != null)
             {
-                dynamicsObject["duration"] = ExpressionConverter.ConvertO(bodydynamicsduration);
+                dynamicsObject["duration"] = CSharpExpressionConverter.ConvertToken(bodydynamicsduration);
                 dynamicsObjectpropCount++;
             }
 
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             {
                 if (bodyalertaction != null)
                 {
-                    alertObject["action"] = ExpressionConverter.ConvertO(bodyalertaction);
+                    alertObject["action"] = CSharpExpressionConverter.ConvertToken(bodyalertaction);
                     alertObjectpropCount++;
                 }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var gradientObjectpropCount = 0;
             if (bodygradientpoints != null)
             {
-                gradientObject["points"] = ExpressionConverter.ConvertO(bodygradientpoints);
+                gradientObject["points"] = CSharpExpressionConverter.ConvertToken(bodygradientpoints);
                 gradientObjectpropCount++;
             }
 
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetDeviceResponse> GetDevice(Expression<Func<string>> deviceId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDeviceResponse>(callPayload);
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var metadataObjectpropCount = 0;
             if (bodymetadataarchetype != null)
             {
-                metadataObject["archetype"] = ExpressionConverter.ConvertO(bodymetadataarchetype);
+                metadataObject["archetype"] = CSharpExpressionConverter.Convert(bodymetadataarchetype);
                 metadataObjectpropCount++;
             }
 
             if (bodymetadataname != null)
             {
-                metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
+                metadataObject["name"] = CSharpExpressionConverter.ConvertToken(bodymetadataname);
                 metadataObjectpropCount++;
             }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             {
                 if (bodyidentifyaction != null)
                 {
-                    identifyObject["action"] = ExpressionConverter.ConvertO(bodyidentifyaction);
+                    identifyObject["action"] = CSharpExpressionConverter.ConvertToken(bodyidentifyaction);
                     identifyObjectpropCount++;
                 }
 
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetSceneResponse> GetScene(Expression<Func<string>> sceneId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSceneResponse>(callPayload);
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene(Expression<Func<string>> sceneId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteSceneResponse>(callPayload);

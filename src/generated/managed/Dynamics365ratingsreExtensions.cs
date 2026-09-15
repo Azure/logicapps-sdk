@@ -14,35 +14,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
         public IBodyWorkflowAction<string> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
         {
-            var apiCallPath = String.Format("/v2.0/reviews/product/{0}/user", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/reviews/product/{0}/user", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (channelId != null)
-                callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+                callPayload.Queries["channelId"] = CSharpExpressionConverter.ConvertO(channelId);
             if (market != null)
-                callPayload.Queries["market"] = ExpressionConverter.Convert(market);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["encodedUser"] = ExpressionConverter.Convert(encodedUser);
+                callPayload.Queries["market"] = CSharpExpressionConverter.ConvertO(market);
+            callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
+            callPayload.Queries["encodedUser"] = CSharpExpressionConverter.ConvertO(encodedUser);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Rating"] = ExpressionConverter.ConvertO(bodyrating);
+            body["Rating"] = CSharpExpressionConverter.ConvertToken(bodyrating);
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            body["ReviewText"] = CSharpExpressionConverter.ConvertToken(bodyreviewText);
             if (bodysku != null)
             {
-                body["Sku"] = ExpressionConverter.ConvertO(bodysku);
+                body["Sku"] = CSharpExpressionConverter.ConvertToken(bodysku);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ProductName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["ProductName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             if (bodylegalEntity != null)
             {
-                body["LegalEntity"] = ExpressionConverter.ConvertO(bodylegalEntity);
+                body["LegalEntity"] = CSharpExpressionConverter.ConvertToken(bodylegalEntity);
                 bodypropCount++;
             }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
 
             if (bodysubmittedDateTime != null)
             {
-                body["submittedDateTime"] = ExpressionConverter.ConvertO(bodysubmittedDateTime);
+                body["submittedDateTime"] = CSharpExpressionConverter.ConvertToken(bodysubmittedDateTime);
                 bodypropCount++;
             }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             var apiCallPath = "/v2.0/export/reviews/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             return new ApiConnectionAction<ExportSuccessfulResponse>(callPayload);
         }
     }

@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             var apiCallPath = "/1/updates/create.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["CreateUpdateProfileId"] = ExpressionConverter.Convert(createUpdateProfileId);
-            callPayload.Queries["CreateUpdateText"] = ExpressionConverter.Convert(createUpdateText);
+            callPayload.Queries["CreateUpdateProfileId"] = CSharpExpressionConverter.ConvertO(createUpdateProfileId);
+            callPayload.Queries["CreateUpdateText"] = CSharpExpressionConverter.ConvertO(createUpdateText);
             return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
         public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
         {
-            var apiCallPath = String.Format("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(udpateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(udpateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+            callPayload.Queries["profile_id"] = CSharpExpressionConverter.ConvertO(profileId);
             return new ApiConnectionAction<ShareUpdateResponse>(callPayload);
         }
     }
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     {
         public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, triggerName, recurrence);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
         public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, triggerName, recurrence);

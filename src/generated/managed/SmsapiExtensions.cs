@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             body["format"] = "json";
             bodypropCount++;
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
             bodypropCount++;
             if (bodygroup != null)
             {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
             {
                 if (bodyfast != null)
                 {
-                    body["fast"] = ExpressionConverter.ConvertO(bodyfast);
+                    body["fast"] = CSharpExpressionConverter.ConvertToken(bodyfast);
                     bodypropCount++;
                 }
 

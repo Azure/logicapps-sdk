@@ -23,17 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
         {
-            var apiCallPath = String.Format("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(sourcePrice);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(sourcePrice);
             return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
         {
-            var apiCallPath = String.Format("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ExchangeRateResult>(callPayload);

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
         {
-            var apiCallPath = String.Format("/integration/v2/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/predictiveContent/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictiveContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contextId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SeismicPredictiveContentPredictiveContentResponse[]>(callPayload);
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (systemType != null)
-                callPayload.Queries["systemType"] = ExpressionConverter.Convert(systemType);
+                callPayload.Queries["systemType"] = CSharpExpressionConverter.ConvertO(systemType);
             if (contextType != null)
-                callPayload.Queries["contextType"] = ExpressionConverter.Convert(contextType);
+                callPayload.Queries["contextType"] = CSharpExpressionConverter.ConvertO(contextType);
             return new ApiConnectionAction<SeismicPredictiveContentEmbeddedAppTab[]>(callPayload);
         }
 
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                callPayload.Queries["continuationToken"] = CSharpExpressionConverter.ConvertO(continuationToken);
             var searchRequestBody = new JObject();
             var searchRequestBodypropCount = 0;
             if (searchRequestBodyterm != null)
             {
-                searchRequestBody["term"] = ExpressionConverter.ConvertO(searchRequestBodyterm);
+                searchRequestBody["term"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyterm);
                 searchRequestBodypropCount++;
             }
 
@@ -71,19 +71,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var optionsObjectpropCount = 0;
             if (searchRequestBodyoptionspageSize != null)
             {
-                optionsObject["pageSize"] = ExpressionConverter.ConvertO(searchRequestBodyoptionspageSize);
+                optionsObject["pageSize"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyoptionspageSize);
                 optionsObjectpropCount++;
             }
 
             if (searchRequestBodyoptionssearchFields != null)
             {
-                optionsObject["searchFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionssearchFields);
+                optionsObject["searchFields"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyoptionssearchFields);
                 optionsObjectpropCount++;
             }
 
             if (searchRequestBodyoptionsreturnFields != null)
             {
-                optionsObject["returnFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionsreturnFields);
+                optionsObject["returnFields"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyoptionsreturnFields);
                 optionsObjectpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
 
             if (searchRequestBodysort != null)
             {
-                searchRequestBody["sort"] = ExpressionConverter.ConvertO(searchRequestBodysort);
+                searchRequestBody["sort"] = CSharpExpressionConverter.ConvertToken(searchRequestBodysort);
                 searchRequestBodypropCount++;
             }
 
@@ -103,19 +103,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var filterObjectpropCount = 0;
             if (searchRequestBodyfiltercondition != null)
             {
-                filterObject["conditions"] = ExpressionConverter.ConvertO(searchRequestBodyfiltercondition);
+                filterObject["conditions"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyfiltercondition);
                 filterObjectpropCount++;
             }
 
             if (searchRequestBodyfilterfilter != null)
             {
-                filterObject["filters"] = ExpressionConverter.ConvertO(searchRequestBodyfilterfilter);
+                filterObject["filters"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyfilterfilter);
                 filterObjectpropCount++;
             }
 
             if (searchRequestBodyfilterOperator != null)
             {
-                filterObject["operator"] = ExpressionConverter.ConvertO(searchRequestBodyfilterOperator);
+                filterObject["operator"] = CSharpExpressionConverter.ConvertToken(searchRequestBodyfilterOperator);
                 filterObjectpropCount++;
             }
 

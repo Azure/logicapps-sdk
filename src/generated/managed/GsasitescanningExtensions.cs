@@ -18,21 +18,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (targetUrlDomain != null)
-                callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
+                callPayload.Queries["target_url_domain"] = CSharpExpressionConverter.ConvertO(targetUrlDomain);
             if (finalUrlDomain != null)
-                callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
+                callPayload.Queries["final_url_domain"] = CSharpExpressionConverter.ConvertO(finalUrlDomain);
             if (finalUrlLive != null)
-                callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
+                callPayload.Queries["final_url_live"] = CSharpExpressionConverter.ConvertO(finalUrlLive);
             if (targetUrlRedirects != null)
-                callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
+                callPayload.Queries["target_url_redirects"] = CSharpExpressionConverter.ConvertO(targetUrlRedirects);
             if (targetUrlAgencyOwner != null)
-                callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
+                callPayload.Queries["target_url_agency_owner"] = CSharpExpressionConverter.ConvertO(targetUrlAgencyOwner);
             if (targetUrlBureauOwner != null)
-                callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
+                callPayload.Queries["target_url_bureau_owner"] = CSharpExpressionConverter.ConvertO(targetUrlBureauOwner);
             if (primaryScanStatus != null)
-                callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
+                callPayload.Queries["primary_scan_status"] = CSharpExpressionConverter.Convert(primaryScanStatus);
             if (dapDetectedFinalUrl != null)
-                callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
+                callPayload.Queries["dap_detected_final_url"] = CSharpExpressionConverter.ConvertO(dapDetectedFinalUrl);
             return new ApiConnectionAction<AnalysisDto>(callPayload);
         }
 
@@ -43,32 +43,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (targetUrlDomain != null)
-                callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
+                callPayload.Queries["target_url_domain"] = CSharpExpressionConverter.ConvertO(targetUrlDomain);
             if (finalUrlDomain != null)
-                callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
+                callPayload.Queries["final_url_domain"] = CSharpExpressionConverter.ConvertO(finalUrlDomain);
             if (finalUrlLive != null)
-                callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
+                callPayload.Queries["final_url_live"] = CSharpExpressionConverter.ConvertO(finalUrlLive);
             if (targetUrlRedirects != null)
-                callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
+                callPayload.Queries["target_url_redirects"] = CSharpExpressionConverter.ConvertO(targetUrlRedirects);
             if (targetUrlAgencyOwner != null)
-                callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
+                callPayload.Queries["target_url_agency_owner"] = CSharpExpressionConverter.ConvertO(targetUrlAgencyOwner);
             if (targetUrlBureauOwner != null)
-                callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
+                callPayload.Queries["target_url_bureau_owner"] = CSharpExpressionConverter.ConvertO(targetUrlBureauOwner);
             if (primaryScanStatus != null)
-                callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
+                callPayload.Queries["primary_scan_status"] = CSharpExpressionConverter.Convert(primaryScanStatus);
             if (dapDetectedFinalUrl != null)
-                callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
+                callPayload.Queries["dap_detected_final_url"] = CSharpExpressionConverter.ConvertO(dapDetectedFinalUrl);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<PaginatedWebsiteResponseDto>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl(Expression<Func<string>> url)
         {
-            var apiCallPath = String.Format("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/websites/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(url, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);

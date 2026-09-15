@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
         {
-            var apiCallPath = String.Format("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(author, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(author, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             var apiCallPath = "/v1/generation";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<GetGenerationResponse>(callPayload);
         }
 
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+            body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

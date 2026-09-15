@@ -14,21 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<JToken> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
         {
-            var apiCallPath = String.Format("/survey-service/execution/{0}", ExpressionConverter.ConvertWithUrlEncoding(executionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(executionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["advancedInfo"] = Convert.ToString(false);
             if (advancedInfo != null)
-                callPayload.Headers["advancedInfo"] = ExpressionConverter.Convert(advancedInfo);
-            callPayload.Headers["surveyId"] = ExpressionConverter.Convert(surveyId);
-            callPayload.Headers["publicationId"] = ExpressionConverter.Convert(publicationId);
+                callPayload.Headers["advancedInfo"] = CSharpExpressionConverter.ConvertO(advancedInfo);
+            callPayload.Headers["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
+            callPayload.Headers["publicationId"] = CSharpExpressionConverter.ConvertO(publicationId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/identity-service/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
             var parametersObjectpropCount = 0;
             if (bodyparameterssurveyId != null)
             {
-                parametersObject["surveyId"] = ExpressionConverter.ConvertO(bodyparameterssurveyId);
+                parametersObject["surveyId"] = CSharpExpressionConverter.ConvertToken(bodyparameterssurveyId);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterspublicationId != null)
             {
-                parametersObject["publicationId"] = ExpressionConverter.ConvertO(bodyparameterspublicationId);
+                parametersObject["publicationId"] = CSharpExpressionConverter.ConvertToken(bodyparameterspublicationId);
                 parametersObjectpropCount++;
             }
 

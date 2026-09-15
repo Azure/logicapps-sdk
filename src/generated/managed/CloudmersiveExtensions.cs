@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
             var inputpropCount = 0;
             if (inputurl != null)
             {
-                input["Url"] = ExpressionConverter.ConvertO(inputurl);
+                input["Url"] = CSharpExpressionConverter.ConvertToken(inputurl);
                 inputpropCount++;
             }
 

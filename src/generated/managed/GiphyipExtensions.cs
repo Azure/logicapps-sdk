@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(aPIKEY);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["API_KEY"] = CSharpExpressionConverter.ConvertO(aPIKEY);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (rating != null)
-                callPayload.Queries["rating"] = ExpressionConverter.Convert(rating);
+                callPayload.Queries["rating"] = CSharpExpressionConverter.ConvertO(rating);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             return new ApiConnectionAction<GetGIFResponse>(callPayload);
         }
     }

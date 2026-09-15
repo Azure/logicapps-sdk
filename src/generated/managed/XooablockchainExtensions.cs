@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooablockchain
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["async"] = Convert.ToString(false);
             if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
             callPayload.Queries["timeout"] = Convert.ToString(5000);
             if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
     }

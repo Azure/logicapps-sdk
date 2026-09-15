@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             bodypropCount++;
-            body["client_id"] = ExpressionConverter.ConvertO(bodyclientId);
+            body["client_id"] = CSharpExpressionConverter.ConvertToken(bodyclientId);
             bodypropCount++;
-            body["client_secret"] = ExpressionConverter.ConvertO(bodyclientSecret);
+            body["client_secret"] = CSharpExpressionConverter.ConvertToken(bodyclientSecret);
             body["grant_type"] = "password";
             bodypropCount++;
             body["auth_chain"] = "OAuthLdapService";

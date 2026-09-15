@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
             var apiCallPath = "/sms/send";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
-            callPayload.Queries["sender_id"] = ExpressionConverter.Convert(senderId);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+            callPayload.Queries["recipient"] = CSharpExpressionConverter.ConvertO(recipient);
+            callPayload.Queries["sender_id"] = CSharpExpressionConverter.ConvertO(senderId);
+            callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             callPayload.Queries["type"] = Convert.ToString("plain");
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             return new ApiConnectionAction<SMSResponse>(callPayload);
         }
 
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<SMSList>(callPayload);
         }
 

@@ -21,31 +21,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodynameFirst != null)
             {
-                body["nameFirst"] = ExpressionConverter.ConvertO(bodynameFirst);
+                body["nameFirst"] = CSharpExpressionConverter.ConvertToken(bodynameFirst);
                 bodypropCount++;
             }
 
             if (bodynameLast != null)
             {
-                body["nameLast"] = ExpressionConverter.ConvertO(bodynameLast);
+                body["nameLast"] = CSharpExpressionConverter.ConvertToken(bodynameLast);
                 bodypropCount++;
             }
 
             if (bodyflowName != null)
             {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                body["flowName"] = CSharpExpressionConverter.ConvertToken(bodyflowName);
                 bodypropCount++;
             }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyapplicant != null)
             {
-                body["applicant"] = ExpressionConverter.ConvertO(bodyapplicant);
+                body["applicant"] = CSharpExpressionConverter.ConvertToken(bodyapplicant);
                 bodypropCount++;
             }
 
@@ -89,25 +89,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyapplicantId != null)
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
+                body["applicantId"] = CSharpExpressionConverter.ConvertToken(bodyapplicantId);
                 bodypropCount++;
             }
 
             if (bodydocType != null)
             {
-                body["docType"] = ExpressionConverter.ConvertO(bodydocType);
+                body["docType"] = CSharpExpressionConverter.ConvertToken(bodydocType);
                 bodypropCount++;
             }
 
             if (bodydocSubType != null)
             {
-                body["docSubType"] = ExpressionConverter.ConvertO(bodydocSubType);
+                body["docSubType"] = CSharpExpressionConverter.ConvertToken(bodydocSubType);
                 bodypropCount++;
             }
 
             if (bodydocCountryISO != null)
             {
-                body["docCountryISO"] = ExpressionConverter.ConvertO(bodydocCountryISO);
+                body["docCountryISO"] = CSharpExpressionConverter.ConvertToken(bodydocCountryISO);
                 bodypropCount++;
             }
 
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var docFileObjectpropCount = 0;
             if (bodydocFilefilename != null)
             {
-                docFileObject["filename"] = ExpressionConverter.ConvertO(bodydocFilefilename);
+                docFileObject["filename"] = CSharpExpressionConverter.ConvertToken(bodydocFilefilename);
                 docFileObjectpropCount++;
             }
 
             if (bodydocFilecontents != null)
             {
-                docFileObject["contents"] = ExpressionConverter.ConvertO(bodydocFilecontents);
+                docFileObject["contents"] = CSharpExpressionConverter.ConvertToken(bodydocFilecontents);
                 docFileObjectpropCount++;
             }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyapplicantId != null)
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
+                body["applicantId"] = CSharpExpressionConverter.ConvertToken(bodyapplicantId);
                 bodypropCount++;
             }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyapplicantId != null)
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
+                body["applicantId"] = CSharpExpressionConverter.ConvertToken(bodyapplicantId);
                 bodypropCount++;
             }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var bodypropCount = 0;
             if (bodyapplicantId != null)
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
+                body["applicantId"] = CSharpExpressionConverter.ConvertToken(bodyapplicantId);
                 bodypropCount++;
             }
 

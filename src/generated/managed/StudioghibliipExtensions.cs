@@ -18,20 +18,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<Films[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/films/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<Films[]>(callPayload);
         }
 
@@ -42,20 +42,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<People[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/people/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<People[]>(callPayload);
         }
 
@@ -66,20 +66,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<Locations[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/locations/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<Locations[]>(callPayload);
         }
 
@@ -90,20 +90,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<Species[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/species/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<Species[]>(callPayload);
         }
 
@@ -114,20 +114,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<Vehicles[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/vehicles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/vehicles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<Vehicles[]>(callPayload);
         }
     }

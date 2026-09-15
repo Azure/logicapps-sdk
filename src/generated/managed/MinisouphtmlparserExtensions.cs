@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["operation"] = "fetch_html";
             bodypropCount++;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["operation"] = "select";
             bodypropCount++;
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             bodypropCount++;
-            body["selector"] = ExpressionConverter.ConvertO(bodyselector);
+            body["selector"] = CSharpExpressionConverter.ConvertToken(bodyselector);
             if (bodyselectorType != null)
             {
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    body["selector_type"] = CSharpExpressionConverter.Convert(bodyselectorType);
                     bodypropCount++;
                 }
 
@@ -80,16 +80,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["operation"] = "extract";
             bodypropCount++;
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             bodypropCount++;
-            body["selector"] = ExpressionConverter.ConvertO(bodyselector);
+            body["selector"] = CSharpExpressionConverter.ConvertToken(bodyselector);
             bodypropCount++;
-            body["attribute"] = ExpressionConverter.ConvertO(bodyattribute);
+            body["attribute"] = CSharpExpressionConverter.ConvertToken(bodyattribute);
             if (bodyselectorType != null)
             {
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    body["selector_type"] = CSharpExpressionConverter.Convert(bodyselectorType);
                     bodypropCount++;
                 }
 
@@ -120,20 +120,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["operation"] = "find_all";
             bodypropCount++;
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             bodypropCount++;
-            body["tag_name"] = ExpressionConverter.ConvertO(bodytagName);
+            body["tag_name"] = CSharpExpressionConverter.ConvertToken(bodytagName);
             var attributesObject = new JObject();
             var attributesObjectpropCount = 0;
             if (bodyattributesid != null)
             {
-                attributesObject["id"] = ExpressionConverter.ConvertO(bodyattributesid);
+                attributesObject["id"] = CSharpExpressionConverter.ConvertToken(bodyattributesid);
                 attributesObjectpropCount++;
             }
 
             if (bodyattributesClass != null)
             {
-                attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesClass);
+                attributesObject["class"] = CSharpExpressionConverter.ConvertToken(bodyattributesClass);
                 attributesObjectpropCount++;
             }
 
@@ -162,12 +162,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["operation"] = "parse_table";
             bodypropCount++;
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             if (bodytableSelector != null)
             {
                 if (bodytableSelector != null)
                 {
-                    body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                    body["table_selector"] = CSharpExpressionConverter.ConvertToken(bodytableSelector);
                     bodypropCount++;
                 }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             {
                 if (bodyheaderRowsExist != null)
                 {
-                    body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                    body["header_rows_exist"] = CSharpExpressionConverter.ConvertToken(bodyheaderRowsExist);
                     bodypropCount++;
                 }
 

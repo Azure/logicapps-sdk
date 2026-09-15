@@ -14,44 +14,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<StartResponse> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmID)
         {
-            var apiCallPath = String.Format("/start/{0}", ExpressionConverter.ConvertWithUrlEncoding(kmID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/start/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(kmID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             return new ApiConnectionAction<StartResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<InjectResponse> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/{0}/inject", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/inject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<InjectResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
         {
-            var apiCallPath = String.Format("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/query", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
+            body["relationship"] = CSharpExpressionConverter.ConvertToken(bodyrelationship);
             if (bodyObject != null)
             {
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = CSharpExpressionConverter.ConvertToken(bodyObject);
                 bodypropCount++;
             }
 
@@ -66,15 +66,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
         {
-            var apiCallPath = String.Format("/{0}/response", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/response", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyanswers != null)
             {
-                body["answers"] = ExpressionConverter.ConvertO(bodyanswers);
+                body["answers"] = CSharpExpressionConverter.ConvertToken(bodyanswers);
                 bodypropCount++;
             }
 
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID)
         {
-            var apiCallPath = String.Format("/{0}/undo", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/undo", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -106,10 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<EvidenceResponse> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factID, Expression<Func<string>> sessionID)
         {
-            var apiCallPath = String.Format("/analysis/evidence/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(factID, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/analysis/evidence/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(factID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             return new ApiConnectionAction<EvidenceResponse>(callPayload);
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
             var apiCallPath = "/version";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+            callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

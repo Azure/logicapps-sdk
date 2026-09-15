@@ -21,31 +21,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
             var bodypropCount = 0;
             if (bodytemplate != null)
             {
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
                 bodypropCount++;
             }
 
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodytemplateVariables != null)
             {
-                body["templateVariables"] = ExpressionConverter.ConvertO(bodytemplateVariables);
+                body["templateVariables"] = CSharpExpressionConverter.ConvertToken(bodytemplateVariables);
                 bodypropCount++;
             }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateName)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateGetResponse>(callPayload);

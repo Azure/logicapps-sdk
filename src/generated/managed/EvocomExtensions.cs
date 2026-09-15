@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/api/Teams";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             return new ApiConnectionAction<TeamResponseV2[]>(callPayload);
         }
 
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pageIndex"] = Convert.ToString(0);
             if (pageIndex != null)
-                callPayload.Queries["pageIndex"] = ExpressionConverter.Convert(pageIndex);
+                callPayload.Queries["pageIndex"] = CSharpExpressionConverter.ConvertO(pageIndex);
             callPayload.Queries["itemsPerPage"] = Convert.ToString(1000);
             if (itemsPerPage != null)
-                callPayload.Queries["itemsPerPage"] = ExpressionConverter.Convert(itemsPerPage);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+                callPayload.Queries["itemsPerPage"] = CSharpExpressionConverter.ConvertO(itemsPerPage);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             return new ApiConnectionAction<RouteDefinitionsResponse>(callPayload);
         }
     }
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Tasks/New";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.ConvertToken(bodytaskType);
                 bodypropCount++;
             }
 
@@ -69,22 +69,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Tasks/Change";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.ConvertToken(bodytaskType);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
+            body["changeType"] = CSharpExpressionConverter.ConvertToken(bodychangeType);
             if (bodytaskStatus != null)
             {
-                body["taskStatus"] = ExpressionConverter.ConvertO(bodytaskStatus);
+                body["taskStatus"] = CSharpExpressionConverter.ConvertToken(bodytaskStatus);
                 bodypropCount++;
             }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Teams/New";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Teams/Change";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
+            body["changeType"] = CSharpExpressionConverter.ConvertToken(bodychangeType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -139,13 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Processes/New";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["definitionId"] = ExpressionConverter.ConvertO(bodydefinitionId);
+            body["definitionId"] = CSharpExpressionConverter.ConvertToken(bodydefinitionId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -159,22 +159,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             var apiCallPath = "/hooks/Processes/Change";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
+            callPayload.Headers["x-ep-tenant"] = CSharpExpressionConverter.ConvertO(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodydefinitionId != null)
             {
-                body["definitionId"] = ExpressionConverter.ConvertO(bodydefinitionId);
+                body["definitionId"] = CSharpExpressionConverter.ConvertToken(bodydefinitionId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
+            body["changeType"] = CSharpExpressionConverter.ConvertToken(bodychangeType);
             if (bodystepId != null)
             {
-                body["stepId"] = ExpressionConverter.ConvertO(bodystepId);
+                body["stepId"] = CSharpExpressionConverter.ConvertToken(bodystepId);
                 bodypropCount++;
             }
 

@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-api-key"] = Convert.ToString("");
             if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
             callPayload.Headers["x-client-id"] = Convert.ToString("");
             if (xClientId != null)
-                callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
+                callPayload.Headers["x-client-id"] = CSharpExpressionConverter.ConvertO(xClientId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
             body["filetype"] = "text/plain";
             bodypropCount++;
             body["cte"] = "base64";
             bodypropCount++;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -48,17 +48,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
+                callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
             if (xClientId != null)
-                callPayload.Headers["x-client-id"] = ExpressionConverter.Convert(xClientId);
+                callPayload.Headers["x-client-id"] = CSharpExpressionConverter.ConvertO(xClientId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
             body["cte"] = "base64";
             bodypropCount++;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

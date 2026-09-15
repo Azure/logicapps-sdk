@@ -14,41 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<ExecuteSceneResponse> ExecuteScene(Expression<Func<string>> sceneID, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/scene/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
             return new ApiConnectionAction<ExecuteSceneResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<GetWebhookResponse> GetWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
             return new ApiConnectionAction<GetWebhookResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<DeleteWebhookResponse> DeleteWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
             return new ApiConnectionAction<DeleteWebhookResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<CreateWebhookResponse> CreateWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> webhook, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Queries["webhook"] = CSharpExpressionConverter.ConvertO(webhook);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/EntityTypes/GetEntityTypes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             return new ApiConnectionAction<Item[]>(callPayload);
         }
 
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(entityTypeUid);
-            callPayload.Queries["entityName"] = ExpressionConverter.Convert(entityName);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityTypeUid"] = CSharpExpressionConverter.ConvertO(entityTypeUid);
+            callPayload.Queries["entityName"] = CSharpExpressionConverter.ConvertO(entityName);
             return new ApiConnectionAction<CallResultWithData>(callPayload);
         }
 
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetAllEntities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                callPayload.Queries["selectColumns"] = CSharpExpressionConverter.ConvertO(selectColumns);
             return new ApiConnectionAction<Entity[]>(callPayload);
         }
 
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                callPayload.Queries["selectColumns"] = CSharpExpressionConverter.ConvertO(selectColumns);
             return new ApiConnectionAction<CallResultWithData>(callPayload);
         }
 
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntity";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                callPayload.Queries["selectColumns"] = CSharpExpressionConverter.ConvertO(selectColumns);
             return new ApiConnectionAction<Entity>(callPayload);
         }
 
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                callPayload.Queries["selectColumns"] = CSharpExpressionConverter.ConvertO(selectColumns);
             return new ApiConnectionAction<CallResultWithData>(callPayload);
         }
 
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityFields";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             return new ApiConnectionAction<Item[]>(callPayload);
         }
 
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<CallResultWithData>(callPayload);
         }
 
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             return new ApiConnectionAction<FieldValue[]>(callPayload);
         }
 
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["fieldIdentifier"] = CSharpExpressionConverter.ConvertO(fieldIdentifier);
             return new ApiConnectionAction<FieldValue>(callPayload);
         }
 
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             return new ApiConnectionAction<bool>(callPayload);
         }
 
@@ -153,10 +153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["fieldIdentifier"] = CSharpExpressionConverter.ConvertO(fieldIdentifier);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<CallResult>(callPayload);
         }
 
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fieldValues);
             return new ApiConnectionAction<CallResult>(callPayload);
         }
 
@@ -178,13 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["eftId"] = CSharpExpressionConverter.ConvertO(eftId);
+            callPayload.Queries["fdId"] = CSharpExpressionConverter.ConvertO(fdId);
+            callPayload.Queries["fnId"] = CSharpExpressionConverter.ConvertO(fnId);
+            callPayload.Queries["centerId"] = CSharpExpressionConverter.ConvertO(centerId);
+            callPayload.Queries["fieldIdentifier"] = CSharpExpressionConverter.ConvertO(fieldIdentifier);
             return new ApiConnectionAction<CustomFieldValueCreationInformation>(callPayload);
         }
 
@@ -194,14 +194,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["eftId"] = CSharpExpressionConverter.ConvertO(eftId);
+            callPayload.Queries["fdId"] = CSharpExpressionConverter.ConvertO(fdId);
+            callPayload.Queries["fnId"] = CSharpExpressionConverter.ConvertO(fnId);
+            callPayload.Queries["centerId"] = CSharpExpressionConverter.ConvertO(centerId);
+            callPayload.Queries["fieldIdentifier"] = CSharpExpressionConverter.ConvertO(fieldIdentifier);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -211,13 +211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["eftId"] = CSharpExpressionConverter.ConvertO(eftId);
+            callPayload.Queries["fdId"] = CSharpExpressionConverter.ConvertO(fdId);
+            callPayload.Queries["fnId"] = CSharpExpressionConverter.ConvertO(fnId);
+            callPayload.Queries["centerId"] = CSharpExpressionConverter.ConvertO(centerId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fieldValues);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -227,8 +227,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityResources";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityUid"] = CSharpExpressionConverter.ConvertO(entityUid);
             return new ApiConnectionAction<Resource[]>(callPayload);
         }
 
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/AddEntityResource";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
-            callPayload.Queries["resourceUid"] = ExpressionConverter.Convert(resourceUid);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityUid"] = CSharpExpressionConverter.ConvertO(entityUid);
+            callPayload.Queries["resourceUid"] = CSharpExpressionConverter.ConvertO(resourceUid);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -250,10 +250,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -263,8 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
             return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
         }
 
@@ -274,9 +274,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(relatedEntityId);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["relatedEntityId"] = CSharpExpressionConverter.ConvertO(relatedEntityId);
             return new ApiConnectionAction<CallResult>(callPayload);
         }
 
@@ -286,12 +286,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
-            callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(activityTypeIcon);
-            callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(activityDetails);
-            callPayload.Queries["initiator"] = ExpressionConverter.Convert(initiator);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["entityId"] = CSharpExpressionConverter.ConvertO(entityId);
+            callPayload.Queries["activityType"] = CSharpExpressionConverter.ConvertO(activityType);
+            callPayload.Queries["activityTypeIcon"] = CSharpExpressionConverter.ConvertO(activityTypeIcon);
+            callPayload.Queries["activityDetails"] = CSharpExpressionConverter.ConvertO(activityDetails);
+            callPayload.Queries["initiator"] = CSharpExpressionConverter.ConvertO(initiator);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/LookupTable/GetLookupTables";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             return new ApiConnectionAction<Item[]>(callPayload);
         }
 
@@ -311,8 +311,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var apiCallPath = "/LookupTable/GetLookupTableValues";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(optionSetUid);
+            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["optionSetUid"] = CSharpExpressionConverter.ConvertO(optionSetUid);
             return new ApiConnectionAction<Item[]>(callPayload);
         }
     }
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var eventCreationInformation = new JObject();
             var eventCreationInformationpropCount = 0;
             eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+            eventCreationInformation["SiteURL"] = CSharpExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
             eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
             eventCreationInformationpropCount++;
             if (eventCreationInformationpropCount > 0)

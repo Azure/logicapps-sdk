@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             if (bodymembers != null)
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -63,19 +63,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodystartIndex != null)
             {
-                body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
+                body["startIndex"] = CSharpExpressionConverter.ConvertToken(bodystartIndex);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodystartIndex != null)
             {
-                body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
+                body["startIndex"] = CSharpExpressionConverter.ConvertToken(bodystartIndex);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -148,10 +148,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -159,13 +159,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var nameObjectpropCount = 0;
             if (bodynamegivenName != null)
             {
-                nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
+                nameObject["givenName"] = CSharpExpressionConverter.ConvertToken(bodynamegivenName);
                 nameObjectpropCount++;
             }
 
             if (bodynamefamilyName != null)
             {
-                nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
+                nameObject["familyName"] = CSharpExpressionConverter.ConvertToken(bodynamefamilyName);
                 nameObjectpropCount++;
             }
 
@@ -177,49 +177,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
             if (bodyactive != null)
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
                 bodypropCount++;
             }
 
             if (bodysendInvite != null)
             {
-                body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                body["sendInvite"] = CSharpExpressionConverter.ConvertToken(bodysendInvite);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodyauthType != null)
             {
-                body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+                body["authType"] = CSharpExpressionConverter.Convert(bodyauthType);
                 bodypropCount++;
             }
 
             if (bodyuserType != null)
             {
-                body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
+                body["userType"] = CSharpExpressionConverter.Convert(bodyuserType);
                 bodypropCount++;
             }
 
             if (bodyrole != null)
             {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
                 bodypropCount++;
             }
 
             if (bodyidpUserId != null)
             {
-                body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                body["idpUserId"] = CSharpExpressionConverter.ConvertToken(bodyidpUserId);
                 bodypropCount++;
             }
 
             if (bodyuserPrincipalName != null)
             {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                body["userPrincipalName"] = CSharpExpressionConverter.ConvertToken(bodyuserPrincipalName);
                 bodypropCount++;
             }
 
@@ -240,20 +240,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+            body["userName"] = CSharpExpressionConverter.ConvertToken(bodyuserName);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             var nameObject = new JObject();
             var nameObjectpropCount = 0;
             if (bodynamegivenName != null)
             {
-                nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
+                nameObject["givenName"] = CSharpExpressionConverter.ConvertToken(bodynamegivenName);
                 nameObjectpropCount++;
             }
 
             if (bodynamefamilyName != null)
             {
-                nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
+                nameObject["familyName"] = CSharpExpressionConverter.ConvertToken(bodynamefamilyName);
                 nameObjectpropCount++;
             }
 
@@ -264,50 +264,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             }
 
             bodypropCount++;
-            body["active"] = ExpressionConverter.ConvertO(bodyactive);
+            body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
             bodypropCount++;
-            body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
+            body["userType"] = CSharpExpressionConverter.Convert(bodyuserType);
             bodypropCount++;
-            body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+            body["authType"] = CSharpExpressionConverter.Convert(bodyauthType);
             if (bodyexternalId != null)
             {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                body["externalId"] = CSharpExpressionConverter.ConvertToken(bodyexternalId);
                 bodypropCount++;
             }
 
             if (bodysendInvite != null)
             {
-                body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                body["sendInvite"] = CSharpExpressionConverter.ConvertToken(bodysendInvite);
                 bodypropCount++;
             }
 
             if (bodyisServiceAccount != null)
             {
-                body["isServiceAccount"] = ExpressionConverter.ConvertO(bodyisServiceAccount);
+                body["isServiceAccount"] = CSharpExpressionConverter.ConvertToken(bodyisServiceAccount);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodyrole != null)
             {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
                 bodypropCount++;
             }
 
             if (bodyidpUserId != null)
             {
-                body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                body["idpUserId"] = CSharpExpressionConverter.ConvertToken(bodyidpUserId);
                 bodypropCount++;
             }
 
             if (bodyuserPrincipalName != null)
             {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                body["userPrincipalName"] = CSharpExpressionConverter.ConvertToken(bodyuserPrincipalName);
                 bodypropCount++;
             }
 
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -436,9 +436,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -456,9 +456,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -476,12 +476,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             if (bodymembers != null)
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
@@ -502,16 +502,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodymembers != null)
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -550,9 +550,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -570,9 +570,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -590,9 +590,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -610,9 +610,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -630,9 +630,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -650,9 +650,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+            body["destination_path"] = CSharpExpressionConverter.ConvertToken(bodydestinationPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -742,28 +742,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodyfolderDescription != null)
             {
-                body["folder_description"] = ExpressionConverter.ConvertO(bodyfolderDescription);
+                body["folder_description"] = CSharpExpressionConverter.ConvertToken(bodyfolderDescription);
                 bodypropCount++;
             }
 
             if (bodyallowLinks != null)
             {
-                body["allow_links"] = ExpressionConverter.ConvertO(bodyallowLinks);
+                body["allow_links"] = CSharpExpressionConverter.ConvertToken(bodyallowLinks);
                 bodypropCount++;
             }
 
             if (bodypublicLinks != null)
             {
-                body["public_links"] = ExpressionConverter.ConvertO(bodypublicLinks);
+                body["public_links"] = CSharpExpressionConverter.Convert(bodypublicLinks);
                 bodypropCount++;
             }
 
             if (bodyrestrictMoveDelete != null)
             {
-                body["restrict_move_delete"] = ExpressionConverter.ConvertO(bodyrestrictMoveDelete);
+                body["restrict_move_delete"] = CSharpExpressionConverter.ConvertToken(bodyrestrictMoveDelete);
                 bodypropCount++;
             }
 
@@ -771,13 +771,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var emailPreferencesObjectpropCount = 0;
             if (bodyemailPreferencescontentUpdates != null)
             {
-                emailPreferencesObject["content_updates"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentUpdates);
+                emailPreferencesObject["content_updates"] = CSharpExpressionConverter.ConvertToken(bodyemailPreferencescontentUpdates);
                 emailPreferencesObjectpropCount++;
             }
 
             if (bodyemailPreferencescontentAccessed != null)
             {
-                emailPreferencesObject["content_accessed"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentAccessed);
+                emailPreferencesObject["content_accessed"] = CSharpExpressionConverter.ConvertToken(bodyemailPreferencescontentAccessed);
                 emailPreferencesObjectpropCount++;
             }
 
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -858,9 +858,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
+            body["lock_token"] = CSharpExpressionConverter.ConvertToken(bodylockToken);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -896,9 +896,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
+            body["lock_token"] = CSharpExpressionConverter.ConvertToken(bodylockToken);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["filePath"] = ExpressionConverter.ConvertO(bodyfilePath);
+            body["filePath"] = CSharpExpressionConverter.ConvertToken(bodyfilePath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+            body["fileId"] = CSharpExpressionConverter.ConvertToken(bodyfileId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -949,9 +949,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/api-proxy/UploadFile";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Queries["Path"] = CSharpExpressionConverter.ConvertO(path);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateFileResponse>(callPayload);
         }
 
@@ -964,14 +964,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+            body["fileId"] = CSharpExpressionConverter.ConvertToken(bodyfileId);
             bodypropCount++;
-            body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
+            body["namespaceName"] = CSharpExpressionConverter.ConvertToken(bodynamespaceName);
             bodypropCount++;
-            body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
+            body["metadataName"] = CSharpExpressionConverter.ConvertToken(bodymetadataName);
             if (bodymetadataValue != null)
             {
-                body["metadataValue"] = ExpressionConverter.ConvertO(bodymetadataValue);
+                body["metadataValue"] = CSharpExpressionConverter.ConvertToken(bodymetadataValue);
                 bodypropCount++;
             }
 
@@ -992,13 +992,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+            body["folderId"] = CSharpExpressionConverter.ConvertToken(bodyfolderId);
             bodypropCount++;
-            body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
+            body["namespaceName"] = CSharpExpressionConverter.ConvertToken(bodynamespaceName);
             bodypropCount++;
-            body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
+            body["metadataName"] = CSharpExpressionConverter.ConvertToken(bodymetadataName);
             bodypropCount++;
-            body["metadataValue"] = ExpressionConverter.ConvertO(bodymetadataValue);
+            body["metadataValue"] = CSharpExpressionConverter.ConvertToken(bodymetadataValue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1025,17 +1025,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+            body["scope"] = CSharpExpressionConverter.Convert(bodyscope);
             bodypropCount++;
-            body["keys"] = ExpressionConverter.ConvertO(bodykeys);
+            body["keys"] = CSharpExpressionConverter.ConvertToken(bodykeys);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1053,10 +1053,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
@@ -1085,36 +1085,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
             if (bodyhelpText != null)
             {
-                body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
+                body["helpText"] = CSharpExpressionConverter.ConvertToken(bodyhelpText);
                 bodypropCount++;
             }
 
@@ -1135,7 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1153,10 +1153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             if (bodyforce != null)
             {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                body["force"] = CSharpExpressionConverter.ConvertToken(bodyforce);
                 bodypropCount++;
             }
 
@@ -1186,26 +1186,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
+            body["rootFolderId"] = CSharpExpressionConverter.ConvertToken(bodyrootFolderId);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodycompletionDate != null)
             {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                body["completionDate"] = CSharpExpressionConverter.ConvertToken(bodycompletionDate);
                 bodypropCount++;
             }
 
@@ -1226,42 +1226,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+            body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
             bodypropCount++;
-            body["templateFolderId"] = ExpressionConverter.ConvertO(bodytemplateFolderId);
+            body["templateFolderId"] = CSharpExpressionConverter.ConvertToken(bodytemplateFolderId);
             bodypropCount++;
-            body["folderName"] = ExpressionConverter.ConvertO(bodyfolderName);
+            body["folderName"] = CSharpExpressionConverter.ConvertToken(bodyfolderName);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodycustomerName != null)
             {
-                body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
+                body["customerName"] = CSharpExpressionConverter.ConvertToken(bodycustomerName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodycompletionDate != null)
             {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                body["completionDate"] = CSharpExpressionConverter.ConvertToken(bodycompletionDate);
                 bodypropCount++;
             }
 
@@ -1269,37 +1269,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var locationObjectpropCount = 0;
             if (bodylocationstreetAddress1 != null)
             {
-                locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
+                locationObject["streetAddress1"] = CSharpExpressionConverter.ConvertToken(bodylocationstreetAddress1);
                 locationObjectpropCount++;
             }
 
             if (bodylocationstreetAddress2 != null)
             {
-                locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
+                locationObject["streetAddress2"] = CSharpExpressionConverter.ConvertToken(bodylocationstreetAddress2);
                 locationObjectpropCount++;
             }
 
             if (bodylocationcity != null)
             {
-                locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
+                locationObject["city"] = CSharpExpressionConverter.ConvertToken(bodylocationcity);
                 locationObjectpropCount++;
             }
 
             if (bodylocationstate != null)
             {
-                locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
+                locationObject["state"] = CSharpExpressionConverter.ConvertToken(bodylocationstate);
                 locationObjectpropCount++;
             }
 
             if (bodylocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodylocationcountry);
                 locationObjectpropCount++;
             }
 
             if (bodylocationpostalCode != null)
             {
-                locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
+                locationObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodylocationpostalCode);
                 locationObjectpropCount++;
             }
 
@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1344,24 +1344,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             if (bodycustomProjectId != null)
             {
-                body["customProjectId"] = ExpressionConverter.ConvertO(bodycustomProjectId);
+                body["customProjectId"] = CSharpExpressionConverter.ConvertToken(bodycustomProjectId);
                 bodypropCount++;
             }
 
             if (bodycustomerName != null)
             {
-                body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
+                body["customerName"] = CSharpExpressionConverter.ConvertToken(bodycustomerName);
                 bodypropCount++;
             }
 
@@ -1369,37 +1369,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var locationObjectpropCount = 0;
             if (bodylocationstreetAddress1 != null)
             {
-                locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
+                locationObject["streetAddress1"] = CSharpExpressionConverter.ConvertToken(bodylocationstreetAddress1);
                 locationObjectpropCount++;
             }
 
             if (bodylocationstreetAddress2 != null)
             {
-                locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
+                locationObject["streetAddress2"] = CSharpExpressionConverter.ConvertToken(bodylocationstreetAddress2);
                 locationObjectpropCount++;
             }
 
             if (bodylocationcity != null)
             {
-                locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
+                locationObject["city"] = CSharpExpressionConverter.ConvertToken(bodylocationcity);
                 locationObjectpropCount++;
             }
 
             if (bodylocationstate != null)
             {
-                locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
+                locationObject["state"] = CSharpExpressionConverter.ConvertToken(bodylocationstate);
                 locationObjectpropCount++;
             }
 
             if (bodylocationpostalCode != null)
             {
-                locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
+                locationObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodylocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodylocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodylocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -1410,16 +1410,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             }
 
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodycompletionDate != null)
             {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                body["completionDate"] = CSharpExpressionConverter.ConvertToken(bodycompletionDate);
                 bodypropCount++;
             }
 
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteProjectById(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api-proxy/DeleteProjectById/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api-proxy/DeleteProjectById/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -1449,7 +1449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
+            body["rootFolderId"] = CSharpExpressionConverter.ConvertToken(bodyrootFolderId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1467,18 +1467,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             bodypropCount++;
-            body["deleteLinks"] = ExpressionConverter.ConvertO(bodydeleteLinks);
+            body["deleteLinks"] = CSharpExpressionConverter.ConvertToken(bodydeleteLinks);
             if (bodyusersToDelete != null)
             {
-                body["usersToDelete"] = ExpressionConverter.ConvertO(bodyusersToDelete);
+                body["usersToDelete"] = CSharpExpressionConverter.ConvertToken(bodyusersToDelete);
                 bodypropCount++;
             }
 
             if (bodyusersToDisable != null)
             {
-                body["usersToDisable"] = ExpressionConverter.ConvertO(bodyusersToDisable);
+                body["usersToDisable"] = CSharpExpressionConverter.ConvertToken(bodyusersToDisable);
                 bodypropCount++;
             }
 
@@ -1499,32 +1499,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyhelpText != null)
             {
-                body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
+                body["helpText"] = CSharpExpressionConverter.ConvertToken(bodyhelpText);
                 bodypropCount++;
             }
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1545,12 +1545,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodyforce != null)
             {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                body["force"] = CSharpExpressionConverter.ConvertToken(bodyforce);
                 bodypropCount++;
             }
 
@@ -1571,9 +1571,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+            body["fileId"] = CSharpExpressionConverter.ConvertToken(bodyfileId);
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1591,9 +1591,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+            body["folderId"] = CSharpExpressionConverter.ConvertToken(bodyfolderId);
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1612,19 +1612,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodyhasKey != null)
             {
-                body["hasKey"] = ExpressionConverter.ConvertO(bodyhasKey);
+                body["hasKey"] = CSharpExpressionConverter.ConvertToken(bodyhasKey);
                 bodypropCount++;
             }
 
             if (bodykeyWithValue != null)
             {
-                body["keyWithValue"] = ExpressionConverter.ConvertO(bodykeyWithValue);
+                body["keyWithValue"] = CSharpExpressionConverter.ConvertToken(bodykeyWithValue);
                 bodypropCount++;
             }
 
@@ -1645,9 +1645,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1665,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             var userPermsObject = new JObject();
             var userPermsObjectpropCount = 0;
             if (userPermsObjectpropCount > 0)
@@ -1684,13 +1684,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
             if (bodyinheritsPermissions != null)
             {
-                body["inheritsPermissions"] = ExpressionConverter.ConvertO(bodyinheritsPermissions);
+                body["inheritsPermissions"] = CSharpExpressionConverter.ConvertToken(bodyinheritsPermissions);
                 bodypropCount++;
             }
 
             if (bodykeepParentPermissions != null)
             {
-                body["keepParentPermissions"] = ExpressionConverter.ConvertO(bodykeepParentPermissions);
+                body["keepParentPermissions"] = CSharpExpressionConverter.ConvertToken(bodykeepParentPermissions);
                 bodypropCount++;
             }
 
@@ -1711,7 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1729,9 +1729,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1768,49 +1768,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
             if (bodycreatedBefore != null)
             {
-                body["createdBefore"] = ExpressionConverter.ConvertO(bodycreatedBefore);
+                body["createdBefore"] = CSharpExpressionConverter.ConvertToken(bodycreatedBefore);
                 bodypropCount++;
             }
 
             if (bodycreatedAfter != null)
             {
-                body["createdAfter"] = ExpressionConverter.ConvertO(bodycreatedAfter);
+                body["createdAfter"] = CSharpExpressionConverter.ConvertToken(bodycreatedAfter);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodyaccessibility != null)
             {
-                body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
+                body["accessibility"] = CSharpExpressionConverter.Convert(bodyaccessibility);
                 bodypropCount++;
             }
 
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 
@@ -1831,7 +1831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
+            body["linkId"] = CSharpExpressionConverter.ConvertToken(bodylinkId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1849,86 +1849,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodyaccessibility != null)
             {
-                body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
+                body["accessibility"] = CSharpExpressionConverter.Convert(bodyaccessibility);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["useDefaultSettings"] = ExpressionConverter.ConvertO(bodyuseDefaultSettings);
+            body["useDefaultSettings"] = CSharpExpressionConverter.ConvertToken(bodyuseDefaultSettings);
             if (bodysendEmail != null)
             {
-                body["send_email"] = ExpressionConverter.ConvertO(bodysendEmail);
+                body["send_email"] = CSharpExpressionConverter.ConvertToken(bodysendEmail);
                 bodypropCount++;
             }
 
             if (bodyrecipients != null)
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycopyMe != null)
             {
-                body["copy_me"] = ExpressionConverter.ConvertO(bodycopyMe);
+                body["copy_me"] = CSharpExpressionConverter.ConvertToken(bodycopyMe);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodylinkToCurrent != null)
             {
-                body["link_to_current"] = ExpressionConverter.ConvertO(bodylinkToCurrent);
+                body["link_to_current"] = CSharpExpressionConverter.ConvertToken(bodylinkToCurrent);
                 bodypropCount++;
             }
 
             if (bodyexpiryDate != null)
             {
-                body["expiry_date"] = ExpressionConverter.ConvertO(bodyexpiryDate);
+                body["expiry_date"] = CSharpExpressionConverter.ConvertToken(bodyexpiryDate);
                 bodypropCount++;
             }
 
             if (bodyexpiryClicks != null)
             {
-                body["expiry_clicks"] = ExpressionConverter.ConvertO(bodyexpiryClicks);
+                body["expiry_clicks"] = CSharpExpressionConverter.ConvertToken(bodyexpiryClicks);
                 bodypropCount++;
             }
 
             if (bodyaddFileName != null)
             {
-                body["add_file_name"] = ExpressionConverter.ConvertO(bodyaddFileName);
+                body["add_file_name"] = CSharpExpressionConverter.ConvertToken(bodyaddFileName);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyprotection != null)
             {
-                body["protection"] = ExpressionConverter.ConvertO(bodyprotection);
+                body["protection"] = CSharpExpressionConverter.Convert(bodyprotection);
                 bodypropCount++;
             }
 
             if (bodyfolderPerRecipient != null)
             {
-                body["folder_per_recipient"] = ExpressionConverter.ConvertO(bodyfolderPerRecipient);
+                body["folder_per_recipient"] = CSharpExpressionConverter.ConvertToken(bodyfolderPerRecipient);
                 bodypropCount++;
             }
 
@@ -1949,7 +1949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
+            body["linkId"] = CSharpExpressionConverter.ConvertToken(bodylinkId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1968,13 +1968,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodyentryId != null)
             {
-                body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
+                body["entryId"] = CSharpExpressionConverter.ConvertToken(bodyentryId);
                 bodypropCount++;
             }
 
             if (bodyquestion != null)
             {
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                body["question"] = CSharpExpressionConverter.ConvertToken(bodyquestion);
                 bodypropCount++;
             }
 
@@ -1982,7 +1982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             {
                 if (bodyincludeCitations != null)
                 {
-                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    body["includeCitations"] = CSharpExpressionConverter.ConvertToken(bodyincludeCitations);
                     bodypropCount++;
                 }
 
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var chatHistoryObjectpropCount = 0;
             if (bodychatHistorymessages != null)
             {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                chatHistoryObject["messages"] = CSharpExpressionConverter.ConvertToken(bodychatHistorymessages);
                 chatHistoryObjectpropCount++;
             }
 
@@ -2026,7 +2026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodyentryId != null)
             {
-                body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
+                body["entryId"] = CSharpExpressionConverter.ConvertToken(bodyentryId);
                 bodypropCount++;
             }
 
@@ -2034,7 +2034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var chatHistoryObjectpropCount = 0;
             if (bodychatHistorymessages != null)
             {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                chatHistoryObject["messages"] = CSharpExpressionConverter.ConvertToken(bodychatHistorymessages);
                 chatHistoryObjectpropCount++;
             }
 
@@ -2062,7 +2062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var bodypropCount = 0;
             if (bodyquestion != null)
             {
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                body["question"] = CSharpExpressionConverter.ConvertToken(bodyquestion);
                 bodypropCount++;
             }
 
@@ -2070,13 +2070,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var selectedItemsObjectpropCount = 0;
             if (bodyselectedItemsfolders != null)
             {
-                selectedItemsObject["folders"] = ExpressionConverter.ConvertO(bodyselectedItemsfolders);
+                selectedItemsObject["folders"] = CSharpExpressionConverter.ConvertToken(bodyselectedItemsfolders);
                 selectedItemsObjectpropCount++;
             }
 
             if (bodyselectedItemsfiles != null)
             {
-                selectedItemsObject["files"] = ExpressionConverter.ConvertO(bodyselectedItemsfiles);
+                selectedItemsObject["files"] = CSharpExpressionConverter.ConvertToken(bodyselectedItemsfiles);
                 selectedItemsObjectpropCount++;
             }
 
@@ -2090,7 +2090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             {
                 if (bodyincludeCitations != null)
                 {
-                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    body["includeCitations"] = CSharpExpressionConverter.ConvertToken(bodyincludeCitations);
                     bodypropCount++;
                 }
 
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var chatHistoryObjectpropCount = 0;
             if (bodychatHistorymessages != null)
             {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                chatHistoryObject["messages"] = CSharpExpressionConverter.ConvertToken(bodychatHistorymessages);
                 chatHistoryObjectpropCount++;
             }
 
@@ -2133,52 +2133,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 
             if (bodyfolder != null)
             {
-                body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
+                body["folder"] = CSharpExpressionConverter.ConvertToken(bodyfolder);
                 bodypropCount++;
             }
 
             if (bodymodifiedBefore != null)
             {
-                body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
+                body["modifiedBefore"] = CSharpExpressionConverter.ConvertToken(bodymodifiedBefore);
                 bodypropCount++;
             }
 
             if (bodymodifiedAfter != null)
             {
-                body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
+                body["modifiedAfter"] = CSharpExpressionConverter.ConvertToken(bodymodifiedAfter);
                 bodypropCount++;
             }
 
             if (bodyuploadedBefore != null)
             {
-                body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
+                body["uploadedBefore"] = CSharpExpressionConverter.ConvertToken(bodyuploadedBefore);
                 bodypropCount++;
             }
 
             if (bodyuploadedAfter != null)
             {
-                body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
+                body["uploadedAfter"] = CSharpExpressionConverter.ConvertToken(bodyuploadedAfter);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
@@ -2186,7 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             {
                 if (bodysnippetRequested != null)
                 {
-                    body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
+                    body["snippetRequested"] = CSharpExpressionConverter.ConvertToken(bodysnippetRequested);
                     bodypropCount++;
                 }
 
@@ -2200,43 +2200,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
             if (bodysortBy != null)
             {
-                body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
+                body["sortBy"] = CSharpExpressionConverter.Convert(bodysortBy);
                 bodypropCount++;
             }
 
             if (bodysortDirection != null)
             {
-                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
+                body["sortDirection"] = CSharpExpressionConverter.Convert(bodysortDirection);
                 bodypropCount++;
             }
 
             if (bodyfileQueryFields != null)
             {
-                body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
+                body["fileQueryFields"] = CSharpExpressionConverter.ConvertToken(bodyfileQueryFields);
                 bodypropCount++;
             }
 
             if (bodyfolderQueryFields != null)
             {
-                body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
+                body["folderQueryFields"] = CSharpExpressionConverter.ConvertToken(bodyfolderQueryFields);
                 bodypropCount++;
             }
 
             if (bodyqueryOperator != null)
             {
-                body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
+                body["queryOperator"] = CSharpExpressionConverter.Convert(bodyqueryOperator);
                 bodypropCount++;
             }
 
             if (bodymlt != null)
             {
-                body["mlt"] = ExpressionConverter.ConvertO(bodymlt);
+                body["mlt"] = CSharpExpressionConverter.ConvertToken(bodymlt);
                 bodypropCount++;
             }
 
             if (bodymltt != null)
             {
-                body["mltt"] = ExpressionConverter.ConvertO(bodymltt);
+                body["mltt"] = CSharpExpressionConverter.ConvertToken(bodymltt);
                 bodypropCount++;
             }
 
@@ -2256,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileLocked";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2274,7 +2274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileUnlocked";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2292,7 +2292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileUpdated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2310,7 +2310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2328,7 +2328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/ShareLinkCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2346,7 +2346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/ShareLinkDeleted";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2364,7 +2364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileOrFolderPermissionChange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2382,7 +2382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FileOrFolderMetadataChange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2400,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FolderProjectAdded";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2418,7 +2418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FolderProjectUnmarked";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2436,7 +2436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/FolderProjectUpdated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2454,7 +2454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/WorkflowCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2472,7 +2472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/WorkflowCompleted";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2490,7 +2490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2508,7 +2508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["url"] = "@listCallbackUrl()";
@@ -2577,7 +2577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/created-files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2586,7 +2586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/created-folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2595,7 +2595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/deleted-files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2604,7 +2604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/deleted-folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2613,7 +2613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/renamed-files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2622,7 +2622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/renamed-folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2631,7 +2631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/moved-files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2640,7 +2640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/moved-folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2649,7 +2649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/copied-files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -2658,7 +2658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var apiCallPath = "/trigger/polling/copied-folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["FolderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
         }
     }

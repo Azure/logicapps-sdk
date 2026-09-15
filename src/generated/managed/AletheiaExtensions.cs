@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/EntityFilings";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (filing != null)
-                callPayload.Queries["filing"] = ExpressionConverter.Convert(filing);
+                callPayload.Queries["filing"] = CSharpExpressionConverter.ConvertO(filing);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
         }
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/OpenForm4";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+            callPayload.Queries["filingurl"] = CSharpExpressionConverter.ConvertO(filingurl);
             return new ApiConnectionAction<OpenForm4Response>(callPayload);
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/OpenCommonFinancials";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+            callPayload.Queries["filingurl"] = CSharpExpressionConverter.ConvertO(filingurl);
             return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
         }
 
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/SearchEntities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+            callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
             callPayload.Queries["top"] = Convert.ToString(12);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/GetEntity";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<GetEntityResponse>(callPayload);
         }
 
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (url != null)
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             return new ApiConnectionAction<GetFilingResponse>(callPayload);
         }
 
@@ -88,20 +88,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (issuer != null)
-                callPayload.Queries["issuer"] = ExpressionConverter.Convert(issuer);
+                callPayload.Queries["issuer"] = CSharpExpressionConverter.ConvertO(issuer);
             if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                callPayload.Queries["owner"] = CSharpExpressionConverter.ConvertO(owner);
             callPayload.Queries["top"] = Convert.ToString(20);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (securitytype != null)
-                callPayload.Queries["securitytype"] = ExpressionConverter.Convert(securitytype);
+                callPayload.Queries["securitytype"] = CSharpExpressionConverter.ConvertO(securitytype);
             if (transactiontype != null)
-                callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(transactiontype);
+                callPayload.Queries["transactiontype"] = CSharpExpressionConverter.ConvertO(transactiontype);
             if (cascade != null)
-                callPayload.Queries["cascade"] = ExpressionConverter.Convert(cascade);
+                callPayload.Queries["cascade"] = CSharpExpressionConverter.ConvertO(cascade);
             return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/AffiliatedOwners";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
         }
 
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/CommonFinancials";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
+                callPayload.Queries["period"] = CSharpExpressionConverter.Convert(period);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
         }
 
@@ -135,14 +135,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/FinancialFactTrend";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["label"] = ExpressionConverter.Convert(label);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Queries["label"] = CSharpExpressionConverter.ConvertO(label);
             if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
+                callPayload.Queries["period"] = CSharpExpressionConverter.ConvertO(period);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
         }
 
@@ -153,13 +153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (quarter != null)
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
+                callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
         }
 
@@ -169,15 +169,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/EarningsCall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (quarter != null)
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
+                callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
             if (begin != null)
-                callPayload.Queries["begin"] = ExpressionConverter.Convert(begin);
+                callPayload.Queries["begin"] = CSharpExpressionConverter.ConvertO(begin);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             return new ApiConnectionAction<EarningsCallResponse>(callPayload);
         }
 
@@ -187,13 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/EarningsCallHighlights";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
+            callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
+            callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
         }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/Crypto";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+            callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
             return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
         }
 
@@ -213,9 +213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var apiCallPath = "/v2/StockData";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+            callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             callPayload.Headers["Accept-Version"] = Convert.ToString(2);
             return new ApiConnectionAction<StockDataV2Response>(callPayload);
         }
@@ -251,25 +251,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             bodypropCount++;
             if (bodyissuer != null)
             {
-                body["issuer"] = ExpressionConverter.ConvertO(bodyissuer);
+                body["issuer"] = CSharpExpressionConverter.ConvertToken(bodyissuer);
                 bodypropCount++;
             }
 
             if (bodyowner != null)
             {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["owner"] = CSharpExpressionConverter.ConvertToken(bodyowner);
                 bodypropCount++;
             }
 
             if (bodytransactionType != null)
             {
-                body["transactionType"] = ExpressionConverter.ConvertO(bodytransactionType);
+                body["transactionType"] = CSharpExpressionConverter.Convert(bodytransactionType);
                 bodypropCount++;
             }
 
             if (bodysecurityType != null)
             {
-                body["securityType"] = ExpressionConverter.ConvertO(bodysecurityType);
+                body["securityType"] = CSharpExpressionConverter.Convert(bodysecurityType);
                 bodypropCount++;
             }
 

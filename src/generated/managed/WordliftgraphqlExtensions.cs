@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 

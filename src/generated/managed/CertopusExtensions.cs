@@ -20,26 +20,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
+            body["organisationId"] = CSharpExpressionConverter.ConvertToken(bodyorganisationId);
             bodypropCount++;
-            body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
+            body["eventId"] = CSharpExpressionConverter.ConvertToken(bodyeventId);
             bodypropCount++;
-            body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+            body["categoryId"] = CSharpExpressionConverter.ConvertToken(bodycategoryId);
             if (bodygenerate != null)
             {
-                body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                body["generate"] = CSharpExpressionConverter.ConvertToken(bodygenerate);
                 bodypropCount++;
             }
 
             if (bodypublish != null)
             {
-                body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                body["publish"] = CSharpExpressionConverter.ConvertToken(bodypublish);
                 bodypropCount++;
             }
 
             if (bodyrecipients != null)
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
                 bodypropCount++;
             }
 

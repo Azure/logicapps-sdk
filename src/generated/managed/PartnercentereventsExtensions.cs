@@ -32,19 +32,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             var bodypropCount = 0;
             if (bodysignatureTokenToMsSignatureHeader != null)
             {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                body["SignatureTokenToMsSignatureHeader"] = CSharpExpressionConverter.ConvertToken(bodysignatureTokenToMsSignatureHeader);
                 bodypropCount++;
             }
 
             if (bodywebhookEvents != null)
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                body["WebhookEvents"] = CSharpExpressionConverter.ConvertToken(bodywebhookEvents);
                 bodypropCount++;
             }
 
             if (bodywebhookUrl != null)
             {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                body["WebhookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebhookUrl);
                 bodypropCount++;
             }
 
@@ -67,19 +67,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             var bodypropCount = 0;
             if (bodysignatureTokenToMsSignatureHeader != null)
             {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                body["SignatureTokenToMsSignatureHeader"] = CSharpExpressionConverter.ConvertToken(bodysignatureTokenToMsSignatureHeader);
                 bodypropCount++;
             }
 
             if (bodywebhookEvents != null)
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                body["WebhookEvents"] = CSharpExpressionConverter.ConvertToken(bodywebhookEvents);
                 bodypropCount++;
             }
 
             if (bodywebhookUrl != null)
             {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                body["WebhookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebhookUrl);
                 bodypropCount++;
             }
 

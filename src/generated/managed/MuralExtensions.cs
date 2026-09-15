@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
+            body["roomId"] = CSharpExpressionConverter.ConvertToken(bodyroomId);
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
@@ -40,27 +40,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<bodyshapeInput>> bodyshape, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(muralId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(muralId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
+            callPayload.Queries["roomId"] = CSharpExpressionConverter.ConvertO(roomId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["shape"] = ExpressionConverter.ConvertO(bodyshape);
+            body["shape"] = CSharpExpressionConverter.Convert(bodyshape);
             body["x"] = 150;
             bodypropCount++;
             body["y"] = 250;

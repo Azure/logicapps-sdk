@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
             var payloadpropCount = 0;
             if (payloadrecipients != null)
             {
-                payload["recipients"] = ExpressionConverter.ConvertO(payloadrecipients);
+                payload["recipients"] = CSharpExpressionConverter.ConvertToken(payloadrecipients);
                 payloadpropCount++;
             }
 
             if (payloadmessage != null)
             {
-                payload["message"] = ExpressionConverter.ConvertO(payloadmessage);
+                payload["message"] = CSharpExpressionConverter.ConvertToken(payloadmessage);
                 payloadpropCount++;
             }
 
             if (payloadopenApp != null)
             {
-                payload["openApp"] = ExpressionConverter.ConvertO(payloadopenApp);
+                payload["openApp"] = CSharpExpressionConverter.ConvertToken(payloadopenApp);
                 payloadpropCount++;
             }
 

@@ -17,29 +17,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallPath = "/v2/create-pdf";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             if (exportType != null)
-                callPayload.Queries["export_type"] = ExpressionConverter.Convert(exportType);
+                callPayload.Queries["export_type"] = CSharpExpressionConverter.ConvertO(exportType);
             if (expiration != null)
-                callPayload.Queries["expiration"] = ExpressionConverter.Convert(expiration);
+                callPayload.Queries["expiration"] = CSharpExpressionConverter.ConvertO(expiration);
             if (outputHtml != null)
-                callPayload.Queries["output_html"] = ExpressionConverter.Convert(outputHtml);
+                callPayload.Queries["output_html"] = CSharpExpressionConverter.ConvertO(outputHtml);
             if (outputFormat != null)
-                callPayload.Queries["output_format"] = ExpressionConverter.Convert(outputFormat);
+                callPayload.Queries["output_format"] = CSharpExpressionConverter.ConvertO(outputFormat);
             if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
             if (imageResampleRes != null)
-                callPayload.Queries["image_resample_res"] = ExpressionConverter.Convert(imageResampleRes);
+                callPayload.Queries["image_resample_res"] = CSharpExpressionConverter.ConvertO(imageResampleRes);
             if (isCmyk != null)
-                callPayload.Queries["is_cmyk"] = ExpressionConverter.Convert(isCmyk);
+                callPayload.Queries["is_cmyk"] = CSharpExpressionConverter.ConvertO(isCmyk);
             if (cloudStorage != null)
-                callPayload.Queries["cloud_storage"] = ExpressionConverter.Convert(cloudStorage);
+                callPayload.Queries["cloud_storage"] = CSharpExpressionConverter.ConvertO(cloudStorage);
             if (meta != null)
-                callPayload.Queries["meta"] = ExpressionConverter.Convert(meta);
+                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
             if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
             if (webhookUrl != null)
-                callPayload.Queries["webhook_url"] = ExpressionConverter.Convert(webhookUrl);
+                callPayload.Queries["webhook_url"] = CSharpExpressionConverter.ConvertO(webhookUrl);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallPath = "/v2/create-image";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             if (expiration != null)
-                callPayload.Queries["expiration"] = ExpressionConverter.Convert(expiration);
+                callPayload.Queries["expiration"] = CSharpExpressionConverter.ConvertO(expiration);
             if (cloudStorage != null)
-                callPayload.Queries["cloud_storage"] = ExpressionConverter.Convert(cloudStorage);
+                callPayload.Queries["cloud_storage"] = CSharpExpressionConverter.ConvertO(cloudStorage);
             if (outputImageType != null)
-                callPayload.Queries["output_image_type"] = ExpressionConverter.Convert(outputImageType);
+                callPayload.Queries["output_image_type"] = CSharpExpressionConverter.ConvertO(outputImageType);
             if (meta != null)
-                callPayload.Queries["meta"] = ExpressionConverter.Convert(meta);
+                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (templateId != null)
-                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             if (transactionType != null)
-                callPayload.Queries["transaction_type"] = ExpressionConverter.Convert(transactionType);
+                callPayload.Queries["transaction_type"] = CSharpExpressionConverter.ConvertO(transactionType);
             return new ApiConnectionAction<ResponseSuccessListObjects>(callPayload);
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallPath = "/v2/delete-object";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["transaction_ref"] = ExpressionConverter.Convert(transactionRef);
+            callPayload.Queries["transaction_ref"] = CSharpExpressionConverter.ConvertO(transactionRef);
             return new ApiConnectionAction<ResponseSuccessDeleteObject>(callPayload);
         }
 
@@ -109,17 +109,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (templateId != null)
-                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             if (groupName != null)
-                callPayload.Queries["group_name"] = ExpressionConverter.Convert(groupName);
+                callPayload.Queries["group_name"] = CSharpExpressionConverter.ConvertO(groupName);
             if (withLayerInfo != null)
-                callPayload.Queries["with_layer_info"] = ExpressionConverter.Convert(withLayerInfo);
+                callPayload.Queries["with_layer_info"] = CSharpExpressionConverter.ConvertO(withLayerInfo);
             return new ApiConnectionAction<ResponseSuccessListTemplates>(callPayload);
         }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (templateId != null)
-                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             return new ApiConnectionAction<ResponseSuccessTemplate>(callPayload);
         }
 
@@ -143,16 +143,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             if (bodycss != null)
             {
-                body["css"] = ExpressionConverter.ConvertO(bodycss);
+                body["css"] = CSharpExpressionConverter.ConvertToken(bodycss);
                 bodypropCount++;
             }
 
@@ -171,26 +171,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (meta != null)
-                callPayload.Queries["meta"] = ExpressionConverter.Convert(meta);
+                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
             if (bodyexportType != null)
             {
-                body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                body["export_type"] = CSharpExpressionConverter.ConvertToken(bodyexportType);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodycloudStorage != null)
             {
-                body["cloud_storage"] = ExpressionConverter.ConvertO(bodycloudStorage);
+                body["cloud_storage"] = CSharpExpressionConverter.ConvertToken(bodycloudStorage);
                 bodypropCount++;
             }
 

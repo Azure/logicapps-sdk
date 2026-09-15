@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["status"] = Convert.ToString("done");
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             return new ApiConnectionAction<Scan[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Scan>(callPayload);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             return new ApiConnectionAction<CarbonForecastResponse>(callPayload);
         }
 
@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (emissionFactorType != null)
-                callPayload.Queries["emissionFactorType"] = ExpressionConverter.Convert(emissionFactorType);
+                callPayload.Queries["emissionFactorType"] = CSharpExpressionConverter.Convert(emissionFactorType);
             if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(disableEstimations);
+                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
             return new ApiConnectionAction<CarbonHistoryResponse>(callPayload);
         }
 
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (emissionFactorType != null)
-                callPayload.Queries["emissionFactorType"] = ExpressionConverter.Convert(emissionFactorType);
+                callPayload.Queries["emissionFactorType"] = CSharpExpressionConverter.Convert(emissionFactorType);
             if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(disableEstimations);
+                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
             return new ApiConnectionAction<CarbonLatestResponse>(callPayload);
         }
 
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(disableEstimations);
+                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
             return new ApiConnectionAction<BreakdownHistoryResponse>(callPayload);
         }
 
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(disableEstimations);
+                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
             return new ApiConnectionAction<BreakdownLatestResponse>(callPayload);
         }
 
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             return new ApiConnectionAction<ConsumptionForecastResponse>(callPayload);
         }
 
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (zone != null)
-                callPayload.Queries["zone"] = ExpressionConverter.Convert(zone);
+                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             return new ApiConnectionAction<BreakdownForecastResponse>(callPayload);
         }
 

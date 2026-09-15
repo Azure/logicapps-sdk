@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecportabilitycheck")]
         public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber(Expression<Func<string>> phonenumber)
         {
-            var apiCallPath = String.Format("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(phonenumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phonenumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);

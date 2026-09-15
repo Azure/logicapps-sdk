@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hex != null)
-                callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
+                callPayload.Queries["hex"] = CSharpExpressionConverter.ConvertO(hex);
             if (rgb != null)
-                callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
+                callPayload.Queries["rgb"] = CSharpExpressionConverter.ConvertO(rgb);
             if (hsl != null)
-                callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
+                callPayload.Queries["hsl"] = CSharpExpressionConverter.ConvertO(hsl);
             if (cmyk != null)
-                callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
+                callPayload.Queries["cmyk"] = CSharpExpressionConverter.ConvertO(cmyk);
             callPayload.Queries["format"] = Convert.ToString("json");
             return new ApiConnectionAction<ColorGetResponse>(callPayload);
         }
@@ -36,20 +36,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hex != null)
-                callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
+                callPayload.Queries["hex"] = CSharpExpressionConverter.ConvertO(hex);
             if (rgb != null)
-                callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
+                callPayload.Queries["rgb"] = CSharpExpressionConverter.ConvertO(rgb);
             if (hsl != null)
-                callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
+                callPayload.Queries["hsl"] = CSharpExpressionConverter.ConvertO(hsl);
             if (cmyk != null)
-                callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
+                callPayload.Queries["cmyk"] = CSharpExpressionConverter.ConvertO(cmyk);
             callPayload.Queries["format"] = Convert.ToString("json");
             callPayload.Queries["mode"] = Convert.ToString("monochrome");
             if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                callPayload.Queries["mode"] = CSharpExpressionConverter.Convert(mode);
             callPayload.Queries["count"] = Convert.ToString(5);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             return new ApiConnectionAction<SchemeGetResponse>(callPayload);
         }
     }

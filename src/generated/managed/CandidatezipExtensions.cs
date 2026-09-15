@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+            body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+            body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+            body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+            body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

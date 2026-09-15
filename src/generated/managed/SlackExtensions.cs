@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (numMinutes != null)
-                callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(numMinutes);
+                callPayload.Queries["num_minutes"] = CSharpExpressionConverter.ConvertO(numMinutes);
             return new ApiConnectionAction<SetDNDResponse>(callPayload);
         }
 
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (isPrivate != null)
-                callPayload.Queries["is_private"] = ExpressionConverter.Convert(isPrivate);
+                callPayload.Queries["is_private"] = CSharpExpressionConverter.ConvertO(isPrivate);
             return new ApiConnectionAction<CreateChannelResponse>(callPayload);
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (channel != null)
-                callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
+                callPayload.Queries["channel"] = CSharpExpressionConverter.ConvertO(channel);
             return new ApiConnectionAction<JoinChannelResponseV2>(callPayload);
         }
 
@@ -64,60 +64,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var message = new JObject();
             var messagepropCount = 0;
             messagepropCount++;
-            message["channel"] = ExpressionConverter.ConvertO(messagechannelName);
+            message["channel"] = CSharpExpressionConverter.ConvertToken(messagechannelName);
             messagepropCount++;
-            message["text"] = ExpressionConverter.ConvertO(messagemessageText);
+            message["text"] = CSharpExpressionConverter.ConvertToken(messagemessageText);
             if (messagebotName != null)
             {
-                message["username"] = ExpressionConverter.ConvertO(messagebotName);
+                message["username"] = CSharpExpressionConverter.ConvertToken(messagebotName);
                 messagepropCount++;
             }
 
             if (messagepostAsUser != null)
             {
-                message["as_user"] = ExpressionConverter.ConvertO(messagepostAsUser);
+                message["as_user"] = CSharpExpressionConverter.ConvertToken(messagepostAsUser);
                 messagepropCount++;
             }
 
             if (messageparseMode != null)
             {
-                message["parse"] = ExpressionConverter.ConvertO(messageparseMode);
+                message["parse"] = CSharpExpressionConverter.Convert(messageparseMode);
                 messagepropCount++;
             }
 
             if (messageslackMarkupParsing != null)
             {
-                message["mrkdwn"] = ExpressionConverter.ConvertO(messageslackMarkupParsing);
+                message["mrkdwn"] = CSharpExpressionConverter.ConvertToken(messageslackMarkupParsing);
                 messagepropCount++;
             }
 
             if (messagelinkNames != null)
             {
-                message["link_names"] = ExpressionConverter.ConvertO(messagelinkNames);
+                message["link_names"] = CSharpExpressionConverter.ConvertToken(messagelinkNames);
                 messagepropCount++;
             }
 
             if (messageunfurlLinks != null)
             {
-                message["unfurl_links"] = ExpressionConverter.ConvertO(messageunfurlLinks);
+                message["unfurl_links"] = CSharpExpressionConverter.ConvertToken(messageunfurlLinks);
                 messagepropCount++;
             }
 
             if (messageunfurlMedia != null)
             {
-                message["unfurl_media"] = ExpressionConverter.ConvertO(messageunfurlMedia);
+                message["unfurl_media"] = CSharpExpressionConverter.ConvertToken(messageunfurlMedia);
                 messagepropCount++;
             }
 
             if (messageiconUrl != null)
             {
-                message["icon_url"] = ExpressionConverter.ConvertO(messageiconUrl);
+                message["icon_url"] = CSharpExpressionConverter.ConvertToken(messageiconUrl);
                 messagepropCount++;
             }
 
             if (messageiconEmoji != null)
             {
-                message["icon_emoji"] = ExpressionConverter.ConvertO(messageiconEmoji);
+                message["icon_emoji"] = CSharpExpressionConverter.ConvertToken(messageiconEmoji);
                 messagepropCount++;
             }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var apiCallPath = "/trigger/files.list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
+            callPayload.Queries["channel"] = CSharpExpressionConverter.ConvertO(channel);
             return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, triggerName, recurrence);
         }
     }

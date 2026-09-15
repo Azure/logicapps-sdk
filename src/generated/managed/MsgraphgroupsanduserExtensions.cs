@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$search"] = Convert.ToString("\"displayName:Sales\"");
             if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["$search"] = CSharpExpressionConverter.ConvertO(search);
             callPayload.Queries["$count"] = Convert.ToString("true");
             callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
             return new ApiConnectionAction<ListGroupsByDisplayNameSearchResponse>(callPayload);
@@ -46,15 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$filter"] = Convert.ToString("jobTitle ne null");
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["$select"] = Convert.ToString("displayName,userPrincipalName,id,jobTitle,mailNickname");
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             callPayload.Queries["$count"] = Convert.ToString("true");
             callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
             return new ApiConnectionAction<ListDirectGroupMembersResponse>(callPayload);
@@ -63,19 +63,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/licenseDetails", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$select"] = Convert.ToString("skuPartNumber,servicePlans");
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetMemberLicenseDetailsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetGroupPropertiesResponse>(callPayload);
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}/getMemberGroups", ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/getMemberGroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["securityEnabledOnly"] = ExpressionConverter.ConvertO(bodysecurityEnabledOnly);
+            body["securityEnabledOnly"] = CSharpExpressionConverter.ConvertToken(bodysecurityEnabledOnly);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

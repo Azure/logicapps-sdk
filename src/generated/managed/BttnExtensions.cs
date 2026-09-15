@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IWorkflowAction ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
         {
-            var apiCallPath = String.Format("/callback/{0}", ExpressionConverter.ConvertWithUrlEncoding(callbackId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/callback/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(callbackId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var callbackBody = new JObject();
             var callbackBodypropCount = 0;
             if (callbackBodyflowResult != null)
             {
-                callbackBody["result"] = ExpressionConverter.ConvertO(callbackBodyflowResult);
+                callbackBody["result"] = CSharpExpressionConverter.Convert(callbackBodyflowResult);
                 callbackBodypropCount++;
             }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BttnApiInfo>(callPayload);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/{0}/counter", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/counter", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BttnApiCounter>(callPayload);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
             var apiCallPath = "/hook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var webhookRequestBody = new JObject();
             var webhookRequestBodypropCount = 0;
             webhookRequestBody["url"] = "@listCallbackUrl()";

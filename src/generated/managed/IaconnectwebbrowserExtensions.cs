@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetChromeBrowserVersionFromFilepropCount = 0;
             if (browserGetChromeBrowserVersionFromFilechromeBrowserEXE != null)
             {
-                browserGetChromeBrowserVersionFromFile["ChromeBrowserEXE"] = ExpressionConverter.ConvertO(browserGetChromeBrowserVersionFromFilechromeBrowserEXE);
+                browserGetChromeBrowserVersionFromFile["ChromeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserGetChromeBrowserVersionFromFilechromeBrowserEXE);
                 browserGetChromeBrowserVersionFromFilepropCount++;
             }
 
             browserGetChromeBrowserVersionFromFilepropCount++;
-            browserGetChromeBrowserVersionFromFile["Workflow"] = ExpressionConverter.ConvertO(browserGetChromeBrowserVersionFromFileworkflow);
+            browserGetChromeBrowserVersionFromFile["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetChromeBrowserVersionFromFileworkflow);
             if (browserGetChromeBrowserVersionFromFilepropCount > 0)
             {
                 callPayload.Body = browserGetChromeBrowserVersionFromFile;
@@ -44,21 +44,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetChromeDriverFolder = new JObject();
             var browserGetChromeDriverFolderpropCount = 0;
             browserGetChromeDriverFolderpropCount++;
-            browserGetChromeDriverFolder["DirectoryPath"] = ExpressionConverter.ConvertO(browserGetChromeDriverFolderdirectoryPath);
+            browserGetChromeDriverFolder["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(browserGetChromeDriverFolderdirectoryPath);
             if (browserGetChromeDriverFolderchromeMajorVersion != null)
             {
-                browserGetChromeDriverFolder["ChromeMajorVersion"] = ExpressionConverter.ConvertO(browserGetChromeDriverFolderchromeMajorVersion);
+                browserGetChromeDriverFolder["ChromeMajorVersion"] = CSharpExpressionConverter.ConvertToken(browserGetChromeDriverFolderchromeMajorVersion);
                 browserGetChromeDriverFolderpropCount++;
             }
 
             if (browserGetChromeDriverFolderchromeBrowserEXE != null)
             {
-                browserGetChromeDriverFolder["ChromeBrowserEXE"] = ExpressionConverter.ConvertO(browserGetChromeDriverFolderchromeBrowserEXE);
+                browserGetChromeDriverFolder["ChromeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserGetChromeDriverFolderchromeBrowserEXE);
                 browserGetChromeDriverFolderpropCount++;
             }
 
             browserGetChromeDriverFolderpropCount++;
-            browserGetChromeDriverFolder["Workflow"] = ExpressionConverter.ConvertO(browserGetChromeDriverFolderworkflow);
+            browserGetChromeDriverFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetChromeDriverFolderworkflow);
             if (browserGetChromeDriverFolderpropCount > 0)
             {
                 callPayload.Body = browserGetChromeDriverFolder;
@@ -77,17 +77,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDownloadSuitableChromeDriverFromInternetpropCount = 0;
             if (browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["ChromeBrowserEXE"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE);
+                browserDownloadSuitableChromeDriverFromInternet["ChromeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE);
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
             browserDownloadSuitableChromeDriverFromInternetpropCount++;
-            browserDownloadSuitableChromeDriverFromInternet["ChromeDriverDownloadParentFolder"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder);
+            browserDownloadSuitableChromeDriverFromInternet["ChromeDriverDownloadParentFolder"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder);
             if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex != null)
             {
                 if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex != null)
                 {
-                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaXMLIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex);
+                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaXMLIndex"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex);
                     browserDownloadSuitableChromeDriverFromInternetpropCount++;
                 }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL != null)
                 {
-                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL);
+                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverRootWebPageURL"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL);
                     browserDownloadSuitableChromeDriverFromInternetpropCount++;
                 }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex != null)
                 {
-                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaJSONIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex);
+                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaJSONIndex"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex);
                     browserDownloadSuitableChromeDriverFromInternetpropCount++;
                 }
 
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL != null)
                 {
-                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverJSONIndexWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL);
+                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverJSONIndexWebPageURL"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL);
                     browserDownloadSuitableChromeDriverFromInternetpropCount++;
                 }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver != null)
                 {
-                    browserDownloadSuitableChromeDriverFromInternet["Prefer64bitChromeDriver"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver);
+                    browserDownloadSuitableChromeDriverFromInternet["Prefer64bitChromeDriver"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver);
                     browserDownloadSuitableChromeDriverFromInternetpropCount++;
                 }
 
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDownloadSuitableChromeDriverFromInternetpropCount++;
-            browserDownloadSuitableChromeDriverFromInternet["Workflow"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetworkflow);
+            browserDownloadSuitableChromeDriverFromInternet["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromeDriverFromInternetworkflow);
             if (browserDownloadSuitableChromeDriverFromInternetpropCount > 0)
             {
                 callPayload.Body = browserDownloadSuitableChromeDriverFromInternet;
@@ -183,18 +183,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserIsSuitableChromeDriverAvailablepropCount = 0;
             if (browserIsSuitableChromeDriverAvailablechromeDriverFolder != null)
             {
-                browserIsSuitableChromeDriverAvailable["ChromeDriverFolder"] = ExpressionConverter.ConvertO(browserIsSuitableChromeDriverAvailablechromeDriverFolder);
+                browserIsSuitableChromeDriverAvailable["ChromeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromeDriverAvailablechromeDriverFolder);
                 browserIsSuitableChromeDriverAvailablepropCount++;
             }
 
             if (browserIsSuitableChromeDriverAvailablechromeBrowserEXE != null)
             {
-                browserIsSuitableChromeDriverAvailable["ChromeBrowserEXE"] = ExpressionConverter.ConvertO(browserIsSuitableChromeDriverAvailablechromeBrowserEXE);
+                browserIsSuitableChromeDriverAvailable["ChromeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromeDriverAvailablechromeBrowserEXE);
                 browserIsSuitableChromeDriverAvailablepropCount++;
             }
 
             browserIsSuitableChromeDriverAvailablepropCount++;
-            browserIsSuitableChromeDriverAvailable["Workflow"] = ExpressionConverter.ConvertO(browserIsSuitableChromeDriverAvailableworkflow);
+            browserIsSuitableChromeDriverAvailable["Workflow"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromeDriverAvailableworkflow);
             if (browserIsSuitableChromeDriverAvailablepropCount > 0)
             {
                 callPayload.Body = browserIsSuitableChromeDriverAvailable;
@@ -212,12 +212,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserUploadNewChromeDriver = new JObject();
             var browserUploadNewChromeDriverpropCount = 0;
             browserUploadNewChromeDriverpropCount++;
-            browserUploadNewChromeDriver["LocalChromeDriverFilePath"] = ExpressionConverter.ConvertO(browserUploadNewChromeDriverlocalChromeDriverFilePath);
+            browserUploadNewChromeDriver["LocalChromeDriverFilePath"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromeDriverlocalChromeDriverFilePath);
             if (browserUploadNewChromeDrivercompress != null)
             {
                 if (browserUploadNewChromeDrivercompress != null)
                 {
-                    browserUploadNewChromeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromeDrivercompress);
+                    browserUploadNewChromeDriver["Compress"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromeDrivercompress);
                     browserUploadNewChromeDriverpropCount++;
                 }
 
@@ -231,18 +231,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserUploadNewChromeDriverchromeBrowserMajorVersion != null)
             {
-                browserUploadNewChromeDriver["ChromeBrowserMajorVersion"] = ExpressionConverter.ConvertO(browserUploadNewChromeDriverchromeBrowserMajorVersion);
+                browserUploadNewChromeDriver["ChromeBrowserMajorVersion"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromeDriverchromeBrowserMajorVersion);
                 browserUploadNewChromeDriverpropCount++;
             }
 
             if (browserUploadNewChromeDriverchromeDriverRootSaveFolder != null)
             {
-                browserUploadNewChromeDriver["ChromeDriverRootSaveFolder"] = ExpressionConverter.ConvertO(browserUploadNewChromeDriverchromeDriverRootSaveFolder);
+                browserUploadNewChromeDriver["ChromeDriverRootSaveFolder"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromeDriverchromeDriverRootSaveFolder);
                 browserUploadNewChromeDriverpropCount++;
             }
 
             browserUploadNewChromeDriverpropCount++;
-            browserUploadNewChromeDriver["Workflow"] = ExpressionConverter.ConvertO(browserUploadNewChromeDriverworkflow);
+            browserUploadNewChromeDriver["Workflow"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromeDriverworkflow);
             if (browserUploadNewChromeDriverpropCount > 0)
             {
                 callPayload.Body = browserUploadNewChromeDriver;
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserOpenChromepropCount = 0;
             if (browserOpenChromechromeDriverFolder != null)
             {
-                browserOpenChrome["ChromeDriverFolder"] = ExpressionConverter.ConvertO(browserOpenChromechromeDriverFolder);
+                browserOpenChrome["ChromeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserOpenChromechromeDriverFolder);
                 browserOpenChromepropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromekillExistingChromeDriver != null)
                 {
-                    browserOpenChrome["KillExistingChromeDriver"] = ExpressionConverter.ConvertO(browserOpenChromekillExistingChromeDriver);
+                    browserOpenChrome["KillExistingChromeDriver"] = CSharpExpressionConverter.ConvertToken(browserOpenChromekillExistingChromeDriver);
                     browserOpenChromepropCount++;
                 }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromeuserDataDir != null)
             {
-                browserOpenChrome["UserDataDir"] = ExpressionConverter.ConvertO(browserOpenChromeuserDataDir);
+                browserOpenChrome["UserDataDir"] = CSharpExpressionConverter.ConvertToken(browserOpenChromeuserDataDir);
                 browserOpenChromepropCount++;
             }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromeprintToDefaultPrinter != null)
                 {
-                    browserOpenChrome["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromeprintToDefaultPrinter);
+                    browserOpenChrome["PrintToDefaultPrinter"] = CSharpExpressionConverter.ConvertToken(browserOpenChromeprintToDefaultPrinter);
                     browserOpenChromepropCount++;
                 }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromedefaultDownloadDirectory != null)
             {
-                browserOpenChrome["DefaultDownloadDirectory"] = ExpressionConverter.ConvertO(browserOpenChromedefaultDownloadDirectory);
+                browserOpenChrome["DefaultDownloadDirectory"] = CSharpExpressionConverter.ConvertToken(browserOpenChromedefaultDownloadDirectory);
                 browserOpenChromepropCount++;
             }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromedownloadPDFInsteadOfOpening != null)
                 {
-                    browserOpenChrome["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromedownloadPDFInsteadOfOpening);
+                    browserOpenChrome["DownloadPDFInsteadOfOpening"] = CSharpExpressionConverter.ConvertToken(browserOpenChromedownloadPDFInsteadOfOpening);
                     browserOpenChromepropCount++;
                 }
 
@@ -327,19 +327,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromechromeDriverLogFilename != null)
             {
-                browserOpenChrome["ChromeDriverLogFilename"] = ExpressionConverter.ConvertO(browserOpenChromechromeDriverLogFilename);
+                browserOpenChrome["ChromeDriverLogFilename"] = CSharpExpressionConverter.ConvertToken(browserOpenChromechromeDriverLogFilename);
                 browserOpenChromepropCount++;
             }
 
             if (browserOpenChromelocalChromeDriverFolder != null)
             {
-                browserOpenChrome["LocalChromeDriverFolder"] = ExpressionConverter.ConvertO(browserOpenChromelocalChromeDriverFolder);
+                browserOpenChrome["LocalChromeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserOpenChromelocalChromeDriverFolder);
                 browserOpenChromepropCount++;
             }
 
             if (browserOpenChromechromeBrowserEXE != null)
             {
-                browserOpenChrome["ChromeBrowserEXE"] = ExpressionConverter.ConvertO(browserOpenChromechromeBrowserEXE);
+                browserOpenChrome["ChromeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserOpenChromechromeBrowserEXE);
                 browserOpenChromepropCount++;
             }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromeignoreCertificateErrors != null)
                 {
-                    browserOpenChrome["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromeignoreCertificateErrors);
+                    browserOpenChrome["IgnoreCertificateErrors"] = CSharpExpressionConverter.ConvertToken(browserOpenChromeignoreCertificateErrors);
                     browserOpenChromepropCount++;
                 }
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromeadditionalArguments != null)
             {
-                browserOpenChrome["AdditionalArguments"] = ExpressionConverter.ConvertO(browserOpenChromeadditionalArguments);
+                browserOpenChrome["AdditionalArguments"] = CSharpExpressionConverter.ConvertToken(browserOpenChromeadditionalArguments);
                 browserOpenChromepropCount++;
             }
 
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromedoNothingIfChromeInstanceAlreadyOpen != null)
                 {
-                    browserOpenChrome["DoNothingIfChromeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen);
+                    browserOpenChrome["DoNothingIfChromeInstanceAlreadyOpen"] = CSharpExpressionConverter.ConvertToken(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen);
                     browserOpenChromepropCount++;
                 }
 
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserOpenChromepropCount++;
-            browserOpenChrome["Workflow"] = ExpressionConverter.ConvertO(browserOpenChromeworkflow);
+            browserOpenChrome["Workflow"] = CSharpExpressionConverter.ConvertToken(browserOpenChromeworkflow);
             if (browserOpenChromepropCount > 0)
             {
                 callPayload.Body = browserOpenChrome;
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCloseChromepurgeDynamicUserDataDir != null)
                 {
-                    browserCloseChrome["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeDynamicUserDataDir);
+                    browserCloseChrome["PurgeDynamicUserDataDir"] = CSharpExpressionConverter.ConvertToken(browserCloseChromepurgeDynamicUserDataDir);
                     browserCloseChromepropCount++;
                 }
 
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCloseChromepurgeStaticUserDataDir != null)
                 {
-                    browserCloseChrome["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeStaticUserDataDir);
+                    browserCloseChrome["PurgeStaticUserDataDir"] = CSharpExpressionConverter.ConvertToken(browserCloseChromepurgeStaticUserDataDir);
                     browserCloseChromepropCount++;
                 }
 
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCloseChromepropCount++;
-            browserCloseChrome["Workflow"] = ExpressionConverter.ConvertO(browserCloseChromeworkflow);
+            browserCloseChrome["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCloseChromeworkflow);
             if (browserCloseChromepropCount > 0)
             {
                 callPayload.Body = browserCloseChrome;
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserOpenInternetExplorerpropCount = 0;
             if (browserOpenInternetExploreriEDriverFolder != null)
             {
-                browserOpenInternetExplorer["IEDriverFolder"] = ExpressionConverter.ConvertO(browserOpenInternetExploreriEDriverFolder);
+                browserOpenInternetExplorer["IEDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExploreriEDriverFolder);
                 browserOpenInternetExplorerpropCount++;
             }
 
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenInternetExplorerkillExistingIEDriver != null)
                 {
-                    browserOpenInternetExplorer["KillExistingIEDriver"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIEDriver);
+                    browserOpenInternetExplorer["KillExistingIEDriver"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerkillExistingIEDriver);
                     browserOpenInternetExplorerpropCount++;
                 }
 
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenInternetExplorerkillExistingIE != null)
                 {
-                    browserOpenInternetExplorer["KillExistingIE"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIE);
+                    browserOpenInternetExplorer["KillExistingIE"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerkillExistingIE);
                     browserOpenInternetExplorerpropCount++;
                 }
 
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenInternetExplorercleanSession != null)
                 {
-                    browserOpenInternetExplorer["CleanSession"] = ExpressionConverter.ConvertO(browserOpenInternetExplorercleanSession);
+                    browserOpenInternetExplorer["CleanSession"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorercleanSession);
                     browserOpenInternetExplorerpropCount++;
                 }
 
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenInternetExplorerenableNativeEvents != null)
                 {
-                    browserOpenInternetExplorer["EnableNativeEvents"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerenableNativeEvents);
+                    browserOpenInternetExplorer["EnableNativeEvents"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerenableNativeEvents);
                     browserOpenInternetExplorerpropCount++;
                 }
 
@@ -521,13 +521,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenInternetExplorerwebDriverLogFile != null)
             {
-                browserOpenInternetExplorer["WebDriverLogFile"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerwebDriverLogFile);
+                browserOpenInternetExplorer["WebDriverLogFile"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerwebDriverLogFile);
                 browserOpenInternetExplorerpropCount++;
             }
 
             if (browserOpenInternetExplorerwebDriverLogLevel != null)
             {
-                browserOpenInternetExplorer["WebDriverLogLevel"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerwebDriverLogLevel);
+                browserOpenInternetExplorer["WebDriverLogLevel"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerwebDriverLogLevel);
                 browserOpenInternetExplorerpropCount++;
             }
 
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenInternetExplorerdisableIEFirstRunCustomise != null)
                 {
-                    browserOpenInternetExplorer["DisableIEFirstRunCustomise"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerdisableIEFirstRunCustomise);
+                    browserOpenInternetExplorer["DisableIEFirstRunCustomise"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerdisableIEFirstRunCustomise);
                     browserOpenInternetExplorerpropCount++;
                 }
 
@@ -549,12 +549,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenInternetExploreradditionalArguments != null)
             {
-                browserOpenInternetExplorer["AdditionalArguments"] = ExpressionConverter.ConvertO(browserOpenInternetExploreradditionalArguments);
+                browserOpenInternetExplorer["AdditionalArguments"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExploreradditionalArguments);
                 browserOpenInternetExplorerpropCount++;
             }
 
             browserOpenInternetExplorerpropCount++;
-            browserOpenInternetExplorer["Workflow"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerworkflow);
+            browserOpenInternetExplorer["Workflow"] = CSharpExpressionConverter.ConvertToken(browserOpenInternetExplorerworkflow);
             if (browserOpenInternetExplorerpropCount > 0)
             {
                 callPayload.Body = browserOpenInternetExplorer;
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCloseInternetExplorerunloadIEDriver != null)
                 {
-                    browserCloseInternetExplorer["UnloadIEDriver"] = ExpressionConverter.ConvertO(browserCloseInternetExplorerunloadIEDriver);
+                    browserCloseInternetExplorer["UnloadIEDriver"] = CSharpExpressionConverter.ConvertToken(browserCloseInternetExplorerunloadIEDriver);
                     browserCloseInternetExplorerpropCount++;
                 }
 
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCloseInternetExplorerpropCount++;
-            browserCloseInternetExplorer["Workflow"] = ExpressionConverter.ConvertO(browserCloseInternetExplorerworkflow);
+            browserCloseInternetExplorer["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCloseInternetExplorerworkflow);
             if (browserCloseInternetExplorerpropCount > 0)
             {
                 callPayload.Body = browserCloseInternetExplorer;
@@ -606,21 +606,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetChromiumEdgeDriverFolder = new JObject();
             var browserGetChromiumEdgeDriverFolderpropCount = 0;
             browserGetChromiumEdgeDriverFolderpropCount++;
-            browserGetChromiumEdgeDriverFolder["DirectoryPath"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeDriverFolderdirectoryPath);
+            browserGetChromiumEdgeDriverFolder["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeDriverFolderdirectoryPath);
             if (browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion != null)
             {
-                browserGetChromiumEdgeDriverFolder["ChromiumEdgeMajorVersion"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion);
+                browserGetChromiumEdgeDriverFolder["ChromiumEdgeMajorVersion"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion);
                 browserGetChromiumEdgeDriverFolderpropCount++;
             }
 
             if (browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE != null)
             {
-                browserGetChromiumEdgeDriverFolder["ChromiumEdgeBrowserEXE"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE);
+                browserGetChromiumEdgeDriverFolder["ChromiumEdgeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE);
                 browserGetChromiumEdgeDriverFolderpropCount++;
             }
 
             browserGetChromiumEdgeDriverFolderpropCount++;
-            browserGetChromiumEdgeDriverFolder["Workflow"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeDriverFolderworkflow);
+            browserGetChromiumEdgeDriverFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeDriverFolderworkflow);
             if (browserGetChromiumEdgeDriverFolderpropCount > 0)
             {
                 callPayload.Body = browserGetChromiumEdgeDriverFolder;
@@ -639,12 +639,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetChromiumEdgeBrowserVersionFromFilepropCount = 0;
             if (browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE != null)
             {
-                browserGetChromiumEdgeBrowserVersionFromFile["ChromiumEdgeBrowserEXE"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE);
+                browserGetChromiumEdgeBrowserVersionFromFile["ChromiumEdgeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE);
                 browserGetChromiumEdgeBrowserVersionFromFilepropCount++;
             }
 
             browserGetChromiumEdgeBrowserVersionFromFilepropCount++;
-            browserGetChromiumEdgeBrowserVersionFromFile["Workflow"] = ExpressionConverter.ConvertO(browserGetChromiumEdgeBrowserVersionFromFileworkflow);
+            browserGetChromiumEdgeBrowserVersionFromFile["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetChromiumEdgeBrowserVersionFromFileworkflow);
             if (browserGetChromiumEdgeBrowserVersionFromFilepropCount > 0)
             {
                 callPayload.Body = browserGetChromiumEdgeBrowserVersionFromFile;
@@ -663,17 +663,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount = 0;
             if (browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE != null)
             {
-                browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeBrowserEXE"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE);
+                browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE);
                 browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
             }
 
             browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
-            browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverDownloadParentFolder"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder);
+            browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverDownloadParentFolder"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder);
             if (browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL != null)
             {
                 if (browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL != null)
                 {
-                    browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL);
+                    browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverRootWebPageURL"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL);
                     browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
                 }
 
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
-            browserDownloadSuitableChromiumEdgeDriverFromInternet["Workflow"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow);
+            browserDownloadSuitableChromiumEdgeDriverFromInternet["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow);
             if (browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount > 0)
             {
                 callPayload.Body = browserDownloadSuitableChromiumEdgeDriverFromInternet;
@@ -705,18 +705,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserIsSuitableChromiumEdgeDriverAvailablepropCount = 0;
             if (browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder != null)
             {
-                browserIsSuitableChromiumEdgeDriverAvailable["ChromiumEdgeDriverFolder"] = ExpressionConverter.ConvertO(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder);
+                browserIsSuitableChromiumEdgeDriverAvailable["ChromiumEdgeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder);
                 browserIsSuitableChromiumEdgeDriverAvailablepropCount++;
             }
 
             if (browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE != null)
             {
-                browserIsSuitableChromiumEdgeDriverAvailable["ChromiumEdgeBrowserEXE"] = ExpressionConverter.ConvertO(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE);
+                browserIsSuitableChromiumEdgeDriverAvailable["ChromiumEdgeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE);
                 browserIsSuitableChromiumEdgeDriverAvailablepropCount++;
             }
 
             browserIsSuitableChromiumEdgeDriverAvailablepropCount++;
-            browserIsSuitableChromiumEdgeDriverAvailable["Workflow"] = ExpressionConverter.ConvertO(browserIsSuitableChromiumEdgeDriverAvailableworkflow);
+            browserIsSuitableChromiumEdgeDriverAvailable["Workflow"] = CSharpExpressionConverter.ConvertToken(browserIsSuitableChromiumEdgeDriverAvailableworkflow);
             if (browserIsSuitableChromiumEdgeDriverAvailablepropCount > 0)
             {
                 callPayload.Body = browserIsSuitableChromiumEdgeDriverAvailable;
@@ -734,12 +734,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserUploadNewChromiumEdgeDriver = new JObject();
             var browserUploadNewChromiumEdgeDriverpropCount = 0;
             browserUploadNewChromiumEdgeDriverpropCount++;
-            browserUploadNewChromiumEdgeDriver["LocalChromiumEdgeDriverFilePath"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath);
+            browserUploadNewChromiumEdgeDriver["LocalChromiumEdgeDriverFilePath"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath);
             if (browserUploadNewChromiumEdgeDrivercompress != null)
             {
                 if (browserUploadNewChromiumEdgeDrivercompress != null)
                 {
-                    browserUploadNewChromiumEdgeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDrivercompress);
+                    browserUploadNewChromiumEdgeDriver["Compress"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromiumEdgeDrivercompress);
                     browserUploadNewChromiumEdgeDriverpropCount++;
                 }
 
@@ -753,18 +753,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion != null)
             {
-                browserUploadNewChromiumEdgeDriver["ChromiumEdgeBrowserMajorVersion"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion);
+                browserUploadNewChromiumEdgeDriver["ChromiumEdgeBrowserMajorVersion"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion);
                 browserUploadNewChromiumEdgeDriverpropCount++;
             }
 
             if (browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder != null)
             {
-                browserUploadNewChromiumEdgeDriver["ChromiumEdgeDriverRootSaveFolder"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder);
+                browserUploadNewChromiumEdgeDriver["ChromiumEdgeDriverRootSaveFolder"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder);
                 browserUploadNewChromiumEdgeDriverpropCount++;
             }
 
             browserUploadNewChromiumEdgeDriverpropCount++;
-            browserUploadNewChromiumEdgeDriver["Workflow"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDriverworkflow);
+            browserUploadNewChromiumEdgeDriver["Workflow"] = CSharpExpressionConverter.ConvertToken(browserUploadNewChromiumEdgeDriverworkflow);
             if (browserUploadNewChromiumEdgeDriverpropCount > 0)
             {
                 callPayload.Body = browserUploadNewChromiumEdgeDriver;
@@ -783,13 +783,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserOpenChromiumEdgepropCount = 0;
             if (browserOpenChromiumEdgechromiumEdgeDriverFolder != null)
             {
-                browserOpenChromiumEdge["ChromiumEdgeDriverFolder"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgechromiumEdgeDriverFolder);
+                browserOpenChromiumEdge["ChromiumEdgeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgechromiumEdgeDriverFolder);
                 browserOpenChromiumEdgepropCount++;
             }
 
             if (browserOpenChromiumEdgeuserDataDir != null)
             {
-                browserOpenChromiumEdge["UserDataDir"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeuserDataDir);
+                browserOpenChromiumEdge["UserDataDir"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgeuserDataDir);
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgekillExistingChromiumEdgeDriver != null)
                 {
-                    browserOpenChromiumEdge["KillExistingChromiumEdgeDriver"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgekillExistingChromiumEdgeDriver);
+                    browserOpenChromiumEdge["KillExistingChromiumEdgeDriver"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgekillExistingChromiumEdgeDriver);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgeprintToDefaultPrinter != null)
                 {
-                    browserOpenChromiumEdge["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeprintToDefaultPrinter);
+                    browserOpenChromiumEdge["PrintToDefaultPrinter"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgeprintToDefaultPrinter);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgedefaultDownloadDirectory != null)
             {
-                browserOpenChromiumEdge["DefaultDownloadDirectory"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedefaultDownloadDirectory);
+                browserOpenChromiumEdge["DefaultDownloadDirectory"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgedefaultDownloadDirectory);
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgedownloadPDFInsteadOfOpening != null)
                 {
-                    browserOpenChromiumEdge["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedownloadPDFInsteadOfOpening);
+                    browserOpenChromiumEdge["DownloadPDFInsteadOfOpening"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgedownloadPDFInsteadOfOpening);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -849,13 +849,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgechromiumEdgeDriverLogFilename != null)
             {
-                browserOpenChromiumEdge["ChromiumEdgeDriverLogFilename"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgechromiumEdgeDriverLogFilename);
+                browserOpenChromiumEdge["ChromiumEdgeDriverLogFilename"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgechromiumEdgeDriverLogFilename);
                 browserOpenChromiumEdgepropCount++;
             }
 
             if (browserOpenChromiumEdgelocalChromiumEdgeDriverFolder != null)
             {
-                browserOpenChromiumEdge["LocalChromiumEdgeDriverFolder"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgelocalChromiumEdgeDriverFolder);
+                browserOpenChromiumEdge["LocalChromiumEdgeDriverFolder"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgelocalChromiumEdgeDriverFolder);
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage != null)
                 {
-                    browserOpenChromiumEdge["HideBrowserIsBeingAutomatedMessage"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage);
+                    browserOpenChromiumEdge["HideBrowserIsBeingAutomatedMessage"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgechromiumEdgeBrowserEXE != null)
             {
-                browserOpenChromiumEdge["ChromiumEdgeBrowserEXE"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgechromiumEdgeBrowserEXE);
+                browserOpenChromiumEdge["ChromiumEdgeBrowserEXE"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgechromiumEdgeBrowserEXE);
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgeignoreCertificateErrors != null)
                 {
-                    browserOpenChromiumEdge["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeignoreCertificateErrors);
+                    browserOpenChromiumEdge["IgnoreCertificateErrors"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgeignoreCertificateErrors);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgeadditionalArguments != null)
             {
-                browserOpenChromiumEdge["AdditionalArguments"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeadditionalArguments);
+                browserOpenChromiumEdge["AdditionalArguments"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgeadditionalArguments);
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen != null)
                 {
-                    browserOpenChromiumEdge["DoNothingIfChromiumEdgeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen);
+                    browserOpenChromiumEdge["DoNothingIfChromiumEdgeInstanceAlreadyOpen"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen);
                     browserOpenChromiumEdgepropCount++;
                 }
 
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserOpenChromiumEdgepropCount++;
-            browserOpenChromiumEdge["Workflow"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeworkflow);
+            browserOpenChromiumEdge["Workflow"] = CSharpExpressionConverter.ConvertToken(browserOpenChromiumEdgeworkflow);
             if (browserOpenChromiumEdgepropCount > 0)
             {
                 callPayload.Body = browserOpenChromiumEdge;
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCloseChromiumEdgepurgeDynamicUserDataDir != null)
                 {
-                    browserCloseChromiumEdge["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeDynamicUserDataDir);
+                    browserCloseChromiumEdge["PurgeDynamicUserDataDir"] = CSharpExpressionConverter.ConvertToken(browserCloseChromiumEdgepurgeDynamicUserDataDir);
                     browserCloseChromiumEdgepropCount++;
                 }
 
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCloseChromiumEdgepurgeStaticUserDataDir != null)
                 {
-                    browserCloseChromiumEdge["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeStaticUserDataDir);
+                    browserCloseChromiumEdge["PurgeStaticUserDataDir"] = CSharpExpressionConverter.ConvertToken(browserCloseChromiumEdgepurgeStaticUserDataDir);
                     browserCloseChromiumEdgepropCount++;
                 }
 
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCloseChromiumEdgepropCount++;
-            browserCloseChromiumEdge["Workflow"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgeworkflow);
+            browserCloseChromiumEdge["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCloseChromiumEdgeworkflow);
             if (browserCloseChromiumEdgepropCount > 0)
             {
                 callPayload.Body = browserCloseChromiumEdge;
@@ -988,7 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserMaximise = new JObject();
             var browserMaximisepropCount = 0;
             browserMaximisepropCount++;
-            browserMaximise["Workflow"] = ExpressionConverter.ConvertO(browserMaximiseworkflow);
+            browserMaximise["Workflow"] = CSharpExpressionConverter.ConvertToken(browserMaximiseworkflow);
             if (browserMaximisepropCount > 0)
             {
                 callPayload.Body = browserMaximise;
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserMinimise = new JObject();
             var browserMinimisepropCount = 0;
             browserMinimisepropCount++;
-            browserMinimise["Workflow"] = ExpressionConverter.ConvertO(browserMinimiseworkflow);
+            browserMinimise["Workflow"] = CSharpExpressionConverter.ConvertToken(browserMinimiseworkflow);
             if (browserMinimisepropCount > 0)
             {
                 callPayload.Body = browserMinimise;
@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserFullscreen = new JObject();
             var browserFullscreenpropCount = 0;
             browserFullscreenpropCount++;
-            browserFullscreen["Workflow"] = ExpressionConverter.ConvertO(browserFullscreenworkflow);
+            browserFullscreen["Workflow"] = CSharpExpressionConverter.ConvertToken(browserFullscreenworkflow);
             if (browserFullscreenpropCount > 0)
             {
                 callPayload.Body = browserFullscreen;
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserNormaliseBrowserx != null)
                 {
-                    browserNormaliseBrowser["X"] = ExpressionConverter.ConvertO(browserNormaliseBrowserx);
+                    browserNormaliseBrowser["X"] = CSharpExpressionConverter.ConvertToken(browserNormaliseBrowserx);
                     browserNormaliseBrowserpropCount++;
                 }
 
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserNormaliseBrowsery != null)
                 {
-                    browserNormaliseBrowser["Y"] = ExpressionConverter.ConvertO(browserNormaliseBrowsery);
+                    browserNormaliseBrowser["Y"] = CSharpExpressionConverter.ConvertToken(browserNormaliseBrowsery);
                     browserNormaliseBrowserpropCount++;
                 }
 
@@ -1077,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserNormaliseBrowserwidth != null)
                 {
-                    browserNormaliseBrowser["Width"] = ExpressionConverter.ConvertO(browserNormaliseBrowserwidth);
+                    browserNormaliseBrowser["Width"] = CSharpExpressionConverter.ConvertToken(browserNormaliseBrowserwidth);
                     browserNormaliseBrowserpropCount++;
                 }
 
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserNormaliseBrowserheight != null)
                 {
-                    browserNormaliseBrowser["Height"] = ExpressionConverter.ConvertO(browserNormaliseBrowserheight);
+                    browserNormaliseBrowser["Height"] = CSharpExpressionConverter.ConvertToken(browserNormaliseBrowserheight);
                     browserNormaliseBrowserpropCount++;
                 }
 
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserNormaliseBrowserpropCount++;
-            browserNormaliseBrowser["Workflow"] = ExpressionConverter.ConvertO(browserNormaliseBrowserworkflow);
+            browserNormaliseBrowser["Workflow"] = CSharpExpressionConverter.ConvertToken(browserNormaliseBrowserworkflow);
             if (browserNormaliseBrowserpropCount > 0)
             {
                 callPayload.Body = browserNormaliseBrowser;
@@ -1124,11 +1124,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSetWindowSize = new JObject();
             var browserSetWindowSizepropCount = 0;
             browserSetWindowSizepropCount++;
-            browserSetWindowSize["Width"] = ExpressionConverter.ConvertO(browserSetWindowSizewidth);
+            browserSetWindowSize["Width"] = CSharpExpressionConverter.ConvertToken(browserSetWindowSizewidth);
             browserSetWindowSizepropCount++;
-            browserSetWindowSize["Height"] = ExpressionConverter.ConvertO(browserSetWindowSizeheight);
+            browserSetWindowSize["Height"] = CSharpExpressionConverter.ConvertToken(browserSetWindowSizeheight);
             browserSetWindowSizepropCount++;
-            browserSetWindowSize["Workflow"] = ExpressionConverter.ConvertO(browserSetWindowSizeworkflow);
+            browserSetWindowSize["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSetWindowSizeworkflow);
             if (browserSetWindowSizepropCount > 0)
             {
                 callPayload.Body = browserSetWindowSize;
@@ -1146,11 +1146,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSetWindowPosition = new JObject();
             var browserSetWindowPositionpropCount = 0;
             browserSetWindowPositionpropCount++;
-            browserSetWindowPosition["X"] = ExpressionConverter.ConvertO(browserSetWindowPositionx);
+            browserSetWindowPosition["X"] = CSharpExpressionConverter.ConvertToken(browserSetWindowPositionx);
             browserSetWindowPositionpropCount++;
-            browserSetWindowPosition["Y"] = ExpressionConverter.ConvertO(browserSetWindowPositiony);
+            browserSetWindowPosition["Y"] = CSharpExpressionConverter.ConvertToken(browserSetWindowPositiony);
             browserSetWindowPositionpropCount++;
-            browserSetWindowPosition["Workflow"] = ExpressionConverter.ConvertO(browserSetWindowPositionworkflow);
+            browserSetWindowPosition["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSetWindowPositionworkflow);
             if (browserSetWindowPositionpropCount > 0)
             {
                 callPayload.Body = browserSetWindowPosition;
@@ -1169,18 +1169,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSetTimeoutspropCount = 0;
             if (browserSetTimeoutselementWaitTimeoutSeconds != null)
             {
-                browserSetTimeouts["ElementWaitTimeoutSeconds"] = ExpressionConverter.ConvertO(browserSetTimeoutselementWaitTimeoutSeconds);
+                browserSetTimeouts["ElementWaitTimeoutSeconds"] = CSharpExpressionConverter.ConvertToken(browserSetTimeoutselementWaitTimeoutSeconds);
                 browserSetTimeoutspropCount++;
             }
 
             if (browserSetTimeoutspageLoadTimeoutSeconds != null)
             {
-                browserSetTimeouts["PageLoadTimeoutSeconds"] = ExpressionConverter.ConvertO(browserSetTimeoutspageLoadTimeoutSeconds);
+                browserSetTimeouts["PageLoadTimeoutSeconds"] = CSharpExpressionConverter.ConvertToken(browserSetTimeoutspageLoadTimeoutSeconds);
                 browserSetTimeoutspropCount++;
             }
 
             browserSetTimeoutspropCount++;
-            browserSetTimeouts["Workflow"] = ExpressionConverter.ConvertO(browserSetTimeoutsworkflow);
+            browserSetTimeouts["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSetTimeoutsworkflow);
             if (browserSetTimeoutspropCount > 0)
             {
                 callPayload.Body = browserSetTimeouts;
@@ -1198,9 +1198,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserNavigateToURL = new JObject();
             var browserNavigateToURLpropCount = 0;
             browserNavigateToURLpropCount++;
-            browserNavigateToURL["URL"] = ExpressionConverter.ConvertO(browserNavigateToURLuRL);
+            browserNavigateToURL["URL"] = CSharpExpressionConverter.ConvertToken(browserNavigateToURLuRL);
             browserNavigateToURLpropCount++;
-            browserNavigateToURL["Workflow"] = ExpressionConverter.ConvertO(browserNavigateToURLworkflow);
+            browserNavigateToURL["Workflow"] = CSharpExpressionConverter.ConvertToken(browserNavigateToURLworkflow);
             if (browserNavigateToURLpropCount > 0)
             {
                 callPayload.Body = browserNavigateToURL;
@@ -1218,7 +1218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserRefreshPage = new JObject();
             var browserRefreshPagepropCount = 0;
             browserRefreshPagepropCount++;
-            browserRefreshPage["Workflow"] = ExpressionConverter.ConvertO(browserRefreshPageworkflow);
+            browserRefreshPage["Workflow"] = CSharpExpressionConverter.ConvertToken(browserRefreshPageworkflow);
             if (browserRefreshPagepropCount > 0)
             {
                 callPayload.Body = browserRefreshPage;
@@ -1236,7 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserResetAllElementHandles = new JObject();
             var browserResetAllElementHandlespropCount = 0;
             browserResetAllElementHandlespropCount++;
-            browserResetAllElementHandles["Workflow"] = ExpressionConverter.ConvertO(browserResetAllElementHandlesworkflow);
+            browserResetAllElementHandles["Workflow"] = CSharpExpressionConverter.ConvertToken(browserResetAllElementHandlesworkflow);
             if (browserResetAllElementHandlespropCount > 0)
             {
                 callPayload.Body = browserResetAllElementHandles;
@@ -1255,49 +1255,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDoesElementExistpropCount = 0;
             if (browserDoesElementExistparentElementHandle != null)
             {
-                browserDoesElementExist["ParentElementHandle"] = ExpressionConverter.ConvertO(browserDoesElementExistparentElementHandle);
+                browserDoesElementExist["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistparentElementHandle);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementHandle != null)
             {
-                browserDoesElementExist["SearchElementHandle"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementHandle);
+                browserDoesElementExist["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementHandle);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementName != null)
             {
-                browserDoesElementExist["SearchElementName"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementName);
+                browserDoesElementExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementName);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementID != null)
             {
-                browserDoesElementExist["SearchElementID"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementID);
+                browserDoesElementExist["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementID);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementTagName != null)
             {
-                browserDoesElementExist["SearchElementTagName"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementTagName);
+                browserDoesElementExist["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementTagName);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementXPath != null)
             {
-                browserDoesElementExist["SearchElementXPath"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementXPath);
+                browserDoesElementExist["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementXPath);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementClassName != null)
             {
-                browserDoesElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementClassName);
+                browserDoesElementExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementClassName);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementCSSSelector != null)
             {
-                browserDoesElementExist["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementCSSSelector);
+                browserDoesElementExist["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementCSSSelector);
                 browserDoesElementExistpropCount++;
             }
 
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementIndex != null)
                 {
-                    browserDoesElementExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementIndex);
+                    browserDoesElementExist["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementIndex);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1319,19 +1319,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDoesElementExistsearchElementMatchValue != null)
             {
-                browserDoesElementExist["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMatchValue);
+                browserDoesElementExist["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementMatchValue);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementMatchText != null)
             {
-                browserDoesElementExist["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMatchText);
+                browserDoesElementExist["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementMatchText);
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementType != null)
             {
-                browserDoesElementExist["SearchElementType"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementType);
+                browserDoesElementExist["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementType);
                 browserDoesElementExistpropCount++;
             }
 
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementMinimumWidth != null)
                 {
-                    browserDoesElementExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumWidth);
+                    browserDoesElementExist["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementMinimumWidth);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementMinimumHeight != null)
                 {
-                    browserDoesElementExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumHeight);
+                    browserDoesElementExist["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementMinimumHeight);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1371,7 +1371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementBoundingBoxLeft != null)
                 {
-                    browserDoesElementExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxLeft);
+                    browserDoesElementExist["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementBoundingBoxLeft);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1387,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementBoundingBoxRight != null)
                 {
-                    browserDoesElementExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxRight);
+                    browserDoesElementExist["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementBoundingBoxRight);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementBoundingBoxTop != null)
                 {
-                    browserDoesElementExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxTop);
+                    browserDoesElementExist["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementBoundingBoxTop);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1419,7 +1419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistsearchElementBoundingBoxBottom != null)
                 {
-                    browserDoesElementExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxBottom);
+                    browserDoesElementExist["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistsearchElementBoundingBoxBottom);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1435,7 +1435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserDoesElementExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDoesElementExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserDoesElementExistpropCount++;
                 }
 
@@ -1448,7 +1448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDoesElementExistpropCount++;
-            browserDoesElementExist["Workflow"] = ExpressionConverter.ConvertO(browserDoesElementExistworkflow);
+            browserDoesElementExist["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDoesElementExistworkflow);
             if (browserDoesElementExistpropCount > 0)
             {
                 callPayload.Body = browserDoesElementExist;
@@ -1467,49 +1467,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCreateHandleToElementpropCount = 0;
             if (browserCreateHandleToElementparentElementHandle != null)
             {
-                browserCreateHandleToElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserCreateHandleToElementparentElementHandle);
+                browserCreateHandleToElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementparentElementHandle);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementHandle != null)
             {
-                browserCreateHandleToElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementHandle);
+                browserCreateHandleToElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementHandle);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementName != null)
             {
-                browserCreateHandleToElement["SearchElementName"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementName);
+                browserCreateHandleToElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementName);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementID != null)
             {
-                browserCreateHandleToElement["SearchElementID"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementID);
+                browserCreateHandleToElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementID);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementTagName != null)
             {
-                browserCreateHandleToElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementTagName);
+                browserCreateHandleToElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementTagName);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementXPath != null)
             {
-                browserCreateHandleToElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementXPath);
+                browserCreateHandleToElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementXPath);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementClassName != null)
             {
-                browserCreateHandleToElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementClassName);
+                browserCreateHandleToElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementClassName);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementCSSSelector != null)
             {
-                browserCreateHandleToElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementCSSSelector);
+                browserCreateHandleToElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementCSSSelector);
                 browserCreateHandleToElementpropCount++;
             }
 
@@ -1517,7 +1517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementIndex != null)
                 {
-                    browserCreateHandleToElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementIndex);
+                    browserCreateHandleToElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementIndex);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1531,19 +1531,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToElementsearchElementMatchValue != null)
             {
-                browserCreateHandleToElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMatchValue);
+                browserCreateHandleToElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementMatchValue);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementMatchText != null)
             {
-                browserCreateHandleToElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMatchText);
+                browserCreateHandleToElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementMatchText);
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementType != null)
             {
-                browserCreateHandleToElement["SearchElementType"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementType);
+                browserCreateHandleToElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementType);
                 browserCreateHandleToElementpropCount++;
             }
 
@@ -1551,7 +1551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementMinimumWidth != null)
                 {
-                    browserCreateHandleToElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumWidth);
+                    browserCreateHandleToElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementMinimumWidth);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1567,7 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementMinimumHeight != null)
                 {
-                    browserCreateHandleToElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumHeight);
+                    browserCreateHandleToElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementMinimumHeight);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1583,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserCreateHandleToElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxLeft);
+                    browserCreateHandleToElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementBoundingBoxLeft);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1599,7 +1599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementBoundingBoxRight != null)
                 {
-                    browserCreateHandleToElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxRight);
+                    browserCreateHandleToElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementBoundingBoxRight);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1615,7 +1615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementBoundingBoxTop != null)
                 {
-                    browserCreateHandleToElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxTop);
+                    browserCreateHandleToElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementBoundingBoxTop);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1631,7 +1631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserCreateHandleToElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxBottom);
+                    browserCreateHandleToElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementsearchElementBoundingBoxBottom);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1647,7 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserCreateHandleToElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCreateHandleToElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserCreateHandleToElementpropCount++;
                 }
 
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCreateHandleToElementpropCount++;
-            browserCreateHandleToElement["Workflow"] = ExpressionConverter.ConvertO(browserCreateHandleToElementworkflow);
+            browserCreateHandleToElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToElementworkflow);
             if (browserCreateHandleToElementpropCount > 0)
             {
                 callPayload.Body = browserCreateHandleToElement;
@@ -1679,49 +1679,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCreateHandleToParentElementpropCount = 0;
             if (browserCreateHandleToParentElementparentElementHandle != null)
             {
-                browserCreateHandleToParentElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementparentElementHandle);
+                browserCreateHandleToParentElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementparentElementHandle);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementHandle != null)
             {
-                browserCreateHandleToParentElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementHandle);
+                browserCreateHandleToParentElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementHandle);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementName != null)
             {
-                browserCreateHandleToParentElement["SearchElementName"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementName);
+                browserCreateHandleToParentElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementName);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementID != null)
             {
-                browserCreateHandleToParentElement["SearchElementID"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementID);
+                browserCreateHandleToParentElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementID);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementTagName != null)
             {
-                browserCreateHandleToParentElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementTagName);
+                browserCreateHandleToParentElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementTagName);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementXPath != null)
             {
-                browserCreateHandleToParentElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementXPath);
+                browserCreateHandleToParentElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementXPath);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementClassName != null)
             {
-                browserCreateHandleToParentElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementClassName);
+                browserCreateHandleToParentElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementClassName);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementCSSSelector != null)
             {
-                browserCreateHandleToParentElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementCSSSelector);
+                browserCreateHandleToParentElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementCSSSelector);
                 browserCreateHandleToParentElementpropCount++;
             }
 
@@ -1729,7 +1729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementIndex != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementIndex);
+                    browserCreateHandleToParentElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementIndex);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1743,19 +1743,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToParentElementsearchElementMatchValue != null)
             {
-                browserCreateHandleToParentElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMatchValue);
+                browserCreateHandleToParentElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementMatchValue);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementMatchText != null)
             {
-                browserCreateHandleToParentElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMatchText);
+                browserCreateHandleToParentElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementMatchText);
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementType != null)
             {
-                browserCreateHandleToParentElement["SearchElementType"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementType);
+                browserCreateHandleToParentElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementType);
                 browserCreateHandleToParentElementpropCount++;
             }
 
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementMinimumWidth != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumWidth);
+                    browserCreateHandleToParentElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementMinimumWidth);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementMinimumHeight != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumHeight);
+                    browserCreateHandleToParentElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementMinimumHeight);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1795,7 +1795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxLeft);
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementBoundingBoxLeft);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1811,7 +1811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementBoundingBoxRight != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxRight);
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementBoundingBoxRight);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1827,7 +1827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementBoundingBoxTop != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxTop);
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementBoundingBoxTop);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1843,7 +1843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserCreateHandleToParentElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxBottom);
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementsearchElementBoundingBoxBottom);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1859,7 +1859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserCreateHandleToParentElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCreateHandleToParentElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserCreateHandleToParentElementpropCount++;
                 }
 
@@ -1872,7 +1872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCreateHandleToParentElementpropCount++;
-            browserCreateHandleToParentElement["Workflow"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementworkflow);
+            browserCreateHandleToParentElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCreateHandleToParentElementworkflow);
             if (browserCreateHandleToParentElementpropCount > 0)
             {
                 callPayload.Body = browserCreateHandleToParentElement;
@@ -1891,49 +1891,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetElementPropertiespropCount = 0;
             if (browserGetElementPropertiesparentElementHandle != null)
             {
-                browserGetElementProperties["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetElementPropertiesparentElementHandle);
+                browserGetElementProperties["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiesparentElementHandle);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementHandle != null)
             {
-                browserGetElementProperties["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementHandle);
+                browserGetElementProperties["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementHandle);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementName != null)
             {
-                browserGetElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementName);
+                browserGetElementProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementName);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementID != null)
             {
-                browserGetElementProperties["SearchElementID"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementID);
+                browserGetElementProperties["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementID);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementTagName != null)
             {
-                browserGetElementProperties["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementTagName);
+                browserGetElementProperties["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementTagName);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementXPath != null)
             {
-                browserGetElementProperties["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementXPath);
+                browserGetElementProperties["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementXPath);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementClassName != null)
             {
-                browserGetElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementClassName);
+                browserGetElementProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementClassName);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementCSSSelector != null)
             {
-                browserGetElementProperties["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementCSSSelector);
+                browserGetElementProperties["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementCSSSelector);
                 browserGetElementPropertiespropCount++;
             }
 
@@ -1941,7 +1941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementIndex != null)
                 {
-                    browserGetElementProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementIndex);
+                    browserGetElementProperties["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementIndex);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -1955,19 +1955,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementPropertiessearchElementMatchValue != null)
             {
-                browserGetElementProperties["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMatchValue);
+                browserGetElementProperties["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementMatchValue);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementMatchText != null)
             {
-                browserGetElementProperties["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMatchText);
+                browserGetElementProperties["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementMatchText);
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementType != null)
             {
-                browserGetElementProperties["SearchElementType"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementType);
+                browserGetElementProperties["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementType);
                 browserGetElementPropertiespropCount++;
             }
 
@@ -1975,7 +1975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementMinimumWidth != null)
                 {
-                    browserGetElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumWidth);
+                    browserGetElementProperties["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementMinimumWidth);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -1991,7 +1991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementMinimumHeight != null)
                 {
-                    browserGetElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumHeight);
+                    browserGetElementProperties["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementMinimumHeight);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2007,7 +2007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementBoundingBoxLeft != null)
                 {
-                    browserGetElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementProperties["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementBoundingBoxLeft);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2023,7 +2023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementBoundingBoxRight != null)
                 {
-                    browserGetElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxRight);
+                    browserGetElementProperties["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementBoundingBoxRight);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2039,7 +2039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementBoundingBoxTop != null)
                 {
-                    browserGetElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxTop);
+                    browserGetElementProperties["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementBoundingBoxTop);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2055,7 +2055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiessearchElementBoundingBoxBottom != null)
                 {
-                    browserGetElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementProperties["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiessearchElementBoundingBoxBottom);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2071,7 +2071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2087,7 +2087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiesgetHTMLCode != null)
                 {
-                    browserGetElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementPropertiesgetHTMLCode);
+                    browserGetElementProperties["GetHTMLCode"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiesgetHTMLCode);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2103,7 +2103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementPropertiesreturnElementHandle != null)
                 {
-                    browserGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(browserGetElementPropertiesreturnElementHandle);
+                    browserGetElementProperties["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiesreturnElementHandle);
                     browserGetElementPropertiespropCount++;
                 }
 
@@ -2116,7 +2116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetElementPropertiespropCount++;
-            browserGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(browserGetElementPropertiesworkflow);
+            browserGetElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetElementPropertiesworkflow);
             if (browserGetElementPropertiespropCount > 0)
             {
                 callPayload.Body = browserGetElementProperties;
@@ -2135,61 +2135,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetMultipleElementPropertiespropCount = 0;
             if (browserGetMultipleElementPropertiesparentElementHandle != null)
             {
-                browserGetMultipleElementProperties["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesparentElementHandle);
+                browserGetMultipleElementProperties["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesparentElementHandle);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementName != null)
             {
-                browserGetMultipleElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementName);
+                browserGetMultipleElementProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementName);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementID != null)
             {
-                browserGetMultipleElementProperties["SearchElementID"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementID);
+                browserGetMultipleElementProperties["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementID);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementTagName != null)
             {
-                browserGetMultipleElementProperties["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementTagName);
+                browserGetMultipleElementProperties["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementTagName);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementXPath != null)
             {
-                browserGetMultipleElementProperties["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementXPath);
+                browserGetMultipleElementProperties["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementXPath);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementClassName != null)
             {
-                browserGetMultipleElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementClassName);
+                browserGetMultipleElementProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementClassName);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementCSSSelector != null)
             {
-                browserGetMultipleElementProperties["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementCSSSelector);
+                browserGetMultipleElementProperties["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementCSSSelector);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementMatchValue != null)
             {
-                browserGetMultipleElementProperties["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMatchValue);
+                browserGetMultipleElementProperties["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementMatchValue);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementMatchText != null)
             {
-                browserGetMultipleElementProperties["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMatchText);
+                browserGetMultipleElementProperties["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementMatchText);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementType != null)
             {
-                browserGetMultipleElementProperties["SearchElementType"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementType);
+                browserGetMultipleElementProperties["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementType);
                 browserGetMultipleElementPropertiespropCount++;
             }
 
@@ -2197,7 +2197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementMinimumWidth != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumWidth);
+                    browserGetMultipleElementProperties["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementMinimumWidth);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2213,7 +2213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementMinimumHeight != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumHeight);
+                    browserGetMultipleElementProperties["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementMinimumHeight);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2229,7 +2229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementBoundingBoxLeft != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft);
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2245,7 +2245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementBoundingBoxRight != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxRight);
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementBoundingBoxRight);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2261,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementBoundingBoxTop != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxTop);
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementBoundingBoxTop);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2277,7 +2277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiessearchElementBoundingBoxBottom != null)
                 {
-                    browserGetMultipleElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom);
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2293,7 +2293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetMultipleElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetMultipleElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2309,7 +2309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesgetHTMLCode != null)
                 {
-                    browserGetMultipleElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesgetHTMLCode);
+                    browserGetMultipleElementProperties["GetHTMLCode"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesgetHTMLCode);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2325,7 +2325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiescreateHandle != null)
                 {
-                    browserGetMultipleElementProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiescreateHandle);
+                    browserGetMultipleElementProperties["CreateHandle"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiescreateHandle);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2341,7 +2341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnValue != null)
                 {
-                    browserGetMultipleElementProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnValue);
+                    browserGetMultipleElementProperties["ReturnValue"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnValue);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2357,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnText != null)
                 {
-                    browserGetMultipleElementProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnText);
+                    browserGetMultipleElementProperties["ReturnText"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnText);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2373,7 +2373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesmaxValueLength != null)
                 {
-                    browserGetMultipleElementProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxValueLength);
+                    browserGetMultipleElementProperties["MaxValueLength"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesmaxValueLength);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2389,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesmaxTextLength != null)
                 {
-                    browserGetMultipleElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxTextLength);
+                    browserGetMultipleElementProperties["MaxTextLength"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesmaxTextLength);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2405,7 +2405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnIsDisplayed != null)
                 {
-                    browserGetMultipleElementProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnIsDisplayed);
+                    browserGetMultipleElementProperties["ReturnIsDisplayed"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnIsDisplayed);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2421,7 +2421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnCoordinates != null)
                 {
-                    browserGetMultipleElementProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnCoordinates);
+                    browserGetMultipleElementProperties["ReturnCoordinates"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnCoordinates);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2437,7 +2437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnDimensions != null)
                 {
-                    browserGetMultipleElementProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnDimensions);
+                    browserGetMultipleElementProperties["ReturnDimensions"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnDimensions);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2453,7 +2453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnChildElementCount != null)
                 {
-                    browserGetMultipleElementProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnChildElementCount);
+                    browserGetMultipleElementProperties["ReturnChildElementCount"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnChildElementCount);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesreturnParentTag != null)
                 {
-                    browserGetMultipleElementProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnParentTag);
+                    browserGetMultipleElementProperties["ReturnParentTag"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesreturnParentTag);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesfirstItemToReturn != null)
                 {
-                    browserGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesfirstItemToReturn);
+                    browserGetMultipleElementProperties["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesfirstItemToReturn);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2501,7 +2501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetMultipleElementPropertiesmaxItemsToReturn != null)
                 {
-                    browserGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxItemsToReturn);
+                    browserGetMultipleElementProperties["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesmaxItemsToReturn);
                     browserGetMultipleElementPropertiespropCount++;
                 }
 
@@ -2514,7 +2514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetMultipleElementPropertiespropCount++;
-            browserGetMultipleElementProperties["Workflow"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesworkflow);
+            browserGetMultipleElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetMultipleElementPropertiesworkflow);
             if (browserGetMultipleElementPropertiespropCount > 0)
             {
                 callPayload.Body = browserGetMultipleElementProperties;
@@ -2533,49 +2533,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetElementParentPropertiespropCount = 0;
             if (browserGetElementParentPropertiesparentElementHandle != null)
             {
-                browserGetElementParentProperties["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesparentElementHandle);
+                browserGetElementParentProperties["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiesparentElementHandle);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementHandle != null)
             {
-                browserGetElementParentProperties["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementHandle);
+                browserGetElementParentProperties["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementHandle);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementName != null)
             {
-                browserGetElementParentProperties["SearchElementName"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementName);
+                browserGetElementParentProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementName);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementID != null)
             {
-                browserGetElementParentProperties["SearchElementID"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementID);
+                browserGetElementParentProperties["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementID);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementTagName != null)
             {
-                browserGetElementParentProperties["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementTagName);
+                browserGetElementParentProperties["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementTagName);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementXPath != null)
             {
-                browserGetElementParentProperties["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementXPath);
+                browserGetElementParentProperties["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementXPath);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementClassName != null)
             {
-                browserGetElementParentProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementClassName);
+                browserGetElementParentProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementClassName);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementCSSSelector != null)
             {
-                browserGetElementParentProperties["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementCSSSelector);
+                browserGetElementParentProperties["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementCSSSelector);
                 browserGetElementParentPropertiespropCount++;
             }
 
@@ -2583,7 +2583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementIndex != null)
                 {
-                    browserGetElementParentProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementIndex);
+                    browserGetElementParentProperties["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementIndex);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2597,19 +2597,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementParentPropertiessearchElementMatchValue != null)
             {
-                browserGetElementParentProperties["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMatchValue);
+                browserGetElementParentProperties["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementMatchValue);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementMatchText != null)
             {
-                browserGetElementParentProperties["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMatchText);
+                browserGetElementParentProperties["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementMatchText);
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementType != null)
             {
-                browserGetElementParentProperties["SearchElementType"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementType);
+                browserGetElementParentProperties["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementType);
                 browserGetElementParentPropertiespropCount++;
             }
 
@@ -2617,7 +2617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementMinimumWidth != null)
                 {
-                    browserGetElementParentProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumWidth);
+                    browserGetElementParentProperties["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementMinimumWidth);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2633,7 +2633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementMinimumHeight != null)
                 {
-                    browserGetElementParentProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumHeight);
+                    browserGetElementParentProperties["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementMinimumHeight);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2649,7 +2649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementBoundingBoxLeft != null)
                 {
-                    browserGetElementParentProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementParentProperties["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementBoundingBoxLeft);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2665,7 +2665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementBoundingBoxRight != null)
                 {
-                    browserGetElementParentProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxRight);
+                    browserGetElementParentProperties["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementBoundingBoxRight);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2681,7 +2681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementBoundingBoxTop != null)
                 {
-                    browserGetElementParentProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxTop);
+                    browserGetElementParentProperties["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementBoundingBoxTop);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2697,7 +2697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiessearchElementBoundingBoxBottom != null)
                 {
-                    browserGetElementParentProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementParentProperties["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiessearchElementBoundingBoxBottom);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2713,7 +2713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetElementParentProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementParentProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2729,7 +2729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiesgetHTMLCode != null)
                 {
-                    browserGetElementParentProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesgetHTMLCode);
+                    browserGetElementParentProperties["GetHTMLCode"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiesgetHTMLCode);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2745,7 +2745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementParentPropertiescreateHandle != null)
                 {
-                    browserGetElementParentProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiescreateHandle);
+                    browserGetElementParentProperties["CreateHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiescreateHandle);
                     browserGetElementParentPropertiespropCount++;
                 }
 
@@ -2758,7 +2758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetElementParentPropertiespropCount++;
-            browserGetElementParentProperties["Workflow"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesworkflow);
+            browserGetElementParentProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetElementParentPropertiesworkflow);
             if (browserGetElementParentPropertiespropCount > 0)
             {
                 callPayload.Body = browserGetElementParentProperties;
@@ -2777,61 +2777,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetElementChildrenPropertiespropCount = 0;
             if (browserGetElementChildrenPropertiesparentElementHandle != null)
             {
-                browserGetElementChildrenProperties["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesparentElementHandle);
+                browserGetElementChildrenProperties["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesparentElementHandle);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementName != null)
             {
-                browserGetElementChildrenProperties["SearchElementName"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementName);
+                browserGetElementChildrenProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementName);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementID != null)
             {
-                browserGetElementChildrenProperties["SearchElementID"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementID);
+                browserGetElementChildrenProperties["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementID);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementTagName != null)
             {
-                browserGetElementChildrenProperties["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementTagName);
+                browserGetElementChildrenProperties["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementTagName);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementXPath != null)
             {
-                browserGetElementChildrenProperties["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementXPath);
+                browserGetElementChildrenProperties["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementXPath);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementClassName != null)
             {
-                browserGetElementChildrenProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementClassName);
+                browserGetElementChildrenProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementClassName);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementCSSSelector != null)
             {
-                browserGetElementChildrenProperties["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementCSSSelector);
+                browserGetElementChildrenProperties["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementCSSSelector);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementMatchValue != null)
             {
-                browserGetElementChildrenProperties["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMatchValue);
+                browserGetElementChildrenProperties["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementMatchValue);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementMatchText != null)
             {
-                browserGetElementChildrenProperties["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMatchText);
+                browserGetElementChildrenProperties["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementMatchText);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementType != null)
             {
-                browserGetElementChildrenProperties["SearchElementType"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementType);
+                browserGetElementChildrenProperties["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementType);
                 browserGetElementChildrenPropertiespropCount++;
             }
 
@@ -2839,7 +2839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementMinimumWidth != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumWidth);
+                    browserGetElementChildrenProperties["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementMinimumWidth);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2855,7 +2855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementMinimumHeight != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumHeight);
+                    browserGetElementChildrenProperties["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementMinimumHeight);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2871,7 +2871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementBoundingBoxLeft != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2887,7 +2887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementBoundingBoxRight != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxRight);
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementBoundingBoxRight);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2903,7 +2903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementBoundingBoxTop != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxTop);
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementBoundingBoxTop);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2919,7 +2919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchElementBoundingBoxBottom != null)
                 {
-                    browserGetElementChildrenProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2935,7 +2935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetElementChildrenProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementChildrenProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2951,7 +2951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesgetHTMLCode != null)
                 {
-                    browserGetElementChildrenProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesgetHTMLCode);
+                    browserGetElementChildrenProperties["GetHTMLCode"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesgetHTMLCode);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2967,7 +2967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiescreateHandle != null)
                 {
-                    browserGetElementChildrenProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiescreateHandle);
+                    browserGetElementChildrenProperties["CreateHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiescreateHandle);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2983,7 +2983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiessearchSubTree != null)
                 {
-                    browserGetElementChildrenProperties["SearchSubTree"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchSubTree);
+                    browserGetElementChildrenProperties["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiessearchSubTree);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -2999,7 +2999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnValue != null)
                 {
-                    browserGetElementChildrenProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnValue);
+                    browserGetElementChildrenProperties["ReturnValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnValue);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3015,7 +3015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnText != null)
                 {
-                    browserGetElementChildrenProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnText);
+                    browserGetElementChildrenProperties["ReturnText"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnText);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3031,7 +3031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesmaxValueLength != null)
                 {
-                    browserGetElementChildrenProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxValueLength);
+                    browserGetElementChildrenProperties["MaxValueLength"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesmaxValueLength);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesmaxTextLength != null)
                 {
-                    browserGetElementChildrenProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxTextLength);
+                    browserGetElementChildrenProperties["MaxTextLength"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesmaxTextLength);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3063,7 +3063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnIsDisplayed != null)
                 {
-                    browserGetElementChildrenProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnIsDisplayed);
+                    browserGetElementChildrenProperties["ReturnIsDisplayed"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnIsDisplayed);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3079,7 +3079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnCoordinates != null)
                 {
-                    browserGetElementChildrenProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnCoordinates);
+                    browserGetElementChildrenProperties["ReturnCoordinates"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnCoordinates);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3095,7 +3095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnDimensions != null)
                 {
-                    browserGetElementChildrenProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnDimensions);
+                    browserGetElementChildrenProperties["ReturnDimensions"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnDimensions);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3111,7 +3111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnChildElementCount != null)
                 {
-                    browserGetElementChildrenProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnChildElementCount);
+                    browserGetElementChildrenProperties["ReturnChildElementCount"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnChildElementCount);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3127,7 +3127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesreturnParentTag != null)
                 {
-                    browserGetElementChildrenProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnParentTag);
+                    browserGetElementChildrenProperties["ReturnParentTag"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesreturnParentTag);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3143,7 +3143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesfirstItemToReturn != null)
                 {
-                    browserGetElementChildrenProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesfirstItemToReturn);
+                    browserGetElementChildrenProperties["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesfirstItemToReturn);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3159,7 +3159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementChildrenPropertiesmaxItemsToReturn != null)
                 {
-                    browserGetElementChildrenProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxItemsToReturn);
+                    browserGetElementChildrenProperties["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesmaxItemsToReturn);
                     browserGetElementChildrenPropertiespropCount++;
                 }
 
@@ -3172,7 +3172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetElementChildrenPropertiespropCount++;
-            browserGetElementChildrenProperties["Workflow"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesworkflow);
+            browserGetElementChildrenProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetElementChildrenPropertiesworkflow);
             if (browserGetElementChildrenPropertiespropCount > 0)
             {
                 callPayload.Body = browserGetElementChildrenProperties;
@@ -3191,49 +3191,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserInputTextIntoElementpropCount = 0;
             if (browserInputTextIntoElementparentElementHandle != null)
             {
-                browserInputTextIntoElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserInputTextIntoElementparentElementHandle);
+                browserInputTextIntoElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementparentElementHandle);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementHandle != null)
             {
-                browserInputTextIntoElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementHandle);
+                browserInputTextIntoElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementHandle);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementName != null)
             {
-                browserInputTextIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementName);
+                browserInputTextIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementName);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementID != null)
             {
-                browserInputTextIntoElement["SearchElementID"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementID);
+                browserInputTextIntoElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementID);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementTagName != null)
             {
-                browserInputTextIntoElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementTagName);
+                browserInputTextIntoElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementTagName);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementXPath != null)
             {
-                browserInputTextIntoElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementXPath);
+                browserInputTextIntoElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementXPath);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementClassName != null)
             {
-                browserInputTextIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementClassName);
+                browserInputTextIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementClassName);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementCSSSelector != null)
             {
-                browserInputTextIntoElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementCSSSelector);
+                browserInputTextIntoElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementCSSSelector);
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -3241,7 +3241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementIndex != null)
                 {
-                    browserInputTextIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementIndex);
+                    browserInputTextIntoElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementIndex);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3255,19 +3255,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputTextIntoElementsearchElementMatchValue != null)
             {
-                browserInputTextIntoElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMatchValue);
+                browserInputTextIntoElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementMatchValue);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementMatchText != null)
             {
-                browserInputTextIntoElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMatchText);
+                browserInputTextIntoElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementMatchText);
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementType != null)
             {
-                browserInputTextIntoElement["SearchElementType"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementType);
+                browserInputTextIntoElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementType);
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -3275,7 +3275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementMinimumWidth != null)
                 {
-                    browserInputTextIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumWidth);
+                    browserInputTextIntoElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementMinimumWidth);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3291,7 +3291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementMinimumHeight != null)
                 {
-                    browserInputTextIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumHeight);
+                    browserInputTextIntoElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementMinimumHeight);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3307,7 +3307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserInputTextIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxLeft);
+                    browserInputTextIntoElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementBoundingBoxLeft);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3323,7 +3323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementBoundingBoxRight != null)
                 {
-                    browserInputTextIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxRight);
+                    browserInputTextIntoElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementBoundingBoxRight);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3339,7 +3339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementBoundingBoxTop != null)
                 {
-                    browserInputTextIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxTop);
+                    browserInputTextIntoElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementBoundingBoxTop);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3355,7 +3355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserInputTextIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxBottom);
+                    browserInputTextIntoElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementsearchElementBoundingBoxBottom);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3371,7 +3371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserInputTextIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserInputTextIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3385,7 +3385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputTextIntoElementtextToInput != null)
             {
-                browserInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(browserInputTextIntoElementtextToInput);
+                browserInputTextIntoElement["TextToInput"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementtextToInput);
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -3393,7 +3393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementresetExistingValue != null)
                 {
-                    browserInputTextIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputTextIntoElementresetExistingValue);
+                    browserInputTextIntoElement["ResetExistingValue"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementresetExistingValue);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3409,7 +3409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputTextIntoElementinsertPosition != null)
                 {
-                    browserInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(browserInputTextIntoElementinsertPosition);
+                    browserInputTextIntoElement["InsertPosition"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementinsertPosition);
                     browserInputTextIntoElementpropCount++;
                 }
 
@@ -3422,7 +3422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserInputTextIntoElementpropCount++;
-            browserInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(browserInputTextIntoElementworkflow);
+            browserInputTextIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoElementworkflow);
             if (browserInputTextIntoElementpropCount > 0)
             {
                 callPayload.Body = browserInputTextIntoElement;
@@ -3440,9 +3440,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserInputTextIntoMultipleElements = new JObject();
             var browserInputTextIntoMultipleElementspropCount = 0;
             browserInputTextIntoMultipleElementspropCount++;
-            browserInputTextIntoMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(browserInputTextIntoMultipleElementsinputElementsJSON);
+            browserInputTextIntoMultipleElements["InputElementsJSON"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoMultipleElementsinputElementsJSON);
             browserInputTextIntoMultipleElementspropCount++;
-            browserInputTextIntoMultipleElements["Workflow"] = ExpressionConverter.ConvertO(browserInputTextIntoMultipleElementsworkflow);
+            browserInputTextIntoMultipleElements["Workflow"] = CSharpExpressionConverter.ConvertToken(browserInputTextIntoMultipleElementsworkflow);
             if (browserInputTextIntoMultipleElementspropCount > 0)
             {
                 callPayload.Body = browserInputTextIntoMultipleElements;
@@ -3461,49 +3461,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserPressCtrlKeyOnElementpropCount = 0;
             if (browserPressCtrlKeyOnElementparentElementHandle != null)
             {
-                browserPressCtrlKeyOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementparentElementHandle);
+                browserPressCtrlKeyOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementparentElementHandle);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementHandle != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementHandle);
+                browserPressCtrlKeyOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementHandle);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementName != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementName);
+                browserPressCtrlKeyOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementName);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementID != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementID);
+                browserPressCtrlKeyOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementID);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementTagName != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementTagName);
+                browserPressCtrlKeyOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementTagName);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementXPath != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementXPath);
+                browserPressCtrlKeyOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementXPath);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementClassName != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementClassName);
+                browserPressCtrlKeyOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementClassName);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementCSSSelector != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementCSSSelector);
+                browserPressCtrlKeyOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementCSSSelector);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
@@ -3511,7 +3511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementIndex != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementIndex);
+                    browserPressCtrlKeyOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementIndex);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3525,19 +3525,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressCtrlKeyOnElementsearchElementMatchValue != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMatchValue);
+                browserPressCtrlKeyOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementMatchValue);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementMatchText != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMatchText);
+                browserPressCtrlKeyOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementMatchText);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementType != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementType);
+                browserPressCtrlKeyOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementType);
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
@@ -3545,7 +3545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementMinimumWidth != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumWidth);
+                    browserPressCtrlKeyOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementMinimumWidth);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3561,7 +3561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementMinimumHeight != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumHeight);
+                    browserPressCtrlKeyOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementMinimumHeight);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3577,7 +3577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft);
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3593,7 +3593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight);
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3609,7 +3609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop);
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3625,7 +3625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom);
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3641,7 +3641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserPressCtrlKeyOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPressCtrlKeyOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserPressCtrlKeyOnElementpropCount++;
                 }
 
@@ -3654,9 +3654,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserPressCtrlKeyOnElementpropCount++;
-            browserPressCtrlKeyOnElement["ControlKey"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementcontrolKey);
+            browserPressCtrlKeyOnElement["ControlKey"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementcontrolKey);
             browserPressCtrlKeyOnElementpropCount++;
-            browserPressCtrlKeyOnElement["Workflow"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementworkflow);
+            browserPressCtrlKeyOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserPressCtrlKeyOnElementworkflow);
             if (browserPressCtrlKeyOnElementpropCount > 0)
             {
                 callPayload.Body = browserPressCtrlKeyOnElement;
@@ -3675,49 +3675,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserClickElementpropCount = 0;
             if (browserClickElementparentElementHandle != null)
             {
-                browserClickElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserClickElementparentElementHandle);
+                browserClickElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserClickElementparentElementHandle);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementHandle != null)
             {
-                browserClickElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserClickElementsearchElementHandle);
+                browserClickElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementHandle);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementName != null)
             {
-                browserClickElement["SearchElementName"] = ExpressionConverter.ConvertO(browserClickElementsearchElementName);
+                browserClickElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementName);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementID != null)
             {
-                browserClickElement["SearchElementID"] = ExpressionConverter.ConvertO(browserClickElementsearchElementID);
+                browserClickElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementID);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementTagName != null)
             {
-                browserClickElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserClickElementsearchElementTagName);
+                browserClickElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementTagName);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementXPath != null)
             {
-                browserClickElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserClickElementsearchElementXPath);
+                browserClickElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementXPath);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementClassName != null)
             {
-                browserClickElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserClickElementsearchElementClassName);
+                browserClickElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementClassName);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementCSSSelector != null)
             {
-                browserClickElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserClickElementsearchElementCSSSelector);
+                browserClickElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementCSSSelector);
                 browserClickElementpropCount++;
             }
 
@@ -3725,7 +3725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementIndex != null)
                 {
-                    browserClickElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClickElementsearchElementIndex);
+                    browserClickElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementIndex);
                     browserClickElementpropCount++;
                 }
 
@@ -3739,19 +3739,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClickElementsearchElementMatchValue != null)
             {
-                browserClickElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMatchValue);
+                browserClickElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementMatchValue);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementMatchText != null)
             {
-                browserClickElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMatchText);
+                browserClickElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementMatchText);
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementType != null)
             {
-                browserClickElement["SearchElementType"] = ExpressionConverter.ConvertO(browserClickElementsearchElementType);
+                browserClickElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementType);
                 browserClickElementpropCount++;
             }
 
@@ -3759,7 +3759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementMinimumWidth != null)
                 {
-                    browserClickElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumWidth);
+                    browserClickElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementMinimumWidth);
                     browserClickElementpropCount++;
                 }
 
@@ -3775,7 +3775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementMinimumHeight != null)
                 {
-                    browserClickElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumHeight);
+                    browserClickElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementMinimumHeight);
                     browserClickElementpropCount++;
                 }
 
@@ -3791,7 +3791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserClickElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxLeft);
+                    browserClickElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementBoundingBoxLeft);
                     browserClickElementpropCount++;
                 }
 
@@ -3807,7 +3807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementBoundingBoxRight != null)
                 {
-                    browserClickElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxRight);
+                    browserClickElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementBoundingBoxRight);
                     browserClickElementpropCount++;
                 }
 
@@ -3823,7 +3823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementBoundingBoxTop != null)
                 {
-                    browserClickElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxTop);
+                    browserClickElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementBoundingBoxTop);
                     browserClickElementpropCount++;
                 }
 
@@ -3839,7 +3839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserClickElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxBottom);
+                    browserClickElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserClickElementsearchElementBoundingBoxBottom);
                     browserClickElementpropCount++;
                 }
 
@@ -3855,7 +3855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserClickElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserClickElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserClickElementpropCount++;
                 }
 
@@ -3868,7 +3868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserClickElementpropCount++;
-            browserClickElement["Workflow"] = ExpressionConverter.ConvertO(browserClickElementworkflow);
+            browserClickElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserClickElementworkflow);
             if (browserClickElementpropCount > 0)
             {
                 callPayload.Body = browserClickElement;
@@ -3887,49 +3887,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSubmitElementpropCount = 0;
             if (browserSubmitElementparentElementHandle != null)
             {
-                browserSubmitElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserSubmitElementparentElementHandle);
+                browserSubmitElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementparentElementHandle);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementHandle != null)
             {
-                browserSubmitElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementHandle);
+                browserSubmitElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementHandle);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementName != null)
             {
-                browserSubmitElement["SearchElementName"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementName);
+                browserSubmitElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementName);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementID != null)
             {
-                browserSubmitElement["SearchElementID"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementID);
+                browserSubmitElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementID);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementTagName != null)
             {
-                browserSubmitElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementTagName);
+                browserSubmitElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementTagName);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementXPath != null)
             {
-                browserSubmitElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementXPath);
+                browserSubmitElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementXPath);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementClassName != null)
             {
-                browserSubmitElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementClassName);
+                browserSubmitElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementClassName);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementCSSSelector != null)
             {
-                browserSubmitElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementCSSSelector);
+                browserSubmitElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementCSSSelector);
                 browserSubmitElementpropCount++;
             }
 
@@ -3937,7 +3937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementIndex != null)
                 {
-                    browserSubmitElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementIndex);
+                    browserSubmitElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementIndex);
                     browserSubmitElementpropCount++;
                 }
 
@@ -3951,19 +3951,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSubmitElementsearchElementMatchValue != null)
             {
-                browserSubmitElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMatchValue);
+                browserSubmitElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementMatchValue);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementMatchText != null)
             {
-                browserSubmitElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMatchText);
+                browserSubmitElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementMatchText);
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementType != null)
             {
-                browserSubmitElement["SearchElementType"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementType);
+                browserSubmitElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementType);
                 browserSubmitElementpropCount++;
             }
 
@@ -3971,7 +3971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementMinimumWidth != null)
                 {
-                    browserSubmitElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumWidth);
+                    browserSubmitElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementMinimumWidth);
                     browserSubmitElementpropCount++;
                 }
 
@@ -3987,7 +3987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementMinimumHeight != null)
                 {
-                    browserSubmitElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumHeight);
+                    browserSubmitElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementMinimumHeight);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4003,7 +4003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserSubmitElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxLeft);
+                    browserSubmitElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementBoundingBoxLeft);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4019,7 +4019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementBoundingBoxRight != null)
                 {
-                    browserSubmitElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxRight);
+                    browserSubmitElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementBoundingBoxRight);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4035,7 +4035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementBoundingBoxTop != null)
                 {
-                    browserSubmitElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxTop);
+                    browserSubmitElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementBoundingBoxTop);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4051,7 +4051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserSubmitElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxBottom);
+                    browserSubmitElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementsearchElementBoundingBoxBottom);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4067,7 +4067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserSubmitElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSubmitElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserSubmitElementpropCount++;
                 }
 
@@ -4080,7 +4080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserSubmitElementpropCount++;
-            browserSubmitElement["Workflow"] = ExpressionConverter.ConvertO(browserSubmitElementworkflow);
+            browserSubmitElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSubmitElementworkflow);
             if (browserSubmitElementpropCount > 0)
             {
                 callPayload.Body = browserSubmitElement;
@@ -4099,49 +4099,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCheckElementpropCount = 0;
             if (browserCheckElementparentElementHandle != null)
             {
-                browserCheckElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserCheckElementparentElementHandle);
+                browserCheckElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCheckElementparentElementHandle);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementHandle != null)
             {
-                browserCheckElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementHandle);
+                browserCheckElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementHandle);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementName != null)
             {
-                browserCheckElement["SearchElementName"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementName);
+                browserCheckElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementName);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementID != null)
             {
-                browserCheckElement["SearchElementID"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementID);
+                browserCheckElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementID);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementTagName != null)
             {
-                browserCheckElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementTagName);
+                browserCheckElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementTagName);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementXPath != null)
             {
-                browserCheckElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementXPath);
+                browserCheckElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementXPath);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementClassName != null)
             {
-                browserCheckElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementClassName);
+                browserCheckElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementClassName);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementCSSSelector != null)
             {
-                browserCheckElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementCSSSelector);
+                browserCheckElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementCSSSelector);
                 browserCheckElementpropCount++;
             }
 
@@ -4149,7 +4149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementIndex != null)
                 {
-                    browserCheckElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementIndex);
+                    browserCheckElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementIndex);
                     browserCheckElementpropCount++;
                 }
 
@@ -4163,19 +4163,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCheckElementsearchElementMatchValue != null)
             {
-                browserCheckElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMatchValue);
+                browserCheckElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementMatchValue);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementMatchText != null)
             {
-                browserCheckElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMatchText);
+                browserCheckElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementMatchText);
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementType != null)
             {
-                browserCheckElement["SearchElementType"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementType);
+                browserCheckElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementType);
                 browserCheckElementpropCount++;
             }
 
@@ -4183,7 +4183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementMinimumWidth != null)
                 {
-                    browserCheckElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumWidth);
+                    browserCheckElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementMinimumWidth);
                     browserCheckElementpropCount++;
                 }
 
@@ -4199,7 +4199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementMinimumHeight != null)
                 {
-                    browserCheckElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumHeight);
+                    browserCheckElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementMinimumHeight);
                     browserCheckElementpropCount++;
                 }
 
@@ -4215,7 +4215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserCheckElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxLeft);
+                    browserCheckElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementBoundingBoxLeft);
                     browserCheckElementpropCount++;
                 }
 
@@ -4231,7 +4231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementBoundingBoxRight != null)
                 {
-                    browserCheckElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxRight);
+                    browserCheckElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementBoundingBoxRight);
                     browserCheckElementpropCount++;
                 }
 
@@ -4247,7 +4247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementBoundingBoxTop != null)
                 {
-                    browserCheckElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxTop);
+                    browserCheckElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementBoundingBoxTop);
                     browserCheckElementpropCount++;
                 }
 
@@ -4263,7 +4263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserCheckElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxBottom);
+                    browserCheckElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserCheckElementsearchElementBoundingBoxBottom);
                     browserCheckElementpropCount++;
                 }
 
@@ -4279,7 +4279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserCheckElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCheckElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserCheckElementpropCount++;
                 }
 
@@ -4295,7 +4295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCheckElementcheckElement != null)
                 {
-                    browserCheckElement["CheckElement"] = ExpressionConverter.ConvertO(browserCheckElementcheckElement);
+                    browserCheckElement["CheckElement"] = CSharpExpressionConverter.ConvertToken(browserCheckElementcheckElement);
                     browserCheckElementpropCount++;
                 }
 
@@ -4308,7 +4308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCheckElementpropCount++;
-            browserCheckElement["Workflow"] = ExpressionConverter.ConvertO(browserCheckElementworkflow);
+            browserCheckElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCheckElementworkflow);
             if (browserCheckElementpropCount > 0)
             {
                 callPayload.Body = browserCheckElement;
@@ -4326,9 +4326,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCheckMultipleElements = new JObject();
             var browserCheckMultipleElementspropCount = 0;
             browserCheckMultipleElementspropCount++;
-            browserCheckMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(browserCheckMultipleElementsinputElementsJSON);
+            browserCheckMultipleElements["InputElementsJSON"] = CSharpExpressionConverter.ConvertToken(browserCheckMultipleElementsinputElementsJSON);
             browserCheckMultipleElementspropCount++;
-            browserCheckMultipleElements["Workflow"] = ExpressionConverter.ConvertO(browserCheckMultipleElementsworkflow);
+            browserCheckMultipleElements["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCheckMultipleElementsworkflow);
             if (browserCheckMultipleElementspropCount > 0)
             {
                 callPayload.Body = browserCheckMultipleElements;
@@ -4347,49 +4347,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetSelectionPropertiespropCount = 0;
             if (browserGetSelectionPropertiesparentElementHandle != null)
             {
-                browserGetSelectionProperties["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiesparentElementHandle);
+                browserGetSelectionProperties["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiesparentElementHandle);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementHandle != null)
             {
-                browserGetSelectionProperties["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementHandle);
+                browserGetSelectionProperties["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementHandle);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementName != null)
             {
-                browserGetSelectionProperties["SearchElementName"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementName);
+                browserGetSelectionProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementName);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementID != null)
             {
-                browserGetSelectionProperties["SearchElementID"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementID);
+                browserGetSelectionProperties["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementID);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementTagName != null)
             {
-                browserGetSelectionProperties["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementTagName);
+                browserGetSelectionProperties["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementTagName);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementXPath != null)
             {
-                browserGetSelectionProperties["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementXPath);
+                browserGetSelectionProperties["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementXPath);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementClassName != null)
             {
-                browserGetSelectionProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementClassName);
+                browserGetSelectionProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementClassName);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementCSSSelector != null)
             {
-                browserGetSelectionProperties["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementCSSSelector);
+                browserGetSelectionProperties["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementCSSSelector);
                 browserGetSelectionPropertiespropCount++;
             }
 
@@ -4397,7 +4397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementIndex != null)
                 {
-                    browserGetSelectionProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementIndex);
+                    browserGetSelectionProperties["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementIndex);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4411,19 +4411,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetSelectionPropertiessearchElementMatchValue != null)
             {
-                browserGetSelectionProperties["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMatchValue);
+                browserGetSelectionProperties["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementMatchValue);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementMatchText != null)
             {
-                browserGetSelectionProperties["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMatchText);
+                browserGetSelectionProperties["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementMatchText);
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementType != null)
             {
-                browserGetSelectionProperties["SearchElementType"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementType);
+                browserGetSelectionProperties["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementType);
                 browserGetSelectionPropertiespropCount++;
             }
 
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementMinimumWidth != null)
                 {
-                    browserGetSelectionProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumWidth);
+                    browserGetSelectionProperties["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementMinimumWidth);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4447,7 +4447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementMinimumHeight != null)
                 {
-                    browserGetSelectionProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumHeight);
+                    browserGetSelectionProperties["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementMinimumHeight);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4463,7 +4463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementBoundingBoxLeft != null)
                 {
-                    browserGetSelectionProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxLeft);
+                    browserGetSelectionProperties["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementBoundingBoxLeft);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4479,7 +4479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementBoundingBoxRight != null)
                 {
-                    browserGetSelectionProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxRight);
+                    browserGetSelectionProperties["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementBoundingBoxRight);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4495,7 +4495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementBoundingBoxTop != null)
                 {
-                    browserGetSelectionProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxTop);
+                    browserGetSelectionProperties["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementBoundingBoxTop);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4511,7 +4511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiessearchElementBoundingBoxBottom != null)
                 {
-                    browserGetSelectionProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxBottom);
+                    browserGetSelectionProperties["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiessearchElementBoundingBoxBottom);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4527,7 +4527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetSelectionProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetSelectionProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetSelectionPropertiespropCount++;
                 }
 
@@ -4540,7 +4540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetSelectionPropertiespropCount++;
-            browserGetSelectionProperties["Workflow"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiesworkflow);
+            browserGetSelectionProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetSelectionPropertiesworkflow);
             if (browserGetSelectionPropertiespropCount > 0)
             {
                 callPayload.Body = browserGetSelectionProperties;
@@ -4559,49 +4559,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSelectSelectionpropCount = 0;
             if (browserSelectSelectionparentElementHandle != null)
             {
-                browserSelectSelection["ParentElementHandle"] = ExpressionConverter.ConvertO(browserSelectSelectionparentElementHandle);
+                browserSelectSelection["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionparentElementHandle);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementHandle != null)
             {
-                browserSelectSelection["SearchElementHandle"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementHandle);
+                browserSelectSelection["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementHandle);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementName != null)
             {
-                browserSelectSelection["SearchElementName"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementName);
+                browserSelectSelection["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementName);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementID != null)
             {
-                browserSelectSelection["SearchElementID"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementID);
+                browserSelectSelection["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementID);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementTagName != null)
             {
-                browserSelectSelection["SearchElementTagName"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementTagName);
+                browserSelectSelection["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementTagName);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementXPath != null)
             {
-                browserSelectSelection["SearchElementXPath"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementXPath);
+                browserSelectSelection["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementXPath);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementClassName != null)
             {
-                browserSelectSelection["SearchElementClassName"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementClassName);
+                browserSelectSelection["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementClassName);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementCSSSelector != null)
             {
-                browserSelectSelection["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementCSSSelector);
+                browserSelectSelection["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementCSSSelector);
                 browserSelectSelectionpropCount++;
             }
 
@@ -4609,7 +4609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementIndex != null)
                 {
-                    browserSelectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementIndex);
+                    browserSelectSelection["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementIndex);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4623,19 +4623,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectSelectionsearchElementMatchValue != null)
             {
-                browserSelectSelection["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMatchValue);
+                browserSelectSelection["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementMatchValue);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementMatchText != null)
             {
-                browserSelectSelection["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMatchText);
+                browserSelectSelection["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementMatchText);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementType != null)
             {
-                browserSelectSelection["SearchElementType"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementType);
+                browserSelectSelection["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementType);
                 browserSelectSelectionpropCount++;
             }
 
@@ -4643,7 +4643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementMinimumWidth != null)
                 {
-                    browserSelectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumWidth);
+                    browserSelectSelection["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementMinimumWidth);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4659,7 +4659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementMinimumHeight != null)
                 {
-                    browserSelectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumHeight);
+                    browserSelectSelection["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementMinimumHeight);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4675,7 +4675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementBoundingBoxLeft != null)
                 {
-                    browserSelectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxLeft);
+                    browserSelectSelection["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementBoundingBoxLeft);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4691,7 +4691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementBoundingBoxRight != null)
                 {
-                    browserSelectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxRight);
+                    browserSelectSelection["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementBoundingBoxRight);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4707,7 +4707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementBoundingBoxTop != null)
                 {
-                    browserSelectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxTop);
+                    browserSelectSelection["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementBoundingBoxTop);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4723,7 +4723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionsearchElementBoundingBoxBottom != null)
                 {
-                    browserSelectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxBottom);
+                    browserSelectSelection["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionsearchElementBoundingBoxBottom);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4739,7 +4739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserSelectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSelectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4753,13 +4753,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectSelectionvalueToSelect != null)
             {
-                browserSelectSelection["ValueToSelect"] = ExpressionConverter.ConvertO(browserSelectSelectionvalueToSelect);
+                browserSelectSelection["ValueToSelect"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionvalueToSelect);
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectiontextToSelect != null)
             {
-                browserSelectSelection["TextToSelect"] = ExpressionConverter.ConvertO(browserSelectSelectiontextToSelect);
+                browserSelectSelection["TextToSelect"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectiontextToSelect);
                 browserSelectSelectionpropCount++;
             }
 
@@ -4767,7 +4767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectSelectionindexToSelect != null)
                 {
-                    browserSelectSelection["IndexToSelect"] = ExpressionConverter.ConvertO(browserSelectSelectionindexToSelect);
+                    browserSelectSelection["IndexToSelect"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionindexToSelect);
                     browserSelectSelectionpropCount++;
                 }
 
@@ -4780,7 +4780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserSelectSelectionpropCount++;
-            browserSelectSelection["Workflow"] = ExpressionConverter.ConvertO(browserSelectSelectionworkflow);
+            browserSelectSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSelectSelectionworkflow);
             if (browserSelectSelectionpropCount > 0)
             {
                 callPayload.Body = browserSelectSelection;
@@ -4799,49 +4799,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDeselectSelectionpropCount = 0;
             if (browserDeselectSelectionparentElementHandle != null)
             {
-                browserDeselectSelection["ParentElementHandle"] = ExpressionConverter.ConvertO(browserDeselectSelectionparentElementHandle);
+                browserDeselectSelection["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionparentElementHandle);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementHandle != null)
             {
-                browserDeselectSelection["SearchElementHandle"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementHandle);
+                browserDeselectSelection["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementHandle);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementName != null)
             {
-                browserDeselectSelection["SearchElementName"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementName);
+                browserDeselectSelection["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementName);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementID != null)
             {
-                browserDeselectSelection["SearchElementID"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementID);
+                browserDeselectSelection["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementID);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementTagName != null)
             {
-                browserDeselectSelection["SearchElementTagName"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementTagName);
+                browserDeselectSelection["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementTagName);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementXPath != null)
             {
-                browserDeselectSelection["SearchElementXPath"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementXPath);
+                browserDeselectSelection["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementXPath);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementClassName != null)
             {
-                browserDeselectSelection["SearchElementClassName"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementClassName);
+                browserDeselectSelection["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementClassName);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementCSSSelector != null)
             {
-                browserDeselectSelection["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementCSSSelector);
+                browserDeselectSelection["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementCSSSelector);
                 browserDeselectSelectionpropCount++;
             }
 
@@ -4849,7 +4849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementIndex != null)
                 {
-                    browserDeselectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementIndex);
+                    browserDeselectSelection["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementIndex);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4863,19 +4863,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectSelectionsearchElementMatchValue != null)
             {
-                browserDeselectSelection["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMatchValue);
+                browserDeselectSelection["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementMatchValue);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementMatchText != null)
             {
-                browserDeselectSelection["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMatchText);
+                browserDeselectSelection["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementMatchText);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementType != null)
             {
-                browserDeselectSelection["SearchElementType"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementType);
+                browserDeselectSelection["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementType);
                 browserDeselectSelectionpropCount++;
             }
 
@@ -4883,7 +4883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementMinimumWidth != null)
                 {
-                    browserDeselectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumWidth);
+                    browserDeselectSelection["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementMinimumWidth);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4899,7 +4899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementMinimumHeight != null)
                 {
-                    browserDeselectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumHeight);
+                    browserDeselectSelection["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementMinimumHeight);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4915,7 +4915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementBoundingBoxLeft != null)
                 {
-                    browserDeselectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxLeft);
+                    browserDeselectSelection["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementBoundingBoxLeft);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4931,7 +4931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementBoundingBoxRight != null)
                 {
-                    browserDeselectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxRight);
+                    browserDeselectSelection["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementBoundingBoxRight);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4947,7 +4947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementBoundingBoxTop != null)
                 {
-                    browserDeselectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxTop);
+                    browserDeselectSelection["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementBoundingBoxTop);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4963,7 +4963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionsearchElementBoundingBoxBottom != null)
                 {
-                    browserDeselectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxBottom);
+                    browserDeselectSelection["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionsearchElementBoundingBoxBottom);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4979,7 +4979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserDeselectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDeselectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -4993,13 +4993,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectSelectionvalueToDeselect != null)
             {
-                browserDeselectSelection["ValueToDeselect"] = ExpressionConverter.ConvertO(browserDeselectSelectionvalueToDeselect);
+                browserDeselectSelection["ValueToDeselect"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionvalueToDeselect);
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectiontextToDeselect != null)
             {
-                browserDeselectSelection["TextToDeselect"] = ExpressionConverter.ConvertO(browserDeselectSelectiontextToDeselect);
+                browserDeselectSelection["TextToDeselect"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectiontextToDeselect);
                 browserDeselectSelectionpropCount++;
             }
 
@@ -5007,7 +5007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectSelectionindexToDeselect != null)
                 {
-                    browserDeselectSelection["IndexToDeselect"] = ExpressionConverter.ConvertO(browserDeselectSelectionindexToDeselect);
+                    browserDeselectSelection["IndexToDeselect"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionindexToDeselect);
                     browserDeselectSelectionpropCount++;
                 }
 
@@ -5020,7 +5020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDeselectSelectionpropCount++;
-            browserDeselectSelection["Workflow"] = ExpressionConverter.ConvertO(browserDeselectSelectionworkflow);
+            browserDeselectSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDeselectSelectionworkflow);
             if (browserDeselectSelectionpropCount > 0)
             {
                 callPayload.Body = browserDeselectSelection;
@@ -5039,49 +5039,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDeselectAllSelectionpropCount = 0;
             if (browserDeselectAllSelectionparentElementHandle != null)
             {
-                browserDeselectAllSelection["ParentElementHandle"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionparentElementHandle);
+                browserDeselectAllSelection["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionparentElementHandle);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementHandle != null)
             {
-                browserDeselectAllSelection["SearchElementHandle"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementHandle);
+                browserDeselectAllSelection["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementHandle);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementName != null)
             {
-                browserDeselectAllSelection["SearchElementName"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementName);
+                browserDeselectAllSelection["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementName);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementID != null)
             {
-                browserDeselectAllSelection["SearchElementID"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementID);
+                browserDeselectAllSelection["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementID);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementTagName != null)
             {
-                browserDeselectAllSelection["SearchElementTagName"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementTagName);
+                browserDeselectAllSelection["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementTagName);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementXPath != null)
             {
-                browserDeselectAllSelection["SearchElementXPath"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementXPath);
+                browserDeselectAllSelection["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementXPath);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementClassName != null)
             {
-                browserDeselectAllSelection["SearchElementClassName"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementClassName);
+                browserDeselectAllSelection["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementClassName);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementCSSSelector != null)
             {
-                browserDeselectAllSelection["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementCSSSelector);
+                browserDeselectAllSelection["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementCSSSelector);
                 browserDeselectAllSelectionpropCount++;
             }
 
@@ -5089,7 +5089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementIndex != null)
                 {
-                    browserDeselectAllSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementIndex);
+                    browserDeselectAllSelection["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementIndex);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5103,19 +5103,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectAllSelectionsearchElementMatchValue != null)
             {
-                browserDeselectAllSelection["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMatchValue);
+                browserDeselectAllSelection["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementMatchValue);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementMatchText != null)
             {
-                browserDeselectAllSelection["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMatchText);
+                browserDeselectAllSelection["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementMatchText);
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementType != null)
             {
-                browserDeselectAllSelection["SearchElementType"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementType);
+                browserDeselectAllSelection["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementType);
                 browserDeselectAllSelectionpropCount++;
             }
 
@@ -5123,7 +5123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementMinimumWidth != null)
                 {
-                    browserDeselectAllSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumWidth);
+                    browserDeselectAllSelection["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementMinimumWidth);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5139,7 +5139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementMinimumHeight != null)
                 {
-                    browserDeselectAllSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumHeight);
+                    browserDeselectAllSelection["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementMinimumHeight);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5155,7 +5155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementBoundingBoxLeft != null)
                 {
-                    browserDeselectAllSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxLeft);
+                    browserDeselectAllSelection["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementBoundingBoxLeft);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5171,7 +5171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementBoundingBoxRight != null)
                 {
-                    browserDeselectAllSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxRight);
+                    browserDeselectAllSelection["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementBoundingBoxRight);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5187,7 +5187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementBoundingBoxTop != null)
                 {
-                    browserDeselectAllSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxTop);
+                    browserDeselectAllSelection["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementBoundingBoxTop);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5203,7 +5203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectionsearchElementBoundingBoxBottom != null)
                 {
-                    browserDeselectAllSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxBottom);
+                    browserDeselectAllSelection["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionsearchElementBoundingBoxBottom);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5219,7 +5219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserDeselectAllSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDeselectAllSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
                     browserDeselectAllSelectionpropCount++;
                 }
 
@@ -5232,7 +5232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDeselectAllSelectionpropCount++;
-            browserDeselectAllSelection["Workflow"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionworkflow);
+            browserDeselectAllSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDeselectAllSelectionworkflow);
             if (browserDeselectAllSelectionpropCount > 0)
             {
                 callPayload.Body = browserDeselectAllSelection;
@@ -5251,49 +5251,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetTableContentspropCount = 0;
             if (browserGetTableContentsparentElementHandle != null)
             {
-                browserGetTableContents["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetTableContentsparentElementHandle);
+                browserGetTableContents["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentsparentElementHandle);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementHandle != null)
             {
-                browserGetTableContents["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementHandle);
+                browserGetTableContents["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementHandle);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementName != null)
             {
-                browserGetTableContents["SearchElementName"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementName);
+                browserGetTableContents["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementName);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementID != null)
             {
-                browserGetTableContents["SearchElementID"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementID);
+                browserGetTableContents["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementID);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementTagName != null)
             {
-                browserGetTableContents["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementTagName);
+                browserGetTableContents["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementTagName);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementXPath != null)
             {
-                browserGetTableContents["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementXPath);
+                browserGetTableContents["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementXPath);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementClassName != null)
             {
-                browserGetTableContents["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementClassName);
+                browserGetTableContents["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementClassName);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementCSSSelector != null)
             {
-                browserGetTableContents["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementCSSSelector);
+                browserGetTableContents["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementCSSSelector);
                 browserGetTableContentspropCount++;
             }
 
@@ -5301,7 +5301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementIndex != null)
                 {
-                    browserGetTableContents["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementIndex);
+                    browserGetTableContents["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementIndex);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5315,19 +5315,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetTableContentssearchElementMatchValue != null)
             {
-                browserGetTableContents["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMatchValue);
+                browserGetTableContents["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementMatchValue);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementMatchText != null)
             {
-                browserGetTableContents["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMatchText);
+                browserGetTableContents["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementMatchText);
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementType != null)
             {
-                browserGetTableContents["SearchElementType"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementType);
+                browserGetTableContents["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementType);
                 browserGetTableContentspropCount++;
             }
 
@@ -5335,7 +5335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementMinimumWidth != null)
                 {
-                    browserGetTableContents["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumWidth);
+                    browserGetTableContents["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementMinimumWidth);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5351,7 +5351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementMinimumHeight != null)
                 {
-                    browserGetTableContents["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumHeight);
+                    browserGetTableContents["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementMinimumHeight);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5367,7 +5367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementBoundingBoxLeft != null)
                 {
-                    browserGetTableContents["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxLeft);
+                    browserGetTableContents["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementBoundingBoxLeft);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5383,7 +5383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementBoundingBoxRight != null)
                 {
-                    browserGetTableContents["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxRight);
+                    browserGetTableContents["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementBoundingBoxRight);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5399,7 +5399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementBoundingBoxTop != null)
                 {
-                    browserGetTableContents["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxTop);
+                    browserGetTableContents["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementBoundingBoxTop);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5415,7 +5415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentssearchElementBoundingBoxBottom != null)
                 {
-                    browserGetTableContents["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxBottom);
+                    browserGetTableContents["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentssearchElementBoundingBoxBottom);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5431,7 +5431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetTableContents["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetTableContents["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5447,7 +5447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentscreateColumnNamesFromRow != null)
                 {
-                    browserGetTableContents["CreateColumnNamesFromRow"] = ExpressionConverter.ConvertO(browserGetTableContentscreateColumnNamesFromRow);
+                    browserGetTableContents["CreateColumnNamesFromRow"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentscreateColumnNamesFromRow);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5463,7 +5463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetTableContentsmergeChildTables != null)
                 {
-                    browserGetTableContents["MergeChildTables"] = ExpressionConverter.ConvertO(browserGetTableContentsmergeChildTables);
+                    browserGetTableContents["MergeChildTables"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentsmergeChildTables);
                     browserGetTableContentspropCount++;
                 }
 
@@ -5478,7 +5478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserGetTableContents["ReturnAsDataTable"] = true;
             browserGetTableContentspropCount++;
             browserGetTableContentspropCount++;
-            browserGetTableContents["Workflow"] = ExpressionConverter.ConvertO(browserGetTableContentsworkflow);
+            browserGetTableContents["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetTableContentsworkflow);
             if (browserGetTableContentspropCount > 0)
             {
                 callPayload.Body = browserGetTableContents;
@@ -5497,49 +5497,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserScrollElementIntoViewpropCount = 0;
             if (browserScrollElementIntoViewparentElementHandle != null)
             {
-                browserScrollElementIntoView["ParentElementHandle"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewparentElementHandle);
+                browserScrollElementIntoView["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewparentElementHandle);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementHandle != null)
             {
-                browserScrollElementIntoView["SearchElementHandle"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementHandle);
+                browserScrollElementIntoView["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementHandle);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementName != null)
             {
-                browserScrollElementIntoView["SearchElementName"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementName);
+                browserScrollElementIntoView["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementName);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementID != null)
             {
-                browserScrollElementIntoView["SearchElementID"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementID);
+                browserScrollElementIntoView["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementID);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementTagName != null)
             {
-                browserScrollElementIntoView["SearchElementTagName"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementTagName);
+                browserScrollElementIntoView["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementTagName);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementXPath != null)
             {
-                browserScrollElementIntoView["SearchElementXPath"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementXPath);
+                browserScrollElementIntoView["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementXPath);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementClassName != null)
             {
-                browserScrollElementIntoView["SearchElementClassName"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementClassName);
+                browserScrollElementIntoView["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementClassName);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementCSSSelector != null)
             {
-                browserScrollElementIntoView["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementCSSSelector);
+                browserScrollElementIntoView["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementCSSSelector);
                 browserScrollElementIntoViewpropCount++;
             }
 
@@ -5547,7 +5547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementIndex != null)
                 {
-                    browserScrollElementIntoView["SearchElementIndex"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementIndex);
+                    browserScrollElementIntoView["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementIndex);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5561,19 +5561,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserScrollElementIntoViewsearchElementMatchValue != null)
             {
-                browserScrollElementIntoView["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMatchValue);
+                browserScrollElementIntoView["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementMatchValue);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementMatchText != null)
             {
-                browserScrollElementIntoView["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMatchText);
+                browserScrollElementIntoView["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementMatchText);
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementType != null)
             {
-                browserScrollElementIntoView["SearchElementType"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementType);
+                browserScrollElementIntoView["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementType);
                 browserScrollElementIntoViewpropCount++;
             }
 
@@ -5581,7 +5581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementMinimumWidth != null)
                 {
-                    browserScrollElementIntoView["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumWidth);
+                    browserScrollElementIntoView["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementMinimumWidth);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5597,7 +5597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementMinimumHeight != null)
                 {
-                    browserScrollElementIntoView["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumHeight);
+                    browserScrollElementIntoView["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementMinimumHeight);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5613,7 +5613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementBoundingBoxLeft != null)
                 {
-                    browserScrollElementIntoView["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxLeft);
+                    browserScrollElementIntoView["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementBoundingBoxLeft);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5629,7 +5629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementBoundingBoxRight != null)
                 {
-                    browserScrollElementIntoView["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxRight);
+                    browserScrollElementIntoView["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementBoundingBoxRight);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5645,7 +5645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementBoundingBoxTop != null)
                 {
-                    browserScrollElementIntoView["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxTop);
+                    browserScrollElementIntoView["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementBoundingBoxTop);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5661,7 +5661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewsearchElementBoundingBoxBottom != null)
                 {
-                    browserScrollElementIntoView["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxBottom);
+                    browserScrollElementIntoView["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewsearchElementBoundingBoxBottom);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5677,7 +5677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserScrollElementIntoView["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserScrollElementIntoView["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserScrollElementIntoViewpropCount++;
                 }
 
@@ -5690,7 +5690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserScrollElementIntoViewpropCount++;
-            browserScrollElementIntoView["Workflow"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewworkflow);
+            browserScrollElementIntoView["Workflow"] = CSharpExpressionConverter.ConvertToken(browserScrollElementIntoViewworkflow);
             if (browserScrollElementIntoViewpropCount > 0)
             {
                 callPayload.Body = browserScrollElementIntoView;
@@ -5708,9 +5708,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserExecuteJavaScript = new JObject();
             var browserExecuteJavaScriptpropCount = 0;
             browserExecuteJavaScriptpropCount++;
-            browserExecuteJavaScript["JavaScriptCode"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptjavaScriptCode);
+            browserExecuteJavaScript["JavaScriptCode"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptjavaScriptCode);
             browserExecuteJavaScriptpropCount++;
-            browserExecuteJavaScript["Workflow"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptworkflow);
+            browserExecuteJavaScript["Workflow"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptworkflow);
             if (browserExecuteJavaScriptpropCount > 0)
             {
                 callPayload.Body = browserExecuteJavaScript;
@@ -5729,49 +5729,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetElementBoundingRectpropCount = 0;
             if (browserGetElementBoundingRectparentElementHandle != null)
             {
-                browserGetElementBoundingRect["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectparentElementHandle);
+                browserGetElementBoundingRect["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectparentElementHandle);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementHandle != null)
             {
-                browserGetElementBoundingRect["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementHandle);
+                browserGetElementBoundingRect["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementHandle);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementName != null)
             {
-                browserGetElementBoundingRect["SearchElementName"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementName);
+                browserGetElementBoundingRect["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementName);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementID != null)
             {
-                browserGetElementBoundingRect["SearchElementID"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementID);
+                browserGetElementBoundingRect["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementID);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementTagName != null)
             {
-                browserGetElementBoundingRect["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementTagName);
+                browserGetElementBoundingRect["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementTagName);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementXPath != null)
             {
-                browserGetElementBoundingRect["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementXPath);
+                browserGetElementBoundingRect["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementXPath);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementClassName != null)
             {
-                browserGetElementBoundingRect["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementClassName);
+                browserGetElementBoundingRect["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementClassName);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementCSSSelector != null)
             {
-                browserGetElementBoundingRect["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementCSSSelector);
+                browserGetElementBoundingRect["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementCSSSelector);
                 browserGetElementBoundingRectpropCount++;
             }
 
@@ -5779,7 +5779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementIndex != null)
                 {
-                    browserGetElementBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementIndex);
+                    browserGetElementBoundingRect["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementIndex);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5793,19 +5793,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementBoundingRectsearchElementMatchValue != null)
             {
-                browserGetElementBoundingRect["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMatchValue);
+                browserGetElementBoundingRect["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementMatchValue);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementMatchText != null)
             {
-                browserGetElementBoundingRect["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMatchText);
+                browserGetElementBoundingRect["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementMatchText);
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementType != null)
             {
-                browserGetElementBoundingRect["SearchElementType"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementType);
+                browserGetElementBoundingRect["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementType);
                 browserGetElementBoundingRectpropCount++;
             }
 
@@ -5813,7 +5813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementMinimumWidth != null)
                 {
-                    browserGetElementBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumWidth);
+                    browserGetElementBoundingRect["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementMinimumWidth);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5829,7 +5829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementMinimumHeight != null)
                 {
-                    browserGetElementBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumHeight);
+                    browserGetElementBoundingRect["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementMinimumHeight);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5845,7 +5845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementBoundingBoxLeft != null)
                 {
-                    browserGetElementBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxLeft);
+                    browserGetElementBoundingRect["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementBoundingBoxLeft);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5861,7 +5861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementBoundingBoxRight != null)
                 {
-                    browserGetElementBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxRight);
+                    browserGetElementBoundingRect["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementBoundingBoxRight);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5877,7 +5877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementBoundingBoxTop != null)
                 {
-                    browserGetElementBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxTop);
+                    browserGetElementBoundingRect["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementBoundingBoxTop);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5893,7 +5893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectsearchElementBoundingBoxBottom != null)
                 {
-                    browserGetElementBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxBottom);
+                    browserGetElementBoundingRect["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectsearchElementBoundingBoxBottom);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5909,7 +5909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetElementBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetElementBoundingRectpropCount++;
                 }
 
@@ -5922,7 +5922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetElementBoundingRectpropCount++;
-            browserGetElementBoundingRect["Workflow"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectworkflow);
+            browserGetElementBoundingRect["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetElementBoundingRectworkflow);
             if (browserGetElementBoundingRectpropCount > 0)
             {
                 callPayload.Body = browserGetElementBoundingRect;
@@ -5941,49 +5941,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserDrawRectangleAroundElementpropCount = 0;
             if (browserDrawRectangleAroundElementparentElementHandle != null)
             {
-                browserDrawRectangleAroundElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementparentElementHandle);
+                browserDrawRectangleAroundElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementparentElementHandle);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementHandle != null)
             {
-                browserDrawRectangleAroundElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementHandle);
+                browserDrawRectangleAroundElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementHandle);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementName != null)
             {
-                browserDrawRectangleAroundElement["SearchElementName"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementName);
+                browserDrawRectangleAroundElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementName);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementID != null)
             {
-                browserDrawRectangleAroundElement["SearchElementID"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementID);
+                browserDrawRectangleAroundElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementID);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementTagName != null)
             {
-                browserDrawRectangleAroundElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementTagName);
+                browserDrawRectangleAroundElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementTagName);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementXPath != null)
             {
-                browserDrawRectangleAroundElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementXPath);
+                browserDrawRectangleAroundElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementXPath);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementClassName != null)
             {
-                browserDrawRectangleAroundElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementClassName);
+                browserDrawRectangleAroundElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementClassName);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementCSSSelector != null)
             {
-                browserDrawRectangleAroundElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementCSSSelector);
+                browserDrawRectangleAroundElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementCSSSelector);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
@@ -5991,7 +5991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementIndex != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementIndex);
+                    browserDrawRectangleAroundElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementIndex);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6005,19 +6005,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDrawRectangleAroundElementsearchElementMatchValue != null)
             {
-                browserDrawRectangleAroundElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMatchValue);
+                browserDrawRectangleAroundElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementMatchValue);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementMatchText != null)
             {
-                browserDrawRectangleAroundElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMatchText);
+                browserDrawRectangleAroundElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementMatchText);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementType != null)
             {
-                browserDrawRectangleAroundElement["SearchElementType"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementType);
+                browserDrawRectangleAroundElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementType);
                 browserDrawRectangleAroundElementpropCount++;
             }
 
@@ -6025,7 +6025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementMinimumWidth != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumWidth);
+                    browserDrawRectangleAroundElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementMinimumWidth);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6041,7 +6041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementMinimumHeight != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumHeight);
+                    browserDrawRectangleAroundElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementMinimumHeight);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6057,7 +6057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft);
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6073,7 +6073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementBoundingBoxRight != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxRight);
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementBoundingBoxRight);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6089,7 +6089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementBoundingBoxTop != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxTop);
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementBoundingBoxTop);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6105,7 +6105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserDrawRectangleAroundElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom);
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6121,7 +6121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserDrawRectangleAroundElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDrawRectangleAroundElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6137,7 +6137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementpenColour != null)
                 {
-                    browserDrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenColour);
+                    browserDrawRectangleAroundElement["PenColour"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementpenColour);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6153,7 +6153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserDrawRectangleAroundElementpenThicknessPixels != null)
                 {
-                    browserDrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenThicknessPixels);
+                    browserDrawRectangleAroundElement["PenThicknessPixels"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementpenThicknessPixels);
                     browserDrawRectangleAroundElementpropCount++;
                 }
 
@@ -6166,7 +6166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserDrawRectangleAroundElementpropCount++;
-            browserDrawRectangleAroundElement["Workflow"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementworkflow);
+            browserDrawRectangleAroundElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserDrawRectangleAroundElementworkflow);
             if (browserDrawRectangleAroundElementpropCount > 0)
             {
                 callPayload.Body = browserDrawRectangleAroundElement;
@@ -6185,18 +6185,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetBrowserParentWindowDetailspropCount = 0;
             if (browserGetBrowserParentWindowDetailsbrowserPID != null)
             {
-                browserGetBrowserParentWindowDetails["BrowserPID"] = ExpressionConverter.ConvertO(browserGetBrowserParentWindowDetailsbrowserPID);
+                browserGetBrowserParentWindowDetails["BrowserPID"] = CSharpExpressionConverter.ConvertToken(browserGetBrowserParentWindowDetailsbrowserPID);
                 browserGetBrowserParentWindowDetailspropCount++;
             }
 
             if (browserGetBrowserParentWindowDetailssearchDocumentElementClassName != null)
             {
-                browserGetBrowserParentWindowDetails["SearchDocumentElementClassName"] = ExpressionConverter.ConvertO(browserGetBrowserParentWindowDetailssearchDocumentElementClassName);
+                browserGetBrowserParentWindowDetails["SearchDocumentElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetBrowserParentWindowDetailssearchDocumentElementClassName);
                 browserGetBrowserParentWindowDetailspropCount++;
             }
 
             browserGetBrowserParentWindowDetailspropCount++;
-            browserGetBrowserParentWindowDetails["Workflow"] = ExpressionConverter.ConvertO(browserGetBrowserParentWindowDetailsworkflow);
+            browserGetBrowserParentWindowDetails["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetBrowserParentWindowDetailsworkflow);
             if (browserGetBrowserParentWindowDetailspropCount > 0)
             {
                 callPayload.Body = browserGetBrowserParentWindowDetails;
@@ -6215,49 +6215,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetElementScreenBoundingRectpropCount = 0;
             if (browserGetElementScreenBoundingRectparentElementHandle != null)
             {
-                browserGetElementScreenBoundingRect["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectparentElementHandle);
+                browserGetElementScreenBoundingRect["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectparentElementHandle);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementHandle != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementHandle);
+                browserGetElementScreenBoundingRect["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementHandle);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementName != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementName"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementName);
+                browserGetElementScreenBoundingRect["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementName);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementID != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementID"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementID);
+                browserGetElementScreenBoundingRect["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementID);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementTagName != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementTagName);
+                browserGetElementScreenBoundingRect["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementTagName);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementXPath != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementXPath);
+                browserGetElementScreenBoundingRect["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementXPath);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementClassName != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementClassName);
+                browserGetElementScreenBoundingRect["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementClassName);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementCSSSelector != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementCSSSelector);
+                browserGetElementScreenBoundingRect["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementCSSSelector);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
@@ -6265,7 +6265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementIndex != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementIndex);
+                    browserGetElementScreenBoundingRect["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementIndex);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6279,19 +6279,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementScreenBoundingRectsearchElementMatchValue != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMatchValue);
+                browserGetElementScreenBoundingRect["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementMatchValue);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementMatchText != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMatchText);
+                browserGetElementScreenBoundingRect["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementMatchText);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementType != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementType"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementType);
+                browserGetElementScreenBoundingRect["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementType);
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
@@ -6299,7 +6299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementMinimumWidth != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumWidth);
+                    browserGetElementScreenBoundingRect["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementMinimumWidth);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6315,7 +6315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementMinimumHeight != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumHeight);
+                    browserGetElementScreenBoundingRect["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementMinimumHeight);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6331,7 +6331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft);
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6347,7 +6347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementBoundingBoxRight != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight);
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6363,7 +6363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementBoundingBoxTop != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop);
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6379,7 +6379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom != null)
                 {
-                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom);
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6395,7 +6395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGetElementScreenBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementScreenBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGetElementScreenBoundingRectpropCount++;
                 }
 
@@ -6408,7 +6408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetElementScreenBoundingRectpropCount++;
-            browserGetElementScreenBoundingRect["Workflow"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectworkflow);
+            browserGetElementScreenBoundingRect["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetElementScreenBoundingRectworkflow);
             if (browserGetElementScreenBoundingRectpropCount > 0)
             {
                 callPayload.Body = browserGetElementScreenBoundingRect;
@@ -6427,49 +6427,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserFocusElementpropCount = 0;
             if (browserFocusElementparentElementHandle != null)
             {
-                browserFocusElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserFocusElementparentElementHandle);
+                browserFocusElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserFocusElementparentElementHandle);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementHandle != null)
             {
-                browserFocusElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementHandle);
+                browserFocusElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementHandle);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementName != null)
             {
-                browserFocusElement["SearchElementName"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementName);
+                browserFocusElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementName);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementID != null)
             {
-                browserFocusElement["SearchElementID"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementID);
+                browserFocusElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementID);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementTagName != null)
             {
-                browserFocusElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementTagName);
+                browserFocusElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementTagName);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementXPath != null)
             {
-                browserFocusElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementXPath);
+                browserFocusElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementXPath);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementClassName != null)
             {
-                browserFocusElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementClassName);
+                browserFocusElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementClassName);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementCSSSelector != null)
             {
-                browserFocusElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementCSSSelector);
+                browserFocusElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementCSSSelector);
                 browserFocusElementpropCount++;
             }
 
@@ -6477,7 +6477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementIndex != null)
                 {
-                    browserFocusElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementIndex);
+                    browserFocusElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementIndex);
                     browserFocusElementpropCount++;
                 }
 
@@ -6491,19 +6491,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserFocusElementsearchElementMatchValue != null)
             {
-                browserFocusElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMatchValue);
+                browserFocusElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementMatchValue);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementMatchText != null)
             {
-                browserFocusElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMatchText);
+                browserFocusElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementMatchText);
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementType != null)
             {
-                browserFocusElement["SearchElementType"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementType);
+                browserFocusElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementType);
                 browserFocusElementpropCount++;
             }
 
@@ -6511,7 +6511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementMinimumWidth != null)
                 {
-                    browserFocusElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumWidth);
+                    browserFocusElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementMinimumWidth);
                     browserFocusElementpropCount++;
                 }
 
@@ -6527,7 +6527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementMinimumHeight != null)
                 {
-                    browserFocusElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumHeight);
+                    browserFocusElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementMinimumHeight);
                     browserFocusElementpropCount++;
                 }
 
@@ -6543,7 +6543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserFocusElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxLeft);
+                    browserFocusElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementBoundingBoxLeft);
                     browserFocusElementpropCount++;
                 }
 
@@ -6559,7 +6559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementBoundingBoxRight != null)
                 {
-                    browserFocusElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxRight);
+                    browserFocusElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementBoundingBoxRight);
                     browserFocusElementpropCount++;
                 }
 
@@ -6575,7 +6575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementBoundingBoxTop != null)
                 {
-                    browserFocusElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxTop);
+                    browserFocusElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementBoundingBoxTop);
                     browserFocusElementpropCount++;
                 }
 
@@ -6591,7 +6591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserFocusElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxBottom);
+                    browserFocusElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserFocusElementsearchElementBoundingBoxBottom);
                     browserFocusElementpropCount++;
                 }
 
@@ -6607,7 +6607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserFocusElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserFocusElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserFocusElementpropCount++;
                 }
 
@@ -6620,7 +6620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserFocusElementpropCount++;
-            browserFocusElement["Workflow"] = ExpressionConverter.ConvertO(browserFocusElementworkflow);
+            browserFocusElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserFocusElementworkflow);
             if (browserFocusElementpropCount > 0)
             {
                 callPayload.Body = browserFocusElement;
@@ -6639,49 +6639,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserPressEnterOnElementpropCount = 0;
             if (browserPressEnterOnElementparentElementHandle != null)
             {
-                browserPressEnterOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserPressEnterOnElementparentElementHandle);
+                browserPressEnterOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementparentElementHandle);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementHandle != null)
             {
-                browserPressEnterOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementHandle);
+                browserPressEnterOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementHandle);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementName != null)
             {
-                browserPressEnterOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementName);
+                browserPressEnterOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementName);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementID != null)
             {
-                browserPressEnterOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementID);
+                browserPressEnterOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementID);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementTagName != null)
             {
-                browserPressEnterOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementTagName);
+                browserPressEnterOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementTagName);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementXPath != null)
             {
-                browserPressEnterOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementXPath);
+                browserPressEnterOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementXPath);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementClassName != null)
             {
-                browserPressEnterOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementClassName);
+                browserPressEnterOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementClassName);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementCSSSelector != null)
             {
-                browserPressEnterOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementCSSSelector);
+                browserPressEnterOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementCSSSelector);
                 browserPressEnterOnElementpropCount++;
             }
 
@@ -6689,7 +6689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementIndex != null)
                 {
-                    browserPressEnterOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementIndex);
+                    browserPressEnterOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementIndex);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6703,19 +6703,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressEnterOnElementsearchElementMatchValue != null)
             {
-                browserPressEnterOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMatchValue);
+                browserPressEnterOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementMatchValue);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementMatchText != null)
             {
-                browserPressEnterOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMatchText);
+                browserPressEnterOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementMatchText);
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementType != null)
             {
-                browserPressEnterOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementType);
+                browserPressEnterOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementType);
                 browserPressEnterOnElementpropCount++;
             }
 
@@ -6723,7 +6723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementMinimumWidth != null)
                 {
-                    browserPressEnterOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumWidth);
+                    browserPressEnterOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementMinimumWidth);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6739,7 +6739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementMinimumHeight != null)
                 {
-                    browserPressEnterOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumHeight);
+                    browserPressEnterOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementMinimumHeight);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6755,7 +6755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserPressEnterOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxLeft);
+                    browserPressEnterOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementBoundingBoxLeft);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6771,7 +6771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserPressEnterOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxRight);
+                    browserPressEnterOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementBoundingBoxRight);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6787,7 +6787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserPressEnterOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxTop);
+                    browserPressEnterOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementBoundingBoxTop);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6803,7 +6803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserPressEnterOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxBottom);
+                    browserPressEnterOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementsearchElementBoundingBoxBottom);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6819,7 +6819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserPressEnterOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPressEnterOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserPressEnterOnElementpropCount++;
                 }
 
@@ -6832,7 +6832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserPressEnterOnElementpropCount++;
-            browserPressEnterOnElement["Workflow"] = ExpressionConverter.ConvertO(browserPressEnterOnElementworkflow);
+            browserPressEnterOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserPressEnterOnElementworkflow);
             if (browserPressEnterOnElementpropCount > 0)
             {
                 callPayload.Body = browserPressEnterOnElement;
@@ -6851,49 +6851,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserMouseLeftClickOnElementpropCount = 0;
             if (browserMouseLeftClickOnElementparentElementHandle != null)
             {
-                browserMouseLeftClickOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementparentElementHandle);
+                browserMouseLeftClickOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementparentElementHandle);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementHandle != null)
             {
-                browserMouseLeftClickOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementHandle);
+                browserMouseLeftClickOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementHandle);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementName != null)
             {
-                browserMouseLeftClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementName);
+                browserMouseLeftClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementName);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementID != null)
             {
-                browserMouseLeftClickOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementID);
+                browserMouseLeftClickOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementID);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementTagName != null)
             {
-                browserMouseLeftClickOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementTagName);
+                browserMouseLeftClickOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementTagName);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementXPath != null)
             {
-                browserMouseLeftClickOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementXPath);
+                browserMouseLeftClickOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementXPath);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementClassName != null)
             {
-                browserMouseLeftClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementClassName);
+                browserMouseLeftClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementClassName);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementCSSSelector != null)
             {
-                browserMouseLeftClickOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementCSSSelector);
+                browserMouseLeftClickOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementCSSSelector);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
@@ -6901,7 +6901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementIndex != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementIndex);
+                    browserMouseLeftClickOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementIndex);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -6915,19 +6915,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseLeftClickOnElementsearchElementMatchValue != null)
             {
-                browserMouseLeftClickOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMatchValue);
+                browserMouseLeftClickOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementMatchValue);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementMatchText != null)
             {
-                browserMouseLeftClickOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMatchText);
+                browserMouseLeftClickOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementMatchText);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementType != null)
             {
-                browserMouseLeftClickOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementType);
+                browserMouseLeftClickOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementType);
                 browserMouseLeftClickOnElementpropCount++;
             }
 
@@ -6935,7 +6935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementMinimumWidth != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumWidth);
+                    browserMouseLeftClickOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementMinimumWidth);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -6951,7 +6951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementMinimumHeight != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumHeight);
+                    browserMouseLeftClickOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementMinimumHeight);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -6967,7 +6967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -6983,7 +6983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementBoundingBoxRight);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -6999,7 +6999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementBoundingBoxTop);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7015,7 +7015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7031,7 +7031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7047,7 +7047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseLeftClickOnElementfocusFirst != null)
                 {
-                    browserMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementfocusFirst);
+                    browserMouseLeftClickOnElement["FocusFirst"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementfocusFirst);
                     browserMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7060,7 +7060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserMouseLeftClickOnElementpropCount++;
-            browserMouseLeftClickOnElement["Workflow"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementworkflow);
+            browserMouseLeftClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserMouseLeftClickOnElementworkflow);
             if (browserMouseLeftClickOnElementpropCount > 0)
             {
                 callPayload.Body = browserMouseLeftClickOnElement;
@@ -7079,49 +7079,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserMouseRightClickOnElementpropCount = 0;
             if (browserMouseRightClickOnElementparentElementHandle != null)
             {
-                browserMouseRightClickOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementparentElementHandle);
+                browserMouseRightClickOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementparentElementHandle);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementHandle != null)
             {
-                browserMouseRightClickOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementHandle);
+                browserMouseRightClickOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementHandle);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementName != null)
             {
-                browserMouseRightClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementName);
+                browserMouseRightClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementName);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementID != null)
             {
-                browserMouseRightClickOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementID);
+                browserMouseRightClickOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementID);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementTagName != null)
             {
-                browserMouseRightClickOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementTagName);
+                browserMouseRightClickOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementTagName);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementXPath != null)
             {
-                browserMouseRightClickOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementXPath);
+                browserMouseRightClickOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementXPath);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementClassName != null)
             {
-                browserMouseRightClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementClassName);
+                browserMouseRightClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementClassName);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementCSSSelector != null)
             {
-                browserMouseRightClickOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementCSSSelector);
+                browserMouseRightClickOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementCSSSelector);
                 browserMouseRightClickOnElementpropCount++;
             }
 
@@ -7129,7 +7129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementIndex != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementIndex);
+                    browserMouseRightClickOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementIndex);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7143,19 +7143,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseRightClickOnElementsearchElementMatchValue != null)
             {
-                browserMouseRightClickOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMatchValue);
+                browserMouseRightClickOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementMatchValue);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementMatchText != null)
             {
-                browserMouseRightClickOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMatchText);
+                browserMouseRightClickOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementMatchText);
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementType != null)
             {
-                browserMouseRightClickOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementType);
+                browserMouseRightClickOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementType);
                 browserMouseRightClickOnElementpropCount++;
             }
 
@@ -7163,7 +7163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementMinimumWidth != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumWidth);
+                    browserMouseRightClickOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementMinimumWidth);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7179,7 +7179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementMinimumHeight != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumHeight);
+                    browserMouseRightClickOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementMinimumHeight);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7195,7 +7195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementBoundingBoxLeft);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7211,7 +7211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxRight);
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementBoundingBoxRight);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7227,7 +7227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxTop);
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementBoundingBoxTop);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7243,7 +7243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementsearchElementBoundingBoxBottom);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7259,7 +7259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7275,7 +7275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserMouseRightClickOnElementfocusFirst != null)
                 {
-                    browserMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementfocusFirst);
+                    browserMouseRightClickOnElement["FocusFirst"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementfocusFirst);
                     browserMouseRightClickOnElementpropCount++;
                 }
 
@@ -7288,7 +7288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserMouseRightClickOnElementpropCount++;
-            browserMouseRightClickOnElement["Workflow"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementworkflow);
+            browserMouseRightClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserMouseRightClickOnElementworkflow);
             if (browserMouseRightClickOnElementpropCount > 0)
             {
                 callPayload.Body = browserMouseRightClickOnElement;
@@ -7307,49 +7307,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserJavaScriptClickOnElementpropCount = 0;
             if (browserJavaScriptClickOnElementparentElementHandle != null)
             {
-                browserJavaScriptClickOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementparentElementHandle);
+                browserJavaScriptClickOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementparentElementHandle);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementHandle != null)
             {
-                browserJavaScriptClickOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementHandle);
+                browserJavaScriptClickOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementHandle);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementName != null)
             {
-                browserJavaScriptClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementName);
+                browserJavaScriptClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementName);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementID != null)
             {
-                browserJavaScriptClickOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementID);
+                browserJavaScriptClickOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementID);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementTagName != null)
             {
-                browserJavaScriptClickOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementTagName);
+                browserJavaScriptClickOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementTagName);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementXPath != null)
             {
-                browserJavaScriptClickOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementXPath);
+                browserJavaScriptClickOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementXPath);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementClassName != null)
             {
-                browserJavaScriptClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementClassName);
+                browserJavaScriptClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementClassName);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementCSSSelector != null)
             {
-                browserJavaScriptClickOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementCSSSelector);
+                browserJavaScriptClickOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementCSSSelector);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
@@ -7357,7 +7357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementIndex != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementIndex);
+                    browserJavaScriptClickOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementIndex);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7371,19 +7371,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserJavaScriptClickOnElementsearchElementMatchValue != null)
             {
-                browserJavaScriptClickOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMatchValue);
+                browserJavaScriptClickOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementMatchValue);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementMatchText != null)
             {
-                browserJavaScriptClickOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMatchText);
+                browserJavaScriptClickOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementMatchText);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementType != null)
             {
-                browserJavaScriptClickOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementType);
+                browserJavaScriptClickOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementType);
                 browserJavaScriptClickOnElementpropCount++;
             }
 
@@ -7391,7 +7391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementMinimumWidth != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumWidth);
+                    browserJavaScriptClickOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementMinimumWidth);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7407,7 +7407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementMinimumHeight != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumHeight);
+                    browserJavaScriptClickOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementMinimumHeight);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7423,7 +7423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft);
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7439,7 +7439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxRight);
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementBoundingBoxRight);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7455,7 +7455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxTop);
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementBoundingBoxTop);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7471,7 +7471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserJavaScriptClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom);
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7487,7 +7487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserJavaScriptClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserJavaScriptClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserJavaScriptClickOnElementpropCount++;
                 }
 
@@ -7500,7 +7500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserJavaScriptClickOnElementpropCount++;
-            browserJavaScriptClickOnElement["Workflow"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementworkflow);
+            browserJavaScriptClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserJavaScriptClickOnElementworkflow);
             if (browserJavaScriptClickOnElementpropCount > 0)
             {
                 callPayload.Body = browserJavaScriptClickOnElement;
@@ -7519,49 +7519,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserExecuteJavaScriptOnElementpropCount = 0;
             if (browserExecuteJavaScriptOnElementparentElementHandle != null)
             {
-                browserExecuteJavaScriptOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementparentElementHandle);
+                browserExecuteJavaScriptOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementparentElementHandle);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementHandle != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementHandle);
+                browserExecuteJavaScriptOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementHandle);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementName != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementName);
+                browserExecuteJavaScriptOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementName);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementID != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementID);
+                browserExecuteJavaScriptOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementID);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementTagName != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementTagName);
+                browserExecuteJavaScriptOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementTagName);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementXPath != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementXPath);
+                browserExecuteJavaScriptOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementXPath);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementClassName != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementClassName);
+                browserExecuteJavaScriptOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementClassName);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementCSSSelector != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementCSSSelector);
+                browserExecuteJavaScriptOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementCSSSelector);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
@@ -7569,7 +7569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementIndex != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementIndex);
+                    browserExecuteJavaScriptOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementIndex);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7583,19 +7583,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserExecuteJavaScriptOnElementsearchElementMatchValue != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMatchValue);
+                browserExecuteJavaScriptOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementMatchValue);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementMatchText != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMatchText);
+                browserExecuteJavaScriptOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementMatchText);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementType != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementType);
+                browserExecuteJavaScriptOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementType);
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
@@ -7603,7 +7603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementMinimumWidth != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumWidth);
+                    browserExecuteJavaScriptOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementMinimumWidth);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7619,7 +7619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementMinimumHeight != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumHeight);
+                    browserExecuteJavaScriptOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementMinimumHeight);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7635,7 +7635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft);
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7651,7 +7651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight);
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7667,7 +7667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop);
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7683,7 +7683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom);
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7699,7 +7699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserExecuteJavaScriptOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserExecuteJavaScriptOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserExecuteJavaScriptOnElementpropCount++;
                 }
 
@@ -7712,9 +7712,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserExecuteJavaScriptOnElementpropCount++;
-            browserExecuteJavaScriptOnElement["JavaScriptToExecute"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementjavaScriptToExecute);
+            browserExecuteJavaScriptOnElement["JavaScriptToExecute"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementjavaScriptToExecute);
             browserExecuteJavaScriptOnElementpropCount++;
-            browserExecuteJavaScriptOnElement["Workflow"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementworkflow);
+            browserExecuteJavaScriptOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserExecuteJavaScriptOnElementworkflow);
             if (browserExecuteJavaScriptOnElementpropCount > 0)
             {
                 callPayload.Body = browserExecuteJavaScriptOnElement;
@@ -7733,49 +7733,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGlobalMouseLeftClickOnElementpropCount = 0;
             if (browserGlobalMouseLeftClickOnElementparentElementHandle != null)
             {
-                browserGlobalMouseLeftClickOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementparentElementHandle);
+                browserGlobalMouseLeftClickOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementparentElementHandle);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementHandle != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementHandle);
+                browserGlobalMouseLeftClickOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementHandle);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementName != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementName);
+                browserGlobalMouseLeftClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementName);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementID != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementID);
+                browserGlobalMouseLeftClickOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementID);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementTagName != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementTagName);
+                browserGlobalMouseLeftClickOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementTagName);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementXPath != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementXPath);
+                browserGlobalMouseLeftClickOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementXPath);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementClassName != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementClassName);
+                browserGlobalMouseLeftClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementClassName);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementCSSSelector != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementCSSSelector);
+                browserGlobalMouseLeftClickOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementCSSSelector);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -7783,7 +7783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementIndex != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementIndex);
+                    browserGlobalMouseLeftClickOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementIndex);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7797,19 +7797,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseLeftClickOnElementsearchElementMatchValue != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMatchValue);
+                browserGlobalMouseLeftClickOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementMatchValue);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementMatchText != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMatchText);
+                browserGlobalMouseLeftClickOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementMatchText);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementType != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementType);
+                browserGlobalMouseLeftClickOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementType);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -7817,7 +7817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth);
+                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7833,7 +7833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight);
+                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7849,7 +7849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7865,7 +7865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7881,7 +7881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7897,7 +7897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7913,7 +7913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGlobalMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7927,13 +7927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseLeftClickOnElementclickOffsetX != null)
             {
-                browserGlobalMouseLeftClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementclickOffsetX);
+                browserGlobalMouseLeftClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementclickOffsetX);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementclickOffsetY != null)
             {
-                browserGlobalMouseLeftClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementclickOffsetY);
+                browserGlobalMouseLeftClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementclickOffsetY);
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -7941,7 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseLeftClickOnElementfocusFirst != null)
                 {
-                    browserGlobalMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementfocusFirst);
+                    browserGlobalMouseLeftClickOnElement["FocusFirst"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementfocusFirst);
                     browserGlobalMouseLeftClickOnElementpropCount++;
                 }
 
@@ -7954,7 +7954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGlobalMouseLeftClickOnElementpropCount++;
-            browserGlobalMouseLeftClickOnElement["Workflow"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementworkflow);
+            browserGlobalMouseLeftClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseLeftClickOnElementworkflow);
             if (browserGlobalMouseLeftClickOnElementpropCount > 0)
             {
                 callPayload.Body = browserGlobalMouseLeftClickOnElement;
@@ -7973,49 +7973,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGlobalMouseRightClickOnElementpropCount = 0;
             if (browserGlobalMouseRightClickOnElementparentElementHandle != null)
             {
-                browserGlobalMouseRightClickOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementparentElementHandle);
+                browserGlobalMouseRightClickOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementparentElementHandle);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementHandle != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementHandle);
+                browserGlobalMouseRightClickOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementHandle);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementName != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementName);
+                browserGlobalMouseRightClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementName);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementID != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementID);
+                browserGlobalMouseRightClickOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementID);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementTagName != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementTagName);
+                browserGlobalMouseRightClickOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementTagName);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementXPath != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementXPath);
+                browserGlobalMouseRightClickOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementXPath);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementClassName != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementClassName);
+                browserGlobalMouseRightClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementClassName);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementCSSSelector != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementCSSSelector);
+                browserGlobalMouseRightClickOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementCSSSelector);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -8023,7 +8023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementIndex != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementIndex);
+                    browserGlobalMouseRightClickOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementIndex);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8037,19 +8037,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseRightClickOnElementsearchElementMatchValue != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMatchValue);
+                browserGlobalMouseRightClickOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementMatchValue);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementMatchText != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMatchText);
+                browserGlobalMouseRightClickOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementMatchText);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementType != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementType);
+                browserGlobalMouseRightClickOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementType);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -8057,7 +8057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementMinimumWidth != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth);
+                    browserGlobalMouseRightClickOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8073,7 +8073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementMinimumHeight != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight);
+                    browserGlobalMouseRightClickOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8089,7 +8089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8105,7 +8105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight);
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8121,7 +8121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop);
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8137,7 +8137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8153,7 +8153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserGlobalMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGlobalMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8167,13 +8167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseRightClickOnElementclickOffsetX != null)
             {
-                browserGlobalMouseRightClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementclickOffsetX);
+                browserGlobalMouseRightClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementclickOffsetX);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementclickOffsetY != null)
             {
-                browserGlobalMouseRightClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementclickOffsetY);
+                browserGlobalMouseRightClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementclickOffsetY);
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -8181,7 +8181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGlobalMouseRightClickOnElementfocusFirst != null)
                 {
-                    browserGlobalMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementfocusFirst);
+                    browserGlobalMouseRightClickOnElement["FocusFirst"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementfocusFirst);
                     browserGlobalMouseRightClickOnElementpropCount++;
                 }
 
@@ -8194,7 +8194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGlobalMouseRightClickOnElementpropCount++;
-            browserGlobalMouseRightClickOnElement["Workflow"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementworkflow);
+            browserGlobalMouseRightClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGlobalMouseRightClickOnElementworkflow);
             if (browserGlobalMouseRightClickOnElementpropCount > 0)
             {
                 callPayload.Body = browserGlobalMouseRightClickOnElement;
@@ -8213,7 +8213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserOpenNewTabpropCount = 0;
             if (browserOpenNewTabuRL != null)
             {
-                browserOpenNewTab["URL"] = ExpressionConverter.ConvertO(browserOpenNewTabuRL);
+                browserOpenNewTab["URL"] = CSharpExpressionConverter.ConvertToken(browserOpenNewTabuRL);
                 browserOpenNewTabpropCount++;
             }
 
@@ -8221,7 +8221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserOpenNewTabswitchControlToNewTab != null)
                 {
-                    browserOpenNewTab["SwitchControlToNewTab"] = ExpressionConverter.ConvertO(browserOpenNewTabswitchControlToNewTab);
+                    browserOpenNewTab["SwitchControlToNewTab"] = CSharpExpressionConverter.ConvertToken(browserOpenNewTabswitchControlToNewTab);
                     browserOpenNewTabpropCount++;
                 }
 
@@ -8234,7 +8234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserOpenNewTabpropCount++;
-            browserOpenNewTab["Workflow"] = ExpressionConverter.ConvertO(browserOpenNewTabworkflow);
+            browserOpenNewTab["Workflow"] = CSharpExpressionConverter.ConvertToken(browserOpenNewTabworkflow);
             if (browserOpenNewTabpropCount > 0)
             {
                 callPayload.Body = browserOpenNewTab;
@@ -8252,7 +8252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetTabs = new JObject();
             var browserGetTabspropCount = 0;
             browserGetTabspropCount++;
-            browserGetTabs["Workflow"] = ExpressionConverter.ConvertO(browserGetTabsworkflow);
+            browserGetTabs["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetTabsworkflow);
             if (browserGetTabspropCount > 0)
             {
                 callPayload.Body = browserGetTabs;
@@ -8271,18 +8271,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSetTabpropCount = 0;
             if (browserSetTabtabName != null)
             {
-                browserSetTab["TabName"] = ExpressionConverter.ConvertO(browserSetTabtabName);
+                browserSetTab["TabName"] = CSharpExpressionConverter.ConvertToken(browserSetTabtabName);
                 browserSetTabpropCount++;
             }
 
             if (browserSetTabtabIndex != null)
             {
-                browserSetTab["TabIndex"] = ExpressionConverter.ConvertO(browserSetTabtabIndex);
+                browserSetTab["TabIndex"] = CSharpExpressionConverter.ConvertToken(browserSetTabtabIndex);
                 browserSetTabpropCount++;
             }
 
             browserSetTabpropCount++;
-            browserSetTab["Workflow"] = ExpressionConverter.ConvertO(browserSetTabworkflow);
+            browserSetTab["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSetTabworkflow);
             if (browserSetTabpropCount > 0)
             {
                 callPayload.Body = browserSetTab;
@@ -8300,7 +8300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCloseActiveTab = new JObject();
             var browserCloseActiveTabpropCount = 0;
             browserCloseActiveTabpropCount++;
-            browserCloseActiveTab["Workflow"] = ExpressionConverter.ConvertO(browserCloseActiveTabworkflow);
+            browserCloseActiveTab["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCloseActiveTabworkflow);
             if (browserCloseActiveTabpropCount > 0)
             {
                 callPayload.Body = browserCloseActiveTab;
@@ -8318,9 +8318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSavePageToFile = new JObject();
             var browserSavePageToFilepropCount = 0;
             browserSavePageToFilepropCount++;
-            browserSavePageToFile["SaveFilename"] = ExpressionConverter.ConvertO(browserSavePageToFilesaveFilename);
+            browserSavePageToFile["SaveFilename"] = CSharpExpressionConverter.ConvertToken(browserSavePageToFilesaveFilename);
             browserSavePageToFilepropCount++;
-            browserSavePageToFile["Workflow"] = ExpressionConverter.ConvertO(browserSavePageToFileworkflow);
+            browserSavePageToFile["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSavePageToFileworkflow);
             if (browserSavePageToFilepropCount > 0)
             {
                 callPayload.Body = browserSavePageToFile;
@@ -8338,7 +8338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetPageText = new JObject();
             var browserGetPageTextpropCount = 0;
             browserGetPageTextpropCount++;
-            browserGetPageText["Workflow"] = ExpressionConverter.ConvertO(browserGetPageTextworkflow);
+            browserGetPageText["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetPageTextworkflow);
             if (browserGetPageTextpropCount > 0)
             {
                 callPayload.Body = browserGetPageText;
@@ -8357,49 +8357,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSwitchToFrameElementpropCount = 0;
             if (browserSwitchToFrameElementparentElementHandle != null)
             {
-                browserSwitchToFrameElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementparentElementHandle);
+                browserSwitchToFrameElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementparentElementHandle);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementHandle != null)
             {
-                browserSwitchToFrameElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementHandle);
+                browserSwitchToFrameElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementHandle);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementName != null)
             {
-                browserSwitchToFrameElement["SearchElementName"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementName);
+                browserSwitchToFrameElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementName);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementID != null)
             {
-                browserSwitchToFrameElement["SearchElementID"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementID);
+                browserSwitchToFrameElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementID);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementTagName != null)
             {
-                browserSwitchToFrameElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementTagName);
+                browserSwitchToFrameElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementTagName);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementXPath != null)
             {
-                browserSwitchToFrameElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementXPath);
+                browserSwitchToFrameElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementXPath);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementClassName != null)
             {
-                browserSwitchToFrameElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementClassName);
+                browserSwitchToFrameElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementClassName);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementCSSSelector != null)
             {
-                browserSwitchToFrameElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementCSSSelector);
+                browserSwitchToFrameElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementCSSSelector);
                 browserSwitchToFrameElementpropCount++;
             }
 
@@ -8407,7 +8407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementIndex != null)
                 {
-                    browserSwitchToFrameElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementIndex);
+                    browserSwitchToFrameElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementIndex);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8421,19 +8421,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSwitchToFrameElementsearchElementMatchValue != null)
             {
-                browserSwitchToFrameElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMatchValue);
+                browserSwitchToFrameElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementMatchValue);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementMatchText != null)
             {
-                browserSwitchToFrameElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMatchText);
+                browserSwitchToFrameElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementMatchText);
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementType != null)
             {
-                browserSwitchToFrameElement["SearchElementType"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementType);
+                browserSwitchToFrameElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementType);
                 browserSwitchToFrameElementpropCount++;
             }
 
@@ -8441,7 +8441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementMinimumWidth != null)
                 {
-                    browserSwitchToFrameElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumWidth);
+                    browserSwitchToFrameElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementMinimumWidth);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8457,7 +8457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementMinimumHeight != null)
                 {
-                    browserSwitchToFrameElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumHeight);
+                    browserSwitchToFrameElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementMinimumHeight);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8473,7 +8473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserSwitchToFrameElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxLeft);
+                    browserSwitchToFrameElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementBoundingBoxLeft);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8489,7 +8489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementBoundingBoxRight != null)
                 {
-                    browserSwitchToFrameElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxRight);
+                    browserSwitchToFrameElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementBoundingBoxRight);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8505,7 +8505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementBoundingBoxTop != null)
                 {
-                    browserSwitchToFrameElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxTop);
+                    browserSwitchToFrameElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementBoundingBoxTop);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8521,7 +8521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserSwitchToFrameElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxBottom);
+                    browserSwitchToFrameElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementsearchElementBoundingBoxBottom);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8537,7 +8537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserSwitchToFrameElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSwitchToFrameElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserSwitchToFrameElementpropCount++;
                 }
 
@@ -8550,7 +8550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserSwitchToFrameElementpropCount++;
-            browserSwitchToFrameElement["Workflow"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementworkflow);
+            browserSwitchToFrameElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSwitchToFrameElementworkflow);
             if (browserSwitchToFrameElementpropCount > 0)
             {
                 callPayload.Body = browserSwitchToFrameElement;
@@ -8568,7 +8568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetCurrentFrameWindowPixelCoordinate = new JObject();
             var browserGetCurrentFrameWindowPixelCoordinatepropCount = 0;
             browserGetCurrentFrameWindowPixelCoordinatepropCount++;
-            browserGetCurrentFrameWindowPixelCoordinate["Workflow"] = ExpressionConverter.ConvertO(browserGetCurrentFrameWindowPixelCoordinateworkflow);
+            browserGetCurrentFrameWindowPixelCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetCurrentFrameWindowPixelCoordinateworkflow);
             if (browserGetCurrentFrameWindowPixelCoordinatepropCount > 0)
             {
                 callPayload.Body = browserGetCurrentFrameWindowPixelCoordinate;
@@ -8586,7 +8586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSwitchToParentFrameElement = new JObject();
             var browserSwitchToParentFrameElementpropCount = 0;
             browserSwitchToParentFrameElementpropCount++;
-            browserSwitchToParentFrameElement["Workflow"] = ExpressionConverter.ConvertO(browserSwitchToParentFrameElementworkflow);
+            browserSwitchToParentFrameElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSwitchToParentFrameElementworkflow);
             if (browserSwitchToParentFrameElementpropCount > 0)
             {
                 callPayload.Body = browserSwitchToParentFrameElement;
@@ -8604,7 +8604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSwitchToRootFrameElement = new JObject();
             var browserSwitchToRootFrameElementpropCount = 0;
             browserSwitchToRootFrameElementpropCount++;
-            browserSwitchToRootFrameElement["Workflow"] = ExpressionConverter.ConvertO(browserSwitchToRootFrameElementworkflow);
+            browserSwitchToRootFrameElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSwitchToRootFrameElementworkflow);
             if (browserSwitchToRootFrameElementpropCount > 0)
             {
                 callPayload.Body = browserSwitchToRootFrameElement;
@@ -8622,7 +8622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserResetFrameStack = new JObject();
             var browserResetFrameStackpropCount = 0;
             browserResetFrameStackpropCount++;
-            browserResetFrameStack["Workflow"] = ExpressionConverter.ConvertO(browserResetFrameStackworkflow);
+            browserResetFrameStack["Workflow"] = CSharpExpressionConverter.ConvertToken(browserResetFrameStackworkflow);
             if (browserResetFrameStackpropCount > 0)
             {
                 callPayload.Body = browserResetFrameStack;
@@ -8641,49 +8641,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserClearElementTextpropCount = 0;
             if (browserClearElementTextparentElementHandle != null)
             {
-                browserClearElementText["ParentElementHandle"] = ExpressionConverter.ConvertO(browserClearElementTextparentElementHandle);
+                browserClearElementText["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextparentElementHandle);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementHandle != null)
             {
-                browserClearElementText["SearchElementHandle"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementHandle);
+                browserClearElementText["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementHandle);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementName != null)
             {
-                browserClearElementText["SearchElementName"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementName);
+                browserClearElementText["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementName);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementID != null)
             {
-                browserClearElementText["SearchElementID"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementID);
+                browserClearElementText["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementID);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementTagName != null)
             {
-                browserClearElementText["SearchElementTagName"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementTagName);
+                browserClearElementText["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementTagName);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementXPath != null)
             {
-                browserClearElementText["SearchElementXPath"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementXPath);
+                browserClearElementText["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementXPath);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementClassName != null)
             {
-                browserClearElementText["SearchElementClassName"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementClassName);
+                browserClearElementText["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementClassName);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementCSSSelector != null)
             {
-                browserClearElementText["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementCSSSelector);
+                browserClearElementText["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementCSSSelector);
                 browserClearElementTextpropCount++;
             }
 
@@ -8691,7 +8691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementIndex != null)
                 {
-                    browserClearElementText["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementIndex);
+                    browserClearElementText["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementIndex);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8705,19 +8705,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClearElementTextsearchElementMatchValue != null)
             {
-                browserClearElementText["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMatchValue);
+                browserClearElementText["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementMatchValue);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementMatchText != null)
             {
-                browserClearElementText["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMatchText);
+                browserClearElementText["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementMatchText);
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementType != null)
             {
-                browserClearElementText["SearchElementType"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementType);
+                browserClearElementText["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementType);
                 browserClearElementTextpropCount++;
             }
 
@@ -8725,7 +8725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementMinimumWidth != null)
                 {
-                    browserClearElementText["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumWidth);
+                    browserClearElementText["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementMinimumWidth);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8741,7 +8741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementMinimumHeight != null)
                 {
-                    browserClearElementText["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumHeight);
+                    browserClearElementText["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementMinimumHeight);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8757,7 +8757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementBoundingBoxLeft != null)
                 {
-                    browserClearElementText["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxLeft);
+                    browserClearElementText["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementBoundingBoxLeft);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8773,7 +8773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementBoundingBoxRight != null)
                 {
-                    browserClearElementText["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxRight);
+                    browserClearElementText["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementBoundingBoxRight);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8789,7 +8789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementBoundingBoxTop != null)
                 {
-                    browserClearElementText["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxTop);
+                    browserClearElementText["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementBoundingBoxTop);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8805,7 +8805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextsearchElementBoundingBoxBottom != null)
                 {
-                    browserClearElementText["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxBottom);
+                    browserClearElementText["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextsearchElementBoundingBoxBottom);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8821,7 +8821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserClearElementText["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserClearElementText["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserClearElementTextpropCount++;
                 }
 
@@ -8834,7 +8834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserClearElementTextpropCount++;
-            browserClearElementText["Workflow"] = ExpressionConverter.ConvertO(browserClearElementTextworkflow);
+            browserClearElementText["Workflow"] = CSharpExpressionConverter.ConvertToken(browserClearElementTextworkflow);
             if (browserClearElementTextpropCount > 0)
             {
                 callPayload.Body = browserClearElementText;
@@ -8853,49 +8853,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCopySelectedTextOnElementpropCount = 0;
             if (browserCopySelectedTextOnElementparentElementHandle != null)
             {
-                browserCopySelectedTextOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementparentElementHandle);
+                browserCopySelectedTextOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementparentElementHandle);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementHandle != null)
             {
-                browserCopySelectedTextOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementHandle);
+                browserCopySelectedTextOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementHandle);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementName != null)
             {
-                browserCopySelectedTextOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementName);
+                browserCopySelectedTextOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementName);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementID != null)
             {
-                browserCopySelectedTextOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementID);
+                browserCopySelectedTextOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementID);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementTagName != null)
             {
-                browserCopySelectedTextOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementTagName);
+                browserCopySelectedTextOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementTagName);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementXPath != null)
             {
-                browserCopySelectedTextOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementXPath);
+                browserCopySelectedTextOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementXPath);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementClassName != null)
             {
-                browserCopySelectedTextOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementClassName);
+                browserCopySelectedTextOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementClassName);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementCSSSelector != null)
             {
-                browserCopySelectedTextOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementCSSSelector);
+                browserCopySelectedTextOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementCSSSelector);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
@@ -8903,7 +8903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementIndex != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementIndex);
+                    browserCopySelectedTextOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementIndex);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -8917,19 +8917,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCopySelectedTextOnElementsearchElementMatchValue != null)
             {
-                browserCopySelectedTextOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMatchValue);
+                browserCopySelectedTextOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementMatchValue);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementMatchText != null)
             {
-                browserCopySelectedTextOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMatchText);
+                browserCopySelectedTextOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementMatchText);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementType != null)
             {
-                browserCopySelectedTextOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementType);
+                browserCopySelectedTextOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementType);
                 browserCopySelectedTextOnElementpropCount++;
             }
 
@@ -8937,7 +8937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementMinimumWidth != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumWidth);
+                    browserCopySelectedTextOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementMinimumWidth);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -8953,7 +8953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementMinimumHeight != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumHeight);
+                    browserCopySelectedTextOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementMinimumHeight);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -8969,7 +8969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft);
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -8985,7 +8985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxRight);
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementBoundingBoxRight);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -9001,7 +9001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxTop);
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementBoundingBoxTop);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -9017,7 +9017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserCopySelectedTextOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom);
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -9033,7 +9033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserCopySelectedTextOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCopySelectedTextOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserCopySelectedTextOnElementpropCount++;
                 }
 
@@ -9046,7 +9046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserCopySelectedTextOnElementpropCount++;
-            browserCopySelectedTextOnElement["Workflow"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementworkflow);
+            browserCopySelectedTextOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserCopySelectedTextOnElementworkflow);
             if (browserCopySelectedTextOnElementpropCount > 0)
             {
                 callPayload.Body = browserCopySelectedTextOnElement;
@@ -9065,49 +9065,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserInputPasswordIntoElementpropCount = 0;
             if (browserInputPasswordIntoElementparentElementHandle != null)
             {
-                browserInputPasswordIntoElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementparentElementHandle);
+                browserInputPasswordIntoElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementparentElementHandle);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementHandle != null)
             {
-                browserInputPasswordIntoElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementHandle);
+                browserInputPasswordIntoElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementHandle);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementName != null)
             {
-                browserInputPasswordIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementName);
+                browserInputPasswordIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementName);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementID != null)
             {
-                browserInputPasswordIntoElement["SearchElementID"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementID);
+                browserInputPasswordIntoElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementID);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementTagName != null)
             {
-                browserInputPasswordIntoElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementTagName);
+                browserInputPasswordIntoElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementTagName);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementXPath != null)
             {
-                browserInputPasswordIntoElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementXPath);
+                browserInputPasswordIntoElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementXPath);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementClassName != null)
             {
-                browserInputPasswordIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementClassName);
+                browserInputPasswordIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementClassName);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementCSSSelector != null)
             {
-                browserInputPasswordIntoElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementCSSSelector);
+                browserInputPasswordIntoElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementCSSSelector);
                 browserInputPasswordIntoElementpropCount++;
             }
 
@@ -9115,7 +9115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementIndex != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementIndex);
+                    browserInputPasswordIntoElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementIndex);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9129,19 +9129,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputPasswordIntoElementsearchElementMatchValue != null)
             {
-                browserInputPasswordIntoElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMatchValue);
+                browserInputPasswordIntoElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementMatchValue);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementMatchText != null)
             {
-                browserInputPasswordIntoElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMatchText);
+                browserInputPasswordIntoElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementMatchText);
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementType != null)
             {
-                browserInputPasswordIntoElement["SearchElementType"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementType);
+                browserInputPasswordIntoElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementType);
                 browserInputPasswordIntoElementpropCount++;
             }
 
@@ -9149,7 +9149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementMinimumWidth != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumWidth);
+                    browserInputPasswordIntoElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementMinimumWidth);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9165,7 +9165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementMinimumHeight != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumHeight);
+                    browserInputPasswordIntoElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementMinimumHeight);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9181,7 +9181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxLeft);
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementBoundingBoxLeft);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9197,7 +9197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementBoundingBoxRight != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxRight);
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementBoundingBoxRight);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9213,7 +9213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementBoundingBoxTop != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxTop);
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementBoundingBoxTop);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9229,7 +9229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserInputPasswordIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxBottom);
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementsearchElementBoundingBoxBottom);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9245,7 +9245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserInputPasswordIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserInputPasswordIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9258,12 +9258,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserInputPasswordIntoElementpropCount++;
-            browserInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementpasswordToInput);
+            browserInputPasswordIntoElement["PasswordToInput"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementpasswordToInput);
             if (browserInputPasswordIntoElementresetExistingValue != null)
             {
                 if (browserInputPasswordIntoElementresetExistingValue != null)
                 {
-                    browserInputPasswordIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementresetExistingValue);
+                    browserInputPasswordIntoElement["ResetExistingValue"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementresetExistingValue);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9279,7 +9279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserInputPasswordIntoElementpasswordContainsStoredPassword != null)
                 {
-                    browserInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementpasswordContainsStoredPassword);
+                    browserInputPasswordIntoElement["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementpasswordContainsStoredPassword);
                     browserInputPasswordIntoElementpropCount++;
                 }
 
@@ -9292,7 +9292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserInputPasswordIntoElementpropCount++;
-            browserInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementworkflow);
+            browserInputPasswordIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserInputPasswordIntoElementworkflow);
             if (browserInputPasswordIntoElementpropCount > 0)
             {
                 callPayload.Body = browserInputPasswordIntoElement;
@@ -9311,49 +9311,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserPasteIntoElementpropCount = 0;
             if (browserPasteIntoElementparentElementHandle != null)
             {
-                browserPasteIntoElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserPasteIntoElementparentElementHandle);
+                browserPasteIntoElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementparentElementHandle);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementHandle != null)
             {
-                browserPasteIntoElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementHandle);
+                browserPasteIntoElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementHandle);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementName != null)
             {
-                browserPasteIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementName);
+                browserPasteIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementName);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementID != null)
             {
-                browserPasteIntoElement["SearchElementID"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementID);
+                browserPasteIntoElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementID);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementTagName != null)
             {
-                browserPasteIntoElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementTagName);
+                browserPasteIntoElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementTagName);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementXPath != null)
             {
-                browserPasteIntoElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementXPath);
+                browserPasteIntoElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementXPath);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementClassName != null)
             {
-                browserPasteIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementClassName);
+                browserPasteIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementClassName);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementCSSSelector != null)
             {
-                browserPasteIntoElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementCSSSelector);
+                browserPasteIntoElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementCSSSelector);
                 browserPasteIntoElementpropCount++;
             }
 
@@ -9361,7 +9361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementIndex != null)
                 {
-                    browserPasteIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementIndex);
+                    browserPasteIntoElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementIndex);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9375,19 +9375,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPasteIntoElementsearchElementMatchValue != null)
             {
-                browserPasteIntoElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMatchValue);
+                browserPasteIntoElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementMatchValue);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementMatchText != null)
             {
-                browserPasteIntoElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMatchText);
+                browserPasteIntoElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementMatchText);
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementType != null)
             {
-                browserPasteIntoElement["SearchElementType"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementType);
+                browserPasteIntoElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementType);
                 browserPasteIntoElementpropCount++;
             }
 
@@ -9395,7 +9395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementMinimumWidth != null)
                 {
-                    browserPasteIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumWidth);
+                    browserPasteIntoElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementMinimumWidth);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9411,7 +9411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementMinimumHeight != null)
                 {
-                    browserPasteIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumHeight);
+                    browserPasteIntoElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementMinimumHeight);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9427,7 +9427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserPasteIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxLeft);
+                    browserPasteIntoElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementBoundingBoxLeft);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9443,7 +9443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementBoundingBoxRight != null)
                 {
-                    browserPasteIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxRight);
+                    browserPasteIntoElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementBoundingBoxRight);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9459,7 +9459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementBoundingBoxTop != null)
                 {
-                    browserPasteIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxTop);
+                    browserPasteIntoElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementBoundingBoxTop);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9475,7 +9475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserPasteIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxBottom);
+                    browserPasteIntoElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementsearchElementBoundingBoxBottom);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9491,7 +9491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserPasteIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPasteIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserPasteIntoElementpropCount++;
                 }
 
@@ -9504,7 +9504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserPasteIntoElementpropCount++;
-            browserPasteIntoElement["Workflow"] = ExpressionConverter.ConvertO(browserPasteIntoElementworkflow);
+            browserPasteIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserPasteIntoElementworkflow);
             if (browserPasteIntoElementpropCount > 0)
             {
                 callPayload.Body = browserPasteIntoElement;
@@ -9522,7 +9522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserPrintCurrentPage = new JObject();
             var browserPrintCurrentPagepropCount = 0;
             browserPrintCurrentPagepropCount++;
-            browserPrintCurrentPage["Workflow"] = ExpressionConverter.ConvertO(browserPrintCurrentPageworkflow);
+            browserPrintCurrentPage["Workflow"] = CSharpExpressionConverter.ConvertToken(browserPrintCurrentPageworkflow);
             if (browserPrintCurrentPagepropCount > 0)
             {
                 callPayload.Body = browserPrintCurrentPage;
@@ -9541,18 +9541,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserScrollWindowByPixelspropCount = 0;
             if (browserScrollWindowByPixelsx != null)
             {
-                browserScrollWindowByPixels["X"] = ExpressionConverter.ConvertO(browserScrollWindowByPixelsx);
+                browserScrollWindowByPixels["X"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowByPixelsx);
                 browserScrollWindowByPixelspropCount++;
             }
 
             if (browserScrollWindowByPixelsy != null)
             {
-                browserScrollWindowByPixels["Y"] = ExpressionConverter.ConvertO(browserScrollWindowByPixelsy);
+                browserScrollWindowByPixels["Y"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowByPixelsy);
                 browserScrollWindowByPixelspropCount++;
             }
 
             browserScrollWindowByPixelspropCount++;
-            browserScrollWindowByPixels["Workflow"] = ExpressionConverter.ConvertO(browserScrollWindowByPixelsworkflow);
+            browserScrollWindowByPixels["Workflow"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowByPixelsworkflow);
             if (browserScrollWindowByPixelspropCount > 0)
             {
                 callPayload.Body = browserScrollWindowByPixels;
@@ -9571,18 +9571,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserScrollWindowToPixelspropCount = 0;
             if (browserScrollWindowToPixelsx != null)
             {
-                browserScrollWindowToPixels["X"] = ExpressionConverter.ConvertO(browserScrollWindowToPixelsx);
+                browserScrollWindowToPixels["X"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowToPixelsx);
                 browserScrollWindowToPixelspropCount++;
             }
 
             if (browserScrollWindowToPixelsy != null)
             {
-                browserScrollWindowToPixels["Y"] = ExpressionConverter.ConvertO(browserScrollWindowToPixelsy);
+                browserScrollWindowToPixels["Y"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowToPixelsy);
                 browserScrollWindowToPixelspropCount++;
             }
 
             browserScrollWindowToPixelspropCount++;
-            browserScrollWindowToPixels["Workflow"] = ExpressionConverter.ConvertO(browserScrollWindowToPixelsworkflow);
+            browserScrollWindowToPixels["Workflow"] = CSharpExpressionConverter.ConvertToken(browserScrollWindowToPixelsworkflow);
             if (browserScrollWindowToPixelspropCount > 0)
             {
                 callPayload.Body = browserScrollWindowToPixels;
@@ -9601,49 +9601,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserSelectAllOnElementpropCount = 0;
             if (browserSelectAllOnElementparentElementHandle != null)
             {
-                browserSelectAllOnElement["ParentElementHandle"] = ExpressionConverter.ConvertO(browserSelectAllOnElementparentElementHandle);
+                browserSelectAllOnElement["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementparentElementHandle);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementHandle != null)
             {
-                browserSelectAllOnElement["SearchElementHandle"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementHandle);
+                browserSelectAllOnElement["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementHandle);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementName != null)
             {
-                browserSelectAllOnElement["SearchElementName"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementName);
+                browserSelectAllOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementName);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementID != null)
             {
-                browserSelectAllOnElement["SearchElementID"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementID);
+                browserSelectAllOnElement["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementID);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementTagName != null)
             {
-                browserSelectAllOnElement["SearchElementTagName"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementTagName);
+                browserSelectAllOnElement["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementTagName);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementXPath != null)
             {
-                browserSelectAllOnElement["SearchElementXPath"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementXPath);
+                browserSelectAllOnElement["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementXPath);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementClassName != null)
             {
-                browserSelectAllOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementClassName);
+                browserSelectAllOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementClassName);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementCSSSelector != null)
             {
-                browserSelectAllOnElement["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementCSSSelector);
+                browserSelectAllOnElement["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementCSSSelector);
                 browserSelectAllOnElementpropCount++;
             }
 
@@ -9651,7 +9651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementIndex != null)
                 {
-                    browserSelectAllOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementIndex);
+                    browserSelectAllOnElement["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementIndex);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9665,19 +9665,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectAllOnElementsearchElementMatchValue != null)
             {
-                browserSelectAllOnElement["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMatchValue);
+                browserSelectAllOnElement["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementMatchValue);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementMatchText != null)
             {
-                browserSelectAllOnElement["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMatchText);
+                browserSelectAllOnElement["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementMatchText);
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementType != null)
             {
-                browserSelectAllOnElement["SearchElementType"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementType);
+                browserSelectAllOnElement["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementType);
                 browserSelectAllOnElementpropCount++;
             }
 
@@ -9685,7 +9685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementMinimumWidth != null)
                 {
-                    browserSelectAllOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumWidth);
+                    browserSelectAllOnElement["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementMinimumWidth);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9701,7 +9701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementMinimumHeight != null)
                 {
-                    browserSelectAllOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumHeight);
+                    browserSelectAllOnElement["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementMinimumHeight);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9717,7 +9717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementBoundingBoxLeft != null)
                 {
-                    browserSelectAllOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxLeft);
+                    browserSelectAllOnElement["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementBoundingBoxLeft);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9733,7 +9733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementBoundingBoxRight != null)
                 {
-                    browserSelectAllOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxRight);
+                    browserSelectAllOnElement["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementBoundingBoxRight);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9749,7 +9749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementBoundingBoxTop != null)
                 {
-                    browserSelectAllOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxTop);
+                    browserSelectAllOnElement["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementBoundingBoxTop);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9765,7 +9765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementsearchElementBoundingBoxBottom != null)
                 {
-                    browserSelectAllOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxBottom);
+                    browserSelectAllOnElement["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementsearchElementBoundingBoxBottom);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9781,7 +9781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserSelectAllOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSelectAllOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserSelectAllOnElementpropCount++;
                 }
 
@@ -9794,7 +9794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserSelectAllOnElementpropCount++;
-            browserSelectAllOnElement["Workflow"] = ExpressionConverter.ConvertO(browserSelectAllOnElementworkflow);
+            browserSelectAllOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(browserSelectAllOnElementworkflow);
             if (browserSelectAllOnElementpropCount > 0)
             {
                 callPayload.Body = browserSelectAllOnElement;
@@ -9813,43 +9813,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserWaitForElementToExistpropCount = 0;
             if (browserWaitForElementToExistparentElementHandle != null)
             {
-                browserWaitForElementToExist["ParentElementHandle"] = ExpressionConverter.ConvertO(browserWaitForElementToExistparentElementHandle);
+                browserWaitForElementToExist["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistparentElementHandle);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementName != null)
             {
-                browserWaitForElementToExist["SearchElementName"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementName);
+                browserWaitForElementToExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementName);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementID != null)
             {
-                browserWaitForElementToExist["SearchElementID"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementID);
+                browserWaitForElementToExist["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementID);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementTagName != null)
             {
-                browserWaitForElementToExist["SearchElementTagName"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementTagName);
+                browserWaitForElementToExist["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementTagName);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementXPath != null)
             {
-                browserWaitForElementToExist["SearchElementXPath"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementXPath);
+                browserWaitForElementToExist["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementXPath);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementClassName != null)
             {
-                browserWaitForElementToExist["SearchElementClassName"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementClassName);
+                browserWaitForElementToExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementClassName);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementCSSSelector != null)
             {
-                browserWaitForElementToExist["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementCSSSelector);
+                browserWaitForElementToExist["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementCSSSelector);
                 browserWaitForElementToExistpropCount++;
             }
 
@@ -9857,7 +9857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementIndex != null)
                 {
-                    browserWaitForElementToExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementIndex);
+                    browserWaitForElementToExist["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementIndex);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9871,19 +9871,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToExistsearchElementMatchValue != null)
             {
-                browserWaitForElementToExist["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMatchValue);
+                browserWaitForElementToExist["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementMatchValue);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementMatchText != null)
             {
-                browserWaitForElementToExist["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMatchText);
+                browserWaitForElementToExist["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementMatchText);
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementType != null)
             {
-                browserWaitForElementToExist["SearchElementType"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementType);
+                browserWaitForElementToExist["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementType);
                 browserWaitForElementToExistpropCount++;
             }
 
@@ -9891,7 +9891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementMinimumWidth != null)
                 {
-                    browserWaitForElementToExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumWidth);
+                    browserWaitForElementToExist["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementMinimumWidth);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9907,7 +9907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementMinimumHeight != null)
                 {
-                    browserWaitForElementToExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumHeight);
+                    browserWaitForElementToExist["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementMinimumHeight);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9923,7 +9923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementBoundingBoxLeft != null)
                 {
-                    browserWaitForElementToExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxLeft);
+                    browserWaitForElementToExist["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementBoundingBoxLeft);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9939,7 +9939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementBoundingBoxRight != null)
                 {
-                    browserWaitForElementToExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxRight);
+                    browserWaitForElementToExist["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementBoundingBoxRight);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9955,7 +9955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementBoundingBoxTop != null)
                 {
-                    browserWaitForElementToExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxTop);
+                    browserWaitForElementToExist["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementBoundingBoxTop);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9971,7 +9971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistsearchElementBoundingBoxBottom != null)
                 {
-                    browserWaitForElementToExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxBottom);
+                    browserWaitForElementToExist["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsearchElementBoundingBoxBottom);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -9987,7 +9987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserWaitForElementToExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserWaitForElementToExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -10000,12 +10000,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserWaitForElementToExistpropCount++;
-            browserWaitForElementToExist["SecondsToWait"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsecondsToWait);
+            browserWaitForElementToExist["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistsecondsToWait);
             if (browserWaitForElementToExistraiseExceptionIfElementNotFound != null)
             {
                 if (browserWaitForElementToExistraiseExceptionIfElementNotFound != null)
                 {
-                    browserWaitForElementToExist["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserWaitForElementToExistraiseExceptionIfElementNotFound);
+                    browserWaitForElementToExist["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistraiseExceptionIfElementNotFound);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -10021,7 +10021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistuseExplicitWaitConditionsIfPossible != null)
                 {
-                    browserWaitForElementToExist["UseExplicitWaitConditionsIfPossible"] = ExpressionConverter.ConvertO(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible);
+                    browserWaitForElementToExist["UseExplicitWaitConditionsIfPossible"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -10037,7 +10037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToExistwaitForSearchElementToBeDisplayed != null)
                 {
-                    browserWaitForElementToExist["WaitForSearchElementToBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToExistwaitForSearchElementToBeDisplayed);
+                    browserWaitForElementToExist["WaitForSearchElementToBeDisplayed"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistwaitForSearchElementToBeDisplayed);
                     browserWaitForElementToExistpropCount++;
                 }
 
@@ -10050,7 +10050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserWaitForElementToExistpropCount++;
-            browserWaitForElementToExist["Workflow"] = ExpressionConverter.ConvertO(browserWaitForElementToExistworkflow);
+            browserWaitForElementToExist["Workflow"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToExistworkflow);
             if (browserWaitForElementToExistpropCount > 0)
             {
                 callPayload.Body = browserWaitForElementToExist;
@@ -10069,49 +10069,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserWaitForElementToNotExistpropCount = 0;
             if (browserWaitForElementToNotExistparentElementHandle != null)
             {
-                browserWaitForElementToNotExist["ParentElementHandle"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistparentElementHandle);
+                browserWaitForElementToNotExist["ParentElementHandle"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistparentElementHandle);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementHandle != null)
             {
-                browserWaitForElementToNotExist["SearchElementHandle"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementHandle);
+                browserWaitForElementToNotExist["SearchElementHandle"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementHandle);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementName != null)
             {
-                browserWaitForElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementName);
+                browserWaitForElementToNotExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementName);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementID != null)
             {
-                browserWaitForElementToNotExist["SearchElementID"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementID);
+                browserWaitForElementToNotExist["SearchElementID"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementID);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementTagName != null)
             {
-                browserWaitForElementToNotExist["SearchElementTagName"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementTagName);
+                browserWaitForElementToNotExist["SearchElementTagName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementTagName);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementXPath != null)
             {
-                browserWaitForElementToNotExist["SearchElementXPath"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementXPath);
+                browserWaitForElementToNotExist["SearchElementXPath"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementXPath);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementClassName != null)
             {
-                browserWaitForElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementClassName);
+                browserWaitForElementToNotExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementClassName);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementCSSSelector != null)
             {
-                browserWaitForElementToNotExist["SearchElementCSSSelector"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementCSSSelector);
+                browserWaitForElementToNotExist["SearchElementCSSSelector"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementCSSSelector);
                 browserWaitForElementToNotExistpropCount++;
             }
 
@@ -10119,7 +10119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementIndex != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementIndex);
+                    browserWaitForElementToNotExist["SearchElementIndex"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementIndex);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10133,19 +10133,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToNotExistsearchElementMatchValue != null)
             {
-                browserWaitForElementToNotExist["SearchElementMatchValue"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMatchValue);
+                browserWaitForElementToNotExist["SearchElementMatchValue"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementMatchValue);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementMatchText != null)
             {
-                browserWaitForElementToNotExist["SearchElementMatchText"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMatchText);
+                browserWaitForElementToNotExist["SearchElementMatchText"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementMatchText);
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementType != null)
             {
-                browserWaitForElementToNotExist["SearchElementType"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementType);
+                browserWaitForElementToNotExist["SearchElementType"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementType);
                 browserWaitForElementToNotExistpropCount++;
             }
 
@@ -10153,7 +10153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementMinimumWidth != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumWidth);
+                    browserWaitForElementToNotExist["SearchElementMinimumWidth"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementMinimumWidth);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10169,7 +10169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementMinimumHeight != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumHeight);
+                    browserWaitForElementToNotExist["SearchElementMinimumHeight"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementMinimumHeight);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10185,7 +10185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementBoundingBoxLeft != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxLeft);
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementBoundingBoxLeft);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10201,7 +10201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementBoundingBoxRight != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxRight);
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementBoundingBoxRight);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10217,7 +10217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementBoundingBoxTop != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxTop);
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementBoundingBoxTop);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10233,7 +10233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementBoundingBoxBottom != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxBottom);
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementBoundingBoxBottom);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10249,7 +10249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
                 {
-                    browserWaitForElementToNotExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserWaitForElementToNotExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10262,12 +10262,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserWaitForElementToNotExistpropCount++;
-            browserWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsecondsToWait);
+            browserWaitForElementToNotExist["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsecondsToWait);
             if (browserWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
             {
                 if (browserWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
                 {
-                    browserWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                    browserWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistraiseExceptionIfElementStillExists);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10283,7 +10283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserWaitForElementToNotExistsearchElementMustBeDisplayed != null)
                 {
-                    browserWaitForElementToNotExist["SearchElementMustBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMustBeDisplayed);
+                    browserWaitForElementToNotExist["SearchElementMustBeDisplayed"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistsearchElementMustBeDisplayed);
                     browserWaitForElementToNotExistpropCount++;
                 }
 
@@ -10296,7 +10296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserWaitForElementToNotExistpropCount++;
-            browserWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistworkflow);
+            browserWaitForElementToNotExist["Workflow"] = CSharpExpressionConverter.ConvertToken(browserWaitForElementToNotExistworkflow);
             if (browserWaitForElementToNotExistpropCount > 0)
             {
                 callPayload.Body = browserWaitForElementToNotExist;
@@ -10317,7 +10317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtScreenCoordinatesxCoord != null)
                 {
-                    browserGetWebElementAtScreenCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesxCoord);
+                    browserGetWebElementAtScreenCoordinates["XCoord"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtScreenCoordinatesxCoord);
                     browserGetWebElementAtScreenCoordinatespropCount++;
                 }
 
@@ -10333,7 +10333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtScreenCoordinatesyCoord != null)
                 {
-                    browserGetWebElementAtScreenCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesyCoord);
+                    browserGetWebElementAtScreenCoordinates["YCoord"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtScreenCoordinatesyCoord);
                     browserGetWebElementAtScreenCoordinatespropCount++;
                 }
 
@@ -10349,7 +10349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound != null)
                 {
-                    browserGetWebElementAtScreenCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound);
+                    browserGetWebElementAtScreenCoordinates["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound);
                     browserGetWebElementAtScreenCoordinatespropCount++;
                 }
 
@@ -10362,7 +10362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetWebElementAtScreenCoordinatespropCount++;
-            browserGetWebElementAtScreenCoordinates["Workflow"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesworkflow);
+            browserGetWebElementAtScreenCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtScreenCoordinatesworkflow);
             if (browserGetWebElementAtScreenCoordinatespropCount > 0)
             {
                 callPayload.Body = browserGetWebElementAtScreenCoordinates;
@@ -10383,7 +10383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord != null)
                 {
-                    browserGetWebElementAtBrowserDocumentWindowCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["XCoord"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord);
                     browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
                 }
 
@@ -10399,7 +10399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord != null)
                 {
-                    browserGetWebElementAtBrowserDocumentWindowCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["YCoord"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord);
                     browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
                 }
 
@@ -10415,7 +10415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound != null)
                 {
-                    browserGetWebElementAtBrowserDocumentWindowCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound);
                     browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
                 }
 
@@ -10428,7 +10428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
-            browserGetWebElementAtBrowserDocumentWindowCoordinates["Workflow"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow);
+            browserGetWebElementAtBrowserDocumentWindowCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow);
             if (browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount > 0)
             {
                 callPayload.Body = browserGetWebElementAtBrowserDocumentWindowCoordinates;
@@ -10446,12 +10446,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetWebElementPropertiesAsList = new JObject();
             var browserGetWebElementPropertiesAsListpropCount = 0;
             browserGetWebElementPropertiesAsListpropCount++;
-            browserGetWebElementPropertiesAsList["ElementHandle"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListelementHandle);
+            browserGetWebElementPropertiesAsList["ElementHandle"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListelementHandle);
             if (browserGetWebElementPropertiesAsListgetHTMLCode != null)
             {
                 if (browserGetWebElementPropertiesAsListgetHTMLCode != null)
                 {
-                    browserGetWebElementPropertiesAsList["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListgetHTMLCode);
+                    browserGetWebElementPropertiesAsList["GetHTMLCode"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListgetHTMLCode);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10467,7 +10467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListreturnValue != null)
                 {
-                    browserGetWebElementPropertiesAsList["ReturnValue"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnValue);
+                    browserGetWebElementPropertiesAsList["ReturnValue"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListreturnValue);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10483,7 +10483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListreturnText != null)
                 {
-                    browserGetWebElementPropertiesAsList["ReturnText"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnText);
+                    browserGetWebElementPropertiesAsList["ReturnText"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListreturnText);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10499,7 +10499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListmaxValueLength != null)
                 {
-                    browserGetWebElementPropertiesAsList["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxValueLength);
+                    browserGetWebElementPropertiesAsList["MaxValueLength"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListmaxValueLength);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10515,7 +10515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListmaxTextLength != null)
                 {
-                    browserGetWebElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxTextLength);
+                    browserGetWebElementPropertiesAsList["MaxTextLength"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListmaxTextLength);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10531,7 +10531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListreturnCoordinates != null)
                 {
-                    browserGetWebElementPropertiesAsList["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnCoordinates);
+                    browserGetWebElementPropertiesAsList["ReturnCoordinates"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListreturnCoordinates);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10547,7 +10547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             {
                 if (browserGetWebElementPropertiesAsListreturnParentTag != null)
                 {
-                    browserGetWebElementPropertiesAsList["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnParentTag);
+                    browserGetWebElementPropertiesAsList["ReturnParentTag"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListreturnParentTag);
                     browserGetWebElementPropertiesAsListpropCount++;
                 }
 
@@ -10560,7 +10560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             }
 
             browserGetWebElementPropertiesAsListpropCount++;
-            browserGetWebElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListworkflow);
+            browserGetWebElementPropertiesAsList["Workflow"] = CSharpExpressionConverter.ConvertToken(browserGetWebElementPropertiesAsListworkflow);
             if (browserGetWebElementPropertiesAsListpropCount > 0)
             {
                 callPayload.Body = browserGetWebElementPropertiesAsList;
@@ -10578,7 +10578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var isBrowserInstanceOpen = new JObject();
             var isBrowserInstanceOpenpropCount = 0;
             isBrowserInstanceOpenpropCount++;
-            isBrowserInstanceOpen["Workflow"] = ExpressionConverter.ConvertO(isBrowserInstanceOpenworkflow);
+            isBrowserInstanceOpen["Workflow"] = CSharpExpressionConverter.ConvertToken(isBrowserInstanceOpenworkflow);
             if (isBrowserInstanceOpenpropCount > 0)
             {
                 callPayload.Body = isBrowserInstanceOpen;

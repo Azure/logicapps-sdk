@@ -20,21 +20,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["productName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             bodypropCount++;
-            body["provider"] = ExpressionConverter.ConvertO(bodyprovider);
+            body["provider"] = CSharpExpressionConverter.Convert(bodyprovider);
             bodypropCount++;
-            body["transferType"] = ExpressionConverter.ConvertO(bodytransferType);
+            body["transferType"] = CSharpExpressionConverter.Convert(bodytransferType);
             bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+            body["currencyCode"] = CSharpExpressionConverter.Convert(bodycurrencyCode);
             bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+            body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
             bodypropCount++;
-            body["destinationChannel"] = ExpressionConverter.ConvertO(bodydestinationChannel);
+            body["destinationChannel"] = CSharpExpressionConverter.ConvertToken(bodydestinationChannel);
             bodypropCount++;
-            body["destinationAccount"] = ExpressionConverter.ConvertO(bodydestinationAccount);
+            body["destinationAccount"] = CSharpExpressionConverter.ConvertToken(bodydestinationAccount);
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             if (metadataObjectpropCount > 0)
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var apiCallPath = "/query/wallet/balance";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
             return new ApiConnectionAction<FetchWalletBalanceResponse>(callPayload);
         }
 
@@ -70,15 +70,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["productName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             bodypropCount++;
-            body["targetProductCode"] = ExpressionConverter.ConvertO(bodytargetProductCode);
+            body["targetProductCode"] = CSharpExpressionConverter.ConvertToken(bodytargetProductCode);
             bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+            body["currencyCode"] = CSharpExpressionConverter.Convert(bodycurrencyCode);
             bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+            body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             if (metadataObjectpropCount > 0)
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var apiCallPath = "/query/wallet/fetch";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(pageNumber);
-            callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["pageNumber"] = CSharpExpressionConverter.ConvertO(pageNumber);
+            callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<FetchWalletTransactionsResponse>(callPayload);
         }
 
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["productName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+            body["currencyCode"] = CSharpExpressionConverter.Convert(bodycurrencyCode);
             bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+            body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             if (metadataObjectpropCount > 0)
@@ -149,26 +149,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var apiCallPath = "/query/transaction/fetch";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["productName"] = ExpressionConverter.Convert(productName);
-            callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(pageNumber);
-            callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["productName"] = CSharpExpressionConverter.ConvertO(productName);
+            callPayload.Queries["pageNumber"] = CSharpExpressionConverter.ConvertO(pageNumber);
+            callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.Convert(category);
             if (provider != null)
-                callPayload.Queries["provider"] = ExpressionConverter.Convert(provider);
+                callPayload.Queries["provider"] = CSharpExpressionConverter.Convert(provider);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.Convert(source);
             if (destination != null)
-                callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+                callPayload.Queries["destination"] = CSharpExpressionConverter.Convert(destination);
             if (providerChannel != null)
-                callPayload.Queries["providerChannel"] = ExpressionConverter.Convert(providerChannel);
+                callPayload.Queries["providerChannel"] = CSharpExpressionConverter.ConvertO(providerChannel);
             return new ApiConnectionAction<FetchProductTransactionsResponse>(callPayload);
         }
 
@@ -181,21 +181,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["productName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             if (bodyproviderChannel != null)
             {
-                body["providerChannel"] = ExpressionConverter.ConvertO(bodyproviderChannel);
+                body["providerChannel"] = CSharpExpressionConverter.ConvertToken(bodyproviderChannel);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+            body["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
             bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+            body["currencyCode"] = CSharpExpressionConverter.Convert(bodycurrencyCode);
             bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+            body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             if (metadataObjectpropCount > 0)
@@ -221,11 +221,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
+            body["productName"] = CSharpExpressionConverter.ConvertToken(bodyproductName);
             bodypropCount++;
-            body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+            body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

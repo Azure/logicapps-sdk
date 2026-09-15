@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (scope != null)
-                callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                callPayload.Queries["scope"] = CSharpExpressionConverter.ConvertO(scope);
             return new ApiConnectionAction<CampaignGetResponse>(callPayload);
         }
 
@@ -32,43 +32,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyendAt != null)
             {
-                body["end_at"] = ExpressionConverter.ConvertO(bodyendAt);
+                body["end_at"] = CSharpExpressionConverter.ConvertToken(bodyendAt);
                 bodypropCount++;
             }
 
             if (bodygoal != null)
             {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
                 bodypropCount++;
             }
 
             if (bodysubtitle != null)
             {
-                body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
                 bodypropCount++;
             }
 
             if (bodyslug != null)
             {
-                body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CampaignGetAResponse>(callPayload);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> CampaignDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -101,50 +101,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<string>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
         {
-            var apiCallPath = String.Format("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyendAt != null)
             {
-                body["end_at"] = ExpressionConverter.ConvertO(bodyendAt);
+                body["end_at"] = CSharpExpressionConverter.ConvertToken(bodyendAt);
                 bodypropCount++;
             }
 
             if (bodygoal != null)
             {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
                 bodypropCount++;
             }
 
             if (bodysubtitle != null)
             {
-                body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
                 bodypropCount++;
             }
 
             if (bodyslug != null)
             {
-                body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<MemberGetResponse> MemberGet(Expression<Func<string>> campaignId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MemberGetResponse>(callPayload);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<MemberGetAResponse> MemberGetA(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MemberGetAResponse>(callPayload);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> MemberDelete(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TeamGetResponse> TeamGet(Expression<Func<string>> campaignId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TeamGetResponse>(callPayload);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TeamGetAResponse> TeamGetA(Expression<Func<string>> campaignId, Expression<Func<string>> teamId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/teams/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TeamGetAResponse>(callPayload);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (scope != null)
-                callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                callPayload.Queries["scope"] = CSharpExpressionConverter.ConvertO(scope);
             return new ApiConnectionAction<ContactGetResponse>(callPayload);
         }
 
@@ -222,79 +222,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var bodypropCount = 0;
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodymiddleName != null)
             {
-                body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
+                body["middle_name"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodyemails != null)
             {
-                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
                 bodypropCount++;
             }
 
             if (bodyphones != null)
             {
-                body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                body["phones"] = CSharpExpressionConverter.ConvertToken(bodyphones);
                 bodypropCount++;
             }
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodydob != null)
             {
-                body["dob"] = ExpressionConverter.ConvertO(bodydob);
+                body["dob"] = CSharpExpressionConverter.ConvertToken(bodydob);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytwitterUrl != null)
             {
-                body["twitter_url"] = ExpressionConverter.ConvertO(bodytwitterUrl);
+                body["twitter_url"] = CSharpExpressionConverter.ConvertToken(bodytwitterUrl);
                 bodypropCount++;
             }
 
             if (bodylinkedinUrl != null)
             {
-                body["linkedin_url"] = ExpressionConverter.ConvertO(bodylinkedinUrl);
+                body["linkedin_url"] = CSharpExpressionConverter.ConvertToken(bodylinkedinUrl);
                 bodypropCount++;
             }
 
             if (bodyfacebookUrl != null)
             {
-                body["facebook_url"] = ExpressionConverter.ConvertO(bodyfacebookUrl);
+                body["facebook_url"] = CSharpExpressionConverter.ConvertToken(bodyfacebookUrl);
                 bodypropCount++;
             }
 
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactGetAResponse> ContactGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactGetAResponse>(callPayload);
@@ -318,62 +318,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactPatchResponse> ContactPatch(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodymiddleName != null)
             {
-                body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
+                body["middle_name"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodydob != null)
             {
-                body["dob"] = ExpressionConverter.ConvertO(bodydob);
+                body["dob"] = CSharpExpressionConverter.ConvertToken(bodydob);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytwitterUrl != null)
             {
-                body["twitter_url"] = ExpressionConverter.ConvertO(bodytwitterUrl);
+                body["twitter_url"] = CSharpExpressionConverter.ConvertToken(bodytwitterUrl);
                 bodypropCount++;
             }
 
             if (bodylinkedinUrl != null)
             {
-                body["linkedin_url"] = ExpressionConverter.ConvertO(bodylinkedinUrl);
+                body["linkedin_url"] = CSharpExpressionConverter.ConvertToken(bodylinkedinUrl);
                 bodypropCount++;
             }
 
             if (bodyfacebookUrl != null)
             {
-                body["facebook_url"] = ExpressionConverter.ConvertO(bodyfacebookUrl);
+                body["facebook_url"] = CSharpExpressionConverter.ConvertToken(bodyfacebookUrl);
                 bodypropCount++;
             }
 
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> ContactDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactRestoreResponse>(callPayload);
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TicketGetAResponse> TicketGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TicketGetAResponse>(callPayload);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/transactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/transactions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TransactionGetAResponse>(callPayload);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/payouts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/payouts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PayoutGetAResponse>(callPayload);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PlanGetAResponse> PlanGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/plans/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/plans/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PlanGetAResponse>(callPayload);
@@ -494,13 +494,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodycode != null)
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
                 bodypropCount++;
             }
 
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundGetAResponse> FundGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FundGetAResponse>(callPayload);
@@ -524,20 +524,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundPatchResponse> FundPatch(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
         {
-            var apiCallPath = String.Format("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodycode != null)
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
                 bodypropCount++;
             }
 
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> FundDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);

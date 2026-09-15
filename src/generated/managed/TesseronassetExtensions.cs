@@ -20,48 +20,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
             if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyreferenceNumber != null)
             {
-                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
+                body["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
                 bodypropCount++;
             }
 
             if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
+                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
                 bodypropCount++;
             }
 
             if (bodydocumentationName != null)
             {
-                body["DocumentationName"] = ExpressionConverter.ConvertO(bodydocumentationName);
+                body["DocumentationName"] = CSharpExpressionConverter.ConvertToken(bodydocumentationName);
                 bodypropCount++;
             }
 
             if (bodyliveCycleName != null)
             {
-                body["LiveCycleName"] = ExpressionConverter.ConvertO(bodyliveCycleName);
+                body["LiveCycleName"] = CSharpExpressionConverter.ConvertToken(bodyliveCycleName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
+            body["Fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
             if (bodyattachments != null)
             {
-                body["Attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["Attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
@@ -82,50 +82,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetId"] = ExpressionConverter.ConvertO(bodyassetId);
+            body["AssetId"] = CSharpExpressionConverter.ConvertToken(bodyassetId);
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
             if (bodyreferenceNumber != null)
             {
-                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
+                body["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
             if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
+                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
                 bodypropCount++;
             }
 
             if (bodydocumentationName != null)
             {
-                body["DocumentationName"] = ExpressionConverter.ConvertO(bodydocumentationName);
+                body["DocumentationName"] = CSharpExpressionConverter.ConvertToken(bodydocumentationName);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyliveCycleState != null)
             {
-                body["LiveCycleState"] = ExpressionConverter.ConvertO(bodyliveCycleState);
+                body["LiveCycleState"] = CSharpExpressionConverter.ConvertToken(bodyliveCycleState);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
+            body["Fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
             if (bodyattachments != null)
             {
-                body["Attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["Attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
@@ -146,62 +146,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
+            body["Skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
             bodypropCount++;
-            body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+            body["PageSize"] = CSharpExpressionConverter.ConvertToken(bodypageSize);
             if (bodysearch != null)
             {
-                body["search"] = ExpressionConverter.ConvertO(bodysearch);
+                body["search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
             if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
             if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
+                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
                 bodypropCount++;
             }
 
             if (bodyassetStatus != null)
             {
-                body["AssetStatus"] = ExpressionConverter.ConvertO(bodyassetStatus);
+                body["AssetStatus"] = CSharpExpressionConverter.ConvertToken(bodyassetStatus);
                 bodypropCount++;
             }
 
             if (bodyisDeprecated != null)
             {
-                body["IsDeprecated"] = ExpressionConverter.ConvertO(bodyisDeprecated);
+                body["IsDeprecated"] = CSharpExpressionConverter.ConvertToken(bodyisDeprecated);
                 bodypropCount++;
             }
 
             if (bodylastUpdateDateStart != null)
             {
-                body["LastUpdateDateStart"] = ExpressionConverter.ConvertO(bodylastUpdateDateStart);
+                body["LastUpdateDateStart"] = CSharpExpressionConverter.ConvertToken(bodylastUpdateDateStart);
                 bodypropCount++;
             }
 
             if (bodylastUpdateDateEnd != null)
             {
-                body["LastUpdateDateEnd"] = ExpressionConverter.ConvertO(bodylastUpdateDateEnd);
+                body["LastUpdateDateEnd"] = CSharpExpressionConverter.ConvertToken(bodylastUpdateDateEnd);
                 bodypropCount++;
             }
 
             if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
+                body["ResponseType"] = CSharpExpressionConverter.ConvertToken(bodyresponseType);
                 bodypropCount++;
             }
 
             if (bodyincludeAccessAuditedFieldValues != null)
             {
-                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyincludeAccessAuditedFieldValues);
+                body["IncludeAccessAuditedFieldValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
                 bodypropCount++;
             }
 
@@ -222,16 +222,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetId"] = ExpressionConverter.ConvertO(bodyassetId);
+            body["AssetId"] = CSharpExpressionConverter.ConvertToken(bodyassetId);
             if (bodyincludeAccessAuditedFieldValues != null)
             {
-                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyincludeAccessAuditedFieldValues);
+                body["IncludeAccessAuditedFieldValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
                 bodypropCount++;
             }
 
             if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
+                body["ResponseType"] = CSharpExpressionConverter.ConvertToken(bodyresponseType);
                 bodypropCount++;
             }
 
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
             if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 

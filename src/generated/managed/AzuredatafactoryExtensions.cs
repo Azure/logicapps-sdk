@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataFactoryName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pipelineName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (referencePipelineRunId != null)
-                callPayload.Queries["referencePipelineRunId"] = ExpressionConverter.Convert(referencePipelineRunId);
+                callPayload.Queries["referencePipelineRunId"] = CSharpExpressionConverter.ConvertO(referencePipelineRunId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");
             var parameters = new JObject();
             var parameterspropCount = 0;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IWorkflowAction CancelPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataFactoryName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pipelineRunName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IBodyWorkflowAction<PipelineRun> GetPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataFactoryName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pipelineRunName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");

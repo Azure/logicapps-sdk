@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            body["object"] = CSharpExpressionConverter.ConvertToken(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

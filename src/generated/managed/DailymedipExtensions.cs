@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (applicationNumber != null)
-                callPayload.Queries["application_number"] = ExpressionConverter.Convert(applicationNumber);
+                callPayload.Queries["application_number"] = CSharpExpressionConverter.ConvertO(applicationNumber);
             if (marketingCategoryCode != null)
-                callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(marketingCategoryCode);
+                callPayload.Queries["marketing_category_code"] = CSharpExpressionConverter.ConvertO(marketingCategoryCode);
             if (setid != null)
-                callPayload.Queries["setid"] = ExpressionConverter.Convert(setid);
+                callPayload.Queries["setid"] = CSharpExpressionConverter.ConvertO(setid);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<ApplicationNumberResponse>(callPayload);
         }
 
@@ -37,20 +37,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (drugClassCode != null)
-                callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
+                callPayload.Queries["drug_class_code"] = CSharpExpressionConverter.ConvertO(drugClassCode);
             if (drugClassCodingSystem != null)
-                callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
+                callPayload.Queries["drug_class_coding_system"] = CSharpExpressionConverter.ConvertO(drugClassCodingSystem);
             callPayload.Queries["class_code_type"] = Convert.ToString("all");
             if (classCodeType != null)
-                callPayload.Queries["class_code_type"] = ExpressionConverter.Convert(classCodeType);
+                callPayload.Queries["class_code_type"] = CSharpExpressionConverter.Convert(classCodeType);
             if (className != null)
-                callPayload.Queries["class_name"] = ExpressionConverter.Convert(className);
+                callPayload.Queries["class_name"] = CSharpExpressionConverter.ConvertO(className);
             if (uniiCode != null)
-                callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
+                callPayload.Queries["unii_code"] = CSharpExpressionConverter.ConvertO(uniiCode);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<DrugClassResponse>(callPayload);
         }
 
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (drugName != null)
-                callPayload.Queries["drug_name"] = ExpressionConverter.Convert(drugName);
+                callPayload.Queries["drug_name"] = CSharpExpressionConverter.ConvertO(drugName);
             callPayload.Queries["name_type"] = Convert.ToString("both");
             if (nameType != null)
-                callPayload.Queries["name_type"] = ExpressionConverter.Convert(nameType);
+                callPayload.Queries["name_type"] = CSharpExpressionConverter.Convert(nameType);
             if (manufacturer != null)
-                callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(manufacturer);
+                callPayload.Queries["manufacturer"] = CSharpExpressionConverter.ConvertO(manufacturer);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<DrugNameResponse>(callPayload);
         }
 
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<NDCResponse>(callPayload);
         }
 
@@ -95,15 +95,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["rxtty"] = Convert.ToString("PSN");
             if (rxtty != null)
-                callPayload.Queries["rxtty"] = ExpressionConverter.Convert(rxtty);
+                callPayload.Queries["rxtty"] = CSharpExpressionConverter.Convert(rxtty);
             if (rxstring != null)
-                callPayload.Queries["rxstring"] = ExpressionConverter.Convert(rxstring);
+                callPayload.Queries["rxstring"] = CSharpExpressionConverter.ConvertO(rxstring);
             if (rxcui != null)
-                callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
+                callPayload.Queries["rxcui"] = CSharpExpressionConverter.ConvertO(rxcui);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<RxCUIResponse>(callPayload);
         }
 
@@ -114,51 +114,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (applicationNumber != null)
-                callPayload.Queries["application_number"] = ExpressionConverter.Convert(applicationNumber);
+                callPayload.Queries["application_number"] = CSharpExpressionConverter.ConvertO(applicationNumber);
             if (boxedWarning != null)
-                callPayload.Queries["boxed_warning"] = ExpressionConverter.Convert(boxedWarning);
+                callPayload.Queries["boxed_warning"] = CSharpExpressionConverter.ConvertO(boxedWarning);
             callPayload.Queries["dea_schedule_code"] = Convert.ToString("none");
             if (deaScheduleCode != null)
-                callPayload.Queries["dea_schedule_code"] = ExpressionConverter.Convert(deaScheduleCode);
+                callPayload.Queries["dea_schedule_code"] = CSharpExpressionConverter.Convert(deaScheduleCode);
             if (doctype != null)
-                callPayload.Queries["doctype"] = ExpressionConverter.Convert(doctype);
+                callPayload.Queries["doctype"] = CSharpExpressionConverter.ConvertO(doctype);
             if (drugClassCode != null)
-                callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
+                callPayload.Queries["drug_class_code"] = CSharpExpressionConverter.ConvertO(drugClassCode);
             if (drugClassCodingSystem != null)
-                callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
+                callPayload.Queries["drug_class_coding_system"] = CSharpExpressionConverter.ConvertO(drugClassCodingSystem);
             if (drugName != null)
-                callPayload.Queries["drug_name"] = ExpressionConverter.Convert(drugName);
+                callPayload.Queries["drug_name"] = CSharpExpressionConverter.ConvertO(drugName);
             callPayload.Queries["name_type"] = Convert.ToString("both");
             if (nameType != null)
-                callPayload.Queries["name_type"] = ExpressionConverter.Convert(nameType);
+                callPayload.Queries["name_type"] = CSharpExpressionConverter.Convert(nameType);
             if (labeler != null)
-                callPayload.Queries["labeler"] = ExpressionConverter.Convert(labeler);
+                callPayload.Queries["labeler"] = CSharpExpressionConverter.ConvertO(labeler);
             if (manufacturer != null)
-                callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(manufacturer);
+                callPayload.Queries["manufacturer"] = CSharpExpressionConverter.ConvertO(manufacturer);
             if (marketingCategoryCode != null)
-                callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(marketingCategoryCode);
+                callPayload.Queries["marketing_category_code"] = CSharpExpressionConverter.ConvertO(marketingCategoryCode);
             if (ndc != null)
-                callPayload.Queries["ndc"] = ExpressionConverter.Convert(ndc);
+                callPayload.Queries["ndc"] = CSharpExpressionConverter.ConvertO(ndc);
             if (publishedDate != null)
-                callPayload.Queries["published_date"] = ExpressionConverter.Convert(publishedDate);
+                callPayload.Queries["published_date"] = CSharpExpressionConverter.ConvertO(publishedDate);
             callPayload.Queries["published_date_comparison"] = Convert.ToString("lt");
             if (publishedDateComparison != null)
-                callPayload.Queries["published_date_comparison"] = ExpressionConverter.Convert(publishedDateComparison);
+                callPayload.Queries["published_date_comparison"] = CSharpExpressionConverter.Convert(publishedDateComparison);
             if (rxcui != null)
-                callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
+                callPayload.Queries["rxcui"] = CSharpExpressionConverter.ConvertO(rxcui);
             if (uniiCode != null)
-                callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
+                callPayload.Queries["unii_code"] = CSharpExpressionConverter.ConvertO(uniiCode);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<SPLAllResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory(Expression<Func<string>> sETID)
         {
-            var apiCallPath = String.Format("/v2/spls/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SPLHistoryResponse>(callPayload);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLMediaResponse> SPLMedia(Expression<Func<string>> sETID)
         {
-            var apiCallPath = String.Format("/v2/spls/{0}/media.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SPLMediaResponse>(callPayload);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLNDCResponse> SPLNDC(Expression<Func<string>> sETID)
         {
-            var apiCallPath = String.Format("/v2/spls/{0}/ndcs.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SPLNDCResponse>(callPayload);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging(Expression<Func<string>> sETID)
         {
-            var apiCallPath = String.Format("/v2/spls/{0}/packaging.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SPLPackagingResponse>(callPayload);
@@ -198,19 +198,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (activeMoiety != null)
-                callPayload.Queries["active_moiety"] = ExpressionConverter.Convert(activeMoiety);
+                callPayload.Queries["active_moiety"] = CSharpExpressionConverter.ConvertO(activeMoiety);
             if (drugClassCode != null)
-                callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
+                callPayload.Queries["drug_class_code"] = CSharpExpressionConverter.ConvertO(drugClassCode);
             if (drugClassCodingSystem != null)
-                callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
+                callPayload.Queries["drug_class_coding_system"] = CSharpExpressionConverter.ConvertO(drugClassCodingSystem);
             if (rxcui != null)
-                callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
+                callPayload.Queries["rxcui"] = CSharpExpressionConverter.ConvertO(rxcui);
             if (uniiCode != null)
-                callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
+                callPayload.Queries["unii_code"] = CSharpExpressionConverter.ConvertO(uniiCode);
             if (pagesize != null)
-                callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
+                callPayload.Queries["pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<UNIIResponse>(callPayload);
         }
     }

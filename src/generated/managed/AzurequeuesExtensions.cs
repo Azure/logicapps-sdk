@@ -14,30 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction DeleteMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popreceipt)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["popreceipt"] = ExpressionConverter.Convert(popreceipt);
+            callPayload.Queries["popreceipt"] = CSharpExpressionConverter.ConvertO(popreceipt);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Messages> GetMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> numofmessages = null, Expression<Func<string>> visibilitytimeout = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (numofmessages != null)
-                callPayload.Queries["numofmessages"] = ExpressionConverter.Convert(numofmessages);
+                callPayload.Queries["numofmessages"] = CSharpExpressionConverter.ConvertO(numofmessages);
             if (visibilitytimeout != null)
-                callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(visibilitytimeout);
+                callPayload.Queries["visibilitytimeout"] = CSharpExpressionConverter.ConvertO(visibilitytimeout);
             return new ApiConnectionAction<Messages>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Queue[]> ListQueues(Expression<Func<string>> storageAccountName)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/list", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Queue[]>(callPayload);
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(message);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(message);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -58,20 +58,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
     {
         public IBodyWorkflowTrigger<Messages> OnMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (visibilitytimeout != null)
-                callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(visibilitytimeout);
+                callPayload.Queries["visibilitytimeout"] = CSharpExpressionConverter.ConvertO(visibilitytimeout);
             return new ApiConnectionTrigger<Messages>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<string> OnMessageThresholdReached(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
+            callPayload.Queries["threshold"] = CSharpExpressionConverter.ConvertO(threshold);
             return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
         }
     }

@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
             var taskData = new JObject();
             var taskDatapropCount = 0;
             taskDatapropCount++;
-            taskData["title"] = ExpressionConverter.ConvertO(taskDatatitle);
+            taskData["title"] = CSharpExpressionConverter.ConvertToken(taskDatatitle);
             taskDatapropCount++;
-            taskData["description"] = ExpressionConverter.ConvertO(taskDatadescription);
+            taskData["description"] = CSharpExpressionConverter.ConvertToken(taskDatadescription);
             taskDatapropCount++;
-            taskData["priority"] = ExpressionConverter.ConvertO(taskDatapriority);
+            taskData["priority"] = CSharpExpressionConverter.ConvertToken(taskDatapriority);
             if (taskDatapropCount > 0)
             {
                 callPayload.Body = taskData;

@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
+            body["stormid"] = CSharpExpressionConverter.ConvertToken(bodystormid);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
+            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["plan"] = ExpressionConverter.ConvertO(bodyplan);
+            body["plan"] = CSharpExpressionConverter.ConvertToken(bodyplan);
             if (bodygoals != null)
             {
-                body["goals"] = ExpressionConverter.ConvertO(bodygoals);
+                body["goals"] = CSharpExpressionConverter.ConvertToken(bodygoals);
                 bodypropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             {
                 if (bodyideacreator != null)
                 {
-                    body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                    body["ideacreator"] = CSharpExpressionConverter.ConvertToken(bodyideacreator);
                     bodypropCount++;
                 }
 

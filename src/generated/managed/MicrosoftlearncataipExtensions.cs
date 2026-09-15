@@ -18,23 +18,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (uid != null)
-                callPayload.Queries["uid"] = ExpressionConverter.Convert(uid);
+                callPayload.Queries["uid"] = CSharpExpressionConverter.ConvertO(uid);
             if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
+                callPayload.Queries["last_modified"] = CSharpExpressionConverter.ConvertO(lastModified);
             if (popularity != null)
-                callPayload.Queries["popularity"] = ExpressionConverter.Convert(popularity);
+                callPayload.Queries["popularity"] = CSharpExpressionConverter.ConvertO(popularity);
             if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
+                callPayload.Queries["level"] = CSharpExpressionConverter.ConvertO(level);
             if (role != null)
-                callPayload.Queries["role"] = ExpressionConverter.Convert(role);
+                callPayload.Queries["role"] = CSharpExpressionConverter.ConvertO(role);
             if (product != null)
-                callPayload.Queries["product"] = ExpressionConverter.Convert(product);
+                callPayload.Queries["product"] = CSharpExpressionConverter.ConvertO(product);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
         }
     }

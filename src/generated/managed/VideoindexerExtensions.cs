@@ -17,21 +17,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             var apiCallPath = "/Api/Partner/Breakdowns";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(videoUrl);
+            callPayload.Queries["videoUrl"] = CSharpExpressionConverter.ConvertO(videoUrl);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.Convert(language);
             if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                callPayload.Queries["externalId"] = CSharpExpressionConverter.ConvertO(externalId);
             if (metadata != null)
-                callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
+                callPayload.Queries["metadata"] = CSharpExpressionConverter.ConvertO(metadata);
             if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
+                callPayload.Queries["partition"] = CSharpExpressionConverter.ConvertO(partition);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Queries["privacy"] = CSharpExpressionConverter.Convert(privacy);
             if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                callPayload.Queries["callbackUrl"] = CSharpExpressionConverter.ConvertO(callbackUrl);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -42,26 +42,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.Convert(language);
             if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                callPayload.Queries["externalId"] = CSharpExpressionConverter.ConvertO(externalId);
             if (metadata != null)
-                callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
+                callPayload.Queries["metadata"] = CSharpExpressionConverter.ConvertO(metadata);
             if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
+                callPayload.Queries["partition"] = CSharpExpressionConverter.ConvertO(partition);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Queries["privacy"] = CSharpExpressionConverter.Convert(privacy);
             if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                callPayload.Queries["callbackUrl"] = CSharpExpressionConverter.ConvertO(callbackUrl);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetProcessingStateResponse>(callPayload);
@@ -74,69 +74,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (face != null)
-                callPayload.Queries["face"] = ExpressionConverter.Convert(face);
+                callPayload.Queries["face"] = CSharpExpressionConverter.ConvertO(face);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (searchInPublicAccount != null)
-                callPayload.Queries["searchInPublicAccount"] = ExpressionConverter.Convert(searchInPublicAccount);
+                callPayload.Queries["searchInPublicAccount"] = CSharpExpressionConverter.ConvertO(searchInPublicAccount);
             if (privacy != null)
-                callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
+                callPayload.Queries["privacy"] = CSharpExpressionConverter.Convert(privacy);
             if (textScope != null)
-                callPayload.Queries["textScope"] = ExpressionConverter.Convert(textScope);
+                callPayload.Queries["textScope"] = CSharpExpressionConverter.Convert(textScope);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.Convert(language);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
+                callPayload.Queries["partition"] = CSharpExpressionConverter.ConvertO(partition);
             if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                callPayload.Queries["owner"] = CSharpExpressionConverter.ConvertO(owner);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                callPayload.Queries["externalId"] = CSharpExpressionConverter.ConvertO(externalId);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<GetBreakdownResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> DeleteBreakdown(Expression<Func<string>> id, Expression<Func<bool>> deleteInsights = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (deleteInsights != null)
-                callPayload.Queries["deleteInsights"] = ExpressionConverter.Convert(deleteInsights);
+                callPayload.Queries["deleteInsights"] = CSharpExpressionConverter.ConvertO(deleteInsights);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<widgetTypeInput>> widgetType = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (widgetType != null)
-                callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                callPayload.Queries["widgetType"] = CSharpExpressionConverter.Convert(widgetType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetPlayerWidgetUrl(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -145,11 +145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetVttUrl(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -159,9 +159,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
             var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+            callPayload.Queries["externalId"] = CSharpExpressionConverter.ConvertO(externalId);
             if (widgetType != null)
-                callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                callPayload.Queries["widgetType"] = CSharpExpressionConverter.Convert(widgetType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -177,33 +177,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdown(Expression<Func<string>> id, Expression<Func<string>> callbackUrl = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                callPayload.Queries["callbackUrl"] = CSharpExpressionConverter.ConvertO(callbackUrl);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId(Expression<Func<string>> externalId, Expression<Func<string>> callbackUrl = null)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (callbackUrl != null)
-                callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                callPayload.Queries["callbackUrl"] = CSharpExpressionConverter.ConvertO(callbackUrl);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> UpdateFaceName(Expression<Func<string>> id, Expression<Func<double>> faceId, Expression<Func<string>> newName)
         {
-            var apiCallPath = String.Format("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["faceId"] = ExpressionConverter.Convert(faceId);
-            callPayload.Queries["newName"] = ExpressionConverter.Convert(newName);
+            callPayload.Queries["faceId"] = CSharpExpressionConverter.ConvertO(faceId);
+            callPayload.Queries["newName"] = CSharpExpressionConverter.ConvertO(newName);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var readFilterpropCount = 0;
             if (readFilterreadFilter != null)
             {
-                readFilter["readFilter"] = ExpressionConverter.ConvertO(readFilterreadFilter);
+                readFilter["readFilter"] = CSharpExpressionConverter.ConvertToken(readFilterreadFilter);
                 readFilterpropCount++;
             }
 
@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var filterspropCount = 0;
             if (filterslikedFilterDefaultAll != null)
             {
-                filters["likedFilter"] = ExpressionConverter.ConvertO(filterslikedFilterDefaultAll);
+                filters["likedFilter"] = CSharpExpressionConverter.Convert(filterslikedFilterDefaultAll);
                 filterspropCount++;
             }
 
             if (filtersreadFilterDefaultAll != null)
             {
-                filters["readFilter"] = ExpressionConverter.ConvertO(filtersreadFilterDefaultAll);
+                filters["readFilter"] = CSharpExpressionConverter.Convert(filtersreadFilterDefaultAll);
                 filterspropCount++;
             }
 
@@ -67,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             if (likedFilter != null)
-                callPayload.Queries["likedFilter"] = ExpressionConverter.Convert(likedFilter);
+                callPayload.Queries["likedFilter"] = CSharpExpressionConverter.Convert(likedFilter);
             if (readFilter != null)
-                callPayload.Queries["readFilter"] = ExpressionConverter.Convert(readFilter);
+                callPayload.Queries["readFilter"] = CSharpExpressionConverter.Convert(readFilter);
             return new ApiConnectionAction<BookmarksResponse>(callPayload);
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlighstResponse> ListHighlights(Expression<Func<string>> bookmarkId)
         {
-            var apiCallPath = String.Format("/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<HighlighstResponse>(callPayload);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/unstar";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<BookmarkResponse>(callPayload);
         }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/star";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<BookmarkResponse>(callPayload);
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/archive";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<BookmarkResponse>(callPayload);
         }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/unarchive";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<BookmarkResponse>(callPayload);
         }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/delete";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/update_read_progress/read";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -159,17 +159,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/bookmarks/update_read_progress/unread";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlightResponse> AddHighlight(Expression<Func<string>> bookmarkId, Expression<Func<string>> text)
         {
-            var apiCallPath = String.Format("/1.1/bookmarks/{0}/highlight", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+            callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             return new ApiConnectionAction<HighlightResponse>(callPayload);
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/1/folders/add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+            callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             return new ApiConnectionAction<FolderResponse>(callPayload);
         }
     }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionTrigger<int[]>(callPayload, triggerName, recurrence);
         }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -242,16 +242,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionTrigger<HighlighstResponse>(callPayload, triggerName, recurrence);
         }
     }

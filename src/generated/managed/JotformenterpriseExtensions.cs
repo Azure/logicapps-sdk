@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
     {
         public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(workspaceID);
+            callPayload.Headers["workspaceID"] = CSharpExpressionConverter.ConvertO(workspaceID);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackURL"] = "@listCallbackUrl()";

@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
+                callPayload.Queries["station"] = CSharpExpressionConverter.ConvertO(station);
             if (uicCode != null)
-                callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
+                callPayload.Queries["uicCode"] = CSharpExpressionConverter.ConvertO(uicCode);
             if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
+                callPayload.Queries["dateTime"] = CSharpExpressionConverter.ConvertO(dateTime);
             if (maxJourneys != null)
-                callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
+                callPayload.Queries["maxJourneys"] = CSharpExpressionConverter.ConvertO(maxJourneys);
             return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
         }
 
@@ -37,22 +37,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
+                callPayload.Queries["station"] = CSharpExpressionConverter.ConvertO(station);
             if (uicCode != null)
-                callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
+                callPayload.Queries["uicCode"] = CSharpExpressionConverter.ConvertO(uicCode);
             if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
+                callPayload.Queries["dateTime"] = CSharpExpressionConverter.ConvertO(dateTime);
             if (maxJourneys != null)
-                callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
+                callPayload.Queries["maxJourneys"] = CSharpExpressionConverter.ConvertO(maxJourneys);
             return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions(Expression<Func<string>> stationCode)
         {
-            var apiCallPath = String.Format("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);

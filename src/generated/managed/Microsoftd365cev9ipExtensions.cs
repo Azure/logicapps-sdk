@@ -14,114 +14,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertContactResponse> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodybirthdate = null, Expression<Func<string>> bodycustomertypecode = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodyemailaddress2 = null, Expression<Func<string>> bodytelephone1 = null, Expression<Func<string>> bodytelephone2 = null, Expression<Func<string>> bodytelephone3 = null, Expression<Func<string>> bodymobilephone = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
         {
-            var apiCallPath = String.Format("/contacts({0})", ExpressionConverter.ConvertWithUrlEncoding(contactGUID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactGUID, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(oDataMaxVersion);
-            callPayload.Headers["OData-Version"] = ExpressionConverter.Convert(oDataVersion);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["OData-MaxVersion"] = CSharpExpressionConverter.ConvertO(oDataMaxVersion);
+            callPayload.Headers["OData-Version"] = CSharpExpressionConverter.ConvertO(oDataVersion);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfirstname != null)
             {
-                body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                body["firstname"] = CSharpExpressionConverter.ConvertToken(bodyfirstname);
                 bodypropCount++;
             }
 
             if (bodylastname != null)
             {
-                body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                body["lastname"] = CSharpExpressionConverter.ConvertToken(bodylastname);
                 bodypropCount++;
             }
 
             if (bodymiddlename != null)
             {
-                body["middlename"] = ExpressionConverter.ConvertO(bodymiddlename);
+                body["middlename"] = CSharpExpressionConverter.ConvertToken(bodymiddlename);
                 bodypropCount++;
             }
 
             if (bodybirthdate != null)
             {
-                body["birthdate"] = ExpressionConverter.ConvertO(bodybirthdate);
+                body["birthdate"] = CSharpExpressionConverter.ConvertToken(bodybirthdate);
                 bodypropCount++;
             }
 
             if (bodycustomertypecode != null)
             {
-                body["customertypecode"] = ExpressionConverter.ConvertO(bodycustomertypecode);
+                body["customertypecode"] = CSharpExpressionConverter.ConvertToken(bodycustomertypecode);
                 bodypropCount++;
             }
 
             if (bodyemailaddress1 != null)
             {
-                body["emailaddress1"] = ExpressionConverter.ConvertO(bodyemailaddress1);
+                body["emailaddress1"] = CSharpExpressionConverter.ConvertToken(bodyemailaddress1);
                 bodypropCount++;
             }
 
             if (bodyemailaddress2 != null)
             {
-                body["emailaddress2"] = ExpressionConverter.ConvertO(bodyemailaddress2);
+                body["emailaddress2"] = CSharpExpressionConverter.ConvertToken(bodyemailaddress2);
                 bodypropCount++;
             }
 
             if (bodytelephone1 != null)
             {
-                body["telephone1"] = ExpressionConverter.ConvertO(bodytelephone1);
+                body["telephone1"] = CSharpExpressionConverter.ConvertToken(bodytelephone1);
                 bodypropCount++;
             }
 
             if (bodytelephone2 != null)
             {
-                body["telephone2"] = ExpressionConverter.ConvertO(bodytelephone2);
+                body["telephone2"] = CSharpExpressionConverter.ConvertToken(bodytelephone2);
                 bodypropCount++;
             }
 
             if (bodytelephone3 != null)
             {
-                body["telephone3"] = ExpressionConverter.ConvertO(bodytelephone3);
+                body["telephone3"] = CSharpExpressionConverter.ConvertToken(bodytelephone3);
                 bodypropCount++;
             }
 
             if (bodymobilephone != null)
             {
-                body["mobilephone"] = ExpressionConverter.ConvertO(bodymobilephone);
+                body["mobilephone"] = CSharpExpressionConverter.ConvertToken(bodymobilephone);
                 bodypropCount++;
             }
 
             if (bodyaddress1Line1 != null)
             {
-                body["address1_line1"] = ExpressionConverter.ConvertO(bodyaddress1Line1);
+                body["address1_line1"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Line1);
                 bodypropCount++;
             }
 
             if (bodyaddress1Line2 != null)
             {
-                body["address1_line2"] = ExpressionConverter.ConvertO(bodyaddress1Line2);
+                body["address1_line2"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Line2);
                 bodypropCount++;
             }
 
             if (bodyaddress1City != null)
             {
-                body["address1_city"] = ExpressionConverter.ConvertO(bodyaddress1City);
+                body["address1_city"] = CSharpExpressionConverter.ConvertToken(bodyaddress1City);
                 bodypropCount++;
             }
 
             if (bodyaddress1Stateorprovince != null)
             {
-                body["address1_stateorprovince"] = ExpressionConverter.ConvertO(bodyaddress1Stateorprovince);
+                body["address1_stateorprovince"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Stateorprovince);
                 bodypropCount++;
             }
 
             if (bodyaddress1Postalcode != null)
             {
-                body["address1_postalcode"] = ExpressionConverter.ConvertO(bodyaddress1Postalcode);
+                body["address1_postalcode"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Postalcode);
                 bodypropCount++;
             }
 
             if (bodyaddress1County != null)
             {
-                body["address1_county"] = ExpressionConverter.ConvertO(bodyaddress1County);
+                body["address1_county"] = CSharpExpressionConverter.ConvertToken(bodyaddress1County);
                 bodypropCount++;
             }
 
@@ -136,54 +136,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertAccountResponse> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
         {
-            var apiCallPath = String.Format("/accounts({0})", ExpressionConverter.ConvertWithUrlEncoding(accountGUID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/accounts({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountGUID, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(oDataMaxVersion);
-            callPayload.Headers["OData-Version"] = ExpressionConverter.Convert(oDataVersion);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["OData-MaxVersion"] = CSharpExpressionConverter.ConvertO(oDataMaxVersion);
+            callPayload.Headers["OData-Version"] = CSharpExpressionConverter.ConvertO(oDataVersion);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyaddress1Line1 != null)
             {
-                body["address1_line1"] = ExpressionConverter.ConvertO(bodyaddress1Line1);
+                body["address1_line1"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Line1);
                 bodypropCount++;
             }
 
             if (bodyaddress1Line2 != null)
             {
-                body["address1_line2"] = ExpressionConverter.ConvertO(bodyaddress1Line2);
+                body["address1_line2"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Line2);
                 bodypropCount++;
             }
 
             if (bodyaddress1City != null)
             {
-                body["address1_city"] = ExpressionConverter.ConvertO(bodyaddress1City);
+                body["address1_city"] = CSharpExpressionConverter.ConvertToken(bodyaddress1City);
                 bodypropCount++;
             }
 
             if (bodyaddress1Stateorprovince != null)
             {
-                body["address1_stateorprovince"] = ExpressionConverter.ConvertO(bodyaddress1Stateorprovince);
+                body["address1_stateorprovince"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Stateorprovince);
                 bodypropCount++;
             }
 
             if (bodyaddress1Postalcode != null)
             {
-                body["address1_postalcode"] = ExpressionConverter.ConvertO(bodyaddress1Postalcode);
+                body["address1_postalcode"] = CSharpExpressionConverter.ConvertToken(bodyaddress1Postalcode);
                 bodypropCount++;
             }
 
             if (bodyaddress1County != null)
             {
-                body["address1_county"] = ExpressionConverter.ConvertO(bodyaddress1County);
+                body["address1_county"] = CSharpExpressionConverter.ConvertToken(bodyaddress1County);
                 bodypropCount++;
             }
 
@@ -198,30 +198,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertLeadResponse> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfullname = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodytelephone1 = null)
         {
-            var apiCallPath = String.Format("/leads({0})", ExpressionConverter.ConvertWithUrlEncoding(leadGUID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/leads({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(leadGUID, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(oDataMaxVersion);
-            callPayload.Headers["OData-Version"] = ExpressionConverter.Convert(oDataVersion);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["OData-MaxVersion"] = CSharpExpressionConverter.ConvertO(oDataMaxVersion);
+            callPayload.Headers["OData-Version"] = CSharpExpressionConverter.ConvertO(oDataVersion);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfullname != null)
             {
-                body["fullname"] = ExpressionConverter.ConvertO(bodyfullname);
+                body["fullname"] = CSharpExpressionConverter.ConvertToken(bodyfullname);
                 bodypropCount++;
             }
 
             if (bodyemailaddress1 != null)
             {
-                body["emailaddress1"] = ExpressionConverter.ConvertO(bodyemailaddress1);
+                body["emailaddress1"] = CSharpExpressionConverter.ConvertToken(bodyemailaddress1);
                 bodypropCount++;
             }
 
             if (bodytelephone1 != null)
             {
-                body["telephone1"] = ExpressionConverter.ConvertO(bodytelephone1);
+                body["telephone1"] = CSharpExpressionConverter.ConvertToken(bodytelephone1);
                 bodypropCount++;
             }
 

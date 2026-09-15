@@ -17,20 +17,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
+            callPayload.Queries["hl"] = CSharpExpressionConverter.ConvertO(hl);
             if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                callPayload.Queries["c"] = CSharpExpressionConverter.Convert(c);
             if (f != null)
-                callPayload.Queries["f"] = ExpressionConverter.Convert(f);
-            callPayload.Queries["src"] = ExpressionConverter.Convert(src);
+                callPayload.Queries["f"] = CSharpExpressionConverter.ConvertO(f);
+            callPayload.Queries["src"] = CSharpExpressionConverter.ConvertO(src);
             if (v != null)
-                callPayload.Queries["v"] = ExpressionConverter.Convert(v);
+                callPayload.Queries["v"] = CSharpExpressionConverter.ConvertO(v);
             if (r != null)
-                callPayload.Queries["r"] = ExpressionConverter.Convert(r);
+                callPayload.Queries["r"] = CSharpExpressionConverter.ConvertO(r);
             if (ssml != null)
-                callPayload.Queries["ssml"] = ExpressionConverter.Convert(ssml);
+                callPayload.Queries["ssml"] = CSharpExpressionConverter.ConvertO(ssml);
             if (b64 != null)
-                callPayload.Queries["b64"] = ExpressionConverter.Convert(b64);
+                callPayload.Queries["b64"] = CSharpExpressionConverter.ConvertO(b64);
             return new ApiConnectionAction(callPayload);
         }
     }

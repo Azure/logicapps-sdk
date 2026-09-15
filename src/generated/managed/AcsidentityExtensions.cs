@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
             var bodypropCount = 0;
             if (bodytokenScopes != null)
             {
-                body["createTokenWithScopes"] = ExpressionConverter.ConvertO(bodytokenScopes);
+                body["createTokenWithScopes"] = CSharpExpressionConverter.ConvertToken(bodytokenScopes);
                 bodypropCount++;
             }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction DeleteCommunicationIdentity(Expression<Func<string>> identityId)
         {
-            var apiCallPath = String.Format("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/identities/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
         {
-            var apiCallPath = String.Format("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["scopes"] = ExpressionConverter.ConvertO(bodytokenScopes);
+            body["scopes"] = CSharpExpressionConverter.ConvertToken(bodytokenScopes);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
         {
-            var apiCallPath = String.Format("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");

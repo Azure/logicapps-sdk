@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Meeting> GetMeeting(Expression<Func<string>> meetingId)
         {
-            var apiCallPath = String.Format("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Meeting>(callPayload);
@@ -32,24 +32,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IWorkflowAction UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> meetingsubject, Expression<Func<string>> meetingstartTime, Expression<Func<string>> meetingendTime, Expression<Func<bool>> meetingrequiresPassword, Expression<Func<meetingconferenceCallInfoInput>> meetingconferenceCallInfo, Expression<Func<meetingmeetingTypeInput>> meetingmeetingType = null)
         {
-            var apiCallPath = String.Format("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var meeting = new JObject();
             var meetingpropCount = 0;
             meetingpropCount++;
-            meeting["subject"] = ExpressionConverter.ConvertO(meetingsubject);
+            meeting["subject"] = CSharpExpressionConverter.ConvertToken(meetingsubject);
             meetingpropCount++;
-            meeting["starttime"] = ExpressionConverter.ConvertO(meetingstartTime);
+            meeting["starttime"] = CSharpExpressionConverter.ConvertToken(meetingstartTime);
             meetingpropCount++;
-            meeting["endtime"] = ExpressionConverter.ConvertO(meetingendTime);
+            meeting["endtime"] = CSharpExpressionConverter.ConvertToken(meetingendTime);
             meetingpropCount++;
-            meeting["passwordrequired"] = ExpressionConverter.ConvertO(meetingrequiresPassword);
+            meeting["passwordrequired"] = CSharpExpressionConverter.ConvertToken(meetingrequiresPassword);
             meetingpropCount++;
-            meeting["conferencecallinfo"] = ExpressionConverter.ConvertO(meetingconferenceCallInfo);
+            meeting["conferencecallinfo"] = CSharpExpressionConverter.Convert(meetingconferenceCallInfo);
             if (meetingmeetingType != null)
             {
-                meeting["meetingtype"] = ExpressionConverter.ConvertO(meetingmeetingType);
+                meeting["meetingtype"] = CSharpExpressionConverter.Convert(meetingmeetingType);
                 meetingpropCount++;
             }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees(Expression<Func<string>> meetingId)
         {
-            var apiCallPath = String.Format("/meetings/{0}/attendees", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Attendee[]>(callPayload);
@@ -79,17 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var newMeeting = new JObject();
             var newMeetingpropCount = 0;
             newMeetingpropCount++;
-            newMeeting["subject"] = ExpressionConverter.ConvertO(newMeetingsubject);
+            newMeeting["subject"] = CSharpExpressionConverter.ConvertToken(newMeetingsubject);
             newMeetingpropCount++;
-            newMeeting["starttime"] = ExpressionConverter.ConvertO(newMeetingstartTime);
+            newMeeting["starttime"] = CSharpExpressionConverter.ConvertToken(newMeetingstartTime);
             newMeetingpropCount++;
-            newMeeting["endtime"] = ExpressionConverter.ConvertO(newMeetingendTime);
+            newMeeting["endtime"] = CSharpExpressionConverter.ConvertToken(newMeetingendTime);
             newMeetingpropCount++;
-            newMeeting["passwordrequired"] = ExpressionConverter.ConvertO(newMeetingrequiresPassword);
+            newMeeting["passwordrequired"] = CSharpExpressionConverter.ConvertToken(newMeetingrequiresPassword);
             newMeetingpropCount++;
-            newMeeting["conferencecallinfo"] = ExpressionConverter.ConvertO(newMeetingconferenceCallInfo);
+            newMeeting["conferencecallinfo"] = CSharpExpressionConverter.Convert(newMeetingconferenceCallInfo);
             newMeetingpropCount++;
-            newMeeting["meetingtype"] = ExpressionConverter.ConvertO(newMeetingmeetingType);
+            newMeeting["meetingtype"] = CSharpExpressionConverter.Convert(newMeetingmeetingType);
             if (newMeetingpropCount > 0)
             {
                 callPayload.Body = newMeeting;

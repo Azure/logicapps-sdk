@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             return new ApiConnectionAction<QueryResponse>(callPayload);
         }
     }

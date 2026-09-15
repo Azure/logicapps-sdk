@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
-            var apiCallPath = String.Format("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
-            var apiCallPath = String.Format("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(itemType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

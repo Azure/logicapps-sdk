@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
         public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
         {
-            var apiCallPath = String.Format("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+            body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -21,22 +21,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.Convert(bodymodel);
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             bodypropCount++;
-            body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+            body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
             var thinkingObject = new JObject();
             var thinkingObjectpropCount = 0;
             if (bodythinkingtype != null)
             {
-                thinkingObject["type"] = ExpressionConverter.ConvertO(bodythinkingtype);
+                thinkingObject["type"] = CSharpExpressionConverter.ConvertToken(bodythinkingtype);
                 thinkingObjectpropCount++;
             }
 
             if (bodythinkingbudgetTokens != null)
             {
-                thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(bodythinkingbudgetTokens);
+                thinkingObject["budget_tokens"] = CSharpExpressionConverter.ConvertToken(bodythinkingbudgetTokens);
                 thinkingObjectpropCount++;
             }
 
@@ -56,37 +56,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
 
             if (bodystopSequences != null)
             {
-                body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                body["stop_sequences"] = CSharpExpressionConverter.ConvertToken(bodystopSequences);
                 bodypropCount++;
             }
 
             if (bodysystem != null)
             {
-                body["system"] = ExpressionConverter.ConvertO(bodysystem);
+                body["system"] = CSharpExpressionConverter.ConvertToken(bodysystem);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 
             if (bodytopK != null)
             {
-                body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
+                body["top_k"] = CSharpExpressionConverter.ConvertToken(bodytopK);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 

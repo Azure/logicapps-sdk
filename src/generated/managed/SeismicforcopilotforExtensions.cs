@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var apiCallPath = "/connector/relatedRecords";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
+            callPayload.Queries["recordType"] = CSharpExpressionConverter.Convert(recordType);
+            callPayload.Queries["recordId"] = CSharpExpressionConverter.ConvertO(recordId);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             callPayload.Queries["crmType"] = Convert.ToString("Salesforce");
             if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
+                callPayload.Queries["crmType"] = CSharpExpressionConverter.Convert(crmType);
             if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
+                callPayload.Queries["crmOrgUrl"] = CSharpExpressionConverter.ConvertO(crmOrgUrl);
             return new ApiConnectionAction<ExternalRelatedRecordListResponseEnvelope>(callPayload);
         }
 
@@ -37,20 +37,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var apiCallPath = "/connector/relatedActivities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
+            callPayload.Queries["recordType"] = CSharpExpressionConverter.Convert(recordType);
+            callPayload.Queries["recordId"] = CSharpExpressionConverter.ConvertO(recordId);
             if (startDateTime != null)
-                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
             if (endDateTime != null)
-                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
+                callPayload.Queries["crmType"] = CSharpExpressionConverter.Convert(crmType);
             if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
+                callPayload.Queries["crmOrgUrl"] = CSharpExpressionConverter.ConvertO(crmOrgUrl);
             return new ApiConnectionAction<ActivityListResponseEnvelope>(callPayload);
         }
 
@@ -60,16 +60,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var apiCallPath = "/connector/salesHighlights";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
+            callPayload.Queries["recordType"] = CSharpExpressionConverter.Convert(recordType);
+            callPayload.Queries["recordId"] = CSharpExpressionConverter.ConvertO(recordId);
             if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
+                callPayload.Queries["crmType"] = CSharpExpressionConverter.ConvertO(crmType);
             if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
+                callPayload.Queries["crmOrgUrl"] = CSharpExpressionConverter.ConvertO(crmOrgUrl);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             return new ApiConnectionAction<SalesHighlightListResponseEnvelope>(callPayload);
         }
 
@@ -80,18 +80,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordType != null)
-                callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
+                callPayload.Queries["recordType"] = CSharpExpressionConverter.ConvertO(recordType);
             if (recordId != null)
-                callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
+                callPayload.Queries["recordId"] = CSharpExpressionConverter.ConvertO(recordId);
             if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
+                callPayload.Queries["crmType"] = CSharpExpressionConverter.ConvertO(crmType);
             if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
-            callPayload.Queries["emailContacts"] = ExpressionConverter.Convert(emailContacts);
+                callPayload.Queries["crmOrgUrl"] = CSharpExpressionConverter.ConvertO(crmOrgUrl);
+            callPayload.Queries["emailContacts"] = CSharpExpressionConverter.ConvertO(emailContacts);
             if (top != null)
-                callPayload.Queries["Top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["Top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["Skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["Skip"] = CSharpExpressionConverter.ConvertO(skip);
             return new ApiConnectionAction<EmailSummeryResponseEnvelope>(callPayload);
         }
 
@@ -102,70 +102,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsMessageId != null)
-                callPayload.Headers["x-ms-message-id"] = ExpressionConverter.Convert(xMsMessageId);
+                callPayload.Headers["x-ms-message-id"] = CSharpExpressionConverter.ConvertO(xMsMessageId);
             if (xMsConversationId != null)
-                callPayload.Headers["x-ms-conversation-id"] = ExpressionConverter.Convert(xMsConversationId);
+                callPayload.Headers["x-ms-conversation-id"] = CSharpExpressionConverter.ConvertO(xMsConversationId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             var resourceDataObject = new JObject();
             var resourceDataObjectpropCount = 0;
             if (requestBodyresourceDataplainTextBody != null)
             {
-                resourceDataObject["plaintextBody"] = ExpressionConverter.ConvertO(requestBodyresourceDataplainTextBody);
+                resourceDataObject["plaintextBody"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDataplainTextBody);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatafullHTMLBody != null)
             {
-                resourceDataObject["fullHtmlBody"] = ExpressionConverter.ConvertO(requestBodyresourceDatafullHTMLBody);
+                resourceDataObject["fullHtmlBody"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatafullHTMLBody);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatasubject != null)
             {
-                resourceDataObject["subject"] = ExpressionConverter.ConvertO(requestBodyresourceDatasubject);
+                resourceDataObject["subject"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatasubject);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatafrom != null)
             {
-                resourceDataObject["from"] = ExpressionConverter.ConvertO(requestBodyresourceDatafrom);
+                resourceDataObject["from"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatafrom);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatato != null)
             {
-                resourceDataObject["to"] = ExpressionConverter.ConvertO(requestBodyresourceDatato);
+                resourceDataObject["to"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatato);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatacC != null)
             {
-                resourceDataObject["cc"] = ExpressionConverter.ConvertO(requestBodyresourceDatacC);
+                resourceDataObject["cc"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatacC);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatabCC != null)
             {
-                resourceDataObject["bcc"] = ExpressionConverter.ConvertO(requestBodyresourceDatabCC);
+                resourceDataObject["bcc"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatabCC);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatasentDateTime != null)
             {
-                resourceDataObject["sentDateTime"] = ExpressionConverter.ConvertO(requestBodyresourceDatasentDateTime);
+                resourceDataObject["sentDateTime"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatasentDateTime);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatatheGraphMessageId != null)
             {
-                resourceDataObject["messageId"] = ExpressionConverter.ConvertO(requestBodyresourceDatatheGraphMessageId);
+                resourceDataObject["messageId"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatatheGraphMessageId);
                 resourceDataObjectpropCount++;
             }
 
             if (requestBodyresourceDatatheGraphConversationID != null)
             {
-                resourceDataObject["conversationId"] = ExpressionConverter.ConvertO(requestBodyresourceDatatheGraphConversationID);
+                resourceDataObject["conversationId"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceDatatheGraphConversationID);
                 resourceDataObjectpropCount++;
             }
 
@@ -176,46 +176,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             }
 
             requestBodypropCount++;
-            requestBody["resourceType"] = ExpressionConverter.ConvertO(requestBodyresourceType);
+            requestBody["resourceType"] = CSharpExpressionConverter.ConvertToken(requestBodyresourceType);
             if (requestBodyrecordType != null)
             {
-                requestBody["recordType"] = ExpressionConverter.ConvertO(requestBodyrecordType);
+                requestBody["recordType"] = CSharpExpressionConverter.ConvertToken(requestBodyrecordType);
                 requestBodypropCount++;
             }
 
             if (requestBodyrecordID != null)
             {
-                requestBody["recordId"] = ExpressionConverter.ConvertO(requestBodyrecordID);
+                requestBody["recordId"] = CSharpExpressionConverter.ConvertToken(requestBodyrecordID);
                 requestBodypropCount++;
             }
 
             if (requestBodycRMType != null)
             {
-                requestBody["crmType"] = ExpressionConverter.ConvertO(requestBodycRMType);
+                requestBody["crmType"] = CSharpExpressionConverter.ConvertToken(requestBodycRMType);
                 requestBodypropCount++;
             }
 
             if (requestBodycRMOrgURL != null)
             {
-                requestBody["crmOrgUrl"] = ExpressionConverter.ConvertO(requestBodycRMOrgURL);
+                requestBody["crmOrgUrl"] = CSharpExpressionConverter.ConvertToken(requestBodycRMOrgURL);
                 requestBodypropCount++;
             }
 
             if (requestBodyinputPrompt != null)
             {
-                requestBody["inputPrompt"] = ExpressionConverter.ConvertO(requestBodyinputPrompt);
+                requestBody["inputPrompt"] = CSharpExpressionConverter.ConvertToken(requestBodyinputPrompt);
                 requestBodypropCount++;
             }
 
             if (requestBodytop != null)
             {
-                requestBody["top"] = ExpressionConverter.ConvertO(requestBodytop);
+                requestBody["top"] = CSharpExpressionConverter.ConvertToken(requestBodytop);
                 requestBodypropCount++;
             }
 
             if (requestBodyskip != null)
             {
-                requestBody["skip"] = ExpressionConverter.ConvertO(requestBodyskip);
+                requestBody["skip"] = CSharpExpressionConverter.ConvertToken(requestBodyskip);
                 requestBodypropCount++;
             }
 

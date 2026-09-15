@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (appid != null)
-                callPayload.Queries["appid"] = ExpressionConverter.Convert(appid);
+                callPayload.Queries["appid"] = CSharpExpressionConverter.ConvertO(appid);
             return new ApiConnectionAction<CityResponse>(callPayload);
         }
     }

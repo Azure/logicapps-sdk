@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
         public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
         {
-            var apiCallPath = String.Format("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDatasetResponse>(callPayload);

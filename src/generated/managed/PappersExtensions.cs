@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
             var apiCallPath = "/company";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["company_number"] = ExpressionConverter.Convert(companyNumber);
+            callPayload.Queries["country_code"] = CSharpExpressionConverter.Convert(countryCode);
+            callPayload.Queries["company_number"] = CSharpExpressionConverter.ConvertO(companyNumber);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.Convert(fields);
             return new ApiConnectionAction<CompanyFormat>(callPayload);
         }
 
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["country_code"] = CSharpExpressionConverter.Convert(countryCode);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["per_page"] = Convert.ToString(10);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
             var apiCallPath = "/download-file";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["token"] = CSharpExpressionConverter.ConvertO(token);
             return new ApiConnectionAction<DocumentGetResponse>(callPayload);
         }
     }

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodywelcomeEmail != null)
             {
-                body["welcomeEmail"] = ExpressionConverter.ConvertO(bodywelcomeEmail);
+                body["welcomeEmail"] = CSharpExpressionConverter.ConvertToken(bodywelcomeEmail);
                 bodypropCount++;
             }
 
@@ -31,67 +31,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var additionalDataObjectpropCount = 0;
             if (bodyadditionalDataname != null)
             {
-                additionalDataObject["name"] = ExpressionConverter.ConvertO(bodyadditionalDataname);
+                additionalDataObject["name"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDataname);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatalocation != null)
             {
-                additionalDataObject["location"] = ExpressionConverter.ConvertO(bodyadditionalDatalocation);
+                additionalDataObject["location"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatalocation);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatatitle != null)
             {
-                additionalDataObject["title"] = ExpressionConverter.ConvertO(bodyadditionalDatatitle);
+                additionalDataObject["title"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatitle);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatacompany != null)
             {
-                additionalDataObject["company"] = ExpressionConverter.ConvertO(bodyadditionalDatacompany);
+                additionalDataObject["company"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatacompany);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatacompanySize != null)
             {
-                additionalDataObject["companySize"] = ExpressionConverter.ConvertO(bodyadditionalDatacompanySize);
+                additionalDataObject["companySize"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatacompanySize);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDataindustry != null)
             {
-                additionalDataObject["industry"] = ExpressionConverter.ConvertO(bodyadditionalDataindustry);
+                additionalDataObject["industry"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDataindustry);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatatwitter != null)
             {
-                additionalDataObject["twitter"] = ExpressionConverter.ConvertO(bodyadditionalDatatwitter);
+                additionalDataObject["twitter"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatwitter);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatatwitterFollowers != null)
             {
-                additionalDataObject["twitterFollowers"] = ExpressionConverter.ConvertO(bodyadditionalDatatwitterFollowers);
+                additionalDataObject["twitterFollowers"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatwitterFollowers);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatalinkedin != null)
             {
-                additionalDataObject["linkedin"] = ExpressionConverter.ConvertO(bodyadditionalDatalinkedin);
+                additionalDataObject["linkedin"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatalinkedin);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatagithub != null)
             {
-                additionalDataObject["github"] = ExpressionConverter.ConvertO(bodyadditionalDatagithub);
+                additionalDataObject["github"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatagithub);
                 additionalDataObjectpropCount++;
             }
 
             if (bodyadditionalDatafacebook != null)
             {
-                additionalDataObject["facebook"] = ExpressionConverter.ConvertO(bodyadditionalDatafacebook);
+                additionalDataObject["facebook"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatafacebook);
                 additionalDataObjectpropCount++;
             }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var apiCallPath = "/subscriber/remove";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction<SubscriberRemovePostResponse>(callPayload);
         }
 
@@ -128,12 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodyoffset != null)
             {
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                     bodypropCount++;
                 }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<PostGetPostResponse> PostGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/post/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/get/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PostGetPostResponse>(callPayload);
@@ -177,15 +177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodysubtitle != null)
             {
-                body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/project/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/get/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectGetPostResponse>(callPayload);
@@ -212,24 +212,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["suggestedBy"] = ExpressionConverter.ConvertO(bodysuggestedBy);
+            body["suggestedBy"] = CSharpExpressionConverter.ConvertToken(bodysuggestedBy);
             if (bodykeyword != null)
             {
-                body["keyword"] = ExpressionConverter.ConvertO(bodykeyword);
+                body["keyword"] = CSharpExpressionConverter.ConvertToken(bodykeyword);
                 bodypropCount++;
             }
 
             if (bodylabels != null)
             {
-                body["labels"] = ExpressionConverter.ConvertO(bodylabels);
+                body["labels"] = CSharpExpressionConverter.ConvertToken(bodylabels);
                 bodypropCount++;
             }
 
@@ -250,14 +250,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["assignTo"] = ExpressionConverter.ConvertO(bodyassignTo);
+            body["assignTo"] = CSharpExpressionConverter.ConvertToken(bodyassignTo);
             bodypropCount++;
-            body["publishOn"] = ExpressionConverter.ConvertO(bodypublishOn);
+            body["publishOn"] = CSharpExpressionConverter.ConvertToken(bodypublishOn);
             if (bodyapprovers != null)
             {
-                body["approvers"] = ExpressionConverter.ConvertO(bodyapprovers);
+                body["approvers"] = CSharpExpressionConverter.ConvertToken(bodyapprovers);
                 bodypropCount++;
             }
 

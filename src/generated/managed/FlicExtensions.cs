@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
     {
         public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(buttonUuid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(buttonUuid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
             {
                 if (requestBodyOfWebhookevents != null)
                 {
-                    requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                    requestBodyOfWebhook["events"] = CSharpExpressionConverter.Convert(requestBodyOfWebhookevents);
                     requestBodyOfWebhookpropCount++;
                 }
 
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
         public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskUuid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskUuid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();

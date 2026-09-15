@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             var bodypropCount = 0;
             if (bodysourceNumber != null)
             {
-                body["source_number"] = ExpressionConverter.ConvertO(bodysourceNumber);
+                body["source_number"] = CSharpExpressionConverter.ConvertToken(bodysourceNumber);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodydeliveryReport != null)
             {
                 if (bodydeliveryReport != null)
                 {
-                    body["delivery_report"] = ExpressionConverter.ConvertO(bodydeliveryReport);
+                    body["delivery_report"] = CSharpExpressionConverter.ConvertToken(bodydeliveryReport);
                     bodypropCount++;
                 }
 
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
             if (bodycallbackUrl != null)
             {
-                body["callback_url"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                body["callback_url"] = CSharpExpressionConverter.ConvertToken(bodycallbackUrl);
                 bodypropCount++;
             }
 
             if (bodymetadata != null)
             {
-                body["metadata"] = ExpressionConverter.ConvertO(bodymetadata);
+                body["metadata"] = CSharpExpressionConverter.ConvertToken(bodymetadata);
                 bodypropCount++;
             }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<Message> GetMessageStatus(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Message>(callPayload);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             var apiCallPath = "/v2/int-power-automate/message";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
     }

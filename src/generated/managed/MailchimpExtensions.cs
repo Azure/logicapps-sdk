@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IWorkflowAction Sendcampaign(Expression<Func<string>> campaignId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/actions/send", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/actions/send", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["count"] = Convert.ToString(10);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<GetListsResponseModel>(callPayload);
         }
 
@@ -53,29 +53,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var newListRequest = new JObject();
             var newListRequestpropCount = 0;
             newListRequestpropCount++;
-            newListRequest["name"] = ExpressionConverter.ConvertO(newListRequestlistName);
+            newListRequest["name"] = CSharpExpressionConverter.ConvertToken(newListRequestlistName);
             var contactObject = new JObject();
             var contactObjectpropCount = 0;
             contactObjectpropCount++;
-            contactObject["company"] = ExpressionConverter.ConvertO(newListRequestcontactcompanyName);
+            contactObject["company"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactcompanyName);
             contactObjectpropCount++;
-            contactObject["address1"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine1);
+            contactObject["address1"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactaddressLine1);
             if (newListRequestcontactaddressLine2 != null)
             {
-                contactObject["address2"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine2);
+                contactObject["address2"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactaddressLine2);
                 contactObjectpropCount++;
             }
 
             contactObjectpropCount++;
-            contactObject["city"] = ExpressionConverter.ConvertO(newListRequestcontactcity);
+            contactObject["city"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactcity);
             contactObjectpropCount++;
-            contactObject["state"] = ExpressionConverter.ConvertO(newListRequestcontactstate);
+            contactObject["state"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactstate);
             contactObjectpropCount++;
-            contactObject["zip"] = ExpressionConverter.ConvertO(newListRequestcontactpostalCode);
+            contactObject["zip"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactpostalCode);
             contactObjectpropCount++;
-            contactObject["country"] = ExpressionConverter.ConvertO(newListRequestcontactcountryCode);
+            contactObject["country"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactcountryCode);
             contactObjectpropCount++;
-            contactObject["phone"] = ExpressionConverter.ConvertO(newListRequestcontactphoneNumber);
+            contactObject["phone"] = CSharpExpressionConverter.ConvertToken(newListRequestcontactphoneNumber);
             if (contactObjectpropCount > 0)
             {
                 newListRequest["contact"] = contactObject;
@@ -83,23 +83,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             }
 
             newListRequestpropCount++;
-            newListRequest["permission_reminder"] = ExpressionConverter.ConvertO(newListRequestpermissionReminder);
+            newListRequest["permission_reminder"] = CSharpExpressionConverter.ConvertToken(newListRequestpermissionReminder);
             if (newListRequestuseArchiveBar != null)
             {
-                newListRequest["use_archive_bar"] = ExpressionConverter.ConvertO(newListRequestuseArchiveBar);
+                newListRequest["use_archive_bar"] = CSharpExpressionConverter.ConvertToken(newListRequestuseArchiveBar);
                 newListRequestpropCount++;
             }
 
             var campaignDefaultsObject = new JObject();
             var campaignDefaultsObjectpropCount = 0;
             campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["from_name"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSName);
+            campaignDefaultsObject["from_name"] = CSharpExpressionConverter.ConvertToken(newListRequestcampaignDefaultssenderSName);
             campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["from_email"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSEmailAddress);
+            campaignDefaultsObject["from_email"] = CSharpExpressionConverter.ConvertToken(newListRequestcampaignDefaultssenderSEmailAddress);
             campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["subject"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssubject);
+            campaignDefaultsObject["subject"] = CSharpExpressionConverter.ConvertToken(newListRequestcampaignDefaultssubject);
             campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["language"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultslanguage);
+            campaignDefaultsObject["language"] = CSharpExpressionConverter.Convert(newListRequestcampaignDefaultslanguage);
             if (campaignDefaultsObjectpropCount > 0)
             {
                 newListRequest["campaign_defaults"] = campaignDefaultsObject;
@@ -108,21 +108,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             if (newListRequestnotifyOnSubscribe != null)
             {
-                newListRequest["notify_on_subscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnSubscribe);
+                newListRequest["notify_on_subscribe"] = CSharpExpressionConverter.ConvertToken(newListRequestnotifyOnSubscribe);
                 newListRequestpropCount++;
             }
 
             if (newListRequestnotifyOnUnsubscribe != null)
             {
-                newListRequest["notify_on_unsubscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnUnsubscribe);
+                newListRequest["notify_on_unsubscribe"] = CSharpExpressionConverter.ConvertToken(newListRequestnotifyOnUnsubscribe);
                 newListRequestpropCount++;
             }
 
             newListRequestpropCount++;
-            newListRequest["email_type_option"] = ExpressionConverter.ConvertO(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
+            newListRequest["email_type_option"] = CSharpExpressionConverter.ConvertToken(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
             if (newListRequestvisibility != null)
             {
-                newListRequest["visibility"] = ExpressionConverter.ConvertO(newListRequestvisibility);
+                newListRequest["visibility"] = CSharpExpressionConverter.Convert(newListRequestvisibility);
                 newListRequestpropCount++;
             }
 
@@ -137,20 +137,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetAddMembersBatchResponseModel> AddMembers(Expression<Func<string>> listId, Expression<Func<NewMemberInListRequest[]>> bodymembers, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null, Expression<Func<bool>> bodyupdateExisting = null)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (skipMergeValidation != null)
-                callPayload.Queries["skip_merge_validation"] = ExpressionConverter.Convert(skipMergeValidation);
+                callPayload.Queries["skip_merge_validation"] = CSharpExpressionConverter.ConvertO(skipMergeValidation);
             if (skipDuplicateCheck != null)
-                callPayload.Queries["skip_duplicate_check"] = ExpressionConverter.Convert(skipDuplicateCheck);
+                callPayload.Queries["skip_duplicate_check"] = CSharpExpressionConverter.ConvertO(skipDuplicateCheck);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembers);
+            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
             if (bodyupdateExisting != null)
             {
-                body["update_existing"] = ExpressionConverter.ConvertO(bodyupdateExisting);
+                body["update_existing"] = CSharpExpressionConverter.ConvertToken(bodyupdateExisting);
                 bodypropCount++;
             }
 
@@ -165,22 +165,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetAllMembersResponseModel> GetListMembers(Expression<Func<string>> listId, Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["count"] = Convert.ToString(10);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<GetAllMembersResponseModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<MemberResponseModel> Addmember(Expression<Func<string>> listId, Expression<Func<newMemberInListstatusInput>> newMemberInListstatus, Expression<Func<string>> newMemberInListemailAddress, Expression<Func<newMemberInListemailTypeInput>> newMemberInListemailType = null, Expression<Func<string>> newMemberInListmergeFieldsfirstName = null, Expression<Func<string>> newMemberInListmergeFieldslastName = null, Expression<Func<string>> newMemberInListlanguage = null, Expression<Func<bool>> newMemberInListvIP = null, Expression<Func<double>> newMemberInListlocationlatitude = null, Expression<Func<double>> newMemberInListlocationlongitude = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var newMemberInList = new JObject();
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             {
                 if (newMemberInListemailType != null)
                 {
-                    newMemberInList["email_type"] = ExpressionConverter.ConvertO(newMemberInListemailType);
+                    newMemberInList["email_type"] = CSharpExpressionConverter.Convert(newMemberInListemailType);
                     newMemberInListpropCount++;
                 }
 
@@ -202,18 +202,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             }
 
             newMemberInListpropCount++;
-            newMemberInList["status"] = ExpressionConverter.ConvertO(newMemberInListstatus);
+            newMemberInList["status"] = CSharpExpressionConverter.Convert(newMemberInListstatus);
             var mergeFieldsObject = new JObject();
             var mergeFieldsObjectpropCount = 0;
             if (newMemberInListmergeFieldsfirstName != null)
             {
-                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldsfirstName);
+                mergeFieldsObject["FNAME"] = CSharpExpressionConverter.ConvertToken(newMemberInListmergeFieldsfirstName);
                 mergeFieldsObjectpropCount++;
             }
 
             if (newMemberInListmergeFieldslastName != null)
             {
-                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldslastName);
+                mergeFieldsObject["LNAME"] = CSharpExpressionConverter.ConvertToken(newMemberInListmergeFieldslastName);
                 mergeFieldsObjectpropCount++;
             }
 
@@ -225,13 +225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             if (newMemberInListlanguage != null)
             {
-                newMemberInList["language"] = ExpressionConverter.ConvertO(newMemberInListlanguage);
+                newMemberInList["language"] = CSharpExpressionConverter.ConvertToken(newMemberInListlanguage);
                 newMemberInListpropCount++;
             }
 
             if (newMemberInListvIP != null)
             {
-                newMemberInList["vip"] = ExpressionConverter.ConvertO(newMemberInListvIP);
+                newMemberInList["vip"] = CSharpExpressionConverter.ConvertToken(newMemberInListvIP);
                 newMemberInListpropCount++;
             }
 
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var locationObjectpropCount = 0;
             if (newMemberInListlocationlatitude != null)
             {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlatitude);
+                locationObject["latitude"] = CSharpExpressionConverter.ConvertToken(newMemberInListlocationlatitude);
                 locationObjectpropCount++;
             }
 
             if (newMemberInListlocationlongitude != null)
             {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlongitude);
+                locationObject["longitude"] = CSharpExpressionConverter.ConvertToken(newMemberInListlocationlongitude);
                 locationObjectpropCount++;
             }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             }
 
             newMemberInListpropCount++;
-            newMemberInList["email_address"] = ExpressionConverter.ConvertO(newMemberInListemailAddress);
+            newMemberInList["email_address"] = CSharpExpressionConverter.ConvertToken(newMemberInListemailAddress);
             if (newMemberInListpropCount > 0)
             {
                 callPayload.Body = newMemberInList;
@@ -274,22 +274,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var newCampaignRequest = new JObject();
             var newCampaignRequestpropCount = 0;
             newCampaignRequestpropCount++;
-            newCampaignRequest["type"] = ExpressionConverter.ConvertO(newCampaignRequestcampaignType);
+            newCampaignRequest["type"] = CSharpExpressionConverter.Convert(newCampaignRequestcampaignType);
             var recipientsObject = new JObject();
             var recipientsObjectpropCount = 0;
             recipientsObjectpropCount++;
-            recipientsObject["list_id"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientslistId);
+            recipientsObject["list_id"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrecipientslistId);
             var segmentOptsObject = new JObject();
             var segmentOptsObjectpropCount = 0;
             if (newCampaignRequestrecipientssegmentOptssavedSegmentID != null)
             {
-                segmentOptsObject["saved_segment_id"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptssavedSegmentID);
+                segmentOptsObject["saved_segment_id"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrecipientssegmentOptssavedSegmentID);
                 segmentOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrecipientssegmentOptsmatchType != null)
             {
-                segmentOptsObject["match"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptsmatchType);
+                segmentOptsObject["match"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrecipientssegmentOptsmatchType);
                 segmentOptsObjectpropCount++;
             }
 
@@ -308,68 +308,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
             settingsObjectpropCount++;
-            settingsObject["subject_line"] = ExpressionConverter.ConvertO(newCampaignRequestsettingscampaignSubjectLine);
+            settingsObject["subject_line"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingscampaignSubjectLine);
             if (newCampaignRequestsettingstitle != null)
             {
-                settingsObject["title"] = ExpressionConverter.ConvertO(newCampaignRequestsettingstitle);
+                settingsObject["title"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingstitle);
                 settingsObjectpropCount++;
             }
 
             settingsObjectpropCount++;
-            settingsObject["from_name"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsfromName);
+            settingsObject["from_name"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsfromName);
             settingsObjectpropCount++;
-            settingsObject["reply_to"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsreplyToAddress);
+            settingsObject["reply_to"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsreplyToAddress);
             if (newCampaignRequestsettingsconversation != null)
             {
-                settingsObject["use_conversation"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsconversation);
+                settingsObject["use_conversation"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsconversation);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingstoName != null)
             {
-                settingsObject["to_name"] = ExpressionConverter.ConvertO(newCampaignRequestsettingstoName);
+                settingsObject["to_name"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingstoName);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsfolderID != null)
             {
-                settingsObject["folder_id"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsfolderID);
+                settingsObject["folder_id"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsfolderID);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsauthentication != null)
             {
-                settingsObject["authenticate"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsauthentication);
+                settingsObject["authenticate"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsauthentication);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsautoFooter != null)
             {
-                settingsObject["auto_footer"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsautoFooter);
+                settingsObject["auto_footer"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsautoFooter);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsinlineCSS != null)
             {
-                settingsObject["inline_css"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsinlineCSS);
+                settingsObject["inline_css"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsinlineCSS);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsautoTweet != null)
             {
-                settingsObject["auto_tweet"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsautoTweet);
+                settingsObject["auto_tweet"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsautoTweet);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsautoPostToFacebook != null)
             {
-                settingsObject["auto_fb_post"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsautoPostToFacebook);
+                settingsObject["auto_fb_post"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsautoPostToFacebook);
                 settingsObjectpropCount++;
             }
 
             if (newCampaignRequestsettingsfacebookComments != null)
             {
-                settingsObject["fb_comments"] = ExpressionConverter.ConvertO(newCampaignRequestsettingsfacebookComments);
+                settingsObject["fb_comments"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsettingsfacebookComments);
                 settingsObjectpropCount++;
             }
 
@@ -383,43 +383,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var variateSettingsObjectpropCount = 0;
             if (newCampaignRequestvariateSettingswinningCriteria != null)
             {
-                variateSettingsObject["winner_criteria"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswinningCriteria);
+                variateSettingsObject["winner_criteria"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingswinningCriteria);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingswaitTime != null)
             {
-                variateSettingsObject["wait_time"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswaitTime);
+                variateSettingsObject["wait_time"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingswaitTime);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingstestSize != null)
             {
-                variateSettingsObject["test_size"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingstestSize);
+                variateSettingsObject["test_size"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingstestSize);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingssubjectLines != null)
             {
-                variateSettingsObject["subject_lines"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssubjectLines);
+                variateSettingsObject["subject_lines"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingssubjectLines);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingssendTimes != null)
             {
-                variateSettingsObject["send_times"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssendTimes);
+                variateSettingsObject["send_times"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingssendTimes);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingsfromNames != null)
             {
-                variateSettingsObject["from_names"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsfromNames);
+                variateSettingsObject["from_names"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingsfromNames);
                 variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingsreplyToAddresses != null)
             {
-                variateSettingsObject["reply_to_addresses"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsreplyToAddresses);
+                variateSettingsObject["reply_to_addresses"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestvariateSettingsreplyToAddresses);
                 variateSettingsObjectpropCount++;
             }
 
@@ -433,43 +433,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var trackingObjectpropCount = 0;
             if (newCampaignRequesttrackingopens != null)
             {
-                trackingObject["opens"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingopens);
+                trackingObject["opens"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingopens);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackinghTMLClickTracking != null)
             {
-                trackingObject["html_clicks"] = ExpressionConverter.ConvertO(newCampaignRequesttrackinghTMLClickTracking);
+                trackingObject["html_clicks"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackinghTMLClickTracking);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackingplainTextClickTracking != null)
             {
-                trackingObject["text_clicks"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingplainTextClickTracking);
+                trackingObject["text_clicks"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingplainTextClickTracking);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackingmailChimpGoalTracking != null)
             {
-                trackingObject["goal_tracking"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingmailChimpGoalTracking);
+                trackingObject["goal_tracking"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingmailChimpGoalTracking);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackingeCommerce360Tracking != null)
             {
-                trackingObject["ecomm360"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingeCommerce360Tracking);
+                trackingObject["ecomm360"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingeCommerce360Tracking);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackinggoogleAnalyticsTracking != null)
             {
-                trackingObject["google_analytics"] = ExpressionConverter.ConvertO(newCampaignRequesttrackinggoogleAnalyticsTracking);
+                trackingObject["google_analytics"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackinggoogleAnalyticsTracking);
                 trackingObjectpropCount++;
             }
 
             if (newCampaignRequesttrackingclickTaleAnalyticsTracking != null)
             {
-                trackingObject["clicktale"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingclickTaleAnalyticsTracking);
+                trackingObject["clicktale"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingclickTaleAnalyticsTracking);
                 trackingObjectpropCount++;
             }
 
@@ -477,13 +477,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var salesforceObjectpropCount = 0;
             if (newCampaignRequesttrackingsalesforcesalesforceCampaign != null)
             {
-                salesforceObject["campaign"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingsalesforcesalesforceCampaign);
+                salesforceObject["campaign"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingsalesforcesalesforceCampaign);
                 salesforceObjectpropCount++;
             }
 
             if (newCampaignRequesttrackingsalesforcesalesforceNote != null)
             {
-                salesforceObject["notes"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingsalesforcesalesforceNote);
+                salesforceObject["notes"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingsalesforcesalesforceNote);
                 salesforceObjectpropCount++;
             }
 
@@ -497,13 +497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var highriseObjectpropCount = 0;
             if (newCampaignRequesttrackinghighrisehighriseCampaign != null)
             {
-                highriseObject["campaign"] = ExpressionConverter.ConvertO(newCampaignRequesttrackinghighrisehighriseCampaign);
+                highriseObject["campaign"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackinghighrisehighriseCampaign);
                 highriseObjectpropCount++;
             }
 
             if (newCampaignRequesttrackinghighrisehighriseNote != null)
             {
-                highriseObject["notes"] = ExpressionConverter.ConvertO(newCampaignRequesttrackinghighrisehighriseNote);
+                highriseObject["notes"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackinghighrisehighriseNote);
                 highriseObjectpropCount++;
             }
 
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var capsuleObjectpropCount = 0;
             if (newCampaignRequesttrackingcapsulecapsuleNote != null)
             {
-                capsuleObject["notes"] = ExpressionConverter.ConvertO(newCampaignRequesttrackingcapsulecapsuleNote);
+                capsuleObject["notes"] = CSharpExpressionConverter.ConvertToken(newCampaignRequesttrackingcapsulecapsuleNote);
                 capsuleObjectpropCount++;
             }
 
@@ -537,19 +537,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var rssOptsObjectpropCount = 0;
             if (newCampaignRequestrssOptsfeedURL != null)
             {
-                rssOptsObject["feed_url"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfeedURL);
+                rssOptsObject["feed_url"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsfeedURL);
                 rssOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsfrequency != null)
             {
-                rssOptsObject["frequency"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfrequency);
+                rssOptsObject["frequency"] = CSharpExpressionConverter.Convert(newCampaignRequestrssOptsfrequency);
                 rssOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsconstrainRSSImages != null)
             {
-                rssOptsObject["constrain_rss_img"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsconstrainRSSImages);
+                rssOptsObject["constrain_rss_img"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsconstrainRSSImages);
                 rssOptsObjectpropCount++;
             }
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var scheduleObjectpropCount = 0;
             if (newCampaignRequestrssOptsschedulesendingHour != null)
             {
-                scheduleObject["hour"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsschedulesendingHour);
+                scheduleObject["hour"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsschedulesendingHour);
                 scheduleObjectpropCount++;
             }
 
@@ -565,43 +565,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var dailySendObjectpropCount = 0;
             if (newCampaignRequestrssOptsscheduledailySendsunday != null)
             {
-                dailySendObject["sunday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsunday);
+                dailySendObject["sunday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendsunday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendmonday != null)
             {
-                dailySendObject["monday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendmonday);
+                dailySendObject["monday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendmonday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendtuesday != null)
             {
-                dailySendObject["tuesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendtuesday);
+                dailySendObject["tuesday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendtuesday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendwednesday != null)
             {
-                dailySendObject["wednesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendwednesday);
+                dailySendObject["wednesday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendwednesday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendthursday != null)
             {
-                dailySendObject["thursday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendthursday);
+                dailySendObject["thursday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendthursday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendfriday != null)
             {
-                dailySendObject["friday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendfriday);
+                dailySendObject["friday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendfriday);
                 dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendsaturday != null)
             {
-                dailySendObject["saturday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsaturday);
+                dailySendObject["saturday"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsscheduledailySendsaturday);
                 dailySendObjectpropCount++;
             }
 
@@ -613,13 +613,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             if (newCampaignRequestrssOptsscheduleweeklySendingDay != null)
             {
-                scheduleObject["weekly_send_day"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduleweeklySendingDay);
+                scheduleObject["weekly_send_day"] = CSharpExpressionConverter.Convert(newCampaignRequestrssOptsscheduleweeklySendingDay);
                 scheduleObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsschedulemonthlySendingDay != null)
             {
-                scheduleObject["monthly_send_date"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsschedulemonthlySendingDay);
+                scheduleObject["monthly_send_date"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestrssOptsschedulemonthlySendingDay);
                 scheduleObjectpropCount++;
             }
 
@@ -639,19 +639,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var socialCardObjectpropCount = 0;
             if (newCampaignRequestsocialCardimageURL != null)
             {
-                socialCardObject["image_url"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardimageURL);
+                socialCardObject["image_url"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsocialCardimageURL);
                 socialCardObjectpropCount++;
             }
 
             if (newCampaignRequestsocialCardcampaignDescription != null)
             {
-                socialCardObject["description"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardcampaignDescription);
+                socialCardObject["description"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsocialCardcampaignDescription);
                 socialCardObjectpropCount++;
             }
 
             if (newCampaignRequestsocialCardtitle != null)
             {
-                socialCardObject["title"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardtitle);
+                socialCardObject["title"] = CSharpExpressionConverter.ConvertToken(newCampaignRequestsocialCardtitle);
                 socialCardObjectpropCount++;
             }
 
@@ -672,27 +672,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IWorkflowAction Removemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail)
         {
-            var apiCallPath = String.Format("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["member_email"] = ExpressionConverter.Convert(memberEmail);
+            callPayload.Headers["member_email"] = CSharpExpressionConverter.ConvertO(memberEmail);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<MemberResponseModel> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<updateMemberInListRequeststatusInput>> updateMemberInListRequeststatus, Expression<Func<updateMemberInListRequestemailTypeInput>> updateMemberInListRequestemailType = null, Expression<Func<string>> updateMemberInListRequestmergeFieldsfirstName = null, Expression<Func<string>> updateMemberInListRequestmergeFieldslastName = null, Expression<Func<string>> updateMemberInListRequestlanguage = null, Expression<Func<bool>> updateMemberInListRequestvIP = null, Expression<Func<double>> updateMemberInListRequestlocationlatitude = null, Expression<Func<double>> updateMemberInListRequestlocationlongitude = null)
         {
-            var apiCallPath = String.Format("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["member_email"] = ExpressionConverter.Convert(memberEmail);
+            callPayload.Headers["member_email"] = CSharpExpressionConverter.ConvertO(memberEmail);
             var updateMemberInListRequest = new JObject();
             var updateMemberInListRequestpropCount = 0;
             if (updateMemberInListRequestemailType != null)
             {
                 if (updateMemberInListRequestemailType != null)
                 {
-                    updateMemberInListRequest["email_type"] = ExpressionConverter.ConvertO(updateMemberInListRequestemailType);
+                    updateMemberInListRequest["email_type"] = CSharpExpressionConverter.Convert(updateMemberInListRequestemailType);
                     updateMemberInListRequestpropCount++;
                 }
 
@@ -705,18 +705,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             }
 
             updateMemberInListRequestpropCount++;
-            updateMemberInListRequest["status"] = ExpressionConverter.ConvertO(updateMemberInListRequeststatus);
+            updateMemberInListRequest["status"] = CSharpExpressionConverter.Convert(updateMemberInListRequeststatus);
             var mergeFieldsObject = new JObject();
             var mergeFieldsObjectpropCount = 0;
             if (updateMemberInListRequestmergeFieldsfirstName != null)
             {
-                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldsfirstName);
+                mergeFieldsObject["FNAME"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestmergeFieldsfirstName);
                 mergeFieldsObjectpropCount++;
             }
 
             if (updateMemberInListRequestmergeFieldslastName != null)
             {
-                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldslastName);
+                mergeFieldsObject["LNAME"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestmergeFieldslastName);
                 mergeFieldsObjectpropCount++;
             }
 
@@ -728,13 +728,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             if (updateMemberInListRequestlanguage != null)
             {
-                updateMemberInListRequest["language"] = ExpressionConverter.ConvertO(updateMemberInListRequestlanguage);
+                updateMemberInListRequest["language"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestlanguage);
                 updateMemberInListRequestpropCount++;
             }
 
             if (updateMemberInListRequestvIP != null)
             {
-                updateMemberInListRequest["vip"] = ExpressionConverter.ConvertO(updateMemberInListRequestvIP);
+                updateMemberInListRequest["vip"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestvIP);
                 updateMemberInListRequestpropCount++;
             }
 
@@ -742,13 +742,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var locationObjectpropCount = 0;
             if (updateMemberInListRequestlocationlatitude != null)
             {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(updateMemberInListRequestlocationlatitude);
+                locationObject["latitude"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestlocationlatitude);
                 locationObjectpropCount++;
             }
 
             if (updateMemberInListRequestlocationlongitude != null)
             {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(updateMemberInListRequestlocationlongitude);
+                locationObject["longitude"] = CSharpExpressionConverter.ConvertToken(updateMemberInListRequestlocationlongitude);
                 locationObjectpropCount++;
             }
 
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     {
         public IBodyWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed(Expression<Func<string>> listId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/lists/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload, triggerName, recurrence);

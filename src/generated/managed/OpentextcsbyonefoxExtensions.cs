@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var apiCallPath = String.Format("/api/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/create/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentID);
+            body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentID);
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             metadataObjectpropCount++;
-            metadataObject["displayName"] = ExpressionConverter.ConvertO(bodymetadatadisplayName);
+            metadataObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodymetadatadisplayName);
             if (bodymetadatadescription != null)
             {
-                metadataObject["description"] = ExpressionConverter.ConvertO(bodymetadatadescription);
+                metadataObject["description"] = CSharpExpressionConverter.ConvertToken(bodymetadatadescription);
                 metadataObjectpropCount++;
             }
 
             if (bodymetadatafields != null)
             {
-                metadataObject["fieldValues"] = ExpressionConverter.ConvertO(bodymetadatafields);
+                metadataObject["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodymetadatafields);
                 metadataObjectpropCount++;
             }
 
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var fileObject = new JObject();
             var fileObjectpropCount = 0;
             fileObjectpropCount++;
-            fileObject["name"] = ExpressionConverter.ConvertO(bodyfilefileName);
+            fileObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfilefileName);
             fileObjectpropCount++;
-            fileObject["content"] = ExpressionConverter.ConvertO(bodyfilefileContent);
+            fileObject["content"] = CSharpExpressionConverter.ConvertToken(bodyfilefileContent);
             if (fileObjectpropCount > 0)
             {
                 body["file"] = fileObject;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var apiCallPath = String.Format("/api/document/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/update/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -74,16 +74,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
             metadataObjectpropCount++;
-            metadataObject["displayName"] = ExpressionConverter.ConvertO(bodymetadatadisplayName);
+            metadataObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodymetadatadisplayName);
             if (bodymetadatadescription != null)
             {
-                metadataObject["description"] = ExpressionConverter.ConvertO(bodymetadatadescription);
+                metadataObject["description"] = CSharpExpressionConverter.ConvertToken(bodymetadatadescription);
                 metadataObjectpropCount++;
             }
 
             if (bodymetadatafields != null)
             {
-                metadataObject["fieldValues"] = ExpressionConverter.ConvertO(bodymetadatafields);
+                metadataObject["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodymetadatafields);
                 metadataObjectpropCount++;
             }
 
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var fileObject = new JObject();
             var fileObjectpropCount = 0;
             fileObjectpropCount++;
-            fileObject["name"] = ExpressionConverter.ConvertO(bodyfilefileName);
+            fileObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfilefileName);
             fileObjectpropCount++;
-            fileObject["content"] = ExpressionConverter.ConvertO(bodyfilefileContent);
+            fileObject["content"] = CSharpExpressionConverter.ConvertToken(bodyfilefileContent);
             if (fileObjectpropCount > 0)
             {
                 body["file"] = fileObject;
@@ -116,22 +116,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/update-properties/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyfields != null)
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -146,15 +146,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = String.Format("/api/document/update-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/update-content/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodyfileContent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UnreserveDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/check-in/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/check-in/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction ReserveDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/check-out/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/check-out/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/document/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/get/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentResponse>(callPayload);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponse> GetDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/document/get-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/get-properties/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentPropertiesResponse>(callPayload);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentContentResponse> GetDocumentContent(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/get-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentContentResponse>(callPayload);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> GetDocumentVersionContent(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var apiCallPath = String.Format("/api/document/get-content/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(versionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(versionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentVersionContentResponse>(callPayload);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocumentVersion(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var apiCallPath = String.Format("/api/document/delete/{0}/version/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(versionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}/version/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(versionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<Version[]> GetDocumentVersions(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/get-versions/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/get-versions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Version[]>(callPayload);
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction MoveDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
-            var apiCallPath = String.Format("/api/document/move/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(parentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/move/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CopyDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
-            var apiCallPath = String.Format("/api/document/copy/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(parentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/document/copy/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -265,24 +265,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateFolder(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/folder/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/folder/create/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentID);
+            body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentID);
             if (bodyfields != null)
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -297,22 +297,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/folder/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/folder/update/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyfields != null)
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetFolderResponse> GetFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/folder/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/folder/get/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetFolderResponse>(callPayload);
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteFolder(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/folder/delete/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> GetFolderChildren(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/get-children/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/folder/get-children/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ResultItem[]>(callPayload);
@@ -354,13 +354,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> SimpleSearch(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname)
         {
-            var apiCallPath = String.Format("/api/search/simple/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/search/simple/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -378,16 +378,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
@@ -402,34 +402,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> ExecuteWebReport(Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/command/execute/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/command/execute/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateBusinessWorkspace(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodytemplateID, Expression<Func<string>> bodyname = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/workspace/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/workspace/create/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentID);
+            body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentID);
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateID);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateID);
             if (bodyfields != null)
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<TrusteeRead[]> GetItemTrustees(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/security/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/security/get/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TrusteeRead[]>(callPayload);
@@ -453,37 +453,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction AddTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/add/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/security/add/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/security/update/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction RemoveTrustees(Expression<Func<string>> id, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/remove/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/security/remove/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetBusinessWorkspaceResponse> GetBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/workspace/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/workspace/get/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetBusinessWorkspaceResponse>(callPayload);
@@ -492,16 +492,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/workspace/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/workspace/update/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyfields != null)
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fieldValues"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -529,19 +529,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -572,19 +572,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -615,19 +615,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -658,19 +658,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -701,19 +701,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -744,19 +744,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -787,19 +787,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -830,19 +830,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 
@@ -873,19 +873,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             var filterObjectpropCount = 0;
             if (bodyfilterparentID != null)
             {
-                filterObject["parentId"] = ExpressionConverter.ConvertO(bodyfilterparentID);
+                filterObject["parentId"] = CSharpExpressionConverter.ConvertToken(bodyfilterparentID);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterancestorID != null)
             {
-                filterObject["ancestorId"] = ExpressionConverter.ConvertO(bodyfilterancestorID);
+                filterObject["ancestorId"] = CSharpExpressionConverter.ConvertToken(bodyfilterancestorID);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermetadata != null)
             {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObject["metadata"] = CSharpExpressionConverter.ConvertToken(bodyfiltermetadata);
                 filterObjectpropCount++;
             }
 

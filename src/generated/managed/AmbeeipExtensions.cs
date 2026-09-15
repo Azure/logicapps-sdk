@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<AirQualityGeoResponse>(callPayload);
         }
 
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (postalCode != null)
-                callPayload.Queries["postalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["postalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (countryCode != null)
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<AirQualityPostalResponse>(callPayload);
         }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             return new ApiConnectionAction<AirQualityCityResponse>(callPayload);
         }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (countryCode != null)
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<AirQualityCountryResponse>(callPayload);
         }
 
@@ -66,13 +66,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<AirQualityGeoHistoryResponse>(callPayload);
         }
 
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (postalCode != null)
-                callPayload.Queries["postalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["postalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (countryCode != null)
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<AirQualityPostalHistoryResponse>(callPayload);
         }
 
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<WeatherCurrentResponse>(callPayload);
         }
 
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<WeatherHistoryResponse>(callPayload);
         }
 
@@ -148,11 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<WeatherForecastResponse>(callPayload);
         }
 
@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<PollenLatestGeoResponse>(callPayload);
         }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (place != null)
-                callPayload.Queries["place"] = ExpressionConverter.Convert(place);
+                callPayload.Queries["place"] = CSharpExpressionConverter.ConvertO(place);
             return new ApiConnectionAction<PollenLatestPlaceResponse>(callPayload);
         }
 
@@ -187,13 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<PollenHistoryGeoResponse>(callPayload);
         }
 
@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (place != null)
-                callPayload.Queries["place"] = ExpressionConverter.Convert(place);
+                callPayload.Queries["place"] = CSharpExpressionConverter.ConvertO(place);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<PollenHistoryPlaceResponse>(callPayload);
         }
 
@@ -219,9 +219,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<PollForecastGeoResponse>(callPayload);
         }
 
@@ -232,9 +232,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<FireCurrentResponse>(callPayload);
         }
 
@@ -245,9 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<SoilCurrentResponse>(callPayload);
         }
 
@@ -258,13 +258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<SoilHistoryResponse>(callPayload);
         }
 
@@ -275,9 +275,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<WaterVaporCurrentResponse>(callPayload);
         }
 
@@ -288,13 +288,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lng != null)
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             return new ApiConnectionAction<WaterVaporGeoResponse>(callPayload);
         }
     }

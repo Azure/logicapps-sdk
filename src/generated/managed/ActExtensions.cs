@@ -21,49 +21,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
             var contactpropCount = 0;
             if (contactfullName != null)
             {
-                contact["fullName"] = ExpressionConverter.ConvertO(contactfullName);
+                contact["fullName"] = CSharpExpressionConverter.ConvertToken(contactfullName);
                 contactpropCount++;
             }
 
             if (contactemailAddress != null)
             {
-                contact["emailAddress"] = ExpressionConverter.ConvertO(contactemailAddress);
+                contact["emailAddress"] = CSharpExpressionConverter.ConvertToken(contactemailAddress);
                 contactpropCount++;
             }
 
             if (contactcompany != null)
             {
-                contact["company"] = ExpressionConverter.ConvertO(contactcompany);
+                contact["company"] = CSharpExpressionConverter.ConvertToken(contactcompany);
                 contactpropCount++;
             }
 
             if (contactidStatus != null)
             {
-                contact["idStatus"] = ExpressionConverter.ConvertO(contactidStatus);
+                contact["idStatus"] = CSharpExpressionConverter.ConvertToken(contactidStatus);
                 contactpropCount++;
             }
 
             if (contactreferredBy != null)
             {
-                contact["referredBy"] = ExpressionConverter.ConvertO(contactreferredBy);
+                contact["referredBy"] = CSharpExpressionConverter.ConvertToken(contactreferredBy);
                 contactpropCount++;
             }
 
             if (contactjobTitle != null)
             {
-                contact["jobTitle"] = ExpressionConverter.ConvertO(contactjobTitle);
+                contact["jobTitle"] = CSharpExpressionConverter.ConvertToken(contactjobTitle);
                 contactpropCount++;
             }
 
             if (contactbusinessPhoneNumber != null)
             {
-                contact["businessPhone"] = ExpressionConverter.ConvertO(contactbusinessPhoneNumber);
+                contact["businessPhone"] = CSharpExpressionConverter.ConvertToken(contactbusinessPhoneNumber);
                 contactpropCount++;
             }
 
             if (contactmobilePhoneNumber != null)
             {
-                contact["mobilePhone"] = ExpressionConverter.ConvertO(contactmobilePhoneNumber);
+                contact["mobilePhone"] = CSharpExpressionConverter.ConvertToken(contactmobilePhoneNumber);
                 contactpropCount++;
             }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         public IBodyWorkflowAction<ActWebApiModelsContact> GetContact(Expression<Func<string>> contactid)
         {
-            var apiCallPath = String.Format("/api/Contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ActWebApiModelsContact>(callPayload);

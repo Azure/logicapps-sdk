@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> groupId, Expression<Func<string>> requestmessage, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                callPayload.Queries["sendToAll"] = CSharpExpressionConverter.Convert(sendToAll);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["Message"] = ExpressionConverter.ConvertO(requestmessage);
+            request["Message"] = CSharpExpressionConverter.ConvertToken(requestmessage);
             if (requestsubscribers != null)
             {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                request["subscribers"] = CSharpExpressionConverter.ConvertToken(requestsubscribers);
                 requestpropCount++;
             }
 
@@ -40,26 +40,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (actionType != null)
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
+                callPayload.Queries["actionType"] = CSharpExpressionConverter.Convert(actionType);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                callPayload.Queries["sendToAll"] = CSharpExpressionConverter.Convert(sendToAll);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestactionBody != null)
             {
-                request["actionBody"] = ExpressionConverter.ConvertO(requestactionBody);
+                request["actionBody"] = CSharpExpressionConverter.ConvertToken(requestactionBody);
                 requestpropCount++;
             }
 
             if (requestsubscribers != null)
             {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                request["subscribers"] = CSharpExpressionConverter.ConvertToken(requestsubscribers);
                 requestpropCount++;
             }
 
@@ -74,23 +74,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
+            callPayload.Queries["actionType"] = CSharpExpressionConverter.Convert(actionType);
             if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                callPayload.Queries["sendToAll"] = CSharpExpressionConverter.Convert(sendToAll);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestsubscribers != null)
             {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                request["subscribers"] = CSharpExpressionConverter.ConvertToken(requestsubscribers);
                 requestpropCount++;
             }
 
             if (requestactionId != null)
             {
-                request["actionWrapper"] = ExpressionConverter.ConvertO(requestactionId);
+                request["actionWrapper"] = CSharpExpressionConverter.ConvertToken(requestactionId);
                 requestpropCount++;
             }
 
@@ -105,32 +105,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<PostReactionResponse> PostReaction(Expression<Func<string>> groupId, Expression<Func<string>> requestsourceGroupId = null, Expression<Func<string>> requestmessageId = null, Expression<Func<requestreactionTypeInput>> requestreactionType = null, Expression<Func<string>> requestcomment = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestsourceGroupId != null)
             {
-                request["SourceGroupId"] = ExpressionConverter.ConvertO(requestsourceGroupId);
+                request["SourceGroupId"] = CSharpExpressionConverter.ConvertToken(requestsourceGroupId);
                 requestpropCount++;
             }
 
             if (requestmessageId != null)
             {
-                request["ReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
+                request["ReferenceId"] = CSharpExpressionConverter.ConvertToken(requestmessageId);
                 requestpropCount++;
             }
 
             if (requestreactionType != null)
             {
-                request["ReactionType"] = ExpressionConverter.ConvertO(requestreactionType);
+                request["ReactionType"] = CSharpExpressionConverter.Convert(requestreactionType);
                 requestpropCount++;
             }
 
             if (requestcomment != null)
             {
-                request["Comment"] = ExpressionConverter.ConvertO(requestcomment);
+                request["Comment"] = CSharpExpressionConverter.ConvertToken(requestcomment);
                 requestpropCount++;
             }
 
@@ -145,15 +145,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendReply(Expression<Func<string>> groupId, Expression<Func<string>> requestmessageId, Expression<Func<string>> requestmessage)
         {
-            var apiCallPath = String.Format("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["replyToReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
+            request["replyToReferenceId"] = CSharpExpressionConverter.ConvertToken(requestmessageId);
             requestpropCount++;
-            request["message"] = ExpressionConverter.ConvertO(requestmessage);
+            request["message"] = CSharpExpressionConverter.ConvertToken(requestmessage);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -171,30 +171,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["Name"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             requestpropCount++;
-            request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
+            request["WelcomeMessage"] = CSharpExpressionConverter.ConvertToken(requestwelcomeMessage);
             if (requestmembers != null)
             {
-                request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                request["Members"] = CSharpExpressionConverter.ConvertToken(requestmembers);
                 requestpropCount++;
             }
 
             if (requestgroupType != null)
             {
-                request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                request["GroupType"] = CSharpExpressionConverter.Convert(requestgroupType);
                 requestpropCount++;
             }
 
             if (requestshortDescription != null)
             {
-                request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                request["ShortDescriptionString"] = CSharpExpressionConverter.ConvertToken(requestshortDescription);
                 requestpropCount++;
             }
 
             if (requestlongDescription != null)
             {
-                request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
+                request["LongDescriptionString"] = CSharpExpressionConverter.ConvertToken(requestlongDescription);
                 requestpropCount++;
             }
 
@@ -209,13 +209,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["SubGroups"] = ExpressionConverter.ConvertO(requestsubGroups);
+            request["SubGroups"] = CSharpExpressionConverter.ConvertToken(requestsubGroups);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -227,36 +227,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction CreateSubgroup(Expression<Func<string>> groupId, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["Name"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             requestpropCount++;
-            request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
+            request["WelcomeMessage"] = CSharpExpressionConverter.ConvertToken(requestwelcomeMessage);
             if (requestmembers != null)
             {
-                request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                request["Members"] = CSharpExpressionConverter.ConvertToken(requestmembers);
                 requestpropCount++;
             }
 
             if (requestgroupType != null)
             {
-                request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                request["GroupType"] = CSharpExpressionConverter.Convert(requestgroupType);
                 requestpropCount++;
             }
 
             if (requestshortDescription != null)
             {
-                request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                request["ShortDescriptionString"] = CSharpExpressionConverter.ConvertToken(requestshortDescription);
                 requestpropCount++;
             }
 
             if (requestlongDescription != null)
             {
-                request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
+                request["LongDescriptionString"] = CSharpExpressionConverter.ConvertToken(requestlongDescription);
                 requestpropCount++;
             }
 
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveGroupFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> subGroupId)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(subGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subGroupId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -280,13 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestmembers)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+            request["Members"] = CSharpExpressionConverter.ConvertToken(requestmembers);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -298,13 +298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddSubscriberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestsubscribers)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+            request["subscribers"] = CSharpExpressionConverter.ConvertToken(requestsubscribers);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveUserFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> memberId)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var mediaUrl = new JObject();
             var mediaUrlpropCount = 0;
             mediaUrlpropCount++;
-            mediaUrl["mediaUrl"] = ExpressionConverter.ConvertO(mediaUrlmediaUrl);
+            mediaUrl["mediaUrl"] = CSharpExpressionConverter.ConvertToken(mediaUrlmediaUrl);
             if (mediaUrlpropCount > 0)
             {
                 callPayload.Body = mediaUrl;
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction DeleteTrigger(Expression<Func<string>> webhookId)
         {
-            var apiCallPath = String.Format("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -390,9 +390,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/ActionCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             if (actionPackageId != null)
-                callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
+                callPayload.Queries["actionPackageId"] = CSharpExpressionConverter.ConvertO(actionPackageId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/Announcement";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/GroupAdded";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/GroupRemoved";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/MemberAdded";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/MemberRemoved";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/SurveyCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -536,8 +536,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Action/SurveyResponse";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -573,9 +573,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["actionPackageId"] = CSharpExpressionConverter.ConvertO(actionPackageId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var apiCallPath = "/v1/webhook/Group/UserJoined";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+            callPayload.Queries["objectId"] = CSharpExpressionConverter.ConvertO(objectId);
             var request = new JObject();
             var requestpropCount = 0;
             request["CallbackUrl"] = "@listCallbackUrl()";

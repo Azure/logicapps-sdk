@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
             var analysisRequest = new JObject();
             var analysisRequestpropCount = 0;
             analysisRequestpropCount++;
-            analysisRequest["file"] = ExpressionConverter.ConvertO(analysisRequestfile);
+            analysisRequest["file"] = CSharpExpressionConverter.ConvertToken(analysisRequestfile);
             analysisRequestpropCount++;
-            analysisRequest["fileName"] = ExpressionConverter.ConvertO(analysisRequestfileName);
+            analysisRequest["fileName"] = CSharpExpressionConverter.ConvertToken(analysisRequestfileName);
             if (analysisRequestlicense != null)
             {
-                analysisRequest["license"] = ExpressionConverter.ConvertO(analysisRequestlicense);
+                analysisRequest["license"] = CSharpExpressionConverter.ConvertToken(analysisRequestlicense);
                 analysisRequestpropCount++;
             }
 

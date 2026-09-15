@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyplugin != null)
             {
-                body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
+                body["plugin"] = CSharpExpressionConverter.ConvertToken(bodyplugin);
                 bodypropCount++;
             }
 
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyplugin != null)
             {
-                body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
+                body["plugin"] = CSharpExpressionConverter.ConvertToken(bodyplugin);
                 bodypropCount++;
             }
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -167,14 +167,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
         {
-            var apiCallPath = String.Format("/actions/doctype_{0}", ExpressionConverter.ConvertWithUrlEncoding(doctype, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/actions/doctype_{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(doctype, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 

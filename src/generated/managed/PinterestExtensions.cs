@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
         {
-            var apiCallPath = String.Format("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PinResponse>(callPayload);
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var apiCallPath = "/boards";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             return new ApiConnectionAction<BoardResponseData>(callPayload);
         }
 
@@ -38,26 +38,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var apiCallPath = "/pins";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            callPayload.Queries["image_url"] = ExpressionConverter.Convert(imageUrl);
+            callPayload.Queries["board_id"] = CSharpExpressionConverter.ConvertO(boardId);
+            callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
+            callPayload.Queries["image_url"] = CSharpExpressionConverter.ConvertO(imageUrl);
             if (sourceUrl != null)
-                callPayload.Queries["source_url"] = ExpressionConverter.Convert(sourceUrl);
+                callPayload.Queries["source_url"] = CSharpExpressionConverter.ConvertO(sourceUrl);
             return new ApiConnectionAction<PinResponseData>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
         {
-            var apiCallPath = String.Format("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(pin, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pin, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+            callPayload.Queries["board_id"] = CSharpExpressionConverter.ConvertO(boardId);
+            callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             if (link != null)
-                callPayload.Queries["link"] = ExpressionConverter.Convert(link);
+                callPayload.Queries["link"] = CSharpExpressionConverter.ConvertO(link);
             if (secondBoard != null)
-                callPayload.Queries["secondBoard"] = ExpressionConverter.Convert(secondBoard);
+                callPayload.Queries["secondBoard"] = CSharpExpressionConverter.ConvertO(secondBoard);
             return new ApiConnectionAction<PinResponseData>(callPayload);
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     {
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);

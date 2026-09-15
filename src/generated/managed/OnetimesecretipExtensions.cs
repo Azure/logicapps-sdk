@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                callPayload.Queries["passphrase"] = CSharpExpressionConverter.ConvertO(passphrase);
             if (ttl != null)
-                callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
+                callPayload.Queries["ttl"] = CSharpExpressionConverter.ConvertO(ttl);
             if (recipient != null)
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
+                callPayload.Queries["recipient"] = CSharpExpressionConverter.ConvertO(recipient);
             return new ApiConnectionAction<GenerateSecretResponse>(callPayload);
         }
 
@@ -32,31 +32,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             var apiCallPath = "/share";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["secret"] = ExpressionConverter.Convert(secret);
+            callPayload.Queries["secret"] = CSharpExpressionConverter.ConvertO(secret);
             if (ttl != null)
-                callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
+                callPayload.Queries["ttl"] = CSharpExpressionConverter.ConvertO(ttl);
             if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                callPayload.Queries["passphrase"] = CSharpExpressionConverter.ConvertO(passphrase);
             if (recipient != null)
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
+                callPayload.Queries["recipient"] = CSharpExpressionConverter.ConvertO(recipient);
             return new ApiConnectionAction<CreateSecretResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
         {
-            var apiCallPath = String.Format("/secret/{0}", ExpressionConverter.ConvertWithUrlEncoding(sECRETKEY, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secret/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sECRETKEY, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                callPayload.Queries["passphrase"] = CSharpExpressionConverter.ConvertO(passphrase);
             return new ApiConnectionAction<RetrieveSecretResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
         {
-            var apiCallPath = String.Format("/private/{0}", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/private/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mETADATAKEY, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RetrieveMetadataResponse>(callPayload);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<BurnASecretResponse> BurnASecret(Expression<Func<string>> mETADATAKEY)
         {
-            var apiCallPath = String.Format("/private/{0}/burn", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/private/{0}/burn", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mETADATAKEY, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BurnASecretResponse>(callPayload);

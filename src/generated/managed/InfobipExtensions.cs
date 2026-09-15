@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
             var requestBodypropCount = 0;
             if (requestBodysenderSPhoneNumber != null)
             {
-                requestBody["from"] = ExpressionConverter.ConvertO(requestBodysenderSPhoneNumber);
+                requestBody["from"] = CSharpExpressionConverter.ConvertToken(requestBodysenderSPhoneNumber);
                 requestBodypropCount++;
             }
 
             requestBodypropCount++;
-            requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
+            requestBody["to"] = CSharpExpressionConverter.ConvertToken(requestBodyrecipientSPhoneNumber);
             requestBodypropCount++;
-            requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
+            requestBody["text"] = CSharpExpressionConverter.ConvertToken(requestBodymessage);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -47,16 +47,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
             var requestBodypropCount = 0;
             if (requestBodycallerSPhoneNumber != null)
             {
-                requestBody["from"] = ExpressionConverter.ConvertO(requestBodycallerSPhoneNumber);
+                requestBody["from"] = CSharpExpressionConverter.ConvertToken(requestBodycallerSPhoneNumber);
                 requestBodypropCount++;
             }
 
             requestBodypropCount++;
-            requestBody["to"] = ExpressionConverter.ConvertO(requestBodyrecipientSPhoneNumber);
+            requestBody["to"] = CSharpExpressionConverter.ConvertToken(requestBodyrecipientSPhoneNumber);
             requestBodypropCount++;
-            requestBody["text"] = ExpressionConverter.ConvertO(requestBodymessage);
+            requestBody["text"] = CSharpExpressionConverter.ConvertToken(requestBodymessage);
             requestBodypropCount++;
-            requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+            requestBody["language"] = CSharpExpressionConverter.Convert(requestBodylanguage);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["phoneNumber"] = ExpressionConverter.ConvertO(requestBodyOfWebhookphoneNumber);
+            requestBodyOfWebhook["phoneNumber"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookphoneNumber);
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["keyword"] = ExpressionConverter.ConvertO(requestBodyOfWebhookkeyword);
+            requestBodyOfWebhook["keyword"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookkeyword);
             requestBodyOfWebhook["webhookUrl"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookpropCount > 0)

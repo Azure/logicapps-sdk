@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallPath = "/v1/geocode/reverseGeocode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-            callPayload.Queries["y"] = ExpressionConverter.Convert(y);
+            callPayload.Queries["x"] = CSharpExpressionConverter.ConvertO(x);
+            callPayload.Queries["y"] = CSharpExpressionConverter.ConvertO(y);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
             callPayload.Queries["locationType"] = Convert.ToString("Rooftop");
             if (locationType != null)
-                callPayload.Queries["locationType"] = ExpressionConverter.Convert(locationType);
+                callPayload.Queries["locationType"] = CSharpExpressionConverter.Convert(locationType);
             return new ApiConnectionAction<ReverseGeocodeResponse>(callPayload);
         }
 
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallPath = "/v1/geometry/process";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-            callPayload.Body = ExpressionConverter.ConvertO(data);
+            callPayload.Queries["operation"] = CSharpExpressionConverter.ConvertO(operation);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(data);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var data = new JObject();
             var datapropCount = 0;
             datapropCount++;
-            data["dateTime"] = ExpressionConverter.ConvertO(datadateTime);
+            data["dateTime"] = CSharpExpressionConverter.ConvertToken(datadateTime);
             if (datapropCount > 0)
             {
                 callPayload.Body = data;
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallPath = "/v1/helper/createPointGeometry";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-            callPayload.Queries["y"] = ExpressionConverter.Convert(y);
+            callPayload.Queries["x"] = CSharpExpressionConverter.ConvertO(x);
+            callPayload.Queries["y"] = CSharpExpressionConverter.ConvertO(y);
             if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
             return new ApiConnectionAction<CreatePointGeometryHelperResponse>(callPayload);
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallPath = "/v1/helper/exif";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(data);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(data);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var data = new JObject();
             var datapropCount = 0;
             datapropCount++;
-            data["addresses"] = ExpressionConverter.ConvertO(dataaddresses);
+            data["addresses"] = CSharpExpressionConverter.ConvertToken(dataaddresses);
             if (datapropCount > 0)
             {
                 callPayload.Body = data;
@@ -103,11 +103,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallPath = "/v2/geoenrichment/enrich";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["datacollection"] = ExpressionConverter.Convert(datacollection);
-            callPayload.Queries["parameter"] = ExpressionConverter.Convert(parameter);
-            callPayload.Queries["buffertype"] = ExpressionConverter.Convert(buffertype);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["datacollection"] = CSharpExpressionConverter.ConvertO(datacollection);
+            callPayload.Queries["parameter"] = CSharpExpressionConverter.ConvertO(parameter);
+            callPayload.Queries["buffertype"] = CSharpExpressionConverter.Convert(buffertype);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
         }
 
@@ -118,18 +118,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (travelModeName != null)
-                callPayload.Queries["travelModeName"] = ExpressionConverter.Convert(travelModeName);
+                callPayload.Queries["travelModeName"] = CSharpExpressionConverter.ConvertO(travelModeName);
             if (findBestSequence != null)
-                callPayload.Queries["findBestSequence"] = ExpressionConverter.Convert(findBestSequence);
+                callPayload.Queries["findBestSequence"] = CSharpExpressionConverter.ConvertO(findBestSequence);
             if (preserveFirstStop != null)
-                callPayload.Queries["preserveFirstStop"] = ExpressionConverter.Convert(preserveFirstStop);
+                callPayload.Queries["preserveFirstStop"] = CSharpExpressionConverter.ConvertO(preserveFirstStop);
             callPayload.Queries["returnDirections"] = Convert.ToString(true);
             if (returnDirections != null)
-                callPayload.Queries["returnDirections"] = ExpressionConverter.Convert(returnDirections);
+                callPayload.Queries["returnDirections"] = CSharpExpressionConverter.ConvertO(returnDirections);
             var routing = new JObject();
             var routingpropCount = 0;
             routingpropCount++;
-            routing["stops"] = ExpressionConverter.ConvertO(routingroutingStops);
+            routing["stops"] = CSharpExpressionConverter.ConvertToken(routingroutingStops);
             if (routingpropCount > 0)
             {
                 callPayload.Body = routing;

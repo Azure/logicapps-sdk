@@ -21,43 +21,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var bodypropCount = 0;
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodymessageContent != null)
             {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                body["message_content"] = CSharpExpressionConverter.ConvertToken(bodymessageContent);
                 bodypropCount++;
             }
 
             if (bodyrecipientAddress != null)
             {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                body["recipient_address"] = CSharpExpressionConverter.ConvertToken(bodyrecipientAddress);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyuniqueIdentifier != null)
             {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                body["unique_identifier"] = CSharpExpressionConverter.ConvertToken(bodyuniqueIdentifier);
                 bodypropCount++;
             }
 
             if (bodycampaignName != null)
             {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
                 bodypropCount++;
             }
 
             if (bodycustomParameter != null)
             {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                body["custom_parameter"] = CSharpExpressionConverter.ConvertToken(bodycustomParameter);
                 bodypropCount++;
             }
 
@@ -79,67 +79,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var bodypropCount = 0;
             if (bodyconversationId != null)
             {
-                body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
+                body["conversation_id"] = CSharpExpressionConverter.ConvertToken(bodyconversationId);
                 bodypropCount++;
             }
 
             if (bodymessageContent != null)
             {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                body["message_content"] = CSharpExpressionConverter.ConvertToken(bodymessageContent);
                 bodypropCount++;
             }
 
             if (bodyrecipientAddress != null)
             {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                body["recipient_address"] = CSharpExpressionConverter.ConvertToken(bodyrecipientAddress);
                 bodypropCount++;
             }
 
             if (bodyvalidityPeriod != null)
             {
-                body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
+                body["validity_period"] = CSharpExpressionConverter.ConvertToken(bodyvalidityPeriod);
                 bodypropCount++;
             }
 
             if (bodyopenTicket != null)
             {
-                body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
+                body["open_ticket"] = CSharpExpressionConverter.ConvertToken(bodyopenTicket);
                 bodypropCount++;
             }
 
             if (bodyemailResponses != null)
             {
-                body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
+                body["email_responses"] = CSharpExpressionConverter.ConvertToken(bodyemailResponses);
                 bodypropCount++;
             }
 
             if (bodypushResponses != null)
             {
-                body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
+                body["push_responses"] = CSharpExpressionConverter.ConvertToken(bodypushResponses);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyuniqueIdentifier != null)
             {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                body["unique_identifier"] = CSharpExpressionConverter.ConvertToken(bodyuniqueIdentifier);
                 bodypropCount++;
             }
 
             if (bodycampaignName != null)
             {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
                 bodypropCount++;
             }
 
             if (bodycustomParameter != null)
             {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                body["custom_parameter"] = CSharpExpressionConverter.ConvertToken(bodycustomParameter);
                 bodypropCount++;
             }
 
@@ -161,43 +161,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var bodypropCount = 0;
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodymessageContent != null)
             {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                body["message_content"] = CSharpExpressionConverter.ConvertToken(bodymessageContent);
                 bodypropCount++;
             }
 
             if (bodyrecipientAddress != null)
             {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                body["recipient_address"] = CSharpExpressionConverter.ConvertToken(bodyrecipientAddress);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyuniqueIdentifier != null)
             {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                body["unique_identifier"] = CSharpExpressionConverter.ConvertToken(bodyuniqueIdentifier);
                 bodypropCount++;
             }
 
             if (bodycampaignName != null)
             {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
                 bodypropCount++;
             }
 
             if (bodycustomParameter != null)
             {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                body["custom_parameter"] = CSharpExpressionConverter.ConvertToken(bodycustomParameter);
                 bodypropCount++;
             }
 
@@ -219,19 +219,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var bodypropCount = 0;
             if (bodyvoiceIntro != null)
             {
-                body["voice_intro"] = ExpressionConverter.ConvertO(bodyvoiceIntro);
+                body["voice_intro"] = CSharpExpressionConverter.ConvertToken(bodyvoiceIntro);
                 bodypropCount++;
             }
 
             if (bodyvoiceThankYou != null)
             {
-                body["voice_thank_you"] = ExpressionConverter.ConvertO(bodyvoiceThankYou);
+                body["voice_thank_you"] = CSharpExpressionConverter.ConvertToken(bodyvoiceThankYou);
                 bodypropCount++;
             }
 
             if (bodyvoiceRedirectMessage != null)
             {
-                body["voice_redirect_message"] = ExpressionConverter.ConvertO(bodyvoiceRedirectMessage);
+                body["voice_redirect_message"] = CSharpExpressionConverter.ConvertToken(bodyvoiceRedirectMessage);
                 bodypropCount++;
             }
 
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var voiceRedirectNoObjectpropCount = 0;
             if (bodyvoiceRedirectNonumber != null)
             {
-                voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(bodyvoiceRedirectNonumber);
+                voiceRedirectNoObject["number"] = CSharpExpressionConverter.ConvertToken(bodyvoiceRedirectNonumber);
                 voiceRedirectNoObjectpropCount++;
             }
 
@@ -251,49 +251,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 
             if (bodyvoiceRetries != null)
             {
-                body["voice_retries"] = ExpressionConverter.ConvertO(bodyvoiceRetries);
+                body["voice_retries"] = CSharpExpressionConverter.ConvertToken(bodyvoiceRetries);
                 bodypropCount++;
             }
 
             if (bodyvoiceDelay != null)
             {
-                body["voice_delay"] = ExpressionConverter.ConvertO(bodyvoiceDelay);
+                body["voice_delay"] = CSharpExpressionConverter.ConvertToken(bodyvoiceDelay);
                 bodypropCount++;
             }
 
             if (bodymessageContent != null)
             {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                body["message_content"] = CSharpExpressionConverter.ConvertToken(bodymessageContent);
                 bodypropCount++;
             }
 
             if (bodyrecipientAddress != null)
             {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                body["recipient_address"] = CSharpExpressionConverter.ConvertToken(bodyrecipientAddress);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyuniqueIdentifier != null)
             {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                body["unique_identifier"] = CSharpExpressionConverter.ConvertToken(bodyuniqueIdentifier);
                 bodypropCount++;
             }
 
             if (bodycampaignName != null)
             {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
                 bodypropCount++;
             }
 
             if (bodycustomParameter != null)
             {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                body["custom_parameter"] = CSharpExpressionConverter.ConvertToken(bodycustomParameter);
                 bodypropCount++;
             }
 
@@ -315,67 +315,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var bodypropCount = 0;
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyemailSubject != null)
             {
-                body["email_subject"] = ExpressionConverter.ConvertO(bodyemailSubject);
+                body["email_subject"] = CSharpExpressionConverter.ConvertToken(bodyemailSubject);
                 bodypropCount++;
             }
 
             if (bodymessageContent != null)
             {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                body["message_content"] = CSharpExpressionConverter.ConvertToken(bodymessageContent);
                 bodypropCount++;
             }
 
             if (bodyemailAddress != null)
             {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                body["email_address"] = CSharpExpressionConverter.ConvertToken(bodyemailAddress);
                 bodypropCount++;
             }
 
             if (bodyvalidityPeriod != null)
             {
-                body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
+                body["validity_period"] = CSharpExpressionConverter.ConvertToken(bodyvalidityPeriod);
                 bodypropCount++;
             }
 
             if (bodyopenTicket != null)
             {
-                body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
+                body["open_ticket"] = CSharpExpressionConverter.ConvertToken(bodyopenTicket);
                 bodypropCount++;
             }
 
             if (bodyemailResponses != null)
             {
-                body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
+                body["email_responses"] = CSharpExpressionConverter.ConvertToken(bodyemailResponses);
                 bodypropCount++;
             }
 
             if (bodypushResponses != null)
             {
-                body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
+                body["push_responses"] = CSharpExpressionConverter.ConvertToken(bodypushResponses);
                 bodypropCount++;
             }
 
             if (bodyuniqueIdentifier != null)
             {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                body["unique_identifier"] = CSharpExpressionConverter.ConvertToken(bodyuniqueIdentifier);
                 bodypropCount++;
             }
 
             if (bodycampaignName != null)
             {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
                 bodypropCount++;
             }
 
             if (bodycustomParameter != null)
             {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                body["custom_parameter"] = CSharpExpressionConverter.ConvertToken(bodycustomParameter);
                 bodypropCount++;
             }
 

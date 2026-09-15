@@ -23,55 +23,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyenvelopeTitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodyenvelopeTitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeTitle);
                 bodypropCount++;
             }
 
             if (bodyenvelopeLabel != null)
             {
-                body["label"] = ExpressionConverter.ConvertO(bodyenvelopeLabel);
+                body["label"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeLabel);
                 bodypropCount++;
             }
 
             if (bodyenvelopeMessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodyenvelopeMessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeMessage);
                 bodypropCount++;
             }
 
             if (bodyenvelopeMode != null)
             {
-                body["mode"] = ExpressionConverter.ConvertO(bodyenvelopeMode);
+                body["mode"] = CSharpExpressionConverter.Convert(bodyenvelopeMode);
                 bodypropCount++;
             }
 
             if (bodyenvelopeRouting != null)
             {
-                body["routing"] = ExpressionConverter.ConvertO(bodyenvelopeRouting);
+                body["routing"] = CSharpExpressionConverter.Convert(bodyenvelopeRouting);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodytimeZone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
                 bodypropCount++;
             }
 
             if (bodytimestampFormat != null)
             {
-                body["timestamp_format"] = ExpressionConverter.ConvertO(bodytimestampFormat);
+                body["timestamp_format"] = CSharpExpressionConverter.ConvertToken(bodytimestampFormat);
                 bodypropCount++;
             }
 
             if (bodyenvelopeAttestation != null)
             {
-                body["attestation"] = ExpressionConverter.ConvertO(bodyenvelopeAttestation);
+                body["attestation"] = CSharpExpressionConverter.Convert(bodyenvelopeAttestation);
                 bodypropCount++;
             }
 
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var senderObjectpropCount = 0;
             if (bodysendername != null)
             {
-                senderObject["name"] = ExpressionConverter.ConvertO(bodysendername);
+                senderObject["name"] = CSharpExpressionConverter.ConvertToken(bodysendername);
                 senderObjectpropCount++;
             }
 
             if (bodysenderemail != null)
             {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                senderObject["email"] = CSharpExpressionConverter.ConvertToken(bodysenderemail);
                 senderObjectpropCount++;
             }
 
@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
             if (bodyenvelopeTopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodyenvelopeTopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeTopics);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction DeleteEnvelope(Expression<Func<string>> envelopeId)
         {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> GetEnvelope(Expression<Func<string>> envelopeId)
         {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Envelope>(callPayload);
@@ -136,17 +136,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Capture> GetCapture(Expression<Func<string>> envelopeId, Expression<Func<string>> captureKey)
         {
-            var apiCallPath = String.Format("/envelopes/{0}+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["captureKey"] = ExpressionConverter.Convert(captureKey);
+            callPayload.Queries["captureKey"] = CSharpExpressionConverter.ConvertO(captureKey);
             return new ApiConnectionAction<Capture>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope(Expression<Func<string>> envelopeId)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<StartEnvelopeOutput>(callPayload);
@@ -155,20 +155,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentTitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodydocumentTitle);
                 bodypropCount++;
             }
 
             if (bodyfileContent != null)
             {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["file_content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -191,20 +191,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentTitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodydocumentTitle);
                 bodypropCount++;
             }
 
             if (bodyfileContent != null)
             {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["file_content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -227,20 +227,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents+alias2", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydocumentTitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodydocumentTitle);
                 bodypropCount++;
             }
 
             if (bodyfileContent != null)
             {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["file_content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 
@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodytemplateData != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodytemplateData);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodytemplateData);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -269,20 +269,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddTemplateData(Expression<Func<string>> documentId, Expression<Func<string>> bodyfieldName = null, Expression<Func<string>> bodyvalue = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-data", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfieldName != null)
             {
-                body["field_name"] = ExpressionConverter.ConvertO(bodyfieldName);
+                body["field_name"] = CSharpExpressionConverter.ConvertToken(bodyfieldName);
                 bodypropCount++;
             }
 
             if (bodyvalue != null)
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
                 bodypropCount++;
             }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-signature-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -306,43 +306,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodyrecipientKey != null)
             {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                body["recipient_key"] = CSharpExpressionConverter.ConvertToken(bodyrecipientKey);
                 bodypropCount++;
             }
 
             if (bodyplaceHeight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyplaceHeight);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-initials-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -366,43 +366,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodyrecipientKey != null)
             {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                body["recipient_key"] = CSharpExpressionConverter.ConvertToken(bodyrecipientKey);
                 bodypropCount++;
             }
 
             if (bodyplaceHeight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyplaceHeight);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodycaptureAs = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyrequirementInput>> bodyrequirement = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyformatMessage = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-text-input-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -426,31 +426,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodyrecipientKey != null)
             {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                body["recipient_key"] = CSharpExpressionConverter.ConvertToken(bodyrecipientKey);
                 bodypropCount++;
             }
 
             if (bodycaptureAs != null)
             {
-                body["capture_as"] = ExpressionConverter.ConvertO(bodycaptureAs);
+                body["capture_as"] = CSharpExpressionConverter.ConvertToken(bodycaptureAs);
                 bodypropCount++;
             }
 
             if (bodyhint != null)
             {
-                body["hint"] = ExpressionConverter.ConvertO(bodyhint);
+                body["hint"] = CSharpExpressionConverter.ConvertToken(bodyhint);
                 bodypropCount++;
             }
 
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             {
                 if (bodyrequirement != null)
                 {
-                    body["requirement"] = ExpressionConverter.ConvertO(bodyrequirement);
+                    body["requirement"] = CSharpExpressionConverter.Convert(bodyrequirement);
                     bodypropCount++;
                 }
 
@@ -472,37 +472,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                body["format"] = CSharpExpressionConverter.ConvertToken(bodyformat);
                 bodypropCount++;
             }
 
             if (bodyformatMessage != null)
             {
-                body["format_message"] = ExpressionConverter.ConvertO(bodyformatMessage);
+                body["format_message"] = CSharpExpressionConverter.ConvertToken(bodyformatMessage);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceText(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyvalue = null, Expression<Func<double>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-text-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -526,49 +526,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodyvalue != null)
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
                 bodypropCount++;
             }
 
             if (bodyfontSize != null)
             {
-                body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                body["font_size"] = CSharpExpressionConverter.ConvertToken(bodyfontSize);
                 bodypropCount++;
             }
 
             if (bodyfontColor != null)
             {
-                body["font_color"] = ExpressionConverter.ConvertO(bodyfontColor);
+                body["font_color"] = CSharpExpressionConverter.ConvertToken(bodyfontColor);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -592,43 +592,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodyrecipientKey != null)
             {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                body["recipient_key"] = CSharpExpressionConverter.ConvertToken(bodyrecipientKey);
                 bodypropCount++;
             }
 
             if (bodydateFormat != null)
             {
-                body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
+                body["date_format"] = CSharpExpressionConverter.ConvertToken(bodydateFormat);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -652,37 +652,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyplaceKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyplaceKey);
                 bodypropCount++;
             }
 
             if (bodydateFormat != null)
             {
-                body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
+                body["date_format"] = CSharpExpressionConverter.ConvertToken(bodydateFormat);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodydistanceFromTop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                body["top"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromTop);
                 bodypropCount++;
             }
 
             if (bodydistanceFromLeft != null)
             {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                body["left"] = CSharpExpressionConverter.ConvertToken(bodydistanceFromLeft);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<string>> bodyrecipientName = null, Expression<Func<string>> bodyrecipientEmail = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<bodyrecipientCeremonyCreationInput>> bodyrecipientCeremonyCreation = null, Expression<Func<bodyrecipientDeliveryTypeInput>> bodyrecipientDeliveryType = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -706,37 +706,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             bodypropCount++;
             if (bodyrecipientName != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyrecipientName);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyrecipientName);
                 bodypropCount++;
             }
 
             if (bodyrecipientEmail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyrecipientEmail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyrecipientEmail);
                 bodypropCount++;
             }
 
             if (bodyrecipientKey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodyrecipientKey);
                 bodypropCount++;
             }
 
             if (bodyrecipientCeremonyCreation != null)
             {
-                body["ceremony_creation"] = ExpressionConverter.ConvertO(bodyrecipientCeremonyCreation);
+                body["ceremony_creation"] = CSharpExpressionConverter.Convert(bodyrecipientCeremonyCreation);
                 bodypropCount++;
             }
 
             if (bodyrecipientDeliveryType != null)
             {
-                body["delivery_type"] = ExpressionConverter.ConvertO(bodyrecipientDeliveryType);
+                body["delivery_type"] = CSharpExpressionConverter.Convert(bodyrecipientDeliveryType);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Recipient> GetRecipient(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/recipients/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recipients/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Recipient>(callPayload);
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -777,13 +777,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
             if (bodyredirectURL != null)
             {
-                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                body["redirect_url"] = CSharpExpressionConverter.ConvertToken(bodyredirectURL);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<string>> bodyauthenticationauthenticationProvider = null, Expression<Func<string[]>> bodyauthenticationauthenticationData = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -809,13 +809,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             authenticationObjectpropCount++;
             if (bodyauthenticationauthenticationProvider != null)
             {
-                authenticationObject["provider"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationProvider);
+                authenticationObject["provider"] = CSharpExpressionConverter.ConvertToken(bodyauthenticationauthenticationProvider);
                 authenticationObjectpropCount++;
             }
 
             if (bodyauthenticationauthenticationData != null)
             {
-                authenticationObject["data"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationData);
+                authenticationObject["data"] = CSharpExpressionConverter.ConvertToken(bodyauthenticationauthenticationData);
                 authenticationObjectpropCount++;
             }
 
@@ -827,13 +827,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
             if (bodyredirectURL != null)
             {
-                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                body["redirect_url"] = CSharpExpressionConverter.ConvertToken(bodyredirectURL);
                 bodypropCount++;
             }
 
             if (bodyextraProperties != null)
             {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                body["extra"] = CSharpExpressionConverter.ConvertToken(bodyextraProperties);
                 bodypropCount++;
             }
 
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> WaitEnvelope(Expression<Func<string>> envelopeId)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Envelope>(callPayload);
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Deliverable> GetDeliverable(Expression<Func<string>> deliverableId)
         {
-            var apiCallPath = String.Format("/deliverables/{0}", ExpressionConverter.ConvertWithUrlEncoding(deliverableId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliverableId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Deliverable>(callPayload);
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -990,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1013,7 +1013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1059,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1151,7 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             var bodypropCount = 0;
             if (bodytopics != null)
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                body["topics"] = CSharpExpressionConverter.ConvertToken(bodytopics);
                 bodypropCount++;
             }
 

@@ -18,19 +18,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction<GetStationsResponse>(callPayload);
         }
 
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationsAvailabilityResponse>(callPayload);
         }
 
@@ -57,48 +57,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/nearby";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/station/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability(Expression<Func<string>> stationCode, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/availability", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/availability", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetWeatherStationAvailabilityResponse>(callPayload);
         }
 
@@ -108,22 +108,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/bulletins";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction<GetStationsBulletinsResponse>(callPayload);
         }
 
@@ -133,22 +133,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/rainfall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction<GetWeatherStationsRainfallResponse>(callPayload);
         }
 
@@ -159,21 +159,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction<GetWeatherStationRainfallResponse>(callPayload);
         }
 
@@ -184,19 +184,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             return new ApiConnectionAction<GetStationsExtremeConditionsResponse>(callPayload);
         }
 
@@ -207,16 +207,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            callPayload.Queries["operator"] = ExpressionConverter.Convert(@operator);
-            callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
-            callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
+            callPayload.Queries["operator"] = CSharpExpressionConverter.Convert(@operator);
+            callPayload.Queries["threshold"] = CSharpExpressionConverter.ConvertO(threshold);
+            callPayload.Queries["property"] = CSharpExpressionConverter.Convert(property);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
+                callPayload.Queries["interval"] = CSharpExpressionConverter.Convert(interval);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationsExtremeEventsResponse>(callPayload);
         }
 
@@ -227,64 +227,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             return new ApiConnectionAction<GetStationsLatestDataResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/bulletin", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/bulletin", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationBulletinsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/latest", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationLatestDataResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationMinuteDataResponse>(callPayload);
         }
 
@@ -294,22 +294,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/15min";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -319,22 +319,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/30min";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -344,22 +344,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/hourly";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -369,22 +369,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/daily";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -394,22 +394,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/monthly";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
+            callPayload.Queries["startMonth"] = CSharpExpressionConverter.ConvertO(startMonth);
+            callPayload.Queries["endMonth"] = CSharpExpressionConverter.ConvertO(endMonth);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -419,22 +419,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/yearly";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
-            callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
+            callPayload.Queries["startYear"] = CSharpExpressionConverter.ConvertO(startYear);
+            callPayload.Queries["endYear"] = CSharpExpressionConverter.ConvertO(endYear);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
         }
 
@@ -444,22 +444,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/15min/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
@@ -469,22 +469,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/30min/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
@@ -494,22 +494,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/hourly/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
@@ -519,22 +519,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/daily/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
@@ -544,22 +544,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/monthly/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
+            callPayload.Queries["startMonth"] = CSharpExpressionConverter.ConvertO(startMonth);
+            callPayload.Queries["endMonth"] = CSharpExpressionConverter.ConvertO(endMonth);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
@@ -569,136 +569,136 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var apiCallPath = "/stations/summaries/yearly/timeseries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
-            callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
+            callPayload.Queries["startYear"] = CSharpExpressionConverter.ConvertO(startYear);
+            callPayload.Queries["endYear"] = CSharpExpressionConverter.ConvertO(endYear);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                callPayload.Queries["includeClosed"] = CSharpExpressionConverter.ConvertO(includeClosed);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/15min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/15min", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/30min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/30min", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/hourly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/hourly", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+            callPayload.Queries["startDateTime"] = CSharpExpressionConverter.ConvertO(startDateTime);
+            callPayload.Queries["endDateTime"] = CSharpExpressionConverter.ConvertO(endDateTime);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/daily", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/daily", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/monthly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/monthly", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/yearly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/yearly", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
         }
     }

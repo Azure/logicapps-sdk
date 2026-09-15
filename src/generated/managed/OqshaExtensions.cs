@@ -19,56 +19,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             if (accessToken != null)
-                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
+                callPayload.Headers["Access-Token"] = CSharpExpressionConverter.ConvertO(accessToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodylocation != null)
             {
-                body["Location"] = ExpressionConverter.ConvertO(bodylocation);
+                body["Location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
                 bodypropCount++;
             }
 
             if (bodylocationId != null)
             {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                body["LocationId"] = CSharpExpressionConverter.ConvertToken(bodylocationId);
                 bodypropCount++;
             }
 
             if (bodylatitude != null)
             {
-                body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
+                body["Latitude"] = CSharpExpressionConverter.ConvertToken(bodylatitude);
                 bodypropCount++;
             }
 
             if (bodylongitude != null)
             {
-                body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
+                body["Longitude"] = CSharpExpressionConverter.ConvertToken(bodylongitude);
                 bodypropCount++;
             }
 
             if (bodydivisionId != null)
             {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
+                body["DivisionId"] = CSharpExpressionConverter.ConvertToken(bodydivisionId);
                 bodypropCount++;
             }
 
             if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["UserId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyanonymouslyReported != null)
             {
-                body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
+                body["AnonymouslyReported"] = CSharpExpressionConverter.ConvertToken(bodyanonymouslyReported);
                 bodypropCount++;
             }
 
             if (bodycheckListData != null)
             {
-                body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
+                body["CheckListData"] = CSharpExpressionConverter.ConvertToken(bodycheckListData);
                 bodypropCount++;
             }
 
@@ -88,30 +88,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyuserUid != null)
             {
-                body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
+                body["UserUid"] = CSharpExpressionConverter.ConvertToken(bodyuserUid);
                 bodypropCount++;
             }
 
             if (bodyappPassword != null)
             {
-                body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
+                body["AppPassword"] = CSharpExpressionConverter.ConvertToken(bodyappPassword);
                 bodypropCount++;
             }
 
             if (bodyacceptConditions != null)
             {
-                body["acceptConditions"] = ExpressionConverter.ConvertO(bodyacceptConditions);
+                body["acceptConditions"] = CSharpExpressionConverter.ConvertToken(bodyacceptConditions);
                 bodypropCount++;
             }
 
             if (bodyisOqsha != null)
             {
-                body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
+                body["IsOqsha"] = CSharpExpressionConverter.ConvertToken(bodyisOqsha);
                 bodypropCount++;
             }
 

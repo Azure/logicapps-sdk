@@ -14,19 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IBodyWorkflowAction<DetailedReceiveMessage> GetEmail(Expression<Func<string>> id, Expression<Func<bool>> includeAttachments = null)
         {
-            var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Mail/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["includeAttachments"] = Convert.ToString(false);
             if (includeAttachments != null)
-                callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
+                callPayload.Queries["includeAttachments"] = CSharpExpressionConverter.ConvertO(includeAttachments);
             return new ApiConnectionAction<DetailedReceiveMessage>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction DeleteEmail(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Mail/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction TrashEmail(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Mail/{0}/trash", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Mail/{0}/trash", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -44,56 +44,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction ReplyTo(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<Attachment[]>> replyMessageattachments = null)
         {
-            var apiCallPath = String.Format("/v2/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/Mail/ReplyTo/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var replyMessage = new JObject();
             var replyMessagepropCount = 0;
             if (replyMessageto != null)
             {
-                replyMessage["To"] = ExpressionConverter.ConvertO(replyMessageto);
+                replyMessage["To"] = CSharpExpressionConverter.ConvertToken(replyMessageto);
                 replyMessagepropCount++;
             }
 
             if (replyMessagecC != null)
             {
-                replyMessage["Cc"] = ExpressionConverter.ConvertO(replyMessagecC);
+                replyMessage["Cc"] = CSharpExpressionConverter.ConvertToken(replyMessagecC);
                 replyMessagepropCount++;
             }
 
             if (replyMessagebCC != null)
             {
-                replyMessage["Bcc"] = ExpressionConverter.ConvertO(replyMessagebCC);
+                replyMessage["Bcc"] = CSharpExpressionConverter.ConvertToken(replyMessagebCC);
                 replyMessagepropCount++;
             }
 
             if (replyMessagesubject != null)
             {
-                replyMessage["Subject"] = ExpressionConverter.ConvertO(replyMessagesubject);
+                replyMessage["Subject"] = CSharpExpressionConverter.ConvertToken(replyMessagesubject);
                 replyMessagepropCount++;
             }
 
             if (replyMessagebody != null)
             {
-                replyMessage["Body"] = ExpressionConverter.ConvertO(replyMessagebody);
+                replyMessage["Body"] = CSharpExpressionConverter.ConvertToken(replyMessagebody);
                 replyMessagepropCount++;
             }
 
             if (replyMessagereplyAll != null)
             {
-                replyMessage["ReplyAll"] = ExpressionConverter.ConvertO(replyMessagereplyAll);
+                replyMessage["ReplyAll"] = CSharpExpressionConverter.ConvertToken(replyMessagereplyAll);
                 replyMessagepropCount++;
             }
 
             if (replyMessageimportance != null)
             {
-                replyMessage["Importance"] = ExpressionConverter.ConvertO(replyMessageimportance);
+                replyMessage["Importance"] = CSharpExpressionConverter.Convert(replyMessageimportance);
                 replyMessagepropCount++;
             }
 
             if (replyMessageattachments != null)
             {
-                replyMessage["Attachments"] = ExpressionConverter.ConvertO(replyMessageattachments);
+                replyMessage["Attachments"] = CSharpExpressionConverter.ConvertToken(replyMessageattachments);
                 replyMessagepropCount++;
             }
 
@@ -114,40 +114,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             var emailMessage = new JObject();
             var emailMessagepropCount = 0;
             emailMessagepropCount++;
-            emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
+            emailMessage["To"] = CSharpExpressionConverter.ConvertToken(emailMessageto);
             if (emailMessagecC != null)
             {
-                emailMessage["Cc"] = ExpressionConverter.ConvertO(emailMessagecC);
+                emailMessage["Cc"] = CSharpExpressionConverter.ConvertToken(emailMessagecC);
                 emailMessagepropCount++;
             }
 
             if (emailMessagebCC != null)
             {
-                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebCC);
+                emailMessage["Bcc"] = CSharpExpressionConverter.ConvertToken(emailMessagebCC);
                 emailMessagepropCount++;
             }
 
             if (emailMessagesubject != null)
             {
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
+                emailMessage["Subject"] = CSharpExpressionConverter.ConvertToken(emailMessagesubject);
                 emailMessagepropCount++;
             }
 
             if (emailMessagebody != null)
             {
-                emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
+                emailMessage["Body"] = CSharpExpressionConverter.ConvertToken(emailMessagebody);
                 emailMessagepropCount++;
             }
 
             if (emailMessageimportance != null)
             {
-                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                emailMessage["Importance"] = CSharpExpressionConverter.Convert(emailMessageimportance);
                 emailMessagepropCount++;
             }
 
             if (emailMessageattachments != null)
             {
-                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                emailMessage["Attachments"] = CSharpExpressionConverter.ConvertToken(emailMessageattachments);
                 emailMessagepropCount++;
             }
 
@@ -169,25 +169,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["label"] = Convert.ToString("INBOX");
             if (label != null)
-                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
+                callPayload.Queries["label"] = CSharpExpressionConverter.ConvertO(label);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             callPayload.Queries["importance"] = Convert.ToString("All");
             if (importance != null)
-                callPayload.Queries["importance"] = ExpressionConverter.Convert(importance);
+                callPayload.Queries["importance"] = CSharpExpressionConverter.Convert(importance);
             callPayload.Queries["starred"] = Convert.ToString("All");
             if (starred != null)
-                callPayload.Queries["starred"] = ExpressionConverter.Convert(starred);
+                callPayload.Queries["starred"] = CSharpExpressionConverter.Convert(starred);
             callPayload.Queries["fetchOnlyWithAttachments"] = Convert.ToString(false);
             if (fetchOnlyWithAttachments != null)
-                callPayload.Queries["fetchOnlyWithAttachments"] = ExpressionConverter.Convert(fetchOnlyWithAttachments);
+                callPayload.Queries["fetchOnlyWithAttachments"] = CSharpExpressionConverter.ConvertO(fetchOnlyWithAttachments);
             callPayload.Queries["includeAttachments"] = Convert.ToString(false);
             if (includeAttachments != null)
-                callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
+                callPayload.Queries["includeAttachments"] = CSharpExpressionConverter.ConvertO(includeAttachments);
             return new ApiConnectionTrigger<DetailedReceiveMessage>(callPayload, triggerName, recurrence);
         }
     }

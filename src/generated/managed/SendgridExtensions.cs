@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             var recipientEmailspropCount = 0;
             if (recipientEmailsrecipientEmail != null)
             {
-                recipientEmails["recipient_emails"] = ExpressionConverter.ConvertO(recipientEmailsrecipientEmail);
+                recipientEmails["recipient_emails"] = CSharpExpressionConverter.ConvertToken(recipientEmailsrecipientEmail);
                 recipientEmailspropCount++;
             }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteGlobalSuppression(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppressions/global/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/suppressions/global/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> AddRecipientToList(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/v3/contactdb/lists/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/contactdb/lists/{0}/recipients/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<Bounce[]> GetBounce(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Bounce[]>(callPayload);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteBounce(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/unsubscribes/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/unsubscribes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<EmailIsUnsubscribedResponse>(callPayload);
@@ -88,53 +88,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             var requestpropCount = 0;
             if (requestattachment != null)
             {
-                request["attachments"] = ExpressionConverter.ConvertO(requestattachment);
+                request["attachments"] = CSharpExpressionConverter.ConvertToken(requestattachment);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestfrom);
+            request["from"] = CSharpExpressionConverter.ConvertToken(requestfrom);
             if (requestfromName != null)
             {
-                request["fromname"] = ExpressionConverter.ConvertO(requestfromName);
+                request["fromname"] = CSharpExpressionConverter.ConvertToken(requestfromName);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestto);
+            request["to"] = CSharpExpressionConverter.ConvertToken(requestto);
             if (requesttoNames != null)
             {
-                request["toname"] = ExpressionConverter.ConvertO(requesttoNames);
+                request["toname"] = CSharpExpressionConverter.ConvertToken(requesttoNames);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["subject"] = ExpressionConverter.ConvertO(requestsubject);
+            request["subject"] = CSharpExpressionConverter.ConvertToken(requestsubject);
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requestemailBody);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requestemailBody);
             request["ishtml"] = true;
             requestpropCount++;
             if (requestcC != null)
             {
-                request["cc"] = ExpressionConverter.ConvertO(requestcC);
+                request["cc"] = CSharpExpressionConverter.ConvertToken(requestcC);
                 requestpropCount++;
             }
 
             if (requestcCNames != null)
             {
-                request["ccname"] = ExpressionConverter.ConvertO(requestcCNames);
+                request["ccname"] = CSharpExpressionConverter.ConvertToken(requestcCNames);
                 requestpropCount++;
             }
 
             if (requestbcc != null)
             {
-                request["bcc"] = ExpressionConverter.ConvertO(requestbcc);
+                request["bcc"] = CSharpExpressionConverter.ConvertToken(requestbcc);
                 requestpropCount++;
             }
 
             if (requestbCCNames != null)
             {
-                request["bccname"] = ExpressionConverter.ConvertO(requestbCCNames);
+                request["bccname"] = CSharpExpressionConverter.ConvertToken(requestbCCNames);
                 requestpropCount++;
             }
 

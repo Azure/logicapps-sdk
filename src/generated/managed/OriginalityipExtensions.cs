@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
             var apiCallPath = "/api/v1/account/credits/balance";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
             var apiCallPath = "/api/v1/account/credits/content_scan_usage";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
             var apiCallPath = "/api/v1/account/credits/payments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<GetPaymentResponse>(callPayload);
         }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
             var bodypropCount = 0;
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
             var bodypropCount = 0;
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 

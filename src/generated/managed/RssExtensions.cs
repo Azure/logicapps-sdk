@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
             var apiCallPath = "/ListFeedItems";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
+            callPayload.Queries["feedUrl"] = CSharpExpressionConverter.ConvertO(feedUrl);
             if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+                callPayload.Queries["since"] = CSharpExpressionConverter.ConvertO(since);
             callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
             if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
+                callPayload.Queries["sinceProperty"] = CSharpExpressionConverter.Convert(sinceProperty);
             return new ApiConnectionAction<FeedItem[]>(callPayload);
         }
     }
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
             var apiCallPath = "/OnNewFeed";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
+            callPayload.Queries["feedUrl"] = CSharpExpressionConverter.ConvertO(feedUrl);
             callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
             if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
+                callPayload.Queries["sinceProperty"] = CSharpExpressionConverter.Convert(sinceProperty);
             return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
         }
     }

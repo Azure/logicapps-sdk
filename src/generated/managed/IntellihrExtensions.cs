@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
         public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
         {
-            var apiCallPath = String.Format("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/job-end/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+            body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
             bodypropCount++;
-            body["turnoverType"] = ExpressionConverter.ConvertO(bodyturnoverType);
+            body["turnoverType"] = CSharpExpressionConverter.ConvertToken(bodyturnoverType);
             if (bodyturnoverReason != null)
             {
-                body["turnoverReason"] = ExpressionConverter.ConvertO(bodyturnoverReason);
+                body["turnoverReason"] = CSharpExpressionConverter.ConvertToken(bodyturnoverReason);
                 bodypropCount++;
             }
 

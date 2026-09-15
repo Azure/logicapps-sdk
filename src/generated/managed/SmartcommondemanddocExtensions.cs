@@ -17,26 +17,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
             var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(includeDocumentData);
+            callPayload.Queries["includeDocumentData"] = CSharpExpressionConverter.ConvertO(includeDocumentData);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprojectID != null)
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectID);
+                body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["transactionData"] = ExpressionConverter.ConvertO(bodytransactionData);
+            body["transactionData"] = CSharpExpressionConverter.ConvertToken(bodytransactionData);
             bodypropCount++;
-            body["batchConfigResId"] = ExpressionConverter.ConvertO(bodybatchConfigResId);
+            body["batchConfigResId"] = CSharpExpressionConverter.ConvertToken(bodybatchConfigResId);
             if (bodytransactionRange != null)
             {
                 if (bodytransactionRange != null)
                 {
-                    body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                    body["transactionRange"] = CSharpExpressionConverter.ConvertToken(bodytransactionRange);
                     bodypropCount++;
                 }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
             {
                 if (bodytransactionDataType != null)
                 {
-                    body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                    body["transactionDataType"] = CSharpExpressionConverter.Convert(bodytransactionDataType);
                     bodypropCount++;
                 }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 

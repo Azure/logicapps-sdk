@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
     {
         public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(triggerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(triggerId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
             bodypropCount++;
             if (bodycondition != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodycondition);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodycondition);
                 bodypropCount++;
             }
 

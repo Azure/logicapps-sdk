@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var apiCallPath = "/getTrackersForWorkspace";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
             callPayload.Queries["showAllTrackers"] = Convert.ToString(false);
             return new ApiConnectionAction<GetTrackersForWorkspaceResponseBody>(callPayload);
         }
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var apiCallPath = "/getStatusesForATracker";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["trackerId"] = ExpressionConverter.Convert(trackerId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
+            callPayload.Queries["trackerId"] = CSharpExpressionConverter.ConvertO(trackerId);
             return new ApiConnectionAction<GetStatusesForATrackerResponse>(callPayload);
         }
 
@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
+            body["context_work_id"] = CSharpExpressionConverter.ConvertToken(bodycontextWorkId);
             bodypropCount++;
-            body["context_id"] = ExpressionConverter.ConvertO(bodycontextId);
+            body["context_id"] = CSharpExpressionConverter.ConvertToken(bodycontextId);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             var assigneeObject = new JObject();
             var assigneeObjectpropCount = 0;
             assigneeObjectpropCount++;
-            assigneeObject["ty"] = ExpressionConverter.ConvertO(bodyassigneety);
+            assigneeObject["ty"] = CSharpExpressionConverter.Convert(bodyassigneety);
             assigneeObjectpropCount++;
-            assigneeObject["work_id"] = ExpressionConverter.ConvertO(bodyassigneeworkId);
+            assigneeObject["work_id"] = CSharpExpressionConverter.ConvertToken(bodyassigneeworkId);
             if (assigneeObjectpropCount > 0)
             {
                 body["assignee"] = assigneeObject;
@@ -61,22 +61,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
             if (bodydueDate != null)
             {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["due_date"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodydueTimeZone != null)
             {
-                body["due_time_zone"] = ExpressionConverter.ConvertO(bodydueTimeZone);
+                body["due_time_zone"] = CSharpExpressionConverter.ConvertToken(bodydueTimeZone);
                 bodypropCount++;
             }
 
             var workObjectObject = new JObject();
             var workObjectObjectpropCount = 0;
             workObjectObjectpropCount++;
-            workObjectObject["w_wstype"] = ExpressionConverter.ConvertO(bodyworkObjectwWstype);
+            workObjectObject["w_wstype"] = CSharpExpressionConverter.ConvertToken(bodyworkObjectwWstype);
             workObjectObjectpropCount++;
-            workObjectObject["w_id"] = ExpressionConverter.ConvertO(bodyworkObjectwId);
+            workObjectObject["w_id"] = CSharpExpressionConverter.ConvertToken(bodyworkObjectwId);
             if (workObjectObjectpropCount > 0)
             {
                 body["work_object"] = workObjectObject;
@@ -85,19 +85,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
             if (bodytaskStatus != null)
             {
-                body["task_status"] = ExpressionConverter.ConvertO(bodytaskStatus);
+                body["task_status"] = CSharpExpressionConverter.ConvertToken(bodytaskStatus);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parent_id"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parent_id"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
@@ -118,15 +118,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
+            body["context_work_id"] = CSharpExpressionConverter.ConvertToken(bodycontextWorkId);
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             bodypropCount++;
-            body["field_type"] = ExpressionConverter.ConvertO(bodyfieldType);
+            body["field_type"] = CSharpExpressionConverter.ConvertToken(bodyfieldType);
             bodypropCount++;
-            body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
+            body["field_id"] = CSharpExpressionConverter.ConvertToken(bodyfieldId);
             bodypropCount++;
-            body["field_data"] = ExpressionConverter.ConvertO(bodyfieldData);
+            body["field_data"] = CSharpExpressionConverter.ConvertToken(bodyfieldData);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -144,12 +144,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
+            body["context_work_id"] = CSharpExpressionConverter.ConvertToken(bodycontextWorkId);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodytrackerOwner != null)
             {
-                body["tracker_owner"] = ExpressionConverter.ConvertO(bodytrackerOwner);
+                body["tracker_owner"] = CSharpExpressionConverter.ConvertToken(bodytrackerOwner);
                 bodypropCount++;
             }
 
@@ -170,18 +170,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["context_id"] = ExpressionConverter.ConvertO(bodycontextId);
+            body["context_id"] = CSharpExpressionConverter.ConvertToken(bodycontextId);
             bodypropCount++;
-            body["viewOption"] = ExpressionConverter.ConvertO(bodyviewOption);
+            body["viewOption"] = CSharpExpressionConverter.Convert(bodyviewOption);
             bodypropCount++;
-            body["field_title"] = ExpressionConverter.ConvertO(bodyfieldTitle);
+            body["field_title"] = CSharpExpressionConverter.ConvertToken(bodyfieldTitle);
             bodypropCount++;
-            body["field_type"] = ExpressionConverter.ConvertO(bodyfieldType);
+            body["field_type"] = CSharpExpressionConverter.ConvertToken(bodyfieldType);
             if (bodyfieldData != null)
             {
-                body["field_data"] = ExpressionConverter.ConvertO(bodyfieldData);
+                body["field_data"] = CSharpExpressionConverter.ConvertToken(bodyfieldData);
                 bodypropCount++;
             }
 
@@ -202,11 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
+            body["context_work_id"] = CSharpExpressionConverter.ConvertToken(bodycontextWorkId);
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             bodypropCount++;
-            body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
+            body["field_id"] = CSharpExpressionConverter.ConvertToken(bodyfieldId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -224,16 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["source_workspace_id"] = ExpressionConverter.ConvertO(bodysourceWorkspaceId);
+            body["source_workspace_id"] = CSharpExpressionConverter.ConvertToken(bodysourceWorkspaceId);
             bodypropCount++;
-            body["source_tracker_id"] = ExpressionConverter.ConvertO(bodysourceTrackerId);
+            body["source_tracker_id"] = CSharpExpressionConverter.ConvertToken(bodysourceTrackerId);
             bodypropCount++;
-            body["destination_workspace_id"] = ExpressionConverter.ConvertO(bodydestinationWorkspaceId);
+            body["destination_workspace_id"] = CSharpExpressionConverter.ConvertToken(bodydestinationWorkspaceId);
             bodypropCount++;
-            body["import_type"] = ExpressionConverter.ConvertO(bodyimportType);
+            body["import_type"] = CSharpExpressionConverter.ConvertToken(bodyimportType);
             if (bodyoptions != null)
             {
-                body["options"] = ExpressionConverter.ConvertO(bodyoptions);
+                body["options"] = CSharpExpressionConverter.ConvertToken(bodyoptions);
                 bodypropCount++;
             }
 

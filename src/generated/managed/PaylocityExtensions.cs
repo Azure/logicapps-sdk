@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
             var requestBodyOfWebhookpropCount = 0;
             if (requestBodyOfWebhookCompanyId != null)
             {
-                requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(requestBodyOfWebhookCompanyId);
+                requestBodyOfWebhook["companyId"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookCompanyId);
                 requestBodyOfWebhookpropCount++;
             }
 

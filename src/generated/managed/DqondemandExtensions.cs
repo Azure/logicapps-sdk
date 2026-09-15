@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Account/Usage";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["StartDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<GetUsage>(callPayload);
         }
 
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Case";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CaseType"] = ExpressionConverter.Convert(caseType);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CaseType"] = CSharpExpressionConverter.Convert(caseType);
+            callPayload.Queries["Language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Classify";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Categories"] = ExpressionConverter.Convert(categories);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["Categories"] = CSharpExpressionConverter.Convert(categories);
             callPayload.Queries["Language"] = Convert.ToString("English");
             if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["Language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
         }
 
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Compare";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input1"] = ExpressionConverter.Convert(input1);
-            callPayload.Queries["Input2"] = ExpressionConverter.Convert(input2);
-            callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(comparisonAlgorithm);
+            callPayload.Queries["Input1"] = CSharpExpressionConverter.ConvertO(input1);
+            callPayload.Queries["Input2"] = CSharpExpressionConverter.ConvertO(input2);
+            callPayload.Queries["ComparisonAlgorithm"] = CSharpExpressionConverter.Convert(comparisonAlgorithm);
             return new ApiConnectionAction<DQGlobalFloat>(callPayload);
         }
 
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Congruence/Email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+            callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
+            callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
+            callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
         }
 
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Congruence/Country";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["ActionType"] = ExpressionConverter.Convert(actionType);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["ActionType"] = CSharpExpressionConverter.Convert(actionType);
             return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
         }
 
@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Congruence/Salutation";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+            callPayload.Queries["Salutation"] = CSharpExpressionConverter.ConvertO(salutation);
+            callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
+            callPayload.Queries["Language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Derive/Gender";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
         }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Derive/CountryFromCity";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
         }
 
@@ -140,8 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Derive/FromPostalCode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
         }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Derive/EmailType";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
         }
 
@@ -162,24 +162,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (url != null)
-                callPayload.Queries["Url"] = ExpressionConverter.Convert(url);
+                callPayload.Queries["Url"] = CSharpExpressionConverter.ConvertO(url);
             if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
             callPayload.Queries["Threshold"] = Convert.ToString(70);
             if (threshold != null)
-                callPayload.Queries["Threshold"] = ExpressionConverter.Convert(threshold);
+                callPayload.Queries["Threshold"] = CSharpExpressionConverter.ConvertO(threshold);
             callPayload.Queries["OnlyReturnBest"] = Convert.ToString(false);
             if (onlyReturnBest != null)
-                callPayload.Queries["OnlyReturnBest"] = ExpressionConverter.Convert(onlyReturnBest);
+                callPayload.Queries["OnlyReturnBest"] = CSharpExpressionConverter.ConvertO(onlyReturnBest);
             callPayload.Queries["DefaultToCountry"] = Convert.ToString(false);
             if (defaultToCountry != null)
-                callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(defaultToCountry);
+                callPayload.Queries["DefaultToCountry"] = CSharpExpressionConverter.ConvertO(defaultToCountry);
             return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
         }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/Email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -199,8 +199,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/PostCode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -210,8 +210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/TelephoneE164";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -221,8 +221,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/TelephoneInternational";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -232,8 +232,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/TelephoneNational";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/TelephoneRFC3966";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -254,8 +254,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Format/UrlAddress";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(uRLPrefix);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["URLPrefix"] = CSharpExpressionConverter.ConvertO(uRLPrefix);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Generate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(input);
             return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
         }
 
@@ -275,11 +275,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/GenerateToken";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["generateAlgorithmType"] = ExpressionConverter.Convert(generateAlgorithmType);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["generateAlgorithmType"] = CSharpExpressionConverter.Convert(generateAlgorithmType);
             callPayload.Queries["Language"] = Convert.ToString("English");
             if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["Language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -289,8 +289,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Parse/PhoneNumber";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
         }
 
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Parse/Email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
         }
 
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Parse/URL";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
         }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Scoring";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(input);
             return new ApiConnectionAction<ScoringResponse>(callPayload);
         }
 
@@ -330,12 +330,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Transform";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["OperationType"] = ExpressionConverter.Convert(operationType);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
+            callPayload.Queries["OperationType"] = CSharpExpressionConverter.Convert(operationType);
             callPayload.Queries["Language"] = Convert.ToString("English");
             if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["Language"] = CSharpExpressionConverter.Convert(language);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/SequenceTransform";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(input);
             return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
         }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Validate/Email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -365,8 +365,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Validate/PostCode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Validate/UrlAddress";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -386,8 +386,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Validate/Telephone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -397,8 +397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/Validate/DateTime";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["DateTimeFormat"] = CSharpExpressionConverter.ConvertO(dateTimeFormat);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/ValidatePlus/Email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
         }
 
@@ -418,8 +418,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/ValidatePlus/PostCode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
         }
 
@@ -429,173 +429,173 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/ValidatePlus/UrlAddress";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
         {
-            var apiCallPath = String.Format("/Verify/Address/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Verify/Address/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                callPayload.Queries["Line1"] = CSharpExpressionConverter.ConvertO(line1);
             if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                callPayload.Queries["Line2"] = CSharpExpressionConverter.ConvertO(line2);
             if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                callPayload.Queries["Line3"] = CSharpExpressionConverter.ConvertO(line3);
             if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
             if (state != null)
-                callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            callPayload.Queries["Geocode"] = ExpressionConverter.Convert(geocode);
+                callPayload.Queries["State"] = CSharpExpressionConverter.ConvertO(state);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
+            callPayload.Queries["Geocode"] = CSharpExpressionConverter.ConvertO(geocode);
             return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Search/Address/Find/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Search/Address/Find/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Search/Address/Retrieve/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Search/Address/Retrieve/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Deceased/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Deceased/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
+            callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                callPayload.Queries["Line1"] = CSharpExpressionConverter.ConvertO(line1);
             if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                callPayload.Queries["Line2"] = CSharpExpressionConverter.ConvertO(line2);
             if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                callPayload.Queries["Line3"] = CSharpExpressionConverter.ConvertO(line3);
             if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                callPayload.Queries["Town"] = CSharpExpressionConverter.ConvertO(town);
             if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+                callPayload.Queries["County"] = CSharpExpressionConverter.ConvertO(county);
+            callPayload.Queries["Postcode"] = CSharpExpressionConverter.ConvertO(postcode);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/GoneAway/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Suppress/Address/GoneAway/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
+            callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                callPayload.Queries["Line1"] = CSharpExpressionConverter.ConvertO(line1);
             if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                callPayload.Queries["Line2"] = CSharpExpressionConverter.ConvertO(line2);
             if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                callPayload.Queries["Line3"] = CSharpExpressionConverter.ConvertO(line3);
             if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                callPayload.Queries["Town"] = CSharpExpressionConverter.ConvertO(town);
             if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
+                callPayload.Queries["County"] = CSharpExpressionConverter.ConvertO(county);
+            callPayload.Queries["Postcode"] = CSharpExpressionConverter.ConvertO(postcode);
+            callPayload.Queries["ISO2"] = CSharpExpressionConverter.ConvertO(iSO2);
             return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Relocated/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Relocated/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
+            callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
+                callPayload.Queries["Line1"] = CSharpExpressionConverter.ConvertO(line1);
             if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
+                callPayload.Queries["Line2"] = CSharpExpressionConverter.ConvertO(line2);
             if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
+                callPayload.Queries["Line3"] = CSharpExpressionConverter.ConvertO(line3);
             if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
+                callPayload.Queries["Town"] = CSharpExpressionConverter.ConvertO(town);
             if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
+                callPayload.Queries["County"] = CSharpExpressionConverter.ConvertO(county);
+            callPayload.Queries["Postcode"] = CSharpExpressionConverter.ConvertO(postcode);
+            callPayload.Queries["ISO2"] = CSharpExpressionConverter.ConvertO(iSO2);
             return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Personal/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Personal/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Corporate/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Corporate/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/Authenticate/Email/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Authenticate/Email/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Authenticate/Phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Authenticate/Phone/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
+            callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
+            callPayload.Queries["CountryIdentifier"] = CSharpExpressionConverter.ConvertO(countryIdentifier);
             return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
         }
 
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsAllUpper";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsAllLower";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsMixedCase";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsAlphaNumeric";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsNumeric";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsISO2Code";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/IsISO3Code";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -685,9 +685,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/RemoveLeading";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(valToRemove);
-            callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(leaveOneAtStart);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["ValToRemove"] = CSharpExpressionConverter.ConvertO(valToRemove);
+            callPayload.Queries["LeaveOneAtStart"] = CSharpExpressionConverter.ConvertO(leaveOneAtStart);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -697,8 +697,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/RemoveCharacters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["characterType"] = ExpressionConverter.Convert(characterType);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["characterType"] = CSharpExpressionConverter.Convert(characterType);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -718,9 +718,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(repeatingValue);
-            callPayload.Queries["Replacement"] = ExpressionConverter.Convert(replacement);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["RepeatingValue"] = CSharpExpressionConverter.ConvertO(repeatingValue);
+            callPayload.Queries["Replacement"] = CSharpExpressionConverter.ConvertO(replacement);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -730,9 +730,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["stringToReplace"] = CSharpExpressionConverter.ConvertO(stringToReplace);
+            callPayload.Queries["replacement"] = CSharpExpressionConverter.ConvertO(replacement);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -742,9 +742,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["stringToReplace"] = CSharpExpressionConverter.ConvertO(stringToReplace);
+            callPayload.Queries["replacement"] = CSharpExpressionConverter.ConvertO(replacement);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/StringToBinary";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/BinaryToString";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/StringToHex";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/HexToString";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/Reverse";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -824,10 +824,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["collapseNumerics"] = ExpressionConverter.Convert(collapseNumerics);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["collapseNumerics"] = CSharpExpressionConverter.ConvertO(collapseNumerics);
             if (maximumRepeat != null)
-                callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
+                callPayload.Queries["maximumRepeat"] = CSharpExpressionConverter.ConvertO(maximumRepeat);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -837,9 +837,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["MaximumRepeat"] = CSharpExpressionConverter.ConvertO(maximumRepeat);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/FilterStopWords";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -859,9 +859,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/RetainCharacters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(charactersToRetain);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["replacement"] = CSharpExpressionConverter.ConvertO(replacement);
+            callPayload.Queries["charactersToRetain"] = CSharpExpressionConverter.ConvertO(charactersToRetain);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -871,9 +871,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/ExtractCharacters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["extractLength"] = CSharpExpressionConverter.ConvertO(extractLength);
+            callPayload.Queries["extractFrom"] = CSharpExpressionConverter.Convert(extractFrom);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -883,9 +883,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/ExtractWords";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["extractLength"] = CSharpExpressionConverter.ConvertO(extractLength);
+            callPayload.Queries["extractFrom"] = CSharpExpressionConverter.Convert(extractFrom);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/RemoveHTML";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -905,8 +905,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/EndsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["checkfor"] = CSharpExpressionConverter.ConvertO(checkfor);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -916,8 +916,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/StartsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["checkfor"] = CSharpExpressionConverter.ConvertO(checkfor);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -927,8 +927,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/EnsureEndsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["checkFor"] = CSharpExpressionConverter.ConvertO(checkFor);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -938,8 +938,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["checkFor"] = CSharpExpressionConverter.ConvertO(checkFor);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -949,8 +949,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/EnsureStartsWith";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["checkFor"] = CSharpExpressionConverter.ConvertO(checkFor);
             return new ApiConnectionAction<DQGlobal>(callPayload);
         }
 
@@ -960,8 +960,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/StartsWithType";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
 
@@ -971,8 +971,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var apiCallPath = "/StringExtension/EndsWithType";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["Input"] = CSharpExpressionConverter.ConvertO(input);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<DQGlobalBool>(callPayload);
         }
     }

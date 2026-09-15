@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+            callPayload.Queries["publisher"] = CSharpExpressionConverter.ConvertO(publisher);
             var endpoint = new JObject();
             var endpointpropCount = 0;
             endpoint["notificationUrl"] = "@listCallbackUrl()";
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+            callPayload.Queries["publisher"] = CSharpExpressionConverter.ConvertO(publisher);
             var endpoint = new JObject();
             var endpointpropCount = 0;
             endpoint["notificationUrl"] = "@listCallbackUrl()";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+            callPayload.Queries["publisher"] = CSharpExpressionConverter.ConvertO(publisher);
             var endpoint = new JObject();
             var endpointpropCount = 0;
             endpoint["notificationUrl"] = "@listCallbackUrl()";

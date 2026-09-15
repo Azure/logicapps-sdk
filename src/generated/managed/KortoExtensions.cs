@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tagID != null)
-                callPayload.Queries["tagID"] = ExpressionConverter.Convert(tagID);
+                callPayload.Queries["tagID"] = CSharpExpressionConverter.ConvertO(tagID);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             return new ApiConnectionAction<QueryTagsResponse>(callPayload);
         }
 
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tagID != null)
-                callPayload.Queries["tagID"] = ExpressionConverter.Convert(tagID);
+                callPayload.Queries["tagID"] = CSharpExpressionConverter.ConvertO(tagID);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             callPayload.Queries["tagType"] = Convert.ToString(1);
             if (tagType != null)
-                callPayload.Queries["tagType"] = ExpressionConverter.Convert(tagType);
+                callPayload.Queries["tagType"] = CSharpExpressionConverter.ConvertO(tagType);
             if (tagValueType != null)
-                callPayload.Queries["tagValueType"] = ExpressionConverter.Convert(tagValueType);
+                callPayload.Queries["tagValueType"] = CSharpExpressionConverter.ConvertO(tagValueType);
             return new ApiConnectionAction<QueryTagResponseItem>(callPayload);
         }
 
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
         }
 
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -86,17 +86,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (actor != null)
-                callPayload.Queries["actor"] = ExpressionConverter.Convert(actor);
+                callPayload.Queries["actor"] = CSharpExpressionConverter.ConvertO(actor);
             if (externalid != null)
-                callPayload.Queries["externalid"] = ExpressionConverter.Convert(externalid);
+                callPayload.Queries["externalid"] = CSharpExpressionConverter.ConvertO(externalid);
             if (externalurl != null)
-                callPayload.Queries["externalurl"] = ExpressionConverter.Convert(externalurl);
+                callPayload.Queries["externalurl"] = CSharpExpressionConverter.ConvertO(externalurl);
             if (createdAt != null)
-                callPayload.Queries["createdAt"] = ExpressionConverter.Convert(createdAt);
+                callPayload.Queries["createdAt"] = CSharpExpressionConverter.ConvertO(createdAt);
             if (createdBy != null)
-                callPayload.Queries["createdBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["createdBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
         }
 
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             return new ApiConnectionAction<DownloadUrlMessage>(callPayload);
         }
 
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             if (tagValue != null)
-                callPayload.Queries["tagValue"] = ExpressionConverter.Convert(tagValue);
+                callPayload.Queries["tagValue"] = CSharpExpressionConverter.ConvertO(tagValue);
             return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
         }
 
@@ -152,13 +152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recordID != null)
-                callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
+                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
             if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
             if (tagName != null)
-                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             if (tagValue != null)
-                callPayload.Queries["tagValue"] = ExpressionConverter.Convert(tagValue);
+                callPayload.Queries["tagValue"] = CSharpExpressionConverter.ConvertO(tagValue);
             return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
         }
     }

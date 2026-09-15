@@ -20,88 +20,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["api_key"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodymobile != null)
             {
-                body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
+                body["mobile"] = CSharpExpressionConverter.ConvertToken(bodymobile);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodysalutation != null)
             {
-                body["salutation"] = ExpressionConverter.ConvertO(bodysalutation);
+                body["salutation"] = CSharpExpressionConverter.ConvertToken(bodysalutation);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodylocale != null)
             {
-                body["locale"] = ExpressionConverter.ConvertO(bodylocale);
+                body["locale"] = CSharpExpressionConverter.ConvertToken(bodylocale);
                 bodypropCount++;
             }
 
             if (bodyRef != null)
             {
-                body["ref"] = ExpressionConverter.ConvertO(bodyRef);
+                body["ref"] = CSharpExpressionConverter.ConvertToken(bodyRef);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyrecordType != null)
             {
-                body["record_type"] = ExpressionConverter.ConvertO(bodyrecordType);
+                body["record_type"] = CSharpExpressionConverter.ConvertToken(bodyrecordType);
                 bodypropCount++;
             }
 
             if (bodyrecordId != null)
             {
-                body["record_id"] = ExpressionConverter.ConvertO(bodyrecordId);
+                body["record_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordId);
                 bodypropCount++;
             }
 
             if (bodyversionNumber != null)
             {
-                body["version_number"] = ExpressionConverter.ConvertO(bodyversionNumber);
+                body["version_number"] = CSharpExpressionConverter.ConvertToken(bodyversionNumber);
                 bodypropCount++;
             }
 

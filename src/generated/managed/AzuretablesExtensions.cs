@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<InsertEntityResponse> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             var entity = new JObject();
             var entitypropCount = 0;
             if (entitypropCount > 0)
@@ -32,97 +32,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName = null, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            callPayload.Body = ExpressionConverter.ConvertO(tableName);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(tableName);
             return new ApiConnectionAction<GetTableResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> ifMatch = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             if (ifMatch != null)
-                callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
+                callPayload.Headers["If-Match"] = CSharpExpressionConverter.ConvertO(ifMatch);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             return new ApiConnectionAction<GetEntityResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> GetTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             return new ApiConnectionAction<GetTableResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTablesResponse> GetTables(Expression<Func<string>> storageAccountName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             return new ApiConnectionAction<GetTablesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             var entity = new JObject();
             var entitypropCount = 0;
             if (entitypropCount > 0)
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             var entity = new JObject();
             var entitypropCount = 0;
             if (entitypropCount > 0)
@@ -154,12 +154,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
+            callPayload.Headers["If-Match"] = CSharpExpressionConverter.ConvertO(ifMatch);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             var entity = new JObject();
             var entitypropCount = 0;
             if (entitypropCount > 0)
@@ -173,12 +173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
+            callPayload.Headers["If-Match"] = CSharpExpressionConverter.ConvertO(ifMatch);
             if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
+                callPayload.Headers["x-ms-client-request-id"] = CSharpExpressionConverter.ConvertO(xMsClientRequestId);
             var entity = new JObject();
             var entitypropCount = 0;
             if (entitypropCount > 0)

@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
             var apiCallPath = "/_apis/Accounts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["memberId"] = ExpressionConverter.Convert(memberId);
+            callPayload.Queries["memberId"] = CSharpExpressionConverter.ConvertO(memberId);
             return new ApiConnectionAction<VstsListAccount>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Profile>(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
         {
-            var apiCallPath = String.Format("/{0}/_apis/projects", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/projects", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VstsListProject>(callPayload);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/queries", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitemtypes", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitemtypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
@@ -60,17 +60,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> ids)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+            callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/queries/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(folderPath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderPath, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListJObject> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/wiql/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/wiql/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queryId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VstsListJObject>(callPayload);
@@ -88,18 +88,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListSubject> GetSubject(Expression<Func<string>> account, Expression<Func<string>> subjectQueryDetailssearchTerm, Expression<Func<string[]>> subjectQueryDetailssubjectKind, Expression<Func<string>> subjectQueryDetailsscopeDescriptor = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/graph/subjectquery", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/graph/subjectquery", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var subjectQueryDetails = new JObject();
             var subjectQueryDetailspropCount = 0;
             subjectQueryDetailspropCount++;
-            subjectQueryDetails["query"] = ExpressionConverter.ConvertO(subjectQueryDetailssearchTerm);
+            subjectQueryDetails["query"] = CSharpExpressionConverter.ConvertToken(subjectQueryDetailssearchTerm);
             subjectQueryDetailspropCount++;
-            subjectQueryDetails["subjectKind"] = ExpressionConverter.ConvertO(subjectQueryDetailssubjectKind);
+            subjectQueryDetails["subjectKind"] = CSharpExpressionConverter.ConvertToken(subjectQueryDetailssubjectKind);
             if (subjectQueryDetailsscopeDescriptor != null)
             {
-                subjectQueryDetails["scopeDescriptor"] = ExpressionConverter.ConvertO(subjectQueryDetailsscopeDescriptor);
+                subjectQueryDetails["scopeDescriptor"] = CSharpExpressionConverter.ConvertToken(subjectQueryDetailsscopeDescriptor);
                 subjectQueryDetailspropCount++;
             }
 
@@ -114,20 +114,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<JToken> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<int>> workItempriority = null, Expression<Func<KeyValuePair[]>> workItemotherFields = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitems/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var workItem = new JObject();
             var workItempropCount = 0;
             if (workItempriority != null)
             {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                workItem["priority"] = CSharpExpressionConverter.ConvertToken(workItempriority);
                 workItempropCount++;
             }
 
             if (workItemotherFields != null)
             {
-                workItem["userEnteredFields"] = ExpressionConverter.ConvertO(workItemotherFields);
+                workItem["userEnteredFields"] = CSharpExpressionConverter.ConvertToken(workItemotherFields);
                 workItempropCount++;
             }
 

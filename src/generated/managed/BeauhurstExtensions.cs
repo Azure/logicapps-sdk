@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
             var apiCallPath = "/_api/v1/companies/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["names"] = ExpressionConverter.Convert(names);
+            callPayload.Queries["names"] = CSharpExpressionConverter.ConvertO(names);
             return new ApiConnectionAction<GetCompanyFidResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
         {
-            var apiCallPath = String.Format("/_api/v1/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(fID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
             var apiCallPath = "/_api/v1/transactions/company";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company_ids"] = ExpressionConverter.Convert(companyIds);
-            callPayload.Queries["includes"] = ExpressionConverter.Convert(includes);
+            callPayload.Queries["company_ids"] = CSharpExpressionConverter.ConvertO(companyIds);
+            callPayload.Queries["includes"] = CSharpExpressionConverter.Convert(includes);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<FundsByFIDResponse>(callPayload);
         }

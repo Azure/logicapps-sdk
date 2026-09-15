@@ -20,42 +20,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["alertText"] = ExpressionConverter.ConvertO(bodyalertText);
+            body["alertText"] = CSharpExpressionConverter.ConvertToken(bodyalertText);
             bodypropCount++;
-            body["alertTitle"] = ExpressionConverter.ConvertO(bodyalertTitle);
+            body["alertTitle"] = CSharpExpressionConverter.ConvertToken(bodyalertTitle);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
             if (bodyisMandatory != null)
             {
-                body["isMandatory"] = ExpressionConverter.ConvertO(bodyisMandatory);
+                body["isMandatory"] = CSharpExpressionConverter.ConvertToken(bodyisMandatory);
                 bodypropCount++;
             }
 
             if (bodysendSMS != null)
             {
-                body["sendSMS"] = ExpressionConverter.ConvertO(bodysendSMS);
+                body["sendSMS"] = CSharpExpressionConverter.ConvertToken(bodysendSMS);
                 bodypropCount++;
             }
 
@@ -103,90 +103,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodyareCommentsAuthorized != null)
             {
-                body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
+                body["areCommentsAuthorized"] = CSharpExpressionConverter.ConvertToken(bodyareCommentsAuthorized);
                 bodypropCount++;
             }
 
             if (bodyshouldNotifyUsers != null)
             {
-                body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
+                body["shouldNotifyUsers"] = CSharpExpressionConverter.ConvertToken(bodyshouldNotifyUsers);
                 bodypropCount++;
             }
 
             if (bodyisMustReadContent != null)
             {
-                body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
+                body["isMustReadContent"] = CSharpExpressionConverter.ConvertToken(bodyisMustReadContent);
                 bodypropCount++;
             }
 
@@ -207,104 +207,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             bodypropCount++;
-            body["contentUrl"] = ExpressionConverter.ConvertO(bodycontentUrl);
+            body["contentUrl"] = CSharpExpressionConverter.ConvertToken(bodycontentUrl);
             if (bodyisShareable != null)
             {
-                body["isShareable"] = ExpressionConverter.ConvertO(bodyisShareable);
+                body["isShareable"] = CSharpExpressionConverter.ConvertToken(bodyisShareable);
                 bodypropCount++;
             }
 
             if (bodyisOfficialContent != null)
             {
-                body["isOfficialContent"] = ExpressionConverter.ConvertO(bodyisOfficialContent);
+                body["isOfficialContent"] = CSharpExpressionConverter.ConvertToken(bodyisOfficialContent);
                 bodypropCount++;
             }
 
             if (bodyareCommentsAuthorized != null)
             {
-                body["areCommentsAuthorized"] = ExpressionConverter.ConvertO(bodyareCommentsAuthorized);
+                body["areCommentsAuthorized"] = CSharpExpressionConverter.ConvertToken(bodyareCommentsAuthorized);
                 bodypropCount++;
             }
 
             if (bodyshouldNotifyUsers != null)
             {
-                body["shouldNotifyUsers"] = ExpressionConverter.ConvertO(bodyshouldNotifyUsers);
+                body["shouldNotifyUsers"] = CSharpExpressionConverter.ConvertToken(bodyshouldNotifyUsers);
                 bodypropCount++;
             }
 
             if (bodyisMustReadContent != null)
             {
-                body["isMustReadContent"] = ExpressionConverter.ConvertO(bodyisMustReadContent);
+                body["isMustReadContent"] = CSharpExpressionConverter.ConvertToken(bodyisMustReadContent);
                 bodypropCount++;
             }
 
@@ -327,77 +327,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             body["discriminator"] = "Cta";
             bodypropCount++;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
             body["ctaDiscriminator"] = "SuggestContent";
             bodypropCount++;
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -417,77 +417,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             body["discriminator"] = "Cta";
             bodypropCount++;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
             body["ctaDiscriminator"] = "Invitation";
             bodypropCount++;
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -507,77 +507,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             body["discriminator"] = "Cta";
             bodypropCount++;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
             body["ctaDiscriminator"] = "Mobile";
             bodypropCount++;
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -599,96 +599,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             body["ctaDiscriminator"] = "Event";
             bodypropCount++;
             bodypropCount++;
-            body["channelIds"] = ExpressionConverter.ConvertO(bodychannelIds);
+            body["channelIds"] = CSharpExpressionConverter.ConvertToken(bodychannelIds);
             if (bodyaudienceId != null)
             {
-                body["audienceId"] = ExpressionConverter.ConvertO(bodyaudienceId);
+                body["audienceId"] = CSharpExpressionConverter.ConvertToken(bodyaudienceId);
                 bodypropCount++;
             }
 
             if (bodycategoryIds != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIds);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIds);
                 bodypropCount++;
             }
 
             if (bodylink != null)
             {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
+                body["link"] = CSharpExpressionConverter.ConvertToken(bodylink);
                 bodypropCount++;
             }
 
             if (bodyawardedBonus != null)
             {
-                body["awardedBonus"] = ExpressionConverter.ConvertO(bodyawardedBonus);
+                body["awardedBonus"] = CSharpExpressionConverter.ConvertToken(bodyawardedBonus);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodyshouldDisplayTitle != null)
             {
-                body["shouldDisplayTitle"] = ExpressionConverter.ConvertO(bodyshouldDisplayTitle);
+                body["shouldDisplayTitle"] = CSharpExpressionConverter.ConvertToken(bodyshouldDisplayTitle);
                 bodypropCount++;
             }
 
             if (bodyshouldDisplayButton != null)
             {
-                body["shouldDisplayButton"] = ExpressionConverter.ConvertO(bodyshouldDisplayButton);
+                body["shouldDisplayButton"] = CSharpExpressionConverter.ConvertToken(bodyshouldDisplayButton);
                 bodypropCount++;
             }
 
             if (bodypublicationStartDate != null)
             {
-                body["publicationStartDate"] = ExpressionConverter.ConvertO(bodypublicationStartDate);
+                body["publicationStartDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationStartDate);
                 bodypropCount++;
             }
 
             if (bodypublicationEndDate != null)
             {
-                body["publicationEndDate"] = ExpressionConverter.ConvertO(bodypublicationEndDate);
+                body["publicationEndDate"] = CSharpExpressionConverter.ConvertToken(bodypublicationEndDate);
                 bodypropCount++;
             }
 
             if (bodymyNewsDisplay != null)
             {
-                body["myNewsDisplay"] = ExpressionConverter.ConvertO(bodymyNewsDisplay);
+                body["myNewsDisplay"] = CSharpExpressionConverter.Convert(bodymyNewsDisplay);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfMyNews != null)
             {
-                body["shouldPinTopOfMyNews"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfMyNews);
+                body["shouldPinTopOfMyNews"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfMyNews);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsStartDate != null)
             {
-                body["pinOfMyNewsStartDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsStartDate);
+                body["pinOfMyNewsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinOfMyNewsEndDate != null)
             {
-                body["pinOfMyNewsEndDate"] = ExpressionConverter.ConvertO(bodypinOfMyNewsEndDate);
+                body["pinOfMyNewsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinOfMyNewsEndDate);
                 bodypropCount++;
             }
 
             if (bodyshouldPinTopOfSelectedChannels != null)
             {
-                body["shouldPinTopOfSelectedChannels"] = ExpressionConverter.ConvertO(bodyshouldPinTopOfSelectedChannels);
+                body["shouldPinTopOfSelectedChannels"] = CSharpExpressionConverter.ConvertToken(bodyshouldPinTopOfSelectedChannels);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsStartDate != null)
             {
-                body["pinTopOfSelectedChannelsStartDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsStartDate);
+                body["pinTopOfSelectedChannelsStartDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsStartDate);
                 bodypropCount++;
             }
 
             if (bodypinTopOfSelectedChannelsEndDate != null)
             {
-                body["pinTopOfSelectedChannelsEndDate"] = ExpressionConverter.ConvertO(bodypinTopOfSelectedChannelsEndDate);
+                body["pinTopOfSelectedChannelsEndDate"] = CSharpExpressionConverter.ConvertToken(bodypinTopOfSelectedChannelsEndDate);
                 bodypropCount++;
             }
 
@@ -703,15 +703,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<string>> bodybadgeId, Expression<Func<int>> bodylevel)
         {
-            var apiCallPath = String.Format("/users/{0}/badges/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/badges/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["badgeId"] = ExpressionConverter.ConvertO(bodybadgeId);
+            body["badgeId"] = CSharpExpressionConverter.ConvertToken(bodybadgeId);
             bodypropCount++;
-            body["level"] = ExpressionConverter.ConvertO(bodylevel);
+            body["level"] = CSharpExpressionConverter.ConvertToken(bodylevel);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -723,31 +723,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<bodycontentsInputItem[]>> bodycontents, Expression<Func<bool>> bodyisEngaging = null, Expression<Func<bool>> bodyisInternal = null, Expression<Func<int>> bodypoints = null)
         {
-            var apiCallPath = String.Format("/users/{0}/customactions/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/customactions/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyisEngaging != null)
             {
-                body["isEngaging"] = ExpressionConverter.ConvertO(bodyisEngaging);
+                body["isEngaging"] = CSharpExpressionConverter.ConvertToken(bodyisEngaging);
                 bodypropCount++;
             }
 
             if (bodyisInternal != null)
             {
-                body["isInternal"] = ExpressionConverter.ConvertO(bodyisInternal);
+                body["isInternal"] = CSharpExpressionConverter.ConvertToken(bodyisInternal);
                 bodypropCount++;
             }
 
             if (bodypoints != null)
             {
-                body["points"] = ExpressionConverter.ConvertO(bodypoints);
+                body["points"] = CSharpExpressionConverter.ConvertToken(bodypoints);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+            body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels(Expression<Func<string>> badgeId)
         {
-            var apiCallPath = String.Format("/badges/{0}/levels", ExpressionConverter.ConvertWithUrlEncoding(badgeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/badges/{0}/levels", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(badgeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["culture"] = Convert.ToString("en");
             if (culture != null)
-                callPayload.Queries["culture"] = ExpressionConverter.Convert(culture);
+                callPayload.Queries["culture"] = CSharpExpressionConverter.ConvertO(culture);
             return new ApiConnectionAction<GetFoldersResponse>(callPayload);
         }
     }

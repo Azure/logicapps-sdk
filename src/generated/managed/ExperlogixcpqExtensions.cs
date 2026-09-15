@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             var apiCallPath = "/api/ConfigurationXml";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
         }
 
@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["targetId"] = ExpressionConverter.ConvertO(reqtargetId);
+            req["targetId"] = CSharpExpressionConverter.ConvertToken(reqtargetId);
             reqpropCount++;
-            req["sourceId"] = ExpressionConverter.ConvertO(reqsourceId);
+            req["sourceId"] = CSharpExpressionConverter.ConvertToken(reqsourceId);
             reqpropCount++;
-            req["type"] = ExpressionConverter.ConvertO(reqtype);
+            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
             if (reqlineItemIds != null)
             {
-                req["lineItemIds"] = ExpressionConverter.ConvertO(reqlineItemIds);
+                req["lineItemIds"] = CSharpExpressionConverter.ConvertToken(reqlineItemIds);
                 reqpropCount++;
             }
 
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["id"] = ExpressionConverter.ConvertO(reqid);
+            req["id"] = CSharpExpressionConverter.ConvertToken(reqid);
             reqpropCount++;
-            req["type"] = ExpressionConverter.ConvertO(reqtype);
+            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
             reqpropCount++;
-            req["configurationXml"] = ExpressionConverter.ConvertO(reqconfigurationXml);
+            req["configurationXml"] = CSharpExpressionConverter.ConvertToken(reqconfigurationXml);
             if (reqpropCount > 0)
             {
                 callPayload.Body = req;
@@ -81,11 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["id"] = ExpressionConverter.ConvertO(reqid);
+            req["id"] = CSharpExpressionConverter.ConvertToken(reqid);
             reqpropCount++;
-            req["type"] = ExpressionConverter.ConvertO(reqtype);
+            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
             reqpropCount++;
-            req["configurationXml"] = ExpressionConverter.ConvertO(reqconfigurationXml);
+            req["configurationXml"] = CSharpExpressionConverter.ConvertToken(reqconfigurationXml);
             if (reqpropCount > 0)
             {
                 callPayload.Body = req;

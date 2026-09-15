@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["page_size"] = Convert.ToString(100);
             if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["page_size"] = CSharpExpressionConverter.ConvertO(pageSize);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
             return new ApiConnectionAction<ListOfAllUsersResponse>(callPayload);
         }
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock(Expression<Func<string>> blockId)
         {
-            var apiCallPath = String.Format("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blocks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-02-22");
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DeleteablockResponse> Deleteablock(Expression<Func<string>> blockId)
         {
-            var apiCallPath = String.Format("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blocks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
         {
-            var apiCallPath = String.Format("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blocks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var paragraphObjectpropCount = 0;
             if (bodyparagraphrichText != null)
             {
-                paragraphObject["rich_text"] = ExpressionConverter.ConvertO(bodyparagraphrichText);
+                paragraphObject["rich_text"] = CSharpExpressionConverter.ConvertToken(bodyparagraphrichText);
                 paragraphObjectpropCount++;
             }
 
             if (bodyparagraphcolor != null)
             {
-                paragraphObject["color"] = ExpressionConverter.ConvertO(bodyparagraphcolor);
+                paragraphObject["color"] = CSharpExpressionConverter.ConvertToken(bodyparagraphcolor);
                 paragraphObjectpropCount++;
             }
 
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var heading1ObjectpropCount = 0;
             if (bodyheading1richText != null)
             {
-                heading1Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading1richText);
+                heading1Object["rich_text"] = CSharpExpressionConverter.ConvertToken(bodyheading1richText);
                 heading1ObjectpropCount++;
             }
 
             if (bodyheading1color != null)
             {
-                heading1Object["color"] = ExpressionConverter.ConvertO(bodyheading1color);
+                heading1Object["color"] = CSharpExpressionConverter.ConvertToken(bodyheading1color);
                 heading1ObjectpropCount++;
             }
 
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var heading2ObjectpropCount = 0;
             if (bodyheading2richText != null)
             {
-                heading2Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading2richText);
+                heading2Object["rich_text"] = CSharpExpressionConverter.ConvertToken(bodyheading2richText);
                 heading2ObjectpropCount++;
             }
 
             if (bodyheading2color != null)
             {
-                heading2Object["color"] = ExpressionConverter.ConvertO(bodyheading2color);
+                heading2Object["color"] = CSharpExpressionConverter.ConvertToken(bodyheading2color);
                 heading2ObjectpropCount++;
             }
 
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var heading3ObjectpropCount = 0;
             if (bodyheading3richText != null)
             {
-                heading3Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading3richText);
+                heading3Object["rich_text"] = CSharpExpressionConverter.ConvertToken(bodyheading3richText);
                 heading3ObjectpropCount++;
             }
 
             if (bodyheading3color != null)
             {
-                heading3Object["color"] = ExpressionConverter.ConvertO(bodyheading3color);
+                heading3Object["color"] = CSharpExpressionConverter.ConvertToken(bodyheading3color);
                 heading3ObjectpropCount++;
             }
 
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var bulletedListItemObjectpropCount = 0;
             if (bodybulletedListItemrichText != null)
             {
-                bulletedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodybulletedListItemrichText);
+                bulletedListItemObject["rich_text"] = CSharpExpressionConverter.ConvertToken(bodybulletedListItemrichText);
                 bulletedListItemObjectpropCount++;
             }
 
             if (bodybulletedListItemcolor != null)
             {
-                bulletedListItemObject["color"] = ExpressionConverter.ConvertO(bodybulletedListItemcolor);
+                bulletedListItemObject["color"] = CSharpExpressionConverter.ConvertToken(bodybulletedListItemcolor);
                 bulletedListItemObjectpropCount++;
             }
 
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var numberedListItemObjectpropCount = 0;
             if (bodynumberedListItemrichText != null)
             {
-                numberedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodynumberedListItemrichText);
+                numberedListItemObject["rich_text"] = CSharpExpressionConverter.ConvertToken(bodynumberedListItemrichText);
                 numberedListItemObjectpropCount++;
             }
 
             if (bodynumberedListItemcolor != null)
             {
-                numberedListItemObject["color"] = ExpressionConverter.ConvertO(bodynumberedListItemcolor);
+                numberedListItemObject["color"] = CSharpExpressionConverter.ConvertToken(bodynumberedListItemcolor);
                 numberedListItemObjectpropCount++;
             }
 
@@ -188,19 +188,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var toDoObjectpropCount = 0;
             if (bodytoDorichText != null)
             {
-                toDoObject["rich_text"] = ExpressionConverter.ConvertO(bodytoDorichText);
+                toDoObject["rich_text"] = CSharpExpressionConverter.ConvertToken(bodytoDorichText);
                 toDoObjectpropCount++;
             }
 
             if (bodytoDochecked != null)
             {
-                toDoObject["checked"] = ExpressionConverter.ConvertO(bodytoDochecked);
+                toDoObject["checked"] = CSharpExpressionConverter.ConvertToken(bodytoDochecked);
                 toDoObjectpropCount++;
             }
 
             if (bodytoDocolor != null)
             {
-                toDoObject["color"] = ExpressionConverter.ConvertO(bodytoDocolor);
+                toDoObject["color"] = CSharpExpressionConverter.ConvertToken(bodytoDocolor);
                 toDoObjectpropCount++;
             }
 
@@ -221,12 +221,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren(Expression<Func<string>> blockId, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = String.Format("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["page_size"] = Convert.ToString(100);
             if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["page_size"] = CSharpExpressionConverter.ConvertO(pageSize);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
             return new ApiConnectionAction<RetrieveBlockChildrenResponse>(callPayload);
         }
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<bodychildrenInputItem[]>> bodychildren = null)
         {
-            var apiCallPath = String.Format("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var bodypropCount = 0;
             if (bodychildren != null)
             {
-                body["children"] = ExpressionConverter.ConvertO(bodychildren);
+                body["children"] = CSharpExpressionConverter.ConvertToken(bodychildren);
                 bodypropCount++;
             }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase(Expression<Func<string>> databaseId)
         {
-            var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -276,18 +276,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             var sortObject = new JObject();
             var sortObjectpropCount = 0;
             if (bodysortdirection != null)
             {
-                sortObject["direction"] = ExpressionConverter.ConvertO(bodysortdirection);
+                sortObject["direction"] = CSharpExpressionConverter.ConvertToken(bodysortdirection);
                 sortObjectpropCount++;
             }
 
             if (bodysorttimestamp != null)
             {
-                sortObject["timestamp"] = ExpressionConverter.ConvertO(bodysorttimestamp);
+                sortObject["timestamp"] = CSharpExpressionConverter.ConvertToken(bodysorttimestamp);
                 sortObjectpropCount++;
             }
 
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> QueryADatabase(Expression<Func<string>> databaseId)
         {
-            var apiCallPath = String.Format("/databases/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem(Expression<Func<string>> pageId, Expression<Func<string>> propertyId)
         {
-            var apiCallPath = String.Format("/pages/{0}/properties/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(propertyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(propertyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage(Expression<Func<string>> pageId)
         {
-            var apiCallPath = String.Format("/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var parentObjectpropCount = 0;
             if (bodyparentdatabaseId != null)
             {
-                parentObject["database_id"] = ExpressionConverter.ConvertO(bodyparentdatabaseId);
+                parentObject["database_id"] = CSharpExpressionConverter.ConvertToken(bodyparentdatabaseId);
                 parentObjectpropCount++;
             }
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var iconObjectpropCount = 0;
             if (bodyiconemoji != null)
             {
-                iconObject["emoji"] = ExpressionConverter.ConvertO(bodyiconemoji);
+                iconObject["emoji"] = CSharpExpressionConverter.ConvertToken(bodyiconemoji);
                 iconObjectpropCount++;
             }
 
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var externalObjectpropCount = 0;
             if (bodycoverexternalurl != null)
             {
-                externalObject["url"] = ExpressionConverter.ConvertO(bodycoverexternalurl);
+                externalObject["url"] = CSharpExpressionConverter.ConvertToken(bodycoverexternalurl);
                 externalObjectpropCount++;
             }
 
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var apiCallPath = "/comments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["block_id"] = ExpressionConverter.Convert(blockId);
+            callPayload.Queries["block_id"] = CSharpExpressionConverter.ConvertO(blockId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
             return new ApiConnectionAction<CommentResponse>(callPayload);
         }
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var parentObjectpropCount = 0;
             if (bodyparentpageId != null)
             {
-                parentObject["page_id"] = ExpressionConverter.ConvertO(bodyparentpageId);
+                parentObject["page_id"] = CSharpExpressionConverter.ConvertToken(bodyparentpageId);
                 parentObjectpropCount++;
             }
 
@@ -458,13 +458,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
             if (bodydiscussionId != null)
             {
-                body["discussion_id"] = ExpressionConverter.ConvertO(bodydiscussionId);
+                body["discussion_id"] = CSharpExpressionConverter.ConvertToken(bodydiscussionId);
                 bodypropCount++;
             }
 
             if (bodyrichText != null)
             {
-                body["rich_text"] = ExpressionConverter.ConvertO(bodyrichText);
+                body["rich_text"] = CSharpExpressionConverter.ConvertToken(bodyrichText);
                 bodypropCount++;
             }
 

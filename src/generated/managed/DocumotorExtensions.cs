@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
         public IBodyWorkflowAction<string> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<acceptInput>> accept, Expression<Func<string>> stageId = null)
         {
-            var apiCallPath = String.Format("/template/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/template/{0}/generate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.Convert(accept);
             if (stageId != null)
-                callPayload.Headers["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Headers["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             var documentData = new JObject();
             var documentDatapropCount = 0;
             if (documentDatapropCount > 0)

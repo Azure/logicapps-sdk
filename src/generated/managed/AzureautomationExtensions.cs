@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
@@ -34,28 +34,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> runbookName = null, Expression<Func<object>> bodypropertiesrunbookParameters = null, Expression<Func<string>> bodypropertieshybridAutomationWorkerGroup = null, Expression<Func<bool>> wait = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
             if (runbookName != null)
-                callPayload.Queries["runbookName"] = ExpressionConverter.Convert(runbookName);
+                callPayload.Queries["runbookName"] = CSharpExpressionConverter.ConvertO(runbookName);
             callPayload.Queries["wait"] = Convert.ToString(false);
             if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
+                callPayload.Queries["wait"] = CSharpExpressionConverter.ConvertO(wait);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
             var propertiesObjectpropCount = 0;
             if (bodypropertiesrunbookParameters != null)
             {
-                propertiesObject["parameters"] = ExpressionConverter.ConvertO(bodypropertiesrunbookParameters);
+                propertiesObject["parameters"] = CSharpExpressionConverter.ConvertToken(bodypropertiesrunbookParameters);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertieshybridAutomationWorkerGroup != null)
             {
-                propertiesObject["runOn"] = ExpressionConverter.ConvertO(bodypropertieshybridAutomationWorkerGroup);
+                propertiesObject["runOn"] = CSharpExpressionConverter.ConvertToken(bodypropertieshybridAutomationWorkerGroup);
                 propertiesObjectpropCount++;
             }
 

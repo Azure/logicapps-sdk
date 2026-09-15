@@ -20,26 +20,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+            body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
             bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             if (bodymultipleEdits != null)
             {
-                body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                body["multiple_edits"] = CSharpExpressionConverter.ConvertToken(bodymultipleEdits);
                 bodypropCount++;
             }
 
             if (bodyneuralSpellcheck != null)
             {
-                body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                body["neural_spellcheck"] = CSharpExpressionConverter.ConvertToken(bodyneuralSpellcheck);
                 bodypropCount++;
             }
 
             if (bodylang != null)
             {
-                body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                body["lang"] = CSharpExpressionConverter.ConvertToken(bodylang);
                 bodypropCount++;
             }
 
@@ -60,26 +60,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+            body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
             bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             if (bodymultipleEdits != null)
             {
-                body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                body["multiple_edits"] = CSharpExpressionConverter.ConvertToken(bodymultipleEdits);
                 bodypropCount++;
             }
 
             if (bodyneuralSpellcheck != null)
             {
-                body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                body["neural_spellcheck"] = CSharpExpressionConverter.ConvertToken(bodyneuralSpellcheck);
                 bodypropCount++;
             }
 
             if (bodylang != null)
             {
-                body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                body["lang"] = CSharpExpressionConverter.ConvertToken(bodylang);
                 bodypropCount++;
             }
 
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodysentScores != null)
             {
-                body["sent_scores"] = ExpressionConverter.ConvertO(bodysentScores);
+                body["sent_scores"] = CSharpExpressionConverter.ConvertToken(bodysentScores);
                 bodypropCount++;
             }
 

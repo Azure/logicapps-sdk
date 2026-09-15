@@ -14,32 +14,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
         public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
         {
-            var apiCallPath = String.Format("/notifications/{0}", ExpressionConverter.ConvertWithUrlEncoding(notificationName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/notifications/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(notificationName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydynamicText != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodydynamicText);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodydynamicText);
                 bodypropCount++;
             }
 
             if (bodydynamicTitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodydynamicTitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodydynamicTitle);
                 bodypropCount++;
             }
 
             if (bodyinputParameter != null)
             {
-                body["input"] = ExpressionConverter.ConvertO(bodyinputParameter);
+                body["input"] = CSharpExpressionConverter.ConvertToken(bodyinputParameter);
                 bodypropCount++;
             }
 
             if (bodydevices != null)
             {
-                body["devices"] = ExpressionConverter.ConvertO(bodydevices);
+                body["devices"] = CSharpExpressionConverter.ConvertToken(bodydevices);
                 bodypropCount++;
             }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["actionName"] = ExpressionConverter.ConvertO(bodyactionName);
+            body["actionName"] = CSharpExpressionConverter.ConvertToken(bodyactionName);
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

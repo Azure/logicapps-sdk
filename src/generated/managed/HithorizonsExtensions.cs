@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             var apiCallPath = "/Company/Get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["HitHorizonsId"] = ExpressionConverter.Convert(hitHorizonsId);
+            callPayload.Queries["HitHorizonsId"] = CSharpExpressionConverter.ConvertO(hitHorizonsId);
             return new ApiConnectionAction<CompanyDetailResultApiResponse>(callPayload);
         }
 
@@ -28,29 +28,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (dUNSNumber != null)
-                callPayload.Queries["DUNSNumber"] = ExpressionConverter.Convert(dUNSNumber);
+                callPayload.Queries["DUNSNumber"] = CSharpExpressionConverter.ConvertO(dUNSNumber);
             if (companyName != null)
-                callPayload.Queries["CompanyName"] = ExpressionConverter.Convert(companyName);
+                callPayload.Queries["CompanyName"] = CSharpExpressionConverter.ConvertO(companyName);
             if (nationalId != null)
-                callPayload.Queries["NationalId"] = ExpressionConverter.Convert(nationalId);
+                callPayload.Queries["NationalId"] = CSharpExpressionConverter.ConvertO(nationalId);
             if (addressUnstructured != null)
-                callPayload.Queries["AddressUnstructured"] = ExpressionConverter.Convert(addressUnstructured);
+                callPayload.Queries["AddressUnstructured"] = CSharpExpressionConverter.ConvertO(addressUnstructured);
             if (addressStreet != null)
-                callPayload.Queries["AddressStreet"] = ExpressionConverter.Convert(addressStreet);
+                callPayload.Queries["AddressStreet"] = CSharpExpressionConverter.ConvertO(addressStreet);
             if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
             if (stateProvince != null)
-                callPayload.Queries["StateProvince"] = ExpressionConverter.Convert(stateProvince);
+                callPayload.Queries["StateProvince"] = CSharpExpressionConverter.ConvertO(stateProvince);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             callPayload.Queries["ShowBranches"] = Convert.ToString(false);
             if (showBranches != null)
-                callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(showBranches);
+                callPayload.Queries["ShowBranches"] = CSharpExpressionConverter.ConvertO(showBranches);
             if (companyTypes != null)
-                callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(companyTypes);
+                callPayload.Queries["CompanyTypes"] = CSharpExpressionConverter.ConvertO(companyTypes);
             callPayload.Queries["MaxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
         }
 
@@ -61,19 +61,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["Ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (address != null)
-                callPayload.Queries["Address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["Address"] = CSharpExpressionConverter.ConvertO(address);
             callPayload.Queries["ShowBranches"] = Convert.ToString(false);
             if (showBranches != null)
-                callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(showBranches);
+                callPayload.Queries["ShowBranches"] = CSharpExpressionConverter.ConvertO(showBranches);
             if (companyTypes != null)
-                callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(companyTypes);
+                callPayload.Queries["CompanyTypes"] = CSharpExpressionConverter.ConvertO(companyTypes);
             callPayload.Queries["MaxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
         }
     }

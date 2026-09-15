@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablesid != null)
             {
-                variablesObject["id"] = ExpressionConverter.ConvertO(bodyvariablesid);
+                variablesObject["id"] = CSharpExpressionConverter.ConvertToken(bodyvariablesid);
                 variablesObjectpropCount++;
             }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariablesskip != null)
                 {
-                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObject["skip"] = CSharpExpressionConverter.ConvertToken(bodyvariablesskip);
                     variablesObjectpropCount++;
                 }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariableslimit != null)
                 {
-                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObject["limit"] = CSharpExpressionConverter.ConvertToken(bodyvariableslimit);
                     variablesObjectpropCount++;
                 }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesprimarySponsorName != null)
             {
-                variablesObject["primarySponsorName"] = ExpressionConverter.ConvertO(bodyvariablesprimarySponsorName);
+                variablesObject["primarySponsorName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesprimarySponsorName);
                 variablesObjectpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablesfilterByName != null)
             {
-                variablesObject["filterByName"] = ExpressionConverter.ConvertO(bodyvariablesfilterByName);
+                variablesObject["filterByName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesfilterByName);
                 variablesObjectpropCount++;
             }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariablesskip != null)
                 {
-                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObject["skip"] = CSharpExpressionConverter.ConvertToken(bodyvariablesskip);
                     variablesObjectpropCount++;
                 }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariableslimit != null)
                 {
-                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObject["limit"] = CSharpExpressionConverter.ConvertToken(bodyvariableslimit);
                     variablesObjectpropCount++;
                 }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablesid != null)
             {
-                variablesObject["id"] = ExpressionConverter.ConvertO(bodyvariablesid);
+                variablesObject["id"] = CSharpExpressionConverter.ConvertToken(bodyvariablesid);
                 variablesObjectpropCount++;
             }
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariablesskip != null)
                 {
-                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObject["skip"] = CSharpExpressionConverter.ConvertToken(bodyvariablesskip);
                     variablesObjectpropCount++;
                 }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariableslimit != null)
                 {
-                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObject["limit"] = CSharpExpressionConverter.ConvertToken(bodyvariableslimit);
                     variablesObjectpropCount++;
                 }
 
@@ -224,9 +224,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             inputObjectpropCount++;
-            inputObject["contactId"] = ExpressionConverter.ConvertO(bodyvariablesinputcontactId);
+            inputObject["contactId"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputcontactId);
             inputObjectpropCount++;
-            inputObject["additionalFields"] = ExpressionConverter.ConvertO(bodyvariablesinputadditionalFields);
+            inputObject["additionalFields"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputadditionalFields);
             if (inputObjectpropCount > 0)
             {
                 variablesObject["input"] = inputObject;
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablescontactid != null)
             {
-                variablesObject["contactid"] = ExpressionConverter.ConvertO(bodyvariablescontactid);
+                variablesObject["contactid"] = CSharpExpressionConverter.ConvertToken(bodyvariablescontactid);
                 variablesObjectpropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariableslistid != null)
                 {
-                    variablesObject["listid"] = ExpressionConverter.ConvertO(bodyvariableslistid);
+                    variablesObject["listid"] = CSharpExpressionConverter.ConvertToken(bodyvariableslistid);
                     variablesObjectpropCount++;
                 }
 
@@ -311,51 +311,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var inputObjectpropCount = 0;
             if (bodyvariablesinputfirstName != null)
             {
-                inputObject["firstName"] = ExpressionConverter.ConvertO(bodyvariablesinputfirstName);
+                inputObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputfirstName);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputmiddleName != null)
             {
-                inputObject["middleName"] = ExpressionConverter.ConvertO(bodyvariablesinputmiddleName);
+                inputObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputmiddleName);
                 inputObjectpropCount++;
             }
 
             inputObjectpropCount++;
-            inputObject["lastName"] = ExpressionConverter.ConvertO(bodyvariablesinputlastName);
+            inputObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputlastName);
             if (bodyvariablesinputgoesBy != null)
             {
-                inputObject["goesBy"] = ExpressionConverter.ConvertO(bodyvariablesinputgoesBy);
+                inputObject["goesBy"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputgoesBy);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputtitle != null)
             {
-                inputObject["title"] = ExpressionConverter.ConvertO(bodyvariablesinputtitle);
+                inputObject["title"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputtitle);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputemailAddress != null)
             {
-                inputObject["emailAddress"] = ExpressionConverter.ConvertO(bodyvariablesinputemailAddress);
+                inputObject["emailAddress"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputemailAddress);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputcompanyName != null)
             {
-                inputObject["companyName"] = ExpressionConverter.ConvertO(bodyvariablesinputcompanyName);
+                inputObject["companyName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputcompanyName);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputjobTitle != null)
             {
-                inputObject["jobTitle"] = ExpressionConverter.ConvertO(bodyvariablesinputjobTitle);
+                inputObject["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputjobTitle);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputprimaryPhone != null)
             {
-                inputObject["primaryPhone"] = ExpressionConverter.ConvertO(bodyvariablesinputprimaryPhone);
+                inputObject["primaryPhone"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputprimaryPhone);
                 inputObjectpropCount++;
             }
 
@@ -363,31 +363,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var businessAddressObjectpropCount = 0;
             if (bodyvariablesinputbusinessAddresscountry != null)
             {
-                businessAddressObject["country"] = ExpressionConverter.ConvertO(bodyvariablesinputbusinessAddresscountry);
+                businessAddressObject["country"] = CSharpExpressionConverter.Convert(bodyvariablesinputbusinessAddresscountry);
                 businessAddressObjectpropCount++;
             }
 
             if (bodyvariablesinputbusinessAddressstreet != null)
             {
-                businessAddressObject["street"] = ExpressionConverter.ConvertO(bodyvariablesinputbusinessAddressstreet);
+                businessAddressObject["street"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputbusinessAddressstreet);
                 businessAddressObjectpropCount++;
             }
 
             if (bodyvariablesinputbusinessAddresscity != null)
             {
-                businessAddressObject["city"] = ExpressionConverter.ConvertO(bodyvariablesinputbusinessAddresscity);
+                businessAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputbusinessAddresscity);
                 businessAddressObjectpropCount++;
             }
 
             if (bodyvariablesinputbusinessAddressadministrativeDivision != null)
             {
-                businessAddressObject["administrativeDivision"] = ExpressionConverter.ConvertO(bodyvariablesinputbusinessAddressadministrativeDivision);
+                businessAddressObject["administrativeDivision"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputbusinessAddressadministrativeDivision);
                 businessAddressObjectpropCount++;
             }
 
             if (bodyvariablesinputbusinessAddresspostalCode != null)
             {
-                businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(bodyvariablesinputbusinessAddresspostalCode);
+                businessAddressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputbusinessAddresspostalCode);
                 businessAddressObjectpropCount++;
             }
 
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariableslistClass != null)
             {
-                variablesObject["listClass"] = ExpressionConverter.ConvertO(bodyvariableslistClass);
+                variablesObject["listClass"] = CSharpExpressionConverter.Convert(bodyvariableslistClass);
                 variablesObjectpropCount++;
             }
 
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariablesskip != null)
                 {
-                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObject["skip"] = CSharpExpressionConverter.ConvertToken(bodyvariablesskip);
                     variablesObjectpropCount++;
                 }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             {
                 if (bodyvariableslimit != null)
                 {
-                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObject["limit"] = CSharpExpressionConverter.ConvertToken(bodyvariableslimit);
                     variablesObjectpropCount++;
                 }
 
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesfilterByName != null)
             {
-                variablesObject["filterByName"] = ExpressionConverter.ConvertO(bodyvariablesfilterByName);
+                variablesObject["filterByName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesfilterByName);
                 variablesObjectpropCount++;
             }
 
@@ -501,13 +501,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariableslistIds != null)
             {
-                variablesObject["listIds"] = ExpressionConverter.ConvertO(bodyvariableslistIds);
+                variablesObject["listIds"] = CSharpExpressionConverter.ConvertToken(bodyvariableslistIds);
                 variablesObjectpropCount++;
             }
 
             if (bodyvariablescontactIds != null)
             {
-                variablesObject["contactIds"] = ExpressionConverter.ConvertO(bodyvariablescontactIds);
+                variablesObject["contactIds"] = CSharpExpressionConverter.ConvertToken(bodyvariablescontactIds);
                 variablesObjectpropCount++;
             }
 
@@ -539,13 +539,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablescontactIds != null)
             {
-                variablesObject["contactIds"] = ExpressionConverter.ConvertO(bodyvariablescontactIds);
+                variablesObject["contactIds"] = CSharpExpressionConverter.ConvertToken(bodyvariablescontactIds);
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslistId != null)
             {
-                variablesObject["listId"] = ExpressionConverter.ConvertO(bodyvariableslistId);
+                variablesObject["listId"] = CSharpExpressionConverter.ConvertToken(bodyvariableslistId);
                 variablesObjectpropCount++;
             }
 
@@ -578,36 +578,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             inputObjectpropCount++;
-            inputObject["id"] = ExpressionConverter.ConvertO(bodyvariablesinputid);
+            inputObject["id"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputid);
             if (bodyvariablesinputtitle != null)
             {
-                inputObject["title"] = ExpressionConverter.ConvertO(bodyvariablesinputtitle);
+                inputObject["title"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputtitle);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputfirstName != null)
             {
-                inputObject["firstName"] = ExpressionConverter.ConvertO(bodyvariablesinputfirstName);
+                inputObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputfirstName);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputmiddleName != null)
             {
-                inputObject["middleName"] = ExpressionConverter.ConvertO(bodyvariablesinputmiddleName);
+                inputObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputmiddleName);
                 inputObjectpropCount++;
             }
 
             inputObjectpropCount++;
-            inputObject["lastName"] = ExpressionConverter.ConvertO(bodyvariablesinputlastName);
+            inputObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputlastName);
             if (bodyvariablesinputgoesBy != null)
             {
-                inputObject["goesBy"] = ExpressionConverter.ConvertO(bodyvariablesinputgoesBy);
+                inputObject["goesBy"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputgoesBy);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputjobTitle != null)
             {
-                inputObject["jobTitle"] = ExpressionConverter.ConvertO(bodyvariablesinputjobTitle);
+                inputObject["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputjobTitle);
                 inputObjectpropCount++;
             }
 
@@ -615,31 +615,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var addressObjectpropCount = 0;
             if (bodyvariablesinputaddressstreet != null)
             {
-                addressObject["street"] = ExpressionConverter.ConvertO(bodyvariablesinputaddressstreet);
+                addressObject["street"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputaddressstreet);
                 addressObjectpropCount++;
             }
 
             if (bodyvariablesinputaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyvariablesinputaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyvariablesinputaddressadministrativeDivision != null)
             {
-                addressObject["administrativeDivision"] = ExpressionConverter.ConvertO(bodyvariablesinputaddressadministrativeDivision);
+                addressObject["administrativeDivision"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputaddressadministrativeDivision);
                 addressObjectpropCount++;
             }
 
             if (bodyvariablesinputaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyvariablesinputaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.Convert(bodyvariablesinputaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyvariablesinputaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyvariablesinputaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputaddresspostalCode);
                 addressObjectpropCount++;
             }
 
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var emailObjectpropCount = 0;
             if (bodyvariablesinputemailelectronicAddress != null)
             {
-                emailObject["electronicAddress"] = ExpressionConverter.ConvertO(bodyvariablesinputemailelectronicAddress);
+                emailObject["electronicAddress"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputemailelectronicAddress);
                 emailObjectpropCount++;
             }
 
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var primaryPhoneObjectpropCount = 0;
             if (bodyvariablesinputprimaryPhonenumber != null)
             {
-                primaryPhoneObject["number"] = ExpressionConverter.ConvertO(bodyvariablesinputprimaryPhonenumber);
+                primaryPhoneObject["number"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputprimaryPhonenumber);
                 primaryPhoneObjectpropCount++;
             }
 
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesinputcompanyName != null)
             {
-                inputObject["companyName"] = ExpressionConverter.ConvertO(bodyvariablesinputcompanyName);
+                inputObject["companyName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputcompanyName);
                 inputObjectpropCount++;
             }
 
@@ -718,19 +718,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             inputObjectpropCount++;
-            inputObject["typeId"] = ExpressionConverter.ConvertO(bodyvariablesinputtypeId);
+            inputObject["typeId"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputtypeId);
             inputObjectpropCount++;
-            inputObject["activityDate"] = ExpressionConverter.ConvertO(bodyvariablesinputactivityDate);
+            inputObject["activityDate"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputactivityDate);
             inputObjectpropCount++;
-            inputObject["subject"] = ExpressionConverter.ConvertO(bodyvariablesinputsubject);
+            inputObject["subject"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputsubject);
             if (bodyvariablesinputsummary != null)
             {
-                inputObject["summary"] = ExpressionConverter.ConvertO(bodyvariablesinputsummary);
+                inputObject["summary"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputsummary);
                 inputObjectpropCount++;
             }
 
             inputObjectpropCount++;
-            inputObject["linkedEntityIds"] = ExpressionConverter.ConvertO(bodyvariablesinputlinkedEntityIds);
+            inputObject["linkedEntityIds"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputlinkedEntityIds);
             if (inputObjectpropCount > 0)
             {
                 variablesObject["input"] = inputObject;
@@ -765,19 +765,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var variablesObjectpropCount = 0;
             if (bodyvariablesemailAddress != null)
             {
-                variablesObject["emailAddress"] = ExpressionConverter.ConvertO(bodyvariablesemailAddress);
+                variablesObject["emailAddress"] = CSharpExpressionConverter.ConvertToken(bodyvariablesemailAddress);
                 variablesObjectpropCount++;
             }
 
             if (bodyvariablesfirstName != null)
             {
-                variablesObject["firstName"] = ExpressionConverter.ConvertO(bodyvariablesfirstName);
+                variablesObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyvariablesfirstName);
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslastName != null)
             {
-                variablesObject["lastName"] = ExpressionConverter.ConvertO(bodyvariableslastName);
+                variablesObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyvariableslastName);
                 variablesObjectpropCount++;
             }
 
@@ -810,29 +810,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             inputObjectpropCount++;
-            inputObject["activityId"] = ExpressionConverter.ConvertO(bodyvariablesinputactivityId);
+            inputObject["activityId"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputactivityId);
             inputObjectpropCount++;
-            inputObject["typeId"] = ExpressionConverter.ConvertO(bodyvariablesinputtypeId);
+            inputObject["typeId"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputtypeId);
             if (bodyvariablesinputactivityDate != null)
             {
-                inputObject["activityDate"] = ExpressionConverter.ConvertO(bodyvariablesinputactivityDate);
+                inputObject["activityDate"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputactivityDate);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputsubject != null)
             {
-                inputObject["subject"] = ExpressionConverter.ConvertO(bodyvariablesinputsubject);
+                inputObject["subject"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputsubject);
                 inputObjectpropCount++;
             }
 
             if (bodyvariablesinputsummary != null)
             {
-                inputObject["summary"] = ExpressionConverter.ConvertO(bodyvariablesinputsummary);
+                inputObject["summary"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputsummary);
                 inputObjectpropCount++;
             }
 
             inputObjectpropCount++;
-            inputObject["linkedEntityIds"] = ExpressionConverter.ConvertO(bodyvariablesinputlinkedEntityIds);
+            inputObject["linkedEntityIds"] = CSharpExpressionConverter.ConvertToken(bodyvariablesinputlinkedEntityIds);
             if (inputObjectpropCount > 0)
             {
                 variablesObject["input"] = inputObject;

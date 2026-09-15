@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var bodypropCount = 0;
             if (bodyquickadd != null)
             {
-                body["quickadd"] = ExpressionConverter.ConvertO(bodyquickadd);
+                body["quickadd"] = CSharpExpressionConverter.ConvertToken(bodyquickadd);
                 bodypropCount++;
             }
 
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/subscription/edit";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["t"] = ExpressionConverter.ConvertO(bodyt);
+            body["t"] = CSharpExpressionConverter.ConvertToken(bodyt);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/unsubscribe/subscription/edit";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/remove/subscription/edit";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-            callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
+            callPayload.Queries["tagId"] = CSharpExpressionConverter.ConvertO(tagId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/add/subscription/edit";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-            callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
+            callPayload.Queries["tagId"] = CSharpExpressionConverter.ConvertO(tagId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/disable-tag";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+            callPayload.Queries["tagId"] = CSharpExpressionConverter.ConvertO(tagId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/single/unread-count";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
             return new ApiConnectionAction<UnreadCount>(callPayload);
         }
 
@@ -116,11 +116,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents(Expression<Func<string>> streamId, Expression<Func<int>> n = null)
         {
-            var apiCallPath = String.Format("/stream/contents/{0}", ExpressionConverter.ConvertWithUrlEncoding(streamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(streamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (n != null)
-                callPayload.Queries["n"] = ExpressionConverter.Convert(n);
+                callPayload.Queries["n"] = CSharpExpressionConverter.ConvertO(n);
             return new ApiConnectionAction<StreamContentsResponseItem[]>(callPayload);
         }
     }
@@ -140,8 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var apiCallPath = "/trigger/unread-count";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+            callPayload.Queries["streamId"] = CSharpExpressionConverter.ConvertO(streamId);
+            callPayload.Queries["target"] = CSharpExpressionConverter.ConvertO(target);
             return new ApiConnectionTrigger<UnreadCount>(callPayload, triggerName, recurrence);
         }
     }

@@ -17,23 +17,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var apiCallPath = "/api/shorturl/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["longUrl"] = ExpressionConverter.Convert(longUrl);
-            callPayload.Queries["baseDomain"] = ExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(licenseKey);
+            callPayload.Queries["longUrl"] = CSharpExpressionConverter.ConvertO(longUrl);
+            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
             if (shortUrl != null)
-                callPayload.Queries["shortUrl"] = ExpressionConverter.Convert(shortUrl);
+                callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
             if (generatedBy != null)
-                callPayload.Queries["generatedBy"] = ExpressionConverter.Convert(generatedBy);
+                callPayload.Queries["generatedBy"] = CSharpExpressionConverter.ConvertO(generatedBy);
             if (maxUses != null)
-                callPayload.Queries["maxUses"] = ExpressionConverter.Convert(maxUses);
+                callPayload.Queries["maxUses"] = CSharpExpressionConverter.ConvertO(maxUses);
             if (password != null)
-                callPayload.Queries["password"] = ExpressionConverter.Convert(password);
+                callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
             if (expiryDate != null)
-                callPayload.Queries["expiryDate"] = ExpressionConverter.Convert(expiryDate);
+                callPayload.Queries["expiryDate"] = CSharpExpressionConverter.ConvertO(expiryDate);
             callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
             if (redirectionCode != null)
-                callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(redirectionCode);
+                callPayload.Queries["redirectionCode"] = CSharpExpressionConverter.Convert(redirectionCode);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var apiCallPath = "/api/shorturl/delete";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shortUrl"] = ExpressionConverter.Convert(shortUrl);
-            callPayload.Queries["baseDomain"] = ExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(licenseKey);
+            callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
+            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var apiCallPath = "/api/shorturl/getall";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseDomain"] = ExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(licenseKey);
+            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
             if (generatedBy != null)
-                callPayload.Queries["generatedBy"] = ExpressionConverter.Convert(generatedBy);
+                callPayload.Queries["generatedBy"] = CSharpExpressionConverter.ConvertO(generatedBy);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -70,21 +70,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var apiCallPath = "/api/shorturl/modify";
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shortUrl"] = ExpressionConverter.Convert(shortUrl);
-            callPayload.Queries["baseDomain"] = ExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(licenseKey);
+            callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
+            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
             if (newLongUrl != null)
-                callPayload.Queries["newLongUrl"] = ExpressionConverter.Convert(newLongUrl);
+                callPayload.Queries["newLongUrl"] = CSharpExpressionConverter.ConvertO(newLongUrl);
             if (password != null)
-                callPayload.Queries["password"] = ExpressionConverter.Convert(password);
+                callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
             if (maxUses != null)
-                callPayload.Queries["maxUses"] = ExpressionConverter.Convert(maxUses);
+                callPayload.Queries["maxUses"] = CSharpExpressionConverter.ConvertO(maxUses);
             if (expiryDate != null)
-                callPayload.Queries["expiryDate"] = ExpressionConverter.Convert(expiryDate);
+                callPayload.Queries["expiryDate"] = CSharpExpressionConverter.ConvertO(expiryDate);
             callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
             if (redirectionCode != null)
-                callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(redirectionCode);
+                callPayload.Queries["redirectionCode"] = CSharpExpressionConverter.Convert(redirectionCode);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

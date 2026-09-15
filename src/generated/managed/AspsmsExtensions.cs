@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
             var apiCallPath = "/SendSimpleSMS";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["MSISDN"] = ExpressionConverter.Convert(mSISDN);
+            callPayload.Queries["MSISDN"] = CSharpExpressionConverter.ConvertO(mSISDN);
             callPayload.Queries["Operation"] = Convert.ToString("SendTextSMS");
-            callPayload.Queries["MessageData"] = ExpressionConverter.Convert(messageData);
+            callPayload.Queries["MessageData"] = CSharpExpressionConverter.ConvertO(messageData);
             if (originator != null)
-                callPayload.Queries["Originator"] = ExpressionConverter.Convert(originator);
+                callPayload.Queries["Originator"] = CSharpExpressionConverter.ConvertO(originator);
             if (lifeTime != null)
-                callPayload.Queries["LifeTime"] = ExpressionConverter.Convert(lifeTime);
+                callPayload.Queries["LifeTime"] = CSharpExpressionConverter.ConvertO(lifeTime);
             if (deferredDeliveryTime != null)
-                callPayload.Queries["DeferredDeliveryTime"] = ExpressionConverter.Convert(deferredDeliveryTime);
+                callPayload.Queries["DeferredDeliveryTime"] = CSharpExpressionConverter.ConvertO(deferredDeliveryTime);
             if (transactionReferenceNumber != null)
-                callPayload.Queries["TransactionReferenceNumber"] = ExpressionConverter.Convert(transactionReferenceNumber);
+                callPayload.Queries["TransactionReferenceNumber"] = CSharpExpressionConverter.ConvertO(transactionReferenceNumber);
             return new ApiConnectionAction<SendSimpleSMSResponse>(callPayload);
         }
 

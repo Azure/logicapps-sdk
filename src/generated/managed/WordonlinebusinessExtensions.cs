@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
             var apiCallPath = "/api/templates/getFile";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["drive"] = ExpressionConverter.Convert(drive);
-            callPayload.Queries["file"] = ExpressionConverter.Convert(file);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicFileSchema);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["drive"] = CSharpExpressionConverter.ConvertO(drive);
+            callPayload.Queries["file"] = CSharpExpressionConverter.ConvertO(file);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicFileSchema);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["fileName"] = Convert.ToString("");
             if (fileName != null)
-                callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
+                callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["content"] = ExpressionConverter.ConvertO(contentcontent);
+            content["content"] = CSharpExpressionConverter.ConvertToken(contentcontent);
             if (contentpropCount > 0)
             {
                 callPayload.Body = content;
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
             var apiCallPath = "/api/templates/convertFile";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["drive"] = ExpressionConverter.Convert(drive);
-            callPayload.Queries["file"] = ExpressionConverter.Convert(file);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["drive"] = CSharpExpressionConverter.ConvertO(drive);
+            callPayload.Queries["file"] = CSharpExpressionConverter.ConvertO(file);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             callPayload.Queries["format"] = Convert.ToString("pdf");
             return new ApiConnectionAction<string>(callPayload);
         }

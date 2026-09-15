@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                callPayload.Headers["bitRate"] = CSharpExpressionConverter.ConvertO(bitRate);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                callPayload.Headers["bitRate"] = CSharpExpressionConverter.ConvertO(bitRate);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                callPayload.Headers["bitRate"] = CSharpExpressionConverter.ConvertO(bitRate);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (sampleRate != null)
-                callPayload.Headers["sampleRate"] = ExpressionConverter.Convert(sampleRate);
+                callPayload.Headers["sampleRate"] = CSharpExpressionConverter.ConvertO(sampleRate);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             return new ApiConnectionAction<MediaInformation>(callPayload);
         }
 
@@ -81,17 +81,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                callPayload.Headers["preserveAspectRatio"] = CSharpExpressionConverter.ConvertO(preserveAspectRatio);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                callPayload.Headers["quality"] = CSharpExpressionConverter.ConvertO(quality);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -102,17 +102,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                callPayload.Headers["preserveAspectRatio"] = CSharpExpressionConverter.ConvertO(preserveAspectRatio);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                callPayload.Headers["quality"] = CSharpExpressionConverter.ConvertO(quality);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -123,17 +123,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                callPayload.Headers["preserveAspectRatio"] = CSharpExpressionConverter.ConvertO(preserveAspectRatio);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                callPayload.Headers["quality"] = CSharpExpressionConverter.ConvertO(quality);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -144,19 +144,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                callPayload.Headers["preserveAspectRatio"] = CSharpExpressionConverter.ConvertO(preserveAspectRatio);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (startTime != null)
-                callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Headers["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                callPayload.Headers["timeSpan"] = CSharpExpressionConverter.ConvertO(timeSpan);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -167,17 +167,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                callPayload.Headers["quality"] = CSharpExpressionConverter.ConvertO(quality);
             if (extension != null)
-                callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
+                callPayload.Headers["extension"] = CSharpExpressionConverter.ConvertO(extension);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -188,17 +188,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                callPayload.Headers["frameRate"] = CSharpExpressionConverter.ConvertO(frameRate);
             if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                callPayload.Headers["quality"] = CSharpExpressionConverter.ConvertO(quality);
             if (extension != null)
-                callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
+                callPayload.Headers["extension"] = CSharpExpressionConverter.ConvertO(extension);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -209,11 +209,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (startTime != null)
-                callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Headers["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                callPayload.Headers["timeSpan"] = CSharpExpressionConverter.ConvertO(timeSpan);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -224,10 +224,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            callPayload.Headers["splitTime"] = ExpressionConverter.Convert(splitTime);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
+            callPayload.Headers["splitTime"] = CSharpExpressionConverter.ConvertO(splitTime);
             if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                callPayload.Headers["timeSpan"] = CSharpExpressionConverter.ConvertO(timeSpan);
             return new ApiConnectionAction<SplitVideoResult>(callPayload);
         }
 
@@ -238,13 +238,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                callPayload.Headers["maxWidth"] = CSharpExpressionConverter.ConvertO(maxWidth);
             if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                callPayload.Headers["maxHeight"] = CSharpExpressionConverter.ConvertO(maxHeight);
             if (framesPerSecond != null)
-                callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
+                callPayload.Headers["framesPerSecond"] = CSharpExpressionConverter.ConvertO(framesPerSecond);
             return new ApiConnectionAction<StillFramesResult>(callPayload);
         }
 
@@ -255,9 +255,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             if (framesPerSecond != null)
-                callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
+                callPayload.Headers["framesPerSecond"] = CSharpExpressionConverter.ConvertO(framesPerSecond);
             return new ApiConnectionAction<NsfwResult>(callPayload);
         }
     }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var apiCallPath = "/webhook/v1/subscription";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptionId"] = ExpressionConverter.Convert(subscriptionId);
+            callPayload.Queries["subscriptionId"] = CSharpExpressionConverter.ConvertO(subscriptionId);
             return new ApiConnectionAction<DeleteCompanySubscriptionResponse>(callPayload);
         }
 
@@ -55,19 +55,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+            body["event"] = CSharpExpressionConverter.ConvertToken(bodyEvent);
             bodypropCount++;
-            body["registrationId"] = ExpressionConverter.ConvertO(bodyregistrationId);
+            body["registrationId"] = CSharpExpressionConverter.ConvertToken(bodyregistrationId);
             if (bodycallbackUrl != null)
             {
-                body["callbackUrl"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                body["callbackUrl"] = CSharpExpressionConverter.ConvertToken(bodycallbackUrl);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             bodypropCount++;
-            body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+            body["values"] = CSharpExpressionConverter.ConvertToken(bodyvalues);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var apiCallPath = "/validatesignature";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["MessageSignature"] = ExpressionConverter.Convert(messageSignature);
-            callPayload.Headers["SecretKey"] = ExpressionConverter.Convert(secretKey);
+            callPayload.Headers["MessageSignature"] = CSharpExpressionConverter.ConvertO(messageSignature);
+            callPayload.Headers["SecretKey"] = CSharpExpressionConverter.ConvertO(secretKey);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (registrationId != null)
-                callPayload.Queries["registrationId"] = ExpressionConverter.Convert(registrationId);
+                callPayload.Queries["registrationId"] = CSharpExpressionConverter.ConvertO(registrationId);
             return new ApiConnectionAction<DeleteCompanyRegistrationResponse>(callPayload);
         }
 
@@ -141,12 +141,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+            body["event"] = CSharpExpressionConverter.ConvertToken(bodyEvent);
             bodypropCount++;
-            body["callbackSignatureSecretKey"] = ExpressionConverter.ConvertO(bodycallbackSignatureSecretKey);
+            body["callbackSignatureSecretKey"] = CSharpExpressionConverter.ConvertToken(bodycallbackSignatureSecretKey);
             if (bodycallbackAuthUrl != null)
             {
-                body["callbackAuthUrl"] = ExpressionConverter.ConvertO(bodycallbackAuthUrl);
+                body["callbackAuthUrl"] = CSharpExpressionConverter.ConvertToken(bodycallbackAuthUrl);
                 bodypropCount++;
             }
 
@@ -154,18 +154,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             bodypropCount++;
             if (bodycallbackClientId != null)
             {
-                body["callbackClientId"] = ExpressionConverter.ConvertO(bodycallbackClientId);
+                body["callbackClientId"] = CSharpExpressionConverter.ConvertToken(bodycallbackClientId);
                 bodypropCount++;
             }
 
             if (bodycallbackClientSecret != null)
             {
-                body["callbackClientSecret"] = ExpressionConverter.ConvertO(bodycallbackClientSecret);
+                body["callbackClientSecret"] = CSharpExpressionConverter.ConvertToken(bodycallbackClientSecret);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["callbackSignatureAlgorithm"] = ExpressionConverter.ConvertO(bodycallbackSignatureAlgorithm);
+            body["callbackSignatureAlgorithm"] = CSharpExpressionConverter.ConvertToken(bodycallbackSignatureAlgorithm);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

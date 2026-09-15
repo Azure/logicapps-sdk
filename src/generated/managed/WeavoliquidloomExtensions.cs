@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -50,16 +50,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -80,16 +80,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (liquidTemplate != null)
-                callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(liquidTemplate);
-            callPayload.Body = ExpressionConverter.ConvertO(excelFile);
+                callPayload.Queries["LiquidTemplate"] = CSharpExpressionConverter.ConvertO(liquidTemplate);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(excelFile);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (liquidTemplate != null)
-                callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(liquidTemplate);
-            callPayload.Body = ExpressionConverter.ConvertO(excelFile);
+                callPayload.Queries["LiquidTemplate"] = CSharpExpressionConverter.ConvertO(liquidTemplate);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(excelFile);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -132,8 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (liquidTemplate != null)
-                callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(liquidTemplate);
-            callPayload.Body = ExpressionConverter.ConvertO(excelFile);
+                callPayload.Queries["LiquidTemplate"] = CSharpExpressionConverter.ConvertO(liquidTemplate);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(excelFile);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -146,16 +146,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -176,16 +176,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -206,16 +206,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -236,16 +236,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -266,16 +266,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -296,16 +296,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             if (bodyliquidTemplate != null)
             {
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+                body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
                 bodypropCount++;
             }
 
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -326,12 +326,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+            body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -352,12 +352,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+            body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -378,12 +378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+            body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 

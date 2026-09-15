@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<CreateSmartLinkResponse> CreateSmartLink(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/flows/{0}/smartLink/create", ExpressionConverter.ConvertWithUrlEncoding(slateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/flows/{0}/smartLink/create", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(organizationDomain);
+            callPayload.Headers["Organization-Domain"] = CSharpExpressionConverter.ConvertO(organizationDomain);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<CreateSmartLinkResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<StartFlowResponse> StartFlow(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/addon-proxy/flow/v1/flows/{0}/packets/blank", ExpressionConverter.ConvertWithUrlEncoding(slateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/addon-proxy/flow/v1/flows/{0}/packets/blank", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(organizationDomain);
+            callPayload.Headers["Organization-Domain"] = CSharpExpressionConverter.ConvertO(organizationDomain);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fields);
             return new ApiConnectionAction<StartFlowResponse>(callPayload);
         }
     }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["botToken"] = ExpressionConverter.ConvertO(bodybotAuthorizationToken);
+            body["botToken"] = CSharpExpressionConverter.ConvertToken(bodybotAuthorizationToken);
             body["callback"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

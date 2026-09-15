@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> GetContentPropertyValues(Expression<Func<string>> contentPropertyId)
         {
-            var apiCallPath = String.Format("/integration/v2/contentProperties/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(contentPropertyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/contentProperties/{0}/values", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentPropertyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SeismicContentManagerDomainOfValues[]>(callPayload);
@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> AddContentPropertyValues(Expression<Func<string>> contentPropertyId, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/integration/v2/contentProperties/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(contentPropertyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/contentProperties/{0}/values", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentPropertyId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<SeismicContentManagerDomainOfValues[]>(callPayload);
         }
 
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (teamsiteId != null)
-                callPayload.Queries["teamsiteId"] = ExpressionConverter.Convert(teamsiteId);
+                callPayload.Queries["teamsiteId"] = CSharpExpressionConverter.ConvertO(teamsiteId);
             callPayload.Queries["includeValues"] = Convert.ToString(true);
             if (includeValues != null)
-                callPayload.Queries["includeValues"] = ExpressionConverter.Convert(includeValues);
+                callPayload.Queries["includeValues"] = CSharpExpressionConverter.ConvertO(includeValues);
             return new ApiConnectionAction<SeismicContentPropertiesContentProperty[]>(callPayload);
         }
 
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["domainOfValues"] = ExpressionConverter.ConvertO(bodycontentPropertyValues);
+            body["domainOfValues"] = CSharpExpressionConverter.ConvertToken(bodycontentPropertyValues);
             bodypropCount++;
-            body["teamSites"] = ExpressionConverter.ConvertO(bodyteamsiteIds);
+            body["teamSites"] = CSharpExpressionConverter.ConvertToken(bodyteamsiteIds);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -75,16 +75,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<SeismicPrivacyManagementGdprEmailSettingResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IWorkflowAction DeleteGdprEmail(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/integration/v2/system/optouts/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/system/optouts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse> GetTeamsiteDetails(Expression<Func<string>> teamsiteId)
         {
-            var apiCallPath = String.Format("/integration/v2/teamsites/{0}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/teamsites/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SeismicTeamsitesTeamsiteResponse>(callPayload);
@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (application != null)
-                callPayload.Queries["application"] = ExpressionConverter.Convert(application);
+                callPayload.Queries["application"] = CSharpExpressionConverter.ConvertO(application);
             if (isPredictiveOnly != null)
-                callPayload.Queries["isPredictiveOnly"] = ExpressionConverter.Convert(isPredictiveOnly);
+                callPayload.Queries["isPredictiveOnly"] = CSharpExpressionConverter.ConvertO(isPredictiveOnly);
             return new ApiConnectionAction<SeismicDocCenterContentProfileResponse[]>(callPayload);
         }
     }

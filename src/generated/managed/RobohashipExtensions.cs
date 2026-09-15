@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(text, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(text, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["set"] = ExpressionConverter.Convert(set);
+            callPayload.Queries["set"] = CSharpExpressionConverter.Convert(set);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (bgset != null)
-                callPayload.Queries["bgset"] = ExpressionConverter.Convert(bgset);
+                callPayload.Queries["bgset"] = CSharpExpressionConverter.ConvertO(bgset);
             callPayload.Queries["gravatar"] = Convert.ToString("no");
             if (gravatar != null)
-                callPayload.Queries["gravatar"] = ExpressionConverter.Convert(gravatar);
+                callPayload.Queries["gravatar"] = CSharpExpressionConverter.Convert(gravatar);
             return new ApiConnectionAction<ImageGetResponse>(callPayload);
         }
     }

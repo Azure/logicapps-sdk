@@ -17,34 +17,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var apiCallPath = "/v1/template/send";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["templateId"] = ExpressionConverter.Convert(templateId);
-            callPayload.Queries["isSandbox"] = ExpressionConverter.Convert(isSandbox);
-            callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+            callPayload.Queries["templateId"] = CSharpExpressionConverter.ConvertO(templateId);
+            callPayload.Queries["isSandbox"] = CSharpExpressionConverter.ConvertO(isSandbox);
+            callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             if (cc != null)
-                callPayload.Queries["cc"] = ExpressionConverter.Convert(cc);
+                callPayload.Queries["cc"] = CSharpExpressionConverter.ConvertO(cc);
             if (brandId != null)
-                callPayload.Queries["brandId"] = ExpressionConverter.Convert(brandId);
+                callPayload.Queries["brandId"] = CSharpExpressionConverter.ConvertO(brandId);
             if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = ExpressionConverter.Convert(onBehalfOf);
+                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
             callPayload.Queries["expiryDays"] = Convert.ToString(60);
             if (expiryDays != null)
-                callPayload.Queries["expiryDays"] = ExpressionConverter.Convert(expiryDays);
+                callPayload.Queries["expiryDays"] = CSharpExpressionConverter.ConvertO(expiryDays);
             if (labels != null)
-                callPayload.Queries["labels"] = ExpressionConverter.Convert(labels);
+                callPayload.Queries["labels"] = CSharpExpressionConverter.ConvertO(labels);
             if (hideDocumentId != null)
-                callPayload.Queries["hideDocumentId"] = ExpressionConverter.Convert(hideDocumentId);
+                callPayload.Queries["hideDocumentId"] = CSharpExpressionConverter.ConvertO(hideDocumentId);
             callPayload.Queries["enablePrintAndSign"] = Convert.ToString(false);
             if (enablePrintAndSign != null)
-                callPayload.Queries["enablePrintAndSign"] = ExpressionConverter.Convert(enablePrintAndSign);
+                callPayload.Queries["enablePrintAndSign"] = CSharpExpressionConverter.ConvertO(enablePrintAndSign);
             callPayload.Queries["enableReassign"] = Convert.ToString(true);
             if (enableReassign != null)
-                callPayload.Queries["enableReassign"] = ExpressionConverter.Convert(enableReassign);
+                callPayload.Queries["enableReassign"] = CSharpExpressionConverter.ConvertO(enableReassign);
             callPayload.Queries["enableAutoReminder"] = Convert.ToString(false);
             if (enableAutoReminder != null)
-                callPayload.Queries["enableAutoReminder"] = ExpressionConverter.Convert(enableAutoReminder);
-            callPayload.Body = ExpressionConverter.ConvertO(signers);
+                callPayload.Queries["enableAutoReminder"] = CSharpExpressionConverter.ConvertO(enableAutoReminder);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(signers);
             return new ApiConnectionAction<SendDocumentFromTemplateResponse>(callPayload);
         }
 
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var apiCallPath = "/v1/document/download";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = ExpressionConverter.Convert(documentId);
+            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
             if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = ExpressionConverter.Convert(onBehalfOf);
+                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var apiCallPath = "/v1/document/downloadAuditLog";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = ExpressionConverter.Convert(documentId);
+            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
             if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = ExpressionConverter.Convert(onBehalfOf);
+                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var apiCallPath = "/v1/document/properties";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = ExpressionConverter.Convert(documentId);
+            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
             return new ApiConnectionAction<DocumentPropertiesResponse>(callPayload);
         }
     }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["events"] = ExpressionConverter.Convert(events);
+            callPayload.Queries["events"] = CSharpExpressionConverter.Convert(events);
             var body = new JObject();
             var bodypropCount = 0;
             body["name"] = "Power Automate Webhook";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             body["webhookType"] = "AccountCallback";
             bodypropCount++;
             bodypropCount++;
-            body["adminMode"] = ExpressionConverter.ConvertO(bodyadminMode);
+            body["adminMode"] = CSharpExpressionConverter.ConvertToken(bodyadminMode);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

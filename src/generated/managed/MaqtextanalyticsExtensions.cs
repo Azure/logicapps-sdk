@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
             if (bodyentityList != null)
             {
-                body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
+                body["entity_list"] = CSharpExpressionConverter.ConvertToken(bodyentityList);
                 bodypropCount++;
             }
 
@@ -71,25 +71,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodykeyphrasesCount != null)
             {
-                body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
+                body["keyphrases_count"] = CSharpExpressionConverter.ConvertToken(bodykeyphrasesCount);
                 bodypropCount++;
             }
 
             if (bodydiversityThreshold != null)
             {
-                body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
+                body["diversity_threshold"] = CSharpExpressionConverter.ConvertToken(bodydiversityThreshold);
                 bodypropCount++;
             }
 
             if (bodyaliasThreshold != null)
             {
-                body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
+                body["alias_threshold"] = CSharpExpressionConverter.ConvertToken(bodyaliasThreshold);
                 bodypropCount++;
             }
 

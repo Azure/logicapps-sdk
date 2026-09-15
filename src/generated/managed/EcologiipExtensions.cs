@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
+            body["number"] = CSharpExpressionConverter.ConvertToken(bodynumber);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodytest != null)
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
                 bodypropCount++;
             }
 
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
+            body["number"] = CSharpExpressionConverter.ConvertToken(bodynumber);
             bodypropCount++;
-            body["units"] = ExpressionConverter.ConvertO(bodyunits);
+            body["units"] = CSharpExpressionConverter.ConvertToken(bodyunits);
             if (bodytest != null)
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
                 bodypropCount++;
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetImpactResponse> GetImpact(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/impact", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetImpactResponse>(callPayload);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetTreesResponse> GetTrees(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/trees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTreesResponse>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetOffsetResponse> GetOffset(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/carbon-offset", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetOffsetResponse>(callPayload);

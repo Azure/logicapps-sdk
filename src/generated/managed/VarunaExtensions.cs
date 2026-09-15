@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             var apiCallPath = "/getdocument";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-            callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
+            callPayload.Headers["document_type"] = CSharpExpressionConverter.ConvertO(documentType);
+            callPayload.Headers["document_id"] = CSharpExpressionConverter.ConvertO(documentId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             var apiCallPath = "/createdocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-            callPayload.Body = ExpressionConverter.ConvertO(createSchema);
+            callPayload.Headers["document_type"] = CSharpExpressionConverter.ConvertO(documentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(createSchema);
             return new ApiConnectionAction<CreateADocumentResponse>(callPayload);
         }
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             var apiCallPath = "/deletedocument";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-            callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
+            callPayload.Headers["document_type"] = CSharpExpressionConverter.ConvertO(documentType);
+            callPayload.Headers["document_id"] = CSharpExpressionConverter.ConvertO(documentId);
             return new ApiConnectionAction<DeleteADocumentResponse>(callPayload);
         }
 
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             var apiCallPath = "/updatedocument";
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-            callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
-            callPayload.Body = ExpressionConverter.ConvertO(updateSchema);
+            callPayload.Headers["document_type"] = CSharpExpressionConverter.ConvertO(documentType);
+            callPayload.Headers["document_id"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(updateSchema);
             return new ApiConnectionAction<UpdateADocumentResponse>(callPayload);
         }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             var apiCallPath = "/getalldocumentsbytype";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
+            callPayload.Headers["document_type"] = CSharpExpressionConverter.ConvertO(documentType);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
     }
@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             body["MessageTemplateFormat"] = "Json";
             bodypropCount++;
             bodypropCount++;
-            body["Name"] = ExpressionConverter.ConvertO(bodytriggerName);
+            body["Name"] = CSharpExpressionConverter.ConvertToken(bodytriggerName);
             if (bodywhen != null)
             {
-                body["When"] = ExpressionConverter.ConvertO(bodywhen);
+                body["When"] = CSharpExpressionConverter.ConvertToken(bodywhen);
                 bodypropCount++;
             }
 

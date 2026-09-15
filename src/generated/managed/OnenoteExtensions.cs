@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/notebooks/Dynamic/sections";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodynameOfTheNewSection != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodynameOfTheNewSection);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodynameOfTheNewSection);
                 bodypropCount++;
             }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/sections/Dynamic/pages";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pageContent);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(pageContent);
             return new ApiConnectionAction<Page>(callPayload);
         }
 
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/sections/Dynamic/pages";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
             return new ApiConnectionAction<GetPagesInSectionResponse>(callPayload);
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/pages";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pageContent);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(pageContent);
             return new ApiConnectionAction<Page>(callPayload);
         }
 
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/pages";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
+            callPayload.Queries["pageId"] = CSharpExpressionConverter.ConvertO(pageId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/pages/Dynamic/content";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
+            callPayload.Queries["pageId"] = CSharpExpressionConverter.ConvertO(pageId);
             callPayload.Queries["preAuthenticated"] = Convert.ToString(true);
             return new ApiConnectionAction<string>(callPayload);
         }
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/pages/Dynamic/content";
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
-            callPayload.Body = ExpressionConverter.ConvertO(updates);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
+            callPayload.Queries["pageId"] = CSharpExpressionConverter.ConvertO(pageId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(updates);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/notebooks/notebookKey/sections";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
             return new ApiConnectionAction<GetSectionsInNotebookResponse>(callPayload);
         }
     }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
             return new ApiConnectionTrigger<NewSectionResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
             return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -150,8 +150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             var apiCallPath = "/trigger3/sections/Dynamic/pages";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+            callPayload.Queries["notebookKey"] = CSharpExpressionConverter.ConvertO(notebookKey);
+            callPayload.Queries["sectionId"] = CSharpExpressionConverter.ConvertO(sectionId);
             return new ApiConnectionTrigger<NewPageResponse>(callPayload, triggerName, recurrence);
         }
     }

@@ -14,21 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<ETLJob> ETLUpload(Expression<Func<string>> modelIdPath, Expression<Func<string>> templateId, Expression<Func<string>> fileName, Expression<Func<string>> file, Expression<Func<fileTypeInput>> fileType, Expression<Func<fileEncodingInput>> fileEncoding = null)
         {
-            var apiCallPath = String.Format("/models/{0}/etl/templates/{1}/upload", ExpressionConverter.ConvertWithUrlEncoding(modelIdPath, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/templates/{1}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Queries["fileType"] = ExpressionConverter.Convert(fileType);
+            callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
+            callPayload.Queries["fileType"] = CSharpExpressionConverter.Convert(fileType);
             callPayload.Queries["fileEncoding"] = Convert.ToString("UTF-8");
             if (fileEncoding != null)
-                callPayload.Queries["fileEncoding"] = ExpressionConverter.Convert(fileEncoding);
+                callPayload.Queries["fileEncoding"] = CSharpExpressionConverter.Convert(fileEncoding);
             return new ApiConnectionAction<ETLJob>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
-            var apiCallPath = String.Format("/models/{0}/etl/query/attributes", ExpressionConverter.ConvertWithUrlEncoding(modelIdPath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var lidsBody = new JObject();
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyshowHeader != null)
                 {
-                    lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                    lidsBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(lidsBodyshowHeader);
                     lidsBodypropCount++;
                 }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (lidsBodymQLQueryString != null)
             {
-                lidsBody["queryString"] = ExpressionConverter.ConvertO(lidsBodymQLQueryString);
+                lidsBody["queryString"] = CSharpExpressionConverter.ConvertToken(lidsBodymQLQueryString);
                 lidsBodypropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyfileFormat != null)
                 {
-                    lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                    lidsBody["format"] = CSharpExpressionConverter.Convert(lidsBodyfileFormat);
                     lidsBodypropCount++;
                 }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyfileEncoding != null)
                 {
-                    lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                    lidsBody["encoding"] = CSharpExpressionConverter.Convert(lidsBodyfileEncoding);
                     lidsBodypropCount++;
                 }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
         {
-            var apiCallPath = String.Format("/models/{0}/etl/query/hierarchies", ExpressionConverter.ConvertWithUrlEncoding(modelIdPath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var hierarchiesBody = new JObject();
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (hierarchiesBodyshowHeader != null)
                 {
-                    hierarchiesBody["showHeaders"] = ExpressionConverter.ConvertO(hierarchiesBodyshowHeader);
+                    hierarchiesBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodyshowHeader);
                     hierarchiesBodypropCount++;
                 }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (hierarchiesBodymQLQueryString != null)
             {
-                hierarchiesBody["queryString"] = ExpressionConverter.ConvertO(hierarchiesBodymQLQueryString);
+                hierarchiesBody["queryString"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodymQLQueryString);
                 hierarchiesBodypropCount++;
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (hierarchiesBodyfileFormat != null)
                 {
-                    hierarchiesBody["format"] = ExpressionConverter.ConvertO(hierarchiesBodyfileFormat);
+                    hierarchiesBody["format"] = CSharpExpressionConverter.Convert(hierarchiesBodyfileFormat);
                     hierarchiesBodypropCount++;
                 }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (hierarchiesBodyfileEncoding != null)
                 {
-                    hierarchiesBody["encoding"] = ExpressionConverter.ConvertO(hierarchiesBodyfileEncoding);
+                    hierarchiesBody["encoding"] = CSharpExpressionConverter.Convert(hierarchiesBodyfileEncoding);
                     hierarchiesBodypropCount++;
                 }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (hierarchiesBodyexportMemberIDs != null)
                 {
-                    hierarchiesBody["exportMemberIds"] = ExpressionConverter.ConvertO(hierarchiesBodyexportMemberIDs);
+                    hierarchiesBody["exportMemberIds"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodyexportMemberIDs);
                     hierarchiesBodypropCount++;
                 }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
         {
-            var apiCallPath = String.Format("/models/{0}/etl/query/intersections2", ExpressionConverter.ConvertWithUrlEncoding(modelIdPath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var valuesBody = new JObject();
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (valuesBodyshowHeader != null)
                 {
-                    valuesBody["showHeaders"] = ExpressionConverter.ConvertO(valuesBodyshowHeader);
+                    valuesBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(valuesBodyshowHeader);
                     valuesBodypropCount++;
                 }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (valuesBodymQLQueryString != null)
             {
-                valuesBody["queryString"] = ExpressionConverter.ConvertO(valuesBodymQLQueryString);
+                valuesBody["queryString"] = CSharpExpressionConverter.ConvertToken(valuesBodymQLQueryString);
                 valuesBodypropCount++;
             }
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (valuesBodyfileFormat != null)
                 {
-                    valuesBody["format"] = ExpressionConverter.ConvertO(valuesBodyfileFormat);
+                    valuesBody["format"] = CSharpExpressionConverter.Convert(valuesBodyfileFormat);
                     valuesBodypropCount++;
                 }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (valuesBodyfileEncoding != null)
                 {
-                    valuesBody["encoding"] = ExpressionConverter.ConvertO(valuesBodyfileEncoding);
+                    valuesBody["encoding"] = CSharpExpressionConverter.Convert(valuesBodyfileEncoding);
                     valuesBodypropCount++;
                 }
 
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (valuesBodyincludeExternalIDs != null)
                 {
-                    valuesBody["includeExternalId"] = ExpressionConverter.ConvertO(valuesBodyincludeExternalIDs);
+                    valuesBody["includeExternalId"] = CSharpExpressionConverter.ConvertToken(valuesBodyincludeExternalIDs);
                     valuesBodypropCount++;
                 }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (valuesBodynamedDimensions != null)
                 {
-                    valuesBody["isNamedHeader"] = ExpressionConverter.ConvertO(valuesBodynamedDimensions);
+                    valuesBody["isNamedHeader"] = CSharpExpressionConverter.ConvertToken(valuesBodynamedDimensions);
                     valuesBodypropCount++;
                 }
 
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
-            var apiCallPath = String.Format("/models/{0}/etl/query/lids2", ExpressionConverter.ConvertWithUrlEncoding(modelIdPath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var lidsBody = new JObject();
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyshowHeader != null)
                 {
-                    lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                    lidsBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(lidsBodyshowHeader);
                     lidsBodypropCount++;
                 }
 
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (lidsBodymQLQueryString != null)
             {
-                lidsBody["queryString"] = ExpressionConverter.ConvertO(lidsBodymQLQueryString);
+                lidsBody["queryString"] = CSharpExpressionConverter.ConvertToken(lidsBodymQLQueryString);
                 lidsBodypropCount++;
             }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyfileFormat != null)
                 {
-                    lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                    lidsBody["format"] = CSharpExpressionConverter.Convert(lidsBodyfileFormat);
                     lidsBodypropCount++;
                 }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             {
                 if (lidsBodyfileEncoding != null)
                 {
-                    lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                    lidsBody["encoding"] = CSharpExpressionConverter.Convert(lidsBodyfileEncoding);
                     lidsBodypropCount++;
                 }
 

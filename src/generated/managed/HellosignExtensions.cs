@@ -18,24 +18,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (testMode != null)
-                callPayload.Queries["test_mode"] = ExpressionConverter.Convert(testMode);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["test_mode"] = CSharpExpressionConverter.Convert(testMode);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             if (signingRedirectUrl != null)
-                callPayload.Queries["signing_redirect_url"] = ExpressionConverter.Convert(signingRedirectUrl);
+                callPayload.Queries["signing_redirect_url"] = CSharpExpressionConverter.ConvertO(signingRedirectUrl);
             if (allowDecline != null)
-                callPayload.Queries["allow_decline"] = ExpressionConverter.Convert(allowDecline);
-            callPayload.Body = ExpressionConverter.ConvertO(signers);
+                callPayload.Queries["allow_decline"] = CSharpExpressionConverter.ConvertO(allowDecline);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(signers);
             return new ApiConnectionAction<RequestResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         public IBodyWorkflowAction<RequestResponse> GetRequest(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/v3/signature_request/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/signature_request/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RequestResponse>(callPayload);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         public IWorkflowAction CancelRequest(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/v3/signature_request/cancel/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/signature_request/cancel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

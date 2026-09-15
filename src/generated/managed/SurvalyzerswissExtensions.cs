@@ -21,69 +21,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysamplingProjectId != null)
             {
-                body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             if (bodychannel != null)
             {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
+            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
             if (bodytextBlocks != null)
             {
-                body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembers);
+            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
             if (bodyscheduleDateTime != null)
             {
-                body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
                 bodypropCount++;
             }
 
             if (bodyasyncProcess != null)
             {
-                body["asyncProcess"] = ExpressionConverter.ConvertO(bodyasyncProcess);
+                body["asyncProcess"] = CSharpExpressionConverter.ConvertToken(bodyasyncProcess);
                 bodypropCount++;
             }
 
             if (bodyinterviewExpiryDate != null)
             {
-                body["interviewExpiryDate"] = ExpressionConverter.ConvertO(bodyinterviewExpiryDate);
+                body["interviewExpiryDate"] = CSharpExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
                 bodypropCount++;
             }
 
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyfromName != null)
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodyreplyToName != null)
             {
-                body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
                 bodypropCount++;
             }
 
@@ -105,13 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
@@ -133,14 +133,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembers);
+            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypanelType != null)
             {
-                body["panelType"] = ExpressionConverter.ConvertO(bodypanelType);
+                body["panelType"] = CSharpExpressionConverter.Convert(bodypanelType);
                 bodypropCount++;
             }
 
@@ -184,32 +184,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             var surveyDefinitionObject = new JObject();
             var surveyDefinitionObjectpropCount = 0;
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowMultipleParticipation);
+            surveyDefinitionObject["allowMultipleParticipation"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowNavigateBack);
+            surveyDefinitionObject["allowNavigateBack"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
             if (bodysurveyDefinitionallowSaveProgress != null)
             {
-                surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowSaveProgress);
+                surveyDefinitionObject["allowSaveProgress"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionrandomizeSections);
+            surveyDefinitionObject["randomizeSections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
             if (bodysurveyDefinitionenableAutoScroll != null)
             {
-                surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableAutoScroll);
+                surveyDefinitionObject["enableAutoScroll"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionenableCodeAccess != null)
             {
-                surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableCodeAccess);
+                surveyDefinitionObject["enableCodeAccess"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
                 surveyDefinitionObjectpropCount++;
             }
 
@@ -217,13 +217,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var dataAccessControlObjectpropCount = 0;
             if (bodysurveyDefinitiondataAccessControlaccessType != null)
             {
-                dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlaccessType);
+                dataAccessControlObject["accessType"] = CSharpExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
                 dataAccessControlObjectpropCount++;
             }
 
             if (bodysurveyDefinitiondataAccessControlconditions != null)
             {
-                dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlconditions);
+                dataAccessControlObject["conditions"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
                 dataAccessControlObjectpropCount++;
             }
 
@@ -235,50 +235,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
             if (bodysurveyDefinitionassociatedPanels != null)
             {
-                surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(bodysurveyDefinitionassociatedPanels);
+                surveyDefinitionObject["associatedPanels"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitioncodeAccessMode != null)
             {
-                surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncodeAccessMode);
+                surveyDefinitionObject["codeAccessMode"] = CSharpExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionenablePanelSync != null)
             {
-                surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenablePanelSync);
+                surveyDefinitionObject["enablePanelSync"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionpanelSyncBehaviour != null)
             {
-                surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncBehaviour);
+                surveyDefinitionObject["panelSyncBehaviour"] = CSharpExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionpanelSyncs != null)
             {
-                surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncs);
+                surveyDefinitionObject["panelSyncs"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondefaultLanguage);
+            surveyDefinitionObject["defaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
             if (bodysurveyDefinitionendDate != null)
             {
-                surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(bodysurveyDefinitionendDate);
+                surveyDefinitionObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(bodysurveyDefinitionlanguages);
+            surveyDefinitionObject["languages"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsections);
+            surveyDefinitionObject["sections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncustomVariables);
+            surveyDefinitionObject["customVariables"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsurveyEndText);
+            surveyDefinitionObject["surveyEndText"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
             var defaultTextOverridesObject = new JObject();
             var defaultTextOverridesObjectpropCount = 0;
             if (defaultTextOverridesObjectpropCount > 0)
@@ -299,19 +299,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var designConfigurationObjectpropCount = 0;
             if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
             {
-                designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                designConfigurationObject["surveyDesignLayout"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
                 designConfigurationObjectpropCount++;
             }
 
             if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
             {
-                designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                designConfigurationObject["matrixSubQuestionSize"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
                 designConfigurationObjectpropCount++;
             }
 
             if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
             {
-                designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                designConfigurationObject["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
                 designConfigurationObjectpropCount++;
             }
 
@@ -325,16 +325,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var anonymizingConfigurationObjectpropCount = 0;
             if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
             {
-                anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                anonymizingConfigurationObject["anonymizingMode"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
                 anonymizingConfigurationObjectpropCount++;
             }
 
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogIp);
+            anonymizingConfigurationObject["logIp"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+            anonymizingConfigurationObject["logUserAgent"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+            anonymizingConfigurationObject["logReferer"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
             if (anonymizingConfigurationObjectpropCount > 0)
             {
                 surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
@@ -365,25 +365,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyeventType != null)
             {
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
                 bodypropCount++;
             }
 
             if (bodyentityIdentifier != null)
             {
-                body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
                 bodypropCount++;
             }
 
             if (bodysecurityToken != null)
             {
-                body["securityToken"] = ExpressionConverter.ConvertO(bodysecurityToken);
+                body["securityToken"] = CSharpExpressionConverter.ConvertToken(bodysecurityToken);
                 bodypropCount++;
             }
 
             if (bodywebHookUrl != null)
             {
-                body["webHookUrl"] = ExpressionConverter.ConvertO(bodywebHookUrl);
+                body["webHookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebHookUrl);
                 bodypropCount++;
             }
 
@@ -405,19 +405,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
             if (bodyfilename != null)
             {
-                body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+                body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
                 bodypropCount++;
             }
 
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
@@ -438,10 +438,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+            body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
             if (bodykeepInterviews != null)
             {
-                body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
                 bodypropCount++;
             }
 
@@ -463,13 +463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyinterviewId != null)
             {
-                body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+                body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
                 bodypropCount++;
             }
 
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
@@ -490,12 +490,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             bodypropCount++;
-            body["panelMembersIds"] = ExpressionConverter.ConvertO(bodypanelMembersIds);
+            body["panelMembersIds"] = CSharpExpressionConverter.ConvertToken(bodypanelMembersIds);
             if (bodykeepInterviews != null)
             {
-                body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
                 bodypropCount++;
             }
 
@@ -516,10 +516,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             if (bodykeepInterviews != null)
             {
-                body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
                 bodypropCount++;
             }
 
@@ -541,13 +541,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysamplingProjectId != null)
             {
-                body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
                 bodypropCount++;
             }
 
             if (bodykeepInterviews != null)
             {
-                body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
                 bodypropCount++;
             }
 
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodywebHookId != null)
             {
-                body["webHookId"] = ExpressionConverter.ConvertO(bodywebHookId);
+                body["webHookId"] = CSharpExpressionConverter.ConvertToken(bodywebHookId);
                 bodypropCount++;
             }
 
@@ -605,26 +605,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var apiCallPath = "/publicapi/Interview/v3/DownloadAnswers";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenant"] = ExpressionConverter.Convert(tenant);
-            callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
-            callPayload.Queries["interviewId"] = ExpressionConverter.Convert(interviewId);
+            callPayload.Queries["tenant"] = CSharpExpressionConverter.ConvertO(tenant);
+            callPayload.Queries["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
+            callPayload.Queries["interviewId"] = CSharpExpressionConverter.ConvertO(interviewId);
             if (showPartialCompleted != null)
-                callPayload.Queries["showPartialCompleted"] = ExpressionConverter.Convert(showPartialCompleted);
+                callPayload.Queries["showPartialCompleted"] = CSharpExpressionConverter.ConvertO(showPartialCompleted);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             if (timeZone != null)
-                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+                callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyisCancellationRequested != null)
             {
-                body["isCancellationRequested"] = ExpressionConverter.ConvertO(bodyisCancellationRequested);
+                body["isCancellationRequested"] = CSharpExpressionConverter.ConvertToken(bodyisCancellationRequested);
                 bodypropCount++;
             }
 
             if (bodycanBeCanceled != null)
             {
-                body["canBeCanceled"] = ExpressionConverter.ConvertO(bodycanBeCanceled);
+                body["canBeCanceled"] = CSharpExpressionConverter.ConvertToken(bodycanBeCanceled);
                 bodypropCount++;
             }
 
@@ -634,13 +634,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var safeWaitHandleObjectpropCount = 0;
             if (bodywaitHandlesafeWaitHandleisInvalid != null)
             {
-                safeWaitHandleObject["isInvalid"] = ExpressionConverter.ConvertO(bodywaitHandlesafeWaitHandleisInvalid);
+                safeWaitHandleObject["isInvalid"] = CSharpExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisInvalid);
                 safeWaitHandleObjectpropCount++;
             }
 
             if (bodywaitHandlesafeWaitHandleisClosed != null)
             {
-                safeWaitHandleObject["isClosed"] = ExpressionConverter.ConvertO(bodywaitHandlesafeWaitHandleisClosed);
+                safeWaitHandleObject["isClosed"] = CSharpExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisClosed);
                 safeWaitHandleObjectpropCount++;
             }
 
@@ -674,55 +674,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodymessageTemplateId != null)
             {
-                body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
+                body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
                 bodypropCount++;
             }
 
             if (bodytextBlocks != null)
             {
-                body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+            body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             if (bodyfromName != null)
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             if (bodytoName != null)
             {
-                body["toName"] = ExpressionConverter.ConvertO(bodytoName);
+                body["toName"] = CSharpExpressionConverter.ConvertToken(bodytoName);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodyreplyToName != null)
             {
-                body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
                 bodypropCount++;
             }
 
@@ -744,36 +744,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyworkflow != null)
             {
-                body["workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                body["workflow"] = CSharpExpressionConverter.Convert(bodyworkflow);
                 bodypropCount++;
             }
 
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
             if (bodysamplingProjectId != null)
             {
-                body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
                 bodypropCount++;
             }
 
             if (bodydistributorId != null)
             {
-                body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+                body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
                 bodypropCount++;
             }
 
             if (bodyreminderId != null)
             {
-                body["reminderId"] = ExpressionConverter.ConvertO(bodyreminderId);
+                body["reminderId"] = CSharpExpressionConverter.ConvertToken(bodyreminderId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["targetState"] = ExpressionConverter.ConvertO(bodytargetState);
+            body["targetState"] = CSharpExpressionConverter.ConvertToken(bodytargetState);
             var dynamicParametersObject = new JObject();
             var dynamicParametersObjectpropCount = 0;
             if (dynamicParametersObjectpropCount > 0)
@@ -799,80 +799,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             if (bodysamplingProjectId != null)
             {
-                body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
                 bodypropCount++;
             }
 
             if (bodymemberIds != null)
             {
-                body["memberIds"] = ExpressionConverter.ConvertO(bodymemberIds);
+                body["memberIds"] = CSharpExpressionConverter.ConvertToken(bodymemberIds);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
+            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
             if (bodytextBlocks != null)
             {
-                body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
                 bodypropCount++;
             }
 
             if (bodyscheduleDateTime != null)
             {
-                body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             if (bodychannel != null)
             {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
                 bodypropCount++;
             }
 
             if (bodyasyncProcess != null)
             {
-                body["asyncProcess"] = ExpressionConverter.ConvertO(bodyasyncProcess);
+                body["asyncProcess"] = CSharpExpressionConverter.ConvertToken(bodyasyncProcess);
                 bodypropCount++;
             }
 
             if (bodyinterviewExpiryDate != null)
             {
-                body["interviewExpiryDate"] = ExpressionConverter.ConvertO(bodyinterviewExpiryDate);
+                body["interviewExpiryDate"] = CSharpExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
                 bodypropCount++;
             }
 
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyfromName != null)
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodyreplyToName != null)
             {
-                body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
                 bodypropCount++;
             }
 
@@ -894,13 +894,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
@@ -921,46 +921,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             if (bodypanelId != null)
             {
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
                 bodypropCount++;
             }
 
             if (bodydistributors != null)
             {
-                body["distributors"] = ExpressionConverter.ConvertO(bodydistributors);
+                body["distributors"] = CSharpExpressionConverter.ConvertToken(bodydistributors);
                 bodypropCount++;
             }
 
             if (bodyinvitationType != null)
             {
-                body["invitationType"] = ExpressionConverter.ConvertO(bodyinvitationType);
+                body["invitationType"] = CSharpExpressionConverter.Convert(bodyinvitationType);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1004,37 +1004,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
             if (bodypanelId != null)
             {
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1062,25 +1062,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1108,25 +1108,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1153,14 +1153,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+            body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
             bodypropCount++;
-            body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+            body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             if (bodyloadSurveyDefinition != null)
             {
-                body["loadSurveyDefinition"] = ExpressionConverter.ConvertO(bodyloadSurveyDefinition);
+                body["loadSurveyDefinition"] = CSharpExpressionConverter.ConvertToken(bodyloadSurveyDefinition);
                 bodypropCount++;
             }
 
@@ -1182,49 +1182,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
             if (bodyfieldsToDownload != null)
             {
-                body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
                 bodypropCount++;
             }
 
             if (bodyloadCodePlan != null)
             {
-                body["loadCodePlan"] = ExpressionConverter.ConvertO(bodyloadCodePlan);
+                body["loadCodePlan"] = CSharpExpressionConverter.ConvertToken(bodyloadCodePlan);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1252,49 +1252,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
             if (bodyfieldsToDownload != null)
             {
-                body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
                 bodypropCount++;
             }
 
             if (bodyloadCodePlan != null)
             {
-                body["loadCodePlan"] = ExpressionConverter.ConvertO(bodyloadCodePlan);
+                body["loadCodePlan"] = CSharpExpressionConverter.ConvertToken(bodyloadCodePlan);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1322,41 +1322,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             bodypropCount++;
-            body["interviewsRequired"] = ExpressionConverter.ConvertO(bodyinterviewsRequired);
+            body["interviewsRequired"] = CSharpExpressionConverter.ConvertToken(bodyinterviewsRequired);
             if (bodyfieldsToDownload != null)
             {
-                body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1384,33 +1384,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+            body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1438,37 +1438,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodypanelId != null)
             {
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
                 bodypropCount++;
             }
 
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1496,12 +1496,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysamplingProjectId != null)
             {
-                body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
                 bodypropCount++;
             }
 
@@ -1542,7 +1542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
@@ -1563,28 +1563,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1612,12 +1612,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1636,13 +1636,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyeventType != null)
             {
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
                 bodypropCount++;
             }
 
             if (bodyentityIdentifier != null)
             {
-                body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
                 bodypropCount++;
             }
 
@@ -1664,12 +1664,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyworkflow != null)
             {
-                body["workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                body["workflow"] = CSharpExpressionConverter.Convert(bodyworkflow);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["currentState"] = ExpressionConverter.ConvertO(bodycurrentState);
+            body["currentState"] = CSharpExpressionConverter.ConvertToken(bodycurrentState);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1688,25 +1688,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             var pagingObject = new JObject();
             var pagingObjectpropCount = 0;
             pagingObjectpropCount++;
-            pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
             pagingObjectpropCount++;
-            pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
+            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
             if (bodypagingorderField != null)
             {
-                pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
                 pagingObjectpropCount++;
             }
 
             if (bodypagingorderDirection != null)
             {
-                pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
                 pagingObjectpropCount++;
             }
 
@@ -1733,7 +1733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["incentiveId"] = ExpressionConverter.ConvertO(bodyincentiveId);
+            body["incentiveId"] = CSharpExpressionConverter.ConvertToken(bodyincentiveId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1751,54 +1751,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+            body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
             bodypropCount++;
-            body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
+            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
             if (bodytextBlocks != null)
             {
-                body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
                 bodypropCount++;
             }
 
             if (bodyscheduleDateTime != null)
             {
-                body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
                 bodypropCount++;
             }
 
             if (bodyconditions != null)
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
             }
 
             if (bodychannel != null)
             {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
                 bodypropCount++;
             }
 
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyfromName != null)
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodyreplyToName != null)
             {
-                body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
                 bodypropCount++;
             }
 
@@ -1820,13 +1820,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodysurveyId != null)
             {
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
             }
 
             if (bodyinterviewId != null)
             {
-                body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+                body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
                 bodypropCount++;
             }
 
@@ -1848,14 +1848,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembers);
+            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1874,27 +1874,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodytenant != null)
             {
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
             if (bodyaddedFields != null)
             {
-                body["addedFields"] = ExpressionConverter.ConvertO(bodyaddedFields);
+                body["addedFields"] = CSharpExpressionConverter.ConvertToken(bodyaddedFields);
                 bodypropCount++;
             }
 
             if (bodyremovedFields != null)
             {
-                body["removedFields"] = ExpressionConverter.ConvertO(bodyremovedFields);
+                body["removedFields"] = CSharpExpressionConverter.ConvertToken(bodyremovedFields);
                 bodypropCount++;
             }
 
             if (bodyrenamedFields != null)
             {
-                body["renamedFields"] = ExpressionConverter.ConvertO(bodyrenamedFields);
+                body["renamedFields"] = CSharpExpressionConverter.ConvertToken(bodyrenamedFields);
                 bodypropCount++;
             }
 
@@ -1915,36 +1915,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
             if (bodysurveyName != null)
             {
-                body["surveyName"] = ExpressionConverter.ConvertO(bodysurveyName);
+                body["surveyName"] = CSharpExpressionConverter.ConvertToken(bodysurveyName);
                 bodypropCount++;
             }
 
             var surveyDefinitionObject = new JObject();
             var surveyDefinitionObjectpropCount = 0;
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowMultipleParticipation);
+            surveyDefinitionObject["allowMultipleParticipation"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowNavigateBack);
+            surveyDefinitionObject["allowNavigateBack"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
             if (bodysurveyDefinitionallowSaveProgress != null)
             {
-                surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowSaveProgress);
+                surveyDefinitionObject["allowSaveProgress"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionrandomizeSections);
+            surveyDefinitionObject["randomizeSections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
             if (bodysurveyDefinitionenableAutoScroll != null)
             {
-                surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableAutoScroll);
+                surveyDefinitionObject["enableAutoScroll"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionenableCodeAccess != null)
             {
-                surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableCodeAccess);
+                surveyDefinitionObject["enableCodeAccess"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
                 surveyDefinitionObjectpropCount++;
             }
 
@@ -1952,13 +1952,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var dataAccessControlObjectpropCount = 0;
             if (bodysurveyDefinitiondataAccessControlaccessType != null)
             {
-                dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlaccessType);
+                dataAccessControlObject["accessType"] = CSharpExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
                 dataAccessControlObjectpropCount++;
             }
 
             if (bodysurveyDefinitiondataAccessControlconditions != null)
             {
-                dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlconditions);
+                dataAccessControlObject["conditions"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
                 dataAccessControlObjectpropCount++;
             }
 
@@ -1970,50 +1970,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
             if (bodysurveyDefinitionassociatedPanels != null)
             {
-                surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(bodysurveyDefinitionassociatedPanels);
+                surveyDefinitionObject["associatedPanels"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitioncodeAccessMode != null)
             {
-                surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncodeAccessMode);
+                surveyDefinitionObject["codeAccessMode"] = CSharpExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionenablePanelSync != null)
             {
-                surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenablePanelSync);
+                surveyDefinitionObject["enablePanelSync"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionpanelSyncBehaviour != null)
             {
-                surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncBehaviour);
+                surveyDefinitionObject["panelSyncBehaviour"] = CSharpExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
                 surveyDefinitionObjectpropCount++;
             }
 
             if (bodysurveyDefinitionpanelSyncs != null)
             {
-                surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncs);
+                surveyDefinitionObject["panelSyncs"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondefaultLanguage);
+            surveyDefinitionObject["defaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
             if (bodysurveyDefinitionendDate != null)
             {
-                surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(bodysurveyDefinitionendDate);
+                surveyDefinitionObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
                 surveyDefinitionObjectpropCount++;
             }
 
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(bodysurveyDefinitionlanguages);
+            surveyDefinitionObject["languages"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsections);
+            surveyDefinitionObject["sections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncustomVariables);
+            surveyDefinitionObject["customVariables"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
             surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsurveyEndText);
+            surveyDefinitionObject["surveyEndText"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
             var defaultTextOverridesObject = new JObject();
             var defaultTextOverridesObjectpropCount = 0;
             if (defaultTextOverridesObjectpropCount > 0)
@@ -2034,19 +2034,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var designConfigurationObjectpropCount = 0;
             if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
             {
-                designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                designConfigurationObject["surveyDesignLayout"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
                 designConfigurationObjectpropCount++;
             }
 
             if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
             {
-                designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                designConfigurationObject["matrixSubQuestionSize"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
                 designConfigurationObjectpropCount++;
             }
 
             if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
             {
-                designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                designConfigurationObject["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
                 designConfigurationObjectpropCount++;
             }
 
@@ -2060,16 +2060,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var anonymizingConfigurationObjectpropCount = 0;
             if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
             {
-                anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                anonymizingConfigurationObject["anonymizingMode"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
                 anonymizingConfigurationObjectpropCount++;
             }
 
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogIp);
+            anonymizingConfigurationObject["logIp"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+            anonymizingConfigurationObject["logUserAgent"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
             anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+            anonymizingConfigurationObject["logReferer"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
             if (anonymizingConfigurationObjectpropCount > 0)
             {
                 surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
@@ -2100,31 +2100,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodywebHookId != null)
             {
-                body["webHookId"] = ExpressionConverter.ConvertO(bodywebHookId);
+                body["webHookId"] = CSharpExpressionConverter.ConvertToken(bodywebHookId);
                 bodypropCount++;
             }
 
             if (bodyeventType != null)
             {
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
                 bodypropCount++;
             }
 
             if (bodyentityIdentifier != null)
             {
-                body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
                 bodypropCount++;
             }
 
             if (bodysecurityToken != null)
             {
-                body["securityToken"] = ExpressionConverter.ConvertO(bodysecurityToken);
+                body["securityToken"] = CSharpExpressionConverter.ConvertToken(bodysecurityToken);
                 bodypropCount++;
             }
 
             if (bodywebHookUrl != null)
             {
-                body["webHookUrl"] = ExpressionConverter.ConvertO(bodywebHookUrl);
+                body["webHookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebHookUrl);
                 bodypropCount++;
             }
 
@@ -2146,31 +2146,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodypanelId != null)
             {
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
                 bodypropCount++;
             }
 
             if (bodydistributorId != null)
             {
-                body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+                body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
                 bodypropCount++;
             }
 
             if (bodyemails != null)
             {
-                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
                 bodypropCount++;
             }
 
             if (bodycellPhones != null)
             {
-                body["cellPhones"] = ExpressionConverter.ConvertO(bodycellPhones);
+                body["cellPhones"] = CSharpExpressionConverter.ConvertToken(bodycellPhones);
                 bodypropCount++;
             }
 

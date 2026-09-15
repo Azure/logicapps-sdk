@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
             var apiCallPath = "/convert";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<JToken>(callPayload);
         }

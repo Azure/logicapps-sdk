@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<AccountResponse> AccountGetInfo(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AccountResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch(Expression<Func<string>> accountId, Expression<Func<string>> phone)
         {
-            var apiCallPath = String.Format("/account/{0}/contact-search/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/contact-search/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactSearchRequestItem[]>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
-            var apiCallPath = String.Format("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/contact", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -40,25 +40,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             if (bodyphoneNumber != null)
             {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                body["PhoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
@@ -73,32 +73,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
-            var apiCallPath = String.Format("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/contact/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyphoneNumber != null)
             {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                body["PhoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
@@ -113,25 +113,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodychannels, Expression<Func<string[]>> bodytargets, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodyexecute, Expression<Func<string[]>> bodycontactListIds = null, Expression<Func<string[]>> bodyexcludeListIds = null, Expression<Func<int>> bodymediaId = null, Expression<Func<bool>> bodyignoreSingleUse = null, Expression<Func<bool>> bodyforceOptIn = null, Expression<Func<string[]>> bodyschedules = null, Expression<Func<bool>> bodyignoreInvalidTargets = null)
         {
-            var apiCallPath = String.Format("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/action-pushcampaign", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Channels"] = ExpressionConverter.ConvertO(bodychannels);
+            body["Channels"] = CSharpExpressionConverter.ConvertToken(bodychannels);
             bodypropCount++;
-            body["Targets"] = ExpressionConverter.ConvertO(bodytargets);
+            body["Targets"] = CSharpExpressionConverter.ConvertToken(bodytargets);
             if (bodycontactListIds != null)
             {
-                body["ContactListIds"] = ExpressionConverter.ConvertO(bodycontactListIds);
+                body["ContactListIds"] = CSharpExpressionConverter.ConvertToken(bodycontactListIds);
                 bodypropCount++;
             }
 
             if (bodyexcludeListIds != null)
             {
-                body["ExcludeListIds"] = ExpressionConverter.ConvertO(bodyexcludeListIds);
+                body["ExcludeListIds"] = CSharpExpressionConverter.ConvertToken(bodyexcludeListIds);
                 bodypropCount++;
             }
 
@@ -139,15 +139,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             bodypropCount++;
             if (bodymediaId != null)
             {
-                body["MediaId"] = ExpressionConverter.ConvertO(bodymediaId);
+                body["MediaId"] = CSharpExpressionConverter.ConvertToken(bodymediaId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodyignoreSingleUse != null)
             {
-                body["IgnoreSingleUse"] = ExpressionConverter.ConvertO(bodyignoreSingleUse);
+                body["IgnoreSingleUse"] = CSharpExpressionConverter.ConvertToken(bodyignoreSingleUse);
                 bodypropCount++;
             }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             {
                 if (bodyforceOptIn != null)
                 {
-                    body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
+                    body["ForceOptIn"] = CSharpExpressionConverter.ConvertToken(bodyforceOptIn);
                     bodypropCount++;
                 }
 
@@ -169,17 +169,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
             if (bodyschedules != null)
             {
-                body["Schedules"] = ExpressionConverter.ConvertO(bodyschedules);
+                body["Schedules"] = CSharpExpressionConverter.ConvertToken(bodyschedules);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Execute"] = ExpressionConverter.ConvertO(bodyexecute);
+            body["Execute"] = CSharpExpressionConverter.ConvertToken(bodyexecute);
             if (bodyignoreInvalidTargets != null)
             {
                 if (bodyignoreInvalidTargets != null)
                 {
-                    body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
+                    body["IgnoreInvalidTargets"] = CSharpExpressionConverter.ConvertToken(bodyignoreInvalidTargets);
                     bodypropCount++;
                 }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     {
         public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/callback", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-1", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-6", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-12", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-13", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

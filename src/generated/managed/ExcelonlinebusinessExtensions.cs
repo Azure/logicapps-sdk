@@ -14,35 +14,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<JToken> RunScriptProd(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> scriptId, Expression<Func<object>> scriptParameters = null)
         {
-            var apiCallPath = String.Format("/officescripting/api/unattended/run/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/officescripting/api/unattended/run/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["scriptId"] = ExpressionConverter.Convert(scriptId);
-            callPayload.Body = ExpressionConverter.ConvertO(scriptParameters);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["scriptId"] = CSharpExpressionConverter.ConvertO(scriptId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(scriptParameters);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<TableMetadata> CreateTable(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> tabletableRange, Expression<Func<string>> tabletableName = null, Expression<Func<string>> tablecolumnsNames = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             var table = new JObject();
             var tablepropCount = 0;
             if (tabletableName != null)
             {
-                table["TableName"] = ExpressionConverter.ConvertO(tabletableName);
+                table["TableName"] = CSharpExpressionConverter.ConvertToken(tabletableName);
                 tablepropCount++;
             }
 
             tablepropCount++;
-            table["Range"] = ExpressionConverter.ConvertO(tabletableRange);
+            table["Range"] = CSharpExpressionConverter.ConvertToken(tabletableRange);
             if (tablecolumnsNames != null)
             {
-                table["ColumnsNames"] = ExpressionConverter.ConvertO(tablecolumnsNames);
+                table["ColumnsNames"] = CSharpExpressionConverter.ConvertToken(tablecolumnsNames);
                 tablepropCount++;
             }
 
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IWorkflowAction CreateIdColumn(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables/{2}/createIdColumn", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/createIdColumn", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             callPayload.Queries["idColumn"] = Convert.ToString("__PowerAppsId__");
             if (idColumn != null)
-                callPayload.Queries["idColumn"] = ExpressionConverter.Convert(idColumn);
+                callPayload.Queries["idColumn"] = CSharpExpressionConverter.ConvertO(idColumn);
             callPayload.Queries["populateColumn"] = Convert.ToString(false);
             return new ApiConnectionAction(callPayload);
         }
@@ -71,121 +71,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (dateTimeFormat != null)
-                callPayload.Queries["dateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
+                callPayload.Queries["dateTimeFormat"] = CSharpExpressionConverter.Convert(dateTimeFormat);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<CommentsList> GetComments(Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> source = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/items/{1}/workbook/comments", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/items/{1}/workbook/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["source"] = Convert.ToString("me");
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<CommentsList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<Comment> GetComment(Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> commentid, Expression<Func<string>> source = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/items/{1}/workbook/comments/{2}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(commentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/items/{1}/workbook/comments/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["source"] = Convert.ToString("me");
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<Comment>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["idColumn"] = ExpressionConverter.Convert(idColumn);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["idColumn"] = CSharpExpressionConverter.ConvertO(idColumn);
             if (dateTimeFormat != null)
-                callPayload.Queries["dateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
+                callPayload.Queries["dateTimeFormat"] = CSharpExpressionConverter.Convert(dateTimeFormat);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             return new ApiConnectionAction<GetItemResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IWorkflowAction DeleteItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["idColumn"] = ExpressionConverter.Convert(idColumn);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["idColumn"] = CSharpExpressionConverter.ConvertO(idColumn);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<Item> PatchItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
         {
-            var apiCallPath = String.Format("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["idColumn"] = ExpressionConverter.Convert(idColumn);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["idColumn"] = CSharpExpressionConverter.ConvertO(idColumn);
             if (dateTimeFormat != null)
-                callPayload.Queries["dateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Queries["dateTimeFormat"] = CSharpExpressionConverter.Convert(dateTimeFormat);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<Item>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<GetAllWorksheetsResponse> GetAllWorksheets(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             return new ApiConnectionAction<GetAllWorksheetsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<WorksheetMetadata> CreateWorksheet(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> bodyname = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -200,27 +200,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<GetTablesResponse> GetTables(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/drives/{0}/items/{1}/workbook/tables", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             return new ApiConnectionAction<GetTablesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<Item> AddRow(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(drive, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(file, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (dateTimeFormat != null)
-                callPayload.Queries["dateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Queries["dateTimeFormat"] = CSharpExpressionConverter.Convert(dateTimeFormat);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<Item>(callPayload);
         }
     }

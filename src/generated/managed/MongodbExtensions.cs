@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (documentObjectpropCount > 0)
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
             if (bodyupsert != null)
             {
-                body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                body["upsert"] = CSharpExpressionConverter.ConvertToken(bodyupsert);
                 bodypropCount++;
             }
 
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -173,13 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             bodypropCount++;
-            body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+            body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -200,11 +200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyskip != null)
             {
-                body["skip"] = ExpressionConverter.ConvertO(bodyskip);
+                body["skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
                 bodypropCount++;
             }
 
@@ -260,11 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
             if (bodyupsert != null)
             {
-                body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                body["upsert"] = CSharpExpressionConverter.ConvertToken(bodyupsert);
                 bodypropCount++;
             }
 
@@ -306,11 +306,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (filterObjectpropCount > 0)
@@ -339,13 +339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+            body["database"] = CSharpExpressionConverter.ConvertToken(bodydatabase);
             bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+            body["collection"] = CSharpExpressionConverter.ConvertToken(bodycollection);
             bodypropCount++;
-            body["pipeline"] = ExpressionConverter.ConvertO(bodypipeline);
+            body["pipeline"] = CSharpExpressionConverter.ConvertToken(bodypipeline);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

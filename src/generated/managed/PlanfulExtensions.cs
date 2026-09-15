@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (dataLoadRuleName != null)
-                callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(dataLoadRuleName);
-            callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(columnDelimiter);
+                callPayload.Queries["DataLoadRuleName"] = CSharpExpressionConverter.ConvertO(dataLoadRuleName);
+            callPayload.Queries["ColumnDelimiter"] = CSharpExpressionConverter.ConvertO(columnDelimiter);
             return new ApiConnectionAction<FileLoadResponse>(callPayload);
         }
 
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
             var apiCallPath = "/financemodel/data/extract/gldata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Scenario"] = ExpressionConverter.Convert(scenario);
-            callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(fiscalYear);
+            callPayload.Queries["Scenario"] = CSharpExpressionConverter.ConvertO(scenario);
+            callPayload.Queries["FiscalYear"] = CSharpExpressionConverter.ConvertO(fiscalYear);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
         }
     }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
         }
     }

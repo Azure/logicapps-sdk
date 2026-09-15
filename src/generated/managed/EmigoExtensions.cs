@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> type)
         {
-            var apiCallPath = String.Format("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TablesList>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetFeeds(Expression<Func<string>> endpoint)
         {
-            var apiCallPath = String.Format("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FeedList>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> type, Expression<Func<string>> table)
         {
-            var apiCallPath = String.Format("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(type, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ItemsList>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetODataItems(Expression<Func<string>> endpoint, Expression<Func<string>> feed)
         {
-            var apiCallPath = String.Format("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FeedList>(callPayload);
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idList != null)
-                callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
+                callPayload.Queries["IdList"] = CSharpExpressionConverter.ConvertO(idList);
             if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetProductList>(callPayload);
         }
 
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var apiCallPath = "/Product/GetItem";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetProduct>(callPayload);
         }
 
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idList != null)
-                callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
+                callPayload.Queries["IdList"] = CSharpExpressionConverter.ConvertO(idList);
             if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetOperationalUnitList>(callPayload);
         }
 
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var apiCallPath = "/OperationalUnit/GetItem";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetOperationalUnit>(callPayload);
         }
 
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var sendMessage = new JObject();
             var sendMessagepropCount = 0;
             sendMessagepropCount++;
-            sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(sendMessageidOperationalUnit);
+            sendMessage["IdOperationalUnit"] = CSharpExpressionConverter.ConvertToken(sendMessageidOperationalUnit);
             sendMessagepropCount++;
-            sendMessage["Message"] = ExpressionConverter.ConvertO(sendMessagemessage);
+            sendMessage["Message"] = CSharpExpressionConverter.ConvertToken(sendMessagemessage);
             if (sendMessagepropCount > 0)
             {
                 callPayload.Body = sendMessage;
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();

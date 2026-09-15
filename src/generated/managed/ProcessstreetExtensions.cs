@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+            body["workflowId"] = CSharpExpressionConverter.ConvertToken(bodyworkflowID);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<SimpleUser> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SimpleUser>(callPayload);
@@ -49,19 +49,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<WorkflowRunResponse> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydueDate, Expression<Func<bool>> bodyshared)
         {
-            var apiCallPath = String.Format("/workflow-runs/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             bodypropCount++;
-            body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+            body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
             bodypropCount++;
-            body["shared"] = ExpressionConverter.ConvertO(bodyshared);
+            body["shared"] = CSharpExpressionConverter.ConvertToken(bodyshared);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -73,26 +73,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<FindWorkflowRunsResponse> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodyassignees = null, Expression<Func<object>> bodyformFields = null)
         {
-            var apiCallPath = String.Format("/workflows/{0}/workflow-runs/search", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyassignees != null)
             {
-                body["assignees"] = ExpressionConverter.ConvertO(bodyassignees);
+                body["assignees"] = CSharpExpressionConverter.ConvertToken(bodyassignees);
                 bodypropCount++;
             }
 
             if (bodyformFields != null)
             {
-                body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
+                body["formFields"] = CSharpExpressionConverter.ConvertToken(bodyformFields);
                 bodypropCount++;
             }
 
@@ -107,22 +107,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<JToken> ListFormFieldValues(Expression<Func<string>> workflowRunId, Expression<Func<string>> workflowId, Expression<Func<string>> taskId = null)
         {
-            var apiCallPath = String.Format("/workflow-runs/{0}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}/form-fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workflowId"] = ExpressionConverter.Convert(workflowId);
+            callPayload.Queries["workflowId"] = CSharpExpressionConverter.ConvertO(workflowId);
             if (taskId != null)
-                callPayload.Queries["taskId"] = ExpressionConverter.Convert(taskId);
+                callPayload.Queries["taskId"] = CSharpExpressionConverter.ConvertO(taskId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> UpdateFormFieldValuesWithWorkflowId(Expression<Func<string>> workflowId, Expression<Func<string>> workflowRunId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/workflows/{0}/workflow-runs/{1}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(workflowRunId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<UpdateMultipleFormFieldValuesResponse>(callPayload);
         }
     }
@@ -140,18 +140,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             bodypropCount++;
             if (bodyworkflowID != null)
             {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                body["workflowId"] = CSharpExpressionConverter.ConvertToken(bodyworkflowID);
                 bodypropCount++;
             }
 
             if (bodytaskID != null)
             {
-                body["taskId"] = ExpressionConverter.ConvertO(bodytaskID);
+                body["taskId"] = CSharpExpressionConverter.ConvertToken(bodytaskID);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["triggerType"] = ExpressionConverter.ConvertO(bodytaskState);
+            body["triggerType"] = CSharpExpressionConverter.Convert(bodytaskState);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             bodypropCount++;
             if (bodyworkflowID != null)
             {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                body["workflowId"] = CSharpExpressionConverter.ConvertToken(bodyworkflowID);
                 bodypropCount++;
             }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             bodypropCount++;
             if (bodyworkflowID != null)
             {
-                body["workflowId"] = ExpressionConverter.ConvertO(bodyworkflowID);
+                body["workflowId"] = CSharpExpressionConverter.ConvertToken(bodyworkflowID);
                 bodypropCount++;
             }
 

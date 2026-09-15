@@ -17,34 +17,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
             var apiCallPath = "/api/articles";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+            callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
+            callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
+            callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (tags != null)
-                callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
+                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
             if (tagsExclude != null)
-                callPayload.Queries["tags_exclude"] = ExpressionConverter.Convert(tagsExclude);
+                callPayload.Queries["tags_exclude"] = CSharpExpressionConverter.ConvertO(tagsExclude);
             if (username != null)
-                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
             callPayload.Queries["state"] = Convert.ToString("fresh");
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             callPayload.Queries["top"] = Convert.ToString("2");
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["collection_id"] = Convert.ToString("99");
             if (collectionId != null)
-                callPayload.Queries["collection_id"] = ExpressionConverter.Convert(collectionId);
+                callPayload.Queries["collection_id"] = CSharpExpressionConverter.ConvertO(collectionId);
             return new ApiConnectionAction<Articles200Item[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId, Expression<Func<string>> url)
         {
-            var apiCallPath = String.Format("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             return new ApiConnectionAction<User>(callPayload);
         }
     }

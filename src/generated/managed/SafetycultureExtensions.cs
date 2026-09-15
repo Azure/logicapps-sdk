@@ -19,32 +19,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["order"] = Convert.ToString("desc");
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
             if (modifiedAfter != null)
-                callPayload.Queries["modified_after"] = ExpressionConverter.Convert(modifiedAfter);
+                callPayload.Queries["modified_after"] = CSharpExpressionConverter.ConvertO(modifiedAfter);
             if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
+                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
             if (template != null)
-                callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+                callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             callPayload.Queries["archived"] = Convert.ToString("false");
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.Convert(archived);
             callPayload.Queries["completed"] = Convert.ToString("true");
             if (completed != null)
-                callPayload.Queries["completed"] = ExpressionConverter.Convert(completed);
+                callPayload.Queries["completed"] = CSharpExpressionConverter.Convert(completed);
             callPayload.Queries["owner"] = Convert.ToString("all");
             if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                callPayload.Queries["owner"] = CSharpExpressionConverter.Convert(owner);
             callPayload.Queries["limit"] = Convert.ToString(1000);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<AuditSearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById(Expression<Func<string>> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
         {
-            var apiCallPath = String.Format("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyarchived != null)
             {
-                body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
+                body["archived"] = CSharpExpressionConverter.ConvertToken(bodyarchived);
                 bodypropCount++;
             }
 
@@ -75,22 +75,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
         {
-            var apiCallPath = String.Format("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             callPayload.Queries["timezone"] = Convert.ToString("Etc/UTC");
             if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
+                callPayload.Queries["timezone"] = CSharpExpressionConverter.Convert(timezone);
             if (exportProfile != null)
-                callPayload.Queries["export_profile"] = ExpressionConverter.Convert(exportProfile);
+                callPayload.Queries["export_profile"] = CSharpExpressionConverter.ConvertO(exportProfile);
             return new ApiConnectionAction<InitExportResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            var apiCallPath = String.Format("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ExportStatusResponse>(callPayload);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
         {
-            var apiCallPath = String.Format("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(filename, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filename, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink(Expression<Func<string>> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAuditLinkResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IWorkflowAction DeleteWebReportLink(Expression<Func<string>> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var searchActionsBodypropCount = 0;
             if (searchActionsBodyauditIDS != null)
             {
-                searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(searchActionsBodyauditIDS);
+                searchActionsBody["audit_id"] = CSharpExpressionConverter.ConvertToken(searchActionsBodyauditIDS);
                 searchActionsBodypropCount++;
             }
 
             if (searchActionsBodyassignees != null)
             {
-                searchActionsBody["assignees"] = ExpressionConverter.ConvertO(searchActionsBodyassignees);
+                searchActionsBody["assignees"] = CSharpExpressionConverter.ConvertToken(searchActionsBodyassignees);
                 searchActionsBodypropCount++;
             }
 
@@ -147,13 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var createdAtObjectpropCount = 0;
             if (searchActionsBodycreatedafterDate != null)
             {
-                createdAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodycreatedafterDate);
+                createdAtObject["from"] = CSharpExpressionConverter.ConvertToken(searchActionsBodycreatedafterDate);
                 createdAtObjectpropCount++;
             }
 
             if (searchActionsBodycreatedbeforeDate != null)
             {
-                createdAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodycreatedbeforeDate);
+                createdAtObject["to"] = CSharpExpressionConverter.ConvertToken(searchActionsBodycreatedbeforeDate);
                 createdAtObjectpropCount++;
             }
 
@@ -167,13 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var modifiedAtObjectpropCount = 0;
             if (searchActionsBodymodifiedafterDate != null)
             {
-                modifiedAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedafterDate);
+                modifiedAtObject["from"] = CSharpExpressionConverter.ConvertToken(searchActionsBodymodifiedafterDate);
                 modifiedAtObjectpropCount++;
             }
 
             if (searchActionsBodymodifiedbeforeDate != null)
             {
-                modifiedAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedbeforeDate);
+                modifiedAtObject["to"] = CSharpExpressionConverter.ConvertToken(searchActionsBodymodifiedbeforeDate);
                 modifiedAtObjectpropCount++;
             }
 
@@ -187,13 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var dueAtObjectpropCount = 0;
             if (searchActionsBodydueafterDate != null)
             {
-                dueAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodydueafterDate);
+                dueAtObject["from"] = CSharpExpressionConverter.ConvertToken(searchActionsBodydueafterDate);
                 dueAtObjectpropCount++;
             }
 
             if (searchActionsBodyduebeforeDate != null)
             {
-                dueAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodyduebeforeDate);
+                dueAtObject["to"] = CSharpExpressionConverter.ConvertToken(searchActionsBodyduebeforeDate);
                 dueAtObjectpropCount++;
             }
 
@@ -221,49 +221,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var createActionBodypropCount = 0;
             if (createActionBodyauditID != null)
             {
-                createActionBody["audit_id"] = ExpressionConverter.ConvertO(createActionBodyauditID);
+                createActionBody["audit_id"] = CSharpExpressionConverter.ConvertToken(createActionBodyauditID);
                 createActionBodypropCount++;
             }
 
             if (createActionBodyitemID != null)
             {
-                createActionBody["item_id"] = ExpressionConverter.ConvertO(createActionBodyitemID);
+                createActionBody["item_id"] = CSharpExpressionConverter.ConvertToken(createActionBodyitemID);
                 createActionBodypropCount++;
             }
 
             if (createActionBodytitle != null)
             {
-                createActionBody["title"] = ExpressionConverter.ConvertO(createActionBodytitle);
+                createActionBody["title"] = CSharpExpressionConverter.ConvertToken(createActionBodytitle);
                 createActionBodypropCount++;
             }
 
             if (createActionBodydescription != null)
             {
-                createActionBody["description"] = ExpressionConverter.ConvertO(createActionBodydescription);
+                createActionBody["description"] = CSharpExpressionConverter.ConvertToken(createActionBodydescription);
                 createActionBodypropCount++;
             }
 
             if (createActionBodypriority != null)
             {
-                createActionBody["priority"] = ExpressionConverter.ConvertO(createActionBodypriority);
+                createActionBody["priority"] = CSharpExpressionConverter.Convert(createActionBodypriority);
                 createActionBodypropCount++;
             }
 
             if (createActionBodystatus != null)
             {
-                createActionBody["status"] = ExpressionConverter.ConvertO(createActionBodystatus);
+                createActionBody["status"] = CSharpExpressionConverter.Convert(createActionBodystatus);
                 createActionBodypropCount++;
             }
 
             if (createActionBodydueAt != null)
             {
-                createActionBody["due_at"] = ExpressionConverter.ConvertO(createActionBodydueAt);
+                createActionBody["due_at"] = CSharpExpressionConverter.ConvertToken(createActionBodydueAt);
                 createActionBodypropCount++;
             }
 
             if (createActionBodyassignees != null)
             {
-                createActionBody["assignees"] = ExpressionConverter.ConvertO(createActionBodyassignees);
+                createActionBody["assignees"] = CSharpExpressionConverter.ConvertToken(createActionBodyassignees);
                 createActionBodypropCount++;
             }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<DeleteActionResponse> DeleteAction(Expression<Func<string>> actionId)
         {
-            var apiCallPath = String.Format("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/actions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteActionResponse>(callPayload);
@@ -287,44 +287,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<Action> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
         {
-            var apiCallPath = String.Format("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/actions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var updateActionBody = new JObject();
             var updateActionBodypropCount = 0;
             if (updateActionBodytitle != null)
             {
-                updateActionBody["title"] = ExpressionConverter.ConvertO(updateActionBodytitle);
+                updateActionBody["title"] = CSharpExpressionConverter.ConvertToken(updateActionBodytitle);
                 updateActionBodypropCount++;
             }
 
             if (updateActionBodydescription != null)
             {
-                updateActionBody["description"] = ExpressionConverter.ConvertO(updateActionBodydescription);
+                updateActionBody["description"] = CSharpExpressionConverter.ConvertToken(updateActionBodydescription);
                 updateActionBodypropCount++;
             }
 
             if (updateActionBodypriority != null)
             {
-                updateActionBody["priority"] = ExpressionConverter.ConvertO(updateActionBodypriority);
+                updateActionBody["priority"] = CSharpExpressionConverter.Convert(updateActionBodypriority);
                 updateActionBodypropCount++;
             }
 
             if (updateActionBodystatus != null)
             {
-                updateActionBody["status"] = ExpressionConverter.ConvertO(updateActionBodystatus);
+                updateActionBody["status"] = CSharpExpressionConverter.Convert(updateActionBodystatus);
                 updateActionBodypropCount++;
             }
 
             if (updateActionBodydueAt != null)
             {
-                updateActionBody["due_at"] = ExpressionConverter.ConvertO(updateActionBodydueAt);
+                updateActionBody["due_at"] = CSharpExpressionConverter.ConvertToken(updateActionBodydueAt);
                 updateActionBodypropCount++;
             }
 
             if (updateActionBodyassignees != null)
             {
-                updateActionBody["assignees"] = ExpressionConverter.ConvertO(updateActionBodyassignees);
+                updateActionBody["assignees"] = CSharpExpressionConverter.ConvertToken(updateActionBodyassignees);
                 updateActionBodypropCount++;
             }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
         {
-            var apiCallPath = String.Format("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
         {
-            var apiCallPath = String.Format("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var format = new JObject();
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             {
                 if (formatexportFormat != null)
                 {
-                    format["format"] = ExpressionConverter.ConvertO(formatexportFormat);
+                    format["format"] = CSharpExpressionConverter.Convert(formatexportFormat);
                     formatpropCount++;
                 }
 
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 
             if (formatpreferenceID != null)
             {
-                format["preference_id"] = ExpressionConverter.ConvertO(formatpreferenceID);
+                format["preference_id"] = CSharpExpressionConverter.ConvertToken(formatpreferenceID);
                 formatpropCount++;
             }
 
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            var apiCallPath = String.Format("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<InspectionExportStatusResponse>(callPayload);

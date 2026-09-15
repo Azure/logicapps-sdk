@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
         {
-            var apiCallPath = String.Format("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["fields"] = Convert.ToString("stats");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PostModel>(callPayload);
@@ -33,32 +33,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
         {
-            var apiCallPath = String.Format("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var post = new JObject();
             var postpropCount = 0;
             if (posttitle != null)
             {
-                post["title"] = ExpressionConverter.ConvertO(posttitle);
+                post["title"] = CSharpExpressionConverter.ConvertToken(posttitle);
                 postpropCount++;
             }
 
             if (postcontent != null)
             {
-                post["content"] = ExpressionConverter.ConvertO(postcontent);
+                post["content"] = CSharpExpressionConverter.ConvertToken(postcontent);
                 postpropCount++;
             }
 
             if (poststatus != null)
             {
-                post["status"] = ExpressionConverter.ConvertO(poststatus);
+                post["status"] = CSharpExpressionConverter.Convert(poststatus);
                 postpropCount++;
             }
 
             if (posttags != null)
             {
-                post["tags"] = ExpressionConverter.ConvertO(posttags);
+                post["tags"] = CSharpExpressionConverter.ConvertToken(posttags);
                 postpropCount++;
             }
 

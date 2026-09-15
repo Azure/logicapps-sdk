@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
             var apiCallPath = "/dummy-AS400Cobol";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
             var apiCallPath = "/dummy-AS400Rpg";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
             var apiCallPath = "/dummy-AS400DataQueue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
             var apiCallPath = "/dummy-AS400Db2Queries";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
             var apiCallPath = "/dummy-AS400Db2Executables";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["computer"] = ExpressionConverter.ConvertO(bodycomputer);
+            body["computer"] = CSharpExpressionConverter.ConvertToken(bodycomputer);
             bodypropCount++;
-            body["trigger"] = ExpressionConverter.ConvertO(bodytrigger);
+            body["trigger"] = CSharpExpressionConverter.ConvertToken(bodytrigger);
             if (bodyParams != null)
             {
-                body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                body["params"] = CSharpExpressionConverter.ConvertToken(bodyParams);
                 bodypropCount++;
             }
 

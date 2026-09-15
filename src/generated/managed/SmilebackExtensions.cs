@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IWorkflowAction DeletePower(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v3/power/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -69,43 +69,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var fieldpropCount = 0;
             if (fieldcsatFilterRaiting != null)
             {
-                field["csat_filter_raiting"] = ExpressionConverter.ConvertO(fieldcsatFilterRaiting);
+                field["csat_filter_raiting"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterRaiting);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterAgents != null)
             {
-                field["csat_filter_agents"] = ExpressionConverter.ConvertO(fieldcsatFilterAgents);
+                field["csat_filter_agents"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterAgents);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterSegments != null)
             {
-                field["csat_filter_segments"] = ExpressionConverter.ConvertO(fieldcsatFilterSegments);
+                field["csat_filter_segments"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterSegments);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterCompanies != null)
             {
-                field["csat_filter_companies"] = ExpressionConverter.ConvertO(fieldcsatFilterCompanies);
+                field["csat_filter_companies"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterCompanies);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterContacts != null)
             {
-                field["csat_filter_contacts"] = ExpressionConverter.ConvertO(fieldcsatFilterContacts);
+                field["csat_filter_contacts"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterContacts);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterComments != null)
             {
-                field["csat_filter_comments"] = ExpressionConverter.ConvertO(fieldcsatFilterComments);
+                field["csat_filter_comments"] = CSharpExpressionConverter.Convert(fieldcsatFilterComments);
                 fieldpropCount++;
             }
 
             if (fieldcsatFilterMp != null)
             {
-                field["csat_filter_mp"] = ExpressionConverter.ConvertO(fieldcsatFilterMp);
+                field["csat_filter_mp"] = CSharpExpressionConverter.Convert(fieldcsatFilterMp);
                 fieldpropCount++;
             }
 
@@ -127,25 +127,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var fieldpropCount = 0;
             if (fieldnpsFilterScore != null)
             {
-                field["nps_filter_score"] = ExpressionConverter.ConvertO(fieldnpsFilterScore);
+                field["nps_filter_score"] = CSharpExpressionConverter.ConvertToken(fieldnpsFilterScore);
                 fieldpropCount++;
             }
 
             if (fieldnpsFilterCampaigns != null)
             {
-                field["nps_filter_campaigns"] = ExpressionConverter.ConvertO(fieldnpsFilterCampaigns);
+                field["nps_filter_campaigns"] = CSharpExpressionConverter.ConvertToken(fieldnpsFilterCampaigns);
                 fieldpropCount++;
             }
 
             if (fieldnpsFilterComments != null)
             {
-                field["nps_filter_comments"] = ExpressionConverter.ConvertO(fieldnpsFilterComments);
+                field["nps_filter_comments"] = CSharpExpressionConverter.Convert(fieldnpsFilterComments);
                 fieldpropCount++;
             }
 
             if (fieldnpsFilterMp != null)
             {
-                field["nps_filter_mp"] = ExpressionConverter.ConvertO(fieldnpsFilterMp);
+                field["nps_filter_mp"] = CSharpExpressionConverter.Convert(fieldnpsFilterMp);
                 fieldpropCount++;
             }
 
@@ -167,25 +167,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var fieldpropCount = 0;
             if (fieldprojectsFilterScore != null)
             {
-                field["projects_filter_score"] = ExpressionConverter.ConvertO(fieldprojectsFilterScore);
+                field["projects_filter_score"] = CSharpExpressionConverter.ConvertToken(fieldprojectsFilterScore);
                 fieldpropCount++;
             }
 
             if (fieldprojectsFilterSurveys != null)
             {
-                field["projects_filter_surveys"] = ExpressionConverter.ConvertO(fieldprojectsFilterSurveys);
+                field["projects_filter_surveys"] = CSharpExpressionConverter.ConvertToken(fieldprojectsFilterSurveys);
                 fieldpropCount++;
             }
 
             if (fieldprojectsFilterComments != null)
             {
-                field["projects_filter_comments"] = ExpressionConverter.ConvertO(fieldprojectsFilterComments);
+                field["projects_filter_comments"] = CSharpExpressionConverter.Convert(fieldprojectsFilterComments);
                 fieldpropCount++;
             }
 
             if (fieldprojectsFilterMp != null)
             {
-                field["projects_filter_mp"] = ExpressionConverter.ConvertO(fieldprojectsFilterMp);
+                field["projects_filter_mp"] = CSharpExpressionConverter.Convert(fieldprojectsFilterMp);
                 fieldpropCount++;
             }
 

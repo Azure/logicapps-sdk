@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
             var apiCallPath = "/addURL";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
+            callPayload.Queries["long"] = CSharpExpressionConverter.ConvertO(@long);
             if (@short != null)
-                callPayload.Queries["short"] = ExpressionConverter.Convert(@short);
+                callPayload.Queries["short"] = CSharpExpressionConverter.ConvertO(@short);
             return new ApiConnectionAction<URLGetResponse>(callPayload);
         }
     }

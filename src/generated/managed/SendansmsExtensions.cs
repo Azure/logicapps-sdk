@@ -17,28 +17,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
             var apiCallPath = "/messages";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(xTopMessageKey);
+            callPayload.Headers["X-TopMessage-Key"] = CSharpExpressionConverter.ConvertO(xTopMessageKey);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (bodydatafrom != null)
             {
-                dataObject["from"] = ExpressionConverter.ConvertO(bodydatafrom);
+                dataObject["from"] = CSharpExpressionConverter.ConvertToken(bodydatafrom);
                 dataObjectpropCount++;
             }
 
             if (bodydatato != null)
             {
-                dataObject["to"] = ExpressionConverter.ConvertO(bodydatato);
+                dataObject["to"] = CSharpExpressionConverter.ConvertToken(bodydatato);
                 dataObjectpropCount++;
             }
 
             if (bodydatatext != null)
             {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatatext);
+                dataObject["text"] = CSharpExpressionConverter.ConvertToken(bodydatatext);
                 dataObjectpropCount++;
             }
 

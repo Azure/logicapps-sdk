@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
             bodypropCount++;
             if (bodyimageFileContent != null)
             {
-                body["Image File Content"] = ExpressionConverter.ConvertO(bodyimageFileContent);
+                body["Image File Content"] = CSharpExpressionConverter.ConvertToken(bodyimageFileContent);
                 bodypropCount++;
             }
 
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentInformation"] = ExpressionConverter.ConvertO(bodydocumentInformation);
+            body["documentInformation"] = CSharpExpressionConverter.ConvertToken(bodydocumentInformation);
             bodypropCount++;
-            body["templateFile"] = ExpressionConverter.ConvertO(bodydocumentTemplateContent);
+            body["templateFile"] = CSharpExpressionConverter.ConvertToken(bodydocumentTemplateContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

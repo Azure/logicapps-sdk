@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
             var apiCallPath = "/Translate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+            callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (textType != null)
-                callPayload.Queries["textType"] = ExpressionConverter.Convert(textType);
+                callPayload.Queries["textType"] = CSharpExpressionConverter.Convert(textType);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

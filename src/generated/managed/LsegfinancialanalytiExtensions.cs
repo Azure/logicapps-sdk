@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var bodypropCount = 0;
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/job-status";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
             return new ApiConnectionAction<JobStatusResponse>(callPayload);
         }
 
@@ -51,47 +51,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/bulk-py-analytics";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
+            callPayload.Queries["Batch Size"] = CSharpExpressionConverter.ConvertO(batchSize);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
+            body["requestId"] = CSharpExpressionConverter.ConvertToken(bodyrequestId);
             bodypropCount++;
-            body["curveType"] = ExpressionConverter.ConvertO(bodycurveType);
+            body["curveType"] = CSharpExpressionConverter.Convert(bodycurveType);
             if (bodycurrency != null)
             {
-                body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                body["currency"] = CSharpExpressionConverter.Convert(bodycurrency);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["pricingDate"] = ExpressionConverter.ConvertO(bodypricingDate);
+            body["pricingDate"] = CSharpExpressionConverter.ConvertToken(bodypricingDate);
             bodypropCount++;
-            body["settlementType"] = ExpressionConverter.ConvertO(bodysettlementType);
+            body["settlementType"] = CSharpExpressionConverter.ConvertToken(bodysettlementType);
             bodypropCount++;
-            body["prepayType"] = ExpressionConverter.ConvertO(bodyprepayType);
+            body["prepayType"] = CSharpExpressionConverter.Convert(bodyprepayType);
             if (bodyprepayRate != null)
             {
-                body["prepayRate"] = ExpressionConverter.ConvertO(bodyprepayRate);
+                body["prepayRate"] = CSharpExpressionConverter.ConvertToken(bodyprepayRate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["calculatePartialDurations4pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations4pt);
+            body["calculatePartialDurations4pt"] = CSharpExpressionConverter.ConvertToken(bodycalculatePartialDurations4pt);
             bodypropCount++;
-            body["calculatePartialDurations7pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations7pt);
+            body["calculatePartialDurations7pt"] = CSharpExpressionConverter.ConvertToken(bodycalculatePartialDurations7pt);
             bodypropCount++;
-            body["retrieveModelProjections"] = ExpressionConverter.ConvertO(bodyretrieveModelProjections);
+            body["retrieveModelProjections"] = CSharpExpressionConverter.ConvertToken(bodyretrieveModelProjections);
             if (bodyretrieveOas != null)
             {
-                body["retrieveOas"] = ExpressionConverter.ConvertO(bodyretrieveOas);
+                body["retrieveOas"] = CSharpExpressionConverter.ConvertToken(bodyretrieveOas);
                 bodypropCount++;
             }
 
             if (bodyoptionModel != null)
             {
-                body["optionModel"] = ExpressionConverter.ConvertO(bodyoptionModel);
+                body["optionModel"] = CSharpExpressionConverter.Convert(bodyoptionModel);
                 bodypropCount++;
             }
 
@@ -109,12 +109,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/bulk-indic-data";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
+            callPayload.Queries["Batch Size"] = CSharpExpressionConverter.ConvertO(batchSize);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["requestId"] = ExpressionConverter.ConvertO(bodyrequestId);
+            body["requestId"] = CSharpExpressionConverter.ConvertToken(bodyrequestId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/upload-securities-list";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["securitiesList"] = ExpressionConverter.ConvertO(bodysecuritiesList);
+            body["securitiesList"] = CSharpExpressionConverter.ConvertToken(bodysecuritiesList);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/close-job";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
-            callPayload.Queries["Output Format"] = ExpressionConverter.Convert(outputFormat);
+            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
+            callPayload.Queries["Output Format"] = CSharpExpressionConverter.Convert(outputFormat);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["payload"] = ExpressionConverter.ConvertO(bodypayload);
+            body["payload"] = CSharpExpressionConverter.ConvertToken(bodypayload);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -18,43 +18,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (modifiedAfter != null)
-                callPayload.Queries["modifiedAfter"] = ExpressionConverter.Convert(modifiedAfter);
+                callPayload.Queries["modifiedAfter"] = CSharpExpressionConverter.ConvertO(modifiedAfter);
             if (modifiedBefore != null)
-                callPayload.Queries["modifiedBefore"] = ExpressionConverter.Convert(modifiedBefore);
+                callPayload.Queries["modifiedBefore"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
             return new ApiConnectionAction<ListDocumentsResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<DocumentProcessParticipantsResponse> DocumentProcessParticipants(Expression<Func<string>> documentProcessId, Expression<Func<bodyparticipantTypeInput>> bodyparticipantType, Expression<Func<bodyroleTypeInput>> bodyroleType = null, Expression<Func<string>> bodysignatureType = null, Expression<Func<object>> bodyparticipantData = null)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/parties", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/parties", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["participantType"] = ExpressionConverter.ConvertO(bodyparticipantType);
+            body["participantType"] = CSharpExpressionConverter.Convert(bodyparticipantType);
             if (bodyroleType != null)
             {
-                body["roleType"] = ExpressionConverter.ConvertO(bodyroleType);
+                body["roleType"] = CSharpExpressionConverter.Convert(bodyroleType);
                 bodypropCount++;
             }
 
             if (bodysignatureType != null)
             {
-                body["signatureType"] = ExpressionConverter.ConvertO(bodysignatureType);
+                body["signatureType"] = CSharpExpressionConverter.ConvertToken(bodysignatureType);
                 bodypropCount++;
             }
 
             if (bodyparticipantData != null)
             {
-                body["participantData"] = ExpressionConverter.ConvertO(bodyparticipantData);
+                body["participantData"] = CSharpExpressionConverter.ConvertToken(bodyparticipantData);
                 bodypropCount++;
             }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<AddFileResponse> AddFile(Expression<Func<string>> documentProcessId, Expression<Func<object>> file)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AddFileResponse>(callPayload);
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<GetFilesInfoResponse> GetFilesInfo(Expression<Func<string>> documentProcessId, Expression<Func<filePurposeInput>> filePurpose = null)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filePurpose != null)
-                callPayload.Queries["filePurpose"] = ExpressionConverter.Convert(filePurpose);
+                callPayload.Queries["filePurpose"] = CSharpExpressionConverter.Convert(filePurpose);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<GetFilesInfoResponse>(callPayload);
         }
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<ActionsAvailabilityResponse> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<bodyeventTypeInput>> bodyeventType)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event_type"] = ExpressionConverter.ConvertO(bodyeventType);
+            body["event_type"] = CSharpExpressionConverter.Convert(bodyeventType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<GetByIdResponse> GetById(Expression<Func<string>> documentProcessId)
         {
-            var apiCallPath = String.Format("/document-processes/{0}", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetByIdResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IWorkflowAction DownloadFile(Expression<Func<string>> documentProcessId, Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files/{1}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -126,14 +126,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IWorkflowAction AddTag(Expression<Func<string>> documentProcessId, Expression<Func<string>> bodyid = null)
         {
-            var apiCallPath = String.Format("/document-processes/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/tags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["responseVariant"] = Convert.ToString("microsoft_power_automate");
             if (responseVariant != null)
-                callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(responseVariant);
+                callPayload.Queries["responseVariant"] = CSharpExpressionConverter.ConvertO(responseVariant);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["callbackAdapterId"] = ExpressionConverter.ConvertO(bodycallbackAdapterId);
+            body["callbackAdapterId"] = CSharpExpressionConverter.ConvertToken(bodycallbackAdapterId);
             var callbackParametersObject = new JObject();
             var callbackParametersObjectpropCount = 0;
             callbackParametersObject["callbackUrl"] = "@listCallbackUrl()";

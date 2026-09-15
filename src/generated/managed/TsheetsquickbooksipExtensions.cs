@@ -18,30 +18,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (parentIds != null)
-                callPayload.Queries["parent_ids"] = ExpressionConverter.Convert(parentIds);
+                callPayload.Queries["parent_ids"] = CSharpExpressionConverter.ConvertO(parentIds);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Queries["type"] = Convert.ToString("regular");
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (customfields != null)
-                callPayload.Queries["customfields"] = ExpressionConverter.Convert(customfields);
+                callPayload.Queries["customfields"] = CSharpExpressionConverter.ConvertO(customfields);
             if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
+                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
             if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
             callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
             if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
+                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["active"] = Convert.ToString("yes");
             if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
             return new ApiConnectionAction<GetJobcodesResponse>(callPayload);
         }
 
@@ -52,18 +52,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (jobcodeIds != null)
-                callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(jobcodeIds);
+                callPayload.Queries["jobcode_ids"] = CSharpExpressionConverter.ConvertO(jobcodeIds);
             if (parentJobcodeId != null)
-                callPayload.Queries["parent_jobcode_id"] = ExpressionConverter.Convert(parentJobcodeId);
+                callPayload.Queries["parent_jobcode_id"] = CSharpExpressionConverter.ConvertO(parentJobcodeId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Queries["active"] = Convert.ToString("yes");
             if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
             if (byJobcodeAssignment != null)
-                callPayload.Queries["by_jobcode_assignment"] = ExpressionConverter.Convert(byJobcodeAssignment);
+                callPayload.Queries["by_jobcode_assignment"] = CSharpExpressionConverter.ConvertO(byJobcodeAssignment);
             return new ApiConnectionAction<GetProjectsResponse>(callPayload);
         }
 
@@ -74,37 +74,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (notIds != null)
-                callPayload.Queries["not_ids"] = ExpressionConverter.Convert(notIds);
+                callPayload.Queries["not_ids"] = CSharpExpressionConverter.ConvertO(notIds);
             if (employeeNumbers != null)
-                callPayload.Queries["employee_numbers"] = ExpressionConverter.Convert(employeeNumbers);
+                callPayload.Queries["employee_numbers"] = CSharpExpressionConverter.ConvertO(employeeNumbers);
             if (usernames != null)
-                callPayload.Queries["usernames"] = ExpressionConverter.Convert(usernames);
+                callPayload.Queries["usernames"] = CSharpExpressionConverter.ConvertO(usernames);
             if (groupIds != null)
-                callPayload.Queries["group_ids"] = ExpressionConverter.Convert(groupIds);
+                callPayload.Queries["group_ids"] = CSharpExpressionConverter.ConvertO(groupIds);
             if (notGroupIds != null)
-                callPayload.Queries["not_group_ids"] = ExpressionConverter.Convert(notGroupIds);
+                callPayload.Queries["not_group_ids"] = CSharpExpressionConverter.ConvertO(notGroupIds);
             if (payrollIds != null)
-                callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(payrollIds);
+                callPayload.Queries["payroll_ids"] = CSharpExpressionConverter.ConvertO(payrollIds);
             callPayload.Queries["active"] = Convert.ToString("yes");
             if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
             if (firstName != null)
-                callPayload.Queries["first_name"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["first_name"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["last_name"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["last_name"] = CSharpExpressionConverter.ConvertO(lastName);
             if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
+                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
             if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
             callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
             if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
+                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetUsersResponse>(callPayload);
         }
 
@@ -115,36 +115,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
             if (jobcodeIds != null)
-                callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(jobcodeIds);
+                callPayload.Queries["jobcode_ids"] = CSharpExpressionConverter.ConvertO(jobcodeIds);
             if (payrollIds != null)
-                callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(payrollIds);
+                callPayload.Queries["payroll_ids"] = CSharpExpressionConverter.ConvertO(payrollIds);
             if (userIds != null)
-                callPayload.Queries["user_ids"] = ExpressionConverter.Convert(userIds);
+                callPayload.Queries["user_ids"] = CSharpExpressionConverter.ConvertO(userIds);
             if (groupIds != null)
-                callPayload.Queries["group_ids"] = ExpressionConverter.Convert(groupIds);
+                callPayload.Queries["group_ids"] = CSharpExpressionConverter.ConvertO(groupIds);
             callPayload.Queries["on_the_clock"] = Convert.ToString("no");
             if (onTheClock != null)
-                callPayload.Queries["on_the_clock"] = ExpressionConverter.Convert(onTheClock);
+                callPayload.Queries["on_the_clock"] = CSharpExpressionConverter.Convert(onTheClock);
             callPayload.Queries["jobcode_type"] = Convert.ToString("all");
             if (jobcodeType != null)
-                callPayload.Queries["jobcode_type"] = ExpressionConverter.Convert(jobcodeType);
+                callPayload.Queries["jobcode_type"] = CSharpExpressionConverter.Convert(jobcodeType);
             if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
+                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
             if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
             callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
             if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
+                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetTimesheetsResponse>(callPayload);
         }
 
@@ -155,19 +155,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (deliveryBefore != null)
-                callPayload.Queries["delivery_before"] = ExpressionConverter.Convert(deliveryBefore);
+                callPayload.Queries["delivery_before"] = CSharpExpressionConverter.ConvertO(deliveryBefore);
             if (deliveryAfter != null)
-                callPayload.Queries["delivery_after"] = ExpressionConverter.Convert(deliveryAfter);
+                callPayload.Queries["delivery_after"] = CSharpExpressionConverter.ConvertO(deliveryAfter);
             if (userId != null)
-                callPayload.Queries["user_id"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["user_id"] = CSharpExpressionConverter.ConvertO(userId);
             if (msgTrackingId != null)
-                callPayload.Queries["msg_tracking_id"] = ExpressionConverter.Convert(msgTrackingId);
+                callPayload.Queries["msg_tracking_id"] = CSharpExpressionConverter.ConvertO(msgTrackingId);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetNotificationsResponse>(callPayload);
         }
     }

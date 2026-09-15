@@ -18,28 +18,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (radarCode != null)
-                callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
+                callPayload.Queries["radarCode"] = CSharpExpressionConverter.ConvertO(radarCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetRadarsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarResponse> GetRadar(Expression<Func<string>> radarCode, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(radarCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/radars/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(radarCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetRadarResponse>(callPayload);
         }
 
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var apiCallPath = "/nearby";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             callPayload.Queries["dataSet"] = Convert.ToString("ALL");
             if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                callPayload.Queries["dataSet"] = CSharpExpressionConverter.Convert(dataSet);
             return new ApiConnectionAction<GetNearbyRadarResponse>(callPayload);
         }
 
@@ -63,22 +63,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var apiCallPath = "/rainfall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (radarCode != null)
-                callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
+                callPayload.Queries["radarCode"] = CSharpExpressionConverter.ConvertO(radarCode);
             callPayload.Queries["dataSet"] = Convert.ToString("ALL");
             if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                callPayload.Queries["dataSet"] = CSharpExpressionConverter.Convert(dataSet);
             callPayload.Queries["select"] = Convert.ToString("dateTime,radar,radarCode,radarDistance,radarLatitude,radarLongitude,rainfall,rainfallCurrentHour,rainfallMonthToDate,rainfallSince9am,rainfallYrarToDate");
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<GetRadarRainfallResponse>(callPayload);
         }
 
@@ -88,22 +88,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var apiCallPath = "/summaries/daily";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             callPayload.Queries["dataSet"] = Convert.ToString("ALL");
             if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                callPayload.Queries["dataSet"] = CSharpExpressionConverter.Convert(dataSet);
             callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<GetRadarDailySummariesResponse>(callPayload);
         }
 
@@ -113,22 +113,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var apiCallPath = "/summaries/monthly";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["startMonth"] = CSharpExpressionConverter.ConvertO(startMonth);
+            callPayload.Queries["endMonth"] = CSharpExpressionConverter.ConvertO(endMonth);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             callPayload.Queries["dataSet"] = Convert.ToString("ALL");
             if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                callPayload.Queries["dataSet"] = CSharpExpressionConverter.Convert(dataSet);
             callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<GetRadarMonthlySummariesResponse>(callPayload);
         }
     }

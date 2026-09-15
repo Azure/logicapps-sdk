@@ -18,17 +18,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (articleNumber != null)
-                callPayload.Queries["articleNumber"] = ExpressionConverter.Convert(articleNumber);
+                callPayload.Queries["articleNumber"] = CSharpExpressionConverter.ConvertO(articleNumber);
             if (gtin != null)
-                callPayload.Queries["gtin"] = ExpressionConverter.Convert(gtin);
+                callPayload.Queries["gtin"] = CSharpExpressionConverter.ConvertO(gtin);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<ResponseArticlesGet>(callPayload);
         }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var bodypropCount = 0;
             if (bodyarticleNumber != null)
             {
-                body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
+                body["articleNumber"] = CSharpExpressionConverter.ConvertToken(bodyarticleNumber);
                 bodypropCount++;
             }
 
@@ -53,25 +53,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var priceObjectpropCount = 0;
             if (bodypricegrossPrice != null)
             {
-                priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
+                priceObject["grossPrice"] = CSharpExpressionConverter.ConvertToken(bodypricegrossPrice);
                 priceObjectpropCount++;
             }
 
             if (bodypriceleadingPrice != null)
             {
-                priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                priceObject["leadingPrice"] = CSharpExpressionConverter.ConvertToken(bodypriceleadingPrice);
                 priceObjectpropCount++;
             }
 
             if (bodypricenetPrice != null)
             {
-                priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
+                priceObject["netPrice"] = CSharpExpressionConverter.ConvertToken(bodypricenetPrice);
                 priceObjectpropCount++;
             }
 
             if (bodypricetaxRate != null)
             {
-                priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
+                priceObject["taxRate"] = CSharpExpressionConverter.ConvertToken(bodypricetaxRate);
                 priceObjectpropCount++;
             }
 
@@ -83,19 +83,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodyunitName != null)
             {
-                body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
+                body["unitName"] = CSharpExpressionConverter.ConvertToken(bodyunitName);
                 bodypropCount++;
             }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/articles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteAnArticle(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/articles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/articles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -139,19 +139,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var bodypropCount = 0;
             if (bodyarticleNumber != null)
             {
-                body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
+                body["articleNumber"] = CSharpExpressionConverter.ConvertToken(bodyarticleNumber);
                 bodypropCount++;
             }
 
             if (bodygtin != null)
             {
-                body["gtin"] = ExpressionConverter.ConvertO(bodygtin);
+                body["gtin"] = CSharpExpressionConverter.ConvertToken(bodygtin);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var priceObjectpropCount = 0;
             if (bodypricegrossPrice != null)
             {
-                priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
+                priceObject["grossPrice"] = CSharpExpressionConverter.ConvertToken(bodypricegrossPrice);
                 priceObjectpropCount++;
             }
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             {
                 if (bodypriceleadingPrice != null)
                 {
-                    priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                    priceObject["leadingPrice"] = CSharpExpressionConverter.Convert(bodypriceleadingPrice);
                     priceObjectpropCount++;
                 }
 
@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
             if (bodypricenetPrice != null)
             {
-                priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
+                priceObject["netPrice"] = CSharpExpressionConverter.ConvertToken(bodypricenetPrice);
                 priceObjectpropCount++;
             }
 
             if (bodypricetaxRate != null)
             {
-                priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
+                priceObject["taxRate"] = CSharpExpressionConverter.ConvertToken(bodypricetaxRate);
                 priceObjectpropCount++;
             }
 
@@ -199,16 +199,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
+            body["unitName"] = CSharpExpressionConverter.ConvertToken(bodyunitName);
             bodypropCount++;
-            body["version"] = ExpressionConverter.ConvertO(bodyversion);
+            body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -224,23 +224,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (number != null)
-                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
+                callPayload.Queries["number"] = CSharpExpressionConverter.ConvertO(number);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (vendor != null)
-                callPayload.Queries["vendor"] = ExpressionConverter.Convert(vendor);
+                callPayload.Queries["vendor"] = CSharpExpressionConverter.ConvertO(vendor);
             if (customer != null)
-                callPayload.Queries["customer"] = ExpressionConverter.Convert(customer);
+                callPayload.Queries["customer"] = CSharpExpressionConverter.ConvertO(customer);
             callPayload.Queries["page"] = Convert.ToString(0);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["size"] = Convert.ToString(250);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<ResponseContactsGet>(callPayload);
         }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -308,8 +308,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+                callPayload.Queries["precedingSalesVoucherId"] = CSharpExpressionConverter.ConvertO(precedingSalesVoucherId);
+            callPayload.Queries["finalize"] = CSharpExpressionConverter.ConvertO(finalize);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/credit-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/credit-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Queries["precedingSalesVoucherId"] = CSharpExpressionConverter.ConvertO(precedingSalesVoucherId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument(Expression<Func<string>> deliveryNoteid)
         {
-            var apiCallPath = String.Format("/delivery-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(deliveryNoteid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryNoteid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/delivery-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/down-payment-invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/down-payment-invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Queries["precedingSalesVoucherId"] = CSharpExpressionConverter.ConvertO(precedingSalesVoucherId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning(Expression<Func<string>> dunningsid)
         {
-            var apiCallPath = String.Format("/dunnings/{0}", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/dunnings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dunningsid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument(Expression<Func<string>> dunningsid)
         {
-            var apiCallPath = String.Format("/dunnings/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/dunnings/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dunningsid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription(Expression<Func<string>> subscriptionId)
         {
-            var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteEventSubscription(Expression<Func<string>> subscriptionId)
         {
-            var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -475,12 +475,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<object> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<acceptInput>> accept = null)
         {
-            var apiCallPath = String.Format("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.Convert(accept);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -491,8 +491,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+                callPayload.Queries["precedingSalesVoucherId"] = CSharpExpressionConverter.ConvertO(precedingSalesVoucherId);
+            callPayload.Queries["finalize"] = CSharpExpressionConverter.ConvertO(finalize);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Queries["precedingSalesVoucherId"] = CSharpExpressionConverter.ConvertO(precedingSalesVoucherId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/order-confirmations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/order-confirmations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation(Expression<Func<string>> voucherId)
         {
-            var apiCallPath = String.Format("/payments/{0}", ExpressionConverter.ConvertWithUrlEncoding(voucherId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/payments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(voucherId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallPath = "/quotations";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+            callPayload.Queries["finalize"] = CSharpExpressionConverter.ConvertO(finalize);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/quotations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/quotations/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/quotations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/quotations/{0}/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -653,11 +653,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<ResponseRecurringTemplatesGet>(callPayload);
         }
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/recurring-templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recurring-templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -679,35 +679,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var apiCallPath = "/voucherlist";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voucherType"] = ExpressionConverter.Convert(voucherType);
-            callPayload.Queries["voucherStatus"] = ExpressionConverter.Convert(voucherStatus);
+            callPayload.Queries["voucherType"] = CSharpExpressionConverter.Convert(voucherType);
+            callPayload.Queries["voucherStatus"] = CSharpExpressionConverter.Convert(voucherStatus);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (contactId != null)
-                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                callPayload.Queries["contactId"] = CSharpExpressionConverter.ConvertO(contactId);
             if (voucherDateFrom != null)
-                callPayload.Queries["voucherDateFrom"] = ExpressionConverter.Convert(voucherDateFrom);
+                callPayload.Queries["voucherDateFrom"] = CSharpExpressionConverter.ConvertO(voucherDateFrom);
             if (voucherDateTo != null)
-                callPayload.Queries["voucherDateTo"] = ExpressionConverter.Convert(voucherDateTo);
+                callPayload.Queries["voucherDateTo"] = CSharpExpressionConverter.ConvertO(voucherDateTo);
             if (createdDateFrom != null)
-                callPayload.Queries["createdDateFrom"] = ExpressionConverter.Convert(createdDateFrom);
+                callPayload.Queries["createdDateFrom"] = CSharpExpressionConverter.ConvertO(createdDateFrom);
             if (createdDateTo != null)
-                callPayload.Queries["createdDateTo"] = ExpressionConverter.Convert(createdDateTo);
+                callPayload.Queries["createdDateTo"] = CSharpExpressionConverter.ConvertO(createdDateTo);
             if (updatedDateFrom != null)
-                callPayload.Queries["updatedDateFrom"] = ExpressionConverter.Convert(updatedDateFrom);
+                callPayload.Queries["updatedDateFrom"] = CSharpExpressionConverter.ConvertO(updatedDateFrom);
             if (updatedDateTo != null)
-                callPayload.Queries["updatedDateTo"] = ExpressionConverter.Convert(updatedDateTo);
+                callPayload.Queries["updatedDateTo"] = CSharpExpressionConverter.ConvertO(updatedDateTo);
             if (voucherNumber != null)
-                callPayload.Queries["voucherNumber"] = ExpressionConverter.Convert(voucherNumber);
+                callPayload.Queries["voucherNumber"] = CSharpExpressionConverter.ConvertO(voucherNumber);
             callPayload.Queries["page"] = Convert.ToString(0);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["size"] = Convert.ToString(250);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             callPayload.Queries["sort"] = Convert.ToString("voucherNumber,DESC");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<ResponseVoucherlistGet>(callPayload);
         }
@@ -724,67 +724,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var bodypropCount = 0;
             if (bodycontactId != null)
             {
-                body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
+                body["contactId"] = CSharpExpressionConverter.ConvertToken(bodycontactId);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodyremark != null)
             {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["remark"] = CSharpExpressionConverter.ConvertToken(bodyremark);
                 bodypropCount++;
             }
 
             if (bodyshippingDate != null)
             {
-                body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
+                body["shippingDate"] = CSharpExpressionConverter.ConvertToken(bodyshippingDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
+            body["taxType"] = CSharpExpressionConverter.Convert(bodytaxType);
             if (bodytotalGrossAmount != null)
             {
-                body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
+                body["totalGrossAmount"] = CSharpExpressionConverter.ConvertToken(bodytotalGrossAmount);
                 bodypropCount++;
             }
 
             if (bodytotalTaxAmount != null)
             {
-                body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
+                body["totalTaxAmount"] = CSharpExpressionConverter.ConvertToken(bodytotalTaxAmount);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodyuseCollectiveContact != null)
             {
-                body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
+                body["useCollectiveContact"] = CSharpExpressionConverter.ConvertToken(bodyuseCollectiveContact);
                 bodypropCount++;
             }
 
             if (bodyvoucherDate != null)
             {
-                body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
+                body["voucherDate"] = CSharpExpressionConverter.ConvertToken(bodyvoucherDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
+            body["voucherItems"] = CSharpExpressionConverter.ConvertToken(bodyvoucherItems);
             if (bodyvoucherNumber != null)
             {
-                body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
+                body["voucherNumber"] = CSharpExpressionConverter.ConvertToken(bodyvoucherNumber);
                 bodypropCount++;
             }
 
             if (bodyvoucherStatus != null)
             {
-                body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
+                body["voucherStatus"] = CSharpExpressionConverter.Convert(bodyvoucherStatus);
                 bodypropCount++;
             }
 
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
         {
-            var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -818,79 +818,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             var bodypropCount = 0;
             if (bodycontactId != null)
             {
-                body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
+                body["contactId"] = CSharpExpressionConverter.ConvertToken(bodycontactId);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodyfiles != null)
             {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                body["files"] = CSharpExpressionConverter.ConvertToken(bodyfiles);
                 bodypropCount++;
             }
 
             if (bodyremark != null)
             {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["remark"] = CSharpExpressionConverter.ConvertToken(bodyremark);
                 bodypropCount++;
             }
 
             if (bodyshippingDate != null)
             {
-                body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
+                body["shippingDate"] = CSharpExpressionConverter.ConvertToken(bodyshippingDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
+            body["taxType"] = CSharpExpressionConverter.Convert(bodytaxType);
             if (bodytotalGrossAmount != null)
             {
-                body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
+                body["totalGrossAmount"] = CSharpExpressionConverter.ConvertToken(bodytotalGrossAmount);
                 bodypropCount++;
             }
 
             if (bodytotalTaxAmount != null)
             {
-                body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
+                body["totalTaxAmount"] = CSharpExpressionConverter.ConvertToken(bodytotalTaxAmount);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodyuseCollectiveContact != null)
             {
-                body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
+                body["useCollectiveContact"] = CSharpExpressionConverter.ConvertToken(bodyuseCollectiveContact);
                 bodypropCount++;
             }
 
             if (bodyversion != null)
             {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
                 bodypropCount++;
             }
 
             if (bodyvoucherDate != null)
             {
-                body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
+                body["voucherDate"] = CSharpExpressionConverter.ConvertToken(bodyvoucherDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
+            body["voucherItems"] = CSharpExpressionConverter.ConvertToken(bodyvoucherItems);
             if (bodyvoucherNumber != null)
             {
-                body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
+                body["voucherNumber"] = CSharpExpressionConverter.ConvertToken(bodyvoucherNumber);
                 bodypropCount++;
             }
 
             if (bodyvoucherStatus != null)
             {
-                body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
+                body["voucherStatus"] = CSharpExpressionConverter.Convert(bodyvoucherStatus);
                 bodypropCount++;
             }
 
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction UploadFileVoucherLexoffice(Expression<Func<string>> id, Expression<Func<object>> file)
         {
-            var apiCallPath = String.Format("/vouchers/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/vouchers/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+            body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

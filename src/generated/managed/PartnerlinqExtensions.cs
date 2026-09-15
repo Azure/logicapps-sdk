@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             var apiCallPath = "/api/FUNC_HTTP_DATA_SEND";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            callPayload.Headers["Environment"] = ExpressionConverter.Convert(environment);
-            callPayload.Headers["TennatId"] = ExpressionConverter.Convert(tennatId);
-            callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["Process"] = ExpressionConverter.Convert(process);
-            callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(partnerId);
+            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
+            callPayload.Headers["Environment"] = CSharpExpressionConverter.ConvertO(environment);
+            callPayload.Headers["TennatId"] = CSharpExpressionConverter.ConvertO(tennatId);
+            callPayload.Headers["CompanyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["Process"] = CSharpExpressionConverter.ConvertO(process);
+            callPayload.Headers["PartnerId"] = CSharpExpressionConverter.ConvertO(partnerId);
             return new ApiConnectionAction<PartnerLinqGetResponse>(callPayload);
         }
 
@@ -32,17 +32,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            callPayload.Headers["Environment"] = ExpressionConverter.Convert(environment);
-            callPayload.Headers["TenantId"] = ExpressionConverter.Convert(tenantId);
-            callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["Process"] = ExpressionConverter.Convert(process);
-            callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(partnerId);
+            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
+            callPayload.Headers["Environment"] = CSharpExpressionConverter.ConvertO(environment);
+            callPayload.Headers["TenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
+            callPayload.Headers["CompanyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["Process"] = CSharpExpressionConverter.ConvertO(process);
+            callPayload.Headers["PartnerId"] = CSharpExpressionConverter.ConvertO(partnerId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 

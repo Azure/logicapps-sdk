@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+            callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
     }

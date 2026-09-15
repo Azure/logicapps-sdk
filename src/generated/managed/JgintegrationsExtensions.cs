@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["algo"] = ExpressionConverter.ConvertO(bodyalgo);
+            body["algo"] = CSharpExpressionConverter.Convert(bodyalgo);
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+            body["pattern"] = CSharpExpressionConverter.ConvertToken(bodypattern);
             if (bodyreplacement != null)
             {
                 if (bodyreplacement != null)
                 {
-                    body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                    body["replacement"] = CSharpExpressionConverter.ConvertToken(bodyreplacement);
                     bodypropCount++;
                 }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             }
 
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["function"] = ExpressionConverter.ConvertO(bodyfunction);
+            body["function"] = CSharpExpressionConverter.ConvertToken(bodyfunction);
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["landscape"] = ExpressionConverter.ConvertO(bodylandscape);
+            body["landscape"] = CSharpExpressionConverter.ConvertToken(bodylandscape);
             bodypropCount++;
-            body["pagesize"] = ExpressionConverter.ConvertO(bodypagesize);
+            body["pagesize"] = CSharpExpressionConverter.Convert(bodypagesize);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             body["pattern"] = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";
             bodypropCount++;
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

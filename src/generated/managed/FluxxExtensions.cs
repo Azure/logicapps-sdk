@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<object> DownloadDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/rest/v2/model_document_download/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/model_document_download/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<JToken> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/custom_action/{0}", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/custom_action/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["method"] = CSharpExpressionConverter.Convert(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
         {
-            var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["all_core"] = Convert.ToString(1);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -68,22 +68,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["all_core"] = Convert.ToString(1);
             callPayload.Queries["all_dynamic"] = Convert.ToString(1);
             callPayload.Queries["current_page"] = Convert.ToString(1);
             if (currentPage != null)
-                callPayload.Queries["current_page"] = ExpressionConverter.Convert(currentPage);
+                callPayload.Queries["current_page"] = CSharpExpressionConverter.ConvertO(currentPage);
             callPayload.Queries["per_page"] = Convert.ToString(10);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -98,22 +98,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["all_core"] = Convert.ToString(1);
             callPayload.Queries["all_dynamic"] = Convert.ToString(1);
             callPayload.Queries["current_page"] = Convert.ToString(1);
             if (currentPage != null)
-                callPayload.Queries["current_page"] = ExpressionConverter.Convert(currentPage);
+                callPayload.Queries["current_page"] = CSharpExpressionConverter.ConvertO(currentPage);
             callPayload.Queries["per_page"] = Convert.ToString(10);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["all_core"] = Convert.ToString(1);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
         {
-            var apiCallPath = String.Format("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["all_core"] = Convert.ToString(1);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
             var bodypropCount = 0;
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 

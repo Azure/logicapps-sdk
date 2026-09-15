@@ -25,30 +25,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+            body["event"] = CSharpExpressionConverter.Convert(bodyEvent);
             body["source"] = "microsoft";
             bodypropCount++;
             if (bodyregionId != null)
             {
-                body["region_id"] = ExpressionConverter.ConvertO(bodyregionId);
+                body["region_id"] = CSharpExpressionConverter.ConvertToken(bodyregionId);
                 bodypropCount++;
             }
 
             if (bodylocationId != null)
             {
-                body["location_id"] = ExpressionConverter.ConvertO(bodylocationId);
+                body["location_id"] = CSharpExpressionConverter.ConvertToken(bodylocationId);
                 bodypropCount++;
             }
 
             if (bodybuttonId != null)
             {
-                body["button_id"] = ExpressionConverter.ConvertO(bodybuttonId);
+                body["button_id"] = CSharpExpressionConverter.ConvertToken(bodybuttonId);
                 bodypropCount++;
             }
 
             if (bodyconfigId != null)
             {
-                body["config_id"] = ExpressionConverter.ConvertO(bodyconfigId);
+                body["config_id"] = CSharpExpressionConverter.ConvertToken(bodyconfigId);
                 bodypropCount++;
             }
 

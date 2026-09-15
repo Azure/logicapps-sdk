@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en");
             if (acceptLanguage != null)
-                callPayload.Headers["Accept-Language"] = ExpressionConverter.Convert(acceptLanguage);
+                callPayload.Headers["Accept-Language"] = CSharpExpressionConverter.ConvertO(acceptLanguage);
             callPayload.Headers["X-TimeZone"] = Convert.ToString("");
             if (xTimeZone != null)
-                callPayload.Headers["X-TimeZone"] = ExpressionConverter.Convert(xTimeZone);
+                callPayload.Headers["X-TimeZone"] = CSharpExpressionConverter.ConvertO(xTimeZone);
             return new ApiConnectionAction<GetOrganizationsResponseItem[]>(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
             if (bodytheUserSTimeZoneInIANAFormat != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytheUserSTimeZoneInIANAFormat);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytheUserSTimeZoneInIANAFormat);
                 bodypropCount++;
             }
 
@@ -74,13 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var bodypropCount = 0;
             if (bodyorganizationID != null)
             {
-                body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+                body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
             }
 
             if (bodyprojectID != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
                 bodypropCount++;
             }
 
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+            body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
             body["client_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+            body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
             body["client_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -145,9 +145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+            body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
             body["client_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+            body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
             body["client_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -187,9 +187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["business_organization_id"] = ExpressionConverter.ConvertO(bodyorganizationID);
+            body["business_organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationID);
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectID);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectID);
             body["client_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

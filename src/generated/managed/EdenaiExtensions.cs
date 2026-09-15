@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                     bodypropCount++;
                 }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyoption != null)
                 {
-                    body["option"] = ExpressionConverter.ConvertO(bodyoption);
+                    body["option"] = CSharpExpressionConverter.ConvertToken(bodyoption);
                     bodypropCount++;
                 }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyrate != null)
                 {
-                    body["rate"] = ExpressionConverter.ConvertO(bodyrate);
+                    body["rate"] = CSharpExpressionConverter.ConvertToken(bodyrate);
                     bodypropCount++;
                 }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodypitch != null)
                 {
-                    body["pitch"] = ExpressionConverter.ConvertO(bodypitch);
+                    body["pitch"] = CSharpExpressionConverter.ConvertToken(bodypitch);
                     bodypropCount++;
                 }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyvolume != null)
                 {
-                    body["volume"] = ExpressionConverter.ConvertO(bodyvolume);
+                    body["volume"] = CSharpExpressionConverter.ConvertToken(bodyvolume);
                     bodypropCount++;
                 }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyaudioFormat != null)
                 {
-                    body["audio_format"] = ExpressionConverter.ConvertO(bodyaudioFormat);
+                    body["audio_format"] = CSharpExpressionConverter.ConvertToken(bodyaudioFormat);
                     bodypropCount++;
                 }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodysamplingRate != null)
                 {
-                    body["sampling_rate"] = ExpressionConverter.ConvertO(bodysamplingRate);
+                    body["sampling_rate"] = CSharpExpressionConverter.ConvertToken(bodysamplingRate);
                     bodypropCount++;
                 }
 
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                     bodypropCount++;
                 }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                     bodypropCount++;
                 }
 
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -298,13 +298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodychatGlobalAction != null)
             {
-                body["chat_global_action"] = ExpressionConverter.ConvertO(bodychatGlobalAction);
+                body["chat_global_action"] = CSharpExpressionConverter.ConvertToken(bodychatGlobalAction);
                 bodypropCount++;
             }
 
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                     bodypropCount++;
                 }
 
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                     bodypropCount++;
                 }
 
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyresolution != null)
                 {
-                    body["resolution"] = ExpressionConverter.ConvertO(bodyresolution);
+                    body["resolution"] = CSharpExpressionConverter.ConvertToken(bodyresolution);
                     bodypropCount++;
                 }
 
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodynumImages != null)
                 {
-                    body["num_images"] = ExpressionConverter.ConvertO(bodynumImages);
+                    body["num_images"] = CSharpExpressionConverter.ConvertToken(bodynumImages);
                     bodypropCount++;
                 }
 
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodysourceLanguage != null)
                 {
-                    body["source_language"] = ExpressionConverter.ConvertO(bodysourceLanguage);
+                    body["source_language"] = CSharpExpressionConverter.ConvertToken(bodysourceLanguage);
                     bodypropCount++;
                 }
 
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodytargetLanguage != null)
                 {
-                    body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                    body["target_language"] = CSharpExpressionConverter.ConvertToken(bodytargetLanguage);
                     bodypropCount++;
                 }
 
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyoutputSentences != null)
                 {
-                    body["output_sentences"] = ExpressionConverter.ConvertO(bodyoutputSentences);
+                    body["output_sentences"] = CSharpExpressionConverter.ConvertToken(bodyoutputSentences);
                     bodypropCount++;
                 }
 
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    body["providers"] = CSharpExpressionConverter.ConvertToken(bodyproviders);
                     bodypropCount++;
                 }
 
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 

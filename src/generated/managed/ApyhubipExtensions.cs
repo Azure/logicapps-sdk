@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -14,46 +14,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<ProductResponse> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
-            var apiCallPath = String.Format("/v1/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/products/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyactive != null)
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
                 bodypropCount++;
             }
 
             if (bodycaption != null)
             {
-                body["caption"] = ExpressionConverter.ConvertO(bodycaption);
+                body["caption"] = CSharpExpressionConverter.ConvertToken(bodycaption);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyimages != null)
             {
-                body["images"] = ExpressionConverter.ConvertO(bodyimages);
+                body["images"] = CSharpExpressionConverter.ConvertToken(bodyimages);
                 bodypropCount++;
             }
 
             if (bodyshippable != null)
             {
-                body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
+                body["shippable"] = CSharpExpressionConverter.ConvertToken(bodyshippable);
                 bodypropCount++;
             }
 
             if (bodyuRL != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
                 bodypropCount++;
             }
 
@@ -74,46 +74,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyactive != null)
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
                 bodypropCount++;
             }
 
             if (bodycaption != null)
             {
-                body["caption"] = ExpressionConverter.ConvertO(bodycaption);
+                body["caption"] = CSharpExpressionConverter.ConvertToken(bodycaption);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyimages != null)
             {
-                body["images"] = ExpressionConverter.ConvertO(bodyimages);
+                body["images"] = CSharpExpressionConverter.ConvertToken(bodyimages);
                 bodypropCount++;
             }
 
             if (bodyshippable != null)
             {
-                body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
+                body["shippable"] = CSharpExpressionConverter.ConvertToken(bodyshippable);
                 bodypropCount++;
             }
 
             if (bodyuRL != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
                 bodypropCount++;
             }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> GetCustomer(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CustomerResponse>(callPayload);
@@ -137,20 +137,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
-            var apiCallPath = String.Format("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -172,13 +172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 

@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
             var apiCallPath = "/RunCommand";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Body = ExpressionConverter.ConvertO(commandInput);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(commandInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

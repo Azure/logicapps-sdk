@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
             var apiCallPath = "/trigger/channels/videos";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+            callPayload.Queries["channelId"] = CSharpExpressionConverter.ConvertO(channelId);
             callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
             callPayload.Queries["sort"] = Convert.ToString("added");
             callPayload.Queries["per_page"] = Convert.ToString(50);

@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["size"] = Convert.ToString(10);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<WorkflowsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
         {
-            var apiCallPath = String.Format("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
         {
-            var apiCallPath = String.Format("/workflow/{0}/run/{1}", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<WorkflowGetResponse>(callPayload);

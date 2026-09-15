@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var bodypropCount = 0;
             if (bodyincludeValues != null)
             {
-                body["includeValues"] = ExpressionConverter.ConvertO(bodyincludeValues);
+                body["includeValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeValues);
                 bodypropCount++;
             }
 
             if (bodyincludeMetadata != null)
             {
-                body["includeMetadata"] = ExpressionConverter.ConvertO(bodyincludeMetadata);
+                body["includeMetadata"] = CSharpExpressionConverter.ConvertToken(bodyincludeMetadata);
                 bodypropCount++;
             }
 
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var sparseVectorObjectpropCount = 0;
             if (bodysparseVectorindices != null)
             {
-                sparseVectorObject["indices"] = ExpressionConverter.ConvertO(bodysparseVectorindices);
+                sparseVectorObject["indices"] = CSharpExpressionConverter.ConvertToken(bodysparseVectorindices);
                 sparseVectorObjectpropCount++;
             }
 
             if (bodysparseVectorvalues != null)
             {
-                sparseVectorObject["values"] = ExpressionConverter.ConvertO(bodysparseVectorvalues);
+                sparseVectorObject["values"] = CSharpExpressionConverter.ConvertToken(bodysparseVectorvalues);
                 sparseVectorObjectpropCount++;
             }
 
@@ -62,25 +62,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 
             if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
                 bodypropCount++;
             }
 
             if (bodytopK != null)
             {
-                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
+                body["topK"] = CSharpExpressionConverter.ConvertToken(bodytopK);
                 bodypropCount++;
             }
 
             if (bodyvector != null)
             {
-                body["vector"] = ExpressionConverter.ConvertO(bodyvector);
+                body["vector"] = CSharpExpressionConverter.ConvertToken(bodyvector);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -102,19 +102,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var bodypropCount = 0;
             if (bodydeleteAll != null)
             {
-                body["deleteAll"] = ExpressionConverter.ConvertO(bodydeleteAll);
+                body["deleteAll"] = CSharpExpressionConverter.ConvertToken(bodydeleteAll);
                 bodypropCount++;
             }
 
             if (bodyids != null)
             {
-                body["ids"] = ExpressionConverter.ConvertO(bodyids);
+                body["ids"] = CSharpExpressionConverter.ConvertToken(bodyids);
                 bodypropCount++;
             }
 
             if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -132,9 +132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var apiCallPath = "/fetch";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+            callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (@namespace != null)
-                callPayload.Queries["namespace"] = ExpressionConverter.Convert(@namespace);
+                callPayload.Queries["namespace"] = CSharpExpressionConverter.ConvertO(@namespace);
             return new ApiConnectionAction<VectorsGetResponse>(callPayload);
         }
 
@@ -147,10 +147,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyvalues != null)
             {
-                body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+                body["values"] = CSharpExpressionConverter.ConvertToken(bodyvalues);
                 bodypropCount++;
             }
 
@@ -158,13 +158,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var sparseValuesObjectpropCount = 0;
             if (bodysparseValuesindices != null)
             {
-                sparseValuesObject["indices"] = ExpressionConverter.ConvertO(bodysparseValuesindices);
+                sparseValuesObject["indices"] = CSharpExpressionConverter.ConvertToken(bodysparseValuesindices);
                 sparseValuesObjectpropCount++;
             }
 
             if (bodysparseValuesvalues != null)
             {
-                sparseValuesObject["values"] = ExpressionConverter.ConvertO(bodysparseValuesvalues);
+                sparseValuesObject["values"] = CSharpExpressionConverter.ConvertToken(bodysparseValuesvalues);
                 sparseValuesObjectpropCount++;
             }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 
             if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -198,13 +198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var bodypropCount = 0;
             if (bodyvectors != null)
             {
-                body["vectors"] = ExpressionConverter.ConvertO(bodyvectors);
+                body["vectors"] = CSharpExpressionConverter.ConvertToken(bodyvectors);
                 bodypropCount++;
             }
 
             if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["source"] = ExpressionConverter.ConvertO(bodysource);
+            body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<CollectionGetResponse> CollectionGet(Expression<Func<string>> collectionName)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CollectionGetResponse>(callPayload);
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> CollectionDelete(Expression<Func<string>> collectionName)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -281,36 +281,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["dimension"] = ExpressionConverter.ConvertO(bodydimension);
+            body["dimension"] = CSharpExpressionConverter.ConvertToken(bodydimension);
             if (bodymetric != null)
             {
-                body["metric"] = ExpressionConverter.ConvertO(bodymetric);
+                body["metric"] = CSharpExpressionConverter.ConvertToken(bodymetric);
                 bodypropCount++;
             }
 
             if (bodypods != null)
             {
-                body["pods"] = ExpressionConverter.ConvertO(bodypods);
+                body["pods"] = CSharpExpressionConverter.ConvertToken(bodypods);
                 bodypropCount++;
             }
 
             if (bodyreplicas != null)
             {
-                body["replicas"] = ExpressionConverter.ConvertO(bodyreplicas);
+                body["replicas"] = CSharpExpressionConverter.ConvertToken(bodyreplicas);
                 bodypropCount++;
             }
 
             if (bodypodType != null)
             {
-                body["pod_type"] = ExpressionConverter.ConvertO(bodypodType);
+                body["pod_type"] = CSharpExpressionConverter.ConvertToken(bodypodType);
                 bodypropCount++;
             }
 
             if (bodysourceCollection != null)
             {
-                body["source_collection"] = ExpressionConverter.ConvertO(bodysourceCollection);
+                body["source_collection"] = CSharpExpressionConverter.ConvertToken(bodysourceCollection);
                 bodypropCount++;
             }
 
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<IndexGetResponse> IndexGet(Expression<Func<string>> indexName)
         {
-            var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IndexGetResponse>(callPayload);
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> IndexDelete(Expression<Func<string>> indexName)
         {
-            var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -343,20 +343,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
         {
-            var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyreplicas != null)
             {
-                body["replicas"] = ExpressionConverter.ConvertO(bodyreplicas);
+                body["replicas"] = CSharpExpressionConverter.ConvertToken(bodyreplicas);
                 bodypropCount++;
             }
 
             if (bodypodType != null)
             {
-                body["pod_type"] = ExpressionConverter.ConvertO(bodypodType);
+                body["pod_type"] = CSharpExpressionConverter.ConvertToken(bodypodType);
                 bodypropCount++;
             }
 

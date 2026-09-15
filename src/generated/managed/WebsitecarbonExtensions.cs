@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
             var apiCallPath = "/site";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
         }
 
@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
             var apiCallPath = "/data";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bytes"] = ExpressionConverter.Convert(bytes);
-            callPayload.Queries["green"] = ExpressionConverter.Convert(green);
+            callPayload.Queries["bytes"] = CSharpExpressionConverter.ConvertO(bytes);
+            callPayload.Queries["green"] = CSharpExpressionConverter.Convert(green);
             return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
         }
     }

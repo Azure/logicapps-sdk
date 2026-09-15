@@ -14,30 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<ListRecordsResponse> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filterByFormula != null)
-                callPayload.Queries["filterByFormula"] = ExpressionConverter.Convert(filterByFormula);
+                callPayload.Queries["filterByFormula"] = CSharpExpressionConverter.ConvertO(filterByFormula);
             if (maxRecords != null)
-                callPayload.Queries["maxRecords"] = ExpressionConverter.Convert(maxRecords);
+                callPayload.Queries["maxRecords"] = CSharpExpressionConverter.ConvertO(maxRecords);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
+                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
             if (cellFormat != null)
-                callPayload.Queries["cellFormat"] = ExpressionConverter.Convert(cellFormat);
+                callPayload.Queries["cellFormat"] = CSharpExpressionConverter.ConvertO(cellFormat);
             if (timeZone != null)
-                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+                callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
             if (userLocale != null)
-                callPayload.Queries["userLocale"] = ExpressionConverter.Convert(userLocale);
+                callPayload.Queries["userLocale"] = CSharpExpressionConverter.ConvertO(userLocale);
             return new ApiConnectionAction<ListRecordsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
         {
-            var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RetrieveaRecordResponse>(callPayload);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteaRecordResponse>(callPayload);
@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)

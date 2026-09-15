@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Name"] = ExpressionConverter.ConvertO(bodyname);
+            body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/clients/getByName";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["clientName"] = ExpressionConverter.Convert(clientName);
+            callPayload.Queries["clientName"] = CSharpExpressionConverter.ConvertO(clientName);
             return new ApiConnectionAction<Client[]>(callPayload);
         }
 
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyclientId != null)
             {
-                body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
+                body["clientId"] = CSharpExpressionConverter.ConvertToken(bodyclientId);
                 bodypropCount++;
             }
 
@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             bodypropCount++;
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyautoAssignUserId != null)
             {
-                body["autoAssignUserId"] = ExpressionConverter.ConvertO(bodyautoAssignUserId);
+                body["autoAssignUserId"] = CSharpExpressionConverter.ConvertToken(bodyautoAssignUserId);
                 bodypropCount++;
             }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/Projects/getByNameForPA";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
+            callPayload.Queries["projectName"] = CSharpExpressionConverter.ConvertO(projectName);
             return new ApiConnectionAction<Project>(callPayload);
         }
 
@@ -93,14 +93,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/Projects/taskForPA";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodylistName != null)
             {
                 if (bodylistName != null)
                 {
-                    body["listName"] = ExpressionConverter.ConvertO(bodylistName);
+                    body["listName"] = CSharpExpressionConverter.ConvertToken(bodylistName);
                     bodypropCount++;
                 }
 
@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectTaskName"] = ExpressionConverter.Convert(projectTaskName);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectTaskName"] = CSharpExpressionConverter.ConvertO(projectTaskName);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionAction<ProjectTask>(callPayload);
         }
 
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["hexColor"] = ExpressionConverter.ConvertO(bodyhexColor);
+            body["hexColor"] = CSharpExpressionConverter.ConvertToken(bodyhexColor);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/tags/getByNamePowerAutomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+            callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
             return new ApiConnectionAction<Tag>(callPayload);
         }
 
@@ -178,46 +178,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
+            body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
             if (bodystartTime != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystartTime);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
             }
 
             if (bodyendTime != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyendTime);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["Note"] = ExpressionConverter.ConvertO(bodynote);
+                body["Note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["ProjectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodytaskId != null)
             {
-                body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
+                body["TaskId"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
                 bodypropCount++;
             }
 
             if (bodytagId != null)
             {
-                body["TagId"] = ExpressionConverter.ConvertO(bodytagId);
+                body["TagId"] = CSharpExpressionConverter.ConvertToken(bodytagId);
                 bodypropCount++;
             }
 
@@ -235,8 +235,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var apiCallPath = "/api/reports/activityPowerAutomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["dateFrom"] = ExpressionConverter.Convert(dateFrom);
-            callPayload.Queries["dateTo"] = ExpressionConverter.Convert(dateTo);
+            callPayload.Queries["dateFrom"] = CSharpExpressionConverter.ConvertO(dateFrom);
+            callPayload.Queries["dateTo"] = CSharpExpressionConverter.ConvertO(dateTo);
             return new ApiConnectionAction<ActivityReportResponse>(callPayload);
         }
     }

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var apiCallPath = "/cb12-policy/getpolicy";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(cUSTOMERNUMBER);
+            callPayload.Queries["CUSTOMERNUMBER"] = CSharpExpressionConverter.ConvertO(cUSTOMERNUMBER);
             return new ApiConnectionAction<GetPolicyResponse200>(callPayload);
         }
 
@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var lGCMAREAObjectpropCount = 0;
             if (postCustomerdetailsupdRequestlGCMAREAcARETURNCODE != null)
             {
-                lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
+                lGCMAREAObject["CA_RETURN_CODE"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
                 lGCMAREAObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM != null)
             {
-                lGCMAREAObject["CA_CUSTOMER_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
+                lGCMAREAObject["CA_CUSTOMER_NUM"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
                 lGCMAREAObjectpropCount++;
             }
 
@@ -47,67 +47,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var cACUSTOMERREQUESTObjectpropCount = 0;
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME != null)
             {
-                cACUSTOMERREQUESTObject["CA_FIRST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
+                cACUSTOMERREQUESTObject["CA_FIRST_NAME"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
             {
-                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB != null)
             {
-                cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
+                cACUSTOMERREQUESTObject["CA_DOB"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
             {
-                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
             {
-                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
             {
-                cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                cACUSTOMERREQUESTObject["CA_POSTCODE"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
             {
-                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
             {
-                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
             {
-                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
             {
-                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
             {
-                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = CSharpExpressionConverter.ConvertToken(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         public IBodyWorkflowAction<PutCustomerdetailResponse200> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<int>> bodylGCMAREAcARETURNCODE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, Expression<Func<int>> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
-            var apiCallPath = String.Format("/customernumber/Custdetailupd/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(num, 1), ExpressionConverter.ConvertWithUrlEncoding(firstname, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/customernumber/Custdetailupd/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(num, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(firstname, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var lGCMAREAObjectpropCount = 0;
             if (bodylGCMAREAcARETURNCODE != null)
             {
-                lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcARETURNCODE);
+                lGCMAREAObject["CA_RETURN_CODE"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcARETURNCODE);
                 lGCMAREAObjectpropCount++;
             }
 
@@ -151,61 +151,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var cACUSTOMERREQUESTObjectpropCount = 0;
             if (bodylGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
             {
-                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcADOB != null)
             {
-                cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcADOB);
+                cACUSTOMERREQUESTObject["CA_DOB"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcADOB);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
             {
-                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
             {
-                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
             {
-                cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                cACUSTOMERREQUESTObject["CA_POSTCODE"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
             {
-                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
             {
-                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
             {
-                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
             {
-                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
             if (bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
             {
-                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = CSharpExpressionConverter.ConvertToken(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
                 cACUSTOMERREQUESTObjectpropCount++;
             }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
         public IBodyWorkflowAction<GetCustomerDetailResponse> GetCustomerDetail(Expression<Func<string>> num)
         {
-            var apiCallPath = String.Format("/customernumber/custnum/{0}", ExpressionConverter.ConvertWithUrlEncoding(num, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/customernumber/custnum/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(num, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCustomerDetailResponse>(callPayload);

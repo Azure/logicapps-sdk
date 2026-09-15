@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5101AddHtmlToWordpropCount = 0;
             if (dtoRequestV5101AddHtmlToWordexistingFileContent != null)
             {
-                dtoRequestV5101AddHtmlToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5101AddHtmlToWordexistingFileContent);
+                dtoRequestV5101AddHtmlToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5101AddHtmlToWordexistingFileContent);
                 dtoRequestV5101AddHtmlToWordpropCount++;
             }
 
             dtoRequestV5101AddHtmlToWordpropCount++;
-            dtoRequestV5101AddHtmlToWord["html"] = ExpressionConverter.ConvertO(dtoRequestV5101AddHtmlToWordhTML);
+            dtoRequestV5101AddHtmlToWord["html"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5101AddHtmlToWordhTML);
             if (dtoRequestV5101AddHtmlToWordpropCount > 0)
             {
                 callPayload.Body = dtoRequestV5101AddHtmlToWord;
@@ -45,27 +45,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5031AddImageToWordpropCount = 0;
             if (dtoRequestV5031AddImageToWordexistingFileContent != null)
             {
-                dtoRequestV5031AddImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordexistingFileContent);
+                dtoRequestV5031AddImageToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordexistingFileContent);
                 dtoRequestV5031AddImageToWordpropCount++;
             }
 
             dtoRequestV5031AddImageToWordpropCount++;
-            dtoRequestV5031AddImageToWord["image"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordimage);
+            dtoRequestV5031AddImageToWord["image"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordimage);
             if (dtoRequestV5031AddImageToWordcaptionText != null)
             {
-                dtoRequestV5031AddImageToWord["imageText"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordcaptionText);
+                dtoRequestV5031AddImageToWord["imageText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordcaptionText);
                 dtoRequestV5031AddImageToWordpropCount++;
             }
 
             if (dtoRequestV5031AddImageToWordmaximumImageWidth != null)
             {
-                dtoRequestV5031AddImageToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordmaximumImageWidth);
+                dtoRequestV5031AddImageToWord["maxWidth"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordmaximumImageWidth);
                 dtoRequestV5031AddImageToWordpropCount++;
             }
 
             if (dtoRequestV5031AddImageToWordmaximumImageHeight != null)
             {
-                dtoRequestV5031AddImageToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordmaximumImageHeight);
+                dtoRequestV5031AddImageToWord["maxHeight"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordmaximumImageHeight);
                 dtoRequestV5031AddImageToWordpropCount++;
             }
 
@@ -87,27 +87,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5042AddImageWithinTableToWordpropCount = 0;
             if (dtoRequestV5042AddImageWithinTableToWordexistingFileContent != null)
             {
-                dtoRequestV5042AddImageWithinTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
+                dtoRequestV5042AddImageWithinTableToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
                 dtoRequestV5042AddImageWithinTableToWordpropCount++;
             }
 
             dtoRequestV5042AddImageWithinTableToWordpropCount++;
-            dtoRequestV5042AddImageWithinTableToWord["image"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordimage);
+            dtoRequestV5042AddImageWithinTableToWord["image"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordimage);
             if (dtoRequestV5042AddImageWithinTableToWorddescriptionText != null)
             {
-                dtoRequestV5042AddImageWithinTableToWord["imageText"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWorddescriptionText);
+                dtoRequestV5042AddImageWithinTableToWord["imageText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWorddescriptionText);
                 dtoRequestV5042AddImageWithinTableToWordpropCount++;
             }
 
             if (dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth != null)
             {
-                dtoRequestV5042AddImageWithinTableToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
+                dtoRequestV5042AddImageWithinTableToWord["maxWidth"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
                 dtoRequestV5042AddImageWithinTableToWordpropCount++;
             }
 
             if (dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight != null)
             {
-                dtoRequestV5042AddImageWithinTableToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
+                dtoRequestV5042AddImageWithinTableToWord["maxHeight"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
                 dtoRequestV5042AddImageWithinTableToWordpropCount++;
             }
 
@@ -129,17 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5052AddTableToWordpropCount = 0;
             if (dtoRequestV5052AddTableToWordexistingFileContent != null)
             {
-                dtoRequestV5052AddTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordexistingFileContent);
+                dtoRequestV5052AddTableToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordexistingFileContent);
                 dtoRequestV5052AddTableToWordpropCount++;
             }
 
             dtoRequestV5052AddTableToWordpropCount++;
-            dtoRequestV5052AddTableToWord["table"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableData);
+            dtoRequestV5052AddTableToWord["table"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableData);
             if (dtoRequestV5052AddTableToWordshowHeaders != null)
             {
                 if (dtoRequestV5052AddTableToWordshowHeaders != null)
                 {
-                    dtoRequestV5052AddTableToWord["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordshowHeaders);
+                    dtoRequestV5052AddTableToWord["hasHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordshowHeaders);
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV5052AddTableToWordtableStyle != null)
                 {
-                    dtoRequestV5052AddTableToWord["tableStyle"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableStyle);
+                    dtoRequestV5052AddTableToWord["tableStyle"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableStyle);
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV5052AddTableToWordtableCaption != null)
             {
-                dtoRequestV5052AddTableToWord["tableText"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableCaption);
+                dtoRequestV5052AddTableToWord["tableText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableCaption);
                 dtoRequestV5052AddTableToWordpropCount++;
             }
 
@@ -191,14 +191,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestAddTextToWordDatapropCount = 0;
             if (dtoRequestAddTextToWordDataexistingFileContent != null)
             {
-                dtoRequestAddTextToWordData["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDataexistingFileContent);
+                dtoRequestAddTextToWordData["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestAddTextToWordDataexistingFileContent);
                 dtoRequestAddTextToWordDatapropCount++;
             }
 
             dtoRequestAddTextToWordDatapropCount++;
-            dtoRequestAddTextToWordData["sectionType"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDatatype);
+            dtoRequestAddTextToWordData["sectionType"] = CSharpExpressionConverter.ConvertToken(dtoRequestAddTextToWordDatatype);
             dtoRequestAddTextToWordDatapropCount++;
-            dtoRequestAddTextToWordData["text"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDatatext);
+            dtoRequestAddTextToWordData["text"] = CSharpExpressionConverter.ConvertToken(dtoRequestAddTextToWordDatatext);
             if (dtoRequestAddTextToWordDatapropCount > 0)
             {
                 callPayload.Body = dtoRequestAddTextToWordData;
@@ -216,14 +216,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2081CombineCsvs = new JObject();
             var dtoRequestV2081CombineCsvspropCount = 0;
             dtoRequestV2081CombineCsvspropCount++;
-            dtoRequestV2081CombineCsvs["mainCsv"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvsmainCSV);
+            dtoRequestV2081CombineCsvs["mainCsv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2081CombineCsvsmainCSV);
             dtoRequestV2081CombineCsvspropCount++;
-            dtoRequestV2081CombineCsvs["mainCsvColumn"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvscombineColumnName);
+            dtoRequestV2081CombineCsvs["mainCsvColumn"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2081CombineCsvscombineColumnName);
             dtoRequestV2081CombineCsvspropCount++;
-            dtoRequestV2081CombineCsvs["secondCsv"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvssecondCSV);
+            dtoRequestV2081CombineCsvs["secondCsv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2081CombineCsvssecondCSV);
             if (dtoRequestV2081CombineCsvssecondCSVColumn != null)
             {
-                dtoRequestV2081CombineCsvs["secondCsvColumn"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvssecondCSVColumn);
+                dtoRequestV2081CombineCsvs["secondCsvColumn"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2081CombineCsvssecondCSVColumn);
                 dtoRequestV2081CombineCsvspropCount++;
             }
 
@@ -244,14 +244,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2091CombineJsonArrays = new JObject();
             var dtoRequestV2091CombineJsonArrayspropCount = 0;
             dtoRequestV2091CombineJsonArrayspropCount++;
-            dtoRequestV2091CombineJsonArrays["mainJson"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArraysmainJSON);
+            dtoRequestV2091CombineJsonArrays["mainJson"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2091CombineJsonArraysmainJSON);
             dtoRequestV2091CombineJsonArrayspropCount++;
-            dtoRequestV2091CombineJsonArrays["mainJsonProperty"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayscombinePropertyName);
+            dtoRequestV2091CombineJsonArrays["mainJsonProperty"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2091CombineJsonArrayscombinePropertyName);
             dtoRequestV2091CombineJsonArrayspropCount++;
-            dtoRequestV2091CombineJsonArrays["secondJson"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayssecondJSON);
+            dtoRequestV2091CombineJsonArrays["secondJson"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2091CombineJsonArrayssecondJSON);
             if (dtoRequestV2091CombineJsonArrayssecondJSONProperty != null)
             {
-                dtoRequestV2091CombineJsonArrays["secondJsonProperty"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayssecondJSONProperty);
+                dtoRequestV2091CombineJsonArrays["secondJsonProperty"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2091CombineJsonArrayssecondJSONProperty);
                 dtoRequestV2091CombineJsonArrayspropCount++;
             }
 
@@ -272,10 +272,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestCompressImage = new JObject();
             var dtoRequestCompressImagepropCount = 0;
             dtoRequestCompressImagepropCount++;
-            dtoRequestCompressImage["file"] = ExpressionConverter.ConvertO(dtoRequestCompressImageimageFile);
+            dtoRequestCompressImage["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestCompressImageimageFile);
             if (dtoRequestCompressImageimageQuality != null)
             {
-                dtoRequestCompressImage["quality"] = ExpressionConverter.ConvertO(dtoRequestCompressImageimageQuality);
+                dtoRequestCompressImage["quality"] = CSharpExpressionConverter.ConvertToken(dtoRequestCompressImageimageQuality);
                 dtoRequestCompressImagepropCount++;
             }
 
@@ -296,34 +296,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequest = new JObject();
             var dtoRequestpropCount = 0;
             dtoRequestpropCount++;
-            dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
+            dtoRequest["pdf"] = CSharpExpressionConverter.ConvertToken(dtoRequestpDF);
             if (dtoRequestcompressImages != null)
             {
-                dtoRequest["compressImages"] = ExpressionConverter.ConvertO(dtoRequestcompressImages);
+                dtoRequest["compressImages"] = CSharpExpressionConverter.ConvertToken(dtoRequestcompressImages);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestimageQuality != null)
             {
-                dtoRequest["imageQuality"] = ExpressionConverter.ConvertO(dtoRequestimageQuality);
+                dtoRequest["imageQuality"] = CSharpExpressionConverter.ConvertToken(dtoRequestimageQuality);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestoptimizeFonts != null)
             {
-                dtoRequest["optimizeFont"] = ExpressionConverter.ConvertO(dtoRequestoptimizeFonts);
+                dtoRequest["optimizeFont"] = CSharpExpressionConverter.ConvertToken(dtoRequestoptimizeFonts);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestoptimizePageContents != null)
             {
-                dtoRequest["optimizePageContents"] = ExpressionConverter.ConvertO(dtoRequestoptimizePageContents);
+                dtoRequest["optimizePageContents"] = CSharpExpressionConverter.ConvertToken(dtoRequestoptimizePageContents);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestremoveMetadata != null)
             {
-                dtoRequest["removeMetadata"] = ExpressionConverter.ConvertO(dtoRequestremoveMetadata);
+                dtoRequest["removeMetadata"] = CSharpExpressionConverter.ConvertToken(dtoRequestremoveMetadata);
                 dtoRequestpropCount++;
             }
 
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2071ConvertColor = new JObject();
             var dtoRequestV2071ConvertColorpropCount = 0;
             dtoRequestV2071ConvertColorpropCount++;
-            dtoRequestV2071ConvertColor["color"] = ExpressionConverter.ConvertO(dtoRequestV2071ConvertColorcolor);
+            dtoRequestV2071ConvertColor["color"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2071ConvertColorcolor);
             if (dtoRequestV2071ConvertColorpropCount > 0)
             {
                 callPayload.Body = dtoRequestV2071ConvertColor;
@@ -362,12 +362,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1033ConvertCsvToExcel = new JObject();
             var dtoRequestV1033ConvertCsvToExcelpropCount = 0;
             dtoRequestV1033ConvertCsvToExcelpropCount++;
-            dtoRequestV1033ConvertCsvToExcel["csv"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelcSV);
+            dtoRequestV1033ConvertCsvToExcel["csv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelcSV);
             if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
             {
                 if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
+                    dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
+                    dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection != null)
             {
-                dtoRequestV1033ConvertCsvToExcel["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
+                dtoRequestV1033ConvertCsvToExcel["maxScanRows"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
             }
 
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
+                    dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -419,19 +419,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1033ConvertCsvToExcelskipANumberOfRows != null)
             {
-                dtoRequestV1033ConvertCsvToExcel["skip"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
+                dtoRequestV1033ConvertCsvToExcel["skip"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
             }
 
             if (dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow != null)
             {
-                dtoRequestV1033ConvertCsvToExcel["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
+                dtoRequestV1033ConvertCsvToExcel["skipLast"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
             }
 
             if (dtoRequestV1033ConvertCsvToExcelseparator != null)
             {
-                dtoRequestV1033ConvertCsvToExcel["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelseparator);
+                dtoRequestV1033ConvertCsvToExcel["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelseparator);
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
             }
 
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
+                    dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
+                    dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
+                    dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth != null)
             {
-                dtoRequestV1033ConvertCsvToExcel["maxColumnWidth"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
+                dtoRequestV1033ConvertCsvToExcel["maxColumnWidth"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
             }
 
@@ -506,12 +506,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7061ConvertCsvToHtmlTable = new JObject();
             var dtoRequestV7061ConvertCsvToHtmlTablepropCount = 0;
             dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
-            dtoRequestV7061ConvertCsvToHtmlTable["csv"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablecSV);
+            dtoRequestV7061ConvertCsvToHtmlTable["csv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTablecSV);
             if (dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
             {
                 if (dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders);
+                    dtoRequestV7061ConvertCsvToHtmlTable["dataIncludesHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes);
+                    dtoRequestV7061ConvertCsvToHtmlTable["autoDiscoverFieldTypes"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection != null)
             {
-                dtoRequestV7061ConvertCsvToHtmlTable["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection);
+                dtoRequestV7061ConvertCsvToHtmlTable["maxScanRows"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection);
                 dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
             }
 
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows);
+                    dtoRequestV7061ConvertCsvToHtmlTable["ignoreEmptyLine"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
@@ -563,19 +563,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows != null)
             {
-                dtoRequestV7061ConvertCsvToHtmlTable["skip"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows);
+                dtoRequestV7061ConvertCsvToHtmlTable["skip"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows);
                 dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
             }
 
             if (dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow != null)
             {
-                dtoRequestV7061ConvertCsvToHtmlTable["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow);
+                dtoRequestV7061ConvertCsvToHtmlTable["skipLast"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow);
                 dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
             }
 
             if (dtoRequestV7061ConvertCsvToHtmlTableseparator != null)
             {
-                dtoRequestV7061ConvertCsvToHtmlTable["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableseparator);
+                dtoRequestV7061ConvertCsvToHtmlTable["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTableseparator);
                 dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
             }
 
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter);
+                    dtoRequestV7061ConvertCsvToHtmlTable["mayHaveQuotedFields"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
@@ -612,12 +612,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1022ConvertCsvToJson = new JObject();
             var dtoRequestV1022ConvertCsvToJsonpropCount = 0;
             dtoRequestV1022ConvertCsvToJsonpropCount++;
-            dtoRequestV1022ConvertCsvToJson["csv"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsoncSV);
+            dtoRequestV1022ConvertCsvToJson["csv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsoncSV);
             if (dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
             {
                 if (dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders);
+                    dtoRequestV1022ConvertCsvToJson["dataIncludesHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes);
+                    dtoRequestV1022ConvertCsvToJson["autoDiscoverFieldTypes"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection != null)
             {
-                dtoRequestV1022ConvertCsvToJson["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection);
+                dtoRequestV1022ConvertCsvToJson["maxScanRows"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection);
                 dtoRequestV1022ConvertCsvToJsonpropCount++;
             }
 
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1022ConvertCsvToJsonremoveEmptyRows != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows);
+                    dtoRequestV1022ConvertCsvToJson["ignoreEmptyLine"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
@@ -669,19 +669,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1022ConvertCsvToJsonskipANumberOfRows != null)
             {
-                dtoRequestV1022ConvertCsvToJson["skip"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows);
+                dtoRequestV1022ConvertCsvToJson["skip"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows);
                 dtoRequestV1022ConvertCsvToJsonpropCount++;
             }
 
             if (dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow != null)
             {
-                dtoRequestV1022ConvertCsvToJson["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow);
+                dtoRequestV1022ConvertCsvToJson["skipLast"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow);
                 dtoRequestV1022ConvertCsvToJsonpropCount++;
             }
 
             if (dtoRequestV1022ConvertCsvToJsonseparator != null)
             {
-                dtoRequestV1022ConvertCsvToJson["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonseparator);
+                dtoRequestV1022ConvertCsvToJson["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonseparator);
                 dtoRequestV1022ConvertCsvToJsonpropCount++;
             }
 
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter);
+                    dtoRequestV1022ConvertCsvToJson["mayHaveQuotedFields"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
@@ -718,12 +718,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1100ConvertExcelToJson = new JObject();
             var dtoRequestV1100ConvertExcelToJsonpropCount = 0;
             dtoRequestV1100ConvertExcelToJsonpropCount++;
-            dtoRequestV1100ConvertExcelToJson["file"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonexcelFile);
+            dtoRequestV1100ConvertExcelToJson["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1100ConvertExcelToJsonexcelFile);
             if (dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
             {
                 if (dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
                 {
-                    dtoRequestV1100ConvertExcelToJson["hasHeaders"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders);
+                    dtoRequestV1100ConvertExcelToJson["hasHeaders"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders);
                     dtoRequestV1100ConvertExcelToJsonpropCount++;
                 }
 
@@ -737,13 +737,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV1100ConvertExcelToJsonstartCell != null)
             {
-                dtoRequestV1100ConvertExcelToJson["startCell"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonstartCell);
+                dtoRequestV1100ConvertExcelToJson["startCell"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1100ConvertExcelToJsonstartCell);
                 dtoRequestV1100ConvertExcelToJsonpropCount++;
             }
 
             if (dtoRequestV1100ConvertExcelToJsonsheetName != null)
             {
-                dtoRequestV1100ConvertExcelToJson["sheetName"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonsheetName);
+                dtoRequestV1100ConvertExcelToJson["sheetName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1100ConvertExcelToJsonsheetName);
                 dtoRequestV1100ConvertExcelToJsonpropCount++;
             }
 
@@ -764,22 +764,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4013FileToPdf = new JObject();
             var dtoRequestV4013FileToPdfpropCount = 0;
             dtoRequestV4013FileToPdfpropCount++;
-            dtoRequestV4013FileToPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdffile);
+            dtoRequestV4013FileToPdf["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4013FileToPdffile);
             if (dtoRequestV4013FileToPdforiginFileName != null)
             {
-                dtoRequestV4013FileToPdf["fileName"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdforiginFileName);
+                dtoRequestV4013FileToPdf["fileName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4013FileToPdforiginFileName);
                 dtoRequestV4013FileToPdfpropCount++;
             }
 
             if (dtoRequestV4013FileToPdforiginFileExtension != null)
             {
-                dtoRequestV4013FileToPdf["fileExtension"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdforiginFileExtension);
+                dtoRequestV4013FileToPdf["fileExtension"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4013FileToPdforiginFileExtension);
                 dtoRequestV4013FileToPdfpropCount++;
             }
 
             if (dtoRequestV4013FileToPdfconformanceLevel != null)
             {
-                dtoRequestV4013FileToPdf["conformanceLevel"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdfconformanceLevel);
+                dtoRequestV4013FileToPdf["conformanceLevel"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4013FileToPdfconformanceLevel);
                 dtoRequestV4013FileToPdfpropCount++;
             }
 
@@ -800,10 +800,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7070ConvertHtmlTableToCsv = new JObject();
             var dtoRequestV7070ConvertHtmlTableToCsvpropCount = 0;
             dtoRequestV7070ConvertHtmlTableToCsvpropCount++;
-            dtoRequestV7070ConvertHtmlTableToCsv["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable);
+            dtoRequestV7070ConvertHtmlTableToCsv["htmlTable"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable);
             if (dtoRequestV7070ConvertHtmlTableToCsvseparator != null)
             {
-                dtoRequestV7070ConvertHtmlTableToCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV7070ConvertHtmlTableToCsvseparator);
+                dtoRequestV7070ConvertHtmlTableToCsv["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7070ConvertHtmlTableToCsvseparator);
                 dtoRequestV7070ConvertHtmlTableToCsvpropCount++;
             }
 
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7080ConvertHtmlTableToExcel = new JObject();
             var dtoRequestV7080ConvertHtmlTableToExcelpropCount = 0;
             dtoRequestV7080ConvertHtmlTableToExcelpropCount++;
-            dtoRequestV7080ConvertHtmlTableToExcel["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
+            dtoRequestV7080ConvertHtmlTableToExcel["htmlTable"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
             if (dtoRequestV7080ConvertHtmlTableToExcelpropCount > 0)
             {
                 callPayload.Body = dtoRequestV7080ConvertHtmlTableToExcel;
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestHtmlToTableData = new JObject();
             var dtoRequestHtmlToTableDatapropCount = 0;
             dtoRequestHtmlToTableDatapropCount++;
-            dtoRequestHtmlToTableData["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestHtmlToTableDatahTMLTable);
+            dtoRequestHtmlToTableData["htmlTable"] = CSharpExpressionConverter.ConvertToken(dtoRequestHtmlToTableDatahTMLTable);
             if (dtoRequestHtmlToTableDatapropCount > 0)
             {
                 callPayload.Body = dtoRequestHtmlToTableData;
@@ -860,16 +860,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7031ConvertHtmlToImage = new JObject();
             var dtoRequestV7031ConvertHtmlToImagepropCount = 0;
             dtoRequestV7031ConvertHtmlToImagepropCount++;
-            dtoRequestV7031ConvertHtmlToImage["html"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImagehTML);
+            dtoRequestV7031ConvertHtmlToImage["html"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImagehTML);
             if (dtoRequestV7031ConvertHtmlToImagewidth != null)
             {
-                dtoRequestV7031ConvertHtmlToImage["width"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImagewidth);
+                dtoRequestV7031ConvertHtmlToImage["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImagewidth);
                 dtoRequestV7031ConvertHtmlToImagepropCount++;
             }
 
             if (dtoRequestV7031ConvertHtmlToImageheight != null)
             {
-                dtoRequestV7031ConvertHtmlToImage["height"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImageheight);
+                dtoRequestV7031ConvertHtmlToImage["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImageheight);
                 dtoRequestV7031ConvertHtmlToImagepropCount++;
             }
 
@@ -890,12 +890,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7022ConvertHtmlToPdf = new JObject();
             var dtoRequestV7022ConvertHtmlToPdfpropCount = 0;
             dtoRequestV7022ConvertHtmlToPdfpropCount++;
-            dtoRequestV7022ConvertHtmlToPdf["html"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfhTML);
+            dtoRequestV7022ConvertHtmlToPdf["html"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfhTML);
             if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
             {
                 if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
+                    dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
@@ -909,61 +909,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["imageQuality"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
+                dtoRequestV7022ConvertHtmlToPdf["imageQuality"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdffooterOptions != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["footerOption"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdffooterOptions);
+                dtoRequestV7022ConvertHtmlToPdf["footerOption"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdffooterOptions);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfheaderOptions != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["headerOption"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfheaderOptions);
+                dtoRequestV7022ConvertHtmlToPdf["headerOption"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfheaderOptions);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfpaperFormat != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["paperFormat"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfpaperFormat);
+                dtoRequestV7022ConvertHtmlToPdf["paperFormat"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfpaperFormat);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdftopMargin != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["marginTop"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdftopMargin);
+                dtoRequestV7022ConvertHtmlToPdf["marginTop"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdftopMargin);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfbottomMargin != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["marginBottom"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfbottomMargin);
+                dtoRequestV7022ConvertHtmlToPdf["marginBottom"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfbottomMargin);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfleftMargin != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["marginLeft"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfleftMargin);
+                dtoRequestV7022ConvertHtmlToPdf["marginLeft"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfleftMargin);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfrightMargin != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["marginRight"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfrightMargin);
+                dtoRequestV7022ConvertHtmlToPdf["marginRight"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfrightMargin);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfpageRanges != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["pageRanges"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfpageRanges);
+                dtoRequestV7022ConvertHtmlToPdf["pageRanges"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfpageRanges);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
             if (dtoRequestV7022ConvertHtmlToPdfscale != null)
             {
-                dtoRequestV7022ConvertHtmlToPdf["scale"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfscale);
+                dtoRequestV7022ConvertHtmlToPdf["scale"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfscale);
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
             }
 
@@ -984,7 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7041ConvertHtmlToWord = new JObject();
             var dtoRequestV7041ConvertHtmlToWordpropCount = 0;
             dtoRequestV7041ConvertHtmlToWordpropCount++;
-            dtoRequestV7041ConvertHtmlToWord["html"] = ExpressionConverter.ConvertO(dtoRequestV7041ConvertHtmlToWordhTML);
+            dtoRequestV7041ConvertHtmlToWord["html"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7041ConvertHtmlToWordhTML);
             if (dtoRequestV7041ConvertHtmlToWordpropCount > 0)
             {
                 callPayload.Body = dtoRequestV7041ConvertHtmlToWord;
@@ -1002,12 +1002,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3012ConvertImage = new JObject();
             var dtoRequestV3012ConvertImagepropCount = 0;
             dtoRequestV3012ConvertImagepropCount++;
-            dtoRequestV3012ConvertImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3012ConvertImageimageFile);
+            dtoRequestV3012ConvertImage["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3012ConvertImageimageFile);
             if (dtoRequestV3012ConvertImageoutputFormat != null)
             {
                 if (dtoRequestV3012ConvertImageoutputFormat != null)
                 {
-                    dtoRequestV3012ConvertImage["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3012ConvertImageoutputFormat);
+                    dtoRequestV3012ConvertImage["outFormat"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3012ConvertImageoutputFormat);
                     dtoRequestV3012ConvertImagepropCount++;
                 }
 
@@ -1036,10 +1036,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1013ConvertJsonToCsv = new JObject();
             var dtoRequestV1013ConvertJsonToCsvpropCount = 0;
             dtoRequestV1013ConvertJsonToCsvpropCount++;
-            dtoRequestV1013ConvertJsonToCsv["json"] = ExpressionConverter.ConvertO(dtoRequestV1013ConvertJsonToCsvjSON);
+            dtoRequestV1013ConvertJsonToCsv["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1013ConvertJsonToCsvjSON);
             if (dtoRequestV1013ConvertJsonToCsvseparator != null)
             {
-                dtoRequestV1013ConvertJsonToCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1013ConvertJsonToCsvseparator);
+                dtoRequestV1013ConvertJsonToCsv["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1013ConvertJsonToCsvseparator);
                 dtoRequestV1013ConvertJsonToCsvpropCount++;
             }
 
@@ -1060,12 +1060,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestJsonToExcelData = new JObject();
             var dtoRequestJsonToExcelDatapropCount = 0;
             dtoRequestJsonToExcelDatapropCount++;
-            dtoRequestJsonToExcelData["json"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatajSON);
+            dtoRequestJsonToExcelData["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatajSON);
             if (dtoRequestJsonToExcelDataallInOneTable != null)
             {
                 if (dtoRequestJsonToExcelDataallInOneTable != null)
                 {
-                    dtoRequestJsonToExcelData["allInOneTable"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDataallInOneTable);
+                    dtoRequestJsonToExcelData["allInOneTable"] = CSharpExpressionConverter.ConvertToken(dtoRequestJsonToExcelDataallInOneTable);
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
                 {
-                    dtoRequestJsonToExcelData["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDataadjustExcelColumnToContent);
+                    dtoRequestJsonToExcelData["adjustColumnToContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestJsonToExcelDataadjustExcelColumnToContent);
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestJsonToExcelDatawrapExcelColumnText != null)
                 {
-                    dtoRequestJsonToExcelData["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatawrapExcelColumnText);
+                    dtoRequestJsonToExcelData["wrapColumnText"] = CSharpExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatawrapExcelColumnText);
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
@@ -1111,7 +1111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestJsonToExcelDatamaxExcelColumnWidth != null)
             {
-                dtoRequestJsonToExcelData["maxColumnWidth"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatamaxExcelColumnWidth);
+                dtoRequestJsonToExcelData["maxColumnWidth"] = CSharpExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatamaxExcelColumnWidth);
                 dtoRequestJsonToExcelDatapropCount++;
             }
 
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV7051ConvertJsonToHtmlTable = new JObject();
             var dtoRequestV7051ConvertJsonToHtmlTablepropCount = 0;
             dtoRequestV7051ConvertJsonToHtmlTablepropCount++;
-            dtoRequestV7051ConvertJsonToHtmlTable["json"] = ExpressionConverter.ConvertO(dtoRequestV7051ConvertJsonToHtmlTablejSON);
+            dtoRequestV7051ConvertJsonToHtmlTable["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV7051ConvertJsonToHtmlTablejSON);
             if (dtoRequestV7051ConvertJsonToHtmlTablepropCount > 0)
             {
                 callPayload.Body = dtoRequestV7051ConvertJsonToHtmlTable;
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1090ConvertJsonToTextTable = new JObject();
             var dtoRequestV1090ConvertJsonToTextTablepropCount = 0;
             dtoRequestV1090ConvertJsonToTextTablepropCount++;
-            dtoRequestV1090ConvertJsonToTextTable["json"] = ExpressionConverter.ConvertO(dtoRequestV1090ConvertJsonToTextTablejSON);
+            dtoRequestV1090ConvertJsonToTextTable["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1090ConvertJsonToTextTablejSON);
             if (dtoRequestV1090ConvertJsonToTextTablepropCount > 0)
             {
                 callPayload.Body = dtoRequestV1090ConvertJsonToTextTable;
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1042ConvertJsonToXml = new JObject();
             var dtoRequestV1042ConvertJsonToXmlpropCount = 0;
             dtoRequestV1042ConvertJsonToXmlpropCount++;
-            dtoRequestV1042ConvertJsonToXml["json"] = ExpressionConverter.ConvertO(dtoRequestV1042ConvertJsonToXmljSON);
+            dtoRequestV1042ConvertJsonToXml["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1042ConvertJsonToXmljSON);
             if (dtoRequestV1042ConvertJsonToXmlpropCount > 0)
             {
                 callPayload.Body = dtoRequestV1042ConvertJsonToXml;
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1081ConvertJsonToYaml = new JObject();
             var dtoRequestV1081ConvertJsonToYamlpropCount = 0;
             dtoRequestV1081ConvertJsonToYamlpropCount++;
-            dtoRequestV1081ConvertJsonToYaml["json"] = ExpressionConverter.ConvertO(dtoRequestV1081ConvertJsonToYamljSON);
+            dtoRequestV1081ConvertJsonToYaml["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1081ConvertJsonToYamljSON);
             if (dtoRequestV1081ConvertJsonToYamlpropCount > 0)
             {
                 callPayload.Body = dtoRequestV1081ConvertJsonToYaml;
@@ -1204,10 +1204,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4070ConvertPdfToPdfA = new JObject();
             var dtoRequestV4070ConvertPdfToPdfApropCount = 0;
             dtoRequestV4070ConvertPdfToPdfApropCount++;
-            dtoRequestV4070ConvertPdfToPdfA["pdf"] = ExpressionConverter.ConvertO(dtoRequestV4070ConvertPdfToPdfApDF);
+            dtoRequestV4070ConvertPdfToPdfA["pdf"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4070ConvertPdfToPdfApDF);
             if (dtoRequestV4070ConvertPdfToPdfAconformanceLevel != null)
             {
-                dtoRequestV4070ConvertPdfToPdfA["conformanceLevel"] = ExpressionConverter.ConvertO(dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
+                dtoRequestV4070ConvertPdfToPdfA["conformanceLevel"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
                 dtoRequestV4070ConvertPdfToPdfApropCount++;
             }
 
@@ -1228,7 +1228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV6011ConvertSharePointSearchResults = new JObject();
             var dtoRequestV6011ConvertSharePointSearchResultspropCount = 0;
             dtoRequestV6011ConvertSharePointSearchResultspropCount++;
-            dtoRequestV6011ConvertSharePointSearchResults["sharepointResult"] = ExpressionConverter.ConvertO(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult);
+            dtoRequestV6011ConvertSharePointSearchResults["sharepointResult"] = CSharpExpressionConverter.ConvertToken(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult);
             if (dtoRequestV6011ConvertSharePointSearchResultspropCount > 0)
             {
                 callPayload.Body = dtoRequestV6011ConvertSharePointSearchResults;
@@ -1246,22 +1246,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequest = new JObject();
             var dtoRequestpropCount = 0;
             dtoRequestpropCount++;
-            dtoRequest["word"] = ExpressionConverter.ConvertO(dtoRequestword);
+            dtoRequest["word"] = CSharpExpressionConverter.ConvertToken(dtoRequestword);
             if (dtoRequestembedImages != null)
             {
-                dtoRequest["embedImages"] = ExpressionConverter.ConvertO(dtoRequestembedImages);
+                dtoRequest["embedImages"] = CSharpExpressionConverter.ConvertToken(dtoRequestembedImages);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestfullHTMLDocument != null)
             {
-                dtoRequest["fullHtmlDocument"] = ExpressionConverter.ConvertO(dtoRequestfullHTMLDocument);
+                dtoRequest["fullHtmlDocument"] = CSharpExpressionConverter.ConvertToken(dtoRequestfullHTMLDocument);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequesttitle != null)
             {
-                dtoRequest["title"] = ExpressionConverter.ConvertO(dtoRequesttitle);
+                dtoRequest["title"] = CSharpExpressionConverter.ConvertToken(dtoRequesttitle);
                 dtoRequestpropCount++;
             }
 
@@ -1282,7 +1282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1052ConvertXmlToJson = new JObject();
             var dtoRequestV1052ConvertXmlToJsonpropCount = 0;
             dtoRequestV1052ConvertXmlToJsonpropCount++;
-            dtoRequestV1052ConvertXmlToJson["xml"] = ExpressionConverter.ConvertO(dtoRequestV1052ConvertXmlToJsonxML);
+            dtoRequestV1052ConvertXmlToJson["xml"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1052ConvertXmlToJsonxML);
             if (dtoRequestV1052ConvertXmlToJsonpropCount > 0)
             {
                 callPayload.Body = dtoRequestV1052ConvertXmlToJson;
@@ -1300,7 +1300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV8010ConvertXRechnungToPdf = new JObject();
             var dtoRequestV8010ConvertXRechnungToPdfpropCount = 0;
             dtoRequestV8010ConvertXRechnungToPdfpropCount++;
-            dtoRequestV8010ConvertXRechnungToPdf["xml"] = ExpressionConverter.ConvertO(dtoRequestV8010ConvertXRechnungToPdfxRechnung);
+            dtoRequestV8010ConvertXRechnungToPdf["xml"] = CSharpExpressionConverter.ConvertToken(dtoRequestV8010ConvertXRechnungToPdfxRechnung);
             if (dtoRequestV8010ConvertXRechnungToPdfpropCount > 0)
             {
                 callPayload.Body = dtoRequestV8010ConvertXRechnungToPdf;
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV1071YamlToJson = new JObject();
             var dtoRequestV1071YamlToJsonpropCount = 0;
             dtoRequestV1071YamlToJsonpropCount++;
-            dtoRequestV1071YamlToJson["yaml"] = ExpressionConverter.ConvertO(dtoRequestV1071YamlToJsonyAML);
+            dtoRequestV1071YamlToJson["yaml"] = CSharpExpressionConverter.ConvertToken(dtoRequestV1071YamlToJsonyAML);
             if (dtoRequestV1071YamlToJsonpropCount > 0)
             {
                 callPayload.Body = dtoRequestV1071YamlToJson;
@@ -1337,33 +1337,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3091CreateChartImagepropCount = 0;
             if (dtoRequestV3091CreateChartImageimageWidth != null)
             {
-                dtoRequestV3091CreateChartImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageimageWidth);
+                dtoRequestV3091CreateChartImage["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageimageWidth);
                 dtoRequestV3091CreateChartImagepropCount++;
             }
 
             if (dtoRequestV3091CreateChartImageimageHeight != null)
             {
-                dtoRequestV3091CreateChartImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageimageHeight);
+                dtoRequestV3091CreateChartImage["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageimageHeight);
                 dtoRequestV3091CreateChartImagepropCount++;
             }
 
             if (dtoRequestV3091CreateChartImagebackgroundColor != null)
             {
-                dtoRequestV3091CreateChartImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagebackgroundColor);
+                dtoRequestV3091CreateChartImage["backgroundColor"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagebackgroundColor);
                 dtoRequestV3091CreateChartImagepropCount++;
             }
 
             if (dtoRequestV3091CreateChartImageoutputFormat != null)
             {
-                dtoRequestV3091CreateChartImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageoutputFormat);
+                dtoRequestV3091CreateChartImage["format"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageoutputFormat);
                 dtoRequestV3091CreateChartImagepropCount++;
             }
 
             dtoRequestV3091CreateChartImagepropCount++;
-            dtoRequestV3091CreateChartImage["chart"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagetableData);
+            dtoRequestV3091CreateChartImage["chart"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagetableData);
             if (dtoRequestV3091CreateChartImagechartType != null)
             {
-                dtoRequestV3091CreateChartImage["type"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagechartType);
+                dtoRequestV3091CreateChartImage["type"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagechartType);
                 dtoRequestV3091CreateChartImagepropCount++;
             }
 
@@ -1384,46 +1384,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3062CreateCode = new JObject();
             var dtoRequestV3062CreateCodepropCount = 0;
             dtoRequestV3062CreateCodepropCount++;
-            dtoRequestV3062CreateCode["content"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodecontent);
+            dtoRequestV3062CreateCode["content"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodecontent);
             if (dtoRequestV3062CreateCodecodeFormat != null)
             {
-                dtoRequestV3062CreateCode["codeFormat"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodecodeFormat);
+                dtoRequestV3062CreateCode["codeFormat"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodecodeFormat);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodewidth != null)
             {
-                dtoRequestV3062CreateCode["width"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodewidth);
+                dtoRequestV3062CreateCode["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodewidth);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodeheight != null)
             {
-                dtoRequestV3062CreateCode["height"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeheight);
+                dtoRequestV3062CreateCode["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeheight);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodeoutputFormat != null)
             {
-                dtoRequestV3062CreateCode["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeoutputFormat);
+                dtoRequestV3062CreateCode["outFormat"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeoutputFormat);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodeembeddedImage != null)
             {
-                dtoRequestV3062CreateCode["image"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImage);
+                dtoRequestV3062CreateCode["image"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImage);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodeembeddedImageOpacity != null)
             {
-                dtoRequestV3062CreateCode["imageOpacity"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImageOpacity);
+                dtoRequestV3062CreateCode["imageOpacity"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImageOpacity);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
             if (dtoRequestV3062CreateCodeembeddedImageRatio != null)
             {
-                dtoRequestV3062CreateCode["imageRatio"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImageRatio);
+                dtoRequestV3062CreateCode["imageRatio"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImageRatio);
                 dtoRequestV3062CreateCodepropCount++;
             }
 
@@ -1445,30 +1445,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3111CreateGraphImagepropCount = 0;
             if (dtoRequestV3111CreateGraphImageimageWidth != null)
             {
-                dtoRequestV3111CreateGraphImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageimageWidth);
+                dtoRequestV3111CreateGraphImage["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageimageWidth);
                 dtoRequestV3111CreateGraphImagepropCount++;
             }
 
             if (dtoRequestV3111CreateGraphImageimageHeight != null)
             {
-                dtoRequestV3111CreateGraphImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageimageHeight);
+                dtoRequestV3111CreateGraphImage["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageimageHeight);
                 dtoRequestV3111CreateGraphImagepropCount++;
             }
 
             if (dtoRequestV3111CreateGraphImagebackgroundColor != null)
             {
-                dtoRequestV3111CreateGraphImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImagebackgroundColor);
+                dtoRequestV3111CreateGraphImage["backgroundColor"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImagebackgroundColor);
                 dtoRequestV3111CreateGraphImagepropCount++;
             }
 
             if (dtoRequestV3111CreateGraphImageoutputFormat != null)
             {
-                dtoRequestV3111CreateGraphImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageoutputFormat);
+                dtoRequestV3111CreateGraphImage["format"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageoutputFormat);
                 dtoRequestV3111CreateGraphImagepropCount++;
             }
 
             dtoRequestV3111CreateGraphImagepropCount++;
-            dtoRequestV3111CreateGraphImage["graph"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImagegraphData);
+            dtoRequestV3111CreateGraphImage["graph"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImagegraphData);
             if (dtoRequestV3111CreateGraphImagepropCount > 0)
             {
                 callPayload.Body = dtoRequestV3111CreateGraphImage;
@@ -1487,33 +1487,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3101CreateTableImagepropCount = 0;
             if (dtoRequestV3101CreateTableImageimageWidth != null)
             {
-                dtoRequestV3101CreateTableImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageimageWidth);
+                dtoRequestV3101CreateTableImage["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageimageWidth);
                 dtoRequestV3101CreateTableImagepropCount++;
             }
 
             if (dtoRequestV3101CreateTableImageimageHeight != null)
             {
-                dtoRequestV3101CreateTableImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageimageHeight);
+                dtoRequestV3101CreateTableImage["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageimageHeight);
                 dtoRequestV3101CreateTableImagepropCount++;
             }
 
             if (dtoRequestV3101CreateTableImagebackgroundColor != null)
             {
-                dtoRequestV3101CreateTableImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagebackgroundColor);
+                dtoRequestV3101CreateTableImage["backgroundColor"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagebackgroundColor);
                 dtoRequestV3101CreateTableImagepropCount++;
             }
 
             if (dtoRequestV3101CreateTableImageoutputFormat != null)
             {
-                dtoRequestV3101CreateTableImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageoutputFormat);
+                dtoRequestV3101CreateTableImage["format"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageoutputFormat);
                 dtoRequestV3101CreateTableImagepropCount++;
             }
 
             dtoRequestV3101CreateTableImagepropCount++;
-            dtoRequestV3101CreateTableImage["data"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagetableData);
+            dtoRequestV3101CreateTableImage["data"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagetableData);
             if (dtoRequestV3101CreateTableImagetitle != null)
             {
-                dtoRequestV3101CreateTableImage["title"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagetitle);
+                dtoRequestV3101CreateTableImage["title"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagetitle);
                 dtoRequestV3101CreateTableImagepropCount++;
             }
 
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV3101CreateTableImageshowTableBorders != null)
                 {
-                    dtoRequestV3101CreateTableImage["hasLines"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageshowTableBorders);
+                    dtoRequestV3101CreateTableImage["hasLines"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageshowTableBorders);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
@@ -1550,30 +1550,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3081CreateWatermarkImage = new JObject();
             var dtoRequestV3081CreateWatermarkImagepropCount = 0;
             dtoRequestV3081CreateWatermarkImagepropCount++;
-            dtoRequestV3081CreateWatermarkImage["image"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagemainImage);
+            dtoRequestV3081CreateWatermarkImage["image"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagemainImage);
             dtoRequestV3081CreateWatermarkImagepropCount++;
-            dtoRequestV3081CreateWatermarkImage["watermarkImage"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkImage);
+            dtoRequestV3081CreateWatermarkImage["watermarkImage"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkImage);
             if (dtoRequestV3081CreateWatermarkImagewatermarkOpacity != null)
             {
-                dtoRequestV3081CreateWatermarkImage["opacity"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
+                dtoRequestV3081CreateWatermarkImage["opacity"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
                 dtoRequestV3081CreateWatermarkImagepropCount++;
             }
 
             if (dtoRequestV3081CreateWatermarkImagewatermarkRatio != null)
             {
-                dtoRequestV3081CreateWatermarkImage["ratio"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkRatio);
+                dtoRequestV3081CreateWatermarkImage["ratio"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkRatio);
                 dtoRequestV3081CreateWatermarkImagepropCount++;
             }
 
             if (dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition != null)
             {
-                dtoRequestV3081CreateWatermarkImage["imagePositionHorizontal"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
+                dtoRequestV3081CreateWatermarkImage["imagePositionHorizontal"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
                 dtoRequestV3081CreateWatermarkImagepropCount++;
             }
 
             if (dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition != null)
             {
-                dtoRequestV3081CreateWatermarkImage["imagePositionVertical"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
+                dtoRequestV3081CreateWatermarkImage["imagePositionVertical"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
                 dtoRequestV3081CreateWatermarkImagepropCount++;
             }
 
@@ -1595,12 +1595,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5011CreateWordFilepropCount = 0;
             if (dtoRequestV5011CreateWordFileexistingFileContent != null)
             {
-                dtoRequestV5011CreateWordFile["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5011CreateWordFileexistingFileContent);
+                dtoRequestV5011CreateWordFile["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5011CreateWordFileexistingFileContent);
                 dtoRequestV5011CreateWordFilepropCount++;
             }
 
             dtoRequestV5011CreateWordFilepropCount++;
-            dtoRequestV5011CreateWordFile["sections"] = ExpressionConverter.ConvertO(dtoRequestV5011CreateWordFilesection);
+            dtoRequestV5011CreateWordFile["sections"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5011CreateWordFilesection);
             if (dtoRequestV5011CreateWordFilepropCount > 0)
             {
                 callPayload.Body = dtoRequestV5011CreateWordFile;
@@ -1618,28 +1618,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequest = new JObject();
             var dtoRequestpropCount = 0;
             dtoRequestpropCount++;
-            dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
+            dtoRequest["pdf"] = CSharpExpressionConverter.ConvertToken(dtoRequestpDF);
             if (dtoRequestfromPage != null)
             {
-                dtoRequest["fromPage"] = ExpressionConverter.ConvertO(dtoRequestfromPage);
+                dtoRequest["fromPage"] = CSharpExpressionConverter.ConvertToken(dtoRequestfromPage);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequesttoPage != null)
             {
-                dtoRequest["toPage"] = ExpressionConverter.ConvertO(dtoRequesttoPage);
+                dtoRequest["toPage"] = CSharpExpressionConverter.ConvertToken(dtoRequesttoPage);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestfileNamePrefix != null)
             {
-                dtoRequest["fileNamePrefix"] = ExpressionConverter.ConvertO(dtoRequestfileNamePrefix);
+                dtoRequest["fileNamePrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestfileNamePrefix);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestincludeBase64String != null)
             {
-                dtoRequest["includeFileString"] = ExpressionConverter.ConvertO(dtoRequestincludeBase64String);
+                dtoRequest["includeFileString"] = CSharpExpressionConverter.ConvertToken(dtoRequestincludeBase64String);
                 dtoRequestpropCount++;
             }
 
@@ -1660,12 +1660,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2100ExtractJsonObjectProperties = new JObject();
             var dtoRequestV2100ExtractJsonObjectPropertiespropCount = 0;
             dtoRequestV2100ExtractJsonObjectPropertiespropCount++;
-            dtoRequestV2100ExtractJsonObjectProperties["json"] = ExpressionConverter.ConvertO(dtoRequestV2100ExtractJsonObjectPropertiesjSON);
+            dtoRequestV2100ExtractJsonObjectProperties["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2100ExtractJsonObjectPropertiesjSON);
             if (dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
             {
                 if (dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
                 {
-                    dtoRequestV2100ExtractJsonObjectProperties["nestedPropertyExtraction"] = ExpressionConverter.ConvertO(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties);
+                    dtoRequestV2100ExtractJsonObjectProperties["nestedPropertyExtraction"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties);
                     dtoRequestV2100ExtractJsonObjectPropertiespropCount++;
                 }
 
@@ -1694,9 +1694,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4060ExtractPdfPages = new JObject();
             var dtoRequestV4060ExtractPdfPagespropCount = 0;
             dtoRequestV4060ExtractPdfPagespropCount++;
-            dtoRequestV4060ExtractPdfPages["file"] = ExpressionConverter.ConvertO(dtoRequestV4060ExtractPdfPagespDFFile);
+            dtoRequestV4060ExtractPdfPages["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4060ExtractPdfPagespDFFile);
             dtoRequestV4060ExtractPdfPagespropCount++;
-            dtoRequestV4060ExtractPdfPages["pages"] = ExpressionConverter.ConvertO(dtoRequestV4060ExtractPdfPagespagesToExtract);
+            dtoRequestV4060ExtractPdfPages["pages"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4060ExtractPdfPagespagesToExtract);
             if (dtoRequestV4060ExtractPdfPagespropCount > 0)
             {
                 callPayload.Body = dtoRequestV4060ExtractPdfPages;
@@ -1714,18 +1714,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2140ExtractTextAccordingToPattern = new JObject();
             var dtoRequestV2140ExtractTextAccordingToPatternpropCount = 0;
             dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
-            dtoRequestV2140ExtractTextAccordingToPattern["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntext);
+            dtoRequestV2140ExtractTextAccordingToPattern["inputText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2140ExtractTextAccordingToPatterntext);
             dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
-            dtoRequestV2140ExtractTextAccordingToPattern["matchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern);
+            dtoRequestV2140ExtractTextAccordingToPattern["matchPattern"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern);
             if (dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled != null)
             {
-                dtoRequestV2140ExtractTextAccordingToPattern["trimEnabled"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled);
+                dtoRequestV2140ExtractTextAccordingToPattern["trimEnabled"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled);
                 dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
             }
 
             if (dtoRequestV2140ExtractTextAccordingToPatterntrimStrings != null)
             {
-                dtoRequestV2140ExtractTextAccordingToPattern["trimStrings"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings);
+                dtoRequestV2140ExtractTextAccordingToPattern["trimStrings"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings);
                 dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
             }
 
@@ -1746,40 +1746,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequest = new JObject();
             var dtoRequestpropCount = 0;
             dtoRequestpropCount++;
-            dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
+            dtoRequest["pdf"] = CSharpExpressionConverter.ConvertToken(dtoRequestpDF);
             if (dtoRequestfromPage != null)
             {
-                dtoRequest["fromPage"] = ExpressionConverter.ConvertO(dtoRequestfromPage);
+                dtoRequest["fromPage"] = CSharpExpressionConverter.ConvertToken(dtoRequestfromPage);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequesttoPage != null)
             {
-                dtoRequest["toPage"] = ExpressionConverter.ConvertO(dtoRequesttoPage);
+                dtoRequest["toPage"] = CSharpExpressionConverter.ConvertToken(dtoRequesttoPage);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestlayoutBased != null)
             {
-                dtoRequest["layoutBased"] = ExpressionConverter.ConvertO(dtoRequestlayoutBased);
+                dtoRequest["layoutBased"] = CSharpExpressionConverter.ConvertToken(dtoRequestlayoutBased);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestincludePages != null)
             {
-                dtoRequest["includePages"] = ExpressionConverter.ConvertO(dtoRequestincludePages);
+                dtoRequest["includePages"] = CSharpExpressionConverter.ConvertToken(dtoRequestincludePages);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestpageSeparator != null)
             {
-                dtoRequest["pageSeparator"] = ExpressionConverter.ConvertO(dtoRequestpageSeparator);
+                dtoRequest["pageSeparator"] = CSharpExpressionConverter.ConvertToken(dtoRequestpageSeparator);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestnormalizeWhitespace != null)
             {
-                dtoRequest["normalizeWhitespace"] = ExpressionConverter.ConvertO(dtoRequestnormalizeWhitespace);
+                dtoRequest["normalizeWhitespace"] = CSharpExpressionConverter.ConvertToken(dtoRequestnormalizeWhitespace);
                 dtoRequestpropCount++;
             }
 
@@ -1800,12 +1800,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5021ExtractWordBookmarks = new JObject();
             var dtoRequestV5021ExtractWordBookmarkspropCount = 0;
             dtoRequestV5021ExtractWordBookmarkspropCount++;
-            dtoRequestV5021ExtractWordBookmarks["file"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarksfile);
+            dtoRequestV5021ExtractWordBookmarks["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarksfile);
             if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
             {
                 if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
                 {
-                    dtoRequestV5021ExtractWordBookmarks["includeHiddenBookmarks"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks);
+                    dtoRequestV5021ExtractWordBookmarks["includeHiddenBookmarks"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks);
                     dtoRequestV5021ExtractWordBookmarkspropCount++;
                 }
 
@@ -1819,13 +1819,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV5021ExtractWordBookmarkssearchName != null)
             {
-                dtoRequestV5021ExtractWordBookmarks["searchKey"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarkssearchName);
+                dtoRequestV5021ExtractWordBookmarks["searchKey"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarkssearchName);
                 dtoRequestV5021ExtractWordBookmarkspropCount++;
             }
 
             if (dtoRequestV5021ExtractWordBookmarkssearchContent != null)
             {
-                dtoRequestV5021ExtractWordBookmarks["searchValue"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarkssearchContent);
+                dtoRequestV5021ExtractWordBookmarks["searchValue"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarkssearchContent);
                 dtoRequestV5021ExtractWordBookmarkspropCount++;
             }
 
@@ -1846,16 +1846,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5120ExtractWordContentControls = new JObject();
             var dtoRequestV5120ExtractWordContentControlspropCount = 0;
             dtoRequestV5120ExtractWordContentControlspropCount++;
-            dtoRequestV5120ExtractWordContentControls["file"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlsfile);
+            dtoRequestV5120ExtractWordContentControls["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlsfile);
             if (dtoRequestV5120ExtractWordContentControlssearchTag != null)
             {
-                dtoRequestV5120ExtractWordContentControls["searchTag"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlssearchTag);
+                dtoRequestV5120ExtractWordContentControls["searchTag"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlssearchTag);
                 dtoRequestV5120ExtractWordContentControlspropCount++;
             }
 
             if (dtoRequestV5120ExtractWordContentControlssearchTitle != null)
             {
-                dtoRequestV5120ExtractWordContentControls["searchTitle"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlssearchTitle);
+                dtoRequestV5120ExtractWordContentControls["searchTitle"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlssearchTitle);
                 dtoRequestV5120ExtractWordContentControlspropCount++;
             }
 
@@ -1876,7 +1876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2021IbanData = new JObject();
             var dtoRequestV2021IbanDatapropCount = 0;
             dtoRequestV2021IbanDatapropCount++;
-            dtoRequestV2021IbanData["iban"] = ExpressionConverter.ConvertO(dtoRequestV2021IbanDataiBAN);
+            dtoRequestV2021IbanData["iban"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2021IbanDataiBAN);
             if (dtoRequestV2021IbanDatapropCount > 0)
             {
                 callPayload.Body = dtoRequestV2021IbanData;
@@ -1894,7 +1894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3071ImageMetaData = new JObject();
             var dtoRequestV3071ImageMetaDatapropCount = 0;
             dtoRequestV3071ImageMetaDatapropCount++;
-            dtoRequestV3071ImageMetaData["file"] = ExpressionConverter.ConvertO(dtoRequestV3071ImageMetaDataimageFile);
+            dtoRequestV3071ImageMetaData["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3071ImageMetaDataimageFile);
             if (dtoRequestV3071ImageMetaDatapropCount > 0)
             {
                 callPayload.Body = dtoRequestV3071ImageMetaData;
@@ -1912,36 +1912,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV9020InsertImagePowerPoint = new JObject();
             var dtoRequestV9020InsertImagePowerPointpropCount = 0;
             dtoRequestV9020InsertImagePowerPointpropCount++;
-            dtoRequestV9020InsertImagePowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointexistingFileContent);
+            dtoRequestV9020InsertImagePowerPoint["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointexistingFileContent);
             if (dtoRequestV9020InsertImagePowerPointplaceholderName != null)
             {
-                dtoRequestV9020InsertImagePowerPoint["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderName);
+                dtoRequestV9020InsertImagePowerPoint["placeholderName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointplaceholderName);
                 dtoRequestV9020InsertImagePowerPointpropCount++;
             }
 
             dtoRequestV9020InsertImagePowerPointpropCount++;
-            dtoRequestV9020InsertImagePowerPoint["placeholderImage"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderImage);
+            dtoRequestV9020InsertImagePowerPoint["placeholderImage"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointplaceholderImage);
             if (dtoRequestV9020InsertImagePowerPointmaximumImageWidth != null)
             {
-                dtoRequestV9020InsertImagePowerPoint["width"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointmaximumImageWidth);
+                dtoRequestV9020InsertImagePowerPoint["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointmaximumImageWidth);
                 dtoRequestV9020InsertImagePowerPointpropCount++;
             }
 
             if (dtoRequestV9020InsertImagePowerPointmaximumImageHeight != null)
             {
-                dtoRequestV9020InsertImagePowerPoint["height"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointmaximumImageHeight);
+                dtoRequestV9020InsertImagePowerPoint["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointmaximumImageHeight);
                 dtoRequestV9020InsertImagePowerPointpropCount++;
             }
 
             if (dtoRequestV9020InsertImagePowerPointplaceholderPrefix != null)
             {
-                dtoRequestV9020InsertImagePowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderPrefix);
+                dtoRequestV9020InsertImagePowerPoint["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointplaceholderPrefix);
                 dtoRequestV9020InsertImagePowerPointpropCount++;
             }
 
             if (dtoRequestV9020InsertImagePowerPointplaceholderSuffix != null)
             {
-                dtoRequestV9020InsertImagePowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderSuffix);
+                dtoRequestV9020InsertImagePowerPoint["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9020InsertImagePowerPointplaceholderSuffix);
                 dtoRequestV9020InsertImagePowerPointpropCount++;
             }
 
@@ -1962,36 +1962,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5081InsertImageToWord = new JObject();
             var dtoRequestV5081InsertImageToWordpropCount = 0;
             dtoRequestV5081InsertImageToWordpropCount++;
-            dtoRequestV5081InsertImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordexistingFileContent);
+            dtoRequestV5081InsertImageToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordexistingFileContent);
             if (dtoRequestV5081InsertImageToWordplaceholderName != null)
             {
-                dtoRequestV5081InsertImageToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderName);
+                dtoRequestV5081InsertImageToWord["placeholderName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderName);
                 dtoRequestV5081InsertImageToWordpropCount++;
             }
 
             dtoRequestV5081InsertImageToWordpropCount++;
-            dtoRequestV5081InsertImageToWord["placeholderImage"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordimage);
+            dtoRequestV5081InsertImageToWord["placeholderImage"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordimage);
             if (dtoRequestV5081InsertImageToWordmaximumImageWidth != null)
             {
-                dtoRequestV5081InsertImageToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordmaximumImageWidth);
+                dtoRequestV5081InsertImageToWord["maxWidth"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordmaximumImageWidth);
                 dtoRequestV5081InsertImageToWordpropCount++;
             }
 
             if (dtoRequestV5081InsertImageToWordmaximumImageHeight != null)
             {
-                dtoRequestV5081InsertImageToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordmaximumImageHeight);
+                dtoRequestV5081InsertImageToWord["maxHeight"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordmaximumImageHeight);
                 dtoRequestV5081InsertImageToWordpropCount++;
             }
 
             if (dtoRequestV5081InsertImageToWordplaceholderPrefix != null)
             {
-                dtoRequestV5081InsertImageToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderPrefix);
+                dtoRequestV5081InsertImageToWord["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderPrefix);
                 dtoRequestV5081InsertImageToWordpropCount++;
             }
 
             if (dtoRequestV5081InsertImageToWordplaceholderSuffix != null)
             {
-                dtoRequestV5081InsertImageToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderSuffix);
+                dtoRequestV5081InsertImageToWord["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderSuffix);
                 dtoRequestV5081InsertImageToWordpropCount++;
             }
 
@@ -2012,18 +2012,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5110InsertMultipleTextSectionsToWord = new JObject();
             var dtoRequestV5110InsertMultipleTextSectionsToWordpropCount = 0;
             dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-            dtoRequestV5110InsertMultipleTextSectionsToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
+            dtoRequestV5110InsertMultipleTextSectionsToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
             dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-            dtoRequestV5110InsertMultipleTextSectionsToWord["insertSections"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
+            dtoRequestV5110InsertMultipleTextSectionsToWord["insertSections"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
             if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix != null)
             {
-                dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
+                dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
                 dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
             }
 
             if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix != null)
             {
-                dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
+                dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
                 dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
             }
 
@@ -2044,16 +2044,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5091InsertTableToWord = new JObject();
             var dtoRequestV5091InsertTableToWordpropCount = 0;
             dtoRequestV5091InsertTableToWordpropCount++;
-            dtoRequestV5091InsertTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordexistingFileContent);
+            dtoRequestV5091InsertTableToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordexistingFileContent);
             if (dtoRequestV5091InsertTableToWordplaceholderName != null)
             {
-                dtoRequestV5091InsertTableToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderName);
+                dtoRequestV5091InsertTableToWord["placeholderName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderName);
                 dtoRequestV5091InsertTableToWordpropCount++;
             }
 
             if (dtoRequestV5091InsertTableToWordplaceholderTable != null)
             {
-                dtoRequestV5091InsertTableToWord["placeholderTable"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderTable);
+                dtoRequestV5091InsertTableToWord["placeholderTable"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderTable);
                 dtoRequestV5091InsertTableToWordpropCount++;
             }
 
@@ -2061,7 +2061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV5091InsertTableToWordtableStyle != null)
                 {
-                    dtoRequestV5091InsertTableToWord["tableStyle"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordtableStyle);
+                    dtoRequestV5091InsertTableToWord["tableStyle"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordtableStyle);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
@@ -2077,7 +2077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV5091InsertTableToWordshowHeaders != null)
                 {
-                    dtoRequestV5091InsertTableToWord["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordshowHeaders);
+                    dtoRequestV5091InsertTableToWord["hasHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordshowHeaders);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
@@ -2091,13 +2091,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV5091InsertTableToWordplaceholderPrefix != null)
             {
-                dtoRequestV5091InsertTableToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderPrefix);
+                dtoRequestV5091InsertTableToWord["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderPrefix);
                 dtoRequestV5091InsertTableToWordpropCount++;
             }
 
             if (dtoRequestV5091InsertTableToWordplaceholderSuffix != null)
             {
-                dtoRequestV5091InsertTableToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderSuffix);
+                dtoRequestV5091InsertTableToWord["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderSuffix);
                 dtoRequestV5091InsertTableToWordpropCount++;
             }
 
@@ -2118,24 +2118,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV9010InsertTextToPowerPoint = new JObject();
             var dtoRequestV9010InsertTextToPowerPointpropCount = 0;
             dtoRequestV9010InsertTextToPowerPointpropCount++;
-            dtoRequestV9010InsertTextToPowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointexistingFileContent);
+            dtoRequestV9010InsertTextToPowerPoint["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9010InsertTextToPowerPointexistingFileContent);
             dtoRequestV9010InsertTextToPowerPointpropCount++;
-            dtoRequestV9010InsertTextToPowerPoint["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderName);
+            dtoRequestV9010InsertTextToPowerPoint["placeholderName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9010InsertTextToPowerPointplaceholderName);
             if (dtoRequestV9010InsertTextToPowerPointplaceholderText != null)
             {
-                dtoRequestV9010InsertTextToPowerPoint["placeholderText"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderText);
+                dtoRequestV9010InsertTextToPowerPoint["placeholderText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9010InsertTextToPowerPointplaceholderText);
                 dtoRequestV9010InsertTextToPowerPointpropCount++;
             }
 
             if (dtoRequestV9010InsertTextToPowerPointplaceholderPrefix != null)
             {
-                dtoRequestV9010InsertTextToPowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix);
+                dtoRequestV9010InsertTextToPowerPoint["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix);
                 dtoRequestV9010InsertTextToPowerPointpropCount++;
             }
 
             if (dtoRequestV9010InsertTextToPowerPointplaceholderSuffix != null)
             {
-                dtoRequestV9010InsertTextToPowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix);
+                dtoRequestV9010InsertTextToPowerPoint["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix);
                 dtoRequestV9010InsertTextToPowerPointpropCount++;
             }
 
@@ -2156,24 +2156,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5071InsertTextToWord = new JObject();
             var dtoRequestV5071InsertTextToWordpropCount = 0;
             dtoRequestV5071InsertTextToWordpropCount++;
-            dtoRequestV5071InsertTextToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordexistingFileContent);
+            dtoRequestV5071InsertTextToWord["existingFileContent"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordexistingFileContent);
             dtoRequestV5071InsertTextToWordpropCount++;
-            dtoRequestV5071InsertTextToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderName);
+            dtoRequestV5071InsertTextToWord["placeholderName"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderName);
             if (dtoRequestV5071InsertTextToWordplaceholderText != null)
             {
-                dtoRequestV5071InsertTextToWord["placeholderText"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderText);
+                dtoRequestV5071InsertTextToWord["placeholderText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderText);
                 dtoRequestV5071InsertTextToWordpropCount++;
             }
 
             if (dtoRequestV5071InsertTextToWordplaceholderPrefix != null)
             {
-                dtoRequestV5071InsertTextToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderPrefix);
+                dtoRequestV5071InsertTextToWord["placeholderPrefix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderPrefix);
                 dtoRequestV5071InsertTextToWordpropCount++;
             }
 
             if (dtoRequestV5071InsertTextToWordplaceholderSuffix != null)
             {
-                dtoRequestV5071InsertTextToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderSuffix);
+                dtoRequestV5071InsertTextToWord["placeholderSuffix"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderSuffix);
                 dtoRequestV5071InsertTextToWordpropCount++;
             }
 
@@ -2194,9 +2194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4021MergePdfs = new JObject();
             var dtoRequestV4021MergePdfspropCount = 0;
             dtoRequestV4021MergePdfspropCount++;
-            dtoRequestV4021MergePdfs["file1"] = ExpressionConverter.ConvertO(dtoRequestV4021MergePdfsfile1);
+            dtoRequestV4021MergePdfs["file1"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4021MergePdfsfile1);
             dtoRequestV4021MergePdfspropCount++;
-            dtoRequestV4021MergePdfs["file2"] = ExpressionConverter.ConvertO(dtoRequestV4021MergePdfsfile2);
+            dtoRequestV4021MergePdfs["file2"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4021MergePdfsfile2);
             if (dtoRequestV4021MergePdfspropCount > 0)
             {
                 callPayload.Body = dtoRequestV4021MergePdfs;
@@ -2214,9 +2214,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2120PatternMatchCheck = new JObject();
             var dtoRequestV2120PatternMatchCheckpropCount = 0;
             dtoRequestV2120PatternMatchCheckpropCount++;
-            dtoRequestV2120PatternMatchCheck["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2120PatternMatchCheckinputText);
+            dtoRequestV2120PatternMatchCheck["inputText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2120PatternMatchCheckinputText);
             dtoRequestV2120PatternMatchCheckpropCount++;
-            dtoRequestV2120PatternMatchCheck["matchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2120PatternMatchCheckmatchPattern);
+            dtoRequestV2120PatternMatchCheck["matchPattern"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2120PatternMatchCheckmatchPattern);
             if (dtoRequestV2120PatternMatchCheckpropCount > 0)
             {
                 callPayload.Body = dtoRequestV2120PatternMatchCheck;
@@ -2234,7 +2234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4031PdfMetadata = new JObject();
             var dtoRequestV4031PdfMetadatapropCount = 0;
             dtoRequestV4031PdfMetadatapropCount++;
-            dtoRequestV4031PdfMetadata["file"] = ExpressionConverter.ConvertO(dtoRequestV4031PdfMetadatafile);
+            dtoRequestV4031PdfMetadata["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4031PdfMetadatafile);
             if (dtoRequestV4031PdfMetadatapropCount > 0)
             {
                 callPayload.Body = dtoRequestV4031PdfMetadata;
@@ -2252,16 +2252,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4041ProtectPdf = new JObject();
             var dtoRequestV4041ProtectPdfpropCount = 0;
             dtoRequestV4041ProtectPdfpropCount++;
-            dtoRequestV4041ProtectPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdffile);
+            dtoRequestV4041ProtectPdf["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdffile);
             if (dtoRequestV4041ProtectPdfownerPassword != null)
             {
-                dtoRequestV4041ProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdfownerPassword);
+                dtoRequestV4041ProtectPdf["ownerPassword"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdfownerPassword);
                 dtoRequestV4041ProtectPdfpropCount++;
             }
 
             if (dtoRequestV4041ProtectPdfuserPassword != null)
             {
-                dtoRequestV4041ProtectPdf["userPassword"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdfuserPassword);
+                dtoRequestV4041ProtectPdf["userPassword"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdfuserPassword);
                 dtoRequestV4041ProtectPdfpropCount++;
             }
 
@@ -2282,7 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestReadCodeData = new JObject();
             var dtoRequestReadCodeDatapropCount = 0;
             dtoRequestReadCodeDatapropCount++;
-            dtoRequestReadCodeData["file"] = ExpressionConverter.ConvertO(dtoRequestReadCodeDataqROrBarcode);
+            dtoRequestReadCodeData["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestReadCodeDataqROrBarcode);
             if (dtoRequestReadCodeDatapropCount > 0)
             {
                 callPayload.Body = dtoRequestReadCodeData;
@@ -2300,16 +2300,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2011RegularExpression = new JObject();
             var dtoRequestV2011RegularExpressionpropCount = 0;
             dtoRequestV2011RegularExpressionpropCount++;
-            dtoRequestV2011RegularExpression["input"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressiontextToMatch);
+            dtoRequestV2011RegularExpression["input"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2011RegularExpressiontextToMatch);
             if (dtoRequestV2011RegularExpressionregularExpression != null)
             {
-                dtoRequestV2011RegularExpression["pattern"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressionregularExpression);
+                dtoRequestV2011RegularExpression["pattern"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2011RegularExpressionregularExpression);
                 dtoRequestV2011RegularExpressionpropCount++;
             }
 
             if (dtoRequestV2011RegularExpressionregularExpressionOption != null)
             {
-                dtoRequestV2011RegularExpression["option"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressionregularExpressionOption);
+                dtoRequestV2011RegularExpression["option"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2011RegularExpressionregularExpressionOption);
                 dtoRequestV2011RegularExpressionpropCount++;
             }
 
@@ -2330,24 +2330,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequest = new JObject();
             var dtoRequestpropCount = 0;
             dtoRequestpropCount++;
-            dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
+            dtoRequest["pdf"] = CSharpExpressionConverter.ConvertToken(dtoRequestpDF);
             dtoRequestpropCount++;
-            dtoRequest["pages"] = ExpressionConverter.ConvertO(dtoRequestpages);
+            dtoRequest["pages"] = CSharpExpressionConverter.ConvertToken(dtoRequestpages);
             if (dtoRequestinputIs1Based != null)
             {
-                dtoRequest["oneBased"] = ExpressionConverter.ConvertO(dtoRequestinputIs1Based);
+                dtoRequest["oneBased"] = CSharpExpressionConverter.ConvertToken(dtoRequestinputIs1Based);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestmode != null)
             {
-                dtoRequest["mode"] = ExpressionConverter.ConvertO(dtoRequestmode);
+                dtoRequest["mode"] = CSharpExpressionConverter.ConvertToken(dtoRequestmode);
                 dtoRequestpropCount++;
             }
 
             if (dtoRequestfailIfPageOutOfRange != null)
             {
-                dtoRequest["strict"] = ExpressionConverter.ConvertO(dtoRequestfailIfPageOutOfRange);
+                dtoRequest["strict"] = CSharpExpressionConverter.ConvertToken(dtoRequestfailIfPageOutOfRange);
                 dtoRequestpropCount++;
             }
 
@@ -2368,12 +2368,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2110ReplaceTextWithPattern = new JObject();
             var dtoRequestV2110ReplaceTextWithPatternpropCount = 0;
             dtoRequestV2110ReplaceTextWithPatternpropCount++;
-            dtoRequestV2110ReplaceTextWithPattern["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatterninputText);
+            dtoRequestV2110ReplaceTextWithPattern["inputText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2110ReplaceTextWithPatterninputText);
             dtoRequestV2110ReplaceTextWithPatternpropCount++;
-            dtoRequestV2110ReplaceTextWithPattern["searchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatternsearchPattern);
+            dtoRequestV2110ReplaceTextWithPattern["searchPattern"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2110ReplaceTextWithPatternsearchPattern);
             if (dtoRequestV2110ReplaceTextWithPatternreplacementText != null)
             {
-                dtoRequestV2110ReplaceTextWithPattern["replacementText"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatternreplacementText);
+                dtoRequestV2110ReplaceTextWithPattern["replacementText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2110ReplaceTextWithPatternreplacementText);
                 dtoRequestV2110ReplaceTextWithPatternpropCount++;
             }
 
@@ -2394,22 +2394,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3022ResizeImage = new JObject();
             var dtoRequestV3022ResizeImagepropCount = 0;
             dtoRequestV3022ResizeImagepropCount++;
-            dtoRequestV3022ResizeImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageFile);
+            dtoRequestV3022ResizeImage["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageFile);
             if (dtoRequestV3022ResizeImageimageWidth != null)
             {
-                dtoRequestV3022ResizeImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageWidth);
+                dtoRequestV3022ResizeImage["width"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageWidth);
                 dtoRequestV3022ResizeImagepropCount++;
             }
 
             if (dtoRequestV3022ResizeImageimageHeight != null)
             {
-                dtoRequestV3022ResizeImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageHeight);
+                dtoRequestV3022ResizeImage["height"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageHeight);
                 dtoRequestV3022ResizeImagepropCount++;
             }
 
             if (dtoRequestV3022ResizeImageresizeBy != null)
             {
-                dtoRequestV3022ResizeImage["resizeBy"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageresizeBy);
+                dtoRequestV3022ResizeImage["resizeBy"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageresizeBy);
                 dtoRequestV3022ResizeImagepropCount++;
             }
 
@@ -2430,16 +2430,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV3031RotateImage = new JObject();
             var dtoRequestV3031RotateImagepropCount = 0;
             dtoRequestV3031RotateImagepropCount++;
-            dtoRequestV3031RotateImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImageimageFile);
+            dtoRequestV3031RotateImage["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3031RotateImageimageFile);
             if (dtoRequestV3031RotateImagerotate != null)
             {
-                dtoRequestV3031RotateImage["rotate"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImagerotate);
+                dtoRequestV3031RotateImage["rotate"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3031RotateImagerotate);
                 dtoRequestV3031RotateImagepropCount++;
             }
 
             if (dtoRequestV3031RotateImageoutputFormat != null)
             {
-                dtoRequestV3031RotateImage["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImageoutputFormat);
+                dtoRequestV3031RotateImage["outFormat"] = CSharpExpressionConverter.ConvertToken(dtoRequestV3031RotateImageoutputFormat);
                 dtoRequestV3031RotateImagepropCount++;
             }
 
@@ -2460,22 +2460,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dto = new JObject();
             var dtopropCount = 0;
             dtopropCount++;
-            dto["code"] = ExpressionConverter.ConvertO(dtopythonOrJavaScriptCode);
+            dto["code"] = CSharpExpressionConverter.ConvertToken(dtopythonOrJavaScriptCode);
             if (dtoruntime != null)
             {
-                dto["runtime"] = ExpressionConverter.ConvertO(dtoruntime);
+                dto["runtime"] = CSharpExpressionConverter.ConvertToken(dtoruntime);
                 dtopropCount++;
             }
 
             if (dtotimeoutSeconds != null)
             {
-                dto["timeoutSec"] = ExpressionConverter.ConvertO(dtotimeoutSeconds);
+                dto["timeoutSec"] = CSharpExpressionConverter.ConvertToken(dtotimeoutSeconds);
                 dtopropCount++;
             }
 
             if (dtoprintLastExpression != null)
             {
-                dto["printLastExpression"] = ExpressionConverter.ConvertO(dtoprintLastExpression);
+                dto["printLastExpression"] = CSharpExpressionConverter.ConvertToken(dtoprintLastExpression);
                 dtopropCount++;
             }
 
@@ -2496,22 +2496,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2130SmartTextSplit = new JObject();
             var dtoRequestV2130SmartTextSplitpropCount = 0;
             dtoRequestV2130SmartTextSplitpropCount++;
-            dtoRequestV2130SmartTextSplit["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplitinputText);
+            dtoRequestV2130SmartTextSplit["inputText"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2130SmartTextSplitinputText);
             if (dtoRequestV2130SmartTextSplitsplitPattern != null)
             {
-                dtoRequestV2130SmartTextSplit["splitPattern"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplitsplitPattern);
+                dtoRequestV2130SmartTextSplit["splitPattern"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2130SmartTextSplitsplitPattern);
                 dtoRequestV2130SmartTextSplitpropCount++;
             }
 
             if (dtoRequestV2130SmartTextSplittrimEnabled != null)
             {
-                dtoRequestV2130SmartTextSplit["trimEnabled"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplittrimEnabled);
+                dtoRequestV2130SmartTextSplit["trimEnabled"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2130SmartTextSplittrimEnabled);
                 dtoRequestV2130SmartTextSplitpropCount++;
             }
 
             if (dtoRequestV2130SmartTextSplittrimStrings != null)
             {
-                dtoRequestV2130SmartTextSplit["trimStrings"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplittrimStrings);
+                dtoRequestV2130SmartTextSplit["trimStrings"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2130SmartTextSplittrimStrings);
                 dtoRequestV2130SmartTextSplitpropCount++;
             }
 
@@ -2532,12 +2532,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2061SortCsv = new JObject();
             var dtoRequestV2061SortCsvpropCount = 0;
             dtoRequestV2061SortCsvpropCount++;
-            dtoRequestV2061SortCsv["csv"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvcSV);
+            dtoRequestV2061SortCsv["csv"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvcSV);
             if (dtoRequestV2061SortCsvcSVHasHeaders != null)
             {
                 if (dtoRequestV2061SortCsvcSVHasHeaders != null)
                 {
-                    dtoRequestV2061SortCsv["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvcSVHasHeaders);
+                    dtoRequestV2061SortCsv["dataIncludesHeader"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvcSVHasHeaders);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
@@ -2553,7 +2553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV2061SortCsvautoDetectFieldTypes != null)
                 {
-                    dtoRequestV2061SortCsv["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvautoDetectFieldTypes);
+                    dtoRequestV2061SortCsv["autoDiscoverFieldTypes"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvautoDetectFieldTypes);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
@@ -2567,7 +2567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection != null)
             {
-                dtoRequestV2061SortCsv["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection);
+                dtoRequestV2061SortCsv["maxScanRows"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
@@ -2575,7 +2575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV2061SortCsvremoveEmptyRows != null)
                 {
-                    dtoRequestV2061SortCsv["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvremoveEmptyRows);
+                    dtoRequestV2061SortCsv["ignoreEmptyLine"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvremoveEmptyRows);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
@@ -2589,19 +2589,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV2061SortCsvskipANumberOfRows != null)
             {
-                dtoRequestV2061SortCsv["skip"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvskipANumberOfRows);
+                dtoRequestV2061SortCsv["skip"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvskipANumberOfRows);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
             if (dtoRequestV2061SortCsvstopAtASpecificRow != null)
             {
-                dtoRequestV2061SortCsv["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvstopAtASpecificRow);
+                dtoRequestV2061SortCsv["skipLast"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvstopAtASpecificRow);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
             if (dtoRequestV2061SortCsvseparator != null)
             {
-                dtoRequestV2061SortCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvseparator);
+                dtoRequestV2061SortCsv["delimiter"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvseparator);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
@@ -2609,7 +2609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV2061SortCsvautoDetectQuoteDelimiter != null)
                 {
-                    dtoRequestV2061SortCsv["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvautoDetectQuoteDelimiter);
+                    dtoRequestV2061SortCsv["mayHaveQuotedFields"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvautoDetectQuoteDelimiter);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
@@ -2623,13 +2623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
             if (dtoRequestV2061SortCsvsortColumn != null)
             {
-                dtoRequestV2061SortCsv["sortColumn"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvsortColumn);
+                dtoRequestV2061SortCsv["sortColumn"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvsortColumn);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
             if (dtoRequestV2061SortCsvfurtherSortingColumn != null)
             {
-                dtoRequestV2061SortCsv["secondSortColumn"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvfurtherSortingColumn);
+                dtoRequestV2061SortCsv["secondSortColumn"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvfurtherSortingColumn);
                 dtoRequestV2061SortCsvpropCount++;
             }
 
@@ -2637,7 +2637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV2061SortCsvreverseOrder != null)
                 {
-                    dtoRequestV2061SortCsv["isReverse"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvreverseOrder);
+                    dtoRequestV2061SortCsv["isReverse"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2061SortCsvreverseOrder);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
@@ -2666,16 +2666,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2051SortJson = new JObject();
             var dtoRequestV2051SortJsonpropCount = 0;
             dtoRequestV2051SortJsonpropCount++;
-            dtoRequestV2051SortJson["json"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonjSON);
+            dtoRequestV2051SortJson["json"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2051SortJsonjSON);
             if (dtoRequestV2051SortJsonsortProperty != null)
             {
-                dtoRequestV2051SortJson["sortProperty"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonsortProperty);
+                dtoRequestV2051SortJson["sortProperty"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2051SortJsonsortProperty);
                 dtoRequestV2051SortJsonpropCount++;
             }
 
             if (dtoRequestV2051SortJsonfurtherSortingProperty != null)
             {
-                dtoRequestV2051SortJson["secondSortProperty"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonfurtherSortingProperty);
+                dtoRequestV2051SortJson["secondSortProperty"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2051SortJsonfurtherSortingProperty);
                 dtoRequestV2051SortJsonpropCount++;
             }
 
@@ -2683,7 +2683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             {
                 if (dtoRequestV2051SortJsonreverseOrder != null)
                 {
-                    dtoRequestV2051SortJson["isReverse"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonreverseOrder);
+                    dtoRequestV2051SortJson["isReverse"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2051SortJsonreverseOrder);
                     dtoRequestV2051SortJsonpropCount++;
                 }
 
@@ -2712,15 +2712,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2041Translate = new JObject();
             var dtoRequestV2041TranslatepropCount = 0;
             dtoRequestV2041TranslatepropCount++;
-            dtoRequestV2041Translate["text"] = ExpressionConverter.ConvertO(dtoRequestV2041Translatetext);
+            dtoRequestV2041Translate["text"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2041Translatetext);
             if (dtoRequestV2041Translatefrom != null)
             {
-                dtoRequestV2041Translate["from"] = ExpressionConverter.ConvertO(dtoRequestV2041Translatefrom);
+                dtoRequestV2041Translate["from"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2041Translatefrom);
                 dtoRequestV2041TranslatepropCount++;
             }
 
             dtoRequestV2041TranslatepropCount++;
-            dtoRequestV2041Translate["to"] = ExpressionConverter.ConvertO(dtoRequestV2041Translateto);
+            dtoRequestV2041Translate["to"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2041Translateto);
             if (dtoRequestV2041TranslatepropCount > 0)
             {
                 callPayload.Body = dtoRequestV2041Translate;
@@ -2738,16 +2738,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV4051UnProtectPdf = new JObject();
             var dtoRequestV4051UnProtectPdfpropCount = 0;
             dtoRequestV4051UnProtectPdfpropCount++;
-            dtoRequestV4051UnProtectPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdffile);
+            dtoRequestV4051UnProtectPdf["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdffile);
             if (dtoRequestV4051UnProtectPdfownerPassword != null)
             {
-                dtoRequestV4051UnProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdfownerPassword);
+                dtoRequestV4051UnProtectPdf["ownerPassword"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdfownerPassword);
                 dtoRequestV4051UnProtectPdfpropCount++;
             }
 
             if (dtoRequestV4051UnProtectPdfremovePermissions != null)
             {
-                dtoRequestV4051UnProtectPdf["removePermissions"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdfremovePermissions);
+                dtoRequestV4051UnProtectPdf["removePermissions"] = CSharpExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdfremovePermissions);
                 dtoRequestV4051UnProtectPdfpropCount++;
             }
 
@@ -2768,9 +2768,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5150UpdateMultipleWordContentControls = new JObject();
             var dtoRequestV5150UpdateMultipleWordContentControlspropCount = 0;
             dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-            dtoRequestV5150UpdateMultipleWordContentControls["file"] = ExpressionConverter.ConvertO(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
+            dtoRequestV5150UpdateMultipleWordContentControls["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
             dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-            dtoRequestV5150UpdateMultipleWordContentControls["contentControls"] = ExpressionConverter.ConvertO(dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
+            dtoRequestV5150UpdateMultipleWordContentControls["contentControls"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
             if (dtoRequestV5150UpdateMultipleWordContentControlspropCount > 0)
             {
                 callPayload.Body = dtoRequestV5150UpdateMultipleWordContentControls;
@@ -2788,12 +2788,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5140UpdateWordContentControl = new JObject();
             var dtoRequestV5140UpdateWordContentControlpropCount = 0;
             dtoRequestV5140UpdateWordContentControlpropCount++;
-            dtoRequestV5140UpdateWordContentControl["file"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlexistingFileContent);
+            dtoRequestV5140UpdateWordContentControl["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlexistingFileContent);
             dtoRequestV5140UpdateWordContentControlpropCount++;
-            dtoRequestV5140UpdateWordContentControl["name"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlname);
+            dtoRequestV5140UpdateWordContentControl["name"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlname);
             if (dtoRequestV5140UpdateWordContentControlvalue != null)
             {
-                dtoRequestV5140UpdateWordContentControl["value"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlvalue);
+                dtoRequestV5140UpdateWordContentControl["value"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlvalue);
                 dtoRequestV5140UpdateWordContentControlpropCount++;
             }
 
@@ -2814,7 +2814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV5130UpdateWordTableOfContents = new JObject();
             var dtoRequestV5130UpdateWordTableOfContentspropCount = 0;
             dtoRequestV5130UpdateWordTableOfContentspropCount++;
-            dtoRequestV5130UpdateWordTableOfContents["file"] = ExpressionConverter.ConvertO(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
+            dtoRequestV5130UpdateWordTableOfContents["file"] = CSharpExpressionConverter.ConvertToken(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
             if (dtoRequestV5130UpdateWordTableOfContentspropCount > 0)
             {
                 callPayload.Body = dtoRequestV5130UpdateWordTableOfContents;
@@ -2832,7 +2832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             var dtoRequestV2031UrlToFile = new JObject();
             var dtoRequestV2031UrlToFilepropCount = 0;
             dtoRequestV2031UrlToFilepropCount++;
-            dtoRequestV2031UrlToFile["url"] = ExpressionConverter.ConvertO(dtoRequestV2031UrlToFileuRL);
+            dtoRequestV2031UrlToFile["url"] = CSharpExpressionConverter.ConvertToken(dtoRequestV2031UrlToFileuRL);
             if (dtoRequestV2031UrlToFilepropCount > 0)
             {
                 callPayload.Body = dtoRequestV2031UrlToFile;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/move", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodydirection != null)
                 {
-                    body["direction"] = ExpressionConverter.ConvertO(bodydirection);
+                    body["direction"] = CSharpExpressionConverter.Convert(bodydirection);
                     bodypropCount++;
                 }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyperiod != null)
                 {
-                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
                     bodypropCount++;
                 }
 
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodycycles != null)
             {
-                body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
                 bodypropCount++;
             }
 
             if (bodypowerOn != null)
             {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
                 bodypropCount++;
             }
 
@@ -74,16 +74,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/pulse", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
+            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
             if (bodyfromColor != null)
             {
-                body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
+                body["from_color"] = CSharpExpressionConverter.Convert(bodyfromColor);
                 bodypropCount++;
             }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyperiod != null)
                 {
-                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
                     bodypropCount++;
                 }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodycycles != null)
                 {
-                    body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                    body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
                     bodypropCount++;
                 }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodypersist != null)
             {
-                body["persist"] = ExpressionConverter.ConvertO(bodypersist);
+                body["persist"] = CSharpExpressionConverter.ConvertToken(bodypersist);
                 bodypropCount++;
             }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodypowerOn != null)
                 {
-                    body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                    body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
                     bodypropCount++;
                 }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
         {
-            var apiCallPath = String.Format("/v1/scenes/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(scene, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scene, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyduration != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                     bodypropCount++;
                 }
 
@@ -184,20 +184,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IBodyWorkflowAction<SetStateResponse> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/state", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypower != null)
             {
-                body["power"] = ExpressionConverter.ConvertO(bodypower);
+                body["power"] = CSharpExpressionConverter.Convert(bodypower);
                 bodypropCount++;
             }
 
             if (bodycolor != null)
             {
-                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                body["color"] = CSharpExpressionConverter.Convert(bodycolor);
                 bodypropCount++;
             }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodybrightness != null)
                 {
-                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    body["brightness"] = CSharpExpressionConverter.ConvertToken(bodybrightness);
                     bodypropCount++;
                 }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyduration != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                     bodypropCount++;
                 }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodyinfrared != null)
             {
-                body["infrared"] = ExpressionConverter.ConvertO(bodyinfrared);
+                body["infrared"] = CSharpExpressionConverter.ConvertToken(bodyinfrared);
                 bodypropCount++;
             }
 
@@ -250,14 +250,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/off", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypowerOff != null)
             {
-                body["power_off"] = ExpressionConverter.ConvertO(bodypowerOff);
+                body["power_off"] = CSharpExpressionConverter.ConvertToken(bodypowerOff);
                 bodypropCount++;
             }
 
@@ -278,18 +278,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["states"] = ExpressionConverter.ConvertO(bodystates);
+            body["states"] = CSharpExpressionConverter.ConvertToken(bodystates);
             var defaultsObject = new JObject();
             var defaultsObjectpropCount = 0;
             if (bodydefaultspower != null)
             {
-                defaultsObject["power"] = ExpressionConverter.ConvertO(bodydefaultspower);
+                defaultsObject["power"] = CSharpExpressionConverter.Convert(bodydefaultspower);
                 defaultsObjectpropCount++;
             }
 
             if (bodydefaultscolor != null)
             {
-                defaultsObject["color"] = ExpressionConverter.ConvertO(bodydefaultscolor);
+                defaultsObject["color"] = CSharpExpressionConverter.Convert(bodydefaultscolor);
                 defaultsObjectpropCount++;
             }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodydefaultsbrightness != null)
                 {
-                    defaultsObject["brightness"] = ExpressionConverter.ConvertO(bodydefaultsbrightness);
+                    defaultsObject["brightness"] = CSharpExpressionConverter.ConvertToken(bodydefaultsbrightness);
                     defaultsObjectpropCount++;
                 }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodydefaultsduration != null)
                 {
-                    defaultsObject["duration"] = ExpressionConverter.ConvertO(bodydefaultsduration);
+                    defaultsObject["duration"] = CSharpExpressionConverter.ConvertToken(bodydefaultsduration);
                     defaultsObjectpropCount++;
                 }
 
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodydefaultsinfrared != null)
             {
-                defaultsObject["infrared"] = ExpressionConverter.ConvertO(bodydefaultsinfrared);
+                defaultsObject["infrared"] = CSharpExpressionConverter.ConvertToken(bodydefaultsinfrared);
                 defaultsObjectpropCount++;
             }
 
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/toggle", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyduration != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                     bodypropCount++;
                 }
 
@@ -380,16 +380,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/breathe", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
+            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
             if (bodyfromColor != null)
             {
-                body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
+                body["from_color"] = CSharpExpressionConverter.Convert(bodyfromColor);
                 bodypropCount++;
             }
 
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodyperiod != null)
                 {
-                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
                     bodypropCount++;
                 }
 
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodycycles != null)
                 {
-                    body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                    body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
                     bodypropCount++;
                 }
 
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodypersist != null)
             {
-                body["persist"] = ExpressionConverter.ConvertO(bodypersist);
+                body["persist"] = CSharpExpressionConverter.ConvertToken(bodypersist);
                 bodypropCount++;
             }
 
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodypowerOn != null)
                 {
-                    body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                    body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
                     bodypropCount++;
                 }
 
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             {
                 if (bodypeak != null)
                 {
-                    body["peak"] = ExpressionConverter.ConvertO(bodypeak);
+                    body["peak"] = CSharpExpressionConverter.ConvertToken(bodypeak);
                     bodypropCount++;
                 }
 
@@ -474,32 +474,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/morph", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyperiod != null)
             {
-                body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
             if (bodypalette != null)
             {
-                body["palette"] = ExpressionConverter.ConvertO(bodypalette);
+                body["palette"] = CSharpExpressionConverter.ConvertToken(bodypalette);
                 bodypropCount++;
             }
 
             if (bodypowerOn != null)
             {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
                 bodypropCount++;
             }
 

@@ -14,32 +14,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Query(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/query/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fcn, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["async"] = Convert.ToString(false);
             if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
             callPayload.Queries["timeout"] = Convert.ToString(5000);
             if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Invoke(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoke/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fcn, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["async"] = Convert.ToString(false);
             if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
             callPayload.Queries["timeout"] = Convert.ToString(3000);
             if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<FolderUpdatePostResponse> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
         {
-            var apiCallPath = String.Format("/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/folders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (bodydataurl != null)
             {
-                dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
+                dataObject["url"] = CSharpExpressionConverter.ConvertToken(bodydataurl);
                 dataObjectpropCount++;
             }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> qrCodeId)
         {
-            var apiCallPath = String.Format("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(qrCodeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<QRGetResponse>(callPayload);
@@ -111,14 +111,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRUpdatePostResponse> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<string>> bodyname = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydataurl = null)
         {
-            var apiCallPath = String.Format("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(qrCodeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             {
                 if (bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = CSharpExpressionConverter.Convert(bodytype);
                     bodypropCount++;
                 }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var dataObjectpropCount = 0;
             if (bodydataurl != null)
             {
-                dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
+                dataObject["url"] = CSharpExpressionConverter.ConvertToken(bodydataurl);
                 dataObjectpropCount++;
             }
 

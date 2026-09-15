@@ -17,38 +17,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
             var apiCallPath = "/sessions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+            callPayload.Queries["version"] = CSharpExpressionConverter.ConvertO(version);
             return new ApiConnectionAction<CreateSessionResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sessions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["version"] = Convert.ToString("2021-11-27");
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.ConvertO(version);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["version"] = Convert.ToString("2021-11-27");
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.ConvertO(version);
             var body = new JObject();
             var bodypropCount = 0;
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             if (bodyinputtext != null)
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                inputObject["text"] = CSharpExpressionConverter.ConvertToken(bodyinputtext);
                 inputObjectpropCount++;
             }
 
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["version"] = Convert.ToString("2021-11-27");
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.ConvertO(version);
             var body = new JObject();
             var bodypropCount = 0;
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             if (bodyinputtext != null)
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                inputObject["text"] = CSharpExpressionConverter.ConvertToken(bodyinputtext);
                 inputObjectpropCount++;
             }
 

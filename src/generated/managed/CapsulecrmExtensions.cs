@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var opportunityObjectpropCount = 0;
             if (bodyopportunityname != null)
             {
-                opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
+                opportunityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyopportunityname);
                 opportunityObjectpropCount++;
             }
 
             var partyObject = new JObject();
             var partyObjectpropCount = 0;
             partyObjectpropCount++;
-            partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
+            partyObject["id"] = CSharpExpressionConverter.ConvertToken(bodyopportunitypartypartyId);
             if (partyObjectpropCount > 0)
             {
                 opportunityObject["party"] = partyObject;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var milestoneObject = new JObject();
             var milestoneObjectpropCount = 0;
             milestoneObjectpropCount++;
-            milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestoneid);
+            milestoneObject["id"] = CSharpExpressionConverter.ConvertToken(bodyopportunitymilestoneid);
             if (milestoneObjectpropCount > 0)
             {
                 opportunityObject["milestone"] = milestoneObject;
@@ -58,31 +58,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodyopportunitydescription != null)
             {
-                opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
+                opportunityObject["description"] = CSharpExpressionConverter.ConvertToken(bodyopportunitydescription);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunitydurationBasis != null)
             {
-                opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
+                opportunityObject["durationBasis"] = CSharpExpressionConverter.Convert(bodyopportunitydurationBasis);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunityduration != null)
             {
-                opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
+                opportunityObject["duration"] = CSharpExpressionConverter.ConvertToken(bodyopportunityduration);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunityexpectedCloseDate != null)
             {
-                opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
+                opportunityObject["expectedCloseOn"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedCloseDate);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunitywinningProbability != null)
             {
-                opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
+                opportunityObject["probability"] = CSharpExpressionConverter.ConvertToken(bodyopportunitywinningProbability);
                 opportunityObjectpropCount++;
             }
 
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var valueObjectpropCount = 0;
             if (bodyopportunityexpectedamount != null)
             {
-                valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
+                valueObject["amount"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedamount);
                 valueObjectpropCount++;
             }
 
             if (bodyopportunityexpectedcurrency != null)
             {
-                valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
+                valueObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedcurrency);
                 valueObjectpropCount++;
             }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<GetOpportunityResponse> GetOpportunity(Expression<Func<string>> opportunityId)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetOpportunityResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdateOpportunityResponse> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestonemilestoneId, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -141,14 +141,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var opportunityObjectpropCount = 0;
             if (bodyopportunityname != null)
             {
-                opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
+                opportunityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyopportunityname);
                 opportunityObjectpropCount++;
             }
 
             var partyObject = new JObject();
             var partyObjectpropCount = 0;
             partyObjectpropCount++;
-            partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
+            partyObject["id"] = CSharpExpressionConverter.ConvertToken(bodyopportunitypartypartyId);
             if (partyObjectpropCount > 0)
             {
                 opportunityObject["party"] = partyObject;
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var milestoneObject = new JObject();
             var milestoneObjectpropCount = 0;
             milestoneObjectpropCount++;
-            milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestonemilestoneId);
+            milestoneObject["id"] = CSharpExpressionConverter.ConvertToken(bodyopportunitymilestonemilestoneId);
             if (milestoneObjectpropCount > 0)
             {
                 opportunityObject["milestone"] = milestoneObject;
@@ -167,31 +167,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodyopportunitydescription != null)
             {
-                opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
+                opportunityObject["description"] = CSharpExpressionConverter.ConvertToken(bodyopportunitydescription);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunitydurationBasis != null)
             {
-                opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
+                opportunityObject["durationBasis"] = CSharpExpressionConverter.Convert(bodyopportunitydurationBasis);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunityduration != null)
             {
-                opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
+                opportunityObject["duration"] = CSharpExpressionConverter.ConvertToken(bodyopportunityduration);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunityexpectedCloseDate != null)
             {
-                opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
+                opportunityObject["expectedCloseOn"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedCloseDate);
                 opportunityObjectpropCount++;
             }
 
             if (bodyopportunitywinningProbability != null)
             {
-                opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
+                opportunityObject["probability"] = CSharpExpressionConverter.ConvertToken(bodyopportunitywinningProbability);
                 opportunityObjectpropCount++;
             }
 
@@ -199,13 +199,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var valueObjectpropCount = 0;
             if (bodyopportunityexpectedamount != null)
             {
-                valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
+                valueObject["amount"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedamount);
                 valueObjectpropCount++;
             }
 
             if (bodyopportunityexpectedcurrency != null)
             {
-                valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
+                valueObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyopportunityexpectedcurrency);
                 valueObjectpropCount++;
             }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<string> DeleteOpportunity(Expression<Func<string>> opportunityId)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -250,37 +250,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var partyObjectpropCount = 0;
             if (bodypartylastName != null)
             {
-                partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
+                partyObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodypartylastName);
                 partyObjectpropCount++;
             }
 
             if (bodypartyfirstName != null)
             {
-                partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
+                partyObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodypartyfirstName);
                 partyObjectpropCount++;
             }
 
             if (bodypartytitle != null)
             {
-                partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
+                partyObject["title"] = CSharpExpressionConverter.Convert(bodypartytitle);
                 partyObjectpropCount++;
             }
 
             if (bodypartyjobTitle != null)
             {
-                partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
+                partyObject["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodypartyjobTitle);
                 partyObjectpropCount++;
             }
 
             if (bodypartyabout != null)
             {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                partyObject["about"] = CSharpExpressionConverter.ConvertToken(bodypartyabout);
                 partyObjectpropCount++;
             }
 
             if (bodypartyorganisationId != null)
             {
-                partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
+                partyObject["organisation"] = CSharpExpressionConverter.ConvertToken(bodypartyorganisationId);
                 partyObjectpropCount++;
             }
 
@@ -288,13 +288,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var phoneNumbersObjectpropCount = 0;
             if (bodypartyphoneNumbersphoneNumber != null)
             {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                phoneNumbersObject["number"] = CSharpExpressionConverter.ConvertToken(bodypartyphoneNumbersphoneNumber);
                 phoneNumbersObjectpropCount++;
             }
 
             if (bodypartyphoneNumbersphoneType != null)
             {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                phoneNumbersObject["type"] = CSharpExpressionConverter.Convert(bodypartyphoneNumbersphoneType);
                 phoneNumbersObjectpropCount++;
             }
 
@@ -308,13 +308,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var emailAddressesObjectpropCount = 0;
             if (bodypartyemailAddressesemailAddress != null)
             {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                emailAddressesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartyemailAddressesemailAddress);
                 emailAddressesObjectpropCount++;
             }
 
             if (bodypartyemailAddressesemailType != null)
             {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                emailAddressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyemailAddressesemailType);
                 emailAddressesObjectpropCount++;
             }
 
@@ -328,19 +328,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var websitesObjectpropCount = 0;
             if (bodypartywebsiteswebsiteAddress != null)
             {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                websitesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartywebsiteswebsiteAddress);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteService != null)
             {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                websitesObject["service"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteService);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteType != null)
             {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                websitesObject["type"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteType);
                 websitesObjectpropCount++;
             }
 
@@ -354,37 +354,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var addressesObjectpropCount = 0;
             if (bodypartyaddressesaddressStreet != null)
             {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                addressesObject["street"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressStreet);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCity != null)
             {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                addressesObject["city"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCity);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressState != null)
             {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                addressesObject["state"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressState);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressZip != null)
             {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                addressesObject["zip"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressZip);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCountry != null)
             {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                addressesObject["country"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCountry);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressType != null)
             {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                addressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyaddressesaddressType);
                 addressesObjectpropCount++;
             }
 
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodypartytags != null)
             {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                partyObject["tags"] = CSharpExpressionConverter.ConvertToken(bodypartytags);
                 partyObjectpropCount++;
             }
 
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdatePersonResponse> UpdatePerson(Expression<Func<string>> personId, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
-            var apiCallPath = String.Format("/person/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/person/parties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -428,37 +428,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var partyObjectpropCount = 0;
             if (bodypartylastName != null)
             {
-                partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
+                partyObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodypartylastName);
                 partyObjectpropCount++;
             }
 
             if (bodypartyfirstName != null)
             {
-                partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
+                partyObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodypartyfirstName);
                 partyObjectpropCount++;
             }
 
             if (bodypartytitle != null)
             {
-                partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
+                partyObject["title"] = CSharpExpressionConverter.Convert(bodypartytitle);
                 partyObjectpropCount++;
             }
 
             if (bodypartyjobTitle != null)
             {
-                partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
+                partyObject["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodypartyjobTitle);
                 partyObjectpropCount++;
             }
 
             if (bodypartyabout != null)
             {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                partyObject["about"] = CSharpExpressionConverter.ConvertToken(bodypartyabout);
                 partyObjectpropCount++;
             }
 
             if (bodypartyorganisationId != null)
             {
-                partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
+                partyObject["organisation"] = CSharpExpressionConverter.ConvertToken(bodypartyorganisationId);
                 partyObjectpropCount++;
             }
 
@@ -466,13 +466,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var phoneNumbersObjectpropCount = 0;
             if (bodypartyphoneNumbersphoneNumber != null)
             {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                phoneNumbersObject["number"] = CSharpExpressionConverter.ConvertToken(bodypartyphoneNumbersphoneNumber);
                 phoneNumbersObjectpropCount++;
             }
 
             if (bodypartyphoneNumbersphoneType != null)
             {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                phoneNumbersObject["type"] = CSharpExpressionConverter.Convert(bodypartyphoneNumbersphoneType);
                 phoneNumbersObjectpropCount++;
             }
 
@@ -486,13 +486,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var emailAddressesObjectpropCount = 0;
             if (bodypartyemailAddressesemailAddress != null)
             {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                emailAddressesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartyemailAddressesemailAddress);
                 emailAddressesObjectpropCount++;
             }
 
             if (bodypartyemailAddressesemailType != null)
             {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                emailAddressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyemailAddressesemailType);
                 emailAddressesObjectpropCount++;
             }
 
@@ -506,19 +506,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var websitesObjectpropCount = 0;
             if (bodypartywebsiteswebsiteAddress != null)
             {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                websitesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartywebsiteswebsiteAddress);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteService != null)
             {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                websitesObject["service"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteService);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteType != null)
             {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                websitesObject["type"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteType);
                 websitesObjectpropCount++;
             }
 
@@ -532,37 +532,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var addressesObjectpropCount = 0;
             if (bodypartyaddressesaddressStreet != null)
             {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                addressesObject["street"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressStreet);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCity != null)
             {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                addressesObject["city"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCity);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressState != null)
             {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                addressesObject["state"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressState);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressZip != null)
             {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                addressesObject["zip"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressZip);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCountry != null)
             {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                addressesObject["country"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCountry);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressType != null)
             {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                addressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyaddressesaddressType);
                 addressesObjectpropCount++;
             }
 
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodypartytags != null)
             {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                partyObject["tags"] = CSharpExpressionConverter.ConvertToken(bodypartytags);
                 partyObjectpropCount++;
             }
 
@@ -606,13 +606,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var partyObjectpropCount = 0;
             if (bodypartyname != null)
             {
-                partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
+                partyObject["name"] = CSharpExpressionConverter.ConvertToken(bodypartyname);
                 partyObjectpropCount++;
             }
 
             if (bodypartyabout != null)
             {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                partyObject["about"] = CSharpExpressionConverter.ConvertToken(bodypartyabout);
                 partyObjectpropCount++;
             }
 
@@ -620,13 +620,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var phoneNumbersObjectpropCount = 0;
             if (bodypartyphoneNumbersphoneNumber != null)
             {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                phoneNumbersObject["number"] = CSharpExpressionConverter.ConvertToken(bodypartyphoneNumbersphoneNumber);
                 phoneNumbersObjectpropCount++;
             }
 
             if (bodypartyphoneNumbersphoneType != null)
             {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                phoneNumbersObject["type"] = CSharpExpressionConverter.Convert(bodypartyphoneNumbersphoneType);
                 phoneNumbersObjectpropCount++;
             }
 
@@ -640,13 +640,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var emailAddressesObjectpropCount = 0;
             if (bodypartyemailAddressesemailAddress != null)
             {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                emailAddressesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartyemailAddressesemailAddress);
                 emailAddressesObjectpropCount++;
             }
 
             if (bodypartyemailAddressesemailType != null)
             {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                emailAddressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyemailAddressesemailType);
                 emailAddressesObjectpropCount++;
             }
 
@@ -660,19 +660,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var websitesObjectpropCount = 0;
             if (bodypartywebsiteswebsiteAddress != null)
             {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                websitesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartywebsiteswebsiteAddress);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteService != null)
             {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                websitesObject["service"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteService);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteType != null)
             {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                websitesObject["type"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteType);
                 websitesObjectpropCount++;
             }
 
@@ -686,37 +686,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var addressesObjectpropCount = 0;
             if (bodypartyaddressesaddressStreet != null)
             {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                addressesObject["street"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressStreet);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCity != null)
             {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                addressesObject["city"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCity);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressState != null)
             {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                addressesObject["state"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressState);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressZip != null)
             {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                addressesObject["zip"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressZip);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCountry != null)
             {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                addressesObject["country"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCountry);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressType != null)
             {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                addressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyaddressesaddressType);
                 addressesObjectpropCount++;
             }
 
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodypartytags != null)
             {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                partyObject["tags"] = CSharpExpressionConverter.ConvertToken(bodypartytags);
                 partyObjectpropCount++;
             }
 
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdateOrganisationResponse> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
-            var apiCallPath = String.Format("/organisation/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/organisation/parties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -760,13 +760,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var partyObjectpropCount = 0;
             if (bodypartyname != null)
             {
-                partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
+                partyObject["name"] = CSharpExpressionConverter.ConvertToken(bodypartyname);
                 partyObjectpropCount++;
             }
 
             if (bodypartyabout != null)
             {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                partyObject["about"] = CSharpExpressionConverter.ConvertToken(bodypartyabout);
                 partyObjectpropCount++;
             }
 
@@ -774,13 +774,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var phoneNumbersObjectpropCount = 0;
             if (bodypartyphoneNumbersphoneNumber != null)
             {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                phoneNumbersObject["number"] = CSharpExpressionConverter.ConvertToken(bodypartyphoneNumbersphoneNumber);
                 phoneNumbersObjectpropCount++;
             }
 
             if (bodypartyphoneNumbersphoneType != null)
             {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                phoneNumbersObject["type"] = CSharpExpressionConverter.Convert(bodypartyphoneNumbersphoneType);
                 phoneNumbersObjectpropCount++;
             }
 
@@ -794,13 +794,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var emailAddressesObjectpropCount = 0;
             if (bodypartyemailAddressesemailAddress != null)
             {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                emailAddressesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartyemailAddressesemailAddress);
                 emailAddressesObjectpropCount++;
             }
 
             if (bodypartyemailAddressesemailType != null)
             {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                emailAddressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyemailAddressesemailType);
                 emailAddressesObjectpropCount++;
             }
 
@@ -814,19 +814,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var websitesObjectpropCount = 0;
             if (bodypartywebsiteswebsiteAddress != null)
             {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                websitesObject["address"] = CSharpExpressionConverter.ConvertToken(bodypartywebsiteswebsiteAddress);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteService != null)
             {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                websitesObject["service"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteService);
                 websitesObjectpropCount++;
             }
 
             if (bodypartywebsiteswebsiteType != null)
             {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                websitesObject["type"] = CSharpExpressionConverter.Convert(bodypartywebsiteswebsiteType);
                 websitesObjectpropCount++;
             }
 
@@ -840,37 +840,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var addressesObjectpropCount = 0;
             if (bodypartyaddressesaddressStreet != null)
             {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                addressesObject["street"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressStreet);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCity != null)
             {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                addressesObject["city"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCity);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressState != null)
             {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                addressesObject["state"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressState);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressZip != null)
             {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                addressesObject["zip"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressZip);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressCountry != null)
             {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                addressesObject["country"] = CSharpExpressionConverter.ConvertToken(bodypartyaddressesaddressCountry);
                 addressesObjectpropCount++;
             }
 
             if (bodypartyaddressesaddressType != null)
             {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                addressesObject["type"] = CSharpExpressionConverter.Convert(bodypartyaddressesaddressType);
                 addressesObjectpropCount++;
             }
 
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
             if (bodypartytags != null)
             {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                partyObject["tags"] = CSharpExpressionConverter.ConvertToken(bodypartytags);
                 partyObjectpropCount++;
             }
 
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<GetPartyResponse> GetParty(Expression<Func<string>> personId)
         {
-            var apiCallPath = String.Format("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetPartyResponse>(callPayload);
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<string> DeleteParty(Expression<Func<string>> personId)
         {
-            var apiCallPath = String.Format("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -968,25 +968,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var taskObjectpropCount = 0;
             if (bodytaskdescription != null)
             {
-                taskObject["description"] = ExpressionConverter.ConvertO(bodytaskdescription);
+                taskObject["description"] = CSharpExpressionConverter.ConvertToken(bodytaskdescription);
                 taskObjectpropCount++;
             }
 
             if (bodytaskdueDate != null)
             {
-                taskObject["dueOn"] = ExpressionConverter.ConvertO(bodytaskdueDate);
+                taskObject["dueOn"] = CSharpExpressionConverter.ConvertToken(bodytaskdueDate);
                 taskObjectpropCount++;
             }
 
             if (bodytaskdueTime != null)
             {
-                taskObject["dueTime"] = ExpressionConverter.ConvertO(bodytaskdueTime);
+                taskObject["dueTime"] = CSharpExpressionConverter.ConvertToken(bodytaskdueTime);
                 taskObjectpropCount++;
             }
 
             if (bodytaskdetails != null)
             {
-                taskObject["detail"] = ExpressionConverter.ConvertO(bodytaskdetails);
+                taskObject["detail"] = CSharpExpressionConverter.ConvertToken(bodytaskdetails);
                 taskObjectpropCount++;
             }
 
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var partyObjectpropCount = 0;
             if (bodytaskpartyid != null)
             {
-                partyObject["id"] = ExpressionConverter.ConvertO(bodytaskpartyid);
+                partyObject["id"] = CSharpExpressionConverter.ConvertToken(bodytaskpartyid);
                 partyObjectpropCount++;
             }
 
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CompleteTaskResponse> CompleteTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

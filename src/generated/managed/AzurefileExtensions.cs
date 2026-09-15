@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
@@ -23,18 +23,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IWorkflowAction DeleteFile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["SkipDeleteIfFileNotFoundOnServer"] = Convert.ToString(false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
             var apiCallPath = "/datasets/default/GetFileByPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
             var apiCallPath = "/datasets/default/GetFileContentByPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             return new ApiConnectionAction<string>(callPayload);
         }
@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
             var apiCallPath = "/datasets/default/files";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
             var apiCallPath = "/datasets/default/copyFile";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
             var apiCallPath = "/datasets/default/extractFolderV2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadataPage> ListFolder(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/foldersV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/foldersV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["nextPageMarker"] = Convert.ToString("");

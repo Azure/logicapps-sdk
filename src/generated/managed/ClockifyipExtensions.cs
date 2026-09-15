@@ -14,32 +14,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<GetClientsV1ResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (project != null)
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             if (task != null)
-                callPayload.Queries["task"] = ExpressionConverter.Convert(task);
+                callPayload.Queries["task"] = CSharpExpressionConverter.ConvertO(task);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["page-size"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["page-size"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<GetTimeEntriesForUserV1ResponseItem[]>(callPayload);
         }
 

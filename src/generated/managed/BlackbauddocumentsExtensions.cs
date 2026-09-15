@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
             var bodypropCount = 0;
             if (bodyfileName != null)
             {
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["file_name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
                 bodypropCount++;
             }
 
             if (bodyincludeThumbnail != null)
             {
-                body["upload_thumbnail"] = ExpressionConverter.ConvertO(bodyincludeThumbnail);
+                body["upload_thumbnail"] = CSharpExpressionConverter.ConvertToken(bodyincludeThumbnail);
                 bodypropCount++;
             }
 

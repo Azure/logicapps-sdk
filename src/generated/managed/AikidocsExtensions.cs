@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var bodypropCount = 0;
             if (bodyappendDocumentList != null)
             {
-                body["appendDocumentList"] = ExpressionConverter.ConvertO(bodyappendDocumentList);
+                body["appendDocumentList"] = CSharpExpressionConverter.ConvertToken(bodyappendDocumentList);
                 bodypropCount++;
             }
 
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var sourceDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                sourceDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 sourceDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                sourceDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 
             if (bodyheadingStyleName != null)
             {
-                body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                body["headingStyleName"] = CSharpExpressionConverter.ConvertToken(bodyheadingStyleName);
                 bodypropCount++;
             }
 
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var sourceDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                sourceDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 sourceDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                sourceDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -149,19 +149,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 
             if (bodyheadingText != null)
             {
-                body["headingText"] = ExpressionConverter.ConvertO(bodyheadingText);
+                body["headingText"] = CSharpExpressionConverter.ConvertToken(bodyheadingText);
                 bodypropCount++;
             }
 
             if (bodyheadingStyleName != null)
             {
-                body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                body["headingStyleName"] = CSharpExpressionConverter.ConvertToken(bodyheadingStyleName);
                 bodypropCount++;
             }
 
             if (bodyheadingEscapeStyleNames != null)
             {
-                body["headingEscapeStyleNames"] = ExpressionConverter.ConvertO(bodyheadingEscapeStyleNames);
+                body["headingEscapeStyleNames"] = CSharpExpressionConverter.ConvertToken(bodyheadingEscapeStyleNames);
                 bodypropCount++;
             }
 
@@ -183,13 +183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var bodypropCount = 0;
             if (bodystartBookMark != null)
             {
-                body["startBookMark"] = ExpressionConverter.ConvertO(bodystartBookMark);
+                body["startBookMark"] = CSharpExpressionConverter.ConvertToken(bodystartBookMark);
                 bodypropCount++;
             }
 
             if (bodyendBookMark != null)
             {
-                body["endBookMark"] = ExpressionConverter.ConvertO(bodyendBookMark);
+                body["endBookMark"] = CSharpExpressionConverter.ConvertToken(bodyendBookMark);
                 bodypropCount++;
             }
 
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var sourceDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                sourceDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 sourceDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                sourceDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -233,13 +233,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var sourceDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                sourceDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 sourceDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                sourceDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -251,19 +251,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 
             if (bodyinsertDocumentList != null)
             {
-                body["insertDocumentList"] = ExpressionConverter.ConvertO(bodyinsertDocumentList);
+                body["insertDocumentList"] = CSharpExpressionConverter.ConvertToken(bodyinsertDocumentList);
                 bodypropCount++;
             }
 
             if (bodybookmarkName != null)
             {
-                body["bookmarkName"] = ExpressionConverter.ConvertO(bodybookmarkName);
+                body["bookmarkName"] = CSharpExpressionConverter.ConvertToken(bodybookmarkName);
                 bodypropCount++;
             }
 
             if (bodydeleteBookmark != null)
             {
-                body["deleteBookmark"] = ExpressionConverter.ConvertO(bodydeleteBookmark);
+                body["deleteBookmark"] = CSharpExpressionConverter.ConvertToken(bodydeleteBookmark);
                 bodypropCount++;
             }
 
@@ -287,13 +287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var sourceDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                sourceDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 sourceDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                sourceDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 sourceDocumentObjectpropCount++;
             }
 
@@ -307,13 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
             var destinationDocumentObjectpropCount = 0;
             if (bodysourceDocumentdocumentContent != null)
             {
-                destinationDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                destinationDocumentObject["documentContent"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentContent);
                 destinationDocumentObjectpropCount++;
             }
 
             if (bodysourceDocumentdocumentName != null)
             {
-                destinationDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                destinationDocumentObject["documentName"] = CSharpExpressionConverter.ConvertToken(bodysourceDocumentdocumentName);
                 destinationDocumentObjectpropCount++;
             }
 

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/content/automatic/detect/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<StringAutomaticThreatDetection>(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/content/insecure-deserialization/json/detect/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<StringInsecureDeserializationJsonDetection>(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/content/sql-injection/detect/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<StringSqlInjectionDetectionResult>(callPayload);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/content/xss/detect/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<StringXssProtectionResult>(callPayload);
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/content/xxe/detect/xml/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<StringXxeDetectionResult>(callPayload);
         }
 
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var requestpropCount = 0;
             if (requestuRL != null)
             {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
+                request["URL"] = CSharpExpressionConverter.ConvertToken(requestuRL);
                 requestpropCount++;
             }
 
             if (requestblockedDomains != null)
             {
-                request["BlockedDomains"] = ExpressionConverter.ConvertO(requestblockedDomains);
+                request["BlockedDomains"] = CSharpExpressionConverter.ConvertToken(requestblockedDomains);
                 requestpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/network/ip/is-threat";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<IPThreatDetectionResponse>(callPayload);
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/network/ip/is-bot";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<ThreatDetectionBotCheckResponse>(callPayload);
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
             var apiCallPath = "/security/threat-detection/network/ip/is-tor-node";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<ThreatDetectionTorNodeResponse>(callPayload);
         }
     }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<FormGetResponse> FormGet(Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/form/{0}/", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/form/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FormGetResponse>(callPayload);
@@ -39,25 +39,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             var bodypropCount = 0;
             if (bodyformId != null)
             {
-                body["form_id"] = ExpressionConverter.ConvertO(bodyformId);
+                body["form_id"] = CSharpExpressionConverter.ConvertToken(bodyformId);
                 bodypropCount++;
             }
 
             if (bodytemplateFormId != null)
             {
-                body["template_form_id"] = ExpressionConverter.ConvertO(bodytemplateFormId);
+                body["template_form_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateFormId);
                 bodypropCount++;
             }
 
             if (bodysteps != null)
             {
-                body["steps"] = ExpressionConverter.ConvertO(bodysteps);
+                body["steps"] = CSharpExpressionConverter.ConvertToken(bodysteps);
                 bodypropCount++;
             }
 
             if (bodynavigationRules != null)
             {
-                body["navigation_rules"] = ExpressionConverter.ConvertO(bodynavigationRules);
+                body["navigation_rules"] = CSharpExpressionConverter.ConvertToken(bodynavigationRules);
                 bodypropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserSessionGetResponse> UserSessionGet(Expression<Func<string>> userId, Expression<Func<string>> formKey)
         {
-            var apiCallPath = String.Format("/user/{0}/session/{1}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(formKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}/session/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserSessionGetResponse>(callPayload);
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<string> UserDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -127,27 +127,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<UserFieldsGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserFieldPostResponse> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
         {
-            var apiCallPath = String.Format("/field/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/field/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfieldId != null)
             {
-                body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
+                body["field_id"] = CSharpExpressionConverter.ConvertToken(bodyfieldId);
                 bodypropCount++;
             }
 
             if (bodyvalue != null)
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
                 bodypropCount++;
             }
 

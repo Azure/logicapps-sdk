@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
             var apiCallPath = "/api/flowforma";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["connectionUrl"] = ExpressionConverter.Convert(connectionUrl);
-            callPayload.Queries["flows"] = ExpressionConverter.Convert(flows);
-            callPayload.Body = ExpressionConverter.ConvertO(question);
+            callPayload.Queries["connectionUrl"] = CSharpExpressionConverter.ConvertO(connectionUrl);
+            callPayload.Queries["flows"] = CSharpExpressionConverter.ConvertO(flows);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(question);
             return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
         }
     }

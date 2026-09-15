@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Transaction>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             {
                 if (bodysendNotifications != null)
                 {
-                    body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                    body["SendNotifications"] = CSharpExpressionConverter.ConvertToken(bodysendNotifications);
                     bodypropCount++;
                 }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
             if (bodyreason != null)
             {
-                body["Reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["Reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
         {
-            var apiCallPath = String.Format("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
             if (transactionlanguage != null)
             {
-                transaction["Language"] = ExpressionConverter.ConvertO(transactionlanguage);
+                transaction["Language"] = CSharpExpressionConverter.Convert(transactionlanguage);
                 transactionpropCount++;
             }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             {
                 if (transactionseal != null)
                 {
-                    transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                    transaction["Seal"] = CSharpExpressionConverter.ConvertToken(transactionseal);
                     transactionpropCount++;
                 }
 
@@ -116,25 +116,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
             if (transactionsigners != null)
             {
-                transaction["Signers"] = ExpressionConverter.ConvertO(transactionsigners);
+                transaction["Signers"] = CSharpExpressionConverter.ConvertToken(transactionsigners);
                 transactionpropCount++;
             }
 
             if (transactionreceivers != null)
             {
-                transaction["Receivers"] = ExpressionConverter.ConvertO(transactionreceivers);
+                transaction["Receivers"] = CSharpExpressionConverter.ConvertToken(transactionreceivers);
                 transactionpropCount++;
             }
 
             if (transactionreference != null)
             {
-                transaction["Reference"] = ExpressionConverter.ConvertO(transactionreference);
+                transaction["Reference"] = CSharpExpressionConverter.ConvertToken(transactionreference);
                 transactionpropCount++;
             }
 
             if (transactionpostbackUrl != null)
             {
-                transaction["PostbackUrl"] = ExpressionConverter.ConvertO(transactionpostbackUrl);
+                transaction["PostbackUrl"] = CSharpExpressionConverter.ConvertToken(transactionpostbackUrl);
                 transactionpropCount++;
             }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             {
                 if (transactionsignRequestMode != null)
                 {
-                    transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                    transaction["SignRequestMode"] = CSharpExpressionConverter.ConvertToken(transactionsignRequestMode);
                     transactionpropCount++;
                 }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             {
                 if (transactiondaysToExpire != null)
                 {
-                    transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                    transaction["DaysToExpire"] = CSharpExpressionConverter.ConvertToken(transactiondaysToExpire);
                     transactionpropCount++;
                 }
 
@@ -181,17 +181,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ErrorModel>(callPayload);

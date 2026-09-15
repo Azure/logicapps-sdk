@@ -14,15 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
         public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion2, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pluralAPIName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             return new ApiConnectionAction(callPayload);
         }
     }

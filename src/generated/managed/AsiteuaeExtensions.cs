@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             var apiCallPath = "/downloadFileByUrl";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["downloadUrl"] = ExpressionConverter.Convert(downloadUrl);
+            callPayload.Queries["downloadUrl"] = CSharpExpressionConverter.ConvertO(downloadUrl);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             var apiCallPath = "/saveMetadataForUpload";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Body = ExpressionConverter.ConvertO(items);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(items);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             var apiCallPath = "/uploadFileFromExternalSystem";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Queries["metadataId"] = ExpressionConverter.Convert(metadataId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileBinary);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
+            callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
+            callPayload.Queries["metadataId"] = CSharpExpressionConverter.ConvertO(metadataId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileBinary);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -55,14 +55,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             var apiCallPath = "/asitePullDataWebhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
             body["webhookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
+            body["resourceId"] = CSharpExpressionConverter.ConvertToken(bodytriggerName);
             body["resourceType"] = 1;
             bodypropCount++;
             if (bodypropCount > 0)
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
             var apiCallPath = "/asitePullAppFormDataWebhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
             body["webhookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
+            body["resourceId"] = CSharpExpressionConverter.ConvertToken(bodytriggerName);
             body["resourceType"] = 1;
             bodypropCount++;
             if (bodypropCount > 0)

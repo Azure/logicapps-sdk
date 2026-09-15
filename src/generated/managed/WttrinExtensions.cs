@@ -14,14 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
         public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
+                callPayload.Queries["view"] = CSharpExpressionConverter.Convert(view);
             callPayload.Queries["lang"] = Convert.ToString("en");
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.Convert(lang);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

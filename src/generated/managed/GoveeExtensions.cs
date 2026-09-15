@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
+            body["device"] = CSharpExpressionConverter.ConvertToken(bodydeviceMACAddress);
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodydeviceModel);
             var cmdObject = new JObject();
             var cmdObjectpropCount = 0;
             if (bodycmdcommandName != null)
             {
-                cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
+                cmdObject["name"] = CSharpExpressionConverter.Convert(bodycmdcommandName);
                 cmdObjectpropCount++;
             }
 
@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 
             if (bodyturn != null)
             {
-                body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                body["turn"] = CSharpExpressionConverter.Convert(bodyturn);
                 bodypropCount++;
             }
 
             if (bodybrightness != null)
             {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                body["brightness"] = CSharpExpressionConverter.ConvertToken(bodybrightness);
                 bodypropCount++;
             }
 
@@ -53,19 +53,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             var colorObjectpropCount = 0;
             if (bodycolorcolorRed != null)
             {
-                colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
+                colorObject["r"] = CSharpExpressionConverter.ConvertToken(bodycolorcolorRed);
                 colorObjectpropCount++;
             }
 
             if (bodycolorcolorGreen != null)
             {
-                colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
+                colorObject["g"] = CSharpExpressionConverter.ConvertToken(bodycolorcolorGreen);
                 colorObjectpropCount++;
             }
 
             if (bodycolorcolorBlue != null)
             {
-                colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
+                colorObject["b"] = CSharpExpressionConverter.ConvertToken(bodycolorcolorBlue);
                 colorObjectpropCount++;
             }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 
             if (bodycolorTemperature != null)
             {
-                body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
+                body["colorTem"] = CSharpExpressionConverter.ConvertToken(bodycolorTemperature);
                 bodypropCount++;
             }
 
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
+                callPayload.Queries["device"] = CSharpExpressionConverter.ConvertO(device);
             if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
             return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
         }
     }

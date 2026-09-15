@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
             var apiCallPath = "/rest/api/2/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jql"] = ExpressionConverter.Convert(jql);
+            callPayload.Queries["jql"] = CSharpExpressionConverter.ConvertO(jql);
             if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-            callPayload.Queries["hostname"] = ExpressionConverter.Convert(hostname);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
+            callPayload.Queries["hostname"] = CSharpExpressionConverter.ConvertO(hostname);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (startAt != null)
-                callPayload.Queries["startAt"] = ExpressionConverter.Convert(startAt);
+                callPayload.Queries["startAt"] = CSharpExpressionConverter.ConvertO(startAt);
             callPayload.Queries["maxResults"] = Convert.ToString(50);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
         }
     }

@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
         public IBodyWorkflowAction<UploadFileToPathResponse> UploadFileToPath(Expression<Func<string>> aPIKey, Expression<Func<object>> filedata, Expression<Func<string>> pathToAFile, Expression<Func<int>> destinationMap = null)
         {
-            var apiCallPath = String.Format("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pathToAFile, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (destinationMap != null)
-                callPayload.Queries["destination_map"] = ExpressionConverter.Convert(destinationMap);
-            callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
+                callPayload.Queries["destination_map"] = CSharpExpressionConverter.ConvertO(destinationMap);
+            callPayload.Headers["API-Key"] = CSharpExpressionConverter.ConvertO(aPIKey);
             return new ApiConnectionAction<UploadFileToPathResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
         public IBodyWorkflowAction<Error> DeleteFileAtPath(Expression<Func<string>> aPIKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
         {
-            var apiCallPath = String.Format("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pathToAFile, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
+            callPayload.Headers["API-Key"] = CSharpExpressionConverter.ConvertO(aPIKey);
             return new ApiConnectionAction<Error>(callPayload);
         }
     }

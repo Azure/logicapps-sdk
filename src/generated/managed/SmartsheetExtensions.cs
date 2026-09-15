@@ -18,25 +18,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                callPayload.Queries["optionalFolderId"] = CSharpExpressionConverter.ConvertO(optionalFolderId);
             return new ApiConnectionAction<SmartsheetCollectionSheet>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SheetWithRows> GetSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                callPayload.Queries["columns"] = CSharpExpressionConverter.ConvertO(columns);
             return new ApiConnectionAction<SheetWithRows>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SmartsheetCollectionColumn>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IWorkflowAction GetColumnsSchema(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -54,28 +54,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<RowsList> GetSheetData(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                callPayload.Queries["columns"] = CSharpExpressionConverter.ConvertO(columns);
             return new ApiConnectionAction<RowsList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<InsertRowResponse> InsertRow(Expression<Func<string>> sheetId, Expression<Func<object>> row = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(row);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(row);
             return new ApiConnectionAction<InsertRowResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SmartsheetCollectionFolder>(callPayload);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SmartsheetCollectionGetDiscussionResponse>(callPayload);
@@ -93,14 +93,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var discussion = new JObject();
             var discussionpropCount = 0;
             if (discussiontitle != null)
             {
-                discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
+                discussion["title"] = CSharpExpressionConverter.ConvertToken(discussiontitle);
                 discussionpropCount++;
             }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             var commentObjectpropCount = 0;
             if (discussioncommenttext != null)
             {
-                commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
+                commentObject["text"] = CSharpExpressionConverter.ConvertToken(discussioncommenttext);
                 commentObjectpropCount++;
             }
 
@@ -129,14 +129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(rowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var discussion = new JObject();
             var discussionpropCount = 0;
             if (discussiontitle != null)
             {
-                discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
+                discussion["title"] = CSharpExpressionConverter.ConvertToken(discussiontitle);
                 discussionpropCount++;
             }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             var commentObjectpropCount = 0;
             if (discussioncommenttext != null)
             {
-                commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
+                commentObject["text"] = CSharpExpressionConverter.ConvertToken(discussioncommenttext);
                 commentObjectpropCount++;
             }
 
@@ -165,14 +165,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<string>> commenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var comment = new JObject();
             var commentpropCount = 0;
             if (commenttext != null)
             {
-                comment["text"] = ExpressionConverter.ConvertO(commenttext);
+                comment["text"] = CSharpExpressionConverter.ConvertToken(commenttext);
                 commentpropCount++;
             }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionData> GetDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DiscussionData>(callPayload);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                callPayload.Queries["optionalFolderId"] = CSharpExpressionConverter.ConvertO(optionalFolderId);
             return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, triggerName, recurrence);
         }
 
@@ -212,13 +212,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                callPayload.Queries["optionalFolderId"] = CSharpExpressionConverter.ConvertO(optionalFolderId);
             return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<SmartsheetCollectionDiscussionComment>(callPayload, triggerName, recurrence);
@@ -226,27 +226,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                callPayload.Queries["columns"] = CSharpExpressionConverter.ConvertO(columns);
             return new ApiConnectionTrigger<SmartsheetCollectionSheetWithRows>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                callPayload.Queries["columns"] = CSharpExpressionConverter.ConvertO(columns);
             return new ApiConnectionTrigger<RowResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<CommentResponse>(callPayload, triggerName, recurrence);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<SmartsheetCollectionGetDiscussionResponse>(callPayload, triggerName, recurrence);

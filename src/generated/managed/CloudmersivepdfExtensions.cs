@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var requestpropCount = 0;
             if (requestannotationsToAdd != null)
             {
-                request["AnnotationsToAdd"] = ExpressionConverter.ConvertO(requestannotationsToAdd);
+                request["AnnotationsToAdd"] = CSharpExpressionConverter.ConvertToken(requestannotationsToAdd);
                 requestpropCount++;
             }
 
             if (requestinputFileBytes != null)
             {
-                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestinputFileBytes);
+                request["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(requestinputFileBytes);
                 requestpropCount++;
             }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/annotations/remove-item";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["annotationIndex"] = ExpressionConverter.Convert(annotationIndex);
+            callPayload.Headers["annotationIndex"] = CSharpExpressionConverter.ConvertO(annotationIndex);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/decrypt";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["password"] = ExpressionConverter.Convert(password);
+            callPayload.Headers["password"] = CSharpExpressionConverter.ConvertO(password);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userPassword != null)
-                callPayload.Headers["userPassword"] = ExpressionConverter.Convert(userPassword);
+                callPayload.Headers["userPassword"] = CSharpExpressionConverter.ConvertO(userPassword);
             if (ownerPassword != null)
-                callPayload.Headers["ownerPassword"] = ExpressionConverter.Convert(ownerPassword);
+                callPayload.Headers["ownerPassword"] = CSharpExpressionConverter.ConvertO(ownerPassword);
             if (encryptionKeyLength != null)
-                callPayload.Headers["encryptionKeyLength"] = ExpressionConverter.Convert(encryptionKeyLength);
+                callPayload.Headers["encryptionKeyLength"] = CSharpExpressionConverter.ConvertO(encryptionKeyLength);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -98,24 +98,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/encrypt/set-permissions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ownerPassword"] = ExpressionConverter.Convert(ownerPassword);
-            callPayload.Headers["userPassword"] = ExpressionConverter.Convert(userPassword);
+            callPayload.Headers["ownerPassword"] = CSharpExpressionConverter.ConvertO(ownerPassword);
+            callPayload.Headers["userPassword"] = CSharpExpressionConverter.ConvertO(userPassword);
             if (encryptionKeyLength != null)
-                callPayload.Headers["encryptionKeyLength"] = ExpressionConverter.Convert(encryptionKeyLength);
+                callPayload.Headers["encryptionKeyLength"] = CSharpExpressionConverter.ConvertO(encryptionKeyLength);
             if (allowPrinting != null)
-                callPayload.Headers["allowPrinting"] = ExpressionConverter.Convert(allowPrinting);
+                callPayload.Headers["allowPrinting"] = CSharpExpressionConverter.ConvertO(allowPrinting);
             if (allowDocumentAssembly != null)
-                callPayload.Headers["allowDocumentAssembly"] = ExpressionConverter.Convert(allowDocumentAssembly);
+                callPayload.Headers["allowDocumentAssembly"] = CSharpExpressionConverter.ConvertO(allowDocumentAssembly);
             if (allowContentExtraction != null)
-                callPayload.Headers["allowContentExtraction"] = ExpressionConverter.Convert(allowContentExtraction);
+                callPayload.Headers["allowContentExtraction"] = CSharpExpressionConverter.ConvertO(allowContentExtraction);
             if (allowFormFilling != null)
-                callPayload.Headers["allowFormFilling"] = ExpressionConverter.Convert(allowFormFilling);
+                callPayload.Headers["allowFormFilling"] = CSharpExpressionConverter.ConvertO(allowFormFilling);
             if (allowEditing != null)
-                callPayload.Headers["allowEditing"] = ExpressionConverter.Convert(allowEditing);
+                callPayload.Headers["allowEditing"] = CSharpExpressionConverter.ConvertO(allowEditing);
             if (allowAnnotations != null)
-                callPayload.Headers["allowAnnotations"] = ExpressionConverter.Convert(allowAnnotations);
+                callPayload.Headers["allowAnnotations"] = CSharpExpressionConverter.ConvertO(allowAnnotations);
             if (allowDegradedPrinting != null)
-                callPayload.Headers["allowDegradedPrinting"] = ExpressionConverter.Convert(allowDegradedPrinting);
+                callPayload.Headers["allowDegradedPrinting"] = CSharpExpressionConverter.ConvertO(allowDegradedPrinting);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -138,13 +138,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var fieldValuespropCount = 0;
             if (fieldValuesfieldValues != null)
             {
-                fieldValues["FieldValues"] = ExpressionConverter.ConvertO(fieldValuesfieldValues);
+                fieldValues["FieldValues"] = CSharpExpressionConverter.ConvertToken(fieldValuesfieldValues);
                 fieldValuespropCount++;
             }
 
             if (fieldValuesinputFileBytes != null)
             {
-                fieldValues["InputFileBytes"] = ExpressionConverter.ConvertO(fieldValuesinputFileBytes);
+                fieldValues["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(fieldValuesinputFileBytes);
                 fieldValuespropCount++;
             }
 
@@ -171,8 +171,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/pages/delete";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["pageStart"] = ExpressionConverter.Convert(pageStart);
-            callPayload.Headers["pageEnd"] = ExpressionConverter.Convert(pageEnd);
+            callPayload.Headers["pageStart"] = CSharpExpressionConverter.ConvertO(pageStart);
+            callPayload.Headers["pageEnd"] = CSharpExpressionConverter.ConvertO(pageEnd);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/pages/insert";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["pageStartSource"] = ExpressionConverter.Convert(pageStartSource);
-            callPayload.Headers["pageEndSource"] = ExpressionConverter.Convert(pageEndSource);
-            callPayload.Headers["pageInsertBeforeDesitnation"] = ExpressionConverter.Convert(pageInsertBeforeDesitnation);
+            callPayload.Headers["pageStartSource"] = CSharpExpressionConverter.ConvertO(pageStartSource);
+            callPayload.Headers["pageEndSource"] = CSharpExpressionConverter.ConvertO(pageEndSource);
+            callPayload.Headers["pageInsertBeforeDesitnation"] = CSharpExpressionConverter.ConvertO(pageInsertBeforeDesitnation);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/pages/rotate/all";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["rotationAngle"] = ExpressionConverter.Convert(rotationAngle);
+            callPayload.Headers["rotationAngle"] = CSharpExpressionConverter.ConvertO(rotationAngle);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -213,9 +213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/pages/rotate/page-range";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["rotationAngle"] = ExpressionConverter.Convert(rotationAngle);
-            callPayload.Headers["pageStart"] = ExpressionConverter.Convert(pageStart);
-            callPayload.Headers["pageEnd"] = ExpressionConverter.Convert(pageEnd);
+            callPayload.Headers["rotationAngle"] = CSharpExpressionConverter.ConvertO(rotationAngle);
+            callPayload.Headers["pageStart"] = CSharpExpressionConverter.ConvertO(pageStart);
+            callPayload.Headers["pageEnd"] = CSharpExpressionConverter.ConvertO(pageEnd);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var requestpropCount = 0;
             if (requestinputFileBytes != null)
             {
-                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestinputFileBytes);
+                request["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(requestinputFileBytes);
                 requestpropCount++;
             }
 
@@ -246,55 +246,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var metadataToSetObjectpropCount = 0;
             if (requestmetadataToSetauthor != null)
             {
-                metadataToSetObject["Author"] = ExpressionConverter.ConvertO(requestmetadataToSetauthor);
+                metadataToSetObject["Author"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetauthor);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetcreator != null)
             {
-                metadataToSetObject["Creator"] = ExpressionConverter.ConvertO(requestmetadataToSetcreator);
+                metadataToSetObject["Creator"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetcreator);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetdateCreated != null)
             {
-                metadataToSetObject["DateCreated"] = ExpressionConverter.ConvertO(requestmetadataToSetdateCreated);
+                metadataToSetObject["DateCreated"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetdateCreated);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetdateModified != null)
             {
-                metadataToSetObject["DateModified"] = ExpressionConverter.ConvertO(requestmetadataToSetdateModified);
+                metadataToSetObject["DateModified"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetdateModified);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetkeywords != null)
             {
-                metadataToSetObject["Keywords"] = ExpressionConverter.ConvertO(requestmetadataToSetkeywords);
+                metadataToSetObject["Keywords"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetkeywords);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetpageCount != null)
             {
-                metadataToSetObject["PageCount"] = ExpressionConverter.ConvertO(requestmetadataToSetpageCount);
+                metadataToSetObject["PageCount"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetpageCount);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetsubject != null)
             {
-                metadataToSetObject["Subject"] = ExpressionConverter.ConvertO(requestmetadataToSetsubject);
+                metadataToSetObject["Subject"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetsubject);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSetsuccessful != null)
             {
-                metadataToSetObject["Successful"] = ExpressionConverter.ConvertO(requestmetadataToSetsuccessful);
+                metadataToSetObject["Successful"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetsuccessful);
                 metadataToSetObjectpropCount++;
             }
 
             if (requestmetadataToSettitle != null)
             {
-                metadataToSetObject["Title"] = ExpressionConverter.ConvertO(requestmetadataToSettitle);
+                metadataToSetObject["Title"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSettitle);
                 metadataToSetObjectpropCount++;
             }
 
@@ -318,15 +318,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
             var apiCallPath = "/convert/edit/pdf/watermark/text";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["watermarkText"] = ExpressionConverter.Convert(watermarkText);
+            callPayload.Headers["watermarkText"] = CSharpExpressionConverter.ConvertO(watermarkText);
             if (fontName != null)
-                callPayload.Headers["fontName"] = ExpressionConverter.Convert(fontName);
+                callPayload.Headers["fontName"] = CSharpExpressionConverter.ConvertO(fontName);
             if (fontSize != null)
-                callPayload.Headers["fontSize"] = ExpressionConverter.Convert(fontSize);
+                callPayload.Headers["fontSize"] = CSharpExpressionConverter.ConvertO(fontSize);
             if (fontColor != null)
-                callPayload.Headers["fontColor"] = ExpressionConverter.Convert(fontColor);
+                callPayload.Headers["fontColor"] = CSharpExpressionConverter.ConvertO(fontColor);
             if (fontTransparency != null)
-                callPayload.Headers["fontTransparency"] = ExpressionConverter.Convert(fontTransparency);
+                callPayload.Headers["fontTransparency"] = CSharpExpressionConverter.ConvertO(fontTransparency);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
         public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
         {
-            var apiCallPath = String.Format("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["logId"] = Convert.ToString(0);
             if (logId != null)
-                callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
+                callPayload.Queries["logId"] = CSharpExpressionConverter.ConvertO(logId);
             callPayload.Queries["range"] = Convert.ToString(0);
             if (range != null)
-                callPayload.Queries["range"] = ExpressionConverter.Convert(range);
+                callPayload.Queries["range"] = CSharpExpressionConverter.ConvertO(range);
             callPayload.Queries["dataLanguage"] = Convert.ToString("en");
             if (dataLanguage != null)
-                callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
+                callPayload.Queries["dataLanguage"] = CSharpExpressionConverter.Convert(dataLanguage);
             return new ApiConnectionAction<AuditLog[]>(callPayload);
         }
     }

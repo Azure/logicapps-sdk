@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetReportResponse> GetReport(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var apiCallPath = String.Format("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+            callPayload.Headers["SandboxToken"] = CSharpExpressionConverter.ConvertO(sandboxToken);
             return new ApiConnectionAction<GetReportResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetSummaryResponse> GetSummary(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var apiCallPath = String.Format("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/samples/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+            callPayload.Headers["SandboxToken"] = CSharpExpressionConverter.ConvertO(sandboxToken);
             return new ApiConnectionAction<GetSummaryResponse>(callPayload);
         }
 
@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             var apiCallPath = "/samples/url";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+            callPayload.Headers["SandboxToken"] = CSharpExpressionConverter.ConvertO(sandboxToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             var apiCallPath = "/samples/file";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+            callPayload.Headers["SandboxToken"] = CSharpExpressionConverter.ConvertO(sandboxToken);
             return new ApiConnectionAction<SubmitFileSampleResponse>(callPayload);
         }
     }

@@ -21,199 +21,199 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             var bodypropCount = 0;
             if (bodyip != null)
             {
-                body["ip"] = ExpressionConverter.ConvertO(bodyip);
+                body["ip"] = CSharpExpressionConverter.ConvertToken(bodyip);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodybillAddr != null)
             {
-                body["bill_addr"] = ExpressionConverter.ConvertO(bodybillAddr);
+                body["bill_addr"] = CSharpExpressionConverter.ConvertToken(bodybillAddr);
                 bodypropCount++;
             }
 
             if (bodybillCity != null)
             {
-                body["bill_city"] = ExpressionConverter.ConvertO(bodybillCity);
+                body["bill_city"] = CSharpExpressionConverter.ConvertToken(bodybillCity);
                 bodypropCount++;
             }
 
             if (bodybillState != null)
             {
-                body["bill_state"] = ExpressionConverter.ConvertO(bodybillState);
+                body["bill_state"] = CSharpExpressionConverter.ConvertToken(bodybillState);
                 bodypropCount++;
             }
 
             if (bodybillCountry != null)
             {
-                body["bill_country"] = ExpressionConverter.ConvertO(bodybillCountry);
+                body["bill_country"] = CSharpExpressionConverter.ConvertToken(bodybillCountry);
                 bodypropCount++;
             }
 
             if (bodybillZipCode != null)
             {
-                body["bill_zip_code"] = ExpressionConverter.ConvertO(bodybillZipCode);
+                body["bill_zip_code"] = CSharpExpressionConverter.ConvertToken(bodybillZipCode);
                 bodypropCount++;
             }
 
             if (bodyshipLastName != null)
             {
-                body["ship_last_name"] = ExpressionConverter.ConvertO(bodyshipLastName);
+                body["ship_last_name"] = CSharpExpressionConverter.ConvertToken(bodyshipLastName);
                 bodypropCount++;
             }
 
             if (bodyshipFirstName != null)
             {
-                body["ship_first_name"] = ExpressionConverter.ConvertO(bodyshipFirstName);
+                body["ship_first_name"] = CSharpExpressionConverter.ConvertToken(bodyshipFirstName);
                 bodypropCount++;
             }
 
             if (bodyshipAddr != null)
             {
-                body["ship_addr"] = ExpressionConverter.ConvertO(bodyshipAddr);
+                body["ship_addr"] = CSharpExpressionConverter.ConvertToken(bodyshipAddr);
                 bodypropCount++;
             }
 
             if (bodyshipCity != null)
             {
-                body["ship_city"] = ExpressionConverter.ConvertO(bodyshipCity);
+                body["ship_city"] = CSharpExpressionConverter.ConvertToken(bodyshipCity);
                 bodypropCount++;
             }
 
             if (bodyshipState != null)
             {
-                body["ship_state"] = ExpressionConverter.ConvertO(bodyshipState);
+                body["ship_state"] = CSharpExpressionConverter.ConvertToken(bodyshipState);
                 bodypropCount++;
             }
 
             if (bodyshipCountry != null)
             {
-                body["ship_country"] = ExpressionConverter.ConvertO(bodyshipCountry);
+                body["ship_country"] = CSharpExpressionConverter.ConvertToken(bodyshipCountry);
                 bodypropCount++;
             }
 
             if (bodyshipZipCode != null)
             {
-                body["ship_zip_code"] = ExpressionConverter.ConvertO(bodyshipZipCode);
+                body["ship_zip_code"] = CSharpExpressionConverter.ConvertToken(bodyshipZipCode);
                 bodypropCount++;
             }
 
             if (bodyuserPhone != null)
             {
-                body["user_phone"] = ExpressionConverter.ConvertO(bodyuserPhone);
+                body["user_phone"] = CSharpExpressionConverter.ConvertToken(bodyuserPhone);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyemailHash != null)
             {
-                body["email_hash"] = ExpressionConverter.ConvertO(bodyemailHash);
+                body["email_hash"] = CSharpExpressionConverter.ConvertToken(bodyemailHash);
                 bodypropCount++;
             }
 
             if (bodyemailDomain != null)
             {
-                body["email_domain"] = ExpressionConverter.ConvertO(bodyemailDomain);
+                body["email_domain"] = CSharpExpressionConverter.ConvertToken(bodyemailDomain);
                 bodypropCount++;
             }
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
             if (bodybinNo != null)
             {
-                body["bin_no"] = ExpressionConverter.ConvertO(bodybinNo);
+                body["bin_no"] = CSharpExpressionConverter.ConvertToken(bodybinNo);
                 bodypropCount++;
             }
 
             if (bodycardHash != null)
             {
-                body["card_hash"] = ExpressionConverter.ConvertO(bodycardHash);
+                body["card_hash"] = CSharpExpressionConverter.ConvertToken(bodycardHash);
                 bodypropCount++;
             }
 
             if (bodyavsResult != null)
             {
-                body["avs_result"] = ExpressionConverter.ConvertO(bodyavsResult);
+                body["avs_result"] = CSharpExpressionConverter.ConvertToken(bodyavsResult);
                 bodypropCount++;
             }
 
             if (bodycvvResult != null)
             {
-                body["cvv_result"] = ExpressionConverter.ConvertO(bodycvvResult);
+                body["cvv_result"] = CSharpExpressionConverter.ConvertToken(bodycvvResult);
                 bodypropCount++;
             }
 
             if (bodyuserOrderId != null)
             {
-                body["user_order_id"] = ExpressionConverter.ConvertO(bodyuserOrderId);
+                body["user_order_id"] = CSharpExpressionConverter.ConvertToken(bodyuserOrderId);
                 bodypropCount++;
             }
 
             if (bodyuserOrderMemo != null)
             {
-                body["user_order_memo"] = ExpressionConverter.ConvertO(bodyuserOrderMemo);
+                body["user_order_memo"] = CSharpExpressionConverter.ConvertToken(bodyuserOrderMemo);
                 bodypropCount++;
             }
 
             if (bodyamount != null)
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
                 bodypropCount++;
             }
 
             if (bodyquantity != null)
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
                 bodypropCount++;
             }
 
             if (bodycurrency != null)
             {
-                body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                body["currency"] = CSharpExpressionConverter.ConvertToken(bodycurrency);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
             if (bodypaymentGateway != null)
             {
-                body["payment_gateway"] = ExpressionConverter.ConvertO(bodypaymentGateway);
+                body["payment_gateway"] = CSharpExpressionConverter.ConvertToken(bodypaymentGateway);
                 bodypropCount++;
             }
 
             if (bodypaymentMode != null)
             {
-                body["payment_mode"] = ExpressionConverter.ConvertO(bodypaymentMode);
+                body["payment_mode"] = CSharpExpressionConverter.Convert(bodypaymentMode);
                 bodypropCount++;
             }
 
             if (bodyflpChecksum != null)
             {
-                body["flp_checksum"] = ExpressionConverter.ConvertO(bodyflpChecksum);
+                body["flp_checksum"] = CSharpExpressionConverter.ConvertToken(bodyflpChecksum);
                 bodypropCount++;
             }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             {
                 if (bodyaction != null)
                 {
-                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    body["action"] = CSharpExpressionConverter.Convert(bodyaction);
                     bodypropCount++;
                 }
 
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -276,10 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             callPayload.Queries["id_type"] = Convert.ToString("fraudlabspro_id");
             if (idType != null)
-                callPayload.Queries["id_type"] = ExpressionConverter.Convert(idType);
+                callPayload.Queries["id_type"] = CSharpExpressionConverter.Convert(idType);
             return new ApiConnectionAction<ResultGetResponse>(callPayload);
         }
     }

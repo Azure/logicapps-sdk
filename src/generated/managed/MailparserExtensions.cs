@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboxId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhooklabel != null)
             {
-                requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(requestBodyOfWebhooklabel);
+                requestBodyOfWebhook["label"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhooklabel);
                 requestBodyOfWebhookpropCount++;
             }
 

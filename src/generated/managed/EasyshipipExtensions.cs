@@ -23,37 +23,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var originAddressObjectpropCount = 0;
             if (bodyoriginAddressline1 != null)
             {
-                originAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
+                originAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressline1);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressline2 != null)
             {
-                originAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
+                originAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressline2);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressstate != null)
             {
-                originAddressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
+                originAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressstate);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscity != null)
             {
-                originAddressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
+                originAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscity);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresspostalCode != null)
             {
-                originAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
+                originAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresspostalCode);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscountryAlpha2 != null)
             {
-                originAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
+                originAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscountryAlpha2);
                 originAddressObjectpropCount++;
             }
 
@@ -67,37 +67,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var destinationAddressObjectpropCount = 0;
             if (bodydestinationAddressline1 != null)
             {
-                destinationAddressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
+                destinationAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressline1);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressline2 != null)
             {
-                destinationAddressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
+                destinationAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressline2);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressstate != null)
             {
-                destinationAddressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
+                destinationAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressstate);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscity != null)
             {
-                destinationAddressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
+                destinationAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscity);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresspostalCode != null)
             {
-                destinationAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
+                destinationAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresspostalCode);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscountryAlpha2 != null)
             {
-                destinationAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
+                destinationAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscountryAlpha2);
                 destinationAddressObjectpropCount++;
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodyincoterms != null)
             {
-                body["incoterms"] = ExpressionConverter.ConvertO(bodyincoterms);
+                body["incoterms"] = CSharpExpressionConverter.ConvertToken(bodyincoterms);
                 bodypropCount++;
             }
 
@@ -117,19 +117,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var insuranceObjectpropCount = 0;
             if (bodyinsuranceisInsured != null)
             {
-                insuranceObject["is_insured"] = ExpressionConverter.ConvertO(bodyinsuranceisInsured);
+                insuranceObject["is_insured"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceisInsured);
                 insuranceObjectpropCount++;
             }
 
             if (bodyinsuranceinsuredAmount != null)
             {
-                insuranceObject["insured_amount"] = ExpressionConverter.ConvertO(bodyinsuranceinsuredAmount);
+                insuranceObject["insured_amount"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceinsuredAmount);
                 insuranceObjectpropCount++;
             }
 
             if (bodyinsuranceinsuredCurrency != null)
             {
-                insuranceObject["insured_currency"] = ExpressionConverter.ConvertO(bodyinsuranceinsuredCurrency);
+                insuranceObject["insured_currency"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceinsuredCurrency);
                 insuranceObjectpropCount++;
             }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var courierSelectionObjectpropCount = 0;
             if (bodycourierSelectionapplyShippingRules != null)
             {
-                courierSelectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
+                courierSelectionObject["apply_shipping_rules"] = CSharpExpressionConverter.ConvertToken(bodycourierSelectionapplyShippingRules);
                 courierSelectionObjectpropCount++;
             }
 
@@ -159,13 +159,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var unitsObjectpropCount = 0;
             if (bodyshippingSettingsunitsweight != null)
             {
-                unitsObject["weight"] = ExpressionConverter.ConvertO(bodyshippingSettingsunitsweight);
+                unitsObject["weight"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsunitsweight);
                 unitsObjectpropCount++;
             }
 
             if (bodyshippingSettingsunitsdimensions != null)
             {
-                unitsObject["dimensions"] = ExpressionConverter.ConvertO(bodyshippingSettingsunitsdimensions);
+                unitsObject["dimensions"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsunitsdimensions);
                 unitsObjectpropCount++;
             }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodyshippingSettingsoutputCurrency != null)
             {
-                shippingSettingsObject["output_currency"] = ExpressionConverter.ConvertO(bodyshippingSettingsoutputCurrency);
+                shippingSettingsObject["output_currency"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsoutputCurrency);
                 shippingSettingsObjectpropCount++;
             }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodyparcels != null)
             {
-                body["parcels"] = ExpressionConverter.ConvertO(bodyparcels);
+                body["parcels"] = CSharpExpressionConverter.ConvertToken(bodyparcels);
                 bodypropCount++;
             }
 
@@ -208,35 +208,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (easyshipShipmentId != null)
-                callPayload.Queries["easyship_shipment_id"] = ExpressionConverter.Convert(easyshipShipmentId);
+                callPayload.Queries["easyship_shipment_id"] = CSharpExpressionConverter.ConvertO(easyshipShipmentId);
             if (platformOrderNumber != null)
-                callPayload.Queries["platform_order_number"] = ExpressionConverter.Convert(platformOrderNumber);
+                callPayload.Queries["platform_order_number"] = CSharpExpressionConverter.ConvertO(platformOrderNumber);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (createdAtFrom != null)
-                callPayload.Queries["created_at_from"] = ExpressionConverter.Convert(createdAtFrom);
+                callPayload.Queries["created_at_from"] = CSharpExpressionConverter.ConvertO(createdAtFrom);
             if (createdAtTo != null)
-                callPayload.Queries["created_at_to"] = ExpressionConverter.Convert(createdAtTo);
+                callPayload.Queries["created_at_to"] = CSharpExpressionConverter.ConvertO(createdAtTo);
             if (confirmedAtFrom != null)
-                callPayload.Queries["confirmed_at_from"] = ExpressionConverter.Convert(confirmedAtFrom);
+                callPayload.Queries["confirmed_at_from"] = CSharpExpressionConverter.ConvertO(confirmedAtFrom);
             if (confirmAtTo != null)
-                callPayload.Queries["confirm_at_to"] = ExpressionConverter.Convert(confirmAtTo);
+                callPayload.Queries["confirm_at_to"] = CSharpExpressionConverter.ConvertO(confirmAtTo);
             if (labelGeneratedAtFrom != null)
-                callPayload.Queries["label_generated_at_from"] = ExpressionConverter.Convert(labelGeneratedAtFrom);
+                callPayload.Queries["label_generated_at_from"] = CSharpExpressionConverter.ConvertO(labelGeneratedAtFrom);
             if (labelGeneratedAtTo != null)
-                callPayload.Queries["label_generated_at_to"] = ExpressionConverter.Convert(labelGeneratedAtTo);
+                callPayload.Queries["label_generated_at_to"] = CSharpExpressionConverter.ConvertO(labelGeneratedAtTo);
             if (shipmentState != null)
-                callPayload.Queries["shipment_state"] = ExpressionConverter.Convert(shipmentState);
+                callPayload.Queries["shipment_state"] = CSharpExpressionConverter.ConvertO(shipmentState);
             if (pickupState != null)
-                callPayload.Queries["pickup_state"] = ExpressionConverter.Convert(pickupState);
+                callPayload.Queries["pickup_state"] = CSharpExpressionConverter.ConvertO(pickupState);
             if (deliveryState != null)
-                callPayload.Queries["delivery_state"] = ExpressionConverter.Convert(deliveryState);
+                callPayload.Queries["delivery_state"] = CSharpExpressionConverter.ConvertO(deliveryState);
             if (labelState != null)
-                callPayload.Queries["label_state"] = ExpressionConverter.Convert(labelState);
+                callPayload.Queries["label_state"] = CSharpExpressionConverter.ConvertO(labelState);
             if (warehouseState != null)
-                callPayload.Queries["warehouse_state"] = ExpressionConverter.Convert(warehouseState);
+                callPayload.Queries["warehouse_state"] = CSharpExpressionConverter.ConvertO(warehouseState);
             return new ApiConnectionAction<ListAllShipmentsResponse>(callPayload);
         }
 
@@ -252,61 +252,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var originAddressObjectpropCount = 0;
             if (bodyoriginAddressline1 != null)
             {
-                originAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
+                originAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressline1);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressline2 != null)
             {
-                originAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
+                originAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressline2);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressstate != null)
             {
-                originAddressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
+                originAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddressstate);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscity != null)
             {
-                originAddressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
+                originAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscity);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresspostalCode != null)
             {
-                originAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
+                originAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresspostalCode);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscountryAlpha2 != null)
             {
-                originAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
+                originAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscountryAlpha2);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactName != null)
             {
-                originAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactName);
+                originAddressObject["contact_name"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscontactName);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscompanyName != null)
             {
-                originAddressObject["company_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscompanyName);
+                originAddressObject["company_name"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscompanyName);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactPhone != null)
             {
-                originAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactPhone);
+                originAddressObject["contact_phone"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscontactPhone);
                 originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactEmail != null)
             {
-                originAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactEmail);
+                originAddressObject["contact_email"] = CSharpExpressionConverter.ConvertToken(bodyoriginAddresscontactEmail);
                 originAddressObjectpropCount++;
             }
 
@@ -320,61 +320,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var senderAddressObjectpropCount = 0;
             if (bodysenderAddressline1 != null)
             {
-                senderAddressObject["line_1"] = ExpressionConverter.ConvertO(bodysenderAddressline1);
+                senderAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodysenderAddressline1);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddressline2 != null)
             {
-                senderAddressObject["line_2"] = ExpressionConverter.ConvertO(bodysenderAddressline2);
+                senderAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodysenderAddressline2);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddressstate != null)
             {
-                senderAddressObject["state"] = ExpressionConverter.ConvertO(bodysenderAddressstate);
+                senderAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodysenderAddressstate);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscity != null)
             {
-                senderAddressObject["city"] = ExpressionConverter.ConvertO(bodysenderAddresscity);
+                senderAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscity);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresspostalCode != null)
             {
-                senderAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodysenderAddresspostalCode);
+                senderAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresspostalCode);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscountryAlpha2 != null)
             {
-                senderAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodysenderAddresscountryAlpha2);
+                senderAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscountryAlpha2);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactName != null)
             {
-                senderAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodysenderAddresscontactName);
+                senderAddressObject["contact_name"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscontactName);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscompanyName != null)
             {
-                senderAddressObject["company_name"] = ExpressionConverter.ConvertO(bodysenderAddresscompanyName);
+                senderAddressObject["company_name"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscompanyName);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactPhone != null)
             {
-                senderAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodysenderAddresscontactPhone);
+                senderAddressObject["contact_phone"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscontactPhone);
                 senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactEmail != null)
             {
-                senderAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodysenderAddresscontactEmail);
+                senderAddressObject["contact_email"] = CSharpExpressionConverter.ConvertToken(bodysenderAddresscontactEmail);
                 senderAddressObjectpropCount++;
             }
 
@@ -388,61 +388,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var returnAddressObjectpropCount = 0;
             if (bodyreturnAddressline1 != null)
             {
-                returnAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyreturnAddressline1);
+                returnAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddressline1);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddressline2 != null)
             {
-                returnAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyreturnAddressline2);
+                returnAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddressline2);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddressstate != null)
             {
-                returnAddressObject["state"] = ExpressionConverter.ConvertO(bodyreturnAddressstate);
+                returnAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddressstate);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscity != null)
             {
-                returnAddressObject["city"] = ExpressionConverter.ConvertO(bodyreturnAddresscity);
+                returnAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscity);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresspostalCode != null)
             {
-                returnAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyreturnAddresspostalCode);
+                returnAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresspostalCode);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscountryAlpha2 != null)
             {
-                returnAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyreturnAddresscountryAlpha2);
+                returnAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscountryAlpha2);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactName != null)
             {
-                returnAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactName);
+                returnAddressObject["contact_name"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscontactName);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscompanyName != null)
             {
-                returnAddressObject["company_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscompanyName);
+                returnAddressObject["company_name"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscompanyName);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactPhone != null)
             {
-                returnAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactPhone);
+                returnAddressObject["contact_phone"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscontactPhone);
                 returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactEmail != null)
             {
-                returnAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactEmail);
+                returnAddressObject["contact_email"] = CSharpExpressionConverter.ConvertToken(bodyreturnAddresscontactEmail);
                 returnAddressObjectpropCount++;
             }
 
@@ -456,61 +456,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var destinationAddressObjectpropCount = 0;
             if (bodydestinationAddressline1 != null)
             {
-                destinationAddressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
+                destinationAddressObject["line_1"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressline1);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressline2 != null)
             {
-                destinationAddressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
+                destinationAddressObject["line_2"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressline2);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressstate != null)
             {
-                destinationAddressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
+                destinationAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressstate);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscity != null)
             {
-                destinationAddressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
+                destinationAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscity);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresspostalCode != null)
             {
-                destinationAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
+                destinationAddressObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresspostalCode);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscountryAlpha2 != null)
             {
-                destinationAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
+                destinationAddressObject["country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscountryAlpha2);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactName != null)
             {
-                destinationAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactName);
+                destinationAddressObject["contact_name"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscontactName);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscompanyName != null)
             {
-                destinationAddressObject["company_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscompanyName);
+                destinationAddressObject["company_name"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscompanyName);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactPhone != null)
             {
-                destinationAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactPhone);
+                destinationAddressObject["contact_phone"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscontactPhone);
                 destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactEmail != null)
             {
-                destinationAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactEmail);
+                destinationAddressObject["contact_email"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddresscontactEmail);
                 destinationAddressObjectpropCount++;
             }
 
@@ -530,25 +530,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodysetAsResidential != null)
             {
-                body["set_as_residential"] = ExpressionConverter.ConvertO(bodysetAsResidential);
+                body["set_as_residential"] = CSharpExpressionConverter.ConvertToken(bodysetAsResidential);
                 bodypropCount++;
             }
 
             if (bodyconsigneeTaxId != null)
             {
-                body["consignee_tax_id"] = ExpressionConverter.ConvertO(bodyconsigneeTaxId);
+                body["consignee_tax_id"] = CSharpExpressionConverter.ConvertToken(bodyconsigneeTaxId);
                 bodypropCount++;
             }
 
             if (bodyeeiReference != null)
             {
-                body["eei_reference"] = ExpressionConverter.ConvertO(bodyeeiReference);
+                body["eei_reference"] = CSharpExpressionConverter.ConvertToken(bodyeeiReference);
                 bodypropCount++;
             }
 
             if (bodyincoterms != null)
             {
-                body["incoterms"] = ExpressionConverter.ConvertO(bodyincoterms);
+                body["incoterms"] = CSharpExpressionConverter.ConvertToken(bodyincoterms);
                 bodypropCount++;
             }
 
@@ -556,19 +556,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var insuranceObjectpropCount = 0;
             if (bodyinsuranceisInsured != null)
             {
-                insuranceObject["is_insured"] = ExpressionConverter.ConvertO(bodyinsuranceisInsured);
+                insuranceObject["is_insured"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceisInsured);
                 insuranceObjectpropCount++;
             }
 
             if (bodyinsuranceinsuredAmount != null)
             {
-                insuranceObject["insured_amount"] = ExpressionConverter.ConvertO(bodyinsuranceinsuredAmount);
+                insuranceObject["insured_amount"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceinsuredAmount);
                 insuranceObjectpropCount++;
             }
 
             if (bodyinsuranceinsuredCurrency != null)
             {
-                insuranceObject["insured_currency"] = ExpressionConverter.ConvertO(bodyinsuranceinsuredCurrency);
+                insuranceObject["insured_currency"] = CSharpExpressionConverter.ConvertToken(bodyinsuranceinsuredCurrency);
                 insuranceObjectpropCount++;
             }
 
@@ -582,31 +582,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var orderDataObjectpropCount = 0;
             if (bodyorderDataplatformName != null)
             {
-                orderDataObject["platform_name"] = ExpressionConverter.ConvertO(bodyorderDataplatformName);
+                orderDataObject["platform_name"] = CSharpExpressionConverter.ConvertToken(bodyorderDataplatformName);
                 orderDataObjectpropCount++;
             }
 
             if (bodyorderDataplatformOrderNumber != null)
             {
-                orderDataObject["platform_order_number"] = ExpressionConverter.ConvertO(bodyorderDataplatformOrderNumber);
+                orderDataObject["platform_order_number"] = CSharpExpressionConverter.ConvertToken(bodyorderDataplatformOrderNumber);
                 orderDataObjectpropCount++;
             }
 
             if (bodyorderDataorderTagList != null)
             {
-                orderDataObject["order_tag_list"] = ExpressionConverter.ConvertO(bodyorderDataorderTagList);
+                orderDataObject["order_tag_list"] = CSharpExpressionConverter.ConvertToken(bodyorderDataorderTagList);
                 orderDataObjectpropCount++;
             }
 
             if (bodyorderDatasellerNotes != null)
             {
-                orderDataObject["seller_notes"] = ExpressionConverter.ConvertO(bodyorderDatasellerNotes);
+                orderDataObject["seller_notes"] = CSharpExpressionConverter.ConvertToken(bodyorderDatasellerNotes);
                 orderDataObjectpropCount++;
             }
 
             if (bodyorderDatabuyerNotes != null)
             {
-                orderDataObject["buyer_notes"] = ExpressionConverter.ConvertO(bodyorderDatabuyerNotes);
+                orderDataObject["buyer_notes"] = CSharpExpressionConverter.ConvertToken(bodyorderDatabuyerNotes);
                 orderDataObjectpropCount++;
             }
 
@@ -620,19 +620,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var courierSelectionObjectpropCount = 0;
             if (bodycourierSelectionselectedCourierId != null)
             {
-                courierSelectionObject["selected_courier_id"] = ExpressionConverter.ConvertO(bodycourierSelectionselectedCourierId);
+                courierSelectionObject["selected_courier_id"] = CSharpExpressionConverter.ConvertToken(bodycourierSelectionselectedCourierId);
                 courierSelectionObjectpropCount++;
             }
 
             if (bodycourierSelectionallowCourierFallback != null)
             {
-                courierSelectionObject["allow_courier_fallback"] = ExpressionConverter.ConvertO(bodycourierSelectionallowCourierFallback);
+                courierSelectionObject["allow_courier_fallback"] = CSharpExpressionConverter.ConvertToken(bodycourierSelectionallowCourierFallback);
                 courierSelectionObjectpropCount++;
             }
 
             if (bodycourierSelectionapplyShippingRules != null)
             {
-                courierSelectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
+                courierSelectionObject["apply_shipping_rules"] = CSharpExpressionConverter.ConvertToken(bodycourierSelectionapplyShippingRules);
                 courierSelectionObjectpropCount++;
             }
 
@@ -648,13 +648,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var unitsObjectpropCount = 0;
             if (bodyshippingSettingsunitsweight != null)
             {
-                unitsObject["weight"] = ExpressionConverter.ConvertO(bodyshippingSettingsunitsweight);
+                unitsObject["weight"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsunitsweight);
                 unitsObjectpropCount++;
             }
 
             if (bodyshippingSettingsunitsdimensions != null)
             {
-                unitsObject["dimensions"] = ExpressionConverter.ConvertO(bodyshippingSettingsunitsdimensions);
+                unitsObject["dimensions"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsunitsdimensions);
                 unitsObjectpropCount++;
             }
 
@@ -668,25 +668,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var printingOptionsObjectpropCount = 0;
             if (bodyshippingSettingsprintingOptionsformat != null)
             {
-                printingOptionsObject["format"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionsformat);
+                printingOptionsObject["format"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsprintingOptionsformat);
                 printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionslabel != null)
             {
-                printingOptionsObject["label"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionslabel);
+                printingOptionsObject["label"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsprintingOptionslabel);
                 printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionscommercialInvoice != null)
             {
-                printingOptionsObject["commercial_invoice"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionscommercialInvoice);
+                printingOptionsObject["commercial_invoice"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsprintingOptionscommercialInvoice);
                 printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionspackingSlip != null)
             {
-                printingOptionsObject["packing_slip"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionspackingSlip);
+                printingOptionsObject["packing_slip"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsprintingOptionspackingSlip);
                 printingOptionsObjectpropCount++;
             }
 
@@ -698,13 +698,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodyshippingSettingsbuyLabel != null)
             {
-                shippingSettingsObject["buy_label"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabel);
+                shippingSettingsObject["buy_label"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsbuyLabel);
                 shippingSettingsObjectpropCount++;
             }
 
             if (bodyshippingSettingsbuyLabelSynchronous != null)
             {
-                shippingSettingsObject["buy_label_synchronous"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabelSynchronous);
+                shippingSettingsObject["buy_label_synchronous"] = CSharpExpressionConverter.ConvertToken(bodyshippingSettingsbuyLabelSynchronous);
                 shippingSettingsObjectpropCount++;
             }
 
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (bodyparcels != null)
             {
-                body["parcels"] = ExpressionConverter.ConvertO(bodyparcels);
+                body["parcels"] = CSharpExpressionConverter.ConvertToken(bodyparcels);
                 bodypropCount++;
             }
 
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var bodypropCount = 0;
             if (bodyshipments != null)
             {
-                body["shipments"] = ExpressionConverter.ConvertO(bodyshipments);
+                body["shipments"] = CSharpExpressionConverter.ConvertToken(bodyshipments);
                 bodypropCount++;
             }
 
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<DeleteAShipmentResponse> DeleteAShipment(Expression<Func<string>> easyshipShipmentId)
         {
-            var apiCallPath = String.Format("/shipment/v1/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(easyshipShipmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteAShipmentResponse>(callPayload);
@@ -762,98 +762,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<UpdateAShipmentResponse> UpdateAShipment(Expression<Func<string>> easyshipShipmentId, Expression<Func<string>> bodydestinationCountryAlpha2 = null, Expression<Func<string>> bodydestinationCity = null, Expression<Func<string>> bodydestinationName = null, Expression<Func<string>> bodydestinationAddressLine1 = null, Expression<Func<string>> bodydestinationPhoneNumber = null, Expression<Func<bodyitemsInputItem[]>> bodyitems = null, Expression<Func<string>> bodyplatformName = null, Expression<Func<string>> bodyplatformOrderNumber = null, Expression<Func<string>> bodytaxesDutiesPaidBy = null, Expression<Func<bool>> bodyisInsured = null, Expression<Func<string>> bodyselectedCourierId = null, Expression<Func<int>> bodydestinationPostalCode = null, Expression<Func<string>> bodydestinationState = null, Expression<Func<string>> bodydestinationAddressLine2 = null, Expression<Func<string>> bodydestinationEmailAddress = null)
         {
-            var apiCallPath = String.Format("/shipment/v1/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(easyshipShipmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydestinationCountryAlpha2 != null)
             {
-                body["destination_country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationCountryAlpha2);
+                body["destination_country_alpha2"] = CSharpExpressionConverter.ConvertToken(bodydestinationCountryAlpha2);
                 bodypropCount++;
             }
 
             if (bodydestinationCity != null)
             {
-                body["destination_city"] = ExpressionConverter.ConvertO(bodydestinationCity);
+                body["destination_city"] = CSharpExpressionConverter.ConvertToken(bodydestinationCity);
                 bodypropCount++;
             }
 
             if (bodydestinationName != null)
             {
-                body["destination_name"] = ExpressionConverter.ConvertO(bodydestinationName);
+                body["destination_name"] = CSharpExpressionConverter.ConvertToken(bodydestinationName);
                 bodypropCount++;
             }
 
             if (bodydestinationAddressLine1 != null)
             {
-                body["destination_address_line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressLine1);
+                body["destination_address_line_1"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressLine1);
                 bodypropCount++;
             }
 
             if (bodydestinationPhoneNumber != null)
             {
-                body["destination_phone_number"] = ExpressionConverter.ConvertO(bodydestinationPhoneNumber);
+                body["destination_phone_number"] = CSharpExpressionConverter.ConvertToken(bodydestinationPhoneNumber);
                 bodypropCount++;
             }
 
             if (bodyitems != null)
             {
-                body["items"] = ExpressionConverter.ConvertO(bodyitems);
+                body["items"] = CSharpExpressionConverter.ConvertToken(bodyitems);
                 bodypropCount++;
             }
 
             if (bodyplatformName != null)
             {
-                body["platform_name"] = ExpressionConverter.ConvertO(bodyplatformName);
+                body["platform_name"] = CSharpExpressionConverter.ConvertToken(bodyplatformName);
                 bodypropCount++;
             }
 
             if (bodyplatformOrderNumber != null)
             {
-                body["platform_order_number"] = ExpressionConverter.ConvertO(bodyplatformOrderNumber);
+                body["platform_order_number"] = CSharpExpressionConverter.ConvertToken(bodyplatformOrderNumber);
                 bodypropCount++;
             }
 
             if (bodytaxesDutiesPaidBy != null)
             {
-                body["taxes_duties_paid_by"] = ExpressionConverter.ConvertO(bodytaxesDutiesPaidBy);
+                body["taxes_duties_paid_by"] = CSharpExpressionConverter.ConvertToken(bodytaxesDutiesPaidBy);
                 bodypropCount++;
             }
 
             if (bodyisInsured != null)
             {
-                body["is_insured"] = ExpressionConverter.ConvertO(bodyisInsured);
+                body["is_insured"] = CSharpExpressionConverter.ConvertToken(bodyisInsured);
                 bodypropCount++;
             }
 
             if (bodyselectedCourierId != null)
             {
-                body["selected_courier_id"] = ExpressionConverter.ConvertO(bodyselectedCourierId);
+                body["selected_courier_id"] = CSharpExpressionConverter.ConvertToken(bodyselectedCourierId);
                 bodypropCount++;
             }
 
             if (bodydestinationPostalCode != null)
             {
-                body["destination_postal_code"] = ExpressionConverter.ConvertO(bodydestinationPostalCode);
+                body["destination_postal_code"] = CSharpExpressionConverter.ConvertToken(bodydestinationPostalCode);
                 bodypropCount++;
             }
 
             if (bodydestinationState != null)
             {
-                body["destination_state"] = ExpressionConverter.ConvertO(bodydestinationState);
+                body["destination_state"] = CSharpExpressionConverter.ConvertToken(bodydestinationState);
                 bodypropCount++;
             }
 
             if (bodydestinationAddressLine2 != null)
             {
-                body["destination_address_line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressLine2);
+                body["destination_address_line_2"] = CSharpExpressionConverter.ConvertToken(bodydestinationAddressLine2);
                 bodypropCount++;
             }
 
             if (bodydestinationEmailAddress != null)
             {
-                body["destination_email_address"] = ExpressionConverter.ConvertO(bodydestinationEmailAddress);
+                body["destination_email_address"] = CSharpExpressionConverter.ConvertToken(bodydestinationEmailAddress);
                 bodypropCount++;
             }
 
@@ -868,17 +868,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetAShipmentResponse> GetAShipment(Expression<Func<string>> easyshipShipmentId, Expression<Func<string>> format = null, Expression<Func<string>> label = null, Expression<Func<string>> commercialInvoice = null, Expression<Func<string>> packingSlip = null)
         {
-            var apiCallPath = String.Format("/v2/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(easyshipShipmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/shipments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
             if (label != null)
-                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
+                callPayload.Queries["label"] = CSharpExpressionConverter.ConvertO(label);
             if (commercialInvoice != null)
-                callPayload.Queries["commercial_invoice"] = ExpressionConverter.Convert(commercialInvoice);
+                callPayload.Queries["commercial_invoice"] = CSharpExpressionConverter.ConvertO(commercialInvoice);
             if (packingSlip != null)
-                callPayload.Queries["packing_slip"] = ExpressionConverter.Convert(packingSlip);
+                callPayload.Queries["packing_slip"] = CSharpExpressionConverter.ConvertO(packingSlip);
             return new ApiConnectionAction<GetAShipmentResponse>(callPayload);
         }
 
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var bodypropCount = 0;
             if (bodyshipments != null)
             {
-                body["shipments"] = ExpressionConverter.ConvertO(bodyshipments);
+                body["shipments"] = CSharpExpressionConverter.ConvertToken(bodyshipments);
                 bodypropCount++;
             }
 
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetAvailablePickupSlotsResponse> GetAvailablePickupSlots(Expression<Func<string>> courierId)
         {
-            var apiCallPath = String.Format("/pickup/v1/pickup_slots/{0}", ExpressionConverter.ConvertWithUrlEncoding(courierId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pickup/v1/pickup_slots/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courierId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAvailablePickupSlotsResponse>(callPayload);
@@ -923,31 +923,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var bodypropCount = 0;
             if (bodycourierId != null)
             {
-                body["courier_id"] = ExpressionConverter.ConvertO(bodycourierId);
+                body["courier_id"] = CSharpExpressionConverter.ConvertToken(bodycourierId);
                 bodypropCount++;
             }
 
             if (bodypreferredDate != null)
             {
-                body["preferred_date"] = ExpressionConverter.ConvertO(bodypreferredDate);
+                body["preferred_date"] = CSharpExpressionConverter.ConvertToken(bodypreferredDate);
                 bodypropCount++;
             }
 
             if (bodypreferredMaxTime != null)
             {
-                body["preferred_max_time"] = ExpressionConverter.ConvertO(bodypreferredMaxTime);
+                body["preferred_max_time"] = CSharpExpressionConverter.ConvertToken(bodypreferredMaxTime);
                 bodypropCount++;
             }
 
             if (bodypreferredMinTime != null)
             {
-                body["preferred_min_time"] = ExpressionConverter.ConvertO(bodypreferredMinTime);
+                body["preferred_min_time"] = CSharpExpressionConverter.ConvertToken(bodypreferredMinTime);
                 bodypropCount++;
             }
 
             if (bodyeasyshipShipmentIds != null)
             {
-                body["easyship_shipment_ids"] = ExpressionConverter.ConvertO(bodyeasyshipShipmentIds);
+                body["easyship_shipment_ids"] = CSharpExpressionConverter.ConvertToken(bodyeasyshipShipmentIds);
                 bodypropCount++;
             }
 
@@ -965,13 +965,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var apiCallPath = "/track/v1/checkpoints";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["easyship_shipment_id"] = ExpressionConverter.Convert(easyshipShipmentId);
+            callPayload.Queries["easyship_shipment_id"] = CSharpExpressionConverter.ConvertO(easyshipShipmentId);
             if (platformOrderNumber != null)
-                callPayload.Queries["platform_order_number"] = ExpressionConverter.Convert(platformOrderNumber);
+                callPayload.Queries["platform_order_number"] = CSharpExpressionConverter.ConvertO(platformOrderNumber);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<GetCheckpointsResponse>(callPayload);
         }
 
@@ -981,13 +981,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var apiCallPath = "/track/v1/status";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["easyship_shipment_id"] = ExpressionConverter.Convert(easyshipShipmentId);
+            callPayload.Queries["easyship_shipment_id"] = CSharpExpressionConverter.ConvertO(easyshipShipmentId);
             if (platformOrderNumber != null)
-                callPayload.Queries["platform_order_number"] = ExpressionConverter.Convert(platformOrderNumber);
+                callPayload.Queries["platform_order_number"] = CSharpExpressionConverter.ConvertO(platformOrderNumber);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<GetStatusResponse>(callPayload);
         }
 

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
             body["TriggerUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

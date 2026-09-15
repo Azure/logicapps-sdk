@@ -17,22 +17,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             var apiCallPath = "/prod/data";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
+            callPayload.Queries["device"] = CSharpExpressionConverter.ConvertO(device);
+            callPayload.Queries["variable"] = CSharpExpressionConverter.ConvertO(variable);
             callPayload.Queries["query"] = Convert.ToString("last_item");
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.Convert(query);
             if (qty != null)
-                callPayload.Queries["qty"] = ExpressionConverter.Convert(qty);
+                callPayload.Queries["qty"] = CSharpExpressionConverter.ConvertO(qty);
             callPayload.Queries["timezone"] = Convert.ToString("(GMT+00:00) UTC");
             if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
+                callPayload.Queries["timezone"] = CSharpExpressionConverter.Convert(timezone);
             if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
             if (serie != null)
-                callPayload.Queries["serie"] = ExpressionConverter.Convert(serie);
+                callPayload.Queries["serie"] = CSharpExpressionConverter.ConvertO(serie);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -45,16 +45,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceId);
+            body["device"] = CSharpExpressionConverter.ConvertToken(bodydeviceId);
             bodypropCount++;
-            body["variable"] = ExpressionConverter.ConvertO(bodyvariable);
+            body["variable"] = CSharpExpressionConverter.ConvertToken(bodyvariable);
             bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
             if (bodytimezone != null)
             {
                 if (bodytimezone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    body["timezone"] = CSharpExpressionConverter.Convert(bodytimezone);
                     bodypropCount++;
                 }
 
@@ -68,19 +68,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
             if (bodytimestamp != null)
             {
-                body["time"] = ExpressionConverter.ConvertO(bodytimestamp);
+                body["time"] = CSharpExpressionConverter.ConvertToken(bodytimestamp);
                 bodypropCount++;
             }
 
             if (bodyserie != null)
             {
-                body["serie"] = ExpressionConverter.ConvertO(bodyserie);
+                body["serie"] = CSharpExpressionConverter.ConvertToken(bodyserie);
                 bodypropCount++;
             }
 
             if (bodyunit != null)
             {
-                body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                body["unit"] = CSharpExpressionConverter.ConvertToken(bodyunit);
                 bodypropCount++;
             }
 
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             var apiCallPath = "/prod/flow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
-            callPayload.Queries["condition"] = ExpressionConverter.Convert(condition);
+            callPayload.Queries["device"] = CSharpExpressionConverter.ConvertO(device);
+            callPayload.Queries["variable"] = CSharpExpressionConverter.ConvertO(variable);
+            callPayload.Queries["condition"] = CSharpExpressionConverter.Convert(condition);
             if (value != null)
-                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             var body = new JObject();
             var bodypropCount = 0;
             var configObject = new JObject();

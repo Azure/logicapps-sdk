@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
             var personNameObject = new JObject();
             var personNameObjectpropCount = 0;
             personNameObjectpropCount++;
-            personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
+            personNameObject["nameFields"] = CSharpExpressionConverter.ConvertToken(bodyinputPersonpersonNamepersonNames);
             if (personNameObjectpropCount > 0)
             {
                 inputPersonObject["personName"] = personNameObject;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 
             if (bodyinputPersongender != null)
             {
-                inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
+                inputPersonObject["gender"] = CSharpExpressionConverter.Convert(bodyinputPersongender);
                 inputPersonObjectpropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
             var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(emailAddress);
+            callPayload.Queries["emailAddress"] = CSharpExpressionConverter.ConvertO(emailAddress);
             return new ApiConnectionAction<DetectDeaResponse>(callPayload);
         }
     }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
         public IBodyWorkflowAction<GetViolationsResponse> GetViolations(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetViolationsResponse>(callPayload);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
     {
         public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

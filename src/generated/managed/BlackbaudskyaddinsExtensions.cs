@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["uit"] = ExpressionConverter.ConvertO(bodyuserIdentityToken);
+            body["uit"] = CSharpExpressionConverter.ConvertToken(bodyuserIdentityToken);
             bodypropCount++;
-            body["application_id"] = ExpressionConverter.ConvertO(bodyapplicationID);
+            body["application_id"] = CSharpExpressionConverter.ConvertToken(bodyapplicationID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["method"] = ExpressionConverter.ConvertO(bodymethod);
+            body["method"] = CSharpExpressionConverter.Convert(bodymethod);
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodyrelativePath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodyrelativePath);
             var queryObject = new JObject();
             var queryObjectpropCount = 0;
             if (queryObjectpropCount > 0)
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 

@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
             var apiCallPath = "/notamapi/v1/notams";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
+            callPayload.Headers["client_id"] = CSharpExpressionConverter.ConvertO(clientId);
+            callPayload.Headers["client_secret"] = CSharpExpressionConverter.ConvertO(clientSecret);
             return new ApiConnectionAction<GetNotamResponse>(callPayload);
         }
     }

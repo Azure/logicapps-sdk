@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["artifact"] = ExpressionConverter.ConvertO(bodyartifact);
+            body["artifact"] = CSharpExpressionConverter.ConvertToken(bodyartifact);
             if (bodyscanOn != null)
             {
-                body["scanOn"] = ExpressionConverter.ConvertO(bodyscanOn);
+                body["scanOn"] = CSharpExpressionConverter.ConvertToken(bodyscanOn);
                 bodypropCount++;
             }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
             var apiCallPath = "/scan/result";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["scanID"] = ExpressionConverter.Convert(scanID);
+            callPayload.Queries["scanID"] = CSharpExpressionConverter.ConvertO(scanID);
             return new ApiConnectionAction<ScanResult>(callPayload);
         }
     }

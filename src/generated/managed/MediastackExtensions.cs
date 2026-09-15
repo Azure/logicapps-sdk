@@ -18,26 +18,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
+                callPayload.Queries["sources"] = CSharpExpressionConverter.ConvertO(sources);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                callPayload.Queries["countries"] = CSharpExpressionConverter.ConvertO(countries);
             if (languages != null)
-                callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
+                callPayload.Queries["languages"] = CSharpExpressionConverter.ConvertO(languages);
             if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             callPayload.Queries["sort"] = Convert.ToString("published_desc");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
             callPayload.Queries["limit"] = Convert.ToString(25);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListNewsResponse>(callPayload);
         }
 
@@ -47,19 +47,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
             var apiCallPath = "/v1/sources";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+            callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                callPayload.Queries["countries"] = CSharpExpressionConverter.ConvertO(countries);
             if (languages != null)
-                callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
+                callPayload.Queries["languages"] = CSharpExpressionConverter.ConvertO(languages);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             callPayload.Queries["limit"] = Convert.ToString(25);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListSourcesResponse>(callPayload);
         }
     }

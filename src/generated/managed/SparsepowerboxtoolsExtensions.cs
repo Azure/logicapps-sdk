@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfStampImage = new JObject();
             var reqPdfStampImagepropCount = 0;
             reqPdfStampImagepropCount++;
-            reqPdfStampImage["pdf"] = ExpressionConverter.ConvertO(reqPdfStampImagepDF);
+            reqPdfStampImage["pdf"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImagepDF);
             reqPdfStampImagepropCount++;
-            reqPdfStampImage["image"] = ExpressionConverter.ConvertO(reqPdfStampImageimage);
+            reqPdfStampImage["image"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageimage);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (reqPdfStampImageoptionsopacity != null)
             {
                 if (reqPdfStampImageoptionsopacity != null)
                 {
-                    optionsObject["opacity"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsopacity);
+                    optionsObject["opacity"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionsopacity);
                     optionsObjectpropCount++;
                 }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampImageoptionsscale != null)
                 {
-                    optionsObject["scale"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsscale);
+                    optionsObject["scale"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionsscale);
                     optionsObjectpropCount++;
                 }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampImageoptionsrotate != null)
                 {
-                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsrotate);
+                    optionsObject["rotate"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionsrotate);
                     optionsObjectpropCount++;
                 }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampImageoptionspositionyOffset != null)
                 {
-                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionyOffset);
+                    positionObject["yOffset"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionyOffset);
                     positionObjectpropCount++;
                 }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampImageoptionspositionstartOfYOffset != null)
                 {
-                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionstartOfYOffset);
+                    positionObject["yOffsetStart"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionstartOfYOffset);
                     positionObjectpropCount++;
                 }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampImageoptionspositionxOffset != null)
                 {
-                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionxOffset);
+                    positionObject["xOffset"] = CSharpExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionxOffset);
                     positionObjectpropCount++;
                 }
 
@@ -152,15 +152,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqExcelSheetAddrows = new JObject();
             var reqExcelSheetAddrowspropCount = 0;
             reqExcelSheetAddrowspropCount++;
-            reqExcelSheetAddrows["sheet"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowssheetname);
+            reqExcelSheetAddrows["sheet"] = CSharpExpressionConverter.ConvertToken(reqExcelSheetAddrowssheetname);
             if (reqExcelSheetAddrowsdata != null)
             {
-                reqExcelSheetAddrows["data"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowsdata);
+                reqExcelSheetAddrows["data"] = CSharpExpressionConverter.ConvertToken(reqExcelSheetAddrowsdata);
                 reqExcelSheetAddrowspropCount++;
             }
 
             reqExcelSheetAddrowspropCount++;
-            reqExcelSheetAddrows["excelFile"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowsexcel);
+            reqExcelSheetAddrows["excelFile"] = CSharpExpressionConverter.ConvertToken(reqExcelSheetAddrowsexcel);
             if (reqExcelSheetAddrowspropCount > 0)
             {
                 callPayload.Body = reqExcelSheetAddrows;
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfCreateByHtml = new JObject();
             var reqPdfCreateByHtmlpropCount = 0;
             reqPdfCreateByHtmlpropCount++;
-            reqPdfCreateByHtml["content"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmlhTML);
+            reqPdfCreateByHtml["content"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmlhTML);
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (dataObjectpropCount > 0)
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionsmediaType != null)
                 {
-                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmediaType);
+                    optionsObject["mediaType"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmediaType);
                     optionsObjectpropCount++;
                 }
 
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionspageFormat != null)
                 {
-                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionspageFormat);
+                    optionsObject["format"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionspageFormat);
                     optionsObjectpropCount++;
                 }
 
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionslandscape != null)
                 {
-                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionslandscape);
+                    optionsObject["landscape"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionslandscape);
                     optionsObjectpropCount++;
                 }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
                 {
-                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginLeft);
+                    marginObject["left"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginLeft);
                     marginObjectpropCount++;
                 }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
                 {
-                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginRight);
+                    marginObject["right"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginRight);
                     marginObjectpropCount++;
                 }
 
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
                 {
-                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginTop);
+                    marginObject["top"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginTop);
                     marginObjectpropCount++;
                 }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
                 {
-                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginBottom);
+                    marginObject["bottom"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginBottom);
                     marginObjectpropCount++;
                 }
 
@@ -332,9 +332,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqImageMergeDrawing = new JObject();
             var reqImageMergeDrawingpropCount = 0;
             reqImageMergeDrawingpropCount++;
-            reqImageMergeDrawing["background"] = ExpressionConverter.ConvertO(reqImageMergeDrawingbackground);
+            reqImageMergeDrawing["background"] = CSharpExpressionConverter.ConvertToken(reqImageMergeDrawingbackground);
             reqImageMergeDrawingpropCount++;
-            reqImageMergeDrawing["drawing"] = ExpressionConverter.ConvertO(reqImageMergeDrawingdrawing);
+            reqImageMergeDrawing["drawing"] = CSharpExpressionConverter.ConvertToken(reqImageMergeDrawingdrawing);
             if (reqImageMergeDrawingpropCount > 0)
             {
                 callPayload.Body = reqImageMergeDrawing;
@@ -352,16 +352,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfStampText = new JObject();
             var reqPdfStampTextpropCount = 0;
             reqPdfStampTextpropCount++;
-            reqPdfStampText["pdf"] = ExpressionConverter.ConvertO(reqPdfStampTextpDF);
+            reqPdfStampText["pdf"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextpDF);
             reqPdfStampTextpropCount++;
-            reqPdfStampText["text"] = ExpressionConverter.ConvertO(reqPdfStampTexttext);
+            reqPdfStampText["text"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTexttext);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (reqPdfStampTextoptionsfontColor != null)
             {
                 if (reqPdfStampTextoptionsfontColor != null)
                 {
-                    optionsObject["color"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontColor);
+                    optionsObject["color"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionsfontColor);
                     optionsObjectpropCount++;
                 }
 
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampTextoptionsfontSize != null)
                 {
-                    optionsObject["size"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontSize);
+                    optionsObject["size"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionsfontSize);
                     optionsObjectpropCount++;
                 }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampTextoptionsrotate != null)
                 {
-                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsrotate);
+                    optionsObject["rotate"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionsrotate);
                     optionsObjectpropCount++;
                 }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampTextoptionspositionyOffset != null)
                 {
-                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionyOffset);
+                    positionObject["yOffset"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionyOffset);
                     positionObjectpropCount++;
                 }
 
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampTextoptionspositionstartOfYOffset != null)
                 {
-                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionstartOfYOffset);
+                    positionObject["yOffsetStart"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionstartOfYOffset);
                     positionObjectpropCount++;
                 }
 
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfStampTextoptionspositionxOffset != null)
                 {
-                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionxOffset);
+                    positionObject["xOffset"] = CSharpExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionxOffset);
                     positionObjectpropCount++;
                 }
 
@@ -484,14 +484,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqCsvToJson = new JObject();
             var reqCsvToJsonpropCount = 0;
             reqCsvToJsonpropCount++;
-            reqCsvToJson["csv"] = ExpressionConverter.ConvertO(reqCsvToJsoncSV);
+            reqCsvToJson["csv"] = CSharpExpressionConverter.ConvertToken(reqCsvToJsoncSV);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (reqCsvToJsonoptionshasHeaders != null)
             {
                 if (reqCsvToJsonoptionshasHeaders != null)
                 {
-                    optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionshasHeaders);
+                    optionsObject["hasHeaders"] = CSharpExpressionConverter.ConvertToken(reqCsvToJsonoptionshasHeaders);
                     optionsObjectpropCount++;
                 }
 
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqCsvToJsonoptionsdelimiter != null)
                 {
-                    optionsObject["delimiter"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionsdelimiter);
+                    optionsObject["delimiter"] = CSharpExpressionConverter.ConvertToken(reqCsvToJsonoptionsdelimiter);
                     optionsObjectpropCount++;
                 }
 
@@ -542,14 +542,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfCreateByUrl = new JObject();
             var reqPdfCreateByUrlpropCount = 0;
             reqPdfCreateByUrlpropCount++;
-            reqPdfCreateByUrl["url"] = ExpressionConverter.ConvertO(reqPdfCreateByUrlhTML);
+            reqPdfCreateByUrl["url"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrlhTML);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (reqPdfCreateByUrloptionsmediaType != null)
             {
                 if (reqPdfCreateByUrloptionsmediaType != null)
                 {
-                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmediaType);
+                    optionsObject["mediaType"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmediaType);
                     optionsObjectpropCount++;
                 }
 
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionspageFormat != null)
                 {
-                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionspageFormat);
+                    optionsObject["format"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionspageFormat);
                     optionsObjectpropCount++;
                 }
 
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionslandscape != null)
                 {
-                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionslandscape);
+                    optionsObject["landscape"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionslandscape);
                     optionsObjectpropCount++;
                 }
 
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
                 {
-                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginLeft);
+                    marginObject["left"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginLeft);
                     marginObjectpropCount++;
                 }
 
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionsmarginmarginRight != null)
                 {
-                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginRight);
+                    marginObject["right"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginRight);
                     marginObjectpropCount++;
                 }
 
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionsmarginmarginTop != null)
                 {
-                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginTop);
+                    marginObject["top"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginTop);
                     marginObjectpropCount++;
                 }
 
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
                 {
-                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginBottom);
+                    marginObject["bottom"] = CSharpExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginBottom);
                     marginObjectpropCount++;
                 }
 
@@ -689,13 +689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqImageStampTextpropCount = 0;
             if (reqImageStampTextimage != null)
             {
-                reqImageStampText["image"] = ExpressionConverter.ConvertO(reqImageStampTextimage);
+                reqImageStampText["image"] = CSharpExpressionConverter.ConvertToken(reqImageStampTextimage);
                 reqImageStampTextpropCount++;
             }
 
             if (reqImageStampTexttextToStamp != null)
             {
-                reqImageStampText["text"] = ExpressionConverter.ConvertO(reqImageStampTexttextToStamp);
+                reqImageStampText["text"] = CSharpExpressionConverter.ConvertToken(reqImageStampTexttextToStamp);
                 reqImageStampTextpropCount++;
             }
 
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampTextoptionslocationOfTheStamp != null)
                 {
-                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampTextoptionslocationOfTheStamp);
+                    optionsObject["location"] = CSharpExpressionConverter.ConvertToken(reqImageStampTextoptionslocationOfTheStamp);
                     optionsObjectpropCount++;
                 }
 
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampTextoptionsfontcolor != null)
                 {
-                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontcolor);
+                    optionsObject["fontColor"] = CSharpExpressionConverter.ConvertToken(reqImageStampTextoptionsfontcolor);
                     optionsObjectpropCount++;
                 }
 
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampTextoptionsfontsize != null)
                 {
-                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontsize);
+                    optionsObject["fontSize"] = CSharpExpressionConverter.ConvertToken(reqImageStampTextoptionsfontsize);
                     optionsObjectpropCount++;
                 }
 
@@ -773,19 +773,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqImageResizepropCount = 0;
             if (reqImageResizeimage != null)
             {
-                reqImageResize["image"] = ExpressionConverter.ConvertO(reqImageResizeimage);
+                reqImageResize["image"] = CSharpExpressionConverter.ConvertToken(reqImageResizeimage);
                 reqImageResizepropCount++;
             }
 
             if (reqImageResizewidth != null)
             {
-                reqImageResize["width"] = ExpressionConverter.ConvertO(reqImageResizewidth);
+                reqImageResize["width"] = CSharpExpressionConverter.ConvertToken(reqImageResizewidth);
                 reqImageResizepropCount++;
             }
 
             if (reqImageResizeheight != null)
             {
-                reqImageResize["height"] = ExpressionConverter.ConvertO(reqImageResizeheight);
+                reqImageResize["height"] = CSharpExpressionConverter.ConvertToken(reqImageResizeheight);
                 reqImageResizepropCount++;
             }
 
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageResizeoptionsignoreTheAspectRation != null)
                 {
-                    optionsObject["ignoreAspectRation"] = ExpressionConverter.ConvertO(reqImageResizeoptionsignoreTheAspectRation);
+                    optionsObject["ignoreAspectRation"] = CSharpExpressionConverter.ConvertToken(reqImageResizeoptionsignoreTheAspectRation);
                     optionsObjectpropCount++;
                 }
 
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfSplitByPagepropCount = 0;
             if (reqPdfSplitByPagepDFFile != null)
             {
-                reqPdfSplitByPage["pdf"] = ExpressionConverter.ConvertO(reqPdfSplitByPagepDFFile);
+                reqPdfSplitByPage["pdf"] = CSharpExpressionConverter.ConvertToken(reqPdfSplitByPagepDFFile);
                 reqPdfSplitByPagepropCount++;
             }
 
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqPdfSplitByPageoptionsnumberOfPages != null)
                 {
-                    optionsObject["numberOfPages"] = ExpressionConverter.ConvertO(reqPdfSplitByPageoptionsnumberOfPages);
+                    optionsObject["numberOfPages"] = CSharpExpressionConverter.ConvertToken(reqPdfSplitByPageoptionsnumberOfPages);
                     optionsObjectpropCount++;
                 }
 
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqImageStampExifpropCount = 0;
             if (reqImageStampExifimage != null)
             {
-                reqImageStampExif["image"] = ExpressionConverter.ConvertO(reqImageStampExifimage);
+                reqImageStampExif["image"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifimage);
                 reqImageStampExifpropCount++;
             }
 
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqImageStampExifoptionstags != null)
             {
-                optionsObject["tags"] = ExpressionConverter.ConvertO(reqImageStampExifoptionstags);
+                optionsObject["tags"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifoptionstags);
                 optionsObjectpropCount++;
             }
 
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampExifoptionslocationOfTheStamp != null)
                 {
-                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampExifoptionslocationOfTheStamp);
+                    optionsObject["location"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifoptionslocationOfTheStamp);
                     optionsObjectpropCount++;
                 }
 
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampExifoptionsfontcolor != null)
                 {
-                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontcolor);
+                    optionsObject["fontColor"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifoptionsfontcolor);
                     optionsObjectpropCount++;
                 }
 
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampExifoptionsfontsize != null)
                 {
-                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontsize);
+                    optionsObject["fontSize"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifoptionsfontsize);
                     optionsObjectpropCount++;
                 }
 
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             {
                 if (reqImageStampExifoptionsprintTagName != null)
                 {
-                    optionsObject["printTagName"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsprintTagName);
+                    optionsObject["printTagName"] = CSharpExpressionConverter.ConvertToken(reqImageStampExifoptionsprintTagName);
                     optionsObjectpropCount++;
                 }
 
@@ -977,7 +977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfFillFormpropCount = 0;
             if (reqPdfFillFormpDFFile != null)
             {
-                reqPdfFillForm["pdf"] = ExpressionConverter.ConvertO(reqPdfFillFormpDFFile);
+                reqPdfFillForm["pdf"] = CSharpExpressionConverter.ConvertToken(reqPdfFillFormpDFFile);
                 reqPdfFillFormpropCount++;
             }
 
@@ -1007,7 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfGetFormDatapropCount = 0;
             if (reqPdfGetFormDatapDFFile != null)
             {
-                reqPdfGetFormData["pdf"] = ExpressionConverter.ConvertO(reqPdfGetFormDatapDFFile);
+                reqPdfGetFormData["pdf"] = CSharpExpressionConverter.ConvertToken(reqPdfGetFormDatapDFFile);
                 reqPdfGetFormDatapropCount++;
             }
 
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var reqPdfMergeSimplepropCount = 0;
             if (reqPdfMergeSimplepDFFile != null)
             {
-                reqPdfMergeSimple["pdfs"] = ExpressionConverter.ConvertO(reqPdfMergeSimplepDFFile);
+                reqPdfMergeSimple["pdfs"] = CSharpExpressionConverter.ConvertToken(reqPdfMergeSimplepDFFile);
                 reqPdfMergeSimplepropCount++;
             }
 

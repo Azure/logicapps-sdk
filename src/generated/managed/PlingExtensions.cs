@@ -14,19 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
         {
-            var apiCallPath = String.Format("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             bodypropCount++;
-            body["audienceUsers"] = ExpressionConverter.ConvertO(bodyaudienceUsers);
+            body["audienceUsers"] = CSharpExpressionConverter.ConvertToken(bodyaudienceUsers);
             var additionalTemplateDataObject = new JObject();
             var additionalTemplateDataObjectpropCount = 0;
             if (additionalTemplateDataObjectpropCount > 0)
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
         {
-            var apiCallPath = String.Format("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);

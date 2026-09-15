@@ -21,39 +21,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             var requestpropCount = 0;
             if (requestisFlashSMS != null)
             {
-                request["flash"] = ExpressionConverter.ConvertO(requestisFlashSMS);
+                request["flash"] = CSharpExpressionConverter.ConvertToken(requestisFlashSMS);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestsender);
+            request["from"] = CSharpExpressionConverter.ConvertToken(requestsender);
             if (requestprotocolIdentifier != null)
             {
-                request["pid"] = ExpressionConverter.ConvertO(requestprotocolIdentifier);
+                request["pid"] = CSharpExpressionConverter.ConvertToken(requestprotocolIdentifier);
                 requestpropCount++;
             }
 
             if (requestcustomerReference != null)
             {
-                request["reference"] = ExpressionConverter.ConvertO(requestcustomerReference);
+                request["reference"] = CSharpExpressionConverter.ConvertToken(requestcustomerReference);
                 requestpropCount++;
             }
 
             if (requestisTestSMS != null)
             {
-                request["test"] = ExpressionConverter.ConvertO(requestisTestSMS);
+                request["test"] = CSharpExpressionConverter.ConvertToken(requestisTestSMS);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requesttext);
             requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestreceiver);
+            request["to"] = CSharpExpressionConverter.ConvertToken(requestreceiver);
             if (requesttextType != null)
             {
                 if (requesttextType != null)
                 {
-                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    request["type"] = CSharpExpressionConverter.Convert(requesttextType);
                     requestpropCount++;
                 }
 
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
 
             if (requestuserDataHeader != null)
             {
-                request["udh"] = ExpressionConverter.ConvertO(requestuserDataHeader);
+                request["udh"] = CSharpExpressionConverter.ConvertToken(requestuserDataHeader);
                 requestpropCount++;
             }
 
             if (requestvalidityInMinutes != null)
             {
-                request["validity"] = ExpressionConverter.ConvertO(requestvalidityInMinutes);
+                request["validity"] = CSharpExpressionConverter.ConvertToken(requestvalidityInMinutes);
                 requestpropCount++;
             }
 
@@ -95,39 +95,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             var requestpropCount = 0;
             if (requestisFlashSMS != null)
             {
-                request["flash"] = ExpressionConverter.ConvertO(requestisFlashSMS);
+                request["flash"] = CSharpExpressionConverter.ConvertToken(requestisFlashSMS);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestsender);
+            request["from"] = CSharpExpressionConverter.ConvertToken(requestsender);
             if (requestprotocolIdentifier != null)
             {
-                request["pid"] = ExpressionConverter.ConvertO(requestprotocolIdentifier);
+                request["pid"] = CSharpExpressionConverter.ConvertToken(requestprotocolIdentifier);
                 requestpropCount++;
             }
 
             if (requestcustomerReference != null)
             {
-                request["reference"] = ExpressionConverter.ConvertO(requestcustomerReference);
+                request["reference"] = CSharpExpressionConverter.ConvertToken(requestcustomerReference);
                 requestpropCount++;
             }
 
             if (requestisTestSMS != null)
             {
-                request["test"] = ExpressionConverter.ConvertO(requestisTestSMS);
+                request["test"] = CSharpExpressionConverter.ConvertToken(requestisTestSMS);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requesttext);
             requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestreceivers);
+            request["to"] = CSharpExpressionConverter.ConvertToken(requestreceivers);
             if (requesttextType != null)
             {
                 if (requesttextType != null)
                 {
-                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    request["type"] = CSharpExpressionConverter.Convert(requesttextType);
                     requestpropCount++;
                 }
 
@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
 
             if (requestuserDataHeader != null)
             {
-                request["udh"] = ExpressionConverter.ConvertO(requestuserDataHeader);
+                request["udh"] = CSharpExpressionConverter.ConvertToken(requestuserDataHeader);
                 requestpropCount++;
             }
 
             if (requestvalidityInMinutes != null)
             {
-                request["validity"] = ExpressionConverter.ConvertO(requestvalidityInMinutes);
+                request["validity"] = CSharpExpressionConverter.ConvertToken(requestvalidityInMinutes);
                 requestpropCount++;
             }
 

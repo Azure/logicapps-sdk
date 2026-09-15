@@ -18,40 +18,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.Convert(select);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<ListCloudPCsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetACloudPCObjectResponse> GetACloudPCObject(Expression<Func<string>> cloudPcId, Expression<Func<selectInput>> select = null)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}", ExpressionConverter.ConvertWithUrlEncoding(cloudPcId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudPcId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.Convert(select);
             return new ApiConnectionAction<GetACloudPCObjectResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction RemoteActions(Expression<Func<string>> cloudPcId, Expression<Func<remoteActionInput>> remoteAction, Expression<Func<string>> bodycloudPcSnapshotId = null, Expression<Func<string>> bodydisplayName = null)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(cloudPcId, 1), ExpressionConverter.ConvertWithUrlEncoding(remoteAction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudPcId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(remoteAction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycloudPcSnapshotId != null)
             {
-                body["cloudPcSnapshotId"] = ExpressionConverter.ConvertO(bodycloudPcSnapshotId);
+                body["cloudPcSnapshotId"] = CSharpExpressionConverter.ConvertToken(bodycloudPcSnapshotId);
                 bodypropCount++;
             }
 
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
@@ -69,36 +69,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var apiCallPath = "/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+            callPayload.Headers["Uri"] = CSharpExpressionConverter.ConvertO(uri);
+            callPayload.Headers["Method"] = CSharpExpressionConverter.Convert(method);
             callPayload.Headers["ContentType"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["ContentType"] = CSharpExpressionConverter.ConvertO(contentType);
             if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
+                callPayload.Headers["CustomHeader1"] = CSharpExpressionConverter.ConvertO(customHeader1);
             if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
+                callPayload.Headers["CustomHeader2"] = CSharpExpressionConverter.ConvertO(customHeader2);
             if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
+                callPayload.Headers["CustomHeader3"] = CSharpExpressionConverter.ConvertO(customHeader3);
             if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
+                callPayload.Headers["CustomHeader4"] = CSharpExpressionConverter.ConvertO(customHeader4);
             if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["CustomHeader5"] = CSharpExpressionConverter.ConvertO(customHeader5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction AssignAProvisioningPolicyToAGroup(Expression<Func<string>> id, Expression<Func<bodyassignmentsInputItem[]>> bodyassignments)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}/assign", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["assignments"] = ExpressionConverter.ConvertO(bodyassignments);
+            body["assignments"] = CSharpExpressionConverter.ConvertToken(bodyassignments);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["domainJoinConfigurations"] = ExpressionConverter.ConvertO(bodydomainJoinConfigurations);
+            body["domainJoinConfigurations"] = CSharpExpressionConverter.ConvertToken(bodydomainJoinConfigurations);
             var otherFieldsObject = new JObject();
             var otherFieldsObjectpropCount = 0;
             if (otherFieldsObjectpropCount > 0)
@@ -132,23 +132,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
             if (bodyenableSingleSignOn != null)
             {
-                body["enableSingleSignOn"] = ExpressionConverter.ConvertO(bodyenableSingleSignOn);
+                body["enableSingleSignOn"] = CSharpExpressionConverter.ConvertToken(bodyenableSingleSignOn);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["imageId"] = ExpressionConverter.ConvertO(bodyimageId);
+            body["imageId"] = CSharpExpressionConverter.ConvertToken(bodyimageId);
             bodypropCount++;
-            body["imageDisplayName"] = ExpressionConverter.ConvertO(bodyimageDisplayName);
+            body["imageDisplayName"] = CSharpExpressionConverter.ConvertToken(bodyimageDisplayName);
             bodypropCount++;
-            body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
+            body["imageType"] = CSharpExpressionConverter.Convert(bodyimageType);
             bodypropCount++;
-            body["provisioningType"] = ExpressionConverter.ConvertO(bodyprovisioningType);
+            body["provisioningType"] = CSharpExpressionConverter.Convert(bodyprovisioningType);
             var windowsSettingObject = new JObject();
             var windowsSettingObjectpropCount = 0;
             if (bodywindowsSettinglocale != null)
             {
-                windowsSettingObject["locale"] = ExpressionConverter.ConvertO(bodywindowsSettinglocale);
+                windowsSettingObject["locale"] = CSharpExpressionConverter.ConvertToken(bodywindowsSettinglocale);
                 windowsSettingObjectpropCount++;
             }
 
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var microsoftManagedDesktopObjectpropCount = 0;
             if (bodymicrosoftManagedDesktopmanagedType != null)
             {
-                microsoftManagedDesktopObject["managedType"] = ExpressionConverter.ConvertO(bodymicrosoftManagedDesktopmanagedType);
+                microsoftManagedDesktopObject["managedType"] = CSharpExpressionConverter.ConvertToken(bodymicrosoftManagedDesktopmanagedType);
                 microsoftManagedDesktopObjectpropCount++;
             }
 
             if (bodymicrosoftManagedDesktopprofile != null)
             {
-                microsoftManagedDesktopObject["profile"] = ExpressionConverter.ConvertO(bodymicrosoftManagedDesktopprofile);
+                microsoftManagedDesktopObject["profile"] = CSharpExpressionConverter.ConvertToken(bodymicrosoftManagedDesktopprofile);
                 microsoftManagedDesktopObjectpropCount++;
             }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction DeleteAProvisioningPolicy(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -198,14 +198,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetAProvisioningPolicyV1Response> GetAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<selectInput>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.Convert(select);
             callPayload.Queries["$expand"] = Convert.ToString("assignments");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<GetAProvisioningPolicyV1Response>(callPayload);
         }
 
@@ -216,19 +216,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.Convert(select);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["$expand"] = Convert.ToString("assignments");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<GetProvisioningPoliciesV1Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction UpdateAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<string>> bodyautopatchautopatchGroupId = null, Expression<Func<string>> bodyautopilotConfigurationdevicePreparationProfileId = null, Expression<Func<int>> bodyautopilotConfigurationapplicationTimeoutInMinutes = null, Expression<Func<bool>> bodyautopilotConfigurationonFailureDeviceAccessDenied = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodydomainJoinConfigurationsInputItem[]>> bodydomainJoinConfigurations = null, Expression<Func<bool>> bodyenableSingleSignOn = null, Expression<Func<string>> bodyimageDisplayName = null, Expression<Func<string>> bodyimageId = null, Expression<Func<string>> bodyimageType = null, Expression<Func<string>> bodymicrosoftManagedDesktopmanagedType = null, Expression<Func<string>> bodymicrosoftManagedDesktopprofile = null, Expression<Func<string>> bodywindowsSettinglocale = null)
         {
-            var apiCallPath = String.Format("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var autopatchObjectpropCount = 0;
             if (bodyautopatchautopatchGroupId != null)
             {
-                autopatchObject["autopatchGroupId"] = ExpressionConverter.ConvertO(bodyautopatchautopatchGroupId);
+                autopatchObject["autopatchGroupId"] = CSharpExpressionConverter.ConvertToken(bodyautopatchautopatchGroupId);
                 autopatchObjectpropCount++;
             }
 
@@ -252,19 +252,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var autopilotConfigurationObjectpropCount = 0;
             if (bodyautopilotConfigurationdevicePreparationProfileId != null)
             {
-                autopilotConfigurationObject["devicePreparationProfileId"] = ExpressionConverter.ConvertO(bodyautopilotConfigurationdevicePreparationProfileId);
+                autopilotConfigurationObject["devicePreparationProfileId"] = CSharpExpressionConverter.ConvertToken(bodyautopilotConfigurationdevicePreparationProfileId);
                 autopilotConfigurationObjectpropCount++;
             }
 
             if (bodyautopilotConfigurationapplicationTimeoutInMinutes != null)
             {
-                autopilotConfigurationObject["applicationTimeoutInMinutes"] = ExpressionConverter.ConvertO(bodyautopilotConfigurationapplicationTimeoutInMinutes);
+                autopilotConfigurationObject["applicationTimeoutInMinutes"] = CSharpExpressionConverter.ConvertToken(bodyautopilotConfigurationapplicationTimeoutInMinutes);
                 autopilotConfigurationObjectpropCount++;
             }
 
             if (bodyautopilotConfigurationonFailureDeviceAccessDenied != null)
             {
-                autopilotConfigurationObject["onFailureDeviceAccessDenied"] = ExpressionConverter.ConvertO(bodyautopilotConfigurationonFailureDeviceAccessDenied);
+                autopilotConfigurationObject["onFailureDeviceAccessDenied"] = CSharpExpressionConverter.ConvertToken(bodyautopilotConfigurationonFailureDeviceAccessDenied);
                 autopilotConfigurationObjectpropCount++;
             }
 
@@ -276,43 +276,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodydomainJoinConfigurations != null)
             {
-                body["domainJoinConfigurations"] = ExpressionConverter.ConvertO(bodydomainJoinConfigurations);
+                body["domainJoinConfigurations"] = CSharpExpressionConverter.ConvertToken(bodydomainJoinConfigurations);
                 bodypropCount++;
             }
 
             if (bodyenableSingleSignOn != null)
             {
-                body["enableSingleSignOn"] = ExpressionConverter.ConvertO(bodyenableSingleSignOn);
+                body["enableSingleSignOn"] = CSharpExpressionConverter.ConvertToken(bodyenableSingleSignOn);
                 bodypropCount++;
             }
 
             if (bodyimageDisplayName != null)
             {
-                body["imageDisplayName"] = ExpressionConverter.ConvertO(bodyimageDisplayName);
+                body["imageDisplayName"] = CSharpExpressionConverter.ConvertToken(bodyimageDisplayName);
                 bodypropCount++;
             }
 
             if (bodyimageId != null)
             {
-                body["imageId"] = ExpressionConverter.ConvertO(bodyimageId);
+                body["imageId"] = CSharpExpressionConverter.ConvertToken(bodyimageId);
                 bodypropCount++;
             }
 
             if (bodyimageType != null)
             {
-                body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
+                body["imageType"] = CSharpExpressionConverter.ConvertToken(bodyimageType);
                 bodypropCount++;
             }
 
@@ -320,13 +320,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var microsoftManagedDesktopObjectpropCount = 0;
             if (bodymicrosoftManagedDesktopmanagedType != null)
             {
-                microsoftManagedDesktopObject["managedType"] = ExpressionConverter.ConvertO(bodymicrosoftManagedDesktopmanagedType);
+                microsoftManagedDesktopObject["managedType"] = CSharpExpressionConverter.ConvertToken(bodymicrosoftManagedDesktopmanagedType);
                 microsoftManagedDesktopObjectpropCount++;
             }
 
             if (bodymicrosoftManagedDesktopprofile != null)
             {
-                microsoftManagedDesktopObject["profile"] = ExpressionConverter.ConvertO(bodymicrosoftManagedDesktopprofile);
+                microsoftManagedDesktopObject["profile"] = CSharpExpressionConverter.ConvertToken(bodymicrosoftManagedDesktopprofile);
                 microsoftManagedDesktopObjectpropCount++;
             }
 
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var windowsSettingObjectpropCount = 0;
             if (bodywindowsSettinglocale != null)
             {
-                windowsSettingObject["locale"] = ExpressionConverter.ConvertO(bodywindowsSettinglocale);
+                windowsSettingObject["locale"] = CSharpExpressionConverter.ConvertToken(bodywindowsSettinglocale);
                 windowsSettingObjectpropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             body["notificationUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["scenario"] = ExpressionConverter.ConvertO(bodyscenario);
+            body["scenario"] = CSharpExpressionConverter.Convert(bodyscenario);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

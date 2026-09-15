@@ -20,22 +20,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodycompanyId != null)
             {
-                body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                body["companies"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
                 bodypropCount++;
             }
 
@@ -65,16 +65,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             var avatarObjectpropCount = 0;
             if (bodyavatarimageURL != null)
             {
-                avatarObject["image_url"] = ExpressionConverter.ConvertO(bodyavatarimageURL);
+                avatarObject["image_url"] = CSharpExpressionConverter.ConvertToken(bodyavatarimageURL);
                 avatarObjectpropCount++;
             }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
             if (bodycompanyId != null)
             {
-                body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                body["companies"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
                 bodypropCount++;
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserResponse>(callPayload);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<LeadResponse>(callPayload);

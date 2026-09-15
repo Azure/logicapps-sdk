@@ -18,18 +18,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             callPayload.Queries["$top"] = Convert.ToString(10);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["$count"] = CSharpExpressionConverter.ConvertO(count);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
             return new ApiConnectionAction<ServiceDeskCoreModelsTicketItems>(callPayload);
         }
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var ticketObject = new JObject();
             var ticketObjectpropCount = 0;
             ticketObjectpropCount++;
-            ticketObject["Title"] = ExpressionConverter.ConvertO(bodyticketrequest);
+            ticketObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyticketrequest);
             var requesterObject = new JObject();
             var requesterObjectpropCount = 0;
             requesterObjectpropCount++;
-            requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(bodyticketrequesterrequesterEmail);
+            requesterObject["EMailAddress"] = CSharpExpressionConverter.ConvertToken(bodyticketrequesterrequesterEmail);
             if (requesterObjectpropCount > 0)
             {
                 ticketObject["Requester"] = requesterObject;
@@ -58,39 +58,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             }
 
             ticketObjectpropCount++;
-            ticketObject["StatusId"] = ExpressionConverter.ConvertO(bodyticketstatus);
+            ticketObject["StatusId"] = CSharpExpressionConverter.ConvertToken(bodyticketstatus);
             if (bodyticketcategory != null)
             {
-                ticketObject["CategoryId"] = ExpressionConverter.ConvertO(bodyticketcategory);
+                ticketObject["CategoryId"] = CSharpExpressionConverter.ConvertToken(bodyticketcategory);
                 ticketObjectpropCount++;
             }
 
             ticketObjectpropCount++;
-            ticketObject["PriorityId"] = ExpressionConverter.ConvertO(bodyticketpriority);
+            ticketObject["PriorityId"] = CSharpExpressionConverter.ConvertToken(bodyticketpriority);
             ticketObjectpropCount++;
-            ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(bodyticketticketType);
+            ticketObject["TicketTypeId"] = CSharpExpressionConverter.ConvertToken(bodyticketticketType);
             if (bodyticketgroup != null)
             {
-                ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(bodyticketgroup);
+                ticketObject["SupportGroupId"] = CSharpExpressionConverter.ConvertToken(bodyticketgroup);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketdueDate != null)
             {
-                ticketObject["DueDate"] = ExpressionConverter.ConvertO(bodyticketdueDate);
+                ticketObject["DueDate"] = CSharpExpressionConverter.ConvertToken(bodyticketdueDate);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketresolutionDate != null)
             {
-                ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(bodyticketresolutionDate);
+                ticketObject["ResolutionDate"] = CSharpExpressionConverter.ConvertToken(bodyticketresolutionDate);
                 ticketObjectpropCount++;
             }
 
             var assigneeObject = new JObject();
             var assigneeObjectpropCount = 0;
             assigneeObjectpropCount++;
-            assigneeObject["Email"] = ExpressionConverter.ConvertO(bodyticketassigneeassigneeEmail);
+            assigneeObject["Email"] = CSharpExpressionConverter.ConvertToken(bodyticketassigneeassigneeEmail);
             if (assigneeObjectpropCount > 0)
             {
                 ticketObject["Assignee"] = assigneeObject;
@@ -123,10 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var ticketObject = new JObject();
             var ticketObjectpropCount = 0;
             ticketObjectpropCount++;
-            ticketObject["Id"] = ExpressionConverter.ConvertO(bodyticketenterTikitId);
+            ticketObject["Id"] = CSharpExpressionConverter.ConvertToken(bodyticketenterTikitId);
             if (bodyticketchangeRequestInformation != null)
             {
-                ticketObject["Title"] = ExpressionConverter.ConvertO(bodyticketchangeRequestInformation);
+                ticketObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyticketchangeRequestInformation);
                 ticketObjectpropCount++;
             }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var requesterObjectpropCount = 0;
             if (bodyticketrequesterrequesterEmail != null)
             {
-                requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(bodyticketrequesterrequesterEmail);
+                requesterObject["EMailAddress"] = CSharpExpressionConverter.ConvertToken(bodyticketrequesterrequesterEmail);
                 requesterObjectpropCount++;
             }
 
@@ -146,50 +146,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodyticketstatus != null)
             {
-                ticketObject["StatusId"] = ExpressionConverter.ConvertO(bodyticketstatus);
+                ticketObject["StatusId"] = CSharpExpressionConverter.ConvertToken(bodyticketstatus);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketcategory != null)
             {
-                ticketObject["CategoryId"] = ExpressionConverter.ConvertO(bodyticketcategory);
+                ticketObject["CategoryId"] = CSharpExpressionConverter.ConvertToken(bodyticketcategory);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketpriority != null)
             {
-                ticketObject["PriorityId"] = ExpressionConverter.ConvertO(bodyticketpriority);
+                ticketObject["PriorityId"] = CSharpExpressionConverter.ConvertToken(bodyticketpriority);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketticketType != null)
             {
-                ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(bodyticketticketType);
+                ticketObject["TicketTypeId"] = CSharpExpressionConverter.ConvertToken(bodyticketticketType);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketgroup != null)
             {
-                ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(bodyticketgroup);
+                ticketObject["SupportGroupId"] = CSharpExpressionConverter.ConvertToken(bodyticketgroup);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketdueDate != null)
             {
-                ticketObject["DueDate"] = ExpressionConverter.ConvertO(bodyticketdueDate);
+                ticketObject["DueDate"] = CSharpExpressionConverter.ConvertToken(bodyticketdueDate);
                 ticketObjectpropCount++;
             }
 
             if (bodyticketresolutionDate != null)
             {
-                ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(bodyticketresolutionDate);
+                ticketObject["ResolutionDate"] = CSharpExpressionConverter.ConvertToken(bodyticketresolutionDate);
                 ticketObjectpropCount++;
             }
 
             var assigneeObject = new JObject();
             var assigneeObjectpropCount = 0;
             assigneeObjectpropCount++;
-            assigneeObject["Email"] = ExpressionConverter.ConvertO(bodyticketassigneeassigneeEmail);
+            assigneeObject["Email"] = CSharpExpressionConverter.ConvertToken(bodyticketassigneeassigneeEmail);
             if (assigneeObjectpropCount > 0)
             {
                 ticketObject["Assignee"] = assigneeObject;
@@ -213,14 +213,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> GetOneTicket(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/ticket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ticket/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             callPayload.Queries["$expand"] = Convert.ToString("Requester,Assignee");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
             return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
         }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> id, Expression<Func<string>> bodycommentbody = null, Expression<Func<bool>> bodycommentisPublic = null)
         {
-            var apiCallPath = String.Format("/ticket({0})/AddComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ticket({0})/AddComment", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -238,13 +238,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var commentObjectpropCount = 0;
             if (bodycommentbody != null)
             {
-                commentObject["Body"] = ExpressionConverter.ConvertO(bodycommentbody);
+                commentObject["Body"] = CSharpExpressionConverter.ConvertToken(bodycommentbody);
                 commentObjectpropCount++;
             }
 
             if (bodycommentisPublic != null)
             {
-                commentObject["IsPublic"] = ExpressionConverter.ConvertO(bodycommentisPublic);
+                commentObject["IsPublic"] = CSharpExpressionConverter.ConvertToken(bodycommentisPublic);
                 commentObjectpropCount++;
             }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetFileAttachedResponse> GetFileAttached(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/ticket/{0}/FileAttachments", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ticket/{0}/FileAttachments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetFileAttachedResponse>(callPayload);
@@ -274,17 +274,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetTasksResponse> GetTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null, Expression<Func<string>> assignee = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetTasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
+                callPayload.Queries["Lifecycle"] = CSharpExpressionConverter.ConvertO(lifecycle);
             if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
+                callPayload.Queries["Phase"] = CSharpExpressionConverter.ConvertO(phase);
             if (taskName != null)
-                callPayload.Queries["TaskName"] = ExpressionConverter.Convert(taskName);
+                callPayload.Queries["TaskName"] = CSharpExpressionConverter.ConvertO(taskName);
             if (assignee != null)
-                callPayload.Queries["Assignee"] = ExpressionConverter.Convert(assignee);
+                callPayload.Queries["Assignee"] = CSharpExpressionConverter.ConvertO(assignee);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
             return new ApiConnectionAction<GetTasksResponse>(callPayload);
         }
@@ -292,15 +292,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetPowerAutomateTasksResponse> GetPowerAutomateTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetPowerAutomateTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetPowerAutomateTasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
+                callPayload.Queries["Lifecycle"] = CSharpExpressionConverter.ConvertO(lifecycle);
             if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
+                callPayload.Queries["Phase"] = CSharpExpressionConverter.ConvertO(phase);
             if (taskName != null)
-                callPayload.Queries["TaskName"] = ExpressionConverter.Convert(taskName);
+                callPayload.Queries["TaskName"] = CSharpExpressionConverter.ConvertO(taskName);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
             return new ApiConnectionAction<GetPowerAutomateTasksResponse>(callPayload);
         }
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> AddTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle, Expression<Func<string>> bodylifecycle = null, Expression<Func<string>> bodyphase = null, Expression<Func<string>> bodyassignee = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/AddTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Ticket({0})/AddTask", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -316,21 +316,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             if (bodylifecycle != null)
             {
-                body["Lifecycle"] = ExpressionConverter.ConvertO(bodylifecycle);
+                body["Lifecycle"] = CSharpExpressionConverter.ConvertToken(bodylifecycle);
                 bodypropCount++;
             }
 
             if (bodyphase != null)
             {
-                body["PhaseId"] = ExpressionConverter.ConvertO(bodyphase);
+                body["PhaseId"] = CSharpExpressionConverter.ConvertToken(bodyphase);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodyassignee != null)
             {
-                body["Assignee"] = ExpressionConverter.ConvertO(bodyassignee);
+                body["Assignee"] = CSharpExpressionConverter.ConvertToken(bodyassignee);
                 bodypropCount++;
             }
 
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyassignee = null)
         {
-            var apiCallPath = String.Format("/TicketTask({0})/UpdateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdateTask", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -353,13 +353,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyassignee != null)
             {
-                body["Assignee"] = ExpressionConverter.ConvertO(bodyassignee);
+                body["Assignee"] = CSharpExpressionConverter.ConvertToken(bodyassignee);
                 bodypropCount++;
             }
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsPowerAutomateTask> UpdatePowerAutomateTask(Expression<Func<string>> id, Expression<Func<string>> bodystatusId = null)
         {
-            var apiCallPath = String.Format("/TicketTask({0})/UpdatePowerAutomateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdatePowerAutomateTask", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             if (bodystatusId != null)
             {
-                body["StatusId"] = ExpressionConverter.ConvertO(bodystatusId);
+                body["StatusId"] = CSharpExpressionConverter.ConvertToken(bodystatusId);
                 bodypropCount++;
             }
 
@@ -397,19 +397,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetApprovalsResponse> GetApprovals(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> approvalName = null, Expression<Func<string>> approvers = null, Expression<Func<string>> additionalDetails = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetApprovals", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetApprovals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
+                callPayload.Queries["Lifecycle"] = CSharpExpressionConverter.ConvertO(lifecycle);
             if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
+                callPayload.Queries["Phase"] = CSharpExpressionConverter.ConvertO(phase);
             if (approvalName != null)
-                callPayload.Queries["ApprovalName"] = ExpressionConverter.Convert(approvalName);
+                callPayload.Queries["ApprovalName"] = CSharpExpressionConverter.ConvertO(approvalName);
             if (approvers != null)
-                callPayload.Queries["Approvers"] = ExpressionConverter.Convert(approvers);
+                callPayload.Queries["Approvers"] = CSharpExpressionConverter.ConvertO(approvers);
             if (additionalDetails != null)
-                callPayload.Queries["AdditionalDetails"] = ExpressionConverter.Convert(additionalDetails);
+                callPayload.Queries["AdditionalDetails"] = CSharpExpressionConverter.ConvertO(additionalDetails);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
             return new ApiConnectionAction<GetApprovalsResponse>(callPayload);
         }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsApprovals> UpdateApproval(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyadditionalDetails = null, Expression<Func<bodyrequiredByAllInput>> bodyrequiredByAll = null, Expression<Func<string>> bodyapprovers = null)
         {
-            var apiCallPath = String.Format("/Approvals({0})/UpdateApproval", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Approvals({0})/UpdateApproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -425,25 +425,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyadditionalDetails != null)
             {
-                body["AdditionalDetails"] = ExpressionConverter.ConvertO(bodyadditionalDetails);
+                body["AdditionalDetails"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDetails);
                 bodypropCount++;
             }
 
             if (bodyrequiredByAll != null)
             {
-                body["RequiredByAll"] = ExpressionConverter.ConvertO(bodyrequiredByAll);
+                body["RequiredByAll"] = CSharpExpressionConverter.Convert(bodyrequiredByAll);
                 bodypropCount++;
             }
 
             if (bodyapprovers != null)
             {
-                body["Approvers"] = ExpressionConverter.ConvertO(bodyapprovers);
+                body["Approvers"] = CSharpExpressionConverter.ConvertToken(bodyapprovers);
                 bodypropCount++;
             }
 
@@ -472,19 +472,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHookrequesters != null)
             {
-                webHookObject["Requesters"] = ExpressionConverter.ConvertO(bodywebHookrequesters);
+                webHookObject["Requesters"] = CSharpExpressionConverter.ConvertToken(bodywebHookrequesters);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookassignees != null)
             {
-                webHookObject["Assignees"] = ExpressionConverter.ConvertO(bodywebHookassignees);
+                webHookObject["Assignees"] = CSharpExpressionConverter.ConvertToken(bodywebHookassignees);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooktitle != null)
             {
-                webHookObject["Title"] = ExpressionConverter.ConvertO(bodywebHooktitle);
+                webHookObject["Title"] = CSharpExpressionConverter.ConvertToken(bodywebHooktitle);
                 webHookObjectpropCount++;
             }
 
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             {
                 if (bodywebHookstatus != null)
                 {
-                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObject["Status"] = CSharpExpressionConverter.ConvertToken(bodywebHookstatus);
                     webHookObjectpropCount++;
                 }
 
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             {
                 if (bodywebHookpriority != null)
                 {
-                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    webHookObject["Priority"] = CSharpExpressionConverter.Convert(bodywebHookpriority);
                     webHookObjectpropCount++;
                 }
 
@@ -522,13 +522,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodywebHookgroup != null)
             {
-                webHookObject["GroupId"] = ExpressionConverter.ConvertO(bodywebHookgroup);
+                webHookObject["GroupId"] = CSharpExpressionConverter.ConvertToken(bodywebHookgroup);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookselectTemplate != null)
             {
-                webHookObject["TemplateId"] = ExpressionConverter.ConvertO(bodywebHookselectTemplate);
+                webHookObject["TemplateId"] = CSharpExpressionConverter.ConvertToken(bodywebHookselectTemplate);
                 webHookObjectpropCount++;
             }
 
@@ -560,19 +560,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHookrequesters != null)
             {
-                webHookObject["Requesters"] = ExpressionConverter.ConvertO(bodywebHookrequesters);
+                webHookObject["Requesters"] = CSharpExpressionConverter.ConvertToken(bodywebHookrequesters);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookassignees != null)
             {
-                webHookObject["Assignees"] = ExpressionConverter.ConvertO(bodywebHookassignees);
+                webHookObject["Assignees"] = CSharpExpressionConverter.ConvertToken(bodywebHookassignees);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooktitle != null)
             {
-                webHookObject["Title"] = ExpressionConverter.ConvertO(bodywebHooktitle);
+                webHookObject["Title"] = CSharpExpressionConverter.ConvertToken(bodywebHooktitle);
                 webHookObjectpropCount++;
             }
 
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             {
                 if (bodywebHookstatus != null)
                 {
-                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObject["Status"] = CSharpExpressionConverter.ConvertToken(bodywebHookstatus);
                     webHookObjectpropCount++;
                 }
 
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             {
                 if (bodywebHookpriority != null)
                 {
-                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    webHookObject["Priority"] = CSharpExpressionConverter.Convert(bodywebHookpriority);
                     webHookObjectpropCount++;
                 }
 
@@ -610,13 +610,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodywebHookgroup != null)
             {
-                webHookObject["GroupId"] = ExpressionConverter.ConvertO(bodywebHookgroup);
+                webHookObject["GroupId"] = CSharpExpressionConverter.ConvertToken(bodywebHookgroup);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookselectTemplate != null)
             {
-                webHookObject["TemplateId"] = ExpressionConverter.ConvertO(bodywebHookselectTemplate);
+                webHookObject["TemplateId"] = CSharpExpressionConverter.ConvertToken(bodywebHookselectTemplate);
                 webHookObjectpropCount++;
             }
 
@@ -648,13 +648,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHookcommenter != null)
             {
-                webHookObject["Commenter"] = ExpressionConverter.ConvertO(bodywebHookcommenter);
+                webHookObject["Commenter"] = CSharpExpressionConverter.ConvertToken(bodywebHookcommenter);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookcommentStringContain != null)
             {
-                webHookObject["CommentStringContain"] = ExpressionConverter.ConvertO(bodywebHookcommentStringContain);
+                webHookObject["CommentStringContain"] = CSharpExpressionConverter.ConvertToken(bodywebHookcommentStringContain);
                 webHookObjectpropCount++;
             }
 
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             {
                 if (bodywebHookisPublicComment != null)
                 {
-                    webHookObject["IsPublicComment"] = ExpressionConverter.ConvertO(bodywebHookisPublicComment);
+                    webHookObject["IsPublicComment"] = CSharpExpressionConverter.Convert(bodywebHookisPublicComment);
                     webHookObjectpropCount++;
                 }
 
@@ -702,19 +702,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                webHookObject["LifecycleId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecycleId);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooklifecyclePhaseId != null)
             {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
+                webHookObject["LifecyclePhaseId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecyclePhaseId);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooklifecyclePowerAutomateName != null)
             {
-                webHookObject["LifecyclePowerAutomateName"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePowerAutomateName);
+                webHookObject["LifecyclePowerAutomateName"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecyclePowerAutomateName);
                 webHookObjectpropCount++;
             }
 
@@ -746,13 +746,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                webHookObject["LifecycleId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecycleId);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooklifecyclePhaseId != null)
             {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
+                webHookObject["LifecyclePhaseId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecyclePhaseId);
                 webHookObjectpropCount++;
             }
 
@@ -784,19 +784,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                webHookObject["LifecycleId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecycleId);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooklifecyclePhaseId != null)
             {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
+                webHookObject["LifecyclePhaseId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecyclePhaseId);
                 webHookObjectpropCount++;
             }
 
             if (bodywebHooklifecycleTransitionId != null)
             {
-                webHookObject["LifecycleTransitionId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleTransitionId);
+                webHookObject["LifecycleTransitionId"] = CSharpExpressionConverter.ConvertToken(bodywebHooklifecycleTransitionId);
                 webHookObjectpropCount++;
             }
 

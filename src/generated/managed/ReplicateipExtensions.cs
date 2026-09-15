@@ -29,66 +29,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["version"] = ExpressionConverter.ConvertO(bodyversion);
+            body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
             var inputObject = new JObject();
             var inputObjectpropCount = 0;
             if (bodyinputtext != null)
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                inputObject["text"] = CSharpExpressionConverter.ConvertToken(bodyinputtext);
                 inputObjectpropCount++;
             }
 
             if (bodyinputprompt != null)
             {
-                inputObject["prompt"] = ExpressionConverter.ConvertO(bodyinputprompt);
+                inputObject["prompt"] = CSharpExpressionConverter.ConvertToken(bodyinputprompt);
                 inputObjectpropCount++;
             }
 
             if (bodyinputpromptStrength != null)
             {
-                inputObject["prompt_strength"] = ExpressionConverter.ConvertO(bodyinputpromptStrength);
+                inputObject["prompt_strength"] = CSharpExpressionConverter.ConvertToken(bodyinputpromptStrength);
                 inputObjectpropCount++;
             }
 
             if (bodyinputwidth != null)
             {
-                inputObject["width"] = ExpressionConverter.ConvertO(bodyinputwidth);
+                inputObject["width"] = CSharpExpressionConverter.ConvertToken(bodyinputwidth);
                 inputObjectpropCount++;
             }
 
             if (bodyinputheight != null)
             {
-                inputObject["height"] = ExpressionConverter.ConvertO(bodyinputheight);
+                inputObject["height"] = CSharpExpressionConverter.ConvertToken(bodyinputheight);
                 inputObjectpropCount++;
             }
 
             if (bodyinputscale != null)
             {
-                inputObject["scale"] = ExpressionConverter.ConvertO(bodyinputscale);
+                inputObject["scale"] = CSharpExpressionConverter.ConvertToken(bodyinputscale);
                 inputObjectpropCount++;
             }
 
             if (bodyinputnumOutputs != null)
             {
-                inputObject["num_outputs"] = ExpressionConverter.ConvertO(bodyinputnumOutputs);
+                inputObject["num_outputs"] = CSharpExpressionConverter.ConvertToken(bodyinputnumOutputs);
                 inputObjectpropCount++;
             }
 
             if (bodyinputnumInferenceSteps != null)
             {
-                inputObject["num_inference_steps"] = ExpressionConverter.ConvertO(bodyinputnumInferenceSteps);
+                inputObject["num_inference_steps"] = CSharpExpressionConverter.ConvertToken(bodyinputnumInferenceSteps);
                 inputObjectpropCount++;
             }
 
             if (bodyinputguidanceScale != null)
             {
-                inputObject["guidance_scale"] = ExpressionConverter.ConvertO(bodyinputguidanceScale);
+                inputObject["guidance_scale"] = CSharpExpressionConverter.ConvertToken(bodyinputguidanceScale);
                 inputObjectpropCount++;
             }
 
             if (bodyinputseed != null)
             {
-                inputObject["seed"] = ExpressionConverter.ConvertO(bodyinputseed);
+                inputObject["seed"] = CSharpExpressionConverter.ConvertToken(bodyinputseed);
                 inputObjectpropCount++;
             }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 
             if (bodywebhookCompleted != null)
             {
-                body["webhook_completed"] = ExpressionConverter.ConvertO(bodywebhookCompleted);
+                body["webhook_completed"] = CSharpExpressionConverter.ConvertToken(bodywebhookCompleted);
                 bodypropCount++;
             }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionGetResponse> PredictionGet(Expression<Func<string>> predictionId)
         {
-            var apiCallPath = String.Format("/predictions/{0}", ExpressionConverter.ConvertWithUrlEncoding(predictionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/predictions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PredictionGetResponse>(callPayload);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionCancelResponse> PredictionCancel(Expression<Func<string>> predictionId)
         {
-            var apiCallPath = String.Format("/predictions/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(predictionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/predictions/{0}/cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictionId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PredictionCancelResponse>(callPayload);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<string>> modelOwner, Expression<Func<string>> modelName)
         {
-            var apiCallPath = String.Format("/models/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelOwner, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelOwner, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ModelGetResponse>(callPayload);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelListResponse> ModelList(Expression<Func<string>> collectionSlug)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionSlug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionSlug, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ModelListResponse>(callPayload);

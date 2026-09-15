@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
             var apiCallPath = "/trigger/activities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+            callPayload.Queries["channelId"] = CSharpExpressionConverter.ConvertO(channelId);
             return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
             var apiCallPath = "/trigger/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
         }
     }

@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             var bodypropCount = 0;
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
             if (bodyprojectname != null)
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                body["projectname"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 bodypropCount++;
             }
 
             if (bodyplatform != null)
             {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
                 bodypropCount++;
             }
 
             if (bodyprofile != null)
             {
-                body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
+                body["profile"] = CSharpExpressionConverter.ConvertToken(bodyprofile);
                 bodypropCount++;
             }
 
@@ -61,25 +61,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             var bodypropCount = 0;
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
             if (bodyprojectname != null)
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                body["projectname"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 bodypropCount++;
             }
 
             if (bodyplatform != null)
             {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
                 bodypropCount++;
             }
 
             if (bodyprofiles != null)
             {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                body["profiles"] = CSharpExpressionConverter.ConvertToken(bodyprofiles);
                 bodypropCount++;
             }
 
@@ -101,25 +101,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             var bodypropCount = 0;
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
             if (bodyprojectname != null)
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                body["projectname"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 bodypropCount++;
             }
 
             if (bodyplatform != null)
             {
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
                 bodypropCount++;
             }
 
             if (bodyprofiles != null)
             {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                body["profiles"] = CSharpExpressionConverter.ConvertToken(bodyprofiles);
                 bodypropCount++;
             }
 
@@ -141,19 +141,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
             var bodypropCount = 0;
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
             if (bodyprojectname != null)
             {
-                body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                body["projectname"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 bodypropCount++;
             }
 
             if (bodyprofiles != null)
             {
-                body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                body["profiles"] = CSharpExpressionConverter.ConvertToken(bodyprofiles);
                 bodypropCount++;
             }
 

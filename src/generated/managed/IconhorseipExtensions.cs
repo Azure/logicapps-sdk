@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
         public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
         {
-            var apiCallPath = String.Format("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icon/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);

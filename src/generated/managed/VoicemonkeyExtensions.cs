@@ -20,106 +20,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
+            body["device"] = CSharpExpressionConverter.ConvertToken(bodydeviceID);
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodyvoice != null)
             {
-                body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
+                body["voice"] = CSharpExpressionConverter.Convert(bodyvoice);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodychime != null)
             {
-                body["chime"] = ExpressionConverter.ConvertO(bodychime);
+                body["chime"] = CSharpExpressionConverter.Convert(bodychime);
                 bodypropCount++;
             }
 
             if (bodyaudio != null)
             {
-                body["audio"] = ExpressionConverter.ConvertO(bodyaudio);
+                body["audio"] = CSharpExpressionConverter.ConvertToken(bodyaudio);
                 bodypropCount++;
             }
 
             if (bodybackgroundAudio != null)
             {
-                body["background_audio"] = ExpressionConverter.ConvertO(bodybackgroundAudio);
+                body["background_audio"] = CSharpExpressionConverter.ConvertToken(bodybackgroundAudio);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodynoBackground != null)
             {
-                body["no_bg"] = ExpressionConverter.ConvertO(bodynoBackground);
+                body["no_bg"] = CSharpExpressionConverter.ConvertToken(bodynoBackground);
                 bodypropCount++;
             }
 
             if (bodyimage != null)
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
                 bodypropCount++;
             }
 
             if (bodymediaWidth != null)
             {
-                body["media_width"] = ExpressionConverter.ConvertO(bodymediaWidth);
+                body["media_width"] = CSharpExpressionConverter.ConvertToken(bodymediaWidth);
                 bodypropCount++;
             }
 
             if (bodymediaHeight != null)
             {
-                body["media_height"] = ExpressionConverter.ConvertO(bodymediaHeight);
+                body["media_height"] = CSharpExpressionConverter.ConvertToken(bodymediaHeight);
                 bodypropCount++;
             }
 
             if (bodymediaScaling != null)
             {
-                body["media_scaling"] = ExpressionConverter.ConvertO(bodymediaScaling);
+                body["media_scaling"] = CSharpExpressionConverter.Convert(bodymediaScaling);
                 bodypropCount++;
             }
 
             if (bodymediaAlignment != null)
             {
-                body["media_align"] = ExpressionConverter.ConvertO(bodymediaAlignment);
+                body["media_align"] = CSharpExpressionConverter.Convert(bodymediaAlignment);
                 bodypropCount++;
             }
 
             if (bodymediaRadius != null)
             {
-                body["media_radius"] = ExpressionConverter.ConvertO(bodymediaRadius);
+                body["media_radius"] = CSharpExpressionConverter.ConvertToken(bodymediaRadius);
                 bodypropCount++;
             }
 
             if (bodyvideo != null)
             {
-                body["video"] = ExpressionConverter.ConvertO(bodyvideo);
+                body["video"] = CSharpExpressionConverter.ConvertToken(bodyvideo);
                 bodypropCount++;
             }
 
             if (bodyvideoRepeat != null)
             {
-                body["video_repeat"] = ExpressionConverter.ConvertO(bodyvideoRepeat);
+                body["video_repeat"] = CSharpExpressionConverter.ConvertToken(bodyvideoRepeat);
                 bodypropCount++;
             }
 
             if (bodyechoDotWithClockDisplay != null)
             {
-                body["character_display"] = ExpressionConverter.ConvertO(bodyechoDotWithClockDisplay);
+                body["character_display"] = CSharpExpressionConverter.ConvertToken(bodyechoDotWithClockDisplay);
                 bodypropCount++;
             }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
+            body["device"] = CSharpExpressionConverter.ConvertToken(bodydeviceID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["flow"] = ExpressionConverter.ConvertO(bodyflowID);
+            body["flow"] = CSharpExpressionConverter.ConvertToken(bodyflowID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

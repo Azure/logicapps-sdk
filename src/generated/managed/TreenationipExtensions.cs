@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             var apiCallPath = "/api/projects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+            callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             return new ApiConnectionAction<ProjectListResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SitesListResponseItem[]> SitesList(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api/projects/{0}/planting-sites", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SitesListResponseItem[]>(callPayload);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api/projects/{0}/species", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SpeciesListResponseItem[]>(callPayload);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails(Expression<Func<string>> speciesId)
         {
-            var apiCallPath = String.Format("/api/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(speciesId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/species/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(speciesId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SpeciesDetailsResponse>(callPayload);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/api/forests/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ForestDetailsResponse>(callPayload);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
         {
-            var apiCallPath = String.Format("/api/forests/{0}/tree_counter/{1}", ExpressionConverter.ConvertWithUrlEncoding(userSlug, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userSlug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ForestTreeCountResponse>(callPayload);
@@ -85,31 +85,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             var bodypropCount = 0;
             if (bodyrecipients != null)
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
                 bodypropCount++;
             }
 
             if (bodyplanterId != null)
             {
-                body["planter_id"] = ExpressionConverter.ConvertO(bodyplanterId);
+                body["planter_id"] = CSharpExpressionConverter.ConvertToken(bodyplanterId);
                 bodypropCount++;
             }
 
             if (bodyspeciesId != null)
             {
-                body["species_id"] = ExpressionConverter.ConvertO(bodyspeciesId);
+                body["species_id"] = CSharpExpressionConverter.ConvertToken(bodyspeciesId);
                 bodypropCount++;
             }
 
             if (bodyquantity != null)
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
@@ -131,37 +131,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyresponsibleName != null)
             {
-                body["responsible_name"] = ExpressionConverter.ConvertO(bodyresponsibleName);
+                body["responsible_name"] = CSharpExpressionConverter.ConvertToken(bodyresponsibleName);
                 bodypropCount++;
             }
 
             if (bodyorganizationWebsite != null)
             {
-                body["organization_website"] = ExpressionConverter.ConvertO(bodyorganizationWebsite);
+                body["organization_website"] = CSharpExpressionConverter.ConvertToken(bodyorganizationWebsite);
                 bodypropCount++;
             }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails(Expression<Func<string>> planterId)
         {
-            var apiCallPath = String.Format("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(planterId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TreeTemplateDetailsResponse>(callPayload);
@@ -185,14 +185,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
         {
-            var apiCallPath = String.Format("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(planterId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
@@ -214,13 +214,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             var bodypropCount = 0;
             if (bodyplanterId != null)
             {
-                body["planter_id"] = ExpressionConverter.ConvertO(bodyplanterId);
+                body["planter_id"] = CSharpExpressionConverter.ConvertToken(bodyplanterId);
                 bodypropCount++;
             }
 
             if (bodyamount != null)
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
                 bodypropCount++;
             }
 

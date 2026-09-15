@@ -21,17 +21,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["processid"] = ExpressionConverter.ConvertO(bodyprocessid);
+            body["processid"] = CSharpExpressionConverter.ConvertToken(bodyprocessid);
             if (bodyrunid != null)
             {
-                body["runid"] = ExpressionConverter.ConvertO(bodyrunid);
+                body["runid"] = CSharpExpressionConverter.ConvertToken(bodyrunid);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

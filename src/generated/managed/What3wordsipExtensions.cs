@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
             var apiCallPath = "/convert-to-3wa";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["coordinates"] = ExpressionConverter.Convert(coordinates);
+            callPayload.Queries["coordinates"] = CSharpExpressionConverter.ConvertO(coordinates);
             return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
             var apiCallPath = "/convert-to-coordinates";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["words"] = ExpressionConverter.Convert(words);
+            callPayload.Queries["words"] = CSharpExpressionConverter.ConvertO(words);
             return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
         }
     }

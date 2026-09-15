@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+            body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
             bodypropCount++;
-            body["requested_by"] = ExpressionConverter.ConvertO(bodyrequestedBy);
+            body["requested_by"] = CSharpExpressionConverter.ConvertToken(bodyrequestedBy);
             bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
+            body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
             bodypropCount++;
-            body["master_email"] = ExpressionConverter.ConvertO(bodymasterEmail);
+            body["master_email"] = CSharpExpressionConverter.ConvertToken(bodymasterEmail);
             bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["api_key"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

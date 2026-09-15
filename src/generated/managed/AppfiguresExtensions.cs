@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                callPayload.Queries["products"] = CSharpExpressionConverter.ConvertO(products);
             return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, triggerName, recurrence);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                callPayload.Queries["products"] = CSharpExpressionConverter.ConvertO(products);
             return new ApiConnectionTrigger<Rating[]>(callPayload, triggerName, recurrence);
         }
     }

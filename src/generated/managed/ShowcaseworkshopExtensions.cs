@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+            callPayload.Queries["workshop_uid"] = CSharpExpressionConverter.ConvertO(workshopUid);
             callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+            callPayload.Queries["workshop_uid"] = CSharpExpressionConverter.ConvertO(workshopUid);
             callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+            callPayload.Queries["workshop_uid"] = CSharpExpressionConverter.ConvertO(workshopUid);
             callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;

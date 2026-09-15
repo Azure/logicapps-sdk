@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> name)
         {
-            var apiCallPath = String.Format("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetUserResponse>(callPayload);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation(Expression<Func<string>> organisation)
         {
-            var apiCallPath = String.Format("/organisations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(organisation, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/organisations/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisation, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);

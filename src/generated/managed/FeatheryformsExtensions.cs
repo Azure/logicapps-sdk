@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             var apiCallPath = "/trigger/power-automate/poll/form_completion/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
             return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             var apiCallPath = "/trigger/power-automate/poll/data_received/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
             return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             var apiCallPath = "/trigger/power-automate/poll/file/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
             return new ApiConnectionTrigger<NewFileResponse>(callPayload, triggerName, recurrence);
         }
     }

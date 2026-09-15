@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet(Expression<Func<string>> countryName)
         {
-            var apiCallPath = String.Format("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet(Expression<Func<string>> @case)
         {
-            var apiCallPath = String.Format("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(@case, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(@case, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);

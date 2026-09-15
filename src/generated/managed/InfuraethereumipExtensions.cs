@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
             var @paramsObjectpropCount = 0;
             if (bodyParamsaddress != null)
             {
-                @paramsObject["Address"] = ExpressionConverter.ConvertO(bodyParamsaddress);
+                @paramsObject["Address"] = CSharpExpressionConverter.ConvertToken(bodyParamsaddress);
                 @paramsObjectpropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
             {
                 if (bodyParamsblock != null)
                 {
-                    @paramsObject["Block"] = ExpressionConverter.ConvertO(bodyParamsblock);
+                    @paramsObject["Block"] = CSharpExpressionConverter.Convert(bodyParamsblock);
                     @paramsObjectpropCount++;
                 }
 

@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/combined/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
             if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
+                callPayload.Queries["non_working_days"] = CSharpExpressionConverter.ConvertO(nonWorkingDays);
+            callPayload.Queries["x_working_days"] = CSharpExpressionConverter.ConvertO(xWorkingDays);
             callPayload.Queries["country"] = Convert.ToString("scotland");
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<CombinedResponse>(callPayload);
         }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/basicNextWorkingDay/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<BasicNextWorkingDayResponse>(callPayload);
         }
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/nextWorkingDay/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
             if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
+                callPayload.Queries["non_working_days"] = CSharpExpressionConverter.ConvertO(nonWorkingDays);
+            callPayload.Queries["x_working_days"] = CSharpExpressionConverter.ConvertO(xWorkingDays);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<NextWorkingDayResponse>(callPayload);
         }
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["non_working_days"] = CSharpExpressionConverter.ConvertO(nonWorkingDays);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
+            callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<DateDifferenceCalculatorResponse>(callPayload);
         }
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<FirstAndLastWorkingDayOfMonthResponse>(callPayload);
         }
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/isTodayAWorkingDay/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<IsTodayAWorkingDayResponse>(callPayload);
         }
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
             var apiCallPath = "/dateInXWorkingDays/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["working_days"] = CSharpExpressionConverter.ConvertO(workingDays);
+            callPayload.Queries["x_working_days"] = CSharpExpressionConverter.ConvertO(xWorkingDays);
             callPayload.Headers["cf"] = Convert.ToString("sk");
             return new ApiConnectionAction<DateInXWorkingDaysResponse>(callPayload);
         }

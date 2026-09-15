@@ -17,19 +17,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/users";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<UserGetAllResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById(Expression<Func<string>> userId, Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = String.Format("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public_api/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
         }
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/positions";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
         }
 
@@ -50,42 +50,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/positions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<PositionCreateResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> positionId)
         {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(positionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
         {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(positionId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyimportId != null)
             {
-                body["import_id"] = ExpressionConverter.ConvertO(bodyimportId);
+                body["import_id"] = CSharpExpressionConverter.ConvertToken(bodyimportId);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/groups";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
         }
 
@@ -114,20 +114,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/groups";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<GroupCreateResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public_api/groups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
         }
 
@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["grant_type"] = Convert.ToString("password");
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
-            callPayload.Queries["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
+            callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
+            callPayload.Queries["client_id"] = CSharpExpressionConverter.ConvertO(clientId);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<TokenGetResponse>(callPayload);
         }
 
@@ -151,8 +151,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var apiCallPath = "/public_api/me";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
+            callPayload.Headers["Auth"] = CSharpExpressionConverter.ConvertO(auth);
+            callPayload.Headers["subdomain"] = CSharpExpressionConverter.ConvertO(subdomain);
             return new ApiConnectionAction<MeResponse>(callPayload);
         }
     }

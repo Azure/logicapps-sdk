@@ -18,33 +18,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (contactName != null)
-                callPayload.Queries["contact_name"] = ExpressionConverter.Convert(contactName);
+                callPayload.Queries["contact_name"] = CSharpExpressionConverter.ConvertO(contactName);
             if (companyName != null)
-                callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
+                callPayload.Queries["company_name"] = CSharpExpressionConverter.ConvertO(companyName);
             if (firstName != null)
-                callPayload.Queries["first_name"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["first_name"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["last_name"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["last_name"] = CSharpExpressionConverter.ConvertO(lastName);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (filterBy != null)
-                callPayload.Queries["filter_by"] = ExpressionConverter.Convert(filterBy);
+                callPayload.Queries["filter_by"] = CSharpExpressionConverter.Convert(filterBy);
             if (searchText != null)
-                callPayload.Queries["search_text"] = ExpressionConverter.Convert(searchText);
+                callPayload.Queries["search_text"] = CSharpExpressionConverter.ConvertO(searchText);
             if (sortColumn != null)
-                callPayload.Queries["sort_column"] = ExpressionConverter.Convert(sortColumn);
+                callPayload.Queries["sort_column"] = CSharpExpressionConverter.Convert(sortColumn);
             if (zcrmContactId != null)
-                callPayload.Queries["zcrm_contact_id"] = ExpressionConverter.Convert(zcrmContactId);
+                callPayload.Queries["zcrm_contact_id"] = CSharpExpressionConverter.ConvertO(zcrmContactId);
             if (zcrmAccountId != null)
-                callPayload.Queries["zcrm_account_id"] = ExpressionConverter.Convert(zcrmAccountId);
+                callPayload.Queries["zcrm_account_id"] = CSharpExpressionConverter.ConvertO(zcrmAccountId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<ContactsGetResponse>(callPayload);
         }
 
@@ -57,34 +57,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["contact_name"] = ExpressionConverter.ConvertO(bodycontactName);
+            body["contact_name"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
             if (bodycompanyName != null)
             {
-                body["company_name"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["company_name"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodypaymentTerms != null)
             {
-                body["payment_terms"] = ExpressionConverter.ConvertO(bodypaymentTerms);
+                body["payment_terms"] = CSharpExpressionConverter.ConvertToken(bodypaymentTerms);
                 bodypropCount++;
             }
 
             if (bodycurrencyId != null)
             {
-                body["currency_id"] = ExpressionConverter.ConvertO(bodycurrencyId);
+                body["currency_id"] = CSharpExpressionConverter.ConvertToken(bodycurrencyId);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodycustomFields != null)
             {
-                body["custom_fields"] = ExpressionConverter.ConvertO(bodycustomFields);
+                body["custom_fields"] = CSharpExpressionConverter.ConvertToken(bodycustomFields);
                 bodypropCount++;
             }
 
@@ -92,61 +92,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var billingAddressObjectpropCount = 0;
             if (bodybillingAddressattention != null)
             {
-                billingAddressObject["attention"] = ExpressionConverter.ConvertO(bodybillingAddressattention);
+                billingAddressObject["attention"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressattention);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressaddress != null)
             {
-                billingAddressObject["address"] = ExpressionConverter.ConvertO(bodybillingAddressaddress);
+                billingAddressObject["address"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressaddress);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstreet2 != null)
             {
-                billingAddressObject["street2"] = ExpressionConverter.ConvertO(bodybillingAddressstreet2);
+                billingAddressObject["street2"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstreet2);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstateCode != null)
             {
-                billingAddressObject["state_code"] = ExpressionConverter.ConvertO(bodybillingAddressstateCode);
+                billingAddressObject["state_code"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstateCode);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresscity != null)
             {
-                billingAddressObject["city"] = ExpressionConverter.ConvertO(bodybillingAddresscity);
+                billingAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresscity);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstate != null)
             {
-                billingAddressObject["state"] = ExpressionConverter.ConvertO(bodybillingAddressstate);
+                billingAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstate);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresszip != null)
             {
-                billingAddressObject["zip"] = ExpressionConverter.ConvertO(bodybillingAddresszip);
+                billingAddressObject["zip"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresszip);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresscountry != null)
             {
-                billingAddressObject["country"] = ExpressionConverter.ConvertO(bodybillingAddresscountry);
+                billingAddressObject["country"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresscountry);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressfax != null)
             {
-                billingAddressObject["fax"] = ExpressionConverter.ConvertO(bodybillingAddressfax);
+                billingAddressObject["fax"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressfax);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressphone != null)
             {
-                billingAddressObject["phone"] = ExpressionConverter.ConvertO(bodybillingAddressphone);
+                billingAddressObject["phone"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressphone);
                 billingAddressObjectpropCount++;
             }
 
@@ -160,61 +160,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var shippingAddressObjectpropCount = 0;
             if (bodyshippingAddressattention != null)
             {
-                shippingAddressObject["attention"] = ExpressionConverter.ConvertO(bodyshippingAddressattention);
+                shippingAddressObject["attention"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressattention);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressaddress != null)
             {
-                shippingAddressObject["address"] = ExpressionConverter.ConvertO(bodyshippingAddressaddress);
+                shippingAddressObject["address"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressaddress);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstreet2 != null)
             {
-                shippingAddressObject["street2"] = ExpressionConverter.ConvertO(bodyshippingAddressstreet2);
+                shippingAddressObject["street2"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstreet2);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstateCode != null)
             {
-                shippingAddressObject["state_code"] = ExpressionConverter.ConvertO(bodyshippingAddressstateCode);
+                shippingAddressObject["state_code"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstateCode);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresscity != null)
             {
-                shippingAddressObject["city"] = ExpressionConverter.ConvertO(bodyshippingAddresscity);
+                shippingAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresscity);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstate != null)
             {
-                shippingAddressObject["state"] = ExpressionConverter.ConvertO(bodyshippingAddressstate);
+                shippingAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstate);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresszip != null)
             {
-                shippingAddressObject["zip"] = ExpressionConverter.ConvertO(bodyshippingAddresszip);
+                shippingAddressObject["zip"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresszip);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresscountry != null)
             {
-                shippingAddressObject["country"] = ExpressionConverter.ConvertO(bodyshippingAddresscountry);
+                shippingAddressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresscountry);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressfax != null)
             {
-                shippingAddressObject["fax"] = ExpressionConverter.ConvertO(bodyshippingAddressfax);
+                shippingAddressObject["fax"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressfax);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressphone != null)
             {
-                shippingAddressObject["phone"] = ExpressionConverter.ConvertO(bodyshippingAddressphone);
+                shippingAddressObject["phone"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressphone);
                 shippingAddressObjectpropCount++;
             }
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodycontactPersons != null)
             {
-                body["contact_persons"] = ExpressionConverter.ConvertO(bodycontactPersons);
+                body["contact_persons"] = CSharpExpressionConverter.ConvertToken(bodycontactPersons);
                 bodypropCount++;
             }
 
@@ -234,73 +234,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var defaultTemplatesObjectpropCount = 0;
             if (bodydefaultTemplatesinvoiceTemplateId != null)
             {
-                defaultTemplatesObject["invoice_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceTemplateId);
+                defaultTemplatesObject["invoice_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceTemplateName != null)
             {
-                defaultTemplatesObject["invoice_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceTemplateName);
+                defaultTemplatesObject["invoice_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateTemplateId != null)
             {
-                defaultTemplatesObject["estimate_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateTemplateId);
+                defaultTemplatesObject["estimate_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateTemplateName != null)
             {
-                defaultTemplatesObject["estimate_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateTemplateName);
+                defaultTemplatesObject["estimate_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteTemplateId != null)
             {
-                defaultTemplatesObject["creditnote_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteTemplateId);
+                defaultTemplatesObject["creditnote_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteTemplateName != null)
             {
-                defaultTemplatesObject["creditnote_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteTemplateName);
+                defaultTemplatesObject["creditnote_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceEmailTemplateId != null)
             {
-                defaultTemplatesObject["invoice_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceEmailTemplateId);
+                defaultTemplatesObject["invoice_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceEmailTemplateName != null)
             {
-                defaultTemplatesObject["invoice_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceEmailTemplateName);
+                defaultTemplatesObject["invoice_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateEmailTemplateId != null)
             {
-                defaultTemplatesObject["estimate_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateEmailTemplateId);
+                defaultTemplatesObject["estimate_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateEmailTemplateName != null)
             {
-                defaultTemplatesObject["estimate_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateEmailTemplateName);
+                defaultTemplatesObject["estimate_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteEmailTemplateId != null)
             {
-                defaultTemplatesObject["creditnote_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteEmailTemplateId);
+                defaultTemplatesObject["creditnote_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteEmailTemplateName != null)
             {
-                defaultTemplatesObject["creditnote_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteEmailTemplateName);
+                defaultTemplatesObject["creditnote_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
@@ -312,145 +312,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodylanguageCode != null)
             {
-                body["language_code"] = ExpressionConverter.ConvertO(bodylanguageCode);
+                body["language_code"] = CSharpExpressionConverter.Convert(bodylanguageCode);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyvatRegNo != null)
             {
-                body["vat_reg_no"] = ExpressionConverter.ConvertO(bodyvatRegNo);
+                body["vat_reg_no"] = CSharpExpressionConverter.ConvertToken(bodyvatRegNo);
                 bodypropCount++;
             }
 
             if (bodytaxRegNo != null)
             {
-                body["tax_reg_no"] = ExpressionConverter.ConvertO(bodytaxRegNo);
+                body["tax_reg_no"] = CSharpExpressionConverter.ConvertToken(bodytaxRegNo);
                 bodypropCount++;
             }
 
             if (bodycountryCode != null)
             {
-                body["country_code"] = ExpressionConverter.ConvertO(bodycountryCode);
+                body["country_code"] = CSharpExpressionConverter.ConvertToken(bodycountryCode);
                 bodypropCount++;
             }
 
             if (bodyvatTreatment != null)
             {
-                body["vat_treatment"] = ExpressionConverter.ConvertO(bodyvatTreatment);
+                body["vat_treatment"] = CSharpExpressionConverter.ConvertToken(bodyvatTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxTreatment != null)
             {
-                body["tax_treatment"] = ExpressionConverter.ConvertO(bodytaxTreatment);
+                body["tax_treatment"] = CSharpExpressionConverter.ConvertToken(bodytaxTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxRegime != null)
             {
-                body["tax_regime"] = ExpressionConverter.ConvertO(bodytaxRegime);
+                body["tax_regime"] = CSharpExpressionConverter.Convert(bodytaxRegime);
                 bodypropCount++;
             }
 
             if (bodylegalName != null)
             {
-                body["legal_name"] = ExpressionConverter.ConvertO(bodylegalName);
+                body["legal_name"] = CSharpExpressionConverter.ConvertToken(bodylegalName);
                 bodypropCount++;
             }
 
             if (bodyisTdsRegistered != null)
             {
-                body["is_tds_registered"] = ExpressionConverter.ConvertO(bodyisTdsRegistered);
+                body["is_tds_registered"] = CSharpExpressionConverter.ConvertToken(bodyisTdsRegistered);
                 bodypropCount++;
             }
 
             if (bodyplaceOfContact != null)
             {
-                body["place_of_contact"] = ExpressionConverter.ConvertO(bodyplaceOfContact);
+                body["place_of_contact"] = CSharpExpressionConverter.ConvertToken(bodyplaceOfContact);
                 bodypropCount++;
             }
 
             if (bodygstNo != null)
             {
-                body["gst_no"] = ExpressionConverter.ConvertO(bodygstNo);
+                body["gst_no"] = CSharpExpressionConverter.ConvertToken(bodygstNo);
                 bodypropCount++;
             }
 
             if (bodygstTreatment != null)
             {
-                body["gst_treatment"] = ExpressionConverter.ConvertO(bodygstTreatment);
+                body["gst_treatment"] = CSharpExpressionConverter.Convert(bodygstTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityName != null)
             {
-                body["tax_authority_name"] = ExpressionConverter.ConvertO(bodytaxAuthorityName);
+                body["tax_authority_name"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityName);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionCode != null)
             {
-                body["tax_exemption_code"] = ExpressionConverter.ConvertO(bodytaxExemptionCode);
+                body["tax_exemption_code"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionCode);
                 bodypropCount++;
             }
 
             if (bodyavataxExemptNo != null)
             {
-                body["avatax_exempt_no"] = ExpressionConverter.ConvertO(bodyavataxExemptNo);
+                body["avatax_exempt_no"] = CSharpExpressionConverter.ConvertToken(bodyavataxExemptNo);
                 bodypropCount++;
             }
 
             if (bodyavataxUseCode != null)
             {
-                body["avatax_use_code"] = ExpressionConverter.ConvertO(bodyavataxUseCode);
+                body["avatax_use_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxUseCode);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionId != null)
             {
-                body["tax_exemption_id"] = ExpressionConverter.ConvertO(bodytaxExemptionId);
+                body["tax_exemption_id"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionId);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityId != null)
             {
-                body["tax_authority_id"] = ExpressionConverter.ConvertO(bodytaxAuthorityId);
+                body["tax_authority_id"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityId);
                 bodypropCount++;
             }
 
             if (bodytaxId != null)
             {
-                body["tax_id"] = ExpressionConverter.ConvertO(bodytaxId);
+                body["tax_id"] = CSharpExpressionConverter.ConvertToken(bodytaxId);
                 bodypropCount++;
             }
 
             if (bodytdsTaxId != null)
             {
-                body["tds_tax_id"] = ExpressionConverter.ConvertO(bodytdsTaxId);
+                body["tds_tax_id"] = CSharpExpressionConverter.ConvertToken(bodytdsTaxId);
                 bodypropCount++;
             }
 
             if (bodyisTaxable != null)
             {
-                body["is_taxable"] = ExpressionConverter.ConvertO(bodyisTaxable);
+                body["is_taxable"] = CSharpExpressionConverter.ConvertToken(bodyisTaxable);
                 bodypropCount++;
             }
 
             if (bodyfacebook != null)
             {
-                body["facebook"] = ExpressionConverter.ConvertO(bodyfacebook);
+                body["facebook"] = CSharpExpressionConverter.ConvertToken(bodyfacebook);
                 bodypropCount++;
             }
 
             if (bodytwitter != null)
             {
-                body["twitter"] = ExpressionConverter.ConvertO(bodytwitter);
+                body["twitter"] = CSharpExpressionConverter.ConvertToken(bodytwitter);
                 bodypropCount++;
             }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactGetResponse>(callPayload);
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactDeleteResponse> ContactDelete(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactDeleteResponse>(callPayload);
@@ -483,40 +483,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactPutResponse> ContactPut(Expression<Func<string>> contactId, Expression<Func<string>> bodycontactName, Expression<Func<string>> bodycompanyName = null, Expression<Func<int>> bodypaymentTerms = null, Expression<Func<string>> bodycurrencyId = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bodycustomFieldsInputItem2[]>> bodycustomFields = null, Expression<Func<string>> bodybillingAddressattention = null, Expression<Func<string>> bodybillingAddressaddress = null, Expression<Func<string>> bodybillingAddressstreet2 = null, Expression<Func<string>> bodybillingAddressstateCode = null, Expression<Func<string>> bodybillingAddresscity = null, Expression<Func<string>> bodybillingAddressstate = null, Expression<Func<string>> bodybillingAddresszip = null, Expression<Func<string>> bodybillingAddresscountry = null, Expression<Func<string>> bodybillingAddressfax = null, Expression<Func<string>> bodybillingAddressphone = null, Expression<Func<string>> bodyshippingAddressattention = null, Expression<Func<string>> bodyshippingAddressaddress = null, Expression<Func<string>> bodyshippingAddressstreet2 = null, Expression<Func<string>> bodyshippingAddressstateCode = null, Expression<Func<string>> bodyshippingAddresscity = null, Expression<Func<string>> bodyshippingAddressstate = null, Expression<Func<string>> bodyshippingAddresszip = null, Expression<Func<string>> bodyshippingAddresscountry = null, Expression<Func<string>> bodyshippingAddressfax = null, Expression<Func<string>> bodyshippingAddressphone = null, Expression<Func<bodycontactPersonsInputItem[]>> bodycontactPersons = null, Expression<Func<string>> bodydefaultTemplatesinvoiceTemplateId = null, Expression<Func<string>> bodydefaultTemplatesinvoiceTemplateName = null, Expression<Func<string>> bodydefaultTemplatesestimateTemplateId = null, Expression<Func<string>> bodydefaultTemplatesestimateTemplateName = null, Expression<Func<string>> bodydefaultTemplatescreditnoteTemplateId = null, Expression<Func<string>> bodydefaultTemplatescreditnoteTemplateName = null, Expression<Func<string>> bodydefaultTemplatesinvoiceEmailTemplateId = null, Expression<Func<string>> bodydefaultTemplatesinvoiceEmailTemplateName = null, Expression<Func<string>> bodydefaultTemplatesestimateEmailTemplateId = null, Expression<Func<string>> bodydefaultTemplatesestimateEmailTemplateName = null, Expression<Func<string>> bodydefaultTemplatescreditnoteEmailTemplateId = null, Expression<Func<string>> bodydefaultTemplatescreditnoteEmailTemplateName = null, Expression<Func<bodylanguageCodeInput>> bodylanguageCode = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyvatRegNo = null, Expression<Func<string>> bodytaxRegNo = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<bodyvatTreatmentInput>> bodyvatTreatment = null, Expression<Func<string>> bodytaxTreatment = null, Expression<Func<bodytaxRegimeInput>> bodytaxRegime = null, Expression<Func<string>> bodylegalName = null, Expression<Func<bool>> bodyisTdsRegistered = null, Expression<Func<string>> bodyplaceOfContact = null, Expression<Func<string>> bodygstNo = null, Expression<Func<bodygstTreatmentInput>> bodygstTreatment = null, Expression<Func<string>> bodytaxAuthorityName = null, Expression<Func<string>> bodytaxExemptionCode = null, Expression<Func<string>> bodyavataxExemptNo = null, Expression<Func<string>> bodyavataxUseCode = null, Expression<Func<string>> bodytaxExemptionId = null, Expression<Func<string>> bodytaxAuthorityId = null, Expression<Func<string>> bodytaxId = null, Expression<Func<string>> bodytdsTaxId = null, Expression<Func<bool>> bodyisTaxable = null, Expression<Func<string>> bodyfacebook = null, Expression<Func<string>> bodytwitter = null)
         {
-            var apiCallPath = String.Format("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["contact_name"] = ExpressionConverter.ConvertO(bodycontactName);
+            body["contact_name"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
             if (bodycompanyName != null)
             {
-                body["company_name"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["company_name"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodypaymentTerms != null)
             {
-                body["payment_terms"] = ExpressionConverter.ConvertO(bodypaymentTerms);
+                body["payment_terms"] = CSharpExpressionConverter.ConvertToken(bodypaymentTerms);
                 bodypropCount++;
             }
 
             if (bodycurrencyId != null)
             {
-                body["currency_id"] = ExpressionConverter.ConvertO(bodycurrencyId);
+                body["currency_id"] = CSharpExpressionConverter.ConvertToken(bodycurrencyId);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodycustomFields != null)
             {
-                body["custom_fields"] = ExpressionConverter.ConvertO(bodycustomFields);
+                body["custom_fields"] = CSharpExpressionConverter.ConvertToken(bodycustomFields);
                 bodypropCount++;
             }
 
@@ -524,61 +524,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var billingAddressObjectpropCount = 0;
             if (bodybillingAddressattention != null)
             {
-                billingAddressObject["attention"] = ExpressionConverter.ConvertO(bodybillingAddressattention);
+                billingAddressObject["attention"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressattention);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressaddress != null)
             {
-                billingAddressObject["address"] = ExpressionConverter.ConvertO(bodybillingAddressaddress);
+                billingAddressObject["address"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressaddress);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstreet2 != null)
             {
-                billingAddressObject["street2"] = ExpressionConverter.ConvertO(bodybillingAddressstreet2);
+                billingAddressObject["street2"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstreet2);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstateCode != null)
             {
-                billingAddressObject["state_code"] = ExpressionConverter.ConvertO(bodybillingAddressstateCode);
+                billingAddressObject["state_code"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstateCode);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresscity != null)
             {
-                billingAddressObject["city"] = ExpressionConverter.ConvertO(bodybillingAddresscity);
+                billingAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresscity);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressstate != null)
             {
-                billingAddressObject["state"] = ExpressionConverter.ConvertO(bodybillingAddressstate);
+                billingAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressstate);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresszip != null)
             {
-                billingAddressObject["zip"] = ExpressionConverter.ConvertO(bodybillingAddresszip);
+                billingAddressObject["zip"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresszip);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddresscountry != null)
             {
-                billingAddressObject["country"] = ExpressionConverter.ConvertO(bodybillingAddresscountry);
+                billingAddressObject["country"] = CSharpExpressionConverter.ConvertToken(bodybillingAddresscountry);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressfax != null)
             {
-                billingAddressObject["fax"] = ExpressionConverter.ConvertO(bodybillingAddressfax);
+                billingAddressObject["fax"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressfax);
                 billingAddressObjectpropCount++;
             }
 
             if (bodybillingAddressphone != null)
             {
-                billingAddressObject["phone"] = ExpressionConverter.ConvertO(bodybillingAddressphone);
+                billingAddressObject["phone"] = CSharpExpressionConverter.ConvertToken(bodybillingAddressphone);
                 billingAddressObjectpropCount++;
             }
 
@@ -592,61 +592,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var shippingAddressObjectpropCount = 0;
             if (bodyshippingAddressattention != null)
             {
-                shippingAddressObject["attention"] = ExpressionConverter.ConvertO(bodyshippingAddressattention);
+                shippingAddressObject["attention"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressattention);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressaddress != null)
             {
-                shippingAddressObject["address"] = ExpressionConverter.ConvertO(bodyshippingAddressaddress);
+                shippingAddressObject["address"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressaddress);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstreet2 != null)
             {
-                shippingAddressObject["street2"] = ExpressionConverter.ConvertO(bodyshippingAddressstreet2);
+                shippingAddressObject["street2"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstreet2);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstateCode != null)
             {
-                shippingAddressObject["state_code"] = ExpressionConverter.ConvertO(bodyshippingAddressstateCode);
+                shippingAddressObject["state_code"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstateCode);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresscity != null)
             {
-                shippingAddressObject["city"] = ExpressionConverter.ConvertO(bodyshippingAddresscity);
+                shippingAddressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresscity);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressstate != null)
             {
-                shippingAddressObject["state"] = ExpressionConverter.ConvertO(bodyshippingAddressstate);
+                shippingAddressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressstate);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresszip != null)
             {
-                shippingAddressObject["zip"] = ExpressionConverter.ConvertO(bodyshippingAddresszip);
+                shippingAddressObject["zip"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresszip);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddresscountry != null)
             {
-                shippingAddressObject["country"] = ExpressionConverter.ConvertO(bodyshippingAddresscountry);
+                shippingAddressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddresscountry);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressfax != null)
             {
-                shippingAddressObject["fax"] = ExpressionConverter.ConvertO(bodyshippingAddressfax);
+                shippingAddressObject["fax"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressfax);
                 shippingAddressObjectpropCount++;
             }
 
             if (bodyshippingAddressphone != null)
             {
-                shippingAddressObject["phone"] = ExpressionConverter.ConvertO(bodyshippingAddressphone);
+                shippingAddressObject["phone"] = CSharpExpressionConverter.ConvertToken(bodyshippingAddressphone);
                 shippingAddressObjectpropCount++;
             }
 
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodycontactPersons != null)
             {
-                body["contact_persons"] = ExpressionConverter.ConvertO(bodycontactPersons);
+                body["contact_persons"] = CSharpExpressionConverter.ConvertToken(bodycontactPersons);
                 bodypropCount++;
             }
 
@@ -666,73 +666,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var defaultTemplatesObjectpropCount = 0;
             if (bodydefaultTemplatesinvoiceTemplateId != null)
             {
-                defaultTemplatesObject["invoice_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceTemplateId);
+                defaultTemplatesObject["invoice_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceTemplateName != null)
             {
-                defaultTemplatesObject["invoice_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceTemplateName);
+                defaultTemplatesObject["invoice_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateTemplateId != null)
             {
-                defaultTemplatesObject["estimate_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateTemplateId);
+                defaultTemplatesObject["estimate_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateTemplateName != null)
             {
-                defaultTemplatesObject["estimate_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateTemplateName);
+                defaultTemplatesObject["estimate_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteTemplateId != null)
             {
-                defaultTemplatesObject["creditnote_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteTemplateId);
+                defaultTemplatesObject["creditnote_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteTemplateName != null)
             {
-                defaultTemplatesObject["creditnote_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteTemplateName);
+                defaultTemplatesObject["creditnote_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceEmailTemplateId != null)
             {
-                defaultTemplatesObject["invoice_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceEmailTemplateId);
+                defaultTemplatesObject["invoice_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesinvoiceEmailTemplateName != null)
             {
-                defaultTemplatesObject["invoice_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesinvoiceEmailTemplateName);
+                defaultTemplatesObject["invoice_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesinvoiceEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateEmailTemplateId != null)
             {
-                defaultTemplatesObject["estimate_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateEmailTemplateId);
+                defaultTemplatesObject["estimate_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatesestimateEmailTemplateName != null)
             {
-                defaultTemplatesObject["estimate_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatesestimateEmailTemplateName);
+                defaultTemplatesObject["estimate_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatesestimateEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteEmailTemplateId != null)
             {
-                defaultTemplatesObject["creditnote_email_template_id"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteEmailTemplateId);
+                defaultTemplatesObject["creditnote_email_template_id"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteEmailTemplateId);
                 defaultTemplatesObjectpropCount++;
             }
 
             if (bodydefaultTemplatescreditnoteEmailTemplateName != null)
             {
-                defaultTemplatesObject["creditnote_email_template_name"] = ExpressionConverter.ConvertO(bodydefaultTemplatescreditnoteEmailTemplateName);
+                defaultTemplatesObject["creditnote_email_template_name"] = CSharpExpressionConverter.ConvertToken(bodydefaultTemplatescreditnoteEmailTemplateName);
                 defaultTemplatesObjectpropCount++;
             }
 
@@ -744,145 +744,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodylanguageCode != null)
             {
-                body["language_code"] = ExpressionConverter.ConvertO(bodylanguageCode);
+                body["language_code"] = CSharpExpressionConverter.Convert(bodylanguageCode);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyvatRegNo != null)
             {
-                body["vat_reg_no"] = ExpressionConverter.ConvertO(bodyvatRegNo);
+                body["vat_reg_no"] = CSharpExpressionConverter.ConvertToken(bodyvatRegNo);
                 bodypropCount++;
             }
 
             if (bodytaxRegNo != null)
             {
-                body["tax_reg_no"] = ExpressionConverter.ConvertO(bodytaxRegNo);
+                body["tax_reg_no"] = CSharpExpressionConverter.ConvertToken(bodytaxRegNo);
                 bodypropCount++;
             }
 
             if (bodycountryCode != null)
             {
-                body["country_code"] = ExpressionConverter.ConvertO(bodycountryCode);
+                body["country_code"] = CSharpExpressionConverter.ConvertToken(bodycountryCode);
                 bodypropCount++;
             }
 
             if (bodyvatTreatment != null)
             {
-                body["vat_treatment"] = ExpressionConverter.ConvertO(bodyvatTreatment);
+                body["vat_treatment"] = CSharpExpressionConverter.Convert(bodyvatTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxTreatment != null)
             {
-                body["tax_treatment"] = ExpressionConverter.ConvertO(bodytaxTreatment);
+                body["tax_treatment"] = CSharpExpressionConverter.ConvertToken(bodytaxTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxRegime != null)
             {
-                body["tax_regime"] = ExpressionConverter.ConvertO(bodytaxRegime);
+                body["tax_regime"] = CSharpExpressionConverter.Convert(bodytaxRegime);
                 bodypropCount++;
             }
 
             if (bodylegalName != null)
             {
-                body["legal_name"] = ExpressionConverter.ConvertO(bodylegalName);
+                body["legal_name"] = CSharpExpressionConverter.ConvertToken(bodylegalName);
                 bodypropCount++;
             }
 
             if (bodyisTdsRegistered != null)
             {
-                body["is_tds_registered"] = ExpressionConverter.ConvertO(bodyisTdsRegistered);
+                body["is_tds_registered"] = CSharpExpressionConverter.ConvertToken(bodyisTdsRegistered);
                 bodypropCount++;
             }
 
             if (bodyplaceOfContact != null)
             {
-                body["place_of_contact"] = ExpressionConverter.ConvertO(bodyplaceOfContact);
+                body["place_of_contact"] = CSharpExpressionConverter.ConvertToken(bodyplaceOfContact);
                 bodypropCount++;
             }
 
             if (bodygstNo != null)
             {
-                body["gst_no"] = ExpressionConverter.ConvertO(bodygstNo);
+                body["gst_no"] = CSharpExpressionConverter.ConvertToken(bodygstNo);
                 bodypropCount++;
             }
 
             if (bodygstTreatment != null)
             {
-                body["gst_treatment"] = ExpressionConverter.ConvertO(bodygstTreatment);
+                body["gst_treatment"] = CSharpExpressionConverter.Convert(bodygstTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityName != null)
             {
-                body["tax_authority_name"] = ExpressionConverter.ConvertO(bodytaxAuthorityName);
+                body["tax_authority_name"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityName);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionCode != null)
             {
-                body["tax_exemption_code"] = ExpressionConverter.ConvertO(bodytaxExemptionCode);
+                body["tax_exemption_code"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionCode);
                 bodypropCount++;
             }
 
             if (bodyavataxExemptNo != null)
             {
-                body["avatax_exempt_no"] = ExpressionConverter.ConvertO(bodyavataxExemptNo);
+                body["avatax_exempt_no"] = CSharpExpressionConverter.ConvertToken(bodyavataxExemptNo);
                 bodypropCount++;
             }
 
             if (bodyavataxUseCode != null)
             {
-                body["avatax_use_code"] = ExpressionConverter.ConvertO(bodyavataxUseCode);
+                body["avatax_use_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxUseCode);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionId != null)
             {
-                body["tax_exemption_id"] = ExpressionConverter.ConvertO(bodytaxExemptionId);
+                body["tax_exemption_id"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionId);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityId != null)
             {
-                body["tax_authority_id"] = ExpressionConverter.ConvertO(bodytaxAuthorityId);
+                body["tax_authority_id"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityId);
                 bodypropCount++;
             }
 
             if (bodytaxId != null)
             {
-                body["tax_id"] = ExpressionConverter.ConvertO(bodytaxId);
+                body["tax_id"] = CSharpExpressionConverter.ConvertToken(bodytaxId);
                 bodypropCount++;
             }
 
             if (bodytdsTaxId != null)
             {
-                body["tds_tax_id"] = ExpressionConverter.ConvertO(bodytdsTaxId);
+                body["tds_tax_id"] = CSharpExpressionConverter.ConvertToken(bodytdsTaxId);
                 bodypropCount++;
             }
 
             if (bodyisTaxable != null)
             {
-                body["is_taxable"] = ExpressionConverter.ConvertO(bodyisTaxable);
+                body["is_taxable"] = CSharpExpressionConverter.ConvertToken(bodyisTaxable);
                 bodypropCount++;
             }
 
             if (bodyfacebook != null)
             {
-                body["facebook"] = ExpressionConverter.ConvertO(bodyfacebook);
+                body["facebook"] = CSharpExpressionConverter.ConvertToken(bodyfacebook);
                 bodypropCount++;
             }
 
             if (bodytwitter != null)
             {
-                body["twitter"] = ExpressionConverter.ConvertO(bodytwitter);
+                body["twitter"] = CSharpExpressionConverter.ConvertToken(bodytwitter);
                 bodypropCount++;
             }
 
@@ -901,47 +901,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (invoiceNumber != null)
-                callPayload.Queries["invoice_number"] = ExpressionConverter.Convert(invoiceNumber);
+                callPayload.Queries["invoice_number"] = CSharpExpressionConverter.ConvertO(invoiceNumber);
             if (itemName != null)
-                callPayload.Queries["item_name"] = ExpressionConverter.Convert(itemName);
+                callPayload.Queries["item_name"] = CSharpExpressionConverter.ConvertO(itemName);
             if (itemId != null)
-                callPayload.Queries["item_id"] = ExpressionConverter.Convert(itemId);
+                callPayload.Queries["item_id"] = CSharpExpressionConverter.ConvertO(itemId);
             if (itemDescription != null)
-                callPayload.Queries["item_description"] = ExpressionConverter.Convert(itemDescription);
+                callPayload.Queries["item_description"] = CSharpExpressionConverter.ConvertO(itemDescription);
             if (referenceNumber != null)
-                callPayload.Queries["reference_number"] = ExpressionConverter.Convert(referenceNumber);
+                callPayload.Queries["reference_number"] = CSharpExpressionConverter.ConvertO(referenceNumber);
             if (customerName != null)
-                callPayload.Queries["customer_name"] = ExpressionConverter.Convert(customerName);
+                callPayload.Queries["customer_name"] = CSharpExpressionConverter.ConvertO(customerName);
             if (recurringInvoiceId != null)
-                callPayload.Queries["recurring_invoice_id"] = ExpressionConverter.Convert(recurringInvoiceId);
+                callPayload.Queries["recurring_invoice_id"] = CSharpExpressionConverter.ConvertO(recurringInvoiceId);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (total != null)
-                callPayload.Queries["total"] = ExpressionConverter.Convert(total);
+                callPayload.Queries["total"] = CSharpExpressionConverter.ConvertO(total);
             if (balance != null)
-                callPayload.Queries["balance"] = ExpressionConverter.Convert(balance);
+                callPayload.Queries["balance"] = CSharpExpressionConverter.ConvertO(balance);
             if (customField != null)
-                callPayload.Queries["custom_field"] = ExpressionConverter.Convert(customField);
+                callPayload.Queries["custom_field"] = CSharpExpressionConverter.ConvertO(customField);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (dueDate != null)
-                callPayload.Queries["due_date"] = ExpressionConverter.Convert(dueDate);
+                callPayload.Queries["due_date"] = CSharpExpressionConverter.ConvertO(dueDate);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (customerId != null)
-                callPayload.Queries["customer_id"] = ExpressionConverter.Convert(customerId);
+                callPayload.Queries["customer_id"] = CSharpExpressionConverter.ConvertO(customerId);
             if (filterBy != null)
-                callPayload.Queries["filter_by"] = ExpressionConverter.Convert(filterBy);
+                callPayload.Queries["filter_by"] = CSharpExpressionConverter.Convert(filterBy);
             if (searchText != null)
-                callPayload.Queries["search_text"] = ExpressionConverter.Convert(searchText);
+                callPayload.Queries["search_text"] = CSharpExpressionConverter.ConvertO(searchText);
             if (sortColumn != null)
-                callPayload.Queries["sort_column"] = ExpressionConverter.Convert(sortColumn);
+                callPayload.Queries["sort_column"] = CSharpExpressionConverter.Convert(sortColumn);
             if (zcrmPotentialId != null)
-                callPayload.Queries["zcrm_potential_id"] = ExpressionConverter.Convert(zcrmPotentialId);
+                callPayload.Queries["zcrm_potential_id"] = CSharpExpressionConverter.ConvertO(zcrmPotentialId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<InvoicesGetResponse>(callPayload);
         }
 
@@ -952,164 +952,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (send != null)
-                callPayload.Queries["send"] = ExpressionConverter.Convert(send);
+                callPayload.Queries["send"] = CSharpExpressionConverter.ConvertO(send);
             if (ignoreAutoNumberGeneration != null)
-                callPayload.Queries["ignore_auto_number_generation"] = ExpressionConverter.Convert(ignoreAutoNumberGeneration);
+                callPayload.Queries["ignore_auto_number_generation"] = CSharpExpressionConverter.ConvertO(ignoreAutoNumberGeneration);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycustomerId != null)
             {
-                body["customer_id"] = ExpressionConverter.ConvertO(bodycustomerId);
+                body["customer_id"] = CSharpExpressionConverter.ConvertToken(bodycustomerId);
                 bodypropCount++;
             }
 
             if (bodycontactPersons != null)
             {
-                body["contact_persons"] = ExpressionConverter.ConvertO(bodycontactPersons);
+                body["contact_persons"] = CSharpExpressionConverter.ConvertToken(bodycontactPersons);
                 bodypropCount++;
             }
 
             if (bodyinvoiceNumber != null)
             {
-                body["invoice_number"] = ExpressionConverter.ConvertO(bodyinvoiceNumber);
+                body["invoice_number"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceNumber);
                 bodypropCount++;
             }
 
             if (bodyreferenceNumber != null)
             {
-                body["reference_number"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
+                body["reference_number"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
                 bodypropCount++;
             }
 
             if (bodyplaceOfSupply != null)
             {
-                body["place_of_supply"] = ExpressionConverter.ConvertO(bodyplaceOfSupply);
+                body["place_of_supply"] = CSharpExpressionConverter.ConvertToken(bodyplaceOfSupply);
                 bodypropCount++;
             }
 
             if (bodyvatTreatment != null)
             {
-                body["vat_treatment"] = ExpressionConverter.ConvertO(bodyvatTreatment);
+                body["vat_treatment"] = CSharpExpressionConverter.ConvertToken(bodyvatTreatment);
                 bodypropCount++;
             }
 
             if (bodygstTreatment != null)
             {
-                body["gst_treatment"] = ExpressionConverter.ConvertO(bodygstTreatment);
+                body["gst_treatment"] = CSharpExpressionConverter.ConvertToken(bodygstTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxTreatment != null)
             {
-                body["tax_treatment"] = ExpressionConverter.ConvertO(bodytaxTreatment);
+                body["tax_treatment"] = CSharpExpressionConverter.ConvertToken(bodytaxTreatment);
                 bodypropCount++;
             }
 
             if (bodycfdiUsage != null)
             {
-                body["cfdi_usage"] = ExpressionConverter.ConvertO(bodycfdiUsage);
+                body["cfdi_usage"] = CSharpExpressionConverter.ConvertToken(bodycfdiUsage);
                 bodypropCount++;
             }
 
             if (bodygstNo != null)
             {
-                body["gst_no"] = ExpressionConverter.ConvertO(bodygstNo);
+                body["gst_no"] = CSharpExpressionConverter.ConvertToken(bodygstNo);
                 bodypropCount++;
             }
 
             if (bodytemplateId != null)
             {
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
             if (bodypaymentTerms != null)
             {
-                body["payment_terms"] = ExpressionConverter.ConvertO(bodypaymentTerms);
+                body["payment_terms"] = CSharpExpressionConverter.ConvertToken(bodypaymentTerms);
                 bodypropCount++;
             }
 
             if (bodypaymentTermsLabel != null)
             {
-                body["payment_terms_label"] = ExpressionConverter.ConvertO(bodypaymentTermsLabel);
+                body["payment_terms_label"] = CSharpExpressionConverter.ConvertToken(bodypaymentTermsLabel);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["due_date"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodydiscount != null)
             {
-                body["discount"] = ExpressionConverter.ConvertO(bodydiscount);
+                body["discount"] = CSharpExpressionConverter.ConvertToken(bodydiscount);
                 bodypropCount++;
             }
 
             if (bodyisDiscountBeforeTax != null)
             {
-                body["is_discount_before_tax"] = ExpressionConverter.ConvertO(bodyisDiscountBeforeTax);
+                body["is_discount_before_tax"] = CSharpExpressionConverter.ConvertToken(bodyisDiscountBeforeTax);
                 bodypropCount++;
             }
 
             if (bodydiscountType != null)
             {
-                body["discount_type"] = ExpressionConverter.ConvertO(bodydiscountType);
+                body["discount_type"] = CSharpExpressionConverter.ConvertToken(bodydiscountType);
                 bodypropCount++;
             }
 
             if (bodyisInclusiveTax != null)
             {
-                body["is_inclusive_tax"] = ExpressionConverter.ConvertO(bodyisInclusiveTax);
+                body["is_inclusive_tax"] = CSharpExpressionConverter.ConvertToken(bodyisInclusiveTax);
                 bodypropCount++;
             }
 
             if (bodyexchangeRate != null)
             {
-                body["exchange_rate"] = ExpressionConverter.ConvertO(bodyexchangeRate);
+                body["exchange_rate"] = CSharpExpressionConverter.ConvertToken(bodyexchangeRate);
                 bodypropCount++;
             }
 
             if (bodyrecurringInvoiceId != null)
             {
-                body["recurring_invoice_id"] = ExpressionConverter.ConvertO(bodyrecurringInvoiceId);
+                body["recurring_invoice_id"] = CSharpExpressionConverter.ConvertToken(bodyrecurringInvoiceId);
                 bodypropCount++;
             }
 
             if (bodyinvoicedEstimateId != null)
             {
-                body["invoiced_estimate_id"] = ExpressionConverter.ConvertO(bodyinvoicedEstimateId);
+                body["invoiced_estimate_id"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedEstimateId);
                 bodypropCount++;
             }
 
             if (bodysalespersonName != null)
             {
-                body["salesperson_name"] = ExpressionConverter.ConvertO(bodysalespersonName);
+                body["salesperson_name"] = CSharpExpressionConverter.ConvertToken(bodysalespersonName);
                 bodypropCount++;
             }
 
             if (bodycustomFields != null)
             {
-                body["custom_fields"] = ExpressionConverter.ConvertO(bodycustomFields);
+                body["custom_fields"] = CSharpExpressionConverter.ConvertToken(bodycustomFields);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodylineItems != null)
             {
-                body["line_items"] = ExpressionConverter.ConvertO(bodylineItems);
+                body["line_items"] = CSharpExpressionConverter.ConvertToken(bodylineItems);
                 bodypropCount++;
             }
 
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var paymentOptionsObjectpropCount = 0;
             if (bodypaymentOptionspaymentGateways != null)
             {
-                paymentOptionsObject["payment_gateways"] = ExpressionConverter.ConvertO(bodypaymentOptionspaymentGateways);
+                paymentOptionsObject["payment_gateways"] = CSharpExpressionConverter.ConvertToken(bodypaymentOptionspaymentGateways);
                 paymentOptionsObjectpropCount++;
             }
 
@@ -1129,85 +1129,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodyallowPartialPayments != null)
             {
-                body["allow_partial_payments"] = ExpressionConverter.ConvertO(bodyallowPartialPayments);
+                body["allow_partial_payments"] = CSharpExpressionConverter.ConvertToken(bodyallowPartialPayments);
                 bodypropCount++;
             }
 
             if (bodycustomBody != null)
             {
-                body["custom_body"] = ExpressionConverter.ConvertO(bodycustomBody);
+                body["custom_body"] = CSharpExpressionConverter.ConvertToken(bodycustomBody);
                 bodypropCount++;
             }
 
             if (bodycustomSubject != null)
             {
-                body["custom_subject"] = ExpressionConverter.ConvertO(bodycustomSubject);
+                body["custom_subject"] = CSharpExpressionConverter.ConvertToken(bodycustomSubject);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyterms != null)
             {
-                body["terms"] = ExpressionConverter.ConvertO(bodyterms);
+                body["terms"] = CSharpExpressionConverter.ConvertToken(bodyterms);
                 bodypropCount++;
             }
 
             if (bodyshippingCharge != null)
             {
-                body["shipping_charge"] = ExpressionConverter.ConvertO(bodyshippingCharge);
+                body["shipping_charge"] = CSharpExpressionConverter.ConvertToken(bodyshippingCharge);
                 bodypropCount++;
             }
 
             if (bodyadjustment != null)
             {
-                body["adjustment"] = ExpressionConverter.ConvertO(bodyadjustment);
+                body["adjustment"] = CSharpExpressionConverter.ConvertToken(bodyadjustment);
                 bodypropCount++;
             }
 
             if (bodyadjustmentDescription != null)
             {
-                body["adjustment_description"] = ExpressionConverter.ConvertO(bodyadjustmentDescription);
+                body["adjustment_description"] = CSharpExpressionConverter.ConvertToken(bodyadjustmentDescription);
                 bodypropCount++;
             }
 
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityId != null)
             {
-                body["tax_authority_id"] = ExpressionConverter.ConvertO(bodytaxAuthorityId);
+                body["tax_authority_id"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityId);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionId != null)
             {
-                body["tax_exemption_id"] = ExpressionConverter.ConvertO(bodytaxExemptionId);
+                body["tax_exemption_id"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionId);
                 bodypropCount++;
             }
 
             if (bodyavataxUseCode != null)
             {
-                body["avatax_use_code"] = ExpressionConverter.ConvertO(bodyavataxUseCode);
+                body["avatax_use_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxUseCode);
                 bodypropCount++;
             }
 
             if (bodyavataxTaxCode != null)
             {
-                body["avatax_tax_code"] = ExpressionConverter.ConvertO(bodyavataxTaxCode);
+                body["avatax_tax_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxTaxCode);
                 bodypropCount++;
             }
 
             if (bodyavataxExemptNo != null)
             {
-                body["avatax_exempt_no"] = ExpressionConverter.ConvertO(bodyavataxExemptNo);
+                body["avatax_exempt_no"] = CSharpExpressionConverter.ConvertToken(bodyavataxExemptNo);
                 bodypropCount++;
             }
 
@@ -1222,7 +1222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoiceGetResponse> InvoiceGet(Expression<Func<string>> invoiceId)
         {
-            var apiCallPath = String.Format("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(invoiceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<InvoiceGetResponse>(callPayload);
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoiceDeleteResponse> InvoiceDelete(Expression<Func<string>> invoiceId)
         {
-            var apiCallPath = String.Format("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(invoiceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<InvoiceDeleteResponse>(callPayload);
@@ -1240,164 +1240,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoicePutResponse> InvoicePut(Expression<Func<string>> invoiceId, Expression<Func<string>> bodycustomerId = null, Expression<Func<int[]>> bodycontactPersons = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<string>> bodyplaceOfSupply = null, Expression<Func<string>> bodyvatTreatment = null, Expression<Func<string>> bodygstTreatment = null, Expression<Func<string>> bodytaxTreatment = null, Expression<Func<string>> bodycfdiUsage = null, Expression<Func<string>> bodygstNo = null, Expression<Func<string>> bodytemplateId = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodypaymentTerms = null, Expression<Func<string>> bodypaymentTermsLabel = null, Expression<Func<string>> bodydueDate = null, Expression<Func<double>> bodydiscount = null, Expression<Func<bool>> bodyisDiscountBeforeTax = null, Expression<Func<string>> bodydiscountType = null, Expression<Func<bool>> bodyisInclusiveTax = null, Expression<Func<double>> bodyexchangeRate = null, Expression<Func<string>> bodyrecurringInvoiceId = null, Expression<Func<string>> bodyinvoicedEstimateId = null, Expression<Func<string>> bodysalespersonName = null, Expression<Func<bodycustomFieldsInputItem22[]>> bodycustomFields = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<bodylineItemsInputItem[]>> bodylineItems = null, Expression<Func<bodypaymentOptionspaymentGatewaysInputItem[]>> bodypaymentOptionspaymentGateways = null, Expression<Func<bool>> bodyallowPartialPayments = null, Expression<Func<string>> bodycustomBody = null, Expression<Func<string>> bodycustomSubject = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyterms = null, Expression<Func<double>> bodyshippingCharge = null, Expression<Func<double>> bodyadjustment = null, Expression<Func<string>> bodyadjustmentDescription = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodytaxAuthorityId = null, Expression<Func<string>> bodytaxExemptionId = null, Expression<Func<string>> bodyavataxUseCode = null, Expression<Func<string>> bodyavataxTaxCode = null, Expression<Func<string>> bodyavataxExemptNo = null)
         {
-            var apiCallPath = String.Format("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(invoiceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycustomerId != null)
             {
-                body["customer_id"] = ExpressionConverter.ConvertO(bodycustomerId);
+                body["customer_id"] = CSharpExpressionConverter.ConvertToken(bodycustomerId);
                 bodypropCount++;
             }
 
             if (bodycontactPersons != null)
             {
-                body["contact_persons"] = ExpressionConverter.ConvertO(bodycontactPersons);
+                body["contact_persons"] = CSharpExpressionConverter.ConvertToken(bodycontactPersons);
                 bodypropCount++;
             }
 
             if (bodyinvoiceNumber != null)
             {
-                body["invoice_number"] = ExpressionConverter.ConvertO(bodyinvoiceNumber);
+                body["invoice_number"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceNumber);
                 bodypropCount++;
             }
 
             if (bodyreferenceNumber != null)
             {
-                body["reference_number"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
+                body["reference_number"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
                 bodypropCount++;
             }
 
             if (bodyplaceOfSupply != null)
             {
-                body["place_of_supply"] = ExpressionConverter.ConvertO(bodyplaceOfSupply);
+                body["place_of_supply"] = CSharpExpressionConverter.ConvertToken(bodyplaceOfSupply);
                 bodypropCount++;
             }
 
             if (bodyvatTreatment != null)
             {
-                body["vat_treatment"] = ExpressionConverter.ConvertO(bodyvatTreatment);
+                body["vat_treatment"] = CSharpExpressionConverter.ConvertToken(bodyvatTreatment);
                 bodypropCount++;
             }
 
             if (bodygstTreatment != null)
             {
-                body["gst_treatment"] = ExpressionConverter.ConvertO(bodygstTreatment);
+                body["gst_treatment"] = CSharpExpressionConverter.ConvertToken(bodygstTreatment);
                 bodypropCount++;
             }
 
             if (bodytaxTreatment != null)
             {
-                body["tax_treatment"] = ExpressionConverter.ConvertO(bodytaxTreatment);
+                body["tax_treatment"] = CSharpExpressionConverter.ConvertToken(bodytaxTreatment);
                 bodypropCount++;
             }
 
             if (bodycfdiUsage != null)
             {
-                body["cfdi_usage"] = ExpressionConverter.ConvertO(bodycfdiUsage);
+                body["cfdi_usage"] = CSharpExpressionConverter.ConvertToken(bodycfdiUsage);
                 bodypropCount++;
             }
 
             if (bodygstNo != null)
             {
-                body["gst_no"] = ExpressionConverter.ConvertO(bodygstNo);
+                body["gst_no"] = CSharpExpressionConverter.ConvertToken(bodygstNo);
                 bodypropCount++;
             }
 
             if (bodytemplateId != null)
             {
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
             if (bodypaymentTerms != null)
             {
-                body["payment_terms"] = ExpressionConverter.ConvertO(bodypaymentTerms);
+                body["payment_terms"] = CSharpExpressionConverter.ConvertToken(bodypaymentTerms);
                 bodypropCount++;
             }
 
             if (bodypaymentTermsLabel != null)
             {
-                body["payment_terms_label"] = ExpressionConverter.ConvertO(bodypaymentTermsLabel);
+                body["payment_terms_label"] = CSharpExpressionConverter.ConvertToken(bodypaymentTermsLabel);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["due_date"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodydiscount != null)
             {
-                body["discount"] = ExpressionConverter.ConvertO(bodydiscount);
+                body["discount"] = CSharpExpressionConverter.ConvertToken(bodydiscount);
                 bodypropCount++;
             }
 
             if (bodyisDiscountBeforeTax != null)
             {
-                body["is_discount_before_tax"] = ExpressionConverter.ConvertO(bodyisDiscountBeforeTax);
+                body["is_discount_before_tax"] = CSharpExpressionConverter.ConvertToken(bodyisDiscountBeforeTax);
                 bodypropCount++;
             }
 
             if (bodydiscountType != null)
             {
-                body["discount_type"] = ExpressionConverter.ConvertO(bodydiscountType);
+                body["discount_type"] = CSharpExpressionConverter.ConvertToken(bodydiscountType);
                 bodypropCount++;
             }
 
             if (bodyisInclusiveTax != null)
             {
-                body["is_inclusive_tax"] = ExpressionConverter.ConvertO(bodyisInclusiveTax);
+                body["is_inclusive_tax"] = CSharpExpressionConverter.ConvertToken(bodyisInclusiveTax);
                 bodypropCount++;
             }
 
             if (bodyexchangeRate != null)
             {
-                body["exchange_rate"] = ExpressionConverter.ConvertO(bodyexchangeRate);
+                body["exchange_rate"] = CSharpExpressionConverter.ConvertToken(bodyexchangeRate);
                 bodypropCount++;
             }
 
             if (bodyrecurringInvoiceId != null)
             {
-                body["recurring_invoice_id"] = ExpressionConverter.ConvertO(bodyrecurringInvoiceId);
+                body["recurring_invoice_id"] = CSharpExpressionConverter.ConvertToken(bodyrecurringInvoiceId);
                 bodypropCount++;
             }
 
             if (bodyinvoicedEstimateId != null)
             {
-                body["invoiced_estimate_id"] = ExpressionConverter.ConvertO(bodyinvoicedEstimateId);
+                body["invoiced_estimate_id"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedEstimateId);
                 bodypropCount++;
             }
 
             if (bodysalespersonName != null)
             {
-                body["salesperson_name"] = ExpressionConverter.ConvertO(bodysalespersonName);
+                body["salesperson_name"] = CSharpExpressionConverter.ConvertToken(bodysalespersonName);
                 bodypropCount++;
             }
 
             if (bodycustomFields != null)
             {
-                body["custom_fields"] = ExpressionConverter.ConvertO(bodycustomFields);
+                body["custom_fields"] = CSharpExpressionConverter.ConvertToken(bodycustomFields);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodylineItems != null)
             {
-                body["line_items"] = ExpressionConverter.ConvertO(bodylineItems);
+                body["line_items"] = CSharpExpressionConverter.ConvertToken(bodylineItems);
                 bodypropCount++;
             }
 
@@ -1405,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var paymentOptionsObjectpropCount = 0;
             if (bodypaymentOptionspaymentGateways != null)
             {
-                paymentOptionsObject["payment_gateways"] = ExpressionConverter.ConvertO(bodypaymentOptionspaymentGateways);
+                paymentOptionsObject["payment_gateways"] = CSharpExpressionConverter.ConvertToken(bodypaymentOptionspaymentGateways);
                 paymentOptionsObjectpropCount++;
             }
 
@@ -1417,85 +1417,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
             if (bodyallowPartialPayments != null)
             {
-                body["allow_partial_payments"] = ExpressionConverter.ConvertO(bodyallowPartialPayments);
+                body["allow_partial_payments"] = CSharpExpressionConverter.ConvertToken(bodyallowPartialPayments);
                 bodypropCount++;
             }
 
             if (bodycustomBody != null)
             {
-                body["custom_body"] = ExpressionConverter.ConvertO(bodycustomBody);
+                body["custom_body"] = CSharpExpressionConverter.ConvertToken(bodycustomBody);
                 bodypropCount++;
             }
 
             if (bodycustomSubject != null)
             {
-                body["custom_subject"] = ExpressionConverter.ConvertO(bodycustomSubject);
+                body["custom_subject"] = CSharpExpressionConverter.ConvertToken(bodycustomSubject);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyterms != null)
             {
-                body["terms"] = ExpressionConverter.ConvertO(bodyterms);
+                body["terms"] = CSharpExpressionConverter.ConvertToken(bodyterms);
                 bodypropCount++;
             }
 
             if (bodyshippingCharge != null)
             {
-                body["shipping_charge"] = ExpressionConverter.ConvertO(bodyshippingCharge);
+                body["shipping_charge"] = CSharpExpressionConverter.ConvertToken(bodyshippingCharge);
                 bodypropCount++;
             }
 
             if (bodyadjustment != null)
             {
-                body["adjustment"] = ExpressionConverter.ConvertO(bodyadjustment);
+                body["adjustment"] = CSharpExpressionConverter.ConvertToken(bodyadjustment);
                 bodypropCount++;
             }
 
             if (bodyadjustmentDescription != null)
             {
-                body["adjustment_description"] = ExpressionConverter.ConvertO(bodyadjustmentDescription);
+                body["adjustment_description"] = CSharpExpressionConverter.ConvertToken(bodyadjustmentDescription);
                 bodypropCount++;
             }
 
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
             if (bodytaxAuthorityId != null)
             {
-                body["tax_authority_id"] = ExpressionConverter.ConvertO(bodytaxAuthorityId);
+                body["tax_authority_id"] = CSharpExpressionConverter.ConvertToken(bodytaxAuthorityId);
                 bodypropCount++;
             }
 
             if (bodytaxExemptionId != null)
             {
-                body["tax_exemption_id"] = ExpressionConverter.ConvertO(bodytaxExemptionId);
+                body["tax_exemption_id"] = CSharpExpressionConverter.ConvertToken(bodytaxExemptionId);
                 bodypropCount++;
             }
 
             if (bodyavataxUseCode != null)
             {
-                body["avatax_use_code"] = ExpressionConverter.ConvertO(bodyavataxUseCode);
+                body["avatax_use_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxUseCode);
                 bodypropCount++;
             }
 
             if (bodyavataxTaxCode != null)
             {
-                body["avatax_tax_code"] = ExpressionConverter.ConvertO(bodyavataxTaxCode);
+                body["avatax_tax_code"] = CSharpExpressionConverter.ConvertToken(bodyavataxTaxCode);
                 bodypropCount++;
             }
 
             if (bodyavataxExemptNo != null)
             {
-                body["avatax_exempt_no"] = ExpressionConverter.ConvertO(bodyavataxExemptNo);
+                body["avatax_exempt_no"] = CSharpExpressionConverter.ConvertToken(bodyavataxExemptNo);
                 bodypropCount++;
             }
 

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
         public IBodyWorkflowAction<ItemsList> GetAllSalesOrder(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> filter = null)
         {
-            var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instancename, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(salesorderservice, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<ItemsList>(callPayload);
         }
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
         public IBodyWorkflowAction<ItemsList> GetAllSalesLine(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> ordernumber, Expression<Func<string>> saleslineservice)
         {
-            var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1), ExpressionConverter.ConvertWithUrlEncoding(ordernumber, 1), ExpressionConverter.ConvertWithUrlEncoding(saleslineservice, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instancename, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(salesorderservice, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ordernumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(saleslineservice, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");

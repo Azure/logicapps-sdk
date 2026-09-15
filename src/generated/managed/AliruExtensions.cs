@@ -20,36 +20,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Headline"] = ExpressionConverter.ConvertO(bodyheadline);
+            body["Headline"] = CSharpExpressionConverter.ConvertToken(bodyheadline);
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyuRL != null)
             {
-                body["URL"] = ExpressionConverter.ConvertO(bodyuRL);
+                body["URL"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
                 bodypropCount++;
             }
 
             if (bodypictureURL != null)
             {
-                body["PictureURL"] = ExpressionConverter.ConvertO(bodypictureURL);
+                body["PictureURL"] = CSharpExpressionConverter.ConvertToken(bodypictureURL);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["Tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["Tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodytimeToLiveInDays != null)
             {
-                body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodytimeToLiveInDays);
+                body["TimeToLiveInDays"] = CSharpExpressionConverter.ConvertToken(bodytimeToLiveInDays);
                 bodypropCount++;
             }
 
             if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["UserId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["UserId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 

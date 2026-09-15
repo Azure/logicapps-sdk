@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
             {
                 if (bodycommented != null)
                 {
-                    body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                    body["commented"] = CSharpExpressionConverter.ConvertToken(bodycommented);
                     bodypropCount++;
                 }
 
@@ -36,18 +36,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
             }
 
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+            body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
             bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
+            body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                 bodypropCount++;
             }
 
             if (bodycontext != null)
             {
-                body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                body["context"] = CSharpExpressionConverter.ConvertToken(bodycontext);
                 bodypropCount++;
             }
 

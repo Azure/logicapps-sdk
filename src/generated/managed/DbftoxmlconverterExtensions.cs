@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["conten_type"] = ExpressionConverter.ConvertO(bodycontenType);
+            body["conten_type"] = CSharpExpressionConverter.ConvertToken(bodycontenType);
             bodypropCount++;
-            body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+            body["encoding"] = CSharpExpressionConverter.Convert(bodyencoding);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

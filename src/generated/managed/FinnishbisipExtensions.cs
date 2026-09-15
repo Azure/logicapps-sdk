@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
         {
-            var apiCallPath = String.Format("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(businessId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Queries["maxResults"] = Convert.ToString(10);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             callPayload.Queries["totalResults"] = Convert.ToString(true);
             if (totalResults != null)
-                callPayload.Queries["totalResults"] = ExpressionConverter.Convert(totalResults);
+                callPayload.Queries["totalResults"] = CSharpExpressionConverter.ConvertO(totalResults);
             return new ApiConnectionAction<CompanySearchResponse>(callPayload);
         }
     }

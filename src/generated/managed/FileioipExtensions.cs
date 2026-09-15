@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<FileListResponse>(callPayload);
         }
 
@@ -38,25 +38,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
             var bodypropCount = 0;
             if (bodyfile != null)
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
                 bodypropCount++;
             }
 
             if (bodyexpires != null)
             {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                body["expires"] = CSharpExpressionConverter.ConvertToken(bodyexpires);
                 bodypropCount++;
             }
 
             if (bodymaxDownloads != null)
             {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
+                body["maxDownloads"] = CSharpExpressionConverter.ConvertToken(bodymaxDownloads);
                 bodypropCount++;
             }
 
             if (bodyautoDelete != null)
             {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
+                body["autoDelete"] = CSharpExpressionConverter.ConvertToken(bodyautoDelete);
                 bodypropCount++;
             }
 
@@ -71,32 +71,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUpdateResponse> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfile != null)
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
                 bodypropCount++;
             }
 
             if (bodyexpires != null)
             {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                body["expires"] = CSharpExpressionConverter.ConvertToken(bodyexpires);
                 bodypropCount++;
             }
 
             if (bodymaxDownloads != null)
             {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
+                body["maxDownloads"] = CSharpExpressionConverter.ConvertToken(bodymaxDownloads);
                 bodypropCount++;
             }
 
             if (bodyautoDelete != null)
             {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
+                body["autoDelete"] = CSharpExpressionConverter.ConvertToken(bodyautoDelete);
                 bodypropCount++;
             }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FileDeleteResponse>(callPayload);

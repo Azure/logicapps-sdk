@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<TodoList> GetToDoList(Expression<Func<string>> folderId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TodoList>(callPayload);
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<TodoList> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IWorkflowAction DeleteToDoList(Expression<Func<string>> folderId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -77,18 +77,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<ToDo[]> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ToDo[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<ToDo> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var dueDateTimeObjectpropCount = 0;
             if (bodydueDateTimedueDate != null)
             {
-                dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                dueDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTimedueDate);
                 dueDateTimeObjectpropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var reminderDateTimeObjectpropCount = 0;
             if (bodyreminderDateTimereminderDateTime != null)
             {
-                reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
                 reminderDateTimeObjectpropCount++;
             }
 
@@ -127,15 +127,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
             if (bodyimportance != null)
             {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             bodyObjectpropCount++;
             if (bodybodycontent != null)
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodycontent);
                 bodyObjectpropCount++;
             }
 
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
             if (bodyisReminderOn != null)
             {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
                 bodypropCount++;
             }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<ToDo> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ToDo>(callPayload);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<ToDo> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var dueDateTimeObjectpropCount = 0;
             if (bodydueDateTimedueDate != null)
             {
-                dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                dueDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTimedueDate);
                 dueDateTimeObjectpropCount++;
             }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var reminderDateTimeObjectpropCount = 0;
             if (bodyreminderDateTimereminderDateTime != null)
             {
-                reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
                 reminderDateTimeObjectpropCount++;
             }
 
@@ -220,19 +220,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
             if (bodyimportance != null)
             {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             bodyObjectpropCount++;
             if (bodybodycontent != null)
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodycontent);
                 bodyObjectpropCount++;
             }
 
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
             if (bodyisReminderOn != null)
             {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
                 bodypropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IWorkflowAction DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
     {
         public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/onNewToDoInFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
         public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/onUpdateToDoInFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);

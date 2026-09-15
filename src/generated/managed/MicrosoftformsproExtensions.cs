@@ -17,19 +17,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             var apiCallPath = "/api/sendmail/flow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            callPayload.Queries["FormId"] = ExpressionConverter.Convert(formId);
-            callPayload.Queries["EmailTemplateId"] = ExpressionConverter.Convert(emailTemplateId);
+            callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
+            callPayload.Queries["FormId"] = CSharpExpressionConverter.ConvertO(formId);
+            callPayload.Queries["EmailTemplateId"] = CSharpExpressionConverter.ConvertO(emailTemplateId);
             if (regarding != null)
-                callPayload.Queries["Regarding"] = ExpressionConverter.Convert(regarding);
+                callPayload.Queries["Regarding"] = CSharpExpressionConverter.ConvertO(regarding);
             if (recipientInfo != null)
-                callPayload.Queries["RecipientInfo"] = ExpressionConverter.Convert(recipientInfo);
+                callPayload.Queries["RecipientInfo"] = CSharpExpressionConverter.ConvertO(recipientInfo);
             if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["firstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
-            callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Queries["lastName"] = CSharpExpressionConverter.ConvertO(lastName);
+            callPayload.Headers["ProjectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -39,21 +39,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             var apiCallPath = "/api/createinvite";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FormId"] = ExpressionConverter.Convert(formId);
+            callPayload.Queries["FormId"] = CSharpExpressionConverter.ConvertO(formId);
             if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["firstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["lastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (regarding != null)
-                callPayload.Queries["Regarding"] = ExpressionConverter.Convert(regarding);
+                callPayload.Queries["Regarding"] = CSharpExpressionConverter.ConvertO(regarding);
             if (recipientInfo != null)
-                callPayload.Queries["RecipientInfo"] = ExpressionConverter.Convert(recipientInfo);
-            callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Queries["RecipientInfo"] = CSharpExpressionConverter.ConvertO(recipientInfo);
+            callPayload.Headers["ProjectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<CreateSurveyInviteResponse>(callPayload);
         }
     }

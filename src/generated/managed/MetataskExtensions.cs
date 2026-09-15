@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
             var conditionsObjectpropCount = 0;
             if (webhookRequestBodyconditionstemplate != null)
             {
-                conditionsObject["templateId"] = ExpressionConverter.ConvertO(webhookRequestBodyconditionstemplate);
+                conditionsObject["templateId"] = CSharpExpressionConverter.ConvertToken(webhookRequestBodyconditionstemplate);
                 conditionsObjectpropCount++;
             }
 

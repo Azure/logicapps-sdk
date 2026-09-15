@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["watermark_data"] = ExpressionConverter.ConvertO(inputDatawatermarkData);
+            inputData["watermark_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkData);
             if (inputDatafailOnError != null)
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             if (inputPdfDataremoveAnnotations != null)
             {
                 if (inputPdfDataremoveAnnotations != null)
                 {
-                    inputPdfData["remove_annotations"] = ExpressionConverter.ConvertO(inputPdfDataremoveAnnotations);
+                    inputPdfData["remove_annotations"] = CSharpExpressionConverter.Convert(inputPdfDataremoveAnnotations);
                     inputPdfDatapropCount++;
                 }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveBlankPages != null)
                 {
-                    inputPdfData["remove_blank_pages"] = ExpressionConverter.ConvertO(inputPdfDataremoveBlankPages);
+                    inputPdfData["remove_blank_pages"] = CSharpExpressionConverter.Convert(inputPdfDataremoveBlankPages);
                     inputPdfDatapropCount++;
                 }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveBookmarks != null)
                 {
-                    inputPdfData["remove_bookmarks"] = ExpressionConverter.ConvertO(inputPdfDataremoveBookmarks);
+                    inputPdfData["remove_bookmarks"] = CSharpExpressionConverter.Convert(inputPdfDataremoveBookmarks);
                     inputPdfDatapropCount++;
                 }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveEmbeddedFiles != null)
                 {
-                    inputPdfData["remove_embedded_files"] = ExpressionConverter.ConvertO(inputPdfDataremoveEmbeddedFiles);
+                    inputPdfData["remove_embedded_files"] = CSharpExpressionConverter.Convert(inputPdfDataremoveEmbeddedFiles);
                     inputPdfDatapropCount++;
                 }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveFormFields != null)
                 {
-                    inputPdfData["remove_form_fields"] = ExpressionConverter.ConvertO(inputPdfDataremoveFormFields);
+                    inputPdfData["remove_form_fields"] = CSharpExpressionConverter.Convert(inputPdfDataremoveFormFields);
                     inputPdfDatapropCount++;
                 }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveHyperlinks != null)
                 {
-                    inputPdfData["remove_hyperlinks"] = ExpressionConverter.ConvertO(inputPdfDataremoveHyperlinks);
+                    inputPdfData["remove_hyperlinks"] = CSharpExpressionConverter.Convert(inputPdfDataremoveHyperlinks);
                     inputPdfDatapropCount++;
                 }
 
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveJavaScript != null)
                 {
-                    inputPdfData["remove_javascript"] = ExpressionConverter.ConvertO(inputPdfDataremoveJavaScript);
+                    inputPdfData["remove_javascript"] = CSharpExpressionConverter.Convert(inputPdfDataremoveJavaScript);
                     inputPdfDatapropCount++;
                 }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremoveMetadata != null)
                 {
-                    inputPdfData["remove_metadata"] = ExpressionConverter.ConvertO(inputPdfDataremoveMetadata);
+                    inputPdfData["remove_metadata"] = CSharpExpressionConverter.Convert(inputPdfDataremoveMetadata);
                     inputPdfDatapropCount++;
                 }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataremovePageThumbnails != null)
                 {
-                    inputPdfData["remove_page_thumbnails"] = ExpressionConverter.ConvertO(inputPdfDataremovePageThumbnails);
+                    inputPdfData["remove_page_thumbnails"] = CSharpExpressionConverter.Convert(inputPdfDataremovePageThumbnails);
                     inputPdfDatapropCount++;
                 }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatapackFonts != null)
                 {
-                    inputPdfData["pack_fonts"] = ExpressionConverter.ConvertO(inputPdfDatapackFonts);
+                    inputPdfData["pack_fonts"] = CSharpExpressionConverter.Convert(inputPdfDatapackFonts);
                     inputPdfDatapropCount++;
                 }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatapackDocument != null)
                 {
-                    inputPdfData["pack_document"] = ExpressionConverter.ConvertO(inputPdfDatapackDocument);
+                    inputPdfData["pack_document"] = CSharpExpressionConverter.Convert(inputPdfDatapackDocument);
                     inputPdfDatapropCount++;
                 }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatarecompressImages != null)
                 {
-                    inputPdfData["recompress_images"] = ExpressionConverter.ConvertO(inputPdfDatarecompressImages);
+                    inputPdfData["recompress_images"] = CSharpExpressionConverter.Convert(inputPdfDatarecompressImages);
                     inputPdfDatapropCount++;
                 }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataenableMRC != null)
                 {
-                    inputPdfData["enable_mrc"] = ExpressionConverter.ConvertO(inputPdfDataenableMRC);
+                    inputPdfData["enable_mrc"] = CSharpExpressionConverter.Convert(inputPdfDataenableMRC);
                     inputPdfDatapropCount++;
                 }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatadownscaleResolutionMRC != null)
                 {
-                    inputPdfData["downscale_resolution_mrc"] = ExpressionConverter.ConvertO(inputPdfDatadownscaleResolutionMRC);
+                    inputPdfData["downscale_resolution_mrc"] = CSharpExpressionConverter.ConvertToken(inputPdfDatadownscaleResolutionMRC);
                     inputPdfDatapropCount++;
                 }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatapreserveSmoothing != null)
                 {
-                    inputPdfData["preserve_smoothing"] = ExpressionConverter.ConvertO(inputPdfDatapreserveSmoothing);
+                    inputPdfData["preserve_smoothing"] = CSharpExpressionConverter.Convert(inputPdfDatapreserveSmoothing);
                     inputPdfDatapropCount++;
                 }
 
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataimageQuality != null)
                 {
-                    inputPdfData["image_quality"] = ExpressionConverter.ConvertO(inputPdfDataimageQuality);
+                    inputPdfData["image_quality"] = CSharpExpressionConverter.Convert(inputPdfDataimageQuality);
                     inputPdfDatapropCount++;
                 }
 
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatadownscaleImages != null)
                 {
-                    inputPdfData["downscale_images"] = ExpressionConverter.ConvertO(inputPdfDatadownscaleImages);
+                    inputPdfData["downscale_images"] = CSharpExpressionConverter.Convert(inputPdfDatadownscaleImages);
                     inputPdfDatapropCount++;
                 }
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatadownscaleResolution != null)
                 {
-                    inputPdfData["downscale_resolution"] = ExpressionConverter.ConvertO(inputPdfDatadownscaleResolution);
+                    inputPdfData["downscale_resolution"] = CSharpExpressionConverter.ConvertToken(inputPdfDatadownscaleResolution);
                     inputPdfDatapropCount++;
                 }
 
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataenableColorDetection != null)
                 {
-                    inputPdfData["enable_color_detection"] = ExpressionConverter.ConvertO(inputPdfDataenableColorDetection);
+                    inputPdfData["enable_color_detection"] = CSharpExpressionConverter.Convert(inputPdfDataenableColorDetection);
                     inputPdfDatapropCount++;
                 }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataenableCharRepair != null)
                 {
-                    inputPdfData["enable_char_repair"] = ExpressionConverter.ConvertO(inputPdfDataenableCharRepair);
+                    inputPdfData["enable_char_repair"] = CSharpExpressionConverter.Convert(inputPdfDataenableCharRepair);
                     inputPdfDatapropCount++;
                 }
 
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataenableJPEG2000 != null)
                 {
-                    inputPdfData["enable_jpeg2000"] = ExpressionConverter.ConvertO(inputPdfDataenableJPEG2000);
+                    inputPdfData["enable_jpeg2000"] = CSharpExpressionConverter.Convert(inputPdfDataenableJPEG2000);
                     inputPdfDatapropCount++;
                 }
 
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataenableJBIG2 != null)
                 {
-                    inputPdfData["enable_jbig2"] = ExpressionConverter.ConvertO(inputPdfDataenableJBIG2);
+                    inputPdfData["enable_jbig2"] = CSharpExpressionConverter.Convert(inputPdfDataenableJBIG2);
                     inputPdfDatapropCount++;
                 }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatajBIG2PMSThreshold != null)
                 {
-                    inputPdfData["jbig2_pms_threshold"] = ExpressionConverter.ConvertO(inputPdfDatajBIG2PMSThreshold);
+                    inputPdfData["jbig2_pms_threshold"] = CSharpExpressionConverter.ConvertToken(inputPdfDatajBIG2PMSThreshold);
                     inputPdfDatapropCount++;
                 }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputPdfDataoverrideSettings != null)
             {
-                inputPdfData["override_settings"] = ExpressionConverter.ConvertO(inputPdfDataoverrideSettings);
+                inputPdfData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
                 inputPdfDatapropCount++;
             }
 
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -494,9 +494,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -506,18 +506,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["output_format"] = ExpressionConverter.ConvertO(inputDataoutputFormat);
+            inputData["output_format"] = CSharpExpressionConverter.Convert(inputDataoutputFormat);
             inputData["copy_metadata"] = false;
             inputDatapropCount++;
             if (inputDataoverrideSettings != null)
             {
-                inputData["override_settings"] = ExpressionConverter.ConvertO(inputDataoverrideSettings);
+                inputData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputDataoverrideSettings);
                 inputDatapropCount++;
             }
 
             if (inputDatatemplateFileContent != null)
             {
-                inputData["template_file_content"] = ExpressionConverter.ConvertO(inputDatatemplateFileContent);
+                inputData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatatemplateFileContent);
                 inputDatapropCount++;
             }
 
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputCadData["use_async_pattern"] = false;
             inputCadDatapropCount++;
             inputCadDatapropCount++;
-            inputCadData["source_file_name"] = ExpressionConverter.ConvertO(inputCadDatasourceFileName);
+            inputCadData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -566,14 +566,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputCadDatapropCount++;
-            inputCadData["source_file_content"] = ExpressionConverter.ConvertO(inputCadDatasourceFileContent);
+            inputCadData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileContent);
             inputCadData["copy_metadata"] = false;
             inputCadDatapropCount++;
             if (inputCadDatapaperSize != null)
             {
                 if (inputCadDatapaperSize != null)
                 {
-                    inputCadData["paper_size"] = ExpressionConverter.ConvertO(inputCadDatapaperSize);
+                    inputCadData["paper_size"] = CSharpExpressionConverter.Convert(inputCadDatapaperSize);
                     inputCadDatapropCount++;
                 }
 
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputCadDatapaperSizeCustom != null)
             {
-                inputCadData["paper_size_custom"] = ExpressionConverter.ConvertO(inputCadDatapaperSizeCustom);
+                inputCadData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDatapaperSizeCustom);
                 inputCadDatapropCount++;
             }
 
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDatapageMargins != null)
                 {
-                    inputCadData["page_margins"] = ExpressionConverter.ConvertO(inputCadDatapageMargins);
+                    inputCadData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputCadDatapageMargins);
                     inputCadDatapropCount++;
                 }
 
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDatabackgroundColor != null)
                 {
-                    inputCadData["background_color"] = ExpressionConverter.ConvertO(inputCadDatabackgroundColor);
+                    inputCadData["background_color"] = CSharpExpressionConverter.ConvertToken(inputCadDatabackgroundColor);
                     inputCadDatapropCount++;
                 }
 
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDataforegroundColor != null)
                 {
-                    inputCadData["foreground_color"] = ExpressionConverter.ConvertO(inputCadDataforegroundColor);
+                    inputCadData["foreground_color"] = CSharpExpressionConverter.Convert(inputCadDataforegroundColor);
                     inputCadDatapropCount++;
                 }
 
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputCadDataforegroundColorCustom != null)
             {
-                inputCadData["foreground_color_custom"] = ExpressionConverter.ConvertO(inputCadDataforegroundColorCustom);
+                inputCadData["foreground_color_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDataforegroundColorCustom);
                 inputCadDatapropCount++;
             }
 
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDataemptyLayoutDetection != null)
                 {
-                    inputCadData["empty_layout_detection_mode"] = ExpressionConverter.ConvertO(inputCadDataemptyLayoutDetection);
+                    inputCadData["empty_layout_detection_mode"] = CSharpExpressionConverter.Convert(inputCadDataemptyLayoutDetection);
                     inputCadDatapropCount++;
                 }
 
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDatalayoutSortOrder != null)
                 {
-                    inputCadData["layout_sort_order"] = ExpressionConverter.ConvertO(inputCadDatalayoutSortOrder);
+                    inputCadData["layout_sort_order"] = CSharpExpressionConverter.Convert(inputCadDatalayoutSortOrder);
                     inputCadDatapropCount++;
                 }
 
@@ -679,19 +679,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputCadDatastartPage != null)
             {
-                inputCadData["start_page"] = ExpressionConverter.ConvertO(inputCadDatastartPage);
+                inputCadData["start_page"] = CSharpExpressionConverter.ConvertToken(inputCadDatastartPage);
                 inputCadDatapropCount++;
             }
 
             if (inputCadDataendPage != null)
             {
-                inputCadData["end_page"] = ExpressionConverter.ConvertO(inputCadDataendPage);
+                inputCadData["end_page"] = CSharpExpressionConverter.ConvertToken(inputCadDataendPage);
                 inputCadDatapropCount++;
             }
 
             if (inputCadDataoverrideSettings != null)
             {
-                inputCadData["override_settings"] = ExpressionConverter.ConvertO(inputCadDataoverrideSettings);
+                inputCadData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputCadDataoverrideSettings);
                 inputCadDatapropCount++;
             }
 
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputCadDatafailOnError != null)
                 {
-                    inputCadData["fail_on_error"] = ExpressionConverter.ConvertO(inputCadDatafailOnError);
+                    inputCadData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputCadDatafailOnError);
                     inputCadDatapropCount++;
                 }
 
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputEmailData["use_async_pattern"] = false;
             inputEmailDatapropCount++;
             inputEmailDatapropCount++;
-            inputEmailData["source_file_name"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileName);
+            inputEmailData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -740,14 +740,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputEmailDatapropCount++;
-            inputEmailData["source_file_content"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileContent);
+            inputEmailData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileContent);
             inputEmailData["copy_metadata"] = false;
             inputEmailDatapropCount++;
             if (inputEmailDataincludeAttachments != null)
             {
                 if (inputEmailDataincludeAttachments != null)
                 {
-                    inputEmailData["convert_attachments"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachments);
+                    inputEmailData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachments);
                     inputEmailDatapropCount++;
                 }
 
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputEmailDataattachmentAction != null)
             {
-                inputEmailData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputEmailDataattachmentAction);
+                inputEmailData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputEmailDataattachmentAction);
                 inputEmailDatapropCount++;
             }
 
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDataattachmentSummary != null)
                 {
-                    inputEmailData["display_attachment_summary"] = ExpressionConverter.ConvertO(inputEmailDataattachmentSummary);
+                    inputEmailData["display_attachment_summary"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentSummary);
                     inputEmailDatapropCount++;
                 }
 
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDataunsupportedAttachmentAction != null)
                 {
-                    inputEmailData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputEmailDataunsupportedAttachmentAction);
+                    inputEmailData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputEmailDataunsupportedAttachmentAction);
                     inputEmailDatapropCount++;
                 }
 
@@ -799,13 +799,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputEmailDataincludeAttachmentFilter != null)
             {
-                inputEmailData["include_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachmentFilter);
+                inputEmailData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachmentFilter);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataexcludeAttachmentFilter != null)
             {
-                inputEmailData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataexcludeAttachmentFilter);
+                inputEmailData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataexcludeAttachmentFilter);
                 inputEmailDatapropCount++;
             }
 
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDataviewportSize != null)
                 {
-                    inputEmailData["viewport_Size"] = ExpressionConverter.ConvertO(inputEmailDataviewportSize);
+                    inputEmailData["viewport_Size"] = CSharpExpressionConverter.ConvertToken(inputEmailDataviewportSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDatapaperSize != null)
                 {
-                    inputEmailData["paper_size"] = ExpressionConverter.ConvertO(inputEmailDatapaperSize);
+                    inputEmailData["paper_size"] = CSharpExpressionConverter.Convert(inputEmailDatapaperSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputEmailDatapaperSizeCustom != null)
             {
-                inputEmailData["paper_size_custom"] = ExpressionConverter.ConvertO(inputEmailDatapaperSizeCustom);
+                inputEmailData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapaperSizeCustom);
                 inputEmailDatapropCount++;
             }
 
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDatapageMargins != null)
                 {
-                    inputEmailData["page_margins"] = ExpressionConverter.ConvertO(inputEmailDatapageMargins);
+                    inputEmailData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapageMargins);
                     inputEmailDatapropCount++;
                 }
 
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputEmailDataattachmentErrors != null)
             {
-                inputEmailData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputEmailDataattachmentErrors);
+                inputEmailData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentErrors);
                 inputEmailDatapropCount++;
             }
 
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDataminImageSize != null)
                 {
-                    inputEmailData["minimum_image_attachment_dimension"] = ExpressionConverter.ConvertO(inputEmailDataminImageSize);
+                    inputEmailData["minimum_image_attachment_dimension"] = CSharpExpressionConverter.ConvertToken(inputEmailDataminImageSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -889,7 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDataofflineMode != null)
                 {
-                    inputEmailData["enable_offline_mode"] = ExpressionConverter.ConvertO(inputEmailDataofflineMode);
+                    inputEmailData["enable_offline_mode"] = CSharpExpressionConverter.ConvertToken(inputEmailDataofflineMode);
                     inputEmailDatapropCount++;
                 }
 
@@ -903,25 +903,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputEmailDatastartPage != null)
             {
-                inputEmailData["start_page"] = ExpressionConverter.ConvertO(inputEmailDatastartPage);
+                inputEmailData["start_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDatastartPage);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataendPage != null)
             {
-                inputEmailData["end_page"] = ExpressionConverter.ConvertO(inputEmailDataendPage);
+                inputEmailData["end_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDataendPage);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataconversionQuality != null)
             {
-                inputEmailData["quality"] = ExpressionConverter.ConvertO(inputEmailDataconversionQuality);
+                inputEmailData["quality"] = CSharpExpressionConverter.Convert(inputEmailDataconversionQuality);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataoverrideSettings != null)
             {
-                inputEmailData["override_settings"] = ExpressionConverter.ConvertO(inputEmailDataoverrideSettings);
+                inputEmailData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputEmailDataoverrideSettings);
                 inputEmailDatapropCount++;
             }
 
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputEmailDatafailOnError != null)
                 {
-                    inputEmailData["fail_on_error"] = ExpressionConverter.ConvertO(inputEmailDatafailOnError);
+                    inputEmailData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDatafailOnError);
                     inputEmailDatapropCount++;
                 }
 
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputExcelData["use_async_pattern"] = false;
             inputExcelDatapropCount++;
             inputExcelDatapropCount++;
-            inputExcelData["source_file_name"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileName);
+            inputExcelData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -970,14 +970,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputExcelDatapropCount++;
-            inputExcelData["source_file_content"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileContent);
+            inputExcelData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileContent);
             inputExcelDatapropCount++;
-            inputExcelData["output_format"] = ExpressionConverter.ConvertO(inputExcelDataoutputFormat);
+            inputExcelData["output_format"] = CSharpExpressionConverter.Convert(inputExcelDataoutputFormat);
             inputExcelData["copy_metadata"] = false;
             inputExcelDatapropCount++;
             if (inputExcelDatarange != null)
             {
-                inputExcelData["range"] = ExpressionConverter.ConvertO(inputExcelDatarange);
+                inputExcelData["range"] = CSharpExpressionConverter.Convert(inputExcelDatarange);
                 inputExcelDatapropCount++;
             }
 
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputExcelDatarevealHiddenRows != null)
                 {
-                    inputExcelData["unhide_all_rows"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenRows);
+                    inputExcelData["unhide_all_rows"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenRows);
                     inputExcelDatapropCount++;
                 }
 
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputExcelDatarevealHiddenColumns != null)
                 {
-                    inputExcelData["unhide_all_columns"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenColumns);
+                    inputExcelData["unhide_all_columns"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenColumns);
                     inputExcelDatapropCount++;
                 }
 
@@ -1015,37 +1015,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputExcelDatafitToPagesWide != null)
             {
-                inputExcelData["fit_to_pages_wide"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesWide);
+                inputExcelData["fit_to_pages_wide"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesWide);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDatafitToPagesTall != null)
             {
-                inputExcelData["fit_to_pages_tall"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesTall);
+                inputExcelData["fit_to_pages_tall"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesTall);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDatastartPage != null)
             {
-                inputExcelData["start_page"] = ExpressionConverter.ConvertO(inputExcelDatastartPage);
+                inputExcelData["start_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDatastartPage);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataendPage != null)
             {
-                inputExcelData["end_page"] = ExpressionConverter.ConvertO(inputExcelDataendPage);
+                inputExcelData["end_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDataendPage);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataquality != null)
             {
-                inputExcelData["quality"] = ExpressionConverter.ConvertO(inputExcelDataquality);
+                inputExcelData["quality"] = CSharpExpressionConverter.Convert(inputExcelDataquality);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataoverrideSettings != null)
             {
-                inputExcelData["override_settings"] = ExpressionConverter.ConvertO(inputExcelDataoverrideSettings);
+                inputExcelData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputExcelDataoverrideSettings);
                 inputExcelDatapropCount++;
             }
 
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputExcelDatafailOnError != null)
                 {
-                    inputExcelData["fail_on_error"] = ExpressionConverter.ConvertO(inputExcelDatafailOnError);
+                    inputExcelData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafailOnError);
                     inputExcelDatapropCount++;
                 }
 
@@ -1084,12 +1084,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_url_or_html"] = ExpressionConverter.ConvertO(inputDatasourceURLOrHTML);
+            inputData["source_url_or_html"] = CSharpExpressionConverter.ConvertToken(inputDatasourceURLOrHTML);
             if (inputDatapageOrientation != null)
             {
                 if (inputDatapageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatapageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatapageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatamediaType != null)
                 {
-                    inputData["media_type"] = ExpressionConverter.ConvertO(inputDatamediaType);
+                    inputData["media_type"] = CSharpExpressionConverter.Convert(inputDatamediaType);
                     inputDatapropCount++;
                 }
 
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataauthenticationType != null)
                 {
-                    inputData["authentication_type"] = ExpressionConverter.ConvertO(inputDataauthenticationType);
+                    inputData["authentication_type"] = CSharpExpressionConverter.Convert(inputDataauthenticationType);
                     inputDatapropCount++;
                 }
 
@@ -1135,25 +1135,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatauserName != null)
             {
-                inputData["username"] = ExpressionConverter.ConvertO(inputDatauserName);
+                inputData["username"] = CSharpExpressionConverter.ConvertToken(inputDatauserName);
                 inputDatapropCount++;
             }
 
             if (inputDatapassword != null)
             {
-                inputData["password"] = ExpressionConverter.ConvertO(inputDatapassword);
+                inputData["password"] = CSharpExpressionConverter.ConvertToken(inputDatapassword);
                 inputDatapropCount++;
             }
 
             if (inputDataviewportSize != null)
             {
-                inputData["viewport_size"] = ExpressionConverter.ConvertO(inputDataviewportSize);
+                inputData["viewport_size"] = CSharpExpressionConverter.ConvertToken(inputDataviewportSize);
                 inputDatapropCount++;
             }
 
             if (inputDataconversionDelay != null)
             {
-                inputData["conversion_delay"] = ExpressionConverter.ConvertO(inputDataconversionDelay);
+                inputData["conversion_delay"] = CSharpExpressionConverter.ConvertToken(inputDataconversionDelay);
                 inputDatapropCount++;
             }
 
@@ -1161,7 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1192,7 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputInfopathData["use_async_pattern"] = false;
             inputInfopathDatapropCount++;
             inputInfopathDatapropCount++;
-            inputInfopathData["source_file_name"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileName);
+            inputInfopathData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1202,20 +1202,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputInfopathDatapropCount++;
-            inputInfopathData["source_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileContent);
+            inputInfopathData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileContent);
             inputInfopathDatapropCount++;
-            inputInfopathData["output_format"] = ExpressionConverter.ConvertO(inputInfopathDataoutputFormat);
+            inputInfopathData["output_format"] = CSharpExpressionConverter.Convert(inputInfopathDataoutputFormat);
             inputInfopathData["copy_metadata"] = false;
             inputInfopathDatapropCount++;
             if (inputInfopathDatatemplateFileContent != null)
             {
-                inputInfopathData["template_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatatemplateFileContent);
+                inputInfopathData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatatemplateFileContent);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataviewNames != null)
             {
-                inputInfopathData["views_to_convert"] = ExpressionConverter.ConvertO(inputInfopathDataviewNames);
+                inputInfopathData["views_to_convert"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataviewNames);
                 inputInfopathDatapropCount++;
             }
 
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputInfopathDataincludeAttachment != null)
                 {
-                    inputInfopathData["convert_attachments"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachment);
+                    inputInfopathData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachment);
                     inputInfopathDatapropCount++;
                 }
 
@@ -1237,55 +1237,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputInfopathDataattachmentAction != null)
             {
-                inputInfopathData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputInfopathDataattachmentAction);
+                inputInfopathData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputInfopathDataattachmentAction);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataunsupportedAttachmentAction != null)
             {
-                inputInfopathData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputInfopathDataunsupportedAttachmentAction);
+                inputInfopathData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputInfopathDataunsupportedAttachmentAction);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatabreakMergeOnError != null)
             {
-                inputInfopathData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatabreakMergeOnError);
+                inputInfopathData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatabreakMergeOnError);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataincludeAttachmentFilter != null)
             {
-                inputInfopathData["include_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachmentFilter);
+                inputInfopathData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachmentFilter);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataexcludeAttachmentFilter != null)
             {
-                inputInfopathData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataexcludeAttachmentFilter);
+                inputInfopathData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataexcludeAttachmentFilter);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatadefaultPaperSize != null)
             {
-                inputInfopathData["default_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSize);
+                inputInfopathData["default_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPaperSize);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatadefaultPaperSizeCustom != null)
             {
-                inputInfopathData["default_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSizeCustom);
+                inputInfopathData["default_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatadefaultPaperSizeCustom);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataforcePaperSize != null)
             {
-                inputInfopathData["force_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSize);
+                inputInfopathData["force_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePaperSize);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataforcePaperSizeCustom != null)
             {
-                inputInfopathData["force_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSizeCustom);
+                inputInfopathData["force_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataforcePaperSizeCustom);
                 inputInfopathDatapropCount++;
             }
 
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputInfopathDatadefaultPageOrientation != null)
                 {
-                    inputInfopathData["default_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPageOrientation);
+                    inputInfopathData["default_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPageOrientation);
                     inputInfopathDatapropCount++;
                 }
 
@@ -1307,31 +1307,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputInfopathDataforcePageOrientation != null)
             {
-                inputInfopathData["force_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDataforcePageOrientation);
+                inputInfopathData["force_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePageOrientation);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatastartPage != null)
             {
-                inputInfopathData["start_page"] = ExpressionConverter.ConvertO(inputInfopathDatastartPage);
+                inputInfopathData["start_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatastartPage);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataendPage != null)
             {
-                inputInfopathData["end_page"] = ExpressionConverter.ConvertO(inputInfopathDataendPage);
+                inputInfopathData["end_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataendPage);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataconversionQuality != null)
             {
-                inputInfopathData["quality"] = ExpressionConverter.ConvertO(inputInfopathDataconversionQuality);
+                inputInfopathData["quality"] = CSharpExpressionConverter.Convert(inputInfopathDataconversionQuality);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataoverrideSettings != null)
             {
-                inputInfopathData["override_settings"] = ExpressionConverter.ConvertO(inputInfopathDataoverrideSettings);
+                inputInfopathData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataoverrideSettings);
                 inputInfopathDatapropCount++;
             }
 
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputInfopathDatafailOnError != null)
                 {
-                    inputInfopathData["fail_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatafailOnError);
+                    inputInfopathData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatafailOnError);
                     inputInfopathDatapropCount++;
                 }
 
@@ -1370,7 +1370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1380,14 +1380,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             inputPdfData["copy_metadata"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["pdf_profile"] = ExpressionConverter.ConvertO(inputPdfDatapDFProfile);
+            inputPdfData["pdf_profile"] = CSharpExpressionConverter.Convert(inputPdfDatapDFProfile);
             if (inputPdfDataoverrideSettings != null)
             {
-                inputPdfData["override_settings"] = ExpressionConverter.ConvertO(inputPdfDataoverrideSettings);
+                inputPdfData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
                 inputPdfDatapropCount++;
             }
 
@@ -1395,7 +1395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputPowerpointData["use_async_pattern"] = false;
             inputPowerpointDatapropCount++;
             inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_name"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileName);
+            inputPowerpointData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1436,14 +1436,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_content"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileContent);
+            inputPowerpointData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileContent);
             inputPowerpointDatapropCount++;
-            inputPowerpointData["output_format"] = ExpressionConverter.ConvertO(inputPowerpointDataoutputFormat);
+            inputPowerpointData["output_format"] = CSharpExpressionConverter.Convert(inputPowerpointDataoutputFormat);
             inputPowerpointData["copy_metadata"] = false;
             inputPowerpointDatapropCount++;
             if (inputPowerpointDatarange != null)
             {
-                inputPowerpointData["range"] = ExpressionConverter.ConvertO(inputPowerpointDatarange);
+                inputPowerpointData["range"] = CSharpExpressionConverter.Convert(inputPowerpointDatarange);
                 inputPowerpointDatapropCount++;
             }
 
@@ -1451,7 +1451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPowerpointDataprintLayoutHandouts != null)
                 {
-                    inputPowerpointData["print_output_type"] = ExpressionConverter.ConvertO(inputPowerpointDataprintLayoutHandouts);
+                    inputPowerpointData["print_output_type"] = CSharpExpressionConverter.Convert(inputPowerpointDataprintLayoutHandouts);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPowerpointDataframeSlides != null)
                 {
-                    inputPowerpointData["frame_slides"] = ExpressionConverter.ConvertO(inputPowerpointDataframeSlides);
+                    inputPowerpointData["frame_slides"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataframeSlides);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -1481,25 +1481,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputPowerpointDatastartPage != null)
             {
-                inputPowerpointData["start_page"] = ExpressionConverter.ConvertO(inputPowerpointDatastartPage);
+                inputPowerpointData["start_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatastartPage);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataendPage != null)
             {
-                inputPowerpointData["end_page"] = ExpressionConverter.ConvertO(inputPowerpointDataendPage);
+                inputPowerpointData["end_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataendPage);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataquality != null)
             {
-                inputPowerpointData["quality"] = ExpressionConverter.ConvertO(inputPowerpointDataquality);
+                inputPowerpointData["quality"] = CSharpExpressionConverter.Convert(inputPowerpointDataquality);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataoverrideSettings != null)
             {
-                inputPowerpointData["override_settings"] = ExpressionConverter.ConvertO(inputPowerpointDataoverrideSettings);
+                inputPowerpointData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataoverrideSettings);
                 inputPowerpointDatapropCount++;
             }
 
@@ -1507,7 +1507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPowerpointDatafailOnError != null)
                 {
-                    inputPowerpointData["fail_on_error"] = ExpressionConverter.ConvertO(inputPowerpointDatafailOnError);
+                    inputPowerpointData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatafailOnError);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -1538,7 +1538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputVisioData["use_async_pattern"] = false;
             inputVisioDatapropCount++;
             inputVisioDatapropCount++;
-            inputVisioData["source_file_name"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileName);
+            inputVisioData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1548,38 +1548,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputVisioDatapropCount++;
-            inputVisioData["source_file_content"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileContent);
+            inputVisioData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileContent);
             inputVisioDatapropCount++;
-            inputVisioData["output_format"] = ExpressionConverter.ConvertO(inputVisioDataoutputFormat);
+            inputVisioData["output_format"] = CSharpExpressionConverter.Convert(inputVisioDataoutputFormat);
             inputVisioData["copy_metadata"] = false;
             inputVisioDatapropCount++;
             if (inputVisioDatarange != null)
             {
-                inputVisioData["range"] = ExpressionConverter.ConvertO(inputVisioDatarange);
+                inputVisioData["range"] = CSharpExpressionConverter.Convert(inputVisioDatarange);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDatastartPage != null)
             {
-                inputVisioData["start_page"] = ExpressionConverter.ConvertO(inputVisioDatastartPage);
+                inputVisioData["start_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDatastartPage);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataendPage != null)
             {
-                inputVisioData["end_page"] = ExpressionConverter.ConvertO(inputVisioDataendPage);
+                inputVisioData["end_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDataendPage);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataquality != null)
             {
-                inputVisioData["quality"] = ExpressionConverter.ConvertO(inputVisioDataquality);
+                inputVisioData["quality"] = CSharpExpressionConverter.Convert(inputVisioDataquality);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataoverrideSettings != null)
             {
-                inputVisioData["override_settings"] = ExpressionConverter.ConvertO(inputVisioDataoverrideSettings);
+                inputVisioData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputVisioDataoverrideSettings);
                 inputVisioDatapropCount++;
             }
 
@@ -1587,7 +1587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputVisioDatafailOnError != null)
                 {
-                    inputVisioData["fail_on_error"] = ExpressionConverter.ConvertO(inputVisioDatafailOnError);
+                    inputVisioData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputVisioDatafailOnError);
                     inputVisioDatapropCount++;
                 }
 
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputWordData["use_async_pattern"] = false;
             inputWordDatapropCount++;
             inputWordDatapropCount++;
-            inputWordData["source_file_name"] = ExpressionConverter.ConvertO(inputWordDatasourceFileName);
+            inputWordData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1628,16 +1628,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputWordDatapropCount++;
-            inputWordData["source_file_content"] = ExpressionConverter.ConvertO(inputWordDatasourceFileContent);
+            inputWordData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileContent);
             inputWordDatapropCount++;
-            inputWordData["output_format"] = ExpressionConverter.ConvertO(inputWordDataoutputFormat);
+            inputWordData["output_format"] = CSharpExpressionConverter.Convert(inputWordDataoutputFormat);
             inputWordData["copy_metadata"] = false;
             inputWordDatapropCount++;
             if (inputWordDatadisplayForReview != null)
             {
                 if (inputWordDatadisplayForReview != null)
                 {
-                    inputWordData["revisions_and_comments_display_mode"] = ExpressionConverter.ConvertO(inputWordDatadisplayForReview);
+                    inputWordData["revisions_and_comments_display_mode"] = CSharpExpressionConverter.Convert(inputWordDatadisplayForReview);
                     inputWordDatapropCount++;
                 }
 
@@ -1653,7 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputWordDatareviewMarkupMode != null)
                 {
-                    inputWordData["revisions_and_comments_markup_mode"] = ExpressionConverter.ConvertO(inputWordDatareviewMarkupMode);
+                    inputWordData["revisions_and_comments_markup_mode"] = CSharpExpressionConverter.Convert(inputWordDatareviewMarkupMode);
                     inputWordDatapropCount++;
                 }
 
@@ -1667,31 +1667,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputWordDatagenerateBookmarks != null)
             {
-                inputWordData["generate_bookmarks"] = ExpressionConverter.ConvertO(inputWordDatagenerateBookmarks);
+                inputWordData["generate_bookmarks"] = CSharpExpressionConverter.Convert(inputWordDatagenerateBookmarks);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDatastartPage != null)
             {
-                inputWordData["start_page"] = ExpressionConverter.ConvertO(inputWordDatastartPage);
+                inputWordData["start_page"] = CSharpExpressionConverter.ConvertToken(inputWordDatastartPage);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataendPage != null)
             {
-                inputWordData["end_page"] = ExpressionConverter.ConvertO(inputWordDataendPage);
+                inputWordData["end_page"] = CSharpExpressionConverter.ConvertToken(inputWordDataendPage);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataquality != null)
             {
-                inputWordData["quality"] = ExpressionConverter.ConvertO(inputWordDataquality);
+                inputWordData["quality"] = CSharpExpressionConverter.Convert(inputWordDataquality);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataoverrideSettings != null)
             {
-                inputWordData["override_settings"] = ExpressionConverter.ConvertO(inputWordDataoverrideSettings);
+                inputWordData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputWordDataoverrideSettings);
                 inputWordDatapropCount++;
             }
 
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputWordDatafailOnError != null)
                 {
-                    inputWordData["fail_on_error"] = ExpressionConverter.ConvertO(inputWordDatafailOnError);
+                    inputWordData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputWordDatafailOnError);
                     inputWordDatapropCount++;
                 }
 
@@ -1728,32 +1728,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputData = new JObject();
             var inputDatapropCount = 0;
             inputDatapropCount++;
-            inputData["site_url"] = ExpressionConverter.ConvertO(inputDatasiteUrl);
+            inputData["site_url"] = CSharpExpressionConverter.ConvertToken(inputDatasiteUrl);
             inputDatapropCount++;
-            inputData["source_file_url"] = ExpressionConverter.ConvertO(inputDatasourceFileUrl);
+            inputData["source_file_url"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileUrl);
             inputDatapropCount++;
-            inputData["destination_file_url"] = ExpressionConverter.ConvertO(inputDatadestinationFilePath);
+            inputData["destination_file_url"] = CSharpExpressionConverter.ConvertToken(inputDatadestinationFilePath);
             if (inputDatauserName != null)
             {
-                inputData["username"] = ExpressionConverter.ConvertO(inputDatauserName);
+                inputData["username"] = CSharpExpressionConverter.ConvertToken(inputDatauserName);
                 inputDatapropCount++;
             }
 
             if (inputDatapassword != null)
             {
-                inputData["password"] = ExpressionConverter.ConvertO(inputDatapassword);
+                inputData["password"] = CSharpExpressionConverter.ConvertToken(inputDatapassword);
                 inputDatapropCount++;
             }
 
             if (inputDatafieldsToCopy != null)
             {
-                inputData["copy_fields"] = ExpressionConverter.ConvertO(inputDatafieldsToCopy);
+                inputData["copy_fields"] = CSharpExpressionConverter.ConvertToken(inputDatafieldsToCopy);
                 inputDatapropCount++;
             }
 
             if (inputDatadestinationContentType != null)
             {
-                inputData["content_type"] = ExpressionConverter.ConvertO(inputDatadestinationContentType);
+                inputData["content_type"] = CSharpExpressionConverter.ConvertToken(inputDatadestinationContentType);
                 inputDatapropCount++;
             }
 
@@ -1761,7 +1761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1791,16 +1791,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1810,18 +1810,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -1829,7 +1829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -1843,7 +1843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -1851,7 +1851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -1865,37 +1865,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatafillColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatafillColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafillColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatalineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatalineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -1903,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1919,7 +1919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1933,19 +1933,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1953,7 +1953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputFromPdfData["use_async_pattern"] = false;
             inputFromPdfDatapropCount++;
             inputFromPdfDatapropCount++;
-            inputFromPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputFromPdfDatasourceFileName);
+            inputFromPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1994,16 +1994,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputFromPdfDatapropCount++;
-            inputFromPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputFromPdfDatasourceFileContent);
+            inputFromPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatasourceFileContent);
             inputFromPdfDatapropCount++;
-            inputFromPdfData["output_format"] = ExpressionConverter.ConvertO(inputFromPdfDataoutputDataFormat);
+            inputFromPdfData["output_format"] = CSharpExpressionConverter.Convert(inputFromPdfDataoutputDataFormat);
             inputFromPdfData["copy_metadata"] = false;
             inputFromPdfDatapropCount++;
             if (inputFromPdfDatafailOnError != null)
             {
                 if (inputFromPdfDatafailOnError != null)
                 {
-                    inputFromPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputFromPdfDatafailOnError);
+                    inputFromPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatafailOnError);
                     inputFromPdfDatapropCount++;
                 }
 
@@ -2034,7 +2034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2044,12 +2044,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             if (inputPdfDatapageRange != null)
             {
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
                     inputPdfDatapropCount++;
                 }
 
@@ -2065,7 +2065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -2095,16 +2095,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["image_file"] = ExpressionConverter.ConvertO(inputDataimage);
+            inputData["image_file"] = CSharpExpressionConverter.ConvertToken(inputDataimage);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2114,20 +2114,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -2135,7 +2135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -2149,7 +2149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -2157,7 +2157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -2171,37 +2171,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -2209,7 +2209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -2225,7 +2225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -2239,19 +2239,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -2259,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -2290,7 +2290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputXmlData["use_async_pattern"] = false;
             inputXmlDatapropCount++;
             inputXmlDatapropCount++;
-            inputXmlData["source_file_name"] = ExpressionConverter.ConvertO(inputXmlDatasourceFileName);
+            inputXmlData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputXmlDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2300,36 +2300,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputXmlDatapropCount++;
-            inputXmlData["source_file_content"] = ExpressionConverter.ConvertO(inputXmlDatasourceFileContent);
+            inputXmlData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputXmlDatasourceFileContent);
             inputXmlData["copy_metadata"] = false;
             inputXmlDatapropCount++;
             if (inputXmlDatapDFFormFileContent != null)
             {
-                inputXmlData["pdf_template_file_content"] = ExpressionConverter.ConvertO(inputXmlDatapDFFormFileContent);
+                inputXmlData["pdf_template_file_content"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapDFFormFileContent);
                 inputXmlDatapropCount++;
             }
 
             if (inputXmlDatapDFFormURL != null)
             {
-                inputXmlData["pdf_template_url"] = ExpressionConverter.ConvertO(inputXmlDatapDFFormURL);
+                inputXmlData["pdf_template_url"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapDFFormURL);
                 inputXmlDatapropCount++;
             }
 
             if (inputXmlDatausername != null)
             {
-                inputXmlData["pdf_template_username"] = ExpressionConverter.ConvertO(inputXmlDatausername);
+                inputXmlData["pdf_template_username"] = CSharpExpressionConverter.ConvertToken(inputXmlDatausername);
                 inputXmlDatapropCount++;
             }
 
             if (inputXmlDatadomain != null)
             {
-                inputXmlData["pdf_template_domain"] = ExpressionConverter.ConvertO(inputXmlDatadomain);
+                inputXmlData["pdf_template_domain"] = CSharpExpressionConverter.ConvertToken(inputXmlDatadomain);
                 inputXmlDatapropCount++;
             }
 
             if (inputXmlDatapassword != null)
             {
-                inputXmlData["pdf_template_password"] = ExpressionConverter.ConvertO(inputXmlDatapassword);
+                inputXmlData["pdf_template_password"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapassword);
                 inputXmlDatapropCount++;
             }
 
@@ -2337,7 +2337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputXmlDataflatten != null)
                 {
-                    inputXmlData["flatten"] = ExpressionConverter.ConvertO(inputXmlDataflatten);
+                    inputXmlData["flatten"] = CSharpExpressionConverter.Convert(inputXmlDataflatten);
                     inputXmlDatapropCount++;
                 }
 
@@ -2353,7 +2353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputXmlDatareadOnly != null)
                 {
-                    inputXmlData["read_only"] = ExpressionConverter.ConvertO(inputXmlDatareadOnly);
+                    inputXmlData["read_only"] = CSharpExpressionConverter.Convert(inputXmlDatareadOnly);
                     inputXmlDatapropCount++;
                 }
 
@@ -2367,7 +2367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputXmlDataoverrideSettings != null)
             {
-                inputXmlData["override_settings"] = ExpressionConverter.ConvertO(inputXmlDataoverrideSettings);
+                inputXmlData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputXmlDataoverrideSettings);
                 inputXmlDatapropCount++;
             }
 
@@ -2375,7 +2375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputXmlDatafailOnError != null)
                 {
-                    inputXmlData["fail_on_error"] = ExpressionConverter.ConvertO(inputXmlDatafailOnError);
+                    inputXmlData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputXmlDatafailOnError);
                     inputXmlDatapropCount++;
                 }
 
@@ -2406,7 +2406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2416,12 +2416,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             if (inputPdfDataoCRLanguage != null)
             {
                 if (inputPdfDataoCRLanguage != null)
                 {
-                    inputPdfData["ocr_language"] = ExpressionConverter.ConvertO(inputPdfDataoCRLanguage);
+                    inputPdfData["ocr_language"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoCRLanguage);
                     inputPdfDatapropCount++;
                 }
 
@@ -2437,7 +2437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatadPI != null)
                 {
-                    inputPdfData["dpi"] = ExpressionConverter.ConvertO(inputPdfDatadPI);
+                    inputPdfData["dpi"] = CSharpExpressionConverter.Convert(inputPdfDatadPI);
                     inputPdfDatapropCount++;
                 }
 
@@ -2453,7 +2453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatakVPOutputFormat != null)
                 {
-                    inputPdfData["kvp_format"] = ExpressionConverter.ConvertO(inputPdfDatakVPOutputFormat);
+                    inputPdfData["kvp_format"] = CSharpExpressionConverter.Convert(inputPdfDatakVPOutputFormat);
                     inputPdfDatapropCount++;
                 }
 
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
                     inputPdfDatapropCount++;
                 }
 
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataautorotate != null)
                 {
-                    inputPdfData["autorotate"] = ExpressionConverter.ConvertO(inputPdfDataautorotate);
+                    inputPdfData["autorotate"] = CSharpExpressionConverter.Convert(inputPdfDataautorotate);
                     inputPdfDatapropCount++;
                 }
 
@@ -2501,7 +2501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatatrimSymbols != null)
                 {
-                    inputPdfData["trim_symbols"] = ExpressionConverter.ConvertO(inputPdfDatatrimSymbols);
+                    inputPdfData["trim_symbols"] = CSharpExpressionConverter.Convert(inputPdfDatatrimSymbols);
                     inputPdfDatapropCount++;
                 }
 
@@ -2517,7 +2517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataincludeKeyBoundingBox != null)
                 {
-                    inputPdfData["include_key_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeKeyBoundingBox);
+                    inputPdfData["include_key_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeKeyBoundingBox);
                     inputPdfDatapropCount++;
                 }
 
@@ -2533,7 +2533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataincludeValueBoundingBox != null)
                 {
-                    inputPdfData["include_value_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeValueBoundingBox);
+                    inputPdfData["include_value_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeValueBoundingBox);
                     inputPdfDatapropCount++;
                 }
 
@@ -2549,7 +2549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataincludePageNumber != null)
                 {
-                    inputPdfData["include_page_number"] = ExpressionConverter.ConvertO(inputPdfDataincludePageNumber);
+                    inputPdfData["include_page_number"] = CSharpExpressionConverter.Convert(inputPdfDataincludePageNumber);
                     inputPdfDatapropCount++;
                 }
 
@@ -2565,7 +2565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataincludeConfidence != null)
                 {
-                    inputPdfData["include_confidence"] = ExpressionConverter.ConvertO(inputPdfDataincludeConfidence);
+                    inputPdfData["include_confidence"] = CSharpExpressionConverter.Convert(inputPdfDataincludeConfidence);
                     inputPdfDatapropCount++;
                 }
 
@@ -2581,7 +2581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataconfidenceThreshold != null)
                 {
-                    inputPdfData["confidence_threshold"] = ExpressionConverter.ConvertO(inputPdfDataconfidenceThreshold);
+                    inputPdfData["confidence_threshold"] = CSharpExpressionConverter.ConvertToken(inputPdfDataconfidenceThreshold);
                     inputPdfDatapropCount++;
                 }
 
@@ -2597,7 +2597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDataincludeType != null)
                 {
-                    inputPdfData["include_type"] = ExpressionConverter.ConvertO(inputPdfDataincludeType);
+                    inputPdfData["include_type"] = CSharpExpressionConverter.Convert(inputPdfDataincludeType);
                     inputPdfDatapropCount++;
                 }
 
@@ -2611,7 +2611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputPdfDataexpectedKeys != null)
             {
-                inputPdfData["expected_keys"] = ExpressionConverter.ConvertO(inputPdfDataexpectedKeys);
+                inputPdfData["expected_keys"] = CSharpExpressionConverter.ConvertToken(inputPdfDataexpectedKeys);
                 inputPdfDatapropCount++;
             }
 
@@ -2619,7 +2619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -2649,16 +2649,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2668,18 +2668,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinateStart);
+            inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateStart);
             inputDatapropCount++;
-            inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinateStart);
+            inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateStart);
             inputDatapropCount++;
-            inputData["end_x"] = ExpressionConverter.ConvertO(inputDataxCoordinateEnd);
+            inputData["end_x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateEnd);
             inputDatapropCount++;
-            inputData["end_y"] = ExpressionConverter.ConvertO(inputDatayCoordinateEnd);
+            inputData["end_y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateEnd);
             if (inputDatalayer != null)
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -2693,7 +2693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -2701,7 +2701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -2715,31 +2715,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatalineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatalineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatalineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -2763,7 +2763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -2777,19 +2777,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -2797,7 +2797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -2827,16 +2827,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatabarcodeContent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -2846,12 +2846,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["barcode_type"] = ExpressionConverter.ConvertO(inputDatabarcodeType);
+            inputData["barcode_type"] = CSharpExpressionConverter.Convert(inputDatabarcodeType);
             if (inputDataomitEncodingOfStartStopSymbols != null)
             {
                 if (inputDataomitEncodingOfStartStopSymbols != null)
                 {
-                    inputData["omit_start_stop_symbols"] = ExpressionConverter.ConvertO(inputDataomitEncodingOfStartStopSymbols);
+                    inputData["omit_start_stop_symbols"] = CSharpExpressionConverter.Convert(inputDataomitEncodingOfStartStopSymbols);
                     inputDatapropCount++;
                 }
 
@@ -2864,30 +2864,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["disable_checkdigit"] = ExpressionConverter.ConvertO(inputDatadisableCheckDigit);
+            inputData["disable_checkdigit"] = CSharpExpressionConverter.Convert(inputDatadisableCheckDigit);
             inputDatapropCount++;
-            inputData["show_checkdigit"] = ExpressionConverter.ConvertO(inputDatashowCheckDigit);
+            inputData["show_checkdigit"] = CSharpExpressionConverter.Convert(inputDatashowCheckDigit);
             if (inputDatamargin != null)
             {
-                inputData["margin"] = ExpressionConverter.ConvertO(inputDatamargin);
+                inputData["margin"] = CSharpExpressionConverter.ConvertToken(inputDatamargin);
                 inputDatapropCount++;
             }
 
             if (inputDatafontFamily != null)
             {
-                inputData["font_family_name"] = ExpressionConverter.ConvertO(inputDatafontFamily);
+                inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamily);
                 inputDatapropCount++;
             }
 
             if (inputDatafontSize != null)
             {
-                inputData["font_size"] = ExpressionConverter.ConvertO(inputDatafontSize);
+                inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
                 inputDatapropCount++;
             }
 
             if (inputDatafontStyle != null)
             {
-                inputData["font_style"] = ExpressionConverter.ConvertO(inputDatafontStyle);
+                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
                 inputDatapropCount++;
             }
 
@@ -2895,7 +2895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalabelPlacement != null)
                 {
-                    inputData["label_placement"] = ExpressionConverter.ConvertO(inputDatalabelPlacement);
+                    inputData["label_placement"] = CSharpExpressionConverter.Convert(inputDatalabelPlacement);
                     inputDatapropCount++;
                 }
 
@@ -2908,20 +2908,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -2929,7 +2929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -2951,7 +2951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -2965,31 +2965,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatabarcodeBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatabarcodeBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatabarcodeBarColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatabarcodeBarColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBarColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -2997,7 +2997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -3027,19 +3027,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3079,61 +3079,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputDatapropCount++;
             if (inputDatasourceFileName1 != null)
             {
-                inputData["source_file_name_1"] = ExpressionConverter.ConvertO(inputDatasourceFileName1);
+                inputData["source_file_name_1"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName1);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileContent1 != null)
             {
-                inputData["source_file_content_1"] = ExpressionConverter.ConvertO(inputDatasourceFileContent1);
+                inputData["source_file_content_1"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent1);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileName2 != null)
             {
-                inputData["source_file_name_2"] = ExpressionConverter.ConvertO(inputDatasourceFileName2);
+                inputData["source_file_name_2"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName2);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileContent2 != null)
             {
-                inputData["source_file_content_2"] = ExpressionConverter.ConvertO(inputDatasourceFileContent2);
+                inputData["source_file_content_2"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent2);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileName3 != null)
             {
-                inputData["source_file_name_3"] = ExpressionConverter.ConvertO(inputDatasourceFileName3);
+                inputData["source_file_name_3"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName3);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileContent3 != null)
             {
-                inputData["source_file_content_3"] = ExpressionConverter.ConvertO(inputDatasourceFileContent3);
+                inputData["source_file_content_3"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent3);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileName4 != null)
             {
-                inputData["source_file_name_4"] = ExpressionConverter.ConvertO(inputDatasourceFileName4);
+                inputData["source_file_name_4"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName4);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileContent4 != null)
             {
-                inputData["source_file_content_4"] = ExpressionConverter.ConvertO(inputDatasourceFileContent4);
+                inputData["source_file_content_4"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent4);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileName5 != null)
             {
-                inputData["source_file_name_5"] = ExpressionConverter.ConvertO(inputDatasourceFileName5);
+                inputData["source_file_name_5"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName5);
                 inputDatapropCount++;
             }
 
             if (inputDatasourceFileContent5 != null)
             {
-                inputData["source_file_content_5"] = ExpressionConverter.ConvertO(inputDatasourceFileContent5);
+                inputData["source_file_content_5"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent5);
                 inputDatapropCount++;
             }
 
@@ -3149,7 +3149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataeachDocument != null)
                 {
-                    inputData["document_start_page"] = ExpressionConverter.ConvertO(inputDataeachDocument);
+                    inputData["document_start_page"] = CSharpExpressionConverter.Convert(inputDataeachDocument);
                     inputDatapropCount++;
                 }
 
@@ -3163,13 +3163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatasourceFiles != null)
             {
-                inputData["source_files"] = ExpressionConverter.ConvertO(inputDatasourceFiles);
+                inputData["source_files"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFiles);
                 inputDatapropCount++;
             }
 
             if (inputDataoverrideSettings != null)
             {
-                inputData["override_settings"] = ExpressionConverter.ConvertO(inputDataoverrideSettings);
+                inputData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputDataoverrideSettings);
                 inputDatapropCount++;
             }
 
@@ -3177,7 +3177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3208,9 +3208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -3225,7 +3225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalanguage != null)
                 {
-                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
                     inputDatapropCount++;
                 }
 
@@ -3241,7 +3241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
                     inputDatapropCount++;
                 }
 
@@ -3257,7 +3257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
                     inputDatapropCount++;
                 }
 
@@ -3271,7 +3271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatacharacters != null)
             {
-                inputData["characters"] = ExpressionConverter.ConvertO(inputDatacharacters);
+                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
                 inputDatapropCount++;
             }
 
@@ -3279,7 +3279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
                     inputDatapropCount++;
                 }
 
@@ -3293,7 +3293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDataregions != null)
             {
-                inputData["regions"] = ExpressionConverter.ConvertO(inputDataregions);
+                inputData["regions"] = CSharpExpressionConverter.ConvertToken(inputDataregions);
                 inputDatapropCount++;
             }
 
@@ -3301,7 +3301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3332,9 +3332,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -3347,7 +3347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalanguage != null)
                 {
-                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
                     inputDatapropCount++;
                 }
 
@@ -3361,25 +3361,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatawidth != null)
             {
-                inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+                inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
                 inputDatapropCount++;
             }
 
             if (inputDataheight != null)
             {
-                inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+                inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
                 inputDatapropCount++;
             }
 
@@ -3387,7 +3387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatapageNumber != null)
                 {
-                    inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                    inputData["page_number"] = CSharpExpressionConverter.ConvertToken(inputDatapageNumber);
                     inputDatapropCount++;
                 }
 
@@ -3403,7 +3403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
                     inputDatapropCount++;
                 }
 
@@ -3419,7 +3419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
                     inputDatapropCount++;
                 }
 
@@ -3433,7 +3433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatacharacters != null)
             {
-                inputData["characters"] = ExpressionConverter.ConvertO(inputDatacharacters);
+                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
                 inputDatapropCount++;
             }
 
@@ -3441,7 +3441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
                     inputDatapropCount++;
                 }
 
@@ -3457,7 +3457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3487,16 +3487,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["pdf_file"] = ExpressionConverter.ConvertO(inputDatapDFWatermark);
+            inputData["pdf_file"] = CSharpExpressionConverter.ConvertToken(inputDatapDFWatermark);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -3506,20 +3506,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -3527,7 +3527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -3541,7 +3541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -3549,7 +3549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -3563,19 +3563,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -3583,7 +3583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -3599,7 +3599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -3613,19 +3613,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -3633,7 +3633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3663,16 +3663,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatacontent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatacontent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -3682,26 +3682,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["version"] = ExpressionConverter.ConvertO(inputDataversion);
+            inputData["version"] = CSharpExpressionConverter.Convert(inputDataversion);
             inputDatapropCount++;
-            inputData["input_mode"] = ExpressionConverter.ConvertO(inputDatainputMode);
+            inputData["input_mode"] = CSharpExpressionConverter.Convert(inputDatainputMode);
             inputDatapropCount++;
-            inputData["error_correction_level"] = ExpressionConverter.ConvertO(inputDataerrorCorrectionLevel);
+            inputData["error_correction_level"] = CSharpExpressionConverter.Convert(inputDataerrorCorrectionLevel);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -3709,7 +3709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -3723,7 +3723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -3731,7 +3731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -3745,31 +3745,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkForegroundColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkForegroundColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkForegroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -3777,7 +3777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -3793,7 +3793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -3807,19 +3807,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -3827,7 +3827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -3857,16 +3857,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -3876,18 +3876,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -3895,7 +3895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -3909,7 +3909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -3917,7 +3917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -3931,37 +3931,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -3969,7 +3969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -3985,7 +3985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -3999,19 +3999,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -4019,7 +4019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -4049,16 +4049,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["rtf_data"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
+            inputData["rtf_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -4068,20 +4068,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -4089,7 +4089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -4103,7 +4103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -4111,7 +4111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -4125,37 +4125,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -4163,7 +4163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -4179,7 +4179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -4193,19 +4193,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -4213,7 +4213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -4245,12 +4245,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputDatapropCount++;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -4261,19 +4261,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDataopenPassword != null)
             {
-                inputData["open_password"] = ExpressionConverter.ConvertO(inputDataopenPassword);
+                inputData["open_password"] = CSharpExpressionConverter.ConvertToken(inputDataopenPassword);
                 inputDatapropCount++;
             }
 
             if (inputDataownerPassword != null)
             {
-                inputData["owner_password"] = ExpressionConverter.ConvertO(inputDataownerPassword);
+                inputData["owner_password"] = CSharpExpressionConverter.ConvertToken(inputDataownerPassword);
                 inputDatapropCount++;
             }
 
             if (inputDatapDFRestrictions != null)
             {
-                inputData["security_options"] = ExpressionConverter.ConvertO(inputDatapDFRestrictions);
+                inputData["security_options"] = CSharpExpressionConverter.ConvertToken(inputDatapDFRestrictions);
                 inputDatapropCount++;
             }
 
@@ -4281,7 +4281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -4312,9 +4312,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -4325,19 +4325,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatafileNameTemplate != null)
             {
-                inputData["file_name_template"] = ExpressionConverter.ConvertO(inputDatafileNameTemplate);
+                inputData["file_name_template"] = CSharpExpressionConverter.ConvertToken(inputDatafileNameTemplate);
                 inputDatapropCount++;
             }
 
             inputDatapropCount++;
-            inputData["file_split_by"] = ExpressionConverter.ConvertO(inputDatasplitBy);
+            inputData["file_split_by"] = CSharpExpressionConverter.Convert(inputDatasplitBy);
             inputDatapropCount++;
-            inputData["split_parameter"] = ExpressionConverter.ConvertO(inputDatasplitParameter);
+            inputData["split_parameter"] = CSharpExpressionConverter.ConvertToken(inputDatasplitParameter);
             if (inputDatafailOnError != null)
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -4367,16 +4367,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -4386,30 +4386,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             }
 
             inputDatapropCount++;
-            inputData["font_family_name"] = ExpressionConverter.ConvertO(inputDatafontFamilyName);
+            inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamilyName);
             inputDatapropCount++;
-            inputData["font_size"] = ExpressionConverter.ConvertO(inputDatafontSize);
+            inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
             inputDatapropCount++;
-            inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatafontColor);
+            inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontColor);
             inputDatapropCount++;
-            inputData["alignment"] = ExpressionConverter.ConvertO(inputDatatextAlignment);
+            inputData["alignment"] = CSharpExpressionConverter.Convert(inputDatatextAlignment);
             inputDatapropCount++;
-            inputData["word_wrap"] = ExpressionConverter.ConvertO(inputDatawordWrap);
+            inputData["word_wrap"] = CSharpExpressionConverter.Convert(inputDatawordWrap);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -4417,7 +4417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -4439,7 +4439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -4453,37 +4453,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatafontStyle != null)
             {
-                inputData["font_style"] = ExpressionConverter.ConvertO(inputDatafontStyle);
+                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
                 inputDatapropCount++;
             }
 
             if (inputDatafontOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatafontOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatafontOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatafontOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -4491,7 +4491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -4507,7 +4507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -4521,19 +4521,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -4541,7 +4541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 

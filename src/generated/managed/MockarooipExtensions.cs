@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
             var bodypropCount = 0;
             if (bodyschemaName != null)
             {
-                body["schema"] = ExpressionConverter.ConvertO(bodyschemaName);
+                body["schema"] = CSharpExpressionConverter.ConvertToken(bodyschemaName);
                 bodypropCount++;
             }
 
             if (bodyschemaJSON != null)
             {
-                body["fields"] = ExpressionConverter.ConvertO(bodyschemaJSON);
+                body["fields"] = CSharpExpressionConverter.ConvertToken(bodyschemaJSON);
                 bodypropCount++;
             }
 
             if (bodyrecordCount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodyrecordCount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodyrecordCount);
                 bodypropCount++;
             }
 

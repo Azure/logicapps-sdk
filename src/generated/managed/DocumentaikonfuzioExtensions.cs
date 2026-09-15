@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
         {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
         {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsRead(Expression<Func<string>> doc)
         {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

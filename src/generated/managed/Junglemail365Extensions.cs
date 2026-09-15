@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallPath = "/1.0/emails";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(requestJobId);
-            callPayload.Queries["request.emailType"] = ExpressionConverter.Convert(requestEmailType);
+            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
+            callPayload.Queries["request.emailType"] = CSharpExpressionConverter.Convert(requestEmailType);
             return new ApiConnectionAction<JsEmailsResponse>(callPayload);
         }
 
@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             if (requestcomments != null)
             {
-                request["comments"] = ExpressionConverter.ConvertO(requestcomments);
+                request["comments"] = CSharpExpressionConverter.ConvertToken(requestcomments);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["secret"] = ExpressionConverter.ConvertO(requestsecret);
+            request["secret"] = CSharpExpressionConverter.ConvertToken(requestsecret);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -56,31 +56,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             if (requestoffice365Groups != null)
             {
-                request["adGroups"] = ExpressionConverter.ConvertO(requestoffice365Groups);
+                request["adGroups"] = CSharpExpressionConverter.ConvertToken(requestoffice365Groups);
                 requestpropCount++;
             }
 
             if (requestattachmentContent != null)
             {
-                request["attachmentContent"] = ExpressionConverter.ConvertO(requestattachmentContent);
+                request["attachmentContent"] = CSharpExpressionConverter.ConvertToken(requestattachmentContent);
                 requestpropCount++;
             }
 
             if (requestattachmentName != null)
             {
-                request["attachmentName"] = ExpressionConverter.ConvertO(requestattachmentName);
+                request["attachmentName"] = CSharpExpressionConverter.ConvertToken(requestattachmentName);
                 requestpropCount++;
             }
 
             if (requestemailAddresses != null)
             {
-                request["emailAddresses"] = ExpressionConverter.ConvertO(requestemailAddresses);
+                request["emailAddresses"] = CSharpExpressionConverter.ConvertToken(requestemailAddresses);
                 requestpropCount++;
             }
 
             if (requestemailContent != null)
             {
-                request["emailBody"] = ExpressionConverter.ConvertO(requestemailContent);
+                request["emailBody"] = CSharpExpressionConverter.ConvertToken(requestemailContent);
                 requestpropCount++;
             }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             {
                 if (requestemailContentType != null)
                 {
-                    request["emailContentType"] = ExpressionConverter.ConvertO(requestemailContentType);
+                    request["emailContentType"] = CSharpExpressionConverter.Convert(requestemailContentType);
                     requestpropCount++;
                 }
 
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
             if (requestemailSubject != null)
             {
-                request["emailSubject"] = ExpressionConverter.ConvertO(requestemailSubject);
+                request["emailSubject"] = CSharpExpressionConverter.ConvertToken(requestemailSubject);
                 requestpropCount++;
             }
 
             if (requestexchangeGroups != null)
             {
-                request["exchangeGroups"] = ExpressionConverter.ConvertO(requestexchangeGroups);
+                request["exchangeGroups"] = CSharpExpressionConverter.ConvertToken(requestexchangeGroups);
                 requestpropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             {
                 if (requestwhenToSendType != null)
                 {
-                    request["jobExecutionType"] = ExpressionConverter.ConvertO(requestwhenToSendType);
+                    request["jobExecutionType"] = CSharpExpressionConverter.Convert(requestwhenToSendType);
                     requestpropCount++;
                 }
 
@@ -130,35 +130,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
             if (requestwhenToSend != null)
             {
-                request["jobScheduleTime"] = ExpressionConverter.ConvertO(requestwhenToSend);
+                request["jobScheduleTime"] = CSharpExpressionConverter.ConvertToken(requestwhenToSend);
                 requestpropCount++;
             }
 
             if (requestrecipientEmailField != null)
             {
-                request["recipientListField"] = ExpressionConverter.ConvertO(requestrecipientEmailField);
+                request["recipientListField"] = CSharpExpressionConverter.ConvertToken(requestrecipientEmailField);
                 requestpropCount++;
             }
 
             if (requestrecipientListURL != null)
             {
-                request["recipientListUrl"] = ExpressionConverter.ConvertO(requestrecipientListURL);
+                request["recipientListUrl"] = CSharpExpressionConverter.ConvertToken(requestrecipientListURL);
                 requestpropCount++;
             }
 
             if (requestrecipientFilterView != null)
             {
-                request["recipientListView"] = ExpressionConverter.ConvertO(requestrecipientFilterView);
+                request["recipientListView"] = CSharpExpressionConverter.ConvertToken(requestrecipientFilterView);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["recipientType"] = ExpressionConverter.ConvertO(requestrecipientSource);
+            request["recipientType"] = CSharpExpressionConverter.Convert(requestrecipientSource);
             if (requestremoveDuplicates != null)
             {
                 if (requestremoveDuplicates != null)
                 {
-                    request["removeDuplicates"] = ExpressionConverter.ConvertO(requestremoveDuplicates);
+                    request["removeDuplicates"] = CSharpExpressionConverter.ConvertToken(requestremoveDuplicates);
                     requestpropCount++;
                 }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             {
                 if (requestsendReport != null)
                 {
-                    request["reportAuthor"] = ExpressionConverter.ConvertO(requestsendReport);
+                    request["reportAuthor"] = CSharpExpressionConverter.ConvertToken(requestsendReport);
                     requestpropCount++;
                 }
 
@@ -188,25 +188,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
             if (requesttimeZone != null)
             {
-                request["scheduledTimeZoneId"] = ExpressionConverter.ConvertO(requesttimeZone);
+                request["scheduledTimeZoneId"] = CSharpExpressionConverter.ConvertToken(requesttimeZone);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["sendingAddressId"] = ExpressionConverter.ConvertO(requestsendingAccount);
+            request["sendingAddressId"] = CSharpExpressionConverter.ConvertToken(requestsendingAccount);
             if (requesttemplate != null)
             {
-                request["template"] = ExpressionConverter.ConvertO(requesttemplate);
+                request["template"] = CSharpExpressionConverter.ConvertToken(requesttemplate);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requestnewsletterTitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requestnewsletterTitle);
             if (requesttrackClicks != null)
             {
                 if (requesttrackClicks != null)
                 {
-                    request["trackClicks"] = ExpressionConverter.ConvertO(requesttrackClicks);
+                    request["trackClicks"] = CSharpExpressionConverter.ConvertToken(requesttrackClicks);
                     requestpropCount++;
                 }
 
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             {
                 if (requesttrackOpens != null)
                 {
-                    request["trackOpens"] = ExpressionConverter.ConvertO(requesttrackOpens);
+                    request["trackOpens"] = CSharpExpressionConverter.ConvertToken(requesttrackOpens);
                     requestpropCount++;
                 }
 
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallPath = "/1.0/job/get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(requestJobId);
+            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
             return new ApiConnectionAction<JsJob>(callPayload);
         }
 
@@ -259,11 +259,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (requestDateFrom != null)
-                callPayload.Queries["request.dateFrom"] = ExpressionConverter.Convert(requestDateFrom);
+                callPayload.Queries["request.dateFrom"] = CSharpExpressionConverter.ConvertO(requestDateFrom);
             if (requestDateTo != null)
-                callPayload.Queries["request.dateTo"] = ExpressionConverter.Convert(requestDateTo);
+                callPayload.Queries["request.dateTo"] = CSharpExpressionConverter.ConvertO(requestDateTo);
             if (requestLimit != null)
-                callPayload.Queries["request.limit"] = ExpressionConverter.Convert(requestLimit);
+                callPayload.Queries["request.limit"] = CSharpExpressionConverter.ConvertO(requestLimit);
             return new ApiConnectionAction<JsJobsResponse>(callPayload);
         }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallPath = "/1.0/job/getreport";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(requestJobId);
+            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
             return new ApiConnectionAction<JsJobReport>(callPayload);
         }
 
@@ -287,12 +287,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             if (requestcomments != null)
             {
-                request["comments"] = ExpressionConverter.ConvertO(requestcomments);
+                request["comments"] = CSharpExpressionConverter.ConvertToken(requestcomments);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["secret"] = ExpressionConverter.ConvertO(requestsecret);
+            request["secret"] = CSharpExpressionConverter.ConvertToken(requestsecret);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -307,8 +307,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallPath = "/1.0/trackerlog";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(requestJobId);
-            callPayload.Queries["request.dataType"] = ExpressionConverter.Convert(requestDataType);
+            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
+            callPayload.Queries["request.dataType"] = CSharpExpressionConverter.Convert(requestDataType);
             return new ApiConnectionAction<JsTrackerLogResponse>(callPayload);
         }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (requestJobId != null)
-                callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(requestJobId);
+                callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
             return new ApiConnectionAction<JsUnsubscribesResponse>(callPayload);
         }
     }
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             request["triggerUrl"] = "@listCallbackUrl()";
             requestpropCount++;
             if (requestpropCount > 0)
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             request["triggerUrl"] = "@listCallbackUrl()";
             requestpropCount++;
             if (requestpropCount > 0)
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             request["triggerUrl"] = "@listCallbackUrl()";
             requestpropCount++;
             if (requestpropCount > 0)

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListGetResponse>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/lists/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListContactDeleteResponse>(callPayload);
@@ -84,25 +84,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodylists != null)
             {
-                body["lists"] = ExpressionConverter.ConvertO(bodylists);
+                body["lists"] = CSharpExpressionConverter.ConvertToken(bodylists);
                 bodypropCount++;
             }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ContactGetResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> campaignId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CampaignGetResponse>(callPayload);

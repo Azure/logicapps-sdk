@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var bodypropCount = 0;
             if (bodyinputFile != null)
             {
-                body["InputFile"] = ExpressionConverter.ConvertO(bodyinputFile);
+                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
                 bodypropCount++;
             }
 
             if (bodyrules != null)
             {
-                body["Rules"] = ExpressionConverter.ConvertO(bodyrules);
+                body["Rules"] = CSharpExpressionConverter.ConvertToken(bodyrules);
                 bodypropCount++;
             }
 
             if (bodyrecognitionMode != null)
             {
-                body["RecognitionMode"] = ExpressionConverter.ConvertO(bodyrecognitionMode);
+                body["RecognitionMode"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMode);
                 bodypropCount++;
             }
 
@@ -55,31 +55,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var bodypropCount = 0;
             if (bodyinputFile != null)
             {
-                body["InputFile"] = ExpressionConverter.ConvertO(bodyinputFile);
+                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
                 bodypropCount++;
             }
 
             if (bodyquestionsYesNo != null)
             {
-                body["QuestionsYesNo"] = ExpressionConverter.ConvertO(bodyquestionsYesNo);
+                body["QuestionsYesNo"] = CSharpExpressionConverter.ConvertToken(bodyquestionsYesNo);
                 bodypropCount++;
             }
 
             if (bodyquestionsMultipleChoice != null)
             {
-                body["QuestionsMultipleChoice"] = ExpressionConverter.ConvertO(bodyquestionsMultipleChoice);
+                body["QuestionsMultipleChoice"] = CSharpExpressionConverter.ConvertToken(bodyquestionsMultipleChoice);
                 bodypropCount++;
             }
 
             if (bodyquestionsFreeResponse != null)
             {
-                body["QuestionsFreeResponse"] = ExpressionConverter.ConvertO(bodyquestionsFreeResponse);
+                body["QuestionsFreeResponse"] = CSharpExpressionConverter.ConvertToken(bodyquestionsFreeResponse);
                 bodypropCount++;
             }
 
             if (bodyrecognitionMode != null)
             {
-                body["RecognitionMode"] = ExpressionConverter.ConvertO(bodyrecognitionMode);
+                body["RecognitionMode"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMode);
                 bodypropCount++;
             }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractTextResponse>(callPayload);
         }
 
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fieldNames != null)
-                callPayload.Headers["FieldNames"] = ExpressionConverter.Convert(fieldNames);
+                callPayload.Headers["FieldNames"] = CSharpExpressionConverter.ConvertO(fieldNames);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractFieldsResponse>(callPayload);
         }
 
@@ -122,42 +122,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputFile != null)
             {
-                body["InputFile"] = ExpressionConverter.ConvertO(bodyinputFile);
+                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
                 bodypropCount++;
             }
 
             if (bodyfieldsToExtract != null)
             {
-                body["FieldsToExtract"] = ExpressionConverter.ConvertO(bodyfieldsToExtract);
+                body["FieldsToExtract"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToExtract);
                 bodypropCount++;
             }
 
             if (bodymaximumPagesProcessed != null)
             {
-                body["MaximumPagesProcessed"] = ExpressionConverter.ConvertO(bodymaximumPagesProcessed);
+                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
                 bodypropCount++;
             }
 
             if (bodypreprocessing != null)
             {
-                body["Preprocessing"] = ExpressionConverter.ConvertO(bodypreprocessing);
+                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
                 bodypropCount++;
             }
 
             if (bodyresultCrossCheck != null)
             {
-                body["ResultCrossCheck"] = ExpressionConverter.ConvertO(bodyresultCrossCheck);
+                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
                 bodypropCount++;
             }
 
             if (bodyrotateImageDegrees != null)
             {
-                body["RotateImageDegrees"] = ExpressionConverter.ConvertO(bodyrotateImageDegrees);
+                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
                 bodypropCount++;
             }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractTablesResponse>(callPayload);
         }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractBarcodesAiResponse>(callPayload);
         }
 
@@ -198,9 +198,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             if (preprocessing != null)
-                callPayload.Headers["preprocessing"] = ExpressionConverter.Convert(preprocessing);
+                callPayload.Headers["preprocessing"] = CSharpExpressionConverter.ConvertO(preprocessing);
             return new ApiConnectionAction<ExtractFieldsAndTablesResponse>(callPayload);
         }
 
@@ -211,9 +211,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (categories != null)
-                callPayload.Headers["Categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Headers["Categories"] = CSharpExpressionConverter.ConvertO(categories);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<DocumentClassificationResult>(callPayload);
         }
 
@@ -224,42 +224,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputFile != null)
             {
-                body["InputFile"] = ExpressionConverter.ConvertO(bodyinputFile);
+                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
                 bodypropCount++;
             }
 
             if (bodycategories != null)
             {
-                body["Categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["Categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodypreprocessing != null)
             {
-                body["Preprocessing"] = ExpressionConverter.ConvertO(bodypreprocessing);
+                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
                 bodypropCount++;
             }
 
             if (bodyresultCrossCheck != null)
             {
-                body["ResultCrossCheck"] = ExpressionConverter.ConvertO(bodyresultCrossCheck);
+                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
                 bodypropCount++;
             }
 
             if (bodymaximumPagesProcessed != null)
             {
-                body["MaximumPagesProcessed"] = ExpressionConverter.ConvertO(bodymaximumPagesProcessed);
+                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
                 bodypropCount++;
             }
 
             if (bodyrotateImageDegrees != null)
             {
-                body["RotateImageDegrees"] = ExpressionConverter.ConvertO(bodyrotateImageDegrees);
+                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
                 bodypropCount++;
             }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<SummarizeDocumentResponse>(callPayload);
         }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
         }
 
@@ -300,42 +300,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputFile != null)
             {
-                body["InputFile"] = ExpressionConverter.ConvertO(bodyinputFile);
+                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
                 bodypropCount++;
             }
 
             if (bodyfieldsToExtract != null)
             {
-                body["FieldsToExtract"] = ExpressionConverter.ConvertO(bodyfieldsToExtract);
+                body["FieldsToExtract"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToExtract);
                 bodypropCount++;
             }
 
             if (bodymaximumPagesProcessed != null)
             {
-                body["MaximumPagesProcessed"] = ExpressionConverter.ConvertO(bodymaximumPagesProcessed);
+                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
                 bodypropCount++;
             }
 
             if (bodypreprocessing != null)
             {
-                body["Preprocessing"] = ExpressionConverter.ConvertO(bodypreprocessing);
+                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
                 bodypropCount++;
             }
 
             if (bodyresultCrossCheck != null)
             {
-                body["ResultCrossCheck"] = ExpressionConverter.ConvertO(bodyresultCrossCheck);
+                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
                 bodypropCount++;
             }
 
             if (bodyrotateImageDegrees != null)
             {
-                body["RotateImageDegrees"] = ExpressionConverter.ConvertO(bodyrotateImageDegrees);
+                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
                 bodypropCount++;
             }
 
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
         }
 
@@ -365,9 +365,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (categories != null)
-                callPayload.Headers["Categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Headers["Categories"] = CSharpExpressionConverter.ConvertO(categories);
             if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(recognitionMode);
+                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
             return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
         }
 
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (asyncJobID != null)
-                callPayload.Queries["AsyncJobID"] = ExpressionConverter.Convert(asyncJobID);
+                callPayload.Queries["AsyncJobID"] = CSharpExpressionConverter.ConvertO(asyncJobID);
             return new ApiConnectionAction<ExtractDocumentJobStatusResult>(callPayload);
         }
     }

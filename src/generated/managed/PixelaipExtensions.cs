@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var bodypropCount = 0;
             if (bodytoken != null)
             {
-                body["token"] = ExpressionConverter.ConvertO(bodytoken);
+                body["token"] = CSharpExpressionConverter.ConvertToken(bodytoken);
                 bodypropCount++;
             }
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             {
                 if (bodyagreeTermsOfService != null)
                 {
-                    body["agreeTermsOfService"] = ExpressionConverter.ConvertO(bodyagreeTermsOfService);
+                    body["agreeTermsOfService"] = CSharpExpressionConverter.Convert(bodyagreeTermsOfService);
                     bodypropCount++;
                 }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             {
                 if (bodynotMinor != null)
                 {
-                    body["notMinor"] = ExpressionConverter.ConvertO(bodynotMinor);
+                    body["notMinor"] = CSharpExpressionConverter.Convert(bodynotMinor);
                     bodypropCount++;
                 }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
             if (bodythanksCode != null)
             {
-                body["thanksCode"] = ExpressionConverter.ConvertO(bodythanksCode);
+                body["thanksCode"] = CSharpExpressionConverter.ConvertToken(bodythanksCode);
                 bodypropCount++;
             }
 
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["newToken"] = ExpressionConverter.ConvertO(bodynewToken);
+            body["newToken"] = CSharpExpressionConverter.ConvertToken(bodynewToken);
             if (bodythanksCode != null)
             {
-                body["thanksCode"] = ExpressionConverter.ConvertO(bodythanksCode);
+                body["thanksCode"] = CSharpExpressionConverter.ConvertToken(bodythanksCode);
                 bodypropCount++;
             }
 
@@ -120,43 +120,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var bodypropCount = 0;
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodygravatarIconEmail != null)
             {
-                body["gravatarIconEmail"] = ExpressionConverter.ConvertO(bodygravatarIconEmail);
+                body["gravatarIconEmail"] = CSharpExpressionConverter.ConvertToken(bodygravatarIconEmail);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             if (bodyaboutURL != null)
             {
-                body["aboutURL"] = ExpressionConverter.ConvertO(bodyaboutURL);
+                body["aboutURL"] = CSharpExpressionConverter.ConvertToken(bodyaboutURL);
                 bodypropCount++;
             }
 
             if (bodycontributeURLs != null)
             {
-                body["contributeURLs"] = ExpressionConverter.ConvertO(bodycontributeURLs);
+                body["contributeURLs"] = CSharpExpressionConverter.ConvertToken(bodycontributeURLs);
                 bodypropCount++;
             }
 
             if (bodypinnedGraphID != null)
             {
-                body["pinnedGraphID"] = ExpressionConverter.ConvertO(bodypinnedGraphID);
+                body["pinnedGraphID"] = CSharpExpressionConverter.ConvertToken(bodypinnedGraphID);
                 bodypropCount++;
             }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             return new ApiConnectionAction<GraphDeleteResponse>(callPayload);
         }
 
@@ -196,36 +196,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+            body["unit"] = CSharpExpressionConverter.ConvertToken(bodyunit);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
+            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             if (bodyselfSufficient != null)
             {
-                body["selfSufficient"] = ExpressionConverter.ConvertO(bodyselfSufficient);
+                body["selfSufficient"] = CSharpExpressionConverter.ConvertToken(bodyselfSufficient);
                 bodypropCount++;
             }
 
             if (bodyisSecret != null)
             {
-                body["isSecret"] = ExpressionConverter.ConvertO(bodyisSecret);
+                body["isSecret"] = CSharpExpressionConverter.ConvertToken(bodyisSecret);
                 bodypropCount++;
             }
 
             if (bodypublishOptionalData != null)
             {
-                body["publishOptionalData"] = ExpressionConverter.ConvertO(bodypublishOptionalData);
+                body["publishOptionalData"] = CSharpExpressionConverter.ConvertToken(bodypublishOptionalData);
                 bodypropCount++;
             }
 
@@ -243,12 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             {
                 if (bodyunit != null)
                 {
-                    body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                    body["unit"] = CSharpExpressionConverter.ConvertToken(bodyunit);
                     bodypropCount++;
                 }
 
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             {
                 if (bodycolor != null)
                 {
-                    body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                    body["color"] = CSharpExpressionConverter.Convert(bodycolor);
                     bodypropCount++;
                 }
 
@@ -286,25 +286,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             if (bodyselfSufficient != null)
             {
-                body["selfSufficient"] = ExpressionConverter.ConvertO(bodyselfSufficient);
+                body["selfSufficient"] = CSharpExpressionConverter.ConvertToken(bodyselfSufficient);
                 bodypropCount++;
             }
 
             if (bodyisSecret != null)
             {
-                body["isSecret"] = ExpressionConverter.ConvertO(bodyisSecret);
+                body["isSecret"] = CSharpExpressionConverter.ConvertToken(bodyisSecret);
                 bodypropCount++;
             }
 
             if (bodypublishOptionalData != null)
             {
-                body["publishOptionalData"] = ExpressionConverter.ConvertO(bodypublishOptionalData);
+                body["publishOptionalData"] = CSharpExpressionConverter.ConvertToken(bodypublishOptionalData);
                 bodypropCount++;
             }
 
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/graph-def";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             return new ApiConnectionAction<GraphGetResponse>(callPayload);
         }
 
@@ -332,13 +332,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/graphSVG";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                callPayload.Queries["mode"] = CSharpExpressionConverter.Convert(mode);
             if (appearance != null)
-                callPayload.Queries["appearance"] = ExpressionConverter.Convert(appearance);
+                callPayload.Queries["appearance"] = CSharpExpressionConverter.Convert(appearance);
             return new ApiConnectionAction<GraphSVGGetResponse>(callPayload);
         }
 
@@ -348,13 +348,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/pixels";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             if (withBody != null)
-                callPayload.Queries["withBody"] = ExpressionConverter.Convert(withBody);
+                callPayload.Queries["withBody"] = CSharpExpressionConverter.ConvertO(withBody);
             return new ApiConnectionAction<PixelsGetResponse>(callPayload);
         }
 
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/stats";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             return new ApiConnectionAction<StatsGetResponse>(callPayload);
         }
 
@@ -374,13 +374,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
+            body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
             bodypropCount++;
-            body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+            body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
             var optionalDataObject = new JObject();
             var optionalDataObjectpropCount = 0;
             if (optionalDataObjectpropCount > 0)
@@ -403,8 +403,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/pixel";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
+            callPayload.Queries["yyyyMMdd"] = CSharpExpressionConverter.ConvertO(yyyyMMdd);
             return new ApiConnectionAction<PixelGetResponse>(callPayload);
         }
 
@@ -414,8 +414,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/pixel";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
+            callPayload.Queries["yyyyMMdd"] = CSharpExpressionConverter.ConvertO(yyyyMMdd);
             return new ApiConnectionAction<PixelDeleteResponse>(callPayload);
         }
 
@@ -425,8 +425,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/pixel";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
+            callPayload.Queries["yyyyMMdd"] = CSharpExpressionConverter.ConvertO(yyyyMMdd);
             return new ApiConnectionAction<PixelPutResponse>(callPayload);
         }
 
@@ -436,8 +436,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/pixel/retina";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
+            callPayload.Queries["yyyyMMdd"] = CSharpExpressionConverter.ConvertO(yyyyMMdd);
             return new ApiConnectionAction<PixelRetinaGetResponse>(callPayload);
         }
 
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (graphID != null)
-                callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+                callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             callPayload.Headers["Content-Length"] = Convert.ToString(0);
             return new ApiConnectionAction<PixelIncrementPutResponse>(callPayload);
         }
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (graphID != null)
-                callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+                callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             callPayload.Headers["Content-Length"] = Convert.ToString(0);
             return new ApiConnectionAction<PixelDecrementPutResponse>(callPayload);
         }
@@ -471,12 +471,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/add";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyquantity != null)
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
                 bodypropCount++;
             }
 
@@ -494,12 +494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var apiCallPath = "/v1/users/graphs/subtract";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
+            callPayload.Queries["graphID"] = CSharpExpressionConverter.ConvertO(graphID);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyquantity != null)
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
                 bodypropCount++;
             }
 

@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             return new ApiConnectionAction<RandomResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeIDResponse> JokeID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/joke/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JokeIDResponse>(callPayload);
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeTypeResponse> JokeType(Expression<Func<string>> type, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/joke/type/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<JokeTypeResponse>(callPayload);
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (term != null)
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
             return new ApiConnectionAction<JokeSearchResponse>(callPayload);
         }
     }

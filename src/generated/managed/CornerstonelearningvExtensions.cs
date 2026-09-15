@@ -21,18 +21,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -51,21 +51,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodyattendees != null)
             {
-                body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                body["attendees"] = CSharpExpressionConverter.ConvertToken(bodyattendees);
                 bodypropCount++;
             }
 
@@ -87,21 +87,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodyjoinUrl != null)
             {
-                body["joinUrl"] = ExpressionConverter.ConvertO(bodyjoinUrl);
+                body["joinUrl"] = CSharpExpressionConverter.ConvertToken(bodyjoinUrl);
                 bodypropCount++;
             }
 
@@ -123,51 +123,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodycorpId != null)
             {
-                body["corpId"] = ExpressionConverter.ConvertO(bodycorpId);
+                body["corpId"] = CSharpExpressionConverter.ConvertToken(bodycorpId);
                 bodypropCount++;
             }
 
             if (bodymeetingId != null)
             {
-                body["meetingId"] = ExpressionConverter.ConvertO(bodymeetingId);
+                body["meetingId"] = CSharpExpressionConverter.ConvertToken(bodymeetingId);
                 bodypropCount++;
             }
 
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodyhostEmail != null)
             {
-                body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
                 bodypropCount++;
             }
 
             if (bodyjoinURL != null)
             {
-                body["joinURL"] = ExpressionConverter.ConvertO(bodyjoinURL);
+                body["joinURL"] = CSharpExpressionConverter.ConvertToken(bodyjoinURL);
                 bodypropCount++;
             }
 
@@ -189,51 +189,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodycorpId != null)
             {
-                body["corpId"] = ExpressionConverter.ConvertO(bodycorpId);
+                body["corpId"] = CSharpExpressionConverter.ConvertToken(bodycorpId);
                 bodypropCount++;
             }
 
             if (bodymeetingId != null)
             {
-                body["meetingId"] = ExpressionConverter.ConvertO(bodymeetingId);
+                body["meetingId"] = CSharpExpressionConverter.ConvertToken(bodymeetingId);
                 bodypropCount++;
             }
 
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodyhostEmail != null)
             {
-                body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
                 bodypropCount++;
             }
 
             if (bodyjoinURL != null)
             {
-                body["joinURL"] = ExpressionConverter.ConvertO(bodyjoinURL);
+                body["joinURL"] = CSharpExpressionConverter.ConvertToken(bodyjoinURL);
                 bodypropCount++;
             }
 
@@ -255,18 +255,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -285,18 +285,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             var bodypropCount = 0;
             if (bodyisSuccessful != null)
             {
-                body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

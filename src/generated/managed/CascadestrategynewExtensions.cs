@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
         {
-            var apiCallPath = String.Format("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspace_id"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+            body["plan_id"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
             bodypropCount++;
-            body["measure_value"] = ExpressionConverter.ConvertO(bodymeasureValue);
+            body["measure_value"] = CSharpExpressionConverter.ConvertToken(bodymeasureValue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -36,18 +36,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
         {
-            var apiCallPath = String.Format("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspace_id"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+            body["plan_id"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
             if (bodyhistoricalData != null)
             {
-                body["historical_data"] = ExpressionConverter.ConvertO(bodyhistoricalData);
+                body["historical_data"] = CSharpExpressionConverter.ConvertToken(bodyhistoricalData);
                 bodypropCount++;
             }
 
@@ -62,17 +62,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
         {
-            var apiCallPath = String.Format("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspace_id"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+            body["plan_id"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
             bodypropCount++;
-            body["action_value"] = ExpressionConverter.ConvertO(bodyactionValue);
+            body["action_value"] = CSharpExpressionConverter.ConvertToken(bodyactionValue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

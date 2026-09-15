@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<string> GetExpenseImage(Expression<Func<string>> expenseId)
         {
-            var apiCallPath = String.Format("/api/expense/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(expenseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/expense/{0}/image", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -23,58 +23,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultExportResponse> ExportExpenses(Expression<Func<string>> exportId, Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> expenseStates = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMail = null, Expression<Func<string>> reportIds = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> reportName = null, Expression<Func<string>> reportIdShort = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> payId = null, Expression<Func<string>> payId2 = null, Expression<Func<string>> payId3 = null, Expression<Func<string>> accountingPeriod = null, Expression<Func<bool>> includeReceipts = null, Expression<Func<int>> expenseUseTypes = null, Expression<Func<string>> archiveExpenses = null)
         {
-            var apiCallPath = String.Format("/api/export/expenses/{0}/", ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/export/expenses/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (reportId != null)
-                callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
+                callPayload.Queries["reportId"] = CSharpExpressionConverter.ConvertO(reportId);
             if (categoryId != null)
-                callPayload.Queries["categoryId"] = ExpressionConverter.Convert(categoryId);
+                callPayload.Queries["categoryId"] = CSharpExpressionConverter.ConvertO(categoryId);
             if (expenseName != null)
-                callPayload.Queries["expenseName"] = ExpressionConverter.Convert(expenseName);
+                callPayload.Queries["expenseName"] = CSharpExpressionConverter.ConvertO(expenseName);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (expenseStates != null)
-                callPayload.Queries["expenseStates"] = ExpressionConverter.Convert(expenseStates);
+                callPayload.Queries["expenseStates"] = CSharpExpressionConverter.ConvertO(expenseStates);
             if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
+                callPayload.Queries["reportStates"] = CSharpExpressionConverter.ConvertO(reportStates);
             if (userIds != null)
-                callPayload.Queries["userIds"] = ExpressionConverter.Convert(userIds);
+                callPayload.Queries["userIds"] = CSharpExpressionConverter.ConvertO(userIds);
             if (userMail != null)
-                callPayload.Queries["userMail"] = ExpressionConverter.Convert(userMail);
+                callPayload.Queries["userMail"] = CSharpExpressionConverter.ConvertO(userMail);
             if (reportIds != null)
-                callPayload.Queries["reportIds"] = ExpressionConverter.Convert(reportIds);
+                callPayload.Queries["reportIds"] = CSharpExpressionConverter.ConvertO(reportIds);
             if (expenseIds != null)
-                callPayload.Queries["expenseIds"] = ExpressionConverter.Convert(expenseIds);
+                callPayload.Queries["expenseIds"] = CSharpExpressionConverter.ConvertO(expenseIds);
             if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
+                callPayload.Queries["reportName"] = CSharpExpressionConverter.ConvertO(reportName);
             if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
+                callPayload.Queries["reportIdShort"] = CSharpExpressionConverter.ConvertO(reportIdShort);
             if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
+                callPayload.Queries["dateFilterType"] = CSharpExpressionConverter.ConvertO(dateFilterType);
             if (payId != null)
-                callPayload.Queries["payId"] = ExpressionConverter.Convert(payId);
+                callPayload.Queries["payId"] = CSharpExpressionConverter.ConvertO(payId);
             if (payId2 != null)
-                callPayload.Queries["payId2"] = ExpressionConverter.Convert(payId2);
+                callPayload.Queries["payId2"] = CSharpExpressionConverter.ConvertO(payId2);
             if (payId3 != null)
-                callPayload.Queries["payId3"] = ExpressionConverter.Convert(payId3);
+                callPayload.Queries["payId3"] = CSharpExpressionConverter.ConvertO(payId3);
             if (accountingPeriod != null)
-                callPayload.Queries["accountingPeriod"] = ExpressionConverter.Convert(accountingPeriod);
+                callPayload.Queries["accountingPeriod"] = CSharpExpressionConverter.ConvertO(accountingPeriod);
             if (includeReceipts != null)
-                callPayload.Queries["includeReceipts"] = ExpressionConverter.Convert(includeReceipts);
+                callPayload.Queries["includeReceipts"] = CSharpExpressionConverter.ConvertO(includeReceipts);
             if (expenseUseTypes != null)
-                callPayload.Queries["expenseUseTypes"] = ExpressionConverter.Convert(expenseUseTypes);
+                callPayload.Queries["expenseUseTypes"] = CSharpExpressionConverter.ConvertO(expenseUseTypes);
             if (archiveExpenses != null)
-                callPayload.Queries["archiveExpenses"] = ExpressionConverter.Convert(archiveExpenses);
+                callPayload.Queries["archiveExpenses"] = CSharpExpressionConverter.ConvertO(archiveExpenses);
             return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultExportResponse> PrintMission(Expression<Func<string>> reportId)
         {
-            var apiCallPath = String.Format("/api/export/report/{0}/pdf/", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/export/report/{0}/pdf/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (isForExpenses != null)
-                callPayload.Queries["isForExpenses"] = ExpressionConverter.Convert(isForExpenses);
+                callPayload.Queries["isForExpenses"] = CSharpExpressionConverter.ConvertO(isForExpenses);
             if (exportType != null)
-                callPayload.Queries["exportType"] = ExpressionConverter.Convert(exportType);
+                callPayload.Queries["exportType"] = CSharpExpressionConverter.ConvertO(exportType);
             return new ApiConnectionAction<BaseResultListExportFormatResponse>(callPayload);
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallPath = "/api/projects/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(addOrUpdateProjectInputArray);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(addOrUpdateProjectInputArray);
             return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
         }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallPath = "/api/projects/";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(addOrUpdateProjectInputArray);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(addOrUpdateProjectInputArray);
             return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
         }
 
@@ -122,11 +122,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var addReceiptInput = new JObject();
             var addReceiptInputpropCount = 0;
             addReceiptInputpropCount++;
-            addReceiptInput["UserId"] = ExpressionConverter.ConvertO(addReceiptInputuserId);
+            addReceiptInput["UserId"] = CSharpExpressionConverter.ConvertToken(addReceiptInputuserId);
             addReceiptInputpropCount++;
-            addReceiptInput["ReceiptContent"] = ExpressionConverter.ConvertO(addReceiptInputreceiptContent);
+            addReceiptInput["ReceiptContent"] = CSharpExpressionConverter.ConvertToken(addReceiptInputreceiptContent);
             addReceiptInputpropCount++;
-            addReceiptInput["ReceiptName"] = ExpressionConverter.ConvertO(addReceiptInputreceiptName);
+            addReceiptInput["ReceiptName"] = CSharpExpressionConverter.ConvertToken(addReceiptInputreceiptName);
             if (addReceiptInputpropCount > 0)
             {
                 callPayload.Body = addReceiptInput;
@@ -147,59 +147,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> ValidatorReports(Expression<Func<string>> validatorMail, Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
-            var apiCallPath = String.Format("/api/v2/{0}/reports/", ExpressionConverter.ConvertWithUrlEncoding(validatorMail, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/reports/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(validatorMail, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
+                callPayload.Queries["reportName"] = CSharpExpressionConverter.ConvertO(reportName);
             if (reportStartDate != null)
-                callPayload.Queries["reportStartDate"] = ExpressionConverter.Convert(reportStartDate);
+                callPayload.Queries["reportStartDate"] = CSharpExpressionConverter.ConvertO(reportStartDate);
             if (reportEndDate != null)
-                callPayload.Queries["reportEndDate"] = ExpressionConverter.Convert(reportEndDate);
+                callPayload.Queries["reportEndDate"] = CSharpExpressionConverter.ConvertO(reportEndDate);
             if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
+                callPayload.Queries["reportStates"] = CSharpExpressionConverter.ConvertO(reportStates);
             if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
+                callPayload.Queries["reportIdShort"] = CSharpExpressionConverter.ConvertO(reportIdShort);
             if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["ownerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
+                callPayload.Queries["ownerPayId2"] = CSharpExpressionConverter.ConvertO(ownerPayId2);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
+                callPayload.Queries["dateFilterType"] = CSharpExpressionConverter.ConvertO(dateFilterType);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
         {
-            var apiCallPath = String.Format("/api/v2/report/{0}/updateStatus/", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/report/{0}/updateStatus/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var reportUpdateStatusInput = new JObject();
             var reportUpdateStatusInputpropCount = 0;
             reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Operation"] = ExpressionConverter.ConvertO(reportUpdateStatusInputoperation);
+            reportUpdateStatusInput["Operation"] = CSharpExpressionConverter.Convert(reportUpdateStatusInputoperation);
             reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Message"] = ExpressionConverter.ConvertO(reportUpdateStatusInputmessage);
+            reportUpdateStatusInput["Message"] = CSharpExpressionConverter.ConvertToken(reportUpdateStatusInputmessage);
             if (reportUpdateStatusInputinvoiceIdsToReject != null)
             {
-                reportUpdateStatusInput["InvoiceIdsToReject"] = ExpressionConverter.ConvertO(reportUpdateStatusInputinvoiceIdsToReject);
+                reportUpdateStatusInput["InvoiceIdsToReject"] = CSharpExpressionConverter.ConvertToken(reportUpdateStatusInputinvoiceIdsToReject);
                 reportUpdateStatusInputpropCount++;
             }
 
             if (reportUpdateStatusInputaccountingPeriod != null)
             {
-                reportUpdateStatusInput["AccountingPeriod"] = ExpressionConverter.ConvertO(reportUpdateStatusInputaccountingPeriod);
+                reportUpdateStatusInput["AccountingPeriod"] = CSharpExpressionConverter.ConvertToken(reportUpdateStatusInputaccountingPeriod);
                 reportUpdateStatusInputpropCount++;
             }
 
@@ -218,33 +218,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
+                callPayload.Queries["reportName"] = CSharpExpressionConverter.ConvertO(reportName);
             if (reportStartDate != null)
-                callPayload.Queries["reportStartDate"] = ExpressionConverter.Convert(reportStartDate);
+                callPayload.Queries["reportStartDate"] = CSharpExpressionConverter.ConvertO(reportStartDate);
             if (reportEndDate != null)
-                callPayload.Queries["reportEndDate"] = ExpressionConverter.Convert(reportEndDate);
+                callPayload.Queries["reportEndDate"] = CSharpExpressionConverter.ConvertO(reportEndDate);
             if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
+                callPayload.Queries["reportStates"] = CSharpExpressionConverter.ConvertO(reportStates);
             if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
+                callPayload.Queries["reportIdShort"] = CSharpExpressionConverter.ConvertO(reportIdShort);
             if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["ownerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
+                callPayload.Queries["ownerPayId2"] = CSharpExpressionConverter.ConvertO(ownerPayId2);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
+                callPayload.Queries["tagsNames"] = CSharpExpressionConverter.ConvertO(tagsNames);
             if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
+                callPayload.Queries["dateFilterType"] = CSharpExpressionConverter.ConvertO(dateFilterType);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
         }
 
@@ -255,151 +255,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["firstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["lastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (mail != null)
-                callPayload.Queries["mail"] = ExpressionConverter.Convert(mail);
+                callPayload.Queries["mail"] = CSharpExpressionConverter.ConvertO(mail);
             if (payId != null)
-                callPayload.Queries["payId"] = ExpressionConverter.Convert(payId);
+                callPayload.Queries["payId"] = CSharpExpressionConverter.ConvertO(payId);
             if (mailOrNameOrPayId != null)
-                callPayload.Queries["mailOrNameOrPayId"] = ExpressionConverter.Convert(mailOrNameOrPayId);
+                callPayload.Queries["mailOrNameOrPayId"] = CSharpExpressionConverter.ConvertO(mailOrNameOrPayId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (reviewerId != null)
-                callPayload.Queries["reviewerId"] = ExpressionConverter.Convert(reviewerId);
+                callPayload.Queries["reviewerId"] = CSharpExpressionConverter.ConvertO(reviewerId);
             if (reviewerName != null)
-                callPayload.Queries["reviewerName"] = ExpressionConverter.Convert(reviewerName);
+                callPayload.Queries["reviewerName"] = CSharpExpressionConverter.ConvertO(reviewerName);
             if (managerId != null)
-                callPayload.Queries["managerId"] = ExpressionConverter.Convert(managerId);
+                callPayload.Queries["managerId"] = CSharpExpressionConverter.ConvertO(managerId);
             if (managerName != null)
-                callPayload.Queries["managerName"] = ExpressionConverter.Convert(managerName);
+                callPayload.Queries["managerName"] = CSharpExpressionConverter.ConvertO(managerName);
             if (userIds != null)
-                callPayload.Queries["userIds"] = ExpressionConverter.Convert(userIds);
+                callPayload.Queries["userIds"] = CSharpExpressionConverter.ConvertO(userIds);
             if (userMails != null)
-                callPayload.Queries["userMails"] = ExpressionConverter.Convert(userMails);
+                callPayload.Queries["userMails"] = CSharpExpressionConverter.ConvertO(userMails);
             if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
+                callPayload.Queries["tagsNames"] = CSharpExpressionConverter.ConvertO(tagsNames);
             if (simpleTagsNames != null)
-                callPayload.Queries["simpleTagsNames"] = ExpressionConverter.Convert(simpleTagsNames);
+                callPayload.Queries["simpleTagsNames"] = CSharpExpressionConverter.ConvertO(simpleTagsNames);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultUserResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
         {
-            var apiCallPath = String.Format("/api/v2/quickexpense/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/quickexpense/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var quickExpenseInput = new JObject();
             var quickExpenseInputpropCount = 0;
             quickExpenseInputpropCount++;
-            quickExpenseInput["FileToSend"] = ExpressionConverter.ConvertO(quickExpenseInputfileToSend);
+            quickExpenseInput["FileToSend"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputfileToSend);
             if (quickExpenseInputtitle != null)
             {
-                quickExpenseInput["Title"] = ExpressionConverter.ConvertO(quickExpenseInputtitle);
+                quickExpenseInput["Title"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputtitle);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputtransactionAmount != null)
             {
-                quickExpenseInput["TransactionAmount"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionAmount);
+                quickExpenseInput["TransactionAmount"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputtransactionAmount);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputvatRates != null)
             {
-                quickExpenseInput["VatRates"] = ExpressionConverter.ConvertO(quickExpenseInputvatRates);
+                quickExpenseInput["VatRates"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputvatRates);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputvatAmounts != null)
             {
-                quickExpenseInput["VatAmounts"] = ExpressionConverter.ConvertO(quickExpenseInputvatAmounts);
+                quickExpenseInput["VatAmounts"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputvatAmounts);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputcurrencyCode != null)
             {
-                quickExpenseInput["CurrencyCode"] = ExpressionConverter.ConvertO(quickExpenseInputcurrencyCode);
+                quickExpenseInput["CurrencyCode"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputcurrencyCode);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputtransactionDate != null)
             {
-                quickExpenseInput["TransactionDate"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionDate);
+                quickExpenseInput["TransactionDate"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputtransactionDate);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputmerchantName != null)
             {
-                quickExpenseInput["MerchantName"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantName);
+                quickExpenseInput["MerchantName"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputmerchantName);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputlocationCountry != null)
             {
-                quickExpenseInput["LocationCountry"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCountry);
+                quickExpenseInput["LocationCountry"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputlocationCountry);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputlocationCity != null)
             {
-                quickExpenseInput["LocationCity"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCity);
+                quickExpenseInput["LocationCity"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputlocationCity);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputcomment != null)
             {
-                quickExpenseInput["Comment"] = ExpressionConverter.ConvertO(quickExpenseInputcomment);
+                quickExpenseInput["Comment"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputcomment);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputmerchantExpenseId != null)
             {
-                quickExpenseInput["MerchantExpenseId"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantExpenseId);
+                quickExpenseInput["MerchantExpenseId"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputmerchantExpenseId);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputisEncrypted != null)
             {
-                quickExpenseInput["IsEncrypted"] = ExpressionConverter.ConvertO(quickExpenseInputisEncrypted);
+                quickExpenseInput["IsEncrypted"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputisEncrypted);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputexpenseUseType != null)
             {
-                quickExpenseInput["ExpenseUseType"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseUseType);
+                quickExpenseInput["ExpenseUseType"] = CSharpExpressionConverter.Convert(quickExpenseInputexpenseUseType);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputpaymentTypeCode != null)
             {
-                quickExpenseInput["PaymentTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputpaymentTypeCode);
+                quickExpenseInput["PaymentTypeCode"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputpaymentTypeCode);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputexpenseTypeCode != null)
             {
-                quickExpenseInput["ExpenseTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseTypeCode);
+                quickExpenseInput["ExpenseTypeCode"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputexpenseTypeCode);
                 quickExpenseInputpropCount++;
             }
 
             if (quickExpenseInputfileType != null)
             {
-                quickExpenseInput["FileType"] = ExpressionConverter.ConvertO(quickExpenseInputfileType);
+                quickExpenseInput["FileType"] = CSharpExpressionConverter.ConvertToken(quickExpenseInputfileType);
                 quickExpenseInputpropCount++;
             }
 
@@ -418,25 +418,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (categoryName != null)
-                callPayload.Queries["categoryName"] = ExpressionConverter.Convert(categoryName);
+                callPayload.Queries["categoryName"] = CSharpExpressionConverter.ConvertO(categoryName);
             if (costAccount != null)
-                callPayload.Queries["costAccount"] = ExpressionConverter.Convert(costAccount);
+                callPayload.Queries["costAccount"] = CSharpExpressionConverter.ConvertO(costAccount);
             if (vatAccount != null)
-                callPayload.Queries["vatAccount"] = ExpressionConverter.Convert(vatAccount);
+                callPayload.Queries["vatAccount"] = CSharpExpressionConverter.ConvertO(vatAccount);
             if (isActive != null)
-                callPayload.Queries["isActive"] = ExpressionConverter.Convert(isActive);
+                callPayload.Queries["isActive"] = CSharpExpressionConverter.ConvertO(isActive);
             if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
+                callPayload.Queries["tagsNames"] = CSharpExpressionConverter.ConvertO(tagsNames);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultCategoryResponse>(callPayload);
         }
 
@@ -447,90 +447,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (reportId != null)
-                callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
+                callPayload.Queries["reportId"] = CSharpExpressionConverter.ConvertO(reportId);
             if (categoryId != null)
-                callPayload.Queries["categoryId"] = ExpressionConverter.Convert(categoryId);
+                callPayload.Queries["categoryId"] = CSharpExpressionConverter.ConvertO(categoryId);
             if (expenseName != null)
-                callPayload.Queries["expenseName"] = ExpressionConverter.Convert(expenseName);
+                callPayload.Queries["expenseName"] = CSharpExpressionConverter.ConvertO(expenseName);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (reportState != null)
-                callPayload.Queries["reportState"] = ExpressionConverter.Convert(reportState);
+                callPayload.Queries["reportState"] = CSharpExpressionConverter.ConvertO(reportState);
             if (expenseStates != null)
-                callPayload.Queries["expenseStates"] = ExpressionConverter.Convert(expenseStates);
+                callPayload.Queries["expenseStates"] = CSharpExpressionConverter.ConvertO(expenseStates);
             if (isReimbusable != null)
-                callPayload.Queries["isReimbusable"] = ExpressionConverter.Convert(isReimbusable);
+                callPayload.Queries["isReimbusable"] = CSharpExpressionConverter.ConvertO(isReimbusable);
             if (valueInCurrency != null)
-                callPayload.Queries["valueInCurrency"] = ExpressionConverter.Convert(valueInCurrency);
+                callPayload.Queries["valueInCurrency"] = CSharpExpressionConverter.ConvertO(valueInCurrency);
             if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["ownerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (ownerMail != null)
-                callPayload.Queries["ownerMail"] = ExpressionConverter.Convert(ownerMail);
+                callPayload.Queries["ownerMail"] = CSharpExpressionConverter.ConvertO(ownerMail);
             if (ownerPayId != null)
-                callPayload.Queries["ownerPayId"] = ExpressionConverter.Convert(ownerPayId);
+                callPayload.Queries["ownerPayId"] = CSharpExpressionConverter.ConvertO(ownerPayId);
             if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
+                callPayload.Queries["ownerPayId2"] = CSharpExpressionConverter.ConvertO(ownerPayId2);
             if (ownerPayId3 != null)
-                callPayload.Queries["ownerPayId3"] = ExpressionConverter.Convert(ownerPayId3);
+                callPayload.Queries["ownerPayId3"] = CSharpExpressionConverter.ConvertO(ownerPayId3);
             if (ownerPayId4 != null)
-                callPayload.Queries["ownerPayId4"] = ExpressionConverter.Convert(ownerPayId4);
+                callPayload.Queries["ownerPayId4"] = CSharpExpressionConverter.ConvertO(ownerPayId4);
             if (ownerPayId5 != null)
-                callPayload.Queries["ownerPayId5"] = ExpressionConverter.Convert(ownerPayId5);
+                callPayload.Queries["ownerPayId5"] = CSharpExpressionConverter.ConvertO(ownerPayId5);
             if (ownerPayId6 != null)
-                callPayload.Queries["ownerPayId6"] = ExpressionConverter.Convert(ownerPayId6);
+                callPayload.Queries["ownerPayId6"] = CSharpExpressionConverter.ConvertO(ownerPayId6);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (isBillable != null)
-                callPayload.Queries["isBillable"] = ExpressionConverter.Convert(isBillable);
+                callPayload.Queries["isBillable"] = CSharpExpressionConverter.ConvertO(isBillable);
             if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
+                callPayload.Queries["dateFilterType"] = CSharpExpressionConverter.ConvertO(dateFilterType);
             if (merchantCountries != null)
-                callPayload.Queries["merchantCountries"] = ExpressionConverter.Convert(merchantCountries);
+                callPayload.Queries["merchantCountries"] = CSharpExpressionConverter.ConvertO(merchantCountries);
             if (currencies != null)
-                callPayload.Queries["currencies"] = ExpressionConverter.Convert(currencies);
+                callPayload.Queries["currencies"] = CSharpExpressionConverter.ConvertO(currencies);
             if (fileType != null)
-                callPayload.Queries["fileType"] = ExpressionConverter.Convert(fileType);
+                callPayload.Queries["fileType"] = CSharpExpressionConverter.ConvertO(fileType);
             if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
+                callPayload.Queries["reportIdShort"] = CSharpExpressionConverter.ConvertO(reportIdShort);
             if (expenseUseTypes != null)
-                callPayload.Queries["expenseUseTypes"] = ExpressionConverter.Convert(expenseUseTypes);
+                callPayload.Queries["expenseUseTypes"] = CSharpExpressionConverter.ConvertO(expenseUseTypes);
             if (supplierId != null)
-                callPayload.Queries["supplierId"] = ExpressionConverter.Convert(supplierId);
+                callPayload.Queries["supplierId"] = CSharpExpressionConverter.ConvertO(supplierId);
             if (expenseIds != null)
-                callPayload.Queries["expenseIds"] = ExpressionConverter.Convert(expenseIds);
+                callPayload.Queries["expenseIds"] = CSharpExpressionConverter.ConvertO(expenseIds);
             if (merchantName != null)
-                callPayload.Queries["merchantName"] = ExpressionConverter.Convert(merchantName);
+                callPayload.Queries["merchantName"] = CSharpExpressionConverter.ConvertO(merchantName);
             if (vatCode != null)
-                callPayload.Queries["vatCode"] = ExpressionConverter.Convert(vatCode);
+                callPayload.Queries["vatCode"] = CSharpExpressionConverter.ConvertO(vatCode);
             if (valueHTInExpenseCurrency != null)
-                callPayload.Queries["valueHTInExpenseCurrency"] = ExpressionConverter.Convert(valueHTInExpenseCurrency);
+                callPayload.Queries["valueHTInExpenseCurrency"] = CSharpExpressionConverter.ConvertO(valueHTInExpenseCurrency);
             if (vatRate != null)
-                callPayload.Queries["vatRate"] = ExpressionConverter.Convert(vatRate);
+                callPayload.Queries["vatRate"] = CSharpExpressionConverter.ConvertO(vatRate);
             if (vatValue != null)
-                callPayload.Queries["vatValue"] = ExpressionConverter.Convert(vatValue);
+                callPayload.Queries["vatValue"] = CSharpExpressionConverter.ConvertO(vatValue);
             if (reportsIds != null)
-                callPayload.Queries["reportsIds"] = ExpressionConverter.Convert(reportsIds);
+                callPayload.Queries["reportsIds"] = CSharpExpressionConverter.ConvertO(reportsIds);
             if (dateTimeOffset != null)
-                callPayload.Queries["dateTimeOffset"] = ExpressionConverter.Convert(dateTimeOffset);
+                callPayload.Queries["dateTimeOffset"] = CSharpExpressionConverter.ConvertO(dateTimeOffset);
             if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
+                callPayload.Queries["tagsNames"] = CSharpExpressionConverter.ConvertO(tagsNames);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultExpenseResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultProjectResponse> GetProjectDetails(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api/v2/project/{0}/", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/project/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BaseResultProjectResponse>(callPayload);
@@ -543,35 +543,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectName != null)
-                callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
+                callPayload.Queries["projectName"] = CSharpExpressionConverter.ConvertO(projectName);
             if (projectIds != null)
-                callPayload.Queries["projectIds"] = ExpressionConverter.Convert(projectIds);
+                callPayload.Queries["projectIds"] = CSharpExpressionConverter.ConvertO(projectIds);
             if (validatorName != null)
-                callPayload.Queries["validatorName"] = ExpressionConverter.Convert(validatorName);
+                callPayload.Queries["validatorName"] = CSharpExpressionConverter.ConvertO(validatorName);
             if (projectReferenceOrExternalId != null)
-                callPayload.Queries["projectReferenceOrExternalId"] = ExpressionConverter.Convert(projectReferenceOrExternalId);
+                callPayload.Queries["projectReferenceOrExternalId"] = CSharpExpressionConverter.ConvertO(projectReferenceOrExternalId);
             if (bringAllProjects != null)
-                callPayload.Queries["bringAllProjects"] = ExpressionConverter.Convert(bringAllProjects);
+                callPayload.Queries["bringAllProjects"] = CSharpExpressionConverter.ConvertO(bringAllProjects);
             if (projectUseType != null)
-                callPayload.Queries["projectUseType"] = ExpressionConverter.Convert(projectUseType);
+                callPayload.Queries["projectUseType"] = CSharpExpressionConverter.ConvertO(projectUseType);
             if (isActive != null)
-                callPayload.Queries["isActive"] = ExpressionConverter.Convert(isActive);
+                callPayload.Queries["isActive"] = CSharpExpressionConverter.ConvertO(isActive);
             if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
+                callPayload.Queries["tagsNames"] = CSharpExpressionConverter.ConvertO(tagsNames);
             if (customFieldsIds != null)
-                callPayload.Queries["customFieldsIds"] = ExpressionConverter.Convert(customFieldsIds);
+                callPayload.Queries["customFieldsIds"] = CSharpExpressionConverter.ConvertO(customFieldsIds);
             if (expenseDate != null)
-                callPayload.Queries["expenseDate"] = ExpressionConverter.Convert(expenseDate);
+                callPayload.Queries["expenseDate"] = CSharpExpressionConverter.ConvertO(expenseDate);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
+                callPayload.Queries["isDesc"] = CSharpExpressionConverter.ConvertO(isDesc);
             return new ApiConnectionAction<ListAndPagesCountResultProjectResponse>(callPayload);
         }
 
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallPath = "/api/v2/report/history/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
+            callPayload.Queries["reportId"] = CSharpExpressionConverter.ConvertO(reportId);
             return new ApiConnectionAction<BaseResultListEventResponse>(callPayload);
         }
 
@@ -594,110 +594,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var userInviteInput = new JObject();
             var userInviteInputpropCount = 0;
             userInviteInputpropCount++;
-            userInviteInput["LastName"] = ExpressionConverter.ConvertO(userInviteInputlastName);
+            userInviteInput["LastName"] = CSharpExpressionConverter.ConvertToken(userInviteInputlastName);
             userInviteInputpropCount++;
-            userInviteInput["FirstName"] = ExpressionConverter.ConvertO(userInviteInputfirstName);
+            userInviteInput["FirstName"] = CSharpExpressionConverter.ConvertToken(userInviteInputfirstName);
             userInviteInputpropCount++;
-            userInviteInput["Mail"] = ExpressionConverter.ConvertO(userInviteInputmail);
+            userInviteInput["Mail"] = CSharpExpressionConverter.ConvertToken(userInviteInputmail);
             if (userInviteInputmailAlias != null)
             {
-                userInviteInput["MailAlias"] = ExpressionConverter.ConvertO(userInviteInputmailAlias);
+                userInviteInput["MailAlias"] = CSharpExpressionConverter.ConvertToken(userInviteInputmailAlias);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId != null)
             {
-                userInviteInput["PayId"] = ExpressionConverter.ConvertO(userInviteInputpayId);
+                userInviteInput["PayId"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId2 != null)
             {
-                userInviteInput["PayId2"] = ExpressionConverter.ConvertO(userInviteInputpayId2);
+                userInviteInput["PayId2"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId2);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId3 != null)
             {
-                userInviteInput["PayId3"] = ExpressionConverter.ConvertO(userInviteInputpayId3);
+                userInviteInput["PayId3"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId3);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId4 != null)
             {
-                userInviteInput["PayId4"] = ExpressionConverter.ConvertO(userInviteInputpayId4);
+                userInviteInput["PayId4"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId4);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId5 != null)
             {
-                userInviteInput["PayId5"] = ExpressionConverter.ConvertO(userInviteInputpayId5);
+                userInviteInput["PayId5"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId5);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputpayId6 != null)
             {
-                userInviteInput["PayId6"] = ExpressionConverter.ConvertO(userInviteInputpayId6);
+                userInviteInput["PayId6"] = CSharpExpressionConverter.ConvertToken(userInviteInputpayId6);
                 userInviteInputpropCount++;
             }
 
             userInviteInputpropCount++;
-            userInviteInput["Language"] = ExpressionConverter.ConvertO(userInviteInputlanguage);
+            userInviteInput["Language"] = CSharpExpressionConverter.ConvertToken(userInviteInputlanguage);
             if (userInviteInputlocalCurrency != null)
             {
-                userInviteInput["LocalCurrency"] = ExpressionConverter.ConvertO(userInviteInputlocalCurrency);
+                userInviteInput["LocalCurrency"] = CSharpExpressionConverter.ConvertToken(userInviteInputlocalCurrency);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputlocalCountry != null)
             {
-                userInviteInput["LocalCountry"] = ExpressionConverter.ConvertO(userInviteInputlocalCountry);
+                userInviteInput["LocalCountry"] = CSharpExpressionConverter.ConvertToken(userInviteInputlocalCountry);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputmanagerId != null)
             {
-                userInviteInput["ManagerId"] = ExpressionConverter.ConvertO(userInviteInputmanagerId);
+                userInviteInput["ManagerId"] = CSharpExpressionConverter.ConvertToken(userInviteInputmanagerId);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputreviewerId != null)
             {
-                userInviteInput["ReviewerId"] = ExpressionConverter.ConvertO(userInviteInputreviewerId);
+                userInviteInput["ReviewerId"] = CSharpExpressionConverter.ConvertToken(userInviteInputreviewerId);
                 userInviteInputpropCount++;
             }
 
             userInviteInputpropCount++;
-            userInviteInput["UserType"] = ExpressionConverter.ConvertO(userInviteInputuserType);
+            userInviteInput["UserType"] = CSharpExpressionConverter.Convert(userInviteInputuserType);
             if (userInviteInputvendor != null)
             {
-                userInviteInput["Vendor"] = ExpressionConverter.ConvertO(userInviteInputvendor);
+                userInviteInput["Vendor"] = CSharpExpressionConverter.ConvertToken(userInviteInputvendor);
                 userInviteInputpropCount++;
             }
 
             userInviteInputpropCount++;
-            userInviteInput["UserRole"] = ExpressionConverter.ConvertO(userInviteInputuserRole);
+            userInviteInput["UserRole"] = CSharpExpressionConverter.Convert(userInviteInputuserRole);
             if (userInviteInputdefaultProjectId != null)
             {
-                userInviteInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userInviteInputdefaultProjectId);
+                userInviteInput["DefaultProjectId"] = CSharpExpressionConverter.ConvertToken(userInviteInputdefaultProjectId);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputiKRatesId != null)
             {
-                userInviteInput["IKRatesId"] = ExpressionConverter.ConvertO(userInviteInputiKRatesId);
+                userInviteInput["IKRatesId"] = CSharpExpressionConverter.ConvertToken(userInviteInputiKRatesId);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputadditionalValidators != null)
             {
-                userInviteInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userInviteInputadditionalValidators);
+                userInviteInput["AdditionalValidators"] = CSharpExpressionConverter.ConvertToken(userInviteInputadditionalValidators);
                 userInviteInputpropCount++;
             }
 
             if (userInviteInputtagsToAssign != null)
             {
-                userInviteInput["TagsToAssign"] = ExpressionConverter.ConvertO(userInviteInputtagsToAssign);
+                userInviteInput["TagsToAssign"] = CSharpExpressionConverter.ConvertToken(userInviteInputtagsToAssign);
                 userInviteInputpropCount++;
             }
 
@@ -721,159 +721,159 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
         {
-            var apiCallPath = String.Format("/api/v2/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/user/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shouldUpdateValidators"] = ExpressionConverter.Convert(shouldUpdateValidators);
+            callPayload.Queries["shouldUpdateValidators"] = CSharpExpressionConverter.ConvertO(shouldUpdateValidators);
             var userUpdateInput = new JObject();
             var userUpdateInputpropCount = 0;
             if (userUpdateInputlastName != null)
             {
-                userUpdateInput["LastName"] = ExpressionConverter.ConvertO(userUpdateInputlastName);
+                userUpdateInput["LastName"] = CSharpExpressionConverter.ConvertToken(userUpdateInputlastName);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputfirstName != null)
             {
-                userUpdateInput["FirstName"] = ExpressionConverter.ConvertO(userUpdateInputfirstName);
+                userUpdateInput["FirstName"] = CSharpExpressionConverter.ConvertToken(userUpdateInputfirstName);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputmail != null)
             {
-                userUpdateInput["Mail"] = ExpressionConverter.ConvertO(userUpdateInputmail);
+                userUpdateInput["Mail"] = CSharpExpressionConverter.ConvertToken(userUpdateInputmail);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputmailAlias != null)
             {
-                userUpdateInput["MailAlias"] = ExpressionConverter.ConvertO(userUpdateInputmailAlias);
+                userUpdateInput["MailAlias"] = CSharpExpressionConverter.ConvertToken(userUpdateInputmailAlias);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId != null)
             {
-                userUpdateInput["PayId"] = ExpressionConverter.ConvertO(userUpdateInputpayId);
+                userUpdateInput["PayId"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId2 != null)
             {
-                userUpdateInput["PayId2"] = ExpressionConverter.ConvertO(userUpdateInputpayId2);
+                userUpdateInput["PayId2"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId2);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId3 != null)
             {
-                userUpdateInput["PayId3"] = ExpressionConverter.ConvertO(userUpdateInputpayId3);
+                userUpdateInput["PayId3"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId3);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId4 != null)
             {
-                userUpdateInput["PayId4"] = ExpressionConverter.ConvertO(userUpdateInputpayId4);
+                userUpdateInput["PayId4"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId4);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId5 != null)
             {
-                userUpdateInput["PayId5"] = ExpressionConverter.ConvertO(userUpdateInputpayId5);
+                userUpdateInput["PayId5"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId5);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputpayId6 != null)
             {
-                userUpdateInput["PayId6"] = ExpressionConverter.ConvertO(userUpdateInputpayId6);
+                userUpdateInput["PayId6"] = CSharpExpressionConverter.ConvertToken(userUpdateInputpayId6);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputlanguage != null)
             {
-                userUpdateInput["Language"] = ExpressionConverter.ConvertO(userUpdateInputlanguage);
+                userUpdateInput["Language"] = CSharpExpressionConverter.ConvertToken(userUpdateInputlanguage);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputlocalCurrency != null)
             {
-                userUpdateInput["LocalCurrency"] = ExpressionConverter.ConvertO(userUpdateInputlocalCurrency);
+                userUpdateInput["LocalCurrency"] = CSharpExpressionConverter.ConvertToken(userUpdateInputlocalCurrency);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputlocalCountry != null)
             {
-                userUpdateInput["LocalCountry"] = ExpressionConverter.ConvertO(userUpdateInputlocalCountry);
+                userUpdateInput["LocalCountry"] = CSharpExpressionConverter.ConvertToken(userUpdateInputlocalCountry);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputmanagerId != null)
             {
-                userUpdateInput["Manager_Id"] = ExpressionConverter.ConvertO(userUpdateInputmanagerId);
+                userUpdateInput["Manager_Id"] = CSharpExpressionConverter.ConvertToken(userUpdateInputmanagerId);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputreviewerId != null)
             {
-                userUpdateInput["Reviewer_Id"] = ExpressionConverter.ConvertO(userUpdateInputreviewerId);
+                userUpdateInput["Reviewer_Id"] = CSharpExpressionConverter.ConvertToken(userUpdateInputreviewerId);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputuserType != null)
             {
-                userUpdateInput["UserType"] = ExpressionConverter.ConvertO(userUpdateInputuserType);
+                userUpdateInput["UserType"] = CSharpExpressionConverter.Convert(userUpdateInputuserType);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputvendor != null)
             {
-                userUpdateInput["Vendor"] = ExpressionConverter.ConvertO(userUpdateInputvendor);
+                userUpdateInput["Vendor"] = CSharpExpressionConverter.ConvertToken(userUpdateInputvendor);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputuserRole != null)
             {
-                userUpdateInput["UserRole"] = ExpressionConverter.ConvertO(userUpdateInputuserRole);
+                userUpdateInput["UserRole"] = CSharpExpressionConverter.Convert(userUpdateInputuserRole);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputjobTitle != null)
             {
-                userUpdateInput["JobTitle"] = ExpressionConverter.ConvertO(userUpdateInputjobTitle);
+                userUpdateInput["JobTitle"] = CSharpExpressionConverter.ConvertToken(userUpdateInputjobTitle);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputcanAddPurchase != null)
             {
-                userUpdateInput["CanAddPurchase"] = ExpressionConverter.ConvertO(userUpdateInputcanAddPurchase);
+                userUpdateInput["CanAddPurchase"] = CSharpExpressionConverter.ConvertToken(userUpdateInputcanAddPurchase);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputdefaultProjectId != null)
             {
-                userUpdateInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userUpdateInputdefaultProjectId);
+                userUpdateInput["DefaultProjectId"] = CSharpExpressionConverter.ConvertToken(userUpdateInputdefaultProjectId);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputiKRatesId != null)
             {
-                userUpdateInput["IKRates_Id"] = ExpressionConverter.ConvertO(userUpdateInputiKRatesId);
+                userUpdateInput["IKRates_Id"] = CSharpExpressionConverter.ConvertToken(userUpdateInputiKRatesId);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputadditionalValidators != null)
             {
-                userUpdateInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userUpdateInputadditionalValidators);
+                userUpdateInput["AdditionalValidators"] = CSharpExpressionConverter.ConvertToken(userUpdateInputadditionalValidators);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputtagsToAssign != null)
             {
-                userUpdateInput["TagsToAssign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToAssign);
+                userUpdateInput["TagsToAssign"] = CSharpExpressionConverter.ConvertToken(userUpdateInputtagsToAssign);
                 userUpdateInputpropCount++;
             }
 
             if (userUpdateInputtagsToUnassign != null)
             {
-                userUpdateInput["TagsToUnassign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToUnassign);
+                userUpdateInput["TagsToUnassign"] = CSharpExpressionConverter.ConvertToken(userUpdateInputtagsToUnassign);
                 userUpdateInputpropCount++;
             }
 
@@ -894,9 +894,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var updateProjectStateInput = new JObject();
             var updateProjectStateInputpropCount = 0;
             updateProjectStateInputpropCount++;
-            updateProjectStateInput["ItemIds"] = ExpressionConverter.ConvertO(updateProjectStateInputitemIds);
+            updateProjectStateInput["ItemIds"] = CSharpExpressionConverter.ConvertToken(updateProjectStateInputitemIds);
             updateProjectStateInputpropCount++;
-            updateProjectStateInput["ProjectState"] = ExpressionConverter.ConvertO(updateProjectStateInputprojectState);
+            updateProjectStateInput["ProjectState"] = CSharpExpressionConverter.ConvertToken(updateProjectStateInputprojectState);
             if (updateProjectStateInputpropCount > 0)
             {
                 callPayload.Body = updateProjectStateInput;
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var apiCallPath = "/api/v2/users/state/";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(updateUserStateInputArray);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(updateUserStateInputArray);
             return new ApiConnectionAction<BaseResultListUpdateUserResult>(callPayload);
         }
     }

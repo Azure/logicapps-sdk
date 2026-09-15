@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
             bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
+            body["MessageText"] = CSharpExpressionConverter.ConvertToken(bodymessageText);
             bodypropCount++;
-            body["MessageTo"] = ExpressionConverter.ConvertO(bodymessageTo);
+            body["MessageTo"] = CSharpExpressionConverter.ConvertToken(bodymessageTo);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

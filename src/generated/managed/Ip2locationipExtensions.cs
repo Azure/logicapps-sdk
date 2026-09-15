@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
+            callPayload.Queries["ip"] = CSharpExpressionConverter.ConvertO(ip);
             return new ApiConnectionAction<LookupIpResponse>(callPayload);
         }
     }

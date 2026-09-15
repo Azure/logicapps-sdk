@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
+            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["endpoint"] = ExpressionConverter.ConvertO(bodyendpoint);
+            body["endpoint"] = CSharpExpressionConverter.ConvertToken(bodyendpoint);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "CFNCUSDOC";
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "CFNSUPDOC";
@@ -113,14 +113,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "CHEQUE";
@@ -150,14 +150,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "PRSNOUT";
@@ -183,14 +183,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "CUSTOMER";
@@ -220,14 +220,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SODRAFT";
@@ -253,14 +253,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "LINEITEM";
@@ -290,17 +290,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             if (bodylOCATEINFO != null)
             {
                 if (bodylOCATEINFO != null)
                 {
-                    body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                    body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
                     bodypropCount++;
                 }
 
@@ -337,14 +337,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "ITEDOC";
@@ -372,14 +372,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "ITEM";
@@ -409,14 +409,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "PRJC";
@@ -444,14 +444,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "PURDOC";
@@ -477,14 +477,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SALDOC";
@@ -512,14 +512,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SERVICE";
@@ -547,14 +547,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SOEMAIL";
@@ -582,14 +582,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SOMEETING";
@@ -617,14 +617,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SOTASK";
@@ -654,14 +654,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             bodypropCount++;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "SUPPLIER";
@@ -712,13 +712,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dATAObjectpropCount = 0;
             if (bodyvaluecARDLINES != null)
             {
-                dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(bodyvaluecARDLINES);
+                dATAObject["CARDLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecARDLINES);
                 dATAObjectpropCount++;
             }
 
             if (bodyvaluecASHLINES != null)
             {
-                dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(bodyvaluecASHLINES);
+                dATAObject["CASHLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecASHLINES);
                 dATAObjectpropCount++;
             }
 
@@ -726,35 +726,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var cFNCUSDOCObjectpropCount = 0;
             if (bodyvaluecFNCUSDOCcOLLECTOR != null)
             {
-                cFNCUSDOCObject["COLLECTOR"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCcOLLECTOR);
+                cFNCUSDOCObject["COLLECTOR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOLLECTOR);
                 cFNCUSDOCObjectpropCount++;
             }
 
             if (bodyvaluecFNCUSDOCcOMMENTS != null)
             {
-                cFNCUSDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCcOMMENTS);
+                cFNCUSDOCObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOMMENTS);
                 cFNCUSDOCObjectpropCount++;
             }
 
             if (bodyvaluecFNCUSDOCproject != null)
             {
-                cFNCUSDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCproject);
+                cFNCUSDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCproject);
                 cFNCUSDOCObjectpropCount++;
             }
 
             if (bodyvaluecFNCUSDOCsALESMAN != null)
             {
-                cFNCUSDOCObject["SALESMAN"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCsALESMAN);
+                cFNCUSDOCObject["SALESMAN"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsALESMAN);
                 cFNCUSDOCObjectpropCount++;
             }
 
             cFNCUSDOCObjectpropCount++;
-            cFNCUSDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCsERIES);
+            cFNCUSDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsERIES);
             cFNCUSDOCObjectpropCount++;
-            cFNCUSDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCtRDR);
+            cFNCUSDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRDR);
             if (bodyvaluecFNCUSDOCtRNDATE != null)
             {
-                cFNCUSDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCtRNDATE);
+                cFNCUSDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRNDATE);
                 cFNCUSDOCObjectpropCount++;
             }
 
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluecHEQUELINES != null)
             {
-                dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUELINES);
+                dATAObject["CHEQUELINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
                 dATAObjectpropCount++;
             }
 
@@ -778,13 +778,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -817,13 +817,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dATAObjectpropCount = 0;
             if (bodyvaluecARDLINES != null)
             {
-                dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(bodyvaluecARDLINES);
+                dATAObject["CARDLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecARDLINES);
                 dATAObjectpropCount++;
             }
 
             if (bodyvaluecASHLINES != null)
             {
-                dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(bodyvaluecASHLINES);
+                dATAObject["CASHLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecASHLINES);
                 dATAObjectpropCount++;
             }
 
@@ -831,23 +831,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var cFNSUPDOCObjectpropCount = 0;
             if (bodyvaluecFNSUPDOCpRJC != null)
             {
-                cFNSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCpRJC);
+                cFNSUPDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCpRJC);
                 cFNSUPDOCObjectpropCount++;
             }
 
             if (bodyvaluecFNSUPDOCrEMARKS != null)
             {
-                cFNSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCrEMARKS);
+                cFNSUPDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCrEMARKS);
                 cFNSUPDOCObjectpropCount++;
             }
 
             cFNSUPDOCObjectpropCount++;
-            cFNSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCsERIES);
+            cFNSUPDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCsERIES);
             cFNSUPDOCObjectpropCount++;
-            cFNSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCtRDR);
+            cFNSUPDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRDR);
             if (bodyvaluecFNSUPDOCtRNDATE != null)
             {
-                cFNSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCtRNDATE);
+                cFNSUPDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRNDATE);
                 cFNSUPDOCObjectpropCount++;
             }
 
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluecHEQUELINES != null)
             {
-                dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUELINES);
+                dATAObject["CHEQUELINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
                 dATAObjectpropCount++;
             }
 
@@ -871,13 +871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -906,13 +906,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -928,72 +928,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var cHEQUEObjectpropCount = 0;
             if (bodyvaluecHEQUEbank != null)
             {
-                cHEQUEObject["BANK"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEbank);
+                cHEQUEObject["BANK"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEbank);
                 cHEQUEObjectpropCount++;
             }
 
             cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUEBAL"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEbalance);
+            cHEQUEObject["CHEQUEBAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEbalance);
             cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUENUMBER"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEchequeNumber);
+            cHEQUEObject["CHEQUENUMBER"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEchequeNumber);
             cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUESTATES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEstatus);
+            cHEQUEObject["CHEQUESTATES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEstatus);
             cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUEVAL"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEvalue);
+            cHEQUEObject["CHEQUEVAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEvalue);
             if (bodyvaluecHEQUEissuerAddress != null)
             {
-                cHEQUEObject["CREATORADDR"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerAddress);
+                cHEQUEObject["CREATORADDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerAddress);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEissuerName != null)
             {
-                cHEQUEObject["CREATORNAME"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerName);
+                cHEQUEObject["CREATORNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerName);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEissuerTelephone != null)
             {
-                cHEQUEObject["CREATORPHONE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerTelephone);
+                cHEQUEObject["CREATORPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTelephone);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEreceiptDate != null)
             {
-                cHEQUEObject["CRTDATE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEreceiptDate);
+                cHEQUEObject["CRTDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEreceiptDate);
                 cHEQUEObjectpropCount++;
             }
 
             cHEQUEObjectpropCount++;
-            cHEQUEObject["DATEOFS"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissueDate);
+            cHEQUEObject["DATEOFS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissueDate);
             cHEQUEObjectpropCount++;
-            cHEQUEObject["FINALDATE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEdueDate);
+            cHEQUEObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEdueDate);
             if (bodyvaluecHEQUEholderAddress != null)
             {
-                cHEQUEObject["HOLDERADDR"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEholderAddress);
+                cHEQUEObject["HOLDERADDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEholderAddress);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEholderName != null)
             {
-                cHEQUEObject["HOLDERNAME"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEholderName);
+                cHEQUEObject["HOLDERNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEholderName);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEissuerTRNo != null)
             {
-                cHEQUEObject["PUBLISHERAFM"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerTRNo);
+                cHEQUEObject["PUBLISHERAFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTRNo);
                 cHEQUEObjectpropCount++;
             }
 
             if (bodyvaluecHEQUEcomments != null)
             {
-                cHEQUEObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEcomments);
+                cHEQUEObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEcomments);
                 cHEQUEObjectpropCount++;
             }
 
             cHEQUEObjectpropCount++;
-            cHEQUEObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEseries);
+            cHEQUEObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEseries);
             if (cHEQUEObjectpropCount > 0)
             {
                 dataObject["CHEQUE"] = cHEQUEObject;
@@ -1027,13 +1027,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1049,173 +1049,173 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var pRSNOUTObjectpropCount = 0;
             if (bodyvaluepRSNOUTaddress != null)
             {
-                pRSNOUTObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTaddress);
+                pRSNOUTObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTaddress);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTtRNo != null)
             {
-                pRSNOUTObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtRNo);
+                pRSNOUTObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtRNo);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTgeographicalAreas != null)
             {
-                pRSNOUTObject["AREAS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTgeographicalAreas);
+                pRSNOUTObject["AREAS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTgeographicalAreas);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTbIRTHDATE != null)
             {
-                pRSNOUTObject["BIRTHDATE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTbIRTHDATE);
+                pRSNOUTObject["BIRTHDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTbIRTHDATE);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTcity != null)
             {
-                pRSNOUTObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcity);
+                pRSNOUTObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcity);
                 pRSNOUTObjectpropCount++;
             }
 
             pRSNOUTObjectpropCount++;
-            pRSNOUTObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcode);
+            pRSNOUTObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcode);
             if (bodyvaluepRSNOUTcountry != null)
             {
-                pRSNOUTObject["COUNTRY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcountry);
+                pRSNOUTObject["COUNTRY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcountry);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTarea != null)
             {
-                pRSNOUTObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTarea);
+                pRSNOUTObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTarea);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTprefecture != null)
             {
-                pRSNOUTObject["DISTRICT1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTprefecture);
+                pRSNOUTObject["DISTRICT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTprefecture);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTeducationLevel != null)
             {
-                pRSNOUTObject["EDUCAT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTeducationLevel);
+                pRSNOUTObject["EDUCAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTeducationLevel);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTemail != null)
             {
-                pRSNOUTObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTemail);
+                pRSNOUTObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTemail2 != null)
             {
-                pRSNOUTObject["EMAIL1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTemail2);
+                pRSNOUTObject["EMAIL1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail2);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTfax != null)
             {
-                pRSNOUTObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTfax);
+                pRSNOUTObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTfax);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTiDCardNo != null)
             {
-                pRSNOUTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTiDCardNo);
+                pRSNOUTObject["IDENTITYNUM"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTiDCardNo);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTtaxOffice != null)
             {
-                pRSNOUTObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtaxOffice);
+                pRSNOUTObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtaxOffice);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTmobileTelephone != null)
             {
-                pRSNOUTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTmobileTelephone);
+                pRSNOUTObject["MOBILEPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTmobileTelephone);
                 pRSNOUTObjectpropCount++;
             }
 
             pRSNOUTObjectpropCount++;
-            pRSNOUTObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTname);
+            pRSNOUTObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTname);
             if (bodyvaluepRSNOUTsurname != null)
             {
-                pRSNOUTObject["NAME2"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTsurname);
+                pRSNOUTObject["NAME2"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTsurname);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTfatherSName != null)
             {
-                pRSNOUTObject["NAME3"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTfatherSName);
+                pRSNOUTObject["NAME3"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTfatherSName);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTmotherSName != null)
             {
-                pRSNOUTObject["NAME4"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTmotherSName);
+                pRSNOUTObject["NAME4"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTmotherSName);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTnameOfSpouse != null)
             {
-                pRSNOUTObject["NAME5"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTnameOfSpouse);
+                pRSNOUTObject["NAME5"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTnameOfSpouse);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTnationality != null)
             {
-                pRSNOUTObject["NATIONALITY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTnationality);
+                pRSNOUTObject["NATIONALITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTnationality);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTtel1 != null)
             {
-                pRSNOUTObject["PHONE1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtel1);
+                pRSNOUTObject["PHONE1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel1);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTtel2 != null)
             {
-                pRSNOUTObject["PHONE2"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtel2);
+                pRSNOUTObject["PHONE2"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel2);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTinternalTelephone != null)
             {
-                pRSNOUTObject["PHONEEXT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTinternalTelephone);
+                pRSNOUTObject["PHONEEXT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTinternalTelephone);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTpersonalTelephone != null)
             {
-                pRSNOUTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTpersonalTelephone);
+                pRSNOUTObject["PHONELOCAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTpersonalTelephone);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTcomments != null)
             {
-                pRSNOUTObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcomments);
+                pRSNOUTObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcomments);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTgender != null)
             {
-                pRSNOUTObject["SOSEX"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTgender);
+                pRSNOUTObject["SOSEX"] = CSharpExpressionConverter.Convert(bodyvaluepRSNOUTgender);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTwebPage != null)
             {
-                pRSNOUTObject["WEBPAGE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTwebPage);
+                pRSNOUTObject["WEBPAGE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTwebPage);
                 pRSNOUTObjectpropCount++;
             }
 
             if (bodyvaluepRSNOUTzip != null)
             {
-                pRSNOUTObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTzip);
+                pRSNOUTObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTzip);
                 pRSNOUTObjectpropCount++;
             }
 
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluexTRDOCDATA != null)
             {
-                dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                dataObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
                 dataObjectpropCount++;
             }
 
@@ -1258,13 +1258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1280,89 +1280,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var cUSTOMERObjectpropCount = 0;
             if (bodyvaluecUSTOMERprimaryAddress != null)
             {
-                cUSTOMERObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprimaryAddress);
+                cUSTOMERObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryAddress);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERtRNo != null)
             {
-                cUSTOMERObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtRNo);
+                cUSTOMERObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERtRNo);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERgeographicalAreas != null)
             {
-                cUSTOMERObject["AREAS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERgeographicalAreas);
+                cUSTOMERObject["AREAS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERgeographicalAreas);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERcity != null)
             {
-                cUSTOMERObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcity);
+                cUSTOMERObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcity);
                 cUSTOMERObjectpropCount++;
             }
 
             cUSTOMERObjectpropCount++;
-            cUSTOMERObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcode);
+            cUSTOMERObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcode);
             if (bodyvaluecUSTOMERdiscount != null)
             {
-                cUSTOMERObject["DISCOUNT"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERdiscount);
+                cUSTOMERObject["DISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERdiscount);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERlocationArea != null)
             {
-                cUSTOMERObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERlocationArea);
+                cUSTOMERObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERlocationArea);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMEReMail != null)
             {
-                cUSTOMERObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMEReMail);
+                cUSTOMERObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMEReMail);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERfax != null)
             {
-                cUSTOMERObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERfax);
+                cUSTOMERObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERfax);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERtaxOffice != null)
             {
-                cUSTOMERObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtaxOffice);
+                cUSTOMERObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERtaxOffice);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERprofession != null)
             {
-                cUSTOMERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprofession);
+                cUSTOMERObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprofession);
                 cUSTOMERObjectpropCount++;
             }
 
             cUSTOMERObjectpropCount++;
-            cUSTOMERObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERname);
+            cUSTOMERObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERname);
             if (bodyvaluecUSTOMERprimaryTelephone != null)
             {
-                cUSTOMERObject["PHONE01"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprimaryTelephone);
+                cUSTOMERObject["PHONE01"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryTelephone);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERcomments != null)
             {
-                cUSTOMERObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcomments);
+                cUSTOMERObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcomments);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERtaxCategory != null)
             {
-                cUSTOMERObject["VATSTS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtaxCategory);
+                cUSTOMERObject["VATSTS"] = CSharpExpressionConverter.Convert(bodyvaluecUSTOMERtaxCategory);
                 cUSTOMERObjectpropCount++;
             }
 
             if (bodyvaluecUSTOMERzip != null)
             {
-                cUSTOMERObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERzip);
+                cUSTOMERObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERzip);
                 cUSTOMERObjectpropCount++;
             }
 
@@ -1399,13 +1399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1421,147 +1421,147 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sODRAFTObjectpropCount = 0;
             if (bodyvaluesODRAFTaddress != null)
             {
-                sODRAFTObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTaddress);
+                sODRAFTObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTaddress);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTtRNo != null)
             {
-                sODRAFTObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTtRNo);
+                sODRAFTObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTtRNo);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTcity != null)
             {
-                sODRAFTObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcity);
+                sODRAFTObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcity);
                 sODRAFTObjectpropCount++;
             }
 
             sODRAFTObjectpropCount++;
-            sODRAFTObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcode);
+            sODRAFTObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcode);
             if (bodyvaluesODRAFTcountry != null)
             {
-                sODRAFTObject["COUNTRY"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcountry);
+                sODRAFTObject["COUNTRY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcountry);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTarea != null)
             {
-                sODRAFTObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTarea);
+                sODRAFTObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTarea);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTprefecture != null)
             {
-                sODRAFTObject["DISTRICT1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTprefecture);
+                sODRAFTObject["DISTRICT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTprefecture);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTcategory != null)
             {
-                sODRAFTObject["DRAFTTYPE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcategory);
+                sODRAFTObject["DRAFTTYPE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcategory);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTcompanyEmail != null)
             {
-                sODRAFTObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcompanyEmail);
+                sODRAFTObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcompanyEmail);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTbusinessEmail != null)
             {
-                sODRAFTObject["EMAIL1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTbusinessEmail);
+                sODRAFTObject["EMAIL1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessEmail);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTpersonalEmail != null)
             {
-                sODRAFTObject["EMAIL2"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTpersonalEmail);
+                sODRAFTObject["EMAIL2"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalEmail);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTiDCardNo != null)
             {
-                sODRAFTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTiDCardNo);
+                sODRAFTObject["IDENTITYNUM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTiDCardNo);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTactivity != null)
             {
-                sODRAFTObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTactivity);
+                sODRAFTObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTactivity);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTmobileTelephone != null)
             {
-                sODRAFTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTmobileTelephone);
+                sODRAFTObject["MOBILEPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTmobileTelephone);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTnameTitle != null)
             {
-                sODRAFTObject["NAMEC"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTnameTitle);
+                sODRAFTObject["NAMEC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTnameTitle);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTfirstName != null)
             {
-                sODRAFTObject["NAMEF"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTfirstName);
+                sODRAFTObject["NAMEF"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTfirstName);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTsurname != null)
             {
-                sODRAFTObject["NAMEL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTsurname);
+                sODRAFTObject["NAMEL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTsurname);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTzip != null)
             {
-                sODRAFTObject["NUMCG"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTzip);
+                sODRAFTObject["NUMCG"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTzip);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTbusinessTelephone != null)
             {
-                sODRAFTObject["PHONE1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTbusinessTelephone);
+                sODRAFTObject["PHONE1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessTelephone);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTinternalTelephone != null)
             {
-                sODRAFTObject["PHONEEXT"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTinternalTelephone);
+                sODRAFTObject["PHONEEXT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTinternalTelephone);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTpersonalTelephone != null)
             {
-                sODRAFTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTpersonalTelephone);
+                sODRAFTObject["PHONELOCAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalTelephone);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTcomments != null)
             {
-                sODRAFTObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcomments);
+                sODRAFTObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcomments);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTtitle != null)
             {
-                sODRAFTObject["SOTITLENAME"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTtitle);
+                sODRAFTObject["SOTITLENAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTtitle);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTwebPage != null)
             {
-                sODRAFTObject["WEBPAGE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTwebPage);
+                sODRAFTObject["WEBPAGE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTwebPage);
                 sODRAFTObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTzip2 != null)
             {
-                sODRAFTObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTzip2);
+                sODRAFTObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTzip2);
                 sODRAFTObjectpropCount++;
             }
 
@@ -1575,31 +1575,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sODRAFTLNKObjectpropCount = 0;
             if (bodyvaluesODRAFTLNKbranch != null)
             {
-                sODRAFTLNKObject["BRANCH"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKbranch);
+                sODRAFTLNKObject["BRANCH"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbranch);
                 sODRAFTLNKObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTLNKbusinessUnit != null)
             {
-                sODRAFTLNKObject["BUSUNITS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKbusinessUnit);
+                sODRAFTLNKObject["BUSUNITS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbusinessUnit);
                 sODRAFTLNKObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTLNKdepartment != null)
             {
-                sODRAFTLNKObject["DEPART"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKdepartment);
+                sODRAFTLNKObject["DEPART"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKdepartment);
                 sODRAFTLNKObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTLNKproject != null)
             {
-                sODRAFTLNKObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKproject);
+                sODRAFTLNKObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKproject);
                 sODRAFTLNKObjectpropCount++;
             }
 
             if (bodyvaluesODRAFTLNKsource != null)
             {
-                sODRAFTLNKObject["PRJCLEAD"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKsource);
+                sODRAFTLNKObject["PRJCLEAD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKsource);
                 sODRAFTLNKObjectpropCount++;
             }
 
@@ -1636,13 +1636,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1657,37 +1657,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var lINEITEMObject = new JObject();
             var lINEITEMObjectpropCount = 0;
             lINEITEMObjectpropCount++;
-            lINEITEMObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcode);
+            lINEITEMObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcode);
             lINEITEMObjectpropCount++;
-            lINEITEMObject["LISOURCETYPE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMinvoicingCategory);
+            lINEITEMObject["LISOURCETYPE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMinvoicingCategory);
             if (bodyvaluelINEITEMcommercialCategory != null)
             {
-                lINEITEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcommercialCategory);
+                lINEITEMObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcommercialCategory);
                 lINEITEMObjectpropCount++;
             }
 
             if (bodyvaluelINEITEMtype != null)
             {
-                lINEITEMObject["MTRTYPE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMtype);
+                lINEITEMObject["MTRTYPE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMtype);
                 lINEITEMObjectpropCount++;
             }
 
             lINEITEMObjectpropCount++;
-            lINEITEMObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMname);
+            lINEITEMObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMname);
             if (bodyvaluelINEITEMcomments != null)
             {
-                lINEITEMObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcomments);
+                lINEITEMObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcomments);
                 lINEITEMObjectpropCount++;
             }
 
             if (bodyvaluelINEITEMfeeValue != null)
             {
-                lINEITEMObject["SOPAYVALUE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMfeeValue);
+                lINEITEMObject["SOPAYVALUE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMfeeValue);
                 lINEITEMObjectpropCount++;
             }
 
             lINEITEMObjectpropCount++;
-            lINEITEMObject["VAT"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMvatGroup);
+            lINEITEMObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMvatGroup);
             if (lINEITEMObjectpropCount > 0)
             {
                 dataObject["LINEITEM"] = lINEITEMObject;
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dATAObjectpropCount = 0;
             if (bodyvalueunnamed != null)
             {
-                dATAObject["LINLINES"] = ExpressionConverter.ConvertO(bodyvalueunnamed);
+                dATAObject["LINLINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueunnamed);
                 dATAObjectpropCount++;
             }
 
@@ -1733,23 +1733,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var lINSUPDOCObjectpropCount = 0;
             if (bodyvaluelINSUPDOCproject != null)
             {
-                lINSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCproject);
+                lINSUPDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCproject);
                 lINSUPDOCObjectpropCount++;
             }
 
             if (bodyvaluelINSUPDOCcomments != null)
             {
-                lINSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCcomments);
+                lINSUPDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCcomments);
                 lINSUPDOCObjectpropCount++;
             }
 
             lINSUPDOCObjectpropCount++;
-            lINSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCseries);
+            lINSUPDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCseries);
             lINSUPDOCObjectpropCount++;
-            lINSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCsupplier);
+            lINSUPDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCsupplier);
             if (bodyvaluelINSUPDOCtRNDATE != null)
             {
-                lINSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCtRNDATE);
+                lINSUPDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCtRNDATE);
                 lINSUPDOCObjectpropCount++;
             }
 
@@ -1767,13 +1767,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1802,13 +1802,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1824,21 +1824,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var iTEDOCObjectpropCount = 0;
             if (bodyvalueiTEDOCreason != null)
             {
-                iTEDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCreason);
+                iTEDOCObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCreason);
                 iTEDOCObjectpropCount++;
             }
 
             if (bodyvalueiTEDOCrEMARKS != null)
             {
-                iTEDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCrEMARKS);
+                iTEDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCrEMARKS);
                 iTEDOCObjectpropCount++;
             }
 
             iTEDOCObjectpropCount++;
-            iTEDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCseries);
+            iTEDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCseries);
             if (bodyvalueiTEDOCtRNDATE != null)
             {
-                iTEDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCtRNDATE);
+                iTEDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCtRNDATE);
                 iTEDOCObjectpropCount++;
             }
 
@@ -1850,14 +1850,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvalueiTELINES != null)
             {
-                dataObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                dataObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
                 dataObjectpropCount++;
             }
 
             var mTRDOCObject = new JObject();
             var mTRDOCObjectpropCount = 0;
             mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
             if (mTRDOCObjectpropCount > 0)
             {
                 dataObject["MTRDOC"] = mTRDOCObject;
@@ -1891,13 +1891,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -1912,49 +1912,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var iTEMObject = new JObject();
             var iTEMObjectpropCount = 0;
             iTEMObjectpropCount++;
-            iTEMObject["CODE"] = ExpressionConverter.ConvertO(bodyvalueiTEMcode);
+            iTEMObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcode);
             if (bodyvalueiTEMcommercialCategory != null)
             {
-                iTEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvalueiTEMcommercialCategory);
+                iTEMObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcommercialCategory);
                 iTEMObjectpropCount++;
             }
 
             if (bodyvalueiTEMitemGroup != null)
             {
-                iTEMObject["MTRGROUP"] = ExpressionConverter.ConvertO(bodyvalueiTEMitemGroup);
+                iTEMObject["MTRGROUP"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMitemGroup);
                 iTEMObjectpropCount++;
             }
 
             iTEMObjectpropCount++;
-            iTEMObject["MTRUNIT1"] = ExpressionConverter.ConvertO(bodyvalueiTEMbaseUnitOfMeasure);
+            iTEMObject["MTRUNIT1"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMbaseUnitOfMeasure);
             iTEMObjectpropCount++;
-            iTEMObject["NAME"] = ExpressionConverter.ConvertO(bodyvalueiTEMname);
+            iTEMObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMname);
             if (bodyvalueiTEMretailPrice != null)
             {
-                iTEMObject["PRICER"] = ExpressionConverter.ConvertO(bodyvalueiTEMretailPrice);
+                iTEMObject["PRICER"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMretailPrice);
                 iTEMObjectpropCount++;
             }
 
             if (bodyvalueiTEMwholesalePrice != null)
             {
-                iTEMObject["PRICEW"] = ExpressionConverter.ConvertO(bodyvalueiTEMwholesalePrice);
+                iTEMObject["PRICEW"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMwholesalePrice);
                 iTEMObjectpropCount++;
             }
 
             if (bodyvalueiTEMcomments != null)
             {
-                iTEMObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvalueiTEMcomments);
+                iTEMObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcomments);
                 iTEMObjectpropCount++;
             }
 
             if (bodyvalueiTEMdiscount1 != null)
             {
-                iTEMObject["SODISCOUNT"] = ExpressionConverter.ConvertO(bodyvalueiTEMdiscount1);
+                iTEMObject["SODISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMdiscount1);
                 iTEMObjectpropCount++;
             }
 
             iTEMObjectpropCount++;
-            iTEMObject["VAT"] = ExpressionConverter.ConvertO(bodyvalueiTEMvatGroup);
+            iTEMObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMvatGroup);
             if (iTEMObjectpropCount > 0)
             {
                 dataObject["ITEM"] = iTEMObject;
@@ -1988,13 +1988,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2010,35 +2010,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var pRJCObjectpropCount = 0;
             if (bodyvaluepRJCaCTSTATUS != null)
             {
-                pRJCObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodyvaluepRJCaCTSTATUS);
+                pRJCObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodyvaluepRJCaCTSTATUS);
                 pRJCObjectpropCount++;
             }
 
             pRJCObjectpropCount++;
-            pRJCObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluepRJCcode);
+            pRJCObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCcode);
             if (bodyvaluepRJCfINALDATE != null)
             {
-                pRJCObject["FINALDATE"] = ExpressionConverter.ConvertO(bodyvaluepRJCfINALDATE);
+                pRJCObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCfINALDATE);
                 pRJCObjectpropCount++;
             }
 
             if (bodyvaluepRJCfROMDATE != null)
             {
-                pRJCObject["FROMDATE"] = ExpressionConverter.ConvertO(bodyvaluepRJCfROMDATE);
+                pRJCObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCfROMDATE);
                 pRJCObjectpropCount++;
             }
 
             pRJCObjectpropCount++;
-            pRJCObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluepRJCname);
+            pRJCObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCname);
             if (bodyvaluepRJCpRJCRM != null)
             {
-                pRJCObject["PRJCRM"] = ExpressionConverter.ConvertO(bodyvaluepRJCpRJCRM);
+                pRJCObject["PRJCRM"] = CSharpExpressionConverter.Convert(bodyvaluepRJCpRJCRM);
                 pRJCObjectpropCount++;
             }
 
             if (bodyvaluepRJCcomments != null)
             {
-                pRJCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepRJCcomments);
+                pRJCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCcomments);
                 pRJCObjectpropCount++;
             }
 
@@ -2050,7 +2050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluexTRDOCDATA != null)
             {
-                dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                dataObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
                 dataObjectpropCount++;
             }
 
@@ -2085,14 +2085,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dATAObjectpropCount = 0;
             if (bodyvalueiTELINES != null)
             {
-                dATAObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                dATAObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
                 dATAObjectpropCount++;
             }
 
             var mTRDOCObject = new JObject();
             var mTRDOCObjectpropCount = 0;
             mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
             if (mTRDOCObjectpropCount > 0)
             {
                 dATAObject["MTRDOC"] = mTRDOCObject;
@@ -2103,43 +2103,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var pURDOCObjectpropCount = 0;
             if (bodyvaluepURDOCdISC1PRC != null)
             {
-                pURDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(bodyvaluepURDOCdISC1PRC);
+                pURDOCObject["DISC1PRC"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCdISC1PRC);
                 pURDOCObjectpropCount++;
             }
 
             if (bodyvaluepURDOCpAYMENT != null)
             {
-                pURDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(bodyvaluepURDOCpAYMENT);
+                pURDOCObject["PAYMENT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCpAYMENT);
                 pURDOCObjectpropCount++;
             }
 
             if (bodyvaluepURDOCpRJC != null)
             {
-                pURDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluepURDOCpRJC);
+                pURDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCpRJC);
                 pURDOCObjectpropCount++;
             }
 
             if (bodyvaluepURDOCrEMARKS != null)
             {
-                pURDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepURDOCrEMARKS);
+                pURDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCrEMARKS);
                 pURDOCObjectpropCount++;
             }
 
             pURDOCObjectpropCount++;
-            pURDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsERIES);
+            pURDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsERIES);
             pURDOCObjectpropCount++;
-            pURDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsOCURRENCY);
+            pURDOCObject["SOCURRENCY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsOCURRENCY);
             if (bodyvaluepURDOCsUMAMNT != null)
             {
-                pURDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsUMAMNT);
+                pURDOCObject["SUMAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsUMAMNT);
                 pURDOCObjectpropCount++;
             }
 
             pURDOCObjectpropCount++;
-            pURDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluepURDOCtRDR);
+            pURDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCtRDR);
             if (bodyvaluepURDOCtRNDATE != null)
             {
-                pURDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluepURDOCtRNDATE);
+                pURDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCtRNDATE);
                 pURDOCObjectpropCount++;
             }
 
@@ -2151,7 +2151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluesRVLINES != null)
             {
-                dATAObject["SRVLINES"] = ExpressionConverter.ConvertO(bodyvaluesRVLINES);
+                dATAObject["SRVLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesRVLINES);
                 dATAObjectpropCount++;
             }
 
@@ -2163,13 +2163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2198,13 +2198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2218,14 +2218,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dataObjectpropCount = 0;
             if (bodyvalueiTELINES != null)
             {
-                dataObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                dataObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
                 dataObjectpropCount++;
             }
 
             var mTRDOCObject = new JObject();
             var mTRDOCObjectpropCount = 0;
             mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
             if (mTRDOCObjectpropCount > 0)
             {
                 dataObject["MTRDOC"] = mTRDOCObject;
@@ -2236,57 +2236,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sALDOCObjectpropCount = 0;
             if (bodyvaluesALDOCdiscount != null)
             {
-                sALDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(bodyvaluesALDOCdiscount);
+                sALDOCObject["DISC1PRC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCdiscount);
                 sALDOCObjectpropCount++;
             }
 
             if (bodyvaluesALDOCdiscountValue != null)
             {
-                sALDOCObject["DISC1VAL"] = ExpressionConverter.ConvertO(bodyvaluesALDOCdiscountValue);
+                sALDOCObject["DISC1VAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCdiscountValue);
                 sALDOCObjectpropCount++;
             }
 
             if (bodyvaluesALDOCnetAmount != null)
             {
-                sALDOCObject["NETAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCnetAmount);
+                sALDOCObject["NETAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCnetAmount);
                 sALDOCObjectpropCount++;
             }
 
             sALDOCObjectpropCount++;
-            sALDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCpayment);
+            sALDOCObject["PAYMENT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCpayment);
             if (bodyvaluesALDOCproject != null)
             {
-                sALDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluesALDOCproject);
+                sALDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCproject);
                 sALDOCObjectpropCount++;
             }
 
             if (bodyvaluesALDOCcomments != null)
             {
-                sALDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcomments);
+                sALDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcomments);
                 sALDOCObjectpropCount++;
             }
 
             sALDOCObjectpropCount++;
-            sALDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluesALDOCseries);
+            sALDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCseries);
             sALDOCObjectpropCount++;
-            sALDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcurrency);
+            sALDOCObject["SOCURRENCY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcurrency);
             if (bodyvaluesALDOCtotal != null)
             {
-                sALDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCtotal);
+                sALDOCObject["SUMAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCtotal);
                 sALDOCObjectpropCount++;
             }
 
             sALDOCObjectpropCount++;
-            sALDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcustomer);
+            sALDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcustomer);
             if (bodyvaluesALDOCtRNDATE != null)
             {
-                sALDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluesALDOCtRNDATE);
+                sALDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCtRNDATE);
                 sALDOCObjectpropCount++;
             }
 
             if (bodyvaluesALDOCvAT != null)
             {
-                sALDOCObject["VATAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCvAT);
+                sALDOCObject["VATAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCvAT);
                 sALDOCObjectpropCount++;
             }
 
@@ -2298,7 +2298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluesRVLINES != null)
             {
-                dataObject["SRVLINES"] = ExpressionConverter.ConvertO(bodyvaluesRVLINES);
+                dataObject["SRVLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesRVLINES);
                 dataObjectpropCount++;
             }
 
@@ -2329,13 +2329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2350,49 +2350,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sERVICEObject = new JObject();
             var sERVICEObjectpropCount = 0;
             sERVICEObjectpropCount++;
-            sERVICEObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcode);
+            sERVICEObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcode);
             if (bodyvaluesERVICEcommercialCategory != null)
             {
-                sERVICEObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcommercialCategory);
+                sERVICEObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcommercialCategory);
                 sERVICEObjectpropCount++;
             }
 
             if (bodyvaluesERVICEserviceGroup != null)
             {
-                sERVICEObject["MTRGROUP"] = ExpressionConverter.ConvertO(bodyvaluesERVICEserviceGroup);
+                sERVICEObject["MTRGROUP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEserviceGroup);
                 sERVICEObjectpropCount++;
             }
 
             sERVICEObjectpropCount++;
-            sERVICEObject["MTRUNIT1"] = ExpressionConverter.ConvertO(bodyvaluesERVICEbaseUnitOfMeasure);
+            sERVICEObject["MTRUNIT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEbaseUnitOfMeasure);
             sERVICEObjectpropCount++;
-            sERVICEObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluesERVICEname);
+            sERVICEObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEname);
             if (bodyvaluesERVICEretailPrice != null)
             {
-                sERVICEObject["PRICER"] = ExpressionConverter.ConvertO(bodyvaluesERVICEretailPrice);
+                sERVICEObject["PRICER"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEretailPrice);
                 sERVICEObjectpropCount++;
             }
 
             if (bodyvaluesERVICEwholesalePrice != null)
             {
-                sERVICEObject["PRICEW"] = ExpressionConverter.ConvertO(bodyvaluesERVICEwholesalePrice);
+                sERVICEObject["PRICEW"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEwholesalePrice);
                 sERVICEObjectpropCount++;
             }
 
             if (bodyvaluesERVICEcomments != null)
             {
-                sERVICEObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcomments);
+                sERVICEObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcomments);
                 sERVICEObjectpropCount++;
             }
 
             if (bodyvaluesERVICEdiscount1 != null)
             {
-                sERVICEObject["SODISCOUNT"] = ExpressionConverter.ConvertO(bodyvaluesERVICEdiscount1);
+                sERVICEObject["SODISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEdiscount1);
                 sERVICEObjectpropCount++;
             }
 
             sERVICEObjectpropCount++;
-            sERVICEObject["VAT"] = ExpressionConverter.ConvertO(bodyvaluesERVICEvatGroup);
+            sERVICEObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEvatGroup);
             if (sERVICEObjectpropCount > 0)
             {
                 dataObject["SERVICE"] = sERVICEObject;
@@ -2432,21 +2432,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sOACTIONObjectpropCount = 0;
             if (bodyvaluesOACTIONaCTSTATUS != null)
             {
-                sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONaCTSTATUS);
+                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodyvaluesOACTIONaCTSTATUS);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodyvaluesOACTIONcOMMENTS != null)
             {
-                sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONcOMMENTS);
+                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONcOMMENTS);
                 sOACTIONObjectpropCount++;
             }
 
             sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONsERIES);
+            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONsERIES);
             if (bodyvaluesOACTIONtRNDATE != null)
             {
-                sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONtRNDATE);
+                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONtRNDATE);
                 sOACTIONObjectpropCount++;
             }
 
@@ -2460,37 +2460,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sOMAILObjectpropCount = 0;
             if (bodyvaluesOMAILfROMADDRESS != null)
             {
-                sOMAILObject["FROMADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesOMAILfROMADDRESS);
+                sOMAILObject["FROMADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILfROMADDRESS);
                 sOMAILObjectpropCount++;
             }
 
             if (bodyvaluesOMAILfROMNAME != null)
             {
-                sOMAILObject["FROMNAME"] = ExpressionConverter.ConvertO(bodyvaluesOMAILfROMNAME);
+                sOMAILObject["FROMNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILfROMNAME);
                 sOMAILObjectpropCount++;
             }
 
             if (bodyvaluesOMAILsOBCC != null)
             {
-                sOMAILObject["SOBCC"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOBCC);
+                sOMAILObject["SOBCC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOBCC);
                 sOMAILObjectpropCount++;
             }
 
             if (bodyvaluesOMAILsOBODY != null)
             {
-                sOMAILObject["SOBODY"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOBODY);
+                sOMAILObject["SOBODY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOBODY);
                 sOMAILObjectpropCount++;
             }
 
             if (bodyvaluesOMAILsOCC != null)
             {
-                sOMAILObject["SOCC"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOCC);
+                sOMAILObject["SOCC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOCC);
                 sOMAILObjectpropCount++;
             }
 
             if (bodyvaluesOMAILsOTO != null)
             {
-                sOMAILObject["SOTO"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOTO);
+                sOMAILObject["SOTO"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOTO);
                 sOMAILObjectpropCount++;
             }
 
@@ -2502,7 +2502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyvaluexTRDOCDATA != null)
             {
-                dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
                 dATAObjectpropCount++;
             }
 
@@ -2514,13 +2514,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2555,81 +2555,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sOACTIONObjectpropCount = 0;
             if (bodydATAsOACTIONoperator != null)
             {
-                sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                sOACTIONObject["ACTOR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONoperatorContact != null)
             {
-                sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                sOACTIONObject["ACTPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONaCTSTATUS != null)
             {
-                sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONcOMMENTS != null)
             {
-                sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONfINALDATE != null)
             {
-                sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                sOACTIONObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONfROMDATE != null)
             {
-                sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                sOACTIONObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONorderedBy != null)
             {
-                sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                sOACTIONObject["ORDEREDBY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONorderedByContact != null)
             {
-                sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                sOACTIONObject["ORDPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONpriority != null)
             {
-                sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                sOACTIONObject["PRIORITY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONproject != null)
             {
-                sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                sOACTIONObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONrEMARKS != null)
             {
-                sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                sOACTIONObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
                 sOACTIONObjectpropCount++;
             }
 
             sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
+            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
             if (bodydATAsOACTIONtRDR != null)
             {
-                sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                sOACTIONObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONtRNDATE != null)
             {
-                sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
                 sOACTIONObjectpropCount++;
             }
 
@@ -2641,7 +2641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodydATAxTRDOCDATA != null)
             {
-                dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
                 dATAObjectpropCount++;
             }
 
@@ -2653,13 +2653,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2694,81 +2694,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sOACTIONObjectpropCount = 0;
             if (bodydATAsOACTIONoperator != null)
             {
-                sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                sOACTIONObject["ACTOR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONoperatorContact != null)
             {
-                sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                sOACTIONObject["ACTPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONaCTSTATUS != null)
             {
-                sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONcOMMENTS != null)
             {
-                sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONfINALDATE != null)
             {
-                sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                sOACTIONObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONfROMDATE != null)
             {
-                sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                sOACTIONObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONorderedBy != null)
             {
-                sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                sOACTIONObject["ORDEREDBY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONorderedByContact != null)
             {
-                sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                sOACTIONObject["ORDPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONpriority != null)
             {
-                sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                sOACTIONObject["PRIORITY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONproject != null)
             {
-                sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                sOACTIONObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONrEMARKS != null)
             {
-                sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                sOACTIONObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
                 sOACTIONObjectpropCount++;
             }
 
             sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
+            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
             if (bodydATAsOACTIONtRDR != null)
             {
-                sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                sOACTIONObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
                 sOACTIONObjectpropCount++;
             }
 
             if (bodydATAsOACTIONtRNDATE != null)
             {
-                sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
                 sOACTIONObjectpropCount++;
             }
 
@@ -2780,7 +2780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodydATAxTRDOCDATA != null)
             {
-                dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
                 dATAObjectpropCount++;
             }
 
@@ -2792,13 +2792,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2831,7 +2831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var dATAObjectpropCount = 0;
             if (bodyvaluesUPBANKACC != null)
             {
-                dATAObject["SUPBANKACC"] = ExpressionConverter.ConvertO(bodyvaluesUPBANKACC);
+                dATAObject["SUPBANKACC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPBANKACC);
                 dATAObjectpropCount++;
             }
 
@@ -2839,71 +2839,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var sUPPLIERObjectpropCount = 0;
             if (bodyvaluesUPPLIERaDDRESS != null)
             {
-                sUPPLIERObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERaDDRESS);
+                sUPPLIERObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERaDDRESS);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERaFM != null)
             {
-                sUPPLIERObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERaFM);
+                sUPPLIERObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERaFM);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERcITY != null)
             {
-                sUPPLIERObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERcITY);
+                sUPPLIERObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERcITY);
                 sUPPLIERObjectpropCount++;
             }
 
             sUPPLIERObjectpropCount++;
-            sUPPLIERObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERcODE);
+            sUPPLIERObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERcODE);
             if (bodyvaluesUPPLIERdISTRICT != null)
             {
-                sUPPLIERObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERdISTRICT);
+                sUPPLIERObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERdISTRICT);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIEReMAIL != null)
             {
-                sUPPLIERObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIEReMAIL);
+                sUPPLIERObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIEReMAIL);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERfAX != null)
             {
-                sUPPLIERObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERfAX);
+                sUPPLIERObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERfAX);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERiRSDATA != null)
             {
-                sUPPLIERObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERiRSDATA);
+                sUPPLIERObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERiRSDATA);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERjOBTYPETRD != null)
             {
-                sUPPLIERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERjOBTYPETRD);
+                sUPPLIERObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERjOBTYPETRD);
                 sUPPLIERObjectpropCount++;
             }
 
             sUPPLIERObjectpropCount++;
-            sUPPLIERObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERnAME);
+            sUPPLIERObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERnAME);
             if (bodyvaluesUPPLIERpHONE01 != null)
             {
-                sUPPLIERObject["PHONE01"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERpHONE01);
+                sUPPLIERObject["PHONE01"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERpHONE01);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERrEMARKS != null)
             {
-                sUPPLIERObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERrEMARKS);
+                sUPPLIERObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERrEMARKS);
                 sUPPLIERObjectpropCount++;
             }
 
             if (bodyvaluesUPPLIERzIP != null)
             {
-                sUPPLIERObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERzIP);
+                sUPPLIERObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERzIP);
                 sUPPLIERObjectpropCount++;
             }
 
@@ -2921,13 +2921,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
                 bodypropCount++;
             }
 
             if (bodykEY != null)
             {
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
             }
 
@@ -2958,7 +2958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodycondition != null)
             {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
                 bodypropCount++;
             }
 
@@ -2975,7 +2975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             body["event"] = "ONPOST";
             bodypropCount++;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -2994,7 +2994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodycondition != null)
             {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
                 bodypropCount++;
             }
 
@@ -3011,7 +3011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             body["event"] = "ONDELETE";
             bodypropCount++;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3030,7 +3030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodycondition != null)
             {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
                 bodypropCount++;
             }
 
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             body["event"] = "ONINSERT";
             bodypropCount++;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3066,7 +3066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             if (bodycondition != null)
             {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
                 bodypropCount++;
             }
 
@@ -3083,7 +3083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             body["event"] = "ONUPDATE";
             bodypropCount++;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

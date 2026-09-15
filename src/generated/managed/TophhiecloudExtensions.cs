@@ -18,16 +18,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tenantID != null)
-                callPayload.Queries["tenantID"] = ExpressionConverter.Convert(tenantID);
+                callPayload.Queries["tenantID"] = CSharpExpressionConverter.ConvertO(tenantID);
             if (domainName != null)
-                callPayload.Queries["domainName"] = ExpressionConverter.Convert(domainName);
+                callPayload.Queries["domainName"] = CSharpExpressionConverter.ConvertO(domainName);
             return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
         public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
         {
-            var apiCallPath = String.Format("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(callPayload);

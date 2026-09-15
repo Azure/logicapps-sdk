@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
             var apiCallPath = "/validation/single";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             callPayload.Queries["format"] = Convert.ToString("json");
             return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
         }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
             var apiCallPath = "/email/disposable";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             callPayload.Queries["format"] = Convert.ToString("json");
             return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
         }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
             var apiCallPath = "/email/free";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             callPayload.Queries["format"] = Convert.ToString("json");
             return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
         }

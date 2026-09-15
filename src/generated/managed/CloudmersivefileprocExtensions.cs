@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var reqConfigpropCount = 0;
             if (reqConfiginputFileBytes != null)
             {
-                reqConfig["InputFileBytes"] = ExpressionConverter.ConvertO(reqConfiginputFileBytes);
+                reqConfig["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(reqConfiginputFileBytes);
                 reqConfigpropCount++;
             }
 
             if (reqConfiginputFileUrl != null)
             {
-                reqConfig["InputFileUrl"] = ExpressionConverter.ConvertO(reqConfiginputFileUrl);
+                reqConfig["InputFileUrl"] = CSharpExpressionConverter.ConvertToken(reqConfiginputFileUrl);
                 reqConfigpropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requestbase64ContentToDetect != null)
             {
-                request["Base64ContentToDetect"] = ExpressionConverter.ConvertO(requestbase64ContentToDetect);
+                request["Base64ContentToDetect"] = CSharpExpressionConverter.ConvertToken(requestbase64ContentToDetect);
                 requestpropCount++;
             }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requestcontentToEncode != null)
             {
-                request["ContentToEncode"] = ExpressionConverter.ConvertO(requestcontentToEncode);
+                request["ContentToEncode"] = CSharpExpressionConverter.ConvertToken(requestcontentToEncode);
                 requestpropCount++;
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requestbase64ContentToDecode != null)
             {
-                request["Base64ContentToDecode"] = ExpressionConverter.ConvertO(requestbase64ContentToDecode);
+                request["Base64ContentToDecode"] = CSharpExpressionConverter.ConvertToken(requestbase64ContentToDecode);
                 requestpropCount++;
             }
 
@@ -124,13 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                request["TextContent"] = CSharpExpressionConverter.ConvertToken(requesttextContent);
                 requestpropCount++;
             }
 
             if (requesttargetString != null)
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
+                request["TargetString"] = CSharpExpressionConverter.ConvertToken(requesttargetString);
                 requestpropCount++;
             }
 
@@ -152,19 +152,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                request["TextContent"] = CSharpExpressionConverter.ConvertToken(requesttextContent);
                 requestpropCount++;
             }
 
             if (requesttargetRegex != null)
             {
-                request["TargetRegex"] = ExpressionConverter.ConvertO(requesttargetRegex);
+                request["TargetRegex"] = CSharpExpressionConverter.ConvertToken(requesttargetRegex);
                 requestpropCount++;
             }
 
             if (requestmatchCase != null)
             {
-                request["MatchCase"] = ExpressionConverter.ConvertO(requestmatchCase);
+                request["MatchCase"] = CSharpExpressionConverter.ConvertToken(requestmatchCase);
                 requestpropCount++;
             }
 
@@ -186,19 +186,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                request["TextContent"] = CSharpExpressionConverter.ConvertToken(requesttextContent);
                 requestpropCount++;
             }
 
             if (requesttargetString != null)
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
+                request["TargetString"] = CSharpExpressionConverter.ConvertToken(requesttargetString);
                 requestpropCount++;
             }
 
             if (requestreplaceWithString != null)
             {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
+                request["ReplaceWithString"] = CSharpExpressionConverter.ConvertToken(requestreplaceWithString);
                 requestpropCount++;
             }
 
@@ -220,19 +220,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
+                request["TextContent"] = CSharpExpressionConverter.ConvertToken(requesttextContent);
                 requestpropCount++;
             }
 
             if (requestregularExpressionString != null)
             {
-                request["RegularExpressionString"] = ExpressionConverter.ConvertO(requestregularExpressionString);
+                request["RegularExpressionString"] = CSharpExpressionConverter.ConvertToken(requestregularExpressionString);
                 requestpropCount++;
             }
 
             if (requestreplaceWithString != null)
             {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
+                request["ReplaceWithString"] = CSharpExpressionConverter.ConvertToken(requestreplaceWithString);
                 requestpropCount++;
             }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var apiCallPath = "/convert/edit/text/line-endings/change";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["lineEndingType"] = ExpressionConverter.Convert(lineEndingType);
+            callPayload.Headers["lineEndingType"] = CSharpExpressionConverter.ConvertO(lineEndingType);
             return new ApiConnectionAction<ChangeLineEndingResponse>(callPayload);
         }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContainingHtml != null)
             {
-                request["TextContainingHtml"] = ExpressionConverter.ConvertO(requesttextContainingHtml);
+                request["TextContainingHtml"] = CSharpExpressionConverter.ConvertToken(requesttextContainingHtml);
                 requestpropCount++;
             }
 
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContainingWhitespace != null)
             {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
+                request["TextContainingWhitespace"] = CSharpExpressionConverter.ConvertToken(requesttextContainingWhitespace);
                 requestpropCount++;
             }
 
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requesttextContainingWhitespace != null)
             {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
+                request["TextContainingWhitespace"] = CSharpExpressionConverter.ConvertToken(requesttextContainingWhitespace);
                 requestpropCount++;
             }
 
@@ -366,13 +366,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var requestpropCount = 0;
             if (requestfilesInZip != null)
             {
-                request["FilesInZip"] = ExpressionConverter.ConvertO(requestfilesInZip);
+                request["FilesInZip"] = CSharpExpressionConverter.ConvertToken(requestfilesInZip);
                 requestpropCount++;
             }
 
             if (requestdirectoriesInZip != null)
             {
-                request["DirectoriesInZip"] = ExpressionConverter.ConvertO(requestdirectoriesInZip);
+                request["DirectoriesInZip"] = CSharpExpressionConverter.ConvertToken(requestdirectoriesInZip);
                 requestpropCount++;
             }
 
@@ -403,19 +403,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var encryptionRequestpropCount = 0;
             if (encryptionRequestinputFileContents != null)
             {
-                encryptionRequest["InputFileContents"] = ExpressionConverter.ConvertO(encryptionRequestinputFileContents);
+                encryptionRequest["InputFileContents"] = CSharpExpressionConverter.ConvertToken(encryptionRequestinputFileContents);
                 encryptionRequestpropCount++;
             }
 
             if (encryptionRequestpassword != null)
             {
-                encryptionRequest["Password"] = ExpressionConverter.ConvertO(encryptionRequestpassword);
+                encryptionRequest["Password"] = CSharpExpressionConverter.ConvertToken(encryptionRequestpassword);
                 encryptionRequestpropCount++;
             }
 
             if (encryptionRequestencryptionAlgorithm != null)
             {
-                encryptionRequest["EncryptionAlgorithm"] = ExpressionConverter.ConvertO(encryptionRequestencryptionAlgorithm);
+                encryptionRequest["EncryptionAlgorithm"] = CSharpExpressionConverter.ConvertToken(encryptionRequestencryptionAlgorithm);
                 encryptionRequestpropCount++;
             }
 
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
             var apiCallPath = "/convert/archive/zip/decrypt";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["zipPassword"] = ExpressionConverter.Convert(zipPassword);
+            callPayload.Headers["zipPassword"] = CSharpExpressionConverter.ConvertO(zipPassword);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -18,21 +18,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (orderNumber != null)
-                callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
+                callPayload.Queries["OrderNumber"] = CSharpExpressionConverter.ConvertO(orderNumber);
             if (beginDate != null)
-                callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["beginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (orderStatusCode != null)
-                callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
+                callPayload.Queries["OrderStatusCode"] = CSharpExpressionConverter.Convert(orderStatusCode);
             if (itemNumber != null)
-                callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["itemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (parentOrderNumber != null)
-                callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
+                callPayload.Queries["parentOrderNumber"] = CSharpExpressionConverter.ConvertO(parentOrderNumber);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetWorkOrdersResponseItem[]>(callPayload);
         }
 
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateUpdateWorkOrderResponse>(callPayload);
         }
 
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<DeleteOrderResponse>(callPayload);
         }
 
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<SetOrderCompleteResponse>(callPayload);
         }
 
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<SetOrderStatusResponse>(callPayload);
         }
 
@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (itemNumber != null)
-                callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["ItemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (binNumber != null)
-                callPayload.Queries["BinNumber"] = ExpressionConverter.Convert(binNumber);
+                callPayload.Queries["BinNumber"] = CSharpExpressionConverter.ConvertO(binNumber);
             if (allocationSetName != null)
-                callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(allocationSetName);
+                callPayload.Queries["AllocationSetName"] = CSharpExpressionConverter.ConvertO(allocationSetName);
             if (warehouseName != null)
-                callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(warehouseName);
+                callPayload.Queries["WarehouseName"] = CSharpExpressionConverter.ConvertO(warehouseName);
             if (coreValue != null)
-                callPayload.Queries["CoreValue"] = ExpressionConverter.Convert(coreValue);
+                callPayload.Queries["CoreValue"] = CSharpExpressionConverter.ConvertO(coreValue);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetInventoryResponseItem[]>(callPayload);
         }
 
@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateInventoryRequestResponse>(callPayload);
         }
 
@@ -152,10 +152,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateInventoryAdjustmentResponse>(callPayload);
         }
 
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<DeleteInboundRequestResponse>(callPayload);
         }
 
@@ -182,10 +182,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateInboundRequestResponse>(callPayload);
         }
 
@@ -195,9 +195,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/integration/warehouse";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -208,10 +208,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateItemResponse>(callPayload);
         }
 
@@ -222,23 +222,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (beginDate != null)
-                callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["BeginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (pOStatus != null)
-                callPayload.Queries["POStatus"] = ExpressionConverter.Convert(pOStatus);
+                callPayload.Queries["POStatus"] = CSharpExpressionConverter.Convert(pOStatus);
             if (lineReceiptStatus != null)
-                callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(lineReceiptStatus);
+                callPayload.Queries["LineReceiptStatus"] = CSharpExpressionConverter.Convert(lineReceiptStatus);
             if (itemNumber != null)
-                callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["ItemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (pONumber != null)
-                callPayload.Queries["PONumber"] = ExpressionConverter.Convert(pONumber);
+                callPayload.Queries["PONumber"] = CSharpExpressionConverter.ConvertO(pONumber);
             if (pOType != null)
-                callPayload.Queries["POType"] = ExpressionConverter.Convert(pOType);
+                callPayload.Queries["POType"] = CSharpExpressionConverter.ConvertO(pOType);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetInboundRequestResponseItem[]>(callPayload);
         }
 
@@ -249,10 +249,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<InboundCompleteResponse>(callPayload);
         }
 
@@ -263,10 +263,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateLocationResponse>(callPayload);
         }
 
@@ -277,10 +277,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<ReceiptCompleteResponse>(callPayload);
         }
 
@@ -291,21 +291,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (orderNumber != null)
-                callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
+                callPayload.Queries["OrderNumber"] = CSharpExpressionConverter.ConvertO(orderNumber);
             if (beginDate != null)
-                callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["beginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (orderStatusCode != null)
-                callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
+                callPayload.Queries["OrderStatusCode"] = CSharpExpressionConverter.Convert(orderStatusCode);
             if (itemNumber != null)
-                callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["itemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (parentOrderNumber != null)
-                callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
+                callPayload.Queries["parentOrderNumber"] = CSharpExpressionConverter.ConvertO(parentOrderNumber);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetSalesOrdersResponseItem[]>(callPayload);
         }
 
@@ -316,10 +316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateUpdateSalesOrderResponse>(callPayload);
         }
 
@@ -329,9 +329,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/api/workorder/consumption";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -341,9 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/api/barcode";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Barcode"] = ExpressionConverter.Convert(barcode);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+            callPayload.Queries["Barcode"] = CSharpExpressionConverter.ConvertO(barcode);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetBarcodeInfoResponse>(callPayload);
         }
 
@@ -353,9 +353,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/api/po/container";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Barcode"] = ExpressionConverter.Convert(barcode);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+            callPayload.Queries["Barcode"] = CSharpExpressionConverter.ConvertO(barcode);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<SingleScanInventoryLookupResponseItem[]>(callPayload);
         }
 
@@ -366,21 +366,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (orderNumber != null)
-                callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
+                callPayload.Queries["OrderNumber"] = CSharpExpressionConverter.ConvertO(orderNumber);
             if (beginDate != null)
-                callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["beginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (orderStatusCode != null)
-                callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
+                callPayload.Queries["OrderStatusCode"] = CSharpExpressionConverter.Convert(orderStatusCode);
             if (itemNumber != null)
-                callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["itemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (parentOrderNumber != null)
-                callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
+                callPayload.Queries["parentOrderNumber"] = CSharpExpressionConverter.ConvertO(parentOrderNumber);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetTransferOrdersResponseItem[]>(callPayload);
         }
 
@@ -390,9 +390,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/integration/transferorder";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateUpdateTransferOrderResponse>(callPayload);
         }
 
@@ -403,21 +403,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (beginDate != null)
-                callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["BeginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (pOStatus != null)
-                callPayload.Queries["POStatus"] = ExpressionConverter.Convert(pOStatus);
+                callPayload.Queries["POStatus"] = CSharpExpressionConverter.Convert(pOStatus);
             if (lineReceiptStatus != null)
-                callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(lineReceiptStatus);
+                callPayload.Queries["LineReceiptStatus"] = CSharpExpressionConverter.Convert(lineReceiptStatus);
             if (itemNumber != null)
-                callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["ItemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (pONumber != null)
-                callPayload.Queries["PONumber"] = ExpressionConverter.Convert(pONumber);
+                callPayload.Queries["PONumber"] = CSharpExpressionConverter.ConvertO(pONumber);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetPurchaseOrderResponseItem[]>(callPayload);
         }
 
@@ -427,9 +427,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallPath = "/integration/purchaseorder/po";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-            callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
+            callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreatePurchaseOrderResponse>(callPayload);
         }
 
@@ -440,21 +440,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (orderNumber != null)
-                callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
+                callPayload.Queries["OrderNumber"] = CSharpExpressionConverter.ConvertO(orderNumber);
             if (beginDate != null)
-                callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
+                callPayload.Queries["BeginDate"] = CSharpExpressionConverter.ConvertO(beginDate);
             if (endDate != null)
-                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (orderStatusCode != null)
-                callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
+                callPayload.Queries["OrderStatusCode"] = CSharpExpressionConverter.Convert(orderStatusCode);
             if (itemNumber != null)
-                callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["ItemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (parentOrderNumber != null)
-                callPayload.Queries["ParentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
+                callPayload.Queries["ParentOrderNumber"] = CSharpExpressionConverter.ConvertO(parentOrderNumber);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetManufacturingOrderResponseItem[]>(callPayload);
         }
 
@@ -465,10 +465,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreateUpdateManufacturingOrderResponse>(callPayload);
         }
 
@@ -479,15 +479,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (itemNumber != null)
-                callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
+                callPayload.Queries["ItemNumber"] = CSharpExpressionConverter.ConvertO(itemNumber);
             if (warehouseName != null)
-                callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(warehouseName);
+                callPayload.Queries["WarehouseName"] = CSharpExpressionConverter.ConvertO(warehouseName);
             if (allocationSetName != null)
-                callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(allocationSetName);
+                callPayload.Queries["AllocationSetName"] = CSharpExpressionConverter.ConvertO(allocationSetName);
             if (userName != null)
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Headers["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (warehouse != null)
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Headers["Warehouse"] = CSharpExpressionConverter.ConvertO(warehouse);
             return new ApiConnectionAction<GetInventoryAggregateResponseItem[]>(callPayload);
         }
     }

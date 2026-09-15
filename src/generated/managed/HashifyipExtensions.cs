@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md4/hex";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<MD4GETResponse>(callPayload);
         }
 
@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md4/hex";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<MD4POSTResponse>(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md4/base64";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<MD4POSTFileResponse>(callPayload);
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md5/hex";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<MD5GETResponse>(callPayload);
         }
 
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md5/hex";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<MD5POSTResponse>(callPayload);
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/md5/base64";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<MD5POSTFileResponse>(callPayload);
         }
 
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway/base64url";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["X-Hashify-Key"] = CSharpExpressionConverter.ConvertO(xHashifyKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Highway256POSTResponse>(callPayload);
         }
 
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway/base32";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["X-Hashify-Key"] = CSharpExpressionConverter.ConvertO(xHashifyKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Highway256RandomPOSTResponse>(callPayload);
         }
 
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway-64/base32";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["X-Hashify-Key"] = CSharpExpressionConverter.ConvertO(xHashifyKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Highway64RandomPOSTResponse>(callPayload);
         }
 
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway-128/hex";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
             return new ApiConnectionAction<Highway128GETResponse>(callPayload);
         }
 
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway-128/hex";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["X-Hashify-Key"] = CSharpExpressionConverter.ConvertO(xHashifyKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Highway128RandomPOSTResponse>(callPayload);
         }
 
@@ -142,8 +142,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway128";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
             return new ApiConnectionAction<Highway128RandomGETResponse>(callPayload);
         }
 
@@ -153,8 +153,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway64";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
             return new ApiConnectionAction<Highway64RandomGETResponse>(callPayload);
         }
 
@@ -164,10 +164,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway64";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(xHashifyKey);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["X-Hashify-Key"] = CSharpExpressionConverter.ConvertO(xHashifyKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Highway64POSTResponse>(callPayload);
         }
 
@@ -177,49 +177,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var apiCallPath = "/hash/highway";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Queries["key"] = CSharpExpressionConverter.ConvertO(key);
             return new ApiConnectionAction<Highway256RandomGETResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA1GETResponse> SHA1GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
         {
-            var apiCallPath = String.Format("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<SHA1GETResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<M200> SHA1POSTForm(Expression<Func<string>> xHashifyProcess, Expression<Func<string>> digestFormat, Expression<Func<string>> file)
         {
-            var apiCallPath = String.Format("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(xHashifyProcess);
+            callPayload.Headers["X-Hashify-Process"] = CSharpExpressionConverter.ConvertO(xHashifyProcess);
             return new ApiConnectionAction<M200>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256GETResponse> SHA256GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
         {
-            var apiCallPath = String.Format("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
             return new ApiConnectionAction<SHA256GETResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256BodyPOSTResponse> SHA256BodyPOST(Expression<Func<string>> value, Expression<Func<string>> digestFormat, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(digestFormat, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["value"] = CSharpExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<SHA256BodyPOSTResponse>(callPayload);
         }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<M200> Keygen(Expression<Func<string>> keyLength)
         {
-            var apiCallPath = String.Format("/keygen/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyLength, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keygen/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyLength, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<M200>(callPayload);

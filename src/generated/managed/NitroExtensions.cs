@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
         public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
         {
-            var apiCallPath = String.Format("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicSchema);
             return new ApiConnectionAction<Error>(callPayload);
         }
     }

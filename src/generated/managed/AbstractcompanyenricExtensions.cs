@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractcompanyenric
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
     }

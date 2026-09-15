@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
             var apiCallPath = "/users/activatefromproduct";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
+            callPayload.Queries["Product"] = CSharpExpressionConverter.Convert(product);
+            callPayload.Queries["ProductUserId"] = CSharpExpressionConverter.ConvertO(productUserId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
             var apiCallPath = "/users/deactivatefromproduct";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
+            callPayload.Queries["Product"] = CSharpExpressionConverter.Convert(product);
+            callPayload.Queries["ProductUserId"] = CSharpExpressionConverter.ConvertO(productUserId);
             return new ApiConnectionAction(callPayload);
         }
     }

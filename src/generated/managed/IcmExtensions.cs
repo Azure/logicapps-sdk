@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmIncidentResponse> GetIncident(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IcmIncidentResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveById(Expression<Func<string>> retrospectiveId)
         {
-            var apiCallPath = String.Format("/icm/retrospectives/{0}", ExpressionConverter.ConvertWithUrlEncoding(retrospectiveId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/retrospectives/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(retrospectiveId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IcmRetrospectiveResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveByIncidentId(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/retrospective", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/retrospective", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IcmRetrospectiveResponse>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmBridgesResponse> GetBridgesForAnIncident(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/bridges", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/bridges", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IcmBridgesResponse>(callPayload);
@@ -50,20 +50,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction AddNewIcMDiscussionEntry(Expression<Func<string>> id, Expression<Func<string>> bodydiscussionText = null, Expression<Func<bodyrenderTypeInput>> bodyrenderType = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/addDiscussionEntry", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/addDiscussionEntry", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydiscussionText != null)
             {
-                body["discussionText"] = ExpressionConverter.ConvertO(bodydiscussionText);
+                body["discussionText"] = CSharpExpressionConverter.ConvertToken(bodydiscussionText);
                 bodypropCount++;
             }
 
             if (bodyrenderType != null)
             {
-                body["renderType"] = ExpressionConverter.ConvertO(bodyrenderType);
+                body["renderType"] = CSharpExpressionConverter.Convert(bodyrenderType);
                 bodypropCount++;
             }
 
@@ -78,34 +78,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmDescriptionEntriesResponse> GetDescriptionEntries(Expression<Func<string>> id, Expression<Func<int>> count = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/descriptionEntries", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/descriptionEntries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["count"] = Convert.ToString(5);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             return new ApiConnectionAction<IcmDescriptionEntriesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSeverity(Expression<Func<string>> id, Expression<Func<bodyseverityInput>> bodyseverity, Expression<Func<string>> bodydescriptionEntry = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateSeverity", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSeverity", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["severity"] = ExpressionConverter.ConvertO(bodyseverity);
+            body["severity"] = CSharpExpressionConverter.Convert(bodyseverity);
             if (bodydescriptionEntry != null)
             {
-                body["descriptionEntry"] = ExpressionConverter.ConvertO(bodydescriptionEntry);
+                body["descriptionEntry"] = CSharpExpressionConverter.ConvertToken(bodydescriptionEntry);
                 bodypropCount++;
             }
 
@@ -120,16 +120,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTitle(Expression<Func<string>> id, Expression<Func<string>> bodytitle, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateTitle", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTitle", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -141,16 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentOwner(Expression<Func<string>> id, Expression<Func<string>> bodyowningContactAlias, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateOwner", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateOwner", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["owningContactAlias"] = ExpressionConverter.ConvertO(bodyowningContactAlias);
+            body["owningContactAlias"] = CSharpExpressionConverter.ConvertToken(bodyowningContactAlias);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -162,30 +162,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentCustomFields(Expression<Func<string>> id, Expression<Func<string>> bodygroupType, Expression<Func<bodycustomFieldsInputItem[]>> bodycustomFields, Expression<Func<string>> bodypublicID = null, Expression<Func<string>> bodycontainerID = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateCustomFields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateCustomFields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["groupType"] = ExpressionConverter.ConvertO(bodygroupType);
+            body["groupType"] = CSharpExpressionConverter.ConvertToken(bodygroupType);
             if (bodypublicID != null)
             {
-                body["publicId"] = ExpressionConverter.ConvertO(bodypublicID);
+                body["publicId"] = CSharpExpressionConverter.ConvertToken(bodypublicID);
                 bodypropCount++;
             }
 
             if (bodycontainerID != null)
             {
-                body["containerId"] = ExpressionConverter.ConvertO(bodycontainerID);
+                body["containerId"] = CSharpExpressionConverter.ConvertToken(bodycontainerID);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["customFields"] = ExpressionConverter.ConvertO(bodycustomFields);
+            body["customFields"] = CSharpExpressionConverter.ConvertToken(bodycustomFields);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -197,18 +197,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSingleCustomField(Expression<Func<string>> id, Expression<Func<string>> bodycustomField, Expression<Func<string>> bodyvalue, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateSingleCustomField", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSingleCustomField", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["field"] = ExpressionConverter.ConvertO(bodycustomField);
+            body["field"] = CSharpExpressionConverter.ConvertToken(bodycustomField);
             bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -220,16 +220,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTags(Expression<Func<string>> id, Expression<Func<string[]>> bodytags, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/updateTags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["tags"] = ExpressionConverter.ConvertO(bodytags);
+            body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -241,33 +241,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<TagUserInDiscussionResponse> TagUserInDiscussion(Expression<Func<string>> id, Expression<Func<string>> bodyrecipientEmail, Expression<Func<string>> bodydiscussionText, Expression<Func<string>> bodyrecipientDisplayName = null, Expression<Func<string>> bodymentionerDisplayName = null, Expression<Func<string>> bodymentionerAlias = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/tagUser", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/tagUser", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["recipient"] = ExpressionConverter.ConvertO(bodyrecipientEmail);
+            body["recipient"] = CSharpExpressionConverter.ConvertToken(bodyrecipientEmail);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodydiscussionText);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodydiscussionText);
             if (bodyrecipientDisplayName != null)
             {
-                body["recipientDisplayName"] = ExpressionConverter.ConvertO(bodyrecipientDisplayName);
+                body["recipientDisplayName"] = CSharpExpressionConverter.ConvertToken(bodyrecipientDisplayName);
                 bodypropCount++;
             }
 
             if (bodymentionerDisplayName != null)
             {
-                body["mentionerDisplayName"] = ExpressionConverter.ConvertO(bodymentionerDisplayName);
+                body["mentionerDisplayName"] = CSharpExpressionConverter.ConvertToken(bodymentionerDisplayName);
                 bodypropCount++;
             }
 
             if (bodymentionerAlias != null)
             {
-                body["mentionerAlias"] = ExpressionConverter.ConvertO(bodymentionerAlias);
+                body["mentionerAlias"] = CSharpExpressionConverter.ConvertToken(bodymentionerAlias);
                 bodypropCount++;
             }
 
@@ -289,35 +289,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var bodypropCount = 0;
             if (bodyowningTeam != null)
             {
-                body["owningTeam"] = ExpressionConverter.ConvertO(bodyowningTeam);
+                body["owningTeam"] = CSharpExpressionConverter.ConvertToken(bodyowningTeam);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["connectorId"] = ExpressionConverter.ConvertO(bodyconnectorId);
+            body["connectorId"] = CSharpExpressionConverter.ConvertToken(bodyconnectorId);
             if (bodycorrelationId != null)
             {
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
                 bodypropCount++;
             }
 
             if (bodyroutingId != null)
             {
-                body["routingId"] = ExpressionConverter.ConvertO(bodyroutingId);
+                body["routingId"] = CSharpExpressionConverter.ConvertToken(bodyroutingId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodyhowFound != null)
             {
-                body["howFound"] = ExpressionConverter.ConvertO(bodyhowFound);
+                body["howFound"] = CSharpExpressionConverter.Convert(bodyhowFound);
                 bodypropCount++;
             }
 
             if (bodyseverity != null)
             {
-                body["severity"] = ExpressionConverter.ConvertO(bodyseverity);
+                body["severity"] = CSharpExpressionConverter.Convert(bodyseverity);
                 bodypropCount++;
             }
 
@@ -325,13 +325,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var discussionEntryObjectpropCount = 0;
             if (bodydiscussionEntrydiscussionText != null)
             {
-                discussionEntryObject["discussionText"] = ExpressionConverter.ConvertO(bodydiscussionEntrydiscussionText);
+                discussionEntryObject["discussionText"] = CSharpExpressionConverter.ConvertToken(bodydiscussionEntrydiscussionText);
                 discussionEntryObjectpropCount++;
             }
 
             if (bodydiscussionEntryrenderType != null)
             {
-                discussionEntryObject["renderType"] = ExpressionConverter.ConvertO(bodydiscussionEntryrenderType);
+                discussionEntryObject["renderType"] = CSharpExpressionConverter.Convert(bodydiscussionEntryrenderType);
                 discussionEntryObjectpropCount++;
             }
 
@@ -343,19 +343,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
             if (bodysummary != null)
             {
-                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodycloudInstance != null)
             {
-                body["cloudInstance"] = ExpressionConverter.ConvertO(bodycloudInstance);
+                body["cloudInstance"] = CSharpExpressionConverter.Convert(bodycloudInstance);
                 bodypropCount++;
             }
 
@@ -363,31 +363,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var occurringLocationObjectpropCount = 0;
             if (bodyoccurringLocationenvironment != null)
             {
-                occurringLocationObject["environment"] = ExpressionConverter.ConvertO(bodyoccurringLocationenvironment);
+                occurringLocationObject["environment"] = CSharpExpressionConverter.ConvertToken(bodyoccurringLocationenvironment);
                 occurringLocationObjectpropCount++;
             }
 
             if (bodyoccurringLocationdcRegion != null)
             {
-                occurringLocationObject["dcRegion"] = ExpressionConverter.ConvertO(bodyoccurringLocationdcRegion);
+                occurringLocationObject["dcRegion"] = CSharpExpressionConverter.ConvertToken(bodyoccurringLocationdcRegion);
                 occurringLocationObjectpropCount++;
             }
 
             if (bodyoccurringLocationinstanceCluster != null)
             {
-                occurringLocationObject["instanceCluster"] = ExpressionConverter.ConvertO(bodyoccurringLocationinstanceCluster);
+                occurringLocationObject["instanceCluster"] = CSharpExpressionConverter.ConvertToken(bodyoccurringLocationinstanceCluster);
                 occurringLocationObjectpropCount++;
             }
 
             if (bodyoccurringLocationrole != null)
             {
-                occurringLocationObject["role"] = ExpressionConverter.ConvertO(bodyoccurringLocationrole);
+                occurringLocationObject["role"] = CSharpExpressionConverter.ConvertToken(bodyoccurringLocationrole);
                 occurringLocationObjectpropCount++;
             }
 
             if (bodyoccurringLocationslice != null)
             {
-                occurringLocationObject["slice"] = ExpressionConverter.ConvertO(bodyoccurringLocationslice);
+                occurringLocationObject["slice"] = CSharpExpressionConverter.ConvertToken(bodyoccurringLocationslice);
                 occurringLocationObjectpropCount++;
             }
 
@@ -399,19 +399,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
             if (bodyisRestrictedIncident != null)
             {
-                body["isRestrictedIncident"] = ExpressionConverter.ConvertO(bodyisRestrictedIncident);
+                body["isRestrictedIncident"] = CSharpExpressionConverter.ConvertToken(bodyisRestrictedIncident);
                 bodypropCount++;
             }
 
             if (bodyisSecurityRisk != null)
             {
-                body["isSecurityRisk"] = ExpressionConverter.ConvertO(bodyisSecurityRisk);
+                body["isSecurityRisk"] = CSharpExpressionConverter.ConvertToken(bodyisSecurityRisk);
                 bodypropCount++;
             }
 
             if (bodyaccessRestrictedToClaims != null)
             {
-                body["accessRestrictedToClaims"] = ExpressionConverter.ConvertO(bodyaccessRestrictedToClaims);
+                body["accessRestrictedToClaims"] = CSharpExpressionConverter.ConvertToken(bodyaccessRestrictedToClaims);
                 bodypropCount++;
             }
 
@@ -429,16 +429,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var apiCallPath = "/icm/incidents/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+            callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
             if (searchEndpoint != null)
-                callPayload.Queries["searchEndpoint"] = ExpressionConverter.Convert(searchEndpoint);
+                callPayload.Queries["searchEndpoint"] = CSharpExpressionConverter.Convert(searchEndpoint);
             return new ApiConnectionAction<IcmIncidentSearchResponse>(callPayload);
         }
 
@@ -449,14 +449,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (publicId != null)
-                callPayload.Queries["publicId"] = ExpressionConverter.Convert(publicId);
+                callPayload.Queries["publicId"] = CSharpExpressionConverter.ConvertO(publicId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Queries["includeMembers"] = Convert.ToString(false);
             if (includeMembers != null)
-                callPayload.Queries["includeMembers"] = ExpressionConverter.Convert(includeMembers);
+                callPayload.Queries["includeMembers"] = CSharpExpressionConverter.ConvertO(includeMembers);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             return new ApiConnectionAction<IcmTeamSearchResponse>(callPayload);
         }
 
@@ -467,27 +467,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (teamId != null)
-                callPayload.Queries["teamId"] = ExpressionConverter.Convert(teamId);
+                callPayload.Queries["teamId"] = CSharpExpressionConverter.ConvertO(teamId);
             return new ApiConnectionAction<IcmCurrentOnCallResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction TransferIncident(Expression<Func<string>> id, Expression<Func<string>> bodyowningTenantPublicId, Expression<Func<string>> bodyowningTeamPublicId, Expression<Func<string>> bodydescription, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/transfer", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/transfer", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["owningTenantPublicId"] = ExpressionConverter.ConvertO(bodyowningTenantPublicId);
+            body["owningTenantPublicId"] = CSharpExpressionConverter.ConvertToken(bodyowningTenantPublicId);
             bodypropCount++;
-            body["owningTeamPublicId"] = ExpressionConverter.ConvertO(bodyowningTeamPublicId);
+            body["owningTeamPublicId"] = CSharpExpressionConverter.ConvertToken(bodyowningTeamPublicId);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -499,31 +499,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction MitigateIncident(Expression<Func<string>> id, Expression<Func<string>> bodymitigation, Expression<Func<bool>> bodyisCustomerImpacting = null, Expression<Func<bool>> bodyisNoise = null, Expression<Func<string>> bodyhowFixed = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/mitigate", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/mitigate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyisCustomerImpacting != null)
             {
-                body["isCustomerImpacting"] = ExpressionConverter.ConvertO(bodyisCustomerImpacting);
+                body["isCustomerImpacting"] = CSharpExpressionConverter.ConvertToken(bodyisCustomerImpacting);
                 bodypropCount++;
             }
 
             if (bodyisNoise != null)
             {
-                body["isNoise"] = ExpressionConverter.ConvertO(bodyisNoise);
+                body["isNoise"] = CSharpExpressionConverter.ConvertToken(bodyisNoise);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["mitigation"] = ExpressionConverter.ConvertO(bodymitigation);
+            body["mitigation"] = CSharpExpressionConverter.ConvertToken(bodymitigation);
             if (bodyhowFixed != null)
             {
-                body["howFixed"] = ExpressionConverter.ConvertO(bodyhowFixed);
+                body["howFixed"] = CSharpExpressionConverter.ConvertToken(bodyhowFixed);
                 bodypropCount++;
             }
 
@@ -538,22 +538,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ReactivateIncident(Expression<Func<string>> id, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodydisableVoiceNotifications = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/activate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydisableVoiceNotifications != null)
             {
-                body["disableVoiceNotifications"] = ExpressionConverter.ConvertO(bodydisableVoiceNotifications);
+                body["disableVoiceNotifications"] = CSharpExpressionConverter.ConvertToken(bodydisableVoiceNotifications);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -565,28 +565,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ResolveIncident(Expression<Func<string>> id, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodyisCustomerImpacting = null, Expression<Func<bool>> bodyisNoise = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var apiCallPath = String.Format("/icm/incidents/{0}/resolve", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/resolve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
             if (icmEndpoint != null)
-                callPayload.Queries["icmEndpoint"] = ExpressionConverter.Convert(icmEndpoint);
+                callPayload.Queries["icmEndpoint"] = CSharpExpressionConverter.Convert(icmEndpoint);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyisCustomerImpacting != null)
             {
-                body["isCustomerImpacting"] = ExpressionConverter.ConvertO(bodyisCustomerImpacting);
+                body["isCustomerImpacting"] = CSharpExpressionConverter.ConvertToken(bodyisCustomerImpacting);
                 bodypropCount++;
             }
 
             if (bodyisNoise != null)
             {
-                body["isNoise"] = ExpressionConverter.ConvertO(bodyisNoise);
+                body["isNoise"] = CSharpExpressionConverter.ConvertToken(bodyisNoise);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -601,11 +601,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var apiCallPath = "/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+            callPayload.Headers["Uri"] = CSharpExpressionConverter.ConvertO(uri);
+            callPayload.Headers["Method"] = CSharpExpressionConverter.Convert(method);
             callPayload.Headers["ContentType"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["ContentType"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -624,12 +624,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             var apiCallPath = "/icm/triggers/onIncidentCreated";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+            callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
             if (searchEndpoint != null)
-                callPayload.Queries["searchEndpoint"] = ExpressionConverter.Convert(searchEndpoint);
+                callPayload.Queries["searchEndpoint"] = CSharpExpressionConverter.Convert(searchEndpoint);
             return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload, triggerName, recurrence);
         }
     }

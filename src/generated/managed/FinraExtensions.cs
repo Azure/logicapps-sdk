@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
             var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
             var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
             var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> ListModels(Expression<Func<string>> aPIVersion, Expression<Func<int>> pageSize = null, Expression<Func<string>> pageToken = null)
         {
-            var apiCallPath = String.Format("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (pageToken != null)
-                callPayload.Queries["pageToken"] = ExpressionConverter.Convert(pageToken);
+                callPayload.Queries["pageToken"] = CSharpExpressionConverter.ConvertO(pageToken);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GetModel(Expression<Func<string>> aPIVersion, Expression<Func<string>> name)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateText(Expression<Func<string>> aPIVersion, Expression<Func<string>> modelType, Expression<Func<string>> modelName, Expression<Func<string>> bodypromptprompt, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodycandidateCount = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null, Expression<Func<JToken[]>> bodysafetySettings = null, Expression<Func<string[]>> bodystopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}:generateText", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelType, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}:generateText", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             var promptObject = new JObject();
             var promptObjectpropCount = 0;
             promptObjectpropCount++;
-            promptObject["text"] = ExpressionConverter.ConvertO(bodypromptprompt);
+            promptObject["text"] = CSharpExpressionConverter.ConvertToken(bodypromptprompt);
             if (promptObjectpropCount > 0)
             {
                 body["prompt"] = promptObject;
@@ -53,43 +53,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodycandidateCount != null)
             {
-                body["candidateCount"] = ExpressionConverter.ConvertO(bodycandidateCount);
+                body["candidateCount"] = CSharpExpressionConverter.ConvertToken(bodycandidateCount);
                 bodypropCount++;
             }
 
             if (bodymaxOutputTokens != null)
             {
-                body["maxOutputTokens"] = ExpressionConverter.ConvertO(bodymaxOutputTokens);
+                body["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodymaxOutputTokens);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["topP"] = ExpressionConverter.ConvertO(bodytopP);
+                body["topP"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 
             if (bodytopK != null)
             {
-                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
+                body["topK"] = CSharpExpressionConverter.ConvertToken(bodytopK);
                 bodypropCount++;
             }
 
             if (bodysafetySettings != null)
             {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
+                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
                 bodypropCount++;
             }
 
             if (bodystopSequences != null)
             {
-                body["stopSequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                body["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodystopSequences);
                 bodypropCount++;
             }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:generateMessage", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateMessage", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             var promptObjectpropCount = 0;
             if (bodypromptmessages != null)
             {
-                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
+                promptObject["messages"] = CSharpExpressionConverter.ConvertToken(bodypromptmessages);
                 promptObjectpropCount++;
             }
 
@@ -125,19 +125,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["topP"] = ExpressionConverter.ConvertO(bodytopP);
+                body["topP"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 
             if (bodytopK != null)
             {
-                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
+                body["topK"] = CSharpExpressionConverter.ConvertToken(bodytopK);
                 bodypropCount++;
             }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodyprompttext = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countTextTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTextTokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             var promptObjectpropCount = 0;
             if (bodyprompttext != null)
             {
-                promptObject["text"] = ExpressionConverter.ConvertO(bodyprompttext);
+                promptObject["text"] = CSharpExpressionConverter.ConvertToken(bodyprompttext);
                 promptObjectpropCount++;
             }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countMessageTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countMessageTokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
             var promptObjectpropCount = 0;
             if (bodypromptmessages != null)
             {
-                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
+                promptObject["messages"] = CSharpExpressionConverter.ConvertToken(bodypromptmessages);
                 promptObjectpropCount++;
             }
 
@@ -212,13 +212,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<EmbedTextResponse> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:embedText", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedText", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

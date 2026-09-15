@@ -18,67 +18,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (keyword != null)
-                callPayload.Queries["Keyword"] = ExpressionConverter.Convert(keyword);
+                callPayload.Queries["Keyword"] = CSharpExpressionConverter.ConvertO(keyword);
             if (positionTitle != null)
-                callPayload.Queries["PositionTitle"] = ExpressionConverter.Convert(positionTitle);
+                callPayload.Queries["PositionTitle"] = CSharpExpressionConverter.ConvertO(positionTitle);
             if (remunerationMinimumAmount != null)
-                callPayload.Queries["RemunerationMinimumAmount"] = ExpressionConverter.Convert(remunerationMinimumAmount);
+                callPayload.Queries["RemunerationMinimumAmount"] = CSharpExpressionConverter.ConvertO(remunerationMinimumAmount);
             if (remunerationMaximumAmount != null)
-                callPayload.Queries["RemunerationMaximumAmount"] = ExpressionConverter.Convert(remunerationMaximumAmount);
+                callPayload.Queries["RemunerationMaximumAmount"] = CSharpExpressionConverter.ConvertO(remunerationMaximumAmount);
             if (payGradeHigh != null)
-                callPayload.Queries["PayGradeHigh"] = ExpressionConverter.Convert(payGradeHigh);
+                callPayload.Queries["PayGradeHigh"] = CSharpExpressionConverter.ConvertO(payGradeHigh);
             if (payGradeLow != null)
-                callPayload.Queries["PayGradeLow"] = ExpressionConverter.Convert(payGradeLow);
+                callPayload.Queries["PayGradeLow"] = CSharpExpressionConverter.ConvertO(payGradeLow);
             if (jobCategoryCode != null)
-                callPayload.Queries["JobCategoryCode"] = ExpressionConverter.Convert(jobCategoryCode);
+                callPayload.Queries["JobCategoryCode"] = CSharpExpressionConverter.ConvertO(jobCategoryCode);
             if (remoteIndicator != null)
-                callPayload.Queries["RemoteIndicator"] = ExpressionConverter.Convert(remoteIndicator);
+                callPayload.Queries["RemoteIndicator"] = CSharpExpressionConverter.ConvertO(remoteIndicator);
             if (locationName != null)
-                callPayload.Queries["LocationName"] = ExpressionConverter.Convert(locationName);
+                callPayload.Queries["LocationName"] = CSharpExpressionConverter.ConvertO(locationName);
             if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (relocationIndicator != null)
-                callPayload.Queries["RelocationIndicator"] = ExpressionConverter.Convert(relocationIndicator);
+                callPayload.Queries["RelocationIndicator"] = CSharpExpressionConverter.ConvertO(relocationIndicator);
             if (travelPercentage != null)
-                callPayload.Queries["TravelPercentage"] = ExpressionConverter.Convert(travelPercentage);
+                callPayload.Queries["TravelPercentage"] = CSharpExpressionConverter.ConvertO(travelPercentage);
             if (organization != null)
-                callPayload.Queries["Organization"] = ExpressionConverter.Convert(organization);
+                callPayload.Queries["Organization"] = CSharpExpressionConverter.ConvertO(organization);
             if (positionOfferingTypeCode != null)
-                callPayload.Queries["PositionOfferingTypeCode"] = ExpressionConverter.Convert(positionOfferingTypeCode);
+                callPayload.Queries["PositionOfferingTypeCode"] = CSharpExpressionConverter.ConvertO(positionOfferingTypeCode);
             if (positionScheduleTypeCode != null)
-                callPayload.Queries["PositionScheduleTypeCode"] = ExpressionConverter.Convert(positionScheduleTypeCode);
+                callPayload.Queries["PositionScheduleTypeCode"] = CSharpExpressionConverter.ConvertO(positionScheduleTypeCode);
             if (securityClearanceRequired != null)
-                callPayload.Queries["SecurityClearanceRequired"] = ExpressionConverter.Convert(securityClearanceRequired);
+                callPayload.Queries["SecurityClearanceRequired"] = CSharpExpressionConverter.ConvertO(securityClearanceRequired);
             if (positionSensitivity != null)
-                callPayload.Queries["PositionSensitivity"] = ExpressionConverter.Convert(positionSensitivity);
+                callPayload.Queries["PositionSensitivity"] = CSharpExpressionConverter.Convert(positionSensitivity);
             if (supervisoryStatus != null)
-                callPayload.Queries["SupervisoryStatus"] = ExpressionConverter.Convert(supervisoryStatus);
+                callPayload.Queries["SupervisoryStatus"] = CSharpExpressionConverter.ConvertO(supervisoryStatus);
             if (datePosted != null)
-                callPayload.Queries["DatePosted"] = ExpressionConverter.Convert(datePosted);
+                callPayload.Queries["DatePosted"] = CSharpExpressionConverter.ConvertO(datePosted);
             if (jobGradeCode != null)
-                callPayload.Queries["JobGradeCode"] = ExpressionConverter.Convert(jobGradeCode);
+                callPayload.Queries["JobGradeCode"] = CSharpExpressionConverter.ConvertO(jobGradeCode);
             if (whoMayApply != null)
-                callPayload.Queries["WhoMayApply"] = ExpressionConverter.Convert(whoMayApply);
+                callPayload.Queries["WhoMayApply"] = CSharpExpressionConverter.ConvertO(whoMayApply);
             if (salaryBucket != null)
-                callPayload.Queries["SalaryBucket"] = ExpressionConverter.Convert(salaryBucket);
+                callPayload.Queries["SalaryBucket"] = CSharpExpressionConverter.ConvertO(salaryBucket);
             if (gradeBucket != null)
-                callPayload.Queries["GradeBucket"] = ExpressionConverter.Convert(gradeBucket);
+                callPayload.Queries["GradeBucket"] = CSharpExpressionConverter.ConvertO(gradeBucket);
             if (hiringPath != null)
-                callPayload.Queries["HiringPath"] = ExpressionConverter.Convert(hiringPath);
+                callPayload.Queries["HiringPath"] = CSharpExpressionConverter.ConvertO(hiringPath);
             if (missionCriticalTags != null)
-                callPayload.Queries["MissionCriticalTags"] = ExpressionConverter.Convert(missionCriticalTags);
+                callPayload.Queries["MissionCriticalTags"] = CSharpExpressionConverter.ConvertO(missionCriticalTags);
             if (postingChannel != null)
-                callPayload.Queries["PostingChannel"] = ExpressionConverter.Convert(postingChannel);
+                callPayload.Queries["PostingChannel"] = CSharpExpressionConverter.ConvertO(postingChannel);
             if (fields != null)
-                callPayload.Queries["Fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["Fields"] = CSharpExpressionConverter.Convert(fields);
             if (sortField != null)
-                callPayload.Queries["SortField"] = ExpressionConverter.Convert(sortField);
+                callPayload.Queries["SortField"] = CSharpExpressionConverter.Convert(sortField);
             if (sortDirection != null)
-                callPayload.Queries["SortDirection"] = ExpressionConverter.Convert(sortDirection);
+                callPayload.Queries["SortDirection"] = CSharpExpressionConverter.Convert(sortDirection);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (resultsPerPage != null)
-                callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                callPayload.Queries["ResultsPerPage"] = CSharpExpressionConverter.ConvertO(resultsPerPage);
             return new ApiConnectionAction<SearchJobsResponse>(callPayload);
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListAcademicHonorsResponse>(callPayload);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListAcademicLevelsResponse>(callPayload);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListActionCodesResponse>(callPayload);
         }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListAgencySubelementsResponse>(callPayload);
         }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(callPayload);
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListApplicantSuppliersResponse>(callPayload);
         }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListApplicationStatusesResponse>(callPayload);
         }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListCountriesResponse>(callPayload);
         }
 
@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListCountrySubdivisionsResponse>(callPayload);
         }
 
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(callPayload);
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListCyberWorkRolesResponse>(callPayload);
         }
 
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListDegreeTypeCodesResponse>(callPayload);
         }
 
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListDisabilitiesResponse>(callPayload);
         }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListDocumentationsResponse>(callPayload);
         }
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListDocumentFormatsResponse>(callPayload);
         }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListEthnicitiesResponse>(callPayload);
         }
 
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(callPayload);
         }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListGeolocCodesResponse>(callPayload);
         }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListGsaGeolocCodesResponse>(callPayload);
         }
 
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListHiringPathsResponse>(callPayload);
         }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(callPayload);
         }
 
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListLanguageCodesResponse>(callPayload);
         }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListLanguageProficienciesResponse>(callPayload);
         }
 
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListLocationExpansionsResponse>(callPayload);
         }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(callPayload);
         }
 
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListMissionCriticalCodesResponse>(callPayload);
         }
 
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListOccupationalSeriesResponse>(callPayload);
         }
 
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListPayPlansResponse>(callPayload);
         }
 
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListPositionOfferingTypesResponse>(callPayload);
         }
 
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(callPayload);
         }
 
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListPositionScheduleTypesResponse>(callPayload);
         }
 
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListPostalCodesResponse>(callPayload);
         }
 
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListRaceCodesResponse>(callPayload);
         }
 
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListRefereeTypeCodesResponse>(callPayload);
         }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(callPayload);
         }
 
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(callPayload);
         }
 
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListSecurityClearancesResponse>(callPayload);
         }
 
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListServiceTypesResponse>(callPayload);
         }
 
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListSpecialHiringsResponse>(callPayload);
         }
 
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListTravelPercentagesResponse>(callPayload);
         }
 
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                callPayload.Queries["lastmodified"] = CSharpExpressionConverter.ConvertO(lastmodified);
             return new ApiConnectionAction<ListWhoMayApplyResponse>(callPayload);
         }
     }

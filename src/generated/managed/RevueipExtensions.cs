@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<List> GetList(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<List>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Export> GetExport(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/exports/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/exports/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Export>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Export> StartExport(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/exports/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/exports/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Export>(callPayload);
@@ -101,22 +101,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodydoubleOptIn != null)
             {
-                body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
                 bodypropCount++;
             }
 
@@ -137,22 +137,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodydoubleOptIn != null)
             {
-                body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
                 bodypropCount++;
             }
 
@@ -183,19 +183,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
             {
                 if (bodydoubleOptIn != null)
                 {
-                    body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                    body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
                     bodypropCount++;
                 }
 

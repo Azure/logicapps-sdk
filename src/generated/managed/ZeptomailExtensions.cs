@@ -26,25 +26,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             var apiCallPath = "/v1.0/email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailagent_key"] = ExpressionConverter.Convert(mailagentKey);
+            callPayload.Queries["mailagent_key"] = CSharpExpressionConverter.ConvertO(mailagentKey);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
             if (dateFrom != null)
-                callPayload.Queries["date_from"] = ExpressionConverter.Convert(dateFrom);
+                callPayload.Queries["date_from"] = CSharpExpressionConverter.ConvertO(dateFrom);
             if (dateTo != null)
-                callPayload.Queries["date_to"] = ExpressionConverter.Convert(dateTo);
+                callPayload.Queries["date_to"] = CSharpExpressionConverter.ConvertO(dateTo);
             if (requestId != null)
-                callPayload.Queries["request_id"] = ExpressionConverter.Convert(requestId);
+                callPayload.Queries["request_id"] = CSharpExpressionConverter.ConvertO(requestId);
             callPayload.Queries["is_hb"] = Convert.ToString(false);
             if (isHb != null)
-                callPayload.Queries["is_hb"] = ExpressionConverter.Convert(isHb);
+                callPayload.Queries["is_hb"] = CSharpExpressionConverter.ConvertO(isHb);
             callPayload.Queries["is_sb"] = Convert.ToString(false);
             if (isSb != null)
-                callPayload.Queries["is_sb"] = ExpressionConverter.Convert(isSb);
+                callPayload.Queries["is_sb"] = CSharpExpressionConverter.ConvertO(isSb);
             return new ApiConnectionAction<GetProcessedEmailsResponse>(callPayload);
         }
 
@@ -57,20 +57,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["mailagent_key"] = ExpressionConverter.ConvertO(bodymailAgent);
+            body["mailagent_key"] = CSharpExpressionConverter.ConvertToken(bodymailAgent);
             var fromObject = new JObject();
             var fromObjectpropCount = 0;
             var fromDetailObject = new JObject();
             var fromDetailObjectpropCount = 0;
             if (bodyfromaddressprefix != null)
             {
-                fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(bodyfromaddressprefix);
+                fromDetailObject["from-prefix"] = CSharpExpressionConverter.ConvertToken(bodyfromaddressprefix);
                 fromDetailObjectpropCount++;
             }
 
             if (bodyfromaddressdomain != null)
             {
-                fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(bodyfromaddressdomain);
+                fromDetailObject["from-domain"] = CSharpExpressionConverter.ConvertToken(bodyfromaddressdomain);
                 fromDetailObjectpropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             }
 
             fromObjectpropCount++;
-            fromObject["name"] = ExpressionConverter.ConvertO(bodyfromname);
+            fromObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfromname);
             if (fromObjectpropCount > 0)
             {
                 body["from"] = fromObject;
@@ -89,16 +89,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             }
 
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             if (bodycC != null)
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycC);
+                body["cc"] = CSharpExpressionConverter.ConvertToken(bodycC);
                 bodypropCount++;
             }
 
             if (bodybCC != null)
             {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybCC);
+                body["bcc"] = CSharpExpressionConverter.ConvertToken(bodybCC);
                 bodypropCount++;
             }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             {
                 if (bodymailType != null)
                 {
-                    body["mailtype"] = ExpressionConverter.ConvertO(bodymailType);
+                    body["mailtype"] = CSharpExpressionConverter.Convert(bodymailType);
                     bodypropCount++;
                 }
 
@@ -119,22 +119,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             }
 
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodybody != null)
             {
-                body["htmlbody"] = ExpressionConverter.ConvertO(bodybody);
+                body["htmlbody"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["reply_to"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodyattachments != null)
             {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
@@ -155,22 +155,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["mailagent_key"] = ExpressionConverter.ConvertO(bodymailAgent);
+            body["mailagent_key"] = CSharpExpressionConverter.ConvertToken(bodymailAgent);
             bodypropCount++;
-            body["mail_template_key"] = ExpressionConverter.ConvertO(bodymailTemplate);
+            body["mail_template_key"] = CSharpExpressionConverter.ConvertToken(bodymailTemplate);
             var fromObject = new JObject();
             var fromObjectpropCount = 0;
             var fromDetailObject = new JObject();
             var fromDetailObjectpropCount = 0;
             if (bodyfromaddressprefix != null)
             {
-                fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(bodyfromaddressprefix);
+                fromDetailObject["from-prefix"] = CSharpExpressionConverter.ConvertToken(bodyfromaddressprefix);
                 fromDetailObjectpropCount++;
             }
 
             if (bodyfromaddressdomain != null)
             {
-                fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(bodyfromaddressdomain);
+                fromDetailObject["from-domain"] = CSharpExpressionConverter.ConvertToken(bodyfromaddressdomain);
                 fromDetailObjectpropCount++;
             }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             }
 
             fromObjectpropCount++;
-            fromObject["name"] = ExpressionConverter.ConvertO(bodyfromname);
+            fromObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfromname);
             if (fromObjectpropCount > 0)
             {
                 body["from"] = fromObject;
@@ -190,31 +190,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodycC != null)
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycC);
+                body["cc"] = CSharpExpressionConverter.ConvertToken(bodycC);
                 bodypropCount++;
             }
 
             if (bodybCC != null)
             {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybCC);
+                body["bcc"] = CSharpExpressionConverter.ConvertToken(bodybCC);
                 bodypropCount++;
             }
 
             if (bodymergeInfo != null)
             {
-                body["merge_key_detail"] = ExpressionConverter.ConvertO(bodymergeInfo);
+                body["merge_key_detail"] = CSharpExpressionConverter.ConvertToken(bodymergeInfo);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["reply_to"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
@@ -232,11 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
             var apiCallPath = "/v1.0/stats/email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailagent"] = ExpressionConverter.Convert(mailagent);
+            callPayload.Queries["mailagent"] = CSharpExpressionConverter.ConvertO(mailagent);
             if (fromTime != null)
-                callPayload.Queries["from_time"] = ExpressionConverter.Convert(fromTime);
+                callPayload.Queries["from_time"] = CSharpExpressionConverter.ConvertO(fromTime);
             if (toTime != null)
-                callPayload.Queries["to_time"] = ExpressionConverter.Convert(toTime);
+                callPayload.Queries["to_time"] = CSharpExpressionConverter.ConvertO(toTime);
             return new ApiConnectionAction<ProcessedMailStatsResponse>(callPayload);
         }
     }

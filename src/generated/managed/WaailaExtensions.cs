@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
             var apiCallPath = "/v1/depots";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
+            callPayload.Headers["Wauth"] = CSharpExpressionConverter.ConvertO(wauth);
             return new ApiConnectionAction<GetDepotsResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
         {
-            var apiCallPath = String.Format("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(depot, 1), ExpressionConverter.ConvertWithUrlEncoding(testsuite, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(depot, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(testsuite, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
+            callPayload.Headers["Wauth"] = CSharpExpressionConverter.ConvertO(wauth);
             return new ApiConnectionAction<GetTestsuiteResponse>(callPayload);
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
+            body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

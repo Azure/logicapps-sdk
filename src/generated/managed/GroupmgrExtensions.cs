@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
+            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
             bodypropCount++;
-            body["Approved"] = ExpressionConverter.ConvertO(bodyapproved);
+            body["Approved"] = CSharpExpressionConverter.Convert(bodyapproved);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,20 +40,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["DisplayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["Owners"] = ExpressionConverter.ConvertO(bodyowners);
+            body["Owners"] = CSharpExpressionConverter.ConvertToken(bodyowners);
             if (bodymembers != null)
             {
-                body["Members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["Members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
             if (bodygroupType != null)
             {
-                body["GroupType"] = ExpressionConverter.ConvertO(bodygroupType);
+                body["GroupType"] = CSharpExpressionConverter.ConvertToken(bodygroupType);
                 bodypropCount++;
             }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             {
                 if (bodyisPublic != null)
                 {
-                    body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                    body["IsPublic"] = CSharpExpressionConverter.Convert(bodyisPublic);
                     bodypropCount++;
                 }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             {
                 if (bodycreateTeam != null)
                 {
-                    body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                    body["CreateTeam"] = CSharpExpressionConverter.ConvertToken(bodycreateTeam);
                     bodypropCount++;
                 }
 
@@ -91,13 +91,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["CreatedBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["CreatedBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
@@ -118,28 +118,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["GroupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             if (bodydisplayName != null)
             {
-                body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["DisplayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodyowners != null)
             {
-                body["Owners"] = ExpressionConverter.ConvertO(bodyowners);
+                body["Owners"] = CSharpExpressionConverter.ConvertToken(bodyowners);
                 bodypropCount++;
             }
 
             if (bodymembers != null)
             {
-                body["Members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["Members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
             if (bodygroupType != null)
             {
-                body["GroupType"] = ExpressionConverter.ConvertO(bodygroupType);
+                body["GroupType"] = CSharpExpressionConverter.ConvertToken(bodygroupType);
                 bodypropCount++;
             }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             {
                 if (bodyisPublic != null)
                 {
-                    body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                    body["IsPublic"] = CSharpExpressionConverter.Convert(bodyisPublic);
                     bodypropCount++;
                 }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             {
                 if (bodycreateTeam != null)
                 {
-                    body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                    body["CreateTeam"] = CSharpExpressionConverter.ConvertToken(bodycreateTeam);
                     bodypropCount++;
                 }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
+            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
+            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
             bodypropCount++;
-            body["Archive"] = ExpressionConverter.ConvertO(bodyarchive);
+            body["Archive"] = CSharpExpressionConverter.Convert(bodyarchive);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             body["webhook"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

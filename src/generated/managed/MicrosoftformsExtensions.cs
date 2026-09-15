@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<JToken> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
         {
-            var apiCallPath = String.Format("/formapi/api/forms('{0}')/responses", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')/responses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["response_id"] = ExpressionConverter.Convert(responseId);
+            callPayload.Queries["response_id"] = CSharpExpressionConverter.ConvertO(responseId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById(Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/formapi/api/forms('{0}')", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
     {
         public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/formapi/api/forms/{0}/webhooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();

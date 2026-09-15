@@ -14,73 +14,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (onlyFinished != null)
-                callPayload.Queries["onlyFinished"] = ExpressionConverter.Convert(onlyFinished);
+                callPayload.Queries["onlyFinished"] = CSharpExpressionConverter.ConvertO(onlyFinished);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+            body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
             if (bodynegativePrompt != null)
             {
-                body["negativePrompt"] = ExpressionConverter.ConvertO(bodynegativePrompt);
+                body["negativePrompt"] = CSharpExpressionConverter.ConvertToken(bodynegativePrompt);
                 bodypropCount++;
             }
 
             if (bodysteps != null)
             {
-                body["steps"] = ExpressionConverter.ConvertO(bodysteps);
+                body["steps"] = CSharpExpressionConverter.ConvertToken(bodysteps);
                 bodypropCount++;
             }
 
             if (bodywidth != null)
             {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
             }
 
             if (bodyheight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
                 bodypropCount++;
             }
 
             if (bodynumberOfImages != null)
             {
-                body["numberOfImages"] = ExpressionConverter.ConvertO(bodynumberOfImages);
+                body["numberOfImages"] = CSharpExpressionConverter.ConvertToken(bodynumberOfImages);
                 bodypropCount++;
             }
 
             if (bodypromptStrength != null)
             {
-                body["promptStrength"] = ExpressionConverter.ConvertO(bodypromptStrength);
+                body["promptStrength"] = CSharpExpressionConverter.ConvertToken(bodypromptStrength);
                 bodypropCount++;
             }
 
             if (bodyseed != null)
             {
-                body["seed"] = ExpressionConverter.ConvertO(bodyseed);
+                body["seed"] = CSharpExpressionConverter.ConvertToken(bodyseed);
                 bodypropCount++;
             }
 
             if (bodywebhookUrl != null)
             {
-                body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                body["webhookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebhookUrl);
                 bodypropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ImageGetResponse>(callPayload);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<string> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -120,31 +120,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodysubjectKeyword != null)
             {
-                body["subjectKeyword"] = ExpressionConverter.ConvertO(bodysubjectKeyword);
+                body["subjectKeyword"] = CSharpExpressionConverter.ConvertToken(bodysubjectKeyword);
                 bodypropCount++;
             }
 
             if (bodysubjectType != null)
             {
-                body["subjectType"] = ExpressionConverter.ConvertO(bodysubjectType);
+                body["subjectType"] = CSharpExpressionConverter.ConvertToken(bodysubjectType);
                 bodypropCount++;
             }
 
             if (bodywebhookUrl != null)
             {
-                body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                body["webhookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebhookUrl);
                 bodypropCount++;
             }
 
             if (bodyimageSampleUrls != null)
             {
-                body["imageSampleUrls"] = ExpressionConverter.ConvertO(bodyimageSampleUrls);
+                body["imageSampleUrls"] = CSharpExpressionConverter.ConvertToken(bodyimageSampleUrls);
                 bodypropCount++;
             }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<modelIdInput>> modelId)
         {
-            var apiCallPath = String.Format("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ModelGetResponse>(callPayload);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete(Expression<Func<modelIdInput>> modelId)
         {
-            var apiCallPath = String.Format("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
@@ -201,11 +201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+            body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
             bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
+            body["mode"] = CSharpExpressionConverter.Convert(bodymode);
             bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+            body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicGetResponse> MusicGet(Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MusicGetResponse>(callPayload);

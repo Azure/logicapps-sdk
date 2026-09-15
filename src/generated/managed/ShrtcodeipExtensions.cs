@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
             var apiCallPath = "/shorten";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
             var apiCallPath = "/info";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
             return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
         }
     }

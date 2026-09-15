@@ -19,16 +19,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.Convert(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserID);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserID);
             bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
+            body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
             if (bodypayload != null)
             {
-                body["payload"] = ExpressionConverter.ConvertO(bodypayload);
+                body["payload"] = CSharpExpressionConverter.ConvertToken(bodypayload);
                 bodypropCount++;
             }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["action"] = ExpressionConverter.ConvertO(bodyaction);
+            body["action"] = CSharpExpressionConverter.ConvertToken(bodyaction);
             bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+            body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -110,10 +110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["agentACDState"] = ExpressionConverter.ConvertO(bodyagentACDState);
+            body["agentACDState"] = CSharpExpressionConverter.ConvertToken(bodyagentACDState);
             if (bodyuserID != null)
             {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                body["userID"] = CSharpExpressionConverter.ConvertToken(bodyuserID);
                 bodypropCount++;
             }
 
@@ -135,12 +135,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserID != null)
             {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                body["userID"] = CSharpExpressionConverter.ConvertToken(bodyuserID);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+            body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -159,12 +159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+            body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -183,12 +183,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+            body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -207,12 +207,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+            body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -231,14 +231,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+            body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
             bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+            body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -257,13 +257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodycallId != null)
             {
-                body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+                body["callId"] = CSharpExpressionConverter.ConvertToken(bodycallId);
                 bodypropCount++;
             }
 
@@ -288,27 +288,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+            body["event"] = CSharpExpressionConverter.ConvertToken(bodyEvent);
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -331,19 +331,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -368,13 +368,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -430,19 +430,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -467,19 +467,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -504,19 +504,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             bodypropCount++;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 

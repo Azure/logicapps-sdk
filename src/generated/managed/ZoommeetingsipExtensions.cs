@@ -30,25 +30,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             var bodypropCount = 0;
             if (bodytopic != null)
             {
-                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                body["topic"] = CSharpExpressionConverter.ConvertToken(bodytopic);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodystartTime != null)
             {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
@@ -56,43 +56,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             var settingsObjectpropCount = 0;
             if (bodysettingshostVideo != null)
             {
-                settingsObject["host_video"] = ExpressionConverter.ConvertO(bodysettingshostVideo);
+                settingsObject["host_video"] = CSharpExpressionConverter.ConvertToken(bodysettingshostVideo);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsparticipantVideo != null)
             {
-                settingsObject["participant_video"] = ExpressionConverter.ConvertO(bodysettingsparticipantVideo);
+                settingsObject["participant_video"] = CSharpExpressionConverter.ConvertToken(bodysettingsparticipantVideo);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsjoinBeforeHost != null)
             {
-                settingsObject["join_before_host"] = ExpressionConverter.ConvertO(bodysettingsjoinBeforeHost);
+                settingsObject["join_before_host"] = CSharpExpressionConverter.ConvertToken(bodysettingsjoinBeforeHost);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsmuteUponEntry != null)
             {
-                settingsObject["mute_upon_entry"] = ExpressionConverter.ConvertO(bodysettingsmuteUponEntry);
+                settingsObject["mute_upon_entry"] = CSharpExpressionConverter.ConvertToken(bodysettingsmuteUponEntry);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingswatermark != null)
             {
-                settingsObject["watermark"] = ExpressionConverter.ConvertO(bodysettingswatermark);
+                settingsObject["watermark"] = CSharpExpressionConverter.ConvertToken(bodysettingswatermark);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsaudio != null)
             {
-                settingsObject["audio"] = ExpressionConverter.ConvertO(bodysettingsaudio);
+                settingsObject["audio"] = CSharpExpressionConverter.ConvertToken(bodysettingsaudio);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsautoRecording != null)
             {
-                settingsObject["auto_recording"] = ExpressionConverter.ConvertO(bodysettingsautoRecording);
+                settingsObject["auto_recording"] = CSharpExpressionConverter.ConvertToken(bodysettingsautoRecording);
                 settingsObjectpropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails(Expression<Func<string>> meetingid)
         {
-            var apiCallPath = String.Format("/v2/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MeetingDetailsResponse>(callPayload);

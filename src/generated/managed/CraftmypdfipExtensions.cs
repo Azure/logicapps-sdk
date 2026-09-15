@@ -20,30 +20,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             if (bodyexportType != null)
             {
-                body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                body["export_type"] = CSharpExpressionConverter.ConvertToken(bodyexportType);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodyoutputFile != null)
             {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                body["output_file"] = CSharpExpressionConverter.ConvertToken(bodyoutputFile);
                 bodypropCount++;
             }
 
             if (bodyisCmyk != null)
             {
-                body["is_cmyk"] = ExpressionConverter.ConvertO(bodyisCmyk);
+                body["is_cmyk"] = CSharpExpressionConverter.ConvertToken(bodyisCmyk);
                 bodypropCount++;
             }
 
@@ -64,28 +64,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["templates"] = ExpressionConverter.ConvertO(bodytemplates);
+            body["templates"] = CSharpExpressionConverter.ConvertToken(bodytemplates);
             if (bodyexportType != null)
             {
-                body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                body["export_type"] = CSharpExpressionConverter.ConvertToken(bodyexportType);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodyoutputFile != null)
             {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                body["output_file"] = CSharpExpressionConverter.ConvertToken(bodyoutputFile);
                 bodypropCount++;
             }
 
             if (bodypaging != null)
             {
-                body["paging"] = ExpressionConverter.ConvertO(bodypaging);
+                body["paging"] = CSharpExpressionConverter.ConvertToken(bodypaging);
                 bodypropCount++;
             }
 
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ResponseListTemplate>(callPayload);
         }
 
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -143,16 +143,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyjson != null)
             {
-                body["json"] = ExpressionConverter.ConvertO(bodyjson);
+                body["json"] = CSharpExpressionConverter.ConvertToken(bodyjson);
                 bodypropCount++;
             }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var apiCallPath = "/delete-template";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
             return new ApiConnectionAction<ResponseSuccessDeleteTemplate>(callPayload);
         }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             var expirationObject = new JObject();
             var expirationObjectpropCount = 0;
             if (expirationObjectpropCount > 0)
@@ -194,49 +194,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
             if (bodycanSave != null)
             {
-                body["canSave"] = ExpressionConverter.ConvertO(bodycanSave);
+                body["canSave"] = CSharpExpressionConverter.ConvertToken(bodycanSave);
                 bodypropCount++;
             }
 
             if (bodycanCreatePDF != null)
             {
-                body["canCreatePDF"] = ExpressionConverter.ConvertO(bodycanCreatePDF);
+                body["canCreatePDF"] = CSharpExpressionConverter.ConvertToken(bodycanCreatePDF);
                 bodypropCount++;
             }
 
             if (bodycanViewSettings != null)
             {
-                body["canViewSettings"] = ExpressionConverter.ConvertO(bodycanViewSettings);
+                body["canViewSettings"] = CSharpExpressionConverter.ConvertToken(bodycanViewSettings);
                 bodypropCount++;
             }
 
             if (bodycanPreview != null)
             {
-                body["canPreview"] = ExpressionConverter.ConvertO(bodycanPreview);
+                body["canPreview"] = CSharpExpressionConverter.ConvertToken(bodycanPreview);
                 bodypropCount++;
             }
 
             if (bodycanEditJSON != null)
             {
-                body["canEditJSON"] = ExpressionConverter.ConvertO(bodycanEditJSON);
+                body["canEditJSON"] = CSharpExpressionConverter.ConvertToken(bodycanEditJSON);
                 bodypropCount++;
             }
 
             if (bodycanShowHeader != null)
             {
-                body["canShowHeader"] = ExpressionConverter.ConvertO(bodycanShowHeader);
+                body["canShowHeader"] = CSharpExpressionConverter.ConvertToken(bodycanShowHeader);
                 bodypropCount++;
             }
 
             if (bodyjsonMode != null)
             {
-                body["jsonMode"] = ExpressionConverter.ConvertO(bodyjsonMode);
+                body["jsonMode"] = CSharpExpressionConverter.ConvertToken(bodyjsonMode);
                 bodypropCount++;
             }
 
             if (bodybackURL != null)
             {
-                body["backURL"] = ExpressionConverter.ConvertO(bodybackURL);
+                body["backURL"] = CSharpExpressionConverter.ConvertToken(bodybackURL);
                 bodypropCount++;
             }
 
@@ -255,9 +255,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ResponseListTransactions>(callPayload);
         }
 
@@ -279,16 +279,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodyoutputFile != null)
             {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                body["output_file"] = CSharpExpressionConverter.ConvertToken(bodyoutputFile);
                 bodypropCount++;
             }
 
@@ -309,48 +309,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyfontSize != null)
             {
-                body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                body["font_size"] = CSharpExpressionConverter.ConvertToken(bodyfontSize);
                 bodypropCount++;
             }
 
             if (bodyopacity != null)
             {
-                body["opacity"] = ExpressionConverter.ConvertO(bodyopacity);
+                body["opacity"] = CSharpExpressionConverter.ConvertToken(bodyopacity);
                 bodypropCount++;
             }
 
             if (bodyrotation != null)
             {
-                body["rotation"] = ExpressionConverter.ConvertO(bodyrotation);
+                body["rotation"] = CSharpExpressionConverter.ConvertToken(bodyrotation);
                 bodypropCount++;
             }
 
             if (bodyhexColor != null)
             {
-                body["hex_color"] = ExpressionConverter.ConvertO(bodyhexColor);
+                body["hex_color"] = CSharpExpressionConverter.ConvertToken(bodyhexColor);
                 bodypropCount++;
             }
 
             if (bodyfontFamily != null)
             {
-                body["font_family"] = ExpressionConverter.ConvertO(bodyfontFamily);
+                body["font_family"] = CSharpExpressionConverter.ConvertToken(bodyfontFamily);
                 bodypropCount++;
             }
 
             if (bodyexpiration != null)
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
                 bodypropCount++;
             }
 
             if (bodyoutputFile != null)
             {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                body["output_file"] = CSharpExpressionConverter.ConvertToken(bodyoutputFile);
                 bodypropCount++;
             }
 

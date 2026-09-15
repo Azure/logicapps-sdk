@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
+                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
             if (userName != null)
-                callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             return new ApiConnectionAction<QueryListResponse>(callPayload);
         }
 
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
+                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
             if (userName != null)
-                callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (queryName != null)
-                callPayload.Queries["QueryName"] = ExpressionConverter.Convert(queryName);
+                callPayload.Queries["QueryName"] = CSharpExpressionConverter.ConvertO(queryName);
             if (searchText != null)
-                callPayload.Queries["SearchText"] = ExpressionConverter.Convert(searchText);
+                callPayload.Queries["SearchText"] = CSharpExpressionConverter.ConvertO(searchText);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -48,17 +48,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
+                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
             if (userName != null)
-                callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (queryName != null)
-                callPayload.Queries["QueryName"] = ExpressionConverter.Convert(queryName);
+                callPayload.Queries["QueryName"] = CSharpExpressionConverter.ConvertO(queryName);
             if (startPosition != null)
-                callPayload.Queries["StartPosition"] = ExpressionConverter.Convert(startPosition);
+                callPayload.Queries["StartPosition"] = CSharpExpressionConverter.ConvertO(startPosition);
             if (numberOfRecords != null)
-                callPayload.Queries["NumberOfRecords"] = ExpressionConverter.Convert(numberOfRecords);
+                callPayload.Queries["NumberOfRecords"] = CSharpExpressionConverter.ConvertO(numberOfRecords);
             if (searchText != null)
-                callPayload.Queries["SearchText"] = ExpressionConverter.Convert(searchText);
+                callPayload.Queries["SearchText"] = CSharpExpressionConverter.ConvertO(searchText);
             return new ApiConnectionAction<QueryDataResponse>(callPayload);
         }
 
@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
+                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
             if (userName != null)
-                callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             if (savedSearchName != null)
-                callPayload.Queries["SavedSearchName"] = ExpressionConverter.Convert(savedSearchName);
+                callPayload.Queries["SavedSearchName"] = CSharpExpressionConverter.ConvertO(savedSearchName);
             if (queryParams != null)
-                callPayload.Queries["QueryParams"] = ExpressionConverter.Convert(queryParams);
+                callPayload.Queries["QueryParams"] = CSharpExpressionConverter.ConvertO(queryParams);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -86,44 +86,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
+                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
             if (userName != null)
-                callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfileContents != null)
             {
-                body["FileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
+                body["FileContents"] = CSharpExpressionConverter.ConvertToken(bodyfileContents);
                 bodypropCount++;
             }
 
             if (bodyfileName != null)
             {
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodycreatedDate != null)
             {
-                body["CreatedDate"] = ExpressionConverter.ConvertO(bodycreatedDate);
+                body["CreatedDate"] = CSharpExpressionConverter.ConvertToken(bodycreatedDate);
                 bodypropCount++;
             }
 
             if (bodyeDOCType != null)
             {
-                body["EDOCType"] = ExpressionConverter.ConvertO(bodyeDOCType);
+                body["EDOCType"] = CSharpExpressionConverter.ConvertToken(bodyeDOCType);
                 bodypropCount++;
             }
 
             if (bodyextraFields != null)
             {
-                body["ExtraFields"] = ExpressionConverter.ConvertO(bodyextraFields);
+                body["ExtraFields"] = CSharpExpressionConverter.ConvertToken(bodyextraFields);
                 bodypropCount++;
             }
 

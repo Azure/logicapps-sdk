@@ -18,16 +18,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
         }
 
@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["applyActionTo"] = CSharpExpressionConverter.Convert(applyActionTo);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AbEntryCreateSchema>(callPayload);
         }
 
@@ -48,18 +48,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/action/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
+            callPayload.Queries["applyActionTo"] = CSharpExpressionConverter.Convert(applyActionTo);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AbEntryUpdateSchema>(callPayload);
         }
 
@@ -69,18 +69,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/action/findOrCreate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
+            callPayload.Queries["applyActionTo"] = CSharpExpressionConverter.Convert(applyActionTo);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
         }
 
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (linkWithType != null)
-                callPayload.Queries["linkWithType"] = ExpressionConverter.Convert(linkWithType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["linkWithType"] = CSharpExpressionConverter.Convert(linkWithType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/action/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AppointmentUpdateSchema>(callPayload);
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/action/find";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
         }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/action/delete";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
         }
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Case/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<PACaseView>(callPayload);
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Case/action/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<PACaseView>(callPayload);
         }
 
@@ -153,16 +153,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CaseFindOrCreateSchema>(callPayload);
         }
 
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/HTask/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["parentType"] = CSharpExpressionConverter.Convert(parentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<HotlistTaskCreateSchema>(callPayload);
         }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Interaction/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<InteractionLogCreateSchema>(callPayload);
         }
 
@@ -194,16 +194,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<LeadFindSchema>(callPayload);
         }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Lead/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<LeadCreateSchema>(callPayload);
         }
 
@@ -224,16 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<LeadUpdateSchema>(callPayload);
         }
 
@@ -244,16 +244,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<LeadFindOrCreateSchema>(callPayload);
         }
 
@@ -265,14 +265,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["convertOption"] = Convert.ToString("newIndividual");
             if (convertOption != null)
-                callPayload.Queries["convertOption"] = ExpressionConverter.Convert(convertOption);
+                callPayload.Queries["convertOption"] = CSharpExpressionConverter.Convert(convertOption);
             callPayload.Queries["doNotCreateAContact"] = Convert.ToString("false");
             if (doNotCreateAContact != null)
-                callPayload.Queries["doNotCreateAContact"] = ExpressionConverter.Convert(doNotCreateAContact);
+                callPayload.Queries["doNotCreateAContact"] = CSharpExpressionConverter.Convert(doNotCreateAContact);
             callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
             if (doNotCreateAnOpportunity != null)
-                callPayload.Queries["doNotCreateAnOpportunity"] = ExpressionConverter.Convert(doNotCreateAnOpportunity);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["doNotCreateAnOpportunity"] = CSharpExpressionConverter.Convert(doNotCreateAnOpportunity);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<LeadConvertSchema>(callPayload);
         }
 
@@ -282,8 +282,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Note/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["parentType"] = CSharpExpressionConverter.Convert(parentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<NoteCreateSchema>(callPayload);
         }
 
@@ -294,16 +294,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<OpportunityFindSchema>(callPayload);
         }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<OpportunityCreateSchema>(callPayload);
         }
 
@@ -324,16 +324,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
+                callPayload.Queries["udf1"] = CSharpExpressionConverter.ConvertO(udf1);
             if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
+                callPayload.Queries["udf2"] = CSharpExpressionConverter.ConvertO(udf2);
             if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
+                callPayload.Queries["udf3"] = CSharpExpressionConverter.ConvertO(udf3);
             if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
+                callPayload.Queries["udf4"] = CSharpExpressionConverter.ConvertO(udf4);
             if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["udf5"] = CSharpExpressionConverter.ConvertO(udf5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<OpportunityFindOrCreateSchema>(callPayload);
         }
 
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/action/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<OpportunityUpdateSchema>(callPayload);
         }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/PTask/action/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<PersonalTaskCreateSchema>(callPayload);
         }
 
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/User/action/find";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<UserFindSchema>(callPayload);
         }
     }
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/trigger/updated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/trigger/created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/AbEntry/trigger/DateNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/trigger/Updated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/trigger/created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Appointment/trigger/DateNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Case/api/Case/trigger/Updated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Case/trigger/DateNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Case/api/Case/trigger/Created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/HotlistTask/trigger/created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Lead/trigger/DateNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Lead/trigger/updated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Lead/trigger/created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<WebhookCreated>(callPayload, triggerName, recurrence);
         }
 
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/trigger/Created";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/trigger/Updated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
         }
 
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             var apiCallPath = "/api/Opportunity/trigger/DateNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
         }
     }

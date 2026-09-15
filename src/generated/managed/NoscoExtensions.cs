@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<GetIdeaResponse> GetIdea(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/integration/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v1/ideas/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetIdeaResponse>(callPayload);
@@ -36,24 +36,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (publishedAfter != null)
-                callPayload.Queries["publishedAfter"] = ExpressionConverter.Convert(publishedAfter);
+                callPayload.Queries["publishedAfter"] = CSharpExpressionConverter.ConvertO(publishedAfter);
             if (lastStageChangeAfter != null)
-                callPayload.Queries["lastStageChangeAfter"] = ExpressionConverter.Convert(lastStageChangeAfter);
+                callPayload.Queries["lastStageChangeAfter"] = CSharpExpressionConverter.ConvertO(lastStageChangeAfter);
             if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
+                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             callPayload.Queries["sortField"] = Convert.ToString("PUBLISHED_AT");
             if (sortField != null)
-                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
+                callPayload.Queries["sortField"] = CSharpExpressionConverter.Convert(sortField);
             callPayload.Queries["sortOrder"] = Convert.ToString("DESC");
             if (sortOrder != null)
-                callPayload.Queries["sortOrder"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["sortOrder"] = CSharpExpressionConverter.Convert(sortOrder);
             if (afterCursor != null)
-                callPayload.Queries["afterCursor"] = ExpressionConverter.Convert(afterCursor);
+                callPayload.Queries["afterCursor"] = CSharpExpressionConverter.ConvertO(afterCursor);
             callPayload.Queries["limit"] = Convert.ToString(100);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<IdeasResponse>(callPayload);
         }
     }
@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
-            callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+            callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
+            callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
+                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             if (statusId != null)
-                callPayload.Queries["statusId"] = ExpressionConverter.Convert(statusId);
+                callPayload.Queries["statusId"] = CSharpExpressionConverter.ConvertO(statusId);
             return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
+                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
+                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
             if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
             return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, triggerName, recurrence);
         }
     }

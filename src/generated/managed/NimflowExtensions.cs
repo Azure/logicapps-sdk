@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             var command = new JObject();
             var commandpropCount = 0;
             commandpropCount++;
-            command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
+            command["contextTypeName"] = CSharpExpressionConverter.ConvertToken(commandcontextTypeName);
             commandpropCount++;
-            command["reference"] = ExpressionConverter.ConvertO(commandreference);
+            command["reference"] = CSharpExpressionConverter.ConvertToken(commandreference);
             commandpropCount++;
-            command["action"] = ExpressionConverter.ConvertO(commandaction);
+            command["action"] = CSharpExpressionConverter.ConvertToken(commandaction);
             var payloadObject = new JObject();
             var payloadObjectpropCount = 0;
             if (payloadObjectpropCount > 0)
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
             if (commandsubject != null)
             {
-                command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                command["subject"] = CSharpExpressionConverter.ConvertToken(commandsubject);
                 commandpropCount++;
             }
 
@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             var command = new JObject();
             var commandpropCount = 0;
             commandpropCount++;
-            command["contextReference"] = ExpressionConverter.ConvertO(commandcontextReference);
+            command["contextReference"] = CSharpExpressionConverter.ConvertToken(commandcontextReference);
             if (commandsentBy != null)
             {
-                command["sentBy"] = ExpressionConverter.ConvertO(commandsentBy);
+                command["sentBy"] = CSharpExpressionConverter.ConvertToken(commandsentBy);
                 commandpropCount++;
             }
 
@@ -73,31 +73,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
             if (commandstartedOn != null)
             {
-                command["startedOn"] = ExpressionConverter.ConvertO(commandstartedOn);
+                command["startedOn"] = CSharpExpressionConverter.ConvertToken(commandstartedOn);
                 commandpropCount++;
             }
 
             if (commandsentOn != null)
             {
-                command["sentOn"] = ExpressionConverter.ConvertO(commandsentOn);
+                command["sentOn"] = CSharpExpressionConverter.ConvertToken(commandsentOn);
                 commandpropCount++;
             }
 
             if (commandsubject != null)
             {
-                command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                command["subject"] = CSharpExpressionConverter.ConvertToken(commandsubject);
                 commandpropCount++;
             }
 
             commandpropCount++;
-            command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
+            command["contextTypeName"] = CSharpExpressionConverter.ConvertToken(commandcontextTypeName);
             commandpropCount++;
-            command["taskTypeName"] = ExpressionConverter.ConvertO(commandtaskTypeName);
+            command["taskTypeName"] = CSharpExpressionConverter.ConvertToken(commandtaskTypeName);
             commandpropCount++;
-            command["responseTypeName"] = ExpressionConverter.ConvertO(commandresponseTypeName);
+            command["responseTypeName"] = CSharpExpressionConverter.ConvertToken(commandresponseTypeName);
             if (commanditemKey != null)
             {
-                command["itemKey"] = ExpressionConverter.ConvertO(commanditemKey);
+                command["itemKey"] = CSharpExpressionConverter.ConvertToken(commanditemKey);
                 commandpropCount++;
             }
 
@@ -123,13 +123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             requestpropCount++;
             if (requestcontextTypeName != null)
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
                 requestpropCount++;
             }
 
             if (requesttaskTypeName != null)
             {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
                 requestpropCount++;
             }
 
@@ -152,13 +152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             requestpropCount++;
             if (requestcontextTypeName != null)
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
                 requestpropCount++;
             }
 
             if (requesttaskTypeName != null)
             {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
                 requestpropCount++;
             }
 
@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             requestpropCount++;
             if (requestcontextTypeName != null)
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
                 requestpropCount++;
             }
 
             if (requesttaskTypeName != null)
             {
-                request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
                 requestpropCount++;
             }
 
@@ -210,13 +210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             requestpropCount++;
             if (requestcontextTypeName != null)
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
                 requestpropCount++;
             }
 
             if (requestmilestoneName != null)
             {
-                request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                request["milestoneName"] = CSharpExpressionConverter.ConvertToken(requestmilestoneName);
                 requestpropCount++;
             }
 
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             requestpropCount++;
             if (requestcontextTypeName != null)
             {
-                request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
                 requestpropCount++;
             }
 
             if (requestmilestoneName != null)
             {
-                request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                request["milestoneName"] = CSharpExpressionConverter.ConvertToken(requestmilestoneName);
                 requestpropCount++;
             }
 

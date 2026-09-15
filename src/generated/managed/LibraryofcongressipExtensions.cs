@@ -17,64 +17,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var apiCallPath = "/search/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
             if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
             if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
             if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
             if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collection, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
             if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
             if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
             if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
             if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
             return new ApiConnectionAction<CollectionResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var apiCallPath = String.Format("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
             if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
             if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
             if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
             if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
             return new ApiConnectionAction<FormatResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
         {
-            var apiCallPath = String.Format("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/item/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ItemResponse>(callPayload);

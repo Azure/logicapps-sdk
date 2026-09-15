@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/Time/current/zone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+            callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
             return new ApiConnectionAction<CurrentTime>(callPayload);
         }
 
@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/Time/current/coordinate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             return new ApiConnectionAction<CurrentTime>(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/Time/current/ip";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
+            callPayload.Queries["ipAddress"] = CSharpExpressionConverter.ConvertO(ipAddress);
             return new ApiConnectionAction<CurrentTime>(callPayload);
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/TimeZone/zone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+            callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
             return new ApiConnectionAction<TimeZoneData>(callPayload);
         }
 
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/TimeZone/coordinate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             return new ApiConnectionAction<TimeZoneData>(callPayload);
         }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var apiCallPath = "/TimeZone/ip";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
+            callPayload.Queries["ipAddress"] = CSharpExpressionConverter.ConvertO(ipAddress);
             return new ApiConnectionAction<TimeZoneData>(callPayload);
         }
 
@@ -91,13 +91,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fromTimeZone"] = ExpressionConverter.ConvertO(bodyfromTimeZone);
+            body["fromTimeZone"] = CSharpExpressionConverter.ConvertToken(bodyfromTimeZone);
             bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["toTimeZone"] = ExpressionConverter.ConvertO(bodytoTimeZone);
+            body["toTimeZone"] = CSharpExpressionConverter.ConvertToken(bodytoTimeZone);
             bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+            body["dstAmbiguity"] = CSharpExpressionConverter.Convert(bodydstAmbiguity);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["languageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
+            body["languageCode"] = CSharpExpressionConverter.ConvertToken(bodylanguageCode);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<DayOfTheWeekResult> ConvertTimeToDay(Expression<Func<string>> date)
         {
-            var apiCallPath = String.Format("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DayOfTheWeekResult>(callPayload);
@@ -144,13 +144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+            body["timeZone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
             bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
+            body["timeSpan"] = CSharpExpressionConverter.ConvertToken(bodytimeSpan);
             bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+            body["dstAmbiguity"] = CSharpExpressionConverter.Convert(bodydstAmbiguity);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+            body["timeZone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
             bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
+            body["timeSpan"] = CSharpExpressionConverter.ConvertToken(bodytimeSpan);
             bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+            body["dstAmbiguity"] = CSharpExpressionConverter.Convert(bodydstAmbiguity);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

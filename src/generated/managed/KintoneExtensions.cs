@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfRecord = new JObject();
             var requestBodyOfRecordpropCount = 0;
             requestBodyOfRecordpropCount++;
-            requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(requestBodyOfRecordappID);
+            requestBodyOfRecord["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfRecordappID);
             requestBodyOfRecord["schemaType"] = "ACTION_POST_RECORD";
             requestBodyOfRecordpropCount++;
             if (requestBodyOfRecordrecord != null)
             {
-                requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecord);
+                requestBodyOfRecord["record"] = CSharpExpressionConverter.ConvertToken(requestBodyOfRecordrecord);
                 requestBodyOfRecordpropCount++;
             }
 
@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfRecord = new JObject();
             var requestBodyOfRecordpropCount = 0;
             requestBodyOfRecordpropCount++;
-            requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(requestBodyOfRecordappID);
+            requestBodyOfRecord["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfRecordappID);
             requestBodyOfRecordpropCount++;
-            requestBodyOfRecord["id"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecordNumber);
+            requestBodyOfRecord["id"] = CSharpExpressionConverter.ConvertToken(requestBodyOfRecordrecordNumber);
             requestBodyOfRecord["schemaType"] = "ACTION_PUT_RECORD";
             requestBodyOfRecordpropCount++;
             if (requestBodyOfRecordrecord != null)
             {
-                requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecord);
+                requestBodyOfRecord["record"] = CSharpExpressionConverter.ConvertToken(requestBodyOfRecordrecord);
                 requestBodyOfRecordpropCount++;
             }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+            requestBodyOfWebhook["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookappID);
             requestBodyOfWebhook["url"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["type"] = "ADD_RECORD";
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+            requestBodyOfWebhook["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookappID);
             requestBodyOfWebhook["url"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+            requestBodyOfWebhook["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookappID);
             requestBodyOfWebhook["url"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+            requestBodyOfWebhook["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookappID);
             requestBodyOfWebhook["url"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+            requestBodyOfWebhook["app"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookappID);
             requestBodyOfWebhook["url"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";

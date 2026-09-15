@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<ListFormsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
         public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
         {
-            var apiCallPath = String.Format("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FormShow>(callPayload);

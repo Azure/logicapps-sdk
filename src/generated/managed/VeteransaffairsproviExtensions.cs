@@ -18,32 +18,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
+                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
             if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (addressCity != null)
-                callPayload.Queries["address-city"] = ExpressionConverter.Convert(addressCity);
+                callPayload.Queries["address-city"] = CSharpExpressionConverter.ConvertO(addressCity);
             if (addressState != null)
-                callPayload.Queries["address-state"] = ExpressionConverter.Convert(addressState);
+                callPayload.Queries["address-state"] = CSharpExpressionConverter.ConvertO(addressState);
             if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(addressPostalcode);
+                callPayload.Queries["address-postalcode"] = CSharpExpressionConverter.ConvertO(addressPostalcode);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
+                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             return new ApiConnectionAction<LocationBundle>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Location/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Location>(callPayload);
@@ -56,32 +56,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
+                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
             if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (addressCity != null)
-                callPayload.Queries["address-city"] = ExpressionConverter.Convert(addressCity);
+                callPayload.Queries["address-city"] = CSharpExpressionConverter.ConvertO(addressCity);
             if (addressState != null)
-                callPayload.Queries["address-state"] = ExpressionConverter.Convert(addressState);
+                callPayload.Queries["address-state"] = CSharpExpressionConverter.ConvertO(addressState);
             if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(addressPostalcode);
+                callPayload.Queries["address-postalcode"] = CSharpExpressionConverter.ConvertO(addressPostalcode);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
+                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             return new ApiConnectionAction<OrganizationBundle>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Organization/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Organization/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Organization>(callPayload);
@@ -94,28 +94,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
+                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
             if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
             if (family != null)
-                callPayload.Queries["family"] = ExpressionConverter.Convert(family);
+                callPayload.Queries["family"] = CSharpExpressionConverter.ConvertO(family);
             if (given != null)
-                callPayload.Queries["given"] = ExpressionConverter.Convert(given);
+                callPayload.Queries["given"] = CSharpExpressionConverter.ConvertO(given);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
+                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             return new ApiConnectionAction<PractitionerBundle>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Practitioner>(callPayload);
@@ -128,24 +128,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
+                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
             if (practitionerIdentifier != null)
-                callPayload.Queries["practitioner.identifier"] = ExpressionConverter.Convert(practitionerIdentifier);
+                callPayload.Queries["practitioner.identifier"] = CSharpExpressionConverter.ConvertO(practitionerIdentifier);
             if (practitionerName != null)
-                callPayload.Queries["practitioner.name"] = ExpressionConverter.Convert(practitionerName);
+                callPayload.Queries["practitioner.name"] = CSharpExpressionConverter.ConvertO(practitionerName);
             if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
+                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             return new ApiConnectionAction<PractitionerRoleBundle>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/PractitionerRole/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PractitionerRole>(callPayload);

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
         public IBodyWorkflowAction<GetOrderResponse> GetOrder(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/orders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetOrderResponse>(callPayload);

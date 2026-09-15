@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<ListStatesResponse>(callPayload);
         }
 
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<ListCitiesResponse>(callPayload);
         }
 
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             return new ApiConnectionAction<CityResponse>(callPayload);
         }
 
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<CityResponse>(callPayload);
         }
     }

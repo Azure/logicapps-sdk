@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
     {
         public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/connector/powerautomate/triggers/{0}/reports", ExpressionConverter.ConvertWithUrlEncoding(reportDefinitionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/connector/powerautomate/triggers/{0}/reports", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportDefinitionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<JToken[]>(callPayload, triggerName, recurrence);

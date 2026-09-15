@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodymode != null)
             {
                 if (bodymode != null)
                 {
-                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    body["mode"] = CSharpExpressionConverter.Convert(bodymode);
                     bodypropCount++;
                 }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
 
             if (bodycontext != null)
             {
-                body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                body["context"] = CSharpExpressionConverter.ConvertToken(bodycontext);
                 bodypropCount++;
             }
 
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.Convert(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -102,28 +102,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["per_page"] = Convert.ToString(30);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (featured != null)
-                callPayload.Queries["featured"] = ExpressionConverter.Convert(featured);
+                callPayload.Queries["featured"] = CSharpExpressionConverter.ConvertO(featured);
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             return new ApiConnectionAction<License[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<LicenseAdvanced> GetLicense(Expression<Func<string>> license, Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var apiCallPath = String.Format("/licenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(license, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/licenses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(license, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             return new ApiConnectionAction<LicenseAdvanced>(callPayload);
         }
 
@@ -136,19 +136,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             return new ApiConnectionAction<CodeOfConduct[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<CodeOfConduct> GetCodeOfConduct(Expression<Func<string>> codeOfConduct, Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var apiCallPath = String.Format("/codes_of_conduct/{0}", ExpressionConverter.ConvertWithUrlEncoding(codeOfConduct, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codes_of_conduct/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(codeOfConduct, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
             if (xGitHubApiVersion != null)
-                callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(xGitHubApiVersion);
+                callPayload.Headers["X-GitHub-Api-Version"] = CSharpExpressionConverter.ConvertO(xGitHubApiVersion);
             return new ApiConnectionAction<CodeOfConduct>(callPayload);
         }
     }

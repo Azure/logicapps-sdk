@@ -35,18 +35,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             var apiCallPath = "/api/q";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.Convert(filter);
             if (take != null)
-                callPayload.Queries["take"] = ExpressionConverter.Convert(take);
+                callPayload.Queries["take"] = CSharpExpressionConverter.ConvertO(take);
             return new ApiConnectionAction<SearchResponse[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseResponse> CaseGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CaseResponse>(callPayload);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CaseFieldsResponse>(callPayload);
@@ -64,32 +64,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
-            var apiCallPath = String.Format("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyasynchronous != null)
             {
-                body["Asynchronous"] = ExpressionConverter.ConvertO(bodyasynchronous);
+                body["Asynchronous"] = CSharpExpressionConverter.ConvertToken(bodyasynchronous);
                 bodypropCount++;
             }
 
             if (bodyuseCustom != null)
             {
-                body["UseCustom"] = ExpressionConverter.ConvertO(bodyuseCustom);
+                body["UseCustom"] = CSharpExpressionConverter.ConvertToken(bodyuseCustom);
                 bodypropCount++;
             }
 
             if (bodydisplayGallery != null)
             {
-                body["DisplayGallery"] = ExpressionConverter.ConvertO(bodydisplayGallery);
+                body["DisplayGallery"] = CSharpExpressionConverter.Convert(bodydisplayGallery);
                 bodypropCount++;
             }
 
             if (bodydisplayText != null)
             {
-                body["DisplayText"] = ExpressionConverter.ConvertO(bodydisplayText);
+                body["DisplayText"] = CSharpExpressionConverter.Convert(bodydisplayText);
                 bodypropCount++;
             }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CaseReplyResponse>(callPayload);
@@ -122,19 +122,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
-            var apiCallPath = String.Format("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["WithoutNotification"] = ExpressionConverter.ConvertO(bodywithoutNotification);
+            body["WithoutNotification"] = CSharpExpressionConverter.ConvertToken(bodywithoutNotification);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             var bodypropCount = 0;
             if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["TemplateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
             if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                body["Scope"] = CSharpExpressionConverter.Convert(bodyscope);
                 bodypropCount++;
             }
 
@@ -184,13 +184,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             var bodypropCount = 0;
             if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["TemplateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
             if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                body["Scope"] = CSharpExpressionConverter.Convert(bodyscope);
                 bodypropCount++;
             }
 
@@ -213,13 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             var bodypropCount = 0;
             if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["TemplateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
             if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                body["Scope"] = CSharpExpressionConverter.Convert(bodyscope);
                 bodypropCount++;
             }
 

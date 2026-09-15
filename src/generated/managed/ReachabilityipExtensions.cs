@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
             var apiCallPath = "/reachability";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<ReachResponse>(callPayload);
         }
     }

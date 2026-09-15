@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
+            body["actionConfigId"] = CSharpExpressionConverter.ConvertToken(bodyactionConfigId);
             body["hookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

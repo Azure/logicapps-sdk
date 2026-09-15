@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetOrder(Expression<Func<string>> contactId, Expression<Func<string>> since)
         {
-            var apiCallPath = String.Format("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+            callPayload.Queries["since"] = CSharpExpressionConverter.ConvertO(since);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var apiCallPath = "/cdp/suppression/check";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+            callPayload.Queries["contactId"] = CSharpExpressionConverter.ConvertO(contactId);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var apiCallPath = "/cdp/suppression/add";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+            callPayload.Queries["contactId"] = CSharpExpressionConverter.ConvertO(contactId);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
+            callPayload.Queries["timeSpan"] = CSharpExpressionConverter.ConvertO(timeSpan);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cdpContactId != null)
-                callPayload.Queries["cdpContactId"] = ExpressionConverter.Convert(cdpContactId);
+                callPayload.Queries["cdpContactId"] = CSharpExpressionConverter.ConvertO(cdpContactId);
             if (languageId != null)
-                callPayload.Queries["languageId"] = ExpressionConverter.Convert(languageId);
+                callPayload.Queries["languageId"] = CSharpExpressionConverter.ConvertO(languageId);
             if (emailTemplate != null)
-                callPayload.Queries["emailTemplate"] = ExpressionConverter.Convert(emailTemplate);
+                callPayload.Queries["emailTemplate"] = CSharpExpressionConverter.ConvertO(emailTemplate);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -75,18 +75,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (eventName != null)
-                callPayload.Queries["eventName"] = ExpressionConverter.Convert(eventName);
+                callPayload.Queries["eventName"] = CSharpExpressionConverter.Convert(eventName);
             if (contactId != null)
-                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                callPayload.Queries["contactId"] = CSharpExpressionConverter.ConvertO(contactId);
             if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+                callPayload.Queries["since"] = CSharpExpressionConverter.ConvertO(since);
             return new ApiConnectionAction<CheckEventResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<GetWishListResponse> GetWishList(Expression<Func<string>> since)
         {
-            var apiCallPath = String.Format("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(since, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(since, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetWishListResponse>(callPayload);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     {
         public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, triggerName, recurrence);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
         public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, triggerName, recurrence);

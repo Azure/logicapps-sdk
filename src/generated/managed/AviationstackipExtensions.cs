@@ -18,45 +18,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (flightStatus != null)
-                callPayload.Queries["flight_status"] = ExpressionConverter.Convert(flightStatus);
+                callPayload.Queries["flight_status"] = CSharpExpressionConverter.Convert(flightStatus);
             if (flightDate != null)
-                callPayload.Queries["flight_date"] = ExpressionConverter.Convert(flightDate);
+                callPayload.Queries["flight_date"] = CSharpExpressionConverter.ConvertO(flightDate);
             if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
             if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
             if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
             if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
             if (airlineName != null)
-                callPayload.Queries["airline_name"] = ExpressionConverter.Convert(airlineName);
+                callPayload.Queries["airline_name"] = CSharpExpressionConverter.ConvertO(airlineName);
             if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
+                callPayload.Queries["airline_iata"] = CSharpExpressionConverter.ConvertO(airlineIata);
             if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
+                callPayload.Queries["airline_icao"] = CSharpExpressionConverter.ConvertO(airlineIcao);
             if (flightNumber != null)
-                callPayload.Queries["flight_number"] = ExpressionConverter.Convert(flightNumber);
+                callPayload.Queries["flight_number"] = CSharpExpressionConverter.ConvertO(flightNumber);
             if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
             if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
             if (minDelayDep != null)
-                callPayload.Queries["min_delay_dep"] = ExpressionConverter.Convert(minDelayDep);
+                callPayload.Queries["min_delay_dep"] = CSharpExpressionConverter.ConvertO(minDelayDep);
             if (minDelayArr != null)
-                callPayload.Queries["min_delay_arr"] = ExpressionConverter.Convert(minDelayArr);
+                callPayload.Queries["min_delay_arr"] = CSharpExpressionConverter.ConvertO(minDelayArr);
             if (maxDelayDep != null)
-                callPayload.Queries["max_delay_dep"] = ExpressionConverter.Convert(maxDelayDep);
+                callPayload.Queries["max_delay_dep"] = CSharpExpressionConverter.ConvertO(maxDelayDep);
             if (maxDelayArr != null)
-                callPayload.Queries["max_delay_arr"] = ExpressionConverter.Convert(maxDelayArr);
+                callPayload.Queries["max_delay_arr"] = CSharpExpressionConverter.ConvertO(maxDelayArr);
             if (arrScheduledTimeArr != null)
-                callPayload.Queries["arr_scheduled_time_arr"] = ExpressionConverter.Convert(arrScheduledTimeArr);
+                callPayload.Queries["arr_scheduled_time_arr"] = CSharpExpressionConverter.ConvertO(arrScheduledTimeArr);
             if (arrScheduledTimeDep != null)
-                callPayload.Queries["arr_scheduled_time_dep"] = ExpressionConverter.Convert(arrScheduledTimeDep);
+                callPayload.Queries["arr_scheduled_time_dep"] = CSharpExpressionConverter.ConvertO(arrScheduledTimeDep);
             return new ApiConnectionAction<FlightGetResponse>(callPayload);
         }
 
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<AirportGetResponse>(callPayload);
         }
 
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<AirlineGetResponse>(callPayload);
         }
 
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<AirplaneGetResponse>(callPayload);
         }
 
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<AircraftGetResponse>(callPayload);
         }
 
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TaxesGetResponse>(callPayload);
         }
 
@@ -132,9 +132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<CityGetResponse>(callPayload);
         }
 
@@ -145,9 +145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<CountryGetResponse>(callPayload);
         }
     }

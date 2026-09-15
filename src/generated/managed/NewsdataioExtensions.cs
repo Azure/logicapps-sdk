@@ -18,25 +18,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (qInTitle != null)
-                callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(qInTitle);
+                callPayload.Queries["qInTitle"] = CSharpExpressionConverter.ConvertO(qInTitle);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             if (fullContent != null)
-                callPayload.Queries["full_content"] = ExpressionConverter.Convert(fullContent);
+                callPayload.Queries["full_content"] = CSharpExpressionConverter.Convert(fullContent);
             if (image != null)
-                callPayload.Queries["image"] = ExpressionConverter.Convert(image);
+                callPayload.Queries["image"] = CSharpExpressionConverter.Convert(image);
             if (video != null)
-                callPayload.Queries["video"] = ExpressionConverter.Convert(video);
+                callPayload.Queries["video"] = CSharpExpressionConverter.Convert(video);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<LatestGetResponse>(callPayload);
         }
     }

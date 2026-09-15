@@ -27,20 +27,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (where != null)
-                callPayload.Queries["where"] = ExpressionConverter.Convert(where);
+                callPayload.Queries["where"] = CSharpExpressionConverter.ConvertO(where);
             if (statuses != null)
-                callPayload.Queries["Statuses"] = ExpressionConverter.Convert(statuses);
+                callPayload.Queries["Statuses"] = CSharpExpressionConverter.ConvertO(statuses);
             if (iDs != null)
-                callPayload.Queries["IDs"] = ExpressionConverter.Convert(iDs);
+                callPayload.Queries["IDs"] = CSharpExpressionConverter.ConvertO(iDs);
             if (invoiceNumbers != null)
-                callPayload.Queries["InvoiceNumbers"] = ExpressionConverter.Convert(invoiceNumbers);
+                callPayload.Queries["InvoiceNumbers"] = CSharpExpressionConverter.ConvertO(invoiceNumbers);
             if (contactIDs != null)
-                callPayload.Queries["ContactIDs"] = ExpressionConverter.Convert(contactIDs);
+                callPayload.Queries["ContactIDs"] = CSharpExpressionConverter.ConvertO(contactIDs);
             if (summaryOnly != null)
-                callPayload.Queries["summaryOnly"] = ExpressionConverter.Convert(summaryOnly);
+                callPayload.Queries["summaryOnly"] = CSharpExpressionConverter.ConvertO(summaryOnly);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<GetInvoicesResponse>(callPayload);
@@ -52,28 +52,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var apiCallPath = "/api.xro/2.0/Invoices";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             callPayload.Headers["Accept"] = Convert.ToString(" application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydate != null)
             {
-                body["Date"] = ExpressionConverter.ConvertO(bodydate);
+                body["Date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["DueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Type"] = ExpressionConverter.ConvertO(bodytype);
+            body["Type"] = CSharpExpressionConverter.ConvertToken(bodytype);
             if (bodyreference != null)
             {
-                body["Reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["Reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var contactObjectpropCount = 0;
             if (bodycontactcontactID != null)
             {
-                contactObject["ContactID"] = ExpressionConverter.ConvertO(bodycontactcontactID);
+                contactObject["ContactID"] = CSharpExpressionConverter.ConvertToken(bodycontactcontactID);
                 contactObjectpropCount++;
             }
 
@@ -93,39 +93,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
 
             if (bodylineAmountTypes != null)
             {
-                body["LineAmountTypes"] = ExpressionConverter.ConvertO(bodylineAmountTypes);
+                body["LineAmountTypes"] = CSharpExpressionConverter.ConvertToken(bodylineAmountTypes);
                 bodypropCount++;
             }
 
             if (bodyinvoiceNumber != null)
             {
-                body["InvoiceNumber"] = ExpressionConverter.ConvertO(bodyinvoiceNumber);
+                body["InvoiceNumber"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceNumber);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["LineItems"] = ExpressionConverter.ConvertO(bodylineItems);
+            body["LineItems"] = CSharpExpressionConverter.ConvertToken(bodylineItems);
             if (bodycurrencyCode != null)
             {
-                body["CurrencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+                body["CurrencyCode"] = CSharpExpressionConverter.ConvertToken(bodycurrencyCode);
                 bodypropCount++;
             }
 
             if (bodycurrencyRate != null)
             {
-                body["CurrencyRate"] = ExpressionConverter.ConvertO(bodycurrencyRate);
+                body["CurrencyRate"] = CSharpExpressionConverter.ConvertToken(bodycurrencyRate);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyexpectedPaymentDate != null)
             {
-                body["ExpectedPaymentDate"] = ExpressionConverter.ConvertO(bodyexpectedPaymentDate);
+                body["ExpectedPaymentDate"] = CSharpExpressionConverter.ConvertToken(bodyexpectedPaymentDate);
                 bodypropCount++;
             }
 
@@ -144,19 +144,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (where != null)
-                callPayload.Queries["where"] = ExpressionConverter.Convert(where);
+                callPayload.Queries["where"] = CSharpExpressionConverter.ConvertO(where);
             if (iDs != null)
-                callPayload.Queries["IDs"] = ExpressionConverter.Convert(iDs);
+                callPayload.Queries["IDs"] = CSharpExpressionConverter.ConvertO(iDs);
             if (summaryOnly != null)
-                callPayload.Queries["summaryOnly"] = ExpressionConverter.Convert(summaryOnly);
+                callPayload.Queries["summaryOnly"] = CSharpExpressionConverter.ConvertO(summaryOnly);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (includeArchived != null)
-                callPayload.Queries["includeArchived"] = ExpressionConverter.Convert(includeArchived);
+                callPayload.Queries["includeArchived"] = CSharpExpressionConverter.ConvertO(includeArchived);
             if (searchTerm != null)
-                callPayload.Queries["searchTerm"] = ExpressionConverter.Convert(searchTerm);
+                callPayload.Queries["searchTerm"] = CSharpExpressionConverter.ConvertO(searchTerm);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             return new ApiConnectionAction<GetContactsResponse>(callPayload);
         }
 
@@ -167,11 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Contacts"] = ExpressionConverter.ConvertO(bodycontacts);
+            body["Contacts"] = CSharpExpressionConverter.ConvertToken(bodycontacts);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -22,48 +22,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodycustomUserId != null)
             {
-                body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
+                body["customUserId"] = CSharpExpressionConverter.ConvertToken(bodycustomUserId);
                 bodypropCount++;
             }
 
             if (bodycustomAccountId != null)
             {
-                body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
+                body["customAccountId"] = CSharpExpressionConverter.ConvertToken(bodycustomAccountId);
                 bodypropCount++;
             }
 
             if (bodytextOptIn != null)
             {
-                body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
+                body["textOptIn"] = CSharpExpressionConverter.ConvertToken(bodytextOptIn);
                 bodypropCount++;
             }
 
             if (bodycellNumber != null)
             {
-                body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
+                body["cellNumber"] = CSharpExpressionConverter.ConvertToken(bodycellNumber);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+            body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
             if (bodyassignedTo != null)
             {
-                body["assignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                body["assignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
                 bodypropCount++;
             }
 
@@ -86,42 +86,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["noteId"] = ExpressionConverter.ConvertO(bodynoteId);
+            body["noteId"] = CSharpExpressionConverter.ConvertToken(bodynoteId);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodycustomUserId != null)
             {
-                body["customUserId"] = ExpressionConverter.ConvertO(bodycustomUserId);
+                body["customUserId"] = CSharpExpressionConverter.ConvertToken(bodycustomUserId);
                 bodypropCount++;
             }
 
             if (bodycustomAccountId != null)
             {
-                body["customAccountId"] = ExpressionConverter.ConvertO(bodycustomAccountId);
+                body["customAccountId"] = CSharpExpressionConverter.ConvertToken(bodycustomAccountId);
                 bodypropCount++;
             }
 
             if (bodytextOptIn != null)
             {
-                body["textOptIn"] = ExpressionConverter.ConvertO(bodytextOptIn);
+                body["textOptIn"] = CSharpExpressionConverter.ConvertToken(bodytextOptIn);
                 bodypropCount++;
             }
 
             if (bodycellNumber != null)
             {
-                body["cellNumber"] = ExpressionConverter.ConvertO(bodycellNumber);
+                body["cellNumber"] = CSharpExpressionConverter.ConvertToken(bodycellNumber);
                 bodypropCount++;
             }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
             callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
-            callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(webookHookEvent);
+            callPayload.Queries["webookHookEvent"] = CSharpExpressionConverter.Convert(webookHookEvent);
             var body = new JObject();
             var bodypropCount = 0;
             body["webhookURL"] = "@listCallbackUrl()";

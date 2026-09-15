@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         public IWorkflowAction PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
         {
-            var apiCallPath = String.Format("/import/push/lms_{0}", ExpressionConverter.ConvertWithUrlEncoding(learningType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(learningType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event_time"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["event_time"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             bodypropCount++;
-            body["course_name"] = ExpressionConverter.ConvertO(bodycourseName);
+            body["course_name"] = CSharpExpressionConverter.ConvertToken(bodycourseName);
             bodypropCount++;
-            body["score"] = ExpressionConverter.ConvertO(bodyscore);
+            body["score"] = CSharpExpressionConverter.ConvertToken(bodyscore);
             if (bodycontentCategory != null)
             {
-                body["course_category"] = ExpressionConverter.ConvertO(bodycontentCategory);
+                body["course_category"] = CSharpExpressionConverter.ConvertToken(bodycontentCategory);
                 bodypropCount++;
             }
 
@@ -44,22 +44,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         public IWorkflowAction PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
         {
-            var apiCallPath = String.Format("/import/push/kpi_{0}", ExpressionConverter.ConvertWithUrlEncoding(performanceType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(performanceType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event_time"] = ExpressionConverter.ConvertO(bodydateTime);
+            body["event_time"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
             bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             bodypropCount++;
-            body["kpi_name"] = ExpressionConverter.ConvertO(bodykpiName);
+            body["kpi_name"] = CSharpExpressionConverter.ConvertToken(bodykpiName);
             bodypropCount++;
-            body["kpi_value"] = ExpressionConverter.ConvertO(bodykpiValue);
+            body["kpi_value"] = CSharpExpressionConverter.ConvertToken(bodykpiValue);
             if (bodyadditionalData != null)
             {
-                body["additional_data"] = ExpressionConverter.ConvertO(bodyadditionalData);
+                body["additional_data"] = CSharpExpressionConverter.ConvertToken(bodyadditionalData);
                 bodypropCount++;
             }
 

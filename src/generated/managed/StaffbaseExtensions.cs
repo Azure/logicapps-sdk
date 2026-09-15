@@ -23,39 +23,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<ChannelsGetPostsResponse> ChannelsGetPosts(Expression<Func<string>> channelID, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/channels/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(channelID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/channels/{0}/posts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ChannelsGetPostsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction ChannelsPost(Expression<Func<string>> channelID, Expression<Func<string>> bodyexternalID = null, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<string>> bodypublished = null)
         {
-            var apiCallPath = String.Format("/channels/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(channelID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/channels/{0}/posts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyexternalID != null)
             {
-                body["externalID"] = ExpressionConverter.ConvertO(bodyexternalID);
+                body["externalID"] = CSharpExpressionConverter.ConvertToken(bodyexternalID);
                 bodypropCount++;
             }
 
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
             if (bodypublished != null)
             {
-                body["published"] = ExpressionConverter.ConvertO(bodypublished);
+                body["published"] = CSharpExpressionConverter.ConvertToken(bodypublished);
                 bodypropCount++;
             }
 
@@ -74,13 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (manage != null)
-                callPayload.Queries["manage"] = ExpressionConverter.Convert(manage);
+                callPayload.Queries["manage"] = CSharpExpressionConverter.ConvertO(manage);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<CommentsGetResponse>(callPayload);
         }
 
@@ -92,17 +92,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["limit"] = Convert.ToString(100);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<MediaGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<MediaData> MediaGetByID(Expression<Func<string>> mediumID)
         {
-            var apiCallPath = String.Format("/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediumID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/media/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediumID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MediaData>(callPayload);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction MediaDelete(Expression<Func<string>> mediumID)
         {
-            var apiCallPath = String.Format("/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediumID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/media/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediumID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var recipientsObjectpropCount = 0;
             if (bodyrecipientsaccessorIds != null)
             {
-                recipientsObject["accessorIds"] = ExpressionConverter.ConvertO(bodyrecipientsaccessorIds);
+                recipientsObject["accessorIds"] = CSharpExpressionConverter.ConvertToken(bodyrecipientsaccessorIds);
                 recipientsObjectpropCount++;
             }
 
@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodylink != null)
             {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
+                body["link"] = CSharpExpressionConverter.ConvertToken(bodylink);
                 bodypropCount++;
             }
 
@@ -166,23 +166,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             callPayload.Queries["manageable"] = Convert.ToString(false);
             if (manageable != null)
-                callPayload.Queries["manageable"] = ExpressionConverter.Convert(manageable);
+                callPayload.Queries["manageable"] = CSharpExpressionConverter.ConvertO(manageable);
             if (contentType != null)
-                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Queries["contentType"] = CSharpExpressionConverter.Convert(contentType);
             return new ApiConnectionAction<PostsGetAllResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<PostData> PostsGetByID(Expression<Func<string>> pageID)
         {
-            var apiCallPath = String.Format("/posts/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/posts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PostData>(callPayload);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<PostsDeleteResponse> PostsDelete(Expression<Func<string>> pageID)
         {
-            var apiCallPath = String.Format("/posts/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/posts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PostsDeleteResponse>(callPayload);
@@ -200,20 +200,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction PostsPut(Expression<Func<string>> pageID, Expression<Func<string>> bodyexternalID = null, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null)
         {
-            var apiCallPath = String.Format("/posts/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/posts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageID, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyexternalID != null)
             {
-                body["externalID"] = ExpressionConverter.ConvertO(bodyexternalID);
+                body["externalID"] = CSharpExpressionConverter.ConvertToken(bodyexternalID);
                 bodypropCount++;
             }
 
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
@@ -232,9 +232,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -248,19 +248,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<UserData> UserGetByID(Expression<Func<string>> userID)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserData>(callPayload);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction UserDelete(Expression<Func<string>> userID)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -293,38 +293,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<UserData> UserPut(Expression<Func<string>> userID, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyexternalID = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodypublicEmailAddress = null, Expression<Func<string>> bodyconfiglocale = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<string[]>> bodygroupIDs = null, Expression<Func<string>> bodyposition = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyupdated = null, Expression<Func<string>> bodyactivated = null)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userID, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyexternalID != null)
             {
-                body["externalID"] = ExpressionConverter.ConvertO(bodyexternalID);
+                body["externalID"] = CSharpExpressionConverter.ConvertToken(bodyexternalID);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodypublicEmailAddress != null)
             {
-                body["publicEmailAddress"] = ExpressionConverter.ConvertO(bodypublicEmailAddress);
+                body["publicEmailAddress"] = CSharpExpressionConverter.ConvertToken(bodypublicEmailAddress);
                 bodypropCount++;
             }
 
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var configObjectpropCount = 0;
             if (bodyconfiglocale != null)
             {
-                configObject["locale"] = ExpressionConverter.ConvertO(bodyconfiglocale);
+                configObject["locale"] = CSharpExpressionConverter.ConvertToken(bodyconfiglocale);
                 configObjectpropCount++;
             }
 
@@ -344,55 +344,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
 
             if (bodyemails != null)
             {
-                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
                 bodypropCount++;
             }
 
             if (bodygroupIDs != null)
             {
-                body["groupIDs"] = ExpressionConverter.ConvertO(bodygroupIDs);
+                body["groupIDs"] = CSharpExpressionConverter.ConvertToken(bodygroupIDs);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
             if (bodylocation != null)
             {
-                body["location"] = ExpressionConverter.ConvertO(bodylocation);
+                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
                 bodypropCount++;
             }
 
             if (bodyphoneNumber != null)
             {
-                body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                body["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
                 bodypropCount++;
             }
 
             if (bodycreated != null)
             {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
+                body["created"] = CSharpExpressionConverter.ConvertToken(bodycreated);
                 bodypropCount++;
             }
 
             if (bodyupdated != null)
             {
-                body["updated"] = ExpressionConverter.ConvertO(bodyupdated);
+                body["updated"] = CSharpExpressionConverter.ConvertToken(bodyupdated);
                 bodypropCount++;
             }
 
             if (bodyactivated != null)
             {
-                body["activated"] = ExpressionConverter.ConvertO(bodyactivated);
+                body["activated"] = CSharpExpressionConverter.ConvertToken(bodyactivated);
                 bodypropCount++;
             }
 
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction UserPostRecovery(Expression<Func<string>> userID)
         {
-            var apiCallPath = String.Format("/users/{0}/recovery", ExpressionConverter.ConvertWithUrlEncoding(userID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/recovery", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

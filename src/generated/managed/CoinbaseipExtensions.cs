@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetSpotPriceResponse> GetSpotPrice(Expression<Func<string>> currencyPair)
         {
-            var apiCallPath = String.Format("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(currencyPair, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(currencyPair, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSpotPriceResponse>(callPayload);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
             var apiCallPath = "/exchange-rates";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["currency"] = ExpressionConverter.Convert(currency);
+            callPayload.Queries["currency"] = CSharpExpressionConverter.ConvertO(currency);
             return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
         }
     }

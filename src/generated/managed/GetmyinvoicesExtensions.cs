@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
             var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["api_key"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

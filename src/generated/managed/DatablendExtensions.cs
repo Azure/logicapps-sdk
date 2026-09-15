@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                     bodypropCount++;
                 }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodyorders != null)
             {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                body["orders"] = CSharpExpressionConverter.ConvertToken(bodyorders);
                 bodypropCount++;
             }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/query-executions/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/query-executions/{0}/results", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<QueryExecutionResults>(callPayload);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                     bodypropCount++;
                 }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodyorders != null)
             {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                body["orders"] = CSharpExpressionConverter.ConvertToken(bodyorders);
                 bodypropCount++;
             }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodypredicatepath != null)
                 {
-                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    predicateObject["path"] = CSharpExpressionConverter.ConvertToken(bodypredicatepath);
                     predicateObjectpropCount++;
                 }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodypredicatevalue != null)
             {
-                predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                predicateObject["value"] = CSharpExpressionConverter.ConvertToken(bodypredicatevalue);
                 predicateObjectpropCount++;
             }
 
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodypredicatecomparator != null)
                 {
-                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    predicateObject["comparator"] = CSharpExpressionConverter.ConvertToken(bodypredicatecomparator);
                     predicateObjectpropCount++;
                 }
 
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var parentObjectpropCount = 0;
             if (bodyparentid != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyparentid);
+                parentObject["id"] = CSharpExpressionConverter.ConvertToken(bodyparentid);
                 parentObjectpropCount++;
             }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                     bodypropCount++;
                 }
 
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodyorders != null)
             {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                body["orders"] = CSharpExpressionConverter.ConvertToken(bodyorders);
                 bodypropCount++;
             }
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodypredicatepath != null)
                 {
-                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    predicateObject["path"] = CSharpExpressionConverter.ConvertToken(bodypredicatepath);
                     predicateObjectpropCount++;
                 }
 
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodypredicatevalue != null)
             {
-                predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                predicateObject["value"] = CSharpExpressionConverter.ConvertToken(bodypredicatevalue);
                 predicateObjectpropCount++;
             }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             {
                 if (bodypredicatecomparator != null)
                 {
-                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    predicateObject["comparator"] = CSharpExpressionConverter.ConvertToken(bodypredicatecomparator);
                     predicateObjectpropCount++;
                 }
 

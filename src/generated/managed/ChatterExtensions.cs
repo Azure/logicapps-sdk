@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
             var apiCallPath = "/services/data/v38.0/chatter/feed-elements";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["CreatePostInGroupText"] = ExpressionConverter.Convert(createPostInGroupText);
+            callPayload.Queries["CreatePostInGroupText"] = CSharpExpressionConverter.ConvertO(createPostInGroupText);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["subjectId"] = ExpressionConverter.ConvertO(bodygroupID);
+            body["subjectId"] = CSharpExpressionConverter.ConvertToken(bodygroupID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListGroupMembersResponse>(callPayload);
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> bodysalesforceUserID)
         {
-            var apiCallPath = String.Format("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodysalesforceUserID);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodysalesforceUserID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<UserUserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/services/data/v38.0/chatter/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserUserResponse>(callPayload);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<GetPostResponse> Get(Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/services/data/v38.0/chatter/feed-elements/{0}", ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/feed-elements/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetPostResponse>(callPayload);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     {
         public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, triggerName, recurrence);

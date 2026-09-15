@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["size"] = ExpressionConverter.ConvertO(bodysize);
+            body["size"] = CSharpExpressionConverter.ConvertToken(bodysize);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var apiCallPath = "/array/combine";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["keys"] = ExpressionConverter.ConvertO(bodykeys);
+            body["keys"] = CSharpExpressionConverter.ConvertToken(bodykeys);
             bodypropCount++;
-            body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+            body["values"] = CSharpExpressionConverter.ConvertToken(bodyvalues);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             bodypropCount++;
-            body["search"] = ExpressionConverter.ConvertO(bodysearch);
+            body["search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["compare"] = ExpressionConverter.ConvertO(bodycompare);
+            body["compare"] = CSharpExpressionConverter.ConvertToken(bodycompare);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -134,10 +134,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["preserveKeys"] = ExpressionConverter.ConvertO(bodypreserveKeys);
+            body["preserveKeys"] = CSharpExpressionConverter.ConvertToken(bodypreserveKeys);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -182,17 +182,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodyOperator != null)
             {
-                body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
+                body["operator"] = CSharpExpressionConverter.Convert(bodyOperator);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -212,10 +212,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             if (bodydepth != null)
             {
-                body["depth"] = ExpressionConverter.ConvertO(bodydepth);
+                body["depth"] = CSharpExpressionConverter.ConvertToken(bodydepth);
                 bodypropCount++;
             }
 
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -282,9 +282,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             bodypropCount++;
-            body["sort"] = ExpressionConverter.ConvertO(bodysort);
+            body["sort"] = CSharpExpressionConverter.Convert(bodysort);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -304,10 +304,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
+            body["array"] = CSharpExpressionConverter.ConvertToken(bodyarray);
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
@@ -330,19 +330,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["action"] = ExpressionConverter.ConvertO(bodyaction);
+            body["action"] = CSharpExpressionConverter.Convert(bodyaction);
             bodypropCount++;
-            body["datetime"] = ExpressionConverter.ConvertO(bodydatetime);
+            body["datetime"] = CSharpExpressionConverter.ConvertToken(bodydatetime);
             bodypropCount++;
-            body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
+            body["operator"] = CSharpExpressionConverter.Convert(bodyOperator);
             if (bodyoutputFormat != null)
             {
-                body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                body["outputFormat"] = CSharpExpressionConverter.ConvertToken(bodyoutputFormat);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -357,19 +357,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var apiCallPath = "/datetime/string-to-datetime";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputFormat"] = ExpressionConverter.ConvertO(bodyinputFormat);
+            body["inputFormat"] = CSharpExpressionConverter.ConvertToken(bodyinputFormat);
             bodypropCount++;
-            body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+            body["outputFormat"] = CSharpExpressionConverter.ConvertToken(bodyoutputFormat);
             bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
+            body["string"] = CSharpExpressionConverter.ConvertToken(bodystring);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
@@ -392,12 +392,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
+            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
             if (bodylanguage != null)
             {
                 if (bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                     bodypropCount++;
                 }
 
@@ -410,13 +410,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             }
 
             bodypropCount++;
-            body["oem"] = ExpressionConverter.ConvertO(bodyoem);
+            body["oem"] = CSharpExpressionConverter.Convert(bodyoem);
             bodypropCount++;
-            body["psm"] = ExpressionConverter.ConvertO(bodypsm);
+            body["psm"] = CSharpExpressionConverter.Convert(bodypsm);
             bodypropCount++;
-            body["trim"] = ExpressionConverter.ConvertO(bodytrim);
+            body["trim"] = CSharpExpressionConverter.ConvertToken(bodytrim);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pdfs"] = ExpressionConverter.ConvertO(bodypdfs);
+            body["pdfs"] = CSharpExpressionConverter.ConvertToken(bodypdfs);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
+            body["pdf"] = CSharpExpressionConverter.ConvertToken(bodypdf);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -477,17 +477,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var bodypropCount = 0;
             if (bodyendPage != null)
             {
-                body["endPage"] = ExpressionConverter.ConvertO(bodyendPage);
+                body["endPage"] = CSharpExpressionConverter.ConvertToken(bodyendPage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+            body["layout"] = CSharpExpressionConverter.Convert(bodylayout);
             bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
+            body["pdf"] = CSharpExpressionConverter.ConvertToken(bodypdf);
             if (bodystartPage != null)
             {
-                body["startPage"] = ExpressionConverter.ConvertO(bodystartPage);
+                body["startPage"] = CSharpExpressionConverter.ConvertToken(bodystartPage);
                 bodypropCount++;
             }
 
@@ -505,14 +505,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var apiCallPath = "/pdf/set-password";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
+            body["pdf"] = CSharpExpressionConverter.ConvertToken(bodypdf);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -532,11 +532,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+            body["pattern"] = CSharpExpressionConverter.ConvertToken(bodypattern);
             bodypropCount++;
-            body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+            body["replacement"] = CSharpExpressionConverter.ConvertToken(bodyreplacement);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -557,14 +557,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var bodypropCount = 0;
             if (bodygroup != null)
             {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+            body["pattern"] = CSharpExpressionConverter.ConvertToken(bodypattern);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -579,16 +579,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var apiCallPath = "/text/text-replace";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["replace"] = ExpressionConverter.ConvertO(bodyreplace);
+            body["replace"] = CSharpExpressionConverter.ConvertToken(bodyreplace);
             bodypropCount++;
-            body["search"] = ExpressionConverter.ConvertO(bodysearch);
+            body["search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

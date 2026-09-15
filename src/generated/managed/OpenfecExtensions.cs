@@ -14,30 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory(Expression<Func<string>> committeeId, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> page = null, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sort = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> perPage = null, Expression<Func<string>> electionFull = null)
         {
-            var apiCallPath = String.Format("/committee/{0}/candidates/history/", ExpressionConverter.ConvertWithUrlEncoding(committeeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/committee/{0}/candidates/history/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
             if (sortHideNull != null)
-                callPayload.Queries["sort_hide_null"] = ExpressionConverter.Convert(sortHideNull);
+                callPayload.Queries["sort_hide_null"] = CSharpExpressionConverter.ConvertO(sortHideNull);
             callPayload.Queries["page"] = Convert.ToString("1");
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
             if (sortNullsLast != null)
-                callPayload.Queries["sort_nulls_last"] = ExpressionConverter.Convert(sortNullsLast);
+                callPayload.Queries["sort_nulls_last"] = CSharpExpressionConverter.ConvertO(sortNullsLast);
             callPayload.Queries["sort"] = Convert.ToString("");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             callPayload.Queries["sort_null_only"] = Convert.ToString("false");
             if (sortNullOnly != null)
-                callPayload.Queries["sort_null_only"] = ExpressionConverter.Convert(sortNullOnly);
+                callPayload.Queries["sort_null_only"] = CSharpExpressionConverter.ConvertO(sortNullOnly);
             callPayload.Queries["per_page"] = Convert.ToString("20");
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             callPayload.Queries["election_full"] = Convert.ToString("true");
             if (electionFull != null)
-                callPayload.Queries["election_full"] = ExpressionConverter.Convert(electionFull);
+                callPayload.Queries["election_full"] = CSharpExpressionConverter.ConvertO(electionFull);
             return new ApiConnectionAction<CommitteeCandidateHistoryResponse>(callPayload);
         }
 
@@ -47,33 +47,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             var apiCallPath = "/operations-log/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_type"] = ExpressionConverter.Convert(formType);
-            callPayload.Queries["report_year"] = ExpressionConverter.Convert(reportYear);
-            callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Queries["max_receipt_date"] = ExpressionConverter.Convert(maxReceiptDate);
-            callPayload.Queries["report_type"] = ExpressionConverter.Convert(reportType);
-            callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            callPayload.Queries["candidate_committee_id"] = ExpressionConverter.Convert(candidateCommitteeId);
-            callPayload.Queries["min_receipt_date"] = ExpressionConverter.Convert(minReceiptDate);
-            callPayload.Queries["min_coverage_end_date"] = ExpressionConverter.Convert(minCoverageEndDate);
+            callPayload.Queries["form_type"] = CSharpExpressionConverter.ConvertO(formType);
+            callPayload.Queries["report_year"] = CSharpExpressionConverter.ConvertO(reportYear);
+            callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
+            callPayload.Queries["max_receipt_date"] = CSharpExpressionConverter.ConvertO(maxReceiptDate);
+            callPayload.Queries["report_type"] = CSharpExpressionConverter.ConvertO(reportType);
+            callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
+            callPayload.Queries["candidate_committee_id"] = CSharpExpressionConverter.ConvertO(candidateCommitteeId);
+            callPayload.Queries["min_receipt_date"] = CSharpExpressionConverter.ConvertO(minReceiptDate);
+            callPayload.Queries["min_coverage_end_date"] = CSharpExpressionConverter.ConvertO(minCoverageEndDate);
             callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
             if (sortNullsLast != null)
-                callPayload.Queries["sort_nulls_last"] = ExpressionConverter.Convert(sortNullsLast);
+                callPayload.Queries["sort_nulls_last"] = CSharpExpressionConverter.ConvertO(sortNullsLast);
             callPayload.Queries["sort_null_only"] = Convert.ToString("false");
             if (sortNullOnly != null)
-                callPayload.Queries["sort_null_only"] = ExpressionConverter.Convert(sortNullOnly);
+                callPayload.Queries["sort_null_only"] = CSharpExpressionConverter.ConvertO(sortNullOnly);
             callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
             if (sortHideNull != null)
-                callPayload.Queries["sort_hide_null"] = ExpressionConverter.Convert(sortHideNull);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["sort_hide_null"] = CSharpExpressionConverter.ConvertO(sortHideNull);
+            callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["amendment_indicator"] = Convert.ToString("N");
             if (amendmentIndicator != null)
-                callPayload.Queries["amendment_indicator"] = ExpressionConverter.Convert(amendmentIndicator);
-            callPayload.Queries["status_num"] = ExpressionConverter.Convert(statusNum);
-            callPayload.Queries["min_transaction_data_complete_date"] = ExpressionConverter.Convert(minTransactionDataCompleteDate);
-            callPayload.Queries["max_coverage_end_date"] = ExpressionConverter.Convert(maxCoverageEndDate);
-            callPayload.Queries["max_transaction_data_complete_date"] = ExpressionConverter.Convert(maxTransactionDataCompleteDate);
-            callPayload.Queries["beginning_image_number"] = ExpressionConverter.Convert(beginningImageNumber);
+                callPayload.Queries["amendment_indicator"] = CSharpExpressionConverter.ConvertO(amendmentIndicator);
+            callPayload.Queries["status_num"] = CSharpExpressionConverter.ConvertO(statusNum);
+            callPayload.Queries["min_transaction_data_complete_date"] = CSharpExpressionConverter.ConvertO(minTransactionDataCompleteDate);
+            callPayload.Queries["max_coverage_end_date"] = CSharpExpressionConverter.ConvertO(maxCoverageEndDate);
+            callPayload.Queries["max_transaction_data_complete_date"] = CSharpExpressionConverter.ConvertO(maxTransactionDataCompleteDate);
+            callPayload.Queries["beginning_image_number"] = CSharpExpressionConverter.ConvertO(beginningImageNumber);
             return new ApiConnectionAction<OperationsLogResponse>(callPayload);
         }
     }

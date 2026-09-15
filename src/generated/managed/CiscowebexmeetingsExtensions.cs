@@ -22,20 +22,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+            body["topic"] = CSharpExpressionConverter.ConvertToken(bodytopic);
             bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+            body["startTime"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
             bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+            body["endTime"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
             if (bodyattendees != null)
             {
-                body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                body["attendees"] = CSharpExpressionConverter.ConvertToken(bodyattendees);
                 bodypropCount++;
             }
 
             if (bodyagenda != null)
             {
-                body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                body["agenda"] = CSharpExpressionConverter.ConvertToken(bodyagenda);
                 bodypropCount++;
             }
 

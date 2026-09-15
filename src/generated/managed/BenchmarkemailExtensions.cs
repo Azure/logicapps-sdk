@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
             var apiCallPath = "/listCreate/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
             callPayload.Queries["output"] = Convert.ToString("json");
             callPayload.Queries["method"] = Convert.ToString("listCreate");
             return new ApiConnectionAction<string>(callPayload);
@@ -31,20 +31,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["output"] = Convert.ToString("json");
             callPayload.Queries["method"] = Convert.ToString("listAddContacts");
-            callPayload.Queries["listID"] = ExpressionConverter.Convert(listID);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["listID"] = CSharpExpressionConverter.ConvertO(listID);
+            callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (middleName != null)
-                callPayload.Queries["MiddleName"] = ExpressionConverter.Convert(middleName);
+                callPayload.Queries["MiddleName"] = CSharpExpressionConverter.ConvertO(middleName);
             if (lastName != null)
-                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (jobTitle != null)
-                callPayload.Queries["JobTitle"] = ExpressionConverter.Convert(jobTitle);
+                callPayload.Queries["JobTitle"] = CSharpExpressionConverter.ConvertO(jobTitle);
             if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (notes != null)
-                callPayload.Queries["Notes"] = ExpressionConverter.Convert(notes);
+                callPayload.Queries["Notes"] = CSharpExpressionConverter.ConvertO(notes);
             return new ApiConnectionAction<int>(callPayload);
         }
     }

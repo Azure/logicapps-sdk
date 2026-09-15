@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
         public IBodyWorkflowAction<SubmitFormResponse> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
         {
-            var apiCallPath = String.Format("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(processTaskGuid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(processGuid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(processTaskGuid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicListSchema);
             return new ApiConnectionAction<SubmitFormResponse>(callPayload);
         }
     }

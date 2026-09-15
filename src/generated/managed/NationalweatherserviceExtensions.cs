@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> Tafs(Expression<Func<string>> stationId)
         {
-            var apiCallPath = String.Format("/stations/{0}/tafs", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProblemDetail>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
         {
-            var apiCallPath = String.Format("/stations/{0}/tafs/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(time, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(time, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProblemDetail>(callPayload);
@@ -32,38 +32,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
         {
-            var apiCallPath = String.Format("/radar/queues/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (arrived != null)
-                callPayload.Queries["arrived"] = ExpressionConverter.Convert(arrived);
+                callPayload.Queries["arrived"] = CSharpExpressionConverter.ConvertO(arrived);
             if (created != null)
-                callPayload.Queries["created"] = ExpressionConverter.Convert(created);
+                callPayload.Queries["created"] = CSharpExpressionConverter.ConvertO(created);
             if (published != null)
-                callPayload.Queries["published"] = ExpressionConverter.Convert(published);
+                callPayload.Queries["published"] = CSharpExpressionConverter.ConvertO(published);
             if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
+                callPayload.Queries["station"] = CSharpExpressionConverter.ConvertO(station);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (feed != null)
-                callPayload.Queries["feed"] = ExpressionConverter.Convert(feed);
+                callPayload.Queries["feed"] = CSharpExpressionConverter.ConvertO(feed);
             if (resolution != null)
-                callPayload.Queries["resolution"] = ExpressionConverter.Convert(resolution);
+                callPayload.Queries["resolution"] = CSharpExpressionConverter.ConvertO(resolution);
             return new ApiConnectionAction<ProblemDetail>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
         {
-            var apiCallPath = String.Format("/radar/profilers/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (time != null)
-                callPayload.Queries["time"] = ExpressionConverter.Convert(time);
+                callPayload.Queries["time"] = CSharpExpressionConverter.ConvertO(time);
             if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
+                callPayload.Queries["interval"] = CSharpExpressionConverter.ConvertO(interval);
             return new ApiConnectionAction<ProblemDetail>(callPayload);
         }
     }

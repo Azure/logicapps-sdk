@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
+            body["robot_id"] = CSharpExpressionConverter.ConvertToken(bodyrobotId);
             bodypropCount++;
-            body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
+            body["task_file_id"] = CSharpExpressionConverter.ConvertToken(bodytaskFileId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

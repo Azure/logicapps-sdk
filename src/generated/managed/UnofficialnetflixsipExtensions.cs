@@ -18,31 +18,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (genrelist != null)
-                callPayload.Queries["genrelist"] = ExpressionConverter.Convert(genrelist);
+                callPayload.Queries["genrelist"] = CSharpExpressionConverter.ConvertO(genrelist);
             if (countrylist != null)
-                callPayload.Queries["countrylist"] = ExpressionConverter.Convert(countrylist);
+                callPayload.Queries["countrylist"] = CSharpExpressionConverter.ConvertO(countrylist);
             if (startYear != null)
-                callPayload.Queries["start_year"] = ExpressionConverter.Convert(startYear);
+                callPayload.Queries["start_year"] = CSharpExpressionConverter.ConvertO(startYear);
             if (endYear != null)
-                callPayload.Queries["end_year"] = ExpressionConverter.Convert(endYear);
+                callPayload.Queries["end_year"] = CSharpExpressionConverter.ConvertO(endYear);
             if (audio != null)
-                callPayload.Queries["audio"] = ExpressionConverter.Convert(audio);
+                callPayload.Queries["audio"] = CSharpExpressionConverter.ConvertO(audio);
             if (audiosubtitleAndor != null)
-                callPayload.Queries["audiosubtitle_andor"] = ExpressionConverter.Convert(audiosubtitleAndor);
+                callPayload.Queries["audiosubtitle_andor"] = CSharpExpressionConverter.ConvertO(audiosubtitleAndor);
             if (subtitle != null)
-                callPayload.Queries["subtitle"] = ExpressionConverter.Convert(subtitle);
+                callPayload.Queries["subtitle"] = CSharpExpressionConverter.ConvertO(subtitle);
             if (countryAndorunique != null)
-                callPayload.Queries["country_andorunique"] = ExpressionConverter.Convert(countryAndorunique);
+                callPayload.Queries["country_andorunique"] = CSharpExpressionConverter.ConvertO(countryAndorunique);
             if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TitleSearchResponse>(callPayload);
         }
 
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (netflixId != null)
-                callPayload.Queries["netflix_id"] = ExpressionConverter.Convert(netflixId);
+                callPayload.Queries["netflix_id"] = CSharpExpressionConverter.ConvertO(netflixId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<PeopleSearchResponse>(callPayload);
         }
 
@@ -70,15 +70,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (netflixId != null)
-                callPayload.Queries["netflix_id"] = ExpressionConverter.Convert(netflixId);
+                callPayload.Queries["netflix_id"] = CSharpExpressionConverter.ConvertO(netflixId);
             if (countryList != null)
-                callPayload.Queries["country_list"] = ExpressionConverter.Convert(countryList);
+                callPayload.Queries["country_list"] = CSharpExpressionConverter.ConvertO(countryList);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<DeletedSearchResponse>(callPayload);
         }
 
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/title";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            callPayload.Queries["imdbid"] = ExpressionConverter.Convert(imdbid);
+            callPayload.Queries["netflixid"] = CSharpExpressionConverter.ConvertO(netflixid);
+            callPayload.Queries["imdbid"] = CSharpExpressionConverter.ConvertO(imdbid);
             return new ApiConnectionAction<TitleDetailResponse>(callPayload);
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/titlecountries";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
+            callPayload.Queries["netflixid"] = CSharpExpressionConverter.ConvertO(netflixid);
             return new ApiConnectionAction<TitleCountryResponse>(callPayload);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/titlegenres";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
+            callPayload.Queries["netflixid"] = CSharpExpressionConverter.ConvertO(netflixid);
             return new ApiConnectionAction<TitleGenreResponse>(callPayload);
         }
 
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/episodes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            callPayload.Queries["seasonid"] = ExpressionConverter.Convert(seasonid);
+            callPayload.Queries["netflixid"] = CSharpExpressionConverter.ConvertO(netflixid);
+            callPayload.Queries["seasonid"] = CSharpExpressionConverter.ConvertO(seasonid);
             if (episodeid != null)
-                callPayload.Queries["episodeid"] = ExpressionConverter.Convert(episodeid);
+                callPayload.Queries["episodeid"] = CSharpExpressionConverter.ConvertO(episodeid);
             return new ApiConnectionAction<TitleEpisodeResponse>(callPayload);
         }
 
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/images";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
+            callPayload.Queries["netflixid"] = CSharpExpressionConverter.ConvertO(netflixid);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TitleImageResponse>(callPayload);
         }
 
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var apiCallPath = "/expiring";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["countrylist"] = ExpressionConverter.Convert(countrylist);
+            callPayload.Queries["countrylist"] = CSharpExpressionConverter.ConvertO(countrylist);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TitleExpiringResponse>(callPayload);
         }
     }

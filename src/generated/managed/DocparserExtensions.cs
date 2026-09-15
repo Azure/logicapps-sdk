@@ -14,23 +14,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/upload/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
+                callPayload.Queries["remote_id"] = CSharpExpressionConverter.ConvertO(remoteId);
             return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/fetch/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
+                callPayload.Queries["remote_id"] = CSharpExpressionConverter.ConvertO(remoteId);
             return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
         }
     }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     {
         public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/subscribe/{0}/flow", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var targetUrl = new JObject();

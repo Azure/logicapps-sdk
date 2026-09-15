@@ -14,21 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers(Expression<Func<string>> groupId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListGroupMembersResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction AddMemberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userUpn"] = ExpressionConverter.Convert(userUpn);
+            callPayload.Queries["userUpn"] = CSharpExpressionConverter.ConvertO(userUpn);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -48,33 +48,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
+                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
             if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
+                callPayload.Queries["fetchSensitivityLabelMetadata"] = CSharpExpressionConverter.ConvertO(fetchSensitivityLabelMetadata);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
             return new ApiConnectionAction<ListGroupsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(@event, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             var startObject = new JObject();
             var startObjectpropCount = 0;
             if (bodystartstartTime != null)
             {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                startObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodystartstartTime);
                 startObjectpropCount++;
             }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var endObjectpropCount = 0;
             if (bodyendendTime != null)
             {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyendendTime);
                 endObjectpropCount++;
             }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var bodyObjectpropCount = 0;
             if (bodybodybody != null)
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodybody);
                 bodyObjectpropCount++;
             }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var locationObjectpropCount = 0;
             if (bodylocationlocation != null)
             {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
+                locationObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodylocationlocation);
                 locationObjectpropCount++;
             }
 
@@ -134,37 +134,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
             if (bodyimportance != null)
             {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
                 bodypropCount++;
             }
 
             if (bodyisAllDay != null)
             {
-                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                body["isAllDay"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
                 bodypropCount++;
             }
 
             if (bodyisReminderOn != null)
             {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
                 bodypropCount++;
             }
 
             if (bodyreminderStartDuration != null)
             {
-                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
+                body["reminderMinutesBeforeStart"] = CSharpExpressionConverter.ConvertToken(bodyreminderStartDuration);
                 bodypropCount++;
             }
 
             if (bodyshowAs != null)
             {
-                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
+                body["showAs"] = CSharpExpressionConverter.Convert(bodyshowAs);
                 bodypropCount++;
             }
 
             if (bodyresponseRequested != null)
             {
-                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
+                body["responseRequested"] = CSharpExpressionConverter.ConvertToken(bodyresponseRequested);
                 bodypropCount++;
             }
 
@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RemoveMemberFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members/memberId/$ref", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/memberId/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userUpn"] = ExpressionConverter.Convert(userUpn);
+            callPayload.Queries["userUpn"] = CSharpExpressionConverter.ConvertO(userUpn);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RestoreDeletedGroup(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/directory/deletedItems/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/directory/deletedItems/{0}/restore", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -210,14 +210,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var apiCallPath = "/v1.0/directory/deletedItems/getUserOwnedObjects";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["userId"] = ExpressionConverter.Convert(userId);
+            callPayload.Headers["userId"] = CSharpExpressionConverter.ConvertO(userId);
             return new ApiConnectionAction<ListGroupsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> groupId, Expression<Func<string>> @event)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(@event, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -226,18 +226,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/groups/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             var startObject = new JObject();
             var startObjectpropCount = 0;
             if (bodystartstartTime != null)
             {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                startObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodystartstartTime);
                 startObjectpropCount++;
             }
 
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var endObjectpropCount = 0;
             if (bodyendendTime != null)
             {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyendendTime);
                 endObjectpropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var bodyObjectpropCount = 0;
             if (bodybodybody != null)
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodybody);
                 bodyObjectpropCount++;
             }
 
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var locationObjectpropCount = 0;
             if (bodylocationlocation != null)
             {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
+                locationObject["displayName"] = CSharpExpressionConverter.ConvertToken(bodylocationlocation);
                 locationObjectpropCount++;
             }
 
@@ -297,37 +297,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
             if (bodyimportance != null)
             {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
                 bodypropCount++;
             }
 
             if (bodyisAllDay != null)
             {
-                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                body["isAllDay"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
                 bodypropCount++;
             }
 
             if (bodyisReminderOn != null)
             {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
                 bodypropCount++;
             }
 
             if (bodyreminderStartDuration != null)
             {
-                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
+                body["reminderMinutesBeforeStart"] = CSharpExpressionConverter.ConvertToken(bodyreminderStartDuration);
                 bodypropCount++;
             }
 
             if (bodyshowAs != null)
             {
-                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
+                body["showAs"] = CSharpExpressionConverter.Convert(bodyshowAs);
                 bodypropCount++;
             }
 
             if (bodyresponseRequested != null)
             {
-                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
+                body["responseRequested"] = CSharpExpressionConverter.ConvertToken(bodyresponseRequested);
                 bodypropCount++;
             }
 
@@ -345,22 +345,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var apiCallPath = "/v2/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+            callPayload.Headers["Uri"] = CSharpExpressionConverter.ConvertO(uri);
+            callPayload.Headers["Method"] = CSharpExpressionConverter.Convert(method);
             callPayload.Headers["ContentType"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["ContentType"] = CSharpExpressionConverter.ConvertO(contentType);
             if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
+                callPayload.Headers["CustomHeader1"] = CSharpExpressionConverter.ConvertO(customHeader1);
             if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
+                callPayload.Headers["CustomHeader2"] = CSharpExpressionConverter.ConvertO(customHeader2);
             if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
+                callPayload.Headers["CustomHeader3"] = CSharpExpressionConverter.ConvertO(customHeader3);
             if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
+                callPayload.Headers["CustomHeader4"] = CSharpExpressionConverter.ConvertO(customHeader4);
             if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["CustomHeader5"] = CSharpExpressionConverter.ConvertO(customHeader5);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -372,14 +372,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var apiCallPath = "/trigger/v1.0/groups/delta";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             callPayload.Queries["$select"] = Convert.ToString("members");
             return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, triggerName, recurrence);

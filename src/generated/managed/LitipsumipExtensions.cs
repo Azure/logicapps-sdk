@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
         public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
         {
-            var apiCallPath = String.Format("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TextTitleResponse>(callPayload);

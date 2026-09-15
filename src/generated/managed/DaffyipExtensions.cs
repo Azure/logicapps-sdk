@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<CausesGetResponseItem[]>(callPayload);
         }
 
@@ -47,18 +47,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<ContributionsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<DonationsGetResponse> DonationsGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<DonationsGetResponse>(callPayload);
         }
 
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GiftsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet(Expression<Func<string>> ein)
         {
-            var apiCallPath = String.Format("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<NonProfitGetResponse>(callPayload);

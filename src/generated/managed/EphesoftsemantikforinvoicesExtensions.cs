@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<string> DeleteSemantikWebhook(Expression<Func<string>> configurationId)
         {
-            var apiCallPath = String.Format("/v1/settings/integrations/configurations/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/settings/integrations/configurations/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["fileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UpdateDocumentUploadResponse> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<bodystatusInput>> bodystatus)
         {
-            var apiCallPath = String.Format("/v1/documents/uploads/{0}", ExpressionConverter.ConvertWithUrlEncoding(uploadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/documents/uploads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(uploadId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["fileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["integrationName"] = ExpressionConverter.ConvertO(bodyintegrationName);
+            body["integrationName"] = CSharpExpressionConverter.ConvertToken(bodyintegrationName);
             body["integrationType"] = "webhook";
             bodypropCount++;
             body["enabled"] = true;

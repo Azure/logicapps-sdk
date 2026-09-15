@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["apikey"] = ExpressionConverter.Convert(apikey);
+            callPayload.Queries["apikey"] = CSharpExpressionConverter.ConvertO(apikey);
             if (s != null)
-                callPayload.Queries["s"] = ExpressionConverter.Convert(s);
+                callPayload.Queries["s"] = CSharpExpressionConverter.ConvertO(s);
             if (i != null)
-                callPayload.Queries["i"] = ExpressionConverter.Convert(i);
+                callPayload.Queries["i"] = CSharpExpressionConverter.ConvertO(i);
             if (y != null)
-                callPayload.Queries["y"] = ExpressionConverter.Convert(y);
+                callPayload.Queries["y"] = CSharpExpressionConverter.ConvertO(y);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetSearchResultsResponse>(callPayload);
         }
     }

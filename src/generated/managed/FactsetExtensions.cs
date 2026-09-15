@@ -18,42 +18,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (createdGt != null)
-                callPayload.Queries["created[gt]"] = ExpressionConverter.Convert(createdGt);
+                callPayload.Queries["created[gt]"] = CSharpExpressionConverter.ConvertO(createdGt);
             if (createdLt != null)
-                callPayload.Queries["created[lt]"] = ExpressionConverter.Convert(createdLt);
+                callPayload.Queries["created[lt]"] = CSharpExpressionConverter.ConvertO(createdLt);
             if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
+                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
+                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
             if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
+                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
             callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
+                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
             if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
+                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
             if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
+                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
             if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
+                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
             if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
+                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
             if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
+                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
             if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
+                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
             if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
+                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
             if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
+                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
             if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
+                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             return new ApiConnectionAction<GetHeadlinesResponse>(callPayload);
         }
 
@@ -64,38 +64,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
+                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
+                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
             callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
+                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
             if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
+                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
             if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
+                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
             if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
+                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
             if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
+                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
             if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
+                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
             if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
+                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
             if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
+                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
             if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
+                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
             if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
+                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
             if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
+                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             return new ApiConnectionAction<GetDetailsResponse>(callPayload);
         }
 
@@ -106,38 +106,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
+                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
+                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
             callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
+                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
             if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
+                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
             if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
+                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
             if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
+                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
             if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
+                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
             if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
+                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
             if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
+                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
             if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
+                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
             if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
+                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
             if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
+                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
             if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
+                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             return new ApiConnectionAction<GetAdaptiveCardResponse>(callPayload);
         }
 
@@ -150,12 +150,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyfilterEntities != null)
             {
                 if (bodyfilterEntities != null)
                 {
-                    body["filterEntities"] = ExpressionConverter.ConvertO(bodyfilterEntities);
+                    body["filterEntities"] = CSharpExpressionConverter.ConvertToken(bodyfilterEntities);
                     bodypropCount++;
                 }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             {
                 if (bodyenableIdLookup != null)
                 {
-                    body["enableIdLookup"] = ExpressionConverter.ConvertO(bodyenableIdLookup);
+                    body["enableIdLookup"] = CSharpExpressionConverter.ConvertToken(bodyenableIdLookup);
                     bodypropCount++;
                 }
 
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var bodypropCount = 0;
             if (bodyticker != null)
             {
-                body["ticker"] = ExpressionConverter.ConvertO(bodyticker);
+                body["ticker"] = CSharpExpressionConverter.ConvertToken(bodyticker);
                 bodypropCount++;
             }
 
             if (bodytemplateId != null)
             {
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<JToken> GetPDF(Expression<Func<string>> bookId)
         {
-            var apiCallPath = String.Format("/book-builder-api/v1/download-api-book/{0}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);

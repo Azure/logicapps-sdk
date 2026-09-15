@@ -22,56 +22,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var lockPdfInputpropCount = 0;
             if (lockPdfInputallowAccessibility != null)
             {
-                lockPdfInput["allowAccessibility"] = ExpressionConverter.ConvertO(lockPdfInputallowAccessibility);
+                lockPdfInput["allowAccessibility"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowAccessibility);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowCopy != null)
             {
-                lockPdfInput["allowCopy"] = ExpressionConverter.ConvertO(lockPdfInputallowCopy);
+                lockPdfInput["allowCopy"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowCopy);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowDocumentAssembly != null)
             {
-                lockPdfInput["allowDocumentAssembly"] = ExpressionConverter.ConvertO(lockPdfInputallowDocumentAssembly);
+                lockPdfInput["allowDocumentAssembly"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowDocumentAssembly);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowEdit != null)
             {
-                lockPdfInput["allowEdit"] = ExpressionConverter.ConvertO(lockPdfInputallowEdit);
+                lockPdfInput["allowEdit"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowEdit);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowFormFilling != null)
             {
-                lockPdfInput["allowFormFilling"] = ExpressionConverter.ConvertO(lockPdfInputallowFormFilling);
+                lockPdfInput["allowFormFilling"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowFormFilling);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowPrint != null)
             {
-                lockPdfInput["allowPrint"] = ExpressionConverter.ConvertO(lockPdfInputallowPrint);
+                lockPdfInput["allowPrint"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowPrint);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputallowUpdateAnnotationsAndFields != null)
             {
-                lockPdfInput["allowUpdateAnnotationsAndFields"] = ExpressionConverter.ConvertO(lockPdfInputallowUpdateAnnotationsAndFields);
+                lockPdfInput["allowUpdateAnnotationsAndFields"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowUpdateAnnotationsAndFields);
                 lockPdfInputpropCount++;
             }
 
             if (lockPdfInputdocumentOpenPassword != null)
             {
-                lockPdfInput["documentOpenPassword"] = ExpressionConverter.ConvertO(lockPdfInputdocumentOpenPassword);
+                lockPdfInput["documentOpenPassword"] = CSharpExpressionConverter.ConvertToken(lockPdfInputdocumentOpenPassword);
                 lockPdfInputpropCount++;
             }
 
             lockPdfInputpropCount++;
-            lockPdfInput["fileContent"] = ExpressionConverter.ConvertO(lockPdfInputfileContent);
+            lockPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(lockPdfInputfileContent);
             lockPdfInputpropCount++;
-            lockPdfInput["permissionsPassword"] = ExpressionConverter.ConvertO(lockPdfInputpermissionsPassword);
+            lockPdfInput["permissionsPassword"] = CSharpExpressionConverter.ConvertToken(lockPdfInputpermissionsPassword);
             if (lockPdfInputpropCount > 0)
             {
                 callPayload.Body = lockPdfInput;
@@ -90,18 +90,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var mergePdfInput = new JObject();
             var mergePdfInputpropCount = 0;
             mergePdfInputpropCount++;
-            mergePdfInput["fileContent1"] = ExpressionConverter.ConvertO(mergePdfInput1stFileContent);
+            mergePdfInput["fileContent1"] = CSharpExpressionConverter.ConvertToken(mergePdfInput1stFileContent);
             mergePdfInputpropCount++;
-            mergePdfInput["fileContent2"] = ExpressionConverter.ConvertO(mergePdfInput2ndFileContent);
+            mergePdfInput["fileContent2"] = CSharpExpressionConverter.ConvertToken(mergePdfInput2ndFileContent);
             if (mergePdfInput3rdFileContent != null)
             {
-                mergePdfInput["fileContent3"] = ExpressionConverter.ConvertO(mergePdfInput3rdFileContent);
+                mergePdfInput["fileContent3"] = CSharpExpressionConverter.ConvertToken(mergePdfInput3rdFileContent);
                 mergePdfInputpropCount++;
             }
 
             if (mergePdfInput4thFileContent != null)
             {
-                mergePdfInput["fileContent4"] = ExpressionConverter.ConvertO(mergePdfInput4thFileContent);
+                mergePdfInput["fileContent4"] = CSharpExpressionConverter.ConvertToken(mergePdfInput4thFileContent);
                 mergePdfInputpropCount++;
             }
 
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var passwordProtectPdfInput = new JObject();
             var passwordProtectPdfInputpropCount = 0;
             passwordProtectPdfInputpropCount++;
-            passwordProtectPdfInput["fileContent"] = ExpressionConverter.ConvertO(passwordProtectPdfInputfileContent);
+            passwordProtectPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(passwordProtectPdfInputfileContent);
             passwordProtectPdfInputpropCount++;
-            passwordProtectPdfInput["password"] = ExpressionConverter.ConvertO(passwordProtectPdfInputpassword);
+            passwordProtectPdfInput["password"] = CSharpExpressionConverter.ConvertToken(passwordProtectPdfInputpassword);
             if (passwordProtectPdfInputpropCount > 0)
             {
                 callPayload.Body = passwordProtectPdfInput;
@@ -144,16 +144,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var splitPdfInput = new JObject();
             var splitPdfInputpropCount = 0;
             splitPdfInputpropCount++;
-            splitPdfInput["fileContent"] = ExpressionConverter.ConvertO(splitPdfInputfileContent);
+            splitPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(splitPdfInputfileContent);
             if (splitPdfInputfirstPage != null)
             {
-                splitPdfInput["firstPage"] = ExpressionConverter.ConvertO(splitPdfInputfirstPage);
+                splitPdfInput["firstPage"] = CSharpExpressionConverter.ConvertToken(splitPdfInputfirstPage);
                 splitPdfInputpropCount++;
             }
 
             if (splitPdfInputlastPage != null)
             {
-                splitPdfInput["lastPage"] = ExpressionConverter.ConvertO(splitPdfInputlastPage);
+                splitPdfInput["lastPage"] = CSharpExpressionConverter.ConvertToken(splitPdfInputlastPage);
                 splitPdfInputpropCount++;
             }
 
@@ -175,9 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var unlockPdfInput = new JObject();
             var unlockPdfInputpropCount = 0;
             unlockPdfInputpropCount++;
-            unlockPdfInput["fileContent"] = ExpressionConverter.ConvertO(unlockPdfInputfileContent);
+            unlockPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(unlockPdfInputfileContent);
             unlockPdfInputpropCount++;
-            unlockPdfInput["password"] = ExpressionConverter.ConvertO(unlockPdfInputpassword);
+            unlockPdfInput["password"] = CSharpExpressionConverter.ConvertToken(unlockPdfInputpassword);
             if (unlockPdfInputpropCount > 0)
             {
                 callPayload.Body = unlockPdfInput;
@@ -197,47 +197,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var watermarkPdfBackgroundInputpropCount = 0;
             if (watermarkPdfBackgroundInputcolor != null)
             {
-                watermarkPdfBackgroundInput["color"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputcolor);
+                watermarkPdfBackgroundInput["color"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputcolor);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             watermarkPdfBackgroundInputpropCount++;
-            watermarkPdfBackgroundInput["fileContent"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputfileContent);
+            watermarkPdfBackgroundInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputfileContent);
             watermarkPdfBackgroundInputpropCount++;
-            watermarkPdfBackgroundInput["line1"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInput1stLine);
+            watermarkPdfBackgroundInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput1stLine);
             if (watermarkPdfBackgroundInput2ndLine != null)
             {
-                watermarkPdfBackgroundInput["line2"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInput2ndLine);
+                watermarkPdfBackgroundInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput2ndLine);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             if (watermarkPdfBackgroundInput3rdLine != null)
             {
-                watermarkPdfBackgroundInput["line3"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInput3rdLine);
+                watermarkPdfBackgroundInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput3rdLine);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             if (watermarkPdfBackgroundInputmargin != null)
             {
-                watermarkPdfBackgroundInput["margin"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputmargin);
+                watermarkPdfBackgroundInput["margin"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputmargin);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             if (watermarkPdfBackgroundInputorientation != null)
             {
-                watermarkPdfBackgroundInput["orientation"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputorientation);
+                watermarkPdfBackgroundInput["orientation"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputorientation);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             if (watermarkPdfBackgroundInputstyle != null)
             {
-                watermarkPdfBackgroundInput["style"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputstyle);
+                watermarkPdfBackgroundInput["style"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputstyle);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
             if (watermarkPdfBackgroundInputtransparency != null)
             {
-                watermarkPdfBackgroundInput["transparency"] = ExpressionConverter.ConvertO(watermarkPdfBackgroundInputtransparency);
+                watermarkPdfBackgroundInput["transparency"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputtransparency);
                 watermarkPdfBackgroundInputpropCount++;
             }
 
@@ -259,39 +259,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var watermarkPdfCustomInput = new JObject();
             var watermarkPdfCustomInputpropCount = 0;
             watermarkPdfCustomInputpropCount++;
-            watermarkPdfCustomInput["fileContent"] = ExpressionConverter.ConvertO(watermarkPdfCustomInputfileContent);
+            watermarkPdfCustomInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInputfileContent);
             if (watermarkPdfCustomInput1stLine != null)
             {
-                watermarkPdfCustomInput["line1"] = ExpressionConverter.ConvertO(watermarkPdfCustomInput1stLine);
+                watermarkPdfCustomInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput1stLine);
                 watermarkPdfCustomInputpropCount++;
             }
 
             if (watermarkPdfCustomInput2ndLine != null)
             {
-                watermarkPdfCustomInput["line2"] = ExpressionConverter.ConvertO(watermarkPdfCustomInput2ndLine);
+                watermarkPdfCustomInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput2ndLine);
                 watermarkPdfCustomInputpropCount++;
             }
 
             if (watermarkPdfCustomInput3rdLine != null)
             {
-                watermarkPdfCustomInput["line3"] = ExpressionConverter.ConvertO(watermarkPdfCustomInput3rdLine);
+                watermarkPdfCustomInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput3rdLine);
                 watermarkPdfCustomInputpropCount++;
             }
 
             if (watermarkPdfCustomInput4thLine != null)
             {
-                watermarkPdfCustomInput["line4"] = ExpressionConverter.ConvertO(watermarkPdfCustomInput4thLine);
+                watermarkPdfCustomInput["line4"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput4thLine);
                 watermarkPdfCustomInputpropCount++;
             }
 
             if (watermarkPdfCustomInput5thLine != null)
             {
-                watermarkPdfCustomInput["line5"] = ExpressionConverter.ConvertO(watermarkPdfCustomInput5thLine);
+                watermarkPdfCustomInput["line5"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput5thLine);
                 watermarkPdfCustomInputpropCount++;
             }
 
             watermarkPdfCustomInputpropCount++;
-            watermarkPdfCustomInput["templateId"] = ExpressionConverter.ConvertO(watermarkPdfCustomInputtemplateId);
+            watermarkPdfCustomInput["templateId"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInputtemplateId);
             if (watermarkPdfCustomInputpropCount > 0)
             {
                 callPayload.Body = watermarkPdfCustomInput;
@@ -311,47 +311,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
             var watermarkPdfOverlayInputpropCount = 0;
             if (watermarkPdfOverlayInputcolor != null)
             {
-                watermarkPdfOverlayInput["color"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputcolor);
+                watermarkPdfOverlayInput["color"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputcolor);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             watermarkPdfOverlayInputpropCount++;
-            watermarkPdfOverlayInput["fileContent"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputfileContent);
+            watermarkPdfOverlayInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputfileContent);
             watermarkPdfOverlayInputpropCount++;
-            watermarkPdfOverlayInput["line1"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInput1stLine);
+            watermarkPdfOverlayInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput1stLine);
             if (watermarkPdfOverlayInput2ndLine != null)
             {
-                watermarkPdfOverlayInput["line2"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInput2ndLine);
+                watermarkPdfOverlayInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput2ndLine);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             if (watermarkPdfOverlayInput3rdLine != null)
             {
-                watermarkPdfOverlayInput["line3"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInput3rdLine);
+                watermarkPdfOverlayInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput3rdLine);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             if (watermarkPdfOverlayInputmargin != null)
             {
-                watermarkPdfOverlayInput["margin"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputmargin);
+                watermarkPdfOverlayInput["margin"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputmargin);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             if (watermarkPdfOverlayInputorientation != null)
             {
-                watermarkPdfOverlayInput["orientation"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputorientation);
+                watermarkPdfOverlayInput["orientation"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputorientation);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             if (watermarkPdfOverlayInputstyle != null)
             {
-                watermarkPdfOverlayInput["style"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputstyle);
+                watermarkPdfOverlayInput["style"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputstyle);
                 watermarkPdfOverlayInputpropCount++;
             }
 
             if (watermarkPdfOverlayInputtransparency != null)
             {
-                watermarkPdfOverlayInput["transparency"] = ExpressionConverter.ConvertO(watermarkPdfOverlayInputtransparency);
+                watermarkPdfOverlayInput["transparency"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputtransparency);
                 watermarkPdfOverlayInputpropCount++;
             }
 

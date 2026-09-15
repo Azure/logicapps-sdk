@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var bodypropCount = 0;
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodyisFallbackPublicClient != null)
             {
-                body["isFallbackPublicClient"] = ExpressionConverter.ConvertO(bodyisFallbackPublicClient);
+                body["isFallbackPublicClient"] = CSharpExpressionConverter.ConvertToken(bodyisFallbackPublicClient);
                 bodypropCount++;
             }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var webObjectpropCount = 0;
             if (bodywebredirectUris != null)
             {
-                webObject["redirectUris"] = ExpressionConverter.ConvertO(bodywebredirectUris);
+                webObject["redirectUris"] = CSharpExpressionConverter.ConvertToken(bodywebredirectUris);
                 webObjectpropCount++;
             }
 
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var implicitGrantSettingsObjectpropCount = 0;
             if (bodywebimplicitGrantSettingsenableIdTokenIssuance != null)
             {
-                implicitGrantSettingsObject["enableIdTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableIdTokenIssuance);
+                implicitGrantSettingsObject["enableIdTokenIssuance"] = CSharpExpressionConverter.ConvertToken(bodywebimplicitGrantSettingsenableIdTokenIssuance);
                 implicitGrantSettingsObjectpropCount++;
             }
 
             if (bodywebimplicitGrantSettingsenableAccessTokenIssuance != null)
             {
-                implicitGrantSettingsObject["enableAccessTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableAccessTokenIssuance);
+                implicitGrantSettingsObject["enableAccessTokenIssuance"] = CSharpExpressionConverter.ConvertToken(bodywebimplicitGrantSettingsenableAccessTokenIssuance);
                 implicitGrantSettingsObjectpropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IWorkflowAction PatchApplication(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -126,31 +126,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var bodypropCount = 0;
             if (bodyclientId != null)
             {
-                body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
+                body["clientId"] = CSharpExpressionConverter.ConvertToken(bodyclientId);
                 bodypropCount++;
             }
 
             if (bodyconsentType != null)
             {
-                body["consentType"] = ExpressionConverter.ConvertO(bodyconsentType);
+                body["consentType"] = CSharpExpressionConverter.ConvertToken(bodyconsentType);
                 bodypropCount++;
             }
 
             if (bodyprincipalId != null)
             {
-                body["principalId"] = ExpressionConverter.ConvertO(bodyprincipalId);
+                body["principalId"] = CSharpExpressionConverter.ConvertToken(bodyprincipalId);
                 bodypropCount++;
             }
 
             if (bodyresourceId != null)
             {
-                body["resourceId"] = ExpressionConverter.ConvertO(bodyresourceId);
+                body["resourceId"] = CSharpExpressionConverter.ConvertToken(bodyresourceId);
                 bodypropCount++;
             }
 
             if (bodyscope != null)
             {
-                body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+                body["scope"] = CSharpExpressionConverter.ConvertToken(bodyscope);
                 bodypropCount++;
             }
 
@@ -181,19 +181,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyuserFlowType != null)
             {
-                body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
+                body["userFlowType"] = CSharpExpressionConverter.ConvertToken(bodyuserFlowType);
                 bodypropCount++;
             }
 
             if (bodyuserFlowTypeVersion != null)
             {
-                body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                body["userFlowTypeVersion"] = CSharpExpressionConverter.ConvertToken(bodyuserFlowTypeVersion);
                 bodypropCount++;
             }
 
@@ -224,13 +224,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyuserFlowType != null)
             {
-                body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
+                body["userFlowType"] = CSharpExpressionConverter.ConvertToken(bodyuserFlowType);
                 bodypropCount++;
             }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             {
                 if (bodyuserFlowTypeVersion != null)
                 {
-                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                    body["userFlowTypeVersion"] = CSharpExpressionConverter.ConvertToken(bodyuserFlowTypeVersion);
                     bodypropCount++;
                 }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             {
                 if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
                 {
-                    tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                    tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = CSharpExpressionConverter.ConvertToken(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
                     tokenClaimsConfigurationObjectpropCount++;
                 }
 
@@ -301,25 +301,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var bodypropCount = 0;
             if (bodyaccountEnabled != null)
             {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                body["accountEnabled"] = CSharpExpressionConverter.ConvertToken(bodyaccountEnabled);
                 bodypropCount++;
             }
 
             if (bodyappId != null)
             {
-                body["appId"] = ExpressionConverter.ConvertO(bodyappId);
+                body["appId"] = CSharpExpressionConverter.ConvertToken(bodyappId);
                 bodypropCount++;
             }
 
             if (bodyappRoleAssignmentRequired != null)
             {
-                body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(bodyappRoleAssignmentRequired);
+                body["appRoleAssignmentRequired"] = CSharpExpressionConverter.ConvertToken(bodyappRoleAssignmentRequired);
                 bodypropCount++;
             }
 
             if (bodyreplyUrls != null)
             {
-                body["replyUrls"] = ExpressionConverter.ConvertO(bodyreplyUrls);
+                body["replyUrls"] = CSharpExpressionConverter.ConvertToken(bodyreplyUrls);
                 bodypropCount++;
             }
 

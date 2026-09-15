@@ -23,25 +23,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var nameObjectpropCount = 0;
             if (bodynametitle != null)
             {
-                nameObject["Title"] = ExpressionConverter.ConvertO(bodynametitle);
+                nameObject["Title"] = CSharpExpressionConverter.ConvertToken(bodynametitle);
                 nameObjectpropCount++;
             }
 
             if (bodynameforename != null)
             {
-                nameObject["Forename"] = ExpressionConverter.ConvertO(bodynameforename);
+                nameObject["Forename"] = CSharpExpressionConverter.ConvertToken(bodynameforename);
                 nameObjectpropCount++;
             }
 
             if (bodynamemiddleName != null)
             {
-                nameObject["MiddleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                nameObject["MiddleName"] = CSharpExpressionConverter.ConvertToken(bodynamemiddleName);
                 nameObjectpropCount++;
             }
 
             if (bodynamesurname != null)
             {
-                nameObject["Surname"] = ExpressionConverter.ConvertO(bodynamesurname);
+                nameObject["Surname"] = CSharpExpressionConverter.ConvertToken(bodynamesurname);
                 nameObjectpropCount++;
             }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
+            body["number"] = CSharpExpressionConverter.ConvertToken(bodynumber);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
+            body["number"] = CSharpExpressionConverter.ConvertToken(bodynumber);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["sortCode"] = ExpressionConverter.ConvertO(bodysortCode);
+            body["sortCode"] = CSharpExpressionConverter.ConvertToken(bodysortCode);
             if (bodybankAccountNumber != null)
             {
-                body["bankAccountNumber"] = ExpressionConverter.ConvertO(bodybankAccountNumber);
+                body["bankAccountNumber"] = CSharpExpressionConverter.ConvertToken(bodybankAccountNumber);
                 bodypropCount++;
             }
 
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["level"] = ExpressionConverter.ConvertO(bodylevel);
+            body["level"] = CSharpExpressionConverter.Convert(bodylevel);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -148,20 +148,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+            body["telephoneNumber"] = CSharpExpressionConverter.ConvertToken(bodytelephoneNumber);
             bodypropCount++;
-            body["defaultCountry"] = ExpressionConverter.ConvertO(bodydefaultCountry);
+            body["defaultCountry"] = CSharpExpressionConverter.ConvertToken(bodydefaultCountry);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseLineValidation != null)
             {
-                optionsObject["UseLineValidation"] = ExpressionConverter.ConvertO(bodyoptionsuseLineValidation);
+                optionsObject["UseLineValidation"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseLineValidation);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsuseMobileValidation != null)
             {
-                optionsObject["UseMobileValidation"] = ExpressionConverter.ConvertO(bodyoptionsuseMobileValidation);
+                optionsObject["UseMobileValidation"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseMobileValidation);
                 optionsObjectpropCount++;
             }
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var addressObjectpropCount = 0;
             if (bodyaddresslines != null)
             {
-                addressObject["Lines"] = ExpressionConverter.ConvertO(bodyaddresslines);
+                addressObject["Lines"] = CSharpExpressionConverter.ConvertToken(bodyaddresslines);
                 addressObjectpropCount++;
             }
 
@@ -205,25 +205,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var optionsObjectpropCount = 0;
             if (bodyoptionsdefaultCountryCode != null)
             {
-                optionsObject["DefaultCountryCode"] = ExpressionConverter.ConvertO(bodyoptionsdefaultCountryCode);
+                optionsObject["DefaultCountryCode"] = CSharpExpressionConverter.ConvertToken(bodyoptionsdefaultCountryCode);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsdetectCountry != null)
             {
-                optionsObject["DetectCountry"] = ExpressionConverter.ConvertO(bodyoptionsdetectCountry);
+                optionsObject["DetectCountry"] = CSharpExpressionConverter.ConvertToken(bodyoptionsdetectCountry);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionscountry != null)
             {
-                optionsObject["Country"] = ExpressionConverter.ConvertO(bodyoptionscountry);
+                optionsObject["Country"] = CSharpExpressionConverter.ConvertToken(bodyoptionscountry);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeCountry != null)
             {
-                optionsObject["IncludeCountry"] = ExpressionConverter.ConvertO(bodyoptionsincludeCountry);
+                optionsObject["IncludeCountry"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeCountry);
                 optionsObjectpropCount++;
             }
 
@@ -250,12 +250,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["licence"] = ExpressionConverter.ConvertO(bodylicence);
+            body["licence"] = CSharpExpressionConverter.Convert(bodylicence);
             bodypropCount++;
-            body["postcode"] = ExpressionConverter.ConvertO(bodypostcode);
+            body["postcode"] = CSharpExpressionConverter.ConvertToken(bodypostcode);
             if (bodybuilding != null)
             {
-                body["building"] = ExpressionConverter.ConvertO(bodybuilding);
+                body["building"] = CSharpExpressionConverter.ConvertToken(bodybuilding);
                 bodypropCount++;
             }
 
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var optionsObjectpropCount = 0;
             if (bodyoptionsfixTownCounty != null)
             {
-                optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                optionsObject["FixTownCounty"] = CSharpExpressionConverter.ConvertToken(bodyoptionsfixTownCounty);
                 optionsObjectpropCount++;
             }
 
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsmaxLines != null)
                 {
-                    optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                    optionsObject["MaxLines"] = CSharpExpressionConverter.ConvertToken(bodyoptionsmaxLines);
                     optionsObjectpropCount++;
                 }
 
@@ -285,49 +285,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsmaxLineLength != null)
             {
-                optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                optionsObject["MaxLineLength"] = CSharpExpressionConverter.ConvertToken(bodyoptionsmaxLineLength);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsnormalizeCase != null)
             {
-                optionsObject["NormalizeCase"] = ExpressionConverter.ConvertO(bodyoptionsnormalizeCase);
+                optionsObject["NormalizeCase"] = CSharpExpressionConverter.ConvertToken(bodyoptionsnormalizeCase);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsnormalizeTownCase != null)
             {
-                optionsObject["NormalizeTownCase"] = ExpressionConverter.ConvertO(bodyoptionsnormalizeTownCase);
+                optionsObject["NormalizeTownCase"] = CSharpExpressionConverter.ConvertToken(bodyoptionsnormalizeTownCase);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsexcludeCounty != null)
             {
-                optionsObject["ExcludeCounty"] = ExpressionConverter.ConvertO(bodyoptionsexcludeCounty);
+                optionsObject["ExcludeCounty"] = CSharpExpressionConverter.ConvertToken(bodyoptionsexcludeCounty);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsuseAnyAvailableCounty != null)
             {
-                optionsObject["UseAnyAvailableCounty"] = ExpressionConverter.ConvertO(bodyoptionsuseAnyAvailableCounty);
+                optionsObject["UseAnyAvailableCounty"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseAnyAvailableCounty);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsunwantedPunctuation != null)
             {
-                optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(bodyoptionsunwantedPunctuation);
+                optionsObject["UnwantedPunctuation"] = CSharpExpressionConverter.ConvertToken(bodyoptionsunwantedPunctuation);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsfixBuilding != null)
             {
-                optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                optionsObject["FixBuilding"] = CSharpExpressionConverter.ConvertToken(bodyoptionsfixBuilding);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeUDPRN != null)
             {
-                optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                optionsObject["IncludeUDPRN"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeUDPRN);
                 optionsObjectpropCount++;
             }
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsincludeLocation != null)
                 {
-                    optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(bodyoptionsincludeLocation);
+                    optionsObject["IncludeLocation"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeLocation);
                     optionsObjectpropCount++;
                 }
 
@@ -349,25 +349,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsreturnResultCount != null)
             {
-                optionsObject["ReturnResultCount"] = ExpressionConverter.ConvertO(bodyoptionsreturnResultCount);
+                optionsObject["ReturnResultCount"] = CSharpExpressionConverter.ConvertToken(bodyoptionsreturnResultCount);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeNYB != null)
             {
-                optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                optionsObject["IncludeNYB"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeNYB);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeMR != null)
             {
-                optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                optionsObject["IncludeMR"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeMR);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsformatter != null)
             {
-                optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                optionsObject["Formatter"] = CSharpExpressionConverter.Convert(bodyoptionsformatter);
                 optionsObjectpropCount++;
             }
 
@@ -399,24 +399,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var nameObjectpropCount = 0;
             if (bodyrecordnametitle != null)
             {
-                nameObject["Title"] = ExpressionConverter.ConvertO(bodyrecordnametitle);
+                nameObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyrecordnametitle);
                 nameObjectpropCount++;
             }
 
             if (bodyrecordnameforename != null)
             {
-                nameObject["Forename"] = ExpressionConverter.ConvertO(bodyrecordnameforename);
+                nameObject["Forename"] = CSharpExpressionConverter.ConvertToken(bodyrecordnameforename);
                 nameObjectpropCount++;
             }
 
             if (bodyrecordnamemiddleName != null)
             {
-                nameObject["MiddleName"] = ExpressionConverter.ConvertO(bodyrecordnamemiddleName);
+                nameObject["MiddleName"] = CSharpExpressionConverter.ConvertToken(bodyrecordnamemiddleName);
                 nameObjectpropCount++;
             }
 
             nameObjectpropCount++;
-            nameObject["Surname"] = ExpressionConverter.ConvertO(bodyrecordnamesurname);
+            nameObject["Surname"] = CSharpExpressionConverter.ConvertToken(bodyrecordnamesurname);
             if (nameObjectpropCount > 0)
             {
                 recordObject["Name"] = nameObject;
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var addressObject = new JObject();
             var addressObjectpropCount = 0;
             addressObjectpropCount++;
-            addressObject["Lines"] = ExpressionConverter.ConvertO(bodyrecordaddresslines);
+            addressObject["Lines"] = CSharpExpressionConverter.ConvertToken(bodyrecordaddresslines);
             if (addressObjectpropCount > 0)
             {
                 recordObject["Address"] = addressObject;
@@ -440,14 +440,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             }
 
             bodypropCount++;
-            body["marketing"] = ExpressionConverter.ConvertO(bodymarketing);
+            body["marketing"] = CSharpExpressionConverter.ConvertToken(bodymarketing);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsmatchLevel != null)
             {
                 if (bodyoptionsmatchLevel != null)
                 {
-                    optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(bodyoptionsmatchLevel);
+                    optionsObject["MatchLevel"] = CSharpExpressionConverter.Convert(bodyoptionsmatchLevel);
                     optionsObjectpropCount++;
                 }
 
@@ -482,18 +482,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["country"] = ExpressionConverter.ConvertO(bodycountry);
+            body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
             bodypropCount++;
-            body["search"] = ExpressionConverter.ConvertO(bodysearch);
+            body["search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
             if (bodytelephoneNumber != null)
             {
-                body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+                body["telephoneNumber"] = CSharpExpressionConverter.ConvertToken(bodytelephoneNumber);
                 bodypropCount++;
             }
 
             if (bodysession != null)
             {
-                body["session"] = ExpressionConverter.ConvertO(bodysession);
+                body["session"] = CSharpExpressionConverter.ConvertToken(bodysession);
                 bodypropCount++;
             }
 
@@ -501,13 +501,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var optionsObjectpropCount = 0;
             if (bodyoptionsincludeMR != null)
             {
-                optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                optionsObject["IncludeMR"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeMR);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeNYB != null)
             {
-                optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                optionsObject["IncludeNYB"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeNYB);
                 optionsObjectpropCount++;
             }
 
@@ -534,20 +534,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["country"] = ExpressionConverter.ConvertO(bodycountry);
+            body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsincludeMR != null)
             {
-                optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                optionsObject["IncludeMR"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeMR);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeNYB != null)
             {
-                optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                optionsObject["IncludeNYB"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeNYB);
                 optionsObjectpropCount++;
             }
 
@@ -574,16 +574,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["country"] = ExpressionConverter.ConvertO(bodycountry);
+            body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsmaxLineLength != null)
             {
                 if (bodyoptionsmaxLineLength != null)
                 {
-                    optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                    optionsObject["MaxLineLength"] = CSharpExpressionConverter.ConvertToken(bodyoptionsmaxLineLength);
                     optionsObjectpropCount++;
                 }
 
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsmaxLines != null)
                 {
-                    optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                    optionsObject["MaxLines"] = CSharpExpressionConverter.ConvertToken(bodyoptionsmaxLines);
                     optionsObjectpropCount++;
                 }
 
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsfixTownCounty != null)
                 {
-                    optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                    optionsObject["FixTownCounty"] = CSharpExpressionConverter.ConvertToken(bodyoptionsfixTownCounty);
                     optionsObjectpropCount++;
                 }
 
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsfixPostcode != null)
                 {
-                    optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(bodyoptionsfixPostcode);
+                    optionsObject["FixPostcode"] = CSharpExpressionConverter.ConvertToken(bodyoptionsfixPostcode);
                     optionsObjectpropCount++;
                 }
 
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsfixBuilding != null)
                 {
-                    optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                    optionsObject["FixBuilding"] = CSharpExpressionConverter.ConvertToken(bodyoptionsfixBuilding);
                     optionsObjectpropCount++;
                 }
 
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsunwantedPunctuation != null)
             {
-                optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(bodyoptionsunwantedPunctuation);
+                optionsObject["UnwantedPunctuation"] = CSharpExpressionConverter.ConvertToken(bodyoptionsunwantedPunctuation);
                 optionsObjectpropCount++;
             }
 
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsformatter != null)
                 {
-                    optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                    optionsObject["Formatter"] = CSharpExpressionConverter.Convert(bodyoptionsformatter);
                     optionsObjectpropCount++;
                 }
 
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsincludeUDPRN != null)
                 {
-                    optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                    optionsObject["IncludeUDPRN"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeUDPRN);
                     optionsObjectpropCount++;
                 }
 
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             {
                 if (bodyoptionsincludeUPRN != null)
                 {
-                    optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUPRN);
+                    optionsObject["IncludeUPRN"] = CSharpExpressionConverter.ConvertToken(bodyoptionsincludeUPRN);
                     optionsObjectpropCount++;
                 }
 
@@ -736,36 +736,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["Level"] = ExpressionConverter.ConvertO(bodylevel);
+            body["Level"] = CSharpExpressionConverter.Convert(bodylevel);
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyforename != null)
             {
-                body["Forename"] = ExpressionConverter.ConvertO(bodyforename);
+                body["Forename"] = CSharpExpressionConverter.ConvertToken(bodyforename);
                 bodypropCount++;
             }
 
             if (bodymiddleName != null)
             {
-                body["MiddleName"] = ExpressionConverter.ConvertO(bodymiddleName);
+                body["MiddleName"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
                 bodypropCount++;
             }
 
             if (bodysurname != null)
             {
-                body["Surname"] = ExpressionConverter.ConvertO(bodysurname);
+                body["Surname"] = CSharpExpressionConverter.ConvertToken(bodysurname);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["Company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["Company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
@@ -786,9 +786,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+            body["telephoneNumber"] = CSharpExpressionConverter.ConvertToken(bodytelephoneNumber);
             bodypropCount++;
-            body["defaultCountry"] = ExpressionConverter.ConvertO(bodydefaultCountry);
+            body["defaultCountry"] = CSharpExpressionConverter.ConvertToken(bodydefaultCountry);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

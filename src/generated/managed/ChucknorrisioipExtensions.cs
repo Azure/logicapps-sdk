@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
         }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
         }
     }

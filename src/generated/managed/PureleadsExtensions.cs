@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodymobileNo != null)
             {
-                body["mobile_no"] = ExpressionConverter.ConvertO(bodymobileNo);
+                body["mobile_no"] = CSharpExpressionConverter.ConvertToken(bodymobileNo);
                 bodypropCount++;
             }
 
             if (bodysecondaryEmail != null)
             {
-                body["secondary_email"] = ExpressionConverter.ConvertO(bodysecondaryEmail);
+                body["secondary_email"] = CSharpExpressionConverter.ConvertToken(bodysecondaryEmail);
                 bodypropCount++;
             }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
             {
                 if (bodylifecycleStageName != null)
                 {
-                    body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                    body["lifecycle_stage_name"] = CSharpExpressionConverter.ConvertToken(bodylifecycleStageName);
                     bodypropCount++;
                 }
 

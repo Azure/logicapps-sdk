@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                callPayload.Queries["networkId"] = CSharpExpressionConverter.ConvertO(networkId);
+            callPayload.Queries["activityId"] = CSharpExpressionConverter.ConvertO(activityId);
             return new ApiConnectionAction<GetIdeasResponseItem[]>(callPayload);
         }
 
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                callPayload.Queries["networkId"] = CSharpExpressionConverter.ConvertO(networkId);
+            callPayload.Queries["activityId"] = CSharpExpressionConverter.ConvertO(activityId);
             return new ApiConnectionAction<GetVotesResponseItem[]>(callPayload);
         }
 
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                callPayload.Queries["networkId"] = CSharpExpressionConverter.ConvertO(networkId);
+            callPayload.Queries["activityId"] = CSharpExpressionConverter.ConvertO(activityId);
             return new ApiConnectionAction<GetExploreResponsesResponseItem[]>(callPayload);
         }
 
@@ -59,23 +59,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities(Expression<Func<string>> networkId, Expression<Func<activityTypeInput>> activityType)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
+            callPayload.Queries["activityType"] = CSharpExpressionConverter.Convert(activityType);
             return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeaResponse> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AddIdeasResponseItem[]>(callPayload);
         }
     }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
     {
         public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             bodypropCount++;
             if (bodyeventTypes != null)
             {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                body["eventTypes"] = CSharpExpressionConverter.ConvertToken(bodyeventTypes);
                 bodypropCount++;
             }
 
@@ -126,14 +126,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
+                callPayload.Queries["networkId"] = CSharpExpressionConverter.ConvertO(networkId);
             var body = new JObject();
             var bodypropCount = 0;
             body["targetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodyeventTypes != null)
             {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                body["eventTypes"] = CSharpExpressionConverter.ConvertToken(bodyeventTypes);
                 bodypropCount++;
             }
 

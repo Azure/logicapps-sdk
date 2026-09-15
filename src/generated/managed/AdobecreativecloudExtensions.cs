@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset/id/content";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
+            callPayload.Queries["asset_id"] = CSharpExpressionConverter.ConvertO(assetId);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset/id/metadata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
+            callPayload.Queries["asset_id"] = CSharpExpressionConverter.ConvertO(assetId);
             return new ApiConnectionAction<AssetMetadata>(callPayload);
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset/path";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             callPayload.Headers["If-Match"] = Convert.ToString("*");
             return new ApiConnectionAction(callPayload);
         }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset/path/content";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/asset/path/metadata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             return new ApiConnectionAction<AssetMetadata>(callPayload);
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var apiCallPath = "/storage/cc/directory/path/assets";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             return new ApiConnectionAction<DirectoryListing>(callPayload);
         }
 
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodysourceAssetPath);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodysourceAssetPath);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodydestinationAssetPath);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodydestinationAssetPath);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["long_url"] = ExpressionConverter.ConvertO(bodyuRL);
+            body["long_url"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     {
         public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, triggerName, recurrence);

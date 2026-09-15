@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRatesResponse> GetExchangeRates(Expression<Func<string>> basecurrency)
         {
-            var apiCallPath = String.Format("/latest/{0}", ExpressionConverter.ConvertWithUrlEncoding(basecurrency, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/latest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(basecurrency, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetExchangeRatesResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> baseCurrency, Expression<Func<string>> targetCurrency)
         {
-            var apiCallPath = String.Format("/pair/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(targetCurrency, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pair/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetCurrency, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalRatesResponse> GetHistoricalRates(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var apiCallPath = String.Format("/history/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetHistoricalRatesResponse>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalConversionsResponse> GetHistoricalConversions(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day, Expression<Func<string>> amount)
         {
-            var apiCallPath = String.Format("/history/{0}/{1}/{2}/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1), ExpressionConverter.ConvertWithUrlEncoding(amount, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(amount, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetHistoricalConversionsResponse>(callPayload);

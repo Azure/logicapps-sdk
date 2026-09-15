@@ -30,37 +30,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
             var messagepropCount = 0;
             if (messageto != null)
             {
-                message["to"] = ExpressionConverter.ConvertO(messageto);
+                message["to"] = CSharpExpressionConverter.ConvertToken(messageto);
                 messagepropCount++;
             }
 
             if (messagefrom != null)
             {
-                message["from"] = ExpressionConverter.ConvertO(messagefrom);
+                message["from"] = CSharpExpressionConverter.ConvertToken(messagefrom);
                 messagepropCount++;
             }
 
             if (messagebody != null)
             {
-                message["body"] = ExpressionConverter.ConvertO(messagebody);
+                message["body"] = CSharpExpressionConverter.ConvertToken(messagebody);
                 messagepropCount++;
             }
 
             if (messagecampaign != null)
             {
-                message["campaign"] = ExpressionConverter.ConvertO(messagecampaign);
+                message["campaign"] = CSharpExpressionConverter.ConvertToken(messagecampaign);
                 messagepropCount++;
             }
 
             if (messagereference != null)
             {
-                message["reference"] = ExpressionConverter.ConvertO(messagereference);
+                message["reference"] = CSharpExpressionConverter.ConvertToken(messagereference);
                 messagepropCount++;
             }
 
             if (messagedate != null)
             {
-                message["date"] = ExpressionConverter.ConvertO(messagedate);
+                message["date"] = CSharpExpressionConverter.ConvertToken(messagedate);
                 messagepropCount++;
             }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
             configpropCount++;
             if (configdedicatedNumber != null)
             {
-                config["dedicated_number"] = ExpressionConverter.ConvertO(configdedicatedNumber);
+                config["dedicated_number"] = CSharpExpressionConverter.ConvertToken(configdedicatedNumber);
                 configpropCount++;
             }
 

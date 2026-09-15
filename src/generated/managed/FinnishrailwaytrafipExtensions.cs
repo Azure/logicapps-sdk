@@ -23,24 +23,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(arrivalStation, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(departureStation, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(arrivalStation, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (departureDate != null)
-                callPayload.Queries["departure_date"] = ExpressionConverter.Convert(departureDate);
+                callPayload.Queries["departure_date"] = CSharpExpressionConverter.ConvertO(departureDate);
             return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainStation, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainStation, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (arrivingTrains != null)
-                callPayload.Queries["arriving_trains"] = ExpressionConverter.Convert(arrivingTrains);
+                callPayload.Queries["arriving_trains"] = CSharpExpressionConverter.ConvertO(arrivingTrains);
             if (departingTrains != null)
-                callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(departingTrains);
+                callPayload.Queries["departing_trains"] = CSharpExpressionConverter.ConvertO(departingTrains);
             return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
         }
     }

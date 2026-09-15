@@ -14,51 +14,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/zoek/haltes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["huidigePositie"] = CSharpExpressionConverter.ConvertO(huidigePositie);
             callPayload.Queries["startIndex"] = Convert.ToString(0);
             if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["startIndex"] = CSharpExpressionConverter.ConvertO(startIndex);
             callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
             if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                callPayload.Queries["maxAantalHits"] = CSharpExpressionConverter.ConvertO(maxAantalHits);
             return new ApiConnectionAction<HaltesHits>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/zoek/lijnrichtingen/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["huidigePositie"] = CSharpExpressionConverter.ConvertO(huidigePositie);
             callPayload.Queries["startIndex"] = Convert.ToString(0);
             if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["startIndex"] = CSharpExpressionConverter.ConvertO(startIndex);
             callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
             if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                callPayload.Queries["maxAantalHits"] = CSharpExpressionConverter.ConvertO(maxAantalHits);
             return new ApiConnectionAction<LijnRichtingHits>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/zoek/locaties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["huidigePositie"] = CSharpExpressionConverter.ConvertO(huidigePositie);
             callPayload.Queries["startIndex"] = Convert.ToString(0);
             if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["startIndex"] = CSharpExpressionConverter.ConvertO(startIndex);
             callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
             if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                callPayload.Queries["maxAantalHits"] = CSharpExpressionConverter.ConvertO(maxAantalHits);
             return new ApiConnectionAction<LocatiesHits>(callPayload);
         }
     }

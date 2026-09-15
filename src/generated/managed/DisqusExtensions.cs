@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/posts/create.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
+            callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             return new ApiConnectionAction<CreatePostResponse>(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/reply/posts/create.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parent"] = ExpressionConverter.Convert(parent);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+            callPayload.Queries["parent"] = CSharpExpressionConverter.ConvertO(parent);
+            callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             return new ApiConnectionAction<CreatePostResponse>(callPayload);
         }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/posts/remove.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["post"] = ExpressionConverter.Convert(post);
+            callPayload.Queries["post"] = CSharpExpressionConverter.ConvertO(post);
             return new ApiConnectionAction<OperationResultResponse>(callPayload);
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/subscribe.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             return new ApiConnectionAction<EmptyResponse>(callPayload);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/open.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             return new ApiConnectionAction<OperationResultResponse>(callPayload);
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/close.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             return new ApiConnectionAction<OperationResultResponse>(callPayload);
         }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/vote.json";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             callPayload.Queries["vote"] = Convert.ToString("1");
             return new ApiConnectionAction<RecommendThreadResponse>(callPayload);
         }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/details.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+            callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             return new ApiConnectionAction<GetThreadResponse>(callPayload);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/forums/listThreads.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+            callPayload.Queries["forum"] = CSharpExpressionConverter.ConvertO(forum);
             callPayload.Queries["order"] = Convert.ToString("desc");
             callPayload.Queries["limit"] = Convert.ToString(100);
             return new ApiConnectionAction<Thread[]>(callPayload);
@@ -125,9 +125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/posts/list.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+            callPayload.Queries["forum"] = CSharpExpressionConverter.ConvertO(forum);
             if (thread != null)
-                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                callPayload.Queries["thread"] = CSharpExpressionConverter.ConvertO(thread);
             callPayload.Queries["order"] = Convert.ToString("desc");
             callPayload.Queries["limit"] = Convert.ToString(75);
             return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             var apiCallPath = "/threads/list.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+            callPayload.Queries["forum"] = CSharpExpressionConverter.ConvertO(forum);
             callPayload.Queries["order"] = Convert.ToString("desc");
             callPayload.Queries["limit"] = Convert.ToString(75);
             return new ApiConnectionTrigger<Thread[]>(callPayload, triggerName, recurrence);

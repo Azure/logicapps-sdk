@@ -18,39 +18,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (createdDate != null)
-                callPayload.Queries["created_date"] = ExpressionConverter.Convert(createdDate);
+                callPayload.Queries["created_date"] = CSharpExpressionConverter.ConvertO(createdDate);
             if (createdDateFrom != null)
-                callPayload.Queries["created_date_from"] = ExpressionConverter.Convert(createdDateFrom);
+                callPayload.Queries["created_date_from"] = CSharpExpressionConverter.ConvertO(createdDateFrom);
             if (createdDateTo != null)
-                callPayload.Queries["created_date_to"] = ExpressionConverter.Convert(createdDateTo);
+                callPayload.Queries["created_date_to"] = CSharpExpressionConverter.ConvertO(createdDateTo);
             if (violationDate != null)
-                callPayload.Queries["violation_date"] = ExpressionConverter.Convert(violationDate);
+                callPayload.Queries["violation_date"] = CSharpExpressionConverter.ConvertO(violationDate);
             if (violationDateFrom != null)
-                callPayload.Queries["violation_date_from"] = ExpressionConverter.Convert(violationDateFrom);
+                callPayload.Queries["violation_date_from"] = CSharpExpressionConverter.ConvertO(violationDateFrom);
             if (violationDateTo != null)
-                callPayload.Queries["violation_date_to"] = ExpressionConverter.Convert(violationDateTo);
+                callPayload.Queries["violation_date_to"] = CSharpExpressionConverter.ConvertO(violationDateTo);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (areaCode != null)
-                callPayload.Queries["area_code"] = ExpressionConverter.Convert(areaCode);
+                callPayload.Queries["area_code"] = CSharpExpressionConverter.ConvertO(areaCode);
             if (isRobocall != null)
-                callPayload.Queries["is_robocall"] = ExpressionConverter.Convert(isRobocall);
+                callPayload.Queries["is_robocall"] = CSharpExpressionConverter.ConvertO(isRobocall);
             callPayload.Queries["sort_order"] = Convert.ToString("DESC");
             if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["sort_order"] = CSharpExpressionConverter.Convert(sortOrder);
             if (itemsPerPage != null)
-                callPayload.Queries["items_per_page"] = ExpressionConverter.Convert(itemsPerPage);
+                callPayload.Queries["items_per_page"] = CSharpExpressionConverter.ConvertO(itemsPerPage);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ComplaintsAllResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         public IBodyWorkflowAction<ComplaintIDResponse> ComplaintID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/dnc-complaints/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ComplaintIDResponse>(callPayload);

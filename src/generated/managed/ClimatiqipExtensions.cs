@@ -23,49 +23,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var emissionFactorObjectpropCount = 0;
             if (bodyemissionFactoruuid != null)
             {
-                emissionFactorObject["uuid"] = ExpressionConverter.ConvertO(bodyemissionFactoruuid);
+                emissionFactorObject["uuid"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactoruuid);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactoractivityId != null)
             {
-                emissionFactorObject["activity_id"] = ExpressionConverter.ConvertO(bodyemissionFactoractivityId);
+                emissionFactorObject["activity_id"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactoractivityId);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorsource != null)
             {
-                emissionFactorObject["source"] = ExpressionConverter.ConvertO(bodyemissionFactorsource);
+                emissionFactorObject["source"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactorsource);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorregion != null)
             {
-                emissionFactorObject["region"] = ExpressionConverter.ConvertO(bodyemissionFactorregion);
+                emissionFactorObject["region"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactorregion);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorregionFallback != null)
             {
-                emissionFactorObject["region_fallback"] = ExpressionConverter.ConvertO(bodyemissionFactorregionFallback);
+                emissionFactorObject["region_fallback"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactorregionFallback);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactoryear != null)
             {
-                emissionFactorObject["year"] = ExpressionConverter.ConvertO(bodyemissionFactoryear);
+                emissionFactorObject["year"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactoryear);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorlcaActivity != null)
             {
-                emissionFactorObject["lca_activity"] = ExpressionConverter.ConvertO(bodyemissionFactorlcaActivity);
+                emissionFactorObject["lca_activity"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactorlcaActivity);
                 emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorcalculationMethod != null)
             {
-                emissionFactorObject["calculation_method"] = ExpressionConverter.ConvertO(bodyemissionFactorcalculationMethod);
+                emissionFactorObject["calculation_method"] = CSharpExpressionConverter.ConvertToken(bodyemissionFactorcalculationMethod);
                 emissionFactorObjectpropCount++;
             }
 
@@ -79,97 +79,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var parametersObjectpropCount = 0;
             if (bodyparametersenergy != null)
             {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                parametersObject["energy"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergy);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersenergyUnit != null)
             {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                parametersObject["energy_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdata != null)
             {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                parametersObject["data"] = CSharpExpressionConverter.ConvertToken(bodyparametersdata);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdataUnit != null)
             {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                parametersObject["data_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdataUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistance != null)
             {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                parametersObject["distance"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistance);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistanceUnit != null)
             {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                parametersObject["distance_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistanceUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoney != null)
             {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                parametersObject["money"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoney);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoneyUnit != null)
             {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                parametersObject["money_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoneyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersnumber != null)
             {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                parametersObject["number"] = CSharpExpressionConverter.ConvertToken(bodyparametersnumber);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstime != null)
             {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                parametersObject["time"] = CSharpExpressionConverter.ConvertToken(bodyparameterstime);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstimeUnit != null)
             {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                parametersObject["time_unit"] = CSharpExpressionConverter.ConvertToken(bodyparameterstimeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterspassengers != null)
             {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                parametersObject["passengers"] = CSharpExpressionConverter.ConvertToken(bodyparameterspassengers);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolume != null)
             {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                parametersObject["volume"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolume);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolumeUnit != null)
             {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                parametersObject["volume_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolumeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweight != null)
             {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                parametersObject["weight"] = CSharpExpressionConverter.ConvertToken(bodyparametersweight);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweightUnit != null)
             {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                parametersObject["weight_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersweightUnit);
                 parametersObjectpropCount++;
             }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallPath = "/batch";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EmissionEstimateBulkResponse>(callPayload);
         }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["legs"] = ExpressionConverter.ConvertO(bodylegs);
+            body["legs"] = CSharpExpressionConverter.ConvertToken(bodylegs);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["legs"] = ExpressionConverter.ConvertO(bodylegs);
+            body["legs"] = CSharpExpressionConverter.ConvertToken(bodylegs);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -245,22 +245,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
         {
-            var apiCallPath = String.Format("/compute/{0}/cpu", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/compute/{0}/cpu", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["cpu_count"] = ExpressionConverter.ConvertO(bodycpuCount);
+            body["cpu_count"] = CSharpExpressionConverter.ConvertToken(bodycpuCount);
             bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
+            body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
             bodypropCount++;
-            body["cpu_load"] = ExpressionConverter.ConvertO(bodycpuLoad);
+            body["cpu_load"] = CSharpExpressionConverter.ConvertToken(bodycpuLoad);
             bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+            body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
             if (bodydurationUnit != null)
             {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                body["duration_unit"] = CSharpExpressionConverter.ConvertToken(bodydurationUnit);
                 bodypropCount++;
             }
 
@@ -275,28 +275,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
-            var apiCallPath = String.Format("/compute/{0}/storage", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/compute/{0}/storage", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
+            body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
             bodypropCount++;
-            body["storage_type"] = ExpressionConverter.ConvertO(bodystorageType);
+            body["storage_type"] = CSharpExpressionConverter.Convert(bodystorageType);
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodydataUnit != null)
             {
-                body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                body["data_unit"] = CSharpExpressionConverter.ConvertToken(bodydataUnit);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+            body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
             if (bodydurationUnit != null)
             {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                body["duration_unit"] = CSharpExpressionConverter.ConvertToken(bodydurationUnit);
                 bodypropCount++;
             }
 
@@ -311,26 +311,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
-            var apiCallPath = String.Format("/compute/{0}/memory", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/compute/{0}/memory", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["region"] = ExpressionConverter.ConvertO(bodyregion);
+            body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodydataUnit != null)
             {
-                body["data_unit"] = ExpressionConverter.ConvertO(bodydataUnit);
+                body["data_unit"] = CSharpExpressionConverter.ConvertToken(bodydataUnit);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+            body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
             if (bodydurationUnit != null)
             {
-                body["duration_unit"] = ExpressionConverter.ConvertO(bodydurationUnit);
+                body["duration_unit"] = CSharpExpressionConverter.ConvertToken(bodydurationUnit);
                 bodypropCount++;
             }
 
@@ -354,49 +354,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var classificationObjectpropCount = 0;
             if (bodyclassificationclassificationType != null)
             {
-                classificationObject["classification_type"] = ExpressionConverter.ConvertO(bodyclassificationclassificationType);
+                classificationObject["classification_type"] = CSharpExpressionConverter.ConvertToken(bodyclassificationclassificationType);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationclassificationCode != null)
             {
-                classificationObject["classification_code"] = ExpressionConverter.ConvertO(bodyclassificationclassificationCode);
+                classificationObject["classification_code"] = CSharpExpressionConverter.ConvertToken(bodyclassificationclassificationCode);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationsource != null)
             {
-                classificationObject["source"] = ExpressionConverter.ConvertO(bodyclassificationsource);
+                classificationObject["source"] = CSharpExpressionConverter.ConvertToken(bodyclassificationsource);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationregion != null)
             {
-                classificationObject["region"] = ExpressionConverter.ConvertO(bodyclassificationregion);
+                classificationObject["region"] = CSharpExpressionConverter.ConvertToken(bodyclassificationregion);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationregionFallback != null)
             {
-                classificationObject["region_fallback"] = ExpressionConverter.ConvertO(bodyclassificationregionFallback);
+                classificationObject["region_fallback"] = CSharpExpressionConverter.ConvertToken(bodyclassificationregionFallback);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationyear != null)
             {
-                classificationObject["year"] = ExpressionConverter.ConvertO(bodyclassificationyear);
+                classificationObject["year"] = CSharpExpressionConverter.ConvertToken(bodyclassificationyear);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationlcaActivity != null)
             {
-                classificationObject["lca_activity"] = ExpressionConverter.ConvertO(bodyclassificationlcaActivity);
+                classificationObject["lca_activity"] = CSharpExpressionConverter.ConvertToken(bodyclassificationlcaActivity);
                 classificationObjectpropCount++;
             }
 
             if (bodyclassificationcalculationMethod != null)
             {
-                classificationObject["calculation_method"] = ExpressionConverter.ConvertO(bodyclassificationcalculationMethod);
+                classificationObject["calculation_method"] = CSharpExpressionConverter.ConvertToken(bodyclassificationcalculationMethod);
                 classificationObjectpropCount++;
             }
 
@@ -410,97 +410,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var parametersObjectpropCount = 0;
             if (bodyparametersenergy != null)
             {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                parametersObject["energy"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergy);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersenergyUnit != null)
             {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                parametersObject["energy_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdata != null)
             {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                parametersObject["data"] = CSharpExpressionConverter.ConvertToken(bodyparametersdata);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdataUnit != null)
             {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                parametersObject["data_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdataUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistance != null)
             {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                parametersObject["distance"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistance);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistanceUnit != null)
             {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                parametersObject["distance_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistanceUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoney != null)
             {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                parametersObject["money"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoney);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoneyUnit != null)
             {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                parametersObject["money_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoneyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersnumber != null)
             {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                parametersObject["number"] = CSharpExpressionConverter.ConvertToken(bodyparametersnumber);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstime != null)
             {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                parametersObject["time"] = CSharpExpressionConverter.ConvertToken(bodyparameterstime);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstimeUnit != null)
             {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                parametersObject["time_unit"] = CSharpExpressionConverter.ConvertToken(bodyparameterstimeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterspassengers != null)
             {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                parametersObject["passengers"] = CSharpExpressionConverter.ConvertToken(bodyparameterspassengers);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolume != null)
             {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                parametersObject["volume"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolume);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolumeUnit != null)
             {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                parametersObject["volume_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolumeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweight != null)
             {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                parametersObject["weight"] = CSharpExpressionConverter.ConvertToken(bodyparametersweight);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweightUnit != null)
             {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                parametersObject["weight_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersweightUnit);
                 parametersObjectpropCount++;
             }
 
@@ -530,43 +530,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var customActivityObjectpropCount = 0;
             if (bodycustomActivitylabel != null)
             {
-                customActivityObject["label"] = ExpressionConverter.ConvertO(bodycustomActivitylabel);
+                customActivityObject["label"] = CSharpExpressionConverter.ConvertToken(bodycustomActivitylabel);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivitysource != null)
             {
-                customActivityObject["source"] = ExpressionConverter.ConvertO(bodycustomActivitysource);
+                customActivityObject["source"] = CSharpExpressionConverter.ConvertToken(bodycustomActivitysource);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivityregion != null)
             {
-                customActivityObject["region"] = ExpressionConverter.ConvertO(bodycustomActivityregion);
+                customActivityObject["region"] = CSharpExpressionConverter.ConvertToken(bodycustomActivityregion);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivityregionFallback != null)
             {
-                customActivityObject["region_fallback"] = ExpressionConverter.ConvertO(bodycustomActivityregionFallback);
+                customActivityObject["region_fallback"] = CSharpExpressionConverter.ConvertToken(bodycustomActivityregionFallback);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivityyear != null)
             {
-                customActivityObject["year"] = ExpressionConverter.ConvertO(bodycustomActivityyear);
+                customActivityObject["year"] = CSharpExpressionConverter.ConvertToken(bodycustomActivityyear);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivitylcaActivity != null)
             {
-                customActivityObject["lca_activity"] = ExpressionConverter.ConvertO(bodycustomActivitylcaActivity);
+                customActivityObject["lca_activity"] = CSharpExpressionConverter.ConvertToken(bodycustomActivitylcaActivity);
                 customActivityObjectpropCount++;
             }
 
             if (bodycustomActivitycalculationMethod != null)
             {
-                customActivityObject["calculation_method"] = ExpressionConverter.ConvertO(bodycustomActivitycalculationMethod);
+                customActivityObject["calculation_method"] = CSharpExpressionConverter.ConvertToken(bodycustomActivitycalculationMethod);
                 customActivityObjectpropCount++;
             }
 
@@ -580,97 +580,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var parametersObjectpropCount = 0;
             if (bodyparametersenergy != null)
             {
-                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                parametersObject["energy"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergy);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersenergyUnit != null)
             {
-                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                parametersObject["energy_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersenergyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdata != null)
             {
-                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                parametersObject["data"] = CSharpExpressionConverter.ConvertToken(bodyparametersdata);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdataUnit != null)
             {
-                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                parametersObject["data_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdataUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistance != null)
             {
-                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                parametersObject["distance"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistance);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersdistanceUnit != null)
             {
-                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                parametersObject["distance_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersdistanceUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoney != null)
             {
-                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                parametersObject["money"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoney);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmoneyUnit != null)
             {
-                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                parametersObject["money_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersmoneyUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersnumber != null)
             {
-                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                parametersObject["number"] = CSharpExpressionConverter.ConvertToken(bodyparametersnumber);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstime != null)
             {
-                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                parametersObject["time"] = CSharpExpressionConverter.ConvertToken(bodyparameterstime);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstimeUnit != null)
             {
-                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                parametersObject["time_unit"] = CSharpExpressionConverter.ConvertToken(bodyparameterstimeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterspassengers != null)
             {
-                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                parametersObject["passengers"] = CSharpExpressionConverter.ConvertToken(bodyparameterspassengers);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolume != null)
             {
-                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                parametersObject["volume"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolume);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersvolumeUnit != null)
             {
-                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                parametersObject["volume_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersvolumeUnit);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweight != null)
             {
-                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                parametersObject["weight"] = CSharpExpressionConverter.ConvertToken(bodyparametersweight);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersweightUnit != null)
             {
-                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                parametersObject["weight_unit"] = CSharpExpressionConverter.ConvertToken(bodyparametersweightUnit);
                 parametersObjectpropCount++;
             }
 
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallPath = "/custom-activities/batch";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CustomBatchResponse>(callPayload);
         }
 
@@ -705,33 +705,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (uuid != null)
-                callPayload.Queries["uuid"] = ExpressionConverter.Convert(uuid);
+                callPayload.Queries["uuid"] = CSharpExpressionConverter.ConvertO(uuid);
             if (activityId != null)
-                callPayload.Queries["activity_id"] = ExpressionConverter.Convert(activityId);
+                callPayload.Queries["activity_id"] = CSharpExpressionConverter.ConvertO(activityId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             if (unitType != null)
-                callPayload.Queries["unit_type"] = ExpressionConverter.Convert(unitType);
+                callPayload.Queries["unit_type"] = CSharpExpressionConverter.ConvertO(unitType);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (resultsPerPage != null)
-                callPayload.Queries["results_per_page"] = ExpressionConverter.Convert(resultsPerPage);
+                callPayload.Queries["results_per_page"] = CSharpExpressionConverter.ConvertO(resultsPerPage);
             return new ApiConnectionAction<FactorsSearchResponse>(callPayload);
         }
 
@@ -742,21 +742,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<SourcesResponse>(callPayload);
         }
 
@@ -767,21 +767,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<YearsResponse>(callPayload);
         }
 
@@ -792,21 +792,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<RegionsResponse>(callPayload);
         }
 
@@ -817,21 +817,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<CategoriesResponse>(callPayload);
         }
 
@@ -842,21 +842,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<SectorsResponse>(callPayload);
         }
 
@@ -867,21 +867,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<LifeCycleActivitiesResponse>(callPayload);
         }
 
@@ -892,21 +892,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sector != null)
-                callPayload.Queries["sector"] = ExpressionConverter.Convert(sector);
+                callPayload.Queries["sector"] = CSharpExpressionConverter.ConvertO(sector);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (lcaActivity != null)
-                callPayload.Queries["lca_activity"] = ExpressionConverter.Convert(lcaActivity);
+                callPayload.Queries["lca_activity"] = CSharpExpressionConverter.ConvertO(lcaActivity);
             if (calculationMethod != null)
-                callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(calculationMethod);
+                callPayload.Queries["calculation_method"] = CSharpExpressionConverter.ConvertO(calculationMethod);
             return new ApiConnectionAction<UnitTypesResponse>(callPayload);
         }
     }

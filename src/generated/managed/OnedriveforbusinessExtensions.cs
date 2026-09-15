@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
@@ -23,17 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IWorkflowAction DeleteFile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/GetFileByPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
@@ -55,22 +55,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/GetFileContentByPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/files";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
@@ -92,24 +92,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/copyFile";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata> CopyDriveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/copy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
@@ -119,24 +119,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/CopyFileByPath";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata> MoveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/move", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/move", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
@@ -146,23 +146,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/MoveFileByPath";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<string> ConvertFile(Expression<Func<string>> id, Expression<Func<typeInput>> type = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/convert", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/convert", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["type"] = Convert.ToString("PDF");
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -172,20 +172,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/ConvertFileByPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             callPayload.Queries["type"] = Convert.ToString("PDF");
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<Thumbnail> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<sizeInput>> size)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/thumbnail", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/thumbnail", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+            callPayload.Queries["size"] = CSharpExpressionConverter.Convert(size);
             return new ApiConnectionAction<Thumbnail>(callPayload);
         }
 
@@ -201,14 +201,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata[]> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
-            var apiCallPath = String.Format("/datasets/default/folders/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/folders/{0}/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["findMode"] = ExpressionConverter.Convert(findMode);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
+            callPayload.Queries["findMode"] = CSharpExpressionConverter.Convert(findMode);
             callPayload.Queries["maxFileCount"] = Convert.ToString(10);
             if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
+                callPayload.Queries["maxFileCount"] = CSharpExpressionConverter.ConvertO(maxFileCount);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
 
@@ -218,25 +218,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/findFile";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["findMode"] = ExpressionConverter.Convert(findMode);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
+            callPayload.Queries["findMode"] = CSharpExpressionConverter.Convert(findMode);
             callPayload.Queries["maxFileCount"] = Convert.ToString(10);
             if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
+                callPayload.Queries["maxFileCount"] = CSharpExpressionConverter.ConvertO(maxFileCount);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<SharingLink> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput>> type, Expression<Func<scopeInput>> scope = null)
         {
-            var apiCallPath = String.Format("/datasets/default/files/{0}/shareV2", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/shareV2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             callPayload.Queries["scope"] = Convert.ToString("Anonymous");
             if (scope != null)
-                callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                callPayload.Queries["scope"] = CSharpExpressionConverter.Convert(scope);
             return new ApiConnectionAction<SharingLink>(callPayload);
         }
 
@@ -246,11 +246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/CreateShareLinkByPathV2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             callPayload.Queries["scope"] = Convert.ToString("Anonymous");
             if (scope != null)
-                callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                callPayload.Queries["scope"] = CSharpExpressionConverter.Convert(scope);
             return new ApiConnectionAction<SharingLink>(callPayload);
         }
 
@@ -260,18 +260,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/extractFolderV2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
+            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
             callPayload.Queries["overwrite"] = Convert.ToString(false);
             if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadataPage> ListFolder(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/default/foldersV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/foldersV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["skipToken"] = Convert.ToString("");
@@ -287,13 +287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/triggers/onnewfilev2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             callPayload.Queries["includeSubfolders"] = Convert.ToString(false);
             if (includeSubfolders != null)
-                callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(includeSubfolders);
+                callPayload.Queries["includeSubfolders"] = CSharpExpressionConverter.ConvertO(includeSubfolders);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             callPayload.Queries["simulate"] = Convert.ToString(false);
             return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
         }
@@ -303,13 +303,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/triggers/batch/onnewfilesv2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             callPayload.Queries["includeSubfolders"] = Convert.ToString(false);
             if (includeSubfolders != null)
-                callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(includeSubfolders);
+                callPayload.Queries["includeSubfolders"] = CSharpExpressionConverter.ConvertO(includeSubfolders);
             callPayload.Queries["maxFileCount"] = Convert.ToString(10);
             if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
+                callPayload.Queries["maxFileCount"] = CSharpExpressionConverter.ConvertO(maxFileCount);
             callPayload.Queries["simulate"] = Convert.ToString(false);
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
         }
@@ -319,14 +319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/triggers/onupdatedfilev2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             callPayload.Queries["includeSubfolders"] = Convert.ToString(false);
             if (includeSubfolders != null)
-                callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(includeSubfolders);
+                callPayload.Queries["includeSubfolders"] = CSharpExpressionConverter.ConvertO(includeSubfolders);
             callPayload.Queries["includeFileContent"] = Convert.ToString(true);
             callPayload.Queries["inferContentType"] = Convert.ToString(true);
             if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
+                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
             callPayload.Queries["simulate"] = Convert.ToString(false);
             return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
         }
@@ -336,13 +336,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfilesv2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             callPayload.Queries["includeSubfolders"] = Convert.ToString(false);
             if (includeSubfolders != null)
-                callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(includeSubfolders);
+                callPayload.Queries["includeSubfolders"] = CSharpExpressionConverter.ConvertO(includeSubfolders);
             callPayload.Queries["maxFileCount"] = Convert.ToString(10);
             if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
+                callPayload.Queries["maxFileCount"] = CSharpExpressionConverter.ConvertO(maxFileCount);
             callPayload.Queries["simulate"] = Convert.ToString(false);
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
         }

@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
         }
 
@@ -35,25 +35,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["Type"] = CSharpExpressionConverter.ConvertO(type);
             if (isFilterable != null)
-                callPayload.Queries["IsFilterable"] = ExpressionConverter.Convert(isFilterable);
+                callPayload.Queries["IsFilterable"] = CSharpExpressionConverter.ConvertO(isFilterable);
             if (displayOnProduct != null)
-                callPayload.Queries["DisplayOnProduct"] = ExpressionConverter.Convert(displayOnProduct);
+                callPayload.Queries["DisplayOnProduct"] = CSharpExpressionConverter.ConvertO(displayOnProduct);
             if (displayInList != null)
-                callPayload.Queries["DisplayInList"] = ExpressionConverter.Convert(displayInList);
+                callPayload.Queries["DisplayInList"] = CSharpExpressionConverter.ConvertO(displayInList);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<AttributeDTO>(callPayload);
         }
 
@@ -64,19 +64,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["Code"] = CSharpExpressionConverter.ConvertO(code);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<BrandDTO[]>(callPayload);
         }
 
@@ -87,27 +87,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["Code"] = CSharpExpressionConverter.ConvertO(code);
             if (parentId != null)
-                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+                callPayload.Queries["ParentId"] = CSharpExpressionConverter.ConvertO(parentId);
             if (path != null)
-                callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
+                callPayload.Queries["Path"] = CSharpExpressionConverter.ConvertO(path);
             if (parentIds != null)
-                callPayload.Queries["ParentIds"] = ExpressionConverter.Convert(parentIds);
+                callPayload.Queries["ParentIds"] = CSharpExpressionConverter.ConvertO(parentIds);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<CategoryDTO[]>(callPayload);
         }
 
@@ -127,15 +127,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
         }
 
@@ -146,90 +146,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (price != null)
-                callPayload.Queries["Price"] = ExpressionConverter.Convert(price);
+                callPayload.Queries["Price"] = CSharpExpressionConverter.ConvertO(price);
             if (maxPrice != null)
-                callPayload.Queries["MaxPrice"] = ExpressionConverter.Convert(maxPrice);
+                callPayload.Queries["MaxPrice"] = CSharpExpressionConverter.ConvertO(maxPrice);
             if (size1 != null)
-                callPayload.Queries["Size1"] = ExpressionConverter.Convert(size1);
+                callPayload.Queries["Size1"] = CSharpExpressionConverter.ConvertO(size1);
             if (size2 != null)
-                callPayload.Queries["Size2"] = ExpressionConverter.Convert(size2);
+                callPayload.Queries["Size2"] = CSharpExpressionConverter.ConvertO(size2);
             if (size3 != null)
-                callPayload.Queries["Size3"] = ExpressionConverter.Convert(size3);
+                callPayload.Queries["Size3"] = CSharpExpressionConverter.ConvertO(size3);
             if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                callPayload.Queries["InsertDate"] = CSharpExpressionConverter.ConvertO(insertDate);
             if (date1 != null)
-                callPayload.Queries["Date1"] = ExpressionConverter.Convert(date1);
+                callPayload.Queries["Date1"] = CSharpExpressionConverter.ConvertO(date1);
             if (date2 != null)
-                callPayload.Queries["Date2"] = ExpressionConverter.Convert(date2);
+                callPayload.Queries["Date2"] = CSharpExpressionConverter.ConvertO(date2);
             if (date3 != null)
-                callPayload.Queries["Date3"] = ExpressionConverter.Convert(date3);
+                callPayload.Queries["Date3"] = CSharpExpressionConverter.ConvertO(date3);
             if (date1DateRange != null)
-                callPayload.Queries["Date1DateRange"] = ExpressionConverter.Convert(date1DateRange);
+                callPayload.Queries["Date1DateRange"] = CSharpExpressionConverter.ConvertO(date1DateRange);
             if (date2DateRange != null)
-                callPayload.Queries["Date2DateRange"] = ExpressionConverter.Convert(date2DateRange);
+                callPayload.Queries["Date2DateRange"] = CSharpExpressionConverter.ConvertO(date2DateRange);
             if (date3DateRange != null)
-                callPayload.Queries["Date3DateRange"] = ExpressionConverter.Convert(date3DateRange);
+                callPayload.Queries["Date3DateRange"] = CSharpExpressionConverter.ConvertO(date3DateRange);
             if (insertDateRange != null)
-                callPayload.Queries["InsertDateRange"] = ExpressionConverter.Convert(insertDateRange);
+                callPayload.Queries["InsertDateRange"] = CSharpExpressionConverter.ConvertO(insertDateRange);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (minPrice != null)
-                callPayload.Queries["MinPrice"] = ExpressionConverter.Convert(minPrice);
+                callPayload.Queries["MinPrice"] = CSharpExpressionConverter.ConvertO(minPrice);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (availability != null)
-                callPayload.Queries["Availability"] = ExpressionConverter.Convert(availability);
+                callPayload.Queries["Availability"] = CSharpExpressionConverter.ConvertO(availability);
             if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["Tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (sourceTag != null)
-                callPayload.Queries["SourceTag"] = ExpressionConverter.Convert(sourceTag);
+                callPayload.Queries["SourceTag"] = CSharpExpressionConverter.ConvertO(sourceTag);
             if (privacyRule != null)
-                callPayload.Queries["PrivacyRule"] = ExpressionConverter.Convert(privacyRule);
+                callPayload.Queries["PrivacyRule"] = CSharpExpressionConverter.ConvertO(privacyRule);
             if (rule != null)
-                callPayload.Queries["Rule"] = ExpressionConverter.Convert(rule);
+                callPayload.Queries["Rule"] = CSharpExpressionConverter.ConvertO(rule);
             if (condition != null)
-                callPayload.Queries["Condition"] = ExpressionConverter.Convert(condition);
+                callPayload.Queries["Condition"] = CSharpExpressionConverter.ConvertO(condition);
             if (ids != null)
-                callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["Ids"] = CSharpExpressionConverter.ConvertO(ids);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (priceRange != null)
-                callPayload.Queries["PriceRange"] = ExpressionConverter.Convert(priceRange);
+                callPayload.Queries["PriceRange"] = CSharpExpressionConverter.ConvertO(priceRange);
             if (brandCode != null)
-                callPayload.Queries["BrandCode"] = ExpressionConverter.Convert(brandCode);
+                callPayload.Queries["BrandCode"] = CSharpExpressionConverter.ConvertO(brandCode);
             if (brandId != null)
-                callPayload.Queries["BrandId"] = ExpressionConverter.Convert(brandId);
+                callPayload.Queries["BrandId"] = CSharpExpressionConverter.ConvertO(brandId);
             if (attribute != null)
-                callPayload.Queries["Attribute"] = ExpressionConverter.Convert(attribute);
+                callPayload.Queries["Attribute"] = CSharpExpressionConverter.ConvertO(attribute);
             if (pathCategory != null)
-                callPayload.Queries["PathCategory"] = ExpressionConverter.Convert(pathCategory);
+                callPayload.Queries["PathCategory"] = CSharpExpressionConverter.ConvertO(pathCategory);
             if (categoryId != null)
-                callPayload.Queries["CategoryId"] = ExpressionConverter.Convert(categoryId);
+                callPayload.Queries["CategoryId"] = CSharpExpressionConverter.ConvertO(categoryId);
             if (additionalCategoryId != null)
-                callPayload.Queries["AdditionalCategoryId"] = ExpressionConverter.Convert(additionalCategoryId);
+                callPayload.Queries["AdditionalCategoryId"] = CSharpExpressionConverter.ConvertO(additionalCategoryId);
             if (stockAvailabilityId != null)
-                callPayload.Queries["StockAvailabilityId"] = ExpressionConverter.Convert(stockAvailabilityId);
+                callPayload.Queries["StockAvailabilityId"] = CSharpExpressionConverter.ConvertO(stockAvailabilityId);
             if (attributeSetId != null)
-                callPayload.Queries["AttributeSetId"] = ExpressionConverter.Convert(attributeSetId);
+                callPayload.Queries["AttributeSetId"] = CSharpExpressionConverter.ConvertO(attributeSetId);
             if (priceCategoryId != null)
-                callPayload.Queries["PriceCategoryId"] = ExpressionConverter.Convert(priceCategoryId);
+                callPayload.Queries["PriceCategoryId"] = CSharpExpressionConverter.ConvertO(priceCategoryId);
             if (hasMedia != null)
-                callPayload.Queries["HasMedia"] = ExpressionConverter.Convert(hasMedia);
+                callPayload.Queries["HasMedia"] = CSharpExpressionConverter.ConvertO(hasMedia);
             if (masterId != null)
-                callPayload.Queries["MasterId"] = ExpressionConverter.Convert(masterId);
+                callPayload.Queries["MasterId"] = CSharpExpressionConverter.ConvertO(masterId);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<ProblemDetails>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
         {
-            var apiCallPath = String.Format("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1), ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
@@ -242,13 +242,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["Title"] = CSharpExpressionConverter.ConvertO(title);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
         }
 
@@ -259,20 +259,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<UnitDTO[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
         {
-            var apiCallPath = String.Format("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(token, 1), ExpressionConverter.ConvertWithUrlEncoding(productVariantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productVariantId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProblemDetails>(callPayload);
@@ -281,27 +281,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = String.Format("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(customerid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["Source"] = CSharpExpressionConverter.Convert(source);
             if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["Type"] = CSharpExpressionConverter.ConvertO(type);
             if (category != null)
-                callPayload.Queries["Category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["Category"] = CSharpExpressionConverter.ConvertO(category);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (productId != null)
-                callPayload.Queries["ProductId"] = ExpressionConverter.Convert(productId);
+                callPayload.Queries["ProductId"] = CSharpExpressionConverter.ConvertO(productId);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
         }
 
@@ -312,28 +312,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (salesmanId != null)
-                callPayload.Queries["SalesmanId"] = ExpressionConverter.Convert(salesmanId);
+                callPayload.Queries["SalesmanId"] = CSharpExpressionConverter.ConvertO(salesmanId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<CustomerDTO[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId(Expression<Func<string>> variantId)
         {
-            var apiCallPath = String.Format("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
@@ -346,29 +346,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["Code"] = CSharpExpressionConverter.ConvertO(code);
             if (customerId != null)
-                callPayload.Queries["CustomerId"] = ExpressionConverter.Convert(customerId);
+                callPayload.Queries["CustomerId"] = CSharpExpressionConverter.ConvertO(customerId);
             if (orderStatus != null)
-                callPayload.Queries["OrderStatus"] = ExpressionConverter.Convert(orderStatus);
+                callPayload.Queries["OrderStatus"] = CSharpExpressionConverter.ConvertO(orderStatus);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.ConvertO(status);
             if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["Tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (customerCode != null)
-                callPayload.Queries["CustomerCode"] = ExpressionConverter.Convert(customerCode);
+                callPayload.Queries["CustomerCode"] = CSharpExpressionConverter.ConvertO(customerCode);
             if (customerTin != null)
-                callPayload.Queries["CustomerTin"] = ExpressionConverter.Convert(customerTin);
+                callPayload.Queries["CustomerTin"] = CSharpExpressionConverter.ConvertO(customerTin);
             if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                callPayload.Queries["InsertDate"] = CSharpExpressionConverter.ConvertO(insertDate);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<OrderDTO[]>(callPayload);
         }
     }
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -955,7 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

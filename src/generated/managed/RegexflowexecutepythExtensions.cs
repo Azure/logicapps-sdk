@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
             var apiCallPath = "/ExecutePython";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(pythonCode);
             return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
         }
     }

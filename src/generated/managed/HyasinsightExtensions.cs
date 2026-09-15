@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/device_geo";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<DeviceGeoItem[]>(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/sinkhole";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<SinkholeItem[]>(callPayload);
         }
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/passivedns";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<PassivednsItem[]>(callPayload);
         }
 
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/dynamicdns";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<DynamicdnsItem[]>(callPayload);
         }
 
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/passivehash";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<PassivehashItem[]>(callPayload);
         }
 
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/ssl_certificate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<Sslcertificate>(callPayload);
         }
 
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/whois";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<WhoisItem[]>(callPayload);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/c2attribution";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<C2attributionItem[]>(callPayload);
         }
 
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/sample/information";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<SampleInformation>(callPayload);
         }
 
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/sample";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<SampleItem[]>(callPayload);
         }
 
@@ -127,8 +127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var apiCallPath = "/os_indicators";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
+            callPayload.Queries["indicator_type"] = CSharpExpressionConverter.Convert(indicatorType);
+            callPayload.Queries["indicator_value"] = CSharpExpressionConverter.ConvertO(indicatorValue);
             return new ApiConnectionAction<OsIndicatorsItem[]>(callPayload);
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             var appliedFiltersObjectpropCount = 0;
             if (bodyappliedFiltersdomain != null)
             {
-                appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(bodyappliedFiltersdomain);
+                appliedFiltersObject["domain"] = CSharpExpressionConverter.ConvertToken(bodyappliedFiltersdomain);
                 appliedFiltersObjectpropCount++;
             }
 

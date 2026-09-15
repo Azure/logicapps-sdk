@@ -20,40 +20,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["scale"] = ExpressionConverter.ConvertO(bodyscale);
+            body["scale"] = CSharpExpressionConverter.ConvertToken(bodyscale);
             bodypropCount++;
-            body["width"] = ExpressionConverter.ConvertO(bodywidth);
+            body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
             bodypropCount++;
-            body["height"] = ExpressionConverter.ConvertO(bodyheight);
+            body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
             if (bodycolors != null)
             {
-                body["colors"] = ExpressionConverter.ConvertO(bodycolors);
+                body["colors"] = CSharpExpressionConverter.ConvertToken(bodycolors);
                 bodypropCount++;
             }
 
             if (bodyfont != null)
             {
-                body["font"] = ExpressionConverter.ConvertO(bodyfont);
+                body["font"] = CSharpExpressionConverter.ConvertToken(bodyfont);
                 bodypropCount++;
             }
 
             if (bodyuseStopwords != null)
             {
-                body["use_stopwords"] = ExpressionConverter.ConvertO(bodyuseStopwords);
+                body["use_stopwords"] = CSharpExpressionConverter.ConvertToken(bodyuseStopwords);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodyuppercase != null)
             {
-                body["uppercase"] = ExpressionConverter.ConvertO(bodyuppercase);
+                body["uppercase"] = CSharpExpressionConverter.ConvertToken(bodyuppercase);
                 bodypropCount++;
             }
 

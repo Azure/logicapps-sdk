@@ -18,66 +18,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysummary != null)
             {
-                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyorganizerEmail != null)
             {
-                body["organizer_email"] = ExpressionConverter.ConvertO(bodyorganizerEmail);
+                body["organizer_email"] = CSharpExpressionConverter.ConvertToken(bodyorganizerEmail);
                 bodypropCount++;
             }
 
             if (bodyattendeesEmails != null)
             {
-                body["attendees_emails"] = ExpressionConverter.ConvertO(bodyattendeesEmails);
+                body["attendees_emails"] = CSharpExpressionConverter.ConvertToken(bodyattendeesEmails);
                 bodypropCount++;
             }
 
             if (bodylocation != null)
             {
-                body["location"] = ExpressionConverter.ConvertO(bodylocation);
+                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
                 bodypropCount++;
             }
 
             if (bodytimeZone != null)
             {
-                body["time_zone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["time_zone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
                 bodypropCount++;
             }
 
             if (bodystartTime != null)
             {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
             }
 
             if (bodyendTime != null)
             {
-                body["end_time"] = ExpressionConverter.ConvertO(bodyendTime);
+                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
                 bodypropCount++;
             }
 
             if (bodymeetingDate != null)
             {
-                body["meeting_date"] = ExpressionConverter.ConvertO(bodymeetingDate);
+                body["meeting_date"] = CSharpExpressionConverter.ConvertToken(bodymeetingDate);
                 bodypropCount++;
             }
 
             if (bodyrecurring != null)
             {
-                body["recurring"] = ExpressionConverter.ConvertO(bodyrecurring);
+                body["recurring"] = CSharpExpressionConverter.ConvertToken(bodyrecurring);
                 bodypropCount++;
             }
 
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var recurrenceObjectpropCount = 0;
             if (bodyrecurrencefrequency != null)
             {
-                recurrenceObject["frequency"] = ExpressionConverter.ConvertO(bodyrecurrencefrequency);
+                recurrenceObject["frequency"] = CSharpExpressionConverter.Convert(bodyrecurrencefrequency);
                 recurrenceObjectpropCount++;
             }
 
             if (bodyrecurrencecount != null)
             {
-                recurrenceObject["count"] = ExpressionConverter.ConvertO(bodyrecurrencecount);
+                recurrenceObject["count"] = CSharpExpressionConverter.ConvertToken(bodyrecurrencecount);
                 recurrenceObjectpropCount++;
             }
 
@@ -116,66 +116,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysummary != null)
             {
-                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyorganizerEmail != null)
             {
-                body["organizer_email"] = ExpressionConverter.ConvertO(bodyorganizerEmail);
+                body["organizer_email"] = CSharpExpressionConverter.ConvertToken(bodyorganizerEmail);
                 bodypropCount++;
             }
 
             if (bodyattendeesEmails != null)
             {
-                body["attendees_emails"] = ExpressionConverter.ConvertO(bodyattendeesEmails);
+                body["attendees_emails"] = CSharpExpressionConverter.ConvertToken(bodyattendeesEmails);
                 bodypropCount++;
             }
 
             if (bodylocation != null)
             {
-                body["location"] = ExpressionConverter.ConvertO(bodylocation);
+                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
                 bodypropCount++;
             }
 
             if (bodytimeZone != null)
             {
-                body["time_zone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["time_zone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
                 bodypropCount++;
             }
 
             if (bodystartTime != null)
             {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
             }
 
             if (bodyendTime != null)
             {
-                body["end_time"] = ExpressionConverter.ConvertO(bodyendTime);
+                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
                 bodypropCount++;
             }
 
             if (bodymeetingDate != null)
             {
-                body["meeting_date"] = ExpressionConverter.ConvertO(bodymeetingDate);
+                body["meeting_date"] = CSharpExpressionConverter.ConvertToken(bodymeetingDate);
                 bodypropCount++;
             }
 
             if (bodyrecurring != null)
             {
-                body["recurring"] = ExpressionConverter.ConvertO(bodyrecurring);
+                body["recurring"] = CSharpExpressionConverter.ConvertToken(bodyrecurring);
                 bodypropCount++;
             }
 
@@ -183,13 +183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var recurrenceObjectpropCount = 0;
             if (bodyrecurrencefrequency != null)
             {
-                recurrenceObject["frequency"] = ExpressionConverter.ConvertO(bodyrecurrencefrequency);
+                recurrenceObject["frequency"] = CSharpExpressionConverter.Convert(bodyrecurrencefrequency);
                 recurrenceObjectpropCount++;
             }
 
             if (bodyrecurrencecount != null)
             {
-                recurrenceObject["count"] = ExpressionConverter.ConvertO(bodyrecurrencecount);
+                recurrenceObject["count"] = CSharpExpressionConverter.ConvertToken(bodyrecurrencecount);
                 recurrenceObjectpropCount++;
             }
 

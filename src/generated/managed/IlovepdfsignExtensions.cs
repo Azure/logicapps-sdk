@@ -20,72 +20,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+            body["file_source"] = CSharpExpressionConverter.Convert(bodyfileSource);
             bodypropCount++;
-            body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["file_name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             if (bodyfile != null)
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
                 bodypropCount++;
             }
 
             if (bodyfileUrl != null)
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
                 bodypropCount++;
             }
 
             if (bodysigners != null)
             {
-                body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+                body["signers"] = CSharpExpressionConverter.ConvertToken(bodysigners);
                 bodypropCount++;
             }
 
             if (bodysignersEmails != null)
             {
-                body["signers_emails"] = ExpressionConverter.ConvertO(bodysignersEmails);
+                body["signers_emails"] = CSharpExpressionConverter.ConvertToken(bodysignersEmails);
                 bodypropCount++;
             }
 
             if (bodysignsPositions != null)
             {
-                body["signs_positions"] = ExpressionConverter.ConvertO(bodysignsPositions);
+                body["signs_positions"] = CSharpExpressionConverter.ConvertToken(bodysignsPositions);
                 bodypropCount++;
             }
 
             if (bodysignType != null)
             {
-                body["sign_type"] = ExpressionConverter.ConvertO(bodysignType);
+                body["sign_type"] = CSharpExpressionConverter.Convert(bodysignType);
                 bodypropCount++;
             }
 
             if (bodyexpirationDays != null)
             {
-                body["expiration_days"] = ExpressionConverter.ConvertO(bodyexpirationDays);
+                body["expiration_days"] = CSharpExpressionConverter.ConvertToken(bodyexpirationDays);
                 bodypropCount++;
             }
 
             if (bodysignerReminders != null)
             {
-                body["signer_reminders"] = ExpressionConverter.ConvertO(bodysignerReminders);
+                body["signer_reminders"] = CSharpExpressionConverter.Convert(bodysignerReminders);
                 bodypropCount++;
             }
 
             if (bodysignerReminderDaysCycle != null)
             {
-                body["signer_reminder_days_cycle"] = ExpressionConverter.ConvertO(bodysignerReminderDaysCycle);
+                body["signer_reminder_days_cycle"] = CSharpExpressionConverter.ConvertToken(bodysignerReminderDaysCycle);
                 bodypropCount++;
             }
 
             if (bodypages != null)
             {
-                body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
                 bodypropCount++;
             }
 
             if (bodysize != null)
             {
-                body["size"] = ExpressionConverter.ConvertO(bodysize);
+                body["size"] = CSharpExpressionConverter.ConvertToken(bodysize);
                 bodypropCount++;
             }
 

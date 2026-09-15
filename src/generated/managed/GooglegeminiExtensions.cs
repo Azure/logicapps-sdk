@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:generateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
             if (bodysafetySettings != null)
             {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
+                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
                 bodypropCount++;
             }
 
@@ -35,37 +35,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var generationConfigObjectpropCount = 0;
             if (bodygenerationConfigmaxOutputTokens != null)
             {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
+                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtemperature != null)
             {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
+                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopP != null)
             {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
+                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopK != null)
             {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
+                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigcandidateCount != null)
             {
-                generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(bodygenerationConfigcandidateCount);
+                generationConfigObject["candidateCount"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigstopSequences != null)
             {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
+                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
                 generationConfigObjectpropCount++;
             }
 
@@ -86,20 +86,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:streamGenerateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
             if (bodysafetySettings != null)
             {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
+                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
                 bodypropCount++;
             }
 
@@ -107,37 +107,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var generationConfigObjectpropCount = 0;
             if (bodygenerationConfigtemperature != null)
             {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
+                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigmaxOutputTokens != null)
             {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
+                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopP != null)
             {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
+                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopK != null)
             {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
+                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigcandidateCount != null)
             {
-                generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(bodygenerationConfigcandidateCount);
+                generationConfigObject["candidateCount"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigstopSequences != null)
             {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
+                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
                 generationConfigObjectpropCount++;
             }
 
@@ -158,20 +158,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}-vision:generateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
             if (bodysafetySettings != null)
             {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
+                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
                 bodypropCount++;
             }
 
@@ -179,31 +179,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var generationConfigObjectpropCount = 0;
             if (bodygenerationConfigmaxOutputTokens != null)
             {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
+                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtemperature != null)
             {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
+                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopP != null)
             {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
+                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigtopK != null)
             {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
+                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
                 generationConfigObjectpropCount++;
             }
 
             if (bodygenerationConfigstopSequences != null)
             {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
+                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
                 generationConfigObjectpropCount++;
             }
 
@@ -224,14 +224,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<CountTokensResponse> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countTokens", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontents != null)
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
+                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
                 bodypropCount++;
             }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels(Expression<Func<string>> apiVersion)
         {
-            var apiCallPath = String.Format("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAllModelsResponse>(callPayload);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
@@ -264,18 +264,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:embedContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodelResourceName);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodelResourceName);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             if (bodycontentparts != null)
             {
-                contentObject["parts"] = ExpressionConverter.ConvertO(bodycontentparts);
+                contentObject["parts"] = CSharpExpressionConverter.ConvertToken(bodycontentparts);
                 contentObjectpropCount++;
             }
 
@@ -287,13 +287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
@@ -308,13 +308,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:batchEmbedContents", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
+            body["requests"] = CSharpExpressionConverter.ConvertToken(bodyrequests);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["mod"] = Convert.ToString("agent");
             callPayload.Queries["cmd"] = Convert.ToString("modify_campaign_access");
-            callPayload.Queries["agent_id"] = ExpressionConverter.Convert(agentId);
-            callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["agent_id"] = CSharpExpressionConverter.ConvertO(agentId);
+            callPayload.Queries["campaign_id"] = CSharpExpressionConverter.ConvertO(campaignId);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<AgentCampaignAccessResponse>(callPayload);
         }
 
@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var accountObjectpropCount = 0;
             if (bodyaccountexternalId != null)
             {
-                accountObject["external_id"] = ExpressionConverter.ConvertO(bodyaccountexternalId);
+                accountObject["external_id"] = CSharpExpressionConverter.ConvertToken(bodyaccountexternalId);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountinboundNumber != null)
             {
-                accountObject["inbound_number"] = ExpressionConverter.ConvertO(bodyaccountinboundNumber);
+                accountObject["inbound_number"] = CSharpExpressionConverter.ConvertToken(bodyaccountinboundNumber);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountlang != null)
             {
-                accountObject["lang"] = ExpressionConverter.ConvertO(bodyaccountlang);
+                accountObject["lang"] = CSharpExpressionConverter.ConvertToken(bodyaccountlang);
                 accountObjectpropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             accountObjectpropCount++;
             if (bodyaccountpassword != null)
             {
-                accountObject["password"] = ExpressionConverter.ConvertO(bodyaccountpassword);
+                accountObject["password"] = CSharpExpressionConverter.ConvertToken(bodyaccountpassword);
                 accountObjectpropCount++;
             }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             {
                 if (bodyaccounttimeZone != null)
                 {
-                    accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                    accountObject["time_zone"] = CSharpExpressionConverter.ConvertToken(bodyaccounttimeZone);
                     accountObjectpropCount++;
                 }
 
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodyaccountusername != null)
             {
-                accountObject["username"] = ExpressionConverter.ConvertO(bodyaccountusername);
+                accountObject["username"] = CSharpExpressionConverter.ConvertToken(bodyaccountusername);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountvoipUsername != null)
             {
-                accountObject["voip_username"] = ExpressionConverter.ConvertO(bodyaccountvoipUsername);
+                accountObject["voip_username"] = CSharpExpressionConverter.ConvertToken(bodyaccountvoipUsername);
                 accountObjectpropCount++;
             }
 
@@ -101,55 +101,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var contactInformationObjectpropCount = 0;
             if (bodycontactInformationaddress != null)
             {
-                contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                contactInformationObject["address"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationaddress);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcity != null)
             {
-                contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                contactInformationObject["city"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationcity);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcountry != null)
             {
-                contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                contactInformationObject["country"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationcountry);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationeContacts != null)
             {
-                contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                contactInformationObject["e_contacts"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationeContacts);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationemail != null)
             {
-                contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                contactInformationObject["email"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationemail);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationname != null)
             {
-                contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                contactInformationObject["name"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationname);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationphone != null)
             {
-                contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                contactInformationObject["phone"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationphone);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationpostal != null)
             {
-                contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                contactInformationObject["postal"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationpostal);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationworkphone != null)
             {
-                contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                contactInformationObject["workphone"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationworkphone);
                 contactInformationObjectpropCount++;
             }
 
@@ -163,19 +163,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var employmentObjectpropCount = 0;
             if (bodyemploymentagentGroupId != null)
             {
-                employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(bodyemploymentagentGroupId);
+                employmentObject["agent_group_id"] = CSharpExpressionConverter.ConvertToken(bodyemploymentagentGroupId);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentbankAcc != null)
             {
-                employmentObject["bank_acc"] = ExpressionConverter.ConvertO(bodyemploymentbankAcc);
+                employmentObject["bank_acc"] = CSharpExpressionConverter.ConvertToken(bodyemploymentbankAcc);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentdescription != null)
             {
-                employmentObject["description"] = ExpressionConverter.ConvertO(bodyemploymentdescription);
+                employmentObject["description"] = CSharpExpressionConverter.ConvertToken(bodyemploymentdescription);
                 employmentObjectpropCount++;
             }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             {
                 if (bodyemploymentemployment != null)
                 {
-                    employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                    employmentObject["employment"] = CSharpExpressionConverter.Convert(bodyemploymentemployment);
                     employmentObjectpropCount++;
                 }
 
@@ -197,25 +197,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodyemploymentemploymentStart != null)
             {
-                employmentObject["employment_start"] = ExpressionConverter.ConvertO(bodyemploymentemploymentStart);
+                employmentObject["employment_start"] = CSharpExpressionConverter.ConvertToken(bodyemploymentemploymentStart);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentoffice != null)
             {
-                employmentObject["office"] = ExpressionConverter.ConvertO(bodyemploymentoffice);
+                employmentObject["office"] = CSharpExpressionConverter.ConvertToken(bodyemploymentoffice);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentssn != null)
             {
-                employmentObject["ssn"] = ExpressionConverter.ConvertO(bodyemploymentssn);
+                employmentObject["ssn"] = CSharpExpressionConverter.ConvertToken(bodyemploymentssn);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentworkshift != null)
             {
-                employmentObject["workshift"] = ExpressionConverter.ConvertO(bodyemploymentworkshift);
+                employmentObject["workshift"] = CSharpExpressionConverter.ConvertToken(bodyemploymentworkshift);
                 employmentObjectpropCount++;
             }
 
@@ -247,265 +247,265 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var contactObjectpropCount = 0;
             if (bodycontactaddress != null)
             {
-                contactObject["address"] = ExpressionConverter.ConvertO(bodycontactaddress);
+                contactObject["address"] = CSharpExpressionConverter.ConvertToken(bodycontactaddress);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcity != null)
             {
-                contactObject["city"] = ExpressionConverter.ConvertO(bodycontactcity);
+                contactObject["city"] = CSharpExpressionConverter.ConvertToken(bodycontactcity);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcompanyid != null)
             {
-                contactObject["companyid"] = ExpressionConverter.ConvertO(bodycontactcompanyid);
+                contactObject["companyid"] = CSharpExpressionConverter.ConvertToken(bodycontactcompanyid);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcontactList != null)
             {
-                contactObject["contact_list"] = ExpressionConverter.ConvertO(bodycontactcontactList);
+                contactObject["contact_list"] = CSharpExpressionConverter.ConvertToken(bodycontactcontactList);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcontactid != null)
             {
-                contactObject["contactid"] = ExpressionConverter.ConvertO(bodycontactcontactid);
+                contactObject["contactid"] = CSharpExpressionConverter.ConvertToken(bodycontactcontactid);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcountry != null)
             {
-                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                contactObject["country"] = CSharpExpressionConverter.ConvertToken(bodycontactcountry);
                 contactObjectpropCount++;
             }
 
             if (bodycontactfname != null)
             {
-                contactObject["fname"] = ExpressionConverter.ConvertO(bodycontactfname);
+                contactObject["fname"] = CSharpExpressionConverter.ConvertToken(bodycontactfname);
                 contactObjectpropCount++;
             }
 
             if (bodycontactlname != null)
             {
-                contactObject["lname"] = ExpressionConverter.ConvertO(bodycontactlname);
+                contactObject["lname"] = CSharpExpressionConverter.ConvertToken(bodycontactlname);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother1 != null)
             {
-                contactObject["other1"] = ExpressionConverter.ConvertO(bodycontactother1);
+                contactObject["other1"] = CSharpExpressionConverter.ConvertToken(bodycontactother1);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother2 != null)
             {
-                contactObject["other2"] = ExpressionConverter.ConvertO(bodycontactother2);
+                contactObject["other2"] = CSharpExpressionConverter.ConvertToken(bodycontactother2);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother3 != null)
             {
-                contactObject["other3"] = ExpressionConverter.ConvertO(bodycontactother3);
+                contactObject["other3"] = CSharpExpressionConverter.ConvertToken(bodycontactother3);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother4 != null)
             {
-                contactObject["other4"] = ExpressionConverter.ConvertO(bodycontactother4);
+                contactObject["other4"] = CSharpExpressionConverter.ConvertToken(bodycontactother4);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother5 != null)
             {
-                contactObject["other5"] = ExpressionConverter.ConvertO(bodycontactother5);
+                contactObject["other5"] = CSharpExpressionConverter.ConvertToken(bodycontactother5);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother6 != null)
             {
-                contactObject["other6"] = ExpressionConverter.ConvertO(bodycontactother6);
+                contactObject["other6"] = CSharpExpressionConverter.ConvertToken(bodycontactother6);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother7 != null)
             {
-                contactObject["other7"] = ExpressionConverter.ConvertO(bodycontactother7);
+                contactObject["other7"] = CSharpExpressionConverter.ConvertToken(bodycontactother7);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother8 != null)
             {
-                contactObject["other8"] = ExpressionConverter.ConvertO(bodycontactother8);
+                contactObject["other8"] = CSharpExpressionConverter.ConvertToken(bodycontactother8);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother9 != null)
             {
-                contactObject["other9"] = ExpressionConverter.ConvertO(bodycontactother9);
+                contactObject["other9"] = CSharpExpressionConverter.ConvertToken(bodycontactother9);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother10 != null)
             {
-                contactObject["other10"] = ExpressionConverter.ConvertO(bodycontactother10);
+                contactObject["other10"] = CSharpExpressionConverter.ConvertToken(bodycontactother10);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother11 != null)
             {
-                contactObject["other11"] = ExpressionConverter.ConvertO(bodycontactother11);
+                contactObject["other11"] = CSharpExpressionConverter.ConvertToken(bodycontactother11);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother12 != null)
             {
-                contactObject["other12"] = ExpressionConverter.ConvertO(bodycontactother12);
+                contactObject["other12"] = CSharpExpressionConverter.ConvertToken(bodycontactother12);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother13 != null)
             {
-                contactObject["other13"] = ExpressionConverter.ConvertO(bodycontactother13);
+                contactObject["other13"] = CSharpExpressionConverter.ConvertToken(bodycontactother13);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother14 != null)
             {
-                contactObject["other14"] = ExpressionConverter.ConvertO(bodycontactother14);
+                contactObject["other14"] = CSharpExpressionConverter.ConvertToken(bodycontactother14);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother15 != null)
             {
-                contactObject["other15"] = ExpressionConverter.ConvertO(bodycontactother15);
+                contactObject["other15"] = CSharpExpressionConverter.ConvertToken(bodycontactother15);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother16 != null)
             {
-                contactObject["other16"] = ExpressionConverter.ConvertO(bodycontactother16);
+                contactObject["other16"] = CSharpExpressionConverter.ConvertToken(bodycontactother16);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother17 != null)
             {
-                contactObject["other17"] = ExpressionConverter.ConvertO(bodycontactother17);
+                contactObject["other17"] = CSharpExpressionConverter.ConvertToken(bodycontactother17);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother18 != null)
             {
-                contactObject["other18"] = ExpressionConverter.ConvertO(bodycontactother18);
+                contactObject["other18"] = CSharpExpressionConverter.ConvertToken(bodycontactother18);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother19 != null)
             {
-                contactObject["other19"] = ExpressionConverter.ConvertO(bodycontactother19);
+                contactObject["other19"] = CSharpExpressionConverter.ConvertToken(bodycontactother19);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother20 != null)
             {
-                contactObject["other20"] = ExpressionConverter.ConvertO(bodycontactother20);
+                contactObject["other20"] = CSharpExpressionConverter.ConvertToken(bodycontactother20);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother21 != null)
             {
-                contactObject["other21"] = ExpressionConverter.ConvertO(bodycontactother21);
+                contactObject["other21"] = CSharpExpressionConverter.ConvertToken(bodycontactother21);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother22 != null)
             {
-                contactObject["other22"] = ExpressionConverter.ConvertO(bodycontactother22);
+                contactObject["other22"] = CSharpExpressionConverter.ConvertToken(bodycontactother22);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother23 != null)
             {
-                contactObject["other23"] = ExpressionConverter.ConvertO(bodycontactother23);
+                contactObject["other23"] = CSharpExpressionConverter.ConvertToken(bodycontactother23);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother24 != null)
             {
-                contactObject["other24"] = ExpressionConverter.ConvertO(bodycontactother24);
+                contactObject["other24"] = CSharpExpressionConverter.ConvertToken(bodycontactother24);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother25 != null)
             {
-                contactObject["other25"] = ExpressionConverter.ConvertO(bodycontactother25);
+                contactObject["other25"] = CSharpExpressionConverter.ConvertToken(bodycontactother25);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother26 != null)
             {
-                contactObject["other26"] = ExpressionConverter.ConvertO(bodycontactother26);
+                contactObject["other26"] = CSharpExpressionConverter.ConvertToken(bodycontactother26);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother27 != null)
             {
-                contactObject["other27"] = ExpressionConverter.ConvertO(bodycontactother27);
+                contactObject["other27"] = CSharpExpressionConverter.ConvertToken(bodycontactother27);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother28 != null)
             {
-                contactObject["other28"] = ExpressionConverter.ConvertO(bodycontactother28);
+                contactObject["other28"] = CSharpExpressionConverter.ConvertToken(bodycontactother28);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother29 != null)
             {
-                contactObject["other29"] = ExpressionConverter.ConvertO(bodycontactother29);
+                contactObject["other29"] = CSharpExpressionConverter.ConvertToken(bodycontactother29);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother30 != null)
             {
-                contactObject["other30"] = ExpressionConverter.ConvertO(bodycontactother30);
+                contactObject["other30"] = CSharpExpressionConverter.ConvertToken(bodycontactother30);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother31 != null)
             {
-                contactObject["other31"] = ExpressionConverter.ConvertO(bodycontactother31);
+                contactObject["other31"] = CSharpExpressionConverter.ConvertToken(bodycontactother31);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother32 != null)
             {
-                contactObject["other32"] = ExpressionConverter.ConvertO(bodycontactother32);
+                contactObject["other32"] = CSharpExpressionConverter.ConvertToken(bodycontactother32);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother33 != null)
             {
-                contactObject["other33"] = ExpressionConverter.ConvertO(bodycontactother33);
+                contactObject["other33"] = CSharpExpressionConverter.ConvertToken(bodycontactother33);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother34 != null)
             {
-                contactObject["other34"] = ExpressionConverter.ConvertO(bodycontactother34);
+                contactObject["other34"] = CSharpExpressionConverter.ConvertToken(bodycontactother34);
                 contactObjectpropCount++;
             }
 
             if (bodycontactother35 != null)
             {
-                contactObject["other35"] = ExpressionConverter.ConvertO(bodycontactother35);
+                contactObject["other35"] = CSharpExpressionConverter.ConvertToken(bodycontactother35);
                 contactObjectpropCount++;
             }
 
             if (bodycontactpostcode != null)
             {
-                contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
+                contactObject["postcode"] = CSharpExpressionConverter.ConvertToken(bodycontactpostcode);
                 contactObjectpropCount++;
             }
 
@@ -519,37 +519,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var propertiesObjectpropCount = 0;
             if (bodypropertiesagent != null)
             {
-                propertiesObject["agent"] = ExpressionConverter.ConvertO(bodypropertiesagent);
+                propertiesObject["agent"] = CSharpExpressionConverter.ConvertToken(bodypropertiesagent);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiesagentGroup != null)
             {
-                propertiesObject["agent_group"] = ExpressionConverter.ConvertO(bodypropertiesagentGroup);
+                propertiesObject["agent_group"] = CSharpExpressionConverter.ConvertToken(bodypropertiesagentGroup);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiescampaign != null)
             {
-                propertiesObject["campaign"] = ExpressionConverter.ConvertO(bodypropertiescampaign);
+                propertiesObject["campaign"] = CSharpExpressionConverter.ConvertToken(bodypropertiescampaign);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiescomment != null)
             {
-                propertiesObject["comment"] = ExpressionConverter.ConvertO(bodypropertiescomment);
+                propertiesObject["comment"] = CSharpExpressionConverter.ConvertToken(bodypropertiescomment);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiesphone != null)
             {
-                propertiesObject["phone"] = ExpressionConverter.ConvertO(bodypropertiesphone);
+                propertiesObject["phone"] = CSharpExpressionConverter.ConvertToken(bodypropertiesphone);
                 propertiesObjectpropCount++;
             }
 
             if (bodypropertiestimestamp != null)
             {
-                propertiesObject["timestamp"] = ExpressionConverter.ConvertO(bodypropertiestimestamp);
+                propertiesObject["timestamp"] = CSharpExpressionConverter.ConvertToken(bodypropertiestimestamp);
                 propertiesObjectpropCount++;
             }
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             {
                 if (bodypropertiestype != null)
                 {
-                    propertiesObject["type"] = ExpressionConverter.ConvertO(bodypropertiestype);
+                    propertiesObject["type"] = CSharpExpressionConverter.Convert(bodypropertiestype);
                     propertiesObjectpropCount++;
                 }
 
@@ -594,112 +594,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             callPayload.Queries["mod"] = Convert.ToString("contact");
             callPayload.Queries["cmd"] = Convert.ToString("add");
             if (fname != null)
-                callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
+                callPayload.Queries["fname"] = CSharpExpressionConverter.ConvertO(fname);
             if (lname != null)
-                callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
-            callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-            callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                callPayload.Queries["lname"] = CSharpExpressionConverter.ConvertO(lname);
+            callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
+            callPayload.Queries["list"] = CSharpExpressionConverter.ConvertO(list);
             callPayload.Queries["return_value"] = Convert.ToString("1");
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (www != null)
-                callPayload.Queries["www"] = ExpressionConverter.Convert(www);
+                callPayload.Queries["www"] = CSharpExpressionConverter.ConvertO(www);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (postcode != null)
-                callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["postcode"] = CSharpExpressionConverter.ConvertO(postcode);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (ssc != null)
-                callPayload.Queries["ssc"] = ExpressionConverter.Convert(ssc);
+                callPayload.Queries["ssc"] = CSharpExpressionConverter.ConvertO(ssc);
             if (birthyear != null)
-                callPayload.Queries["birthyear"] = ExpressionConverter.Convert(birthyear);
+                callPayload.Queries["birthyear"] = CSharpExpressionConverter.ConvertO(birthyear);
             if (gender != null)
-                callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
+                callPayload.Queries["gender"] = CSharpExpressionConverter.ConvertO(gender);
             if (companyid != null)
-                callPayload.Queries["companyid"] = ExpressionConverter.Convert(companyid);
+                callPayload.Queries["companyid"] = CSharpExpressionConverter.ConvertO(companyid);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (vatin != null)
-                callPayload.Queries["vatin"] = ExpressionConverter.Convert(vatin);
+                callPayload.Queries["vatin"] = CSharpExpressionConverter.ConvertO(vatin);
             if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+                callPayload.Queries["comment"] = CSharpExpressionConverter.ConvertO(comment);
             if (other1 != null)
-                callPayload.Queries["other1"] = ExpressionConverter.Convert(other1);
+                callPayload.Queries["other1"] = CSharpExpressionConverter.ConvertO(other1);
             if (other2 != null)
-                callPayload.Queries["other2"] = ExpressionConverter.Convert(other2);
+                callPayload.Queries["other2"] = CSharpExpressionConverter.ConvertO(other2);
             if (other3 != null)
-                callPayload.Queries["other3"] = ExpressionConverter.Convert(other3);
+                callPayload.Queries["other3"] = CSharpExpressionConverter.ConvertO(other3);
             if (other4 != null)
-                callPayload.Queries["other4"] = ExpressionConverter.Convert(other4);
+                callPayload.Queries["other4"] = CSharpExpressionConverter.ConvertO(other4);
             if (other5 != null)
-                callPayload.Queries["other5"] = ExpressionConverter.Convert(other5);
+                callPayload.Queries["other5"] = CSharpExpressionConverter.ConvertO(other5);
             if (other6 != null)
-                callPayload.Queries["other6"] = ExpressionConverter.Convert(other6);
+                callPayload.Queries["other6"] = CSharpExpressionConverter.ConvertO(other6);
             if (other7 != null)
-                callPayload.Queries["other7"] = ExpressionConverter.Convert(other7);
+                callPayload.Queries["other7"] = CSharpExpressionConverter.ConvertO(other7);
             if (other8 != null)
-                callPayload.Queries["other8"] = ExpressionConverter.Convert(other8);
+                callPayload.Queries["other8"] = CSharpExpressionConverter.ConvertO(other8);
             if (other9 != null)
-                callPayload.Queries["other9"] = ExpressionConverter.Convert(other9);
+                callPayload.Queries["other9"] = CSharpExpressionConverter.ConvertO(other9);
             if (other10 != null)
-                callPayload.Queries["other10"] = ExpressionConverter.Convert(other10);
+                callPayload.Queries["other10"] = CSharpExpressionConverter.ConvertO(other10);
             if (other11 != null)
-                callPayload.Queries["other11"] = ExpressionConverter.Convert(other11);
+                callPayload.Queries["other11"] = CSharpExpressionConverter.ConvertO(other11);
             if (other12 != null)
-                callPayload.Queries["other12"] = ExpressionConverter.Convert(other12);
+                callPayload.Queries["other12"] = CSharpExpressionConverter.ConvertO(other12);
             if (other13 != null)
-                callPayload.Queries["other13"] = ExpressionConverter.Convert(other13);
+                callPayload.Queries["other13"] = CSharpExpressionConverter.ConvertO(other13);
             if (other14 != null)
-                callPayload.Queries["other14"] = ExpressionConverter.Convert(other14);
+                callPayload.Queries["other14"] = CSharpExpressionConverter.ConvertO(other14);
             if (other15 != null)
-                callPayload.Queries["other15"] = ExpressionConverter.Convert(other15);
+                callPayload.Queries["other15"] = CSharpExpressionConverter.ConvertO(other15);
             if (other16 != null)
-                callPayload.Queries["other16"] = ExpressionConverter.Convert(other16);
+                callPayload.Queries["other16"] = CSharpExpressionConverter.ConvertO(other16);
             if (other17 != null)
-                callPayload.Queries["other17"] = ExpressionConverter.Convert(other17);
+                callPayload.Queries["other17"] = CSharpExpressionConverter.ConvertO(other17);
             if (other18 != null)
-                callPayload.Queries["other18"] = ExpressionConverter.Convert(other18);
+                callPayload.Queries["other18"] = CSharpExpressionConverter.ConvertO(other18);
             if (other19 != null)
-                callPayload.Queries["other19"] = ExpressionConverter.Convert(other19);
+                callPayload.Queries["other19"] = CSharpExpressionConverter.ConvertO(other19);
             if (other20 != null)
-                callPayload.Queries["other20"] = ExpressionConverter.Convert(other20);
+                callPayload.Queries["other20"] = CSharpExpressionConverter.ConvertO(other20);
             if (other21 != null)
-                callPayload.Queries["other21"] = ExpressionConverter.Convert(other21);
+                callPayload.Queries["other21"] = CSharpExpressionConverter.ConvertO(other21);
             if (other22 != null)
-                callPayload.Queries["other22"] = ExpressionConverter.Convert(other22);
+                callPayload.Queries["other22"] = CSharpExpressionConverter.ConvertO(other22);
             if (other23 != null)
-                callPayload.Queries["other23"] = ExpressionConverter.Convert(other23);
+                callPayload.Queries["other23"] = CSharpExpressionConverter.ConvertO(other23);
             if (other24 != null)
-                callPayload.Queries["other24"] = ExpressionConverter.Convert(other24);
+                callPayload.Queries["other24"] = CSharpExpressionConverter.ConvertO(other24);
             if (other25 != null)
-                callPayload.Queries["other25"] = ExpressionConverter.Convert(other25);
+                callPayload.Queries["other25"] = CSharpExpressionConverter.ConvertO(other25);
             if (other26 != null)
-                callPayload.Queries["other26"] = ExpressionConverter.Convert(other26);
+                callPayload.Queries["other26"] = CSharpExpressionConverter.ConvertO(other26);
             if (other27 != null)
-                callPayload.Queries["other27"] = ExpressionConverter.Convert(other27);
+                callPayload.Queries["other27"] = CSharpExpressionConverter.ConvertO(other27);
             if (other28 != null)
-                callPayload.Queries["other28"] = ExpressionConverter.Convert(other28);
+                callPayload.Queries["other28"] = CSharpExpressionConverter.ConvertO(other28);
             if (other29 != null)
-                callPayload.Queries["other29"] = ExpressionConverter.Convert(other29);
+                callPayload.Queries["other29"] = CSharpExpressionConverter.ConvertO(other29);
             if (other30 != null)
-                callPayload.Queries["other30"] = ExpressionConverter.Convert(other30);
+                callPayload.Queries["other30"] = CSharpExpressionConverter.ConvertO(other30);
             if (other31 != null)
-                callPayload.Queries["other31"] = ExpressionConverter.Convert(other31);
+                callPayload.Queries["other31"] = CSharpExpressionConverter.ConvertO(other31);
             if (other32 != null)
-                callPayload.Queries["other32"] = ExpressionConverter.Convert(other32);
+                callPayload.Queries["other32"] = CSharpExpressionConverter.ConvertO(other32);
             if (other33 != null)
-                callPayload.Queries["other33"] = ExpressionConverter.Convert(other33);
+                callPayload.Queries["other33"] = CSharpExpressionConverter.ConvertO(other33);
             if (other34 != null)
-                callPayload.Queries["other34"] = ExpressionConverter.Convert(other34);
+                callPayload.Queries["other34"] = CSharpExpressionConverter.ConvertO(other34);
             if (other35 != null)
-                callPayload.Queries["other35"] = ExpressionConverter.Convert(other35);
+                callPayload.Queries["other35"] = CSharpExpressionConverter.ConvertO(other35);
             if (assignToAgent != null)
-                callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(assignToAgent);
+                callPayload.Queries["assign_to_agent"] = CSharpExpressionConverter.ConvertO(assignToAgent);
             return new ApiConnectionAction<CreateContactResponse>(callPayload);
         }
 
@@ -711,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["mod"] = Convert.ToString("agent");
             callPayload.Queries["cmd"] = Convert.ToString("find");
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
             return new ApiConnectionAction<FindAgentResponse>(callPayload);
         }
 
@@ -724,13 +724,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             callPayload.Queries["mod"] = Convert.ToString("contact");
             callPayload.Queries["cmd"] = Convert.ToString("find");
             if (fname != null)
-                callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
+                callPayload.Queries["fname"] = CSharpExpressionConverter.ConvertO(fname);
             if (lname != null)
-                callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
+                callPayload.Queries["lname"] = CSharpExpressionConverter.ConvertO(lname);
             if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (contactListId != null)
-                callPayload.Queries["contact_list_id"] = ExpressionConverter.Convert(contactListId);
+                callPayload.Queries["contact_list_id"] = CSharpExpressionConverter.ConvertO(contactListId);
             return new ApiConnectionAction<FindContactResponse>(callPayload);
         }
 
@@ -748,43 +748,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var accountObjectpropCount = 0;
             if (bodyaccountexternalId != null)
             {
-                accountObject["external_id"] = ExpressionConverter.ConvertO(bodyaccountexternalId);
+                accountObject["external_id"] = CSharpExpressionConverter.ConvertToken(bodyaccountexternalId);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountinboundNumber != null)
             {
-                accountObject["inbound_number"] = ExpressionConverter.ConvertO(bodyaccountinboundNumber);
+                accountObject["inbound_number"] = CSharpExpressionConverter.ConvertToken(bodyaccountinboundNumber);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountlang != null)
             {
-                accountObject["lang"] = ExpressionConverter.ConvertO(bodyaccountlang);
+                accountObject["lang"] = CSharpExpressionConverter.ConvertToken(bodyaccountlang);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountpassword != null)
             {
-                accountObject["password"] = ExpressionConverter.ConvertO(bodyaccountpassword);
+                accountObject["password"] = CSharpExpressionConverter.ConvertToken(bodyaccountpassword);
                 accountObjectpropCount++;
             }
 
             if (bodyaccounttimeZone != null)
             {
-                accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                accountObject["time_zone"] = CSharpExpressionConverter.ConvertToken(bodyaccounttimeZone);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountusername != null)
             {
-                accountObject["username"] = ExpressionConverter.ConvertO(bodyaccountusername);
+                accountObject["username"] = CSharpExpressionConverter.ConvertToken(bodyaccountusername);
                 accountObjectpropCount++;
             }
 
             if (bodyaccountvoipUsername != null)
             {
-                accountObject["voip_username"] = ExpressionConverter.ConvertO(bodyaccountvoipUsername);
+                accountObject["voip_username"] = CSharpExpressionConverter.ConvertToken(bodyaccountvoipUsername);
                 accountObjectpropCount++;
             }
 
@@ -798,55 +798,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var contactInformationObjectpropCount = 0;
             if (bodycontactInformationaddress != null)
             {
-                contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                contactInformationObject["address"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationaddress);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcity != null)
             {
-                contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                contactInformationObject["city"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationcity);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcountry != null)
             {
-                contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                contactInformationObject["country"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationcountry);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationeContacts != null)
             {
-                contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                contactInformationObject["e_contacts"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationeContacts);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationemail != null)
             {
-                contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                contactInformationObject["email"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationemail);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationname != null)
             {
-                contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                contactInformationObject["name"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationname);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationphone != null)
             {
-                contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                contactInformationObject["phone"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationphone);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationpostal != null)
             {
-                contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                contactInformationObject["postal"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationpostal);
                 contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationworkphone != null)
             {
-                contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                contactInformationObject["workphone"] = CSharpExpressionConverter.ConvertToken(bodycontactInformationworkphone);
                 contactInformationObjectpropCount++;
             }
 
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             {
                 if (bodydisable != null)
                 {
-                    body["disable"] = ExpressionConverter.ConvertO(bodydisable);
+                    body["disable"] = CSharpExpressionConverter.ConvertToken(bodydisable);
                     bodypropCount++;
                 }
 
@@ -876,49 +876,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var employmentObjectpropCount = 0;
             if (bodyemploymentagentGroupId != null)
             {
-                employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(bodyemploymentagentGroupId);
+                employmentObject["agent_group_id"] = CSharpExpressionConverter.ConvertToken(bodyemploymentagentGroupId);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentbankAcc != null)
             {
-                employmentObject["bank_acc"] = ExpressionConverter.ConvertO(bodyemploymentbankAcc);
+                employmentObject["bank_acc"] = CSharpExpressionConverter.ConvertToken(bodyemploymentbankAcc);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentdescription != null)
             {
-                employmentObject["description"] = ExpressionConverter.ConvertO(bodyemploymentdescription);
+                employmentObject["description"] = CSharpExpressionConverter.ConvertToken(bodyemploymentdescription);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentemployment != null)
             {
-                employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                employmentObject["employment"] = CSharpExpressionConverter.Convert(bodyemploymentemployment);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentemploymentStart != null)
             {
-                employmentObject["employment_start"] = ExpressionConverter.ConvertO(bodyemploymentemploymentStart);
+                employmentObject["employment_start"] = CSharpExpressionConverter.ConvertToken(bodyemploymentemploymentStart);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentoffice != null)
             {
-                employmentObject["office"] = ExpressionConverter.ConvertO(bodyemploymentoffice);
+                employmentObject["office"] = CSharpExpressionConverter.ConvertToken(bodyemploymentoffice);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentssn != null)
             {
-                employmentObject["ssn"] = ExpressionConverter.ConvertO(bodyemploymentssn);
+                employmentObject["ssn"] = CSharpExpressionConverter.ConvertToken(bodyemploymentssn);
                 employmentObjectpropCount++;
             }
 
             if (bodyemploymentworkshift != null)
             {
-                employmentObject["workshift"] = ExpressionConverter.ConvertO(bodyemploymentworkshift);
+                employmentObject["workshift"] = CSharpExpressionConverter.ConvertToken(bodyemploymentworkshift);
                 employmentObjectpropCount++;
             }
 
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             }
 
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -946,118 +946,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["mod"] = Convert.ToString("contact");
             callPayload.Queries["cmd"] = Convert.ToString("modify");
-            callPayload.Queries["contact_id"] = ExpressionConverter.Convert(contactId);
+            callPayload.Queries["contact_id"] = CSharpExpressionConverter.ConvertO(contactId);
             if (fname != null)
-                callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
+                callPayload.Queries["fname"] = CSharpExpressionConverter.ConvertO(fname);
             if (lname != null)
-                callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
+                callPayload.Queries["lname"] = CSharpExpressionConverter.ConvertO(lname);
             if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (birthyear != null)
-                callPayload.Queries["birthyear"] = ExpressionConverter.Convert(birthyear);
+                callPayload.Queries["birthyear"] = CSharpExpressionConverter.ConvertO(birthyear);
             if (gender != null)
-                callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
+                callPayload.Queries["gender"] = CSharpExpressionConverter.ConvertO(gender);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (www != null)
-                callPayload.Queries["www"] = ExpressionConverter.Convert(www);
+                callPayload.Queries["www"] = CSharpExpressionConverter.ConvertO(www);
             if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (postcode != null)
-                callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["postcode"] = CSharpExpressionConverter.ConvertO(postcode);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (ssc != null)
-                callPayload.Queries["ssc"] = ExpressionConverter.Convert(ssc);
+                callPayload.Queries["ssc"] = CSharpExpressionConverter.ConvertO(ssc);
             if (companyid != null)
-                callPayload.Queries["companyid"] = ExpressionConverter.Convert(companyid);
+                callPayload.Queries["companyid"] = CSharpExpressionConverter.ConvertO(companyid);
             if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (vatin != null)
-                callPayload.Queries["vatin"] = ExpressionConverter.Convert(vatin);
+                callPayload.Queries["vatin"] = CSharpExpressionConverter.ConvertO(vatin);
             if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+                callPayload.Queries["comment"] = CSharpExpressionConverter.ConvertO(comment);
             if (other1 != null)
-                callPayload.Queries["other1"] = ExpressionConverter.Convert(other1);
+                callPayload.Queries["other1"] = CSharpExpressionConverter.ConvertO(other1);
             if (other2 != null)
-                callPayload.Queries["other2"] = ExpressionConverter.Convert(other2);
+                callPayload.Queries["other2"] = CSharpExpressionConverter.ConvertO(other2);
             if (other3 != null)
-                callPayload.Queries["other3"] = ExpressionConverter.Convert(other3);
+                callPayload.Queries["other3"] = CSharpExpressionConverter.ConvertO(other3);
             if (other4 != null)
-                callPayload.Queries["other4"] = ExpressionConverter.Convert(other4);
+                callPayload.Queries["other4"] = CSharpExpressionConverter.ConvertO(other4);
             if (other5 != null)
-                callPayload.Queries["other5"] = ExpressionConverter.Convert(other5);
+                callPayload.Queries["other5"] = CSharpExpressionConverter.ConvertO(other5);
             if (other6 != null)
-                callPayload.Queries["other6"] = ExpressionConverter.Convert(other6);
+                callPayload.Queries["other6"] = CSharpExpressionConverter.ConvertO(other6);
             if (other7 != null)
-                callPayload.Queries["other7"] = ExpressionConverter.Convert(other7);
+                callPayload.Queries["other7"] = CSharpExpressionConverter.ConvertO(other7);
             if (other8 != null)
-                callPayload.Queries["other8"] = ExpressionConverter.Convert(other8);
+                callPayload.Queries["other8"] = CSharpExpressionConverter.ConvertO(other8);
             if (other9 != null)
-                callPayload.Queries["other9"] = ExpressionConverter.Convert(other9);
+                callPayload.Queries["other9"] = CSharpExpressionConverter.ConvertO(other9);
             if (other10 != null)
-                callPayload.Queries["other10"] = ExpressionConverter.Convert(other10);
+                callPayload.Queries["other10"] = CSharpExpressionConverter.ConvertO(other10);
             if (other11 != null)
-                callPayload.Queries["other11"] = ExpressionConverter.Convert(other11);
+                callPayload.Queries["other11"] = CSharpExpressionConverter.ConvertO(other11);
             if (other12 != null)
-                callPayload.Queries["other12"] = ExpressionConverter.Convert(other12);
+                callPayload.Queries["other12"] = CSharpExpressionConverter.ConvertO(other12);
             if (other13 != null)
-                callPayload.Queries["other13"] = ExpressionConverter.Convert(other13);
+                callPayload.Queries["other13"] = CSharpExpressionConverter.ConvertO(other13);
             if (other14 != null)
-                callPayload.Queries["other14"] = ExpressionConverter.Convert(other14);
+                callPayload.Queries["other14"] = CSharpExpressionConverter.ConvertO(other14);
             if (other15 != null)
-                callPayload.Queries["other15"] = ExpressionConverter.Convert(other15);
+                callPayload.Queries["other15"] = CSharpExpressionConverter.ConvertO(other15);
             if (other16 != null)
-                callPayload.Queries["other16"] = ExpressionConverter.Convert(other16);
+                callPayload.Queries["other16"] = CSharpExpressionConverter.ConvertO(other16);
             if (other17 != null)
-                callPayload.Queries["other17"] = ExpressionConverter.Convert(other17);
+                callPayload.Queries["other17"] = CSharpExpressionConverter.ConvertO(other17);
             if (other18 != null)
-                callPayload.Queries["other18"] = ExpressionConverter.Convert(other18);
+                callPayload.Queries["other18"] = CSharpExpressionConverter.ConvertO(other18);
             if (other19 != null)
-                callPayload.Queries["other19"] = ExpressionConverter.Convert(other19);
+                callPayload.Queries["other19"] = CSharpExpressionConverter.ConvertO(other19);
             if (other20 != null)
-                callPayload.Queries["other20"] = ExpressionConverter.Convert(other20);
+                callPayload.Queries["other20"] = CSharpExpressionConverter.ConvertO(other20);
             if (other21 != null)
-                callPayload.Queries["other21"] = ExpressionConverter.Convert(other21);
+                callPayload.Queries["other21"] = CSharpExpressionConverter.ConvertO(other21);
             if (other22 != null)
-                callPayload.Queries["other22"] = ExpressionConverter.Convert(other22);
+                callPayload.Queries["other22"] = CSharpExpressionConverter.ConvertO(other22);
             if (other23 != null)
-                callPayload.Queries["other23"] = ExpressionConverter.Convert(other23);
+                callPayload.Queries["other23"] = CSharpExpressionConverter.ConvertO(other23);
             if (other24 != null)
-                callPayload.Queries["other24"] = ExpressionConverter.Convert(other24);
+                callPayload.Queries["other24"] = CSharpExpressionConverter.ConvertO(other24);
             if (other25 != null)
-                callPayload.Queries["other25"] = ExpressionConverter.Convert(other25);
+                callPayload.Queries["other25"] = CSharpExpressionConverter.ConvertO(other25);
             if (other26 != null)
-                callPayload.Queries["other26"] = ExpressionConverter.Convert(other26);
+                callPayload.Queries["other26"] = CSharpExpressionConverter.ConvertO(other26);
             if (other27 != null)
-                callPayload.Queries["other27"] = ExpressionConverter.Convert(other27);
+                callPayload.Queries["other27"] = CSharpExpressionConverter.ConvertO(other27);
             if (other28 != null)
-                callPayload.Queries["other28"] = ExpressionConverter.Convert(other28);
+                callPayload.Queries["other28"] = CSharpExpressionConverter.ConvertO(other28);
             if (other29 != null)
-                callPayload.Queries["other29"] = ExpressionConverter.Convert(other29);
+                callPayload.Queries["other29"] = CSharpExpressionConverter.ConvertO(other29);
             if (other30 != null)
-                callPayload.Queries["other30"] = ExpressionConverter.Convert(other30);
+                callPayload.Queries["other30"] = CSharpExpressionConverter.ConvertO(other30);
             if (other31 != null)
-                callPayload.Queries["other31"] = ExpressionConverter.Convert(other31);
+                callPayload.Queries["other31"] = CSharpExpressionConverter.ConvertO(other31);
             if (other32 != null)
-                callPayload.Queries["other32"] = ExpressionConverter.Convert(other32);
+                callPayload.Queries["other32"] = CSharpExpressionConverter.ConvertO(other32);
             if (other33 != null)
-                callPayload.Queries["other33"] = ExpressionConverter.Convert(other33);
+                callPayload.Queries["other33"] = CSharpExpressionConverter.ConvertO(other33);
             if (other34 != null)
-                callPayload.Queries["other34"] = ExpressionConverter.Convert(other34);
+                callPayload.Queries["other34"] = CSharpExpressionConverter.ConvertO(other34);
             if (other35 != null)
-                callPayload.Queries["other35"] = ExpressionConverter.Convert(other35);
+                callPayload.Queries["other35"] = CSharpExpressionConverter.ConvertO(other35);
             if (list != null)
-                callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                callPayload.Queries["list"] = CSharpExpressionConverter.ConvertO(list);
             callPayload.Queries["order"] = Convert.ToString("last");
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
             if (assignToAgent != null)
-                callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(assignToAgent);
+                callPayload.Queries["assign_to_agent"] = CSharpExpressionConverter.ConvertO(assignToAgent);
             return new ApiConnectionAction<ModifyContactResponse>(callPayload);
         }
     }

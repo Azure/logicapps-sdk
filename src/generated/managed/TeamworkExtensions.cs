@@ -32,49 +32,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var projectObjectpropCount = 0;
             if (bodyprojectname != null)
             {
-                projectObject["name"] = ExpressionConverter.ConvertO(bodyprojectname);
+                projectObject["name"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectdescription != null)
             {
-                projectObject["description"] = ExpressionConverter.ConvertO(bodyprojectdescription);
+                projectObject["description"] = CSharpExpressionConverter.ConvertToken(bodyprojectdescription);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectcategoryId != null)
             {
-                projectObject["category-id"] = ExpressionConverter.ConvertO(bodyprojectcategoryId);
+                projectObject["category-id"] = CSharpExpressionConverter.ConvertToken(bodyprojectcategoryId);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectcompanyId != null)
             {
-                projectObject["companyId"] = ExpressionConverter.ConvertO(bodyprojectcompanyId);
+                projectObject["companyId"] = CSharpExpressionConverter.ConvertToken(bodyprojectcompanyId);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectnewCompany != null)
             {
-                projectObject["newCompany"] = ExpressionConverter.ConvertO(bodyprojectnewCompany);
+                projectObject["newCompany"] = CSharpExpressionConverter.ConvertToken(bodyprojectnewCompany);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectstartDate != null)
             {
-                projectObject["startDate"] = ExpressionConverter.ConvertO(bodyprojectstartDate);
+                projectObject["startDate"] = CSharpExpressionConverter.ConvertToken(bodyprojectstartDate);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectendDate != null)
             {
-                projectObject["endDate"] = ExpressionConverter.ConvertO(bodyprojectendDate);
+                projectObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodyprojectendDate);
                 projectObjectpropCount++;
             }
 
             if (bodyprojecttags != null)
             {
-                projectObject["tags"] = ExpressionConverter.ConvertO(bodyprojecttags);
+                projectObject["tags"] = CSharpExpressionConverter.ConvertToken(bodyprojecttags);
                 projectObjectpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetProjectResponse>(callPayload);
@@ -104,87 +104,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListTasksResponse> ListTasks(Expression<Func<string>> projectId, Expression<Func<string>> taskListId)
         {
-            var apiCallPath = String.Format("/tasklists/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionAction<ListTasksResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<UpsertTaskResponse> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedMinutes = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
         {
-            var apiCallPath = String.Format("/tasklists/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             var body = new JObject();
             var bodypropCount = 0;
             var todoItemObject = new JObject();
             var todoItemObjectpropCount = 0;
             if (bodytodoItemname != null)
             {
-                todoItemObject["content"] = ExpressionConverter.ConvertO(bodytodoItemname);
+                todoItemObject["content"] = CSharpExpressionConverter.ConvertToken(bodytodoItemname);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemdescription != null)
             {
-                todoItemObject["description"] = ExpressionConverter.ConvertO(bodytodoItemdescription);
+                todoItemObject["description"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdescription);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemprogress != null)
             {
-                todoItemObject["progress"] = ExpressionConverter.ConvertO(bodytodoItemprogress);
+                todoItemObject["progress"] = CSharpExpressionConverter.ConvertToken(bodytodoItemprogress);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemassignTo != null)
             {
-                todoItemObject["responsible-party-id"] = ExpressionConverter.ConvertO(bodytodoItemassignTo);
+                todoItemObject["responsible-party-id"] = CSharpExpressionConverter.ConvertToken(bodytodoItemassignTo);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemstartDate != null)
             {
-                todoItemObject["start-date"] = ExpressionConverter.ConvertO(bodytodoItemstartDate);
+                todoItemObject["start-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemstartDate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemdueDate != null)
             {
-                todoItemObject["due-date"] = ExpressionConverter.ConvertO(bodytodoItemdueDate);
+                todoItemObject["due-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdueDate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemestimatedMinutes != null)
             {
-                todoItemObject["estimated-minutes"] = ExpressionConverter.ConvertO(bodytodoItemestimatedMinutes);
+                todoItemObject["estimated-minutes"] = CSharpExpressionConverter.ConvertToken(bodytodoItemestimatedMinutes);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItempriority != null)
             {
-                todoItemObject["priority"] = ExpressionConverter.ConvertO(bodytodoItempriority);
+                todoItemObject["priority"] = CSharpExpressionConverter.Convert(bodytodoItempriority);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemnotifyPeople != null)
             {
-                todoItemObject["notify"] = ExpressionConverter.ConvertO(bodytodoItemnotifyPeople);
+                todoItemObject["notify"] = CSharpExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemisPrivate != null)
             {
-                todoItemObject["private"] = ExpressionConverter.ConvertO(bodytodoItemisPrivate);
+                todoItemObject["private"] = CSharpExpressionConverter.ConvertToken(bodytodoItemisPrivate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemtags != null)
             {
-                todoItemObject["tags"] = ExpressionConverter.ConvertO(bodytodoItemtags);
+                todoItemObject["tags"] = CSharpExpressionConverter.ConvertToken(bodytodoItemtags);
                 todoItemObjectpropCount++;
             }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTaskResponse>(callPayload);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<UpsertTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedTime = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
         {
-            var apiCallPath = String.Format("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -223,67 +223,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var todoItemObjectpropCount = 0;
             if (bodytodoItemname != null)
             {
-                todoItemObject["content"] = ExpressionConverter.ConvertO(bodytodoItemname);
+                todoItemObject["content"] = CSharpExpressionConverter.ConvertToken(bodytodoItemname);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemdescription != null)
             {
-                todoItemObject["description"] = ExpressionConverter.ConvertO(bodytodoItemdescription);
+                todoItemObject["description"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdescription);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemprogress != null)
             {
-                todoItemObject["progress"] = ExpressionConverter.ConvertO(bodytodoItemprogress);
+                todoItemObject["progress"] = CSharpExpressionConverter.ConvertToken(bodytodoItemprogress);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemassignTo != null)
             {
-                todoItemObject["responsible-party-id"] = ExpressionConverter.ConvertO(bodytodoItemassignTo);
+                todoItemObject["responsible-party-id"] = CSharpExpressionConverter.ConvertToken(bodytodoItemassignTo);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemstartDate != null)
             {
-                todoItemObject["start-date"] = ExpressionConverter.ConvertO(bodytodoItemstartDate);
+                todoItemObject["start-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemstartDate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemdueDate != null)
             {
-                todoItemObject["due-date"] = ExpressionConverter.ConvertO(bodytodoItemdueDate);
+                todoItemObject["due-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdueDate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemestimatedTime != null)
             {
-                todoItemObject["estimated-minutes"] = ExpressionConverter.ConvertO(bodytodoItemestimatedTime);
+                todoItemObject["estimated-minutes"] = CSharpExpressionConverter.ConvertToken(bodytodoItemestimatedTime);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItempriority != null)
             {
-                todoItemObject["priority"] = ExpressionConverter.ConvertO(bodytodoItempriority);
+                todoItemObject["priority"] = CSharpExpressionConverter.Convert(bodytodoItempriority);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemnotifyPeople != null)
             {
-                todoItemObject["notify"] = ExpressionConverter.ConvertO(bodytodoItemnotifyPeople);
+                todoItemObject["notify"] = CSharpExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemisPrivate != null)
             {
-                todoItemObject["private"] = ExpressionConverter.ConvertO(bodytodoItemisPrivate);
+                todoItemObject["private"] = CSharpExpressionConverter.ConvertToken(bodytodoItemisPrivate);
                 todoItemObjectpropCount++;
             }
 
             if (bodytodoItemtags != null)
             {
-                todoItemObject["tags"] = ExpressionConverter.ConvertO(bodytodoItemtags);
+                todoItemObject["tags"] = CSharpExpressionConverter.ConvertToken(bodytodoItemtags);
                 todoItemObjectpropCount++;
             }
 
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListUsersResponse> ListUsers(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}/people.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/people.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListUsersResponse>(callPayload);
@@ -331,67 +331,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var personObjectpropCount = 0;
             if (bodypersonemailAddress != null)
             {
-                personObject["email-address"] = ExpressionConverter.ConvertO(bodypersonemailAddress);
+                personObject["email-address"] = CSharpExpressionConverter.ConvertToken(bodypersonemailAddress);
                 personObjectpropCount++;
             }
 
             if (bodypersonfirstName != null)
             {
-                personObject["first-name"] = ExpressionConverter.ConvertO(bodypersonfirstName);
+                personObject["first-name"] = CSharpExpressionConverter.ConvertToken(bodypersonfirstName);
                 personObjectpropCount++;
             }
 
             if (bodypersonlastName != null)
             {
-                personObject["last-name"] = ExpressionConverter.ConvertO(bodypersonlastName);
+                personObject["last-name"] = CSharpExpressionConverter.ConvertToken(bodypersonlastName);
                 personObjectpropCount++;
             }
 
             if (bodypersoncompanyId != null)
             {
-                personObject["company-id"] = ExpressionConverter.ConvertO(bodypersoncompanyId);
+                personObject["company-id"] = CSharpExpressionConverter.ConvertToken(bodypersoncompanyId);
                 personObjectpropCount++;
             }
 
             if (bodypersonjobTitle != null)
             {
-                personObject["title"] = ExpressionConverter.ConvertO(bodypersonjobTitle);
+                personObject["title"] = CSharpExpressionConverter.ConvertToken(bodypersonjobTitle);
                 personObjectpropCount++;
             }
 
             if (bodypersonhome != null)
             {
-                personObject["phone-number-home"] = ExpressionConverter.ConvertO(bodypersonhome);
+                personObject["phone-number-home"] = CSharpExpressionConverter.ConvertToken(bodypersonhome);
                 personObjectpropCount++;
             }
 
             if (bodypersonmobile != null)
             {
-                personObject["phone-number-mobile"] = ExpressionConverter.ConvertO(bodypersonmobile);
+                personObject["phone-number-mobile"] = CSharpExpressionConverter.ConvertToken(bodypersonmobile);
                 personObjectpropCount++;
             }
 
             if (bodypersonoffice != null)
             {
-                personObject["phone-number-office"] = ExpressionConverter.ConvertO(bodypersonoffice);
+                personObject["phone-number-office"] = CSharpExpressionConverter.ConvertToken(bodypersonoffice);
                 personObjectpropCount++;
             }
 
             if (bodypersonofficeExtension != null)
             {
-                personObject["phone-number-office-ext"] = ExpressionConverter.ConvertO(bodypersonofficeExtension);
+                personObject["phone-number-office-ext"] = CSharpExpressionConverter.ConvertToken(bodypersonofficeExtension);
                 personObjectpropCount++;
             }
 
             if (bodypersonfax != null)
             {
-                personObject["phone-number-fax"] = ExpressionConverter.ConvertO(bodypersonfax);
+                personObject["phone-number-fax"] = CSharpExpressionConverter.ConvertToken(bodypersonfax);
                 personObjectpropCount++;
             }
 
             if (bodypersonusername != null)
             {
-                personObject["user-name"] = ExpressionConverter.ConvertO(bodypersonusername);
+                personObject["user-name"] = CSharpExpressionConverter.ConvertToken(bodypersonusername);
                 personObjectpropCount++;
             }
 
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> personId)
         {
-            var apiCallPath = String.Format("/people/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/people/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetUserResponse>(callPayload);

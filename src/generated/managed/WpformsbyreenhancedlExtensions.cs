@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
             var apiCallPath = "/resources/entries/query";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
         public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> id, Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/resources/entries/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
+            callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["form_id"] = ExpressionConverter.ConvertO(bodyformID);
+            body["form_id"] = CSharpExpressionConverter.ConvertToken(bodyformID);
             var metaObject = new JObject();
             var metaObjectpropCount = 0;
             metaObject["powerAutomateUrl"] = "@listCallbackUrl()";

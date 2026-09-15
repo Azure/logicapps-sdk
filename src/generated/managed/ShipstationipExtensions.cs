@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
             var bodypropCount = 0;
             if (bodystoreId != null)
             {
-                body["storeId"] = ExpressionConverter.ConvertO(bodystoreId);
+                body["storeId"] = CSharpExpressionConverter.ConvertToken(bodystoreId);
                 bodypropCount++;
             }
 
             if (bodyrefreshDate != null)
             {
-                body["refreshDate"] = ExpressionConverter.ConvertO(bodyrefreshDate);
+                body["refreshDate"] = CSharpExpressionConverter.ConvertToken(bodyrefreshDate);
                 bodypropCount++;
             }
 

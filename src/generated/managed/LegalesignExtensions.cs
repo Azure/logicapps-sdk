@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<UserDetailResponse> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserDetailResponse>(callPayload);
@@ -27,19 +27,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.ConvertO(group);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<MemberListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<MemberResponse> GetMember(Expression<Func<string>> memberId)
         {
-            var apiCallPath = String.Format("/member/{0}/", ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/member/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MemberResponse>(callPayload);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<AttachmentResponse> GetAttachment(Expression<Func<string>> attachId)
         {
-            var apiCallPath = String.Format("/attachment/{0}/", ExpressionConverter.ConvertWithUrlEncoding(attachId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AttachmentResponse>(callPayload);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction DeleteAttachment(Expression<Func<string>> attachId)
         {
-            var apiCallPath = String.Format("/attachment/{0}/", ExpressionConverter.ConvertWithUrlEncoding(attachId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.ConvertO(group);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<AttachmentListResponse>(callPayload);
         }
 
@@ -88,20 +88,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["group"] = ExpressionConverter.ConvertO(bodygroup);
+            body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
             bodypropCount++;
-            body["pdf_file"] = ExpressionConverter.ConvertO(bodypdfFile);
+            body["pdf_file"] = CSharpExpressionConverter.ConvertToken(bodypdfFile);
             bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetDocumentFieldsResponseItem[]> GetDocumentFields(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}/fields/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/fields/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentFieldsResponseItem[]>(callPayload);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<object> GetDocumentAuditLog(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}/auditlog/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/auditlog/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<object> GetDocumentPdf(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/pdf/{0}/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pdf/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}/delete/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/delete/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<DocumentResponseDetail> GetDocument(Expression<Func<string>> docId)
         {
-            var apiCallPath = String.Format("/document/{0}/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DocumentResponseDetail>(callPayload);
@@ -161,18 +161,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction UpdateArchiveDocument(Expression<Func<string>> docId, Expression<Func<string>> email = null)
         {
-            var apiCallPath = String.Format("/document/{0}/", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<SignerResponse> GetRecipient(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/signer/{0}/", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signer/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SignerResponse>(callPayload);
@@ -181,14 +181,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction PostSignerReminder(Expression<Func<string>> recipientId, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = String.Format("/signer/{0}/send-reminder/", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signer/{0}/send-reminder/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction GetSignerLink(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/signer/{0}/new-link/", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signer/{0}/new-link/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetSignerFieldsResponseItem[]> GetSignerFields(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/signer/{0}/fields1/", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signer/{0}/fields1/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSignerFieldsResponseItem[]>(callPayload);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetSignerRejectionResponse> GetSignerRejection(Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/signer/{0}/rejection/", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signer/{0}/rejection/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSignerRejectionResponse>(callPayload);
@@ -233,24 +233,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var apiCallPath = "/document/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+            callPayload.Queries["group"] = CSharpExpressionConverter.ConvertO(group);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             if (nosigners != null)
-                callPayload.Queries["nosigners"] = ExpressionConverter.Convert(nosigners);
+                callPayload.Queries["nosigners"] = CSharpExpressionConverter.ConvertO(nosigners);
             if (createdGt != null)
-                callPayload.Queries["created_gt"] = ExpressionConverter.Convert(createdGt);
+                callPayload.Queries["created_gt"] = CSharpExpressionConverter.ConvertO(createdGt);
             if (modifiedGt != null)
-                callPayload.Queries["modified_gt"] = ExpressionConverter.Convert(modifiedGt);
+                callPayload.Queries["modified_gt"] = CSharpExpressionConverter.ConvertO(modifiedGt);
             return new ApiConnectionAction<DocumentListResponse>(callPayload);
         }
 
@@ -263,18 +263,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["group"] = ExpressionConverter.ConvertO(bodygroup);
+            body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["templatepdf"] = ExpressionConverter.ConvertO(bodytemplatepdf);
+            body["templatepdf"] = CSharpExpressionConverter.ConvertToken(bodytemplatepdf);
             bodypropCount++;
-            body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+            body["signers"] = CSharpExpressionConverter.ConvertToken(bodysigners);
             if (bodysignatureType != null)
             {
                 if (bodysignatureType != null)
                 {
-                    body["signature_type"] = ExpressionConverter.ConvertO(bodysignatureType);
+                    body["signature_type"] = CSharpExpressionConverter.ConvertToken(bodysignatureType);
                     bodypropCount++;
                 }
 
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyappendPdf != null)
             {
-                body["append_pdf"] = ExpressionConverter.ConvertO(bodyappendPdf);
+                body["append_pdf"] = CSharpExpressionConverter.ConvertToken(bodyappendPdf);
                 bodypropCount++;
             }
 
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodyautoArchive != null)
                 {
-                    body["auto_archive"] = ExpressionConverter.ConvertO(bodyautoArchive);
+                    body["auto_archive"] = CSharpExpressionConverter.ConvertToken(bodyautoArchive);
                     bodypropCount++;
                 }
 
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodydoEmail != null)
                 {
-                    body["do_email"] = ExpressionConverter.ConvertO(bodydoEmail);
+                    body["do_email"] = CSharpExpressionConverter.ConvertToken(bodydoEmail);
                     bodypropCount++;
                 }
 
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyccEmails != null)
             {
-                body["cc_emails"] = ExpressionConverter.ConvertO(bodyccEmails);
+                body["cc_emails"] = CSharpExpressionConverter.ConvertToken(bodyccEmails);
                 bodypropCount++;
             }
 
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodyconvertSenderToSigner != null)
                 {
-                    body["convert_sender_to_signer"] = ExpressionConverter.ConvertO(bodyconvertSenderToSigner);
+                    body["convert_sender_to_signer"] = CSharpExpressionConverter.ConvertToken(bodyconvertSenderToSigner);
                     bodypropCount++;
                 }
 
@@ -348,13 +348,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodypdfPassword != null)
             {
-                body["pdf_password"] = ExpressionConverter.ConvertO(bodypdfPassword);
+                body["pdf_password"] = CSharpExpressionConverter.ConvertToken(bodypdfPassword);
                 bodypropCount++;
             }
 
             if (bodypdfPasswordType != null)
             {
-                body["pdf_password_type"] = ExpressionConverter.ConvertO(bodypdfPasswordType);
+                body["pdf_password_type"] = CSharpExpressionConverter.Convert(bodypdfPasswordType);
                 bodypropCount++;
             }
 
@@ -368,13 +368,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyredirect != null)
             {
-                body["redirect"] = ExpressionConverter.ConvertO(bodyredirect);
+                body["redirect"] = CSharpExpressionConverter.ConvertToken(bodyredirect);
                 bodypropCount++;
             }
 
             if (bodyreminders != null)
             {
-                body["reminders"] = ExpressionConverter.ConvertO(bodyreminders);
+                body["reminders"] = CSharpExpressionConverter.ConvertToken(bodyreminders);
                 bodypropCount++;
             }
 
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodyreturnSignerLinks != null)
                 {
-                    body["return_signer_links"] = ExpressionConverter.ConvertO(bodyreturnSignerLinks);
+                    body["return_signer_links"] = CSharpExpressionConverter.ConvertToken(bodyreturnSignerLinks);
                     bodypropCount++;
                 }
 
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodysignersInOrder != null)
             {
-                body["signers_in_order"] = ExpressionConverter.ConvertO(bodysignersInOrder);
+                body["signers_in_order"] = CSharpExpressionConverter.ConvertToken(bodysignersInOrder);
                 bodypropCount++;
             }
 
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodystrictFields != null)
                 {
-                    body["strict_fields"] = ExpressionConverter.ConvertO(bodystrictFields);
+                    body["strict_fields"] = CSharpExpressionConverter.ConvertToken(bodystrictFields);
                     bodypropCount++;
                 }
 
@@ -426,25 +426,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodytag != null)
             {
-                body["tag"] = ExpressionConverter.ConvertO(bodytag);
+                body["tag"] = CSharpExpressionConverter.ConvertToken(bodytag);
                 bodypropCount++;
             }
 
             if (bodytag1 != null)
             {
-                body["tag1"] = ExpressionConverter.ConvertO(bodytag1);
+                body["tag1"] = CSharpExpressionConverter.ConvertToken(bodytag1);
                 bodypropCount++;
             }
 
             if (bodytag2 != null)
             {
-                body["tag2"] = ExpressionConverter.ConvertO(bodytag2);
+                body["tag2"] = CSharpExpressionConverter.ConvertToken(bodytag2);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<TemplatePdfResponse> GetPdfTemplate(Expression<Func<string>> pdfId)
         {
-            var apiCallPath = String.Format("/templatepdf/{0}/", ExpressionConverter.ConvertWithUrlEncoding(pdfId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pdfId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplatePdfResponse>(callPayload);
@@ -468,13 +468,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction GetPdfTemplateEditLink(Expression<Func<string>> pdfId, Expression<Func<bool>> hideSenderFields = null, Expression<Func<string>> cssBodyBackgroundcolor = null)
         {
-            var apiCallPath = String.Format("/templatepdf/{0}/edit-link/", ExpressionConverter.ConvertWithUrlEncoding(pdfId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/edit-link/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pdfId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (hideSenderFields != null)
-                callPayload.Queries["hide_sender_fields"] = ExpressionConverter.Convert(hideSenderFields);
+                callPayload.Queries["hide_sender_fields"] = CSharpExpressionConverter.ConvertO(hideSenderFields);
             if (cssBodyBackgroundcolor != null)
-                callPayload.Queries["css_body_backgroundcolor"] = ExpressionConverter.Convert(cssBodyBackgroundcolor);
+                callPayload.Queries["css_body_backgroundcolor"] = CSharpExpressionConverter.ConvertO(cssBodyBackgroundcolor);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -485,12 +485,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.ConvertO(group);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TemplatePdfListResponse>(callPayload);
         }
 
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             {
                 if (bodyarchiveUponSend != null)
                 {
-                    body["archive_upon_send"] = ExpressionConverter.ConvertO(bodyarchiveUponSend);
+                    body["archive_upon_send"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUponSend);
                     bodypropCount++;
                 }
 
@@ -519,24 +519,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             }
 
             bodypropCount++;
-            body["group"] = ExpressionConverter.ConvertO(bodygroup);
+            body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
             bodypropCount++;
-            body["pdf_file"] = ExpressionConverter.ConvertO(bodypdfFile);
+            body["pdf_file"] = CSharpExpressionConverter.ConvertToken(bodypdfFile);
             if (bodyprocessTags != null)
             {
-                body["process_tags"] = ExpressionConverter.ConvertO(bodyprocessTags);
+                body["process_tags"] = CSharpExpressionConverter.ConvertToken(bodyprocessTags);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
@@ -555,9 +555,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<GroupListResponse>(callPayload);
         }
     }
@@ -577,10 +577,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             body["notify"] = "realtime";
             bodypropCount++;
             bodypropCount++;
-            body["eventFilter"] = ExpressionConverter.ConvertO(bodyeventFilter);
+            body["eventFilter"] = CSharpExpressionConverter.Convert(bodyeventFilter);
             if (bodygroup != null)
             {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 
@@ -605,10 +605,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             body["notify"] = "realtime";
             bodypropCount++;
             bodypropCount++;
-            body["eventFilter"] = ExpressionConverter.ConvertO(bodyeventFilter);
+            body["eventFilter"] = CSharpExpressionConverter.Convert(bodyeventFilter);
             if (bodygroup != null)
             {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 

@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (navn != null)
-                callPayload.Queries["navn"] = ExpressionConverter.Convert(navn);
+                callPayload.Queries["navn"] = CSharpExpressionConverter.ConvertO(navn);
             if (fraRegistreringsdatoEnhetsregisteret != null)
-                callPayload.Queries["fraRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(fraRegistreringsdatoEnhetsregisteret);
+                callPayload.Queries["fraRegistreringsdatoEnhetsregisteret"] = CSharpExpressionConverter.ConvertO(fraRegistreringsdatoEnhetsregisteret);
             if (tilRegistreringsdatoEnhetsregisteret != null)
-                callPayload.Queries["tilRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(tilRegistreringsdatoEnhetsregisteret);
+                callPayload.Queries["tilRegistreringsdatoEnhetsregisteret"] = CSharpExpressionConverter.ConvertO(tilRegistreringsdatoEnhetsregisteret);
             if (konkurs != null)
-                callPayload.Queries["konkurs"] = ExpressionConverter.Convert(konkurs);
+                callPayload.Queries["konkurs"] = CSharpExpressionConverter.ConvertO(konkurs);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<GetAllSearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetByOrganizationNumberResponse>(callPayload);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}/roller", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -56,16 +56,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (navn != null)
-                callPayload.Queries["navn"] = ExpressionConverter.Convert(navn);
+                callPayload.Queries["navn"] = CSharpExpressionConverter.ConvertO(navn);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<GetAllSearchSubResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/underenheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/underenheter/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSubByOrganizationNumberResponse>(callPayload);
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (dato != null)
-                callPayload.Queries["dato"] = ExpressionConverter.Convert(dato);
+                callPayload.Queries["dato"] = CSharpExpressionConverter.ConvertO(dato);
             if (oppdateringsid != null)
-                callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(oppdateringsid);
+                callPayload.Queries["oppdateringsid"] = CSharpExpressionConverter.ConvertO(oppdateringsid);
             return new ApiConnectionAction<GetEntitiesUpdatesResponse>(callPayload);
         }
 
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (dato != null)
-                callPayload.Queries["dato"] = ExpressionConverter.Convert(dato);
+                callPayload.Queries["dato"] = CSharpExpressionConverter.ConvertO(dato);
             if (oppdateringsid != null)
-                callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(oppdateringsid);
+                callPayload.Queries["oppdateringsid"] = CSharpExpressionConverter.ConvertO(oppdateringsid);
             return new ApiConnectionAction<GetSubEntitiesUpdatesResponse>(callPayload);
         }
     }

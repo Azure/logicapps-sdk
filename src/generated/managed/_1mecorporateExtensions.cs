@@ -29,20 +29,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["CardTemplateId"] = ExpressionConverter.ConvertO(bodycardTemplateId);
+            body["CardTemplateId"] = CSharpExpressionConverter.ConvertToken(bodycardTemplateId);
             if (bodynameOnCard != null)
             {
-                body["NameOnCard"] = ExpressionConverter.ConvertO(bodynameOnCard);
+                body["NameOnCard"] = CSharpExpressionConverter.ConvertToken(bodynameOnCard);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Jobtitle"] = ExpressionConverter.ConvertO(bodyjobtitle);
+            body["Jobtitle"] = CSharpExpressionConverter.ConvertToken(bodyjobtitle);
             bodypropCount++;
-            body["WorkEmail"] = ExpressionConverter.ConvertO(bodyworkEmail);
+            body["WorkEmail"] = CSharpExpressionConverter.ConvertToken(bodyworkEmail);
             if (bodyextension != null)
             {
-                body["Extension"] = ExpressionConverter.ConvertO(bodyextension);
+                body["Extension"] = CSharpExpressionConverter.ConvertToken(bodyextension);
                 bodypropCount++;
             }
 
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             var apiCallPath = "/api/Invitation/Disassociate";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

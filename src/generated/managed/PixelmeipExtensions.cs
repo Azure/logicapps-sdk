@@ -29,46 +29,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodypixelsIds != null)
             {
-                body["pixels_ids"] = ExpressionConverter.ConvertO(bodypixelsIds);
+                body["pixels_ids"] = CSharpExpressionConverter.ConvertToken(bodypixelsIds);
                 bodypropCount++;
             }
 
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodycampaignId != null)
             {
-                body["campaign_id"] = ExpressionConverter.ConvertO(bodycampaignId);
+                body["campaign_id"] = CSharpExpressionConverter.ConvertToken(bodycampaignId);
                 bodypropCount++;
             }
 
             if (bodysubCampaignId != null)
             {
-                body["sub_campaign_id"] = ExpressionConverter.ConvertO(bodysubCampaignId);
+                body["sub_campaign_id"] = CSharpExpressionConverter.ConvertToken(bodysubCampaignId);
                 bodypropCount++;
             }
 
             if (bodydynamicUrls != null)
             {
-                body["dynamic_urls"] = ExpressionConverter.ConvertO(bodydynamicUrls);
+                body["dynamic_urls"] = CSharpExpressionConverter.ConvertToken(bodydynamicUrls);
                 bodypropCount++;
             }
 
@@ -92,16 +92,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<RedirectPatchResponse> RedirectPatch(Expression<Func<string>> id, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodytags = null)
         {
-            var apiCallPath = String.Format("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/redirects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<string> RedirectDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/redirects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);

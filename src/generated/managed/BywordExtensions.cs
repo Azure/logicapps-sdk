@@ -20,36 +20,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
+            body["mode"] = CSharpExpressionConverter.Convert(bodymode);
             bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
+            body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodysubheadings != null)
             {
-                body["subheadings"] = ExpressionConverter.ConvertO(bodysubheadings);
+                body["subheadings"] = CSharpExpressionConverter.ConvertToken(bodysubheadings);
                 bodypropCount++;
             }
 
             if (bodyundetectable != null)
             {
-                body["undetectable"] = ExpressionConverter.ConvertO(bodyundetectable);
+                body["undetectable"] = CSharpExpressionConverter.ConvertToken(bodyundetectable);
                 bodypropCount++;
             }
 
             if (bodytone != null)
             {
-                body["tone"] = ExpressionConverter.ConvertO(bodytone);
+                body["tone"] = CSharpExpressionConverter.ConvertToken(bodytone);
                 bodypropCount++;
             }
 
             if (bodylength != null)
             {
-                body["length"] = ExpressionConverter.ConvertO(bodylength);
+                body["length"] = CSharpExpressionConverter.ConvertToken(bodylength);
                 bodypropCount++;
             }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             var bodypropCount = 0;
             if (bodyarticleID != null)
             {
-                body["articleID"] = ExpressionConverter.ConvertO(bodyarticleID);
+                body["articleID"] = CSharpExpressionConverter.ConvertToken(bodyarticleID);
                 bodypropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             {
                 if (bodycursor != null)
                 {
-                    body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                    body["cursor"] = CSharpExpressionConverter.ConvertToken(bodycursor);
                     bodypropCount++;
                 }
 

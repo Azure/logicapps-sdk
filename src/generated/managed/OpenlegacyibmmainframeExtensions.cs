@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfCicsCobol";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfCtgCobol";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfImsCobol";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfNatural";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfVsamCics";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-Mf3270Screens";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
             var apiCallPath = "/dummy-MfMq";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

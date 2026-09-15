@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem(Expression<Func<string>> workItemId)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(workItemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workItemId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
@@ -39,51 +39,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
+            body["Classification"] = CSharpExpressionConverter.ConvertToken(bodyclassification);
             bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+            body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
             bodypropCount++;
-            body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+            body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
             bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
+            body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
             if (bodysupportGroup != null)
             {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                body["SupportGroup"] = CSharpExpressionConverter.ConvertToken(bodysupportGroup);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaffectedUser != null)
             {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                body["RequestedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyaffectedUser);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -98,74 +98,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Incident/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyclassification != null)
             {
-                body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
+                body["Classification"] = CSharpExpressionConverter.ConvertToken(bodyclassification);
                 bodypropCount++;
             }
 
             if (bodyurgency != null)
             {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodysource != null)
             {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
                 bodypropCount++;
             }
 
             if (bodysupportGroup != null)
             {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                body["SupportGroup"] = CSharpExpressionConverter.ConvertToken(bodysupportGroup);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaffectedUser != null)
             {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                body["RequestedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyaffectedUser);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -187,49 +187,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Area"] = ExpressionConverter.ConvertO(bodyarea);
+            body["Area"] = CSharpExpressionConverter.ConvertToken(bodyarea);
             bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+            body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
             bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
+            body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
             if (bodysupportGroup != null)
             {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                body["SupportGroup"] = CSharpExpressionConverter.ConvertToken(bodysupportGroup);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaffectedUser != null)
             {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                body["RequestedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyaffectedUser);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -244,74 +244,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ServiceRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyclassification != null)
             {
-                body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
+                body["Classification"] = CSharpExpressionConverter.ConvertToken(bodyclassification);
                 bodypropCount++;
             }
 
             if (bodyurgency != null)
             {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodysource != null)
             {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
                 bodypropCount++;
             }
 
             if (bodysupportGroup != null)
             {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                body["SupportGroup"] = CSharpExpressionConverter.ConvertToken(bodysupportGroup);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaffectedUser != null)
             {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                body["RequestedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyaffectedUser);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -333,49 +333,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyarea != null)
             {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
+                body["Area"] = CSharpExpressionConverter.ConvertToken(bodyarea);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyrisk != null)
             {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                body["Risk"] = CSharpExpressionConverter.ConvertToken(bodyrisk);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -390,56 +390,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ChangeRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyarea != null)
             {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
+                body["Area"] = CSharpExpressionConverter.ConvertToken(bodyarea);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyrisk != null)
             {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                body["Risk"] = CSharpExpressionConverter.ConvertToken(bodyrisk);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -461,55 +461,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodysource != null)
             {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyurgency != null)
             {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -524,62 +524,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Problem/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodysource != null)
             {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                body["Source"] = CSharpExpressionConverter.ConvertToken(bodysource);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyurgency != null)
             {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                body["Urgency"] = CSharpExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -601,55 +601,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                body["Type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyrisk != null)
             {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                body["Risk"] = CSharpExpressionConverter.ConvertToken(bodyrisk);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -664,62 +664,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                body["Type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodyimpact != null)
             {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                body["Impact"] = CSharpExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
             }
 
             if (bodyrisk != null)
             {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                body["Risk"] = CSharpExpressionConverter.ConvertToken(bodyrisk);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyassignedUser != null)
             {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                body["AssignedWorkItem"] = CSharpExpressionConverter.ConvertToken(bodyassignedUser);
                 bodypropCount++;
             }
 
@@ -734,32 +734,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyenteredBy = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null)
         {
-            var apiCallPath = String.Format("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyenteredBy != null)
             {
-                body["EnteredBy"] = ExpressionConverter.ConvertO(bodyenteredBy);
+                body["EnteredBy"] = CSharpExpressionConverter.ConvertToken(bodyenteredBy);
                 bodypropCount++;
             }
 
             if (bodyisPrivate != null)
             {
-                body["IsPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                body["IsPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
                 bodypropCount++;
             }
 
             if (bodyactionType != null)
             {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
+                body["ActionType"] = CSharpExpressionConverter.Convert(bodyactionType);
                 bodypropCount++;
             }
 
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             {
                 if (bodywebhookSettingsworkItemClassType != null)
                 {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    webhookSettingsObject["WorkItemClassType"] = CSharpExpressionConverter.Convert(bodywebhookSettingsworkItemClassType);
                     webhookSettingsObjectpropCount++;
                 }
 
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             {
                 if (bodywebhookSettingsworkItemClassType != null)
                 {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    webhookSettingsObject["WorkItemClassType"] = CSharpExpressionConverter.Convert(bodywebhookSettingsworkItemClassType);
                     webhookSettingsObjectpropCount++;
                 }
 

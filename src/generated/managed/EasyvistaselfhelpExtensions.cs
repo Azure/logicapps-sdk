@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(scenarioId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
+            callPayload.Queries["scenarioId"] = CSharpExpressionConverter.ConvertO(scenarioId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
+            callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
+            callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/project/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
+            callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
+            callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
             return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
         }
 
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
+            callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                callPayload.Queries["mode"] = CSharpExpressionConverter.ConvertO(mode);
             return new ApiConnectionAction<GetProjectListResponse>(callPayload);
         }
 
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/search/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
+            callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
+            callPayload.Queries["pattern"] = CSharpExpressionConverter.ConvertO(pattern);
             if (versionId != null)
-                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var apiCallPath = "/AtanorPortalAPI/atanor/user/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             return new ApiConnectionAction<GetUserResponse>(callPayload);
         }
 
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["locale"] = Convert.ToString("en_US");
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["login"] = ExpressionConverter.Convert(login);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
+            callPayload.Queries["login"] = CSharpExpressionConverter.ConvertO(login);
+            callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
             return new ApiConnectionAction(callPayload);
         }
     }

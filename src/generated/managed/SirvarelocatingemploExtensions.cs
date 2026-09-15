@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
         {
-            var apiCallPath = String.Format("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/package/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
         {
-            var apiCallPath = String.Format("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
+            callPayload.Queries["IncludePicture"] = CSharpExpressionConverter.ConvertO(includePicture);
             return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
         }
 
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
+            body["RelocationId"] = CSharpExpressionConverter.ConvertToken(bodyrelocationId);
             bodypropCount++;
-            body["Query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["Query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             bodypropCount++;
-            body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
+            body["Topic"] = CSharpExpressionConverter.Convert(bodytopic);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

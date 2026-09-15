@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
             var bodypropCount = 0;
             if (bodybarcodeNumber != null)
             {
-                body["barcodeNumber"] = ExpressionConverter.ConvertO(bodybarcodeNumber);
+                body["barcodeNumber"] = CSharpExpressionConverter.ConvertToken(bodybarcodeNumber);
                 bodypropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
             var bodypropCount = 0;
             if (bodyqrcodeText != null)
             {
-                body["qrcodeText"] = ExpressionConverter.ConvertO(bodyqrcodeText);
+                body["qrcodeText"] = CSharpExpressionConverter.ConvertToken(bodyqrcodeText);
                 bodypropCount++;
             }
 

@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
             var bodypropCount = 0;
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["channelList"] = ExpressionConverter.ConvertO(bodychannelList);
+            body["channelList"] = CSharpExpressionConverter.ConvertToken(bodychannelList);
             if (bodyimageUrl != null)
             {
-                body["imageUrl"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                body["imageUrl"] = CSharpExpressionConverter.ConvertToken(bodyimageUrl);
                 bodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
             {
                 if (bodyproposed != null)
                 {
-                    body["proposed"] = ExpressionConverter.ConvertO(bodyproposed);
+                    body["proposed"] = CSharpExpressionConverter.ConvertToken(bodyproposed);
                     bodypropCount++;
                 }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
             {
                 if (bodyshareable != null)
                 {
-                    body["shareable"] = ExpressionConverter.ConvertO(bodyshareable);
+                    body["shareable"] = CSharpExpressionConverter.ConvertToken(bodyshareable);
                     bodypropCount++;
                 }
 
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 

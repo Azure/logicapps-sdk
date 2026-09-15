@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (vatNumber != null)
-                callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
+                callPayload.Queries["vat_number"] = CSharpExpressionConverter.ConvertO(vatNumber);
             if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
     }

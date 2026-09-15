@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["comp"] = Convert.ToString(-1);
             if (comp != null)
-                callPayload.Queries["comp"] = ExpressionConverter.Convert(comp);
+                callPayload.Queries["comp"] = CSharpExpressionConverter.ConvertO(comp);
             return new ApiConnectionAction<TaskObject[]>(callPayload);
         }
 
@@ -33,37 +33,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var taskpropCount = 0;
             if (tasktitle != null)
             {
-                task["title"] = ExpressionConverter.ConvertO(tasktitle);
+                task["title"] = CSharpExpressionConverter.ConvertToken(tasktitle);
                 taskpropCount++;
             }
 
             if (taskfolderId != null)
             {
-                task["folder"] = ExpressionConverter.ConvertO(taskfolderId);
+                task["folder"] = CSharpExpressionConverter.ConvertToken(taskfolderId);
                 taskpropCount++;
             }
 
             if (taskpriority != null)
             {
-                task["priority"] = ExpressionConverter.ConvertO(taskpriority);
+                task["priority"] = CSharpExpressionConverter.ConvertToken(taskpriority);
                 taskpropCount++;
             }
 
             if (tasknote != null)
             {
-                task["note"] = ExpressionConverter.ConvertO(tasknote);
+                task["note"] = CSharpExpressionConverter.ConvertToken(tasknote);
                 taskpropCount++;
             }
 
             if (taskdueDate != null)
             {
-                task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
+                task["duedate"] = CSharpExpressionConverter.ConvertToken(taskdueDate);
                 taskpropCount++;
             }
 
             if (taskdueTime != null)
             {
-                task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
+                task["duetime"] = CSharpExpressionConverter.ConvertToken(taskdueTime);
                 taskpropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var apiCallPath = "/tasks/getById.php";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<TaskObject>(callPayload);
         }
 
@@ -95,55 +95,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var taskpropCount = 0;
             if (taskid != null)
             {
-                task["id"] = ExpressionConverter.ConvertO(taskid);
+                task["id"] = CSharpExpressionConverter.ConvertToken(taskid);
                 taskpropCount++;
             }
 
             if (tasktitle != null)
             {
-                task["title"] = ExpressionConverter.ConvertO(tasktitle);
+                task["title"] = CSharpExpressionConverter.ConvertToken(tasktitle);
                 taskpropCount++;
             }
 
             if (taskcompleted != null)
             {
-                task["completed"] = ExpressionConverter.ConvertO(taskcompleted);
+                task["completed"] = CSharpExpressionConverter.ConvertToken(taskcompleted);
                 taskpropCount++;
             }
 
             if (taskdueDate != null)
             {
-                task["duedate"] = ExpressionConverter.ConvertO(taskdueDate);
+                task["duedate"] = CSharpExpressionConverter.ConvertToken(taskdueDate);
                 taskpropCount++;
             }
 
             if (taskdueTime != null)
             {
-                task["duetime"] = ExpressionConverter.ConvertO(taskdueTime);
+                task["duetime"] = CSharpExpressionConverter.ConvertToken(taskdueTime);
                 taskpropCount++;
             }
 
             if (tasknote != null)
             {
-                task["note"] = ExpressionConverter.ConvertO(tasknote);
+                task["note"] = CSharpExpressionConverter.ConvertToken(tasknote);
                 taskpropCount++;
             }
 
             if (taskpriority != null)
             {
-                task["priority"] = ExpressionConverter.ConvertO(taskpriority);
+                task["priority"] = CSharpExpressionConverter.ConvertToken(taskpriority);
                 taskpropCount++;
             }
 
             if (taskfolder != null)
             {
-                task["folder"] = ExpressionConverter.ConvertO(taskfolder);
+                task["folder"] = CSharpExpressionConverter.ConvertToken(taskfolder);
                 taskpropCount++;
             }
 
             if (taskmodified != null)
             {
-                task["modified"] = ExpressionConverter.ConvertO(taskmodified);
+                task["modified"] = CSharpExpressionConverter.ConvertToken(taskmodified);
                 taskpropCount++;
             }
 

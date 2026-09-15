@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             var generationInfo = new JObject();
             var generationInfopropCount = 0;
             generationInfopropCount++;
-            generationInfo["dataMap"] = ExpressionConverter.ConvertO(generationInfodataMap);
+            generationInfo["dataMap"] = CSharpExpressionConverter.ConvertToken(generationInfodataMap);
             if (generationInfofile != null)
             {
-                generationInfo["file"] = ExpressionConverter.ConvertO(generationInfofile);
+                generationInfo["file"] = CSharpExpressionConverter.ConvertToken(generationInfofile);
                 generationInfopropCount++;
             }
 
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             var generationInfo = new JObject();
             var generationInfopropCount = 0;
             generationInfopropCount++;
-            generationInfo["dataMap"] = ExpressionConverter.ConvertO(generationInfodataMap);
+            generationInfo["dataMap"] = CSharpExpressionConverter.ConvertToken(generationInfodataMap);
             if (generationInfofile != null)
             {
-                generationInfo["file"] = ExpressionConverter.ConvertO(generationInfofile);
+                generationInfo["file"] = CSharpExpressionConverter.ConvertToken(generationInfofile);
                 generationInfopropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             var apiCallPath = "/api/Powerpoint/Merge";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(documents);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(documents);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
             var apiCallPath = "/api/Word/Merge";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(documents);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(documents);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

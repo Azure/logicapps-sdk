@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["$count"] = CSharpExpressionConverter.ConvertO(count);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
             return new ApiConnectionAction<GetAllReferralsResponse>(callPayload);
         }
@@ -45,19 +45,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
             var referral = new JObject();
             var referralpropCount = 0;
             if (referralcontext != null)
             {
-                referral["@odata.context"] = ExpressionConverter.ConvertO(referralcontext);
+                referral["@odata.context"] = CSharpExpressionConverter.ConvertToken(referralcontext);
                 referralpropCount++;
             }
 
             if (referralcampaignId != null)
             {
-                referral["campaignId"] = ExpressionConverter.ConvertO(referralcampaignId);
+                referral["campaignId"] = CSharpExpressionConverter.ConvertToken(referralcampaignId);
                 referralpropCount++;
             }
 
@@ -65,19 +65,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var consentObjectpropCount = 0;
             if (referralconsentconsentToContact != null)
             {
-                consentObject["consentToContact"] = ExpressionConverter.ConvertO(referralconsentconsentToContact);
+                consentObject["consentToContact"] = CSharpExpressionConverter.ConvertToken(referralconsentconsentToContact);
                 consentObjectpropCount++;
             }
 
             if (referralconsentconsentToToShareInfoWithOthers != null)
             {
-                consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(referralconsentconsentToToShareInfoWithOthers);
+                consentObject["consentToToShareInfoWithOthers"] = CSharpExpressionConverter.ConvertToken(referralconsentconsentToToShareInfoWithOthers);
                 consentObjectpropCount++;
             }
 
             if (referralconsentconsentToShareReferralWithMicrosoftSellers != null)
             {
-                consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(referralconsentconsentToShareReferralWithMicrosoftSellers);
+                consentObject["consentToShareReferralWithMicrosoftSellers"] = CSharpExpressionConverter.ConvertToken(referralconsentconsentToShareReferralWithMicrosoftSellers);
                 consentObjectpropCount++;
             }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referralcreatedDateTime != null)
             {
-                referral["createdDateTime"] = ExpressionConverter.ConvertO(referralcreatedDateTime);
+                referral["createdDateTime"] = CSharpExpressionConverter.ConvertToken(referralcreatedDateTime);
                 referralpropCount++;
             }
 
@@ -99,43 +99,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var addressObjectpropCount = 0;
             if (referralcustomerProfileaddressaddressLine1 != null)
             {
-                addressObject["addressLine1"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressaddressLine1);
+                addressObject["addressLine1"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddressaddressLine1);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddressaddressLine2 != null)
             {
-                addressObject["addressLine2"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressaddressLine2);
+                addressObject["addressLine2"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddressaddressLine2);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddresscity);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddressregion != null)
             {
-                addressObject["region"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressregion);
+                addressObject["region"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddressregion);
                 addressObjectpropCount++;
             }
 
             if (referralcustomerProfileaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileaddressstate);
                 addressObjectpropCount++;
             }
 
@@ -147,25 +147,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referralcustomerProfileids != null)
             {
-                customerProfileObject["ids"] = ExpressionConverter.ConvertO(referralcustomerProfileids);
+                customerProfileObject["ids"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileids);
                 customerProfileObjectpropCount++;
             }
 
             if (referralcustomerProfilename != null)
             {
-                customerProfileObject["name"] = ExpressionConverter.ConvertO(referralcustomerProfilename);
+                customerProfileObject["name"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfilename);
                 customerProfileObjectpropCount++;
             }
 
             if (referralcustomerProfilesize != null)
             {
-                customerProfileObject["size"] = ExpressionConverter.ConvertO(referralcustomerProfilesize);
+                customerProfileObject["size"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfilesize);
                 customerProfileObjectpropCount++;
             }
 
             if (referralcustomerProfileteam != null)
             {
-                customerProfileObject["team"] = ExpressionConverter.ConvertO(referralcustomerProfileteam);
+                customerProfileObject["team"] = CSharpExpressionConverter.ConvertToken(referralcustomerProfileteam);
                 customerProfileObjectpropCount++;
             }
 
@@ -179,37 +179,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var detailsObjectpropCount = 0;
             if (referraldetailsclosingDateTime != null)
             {
-                detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(referraldetailsclosingDateTime);
+                detailsObject["closingDateTime"] = CSharpExpressionConverter.ConvertToken(referraldetailsclosingDateTime);
                 detailsObjectpropCount++;
             }
 
             if (referraldetailscurrency != null)
             {
-                detailsObject["currency"] = ExpressionConverter.ConvertO(referraldetailscurrency);
+                detailsObject["currency"] = CSharpExpressionConverter.ConvertToken(referraldetailscurrency);
                 detailsObjectpropCount++;
             }
 
             if (referraldetailscustomerAction != null)
             {
-                detailsObject["customerAction"] = ExpressionConverter.ConvertO(referraldetailscustomerAction);
+                detailsObject["customerAction"] = CSharpExpressionConverter.ConvertToken(referraldetailscustomerAction);
                 detailsObjectpropCount++;
             }
 
             if (referraldetailscustomerRequestedContact != null)
             {
-                detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(referraldetailscustomerRequestedContact);
+                detailsObject["customerRequestedContact"] = CSharpExpressionConverter.ConvertToken(referraldetailscustomerRequestedContact);
                 detailsObjectpropCount++;
             }
 
             if (referraldetailsdealValue != null)
             {
-                detailsObject["dealValue"] = ExpressionConverter.ConvertO(referraldetailsdealValue);
+                detailsObject["dealValue"] = CSharpExpressionConverter.ConvertToken(referraldetailsdealValue);
                 detailsObjectpropCount++;
             }
 
             if (referraldetailsnotes != null)
             {
-                detailsObject["notes"] = ExpressionConverter.ConvertO(referraldetailsnotes);
+                detailsObject["notes"] = CSharpExpressionConverter.ConvertToken(referraldetailsnotes);
                 detailsObjectpropCount++;
             }
 
@@ -217,31 +217,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var requirementsObjectpropCount = 0;
             if (referraldetailsrequirementsindustries != null)
             {
-                requirementsObject["industries"] = ExpressionConverter.ConvertO(referraldetailsrequirementsindustries);
+                requirementsObject["industries"] = CSharpExpressionConverter.ConvertToken(referraldetailsrequirementsindustries);
                 requirementsObjectpropCount++;
             }
 
             if (referraldetailsrequirementsproducts != null)
             {
-                requirementsObject["products"] = ExpressionConverter.ConvertO(referraldetailsrequirementsproducts);
+                requirementsObject["products"] = CSharpExpressionConverter.ConvertToken(referraldetailsrequirementsproducts);
                 requirementsObjectpropCount++;
             }
 
             if (referraldetailsrequirementsservices != null)
             {
-                requirementsObject["services"] = ExpressionConverter.ConvertO(referraldetailsrequirementsservices);
+                requirementsObject["services"] = CSharpExpressionConverter.ConvertToken(referraldetailsrequirementsservices);
                 requirementsObjectpropCount++;
             }
 
             if (referraldetailsrequirementssolutions != null)
             {
-                requirementsObject["solutions"] = ExpressionConverter.ConvertO(referraldetailsrequirementssolutions);
+                requirementsObject["solutions"] = CSharpExpressionConverter.ConvertToken(referraldetailsrequirementssolutions);
                 requirementsObjectpropCount++;
             }
 
             if (referraldetailsrequirementsoffers != null)
             {
-                requirementsObject["offers"] = ExpressionConverter.ConvertO(referraldetailsrequirementsoffers);
+                requirementsObject["offers"] = CSharpExpressionConverter.ConvertToken(referraldetailsrequirementsoffers);
                 requirementsObjectpropCount++;
             }
 
@@ -267,37 +267,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referraleTag != null)
             {
-                referral["eTag"] = ExpressionConverter.ConvertO(referraleTag);
+                referral["eTag"] = CSharpExpressionConverter.ConvertToken(referraleTag);
                 referralpropCount++;
             }
 
             if (referralengagementId != null)
             {
-                referral["engagementId"] = ExpressionConverter.ConvertO(referralengagementId);
+                referral["engagementId"] = CSharpExpressionConverter.ConvertToken(referralengagementId);
                 referralpropCount++;
             }
 
             if (referralexpirationDateTime != null)
             {
-                referral["expirationDateTime"] = ExpressionConverter.ConvertO(referralexpirationDateTime);
+                referral["expirationDateTime"] = CSharpExpressionConverter.ConvertToken(referralexpirationDateTime);
                 referralpropCount++;
             }
 
             if (referralexternalReferenceId != null)
             {
-                referral["externalReferenceId"] = ExpressionConverter.ConvertO(referralexternalReferenceId);
+                referral["externalReferenceId"] = CSharpExpressionConverter.ConvertToken(referralexternalReferenceId);
                 referralpropCount++;
             }
 
             if (referralfavorite != null)
             {
-                referral["favorite"] = ExpressionConverter.ConvertO(referralfavorite);
+                referral["favorite"] = CSharpExpressionConverter.ConvertToken(referralfavorite);
                 referralpropCount++;
             }
 
             if (referralid != null)
             {
-                referral["id"] = ExpressionConverter.ConvertO(referralid);
+                referral["id"] = CSharpExpressionConverter.ConvertToken(referralid);
                 referralpropCount++;
             }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var inviteContextObjectpropCount = 0;
             if (referralinviteContextassistanceRequestCode != null)
             {
-                inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(referralinviteContextassistanceRequestCode);
+                inviteContextObject["assistanceRequestCode"] = CSharpExpressionConverter.Convert(referralinviteContextassistanceRequestCode);
                 inviteContextObjectpropCount++;
             }
 
@@ -313,13 +313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var invitedByObjectpropCount = 0;
             if (referralinviteContextinvitedByorganizationId != null)
             {
-                invitedByObject["organizationId"] = ExpressionConverter.ConvertO(referralinviteContextinvitedByorganizationId);
+                invitedByObject["organizationId"] = CSharpExpressionConverter.ConvertToken(referralinviteContextinvitedByorganizationId);
                 invitedByObjectpropCount++;
             }
 
             if (referralinviteContextinvitedByorganizationName != null)
             {
-                invitedByObject["organizationName"] = ExpressionConverter.ConvertO(referralinviteContextinvitedByorganizationName);
+                invitedByObject["organizationName"] = CSharpExpressionConverter.ConvertToken(referralinviteContextinvitedByorganizationName);
                 invitedByObjectpropCount++;
             }
 
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referralinviteContextnotes != null)
             {
-                inviteContextObject["notes"] = ExpressionConverter.ConvertO(referralinviteContextnotes);
+                inviteContextObject["notes"] = CSharpExpressionConverter.ConvertToken(referralinviteContextnotes);
                 inviteContextObjectpropCount++;
             }
 
@@ -343,13 +343,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referrallastModifiedVia != null)
             {
-                referral["lastModifiedVia"] = ExpressionConverter.ConvertO(referrallastModifiedVia);
+                referral["lastModifiedVia"] = CSharpExpressionConverter.ConvertToken(referrallastModifiedVia);
                 referralpropCount++;
             }
 
             if (referrallastRunId != null)
             {
-                referral["lastRunId"] = ExpressionConverter.ConvertO(referrallastRunId);
+                referral["lastRunId"] = CSharpExpressionConverter.ConvertToken(referrallastRunId);
                 referralpropCount++;
             }
 
@@ -359,13 +359,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var relatedReferralsObjectpropCount = 0;
             if (referrallinksrelatedReferralsmethod != null)
             {
-                relatedReferralsObject["method"] = ExpressionConverter.ConvertO(referrallinksrelatedReferralsmethod);
+                relatedReferralsObject["method"] = CSharpExpressionConverter.ConvertToken(referrallinksrelatedReferralsmethod);
                 relatedReferralsObjectpropCount++;
             }
 
             if (referrallinksrelatedReferralsuri != null)
             {
-                relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(referrallinksrelatedReferralsuri);
+                relatedReferralsObject["uri"] = CSharpExpressionConverter.ConvertToken(referrallinksrelatedReferralsuri);
                 relatedReferralsObjectpropCount++;
             }
 
@@ -379,13 +379,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var selfObjectpropCount = 0;
             if (referrallinksselfmethod != null)
             {
-                selfObject["method"] = ExpressionConverter.ConvertO(referrallinksselfmethod);
+                selfObject["method"] = CSharpExpressionConverter.ConvertToken(referrallinksselfmethod);
                 selfObjectpropCount++;
             }
 
             if (referrallinksselfuri != null)
             {
-                selfObject["uri"] = ExpressionConverter.ConvertO(referrallinksselfuri);
+                selfObject["uri"] = CSharpExpressionConverter.ConvertToken(referrallinksselfuri);
                 selfObjectpropCount++;
             }
 
@@ -403,67 +403,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referralname != null)
             {
-                referral["name"] = ExpressionConverter.ConvertO(referralname);
+                referral["name"] = CSharpExpressionConverter.ConvertToken(referralname);
                 referralpropCount++;
             }
 
             if (referralorganizationId != null)
             {
-                referral["organizationId"] = ExpressionConverter.ConvertO(referralorganizationId);
+                referral["organizationId"] = CSharpExpressionConverter.ConvertToken(referralorganizationId);
                 referralpropCount++;
             }
 
             if (referralorganizationName != null)
             {
-                referral["organizationName"] = ExpressionConverter.ConvertO(referralorganizationName);
+                referral["organizationName"] = CSharpExpressionConverter.ConvertToken(referralorganizationName);
                 referralpropCount++;
             }
 
             if (referralqualification != null)
             {
-                referral["qualification"] = ExpressionConverter.ConvertO(referralqualification);
+                referral["qualification"] = CSharpExpressionConverter.ConvertToken(referralqualification);
                 referralpropCount++;
             }
 
             if (referralreferralProgram != null)
             {
-                referral["referralProgram"] = ExpressionConverter.ConvertO(referralreferralProgram);
+                referral["referralProgram"] = CSharpExpressionConverter.ConvertToken(referralreferralProgram);
                 referralpropCount++;
             }
 
             if (referralsalesStage != null)
             {
-                referral["salesStage"] = ExpressionConverter.ConvertO(referralsalesStage);
+                referral["salesStage"] = CSharpExpressionConverter.Convert(referralsalesStage);
                 referralpropCount++;
             }
 
             if (referralstatus != null)
             {
-                referral["status"] = ExpressionConverter.ConvertO(referralstatus);
+                referral["status"] = CSharpExpressionConverter.ConvertToken(referralstatus);
                 referralpropCount++;
             }
 
             if (referralstatusReason != null)
             {
-                referral["statusReason"] = ExpressionConverter.ConvertO(referralstatusReason);
+                referral["statusReason"] = CSharpExpressionConverter.ConvertToken(referralstatusReason);
                 referralpropCount++;
             }
 
             if (referralsubstatus != null)
             {
-                referral["substatus"] = ExpressionConverter.ConvertO(referralsubstatus);
+                referral["substatus"] = CSharpExpressionConverter.ConvertToken(referralsubstatus);
                 referralpropCount++;
             }
 
             if (referraltarget != null)
             {
-                referral["target"] = ExpressionConverter.ConvertO(referraltarget);
+                referral["target"] = CSharpExpressionConverter.ConvertToken(referraltarget);
                 referralpropCount++;
             }
 
             if (referralteam != null)
             {
-                referral["team"] = ExpressionConverter.ConvertO(referralteam);
+                referral["team"] = CSharpExpressionConverter.ConvertToken(referralteam);
                 referralpropCount++;
             }
 
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var trackingInfoObjectpropCount = 0;
             if (referraltrackingInfomicrosoftMsxId != null)
             {
-                trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(referraltrackingInfomicrosoftMsxId);
+                trackingInfoObject["microsoftMsxId"] = CSharpExpressionConverter.ConvertToken(referraltrackingInfomicrosoftMsxId);
                 trackingInfoObjectpropCount++;
             }
 
@@ -483,79 +483,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (referraltype != null)
             {
-                referral["type"] = ExpressionConverter.ConvertO(referraltype);
+                referral["type"] = CSharpExpressionConverter.ConvertToken(referraltype);
                 referralpropCount++;
             }
 
             if (referralupdatedDateTime != null)
             {
-                referral["updatedDateTime"] = ExpressionConverter.ConvertO(referralupdatedDateTime);
+                referral["updatedDateTime"] = CSharpExpressionConverter.ConvertToken(referralupdatedDateTime);
                 referralpropCount++;
             }
 
             if (referralmpnId != null)
             {
-                referral["mpnId"] = ExpressionConverter.ConvertO(referralmpnId);
+                referral["mpnId"] = CSharpExpressionConverter.ConvertToken(referralmpnId);
                 referralpropCount++;
             }
 
             if (referralregistrations != null)
             {
-                referral["registrations"] = ExpressionConverter.ConvertO(referralregistrations);
+                referral["registrations"] = CSharpExpressionConverter.ConvertToken(referralregistrations);
                 referralpropCount++;
             }
 
             if (referralregistrationStatus != null)
             {
-                referral["registrationStatus"] = ExpressionConverter.ConvertO(referralregistrationStatus);
+                referral["registrationStatus"] = CSharpExpressionConverter.ConvertToken(referralregistrationStatus);
                 referralpropCount++;
             }
 
             if (referralcallToAction != null)
             {
-                referral["callToAction"] = ExpressionConverter.ConvertO(referralcallToAction);
+                referral["callToAction"] = CSharpExpressionConverter.ConvertToken(referralcallToAction);
                 referralpropCount++;
             }
 
             if (referralreferralSource != null)
             {
-                referral["referralSource"] = ExpressionConverter.ConvertO(referralreferralSource);
+                referral["referralSource"] = CSharpExpressionConverter.ConvertToken(referralreferralSource);
                 referralpropCount++;
             }
 
             if (referralquality != null)
             {
-                referral["quality"] = ExpressionConverter.ConvertO(referralquality);
+                referral["quality"] = CSharpExpressionConverter.ConvertToken(referralquality);
                 referralpropCount++;
             }
 
             if (referralisSpam != null)
             {
-                referral["isSpam"] = ExpressionConverter.ConvertO(referralisSpam);
+                referral["isSpam"] = CSharpExpressionConverter.ConvertToken(referralisSpam);
                 referralpropCount++;
             }
 
             if (referraldirection != null)
             {
-                referral["direction"] = ExpressionConverter.ConvertO(referraldirection);
+                referral["direction"] = CSharpExpressionConverter.ConvertToken(referraldirection);
                 referralpropCount++;
             }
 
             if (referraltags != null)
             {
-                referral["tags"] = ExpressionConverter.ConvertO(referraltags);
+                referral["tags"] = CSharpExpressionConverter.ConvertToken(referraltags);
                 referralpropCount++;
             }
 
             if (referralacceptedDateTime != null)
             {
-                referral["acceptedDateTime"] = ExpressionConverter.ConvertO(referralacceptedDateTime);
+                referral["acceptedDateTime"] = CSharpExpressionConverter.ConvertToken(referralacceptedDateTime);
                 referralpropCount++;
             }
 
             if (referralclosedDateTime != null)
             {
-                referral["closedDateTime"] = ExpressionConverter.ConvertO(referralclosedDateTime);
+                referral["closedDateTime"] = CSharpExpressionConverter.ConvertToken(referralclosedDateTime);
                 referralpropCount++;
             }
 
@@ -570,12 +570,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> GetReferralById(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null)
         {
-            var apiCallPath = String.Format("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/referrals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
             return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
         }
@@ -583,25 +583,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> UpdateReferralById(Expression<Func<string>> id, Expression<Func<string>> ifMatch, Expression<Func<string>> odataReferralcontext = null, Expression<Func<string>> odataReferralcampaignId = null, Expression<Func<bool>> odataReferralconsentconsentToContact = null, Expression<Func<bool>> odataReferralconsentconsentToToShareInfoWithOthers = null, Expression<Func<bool>> odataReferralconsentconsentToShareReferralWithMicrosoftSellers = null, Expression<Func<string>> odataReferralcreatedDateTime = null, Expression<Func<string>> odataReferralcustomerProfileaddressaddressLine1 = null, Expression<Func<string>> odataReferralcustomerProfileaddressaddressLine2 = null, Expression<Func<string>> odataReferralcustomerProfileaddresscity = null, Expression<Func<string>> odataReferralcustomerProfileaddresscountry = null, Expression<Func<string>> odataReferralcustomerProfileaddresspostalCode = null, Expression<Func<string>> odataReferralcustomerProfileaddressregion = null, Expression<Func<string>> odataReferralcustomerProfileaddressstate = null, Expression<Func<JToken[]>> odataReferralcustomerProfileids = null, Expression<Func<string>> odataReferralcustomerProfilename = null, Expression<Func<string>> odataReferralcustomerProfilesize = null, Expression<Func<odataReferralcustomerProfileteamInputItem[]>> odataReferralcustomerProfileteam = null, Expression<Func<string>> odataReferraldetailsclosingDateTime = null, Expression<Func<string>> odataReferraldetailscurrency = null, Expression<Func<string>> odataReferraldetailscustomerAction = null, Expression<Func<bool>> odataReferraldetailscustomerRequestedContact = null, Expression<Func<double>> odataReferraldetailsdealValue = null, Expression<Func<string>> odataReferraldetailsnotes = null, Expression<Func<odataReferraldetailsrequirementsindustriesInputItem[]>> odataReferraldetailsrequirementsindustries = null, Expression<Func<odataReferraldetailsrequirementsproductsInputItem[]>> odataReferraldetailsrequirementsproducts = null, Expression<Func<odataReferraldetailsrequirementsservicesInputItem[]>> odataReferraldetailsrequirementsservices = null, Expression<Func<JToken[]>> odataReferraldetailsrequirementssolutions = null, Expression<Func<JToken[]>> odataReferraldetailsrequirementsoffers = null, Expression<Func<string>> odataReferraleTag = null, Expression<Func<string>> odataReferralengagementId = null, Expression<Func<string>> odataReferralexpirationDateTime = null, Expression<Func<string>> odataReferralexternalReferenceId = null, Expression<Func<bool>> odataReferralfavorite = null, Expression<Func<string>> odataReferralid = null, Expression<Func<odataReferralinviteContextassistanceRequestCodeInput>> odataReferralinviteContextassistanceRequestCode = null, Expression<Func<string>> odataReferralinviteContextinvitedByorganizationId = null, Expression<Func<string>> odataReferralinviteContextinvitedByorganizationName = null, Expression<Func<string>> odataReferralinviteContextnotes = null, Expression<Func<string>> odataReferrallastModifiedVia = null, Expression<Func<string>> odataReferrallastRunId = null, Expression<Func<string>> odataReferrallinksrelatedReferralsmethod = null, Expression<Func<string>> odataReferrallinksrelatedReferralsuri = null, Expression<Func<string>> odataReferrallinksselfmethod = null, Expression<Func<string>> odataReferrallinksselfuri = null, Expression<Func<string>> odataReferralname = null, Expression<Func<string>> odataReferralorganizationId = null, Expression<Func<string>> odataReferralorganizationName = null, Expression<Func<string>> odataReferralqualification = null, Expression<Func<string>> odataReferralreferralProgram = null, Expression<Func<odataReferralsalesStageInput>> odataReferralsalesStage = null, Expression<Func<string>> odataReferralstatus = null, Expression<Func<string>> odataReferralstatusReason = null, Expression<Func<string>> odataReferralsubstatus = null, Expression<Func<odataReferraltargetInputItem[]>> odataReferraltarget = null, Expression<Func<odataReferralteamInputItem[]>> odataReferralteam = null, Expression<Func<string>> odataReferraltrackingInfomicrosoftMsxId = null, Expression<Func<string>> odataReferraltype = null, Expression<Func<string>> odataReferralupdatedDateTime = null, Expression<Func<string>> odataReferralmpnId = null, Expression<Func<odataReferralregistrationsInputItem[]>> odataReferralregistrations = null, Expression<Func<string>> odataReferralregistrationStatus = null, Expression<Func<string>> odataReferralcallToAction = null, Expression<Func<string>> odataReferralreferralSource = null, Expression<Func<string>> odataReferralquality = null, Expression<Func<bool>> odataReferralisSpam = null, Expression<Func<string>> odataReferraldirection = null, Expression<Func<string[]>> odataReferraltags = null, Expression<Func<string>> odataReferralacceptedDateTime = null, Expression<Func<string>> odataReferralclosedDateTime = null, Expression<Func<string>> mSCorrelationId = null)
         {
-            var apiCallPath = String.Format("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/referrals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["if-match"] = ExpressionConverter.Convert(ifMatch);
+            callPayload.Headers["if-match"] = CSharpExpressionConverter.ConvertO(ifMatch);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
             var odataReferral = new JObject();
             var odataReferralpropCount = 0;
             if (odataReferralcontext != null)
             {
-                odataReferral["@odata.context"] = ExpressionConverter.ConvertO(odataReferralcontext);
+                odataReferral["@odata.context"] = CSharpExpressionConverter.ConvertToken(odataReferralcontext);
                 odataReferralpropCount++;
             }
 
             if (odataReferralcampaignId != null)
             {
-                odataReferral["campaignId"] = ExpressionConverter.ConvertO(odataReferralcampaignId);
+                odataReferral["campaignId"] = CSharpExpressionConverter.ConvertToken(odataReferralcampaignId);
                 odataReferralpropCount++;
             }
 
@@ -609,19 +609,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var consentObjectpropCount = 0;
             if (odataReferralconsentconsentToContact != null)
             {
-                consentObject["consentToContact"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToContact);
+                consentObject["consentToContact"] = CSharpExpressionConverter.ConvertToken(odataReferralconsentconsentToContact);
                 consentObjectpropCount++;
             }
 
             if (odataReferralconsentconsentToToShareInfoWithOthers != null)
             {
-                consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToToShareInfoWithOthers);
+                consentObject["consentToToShareInfoWithOthers"] = CSharpExpressionConverter.ConvertToken(odataReferralconsentconsentToToShareInfoWithOthers);
                 consentObjectpropCount++;
             }
 
             if (odataReferralconsentconsentToShareReferralWithMicrosoftSellers != null)
             {
-                consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToShareReferralWithMicrosoftSellers);
+                consentObject["consentToShareReferralWithMicrosoftSellers"] = CSharpExpressionConverter.ConvertToken(odataReferralconsentconsentToShareReferralWithMicrosoftSellers);
                 consentObjectpropCount++;
             }
 
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferralcreatedDateTime != null)
             {
-                odataReferral["createdDateTime"] = ExpressionConverter.ConvertO(odataReferralcreatedDateTime);
+                odataReferral["createdDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferralcreatedDateTime);
                 odataReferralpropCount++;
             }
 
@@ -643,43 +643,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var addressObjectpropCount = 0;
             if (odataReferralcustomerProfileaddressaddressLine1 != null)
             {
-                addressObject["addressLine1"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressaddressLine1);
+                addressObject["addressLine1"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddressaddressLine1);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddressaddressLine2 != null)
             {
-                addressObject["addressLine2"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressaddressLine2);
+                addressObject["addressLine2"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddressaddressLine2);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddresscity);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddressregion != null)
             {
-                addressObject["region"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressregion);
+                addressObject["region"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddressregion);
                 addressObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileaddressstate);
                 addressObjectpropCount++;
             }
 
@@ -691,25 +691,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferralcustomerProfileids != null)
             {
-                customerProfileObject["ids"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileids);
+                customerProfileObject["ids"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileids);
                 customerProfileObjectpropCount++;
             }
 
             if (odataReferralcustomerProfilename != null)
             {
-                customerProfileObject["name"] = ExpressionConverter.ConvertO(odataReferralcustomerProfilename);
+                customerProfileObject["name"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfilename);
                 customerProfileObjectpropCount++;
             }
 
             if (odataReferralcustomerProfilesize != null)
             {
-                customerProfileObject["size"] = ExpressionConverter.ConvertO(odataReferralcustomerProfilesize);
+                customerProfileObject["size"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfilesize);
                 customerProfileObjectpropCount++;
             }
 
             if (odataReferralcustomerProfileteam != null)
             {
-                customerProfileObject["team"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileteam);
+                customerProfileObject["team"] = CSharpExpressionConverter.ConvertToken(odataReferralcustomerProfileteam);
                 customerProfileObjectpropCount++;
             }
 
@@ -723,37 +723,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var detailsObjectpropCount = 0;
             if (odataReferraldetailsclosingDateTime != null)
             {
-                detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(odataReferraldetailsclosingDateTime);
+                detailsObject["closingDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsclosingDateTime);
                 detailsObjectpropCount++;
             }
 
             if (odataReferraldetailscurrency != null)
             {
-                detailsObject["currency"] = ExpressionConverter.ConvertO(odataReferraldetailscurrency);
+                detailsObject["currency"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailscurrency);
                 detailsObjectpropCount++;
             }
 
             if (odataReferraldetailscustomerAction != null)
             {
-                detailsObject["customerAction"] = ExpressionConverter.ConvertO(odataReferraldetailscustomerAction);
+                detailsObject["customerAction"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailscustomerAction);
                 detailsObjectpropCount++;
             }
 
             if (odataReferraldetailscustomerRequestedContact != null)
             {
-                detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(odataReferraldetailscustomerRequestedContact);
+                detailsObject["customerRequestedContact"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailscustomerRequestedContact);
                 detailsObjectpropCount++;
             }
 
             if (odataReferraldetailsdealValue != null)
             {
-                detailsObject["dealValue"] = ExpressionConverter.ConvertO(odataReferraldetailsdealValue);
+                detailsObject["dealValue"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsdealValue);
                 detailsObjectpropCount++;
             }
 
             if (odataReferraldetailsnotes != null)
             {
-                detailsObject["notes"] = ExpressionConverter.ConvertO(odataReferraldetailsnotes);
+                detailsObject["notes"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsnotes);
                 detailsObjectpropCount++;
             }
 
@@ -761,31 +761,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var requirementsObjectpropCount = 0;
             if (odataReferraldetailsrequirementsindustries != null)
             {
-                requirementsObject["industries"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsindustries);
+                requirementsObject["industries"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsrequirementsindustries);
                 requirementsObjectpropCount++;
             }
 
             if (odataReferraldetailsrequirementsproducts != null)
             {
-                requirementsObject["products"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsproducts);
+                requirementsObject["products"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsrequirementsproducts);
                 requirementsObjectpropCount++;
             }
 
             if (odataReferraldetailsrequirementsservices != null)
             {
-                requirementsObject["services"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsservices);
+                requirementsObject["services"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsrequirementsservices);
                 requirementsObjectpropCount++;
             }
 
             if (odataReferraldetailsrequirementssolutions != null)
             {
-                requirementsObject["solutions"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementssolutions);
+                requirementsObject["solutions"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsrequirementssolutions);
                 requirementsObjectpropCount++;
             }
 
             if (odataReferraldetailsrequirementsoffers != null)
             {
-                requirementsObject["offers"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsoffers);
+                requirementsObject["offers"] = CSharpExpressionConverter.ConvertToken(odataReferraldetailsrequirementsoffers);
                 requirementsObjectpropCount++;
             }
 
@@ -811,37 +811,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferraleTag != null)
             {
-                odataReferral["eTag"] = ExpressionConverter.ConvertO(odataReferraleTag);
+                odataReferral["eTag"] = CSharpExpressionConverter.ConvertToken(odataReferraleTag);
                 odataReferralpropCount++;
             }
 
             if (odataReferralengagementId != null)
             {
-                odataReferral["engagementId"] = ExpressionConverter.ConvertO(odataReferralengagementId);
+                odataReferral["engagementId"] = CSharpExpressionConverter.ConvertToken(odataReferralengagementId);
                 odataReferralpropCount++;
             }
 
             if (odataReferralexpirationDateTime != null)
             {
-                odataReferral["expirationDateTime"] = ExpressionConverter.ConvertO(odataReferralexpirationDateTime);
+                odataReferral["expirationDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferralexpirationDateTime);
                 odataReferralpropCount++;
             }
 
             if (odataReferralexternalReferenceId != null)
             {
-                odataReferral["externalReferenceId"] = ExpressionConverter.ConvertO(odataReferralexternalReferenceId);
+                odataReferral["externalReferenceId"] = CSharpExpressionConverter.ConvertToken(odataReferralexternalReferenceId);
                 odataReferralpropCount++;
             }
 
             if (odataReferralfavorite != null)
             {
-                odataReferral["favorite"] = ExpressionConverter.ConvertO(odataReferralfavorite);
+                odataReferral["favorite"] = CSharpExpressionConverter.ConvertToken(odataReferralfavorite);
                 odataReferralpropCount++;
             }
 
             if (odataReferralid != null)
             {
-                odataReferral["id"] = ExpressionConverter.ConvertO(odataReferralid);
+                odataReferral["id"] = CSharpExpressionConverter.ConvertToken(odataReferralid);
                 odataReferralpropCount++;
             }
 
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var inviteContextObjectpropCount = 0;
             if (odataReferralinviteContextassistanceRequestCode != null)
             {
-                inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(odataReferralinviteContextassistanceRequestCode);
+                inviteContextObject["assistanceRequestCode"] = CSharpExpressionConverter.Convert(odataReferralinviteContextassistanceRequestCode);
                 inviteContextObjectpropCount++;
             }
 
@@ -857,13 +857,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var invitedByObjectpropCount = 0;
             if (odataReferralinviteContextinvitedByorganizationId != null)
             {
-                invitedByObject["organizationId"] = ExpressionConverter.ConvertO(odataReferralinviteContextinvitedByorganizationId);
+                invitedByObject["organizationId"] = CSharpExpressionConverter.ConvertToken(odataReferralinviteContextinvitedByorganizationId);
                 invitedByObjectpropCount++;
             }
 
             if (odataReferralinviteContextinvitedByorganizationName != null)
             {
-                invitedByObject["organizationName"] = ExpressionConverter.ConvertO(odataReferralinviteContextinvitedByorganizationName);
+                invitedByObject["organizationName"] = CSharpExpressionConverter.ConvertToken(odataReferralinviteContextinvitedByorganizationName);
                 invitedByObjectpropCount++;
             }
 
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferralinviteContextnotes != null)
             {
-                inviteContextObject["notes"] = ExpressionConverter.ConvertO(odataReferralinviteContextnotes);
+                inviteContextObject["notes"] = CSharpExpressionConverter.ConvertToken(odataReferralinviteContextnotes);
                 inviteContextObjectpropCount++;
             }
 
@@ -887,13 +887,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferrallastModifiedVia != null)
             {
-                odataReferral["lastModifiedVia"] = ExpressionConverter.ConvertO(odataReferrallastModifiedVia);
+                odataReferral["lastModifiedVia"] = CSharpExpressionConverter.ConvertToken(odataReferrallastModifiedVia);
                 odataReferralpropCount++;
             }
 
             if (odataReferrallastRunId != null)
             {
-                odataReferral["lastRunId"] = ExpressionConverter.ConvertO(odataReferrallastRunId);
+                odataReferral["lastRunId"] = CSharpExpressionConverter.ConvertToken(odataReferrallastRunId);
                 odataReferralpropCount++;
             }
 
@@ -903,13 +903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var relatedReferralsObjectpropCount = 0;
             if (odataReferrallinksrelatedReferralsmethod != null)
             {
-                relatedReferralsObject["method"] = ExpressionConverter.ConvertO(odataReferrallinksrelatedReferralsmethod);
+                relatedReferralsObject["method"] = CSharpExpressionConverter.ConvertToken(odataReferrallinksrelatedReferralsmethod);
                 relatedReferralsObjectpropCount++;
             }
 
             if (odataReferrallinksrelatedReferralsuri != null)
             {
-                relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(odataReferrallinksrelatedReferralsuri);
+                relatedReferralsObject["uri"] = CSharpExpressionConverter.ConvertToken(odataReferrallinksrelatedReferralsuri);
                 relatedReferralsObjectpropCount++;
             }
 
@@ -923,13 +923,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var selfObjectpropCount = 0;
             if (odataReferrallinksselfmethod != null)
             {
-                selfObject["method"] = ExpressionConverter.ConvertO(odataReferrallinksselfmethod);
+                selfObject["method"] = CSharpExpressionConverter.ConvertToken(odataReferrallinksselfmethod);
                 selfObjectpropCount++;
             }
 
             if (odataReferrallinksselfuri != null)
             {
-                selfObject["uri"] = ExpressionConverter.ConvertO(odataReferrallinksselfuri);
+                selfObject["uri"] = CSharpExpressionConverter.ConvertToken(odataReferrallinksselfuri);
                 selfObjectpropCount++;
             }
 
@@ -947,67 +947,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferralname != null)
             {
-                odataReferral["name"] = ExpressionConverter.ConvertO(odataReferralname);
+                odataReferral["name"] = CSharpExpressionConverter.ConvertToken(odataReferralname);
                 odataReferralpropCount++;
             }
 
             if (odataReferralorganizationId != null)
             {
-                odataReferral["organizationId"] = ExpressionConverter.ConvertO(odataReferralorganizationId);
+                odataReferral["organizationId"] = CSharpExpressionConverter.ConvertToken(odataReferralorganizationId);
                 odataReferralpropCount++;
             }
 
             if (odataReferralorganizationName != null)
             {
-                odataReferral["organizationName"] = ExpressionConverter.ConvertO(odataReferralorganizationName);
+                odataReferral["organizationName"] = CSharpExpressionConverter.ConvertToken(odataReferralorganizationName);
                 odataReferralpropCount++;
             }
 
             if (odataReferralqualification != null)
             {
-                odataReferral["qualification"] = ExpressionConverter.ConvertO(odataReferralqualification);
+                odataReferral["qualification"] = CSharpExpressionConverter.ConvertToken(odataReferralqualification);
                 odataReferralpropCount++;
             }
 
             if (odataReferralreferralProgram != null)
             {
-                odataReferral["referralProgram"] = ExpressionConverter.ConvertO(odataReferralreferralProgram);
+                odataReferral["referralProgram"] = CSharpExpressionConverter.ConvertToken(odataReferralreferralProgram);
                 odataReferralpropCount++;
             }
 
             if (odataReferralsalesStage != null)
             {
-                odataReferral["salesStage"] = ExpressionConverter.ConvertO(odataReferralsalesStage);
+                odataReferral["salesStage"] = CSharpExpressionConverter.Convert(odataReferralsalesStage);
                 odataReferralpropCount++;
             }
 
             if (odataReferralstatus != null)
             {
-                odataReferral["status"] = ExpressionConverter.ConvertO(odataReferralstatus);
+                odataReferral["status"] = CSharpExpressionConverter.ConvertToken(odataReferralstatus);
                 odataReferralpropCount++;
             }
 
             if (odataReferralstatusReason != null)
             {
-                odataReferral["statusReason"] = ExpressionConverter.ConvertO(odataReferralstatusReason);
+                odataReferral["statusReason"] = CSharpExpressionConverter.ConvertToken(odataReferralstatusReason);
                 odataReferralpropCount++;
             }
 
             if (odataReferralsubstatus != null)
             {
-                odataReferral["substatus"] = ExpressionConverter.ConvertO(odataReferralsubstatus);
+                odataReferral["substatus"] = CSharpExpressionConverter.ConvertToken(odataReferralsubstatus);
                 odataReferralpropCount++;
             }
 
             if (odataReferraltarget != null)
             {
-                odataReferral["target"] = ExpressionConverter.ConvertO(odataReferraltarget);
+                odataReferral["target"] = CSharpExpressionConverter.ConvertToken(odataReferraltarget);
                 odataReferralpropCount++;
             }
 
             if (odataReferralteam != null)
             {
-                odataReferral["team"] = ExpressionConverter.ConvertO(odataReferralteam);
+                odataReferral["team"] = CSharpExpressionConverter.ConvertToken(odataReferralteam);
                 odataReferralpropCount++;
             }
 
@@ -1015,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var trackingInfoObjectpropCount = 0;
             if (odataReferraltrackingInfomicrosoftMsxId != null)
             {
-                trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(odataReferraltrackingInfomicrosoftMsxId);
+                trackingInfoObject["microsoftMsxId"] = CSharpExpressionConverter.ConvertToken(odataReferraltrackingInfomicrosoftMsxId);
                 trackingInfoObjectpropCount++;
             }
 
@@ -1027,79 +1027,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
             if (odataReferraltype != null)
             {
-                odataReferral["type"] = ExpressionConverter.ConvertO(odataReferraltype);
+                odataReferral["type"] = CSharpExpressionConverter.ConvertToken(odataReferraltype);
                 odataReferralpropCount++;
             }
 
             if (odataReferralupdatedDateTime != null)
             {
-                odataReferral["updatedDateTime"] = ExpressionConverter.ConvertO(odataReferralupdatedDateTime);
+                odataReferral["updatedDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferralupdatedDateTime);
                 odataReferralpropCount++;
             }
 
             if (odataReferralmpnId != null)
             {
-                odataReferral["mpnId"] = ExpressionConverter.ConvertO(odataReferralmpnId);
+                odataReferral["mpnId"] = CSharpExpressionConverter.ConvertToken(odataReferralmpnId);
                 odataReferralpropCount++;
             }
 
             if (odataReferralregistrations != null)
             {
-                odataReferral["registrations"] = ExpressionConverter.ConvertO(odataReferralregistrations);
+                odataReferral["registrations"] = CSharpExpressionConverter.ConvertToken(odataReferralregistrations);
                 odataReferralpropCount++;
             }
 
             if (odataReferralregistrationStatus != null)
             {
-                odataReferral["registrationStatus"] = ExpressionConverter.ConvertO(odataReferralregistrationStatus);
+                odataReferral["registrationStatus"] = CSharpExpressionConverter.ConvertToken(odataReferralregistrationStatus);
                 odataReferralpropCount++;
             }
 
             if (odataReferralcallToAction != null)
             {
-                odataReferral["callToAction"] = ExpressionConverter.ConvertO(odataReferralcallToAction);
+                odataReferral["callToAction"] = CSharpExpressionConverter.ConvertToken(odataReferralcallToAction);
                 odataReferralpropCount++;
             }
 
             if (odataReferralreferralSource != null)
             {
-                odataReferral["referralSource"] = ExpressionConverter.ConvertO(odataReferralreferralSource);
+                odataReferral["referralSource"] = CSharpExpressionConverter.ConvertToken(odataReferralreferralSource);
                 odataReferralpropCount++;
             }
 
             if (odataReferralquality != null)
             {
-                odataReferral["quality"] = ExpressionConverter.ConvertO(odataReferralquality);
+                odataReferral["quality"] = CSharpExpressionConverter.ConvertToken(odataReferralquality);
                 odataReferralpropCount++;
             }
 
             if (odataReferralisSpam != null)
             {
-                odataReferral["isSpam"] = ExpressionConverter.ConvertO(odataReferralisSpam);
+                odataReferral["isSpam"] = CSharpExpressionConverter.ConvertToken(odataReferralisSpam);
                 odataReferralpropCount++;
             }
 
             if (odataReferraldirection != null)
             {
-                odataReferral["direction"] = ExpressionConverter.ConvertO(odataReferraldirection);
+                odataReferral["direction"] = CSharpExpressionConverter.ConvertToken(odataReferraldirection);
                 odataReferralpropCount++;
             }
 
             if (odataReferraltags != null)
             {
-                odataReferral["tags"] = ExpressionConverter.ConvertO(odataReferraltags);
+                odataReferral["tags"] = CSharpExpressionConverter.ConvertToken(odataReferraltags);
                 odataReferralpropCount++;
             }
 
             if (odataReferralacceptedDateTime != null)
             {
-                odataReferral["acceptedDateTime"] = ExpressionConverter.ConvertO(odataReferralacceptedDateTime);
+                odataReferral["acceptedDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferralacceptedDateTime);
                 odataReferralpropCount++;
             }
 
             if (odataReferralclosedDateTime != null)
             {
-                odataReferral["closedDateTime"] = ExpressionConverter.ConvertO(odataReferralclosedDateTime);
+                odataReferral["closedDateTime"] = CSharpExpressionConverter.ConvertToken(odataReferralclosedDateTime);
                 odataReferralpropCount++;
             }
 
@@ -1114,42 +1114,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchReferralById(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem[]>> referral = null)
         {
-            var apiCallPath = String.Format("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/referrals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-            callPayload.Body = ExpressionConverter.ConvertO(referral);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(referral);
             return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem2[]>> referral = null)
         {
-            var apiCallPath = String.Format("/referrals/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/referrals/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-            callPayload.Body = ExpressionConverter.ConvertO(referral);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(referral);
             return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem22[]>> referral = null)
         {
-            var apiCallPath = String.Format("/referrals/{0}//", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/referrals/{0}//", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (mSCorrelationId != null)
-                callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                callPayload.Headers["MS-CorrelationId"] = CSharpExpressionConverter.ConvertO(mSCorrelationId);
             callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-            callPayload.Body = ExpressionConverter.ConvertO(referral);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(referral);
             return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
         }
     }

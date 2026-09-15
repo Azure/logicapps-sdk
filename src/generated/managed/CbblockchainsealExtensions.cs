@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
+            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
             var bodypropCount = 0;
             if (bodyfile != null)
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
                 bodypropCount++;
             }
 
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
+            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
             bodypropCount++;
-            body["sealId"] = ExpressionConverter.ConvertO(bodysealId);
+            body["sealId"] = CSharpExpressionConverter.ConvertToken(bodysealId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

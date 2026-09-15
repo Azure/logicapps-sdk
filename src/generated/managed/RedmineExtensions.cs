@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetIssueResponse> GetIssue(Expression<Func<string>> issueId)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetIssueResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<string> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissuepriority = null, Expression<Func<issueissuetrackerInput>> issueissuetracker = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var issue = new JObject();
@@ -32,31 +32,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             var issueObjectpropCount = 0;
             if (issueissuepriority != null)
             {
-                issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriority);
+                issueObject["priority_id"] = CSharpExpressionConverter.ConvertToken(issueissuepriority);
                 issueObjectpropCount++;
             }
 
             if (issueissuetracker != null)
             {
-                issueObject["tracker_id"] = ExpressionConverter.ConvertO(issueissuetracker);
+                issueObject["tracker_id"] = CSharpExpressionConverter.Convert(issueissuetracker);
                 issueObjectpropCount++;
             }
 
             if (issueissuestatus != null)
             {
-                issueObject["status_id"] = ExpressionConverter.ConvertO(issueissuestatus);
+                issueObject["status_id"] = CSharpExpressionConverter.Convert(issueissuestatus);
                 issueObjectpropCount++;
             }
 
             if (issueissuesubject != null)
             {
-                issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
+                issueObject["subject"] = CSharpExpressionConverter.ConvertToken(issueissuesubject);
                 issueObjectpropCount++;
             }
 
             if (issueissuedescription != null)
             {
-                issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
+                issueObject["description"] = CSharpExpressionConverter.ConvertToken(issueissuedescription);
                 issueObjectpropCount++;
             }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetProjectResponse>(callPayload);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetUserResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             var apiCallPath = "/new_issue_trigger/issues.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             var apiCallPath = "/resolved_issue_trigger/issues.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
         }
     }

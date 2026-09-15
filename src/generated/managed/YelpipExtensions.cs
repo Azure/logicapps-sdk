@@ -17,26 +17,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var apiCallPath = "/v3/businesses/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+            callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
+            callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
             if (latitude != null)
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
             if (longtitude != null)
-                callPayload.Queries["longtitude"] = ExpressionConverter.Convert(longtitude);
+                callPayload.Queries["longtitude"] = CSharpExpressionConverter.ConvertO(longtitude);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_by"] = CSharpExpressionConverter.Convert(sortBy);
             if (openNow != null)
-                callPayload.Queries["open_now"] = ExpressionConverter.Convert(openNow);
+                callPayload.Queries["open_now"] = CSharpExpressionConverter.ConvertO(openNow);
             return new ApiConnectionAction<BusinessSearchResponse>(callPayload);
         }
 
@@ -46,20 +46,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var apiCallPath = "/v3/businesses/search/phone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+            callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             return new ApiConnectionAction<PhoneSearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessDetailsResponse> BusinessDetails(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
-            var apiCallPath = String.Format("/v3/businesses/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             return new ApiConnectionAction<BusinessDetailsResponse>(callPayload);
         }
 
@@ -69,40 +69,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var apiCallPath = "/v3/businesses/matches";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["address1"] = ExpressionConverter.Convert(address1);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
+            callPayload.Queries["address1"] = CSharpExpressionConverter.ConvertO(address1);
             if (address2 != null)
-                callPayload.Queries["address2"] = ExpressionConverter.Convert(address2);
+                callPayload.Queries["address2"] = CSharpExpressionConverter.ConvertO(address2);
             if (address3 != null)
-                callPayload.Queries["address3"] = ExpressionConverter.Convert(address3);
-            callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["address3"] = CSharpExpressionConverter.ConvertO(address3);
+            callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
+            callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (latitude != null)
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
             if (longitude != null)
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (zipCode != null)
-                callPayload.Queries["zip_code"] = ExpressionConverter.Convert(zipCode);
+                callPayload.Queries["zip_code"] = CSharpExpressionConverter.ConvertO(zipCode);
             if (yelpBusinessId != null)
-                callPayload.Queries["yelp_business_id"] = ExpressionConverter.Convert(yelpBusinessId);
+                callPayload.Queries["yelp_business_id"] = CSharpExpressionConverter.ConvertO(yelpBusinessId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (matchThreshold != null)
-                callPayload.Queries["match_threshold"] = ExpressionConverter.Convert(matchThreshold);
+                callPayload.Queries["match_threshold"] = CSharpExpressionConverter.Convert(matchThreshold);
             return new ApiConnectionAction<BusinessMatchResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<ReviewsResponse> Reviews(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
-            var apiCallPath = String.Format("/v3/businesses/{0}/reviews", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}/reviews", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             return new ApiConnectionAction<ReviewsResponse>(callPayload);
         }
 
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var apiCallPath = "/v3/autocomplete";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
             return new ApiConnectionAction<AutocompleteResponse>(callPayload);
         }
     }

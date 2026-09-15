@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
         public IWorkflowAction UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
         {
-            var apiCallPath = String.Format("/{0}/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1), ExpressionConverter.ConvertWithUrlEncoding(storeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
     {
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/despatch-advice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodystoreIds != null)
             {
-                body["storeIds"] = ExpressionConverter.ConvertO(bodystoreIds);
+                body["storeIds"] = CSharpExpressionConverter.ConvertToken(bodystoreIds);
                 bodypropCount++;
             }
 
@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/invoice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodystoreIds != null)
             {
-                body["storeIds"] = ExpressionConverter.ConvertO(bodystoreIds);
+                body["storeIds"] = CSharpExpressionConverter.ConvertToken(bodystoreIds);
                 bodypropCount++;
             }
 

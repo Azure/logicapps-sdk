@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -34,18 +34,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputDatapropCount++;
-            inputData["output_format"] = ExpressionConverter.ConvertO(inputDataoutputFormat);
+            inputData["output_format"] = CSharpExpressionConverter.Convert(inputDataoutputFormat);
             inputData["copy_metadata"] = false;
             inputDatapropCount++;
             if (inputDataoverrideSettings != null)
             {
-                inputData["override_settings"] = ExpressionConverter.ConvertO(inputDataoverrideSettings);
+                inputData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputDataoverrideSettings);
                 inputDatapropCount++;
             }
 
             if (inputDatatemplateFileContent != null)
             {
-                inputData["template_file_content"] = ExpressionConverter.ConvertO(inputDatatemplateFileContent);
+                inputData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatatemplateFileContent);
                 inputDatapropCount++;
             }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputCadData["use_async_pattern"] = false;
             inputCadDatapropCount++;
             inputCadDatapropCount++;
-            inputCadData["source_file_name"] = ExpressionConverter.ConvertO(inputCadDatasourceFileName);
+            inputCadData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputCadDatapropCount++;
-            inputCadData["source_file_content"] = ExpressionConverter.ConvertO(inputCadDatasourceFileContent);
+            inputCadData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileContent);
             inputCadData["copy_metadata"] = false;
             inputCadDatapropCount++;
             if (inputCadDatapaperSize != null)
             {
                 if (inputCadDatapaperSize != null)
                 {
-                    inputCadData["paper_size"] = ExpressionConverter.ConvertO(inputCadDatapaperSize);
+                    inputCadData["paper_size"] = CSharpExpressionConverter.Convert(inputCadDatapaperSize);
                     inputCadDatapropCount++;
                 }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputCadDatapaperSizeCustom != null)
             {
-                inputCadData["paper_size_custom"] = ExpressionConverter.ConvertO(inputCadDatapaperSizeCustom);
+                inputCadData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDatapaperSizeCustom);
                 inputCadDatapropCount++;
             }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDatapageMargins != null)
                 {
-                    inputCadData["page_margins"] = ExpressionConverter.ConvertO(inputCadDatapageMargins);
+                    inputCadData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputCadDatapageMargins);
                     inputCadDatapropCount++;
                 }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDatabackgroundColor != null)
                 {
-                    inputCadData["background_color"] = ExpressionConverter.ConvertO(inputCadDatabackgroundColor);
+                    inputCadData["background_color"] = CSharpExpressionConverter.ConvertToken(inputCadDatabackgroundColor);
                     inputCadDatapropCount++;
                 }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDataforegroundColor != null)
                 {
-                    inputCadData["foreground_color"] = ExpressionConverter.ConvertO(inputCadDataforegroundColor);
+                    inputCadData["foreground_color"] = CSharpExpressionConverter.Convert(inputCadDataforegroundColor);
                     inputCadDatapropCount++;
                 }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputCadDataforegroundColorCustom != null)
             {
-                inputCadData["foreground_color_custom"] = ExpressionConverter.ConvertO(inputCadDataforegroundColorCustom);
+                inputCadData["foreground_color_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDataforegroundColorCustom);
                 inputCadDatapropCount++;
             }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDataemptyLayoutDetection != null)
                 {
-                    inputCadData["empty_layout_detection_mode"] = ExpressionConverter.ConvertO(inputCadDataemptyLayoutDetection);
+                    inputCadData["empty_layout_detection_mode"] = CSharpExpressionConverter.Convert(inputCadDataemptyLayoutDetection);
                     inputCadDatapropCount++;
                 }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDatalayoutSortOrder != null)
                 {
-                    inputCadData["layout_sort_order"] = ExpressionConverter.ConvertO(inputCadDatalayoutSortOrder);
+                    inputCadData["layout_sort_order"] = CSharpExpressionConverter.Convert(inputCadDatalayoutSortOrder);
                     inputCadDatapropCount++;
                 }
 
@@ -207,19 +207,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputCadDatastartPage != null)
             {
-                inputCadData["start_page"] = ExpressionConverter.ConvertO(inputCadDatastartPage);
+                inputCadData["start_page"] = CSharpExpressionConverter.ConvertToken(inputCadDatastartPage);
                 inputCadDatapropCount++;
             }
 
             if (inputCadDataendPage != null)
             {
-                inputCadData["end_page"] = ExpressionConverter.ConvertO(inputCadDataendPage);
+                inputCadData["end_page"] = CSharpExpressionConverter.ConvertToken(inputCadDataendPage);
                 inputCadDatapropCount++;
             }
 
             if (inputCadDataoverrideSettings != null)
             {
-                inputCadData["override_settings"] = ExpressionConverter.ConvertO(inputCadDataoverrideSettings);
+                inputCadData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputCadDataoverrideSettings);
                 inputCadDatapropCount++;
             }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputCadDatafailOnError != null)
                 {
-                    inputCadData["fail_on_error"] = ExpressionConverter.ConvertO(inputCadDatafailOnError);
+                    inputCadData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputCadDatafailOnError);
                     inputCadDatapropCount++;
                 }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputEmailData["use_async_pattern"] = false;
             inputEmailDatapropCount++;
             inputEmailDatapropCount++;
-            inputEmailData["source_file_name"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileName);
+            inputEmailData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -268,14 +268,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputEmailDatapropCount++;
-            inputEmailData["source_file_content"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileContent);
+            inputEmailData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileContent);
             inputEmailData["copy_metadata"] = false;
             inputEmailDatapropCount++;
             if (inputEmailDataincludeAttachments != null)
             {
                 if (inputEmailDataincludeAttachments != null)
                 {
-                    inputEmailData["convert_attachments"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachments);
+                    inputEmailData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachments);
                     inputEmailDatapropCount++;
                 }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputEmailDataattachmentAction != null)
             {
-                inputEmailData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputEmailDataattachmentAction);
+                inputEmailData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputEmailDataattachmentAction);
                 inputEmailDatapropCount++;
             }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDataattachmentSummary != null)
                 {
-                    inputEmailData["display_attachment_summary"] = ExpressionConverter.ConvertO(inputEmailDataattachmentSummary);
+                    inputEmailData["display_attachment_summary"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentSummary);
                     inputEmailDatapropCount++;
                 }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDataunsupportedAttachmentAction != null)
                 {
-                    inputEmailData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputEmailDataunsupportedAttachmentAction);
+                    inputEmailData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputEmailDataunsupportedAttachmentAction);
                     inputEmailDatapropCount++;
                 }
 
@@ -327,13 +327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputEmailDataincludeAttachmentFilter != null)
             {
-                inputEmailData["include_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachmentFilter);
+                inputEmailData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachmentFilter);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataexcludeAttachmentFilter != null)
             {
-                inputEmailData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataexcludeAttachmentFilter);
+                inputEmailData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataexcludeAttachmentFilter);
                 inputEmailDatapropCount++;
             }
 
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDataviewportSize != null)
                 {
-                    inputEmailData["viewport_Size"] = ExpressionConverter.ConvertO(inputEmailDataviewportSize);
+                    inputEmailData["viewport_Size"] = CSharpExpressionConverter.ConvertToken(inputEmailDataviewportSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDatapaperSize != null)
                 {
-                    inputEmailData["paper_size"] = ExpressionConverter.ConvertO(inputEmailDatapaperSize);
+                    inputEmailData["paper_size"] = CSharpExpressionConverter.Convert(inputEmailDatapaperSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputEmailDatapaperSizeCustom != null)
             {
-                inputEmailData["paper_size_custom"] = ExpressionConverter.ConvertO(inputEmailDatapaperSizeCustom);
+                inputEmailData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapaperSizeCustom);
                 inputEmailDatapropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDatapageMargins != null)
                 {
-                    inputEmailData["page_margins"] = ExpressionConverter.ConvertO(inputEmailDatapageMargins);
+                    inputEmailData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapageMargins);
                     inputEmailDatapropCount++;
                 }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputEmailDataattachmentErrors != null)
             {
-                inputEmailData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputEmailDataattachmentErrors);
+                inputEmailData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentErrors);
                 inputEmailDatapropCount++;
             }
 
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDataminImageSize != null)
                 {
-                    inputEmailData["minimum_image_attachment_dimension"] = ExpressionConverter.ConvertO(inputEmailDataminImageSize);
+                    inputEmailData["minimum_image_attachment_dimension"] = CSharpExpressionConverter.ConvertToken(inputEmailDataminImageSize);
                     inputEmailDatapropCount++;
                 }
 
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDataofflineMode != null)
                 {
-                    inputEmailData["enable_offline_mode"] = ExpressionConverter.ConvertO(inputEmailDataofflineMode);
+                    inputEmailData["enable_offline_mode"] = CSharpExpressionConverter.ConvertToken(inputEmailDataofflineMode);
                     inputEmailDatapropCount++;
                 }
 
@@ -431,25 +431,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputEmailDatastartPage != null)
             {
-                inputEmailData["start_page"] = ExpressionConverter.ConvertO(inputEmailDatastartPage);
+                inputEmailData["start_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDatastartPage);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataendPage != null)
             {
-                inputEmailData["end_page"] = ExpressionConverter.ConvertO(inputEmailDataendPage);
+                inputEmailData["end_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDataendPage);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataconversionQuality != null)
             {
-                inputEmailData["quality"] = ExpressionConverter.ConvertO(inputEmailDataconversionQuality);
+                inputEmailData["quality"] = CSharpExpressionConverter.Convert(inputEmailDataconversionQuality);
                 inputEmailDatapropCount++;
             }
 
             if (inputEmailDataoverrideSettings != null)
             {
-                inputEmailData["override_settings"] = ExpressionConverter.ConvertO(inputEmailDataoverrideSettings);
+                inputEmailData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputEmailDataoverrideSettings);
                 inputEmailDatapropCount++;
             }
 
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputEmailDatafailOnError != null)
                 {
-                    inputEmailData["fail_on_error"] = ExpressionConverter.ConvertO(inputEmailDatafailOnError);
+                    inputEmailData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDatafailOnError);
                     inputEmailDatapropCount++;
                 }
 
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputExcelData["use_async_pattern"] = false;
             inputExcelDatapropCount++;
             inputExcelDatapropCount++;
-            inputExcelData["source_file_name"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileName);
+            inputExcelData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -498,14 +498,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputExcelDatapropCount++;
-            inputExcelData["source_file_content"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileContent);
+            inputExcelData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileContent);
             inputExcelDatapropCount++;
-            inputExcelData["output_format"] = ExpressionConverter.ConvertO(inputExcelDataoutputFormat);
+            inputExcelData["output_format"] = CSharpExpressionConverter.Convert(inputExcelDataoutputFormat);
             inputExcelData["copy_metadata"] = false;
             inputExcelDatapropCount++;
             if (inputExcelDatarange != null)
             {
-                inputExcelData["range"] = ExpressionConverter.ConvertO(inputExcelDatarange);
+                inputExcelData["range"] = CSharpExpressionConverter.Convert(inputExcelDatarange);
                 inputExcelDatapropCount++;
             }
 
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputExcelDatarevealHiddenRows != null)
                 {
-                    inputExcelData["unhide_all_rows"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenRows);
+                    inputExcelData["unhide_all_rows"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenRows);
                     inputExcelDatapropCount++;
                 }
 
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputExcelDatarevealHiddenColumns != null)
                 {
-                    inputExcelData["unhide_all_columns"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenColumns);
+                    inputExcelData["unhide_all_columns"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenColumns);
                     inputExcelDatapropCount++;
                 }
 
@@ -543,37 +543,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputExcelDatafitToPagesWide != null)
             {
-                inputExcelData["fit_to_pages_wide"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesWide);
+                inputExcelData["fit_to_pages_wide"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesWide);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDatafitToPagesTall != null)
             {
-                inputExcelData["fit_to_pages_tall"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesTall);
+                inputExcelData["fit_to_pages_tall"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesTall);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDatastartPage != null)
             {
-                inputExcelData["start_page"] = ExpressionConverter.ConvertO(inputExcelDatastartPage);
+                inputExcelData["start_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDatastartPage);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataendPage != null)
             {
-                inputExcelData["end_page"] = ExpressionConverter.ConvertO(inputExcelDataendPage);
+                inputExcelData["end_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDataendPage);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataquality != null)
             {
-                inputExcelData["quality"] = ExpressionConverter.ConvertO(inputExcelDataquality);
+                inputExcelData["quality"] = CSharpExpressionConverter.Convert(inputExcelDataquality);
                 inputExcelDatapropCount++;
             }
 
             if (inputExcelDataoverrideSettings != null)
             {
-                inputExcelData["override_settings"] = ExpressionConverter.ConvertO(inputExcelDataoverrideSettings);
+                inputExcelData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputExcelDataoverrideSettings);
                 inputExcelDatapropCount++;
             }
 
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputExcelDatafailOnError != null)
                 {
-                    inputExcelData["fail_on_error"] = ExpressionConverter.ConvertO(inputExcelDatafailOnError);
+                    inputExcelData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafailOnError);
                     inputExcelDatapropCount++;
                 }
 
@@ -612,12 +612,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_url_or_html"] = ExpressionConverter.ConvertO(inputDatasourceURLOrHTML);
+            inputData["source_url_or_html"] = CSharpExpressionConverter.ConvertToken(inputDatasourceURLOrHTML);
             if (inputDatapageOrientation != null)
             {
                 if (inputDatapageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatapageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatapageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputDatamediaType != null)
                 {
-                    inputData["media_type"] = ExpressionConverter.ConvertO(inputDatamediaType);
+                    inputData["media_type"] = CSharpExpressionConverter.Convert(inputDatamediaType);
                     inputDatapropCount++;
                 }
 
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputDataauthenticationType != null)
                 {
-                    inputData["authentication_type"] = ExpressionConverter.ConvertO(inputDataauthenticationType);
+                    inputData["authentication_type"] = CSharpExpressionConverter.Convert(inputDataauthenticationType);
                     inputDatapropCount++;
                 }
 
@@ -663,25 +663,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputDatauserName != null)
             {
-                inputData["username"] = ExpressionConverter.ConvertO(inputDatauserName);
+                inputData["username"] = CSharpExpressionConverter.ConvertToken(inputDatauserName);
                 inputDatapropCount++;
             }
 
             if (inputDatapassword != null)
             {
-                inputData["password"] = ExpressionConverter.ConvertO(inputDatapassword);
+                inputData["password"] = CSharpExpressionConverter.ConvertToken(inputDatapassword);
                 inputDatapropCount++;
             }
 
             if (inputDataviewportSize != null)
             {
-                inputData["viewport_size"] = ExpressionConverter.ConvertO(inputDataviewportSize);
+                inputData["viewport_size"] = CSharpExpressionConverter.ConvertToken(inputDataviewportSize);
                 inputDatapropCount++;
             }
 
             if (inputDataconversionDelay != null)
             {
-                inputData["conversion_delay"] = ExpressionConverter.ConvertO(inputDataconversionDelay);
+                inputData["conversion_delay"] = CSharpExpressionConverter.ConvertToken(inputDataconversionDelay);
                 inputDatapropCount++;
             }
 
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputInfopathData["use_async_pattern"] = false;
             inputInfopathDatapropCount++;
             inputInfopathDatapropCount++;
-            inputInfopathData["source_file_name"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileName);
+            inputInfopathData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -730,20 +730,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputInfopathDatapropCount++;
-            inputInfopathData["source_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileContent);
+            inputInfopathData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileContent);
             inputInfopathDatapropCount++;
-            inputInfopathData["output_format"] = ExpressionConverter.ConvertO(inputInfopathDataoutputFormat);
+            inputInfopathData["output_format"] = CSharpExpressionConverter.Convert(inputInfopathDataoutputFormat);
             inputInfopathData["copy_metadata"] = false;
             inputInfopathDatapropCount++;
             if (inputInfopathDatatemplateFileContent != null)
             {
-                inputInfopathData["template_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatatemplateFileContent);
+                inputInfopathData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatatemplateFileContent);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataviewNames != null)
             {
-                inputInfopathData["views_to_convert"] = ExpressionConverter.ConvertO(inputInfopathDataviewNames);
+                inputInfopathData["views_to_convert"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataviewNames);
                 inputInfopathDatapropCount++;
             }
 
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputInfopathDataincludeAttachment != null)
                 {
-                    inputInfopathData["convert_attachments"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachment);
+                    inputInfopathData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachment);
                     inputInfopathDatapropCount++;
                 }
 
@@ -765,55 +765,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputInfopathDataattachmentAction != null)
             {
-                inputInfopathData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputInfopathDataattachmentAction);
+                inputInfopathData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputInfopathDataattachmentAction);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataunsupportedAttachmentAction != null)
             {
-                inputInfopathData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputInfopathDataunsupportedAttachmentAction);
+                inputInfopathData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputInfopathDataunsupportedAttachmentAction);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatabreakMergeOnError != null)
             {
-                inputInfopathData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatabreakMergeOnError);
+                inputInfopathData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatabreakMergeOnError);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataincludeAttachmentFilter != null)
             {
-                inputInfopathData["include_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachmentFilter);
+                inputInfopathData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachmentFilter);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataexcludeAttachmentFilter != null)
             {
-                inputInfopathData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataexcludeAttachmentFilter);
+                inputInfopathData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataexcludeAttachmentFilter);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatadefaultPaperSize != null)
             {
-                inputInfopathData["default_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSize);
+                inputInfopathData["default_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPaperSize);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatadefaultPaperSizeCustom != null)
             {
-                inputInfopathData["default_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSizeCustom);
+                inputInfopathData["default_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatadefaultPaperSizeCustom);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataforcePaperSize != null)
             {
-                inputInfopathData["force_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSize);
+                inputInfopathData["force_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePaperSize);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataforcePaperSizeCustom != null)
             {
-                inputInfopathData["force_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSizeCustom);
+                inputInfopathData["force_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataforcePaperSizeCustom);
                 inputInfopathDatapropCount++;
             }
 
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputInfopathDatadefaultPageOrientation != null)
                 {
-                    inputInfopathData["default_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPageOrientation);
+                    inputInfopathData["default_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPageOrientation);
                     inputInfopathDatapropCount++;
                 }
 
@@ -835,31 +835,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputInfopathDataforcePageOrientation != null)
             {
-                inputInfopathData["force_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDataforcePageOrientation);
+                inputInfopathData["force_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePageOrientation);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDatastartPage != null)
             {
-                inputInfopathData["start_page"] = ExpressionConverter.ConvertO(inputInfopathDatastartPage);
+                inputInfopathData["start_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatastartPage);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataendPage != null)
             {
-                inputInfopathData["end_page"] = ExpressionConverter.ConvertO(inputInfopathDataendPage);
+                inputInfopathData["end_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataendPage);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataconversionQuality != null)
             {
-                inputInfopathData["quality"] = ExpressionConverter.ConvertO(inputInfopathDataconversionQuality);
+                inputInfopathData["quality"] = CSharpExpressionConverter.Convert(inputInfopathDataconversionQuality);
                 inputInfopathDatapropCount++;
             }
 
             if (inputInfopathDataoverrideSettings != null)
             {
-                inputInfopathData["override_settings"] = ExpressionConverter.ConvertO(inputInfopathDataoverrideSettings);
+                inputInfopathData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataoverrideSettings);
                 inputInfopathDatapropCount++;
             }
 
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputInfopathDatafailOnError != null)
                 {
-                    inputInfopathData["fail_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatafailOnError);
+                    inputInfopathData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatafailOnError);
                     inputInfopathDatapropCount++;
                 }
 
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputPdfData["use_async_pattern"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
+            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -908,14 +908,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
+            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
             inputPdfData["copy_metadata"] = false;
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
-            inputPdfData["pdf_profile"] = ExpressionConverter.ConvertO(inputPdfDatapDFProfile);
+            inputPdfData["pdf_profile"] = CSharpExpressionConverter.Convert(inputPdfDatapDFProfile);
             if (inputPdfDataoverrideSettings != null)
             {
-                inputPdfData["override_settings"] = ExpressionConverter.ConvertO(inputPdfDataoverrideSettings);
+                inputPdfData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
                 inputPdfDatapropCount++;
             }
 
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
                     inputPdfDatapropCount++;
                 }
 
@@ -954,7 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputPowerpointData["use_async_pattern"] = false;
             inputPowerpointDatapropCount++;
             inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_name"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileName);
+            inputPowerpointData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -964,14 +964,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_content"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileContent);
+            inputPowerpointData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileContent);
             inputPowerpointDatapropCount++;
-            inputPowerpointData["output_format"] = ExpressionConverter.ConvertO(inputPowerpointDataoutputFormat);
+            inputPowerpointData["output_format"] = CSharpExpressionConverter.Convert(inputPowerpointDataoutputFormat);
             inputPowerpointData["copy_metadata"] = false;
             inputPowerpointDatapropCount++;
             if (inputPowerpointDatarange != null)
             {
-                inputPowerpointData["range"] = ExpressionConverter.ConvertO(inputPowerpointDatarange);
+                inputPowerpointData["range"] = CSharpExpressionConverter.Convert(inputPowerpointDatarange);
                 inputPowerpointDatapropCount++;
             }
 
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputPowerpointDataprintLayoutHandouts != null)
                 {
-                    inputPowerpointData["print_output_type"] = ExpressionConverter.ConvertO(inputPowerpointDataprintLayoutHandouts);
+                    inputPowerpointData["print_output_type"] = CSharpExpressionConverter.Convert(inputPowerpointDataprintLayoutHandouts);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -995,7 +995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputPowerpointDataframeSlides != null)
                 {
-                    inputPowerpointData["frame_slides"] = ExpressionConverter.ConvertO(inputPowerpointDataframeSlides);
+                    inputPowerpointData["frame_slides"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataframeSlides);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -1009,25 +1009,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputPowerpointDatastartPage != null)
             {
-                inputPowerpointData["start_page"] = ExpressionConverter.ConvertO(inputPowerpointDatastartPage);
+                inputPowerpointData["start_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatastartPage);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataendPage != null)
             {
-                inputPowerpointData["end_page"] = ExpressionConverter.ConvertO(inputPowerpointDataendPage);
+                inputPowerpointData["end_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataendPage);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataquality != null)
             {
-                inputPowerpointData["quality"] = ExpressionConverter.ConvertO(inputPowerpointDataquality);
+                inputPowerpointData["quality"] = CSharpExpressionConverter.Convert(inputPowerpointDataquality);
                 inputPowerpointDatapropCount++;
             }
 
             if (inputPowerpointDataoverrideSettings != null)
             {
-                inputPowerpointData["override_settings"] = ExpressionConverter.ConvertO(inputPowerpointDataoverrideSettings);
+                inputPowerpointData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataoverrideSettings);
                 inputPowerpointDatapropCount++;
             }
 
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputPowerpointDatafailOnError != null)
                 {
-                    inputPowerpointData["fail_on_error"] = ExpressionConverter.ConvertO(inputPowerpointDatafailOnError);
+                    inputPowerpointData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatafailOnError);
                     inputPowerpointDatapropCount++;
                 }
 
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputVisioData["use_async_pattern"] = false;
             inputVisioDatapropCount++;
             inputVisioDatapropCount++;
-            inputVisioData["source_file_name"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileName);
+            inputVisioData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1076,38 +1076,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputVisioDatapropCount++;
-            inputVisioData["source_file_content"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileContent);
+            inputVisioData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileContent);
             inputVisioDatapropCount++;
-            inputVisioData["output_format"] = ExpressionConverter.ConvertO(inputVisioDataoutputFormat);
+            inputVisioData["output_format"] = CSharpExpressionConverter.Convert(inputVisioDataoutputFormat);
             inputVisioData["copy_metadata"] = false;
             inputVisioDatapropCount++;
             if (inputVisioDatarange != null)
             {
-                inputVisioData["range"] = ExpressionConverter.ConvertO(inputVisioDatarange);
+                inputVisioData["range"] = CSharpExpressionConverter.Convert(inputVisioDatarange);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDatastartPage != null)
             {
-                inputVisioData["start_page"] = ExpressionConverter.ConvertO(inputVisioDatastartPage);
+                inputVisioData["start_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDatastartPage);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataendPage != null)
             {
-                inputVisioData["end_page"] = ExpressionConverter.ConvertO(inputVisioDataendPage);
+                inputVisioData["end_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDataendPage);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataquality != null)
             {
-                inputVisioData["quality"] = ExpressionConverter.ConvertO(inputVisioDataquality);
+                inputVisioData["quality"] = CSharpExpressionConverter.Convert(inputVisioDataquality);
                 inputVisioDatapropCount++;
             }
 
             if (inputVisioDataoverrideSettings != null)
             {
-                inputVisioData["override_settings"] = ExpressionConverter.ConvertO(inputVisioDataoverrideSettings);
+                inputVisioData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputVisioDataoverrideSettings);
                 inputVisioDatapropCount++;
             }
 
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputVisioDatafailOnError != null)
                 {
-                    inputVisioData["fail_on_error"] = ExpressionConverter.ConvertO(inputVisioDatafailOnError);
+                    inputVisioData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputVisioDatafailOnError);
                     inputVisioDatapropCount++;
                 }
 
@@ -1146,7 +1146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             inputWordData["use_async_pattern"] = false;
             inputWordDatapropCount++;
             inputWordDatapropCount++;
-            inputWordData["source_file_name"] = ExpressionConverter.ConvertO(inputWordDatasourceFileName);
+            inputWordData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileName);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1156,16 +1156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             }
 
             inputWordDatapropCount++;
-            inputWordData["source_file_content"] = ExpressionConverter.ConvertO(inputWordDatasourceFileContent);
+            inputWordData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileContent);
             inputWordDatapropCount++;
-            inputWordData["output_format"] = ExpressionConverter.ConvertO(inputWordDataoutputFormat);
+            inputWordData["output_format"] = CSharpExpressionConverter.Convert(inputWordDataoutputFormat);
             inputWordData["copy_metadata"] = false;
             inputWordDatapropCount++;
             if (inputWordDatadisplayForReview != null)
             {
                 if (inputWordDatadisplayForReview != null)
                 {
-                    inputWordData["revisions_and_comments_display_mode"] = ExpressionConverter.ConvertO(inputWordDatadisplayForReview);
+                    inputWordData["revisions_and_comments_display_mode"] = CSharpExpressionConverter.Convert(inputWordDatadisplayForReview);
                     inputWordDatapropCount++;
                 }
 
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputWordDatareviewMarkupMode != null)
                 {
-                    inputWordData["revisions_and_comments_markup_mode"] = ExpressionConverter.ConvertO(inputWordDatareviewMarkupMode);
+                    inputWordData["revisions_and_comments_markup_mode"] = CSharpExpressionConverter.Convert(inputWordDatareviewMarkupMode);
                     inputWordDatapropCount++;
                 }
 
@@ -1195,31 +1195,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
             if (inputWordDatagenerateBookmarks != null)
             {
-                inputWordData["generate_bookmarks"] = ExpressionConverter.ConvertO(inputWordDatagenerateBookmarks);
+                inputWordData["generate_bookmarks"] = CSharpExpressionConverter.Convert(inputWordDatagenerateBookmarks);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDatastartPage != null)
             {
-                inputWordData["start_page"] = ExpressionConverter.ConvertO(inputWordDatastartPage);
+                inputWordData["start_page"] = CSharpExpressionConverter.ConvertToken(inputWordDatastartPage);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataendPage != null)
             {
-                inputWordData["end_page"] = ExpressionConverter.ConvertO(inputWordDataendPage);
+                inputWordData["end_page"] = CSharpExpressionConverter.ConvertToken(inputWordDataendPage);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataquality != null)
             {
-                inputWordData["quality"] = ExpressionConverter.ConvertO(inputWordDataquality);
+                inputWordData["quality"] = CSharpExpressionConverter.Convert(inputWordDataquality);
                 inputWordDatapropCount++;
             }
 
             if (inputWordDataoverrideSettings != null)
             {
-                inputWordData["override_settings"] = ExpressionConverter.ConvertO(inputWordDataoverrideSettings);
+                inputWordData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputWordDataoverrideSettings);
                 inputWordDatapropCount++;
             }
 
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             {
                 if (inputWordDatafailOnError != null)
                 {
-                    inputWordData["fail_on_error"] = ExpressionConverter.ConvertO(inputWordDatafailOnError);
+                    inputWordData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputWordDatafailOnError);
                     inputWordDatapropCount++;
                 }
 

@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["$search"] = CSharpExpressionConverter.ConvertO(search);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderBy != null)
-                callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["$orderBy"] = CSharpExpressionConverter.ConvertO(orderBy);
             callPayload.Queries["$expand"] = Convert.ToString("properties");
             return new ApiConnectionAction<AMObjectsExpandedApiResponse>(callPayload);
         }
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["$search"] = CSharpExpressionConverter.ConvertO(search);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderBy != null)
-                callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["$orderBy"] = CSharpExpressionConverter.ConvertO(orderBy);
             return new ApiConnectionAction<CommonUsersApiResponse>(callPayload);
         }
     }
@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             body["webhookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["process"] = ExpressionConverter.ConvertO(bodyprocessName);
+            body["process"] = CSharpExpressionConverter.ConvertToken(bodyprocessName);
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodyticketStatusName);
+            body["status"] = CSharpExpressionConverter.ConvertToken(bodyticketStatusName);
             if (bodyserviceName != null)
             {
-                body["service"] = ExpressionConverter.ConvertO(bodyserviceName);
+                body["service"] = CSharpExpressionConverter.ConvertToken(bodyserviceName);
                 bodypropCount++;
             }
 

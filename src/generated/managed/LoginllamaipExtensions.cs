@@ -20,26 +20,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ip_address"] = ExpressionConverter.ConvertO(bodyipAddress);
+            body["ip_address"] = CSharpExpressionConverter.ConvertToken(bodyipAddress);
             bodypropCount++;
-            body["user_agent"] = ExpressionConverter.ConvertO(bodyuserAgent);
+            body["user_agent"] = CSharpExpressionConverter.ConvertToken(bodyuserAgent);
             bodypropCount++;
-            body["identity_key"] = ExpressionConverter.ConvertO(bodyidentityKey);
+            body["identity_key"] = CSharpExpressionConverter.ConvertToken(bodyidentityKey);
             if (bodygeoCountry != null)
             {
-                body["geo_country"] = ExpressionConverter.ConvertO(bodygeoCountry);
+                body["geo_country"] = CSharpExpressionConverter.ConvertToken(bodygeoCountry);
                 bodypropCount++;
             }
 
             if (bodygeoCity != null)
             {
-                body["geo_city"] = ExpressionConverter.ConvertO(bodygeoCity);
+                body["geo_city"] = CSharpExpressionConverter.ConvertToken(bodygeoCity);
                 bodypropCount++;
             }
 
             if (bodyuserTimeOfDay != null)
             {
-                body["user_time_of_day"] = ExpressionConverter.ConvertO(bodyuserTimeOfDay);
+                body["user_time_of_day"] = CSharpExpressionConverter.ConvertToken(bodyuserTimeOfDay);
                 bodypropCount++;
             }
 

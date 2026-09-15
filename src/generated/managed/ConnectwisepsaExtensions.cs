@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (conditions != null)
-                callPayload.Queries["conditions"] = ExpressionConverter.Convert(conditions);
+                callPayload.Queries["conditions"] = CSharpExpressionConverter.ConvertO(conditions);
             if (childConditions != null)
-                callPayload.Queries["childConditions"] = ExpressionConverter.Convert(childConditions);
+                callPayload.Queries["childConditions"] = CSharpExpressionConverter.ConvertO(childConditions);
             if (customFieldConditions != null)
-                callPayload.Queries["customFieldConditions"] = ExpressionConverter.Convert(customFieldConditions);
+                callPayload.Queries["customFieldConditions"] = CSharpExpressionConverter.ConvertO(customFieldConditions);
             if (orderBy != null)
-                callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["orderBy"] = CSharpExpressionConverter.ConvertO(orderBy);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (pageId != null)
-                callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
-            callPayload.Headers["clientId"] = ExpressionConverter.Convert(clientId);
+                callPayload.Queries["pageId"] = CSharpExpressionConverter.ConvertO(pageId);
+            callPayload.Headers["clientId"] = CSharpExpressionConverter.ConvertO(clientId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
             var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["clientId"] = ExpressionConverter.Convert(clientId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["clientId"] = CSharpExpressionConverter.ConvertO(clientId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
     }

@@ -20,24 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+            body["PhoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
             if (bodyexternalId != null)
             {
-                body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                body["ExternalId"] = CSharpExpressionConverter.ConvertToken(bodyexternalId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
+            body["MessageText"] = CSharpExpressionConverter.ConvertToken(bodymessageText);
             if (bodymessageType != null)
             {
-                body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
+                body["MessageType"] = CSharpExpressionConverter.ConvertToken(bodymessageType);
                 bodypropCount++;
             }
 
             if (bodysenderId != null)
             {
-                body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
+                body["SenderId"] = CSharpExpressionConverter.ConvertToken(bodysenderId);
                 bodypropCount++;
             }
 

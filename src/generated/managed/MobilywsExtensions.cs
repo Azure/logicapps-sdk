@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilyws
             var apiCallPath = "/msgSend.php";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["apiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["numbers"] = ExpressionConverter.Convert(numbers);
-            callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
-            callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
-            callPayload.Queries["applicationType"] = ExpressionConverter.Convert(applicationType);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Queries["apiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["numbers"] = CSharpExpressionConverter.ConvertO(numbers);
+            callPayload.Queries["sender"] = CSharpExpressionConverter.ConvertO(sender);
+            callPayload.Queries["msg"] = CSharpExpressionConverter.ConvertO(msg);
+            callPayload.Queries["applicationType"] = CSharpExpressionConverter.ConvertO(applicationType);
+            callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

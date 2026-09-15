@@ -17,27 +17,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var apiCallPath = "/cards/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Queries["unique"] = Convert.ToString("cards");
             if (unique != null)
-                callPayload.Queries["unique"] = ExpressionConverter.Convert(unique);
+                callPayload.Queries["unique"] = CSharpExpressionConverter.Convert(unique);
             callPayload.Queries["order"] = Convert.ToString("name");
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
             callPayload.Queries["dir"] = Convert.ToString("auto");
             if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
+                callPayload.Queries["dir"] = CSharpExpressionConverter.Convert(dir);
             callPayload.Queries["include_extras"] = Convert.ToString(false);
             if (includeExtras != null)
-                callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
+                callPayload.Queries["include_extras"] = CSharpExpressionConverter.ConvertO(includeExtras);
             callPayload.Queries["include_multilingual"] = Convert.ToString(false);
             if (includeMultilingual != null)
-                callPayload.Queries["include_multilingual"] = ExpressionConverter.Convert(includeMultilingual);
+                callPayload.Queries["include_multilingual"] = CSharpExpressionConverter.ConvertO(includeMultilingual);
             callPayload.Queries["include_variations"] = Convert.ToString(false);
             if (includeVariations != null)
-                callPayload.Queries["include_variations"] = ExpressionConverter.Convert(includeVariations);
+                callPayload.Queries["include_variations"] = CSharpExpressionConverter.ConvertO(includeVariations);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<CardsSearchGetResponse>(callPayload);
         }
 
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (fuzzy != null)
-                callPayload.Queries["fuzzy"] = ExpressionConverter.Convert(fuzzy);
+                callPayload.Queries["fuzzy"] = CSharpExpressionConverter.ConvertO(fuzzy);
             if (set != null)
-                callPayload.Queries["set"] = ExpressionConverter.Convert(set);
+                callPayload.Queries["set"] = CSharpExpressionConverter.ConvertO(set);
             callPayload.Queries["version"] = Convert.ToString("large");
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.Convert(version);
             return new ApiConnectionAction<CardsNamedGetResponse>(callPayload);
         }
 
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var apiCallPath = "/cards/autocomplete";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (includeExtras != null)
-                callPayload.Queries["include_extras"] = ExpressionConverter.Convert(includeExtras);
+                callPayload.Queries["include_extras"] = CSharpExpressionConverter.ConvertO(includeExtras);
             return new ApiConnectionAction<CardsAutocompleteGetResponse>(callPayload);
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var bodypropCount = 0;
             if (bodyidentifiers != null)
             {
-                body["identifiers"] = ExpressionConverter.ConvertO(bodyidentifiers);
+                body["identifiers"] = CSharpExpressionConverter.ConvertToken(bodyidentifiers);
                 bodypropCount++;
             }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet(Expression<Func<string>> code, Expression<Func<string>> number)
         {
-            var apiCallPath = String.Format("/cards/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(code, 1), ExpressionConverter.ConvertWithUrlEncoding(number, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsSetNumberGetResponse>(callPayload);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/multiverse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsMultiverseGetResponse>(callPayload);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/mtgo/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/arena/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsArenaGetResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/tcgplayer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsTCGplayerGetResponse>(callPayload);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/cardmarket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/cardmarket/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsCardmarketGetResponse>(callPayload);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CardsScryfallGetResponse>(callPayload);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetGetResponse> SetGet(Expression<Func<string>> code)
         {
-            var apiCallPath = String.Format("/sets/{0}", ExpressionConverter.ConvertWithUrlEncoding(code, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SetGetResponse>(callPayload);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/sets/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sets/tcgplayer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SetsTCGplayerGetResponse>(callPayload);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/multiverse/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}/rulings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RulingsMultiverseGetResponse>(callPayload);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/mtgo/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}/rulings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cards/arena/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}/rulings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RulingsArenaGetResponse>(callPayload);

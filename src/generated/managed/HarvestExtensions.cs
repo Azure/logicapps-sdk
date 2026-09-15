@@ -32,49 +32,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var contactObjectpropCount = 0;
             if (bodycontactclientId != null)
             {
-                contactObject["client_id"] = ExpressionConverter.ConvertO(bodycontactclientId);
+                contactObject["client_id"] = CSharpExpressionConverter.ConvertToken(bodycontactclientId);
                 contactObjectpropCount++;
             }
 
             if (bodycontactfirstName != null)
             {
-                contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
+                contactObject["first_name"] = CSharpExpressionConverter.ConvertToken(bodycontactfirstName);
                 contactObjectpropCount++;
             }
 
             if (bodycontactlastName != null)
             {
-                contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
+                contactObject["last_name"] = CSharpExpressionConverter.ConvertToken(bodycontactlastName);
                 contactObjectpropCount++;
             }
 
             if (bodycontactemail != null)
             {
-                contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
+                contactObject["email"] = CSharpExpressionConverter.ConvertToken(bodycontactemail);
                 contactObjectpropCount++;
             }
 
             if (bodycontactofficePhone != null)
             {
-                contactObject["phone_office"] = ExpressionConverter.ConvertO(bodycontactofficePhone);
+                contactObject["phone_office"] = CSharpExpressionConverter.ConvertToken(bodycontactofficePhone);
                 contactObjectpropCount++;
             }
 
             if (bodycontactmobilePhone != null)
             {
-                contactObject["phone_mobile"] = ExpressionConverter.ConvertO(bodycontactmobilePhone);
+                contactObject["phone_mobile"] = CSharpExpressionConverter.ConvertToken(bodycontactmobilePhone);
                 contactObjectpropCount++;
             }
 
             if (bodycontactfax != null)
             {
-                contactObject["fax"] = ExpressionConverter.ConvertO(bodycontactfax);
+                contactObject["fax"] = CSharpExpressionConverter.ConvertToken(bodycontactfax);
                 contactObjectpropCount++;
             }
 
             if (bodycontacttitle != null)
             {
-                contactObject["title"] = ExpressionConverter.ConvertO(bodycontacttitle);
+                contactObject["title"] = CSharpExpressionConverter.ConvertToken(bodycontacttitle);
                 contactObjectpropCount++;
             }
 
@@ -113,25 +113,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var clientObjectpropCount = 0;
             if (bodyclientname != null)
             {
-                clientObject["name"] = ExpressionConverter.ConvertO(bodyclientname);
+                clientObject["name"] = CSharpExpressionConverter.ConvertToken(bodyclientname);
                 clientObjectpropCount++;
             }
 
             if (bodyclientcurrency != null)
             {
-                clientObject["currency"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                clientObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyclientcurrency);
                 clientObjectpropCount++;
             }
 
             if (bodyclientcurrencySymbol != null)
             {
-                clientObject["currency_symbol"] = ExpressionConverter.ConvertO(bodyclientcurrencySymbol);
+                clientObject["currency_symbol"] = CSharpExpressionConverter.ConvertToken(bodyclientcurrencySymbol);
                 clientObjectpropCount++;
             }
 
             if (bodyclientdetails != null)
             {
-                clientObject["details"] = ExpressionConverter.ConvertO(bodyclientdetails);
+                clientObject["details"] = CSharpExpressionConverter.ConvertToken(bodyclientdetails);
                 clientObjectpropCount++;
             }
 
@@ -161,37 +161,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var userObjectpropCount = 0;
             if (bodyuseremail != null)
             {
-                userObject["email"] = ExpressionConverter.ConvertO(bodyuseremail);
+                userObject["email"] = CSharpExpressionConverter.ConvertToken(bodyuseremail);
                 userObjectpropCount++;
             }
 
             if (bodyuserisAdmin != null)
             {
-                userObject["is_admin"] = ExpressionConverter.ConvertO(bodyuserisAdmin);
+                userObject["is_admin"] = CSharpExpressionConverter.ConvertToken(bodyuserisAdmin);
                 userObjectpropCount++;
             }
 
             if (bodyuserfirstName != null)
             {
-                userObject["first_name"] = ExpressionConverter.ConvertO(bodyuserfirstName);
+                userObject["first_name"] = CSharpExpressionConverter.ConvertToken(bodyuserfirstName);
                 userObjectpropCount++;
             }
 
             if (bodyuserlastName != null)
             {
-                userObject["last_name"] = ExpressionConverter.ConvertO(bodyuserlastName);
+                userObject["last_name"] = CSharpExpressionConverter.ConvertToken(bodyuserlastName);
                 userObjectpropCount++;
             }
 
             if (bodyuserisContractor != null)
             {
-                userObject["is_contractor"] = ExpressionConverter.ConvertO(bodyuserisContractor);
+                userObject["is_contractor"] = CSharpExpressionConverter.ConvertToken(bodyuserisContractor);
                 userObjectpropCount++;
             }
 
             if (bodyuserphone != null)
             {
-                userObject["telephone"] = ExpressionConverter.ConvertO(bodyuserphone);
+                userObject["telephone"] = CSharpExpressionConverter.ConvertToken(bodyuserphone);
                 userObjectpropCount++;
             }
 
@@ -199,19 +199,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             userObjectpropCount++;
             if (bodyuserhourlyRate != null)
             {
-                userObject["default_hourly_rate"] = ExpressionConverter.ConvertO(bodyuserhourlyRate);
+                userObject["default_hourly_rate"] = CSharpExpressionConverter.ConvertToken(bodyuserhourlyRate);
                 userObjectpropCount++;
             }
 
             if (bodyuserdepartment != null)
             {
-                userObject["department"] = ExpressionConverter.ConvertO(bodyuserdepartment);
+                userObject["department"] = CSharpExpressionConverter.ConvertToken(bodyuserdepartment);
                 userObjectpropCount++;
             }
 
             if (bodyusercostRate != null)
             {
-                userObject["cost_rate"] = ExpressionConverter.ConvertO(bodyusercostRate);
+                userObject["cost_rate"] = CSharpExpressionConverter.ConvertToken(bodyusercostRate);
                 userObjectpropCount++;
             }
 
@@ -232,36 +232,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry(Expression<Func<string>> dAYENTRYID, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartedDateTime = null, Expression<Func<string>> bodyendedDateTime = null, Expression<Func<string>> bodydate = null)
         {
-            var apiCallPath = String.Format("/daily/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodystartedDateTime != null)
             {
-                body["started_at"] = ExpressionConverter.ConvertO(bodystartedDateTime);
+                body["started_at"] = CSharpExpressionConverter.ConvertToken(bodystartedDateTime);
                 bodypropCount++;
             }
 
             if (bodyendedDateTime != null)
             {
-                body["ended_at"] = ExpressionConverter.ConvertO(bodyendedDateTime);
+                body["ended_at"] = CSharpExpressionConverter.ConvertToken(bodyendedDateTime);
                 bodypropCount++;
             }
 
             if (bodydate != null)
             {
-                body["spent_at"] = ExpressionConverter.ConvertO(bodydate);
+                body["spent_at"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -283,23 +283,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var bodypropCount = 0;
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodyhours != null)
             {
-                body["hours"] = ExpressionConverter.ConvertO(bodyhours);
+                body["hours"] = CSharpExpressionConverter.ConvertToken(bodyhours);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             if (bodydate != null)
             {
-                body["spent_at"] = ExpressionConverter.ConvertO(bodydate);
+                body["spent_at"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction DeleteTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            var apiCallPath = String.Format("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var userObjectpropCount = 0;
             if (bodyuseruserId != null)
             {
-                userObject["id"] = ExpressionConverter.ConvertO(bodyuseruserId);
+                userObject["id"] = CSharpExpressionConverter.ConvertToken(bodyuseruserId);
                 userObjectpropCount++;
             }
 
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            var apiCallPath = String.Format("/daily/show/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<GetUserByIDResponse> GetUser(Expression<Func<string>> uSERID)
         {
-            var apiCallPath = String.Format("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(uSERID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/people/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(uSERID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetUserByIDResponse>(callPayload);
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ofUser != null)
-                callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
+                callPayload.Queries["of_user"] = CSharpExpressionConverter.ConvertO(ofUser);
             return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -436,9 +436,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var apiCallPath = "/trigger/daily/day/year";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (ofUser != null)
-                callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
+                callPayload.Queries["of_user"] = CSharpExpressionConverter.ConvertO(ofUser);
             return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, triggerName, recurrence);
         }
     }

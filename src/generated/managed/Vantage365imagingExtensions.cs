@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
             callPayload.Queries["sig"] = Convert.ToString("cFQmyp6LsHfQTy18hqygjAVLuXSHR-FMtcRg_CxLIkA");
             callPayload.Queries["height"] = Convert.ToString(100);
             if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
             callPayload.Queries["width"] = Convert.ToString(100);
             if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            callPayload.Queries["typeofcode"] = ExpressionConverter.Convert(typeofcode);
-            callPayload.Queries["texttoencode"] = ExpressionConverter.Convert(texttoencode);
+                callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
+            callPayload.Queries["typeofcode"] = CSharpExpressionConverter.Convert(typeofcode);
+            callPayload.Queries["texttoencode"] = CSharpExpressionConverter.ConvertO(texttoencode);
             return new ApiConnectionAction<GenerateBarCodeResponse>(callPayload);
         }
     }

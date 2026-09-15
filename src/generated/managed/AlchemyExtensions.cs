@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfromPhoneNumber);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfromPhoneNumber);
             bodypropCount++;
-            body["smsRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+            body["smsRecipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             var smsSendOptionsObject = new JObject();
             var smsSendOptionsObjectpropCount = 0;
             if (bodysmsSendOptionsdeliveryReport != null)
             {
                 if (bodysmsSendOptionsdeliveryReport != null)
                 {
-                    smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                    smsSendOptionsObject["enableDeliveryReport"] = CSharpExpressionConverter.ConvertToken(bodysmsSendOptionsdeliveryReport);
                     smsSendOptionsObjectpropCount++;
                 }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 
             if (bodysmsSendOptionstag != null)
             {
-                smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(bodysmsSendOptionstag);
+                smsSendOptionsObject["tag"] = CSharpExpressionConverter.ConvertToken(bodysmsSendOptionstag);
                 smsSendOptionsObjectpropCount++;
             }
 

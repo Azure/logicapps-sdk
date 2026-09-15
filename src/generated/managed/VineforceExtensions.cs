@@ -20,120 +20,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             if (bodyfromEmail != null)
             {
-                body["fromEmail"] = ExpressionConverter.ConvertO(bodyfromEmail);
+                body["fromEmail"] = CSharpExpressionConverter.ConvertToken(bodyfromEmail);
                 bodypropCount++;
             }
 
             if (bodytoEmail != null)
             {
-                body["toEmail"] = ExpressionConverter.ConvertO(bodytoEmail);
+                body["toEmail"] = CSharpExpressionConverter.ConvertToken(bodytoEmail);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodypriorityText != null)
             {
-                body["priorityText"] = ExpressionConverter.ConvertO(bodypriorityText);
+                body["priorityText"] = CSharpExpressionConverter.Convert(bodypriorityText);
                 bodypropCount++;
             }
 
             if (bodyassociatedContactEmail != null)
             {
-                body["associatedContactEmail"] = ExpressionConverter.ConvertO(bodyassociatedContactEmail);
+                body["associatedContactEmail"] = CSharpExpressionConverter.ConvertToken(bodyassociatedContactEmail);
                 bodypropCount++;
             }
 
             if (bodyresourceAppName != null)
             {
-                body["resourceAppName"] = ExpressionConverter.ConvertO(bodyresourceAppName);
+                body["resourceAppName"] = CSharpExpressionConverter.Convert(bodyresourceAppName);
                 bodypropCount++;
             }
 
             if (bodyresourceAppUrl != null)
             {
-                body["resourceAppUrl"] = ExpressionConverter.ConvertO(bodyresourceAppUrl);
+                body["resourceAppUrl"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppUrl);
                 bodypropCount++;
             }
 
             if (bodyresourceAppID != null)
             {
-                body["resourceAppID"] = ExpressionConverter.ConvertO(bodyresourceAppID);
+                body["resourceAppID"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppID);
                 bodypropCount++;
             }
 
             if (bodyresourceAppData != null)
             {
-                body["resourceAppData"] = ExpressionConverter.ConvertO(bodyresourceAppData);
+                body["resourceAppData"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppData);
                 bodypropCount++;
             }
 
             if (bodyreferenceId != null)
             {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
+                body["referenceId"] = CSharpExpressionConverter.ConvertToken(bodyreferenceId);
                 bodypropCount++;
             }
 
             if (bodyreferenceData != null)
             {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
+                body["referenceData"] = CSharpExpressionConverter.ConvertToken(bodyreferenceData);
                 bodypropCount++;
             }
 
             if (bodyreferenceSource != null)
             {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
+                body["referenceSource"] = CSharpExpressionConverter.ConvertToken(bodyreferenceSource);
                 bodypropCount++;
             }
 
             if (bodyprojectName != null)
             {
-                body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
+                body["projectName"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
                 bodypropCount++;
             }
 
             if (bodyprojectSectionName != null)
             {
-                body["projectSectionName"] = ExpressionConverter.ConvertO(bodyprojectSectionName);
+                body["projectSectionName"] = CSharpExpressionConverter.ConvertToken(bodyprojectSectionName);
                 bodypropCount++;
             }
 
             if (bodyprojectTags != null)
             {
-                body["projectTags"] = ExpressionConverter.ConvertO(bodyprojectTags);
+                body["projectTags"] = CSharpExpressionConverter.ConvertToken(bodyprojectTags);
                 bodypropCount++;
             }
 
             if (bodychecklists != null)
             {
-                body["checklists"] = ExpressionConverter.ConvertO(bodychecklists);
+                body["checklists"] = CSharpExpressionConverter.ConvertToken(bodychecklists);
                 bodypropCount++;
             }
 
             if (bodyfiles != null)
             {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                body["files"] = CSharpExpressionConverter.ConvertToken(bodyfiles);
                 bodypropCount++;
             }
 
@@ -154,22 +154,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["alertToEmail"] = ExpressionConverter.ConvertO(bodyalertToEmail);
+            body["alertToEmail"] = CSharpExpressionConverter.ConvertToken(bodyalertToEmail);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodyresourceName != null)
             {
-                body["resourceName"] = ExpressionConverter.ConvertO(bodyresourceName);
+                body["resourceName"] = CSharpExpressionConverter.Convert(bodyresourceName);
                 bodypropCount++;
             }
 
             if (bodyresourceUrl != null)
             {
-                body["ResourceUrl"] = ExpressionConverter.ConvertO(bodyresourceUrl);
+                body["ResourceUrl"] = CSharpExpressionConverter.ConvertToken(bodyresourceUrl);
                 bodypropCount++;
             }
 
@@ -190,20 +190,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
+            body["projectName"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
             bodypropCount++;
-            body["creatorEmail"] = ExpressionConverter.ConvertO(bodycreatorEmail);
+            body["creatorEmail"] = CSharpExpressionConverter.ConvertToken(bodycreatorEmail);
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             {
                 if (bodyisPrivate != null)
                 {
-                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
                     bodypropCount++;
                 }
 
@@ -225,39 +225,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodymembers != null)
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
             if (bodysections != null)
             {
-                body["sections"] = ExpressionConverter.ConvertO(bodysections);
+                body["sections"] = CSharpExpressionConverter.ConvertToken(bodysections);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+            body["files"] = CSharpExpressionConverter.ConvertToken(bodyfiles);
             if (bodyreferenceId != null)
             {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
+                body["referenceId"] = CSharpExpressionConverter.ConvertToken(bodyreferenceId);
                 bodypropCount++;
             }
 
             if (bodyreferenceData != null)
             {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
+                body["referenceData"] = CSharpExpressionConverter.ConvertToken(bodyreferenceData);
                 bodypropCount++;
             }
 
             if (bodyreferenceSource != null)
             {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
+                body["referenceSource"] = CSharpExpressionConverter.ConvertToken(bodyreferenceSource);
                 bodypropCount++;
             }
 
@@ -278,124 +278,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["taskID"] = ExpressionConverter.ConvertO(bodytaskID);
+            body["taskID"] = CSharpExpressionConverter.ConvertToken(bodytaskID);
             if (bodyfromEmail != null)
             {
-                body["fromEmail"] = ExpressionConverter.ConvertO(bodyfromEmail);
+                body["fromEmail"] = CSharpExpressionConverter.ConvertToken(bodyfromEmail);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["toEmail"] = ExpressionConverter.ConvertO(bodytoEmail);
+            body["toEmail"] = CSharpExpressionConverter.ConvertToken(bodytoEmail);
             if (bodytaskStatus != null)
             {
-                body["TaskStatus"] = ExpressionConverter.ConvertO(bodytaskStatus);
+                body["TaskStatus"] = CSharpExpressionConverter.Convert(bodytaskStatus);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodypriorityText != null)
             {
-                body["priorityText"] = ExpressionConverter.ConvertO(bodypriorityText);
+                body["priorityText"] = CSharpExpressionConverter.Convert(bodypriorityText);
                 bodypropCount++;
             }
 
             if (bodyassociatedContactEmail != null)
             {
-                body["associatedContactEmail"] = ExpressionConverter.ConvertO(bodyassociatedContactEmail);
+                body["associatedContactEmail"] = CSharpExpressionConverter.ConvertToken(bodyassociatedContactEmail);
                 bodypropCount++;
             }
 
             if (bodyresourceAppName != null)
             {
-                body["resourceAppName"] = ExpressionConverter.ConvertO(bodyresourceAppName);
+                body["resourceAppName"] = CSharpExpressionConverter.Convert(bodyresourceAppName);
                 bodypropCount++;
             }
 
             if (bodyresourceAppUrl != null)
             {
-                body["resourceAppUrl"] = ExpressionConverter.ConvertO(bodyresourceAppUrl);
+                body["resourceAppUrl"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppUrl);
                 bodypropCount++;
             }
 
             if (bodyresourceAppID != null)
             {
-                body["resourceAppID"] = ExpressionConverter.ConvertO(bodyresourceAppID);
+                body["resourceAppID"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppID);
                 bodypropCount++;
             }
 
             if (bodyresourceAppData != null)
             {
-                body["resourceAppData"] = ExpressionConverter.ConvertO(bodyresourceAppData);
+                body["resourceAppData"] = CSharpExpressionConverter.ConvertToken(bodyresourceAppData);
                 bodypropCount++;
             }
 
             if (bodyreferenceId != null)
             {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
+                body["referenceId"] = CSharpExpressionConverter.ConvertToken(bodyreferenceId);
                 bodypropCount++;
             }
 
             if (bodyreferenceData != null)
             {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
+                body["referenceData"] = CSharpExpressionConverter.ConvertToken(bodyreferenceData);
                 bodypropCount++;
             }
 
             if (bodyreferenceSource != null)
             {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
+                body["referenceSource"] = CSharpExpressionConverter.ConvertToken(bodyreferenceSource);
                 bodypropCount++;
             }
 
             if (bodyprojectName != null)
             {
-                body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
+                body["projectName"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
                 bodypropCount++;
             }
 
             if (bodyprojectSectionName != null)
             {
-                body["projectSectionName"] = ExpressionConverter.ConvertO(bodyprojectSectionName);
+                body["projectSectionName"] = CSharpExpressionConverter.ConvertToken(bodyprojectSectionName);
                 bodypropCount++;
             }
 
             if (bodyprojectTags != null)
             {
-                body["projectTags"] = ExpressionConverter.ConvertO(bodyprojectTags);
+                body["projectTags"] = CSharpExpressionConverter.ConvertToken(bodyprojectTags);
                 bodypropCount++;
             }
 
             if (bodychecklists != null)
             {
-                body["checklists"] = ExpressionConverter.ConvertO(bodychecklists);
+                body["checklists"] = CSharpExpressionConverter.ConvertToken(bodychecklists);
                 bodypropCount++;
             }
 
             if (bodyfiles != null)
             {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                body["files"] = CSharpExpressionConverter.ConvertToken(bodyfiles);
                 bodypropCount++;
             }
 
@@ -416,13 +416,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["ownerEmail"] = ExpressionConverter.ConvertO(bodyownerEmail);
+            body["ownerEmail"] = CSharpExpressionConverter.ConvertToken(bodyownerEmail);
             bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+            body["contactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
             bodypropCount++;
-            body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+            body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -440,56 +440,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["companyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+            body["companyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
             bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+            body["userEmail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
             if (bodystreet != null)
             {
-                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                body["street"] = CSharpExpressionConverter.ConvertToken(bodystreet);
                 bodypropCount++;
             }
 
             if (bodysuiteUnitNumber != null)
             {
-                body["suite_UnitNumber"] = ExpressionConverter.ConvertO(bodysuiteUnitNumber);
+                body["suite_UnitNumber"] = CSharpExpressionConverter.ConvertToken(bodysuiteUnitNumber);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodypostalCode != null)
             {
-                body["postalCode"] = ExpressionConverter.ConvertO(bodypostalCode);
+                body["postalCode"] = CSharpExpressionConverter.ConvertToken(bodypostalCode);
                 bodypropCount++;
             }
 
             if (bodycountryName != null)
             {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
+                body["countryName"] = CSharpExpressionConverter.ConvertToken(bodycountryName);
                 bodypropCount++;
             }
 
             if (bodytaxId != null)
             {
-                body["taxId"] = ExpressionConverter.ConvertO(bodytaxId);
+                body["taxId"] = CSharpExpressionConverter.ConvertToken(bodytaxId);
                 bodypropCount++;
             }
 
             if (bodysiteUrl != null)
             {
-                body["siteUrl"] = ExpressionConverter.ConvertO(bodysiteUrl);
+                body["siteUrl"] = CSharpExpressionConverter.ConvertToken(bodysiteUrl);
                 bodypropCount++;
             }
 
@@ -510,88 +510,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["ownerEmailAddress"] = ExpressionConverter.ConvertO(bodyownerEmailAddress);
+            body["ownerEmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyownerEmailAddress);
             bodypropCount++;
-            body["contactEmailAddress1"] = ExpressionConverter.ConvertO(bodycontactEmailAddress1);
+            body["contactEmailAddress1"] = CSharpExpressionConverter.ConvertToken(bodycontactEmailAddress1);
             if (bodycontactEmailAddress2 != null)
             {
-                body["contactEmailAddress2"] = ExpressionConverter.ConvertO(bodycontactEmailAddress2);
+                body["contactEmailAddress2"] = CSharpExpressionConverter.ConvertToken(bodycontactEmailAddress2);
                 bodypropCount++;
             }
 
             if (bodycontactEmailAddress3 != null)
             {
-                body["contactEmailAddress3"] = ExpressionConverter.ConvertO(bodycontactEmailAddress3);
+                body["contactEmailAddress3"] = CSharpExpressionConverter.ConvertToken(bodycontactEmailAddress3);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+            body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodybirthDay != null)
             {
-                body["birthDay"] = ExpressionConverter.ConvertO(bodybirthDay);
+                body["birthDay"] = CSharpExpressionConverter.ConvertToken(bodybirthDay);
                 bodypropCount++;
             }
 
             if (bodybirthMonth != null)
             {
-                body["birthMonth"] = ExpressionConverter.ConvertO(bodybirthMonth);
+                body["birthMonth"] = CSharpExpressionConverter.ConvertToken(bodybirthMonth);
                 bodypropCount++;
             }
 
             if (bodybirthYear != null)
             {
-                body["birthYear"] = ExpressionConverter.ConvertO(bodybirthYear);
+                body["birthYear"] = CSharpExpressionConverter.ConvertToken(bodybirthYear);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.ConvertToken(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodycompanyID1 != null)
             {
-                body["companyID1"] = ExpressionConverter.ConvertO(bodycompanyID1);
+                body["companyID1"] = CSharpExpressionConverter.ConvertToken(bodycompanyID1);
                 bodypropCount++;
             }
 
             if (bodycompanyID2 != null)
             {
-                body["companyID2"] = ExpressionConverter.ConvertO(bodycompanyID2);
+                body["companyID2"] = CSharpExpressionConverter.ConvertToken(bodycompanyID2);
                 bodypropCount++;
             }
 
             if (bodycompanyID3 != null)
             {
-                body["companyID3"] = ExpressionConverter.ConvertO(bodycompanyID3);
+                body["companyID3"] = CSharpExpressionConverter.ConvertToken(bodycompanyID3);
                 bodypropCount++;
             }
 
             if (bodyaccountNumber != null)
             {
-                body["accountNumber"] = ExpressionConverter.ConvertO(bodyaccountNumber);
+                body["accountNumber"] = CSharpExpressionConverter.ConvertToken(bodyaccountNumber);
                 bodypropCount++;
             }
 
             if (bodysocialSecurityNumber != null)
             {
-                body["socialSecurityNumber"] = ExpressionConverter.ConvertO(bodysocialSecurityNumber);
+                body["socialSecurityNumber"] = CSharpExpressionConverter.ConvertToken(bodysocialSecurityNumber);
                 bodypropCount++;
             }
 
@@ -612,18 +612,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+            body["contactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
             bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+            body["userEmail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
             bodypropCount++;
-            body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+            body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
             bodypropCount++;
-            body["phoneType"] = ExpressionConverter.ConvertO(bodyphoneType);
+            body["phoneType"] = CSharpExpressionConverter.Convert(bodyphoneType);
             if (bodyextension != null)
             {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                body["extension"] = CSharpExpressionConverter.ConvertToken(bodyextension);
                 bodypropCount++;
             }
 
@@ -644,46 +644,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+            body["contactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
             bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+            body["userEmail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
             bodypropCount++;
-            body["addressType"] = ExpressionConverter.ConvertO(bodyaddressType);
+            body["addressType"] = CSharpExpressionConverter.Convert(bodyaddressType);
             if (bodystreet != null)
             {
-                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                body["street"] = CSharpExpressionConverter.ConvertToken(bodystreet);
                 bodypropCount++;
             }
 
             if (bodysuiteUnitNumber != null)
             {
-                body["suiteUnitNumber"] = ExpressionConverter.ConvertO(bodysuiteUnitNumber);
+                body["suiteUnitNumber"] = CSharpExpressionConverter.ConvertToken(bodysuiteUnitNumber);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodyzipCode != null)
             {
-                body["zipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
+                body["zipCode"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
                 bodypropCount++;
             }
 
             if (bodycountryName != null)
             {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
+                body["countryName"] = CSharpExpressionConverter.ConvertToken(bodycountryName);
                 bodypropCount++;
             }
 
@@ -704,42 +704,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+            body["contactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
             bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+            body["userEmail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
             bodypropCount++;
-            body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+            body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
+            body["relationship"] = CSharpExpressionConverter.Convert(bodyrelationship);
             if (bodybirthDate != null)
             {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
+                body["birthDate"] = CSharpExpressionConverter.ConvertToken(bodybirthDate);
                 bodypropCount++;
             }
 
             if (bodybirthMonth != null)
             {
-                body["birthMonth"] = ExpressionConverter.ConvertO(bodybirthMonth);
+                body["birthMonth"] = CSharpExpressionConverter.ConvertToken(bodybirthMonth);
                 bodypropCount++;
             }
 
             if (bodybirthYear != null)
             {
-                body["birthYear"] = ExpressionConverter.ConvertO(bodybirthYear);
+                body["birthYear"] = CSharpExpressionConverter.ConvertToken(bodybirthYear);
                 bodypropCount++;
             }
 
             if (bodycountryName != null)
             {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
+                body["countryName"] = CSharpExpressionConverter.ConvertToken(bodycountryName);
                 bodypropCount++;
             }
 
@@ -757,9 +757,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalContact/GetContactFolderDetailExternal";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
-            callPayload.Queries["ContactEmail"] = ExpressionConverter.Convert(contactEmail);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["UserEmail"] = CSharpExpressionConverter.ConvertO(userEmail);
+            callPayload.Queries["ContactEmail"] = CSharpExpressionConverter.ConvertO(contactEmail);
             return new ApiConnectionAction<GetContactFolderDetailsResponse>(callPayload);
         }
 
@@ -769,9 +769,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalCompany/GetCompanyDetailExternal";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["MatchBy"] = ExpressionConverter.Convert(matchBy);
-            callPayload.Queries["MatchValue"] = ExpressionConverter.Convert(matchValue);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["MatchBy"] = CSharpExpressionConverter.Convert(matchBy);
+            callPayload.Queries["MatchValue"] = CSharpExpressionConverter.ConvertO(matchValue);
             return new ApiConnectionAction<GetCompanyDetailExternalResponse>(callPayload);
         }
 
@@ -781,8 +781,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/GetTaskByResourceExt";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(resourceAppID);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["ResourceAppID"] = CSharpExpressionConverter.ConvertO(resourceAppID);
             return new ApiConnectionAction<GetTaskByResourceExtResponse>(callPayload);
         }
 
@@ -795,13 +795,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+            body["userEmail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
             bodypropCount++;
-            body["taskId"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["taskId"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             bodypropCount++;
-            body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+            body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -819,28 +819,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
+            body["projectName"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
             bodypropCount++;
-            body["currentUserEmail"] = ExpressionConverter.ConvertO(bodycurrentUserEmail);
+            body["currentUserEmail"] = CSharpExpressionConverter.ConvertToken(bodycurrentUserEmail);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             {
                 if (bodystatus != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                     bodypropCount++;
                 }
 
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             {
                 if (bodyisPrivate != null)
                 {
-                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
                     bodypropCount++;
                 }
 
@@ -878,19 +878,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
             if (bodyreferenceId != null)
             {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
+                body["referenceId"] = CSharpExpressionConverter.ConvertToken(bodyreferenceId);
                 bodypropCount++;
             }
 
             if (bodyreferenceData != null)
             {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
+                body["referenceData"] = CSharpExpressionConverter.ConvertToken(bodyreferenceData);
                 bodypropCount++;
             }
 
             if (bodyreferenceSource != null)
             {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
+                body["referenceSource"] = CSharpExpressionConverter.ConvertToken(bodyreferenceSource);
                 bodypropCount++;
             }
 
@@ -908,11 +908,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/GetTaskExt";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["GetBy"] = ExpressionConverter.Convert(getBy);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["GetBy"] = CSharpExpressionConverter.Convert(getBy);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["Source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<GetTaskExtResponse>(callPayload);
         }
 
@@ -922,11 +922,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/GetProjectExt";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["GetBy"] = ExpressionConverter.Convert(getBy);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["GetBy"] = CSharpExpressionConverter.Convert(getBy);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["Source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<GetProjectExtResponse>(callPayload);
         }
 
@@ -936,8 +936,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/GetProjectTemplatesExt";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["UserEmail"] = CSharpExpressionConverter.ConvertO(userEmail);
             return new ApiConnectionAction<GetProjectTemplatesExtResponse>(callPayload);
         }
 
@@ -947,10 +947,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/GetProjectRolesExt";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["UserEmail"] = CSharpExpressionConverter.ConvertO(userEmail);
             if (roleType != null)
-                callPayload.Queries["RoleType"] = ExpressionConverter.Convert(roleType);
+                callPayload.Queries["RoleType"] = CSharpExpressionConverter.Convert(roleType);
             return new ApiConnectionAction<GetProjectRolesExtResponse>(callPayload);
         }
 
@@ -963,42 +963,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
+            body["apiKey"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             bodypropCount++;
-            body["creatorEmail"] = ExpressionConverter.ConvertO(bodycreatorEmail);
+            body["creatorEmail"] = CSharpExpressionConverter.ConvertToken(bodycreatorEmail);
             bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
+            body["projectName"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyclientName != null)
             {
-                body["clientName"] = ExpressionConverter.ConvertO(bodyclientName);
+                body["clientName"] = CSharpExpressionConverter.ConvertToken(bodyclientName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
             if (bodymembers != null)
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
                 bodypropCount++;
             }
 
             if (bodyfilesLinks != null)
             {
-                body["filesLinks"] = ExpressionConverter.ConvertO(bodyfilesLinks);
+                body["filesLinks"] = CSharpExpressionConverter.ConvertToken(bodyfilesLinks);
                 bodypropCount++;
             }
 
@@ -1016,8 +1016,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/api/services/app/ExternalTask/DeleteExternalTask";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["TaskID"] = ExpressionConverter.Convert(taskID);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["TaskID"] = CSharpExpressionConverter.ConvertO(taskID);
             return new ApiConnectionAction<DeletetaskResponse>(callPayload);
         }
     }
@@ -1029,16 +1029,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
             if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
+                callPayload.Queries["ProjectName"] = CSharpExpressionConverter.ConvertO(projectName);
             if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["ProjectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
+                callPayload.Queries["AssigneeEmail"] = CSharpExpressionConverter.ConvertO(assigneeEmail);
             if (creatorEmail != null)
-                callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
+                callPayload.Queries["CreatorEmail"] = CSharpExpressionConverter.ConvertO(creatorEmail);
+            callPayload.Queries["Duration"] = CSharpExpressionConverter.ConvertO(duration);
             return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -1047,24 +1047,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["UserEmail"] = CSharpExpressionConverter.ConvertO(userEmail);
             if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
+                callPayload.Queries["ProjectName"] = CSharpExpressionConverter.ConvertO(projectName);
             if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["ProjectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
+                callPayload.Queries["AssigneeEmail"] = CSharpExpressionConverter.ConvertO(assigneeEmail);
             if (taskId != null)
-                callPayload.Queries["TaskId"] = ExpressionConverter.Convert(taskId);
+                callPayload.Queries["TaskId"] = CSharpExpressionConverter.ConvertO(taskId);
             if (oldSectionId != null)
-                callPayload.Queries["OldSectionId"] = ExpressionConverter.Convert(oldSectionId);
+                callPayload.Queries["OldSectionId"] = CSharpExpressionConverter.ConvertO(oldSectionId);
             if (oldSectoinName != null)
-                callPayload.Queries["OldSectoinName"] = ExpressionConverter.Convert(oldSectoinName);
+                callPayload.Queries["OldSectoinName"] = CSharpExpressionConverter.ConvertO(oldSectoinName);
             if (newSectionId != null)
-                callPayload.Queries["NewSectionId"] = ExpressionConverter.Convert(newSectionId);
+                callPayload.Queries["NewSectionId"] = CSharpExpressionConverter.ConvertO(newSectionId);
             if (newSectoinName != null)
-                callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(newSectoinName);
+                callPayload.Queries["NewSectoinName"] = CSharpExpressionConverter.ConvertO(newSectoinName);
             return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -1073,8 +1073,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
+            callPayload.Queries["Duration"] = CSharpExpressionConverter.ConvertO(duration);
             return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -1083,10 +1083,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
             if (updateFilter != null)
-                callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(updateFilter);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
+                callPayload.Queries["UpdateFilter"] = CSharpExpressionConverter.ConvertO(updateFilter);
+            callPayload.Queries["Duration"] = CSharpExpressionConverter.ConvertO(duration);
             return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -1095,16 +1095,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
+            callPayload.Queries["ApiKey"] = CSharpExpressionConverter.ConvertO(apiKey);
             if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
+                callPayload.Queries["ProjectName"] = CSharpExpressionConverter.ConvertO(projectName);
             if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["ProjectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
+                callPayload.Queries["AssigneeEmail"] = CSharpExpressionConverter.ConvertO(assigneeEmail);
             if (creatorEmail != null)
-                callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
+                callPayload.Queries["CreatorEmail"] = CSharpExpressionConverter.ConvertO(creatorEmail);
+            callPayload.Queries["Duration"] = CSharpExpressionConverter.ConvertO(duration);
             return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, triggerName, recurrence);
         }
     }

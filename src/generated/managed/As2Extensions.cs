@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
             var apiCallPath = "/createOrUpdateMicValues";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(micContent);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(micContent);
             return new ApiConnectionAction<MicUpdateResponse[]>(callPayload);
         }
 
@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
             var apiCallPath = "/resolveAgreement";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["as2From"] = ExpressionConverter.Convert(as2From);
-            callPayload.Queries["as2To"] = ExpressionConverter.Convert(as2To);
+            callPayload.Queries["as2From"] = CSharpExpressionConverter.ConvertO(as2From);
+            callPayload.Queries["as2To"] = CSharpExpressionConverter.ConvertO(as2To);
             return new ApiConnectionAction<As2AgreementProperties>(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
             var apiCallPath = "/decode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<As2DecodeResponse>(callPayload);
         }
 
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
             var apiCallPath = "/encode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["as2From"] = ExpressionConverter.Convert(as2From);
-            callPayload.Queries["as2To"] = ExpressionConverter.Convert(as2To);
+            callPayload.Queries["as2From"] = CSharpExpressionConverter.ConvertO(as2From);
+            callPayload.Queries["as2To"] = CSharpExpressionConverter.ConvertO(as2To);
             if (fileName != null)
-                callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
+                callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<As2EncodeResponse>(callPayload);
         }
     }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startSyncTime != null)
-                callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
+                callPayload.Queries["startSyncTime"] = CSharpExpressionConverter.ConvertO(startSyncTime);
             return new ApiConnectionTrigger<As2ReplicableMicContent[]>(callPayload, triggerName, recurrence);
         }
     }

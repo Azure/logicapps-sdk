@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
             var bodypropCount = 0;
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
             var bodypropCount = 0;
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 

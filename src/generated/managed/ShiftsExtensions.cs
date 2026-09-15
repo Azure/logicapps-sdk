@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ScheduleResponse> GetSchedule(Expression<Func<string>> teamId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ScheduleResponse>(callPayload);
@@ -23,22 +23,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListTimesOffResponse> ListTimesOff(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListTimesOffResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
@@ -47,19 +47,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var sharedTimeOffObjectpropCount = 0;
             if (requestvaluetimeOffReason != null)
             {
-                sharedTimeOffObject["timeOffReasonId"] = ExpressionConverter.ConvertO(requestvaluetimeOffReason);
+                sharedTimeOffObject["timeOffReasonId"] = CSharpExpressionConverter.ConvertToken(requestvaluetimeOffReason);
                 sharedTimeOffObjectpropCount++;
             }
 
             if (requestvaluestartTime != null)
             {
-                sharedTimeOffObject["startDateTime"] = ExpressionConverter.ConvertO(requestvaluestartTime);
+                sharedTimeOffObject["startDateTime"] = CSharpExpressionConverter.ConvertToken(requestvaluestartTime);
                 sharedTimeOffObjectpropCount++;
             }
 
             if (requestvalueendTime != null)
             {
-                sharedTimeOffObject["endDateTime"] = ExpressionConverter.ConvertO(requestvalueendTime);
+                sharedTimeOffObject["endDateTime"] = CSharpExpressionConverter.ConvertToken(requestvalueendTime);
                 sharedTimeOffObjectpropCount++;
             }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             {
                 if (requestvaluetheme != null)
                 {
-                    sharedTimeOffObject["theme"] = ExpressionConverter.ConvertO(requestvaluetheme);
+                    sharedTimeOffObject["theme"] = CSharpExpressionConverter.Convert(requestvaluetheme);
                     sharedTimeOffObjectpropCount++;
                 }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             }
 
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestuserID);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestuserID);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffResponse> GetTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TimeOffResponse>(callPayload);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -116,29 +116,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListShiftsResponse> ListShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/shifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListShiftsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ShiftResponse> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/shifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestschedulingGroupID != null)
             {
-                request["schedulingGroupId"] = ExpressionConverter.ConvertO(requestschedulingGroupID);
+                request["schedulingGroupId"] = CSharpExpressionConverter.ConvertToken(requestschedulingGroupID);
                 requestpropCount++;
             }
 
@@ -146,25 +146,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var sharedShiftObjectpropCount = 0;
             if (requestvaluedisplayName != null)
             {
-                sharedShiftObject["displayName"] = ExpressionConverter.ConvertO(requestvaluedisplayName);
+                sharedShiftObject["displayName"] = CSharpExpressionConverter.ConvertToken(requestvaluedisplayName);
                 sharedShiftObjectpropCount++;
             }
 
             if (requestvaluenotes != null)
             {
-                sharedShiftObject["notes"] = ExpressionConverter.ConvertO(requestvaluenotes);
+                sharedShiftObject["notes"] = CSharpExpressionConverter.ConvertToken(requestvaluenotes);
                 sharedShiftObjectpropCount++;
             }
 
             if (requestvaluestartTime != null)
             {
-                sharedShiftObject["startDateTime"] = ExpressionConverter.ConvertO(requestvaluestartTime);
+                sharedShiftObject["startDateTime"] = CSharpExpressionConverter.ConvertToken(requestvaluestartTime);
                 sharedShiftObjectpropCount++;
             }
 
             if (requestvalueendTime != null)
             {
-                sharedShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestvalueendTime);
+                sharedShiftObject["endDateTime"] = CSharpExpressionConverter.ConvertToken(requestvalueendTime);
                 sharedShiftObjectpropCount++;
             }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             {
                 if (requestvaluetheme != null)
                 {
-                    sharedShiftObject["theme"] = ExpressionConverter.ConvertO(requestvaluetheme);
+                    sharedShiftObject["theme"] = CSharpExpressionConverter.Convert(requestvaluetheme);
                     sharedShiftObjectpropCount++;
                 }
 
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
             if (requestvalueactivities != null)
             {
-                sharedShiftObject["activities"] = ExpressionConverter.ConvertO(requestvalueactivities);
+                sharedShiftObject["activities"] = CSharpExpressionConverter.ConvertToken(requestvalueactivities);
                 sharedShiftObjectpropCount++;
             }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             }
 
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestuserID);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestuserID);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ShiftResponse> GetShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/shifts/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(shiftId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ShiftResponse>(callPayload);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/shifts/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(shiftId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -227,29 +227,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOpenShiftsResponse> ListOpenShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListOpenShiftsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> CreateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestschedulingGroupID != null)
             {
-                request["schedulingGroupId"] = ExpressionConverter.ConvertO(requestschedulingGroupID);
+                request["schedulingGroupId"] = CSharpExpressionConverter.ConvertToken(requestschedulingGroupID);
                 requestpropCount++;
             }
 
@@ -257,25 +257,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var sharedOpenShiftObjectpropCount = 0;
             if (requestsharedOpenShiftdisplayName != null)
             {
-                sharedOpenShiftObject["displayName"] = ExpressionConverter.ConvertO(requestsharedOpenShiftdisplayName);
+                sharedOpenShiftObject["displayName"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftdisplayName);
                 sharedOpenShiftObjectpropCount++;
             }
 
             if (requestsharedOpenShiftnotes != null)
             {
-                sharedOpenShiftObject["notes"] = ExpressionConverter.ConvertO(requestsharedOpenShiftnotes);
+                sharedOpenShiftObject["notes"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftnotes);
                 sharedOpenShiftObjectpropCount++;
             }
 
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["startDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftstartTime);
+            sharedOpenShiftObject["startDateTime"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftstartTime);
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftendTime);
+            sharedOpenShiftObject["endDateTime"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftendTime);
             if (requestsharedOpenShifttheme != null)
             {
                 if (requestsharedOpenShifttheme != null)
                 {
-                    sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                    sharedOpenShiftObject["theme"] = CSharpExpressionConverter.Convert(requestsharedOpenShifttheme);
                     sharedOpenShiftObjectpropCount++;
                 }
 
@@ -288,10 +288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             }
 
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["openSlotCount"] = ExpressionConverter.ConvertO(requestsharedOpenShiftopenSlotCount);
+            sharedOpenShiftObject["openSlotCount"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftopenSlotCount);
             if (requestsharedOpenShiftactivities != null)
             {
-                sharedOpenShiftObject["activities"] = ExpressionConverter.ConvertO(requestsharedOpenShiftactivities);
+                sharedOpenShiftObject["activities"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftactivities);
                 sharedOpenShiftObjectpropCount++;
             }
 
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> GetOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShifts/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OpenShiftResponse>(callPayload);
@@ -321,14 +321,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> UpdateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShifts/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestschedulingGroupID != null)
             {
-                request["schedulingGroupId"] = ExpressionConverter.ConvertO(requestschedulingGroupID);
+                request["schedulingGroupId"] = CSharpExpressionConverter.ConvertToken(requestschedulingGroupID);
                 requestpropCount++;
             }
 
@@ -336,25 +336,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var sharedOpenShiftObjectpropCount = 0;
             if (requestsharedOpenShiftdisplayName != null)
             {
-                sharedOpenShiftObject["displayName"] = ExpressionConverter.ConvertO(requestsharedOpenShiftdisplayName);
+                sharedOpenShiftObject["displayName"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftdisplayName);
                 sharedOpenShiftObjectpropCount++;
             }
 
             if (requestsharedOpenShiftnotes != null)
             {
-                sharedOpenShiftObject["notes"] = ExpressionConverter.ConvertO(requestsharedOpenShiftnotes);
+                sharedOpenShiftObject["notes"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftnotes);
                 sharedOpenShiftObjectpropCount++;
             }
 
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["startDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftstartTime);
+            sharedOpenShiftObject["startDateTime"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftstartTime);
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftendTime);
+            sharedOpenShiftObject["endDateTime"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftendTime);
             if (requestsharedOpenShifttheme != null)
             {
                 if (requestsharedOpenShifttheme != null)
                 {
-                    sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                    sharedOpenShiftObject["theme"] = CSharpExpressionConverter.Convert(requestsharedOpenShifttheme);
                     sharedOpenShiftObjectpropCount++;
                 }
 
@@ -367,10 +367,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             }
 
             sharedOpenShiftObjectpropCount++;
-            sharedOpenShiftObject["openSlotCount"] = ExpressionConverter.ConvertO(requestsharedOpenShiftopenSlotCount);
+            sharedOpenShiftObject["openSlotCount"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftopenSlotCount);
             if (requestsharedOpenShiftactivities != null)
             {
-                sharedOpenShiftObject["activities"] = ExpressionConverter.ConvertO(requestsharedOpenShiftactivities);
+                sharedOpenShiftObject["activities"] = CSharpExpressionConverter.ConvertToken(requestsharedOpenShiftactivities);
                 sharedOpenShiftObjectpropCount++;
             }
 
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShifts/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -400,29 +400,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<GetTimeOffReasonsResponse> ListTimeOffReasons(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timeOffReasons", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffReasons", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<GetTimeOffReasonsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListSchedulingGroupsResponse> ListSchedulingGroups(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/schedulinggroups", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListSchedulingGroupsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<SchedulingGroupResponse> GetSchedulingGroup(Expression<Func<string>> teamId, Expression<Func<string>> schedulingGroupId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/schedulinggroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(schedulingGroupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(schedulingGroupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SchedulingGroupResponse>(callPayload);
@@ -431,20 +431,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListTimeOffRequestsResponse> ListTimeOffRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timeOffRequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.Convert(state);
             return new ApiConnectionAction<ListTimeOffRequestsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffRequestResponse> GetTimeOffShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timeOffRequests/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TimeOffRequestResponse>(callPayload);
@@ -453,14 +453,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction TimeOffRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/approve", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromManager);
                 requestpropCount++;
             }
 
@@ -475,14 +475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction TimeOffRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/decline", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/decline", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromManager);
                 requestpropCount++;
             }
 
@@ -497,20 +497,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOfferShiftRequestsResponse> ListOfferShiftRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/offerShiftRequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.Convert(state);
             return new ApiConnectionAction<ListOfferShiftRequestsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OfferShiftRequestResponse> GetOfferShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(offerShiftRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OfferShiftRequestResponse>(callPayload);
@@ -519,14 +519,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OfferShiftRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/approve", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(offerShiftRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromRecipientManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromRecipientManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromRecipientManager);
                 requestpropCount++;
             }
 
@@ -541,14 +541,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OfferShiftRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/decline", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(offerShiftRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/decline", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromRecipientManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromRecipientManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromRecipientManager);
                 requestpropCount++;
             }
 
@@ -563,20 +563,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListSwapShiftsChangeRequestsResponse> ListSwapShiftsChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.Convert(state);
             return new ApiConnectionAction<ListSwapShiftsChangeRequestsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<SwapShiftsChangeRequestResponse> GetSwapShiftsChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(swapShiftsChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SwapShiftsChangeRequestResponse>(callPayload);
@@ -585,14 +585,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction SwapShiftsChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/approve", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(swapShiftsChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromRecipientManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromRecipientManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromRecipientManager);
                 requestpropCount++;
             }
 
@@ -607,14 +607,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction SwapShiftsChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/decline", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(swapShiftsChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/decline", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromRecipientManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromRecipientManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromRecipientManager);
                 requestpropCount++;
             }
 
@@ -629,20 +629,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOpenShiftChangeRequestsResponse> ListOpenShiftChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShiftChangeRequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.Convert(state);
             return new ApiConnectionAction<ListOpenShiftChangeRequestsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftChangeRequestResponse> GetOpenShiftChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OpenShiftChangeRequestResponse>(callPayload);
@@ -651,14 +651,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OpenShiftChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/approve", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromManager);
                 requestpropCount++;
             }
 
@@ -673,14 +673,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OpenShiftChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/decline", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(openShiftChangeRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/decline", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             if (requestmessageFromManager != null)
             {
-                request["message"] = ExpressionConverter.ConvertO(requestmessageFromManager);
+                request["message"] = CSharpExpressionConverter.ConvertToken(requestmessageFromManager);
                 requestpropCount++;
             }
 
@@ -699,11 +699,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListOpenShiftsCrossTeamResponse>(callPayload);
         }
 
@@ -714,13 +714,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (assignedToUserName != null)
-                callPayload.Queries["assignedToUserName"] = ExpressionConverter.Convert(assignedToUserName);
+                callPayload.Queries["assignedToUserName"] = CSharpExpressionConverter.ConvertO(assignedToUserName);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListShiftsCrossTeamResponse>(callPayload);
         }
 
@@ -731,13 +731,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
+                callPayload.Queries["startTime"] = CSharpExpressionConverter.ConvertO(startTime);
             if (endTime != null)
-                callPayload.Queries["endTime"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["endTime"] = CSharpExpressionConverter.ConvertO(endTime);
             if (assignedToUserName != null)
-                callPayload.Queries["assignedToUserName"] = ExpressionConverter.Convert(assignedToUserName);
+                callPayload.Queries["assignedToUserName"] = CSharpExpressionConverter.ConvertO(assignedToUserName);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             return new ApiConnectionAction<ListTimesOffCrossTeamResponse>(callPayload);
         }
     }
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     {
         public IWorkflowTrigger TriggerForOpenShiftChangeRequests(Expression<Func<string>> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/teams/{0}/openshiftchangerequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/openshiftchangerequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForSwapShiftsChangeRequests(Expression<Func<string>> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/teams/{0}/swapshiftschangerequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/swapshiftschangerequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForOfferShiftRequests(Expression<Func<string>> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/teams/{0}/offershiftrequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/offershiftrequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForTimeOffRequests(Expression<Func<string>> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/teams/{0}/timeoffrequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/timeoffrequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForShifts(Expression<Func<string>> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/teams/{0}/shifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/shifts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();

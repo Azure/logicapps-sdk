@@ -17,19 +17,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/AddRfcToTransaction";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+            callPayload.Queries["rfcName"] = CSharpExpressionConverter.ConvertO(rfcName);
             if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["rfcGroupFilter"] = CSharpExpressionConverter.ConvertO(rfcGroupFilter);
             callPayload.Queries["autoCommit"] = Convert.ToString(false);
             if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                callPayload.Queries["autoCommit"] = CSharpExpressionConverter.ConvertO(autoCommit);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
         }
 
@@ -39,16 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/CallBapi";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["businessObject"] = ExpressionConverter.Convert(businessObject);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+            callPayload.Queries["businessObject"] = CSharpExpressionConverter.ConvertO(businessObject);
+            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
             callPayload.Queries["autoCommit"] = Convert.ToString(true);
             if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                callPayload.Queries["autoCommit"] = CSharpExpressionConverter.ConvertO(autoCommit);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CallBapiResponse>(callPayload);
         }
 
@@ -58,21 +58,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/CallRfc";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+            callPayload.Queries["rfcName"] = CSharpExpressionConverter.ConvertO(rfcName);
             if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["rfcGroupFilter"] = CSharpExpressionConverter.ConvertO(rfcGroupFilter);
             callPayload.Queries["autoCommit"] = Convert.ToString(false);
             if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                callPayload.Queries["autoCommit"] = CSharpExpressionConverter.ConvertO(autoCommit);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<CallRfcResponse>(callPayload);
         }
 
@@ -82,25 +82,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/CallRfc3";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+            callPayload.Queries["rfcName"] = CSharpExpressionConverter.ConvertO(rfcName);
             if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["rfcGroupFilter"] = CSharpExpressionConverter.ConvertO(rfcGroupFilter);
             callPayload.Queries["autoCommit"] = Convert.ToString(false);
             if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                callPayload.Queries["autoCommit"] = CSharpExpressionConverter.ConvertO(autoCommit);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             callPayload.Queries["inputFormat"] = Convert.ToString("Json");
             if (inputFormat != null)
-                callPayload.Queries["inputFormat"] = ExpressionConverter.Convert(inputFormat);
+                callPayload.Queries["inputFormat"] = CSharpExpressionConverter.Convert(inputFormat);
             callPayload.Queries["returnFormat"] = Convert.ToString("Json");
             if (returnFormat != null)
-                callPayload.Queries["returnFormat"] = ExpressionConverter.Convert(returnFormat);
-            callPayload.Body = ExpressionConverter.ConvertO(rfcInputs);
+                callPayload.Queries["returnFormat"] = CSharpExpressionConverter.Convert(returnFormat);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(rfcInputs);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/CloseSession";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/CommitBapiTransaction";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             callPayload.Queries["wait"] = Convert.ToString(false);
             if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
+                callPayload.Queries["wait"] = CSharpExpressionConverter.ConvertO(wait);
             callPayload.Queries["closeSession"] = Convert.ToString(true);
             if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
+                callPayload.Queries["closeSession"] = CSharpExpressionConverter.ConvertO(closeSession);
             return new ApiConnectionAction<BapiRet2>(callPayload);
         }
 
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/ConfirmTid";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
+            callPayload.Queries["tid"] = CSharpExpressionConverter.ConvertO(tid);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
         }
 
@@ -183,8 +183,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["fileNamePrefix"] = Convert.ToString("");
             if (fileNamePrefix != null)
-                callPayload.Queries["fileNamePrefix"] = ExpressionConverter.Convert(fileNamePrefix);
-            callPayload.Body = ExpressionConverter.ConvertO(sapActionUris);
+                callPayload.Queries["fileNamePrefix"] = CSharpExpressionConverter.ConvertO(fileNamePrefix);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(sapActionUris);
             return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(callPayload);
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/GetIdocStatus";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocNumber"] = ExpressionConverter.Convert(idocNumber);
+            callPayload.Queries["idocNumber"] = CSharpExpressionConverter.ConvertO(idocNumber);
             return new ApiConnectionAction<IdocStatusResponse>(callPayload);
         }
 
@@ -205,9 +205,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["queueName"] = CSharpExpressionConverter.ConvertO(queueName);
             return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
         }
 
@@ -217,8 +217,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/GetTransactionIdocs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
-            callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+            callPayload.Queries["direction"] = CSharpExpressionConverter.Convert(direction);
+            callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             return new ApiConnectionAction<IdocNumbersList>(callPayload);
         }
 
@@ -231,34 +231,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var inputParameters = new JObject();
             var inputParameterspropCount = 0;
             inputParameterspropCount++;
-            inputParameters["tableName"] = ExpressionConverter.ConvertO(inputParameterstableName);
+            inputParameters["tableName"] = CSharpExpressionConverter.ConvertToken(inputParameterstableName);
             if (inputParametersfieldsToRead != null)
             {
-                inputParameters["FieldNames"] = ExpressionConverter.ConvertO(inputParametersfieldsToRead);
+                inputParameters["FieldNames"] = CSharpExpressionConverter.ConvertToken(inputParametersfieldsToRead);
                 inputParameterspropCount++;
             }
 
             if (inputParameterswhereFilters != null)
             {
-                inputParameters["WhereFilters"] = ExpressionConverter.ConvertO(inputParameterswhereFilters);
+                inputParameters["WhereFilters"] = CSharpExpressionConverter.ConvertToken(inputParameterswhereFilters);
                 inputParameterspropCount++;
             }
 
             if (inputParametersstartingRowIndex != null)
             {
-                inputParameters["StartIndex"] = ExpressionConverter.ConvertO(inputParametersstartingRowIndex);
+                inputParameters["StartIndex"] = CSharpExpressionConverter.ConvertToken(inputParametersstartingRowIndex);
                 inputParameterspropCount++;
             }
 
             if (inputParameterscountOfRowsToRead != null)
             {
-                inputParameters["RowCount"] = ExpressionConverter.ConvertO(inputParameterscountOfRowsToRead);
+                inputParameters["RowCount"] = CSharpExpressionConverter.ConvertToken(inputParameterscountOfRowsToRead);
                 inputParameterspropCount++;
             }
 
             if (inputParametersfieldDelimiter != null)
             {
-                inputParameters["Delimiter"] = ExpressionConverter.ConvertO(inputParametersfieldDelimiter);
+                inputParameters["Delimiter"] = CSharpExpressionConverter.ConvertToken(inputParametersfieldDelimiter);
                 inputParameterspropCount++;
             }
 
@@ -276,10 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/RollbackBapiTransaction";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+            callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             callPayload.Queries["closeSession"] = Convert.ToString(true);
             if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
+                callPayload.Queries["closeSession"] = CSharpExpressionConverter.ConvertO(closeSession);
             return new ApiConnectionAction<BapiRet2>(callPayload);
         }
 
@@ -289,10 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/Send";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sapAction"] = ExpressionConverter.Convert(sapAction);
+            callPayload.Queries["sapAction"] = CSharpExpressionConverter.ConvertO(sapAction);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -302,21 +302,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/SendIDoc";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocType"] = ExpressionConverter.Convert(idocType);
+            callPayload.Queries["idocType"] = CSharpExpressionConverter.ConvertO(idocType);
             callPayload.Queries["releaseVersion"] = Convert.ToString("");
             if (releaseVersion != null)
-                callPayload.Queries["releaseVersion"] = ExpressionConverter.Convert(releaseVersion);
+                callPayload.Queries["releaseVersion"] = CSharpExpressionConverter.ConvertO(releaseVersion);
             callPayload.Queries["recordTypesVersion"] = Convert.ToString("3");
             if (recordTypesVersion != null)
-                callPayload.Queries["recordTypesVersion"] = ExpressionConverter.Convert(recordTypesVersion);
+                callPayload.Queries["recordTypesVersion"] = CSharpExpressionConverter.Convert(recordTypesVersion);
             callPayload.Queries["confirmTid"] = Convert.ToString(false);
             if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
+                callPayload.Queries["confirmTid"] = CSharpExpressionConverter.ConvertO(confirmTid);
             if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
+                callPayload.Queries["tid"] = CSharpExpressionConverter.ConvertO(tid);
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<SendIdocResponse>(callPayload);
         }
 
@@ -328,13 +328,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["idocFormat"] = Convert.ToString("Xml");
             if (idocFormat != null)
-                callPayload.Queries["idocFormat"] = ExpressionConverter.Convert(idocFormat);
+                callPayload.Queries["idocFormat"] = CSharpExpressionConverter.Convert(idocFormat);
             callPayload.Queries["confirmTid"] = Convert.ToString(false);
             if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
+                callPayload.Queries["confirmTid"] = CSharpExpressionConverter.ConvertO(confirmTid);
             if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicParameters);
+                callPayload.Queries["tid"] = CSharpExpressionConverter.ConvertO(tid);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicParameters);
             return new ApiConnectionAction<SendIdocResponse>(callPayload);
         }
 
@@ -345,42 +345,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                callPayload.Queries["tId"] = CSharpExpressionConverter.ConvertO(tId);
             var callRfcSubscription = new JObject();
             var callRfcSubscriptionpropCount = 0;
             var rfcCallParametersObject = new JObject();
             var rfcCallParametersObjectpropCount = 0;
             rfcCallParametersObjectpropCount++;
-            rfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCName);
+            rfcCallParametersObject["RfcName"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersrFCName);
             if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
             {
-                rfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
+                rfcCallParametersObject["Payload"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
                 rfcCallParametersObjectpropCount++;
             }
 
             if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
             {
-                rfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
+                rfcCallParametersObject["PayloadReference"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
                 rfcCallParametersObjectpropCount++;
             }
 
             if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
             {
-                rfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
+                rfcCallParametersObject["RfcGroupFilter"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
                 rfcCallParametersObjectpropCount++;
             }
 
             if (callRfcSubscriptionrfcCallParametersautoCommit != null)
             {
-                rfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersautoCommit);
+                rfcCallParametersObject["AutoCommit"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersautoCommit);
                 rfcCallParametersObjectpropCount++;
             }
 
             if (callRfcSubscriptionrfcCallParametersqueueName != null)
             {
-                rfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersqueueName);
+                rfcCallParametersObject["QueueName"] = CSharpExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersqueueName);
                 rfcCallParametersObjectpropCount++;
             }
 
@@ -408,31 +408,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var apiCallPath = "/api/webhooktrigger/subscribe";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["gatewayHost"] = ExpressionConverter.Convert(gatewayHost);
-            callPayload.Queries["gatewayService"] = ExpressionConverter.Convert(gatewayService);
-            callPayload.Queries["programId"] = ExpressionConverter.Convert(programId);
+            callPayload.Queries["gatewayHost"] = CSharpExpressionConverter.ConvertO(gatewayHost);
+            callPayload.Queries["gatewayService"] = CSharpExpressionConverter.ConvertO(gatewayService);
+            callPayload.Queries["programId"] = CSharpExpressionConverter.ConvertO(programId);
             if (sncPartnerNames != null)
-                callPayload.Queries["sncPartnerNames"] = ExpressionConverter.Convert(sncPartnerNames);
+                callPayload.Queries["sncPartnerNames"] = CSharpExpressionConverter.ConvertO(sncPartnerNames);
             callPayload.Queries["degreeOfParallelism"] = Convert.ToString(-1);
             if (degreeOfParallelism != null)
-                callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(degreeOfParallelism);
+                callPayload.Queries["degreeOfParallelism"] = CSharpExpressionConverter.ConvertO(degreeOfParallelism);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
             if (subscriptionsapActions != null)
             {
-                subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionsapActions);
+                subscription["SapActions"] = CSharpExpressionConverter.ConvertToken(subscriptionsapActions);
                 subscriptionpropCount++;
             }
 
             if (subscriptioniDOCFormat != null)
             {
-                subscription["IdocFormat"] = ExpressionConverter.ConvertO(subscriptioniDOCFormat);
+                subscription["IdocFormat"] = CSharpExpressionConverter.Convert(subscriptioniDOCFormat);
                 subscriptionpropCount++;
             }
 
             if (subscriptionreceiveIDOCsWithUnreleasedSegments != null)
             {
-                subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(subscriptionreceiveIDOCsWithUnreleasedSegments);
+                subscription["ReceiveIdocsWithUnreleasedSegments"] = CSharpExpressionConverter.ConvertToken(subscriptionreceiveIDOCsWithUnreleasedSegments);
                 subscriptionpropCount++;
             }
 

@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
             var bodypropCount = 0;
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodymessages != null)
             {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
                 bodypropCount++;
             }
 

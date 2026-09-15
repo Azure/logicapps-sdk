@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus(Expression<Func<moduleInput>> module, Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
         {
-            var apiCallPath = String.Format("/query/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = ExpressionConverter.Convert(module);
+            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
             callPayload.Queries["include_read_url"] = Convert.ToString("OnceCompleted");
             if (includeReadUrl != null)
-                callPayload.Queries["include_read_url"] = ExpressionConverter.Convert(includeReadUrl);
+                callPayload.Queries["include_read_url"] = CSharpExpressionConverter.Convert(includeReadUrl);
             callPayload.Queries["content_disposition"] = Convert.ToString("Attachment");
             if (contentDisposition != null)
-                callPayload.Queries["content_disposition"] = ExpressionConverter.Convert(contentDisposition);
+                callPayload.Queries["content_disposition"] = CSharpExpressionConverter.Convert(contentDisposition);
             return new ApiConnectionAction<QueryApiQueryExecutionJob>(callPayload);
         }
 
@@ -35,33 +35,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = ExpressionConverter.Convert(module);
+            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
             if (queryTypeId != null)
-                callPayload.Queries["query_type_id"] = ExpressionConverter.Convert(queryTypeId);
+                callPayload.Queries["query_type_id"] = CSharpExpressionConverter.ConvertO(queryTypeId);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (queryFormat != null)
-                callPayload.Queries["query_format"] = ExpressionConverter.Convert(queryFormat);
+                callPayload.Queries["query_format"] = CSharpExpressionConverter.Convert(queryFormat);
             if (searchText != null)
-                callPayload.Queries["search_text"] = ExpressionConverter.Convert(searchText);
+                callPayload.Queries["search_text"] = CSharpExpressionConverter.ConvertO(searchText);
             if (myFavQueriesOnly != null)
-                callPayload.Queries["my_fav_queries_only"] = ExpressionConverter.Convert(myFavQueriesOnly);
+                callPayload.Queries["my_fav_queries_only"] = CSharpExpressionConverter.ConvertO(myFavQueriesOnly);
             if (myQueriesOnly != null)
-                callPayload.Queries["my_queries_only"] = ExpressionConverter.Convert(myQueriesOnly);
+                callPayload.Queries["my_queries_only"] = CSharpExpressionConverter.ConvertO(myQueriesOnly);
             if (mergedQueriesOnly != null)
-                callPayload.Queries["merged_queries_only"] = ExpressionConverter.Convert(mergedQueriesOnly);
+                callPayload.Queries["merged_queries_only"] = CSharpExpressionConverter.ConvertO(mergedQueriesOnly);
             if (sortColumn != null)
-                callPayload.Queries["sort_column"] = ExpressionConverter.Convert(sortColumn);
+                callPayload.Queries["sort_column"] = CSharpExpressionConverter.Convert(sortColumn);
             if (dateAdded != null)
-                callPayload.Queries["date_added"] = ExpressionConverter.Convert(dateAdded);
+                callPayload.Queries["date_added"] = CSharpExpressionConverter.ConvertO(dateAdded);
             if (addedBy != null)
-                callPayload.Queries["added_by"] = ExpressionConverter.Convert(addedBy);
+                callPayload.Queries["added_by"] = CSharpExpressionConverter.ConvertO(addedBy);
             if (sortDescending != null)
-                callPayload.Queries["sort_descending"] = ExpressionConverter.Convert(sortDescending);
+                callPayload.Queries["sort_descending"] = CSharpExpressionConverter.ConvertO(sortDescending);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<QueryApiQuerySummaryCollection>(callPayload);
         }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = ExpressionConverter.Convert(module);
+            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
             var body = new JObject();
             var bodypropCount = 0;
             var queryObject = new JObject();
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             {
                 if (bodyoutputFormat != null)
                 {
-                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
                     bodypropCount++;
                 }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             {
                 if (bodyformattingMode != null)
                 {
-                    body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                    body["formatting_mode"] = CSharpExpressionConverter.Convert(bodyformattingMode);
                     bodypropCount++;
                 }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
 
             if (bodyfilename != null)
             {
-                body["results_file_name"] = ExpressionConverter.ConvertO(bodyfilename);
+                body["results_file_name"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
                 bodypropCount++;
             }
 
@@ -138,18 +138,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = ExpressionConverter.Convert(module);
+            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["v_query_type_id"] = ExpressionConverter.ConvertO(bodytype);
+            body["v_query_type_id"] = CSharpExpressionConverter.ConvertToken(bodytype);
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyquery);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodyoutputFormat != null)
             {
                 if (bodyoutputFormat != null)
                 {
-                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
                     bodypropCount++;
                 }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             {
                 if (bodyformattingMode != null)
                 {
-                    body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                    body["formatting_mode"] = CSharpExpressionConverter.Convert(bodyformattingMode);
                     bodypropCount++;
                 }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             {
                 if (bodysQLGenerationMode != null)
                 {
-                    body["sql_generation_mode"] = ExpressionConverter.ConvertO(bodysQLGenerationMode);
+                    body["sql_generation_mode"] = CSharpExpressionConverter.Convert(bodysQLGenerationMode);
                     bodypropCount++;
                 }
 
@@ -195,13 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
 
             if (bodyuseStaticQuery != null)
             {
-                body["use_static_query_id_set"] = ExpressionConverter.ConvertO(bodyuseStaticQuery);
+                body["use_static_query_id_set"] = CSharpExpressionConverter.ConvertToken(bodyuseStaticQuery);
                 bodypropCount++;
             }
 
             if (bodyfilename != null)
             {
-                body["results_file_name"] = ExpressionConverter.ConvertO(bodyfilename);
+                body["results_file_name"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
                 bodypropCount++;
             }
 
@@ -222,13 +222,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = ExpressionConverter.Convert(module);
+            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["v_query_type_id"] = ExpressionConverter.ConvertO(bodytype);
+            body["v_query_type_id"] = CSharpExpressionConverter.ConvertToken(bodytype);
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyquery);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             body["ux_mode"] = "Asynchronous";
             bodypropCount++;
             if (bodypropCount > 0)

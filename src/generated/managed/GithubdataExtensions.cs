@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubdata")]
         public IBodyWorkflowAction<string> RetrieveData(Expression<Func<string>> githubname, Expression<Func<string>> reponame, Expression<Func<string>> filewithpath)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(githubname, 1), ExpressionConverter.ConvertWithUrlEncoding(reponame, 1), ExpressionConverter.ConvertWithUrlEncoding(filewithpath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(githubname, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reponame, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filewithpath, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);

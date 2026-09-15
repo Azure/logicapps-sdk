@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
             var bodypropCount = 0;
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
             contentObjectpropCount++;
             if (bodycontenttext != null)
             {
-                contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
+                contentObject["text"] = CSharpExpressionConverter.ConvertToken(bodycontenttext);
                 contentObjectpropCount++;
             }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
     {
         public IWorkflowTrigger Incoming(Expression<Func<string>> smsSender, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(smsSender, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(smsSender, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

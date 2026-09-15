@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
             if (warehouseRefNum != null)
-                callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["warehouseRefNum"] = CSharpExpressionConverter.ConvertO(warehouseRefNum);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -118,12 +118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (companyId != null)
-                callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
+                callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
             if (warehouseRefNum != null)
-                callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(warehouseRefNum);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["warehouseRefNum"] = CSharpExpressionConverter.ConvertO(warehouseRefNum);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallPath = "/api/v1/location/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -146,10 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallPath = "/api/v1/location/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallPath = "/api/v1/user/create";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -172,86 +172,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
             var apiCallPath = "/api/v1/user/update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["companyId"] = ExpressionConverter.Convert(companyId);
-            callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(xApiKey);
-            callPayload.Headers["x-origin"] = ExpressionConverter.Convert(xOrigin);
+            callPayload.Queries["companyId"] = CSharpExpressionConverter.ConvertO(companyId);
+            callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
+            callPayload.Headers["x-origin"] = CSharpExpressionConverter.ConvertO(xOrigin);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycompanyId != null)
             {
-                body["companyId"] = ExpressionConverter.ConvertO(bodycompanyId);
+                body["companyId"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodybusinessUnitCode != null)
             {
-                body["businessUnitCode"] = ExpressionConverter.ConvertO(bodybusinessUnitCode);
+                body["businessUnitCode"] = CSharpExpressionConverter.ConvertToken(bodybusinessUnitCode);
                 bodypropCount++;
             }
 
             if (bodydepartmentCode != null)
             {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                body["departmentCode"] = CSharpExpressionConverter.ConvertToken(bodydepartmentCode);
                 bodypropCount++;
             }
 
             if (bodypayrollCode != null)
             {
-                body["payrollCode"] = ExpressionConverter.ConvertO(bodypayrollCode);
+                body["payrollCode"] = CSharpExpressionConverter.ConvertToken(bodypayrollCode);
                 bodypropCount++;
             }
 
             if (bodyplantId != null)
             {
-                body["plantId"] = ExpressionConverter.ConvertO(bodyplantId);
+                body["plantId"] = CSharpExpressionConverter.ConvertToken(bodyplantId);
                 bodypropCount++;
             }
 
             if (bodyempId != null)
             {
-                body["empId"] = ExpressionConverter.ConvertO(bodyempId);
+                body["empId"] = CSharpExpressionConverter.ConvertToken(bodyempId);
                 bodypropCount++;
             }
 
             if (bodymobileNumber != null)
             {
-                body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                body["mobileNumber"] = CSharpExpressionConverter.ConvertToken(bodymobileNumber);
                 bodypropCount++;
             }
 
             if (bodyreportingManager != null)
             {
-                body["reportingManager"] = ExpressionConverter.ConvertO(bodyreportingManager);
+                body["reportingManager"] = CSharpExpressionConverter.ConvertToken(bodyreportingManager);
                 bodypropCount++;
             }
 
             if (bodyempType != null)
             {
-                body["empType"] = ExpressionConverter.ConvertO(bodyempType);
+                body["empType"] = CSharpExpressionConverter.ConvertToken(bodyempType);
                 bodypropCount++;
             }
 
             if (bodystateCode != null)
             {
-                body["stateCode"] = ExpressionConverter.ConvertO(bodystateCode);
+                body["stateCode"] = CSharpExpressionConverter.ConvertToken(bodystateCode);
                 bodypropCount++;
             }
 

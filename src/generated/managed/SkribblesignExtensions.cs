@@ -21,15 +21,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
             var requestpropCount = 0;
             if (requesttitle != null)
             {
-                request["title"] = ExpressionConverter.ConvertO(requesttitle);
+                request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["content"] = ExpressionConverter.ConvertO(requestcontent);
+            request["content"] = CSharpExpressionConverter.ConvertToken(requestcontent);
             if (requestsealForSealing != null)
             {
-                request["account_name"] = ExpressionConverter.ConvertO(requestsealForSealing);
+                request["account_name"] = CSharpExpressionConverter.ConvertToken(requestsealForSealing);
                 requestpropCount++;
             }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
             var visualSignatureObjectpropCount = 0;
             if (requestvisualSignatureformField != null)
             {
-                visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
+                visualSignatureObject["form_field"] = CSharpExpressionConverter.ConvertToken(requestvisualSignatureformField);
                 visualSignatureObjectpropCount++;
             }
 
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
             var imageObjectpropCount = 0;
             if (requestvisualSignatureimagecontent != null)
             {
-                imageObject["content"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontent);
+                imageObject["content"] = CSharpExpressionConverter.ConvertToken(requestvisualSignatureimagecontent);
                 imageObjectpropCount++;
             }
 
             if (requestvisualSignatureimagecontentType != null)
             {
-                imageObject["content_type"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontentType);
+                imageObject["content_type"] = CSharpExpressionConverter.ConvertToken(requestvisualSignatureimagecontentType);
                 imageObjectpropCount++;
             }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 
             if (requestvisualSignaturepositions != null)
             {
-                visualSignatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
+                visualSignatureObject["positions"] = CSharpExpressionConverter.ConvertToken(requestvisualSignaturepositions);
                 visualSignatureObjectpropCount++;
             }
 

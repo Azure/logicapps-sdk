@@ -18,33 +18,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (label != null)
-                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
+                callPayload.Queries["label"] = CSharpExpressionConverter.ConvertO(label);
             if (labelColor != null)
-                callPayload.Queries["labelColor"] = ExpressionConverter.Convert(labelColor);
+                callPayload.Queries["labelColor"] = CSharpExpressionConverter.ConvertO(labelColor);
             if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
             if (color != null)
-                callPayload.Queries["color"] = ExpressionConverter.Convert(color);
+                callPayload.Queries["color"] = CSharpExpressionConverter.ConvertO(color);
             if (style != null)
-                callPayload.Queries["style"] = ExpressionConverter.Convert(style);
+                callPayload.Queries["style"] = CSharpExpressionConverter.ConvertO(style);
             if (logo != null)
-                callPayload.Queries["logo"] = ExpressionConverter.Convert(logo);
+                callPayload.Queries["logo"] = CSharpExpressionConverter.ConvertO(logo);
             if (logoColor != null)
-                callPayload.Queries["logoColor"] = ExpressionConverter.Convert(logoColor);
+                callPayload.Queries["logoColor"] = CSharpExpressionConverter.ConvertO(logoColor);
             if (logoWidth != null)
-                callPayload.Queries["logoWidth"] = ExpressionConverter.Convert(logoWidth);
+                callPayload.Queries["logoWidth"] = CSharpExpressionConverter.ConvertO(logoWidth);
             if (link != null)
-                callPayload.Queries["link"] = ExpressionConverter.Convert(link);
+                callPayload.Queries["link"] = CSharpExpressionConverter.ConvertO(link);
             callPayload.Queries["cacheSeconds"] = Convert.ToString(3600);
             if (cacheSeconds != null)
-                callPayload.Queries["cacheSeconds"] = ExpressionConverter.Convert(cacheSeconds);
+                callPayload.Queries["cacheSeconds"] = CSharpExpressionConverter.ConvertO(cacheSeconds);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         public IBodyWorkflowAction<JToken> BadgeGet(Expression<Func<string>> parameters)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(parameters, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parameters, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);

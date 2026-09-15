@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/entityView";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyqualifiedviewName != null)
             {
-                body["qualifiedviewName"] = ExpressionConverter.ConvertO(bodyqualifiedviewName);
+                body["qualifiedviewName"] = CSharpExpressionConverter.ConvertToken(bodyqualifiedviewName);
                 bodypropCount++;
             }
 
@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/DataExchangeLookup";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["lookupType"] = ExpressionConverter.Convert(lookupType);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
+            callPayload.Headers["lookupType"] = CSharpExpressionConverter.Convert(lookupType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodylookupName != null)
             {
-                body["lookupName"] = ExpressionConverter.ConvertO(bodylookupName);
+                body["lookupName"] = CSharpExpressionConverter.ConvertToken(bodylookupName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["details"] = ExpressionConverter.ConvertO(bodydetails);
+            body["details"] = CSharpExpressionConverter.ConvertToken(bodydetails);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -68,25 +68,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/EntityLists";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyactive != null)
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
                 bodypropCount++;
             }
 
             if (bodyperiodName != null)
             {
-                body["periodName"] = ExpressionConverter.ConvertO(bodyperiodName);
+                body["periodName"] = CSharpExpressionConverter.ConvertToken(bodyperiodName);
                 bodypropCount++;
             }
 
             if (bodyviewName != null)
             {
-                body["viewName"] = ExpressionConverter.ConvertO(bodyviewName);
+                body["viewName"] = CSharpExpressionConverter.ConvertToken(bodyviewName);
                 bodypropCount++;
             }
 
@@ -104,51 +104,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/dataExport";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodynamedContext != null)
             {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
                 bodypropCount++;
             }
 
             if (bodyentityCode != null)
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
                 bodypropCount++;
             }
 
             if (bodycaseCode != null)
             {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
                 bodypropCount++;
             }
 
             if (bodyperiodCode != null)
             {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
                 bodypropCount++;
             }
 
             if (bodyjurisdictionCode != null)
             {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
+            body["packageName"] = CSharpExpressionConverter.ConvertToken(bodypackageName);
             if (bodyinternationalTaxName != null)
             {
-                body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
+                body["internationalTaxName"] = CSharpExpressionConverter.ConvertToken(bodyinternationalTaxName);
                 bodypropCount++;
             }
 
             if (bodyprovisionName != null)
             {
-                body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
+                body["provisionName"] = CSharpExpressionConverter.ConvertToken(bodyprovisionName);
                 bodypropCount++;
             }
 
@@ -166,51 +166,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/dataExportWithDataSource";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodynamedContext != null)
             {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
                 bodypropCount++;
             }
 
             if (bodyentityCode != null)
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
                 bodypropCount++;
             }
 
             if (bodycaseCode != null)
             {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
                 bodypropCount++;
             }
 
             if (bodyperiodCode != null)
             {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
                 bodypropCount++;
             }
 
             if (bodyjurisdictionCode != null)
             {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
             if (bodyinternationalTaxName != null)
             {
-                body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
+                body["internationalTaxName"] = CSharpExpressionConverter.ConvertToken(bodyinternationalTaxName);
                 bodypropCount++;
             }
 
             if (bodyprovisionName != null)
             {
-                body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
+                body["provisionName"] = CSharpExpressionConverter.ConvertToken(bodyprovisionName);
                 bodypropCount++;
             }
 
@@ -228,53 +228,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/triggerCart";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["cartName"] = ExpressionConverter.ConvertO(bodycartName);
+            body["cartName"] = CSharpExpressionConverter.ConvertToken(bodycartName);
             bodypropCount++;
-            body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
+            body["typeOfAction"] = CSharpExpressionConverter.Convert(bodytypeOfAction);
             if (bodynamedContext != null)
             {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
                 bodypropCount++;
             }
 
             if (bodyentityCode != null)
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
                 bodypropCount++;
             }
 
             if (bodycaseCode != null)
             {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
                 bodypropCount++;
             }
 
             if (bodyperiodCode != null)
             {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
                 bodypropCount++;
             }
 
             if (bodyjurisdictionCode != null)
             {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
                 bodypropCount++;
             }
 
             if (bodyledgerName != null)
             {
-                body["ledgerName"] = ExpressionConverter.ConvertO(bodyledgerName);
+                body["ledgerName"] = CSharpExpressionConverter.ConvertToken(bodyledgerName);
                 bodypropCount++;
             }
 
             if (bodyisoCurrencyCode != null)
             {
-                body["isoCurrencyCode"] = ExpressionConverter.ConvertO(bodyisoCurrencyCode);
+                body["isoCurrencyCode"] = CSharpExpressionConverter.ConvertToken(bodyisoCurrencyCode);
                 bodypropCount++;
             }
 
@@ -292,14 +292,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/triggerReturn";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
+            body["returnName"] = CSharpExpressionConverter.ConvertToken(bodyreturnName);
             bodypropCount++;
-            body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
+            body["typeOfAction"] = CSharpExpressionConverter.ConvertToken(bodytypeOfAction);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -314,13 +314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/downloadContents";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
+            callPayload.Headers["typeOfAction"] = CSharpExpressionConverter.Convert(typeOfAction);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
+            body["returnOrCartName"] = CSharpExpressionConverter.ConvertToken(bodyreturnOrCartName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -335,13 +335,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/checkTriggerStatus";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
+            callPayload.Headers["typeOfAction"] = CSharpExpressionConverter.Convert(typeOfAction);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
+            body["returnOrCartName"] = CSharpExpressionConverter.ConvertToken(bodyreturnOrCartName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -356,57 +356,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/importData";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyentityCode != null)
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
                 bodypropCount++;
             }
 
             if (bodycaseCode != null)
             {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
                 bodypropCount++;
             }
 
             if (bodyperiodCode != null)
             {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
                 bodypropCount++;
             }
 
             if (bodyjurisdictionCode != null)
             {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
+            body["packageName"] = CSharpExpressionConverter.ConvertToken(bodypackageName);
             bodypropCount++;
-            body["fileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
+            body["fileContents"] = CSharpExpressionConverter.ConvertToken(bodyfileContents);
             bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+            body["fileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
             bodypropCount++;
-            body["importTransactionType"] = ExpressionConverter.ConvertO(bodyimportTransactionType);
+            body["importTransactionType"] = CSharpExpressionConverter.Convert(bodyimportTransactionType);
             bodypropCount++;
-            body["chartOfAccountsName"] = ExpressionConverter.ConvertO(bodychartOfAccountsName);
+            body["chartOfAccountsName"] = CSharpExpressionConverter.ConvertToken(bodychartOfAccountsName);
             bodypropCount++;
-            body["recognizeFunctionalCurrency"] = ExpressionConverter.ConvertO(bodyrecognizeFunctionalCurrency);
+            body["recognizeFunctionalCurrency"] = CSharpExpressionConverter.ConvertToken(bodyrecognizeFunctionalCurrency);
             bodypropCount++;
-            body["stopOnLookupErrors"] = ExpressionConverter.ConvertO(bodystopOnLookupErrors);
+            body["stopOnLookupErrors"] = CSharpExpressionConverter.ConvertToken(bodystopOnLookupErrors);
             if (bodyledgerAmountType != null)
             {
-                body["ledgerAmountType"] = ExpressionConverter.ConvertO(bodyledgerAmountType);
+                body["ledgerAmountType"] = CSharpExpressionConverter.Convert(bodyledgerAmountType);
                 bodypropCount++;
             }
 
             if (bodyfunctionalCurrencyValue != null)
             {
-                body["functionalCurrencyValue"] = ExpressionConverter.ConvertO(bodyfunctionalCurrencyValue);
+                body["functionalCurrencyValue"] = CSharpExpressionConverter.ConvertToken(bodyfunctionalCurrencyValue);
                 bodypropCount++;
             }
 
@@ -424,10 +424,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/efileGroups";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             if (filingGroup != null)
-                callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(filingGroup);
+                callPayload.Headers["filingGroup"] = CSharpExpressionConverter.ConvertO(filingGroup);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -437,25 +437,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/efilePackage";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(filingGroup);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
+            callPayload.Headers["filingGroup"] = CSharpExpressionConverter.ConvertO(filingGroup);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyentityCode != null)
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
                 bodypropCount++;
             }
 
             if (bodyform != null)
             {
-                body["form"] = ExpressionConverter.ConvertO(bodyform);
+                body["form"] = CSharpExpressionConverter.ConvertToken(bodyform);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["efilePackageDetails"] = ExpressionConverter.ConvertO(bodyefilePackageDetails);
+            body["efilePackageDetails"] = CSharpExpressionConverter.ConvertToken(bodyefilePackageDetails);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -470,16 +470,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/JobHistoryReports";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["jobToken"] = ExpressionConverter.ConvertO(bodyjobToken);
+            body["jobToken"] = CSharpExpressionConverter.ConvertToken(bodyjobToken);
             if (bodyreport != null)
             {
                 if (bodyreport != null)
                 {
-                    body["report"] = ExpressionConverter.ConvertO(bodyreport);
+                    body["report"] = CSharpExpressionConverter.Convert(bodyreport);
                     bodypropCount++;
                 }
 
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             {
                 if (bodyreportFormat != null)
                 {
-                    body["reportFormat"] = ExpressionConverter.ConvertO(bodyreportFormat);
+                    body["reportFormat"] = CSharpExpressionConverter.Convert(bodyreportFormat);
                     bodypropCount++;
                 }
 
@@ -521,14 +521,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/gmtDiagnosticsData";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["gmtSetting"] = ExpressionConverter.ConvertO(bodygmtSetting);
+            body["gmtSetting"] = CSharpExpressionConverter.ConvertToken(bodygmtSetting);
             bodypropCount++;
-            body["gmtDiagnosticName"] = ExpressionConverter.ConvertO(bodygmtDiagnosticName);
+            body["gmtDiagnosticName"] = CSharpExpressionConverter.ConvertToken(bodygmtDiagnosticName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -543,12 +543,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var apiCallPath = "/ReturnCalculationDetails";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
+            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
+            body["returnName"] = CSharpExpressionConverter.ConvertToken(bodyreturnName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

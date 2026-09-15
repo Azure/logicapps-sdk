@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecuteProcedure(Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
         {
-            var apiCallPath = String.Format("/datasets/default/procedures/{0}", ExpressionConverter.ConvertWithUrlEncoding(procedure, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/default/procedures/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(parameters);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(parameters);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0},{1}/query/sql", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/query/sql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var query = new JObject();
             var querypropCount = 0;
             if (queryquery != null)
             {
-                query["query"] = ExpressionConverter.ConvertO(queryquery);
+                query["query"] = CSharpExpressionConverter.ConvertToken(queryquery);
                 querypropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
 
             if (queryactualParameters != null)
             {
-                query["actualParameters"] = ExpressionConverter.ConvertO(queryactualParameters);
+                query["actualParameters"] = CSharpExpressionConverter.ConvertToken(queryactualParameters);
                 querypropCount++;
             }
 
@@ -60,26 +60,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<ItemsListV2> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables/{2}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<ItemsListV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TablesList>(callPayload);

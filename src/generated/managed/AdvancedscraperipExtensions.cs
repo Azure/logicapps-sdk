@@ -17,15 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
             var apiCallPath = "/scraper";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
+                callPayload.Queries["render"] = CSharpExpressionConverter.ConvertO(render);
             if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
+                callPayload.Queries["selector"] = CSharpExpressionConverter.ConvertO(selector);
             if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
+                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
             return new ApiConnectionAction<ScrapeResponse>(callPayload);
         }
 
@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
             var apiCallPath = "/scraper";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
+                callPayload.Queries["render"] = CSharpExpressionConverter.ConvertO(render);
             if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
+                callPayload.Queries["selector"] = CSharpExpressionConverter.ConvertO(selector);
             if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
         }
     }

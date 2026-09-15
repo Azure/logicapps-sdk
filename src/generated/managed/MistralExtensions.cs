@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             if (bodytemperature != null)
             {
                 if (bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                     bodypropCount++;
                 }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             {
                 if (bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                     bodypropCount++;
                 }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                 bodypropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             {
                 if (bodystream != null)
                 {
-                    body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                    body["stream"] = CSharpExpressionConverter.ConvertToken(bodystream);
                     bodypropCount++;
                 }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             {
                 if (bodysafePrompt != null)
                 {
-                    body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                    body["safe_prompt"] = CSharpExpressionConverter.ConvertToken(bodysafePrompt);
                     bodypropCount++;
                 }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 
             if (bodyrandomSeed != null)
             {
-                body["random_seed"] = ExpressionConverter.ConvertO(bodyrandomSeed);
+                body["random_seed"] = CSharpExpressionConverter.ConvertToken(bodyrandomSeed);
                 bodypropCount++;
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
                     bodypropCount++;
                 }
 
@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 
             if (bodyinput != null)
             {
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
                 bodypropCount++;
             }
 
             if (bodyencodingFormat != null)
             {
-                body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                body["encoding_format"] = CSharpExpressionConverter.Convert(bodyencodingFormat);
                 bodypropCount++;
             }
 

@@ -17,19 +17,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
             var apiCallPath = "/conversation/cognitiveservices/v1";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Headers["ReferenceText"] = ExpressionConverter.Convert(referenceText);
+            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
+            callPayload.Headers["ReferenceText"] = CSharpExpressionConverter.ConvertO(referenceText);
             if (gradingSystem != null)
-                callPayload.Headers["GradingSystem"] = ExpressionConverter.Convert(gradingSystem);
+                callPayload.Headers["GradingSystem"] = CSharpExpressionConverter.Convert(gradingSystem);
             if (granularity != null)
-                callPayload.Headers["Granularity"] = ExpressionConverter.Convert(granularity);
+                callPayload.Headers["Granularity"] = CSharpExpressionConverter.Convert(granularity);
             if (dimension != null)
-                callPayload.Headers["Dimension"] = ExpressionConverter.Convert(dimension);
+                callPayload.Headers["Dimension"] = CSharpExpressionConverter.Convert(dimension);
             if (enableMiscue != null)
-                callPayload.Headers["EnableMiscue"] = ExpressionConverter.Convert(enableMiscue);
+                callPayload.Headers["EnableMiscue"] = CSharpExpressionConverter.ConvertO(enableMiscue);
             if (scenarioId != null)
-                callPayload.Headers["ScenarioId"] = ExpressionConverter.Convert(scenarioId);
-            callPayload.Body = ExpressionConverter.ConvertO(audioContent);
+                callPayload.Headers["ScenarioId"] = CSharpExpressionConverter.ConvertO(scenarioId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(audioContent);
             return new ApiConnectionAction(callPayload);
         }
     }

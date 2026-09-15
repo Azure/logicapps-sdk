@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> GetResourceById(Expression<Func<string>> resource, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -23,30 +23,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> DeleteResource(Expression<Func<string>> resource, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> UpdateResource(Expression<Func<string>> id, Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken[]> GetItemsByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/resources/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/query", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -62,20 +62,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> CreateResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/resources/{0}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> GetItemByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/resources/{0}/fetch", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/fetch", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["trigger_resource_schema"] = ExpressionConverter.ConvertO(bodyresourceType);
+            body["trigger_resource_schema"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
             bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodytriggerEvent);
+            body["topic"] = CSharpExpressionConverter.ConvertToken(bodytriggerEvent);
             body["delivery_url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

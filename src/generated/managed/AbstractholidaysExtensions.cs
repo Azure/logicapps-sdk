@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                callPayload.Queries["month"] = CSharpExpressionConverter.ConvertO(month);
             if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                callPayload.Queries["day"] = CSharpExpressionConverter.ConvertO(day);
             return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
         }
     }

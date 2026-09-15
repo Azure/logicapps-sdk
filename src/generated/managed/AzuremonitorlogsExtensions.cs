@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             var apiCallPath = "/queryData";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptions"] = ExpressionConverter.Convert(subscriptions);
-            callPayload.Queries["resourcegroups"] = ExpressionConverter.Convert(resourcegroups);
-            callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(resourcetype);
-            callPayload.Queries["resourcename"] = ExpressionConverter.Convert(resourcename);
-            callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
+            callPayload.Queries["subscriptions"] = CSharpExpressionConverter.ConvertO(subscriptions);
+            callPayload.Queries["resourcegroups"] = CSharpExpressionConverter.ConvertO(resourcegroups);
+            callPayload.Queries["resourcetype"] = CSharpExpressionConverter.Convert(resourcetype);
+            callPayload.Queries["resourcename"] = CSharpExpressionConverter.ConvertO(resourcename);
+            callPayload.Queries["timerange"] = CSharpExpressionConverter.ConvertO(timerange);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
             return new ApiConnectionAction<Table>(callPayload);
         }
 
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             var apiCallPath = "/visualizeQuery";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptions"] = ExpressionConverter.Convert(subscriptions);
-            callPayload.Queries["resourcegroups"] = ExpressionConverter.Convert(resourcegroups);
-            callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(resourcetype);
-            callPayload.Queries["resourcename"] = ExpressionConverter.Convert(resourcename);
-            callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
-            callPayload.Queries["visType"] = ExpressionConverter.Convert(visType);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
+            callPayload.Queries["subscriptions"] = CSharpExpressionConverter.ConvertO(subscriptions);
+            callPayload.Queries["resourcegroups"] = CSharpExpressionConverter.ConvertO(resourcegroups);
+            callPayload.Queries["resourcetype"] = CSharpExpressionConverter.Convert(resourcetype);
+            callPayload.Queries["resourcename"] = CSharpExpressionConverter.ConvertO(resourcename);
+            callPayload.Queries["timerange"] = CSharpExpressionConverter.ConvertO(timerange);
+            callPayload.Queries["visType"] = CSharpExpressionConverter.Convert(visType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
             return new ApiConnectionAction<VisualizeResults>(callPayload);
         }
     }

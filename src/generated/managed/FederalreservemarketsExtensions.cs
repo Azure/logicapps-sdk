@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = String.Format("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(operation, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(include, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = String.Format("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(operation, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(include, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);

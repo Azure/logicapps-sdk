@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             var resultObjectpropCount = 0;
             if (bodyresultapproval != null)
             {
-                resultObject["approval"] = ExpressionConverter.ConvertO(bodyresultapproval);
+                resultObject["approval"] = CSharpExpressionConverter.ConvertToken(bodyresultapproval);
                 resultObjectpropCount++;
             }
 
             if (bodyresultreason != null)
             {
-                resultObject["reason"] = ExpressionConverter.ConvertO(bodyresultreason);
+                resultObject["reason"] = CSharpExpressionConverter.ConvertToken(bodyresultreason);
                 resultObjectpropCount++;
             }
 
             if (bodyresultreviewedBy != null)
             {
-                resultObject["reviewedBy"] = ExpressionConverter.ConvertO(bodyresultreviewedBy);
+                resultObject["reviewedBy"] = CSharpExpressionConverter.ConvertToken(bodyresultreviewedBy);
                 resultObjectpropCount++;
             }
 

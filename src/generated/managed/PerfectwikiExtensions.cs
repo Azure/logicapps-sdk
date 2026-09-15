@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
             var apiCallPath = "/chatgpt/organization/bot";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["chatId"] = ExpressionConverter.Convert(chatId);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
+            callPayload.Queries["chatId"] = CSharpExpressionConverter.ConvertO(chatId);
             return new ApiConnectionAction(callPayload);
         }
     }

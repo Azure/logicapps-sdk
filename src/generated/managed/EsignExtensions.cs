@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["base64"] = ExpressionConverter.ConvertO(bodybase64);
+            body["base64"] = CSharpExpressionConverter.ConvertToken(bodybase64);
             body["extension"] = "pdf";
             bodypropCount++;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             body["type"] = "document";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -47,31 +47,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodytemplateTitle != null)
             {
-                body["template_title"] = ExpressionConverter.ConvertO(bodytemplateTitle);
+                body["template_title"] = CSharpExpressionConverter.ConvertToken(bodytemplateTitle);
                 bodypropCount++;
             }
 
             if (bodyuploadFile != null)
             {
-                body["upload_file"] = ExpressionConverter.ConvertO(bodyuploadFile);
+                body["upload_file"] = CSharpExpressionConverter.ConvertToken(bodyuploadFile);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodysigners != null)
             {
-                body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+                body["signers"] = CSharpExpressionConverter.ConvertToken(bodysigners);
                 bodypropCount++;
             }
 
@@ -93,28 +93,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+            body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
             bodypropCount++;
-            body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+            body["signers"] = CSharpExpressionConverter.ConvertToken(bodysigners);
             var envelopeOptionsObject = new JObject();
             var envelopeOptionsObjectpropCount = 0;
             if (bodyenvelopeOptionssignInSequentialOrder != null)
             {
-                envelopeOptionsObject["sign_in_sequential_order"] = ExpressionConverter.ConvertO(bodyenvelopeOptionssignInSequentialOrder);
+                envelopeOptionsObject["sign_in_sequential_order"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeOptionssignInSequentialOrder);
                 envelopeOptionsObjectpropCount++;
             }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
             if (bodycarbonCopies != null)
             {
-                body["carbon_copies"] = ExpressionConverter.ConvertO(bodycarbonCopies);
+                body["carbon_copies"] = CSharpExpressionConverter.ConvertToken(bodycarbonCopies);
                 bodypropCount++;
             }
 

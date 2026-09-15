@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<CreateRequestResponse> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatarequestsubject, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/requests", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requestObject = new JObject();
             var requestObjectpropCount = 0;
             requestObjectpropCount++;
-            requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
+            requestObject["subject"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsubject);
             var templateObject = new JObject();
             var templateObjectpropCount = 0;
             if (bodyinputDatarequesttemplatename != null)
             {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
+                templateObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesttemplatename);
                 templateObjectpropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requestTypeObjectpropCount = 0;
             if (bodyinputDatarequestrequestTypename != null)
             {
-                requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
+                requestTypeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestrequestTypename);
                 requestTypeObjectpropCount++;
             }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requesterObjectpropCount = 0;
             if (bodyinputDatarequestrequestername != null)
             {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
+                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestrequestername);
                 requesterObjectpropCount++;
             }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var statusObjectpropCount = 0;
             if (bodyinputDatarequeststatusname != null)
             {
-                statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
+                statusObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequeststatusname);
                 statusObjectpropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var technicianObjectpropCount = 0;
             if (bodyinputDatarequesttechnicianemailId != null)
             {
-                technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
+                technicianObject["email_id"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesttechnicianemailId);
                 technicianObjectpropCount++;
             }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var siteObjectpropCount = 0;
             if (bodyinputDatarequestsitename != null)
             {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
+                siteObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsitename);
                 siteObjectpropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var groupObjectpropCount = 0;
             if (bodyinputDatarequestgroupname != null)
             {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
+                groupObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestgroupname);
                 groupObjectpropCount++;
             }
 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatarequestdescription != null)
             {
-                requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
+                requestObject["description"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestdescription);
                 requestObjectpropCount++;
             }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var priorityObjectpropCount = 0;
             if (bodyinputDatarequestpriorityname != null)
             {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
+                priorityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestpriorityname);
                 priorityObjectpropCount++;
             }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var urgencyObjectpropCount = 0;
             if (bodyinputDatarequesturgencyname != null)
             {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
+                urgencyObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesturgencyname);
                 urgencyObjectpropCount++;
             }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var impactObjectpropCount = 0;
             if (bodyinputDatarequestimpactname != null)
             {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
+                impactObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestimpactname);
                 impactObjectpropCount++;
             }
 
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var modeObjectpropCount = 0;
             if (bodyinputDatarequestmodename != null)
             {
-                modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
+                modeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestmodename);
                 modeObjectpropCount++;
             }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var categoryObjectpropCount = 0;
             if (bodyinputDatarequestcategoryname != null)
             {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
+                categoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestcategoryname);
                 categoryObjectpropCount++;
             }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var subcategoryObjectpropCount = 0;
             if (bodyinputDatarequestsubcategoryname != null)
             {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
+                subcategoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsubcategoryname);
                 subcategoryObjectpropCount++;
             }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var itemObjectpropCount = 0;
             if (bodyinputDatarequestitemname != null)
             {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
+                itemObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestitemname);
                 itemObjectpropCount++;
             }
 
@@ -229,13 +229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatarequestassets != null)
             {
-                requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
+                requestObject["assets"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestassets);
                 requestObjectpropCount++;
             }
 
             if (bodyinputDatarequestudfFields != null)
             {
-                requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
+                requestObject["udf_fields"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestudfFields);
                 requestObjectpropCount++;
             }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatarequestsubject = null, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requestObjectpropCount = 0;
             if (bodyinputDatarequestsubject != null)
             {
-                requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
+                requestObject["subject"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsubject);
                 requestObjectpropCount++;
             }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var templateObjectpropCount = 0;
             if (bodyinputDatarequesttemplatename != null)
             {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
+                templateObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesttemplatename);
                 templateObjectpropCount++;
             }
 
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requestTypeObjectpropCount = 0;
             if (bodyinputDatarequestrequestTypename != null)
             {
-                requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
+                requestTypeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestrequestTypename);
                 requestTypeObjectpropCount++;
             }
 
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var requesterObjectpropCount = 0;
             if (bodyinputDatarequestrequestername != null)
             {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
+                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestrequestername);
                 requesterObjectpropCount++;
             }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var statusObjectpropCount = 0;
             if (bodyinputDatarequeststatusname != null)
             {
-                statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
+                statusObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequeststatusname);
                 statusObjectpropCount++;
             }
 
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var technicianObjectpropCount = 0;
             if (bodyinputDatarequesttechnicianemailId != null)
             {
-                technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
+                technicianObject["email_id"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesttechnicianemailId);
                 technicianObjectpropCount++;
             }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var siteObjectpropCount = 0;
             if (bodyinputDatarequestsitename != null)
             {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
+                siteObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsitename);
                 siteObjectpropCount++;
             }
 
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var groupObjectpropCount = 0;
             if (bodyinputDatarequestgroupname != null)
             {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
+                groupObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestgroupname);
                 groupObjectpropCount++;
             }
 
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatarequestdescription != null)
             {
-                requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
+                requestObject["description"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestdescription);
                 requestObjectpropCount++;
             }
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var priorityObjectpropCount = 0;
             if (bodyinputDatarequestpriorityname != null)
             {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
+                priorityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestpriorityname);
                 priorityObjectpropCount++;
             }
 
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var urgencyObjectpropCount = 0;
             if (bodyinputDatarequesturgencyname != null)
             {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
+                urgencyObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequesturgencyname);
                 urgencyObjectpropCount++;
             }
 
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var impactObjectpropCount = 0;
             if (bodyinputDatarequestimpactname != null)
             {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
+                impactObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestimpactname);
                 impactObjectpropCount++;
             }
 
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var modeObjectpropCount = 0;
             if (bodyinputDatarequestmodename != null)
             {
-                modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
+                modeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestmodename);
                 modeObjectpropCount++;
             }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var categoryObjectpropCount = 0;
             if (bodyinputDatarequestcategoryname != null)
             {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
+                categoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestcategoryname);
                 categoryObjectpropCount++;
             }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var subcategoryObjectpropCount = 0;
             if (bodyinputDatarequestsubcategoryname != null)
             {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
+                subcategoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestsubcategoryname);
                 subcategoryObjectpropCount++;
             }
 
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var itemObjectpropCount = 0;
             if (bodyinputDatarequestitemname != null)
             {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
+                itemObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestitemname);
                 itemObjectpropCount++;
             }
 
@@ -481,13 +481,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatarequestassets != null)
             {
-                requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
+                requestObject["assets"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestassets);
                 requestObjectpropCount++;
             }
 
             if (bodyinputDatarequestudfFields != null)
             {
-                requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
+                requestObject["udf_fields"] = CSharpExpressionConverter.ConvertToken(bodyinputDatarequestudfFields);
                 requestObjectpropCount++;
             }
 
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<CreateChangeResponse> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatachangetitle, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/changes", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -524,10 +524,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeObject = new JObject();
             var changeObjectpropCount = 0;
             changeObjectpropCount++;
-            changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
+            changeObject["title"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangetitle);
             if (bodyinputDatachangecomment != null)
             {
-                changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
+                changeObject["comment"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangecomment);
                 changeObjectpropCount++;
             }
 
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var templateObjectpropCount = 0;
             if (bodyinputDatachangetemplatename != null)
             {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
+                templateObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangetemplatename);
                 templateObjectpropCount++;
             }
 
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeRequesterObjectpropCount = 0;
             if (bodyinputDatachangechangeRequestername != null)
             {
-                changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
+                changeRequesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeRequestername);
                 changeRequesterObjectpropCount++;
             }
 
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var siteObjectpropCount = 0;
             if (bodyinputDatachangesitename != null)
             {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
+                siteObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangesitename);
                 siteObjectpropCount++;
             }
 
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var groupObjectpropCount = 0;
             if (bodyinputDatachangegroupname != null)
             {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
+                groupObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangegroupname);
                 groupObjectpropCount++;
             }
 
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatachangedescription != null)
             {
-                changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
+                changeObject["description"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangedescription);
                 changeObjectpropCount++;
             }
 
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeOwnerObjectpropCount = 0;
             if (bodyinputDatachangechangeOwneremailId != null)
             {
-                changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
+                changeOwnerObject["email_id"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeOwneremailId);
                 changeOwnerObjectpropCount++;
             }
 
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeTypeObjectpropCount = 0;
             if (bodyinputDatachangechangeTypename != null)
             {
-                changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
+                changeTypeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeTypename);
                 changeTypeObjectpropCount++;
             }
 
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var priorityObjectpropCount = 0;
             if (bodyinputDatachangepriorityname != null)
             {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
+                priorityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangepriorityname);
                 priorityObjectpropCount++;
             }
 
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var urgencyObjectpropCount = 0;
             if (bodyinputDatachangeurgencyname != null)
             {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
+                urgencyObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeurgencyname);
                 urgencyObjectpropCount++;
             }
 
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var impactObjectpropCount = 0;
             if (bodyinputDatachangeimpactname != null)
             {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
+                impactObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeimpactname);
                 impactObjectpropCount++;
             }
 
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var riskObjectpropCount = 0;
             if (bodyinputDatachangeriskname != null)
             {
-                riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
+                riskObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeriskname);
                 riskObjectpropCount++;
             }
 
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var reasonForChangeObjectpropCount = 0;
             if (bodyinputDatachangereasonForChangename != null)
             {
-                reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
+                reasonForChangeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangereasonForChangename);
                 reasonForChangeObjectpropCount++;
             }
 
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var categoryObjectpropCount = 0;
             if (bodyinputDatachangecategoryname != null)
             {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
+                categoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangecategoryname);
                 categoryObjectpropCount++;
             }
 
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var subcategoryObjectpropCount = 0;
             if (bodyinputDatachangesubcategoryname != null)
             {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
+                subcategoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangesubcategoryname);
                 subcategoryObjectpropCount++;
             }
 
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var itemObjectpropCount = 0;
             if (bodyinputDatachangeitemname != null)
             {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
+                itemObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeitemname);
                 itemObjectpropCount++;
             }
 
@@ -735,13 +735,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatachangeassets != null)
             {
-                changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
+                changeObject["assets"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeassets);
                 changeObjectpropCount++;
             }
 
             if (bodyinputDatachangeudfFields != null)
             {
-                changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
+                changeObject["udf_fields"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeudfFields);
                 changeObjectpropCount++;
             }
 
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatachangetitle = null, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/changes/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -779,13 +779,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeObjectpropCount = 0;
             if (bodyinputDatachangetitle != null)
             {
-                changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
+                changeObject["title"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangetitle);
                 changeObjectpropCount++;
             }
 
             if (bodyinputDatachangecomment != null)
             {
-                changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
+                changeObject["comment"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangecomment);
                 changeObjectpropCount++;
             }
 
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var templateObjectpropCount = 0;
             if (bodyinputDatachangetemplatename != null)
             {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
+                templateObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangetemplatename);
                 templateObjectpropCount++;
             }
 
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeRequesterObjectpropCount = 0;
             if (bodyinputDatachangechangeRequestername != null)
             {
-                changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
+                changeRequesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeRequestername);
                 changeRequesterObjectpropCount++;
             }
 
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var siteObjectpropCount = 0;
             if (bodyinputDatachangesitename != null)
             {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
+                siteObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangesitename);
                 siteObjectpropCount++;
             }
 
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var groupObjectpropCount = 0;
             if (bodyinputDatachangegroupname != null)
             {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
+                groupObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangegroupname);
                 groupObjectpropCount++;
             }
 
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatachangedescription != null)
             {
-                changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
+                changeObject["description"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangedescription);
                 changeObjectpropCount++;
             }
 
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeOwnerObjectpropCount = 0;
             if (bodyinputDatachangechangeOwneremailId != null)
             {
-                changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
+                changeOwnerObject["email_id"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeOwneremailId);
                 changeOwnerObjectpropCount++;
             }
 
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var changeTypeObjectpropCount = 0;
             if (bodyinputDatachangechangeTypename != null)
             {
-                changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
+                changeTypeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangechangeTypename);
                 changeTypeObjectpropCount++;
             }
 
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var priorityObjectpropCount = 0;
             if (bodyinputDatachangepriorityname != null)
             {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
+                priorityObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangepriorityname);
                 priorityObjectpropCount++;
             }
 
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var urgencyObjectpropCount = 0;
             if (bodyinputDatachangeurgencyname != null)
             {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
+                urgencyObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeurgencyname);
                 urgencyObjectpropCount++;
             }
 
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var impactObjectpropCount = 0;
             if (bodyinputDatachangeimpactname != null)
             {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
+                impactObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeimpactname);
                 impactObjectpropCount++;
             }
 
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var riskObjectpropCount = 0;
             if (bodyinputDatachangeriskname != null)
             {
-                riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
+                riskObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeriskname);
                 riskObjectpropCount++;
             }
 
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var reasonForChangeObjectpropCount = 0;
             if (bodyinputDatachangereasonForChangename != null)
             {
-                reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
+                reasonForChangeObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangereasonForChangename);
                 reasonForChangeObjectpropCount++;
             }
 
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var categoryObjectpropCount = 0;
             if (bodyinputDatachangecategoryname != null)
             {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
+                categoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangecategoryname);
                 categoryObjectpropCount++;
             }
 
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var subcategoryObjectpropCount = 0;
             if (bodyinputDatachangesubcategoryname != null)
             {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
+                subcategoryObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangesubcategoryname);
                 subcategoryObjectpropCount++;
             }
 
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var itemObjectpropCount = 0;
             if (bodyinputDatachangeitemname != null)
             {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
+                itemObject["name"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeitemname);
                 itemObjectpropCount++;
             }
 
@@ -993,13 +993,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
             if (bodyinputDatachangeassets != null)
             {
-                changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
+                changeObject["assets"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeassets);
                 changeObjectpropCount++;
             }
 
             if (bodyinputDatachangeudfFields != null)
             {
-                changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
+                changeObject["udf_fields"] = CSharpExpressionConverter.ConvertToken(bodyinputDatachangeudfFields);
                 changeObjectpropCount++;
             }
 

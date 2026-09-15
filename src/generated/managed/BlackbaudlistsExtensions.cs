@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
+            body["list_type"] = CSharpExpressionConverter.Convert(bodylistType);
             bodypropCount++;
-            body["list_id"] = ExpressionConverter.ConvertO(bodylist);
+            body["list_id"] = CSharpExpressionConverter.ConvertToken(bodylist);
             bodypropCount++;
-            body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
+            body["ids"] = CSharpExpressionConverter.ConvertToken(bodyiDS);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -42,15 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["list_type"] = ExpressionConverter.ConvertO(bodylistType);
+            body["list_type"] = CSharpExpressionConverter.Convert(bodylistType);
             bodypropCount++;
-            body["list_permissions"] = ExpressionConverter.ConvertO(bodypermissions);
+            body["list_permissions"] = CSharpExpressionConverter.Convert(bodypermissions);
             bodypropCount++;
-            body["ids"] = ExpressionConverter.ConvertO(bodyiDS);
+            body["ids"] = CSharpExpressionConverter.ConvertToken(bodyiDS);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

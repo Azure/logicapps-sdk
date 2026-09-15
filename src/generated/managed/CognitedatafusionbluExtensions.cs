@@ -14,68 +14,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<ListTimeSeriesResponse> ListTimeSeries(Expression<Func<string>> project, Expression<Func<int>> limit = null, Expression<Func<bool>> includeMetadata = null, Expression<Func<string>> cursor = null, Expression<Func<string>> partition = null, Expression<Func<string>> assetIds = null, Expression<Func<string>> rootAssetIds = null, Expression<Func<string>> externalIdPrefix = null, Expression<Func<string>> accept = null)
         {
-            var apiCallPath = String.Format("/api/v1/projects/{0}/timeseries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["limit"] = Convert.ToString(100);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["includeMetadata"] = Convert.ToString(true);
             if (includeMetadata != null)
-                callPayload.Queries["includeMetadata"] = ExpressionConverter.Convert(includeMetadata);
+                callPayload.Queries["includeMetadata"] = CSharpExpressionConverter.ConvertO(includeMetadata);
             if (cursor != null)
-                callPayload.Queries["cursor"] = ExpressionConverter.Convert(cursor);
+                callPayload.Queries["cursor"] = CSharpExpressionConverter.ConvertO(cursor);
             if (partition != null)
-                callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
+                callPayload.Queries["partition"] = CSharpExpressionConverter.ConvertO(partition);
             if (assetIds != null)
-                callPayload.Queries["assetIds"] = ExpressionConverter.Convert(assetIds);
+                callPayload.Queries["assetIds"] = CSharpExpressionConverter.ConvertO(assetIds);
             if (rootAssetIds != null)
-                callPayload.Queries["rootAssetIds"] = ExpressionConverter.Convert(rootAssetIds);
+                callPayload.Queries["rootAssetIds"] = CSharpExpressionConverter.ConvertO(rootAssetIds);
             if (externalIdPrefix != null)
-                callPayload.Queries["externalIdPrefix"] = ExpressionConverter.Convert(externalIdPrefix);
+                callPayload.Queries["externalIdPrefix"] = CSharpExpressionConverter.ConvertO(externalIdPrefix);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<ListTimeSeriesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<FilterTimeSeriesResponse> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodycursor = null, Expression<Func<string>> bodypartition = null, Expression<Func<bodysortInputItem[]>> bodysort = null)
         {
-            var apiCallPath = String.Format("/api/v1/projects/{0}/timeseries/list", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (bodyfiltername != null)
             {
-                filterObject["name"] = ExpressionConverter.ConvertO(bodyfiltername);
+                filterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfiltername);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterunit != null)
             {
-                filterObject["unit"] = ExpressionConverter.ConvertO(bodyfilterunit);
+                filterObject["unit"] = CSharpExpressionConverter.ConvertToken(bodyfilterunit);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterisString != null)
             {
-                filterObject["isString"] = ExpressionConverter.ConvertO(bodyfilterisString);
+                filterObject["isString"] = CSharpExpressionConverter.ConvertToken(bodyfilterisString);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterisStep != null)
             {
-                filterObject["isStep"] = ExpressionConverter.ConvertO(bodyfilterisStep);
+                filterObject["isStep"] = CSharpExpressionConverter.ConvertToken(bodyfilterisStep);
                 filterObjectpropCount++;
             }
 
@@ -89,37 +89,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
 
             if (bodyfilterassetIds != null)
             {
-                filterObject["assetIds"] = ExpressionConverter.ConvertO(bodyfilterassetIds);
+                filterObject["assetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterassetExternalIds != null)
             {
-                filterObject["assetExternalIds"] = ExpressionConverter.ConvertO(bodyfilterassetExternalIds);
+                filterObject["assetExternalIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetExternalIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterrootAssetIds != null)
             {
-                filterObject["rootAssetIds"] = ExpressionConverter.ConvertO(bodyfilterrootAssetIds);
+                filterObject["rootAssetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterrootAssetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterassetSubtreeIds != null)
             {
-                filterObject["assetSubtreeIds"] = ExpressionConverter.ConvertO(bodyfilterassetSubtreeIds);
+                filterObject["assetSubtreeIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetSubtreeIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterdataSetIds != null)
             {
-                filterObject["dataSetIds"] = ExpressionConverter.ConvertO(bodyfilterdataSetIds);
+                filterObject["dataSetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterdataSetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterexternalIdPrefix != null)
             {
-                filterObject["externalIdPrefix"] = ExpressionConverter.ConvertO(bodyfilterexternalIdPrefix);
+                filterObject["externalIdPrefix"] = CSharpExpressionConverter.ConvertToken(bodyfilterexternalIdPrefix);
                 filterObjectpropCount++;
             }
 
@@ -127,13 +127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var createdTimeObjectpropCount = 0;
             if (bodyfiltercreatedTimemax != null)
             {
-                createdTimeObject["max"] = ExpressionConverter.ConvertO(bodyfiltercreatedTimemax);
+                createdTimeObject["max"] = CSharpExpressionConverter.ConvertToken(bodyfiltercreatedTimemax);
                 createdTimeObjectpropCount++;
             }
 
             if (bodyfiltercreatedTimemin != null)
             {
-                createdTimeObject["min"] = ExpressionConverter.ConvertO(bodyfiltercreatedTimemin);
+                createdTimeObject["min"] = CSharpExpressionConverter.ConvertToken(bodyfiltercreatedTimemin);
                 createdTimeObjectpropCount++;
             }
 
@@ -147,13 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var lastUpdatedTimeObjectpropCount = 0;
             if (bodyfilterlastUpdatedTimemax != null)
             {
-                lastUpdatedTimeObject["max"] = ExpressionConverter.ConvertO(bodyfilterlastUpdatedTimemax);
+                lastUpdatedTimeObject["max"] = CSharpExpressionConverter.ConvertToken(bodyfilterlastUpdatedTimemax);
                 lastUpdatedTimeObjectpropCount++;
             }
 
             if (bodyfilterlastUpdatedTimemin != null)
             {
-                lastUpdatedTimeObject["min"] = ExpressionConverter.ConvertO(bodyfilterlastUpdatedTimemin);
+                lastUpdatedTimeObject["min"] = CSharpExpressionConverter.ConvertToken(bodyfilterlastUpdatedTimemin);
                 lastUpdatedTimeObjectpropCount++;
             }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -195,19 +195,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
 
             if (bodycursor != null)
             {
-                body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                body["cursor"] = CSharpExpressionConverter.ConvertToken(bodycursor);
                 bodypropCount++;
             }
 
             if (bodypartition != null)
             {
-                body["partition"] = ExpressionConverter.ConvertO(bodypartition);
+                body["partition"] = CSharpExpressionConverter.ConvertToken(bodypartition);
                 bodypropCount++;
             }
 
             if (bodysort != null)
             {
-                body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                body["sort"] = CSharpExpressionConverter.ConvertToken(bodysort);
                 bodypropCount++;
             }
 
@@ -222,40 +222,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<SearchTimeSeriesResponse> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodysearchdescription = null, Expression<Func<string>> bodysearchquery = null, Expression<Func<int>> bodylimit = null)
         {
-            var apiCallPath = String.Format("/api/v1/projects/{0}/timeseries/search", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             var filterObject = new JObject();
             var filterObjectpropCount = 0;
             if (bodyfiltername != null)
             {
-                filterObject["name"] = ExpressionConverter.ConvertO(bodyfiltername);
+                filterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfiltername);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterunit != null)
             {
-                filterObject["unit"] = ExpressionConverter.ConvertO(bodyfilterunit);
+                filterObject["unit"] = CSharpExpressionConverter.ConvertToken(bodyfilterunit);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterisString != null)
             {
-                filterObject["isString"] = ExpressionConverter.ConvertO(bodyfilterisString);
+                filterObject["isString"] = CSharpExpressionConverter.ConvertToken(bodyfilterisString);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterisStep != null)
             {
-                filterObject["isStep"] = ExpressionConverter.ConvertO(bodyfilterisStep);
+                filterObject["isStep"] = CSharpExpressionConverter.ConvertToken(bodyfilterisStep);
                 filterObjectpropCount++;
             }
 
@@ -269,37 +269,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
 
             if (bodyfilterassetIds != null)
             {
-                filterObject["assetIds"] = ExpressionConverter.ConvertO(bodyfilterassetIds);
+                filterObject["assetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterassetExternalIds != null)
             {
-                filterObject["assetExternalIds"] = ExpressionConverter.ConvertO(bodyfilterassetExternalIds);
+                filterObject["assetExternalIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetExternalIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterrootAssetIds != null)
             {
-                filterObject["rootAssetIds"] = ExpressionConverter.ConvertO(bodyfilterrootAssetIds);
+                filterObject["rootAssetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterrootAssetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterassetSubtreeIds != null)
             {
-                filterObject["assetSubtreeIds"] = ExpressionConverter.ConvertO(bodyfilterassetSubtreeIds);
+                filterObject["assetSubtreeIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterassetSubtreeIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterdataSetIds != null)
             {
-                filterObject["dataSetIds"] = ExpressionConverter.ConvertO(bodyfilterdataSetIds);
+                filterObject["dataSetIds"] = CSharpExpressionConverter.ConvertToken(bodyfilterdataSetIds);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterexternalIdPrefix != null)
             {
-                filterObject["externalIdPrefix"] = ExpressionConverter.ConvertO(bodyfilterexternalIdPrefix);
+                filterObject["externalIdPrefix"] = CSharpExpressionConverter.ConvertToken(bodyfilterexternalIdPrefix);
                 filterObjectpropCount++;
             }
 
@@ -307,13 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var createdTimeObjectpropCount = 0;
             if (bodyfiltercreatedTimemax != null)
             {
-                createdTimeObject["max"] = ExpressionConverter.ConvertO(bodyfiltercreatedTimemax);
+                createdTimeObject["max"] = CSharpExpressionConverter.ConvertToken(bodyfiltercreatedTimemax);
                 createdTimeObjectpropCount++;
             }
 
             if (bodyfiltercreatedTimemin != null)
             {
-                createdTimeObject["min"] = ExpressionConverter.ConvertO(bodyfiltercreatedTimemin);
+                createdTimeObject["min"] = CSharpExpressionConverter.ConvertToken(bodyfiltercreatedTimemin);
                 createdTimeObjectpropCount++;
             }
 
@@ -327,13 +327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var lastUpdatedTimeObjectpropCount = 0;
             if (bodyfilterlastUpdatedTimemax != null)
             {
-                lastUpdatedTimeObject["max"] = ExpressionConverter.ConvertO(bodyfilterlastUpdatedTimemax);
+                lastUpdatedTimeObject["max"] = CSharpExpressionConverter.ConvertToken(bodyfilterlastUpdatedTimemax);
                 lastUpdatedTimeObjectpropCount++;
             }
 
             if (bodyfilterlastUpdatedTimemin != null)
             {
-                lastUpdatedTimeObject["min"] = ExpressionConverter.ConvertO(bodyfilterlastUpdatedTimemin);
+                lastUpdatedTimeObject["min"] = CSharpExpressionConverter.ConvertToken(bodyfilterlastUpdatedTimemin);
                 lastUpdatedTimeObjectpropCount++;
             }
 
@@ -353,19 +353,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var searchObjectpropCount = 0;
             if (bodysearchname != null)
             {
-                searchObject["name"] = ExpressionConverter.ConvertO(bodysearchname);
+                searchObject["name"] = CSharpExpressionConverter.ConvertToken(bodysearchname);
                 searchObjectpropCount++;
             }
 
             if (bodysearchdescription != null)
             {
-                searchObject["description"] = ExpressionConverter.ConvertO(bodysearchdescription);
+                searchObject["description"] = CSharpExpressionConverter.ConvertToken(bodysearchdescription);
                 searchObjectpropCount++;
             }
 
             if (bodysearchquery != null)
             {
-                searchObject["query"] = ExpressionConverter.ConvertO(bodysearchquery);
+                searchObject["query"] = CSharpExpressionConverter.ConvertToken(bodysearchquery);
                 searchObjectpropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -402,20 +402,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IWorkflowAction QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = String.Format("/api/v1/projects/{0}/userapis/spaces/{1}/datamodels/{2}/versions/{3}/graphql", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(space, 1), ExpressionConverter.ConvertWithUrlEncoding(datamodel, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/userapis/spaces/{1}/datamodels/{2}/versions/{3}/graphql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(space, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datamodel, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 

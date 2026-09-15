@@ -21,133 +21,133 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             var bodypropCount = 0;
             if (bodyauthor != null)
             {
-                body["author"] = ExpressionConverter.ConvertO(bodyauthor);
+                body["author"] = CSharpExpressionConverter.ConvertToken(bodyauthor);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyslug != null)
             {
-                body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
                 bodypropCount++;
             }
 
             if (bodyexcerpt != null)
             {
-                body["excerpt"] = ExpressionConverter.ConvertO(bodyexcerpt);
+                body["excerpt"] = CSharpExpressionConverter.ConvertToken(bodyexcerpt);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             if (bodyallDay != null)
             {
-                body["all_day"] = ExpressionConverter.ConvertO(bodyallDay);
+                body["all_day"] = CSharpExpressionConverter.ConvertToken(bodyallDay);
                 bodypropCount++;
             }
 
             if (bodystartDate != null)
             {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["start_date"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["end_date"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyimage != null)
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
                 bodypropCount++;
             }
 
             if (bodycost != null)
             {
-                body["cost"] = ExpressionConverter.ConvertO(bodycost);
+                body["cost"] = CSharpExpressionConverter.ConvertToken(bodycost);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodyshowMap != null)
             {
-                body["show_map"] = ExpressionConverter.ConvertO(bodyshowMap);
+                body["show_map"] = CSharpExpressionConverter.ConvertToken(bodyshowMap);
                 bodypropCount++;
             }
 
             if (bodyshowMapLink != null)
             {
-                body["show_map_link"] = ExpressionConverter.ConvertO(bodyshowMapLink);
+                body["show_map_link"] = CSharpExpressionConverter.ConvertToken(bodyshowMapLink);
                 bodypropCount++;
             }
 
             if (bodyhideFromListings != null)
             {
-                body["hide_from_listings"] = ExpressionConverter.ConvertO(bodyhideFromListings);
+                body["hide_from_listings"] = CSharpExpressionConverter.ConvertToken(bodyhideFromListings);
                 bodypropCount++;
             }
 
             if (bodysticky != null)
             {
-                body["sticky"] = ExpressionConverter.ConvertO(bodysticky);
+                body["sticky"] = CSharpExpressionConverter.ConvertToken(bodysticky);
                 bodypropCount++;
             }
 
             if (bodyfeatured != null)
             {
-                body["featured"] = ExpressionConverter.ConvertO(bodyfeatured);
+                body["featured"] = CSharpExpressionConverter.ConvertToken(bodyfeatured);
                 bodypropCount++;
             }
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodyvenue != null)
             {
-                body["venue"] = ExpressionConverter.ConvertO(bodyvenue);
+                body["venue"] = CSharpExpressionConverter.ConvertToken(bodyvenue);
                 bodypropCount++;
             }
 
             if (bodyorganizer != null)
             {
-                body["organizer"] = ExpressionConverter.ConvertO(bodyorganizer);
+                body["organizer"] = CSharpExpressionConverter.ConvertToken(bodyorganizer);
                 bodypropCount++;
             }
 

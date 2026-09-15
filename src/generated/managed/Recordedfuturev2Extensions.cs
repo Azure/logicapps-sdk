@@ -14,75 +14,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<IPEResponse> IPE(Expression<Func<string>> ip, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var apiCallPath = String.Format("/lookup/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (intelligenceCloud != null)
-                callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["IntelligenceCloud"] = CSharpExpressionConverter.ConvertO(intelligenceCloud);
             callPayload.Queries["htmlresponse"] = Convert.ToString(false);
             if (htmlresponse != null)
-                callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                callPayload.Queries["htmlresponse"] = CSharpExpressionConverter.ConvertO(htmlresponse);
             return new ApiConnectionAction<IPEResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<DEResponse> DE(Expression<Func<string>> domain, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var apiCallPath = String.Format("/lookup/domain/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (intelligenceCloud != null)
-                callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["IntelligenceCloud"] = CSharpExpressionConverter.ConvertO(intelligenceCloud);
             callPayload.Queries["htmlresponse"] = Convert.ToString(false);
             if (htmlresponse != null)
-                callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                callPayload.Queries["htmlresponse"] = CSharpExpressionConverter.ConvertO(htmlresponse);
             return new ApiConnectionAction<DEResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<UEResponse> UE(Expression<Func<string>> url, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var apiCallPath = String.Format("/lookup/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(url, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (intelligenceCloud != null)
-                callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["IntelligenceCloud"] = CSharpExpressionConverter.ConvertO(intelligenceCloud);
             callPayload.Queries["htmlresponse"] = Convert.ToString(false);
             if (htmlresponse != null)
-                callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                callPayload.Queries["htmlresponse"] = CSharpExpressionConverter.ConvertO(htmlresponse);
             return new ApiConnectionAction<UEResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<HEResponse> HE(Expression<Func<string>> hash, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var apiCallPath = String.Format("/lookup/hash/{0}", ExpressionConverter.ConvertWithUrlEncoding(hash, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hash, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (intelligenceCloud != null)
-                callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["IntelligenceCloud"] = CSharpExpressionConverter.ConvertO(intelligenceCloud);
             callPayload.Queries["htmlresponse"] = Convert.ToString(false);
             if (htmlresponse != null)
-                callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                callPayload.Queries["htmlresponse"] = CSharpExpressionConverter.ConvertO(htmlresponse);
             return new ApiConnectionAction<HEResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<VulnEResponse> VulnE(Expression<Func<string>> id, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var apiCallPath = String.Format("/lookup/vulnerability/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             if (intelligenceCloud != null)
-                callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["IntelligenceCloud"] = CSharpExpressionConverter.ConvertO(intelligenceCloud);
             callPayload.Queries["htmlresponse"] = Convert.ToString(false);
             if (htmlresponse != null)
-                callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                callPayload.Queries["htmlresponse"] = CSharpExpressionConverter.ConvertO(htmlresponse);
             return new ApiConnectionAction<VulnEResponse>(callPayload);
         }
 
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (freetext != null)
-                callPayload.Queries["freetext"] = ExpressionConverter.Convert(freetext);
+                callPayload.Queries["freetext"] = CSharpExpressionConverter.ConvertO(freetext);
             callPayload.Queries["limit"] = Convert.ToString(10);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<AlertRulesSearchResponse>(callPayload);
         }
 
@@ -107,20 +107,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (triggered != null)
-                callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
-            callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
+                callPayload.Queries["triggered"] = CSharpExpressionConverter.ConvertO(triggered);
+            callPayload.Queries["alertRule"] = CSharpExpressionConverter.ConvertO(alertRule);
             callPayload.Queries["limit"] = Convert.ToString(10);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             return new ApiConnectionAction<AlertSearch>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertLookup> AlertNotLookup(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/alert/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AlertLookup>(callPayload);
@@ -136,55 +136,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var bodypropCount = 0;
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyentities != null)
             {
-                body["entities"] = ExpressionConverter.ConvertO(bodyentities);
+                body["entities"] = CSharpExpressionConverter.ConvertToken(bodyentities);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
             if (bodypriorities != null)
             {
-                body["priorities"] = ExpressionConverter.ConvertO(bodypriorities);
+                body["priorities"] = CSharpExpressionConverter.ConvertToken(bodypriorities);
                 bodypropCount++;
             }
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodycreatedFromRelative != null)
             {
-                body["created_from_relative"] = ExpressionConverter.ConvertO(bodycreatedFromRelative);
+                body["created_from_relative"] = CSharpExpressionConverter.Convert(bodycreatedFromRelative);
                 bodypropCount++;
             }
 
             if (bodycreatedUntilRelative != null)
             {
-                body["created_until_relative"] = ExpressionConverter.ConvertO(bodycreatedUntilRelative);
+                body["created_until_relative"] = CSharpExpressionConverter.Convert(bodycreatedUntilRelative);
                 bodypropCount++;
             }
 
             if (bodyupdatedFromRelative != null)
             {
-                body["updated_from_relative"] = ExpressionConverter.ConvertO(bodyupdatedFromRelative);
+                body["updated_from_relative"] = CSharpExpressionConverter.Convert(bodyupdatedFromRelative);
                 bodypropCount++;
             }
 
             if (bodyupdatedUntilRelative != null)
             {
-                body["updated_until_relative"] = ExpressionConverter.ConvertO(bodyupdatedUntilRelative);
+                body["updated_until_relative"] = CSharpExpressionConverter.Convert(bodyupdatedUntilRelative);
                 bodypropCount++;
             }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<PlaybookAlertLookup> PlaybookAlertLookup(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/playbook-alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PlaybookAlertLookup>(callPayload);
@@ -215,13 +215,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var bodypropCount = 0;
             if (bodytypes != null)
             {
-                body["types"] = ExpressionConverter.ConvertO(bodytypes);
+                body["types"] = CSharpExpressionConverter.ConvertToken(bodytypes);
                 bodypropCount++;
             }
 
             if (bodyentities != null)
             {
-                body["entities"] = ExpressionConverter.ConvertO(bodyentities);
+                body["entities"] = CSharpExpressionConverter.ConvertToken(bodyentities);
                 bodypropCount++;
             }
 
@@ -229,13 +229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var createdObjectpropCount = 0;
             if (bodycreatedbefore != null)
             {
-                createdObject["before"] = ExpressionConverter.ConvertO(bodycreatedbefore);
+                createdObject["before"] = CSharpExpressionConverter.ConvertToken(bodycreatedbefore);
                 createdObjectpropCount++;
             }
 
             if (bodycreatedafter != null)
             {
-                createdObject["after"] = ExpressionConverter.ConvertO(bodycreatedafter);
+                createdObject["after"] = CSharpExpressionConverter.ConvertToken(bodycreatedafter);
                 createdObjectpropCount++;
             }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.Convert(bodylimit);
                 bodypropCount++;
             }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var apiCallPath = "/fusion/files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.Convert(path);
             return new ApiConnectionAction<RListDResponseItem[]>(callPayload);
         }
 
@@ -279,31 +279,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var bodypropCount = 0;
             if (bodyip != null)
             {
-                body["ip"] = ExpressionConverter.ConvertO(bodyip);
+                body["ip"] = CSharpExpressionConverter.ConvertToken(bodyip);
                 bodypropCount++;
             }
 
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodyhash != null)
             {
-                body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                body["hash"] = CSharpExpressionConverter.ConvertToken(bodyhash);
                 bodypropCount++;
             }
 
             if (bodyvulnerability != null)
             {
-                body["vulnerability"] = ExpressionConverter.ConvertO(bodyvulnerability);
+                body["vulnerability"] = CSharpExpressionConverter.ConvertToken(bodyvulnerability);
                 bodypropCount++;
             }
 
@@ -324,11 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["actors"] = ExpressionConverter.ConvertO(bodyactors);
+            body["actors"] = CSharpExpressionConverter.ConvertToken(bodyactors);
             bodypropCount++;
-            body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+            body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
             bodypropCount++;
-            body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+            body["watchlists"] = CSharpExpressionConverter.ConvertToken(bodywatchlists);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -346,11 +346,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["malware"] = ExpressionConverter.ConvertO(bodymalware);
+            body["malware"] = CSharpExpressionConverter.ConvertToken(bodymalware);
             bodypropCount++;
-            body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+            body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
             bodypropCount++;
-            body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+            body["watchlists"] = CSharpExpressionConverter.ConvertToken(bodywatchlists);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -369,55 +369,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var bodypropCount = 0;
             if (bodyactors != null)
             {
-                body["actors"] = ExpressionConverter.ConvertO(bodyactors);
+                body["actors"] = CSharpExpressionConverter.ConvertToken(bodyactors);
                 bodypropCount++;
             }
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodywatchlists != null)
             {
-                body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                body["watchlists"] = CSharpExpressionConverter.ConvertToken(bodywatchlists);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreIp != null)
             {
-                body["trigger_score_ip"] = ExpressionConverter.ConvertO(bodytriggerScoreIp);
+                body["trigger_score_ip"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreIp);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreUrl != null)
             {
-                body["trigger_score_url"] = ExpressionConverter.ConvertO(bodytriggerScoreUrl);
+                body["trigger_score_url"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreUrl);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreDomain != null)
             {
-                body["trigger_score_domain"] = ExpressionConverter.ConvertO(bodytriggerScoreDomain);
+                body["trigger_score_domain"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreDomain);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreHash != null)
             {
-                body["trigger_score_hash"] = ExpressionConverter.ConvertO(bodytriggerScoreHash);
+                body["trigger_score_hash"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreHash);
                 bodypropCount++;
             }
 
             if (bodyvalidUntilDeltaHours != null)
             {
-                body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(bodyvalidUntilDeltaHours);
+                body["valid_until_delta_hours"] = CSharpExpressionConverter.ConvertToken(bodyvalidUntilDeltaHours);
                 bodypropCount++;
             }
 
             if (bodythreatHuntDescription != null)
             {
-                body["threat_hunt_description"] = ExpressionConverter.ConvertO(bodythreatHuntDescription);
+                body["threat_hunt_description"] = CSharpExpressionConverter.ConvertToken(bodythreatHuntDescription);
                 bodypropCount++;
             }
 
@@ -439,55 +439,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var bodypropCount = 0;
             if (bodymalware != null)
             {
-                body["malware"] = ExpressionConverter.ConvertO(bodymalware);
+                body["malware"] = CSharpExpressionConverter.ConvertToken(bodymalware);
                 bodypropCount++;
             }
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodywatchlists != null)
             {
-                body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                body["watchlists"] = CSharpExpressionConverter.ConvertToken(bodywatchlists);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreIp != null)
             {
-                body["trigger_score_ip"] = ExpressionConverter.ConvertO(bodytriggerScoreIp);
+                body["trigger_score_ip"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreIp);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreUrl != null)
             {
-                body["trigger_score_url"] = ExpressionConverter.ConvertO(bodytriggerScoreUrl);
+                body["trigger_score_url"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreUrl);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreDomain != null)
             {
-                body["trigger_score_domain"] = ExpressionConverter.ConvertO(bodytriggerScoreDomain);
+                body["trigger_score_domain"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreDomain);
                 bodypropCount++;
             }
 
             if (bodytriggerScoreHash != null)
             {
-                body["trigger_score_hash"] = ExpressionConverter.ConvertO(bodytriggerScoreHash);
+                body["trigger_score_hash"] = CSharpExpressionConverter.ConvertToken(bodytriggerScoreHash);
                 bodypropCount++;
             }
 
             if (bodyvalidUntilDeltaHours != null)
             {
-                body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(bodyvalidUntilDeltaHours);
+                body["valid_until_delta_hours"] = CSharpExpressionConverter.ConvertToken(bodyvalidUntilDeltaHours);
                 bodypropCount++;
             }
 
             if (bodythreatHuntDescription != null)
             {
-                body["threat_hunt_description"] = ExpressionConverter.ConvertO(bodythreatHuntDescription);
+                body["threat_hunt_description"] = CSharpExpressionConverter.ConvertToken(bodythreatHuntDescription);
                 bodypropCount++;
             }
 
@@ -506,26 +506,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (triggered != null)
-                callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
+                callPayload.Queries["triggered"] = CSharpExpressionConverter.ConvertO(triggered);
             if (alertRule != null)
-                callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
+                callPayload.Queries["alertRule"] = CSharpExpressionConverter.ConvertO(alertRule);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.Convert(fields);
             return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
         {
-            var apiCallPath = String.Format("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.Convert(fields);
             return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
         }
     }

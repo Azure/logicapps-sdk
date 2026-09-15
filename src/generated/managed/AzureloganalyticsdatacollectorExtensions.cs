@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollecto
             var apiCallPath = "/api/logs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Log-Type"] = ExpressionConverter.Convert(logType);
+            callPayload.Headers["Log-Type"] = CSharpExpressionConverter.ConvertO(logType);
             if (timeGeneratedField != null)
-                callPayload.Headers["time-generated-field"] = ExpressionConverter.Convert(timeGeneratedField);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["time-generated-field"] = CSharpExpressionConverter.ConvertO(timeGeneratedField);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
     }

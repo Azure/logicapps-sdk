@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var workerReferenceObject = new JObject();
             var workerReferenceObjectpropCount = 0;
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObject["WorkerIDType"] = CSharpExpressionConverter.Convert(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType);
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID);
+            workerReferenceObject["WorkerID"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID);
             if (workerReferenceObjectpropCount > 0)
             {
                 addOrUpdateAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             }
 
             addOrUpdateAddressInformationDataObjectpropCount++;
-            addOrUpdateAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
+            addOrUpdateAddressInformationDataObject["effective_Date"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
             var addressInformationDataObject = new JObject();
             var addressInformationDataObjectpropCount = 0;
             var countryReferenceObject = new JObject();
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             countryReferenceObjectpropCount++;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID != null)
             {
-                countryReferenceObject["CountryID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID);
+                countryReferenceObject["CountryID"] = CSharpExpressionConverter.Convert(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID);
                 countryReferenceObjectpropCount++;
             }
 
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData != null)
             {
-                addressInformationDataObject["address_Line_Data"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
+                addressInformationDataObject["address_Line_Data"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
                 addressInformationDataObjectpropCount++;
             }
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality != null)
             {
-                addressInformationDataObject["municipality"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
+                addressInformationDataObject["municipality"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
                 addressInformationDataObjectpropCount++;
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             countryRegionReferenceObjectpropCount++;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID != null)
             {
-                countryRegionReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID);
+                countryRegionReferenceObject["CountryRegionID"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID);
                 countryRegionReferenceObjectpropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode != null)
             {
-                addressInformationDataObject["postal_Code"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
+                addressInformationDataObject["postal_Code"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
                 addressInformationDataObjectpropCount++;
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var usageDataObjectpropCount = 0;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic != null)
             {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
+                usageDataObject["isPublic"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
                 usageDataObjectpropCount++;
             }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var typeDataObjectpropCount = 0;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObject["isPrimary"] = CSharpExpressionConverter.ConvertToken(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
                 typeDataObjectpropCount++;
             }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             typeReferenceObjectpropCount++;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObject["communicationUsageTypeID"] = CSharpExpressionConverter.Convert(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
                 typeReferenceObjectpropCount++;
             }
 
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var workerReferenceObject = new JObject();
             var workerReferenceObjectpropCount = 0;
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType);
+            workerReferenceObject["WorkerIDType"] = CSharpExpressionConverter.Convert(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType);
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID);
+            workerReferenceObject["WorkerID"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID);
             if (workerReferenceObjectpropCount > 0)
             {
                 addOrUpdatePhoneInformationDataObject["worker_Reference"] = workerReferenceObject;
@@ -184,30 +184,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             }
 
             addOrUpdatePhoneInformationDataObjectpropCount++;
-            addOrUpdatePhoneInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
+            addOrUpdatePhoneInformationDataObject["effective_Date"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
             var phoneInformationDataObject = new JObject();
             var phoneInformationDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode != null)
             {
-                phoneInformationDataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
+                phoneInformationDataObject["country_ISO_Code"] = CSharpExpressionConverter.Convert(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
                 phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode != null)
             {
-                phoneInformationDataObject["area_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
+                phoneInformationDataObject["area_Code"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
                 phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber != null)
             {
-                phoneInformationDataObject["phone_Number"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
+                phoneInformationDataObject["phone_Number"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
                 phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension != null)
             {
-                phoneInformationDataObject["phone_Extension"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
+                phoneInformationDataObject["phone_Extension"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
                 phoneInformationDataObjectpropCount++;
             }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             phoneDeviceTypeReferenceObjectpropCount++;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID != null)
             {
-                phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID);
+                phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = CSharpExpressionConverter.Convert(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID);
                 phoneDeviceTypeReferenceObjectpropCount++;
             }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var usageDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic != null)
             {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
+                usageDataObject["isPublic"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
                 usageDataObjectpropCount++;
             }
 
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var typeDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary != null)
             {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
+                typeDataObject["isPrimary"] = CSharpExpressionConverter.ConvertToken(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
                 typeDataObjectpropCount++;
             }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             typeReferenceObjectpropCount++;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObject["communicationUsageTypeID"] = CSharpExpressionConverter.Convert(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
                 typeReferenceObjectpropCount++;
             }
 
@@ -312,9 +312,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var workerReferenceObject = new JObject();
             var workerReferenceObjectpropCount = 0;
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObject["WorkerIDType"] = CSharpExpressionConverter.Convert(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType);
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID);
+            workerReferenceObject["WorkerID"] = CSharpExpressionConverter.ConvertToken(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID);
             if (workerReferenceObjectpropCount > 0)
             {
                 addOrUpdateEmailAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
@@ -322,12 +322,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             }
 
             addOrUpdateEmailAddressInformationDataObjectpropCount++;
-            addOrUpdateEmailAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
+            addOrUpdateEmailAddressInformationDataObject["effective_Date"] = CSharpExpressionConverter.ConvertToken(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
             var emailAddressInformationDataObject = new JObject();
             var emailAddressInformationDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress != null)
             {
-                emailAddressInformationDataObject["email_Address"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
+                emailAddressInformationDataObject["email_Address"] = CSharpExpressionConverter.ConvertToken(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
                 emailAddressInformationDataObjectpropCount++;
             }
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var usageDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic != null)
             {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
+                usageDataObject["isPublic"] = CSharpExpressionConverter.ConvertToken(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
                 usageDataObjectpropCount++;
             }
 
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var typeDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObject["isPrimary"] = CSharpExpressionConverter.ConvertToken(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
                 typeDataObjectpropCount++;
             }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             typeReferenceObjectpropCount++;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObject["communicationUsageTypeID"] = CSharpExpressionConverter.Convert(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
                 typeReferenceObjectpropCount++;
             }
 
@@ -416,9 +416,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var workerReferenceObject = new JObject();
             var workerReferenceObjectpropCount = 0;
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType);
+            workerReferenceObject["WorkerIDType"] = CSharpExpressionConverter.Convert(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType);
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID);
+            workerReferenceObject["WorkerID"] = CSharpExpressionConverter.ConvertToken(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID);
             if (workerReferenceObjectpropCount > 0)
             {
                 addOrUpdateInstantMessengerInformationDataObject["worker_Reference"] = workerReferenceObject;
@@ -426,12 +426,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             }
 
             addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-            addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
+            addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = CSharpExpressionConverter.ConvertToken(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
             var instantMessengerInformationDataObject = new JObject();
             var instantMessengerInformationDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress != null)
             {
-                instantMessengerInformationDataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
+                instantMessengerInformationDataObject["instant_Messenger_Address"] = CSharpExpressionConverter.ConvertToken(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
                 instantMessengerInformationDataObjectpropCount++;
             }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             instantMessengerTypeReferenceObjectpropCount++;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID != null)
             {
-                instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID);
+                instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = CSharpExpressionConverter.Convert(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID);
                 instantMessengerTypeReferenceObjectpropCount++;
             }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var usageDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic != null)
             {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
+                usageDataObject["isPublic"] = CSharpExpressionConverter.ConvertToken(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
                 usageDataObjectpropCount++;
             }
 
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var typeDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary != null)
             {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
+                typeDataObject["isPrimary"] = CSharpExpressionConverter.ConvertToken(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
                 typeDataObjectpropCount++;
             }
 
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             typeReferenceObjectpropCount++;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObject["communicationUsageTypeID"] = CSharpExpressionConverter.Convert(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
                 typeReferenceObjectpropCount++;
             }
 
@@ -536,9 +536,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var workerReferenceObject = new JObject();
             var workerReferenceObjectpropCount = 0;
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObject["WorkerIDType"] = CSharpExpressionConverter.Convert(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType);
             workerReferenceObjectpropCount++;
-            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID);
+            workerReferenceObject["WorkerID"] = CSharpExpressionConverter.ConvertToken(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID);
             if (workerReferenceObjectpropCount > 0)
             {
                 addOrUpdateWebAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
@@ -546,12 +546,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             }
 
             addOrUpdateWebAddressInformationDataObjectpropCount++;
-            addOrUpdateWebAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
+            addOrUpdateWebAddressInformationDataObject["effective_Date"] = CSharpExpressionConverter.ConvertToken(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
             var webAddressInformationDataObject = new JObject();
             var webAddressInformationDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress != null)
             {
-                webAddressInformationDataObject["web_Address"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
+                webAddressInformationDataObject["web_Address"] = CSharpExpressionConverter.ConvertToken(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
                 webAddressInformationDataObjectpropCount++;
             }
 
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var usageDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic != null)
             {
-                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
+                usageDataObject["isPublic"] = CSharpExpressionConverter.ConvertToken(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
                 usageDataObjectpropCount++;
             }
 
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var typeDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObject["isPrimary"] = CSharpExpressionConverter.ConvertToken(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
                 typeDataObjectpropCount++;
             }
 
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             typeReferenceObjectpropCount++;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObject["communicationUsageTypeID"] = CSharpExpressionConverter.Convert(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
                 typeReferenceObjectpropCount++;
             }
 
@@ -631,8 +631,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/Get_Employee_Personal_Info";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+            callPayload.Queries["SystemIDType"] = CSharpExpressionConverter.Convert(systemIDType);
+            callPayload.Queries["SystemID"] = CSharpExpressionConverter.ConvertO(systemID);
             return new ApiConnectionAction<EmployeePersonalInfoInfo>(callPayload);
         }
 
@@ -642,8 +642,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/Get_Employee_Identity_Info";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+            callPayload.Queries["SystemIDType"] = CSharpExpressionConverter.Convert(systemIDType);
+            callPayload.Queries["SystemID"] = CSharpExpressionConverter.ConvertO(systemID);
             return new ApiConnectionAction<EmployeeIdentityInfo>(callPayload);
         }
 
@@ -653,8 +653,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/Get_Employee_Qualification_Info";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+            callPayload.Queries["SystemIDType"] = CSharpExpressionConverter.Convert(systemIDType);
+            callPayload.Queries["SystemID"] = CSharpExpressionConverter.ConvertO(systemID);
             return new ApiConnectionAction<EmployeeQualificationInfo>(callPayload);
         }
 
@@ -664,8 +664,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/Get_Employee_Employment_Info";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(systemIDType);
-            callPayload.Queries["SystemID"] = ExpressionConverter.Convert(systemID);
+            callPayload.Queries["SystemIDType"] = CSharpExpressionConverter.Convert(systemIDType);
+            callPayload.Queries["SystemID"] = CSharpExpressionConverter.ConvertO(systemID);
             return new ApiConnectionAction<EmployeeEmploymentInfoInfo>(callPayload);
         }
 
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/SOAP_Operation";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
     }
@@ -687,9 +687,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
             var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(dateCriteria);
+            callPayload.Queries["dateCriteria"] = CSharpExpressionConverter.Convert(dateCriteria);
             if (businessProcessType != null)
-                callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(businessProcessType);
+                callPayload.Queries["businessProcessType"] = CSharpExpressionConverter.Convert(businessProcessType);
             return new ApiConnectionTrigger<EmployeeInfo>(callPayload, triggerName, recurrence);
         }
     }

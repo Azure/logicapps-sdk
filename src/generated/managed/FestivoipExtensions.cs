@@ -17,26 +17,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
             var apiCallPath = "/holidays";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                callPayload.Queries["month"] = CSharpExpressionConverter.ConvertO(month);
             if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                callPayload.Queries["day"] = CSharpExpressionConverter.ConvertO(day);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             callPayload.Queries["before"] = Convert.ToString(false);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             callPayload.Queries["after"] = Convert.ToString(false);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             callPayload.Queries["public"] = Convert.ToString(false);
             if (@public != null)
-                callPayload.Queries["public"] = ExpressionConverter.Convert(@public);
+                callPayload.Queries["public"] = CSharpExpressionConverter.ConvertO(@public);
             callPayload.Queries["format"] = Convert.ToString("json");
             if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
+                callPayload.Queries["timezone"] = CSharpExpressionConverter.ConvertO(timezone);
             return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
             return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
         }
     }

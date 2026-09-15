@@ -20,32 +20,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             bodypropCount++;
-            body["docName"] = ExpressionConverter.ConvertO(bodydocName);
+            body["docName"] = CSharpExpressionConverter.ConvertToken(bodydocName);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+            body["barcodeType"] = CSharpExpressionConverter.Convert(bodybarcodeType);
             bodypropCount++;
-            body["pages"] = ExpressionConverter.ConvertO(bodypages);
+            body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
             bodypropCount++;
-            body["alignX"] = ExpressionConverter.ConvertO(bodyalignX);
+            body["alignX"] = CSharpExpressionConverter.Convert(bodyalignX);
             bodypropCount++;
-            body["alignY"] = ExpressionConverter.ConvertO(bodyalignY);
+            body["alignY"] = CSharpExpressionConverter.Convert(bodyalignY);
             bodypropCount++;
-            body["heightInMM"] = ExpressionConverter.ConvertO(bodyheightInMM);
+            body["heightInMM"] = CSharpExpressionConverter.ConvertToken(bodyheightInMM);
             bodypropCount++;
-            body["widthInMM"] = ExpressionConverter.ConvertO(bodywidthInMM);
+            body["widthInMM"] = CSharpExpressionConverter.ConvertToken(bodywidthInMM);
             bodypropCount++;
-            body["marginXInMM"] = ExpressionConverter.ConvertO(bodymarginXInMM);
+            body["marginXInMM"] = CSharpExpressionConverter.ConvertToken(bodymarginXInMM);
             bodypropCount++;
-            body["marginYInMM"] = ExpressionConverter.ConvertO(bodymarginYInMM);
+            body["marginYInMM"] = CSharpExpressionConverter.ConvertToken(bodymarginYInMM);
             bodypropCount++;
-            body["opacity"] = ExpressionConverter.ConvertO(bodyopacity);
+            body["opacity"] = CSharpExpressionConverter.ConvertToken(bodyopacity);
             if (bodydisplayText != null)
             {
-                body["displayText"] = ExpressionConverter.ConvertO(bodydisplayText);
+                body["displayText"] = CSharpExpressionConverter.ConvertToken(bodydisplayText);
                 bodypropCount++;
             }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyisTextAbove != null)
                 {
-                    body["isTextAbove"] = ExpressionConverter.ConvertO(bodyisTextAbove);
+                    body["isTextAbove"] = CSharpExpressionConverter.ConvertToken(bodyisTextAbove);
                     bodypropCount++;
                 }
 
@@ -82,14 +82,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+            body["barcodeType"] = CSharpExpressionConverter.Convert(bodybarcodeType);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyhideText != null)
             {
                 if (bodyhideText != null)
                 {
-                    body["hideText"] = ExpressionConverter.ConvertO(bodyhideText);
+                    body["hideText"] = CSharpExpressionConverter.ConvertToken(bodyhideText);
                     bodypropCount++;
                 }
 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyepcQrCodeActionversion != null)
                 {
-                    epcQrCodeActionObject["version"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionversion);
+                    epcQrCodeActionObject["version"] = CSharpExpressionConverter.Convert(bodyepcQrCodeActionversion);
                     epcQrCodeActionObjectpropCount++;
                 }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyepcQrCodeActioncharacterSet != null)
                 {
-                    epcQrCodeActionObject["characterSet"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioncharacterSet);
+                    epcQrCodeActionObject["characterSet"] = CSharpExpressionConverter.Convert(bodyepcQrCodeActioncharacterSet);
                     epcQrCodeActionObjectpropCount++;
                 }
 
@@ -157,19 +157,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             epcQrCodeActionObjectpropCount++;
             if (bodyepcQrCodeActionbic != null)
             {
-                epcQrCodeActionObject["bic"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionbic);
+                epcQrCodeActionObject["bic"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionbic);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActionreceiverName != null)
             {
-                epcQrCodeActionObject["receiverName"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionreceiverName);
+                epcQrCodeActionObject["receiverName"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionreceiverName);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActioniban != null)
             {
-                epcQrCodeActionObject["iban"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioniban);
+                epcQrCodeActionObject["iban"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActioniban);
                 epcQrCodeActionObjectpropCount++;
             }
 
@@ -177,31 +177,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             epcQrCodeActionObjectpropCount++;
             if (bodyepcQrCodeActionamount != null)
             {
-                epcQrCodeActionObject["amount"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionamount);
+                epcQrCodeActionObject["amount"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionamount);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActionpurpose != null)
             {
-                epcQrCodeActionObject["purpose"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionpurpose);
+                epcQrCodeActionObject["purpose"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionpurpose);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActionremittanceReference != null)
             {
-                epcQrCodeActionObject["remittanceReference"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionremittanceReference);
+                epcQrCodeActionObject["remittanceReference"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionremittanceReference);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActionremittanceText != null)
             {
-                epcQrCodeActionObject["remittanceText"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionremittanceText);
+                epcQrCodeActionObject["remittanceText"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActionremittanceText);
                 epcQrCodeActionObjectpropCount++;
             }
 
             if (bodyepcQrCodeActioninformation != null)
             {
-                epcQrCodeActionObject["information"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioninformation);
+                epcQrCodeActionObject["information"] = CSharpExpressionConverter.ConvertToken(bodyepcQrCodeActioninformation);
                 epcQrCodeActionObjectpropCount++;
             }
 
@@ -229,53 +229,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var bodypropCount = 0;
             if (bodyamount != null)
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
                 bodypropCount++;
             }
 
             if (bodyav1Parameters != null)
             {
-                body["av1Parameters"] = ExpressionConverter.ConvertO(bodyav1Parameters);
+                body["av1Parameters"] = CSharpExpressionConverter.ConvertToken(bodyav1Parameters);
                 bodypropCount++;
             }
 
             if (bodyav2Parameters != null)
             {
-                body["av2Parameters"] = ExpressionConverter.ConvertO(bodyav2Parameters);
+                body["av2Parameters"] = CSharpExpressionConverter.ConvertToken(bodyav2Parameters);
                 bodypropCount++;
             }
 
             if (bodybillingInfo != null)
             {
-                body["billingInfo"] = ExpressionConverter.ConvertO(bodybillingInfo);
+                body["billingInfo"] = CSharpExpressionConverter.ConvertToken(bodybillingInfo);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["crAddressType"] = ExpressionConverter.ConvertO(bodycrAddressType);
+            body["crAddressType"] = CSharpExpressionConverter.Convert(bodycrAddressType);
             if (bodycrCity != null)
             {
-                body["crCity"] = ExpressionConverter.ConvertO(bodycrCity);
+                body["crCity"] = CSharpExpressionConverter.ConvertToken(bodycrCity);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["crName"] = ExpressionConverter.ConvertO(bodycrName);
+            body["crName"] = CSharpExpressionConverter.ConvertToken(bodycrName);
             if (bodycrPostalCode != null)
             {
-                body["crPostalCode"] = ExpressionConverter.ConvertO(bodycrPostalCode);
+                body["crPostalCode"] = CSharpExpressionConverter.ConvertToken(bodycrPostalCode);
                 bodypropCount++;
             }
 
             if (bodycrStreetOrAddressLine1 != null)
             {
-                body["crStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine1);
+                body["crStreetOrAddressLine1"] = CSharpExpressionConverter.ConvertToken(bodycrStreetOrAddressLine1);
                 bodypropCount++;
             }
 
             if (bodycrStreetOrAddressLine2 != null)
             {
-                body["crStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine2);
+                body["crStreetOrAddressLine2"] = CSharpExpressionConverter.ConvertToken(bodycrStreetOrAddressLine2);
                 bodypropCount++;
             }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodycurrency != null)
                 {
-                    body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                    body["currency"] = CSharpExpressionConverter.Convert(bodycurrency);
                     bodypropCount++;
                 }
 
@@ -296,12 +296,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             }
 
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -312,12 +312,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             }
 
             bodypropCount++;
-            body["iban"] = ExpressionConverter.ConvertO(bodyiban);
+            body["iban"] = CSharpExpressionConverter.ConvertToken(bodyiban);
             if (bodylanguageType != null)
             {
                 if (bodylanguageType != null)
                 {
-                    body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                    body["languageType"] = CSharpExpressionConverter.Convert(bodylanguageType);
                     bodypropCount++;
                 }
 
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyreferenceType != null)
                 {
-                    body["referenceType"] = ExpressionConverter.ConvertO(bodyreferenceType);
+                    body["referenceType"] = CSharpExpressionConverter.Convert(bodyreferenceType);
                     bodypropCount++;
                 }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyseperatorLine != null)
                 {
-                    body["seperatorLine"] = ExpressionConverter.ConvertO(bodyseperatorLine);
+                    body["seperatorLine"] = CSharpExpressionConverter.Convert(bodyseperatorLine);
                     bodypropCount++;
                 }
 
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyudAddressType != null)
                 {
-                    body["udAddressType"] = ExpressionConverter.ConvertO(bodyudAddressType);
+                    body["udAddressType"] = CSharpExpressionConverter.Convert(bodyudAddressType);
                     bodypropCount++;
                 }
 
@@ -385,37 +385,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
             if (bodyudCity != null)
             {
-                body["udCity"] = ExpressionConverter.ConvertO(bodyudCity);
+                body["udCity"] = CSharpExpressionConverter.ConvertToken(bodyudCity);
                 bodypropCount++;
             }
 
             if (bodyudName != null)
             {
-                body["udName"] = ExpressionConverter.ConvertO(bodyudName);
+                body["udName"] = CSharpExpressionConverter.ConvertToken(bodyudName);
                 bodypropCount++;
             }
 
             if (bodyudPostalCode != null)
             {
-                body["udPostalCode"] = ExpressionConverter.ConvertO(bodyudPostalCode);
+                body["udPostalCode"] = CSharpExpressionConverter.ConvertToken(bodyudPostalCode);
                 bodypropCount++;
             }
 
             if (bodyudStreetOrAddressLine1 != null)
             {
-                body["udStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine1);
+                body["udStreetOrAddressLine1"] = CSharpExpressionConverter.ConvertToken(bodyudStreetOrAddressLine1);
                 bodypropCount++;
             }
 
             if (bodyudStreetOrAddressLine2 != null)
             {
-                body["udStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine2);
+                body["udStreetOrAddressLine2"] = CSharpExpressionConverter.ConvertToken(bodyudStreetOrAddressLine2);
                 bodypropCount++;
             }
 
             if (bodyunstructuredMessage != null)
             {
-                body["unstructuredMessage"] = ExpressionConverter.ConvertO(bodyunstructuredMessage);
+                body["unstructuredMessage"] = CSharpExpressionConverter.ConvertToken(bodyunstructuredMessage);
                 bodypropCount++;
             }
 
@@ -430,11 +430,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["Content-type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -447,12 +447,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -463,12 +463,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             }
 
             bodypropCount++;
-            body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+            body["barcodeType"] = CSharpExpressionConverter.ConvertToken(bodybarcodeType);
             if (bodypages != null)
             {
                 if (bodypages != null)
                 {
-                    body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                    body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
                     bodypropCount++;
                 }
 
@@ -497,12 +497,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -529,12 +529,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -561,12 +561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -577,18 +577,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             }
 
             bodypropCount++;
-            body["barcodeFilter"] = ExpressionConverter.ConvertO(bodybarcodeFilter);
+            body["barcodeFilter"] = CSharpExpressionConverter.Convert(bodybarcodeFilter);
             bodypropCount++;
-            body["barcodeString"] = ExpressionConverter.ConvertO(bodybarcodeString);
+            body["barcodeString"] = CSharpExpressionConverter.ConvertToken(bodybarcodeString);
             bodypropCount++;
-            body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+            body["barcodeType"] = CSharpExpressionConverter.Convert(bodybarcodeType);
             bodypropCount++;
-            body["splitBarcodePage"] = ExpressionConverter.ConvertO(bodysplitBarcodePage);
+            body["splitBarcodePage"] = CSharpExpressionConverter.Convert(bodysplitBarcodePage);
             if (bodycombinePagesWithSameConsecutiveBarcodes != null)
             {
                 if (bodycombinePagesWithSameConsecutiveBarcodes != null)
                 {
-                    body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(bodycombinePagesWithSameConsecutiveBarcodes);
+                    body["combinePagesWithSameConsecutiveBarcodes"] = CSharpExpressionConverter.ConvertToken(bodycombinePagesWithSameConsecutiveBarcodes);
                     bodypropCount++;
                 }
 
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodypdfRenderDpi != null)
                 {
-                    body["pdfRenderDpi"] = ExpressionConverter.ConvertO(bodypdfRenderDpi);
+                    body["pdfRenderDpi"] = CSharpExpressionConverter.ConvertToken(bodypdfRenderDpi);
                     bodypropCount++;
                 }
 
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
             {
                 if (bodyisAsync != null)
                 {
-                    body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                    body["isAsync"] = CSharpExpressionConverter.ConvertToken(bodyisAsync);
                     bodypropCount++;
                 }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             bodypropCount++;
             if (bodyaction != null)
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                body["action"] = CSharpExpressionConverter.Convert(bodyaction);
                 bodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             bodypropCount++;
             if (bodyaction != null)
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                body["action"] = CSharpExpressionConverter.ConvertToken(bodyaction);
                 bodypropCount++;
             }
 

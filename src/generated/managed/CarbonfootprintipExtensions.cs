@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/AirQualityHealthIndex";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["O3"] = ExpressionConverter.Convert(o3);
-            callPayload.Queries["NO2"] = ExpressionConverter.Convert(nO2);
-            callPayload.Queries["PM"] = ExpressionConverter.Convert(pM);
+            callPayload.Queries["O3"] = CSharpExpressionConverter.ConvertO(o3);
+            callPayload.Queries["NO2"] = CSharpExpressionConverter.ConvertO(nO2);
+            callPayload.Queries["PM"] = CSharpExpressionConverter.ConvertO(pM);
             return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
         }
 
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/TreeEquivalent";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["weight"] = ExpressionConverter.Convert(weight);
-            callPayload.Queries["unit"] = ExpressionConverter.Convert(unit);
+            callPayload.Queries["weight"] = CSharpExpressionConverter.ConvertO(weight);
+            callPayload.Queries["unit"] = CSharpExpressionConverter.Convert(unit);
             return new ApiConnectionAction<TreeEquivalentResponse>(callPayload);
         }
 
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/TraditionalHydroToCarbonFootprint";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["consumption"] = ExpressionConverter.Convert(consumption);
-            callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+            callPayload.Queries["consumption"] = CSharpExpressionConverter.ConvertO(consumption);
+            callPayload.Queries["location"] = CSharpExpressionConverter.Convert(location);
             return new ApiConnectionAction<TraditionalHydroToCarbonFootprintResponse>(callPayload);
         }
 
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/CleanHydroToCarbonFootprint";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["energy"] = ExpressionConverter.Convert(energy);
-            callPayload.Queries["consumption"] = ExpressionConverter.Convert(consumption);
+            callPayload.Queries["energy"] = CSharpExpressionConverter.Convert(energy);
+            callPayload.Queries["consumption"] = CSharpExpressionConverter.ConvertO(consumption);
             return new ApiConnectionAction<CleanHydroToCarbonFootprintResponse>(callPayload);
         }
 
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/FuelToCO2e";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["litres"] = ExpressionConverter.Convert(litres);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
+            callPayload.Queries["litres"] = CSharpExpressionConverter.ConvertO(litres);
             return new ApiConnectionAction<FuelToCO2eResponse>(callPayload);
         }
 
@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/CarbonFootprintFromCarTravel";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["vehicle"] = ExpressionConverter.Convert(vehicle);
+            callPayload.Queries["distance"] = CSharpExpressionConverter.ConvertO(distance);
+            callPayload.Queries["vehicle"] = CSharpExpressionConverter.Convert(vehicle);
             return new ApiConnectionAction<CarbonFootprintFromCarTravelResponse>(callPayload);
         }
 
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/CarbonFootprintFromFlight";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["distance"] = CSharpExpressionConverter.ConvertO(distance);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<CarbonFootprintFromFlightResponse>(callPayload);
         }
 
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/CarbonFootprintFromMotorBike";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
+            callPayload.Queries["distance"] = CSharpExpressionConverter.ConvertO(distance);
             return new ApiConnectionAction<CarbonFootprintFromMotorBikeResponse>(callPayload);
         }
 
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
             var apiCallPath = "/CarbonFootprintFromPublicTransit";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Queries["distance"] = CSharpExpressionConverter.ConvertO(distance);
+            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<CarbonFootprintFromPublicTransitResponse>(callPayload);
         }
     }

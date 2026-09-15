@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
     {
         public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(signatureRequestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureRequestId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

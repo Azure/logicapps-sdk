@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             var apiCallPath = "/GetMatterList";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request"] = ExpressionConverter.Convert(request);
+            callPayload.Queries["request"] = CSharpExpressionConverter.ConvertO(request);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             var apiCallPath = "/GetMatterNarrative";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["matterId"] = ExpressionConverter.Convert(matterId);
+            callPayload.Queries["matterId"] = CSharpExpressionConverter.ConvertO(matterId);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
             var apiCallPath = "/GetMatterDetail";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["matterId"] = ExpressionConverter.Convert(matterId);
+            callPayload.Queries["matterId"] = CSharpExpressionConverter.ConvertO(matterId);
             return new ApiConnectionAction(callPayload);
         }
     }

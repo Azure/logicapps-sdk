@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
             var apiCallPath = "/api/Hooks/subscribe";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
+            callPayload.Queries["solutionId"] = CSharpExpressionConverter.ConvertO(solutionId);
             var data = new JObject();
             var datapropCount = 0;
             data["url"] = "@listCallbackUrl()";

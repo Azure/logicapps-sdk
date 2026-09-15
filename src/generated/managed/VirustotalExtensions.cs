@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v3/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UrlResult>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport(Expression<Func<string>> domain)
         {
-            var apiCallPath = String.Format("/api/v3/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DomainResult>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3(Expression<Func<string>> ip)
         {
-            var apiCallPath = String.Format("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Ip>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Analyses>(callPayload);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<File>(callPayload);

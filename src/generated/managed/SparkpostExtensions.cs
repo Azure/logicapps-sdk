@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var recipientListpropCount = 0;
             if (recipientListidOfTheRecipientList != null)
             {
-                recipientList["id"] = ExpressionConverter.ConvertO(recipientListidOfTheRecipientList);
+                recipientList["id"] = CSharpExpressionConverter.ConvertToken(recipientListidOfTheRecipientList);
                 recipientListpropCount++;
             }
 
             if (recipientListnameOfTheRecipientList != null)
             {
-                recipientList["name"] = ExpressionConverter.ConvertO(recipientListnameOfTheRecipientList);
+                recipientList["name"] = CSharpExpressionConverter.ConvertToken(recipientListnameOfTheRecipientList);
                 recipientListpropCount++;
             }
 
             if (recipientListdescription != null)
             {
-                recipientList["description"] = ExpressionConverter.ConvertO(recipientListdescription);
+                recipientList["description"] = CSharpExpressionConverter.ConvertToken(recipientListdescription);
                 recipientListpropCount++;
             }
 
             if (recipientListemailAddressOfFirstRecipient != null)
             {
-                recipientList["email"] = ExpressionConverter.ConvertO(recipientListemailAddressOfFirstRecipient);
+                recipientList["email"] = CSharpExpressionConverter.ConvertToken(recipientListemailAddressOfFirstRecipient);
                 recipientListpropCount++;
             }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressemailAddress, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressname = null)
         {
-            var apiCallPath = String.Format("/add-user/recipient-lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/add-user/recipient-lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addUserToRecipientListRequest = new JObject();
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var addressObject = new JObject();
             var addressObjectpropCount = 0;
             addressObjectpropCount++;
-            addressObject["email"] = ExpressionConverter.ConvertO(addUserToRecipientListRequestrecipientaddressemailAddress);
+            addressObject["email"] = CSharpExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressemailAddress);
             if (addUserToRecipientListRequestrecipientaddressname != null)
             {
-                addressObject["name"] = ExpressionConverter.ConvertO(addUserToRecipientListRequestrecipientaddressname);
+                addressObject["name"] = CSharpExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressname);
                 addressObjectpropCount++;
             }
 
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> deleteUserRequestemailAddress = null)
         {
-            var apiCallPath = String.Format("/delete-user/recipient-lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/delete-user/recipient-lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var deleteUserRequest = new JObject();
             var deleteUserRequestpropCount = 0;
             if (deleteUserRequestemailAddress != null)
             {
-                deleteUserRequest["email_address"] = ExpressionConverter.ConvertO(deleteUserRequestemailAddress);
+                deleteUserRequest["email_address"] = CSharpExpressionConverter.ConvertToken(deleteUserRequestemailAddress);
                 deleteUserRequestpropCount++;
             }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var recipientsObject = new JObject();
             var recipientsObjectpropCount = 0;
             recipientsObjectpropCount++;
-            recipientsObject["list_id"] = ExpressionConverter.ConvertO(requestrecipientsrecipient);
+            recipientsObject["list_id"] = CSharpExpressionConverter.ConvertToken(requestrecipientsrecipient);
             if (recipientsObjectpropCount > 0)
             {
                 request["recipients"] = recipientsObject;
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObjectpropCount++;
-            contentObject["template_id"] = ExpressionConverter.ConvertO(requestcontenttemplate);
+            contentObject["template_id"] = CSharpExpressionConverter.ConvertToken(requestcontenttemplate);
             if (contentObjectpropCount > 0)
             {
                 request["content"] = contentObject;
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
             if (requestcampaignId != null)
             {
-                request["campaign_id"] = ExpressionConverter.ConvertO(requestcampaignId);
+                request["campaign_id"] = CSharpExpressionConverter.ConvertToken(requestcampaignId);
                 requestpropCount++;
             }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObjectpropCount++;
-            contentObject["template_id"] = ExpressionConverter.ConvertO(requestcontenttemplate);
+            contentObject["template_id"] = CSharpExpressionConverter.ConvertToken(requestcontenttemplate);
             if (contentObjectpropCount > 0)
             {
                 request["content"] = contentObject;
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             }
 
             requestpropCount++;
-            request["recipients"] = ExpressionConverter.ConvertO(requestrecipients);
+            request["recipients"] = CSharpExpressionConverter.ConvertToken(requestrecipients);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;

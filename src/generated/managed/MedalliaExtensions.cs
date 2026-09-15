@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
+            callPayload.Headers["Instance-URL"] = CSharpExpressionConverter.ConvertO(instanceURL);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)
@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var apiCallPath = String.Format("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
+            callPayload.Headers["Instance-URL"] = CSharpExpressionConverter.ConvertO(instanceURL);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)

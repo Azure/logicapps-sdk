@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction DeleteContact(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetContactResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction UpdateContact(Expression<Func<string>> contactId, Expression<Func<bool>> bodycontactcontactNameOnInvoices = null, Expression<Func<int>> bodycontactdefaultPaymentTermsInDays = null, Expression<Func<string>> bodycontactlocale = null, Expression<Func<string>> bodycontactcountry = null)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -41,25 +41,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             var contactObjectpropCount = 0;
             if (bodycontactcontactNameOnInvoices != null)
             {
-                contactObject["contact_name_on_invoices"] = ExpressionConverter.ConvertO(bodycontactcontactNameOnInvoices);
+                contactObject["contact_name_on_invoices"] = CSharpExpressionConverter.ConvertToken(bodycontactcontactNameOnInvoices);
                 contactObjectpropCount++;
             }
 
             if (bodycontactdefaultPaymentTermsInDays != null)
             {
-                contactObject["default_payment_terms_in_days"] = ExpressionConverter.ConvertO(bodycontactdefaultPaymentTermsInDays);
+                contactObject["default_payment_terms_in_days"] = CSharpExpressionConverter.ConvertToken(bodycontactdefaultPaymentTermsInDays);
                 contactObjectpropCount++;
             }
 
             if (bodycontactlocale != null)
             {
-                contactObject["locale"] = ExpressionConverter.ConvertO(bodycontactlocale);
+                contactObject["locale"] = CSharpExpressionConverter.ConvertToken(bodycontactlocale);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcountry != null)
             {
-                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                contactObject["country"] = CSharpExpressionConverter.ConvertToken(bodycontactcountry);
                 contactObjectpropCount++;
             }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction DeleteInvoice(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ShowInvoiceResponse>(callPayload);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction UpdateInvoice(Expression<Func<string>> id, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<string>> bodyinvoiceexchangeRate = null, Expression<Func<string>> bodyinvoicestatus = null, Expression<Func<bodyinvoiceinvoiceItemsInputItem[]>> bodyinvoiceinvoiceItems = null)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -107,37 +107,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             var invoiceObjectpropCount = 0;
             if (bodyinvoicedatedOn != null)
             {
-                invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
+                invoiceObject["dated_on"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedatedOn);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicedueOn != null)
             {
-                invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
+                invoiceObject["due_on"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedueOn);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicecurrency != null)
             {
-                invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
+                invoiceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyinvoicecurrency);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoiceexchangeRate != null)
             {
-                invoiceObject["exchange_rate"] = ExpressionConverter.ConvertO(bodyinvoiceexchangeRate);
+                invoiceObject["exchange_rate"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceexchangeRate);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicestatus != null)
             {
-                invoiceObject["status"] = ExpressionConverter.ConvertO(bodyinvoicestatus);
+                invoiceObject["status"] = CSharpExpressionConverter.ConvertToken(bodyinvoicestatus);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoiceinvoiceItems != null)
             {
-                invoiceObject["invoice_items"] = ExpressionConverter.ConvertO(bodyinvoiceinvoiceItems);
+                invoiceObject["invoice_items"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceinvoiceItems);
                 invoiceObjectpropCount++;
             }
 
@@ -176,79 +176,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             var contactObjectpropCount = 0;
             if (bodycontactfirstName != null)
             {
-                contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
+                contactObject["first_name"] = CSharpExpressionConverter.ConvertToken(bodycontactfirstName);
                 contactObjectpropCount++;
             }
 
             if (bodycontactlastName != null)
             {
-                contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
+                contactObject["last_name"] = CSharpExpressionConverter.ConvertToken(bodycontactlastName);
                 contactObjectpropCount++;
             }
 
             if (bodycontactorganisationName != null)
             {
-                contactObject["organisation_name"] = ExpressionConverter.ConvertO(bodycontactorganisationName);
+                contactObject["organisation_name"] = CSharpExpressionConverter.ConvertToken(bodycontactorganisationName);
                 contactObjectpropCount++;
             }
 
             if (bodycontactemail != null)
             {
-                contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
+                contactObject["email"] = CSharpExpressionConverter.ConvertToken(bodycontactemail);
                 contactObjectpropCount++;
             }
 
             if (bodycontacttelephone != null)
             {
-                contactObject["phone_number"] = ExpressionConverter.ConvertO(bodycontacttelephone);
+                contactObject["phone_number"] = CSharpExpressionConverter.ConvertToken(bodycontacttelephone);
                 contactObjectpropCount++;
             }
 
             if (bodycontactmobile != null)
             {
-                contactObject["mobile"] = ExpressionConverter.ConvertO(bodycontactmobile);
+                contactObject["mobile"] = CSharpExpressionConverter.ConvertToken(bodycontactmobile);
                 contactObjectpropCount++;
             }
 
             if (bodycontactaddress1 != null)
             {
-                contactObject["address1"] = ExpressionConverter.ConvertO(bodycontactaddress1);
+                contactObject["address1"] = CSharpExpressionConverter.ConvertToken(bodycontactaddress1);
                 contactObjectpropCount++;
             }
 
             if (bodycontactaddress2 != null)
             {
-                contactObject["address2"] = ExpressionConverter.ConvertO(bodycontactaddress2);
+                contactObject["address2"] = CSharpExpressionConverter.ConvertToken(bodycontactaddress2);
                 contactObjectpropCount++;
             }
 
             if (bodycontactaddress3 != null)
             {
-                contactObject["address3"] = ExpressionConverter.ConvertO(bodycontactaddress3);
+                contactObject["address3"] = CSharpExpressionConverter.ConvertToken(bodycontactaddress3);
                 contactObjectpropCount++;
             }
 
             if (bodycontacttown != null)
             {
-                contactObject["town"] = ExpressionConverter.ConvertO(bodycontacttown);
+                contactObject["town"] = CSharpExpressionConverter.ConvertToken(bodycontacttown);
                 contactObjectpropCount++;
             }
 
             if (bodycontactregion != null)
             {
-                contactObject["region"] = ExpressionConverter.ConvertO(bodycontactregion);
+                contactObject["region"] = CSharpExpressionConverter.ConvertToken(bodycontactregion);
                 contactObjectpropCount++;
             }
 
             if (bodycontactpostcode != null)
             {
-                contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
+                contactObject["postcode"] = CSharpExpressionConverter.ConvertToken(bodycontactpostcode);
                 contactObjectpropCount++;
             }
 
             if (bodycontactcountry != null)
             {
-                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                contactObject["country"] = CSharpExpressionConverter.ConvertToken(bodycontactcountry);
                 contactObjectpropCount++;
             }
 
@@ -296,43 +296,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
             var invoiceObjectpropCount = 0;
             if (bodyinvoicecontact != null)
             {
-                invoiceObject["contact"] = ExpressionConverter.ConvertO(bodyinvoicecontact);
+                invoiceObject["contact"] = CSharpExpressionConverter.ConvertToken(bodyinvoicecontact);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicedatedOn != null)
             {
-                invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
+                invoiceObject["dated_on"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedatedOn);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicedueOn != null)
             {
-                invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
+                invoiceObject["due_on"] = CSharpExpressionConverter.ConvertToken(bodyinvoicedueOn);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicecurrency != null)
             {
-                invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
+                invoiceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyinvoicecurrency);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoiceomitHeader != null)
             {
-                invoiceObject["omit_header"] = ExpressionConverter.ConvertO(bodyinvoiceomitHeader);
+                invoiceObject["omit_header"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceomitHeader);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicealwaysShowBICAndIBAN != null)
             {
-                invoiceObject["always_show_bic_and_iban"] = ExpressionConverter.ConvertO(bodyinvoicealwaysShowBICAndIBAN);
+                invoiceObject["always_show_bic_and_iban"] = CSharpExpressionConverter.ConvertToken(bodyinvoicealwaysShowBICAndIBAN);
                 invoiceObjectpropCount++;
             }
 
             if (bodyinvoicepaymentTermsInDays != null)
             {
-                invoiceObject["payment_terms_in_days"] = ExpressionConverter.ConvertO(bodyinvoicepaymentTermsInDays);
+                invoiceObject["payment_terms_in_days"] = CSharpExpressionConverter.ConvertToken(bodyinvoicepaymentTermsInDays);
                 invoiceObjectpropCount++;
             }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/recurring_invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recurring_invoices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ShowRecurringInvoiceResponse>(callPayload);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsCancelled(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_cancelled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_cancelled", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsDraft(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_draft", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_draft", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsScheduled(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_scheduled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_scheduled", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsSent(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_sent", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_sent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

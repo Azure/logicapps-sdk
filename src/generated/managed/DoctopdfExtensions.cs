@@ -19,21 +19,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["publickey"] = Convert.ToString("");
             if (publickey != null)
-                callPayload.Headers["publickey"] = ExpressionConverter.Convert(publickey);
+                callPayload.Headers["publickey"] = CSharpExpressionConverter.ConvertO(publickey);
             callPayload.Headers["apikey"] = Convert.ToString("");
             if (apikey != null)
-                callPayload.Headers["apikey"] = ExpressionConverter.Convert(apikey);
+                callPayload.Headers["apikey"] = CSharpExpressionConverter.ConvertO(apikey);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfileName != null)
             {
-                body["File Name"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["File Name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
                 bodypropCount++;
             }
 
             if (bodyfileContent != null)
             {
-                body["File Content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["File Content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 

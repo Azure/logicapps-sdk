@@ -18,24 +18,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             var queryRequest = new JObject();
             var queryRequestpropCount = 0;
             if (queryRequestjsonrpc != null)
             {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                queryRequest["jsonrpc"] = CSharpExpressionConverter.ConvertToken(queryRequestjsonrpc);
                 queryRequestpropCount++;
             }
 
             if (queryRequestid != null)
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                queryRequest["id"] = CSharpExpressionConverter.ConvertToken(queryRequestid);
                 queryRequestpropCount++;
             }
 
             if (queryRequestmethod != null)
             {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                queryRequest["method"] = CSharpExpressionConverter.ConvertToken(queryRequestmethod);
                 queryRequestpropCount++;
             }
 

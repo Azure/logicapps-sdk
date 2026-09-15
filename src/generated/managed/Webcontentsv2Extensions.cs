@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
+            request["method"] = CSharpExpressionConverter.Convert(requestmethod);
             requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
+            request["url"] = CSharpExpressionConverter.ConvertToken(requesturlOfTheRequest);
             var headersObject = new JObject();
             var headersObjectpropCount = 0;
             if (headersObjectpropCount > 0)
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
 
             if (requestbodyOfTheRequest != null)
             {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["body"] = CSharpExpressionConverter.ConvertToken(requestbodyOfTheRequest);
                 requestpropCount++;
             }
 

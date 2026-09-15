@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyhtmlBody != null)
             {
                 if (bodyhtmlBody != null)
                 {
-                    body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
+                    body["HtmlBody"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBody);
                     bodypropCount++;
                 }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
 
             if (bodycipher != null)
             {
-                body["Cipher"] = ExpressionConverter.ConvertO(bodycipher);
+                body["Cipher"] = CSharpExpressionConverter.ConvertToken(bodycipher);
                 bodypropCount++;
             }
 

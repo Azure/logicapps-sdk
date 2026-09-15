@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesCustomerUsingCustomeridResponse> RetrievesCustomerUsingCustomerid(Expression<Func<string>> ids, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Customer/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesCustomerUsingCustomeridResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesCustomerUsingCustomerid(Expression<Func<string>> ids)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Customer/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesOpportunityUsingOpportunityidResponse> RetrievesOpportunityUsingOpportunityid(Expression<Func<string>> ids, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesOpportunityUsingOpportunityidResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesOpportunityUsingOpportunityid(Expression<Func<string>> ids)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesCaseUsingCaseidResponse> RetrievesCaseUsingCaseid(Expression<Func<string>> ids, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Case/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesCaseUsingCaseidResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesCaseUsingCaseid(Expression<Func<string>> ids)
         {
-            var apiCallPath = String.Format("/entity/Default/17.200.001/Case/{0}", ExpressionConverter.ConvertWithUrlEncoding(ids, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var apiCallPath = "/entity/Default/17.200.001/Customer";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
+            callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
+            callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
         }
 
@@ -87,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var apiCallPath = "/entity/Default/17.200.001/Customer";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             var customerIDObject = new JObject();
             var customerIDObjectpropCount = 0;
             if (bodycustomerIDvalue != null)
             {
-                customerIDObject["value"] = ExpressionConverter.ConvertO(bodycustomerIDvalue);
+                customerIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerIDvalue);
                 customerIDObjectpropCount++;
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var customerNameObjectpropCount = 0;
             if (bodycustomerNamevalue != null)
             {
-                customerNameObject["value"] = ExpressionConverter.ConvertO(bodycustomerNamevalue);
+                customerNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerNamevalue);
                 customerNameObjectpropCount++;
             }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
                 statusObjectpropCount++;
             }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var accountRefObjectpropCount = 0;
             if (bodyaccountRefvalue != null)
             {
-                accountRefObject["value"] = ExpressionConverter.ConvertO(bodyaccountRefvalue);
+                accountRefObject["value"] = CSharpExpressionConverter.ConvertToken(bodyaccountRefvalue);
                 accountRefObjectpropCount++;
             }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var currencyIDObjectpropCount = 0;
             if (bodycurrencyIDvalue != null)
             {
-                currencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
+                currencyIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyIDvalue);
                 currencyIDObjectpropCount++;
             }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var customerClassObjectpropCount = 0;
             if (bodycustomerClassvalue != null)
             {
-                customerClassObject["value"] = ExpressionConverter.ConvertO(bodycustomerClassvalue);
+                customerClassObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerClassvalue);
                 customerClassObjectpropCount++;
             }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var termsObjectpropCount = 0;
             if (bodytermsvalue != null)
             {
-                termsObject["value"] = ExpressionConverter.ConvertO(bodytermsvalue);
+                termsObject["value"] = CSharpExpressionConverter.ConvertToken(bodytermsvalue);
                 termsObjectpropCount++;
             }
 
@@ -205,14 +205,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["skip"] = Convert.ToString("");
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             callPayload.Queries["top"] = Convert.ToString("");
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
         }
 
@@ -222,15 +222,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var apiCallPath = "/entity/Default/17.200.001/Opportunity";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             var opportunityIDObject = new JObject();
             var opportunityIDObjectpropCount = 0;
             if (bodyopportunityIDvalue != null)
             {
-                opportunityIDObject["value"] = ExpressionConverter.ConvertO(bodyopportunityIDvalue);
+                opportunityIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodyopportunityIDvalue);
                 opportunityIDObjectpropCount++;
             }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var subjectObjectpropCount = 0;
             if (bodysubjectvalue != null)
             {
-                subjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
+                subjectObject["value"] = CSharpExpressionConverter.ConvertToken(bodysubjectvalue);
                 subjectObjectpropCount++;
             }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
                 statusObjectpropCount++;
             }
 
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var stageObjectpropCount = 0;
             if (bodystagevalue != null)
             {
-                stageObject["value"] = ExpressionConverter.ConvertO(bodystagevalue);
+                stageObject["value"] = CSharpExpressionConverter.ConvertToken(bodystagevalue);
                 stageObjectpropCount++;
             }
 
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var currencyIDObjectpropCount = 0;
             if (bodycurrencyIDvalue != null)
             {
-                currencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
+                currencyIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyIDvalue);
                 currencyIDObjectpropCount++;
             }
 
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var businessAccountObjectpropCount = 0;
             if (bodybusinessAccountvalue != null)
             {
-                businessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
+                businessAccountObject["value"] = CSharpExpressionConverter.ConvertToken(bodybusinessAccountvalue);
                 businessAccountObjectpropCount++;
             }
 
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var contactDisplayNameObjectpropCount = 0;
             if (bodycontactDisplayNamevalue != null)
             {
-                contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
+                contactDisplayNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
                 contactDisplayNameObjectpropCount++;
             }
 
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var amountObjectpropCount = 0;
             if (bodyamountvalue != null)
             {
-                amountObject["value"] = ExpressionConverter.ConvertO(bodyamountvalue);
+                amountObject["value"] = CSharpExpressionConverter.ConvertToken(bodyamountvalue);
                 amountObjectpropCount++;
             }
 
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var discountObjectpropCount = 0;
             if (bodydiscountvalue != null)
             {
-                discountObject["value"] = ExpressionConverter.ConvertO(bodydiscountvalue);
+                discountObject["value"] = CSharpExpressionConverter.ConvertToken(bodydiscountvalue);
                 discountObjectpropCount++;
             }
 
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var totalObjectpropCount = 0;
             if (bodytotalvalue != null)
             {
-                totalObject["value"] = ExpressionConverter.ConvertO(bodytotalvalue);
+                totalObject["value"] = CSharpExpressionConverter.ConvertToken(bodytotalvalue);
                 totalObjectpropCount++;
             }
 
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var sourceObjectpropCount = 0;
             if (bodysourcevalue != null)
             {
-                sourceObject["value"] = ExpressionConverter.ConvertO(bodysourcevalue);
+                sourceObject["value"] = CSharpExpressionConverter.ConvertToken(bodysourcevalue);
                 sourceObjectpropCount++;
             }
 
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var reasonObjectpropCount = 0;
             if (bodyreasonvalue != null)
             {
-                reasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
+                reasonObject["value"] = CSharpExpressionConverter.ConvertToken(bodyreasonvalue);
                 reasonObjectpropCount++;
             }
 
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var projectObjectpropCount = 0;
             if (bodyprojectvalue != null)
             {
-                projectObject["value"] = ExpressionConverter.ConvertO(bodyprojectvalue);
+                projectObject["value"] = CSharpExpressionConverter.ConvertToken(bodyprojectvalue);
                 projectObjectpropCount++;
             }
 
@@ -424,14 +424,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["skip"] = Convert.ToString("");
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             callPayload.Queries["top"] = Convert.ToString("");
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
         }
 
@@ -441,15 +441,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var apiCallPath = "/entity/Default/17.200.001/Case";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             var caseIDObject = new JObject();
             var caseIDObjectpropCount = 0;
             if (bodycaseIDvalue != null)
             {
-                caseIDObject["value"] = ExpressionConverter.ConvertO(bodycaseIDvalue);
+                caseIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycaseIDvalue);
                 caseIDObjectpropCount++;
             }
 
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var subjectObjectpropCount = 0;
             if (bodysubjectvalue != null)
             {
-                subjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
+                subjectObject["value"] = CSharpExpressionConverter.ConvertToken(bodysubjectvalue);
                 subjectObjectpropCount++;
             }
 
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var classIDObjectpropCount = 0;
             if (bodyclassIDvalue != null)
             {
-                classIDObject["value"] = ExpressionConverter.ConvertO(bodyclassIDvalue);
+                classIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodyclassIDvalue);
                 classIDObjectpropCount++;
             }
 
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var businessAccountObjectpropCount = 0;
             if (bodybusinessAccountvalue != null)
             {
-                businessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
+                businessAccountObject["value"] = CSharpExpressionConverter.ConvertToken(bodybusinessAccountvalue);
                 businessAccountObjectpropCount++;
             }
 
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var descriptionObjectpropCount = 0;
             if (bodydescriptionvalue != null)
             {
-                descriptionObject["value"] = ExpressionConverter.ConvertO(bodydescriptionvalue);
+                descriptionObject["value"] = CSharpExpressionConverter.ConvertToken(bodydescriptionvalue);
                 descriptionObjectpropCount++;
             }
 
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var contactDisplayNameObjectpropCount = 0;
             if (bodycontactDisplayNamevalue != null)
             {
-                contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
+                contactDisplayNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
                 contactDisplayNameObjectpropCount++;
             }
 
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
                 statusObjectpropCount++;
             }
 
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var reasonObjectpropCount = 0;
             if (bodyreasonvalue != null)
             {
-                reasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
+                reasonObject["value"] = CSharpExpressionConverter.ConvertToken(bodyreasonvalue);
                 reasonObjectpropCount++;
             }
 
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var severityObjectpropCount = 0;
             if (bodyseverityvalue != null)
             {
-                severityObject["value"] = ExpressionConverter.ConvertO(bodyseverityvalue);
+                severityObject["value"] = CSharpExpressionConverter.ConvertToken(bodyseverityvalue);
                 severityObjectpropCount++;
             }
 
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var priorityObjectpropCount = 0;
             if (bodypriorityvalue != null)
             {
-                priorityObject["value"] = ExpressionConverter.ConvertO(bodypriorityvalue);
+                priorityObject["value"] = CSharpExpressionConverter.ConvertToken(bodypriorityvalue);
                 priorityObjectpropCount++;
             }
 

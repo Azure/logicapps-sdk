@@ -18,19 +18,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (flag != null)
-                callPayload.Queries["flag"] = ExpressionConverter.Convert(flag);
+                callPayload.Queries["flag"] = CSharpExpressionConverter.ConvertO(flag);
             if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
             if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
             if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
             if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
             if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
             if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
             return new ApiConnectionAction<ListFlightsResponse>(callPayload);
         }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
             if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
             return new ApiConnectionAction<GetFlightResponse>(callPayload);
         }
 
@@ -54,19 +54,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (iataCode != null)
-                callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
+                callPayload.Queries["iata_code"] = CSharpExpressionConverter.ConvertO(iataCode);
             if (iataPrefix != null)
-                callPayload.Queries["iata_prefix"] = ExpressionConverter.Convert(iataPrefix);
+                callPayload.Queries["iata_prefix"] = CSharpExpressionConverter.ConvertO(iataPrefix);
             if (iataAccounting != null)
-                callPayload.Queries["iata_accounting"] = ExpressionConverter.Convert(iataAccounting);
+                callPayload.Queries["iata_accounting"] = CSharpExpressionConverter.ConvertO(iataAccounting);
             if (icaoCode != null)
-                callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
+                callPayload.Queries["icao_code"] = CSharpExpressionConverter.ConvertO(icaoCode);
             if (callsign != null)
-                callPayload.Queries["callsign"] = ExpressionConverter.Convert(callsign);
+                callPayload.Queries["callsign"] = CSharpExpressionConverter.ConvertO(callsign);
             if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
             return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
         }
 
@@ -77,23 +77,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
             if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
             if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
             if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
             if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
+                callPayload.Queries["airline_icao"] = CSharpExpressionConverter.ConvertO(airlineIcao);
             if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
+                callPayload.Queries["airline_iata"] = CSharpExpressionConverter.ConvertO(airlineIata);
             if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
             if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
             if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
             return new ApiConnectionAction<ListRoutesResponse>(callPayload);
         }
 
@@ -104,23 +104,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
+                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
             if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
+                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
             if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
+                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
             if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
+                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
             if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
+                callPayload.Queries["airline_icao"] = CSharpExpressionConverter.ConvertO(airlineIcao);
             if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
+                callPayload.Queries["airline_iata"] = CSharpExpressionConverter.ConvertO(airlineIata);
             if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
+                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
             if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
+                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
             if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
             return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
         }
 
@@ -131,15 +131,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (iataCode != null)
-                callPayload.Queries["iata_code"] = ExpressionConverter.Convert(iataCode);
+                callPayload.Queries["iata_code"] = CSharpExpressionConverter.ConvertO(iataCode);
             if (icaoCode != null)
-                callPayload.Queries["icao_code"] = ExpressionConverter.Convert(icaoCode);
+                callPayload.Queries["icao_code"] = CSharpExpressionConverter.ConvertO(icaoCode);
             if (cityCode != null)
-                callPayload.Queries["city_code"] = ExpressionConverter.Convert(cityCode);
+                callPayload.Queries["city_code"] = CSharpExpressionConverter.ConvertO(cityCode);
             if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
             return new ApiConnectionAction<ListAirportsResponse>(callPayload);
         }
 
@@ -150,13 +150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
             if (code3 != null)
-                callPayload.Queries["code3"] = ExpressionConverter.Convert(code3);
+                callPayload.Queries["code3"] = CSharpExpressionConverter.ConvertO(code3);
             if (continent != null)
-                callPayload.Queries["continent"] = ExpressionConverter.Convert(continent);
+                callPayload.Queries["continent"] = CSharpExpressionConverter.ConvertO(continent);
             if (Fields != null)
-                callPayload.Queries["_fields"] = ExpressionConverter.Convert(Fields);
+                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
             return new ApiConnectionAction<ListCountriesResponse>(callPayload);
         }
     }

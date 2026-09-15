@@ -17,26 +17,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/getentitydata";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             callPayload.Queries["relativePath"] = Convert.ToString("/");
             if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+                callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (inlinecount != null)
-                callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
+                callPayload.Queries["inlinecount"] = CSharpExpressionConverter.Convert(inlinecount);
             return new ApiConnectionAction<Output>(callPayload);
         }
 
@@ -46,27 +46,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/getentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             callPayload.Queries["relativePath"] = Convert.ToString("/");
             if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+                callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (inlinecount != null)
-                callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["inlinecount"] = CSharpExpressionConverter.Convert(inlinecount);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/createentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             callPayload.Queries["relativePath"] = Convert.ToString("/");
             if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/updateentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             callPayload.Queries["relativePath"] = Convert.ToString("/");
             if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -104,14 +104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/adhoc";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+            callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
             callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
             if (bypassMetadata != null)
-                callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
+                callPayload.Queries["bypassMetadata"] = CSharpExpressionConverter.ConvertO(bypassMetadata);
             var entryInput = new JObject();
             var entryInputpropCount = 0;
             entryInputpropCount++;
-            entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
+            entryInput["httpMethod"] = CSharpExpressionConverter.Convert(entryInputhttpMethod);
             var queryStringObject = new JObject();
             var queryStringObjectpropCount = 0;
             if (queryStringObjectpropCount > 0)
@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/adhocBulk";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+            callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
             callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
             if (bypassMetadata != null)
-                callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
+                callPayload.Queries["bypassMetadata"] = CSharpExpressionConverter.ConvertO(bypassMetadata);
             var entryInput = new JObject();
             var entryInputpropCount = 0;
             entryInputpropCount++;
-            entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
+            entryInput["httpMethod"] = CSharpExpressionConverter.Convert(entryInputhttpMethod);
             var queryStringObject = new JObject();
             var queryStringObjectpropCount = 0;
             if (queryStringObjectpropCount > 0)
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 
             if (entryInputpayload != null)
             {
-                entryInput["payload"] = ExpressionConverter.ConvertO(entryInputpayload);
+                entryInput["payload"] = CSharpExpressionConverter.ConvertToken(entryInputpayload);
                 entryInputpropCount++;
             }
 
@@ -178,11 +178,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
             var apiCallPath = "/deleteentry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
             callPayload.Queries["relativePath"] = Convert.ToString("/");
             if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["relativePath"] = CSharpExpressionConverter.ConvertO(relativePath);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(entryInput);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

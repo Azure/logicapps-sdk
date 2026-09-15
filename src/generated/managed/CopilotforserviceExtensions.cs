@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
             var bodypropCount = 0;
             if (bodyskillId != null)
             {
-                body["SkillId"] = ExpressionConverter.ConvertO(bodyskillId);
+                body["SkillId"] = CSharpExpressionConverter.ConvertToken(bodyskillId);
                 bodypropCount++;
             }
 

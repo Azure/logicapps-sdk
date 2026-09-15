@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var inputsObjectpropCount = 0;
             if (bodyinputscommand != null)
             {
-                inputsObject["command"] = ExpressionConverter.ConvertO(bodyinputscommand);
+                inputsObject["command"] = CSharpExpressionConverter.ConvertToken(bodyinputscommand);
                 inputsObjectpropCount++;
             }
 
             if (bodyinputscontext != null)
             {
-                inputsObject["context"] = ExpressionConverter.ConvertO(bodyinputscontext);
+                inputsObject["context"] = CSharpExpressionConverter.ConvertToken(bodyinputscontext);
                 inputsObjectpropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsoutputCount != null)
                 {
-                    optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                    optionsObject["outputCount"] = CSharpExpressionConverter.ConvertToken(bodyoptionsoutputCount);
                     optionsObjectpropCount++;
                 }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
                     optionsObjectpropCount++;
                 }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionscompletionType != null)
                 {
-                    optionsObject["completionType"] = ExpressionConverter.ConvertO(bodyoptionscompletionType);
+                    optionsObject["completionType"] = CSharpExpressionConverter.Convert(bodyoptionscompletionType);
                     optionsObjectpropCount++;
                 }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyinputstype != null)
                 {
-                    inputsObject["type"] = ExpressionConverter.ConvertO(bodyinputstype);
+                    inputsObject["type"] = CSharpExpressionConverter.Convert(bodyinputstype);
                     inputsObjectpropCount++;
                 }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
             if (bodyinputsvalue != null)
             {
-                inputsObject["value"] = ExpressionConverter.ConvertO(bodyinputsvalue);
+                inputsObject["value"] = CSharpExpressionConverter.ConvertToken(bodyinputsvalue);
                 inputsObjectpropCount++;
             }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
                     optionsObjectpropCount++;
                 }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/v1/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateGetResponse>(callPayload);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
-            var apiCallPath = String.Format("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var optionsObjectpropCount = 0;
             if (bodyoptionsoutputCount != null)
             {
-                optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                optionsObject["outputCount"] = CSharpExpressionConverter.ConvertToken(bodyoptionsoutputCount);
                 optionsObjectpropCount++;
             }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
                     optionsObjectpropCount++;
                 }
 
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
                     optionsObjectpropCount++;
                 }
 
@@ -348,9 +348,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
         }
 
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodysettingsappVisibility != null)
                 {
-                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    settingsObject["appVisibility"] = CSharpExpressionConverter.Convert(bodysettingsappVisibility);
                     settingsObjectpropCount++;
                 }
 
@@ -395,9 +395,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
+            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet(Expression<Func<string>> knowledgeId)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete(Expression<Func<string>> knowledgeId)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var settingsObjectpropCount = 0;
             if (bodysettingsappVisibility != null)
             {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                settingsObject["appVisibility"] = CSharpExpressionConverter.ConvertToken(bodysettingsappVisibility);
                 settingsObjectpropCount++;
             }
 
@@ -456,13 +456,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyfile != null)
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
                 bodypropCount++;
             }
 
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             {
                 if (bodysettingsappVisibility != null)
                 {
-                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    settingsObject["appVisibility"] = CSharpExpressionConverter.Convert(bodysettingsappVisibility);
                     settingsObjectpropCount++;
                 }
 
@@ -524,9 +524,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneGetResponse> ToneGet(Expression<Func<string>> toneId)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ToneGetResponse>(callPayload);
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePatchResponse> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var settingsObjectpropCount = 0;
             if (bodysettingsappVisibility != null)
             {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                settingsObject["appVisibility"] = CSharpExpressionConverter.ConvertToken(bodysettingsappVisibility);
                 settingsObjectpropCount++;
             }
 
@@ -576,13 +576,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyvalue != null)
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
                 bodypropCount++;
             }
 
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete(Expression<Func<string>> toneId)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ToneDeleteResponse>(callPayload);

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordCreateInstanceshowWord != null)
                 {
-                    mSWordCreateInstance["ShowWord"] = ExpressionConverter.ConvertO(mSWordCreateInstanceshowWord);
+                    mSWordCreateInstance["ShowWord"] = CSharpExpressionConverter.ConvertToken(mSWordCreateInstanceshowWord);
                     mSWordCreateInstancepropCount++;
                 }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordCreateInstancepropCount++;
-            mSWordCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateInstanceworkflow);
+            mSWordCreateInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordCreateInstanceworkflow);
             if (mSWordCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSWordCreateInstance;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordCloseInstancehandle != null)
                 {
-                    mSWordCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSWordCloseInstancehandle);
+                    mSWordCloseInstance["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordCloseInstancehandle);
                     mSWordCloseInstancepropCount++;
                 }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordCloseInstancepropCount++;
-            mSWordCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseInstanceworkflow);
+            mSWordCloseInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordCloseInstanceworkflow);
             if (mSWordCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSWordCloseInstance;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordDetachFromInstancehandle != null)
                 {
-                    mSWordDetachFromInstance["Handle"] = ExpressionConverter.ConvertO(mSWordDetachFromInstancehandle);
+                    mSWordDetachFromInstance["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordDetachFromInstancehandle);
                     mSWordDetachFromInstancepropCount++;
                 }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordDetachFromInstancepropCount++;
-            mSWordDetachFromInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordDetachFromInstanceworkflow);
+            mSWordDetachFromInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordDetachFromInstanceworkflow);
             if (mSWordDetachFromInstancepropCount > 0)
             {
                 callPayload.Body = mSWordDetachFromInstance;
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSWordAttachToExistingInstancepropCount = 0;
             if (mSWordAttachToExistingInstancefilename != null)
             {
-                mSWordAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancefilename);
+                mSWordAttachToExistingInstance["Filename"] = CSharpExpressionConverter.ConvertToken(mSWordAttachToExistingInstancefilename);
                 mSWordAttachToExistingInstancepropCount++;
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAttachToExistingInstancetoggleWindow != null)
                 {
-                    mSWordAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleWindow);
+                    mSWordAttachToExistingInstance["ToggleWindow"] = CSharpExpressionConverter.ConvertToken(mSWordAttachToExistingInstancetoggleWindow);
                     mSWordAttachToExistingInstancepropCount++;
                 }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
                 {
-                    mSWordAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
+                    mSWordAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = CSharpExpressionConverter.ConvertToken(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                     mSWordAttachToExistingInstancepropCount++;
                 }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAttachToExistingInstancetoggleDelay != null)
                 {
-                    mSWordAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleDelay);
+                    mSWordAttachToExistingInstance["ToggleDelay"] = CSharpExpressionConverter.ConvertToken(mSWordAttachToExistingInstancetoggleDelay);
                     mSWordAttachToExistingInstancepropCount++;
                 }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordAttachToExistingInstancepropCount++;
-            mSWordAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceworkflow);
+            mSWordAttachToExistingInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordAttachToExistingInstanceworkflow);
             if (mSWordAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSWordAttachToExistingInstance;
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordShowWordhandle != null)
                 {
-                    mSWordShowWord["Handle"] = ExpressionConverter.ConvertO(mSWordShowWordhandle);
+                    mSWordShowWord["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordShowWordhandle);
                     mSWordShowWordpropCount++;
                 }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordShowWordpropCount++;
-            mSWordShowWord["Workflow"] = ExpressionConverter.ConvertO(mSWordShowWordworkflow);
+            mSWordShowWord["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordShowWordworkflow);
             if (mSWordShowWordpropCount > 0)
             {
                 callPayload.Body = mSWordShowWord;
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordHideWordhandle != null)
                 {
-                    mSWordHideWord["Handle"] = ExpressionConverter.ConvertO(mSWordHideWordhandle);
+                    mSWordHideWord["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordHideWordhandle);
                     mSWordHideWordpropCount++;
                 }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordHideWordpropCount++;
-            mSWordHideWord["Workflow"] = ExpressionConverter.ConvertO(mSWordHideWordworkflow);
+            mSWordHideWord["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordHideWordworkflow);
             if (mSWordHideWordpropCount > 0)
             {
                 callPayload.Body = mSWordHideWord;
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordCreateDocumenthandle != null)
                 {
-                    mSWordCreateDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCreateDocumenthandle);
+                    mSWordCreateDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordCreateDocumenthandle);
                     mSWordCreateDocumentpropCount++;
                 }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordCreateDocumentpropCount++;
-            mSWordCreateDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateDocumentworkflow);
+            mSWordCreateDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordCreateDocumentworkflow);
             if (mSWordCreateDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordCreateDocument;
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordOpenDocumenthandle != null)
                 {
-                    mSWordOpenDocument["Handle"] = ExpressionConverter.ConvertO(mSWordOpenDocumenthandle);
+                    mSWordOpenDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumenthandle);
                     mSWordOpenDocumentpropCount++;
                 }
 
@@ -312,12 +312,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordOpenDocumentpropCount++;
-            mSWordOpenDocument["Filename"] = ExpressionConverter.ConvertO(mSWordOpenDocumentfilename);
+            mSWordOpenDocument["Filename"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentfilename);
             if (mSWordOpenDocumentopenReadOnly != null)
             {
                 if (mSWordOpenDocumentopenReadOnly != null)
                 {
-                    mSWordOpenDocument["OpenReadOnly"] = ExpressionConverter.ConvertO(mSWordOpenDocumentopenReadOnly);
+                    mSWordOpenDocument["OpenReadOnly"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentopenReadOnly);
                     mSWordOpenDocumentpropCount++;
                 }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordOpenDocumentaddToRecentFiles != null)
                 {
-                    mSWordOpenDocument["AddToRecentFiles"] = ExpressionConverter.ConvertO(mSWordOpenDocumentaddToRecentFiles);
+                    mSWordOpenDocument["AddToRecentFiles"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentaddToRecentFiles);
                     mSWordOpenDocumentpropCount++;
                 }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordOpenDocumentpassword != null)
             {
-                mSWordOpenDocument["Password"] = ExpressionConverter.ConvertO(mSWordOpenDocumentpassword);
+                mSWordOpenDocument["Password"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentpassword);
                 mSWordOpenDocumentpropCount++;
             }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordOpenDocumentopenAndRepair != null)
                 {
-                    mSWordOpenDocument["OpenAndRepair"] = ExpressionConverter.ConvertO(mSWordOpenDocumentopenAndRepair);
+                    mSWordOpenDocument["OpenAndRepair"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentopenAndRepair);
                     mSWordOpenDocumentpropCount++;
                 }
 
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordOpenDocumentpropCount++;
-            mSWordOpenDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordOpenDocumentworkflow);
+            mSWordOpenDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordOpenDocumentworkflow);
             if (mSWordOpenDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordOpenDocument;
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSaveDocumenthandle != null)
                 {
-                    mSWordSaveDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveDocumenthandle);
+                    mSWordSaveDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSaveDocumenthandle);
                     mSWordSaveDocumentpropCount++;
                 }
 
@@ -403,12 +403,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSaveDocumentdocumentName != null)
             {
-                mSWordSaveDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveDocumentdocumentName);
+                mSWordSaveDocument["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSaveDocumentdocumentName);
                 mSWordSaveDocumentpropCount++;
             }
 
             mSWordSaveDocumentpropCount++;
-            mSWordSaveDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveDocumentworkflow);
+            mSWordSaveDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSaveDocumentworkflow);
             if (mSWordSaveDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordSaveDocument;
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSaveAsDocumenthandle != null)
                 {
-                    mSWordSaveAsDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumenthandle);
+                    mSWordSaveAsDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSaveAsDocumenthandle);
                     mSWordSaveAsDocumentpropCount++;
                 }
 
@@ -443,14 +443,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSaveAsDocumentdocumentName != null)
             {
-                mSWordSaveAsDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentdocumentName);
+                mSWordSaveAsDocument["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSaveAsDocumentdocumentName);
                 mSWordSaveAsDocumentpropCount++;
             }
 
             mSWordSaveAsDocumentpropCount++;
-            mSWordSaveAsDocument["SaveFilename"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentsaveFilename);
+            mSWordSaveAsDocument["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSWordSaveAsDocumentsaveFilename);
             mSWordSaveAsDocumentpropCount++;
-            mSWordSaveAsDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentworkflow);
+            mSWordSaveAsDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSaveAsDocumentworkflow);
             if (mSWordSaveAsDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordSaveAsDocument;
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordCloseDocumenthandle != null)
                 {
-                    mSWordCloseDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCloseDocumenthandle);
+                    mSWordCloseDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordCloseDocumenthandle);
                     mSWordCloseDocumentpropCount++;
                 }
 
@@ -485,12 +485,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordCloseDocumentdocumentName != null)
             {
-                mSWordCloseDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordCloseDocumentdocumentName);
+                mSWordCloseDocument["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordCloseDocumentdocumentName);
                 mSWordCloseDocumentpropCount++;
             }
 
             mSWordCloseDocumentpropCount++;
-            mSWordCloseDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseDocumentworkflow);
+            mSWordCloseDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordCloseDocumentworkflow);
             if (mSWordCloseDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordCloseDocument;
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordTypeTexthandle != null)
                 {
-                    mSWordTypeText["Handle"] = ExpressionConverter.ConvertO(mSWordTypeTexthandle);
+                    mSWordTypeText["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordTypeTexthandle);
                     mSWordTypeTextpropCount++;
                 }
 
@@ -524,9 +524,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordTypeTextpropCount++;
-            mSWordTypeText["Text"] = ExpressionConverter.ConvertO(mSWordTypeTexttext);
+            mSWordTypeText["Text"] = CSharpExpressionConverter.ConvertToken(mSWordTypeTexttext);
             mSWordTypeTextpropCount++;
-            mSWordTypeText["Workflow"] = ExpressionConverter.ConvertO(mSWordTypeTextworkflow);
+            mSWordTypeText["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordTypeTextworkflow);
             if (mSWordTypeTextpropCount > 0)
             {
                 callPayload.Body = mSWordTypeText;
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSelectAllhandle != null)
                 {
-                    mSWordSelectAll["Handle"] = ExpressionConverter.ConvertO(mSWordSelectAllhandle);
+                    mSWordSelectAll["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSelectAllhandle);
                     mSWordSelectAllpropCount++;
                 }
 
@@ -561,12 +561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSelectAlldocumentName != null)
             {
-                mSWordSelectAll["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectAlldocumentName);
+                mSWordSelectAll["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSelectAlldocumentName);
                 mSWordSelectAllpropCount++;
             }
 
             mSWordSelectAllpropCount++;
-            mSWordSelectAll["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectAllworkflow);
+            mSWordSelectAll["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSelectAllworkflow);
             if (mSWordSelectAllpropCount > 0)
             {
                 callPayload.Body = mSWordSelectAll;
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSelectRangehandle != null)
                 {
-                    mSWordSelectRange["Handle"] = ExpressionConverter.ConvertO(mSWordSelectRangehandle);
+                    mSWordSelectRange["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSelectRangehandle);
                     mSWordSelectRangepropCount++;
                 }
 
@@ -601,16 +601,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSelectRangedocumentName != null)
             {
-                mSWordSelectRange["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectRangedocumentName);
+                mSWordSelectRange["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSelectRangedocumentName);
                 mSWordSelectRangepropCount++;
             }
 
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Start"] = ExpressionConverter.ConvertO(mSWordSelectRangestart);
+            mSWordSelectRange["Start"] = CSharpExpressionConverter.ConvertToken(mSWordSelectRangestart);
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Finish"] = ExpressionConverter.ConvertO(mSWordSelectRangefinish);
+            mSWordSelectRange["Finish"] = CSharpExpressionConverter.ConvertToken(mSWordSelectRangefinish);
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectRangeworkflow);
+            mSWordSelectRange["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSelectRangeworkflow);
             if (mSWordSelectRangepropCount > 0)
             {
                 callPayload.Body = mSWordSelectRange;
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordCopyToClipboardhandle != null)
                 {
-                    mSWordCopyToClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardhandle);
+                    mSWordCopyToClipboard["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordCopyToClipboardhandle);
                     mSWordCopyToClipboardpropCount++;
                 }
 
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordCopyToClipboardpropCount++;
-            mSWordCopyToClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardworkflow);
+            mSWordCopyToClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordCopyToClipboardworkflow);
             if (mSWordCopyToClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordCopyToClipboard;
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordPasteFromClipboardhandle != null)
                 {
-                    mSWordPasteFromClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardhandle);
+                    mSWordPasteFromClipboard["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordPasteFromClipboardhandle);
                     mSWordPasteFromClipboardpropCount++;
                 }
 
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordPasteFromClipboardpropCount++;
-            mSWordPasteFromClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardworkflow);
+            mSWordPasteFromClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordPasteFromClipboardworkflow);
             if (mSWordPasteFromClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordPasteFromClipboard;
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSWordClearClipboard = new JObject();
             var mSWordClearClipboardpropCount = 0;
             mSWordClearClipboardpropCount++;
-            mSWordClearClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordClearClipboardworkflow);
+            mSWordClearClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordClearClipboardworkflow);
             if (mSWordClearClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordClearClipboard;
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetDocumentBodyTexthandle != null)
                 {
-                    mSWordGetDocumentBodyText["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTexthandle);
+                    mSWordGetDocumentBodyText["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentBodyTexthandle);
                     mSWordGetDocumentBodyTextpropCount++;
                 }
 
@@ -731,16 +731,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetDocumentBodyTextdocumentName != null)
             {
-                mSWordGetDocumentBodyText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextdocumentName);
+                mSWordGetDocumentBodyText["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentBodyTextdocumentName);
                 mSWordGetDocumentBodyTextpropCount++;
             }
 
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Start"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextstart);
+            mSWordGetDocumentBodyText["Start"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentBodyTextstart);
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Finish"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextfinish);
+            mSWordGetDocumentBodyText["Finish"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentBodyTextfinish);
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextworkflow);
+            mSWordGetDocumentBodyText["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentBodyTextworkflow);
             if (mSWordGetDocumentBodyTextpropCount > 0)
             {
                 callPayload.Body = mSWordGetDocumentBodyText;
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetNumberOfTablesInDocumenthandle != null)
                 {
-                    mSWordGetNumberOfTablesInDocument["Handle"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumenthandle);
+                    mSWordGetNumberOfTablesInDocument["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetNumberOfTablesInDocumenthandle);
                     mSWordGetNumberOfTablesInDocumentpropCount++;
                 }
 
@@ -775,12 +775,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetNumberOfTablesInDocumentdocumentName != null)
             {
-                mSWordGetNumberOfTablesInDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentdocumentName);
+                mSWordGetNumberOfTablesInDocument["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetNumberOfTablesInDocumentdocumentName);
                 mSWordGetNumberOfTablesInDocumentpropCount++;
             }
 
             mSWordGetNumberOfTablesInDocumentpropCount++;
-            mSWordGetNumberOfTablesInDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentworkflow);
+            mSWordGetNumberOfTablesInDocument["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetNumberOfTablesInDocumentworkflow);
             if (mSWordGetNumberOfTablesInDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordGetNumberOfTablesInDocument;
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordUpdateBookmarkhandle != null)
                 {
-                    mSWordUpdateBookmark["Handle"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkhandle);
+                    mSWordUpdateBookmark["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordUpdateBookmarkhandle);
                     mSWordUpdateBookmarkpropCount++;
                 }
 
@@ -815,20 +815,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordUpdateBookmarkdocumentName != null)
             {
-                mSWordUpdateBookmark["DocumentName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkdocumentName);
+                mSWordUpdateBookmark["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordUpdateBookmarkdocumentName);
                 mSWordUpdateBookmarkpropCount++;
             }
 
             mSWordUpdateBookmarkpropCount++;
-            mSWordUpdateBookmark["BookmarkName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkbookmarkName);
+            mSWordUpdateBookmark["BookmarkName"] = CSharpExpressionConverter.ConvertToken(mSWordUpdateBookmarkbookmarkName);
             if (mSWordUpdateBookmarknewValue != null)
             {
-                mSWordUpdateBookmark["NewValue"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarknewValue);
+                mSWordUpdateBookmark["NewValue"] = CSharpExpressionConverter.ConvertToken(mSWordUpdateBookmarknewValue);
                 mSWordUpdateBookmarkpropCount++;
             }
 
             mSWordUpdateBookmarkpropCount++;
-            mSWordUpdateBookmark["Workflow"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkworkflow);
+            mSWordUpdateBookmark["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordUpdateBookmarkworkflow);
             if (mSWordUpdateBookmarkpropCount > 0)
             {
                 callPayload.Body = mSWordUpdateBookmark;
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSelectTablehandle != null)
                 {
-                    mSWordSelectTable["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTablehandle);
+                    mSWordSelectTable["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTablehandle);
                     mSWordSelectTablepropCount++;
                 }
 
@@ -863,14 +863,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSelectTabledocumentName != null)
             {
-                mSWordSelectTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTabledocumentName);
+                mSWordSelectTable["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTabledocumentName);
                 mSWordSelectTablepropCount++;
             }
 
             mSWordSelectTablepropCount++;
-            mSWordSelectTable["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTabletableIndex);
+            mSWordSelectTable["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTabletableIndex);
             mSWordSelectTablepropCount++;
-            mSWordSelectTable["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableworkflow);
+            mSWordSelectTable["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableworkflow);
             if (mSWordSelectTablepropCount > 0)
             {
                 callPayload.Body = mSWordSelectTable;
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetTableBoundshandle != null)
                 {
-                    mSWordGetTableBounds["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableBoundshandle);
+                    mSWordGetTableBounds["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableBoundshandle);
                     mSWordGetTableBoundspropCount++;
                 }
 
@@ -905,14 +905,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetTableBoundsdocumentName != null)
             {
-                mSWordGetTableBounds["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsdocumentName);
+                mSWordGetTableBounds["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableBoundsdocumentName);
                 mSWordGetTableBoundspropCount++;
             }
 
             mSWordGetTableBoundspropCount++;
-            mSWordGetTableBounds["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableBoundstableIndex);
+            mSWordGetTableBounds["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableBoundstableIndex);
             mSWordGetTableBoundspropCount++;
-            mSWordGetTableBounds["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsworkflow);
+            mSWordGetTableBounds["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableBoundsworkflow);
             if (mSWordGetTableBoundspropCount > 0)
             {
                 callPayload.Body = mSWordGetTableBounds;
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSelectTableCellhandle != null)
                 {
-                    mSWordSelectTableCell["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTableCellhandle);
+                    mSWordSelectTableCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCellhandle);
                     mSWordSelectTableCellpropCount++;
                 }
 
@@ -947,18 +947,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSelectTableCelldocumentName != null)
             {
-                mSWordSelectTableCell["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTableCelldocumentName);
+                mSWordSelectTableCell["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCelldocumentName);
                 mSWordSelectTableCellpropCount++;
             }
 
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCelltableIndex);
+            mSWordSelectTableCell["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCelltableIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["RowIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellrowIndex);
+            mSWordSelectTableCell["RowIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCellrowIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellcolumnIndex);
+            mSWordSelectTableCell["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCellcolumnIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableCellworkflow);
+            mSWordSelectTableCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSelectTableCellworkflow);
             if (mSWordSelectTableCellpropCount > 0)
             {
                 callPayload.Body = mSWordSelectTableCell;
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetTableCellTextValuehandle != null)
                 {
-                    mSWordGetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuehandle);
+                    mSWordGetTableCellTextValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValuehandle);
                     mSWordGetTableCellTextValuepropCount++;
                 }
 
@@ -993,18 +993,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetTableCellTextValuedocumentName != null)
             {
-                mSWordGetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuedocumentName);
+                mSWordGetTableCellTextValue["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValuedocumentName);
                 mSWordGetTableCellTextValuepropCount++;
             }
 
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuetableIndex);
+            mSWordGetTableCellTextValue["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValuetableIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuerowIndex);
+            mSWordGetTableCellTextValue["RowIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValuerowIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuecolumnIndex);
+            mSWordGetTableCellTextValue["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValuecolumnIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueworkflow);
+            mSWordGetTableCellTextValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueworkflow);
             if (mSWordGetTableCellTextValuepropCount > 0)
             {
                 callPayload.Body = mSWordGetTableCellTextValue;
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetTableCellTextValueTrimmedhandle != null)
                 {
-                    mSWordGetTableCellTextValueTrimmed["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedhandle);
+                    mSWordGetTableCellTextValueTrimmed["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmedhandle);
                     mSWordGetTableCellTextValueTrimmedpropCount++;
                 }
 
@@ -1039,18 +1039,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetTableCellTextValueTrimmeddocumentName != null)
             {
-                mSWordGetTableCellTextValueTrimmed["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmeddocumentName);
+                mSWordGetTableCellTextValueTrimmed["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmeddocumentName);
                 mSWordGetTableCellTextValueTrimmedpropCount++;
             }
 
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedtableIndex);
+            mSWordGetTableCellTextValueTrimmed["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmedtableIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedrowIndex);
+            mSWordGetTableCellTextValueTrimmed["RowIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmedrowIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedcolumnIndex);
+            mSWordGetTableCellTextValueTrimmed["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmedcolumnIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedworkflow);
+            mSWordGetTableCellTextValueTrimmed["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetTableCellTextValueTrimmedworkflow);
             if (mSWordGetTableCellTextValueTrimmedpropCount > 0)
             {
                 callPayload.Body = mSWordGetTableCellTextValueTrimmed;
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSetTableCellTextValuehandle != null)
                 {
-                    mSWordSetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuehandle);
+                    mSWordSetTableCellTextValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuehandle);
                     mSWordSetTableCellTextValuepropCount++;
                 }
 
@@ -1085,24 +1085,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSetTableCellTextValuedocumentName != null)
             {
-                mSWordSetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuedocumentName);
+                mSWordSetTableCellTextValue["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuedocumentName);
                 mSWordSetTableCellTextValuepropCount++;
             }
 
             mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuetableIndex);
+            mSWordSetTableCellTextValue["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuetableIndex);
             mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuerowIndex);
+            mSWordSetTableCellTextValue["RowIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuerowIndex);
             mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuecolumnIndex);
+            mSWordSetTableCellTextValue["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuecolumnIndex);
             if (mSWordSetTableCellTextValuenewCellText != null)
             {
-                mSWordSetTableCellTextValue["NewCellText"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuenewCellText);
+                mSWordSetTableCellTextValue["NewCellText"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValuenewCellText);
                 mSWordSetTableCellTextValuepropCount++;
             }
 
             mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueworkflow);
+            mSWordSetTableCellTextValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSetTableCellTextValueworkflow);
             if (mSWordSetTableCellTextValuepropCount > 0)
             {
                 callPayload.Body = mSWordSetTableCellTextValue;
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordExportDocumentAsPDFhandle != null)
                 {
-                    mSWordExportDocumentAsPDF["Handle"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFhandle);
+                    mSWordExportDocumentAsPDF["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordExportDocumentAsPDFhandle);
                     mSWordExportDocumentAsPDFpropCount++;
                 }
 
@@ -1137,14 +1137,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordExportDocumentAsPDFdocumentName != null)
             {
-                mSWordExportDocumentAsPDF["DocumentName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFdocumentName);
+                mSWordExportDocumentAsPDF["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordExportDocumentAsPDFdocumentName);
                 mSWordExportDocumentAsPDFpropCount++;
             }
 
             mSWordExportDocumentAsPDFpropCount++;
-            mSWordExportDocumentAsPDF["SaveFileName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFsaveFileName);
+            mSWordExportDocumentAsPDF["SaveFileName"] = CSharpExpressionConverter.ConvertToken(mSWordExportDocumentAsPDFsaveFileName);
             mSWordExportDocumentAsPDFpropCount++;
-            mSWordExportDocumentAsPDF["Workflow"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFworkflow);
+            mSWordExportDocumentAsPDF["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordExportDocumentAsPDFworkflow);
             if (mSWordExportDocumentAsPDFpropCount > 0)
             {
                 callPayload.Body = mSWordExportDocumentAsPDF;
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAddTablehandle != null)
                 {
-                    mSWordAddTable["Handle"] = ExpressionConverter.ConvertO(mSWordAddTablehandle);
+                    mSWordAddTable["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordAddTablehandle);
                     mSWordAddTablepropCount++;
                 }
 
@@ -1179,19 +1179,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordAddTabledocumentName != null)
             {
-                mSWordAddTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTabledocumentName);
+                mSWordAddTable["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordAddTabledocumentName);
                 mSWordAddTablepropCount++;
             }
 
             mSWordAddTablepropCount++;
-            mSWordAddTable["NumberOfRows"] = ExpressionConverter.ConvertO(mSWordAddTablenumberOfRows);
+            mSWordAddTable["NumberOfRows"] = CSharpExpressionConverter.ConvertToken(mSWordAddTablenumberOfRows);
             mSWordAddTablepropCount++;
-            mSWordAddTable["NumberOfColumns"] = ExpressionConverter.ConvertO(mSWordAddTablenumberOfColumns);
+            mSWordAddTable["NumberOfColumns"] = CSharpExpressionConverter.ConvertToken(mSWordAddTablenumberOfColumns);
             if (mSWordAddTableautoFitBehaviour != null)
             {
                 if (mSWordAddTableautoFitBehaviour != null)
                 {
-                    mSWordAddTable["AutoFitBehaviour"] = ExpressionConverter.ConvertO(mSWordAddTableautoFitBehaviour);
+                    mSWordAddTable["AutoFitBehaviour"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableautoFitBehaviour);
                     mSWordAddTablepropCount++;
                 }
 
@@ -1204,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordAddTablepropCount++;
-            mSWordAddTable["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableworkflow);
+            mSWordAddTable["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableworkflow);
             if (mSWordAddTablepropCount > 0)
             {
                 callPayload.Body = mSWordAddTable;
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAddTableRowhandle != null)
                 {
-                    mSWordAddTableRow["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableRowhandle);
+                    mSWordAddTableRow["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableRowhandle);
                     mSWordAddTableRowpropCount++;
                 }
 
@@ -1239,14 +1239,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordAddTableRowdocumentName != null)
             {
-                mSWordAddTableRow["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableRowdocumentName);
+                mSWordAddTableRow["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableRowdocumentName);
                 mSWordAddTableRowpropCount++;
             }
 
             mSWordAddTableRowpropCount++;
-            mSWordAddTableRow["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableRowtableIndex);
+            mSWordAddTableRow["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableRowtableIndex);
             mSWordAddTableRowpropCount++;
-            mSWordAddTableRow["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableRowworkflow);
+            mSWordAddTableRow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableRowworkflow);
             if (mSWordAddTableRowpropCount > 0)
             {
                 callPayload.Body = mSWordAddTableRow;
@@ -1267,7 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordAddTableColumnhandle != null)
                 {
-                    mSWordAddTableColumn["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableColumnhandle);
+                    mSWordAddTableColumn["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableColumnhandle);
                     mSWordAddTableColumnpropCount++;
                 }
 
@@ -1281,14 +1281,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordAddTableColumndocumentName != null)
             {
-                mSWordAddTableColumn["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableColumndocumentName);
+                mSWordAddTableColumn["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableColumndocumentName);
                 mSWordAddTableColumnpropCount++;
             }
 
             mSWordAddTableColumnpropCount++;
-            mSWordAddTableColumn["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableColumntableIndex);
+            mSWordAddTableColumn["TableIndex"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableColumntableIndex);
             mSWordAddTableColumnpropCount++;
-            mSWordAddTableColumn["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableColumnworkflow);
+            mSWordAddTableColumn["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordAddTableColumnworkflow);
             if (mSWordAddTableColumnpropCount > 0)
             {
                 callPayload.Body = mSWordAddTableColumn;
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetHighlightedTexthandle != null)
                 {
-                    mSWordGetHighlightedText["Handle"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTexthandle);
+                    mSWordGetHighlightedText["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetHighlightedTexthandle);
                     mSWordGetHighlightedTextpropCount++;
                 }
 
@@ -1323,12 +1323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetHighlightedTextdocumentName != null)
             {
-                mSWordGetHighlightedText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextdocumentName);
+                mSWordGetHighlightedText["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetHighlightedTextdocumentName);
                 mSWordGetHighlightedTextpropCount++;
             }
 
             mSWordGetHighlightedTextpropCount++;
-            mSWordGetHighlightedText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextworkflow);
+            mSWordGetHighlightedText["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetHighlightedTextworkflow);
             if (mSWordGetHighlightedTextpropCount > 0)
             {
                 callPayload.Body = mSWordGetHighlightedText;
@@ -1349,7 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordExecuteCommandBarObjecthandle != null)
                 {
-                    mSWordExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjecthandle);
+                    mSWordExecuteCommandBarObject["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordExecuteCommandBarObjecthandle);
                     mSWordExecuteCommandBarObjectpropCount++;
                 }
 
@@ -1362,12 +1362,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordExecuteCommandBarObjectpropCount++;
-            mSWordExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectobjectId);
+            mSWordExecuteCommandBarObject["ObjectId"] = CSharpExpressionConverter.ConvertToken(mSWordExecuteCommandBarObjectobjectId);
             if (mSWordExecuteCommandBarObjectrunInBackground != null)
             {
                 if (mSWordExecuteCommandBarObjectrunInBackground != null)
                 {
-                    mSWordExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectrunInBackground);
+                    mSWordExecuteCommandBarObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSWordExecuteCommandBarObjectrunInBackground);
                     mSWordExecuteCommandBarObjectpropCount++;
                 }
 
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSWordExecuteCommandBarObjectpropCount++;
-            mSWordExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectworkflow);
+            mSWordExecuteCommandBarObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordExecuteCommandBarObjectworkflow);
             if (mSWordExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSWordExecuteCommandBarObject;
@@ -1401,7 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordSetDocumentSensitivityLabelhandle != null)
                 {
-                    mSWordSetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelhandle);
+                    mSWordSetDocumentSensitivityLabel["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabelhandle);
                     mSWordSetDocumentSensitivityLabelpropCount++;
                 }
 
@@ -1415,34 +1415,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordSetDocumentSensitivityLabeldocumentName != null)
             {
-                mSWordSetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabeldocumentName);
+                mSWordSetDocumentSensitivityLabel["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabeldocumentName);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
             mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelassignmentMethod);
+            mSWordSetDocumentSensitivityLabel["AssignmentMethod"] = CSharpExpressionConverter.Convert(mSWordSetDocumentSensitivityLabelassignmentMethod);
             mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabellabelId);
+            mSWordSetDocumentSensitivityLabel["LabelId"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabellabelId);
             if (mSWordSetDocumentSensitivityLabellabelName != null)
             {
-                mSWordSetDocumentSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabellabelName);
+                mSWordSetDocumentSensitivityLabel["LabelName"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabellabelName);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
             if (mSWordSetDocumentSensitivityLabelsiteId != null)
             {
-                mSWordSetDocumentSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelsiteId);
+                mSWordSetDocumentSensitivityLabel["SiteId"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabelsiteId);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
             if (mSWordSetDocumentSensitivityLabeljustification != null)
             {
-                mSWordSetDocumentSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabeljustification);
+                mSWordSetDocumentSensitivityLabel["Justification"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabeljustification);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
             mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelworkflow);
+            mSWordSetDocumentSensitivityLabel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordSetDocumentSensitivityLabelworkflow);
             if (mSWordSetDocumentSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSWordSetDocumentSensitivityLabel;
@@ -1463,7 +1463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSWordGetDocumentSensitivityLabelhandle != null)
                 {
-                    mSWordGetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelhandle);
+                    mSWordGetDocumentSensitivityLabel["Handle"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentSensitivityLabelhandle);
                     mSWordGetDocumentSensitivityLabelpropCount++;
                 }
 
@@ -1477,12 +1477,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSWordGetDocumentSensitivityLabeldocumentName != null)
             {
-                mSWordGetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabeldocumentName);
+                mSWordGetDocumentSensitivityLabel["DocumentName"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentSensitivityLabeldocumentName);
                 mSWordGetDocumentSensitivityLabelpropCount++;
             }
 
             mSWordGetDocumentSensitivityLabelpropCount++;
-            mSWordGetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelworkflow);
+            mSWordGetDocumentSensitivityLabel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSWordGetDocumentSensitivityLabelworkflow);
             if (mSWordGetDocumentSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSWordGetDocumentSensitivityLabel;
@@ -1503,7 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCreateInstanceenableEvents != null)
                 {
-                    mSExcelCreateInstance["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceenableEvents);
+                    mSExcelCreateInstance["EnableEvents"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateInstanceenableEvents);
                     mSExcelCreateInstancepropCount++;
                 }
 
@@ -1519,7 +1519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCreateInstanceshowExcel != null)
                 {
-                    mSExcelCreateInstance["ShowExcel"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceshowExcel);
+                    mSExcelCreateInstance["ShowExcel"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateInstanceshowExcel);
                     mSExcelCreateInstancepropCount++;
                 }
 
@@ -1532,7 +1532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCreateInstancepropCount++;
-            mSExcelCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceworkflow);
+            mSExcelCreateInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateInstanceworkflow);
             if (mSExcelCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelCreateInstance;
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCloseInstancehandle != null)
                 {
-                    mSExcelCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseInstancehandle);
+                    mSExcelCloseInstance["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseInstancehandle);
                     mSExcelCloseInstancepropCount++;
                 }
 
@@ -1566,7 +1566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCloseInstancepropCount++;
-            mSExcelCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseInstanceworkflow);
+            mSExcelCloseInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseInstanceworkflow);
             if (mSExcelCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelCloseInstance;
@@ -1585,7 +1585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSExcelAttachToExistingInstancepropCount = 0;
             if (mSExcelAttachToExistingInstancefilename != null)
             {
-                mSExcelAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancefilename);
+                mSExcelAttachToExistingInstance["Filename"] = CSharpExpressionConverter.ConvertToken(mSExcelAttachToExistingInstancefilename);
                 mSExcelAttachToExistingInstancepropCount++;
             }
 
@@ -1593,7 +1593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelAttachToExistingInstancetoggleWindow != null)
                 {
-                    mSExcelAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleWindow);
+                    mSExcelAttachToExistingInstance["ToggleWindow"] = CSharpExpressionConverter.ConvertToken(mSExcelAttachToExistingInstancetoggleWindow);
                     mSExcelAttachToExistingInstancepropCount++;
                 }
 
@@ -1609,7 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
                 {
-                    mSExcelAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
+                    mSExcelAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = CSharpExpressionConverter.ConvertToken(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                     mSExcelAttachToExistingInstancepropCount++;
                 }
 
@@ -1625,7 +1625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelAttachToExistingInstancetoggleDelay != null)
                 {
-                    mSExcelAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleDelay);
+                    mSExcelAttachToExistingInstance["ToggleDelay"] = CSharpExpressionConverter.ConvertToken(mSExcelAttachToExistingInstancetoggleDelay);
                     mSExcelAttachToExistingInstancepropCount++;
                 }
 
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelAttachToExistingInstancepropCount++;
-            mSExcelAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceworkflow);
+            mSExcelAttachToExistingInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelAttachToExistingInstanceworkflow);
             if (mSExcelAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelAttachToExistingInstance;
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelShowExcelhandle != null)
                 {
-                    mSExcelShowExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelShowExcelhandle);
+                    mSExcelShowExcel["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelShowExcelhandle);
                     mSExcelShowExcelpropCount++;
                 }
 
@@ -1672,7 +1672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelShowExcelpropCount++;
-            mSExcelShowExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelShowExcelworkflow);
+            mSExcelShowExcel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelShowExcelworkflow);
             if (mSExcelShowExcelpropCount > 0)
             {
                 callPayload.Body = mSExcelShowExcel;
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelHideExcelhandle != null)
                 {
-                    mSExcelHideExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelHideExcelhandle);
+                    mSExcelHideExcel["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelHideExcelhandle);
                     mSExcelHideExcelpropCount++;
                 }
 
@@ -1706,7 +1706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelHideExcelpropCount++;
-            mSExcelHideExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelHideExcelworkflow);
+            mSExcelHideExcel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelHideExcelworkflow);
             if (mSExcelHideExcelpropCount > 0)
             {
                 callPayload.Body = mSExcelHideExcel;
@@ -1727,7 +1727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookhandle != null)
                 {
-                    mSExcelOpenWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookhandle);
+                    mSExcelOpenWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookhandle);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1741,7 +1741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelOpenWorkbookfilename != null)
             {
-                mSExcelOpenWorkbook["Filename"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookfilename);
+                mSExcelOpenWorkbook["Filename"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookfilename);
                 mSExcelOpenWorkbookpropCount++;
             }
 
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookreadOnly != null)
                 {
-                    mSExcelOpenWorkbook["ReadOnly"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookreadOnly);
+                    mSExcelOpenWorkbook["ReadOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookreadOnly);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1765,7 +1765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookupdateLinks != null)
                 {
-                    mSExcelOpenWorkbook["UpdateLinks"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookupdateLinks);
+                    mSExcelOpenWorkbook["UpdateLinks"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookupdateLinks);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelOpenWorkbookpassword != null)
             {
-                mSExcelOpenWorkbook["Password"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookpassword);
+                mSExcelOpenWorkbook["Password"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookpassword);
                 mSExcelOpenWorkbookpropCount++;
             }
 
@@ -1787,7 +1787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookenableEvents != null)
                 {
-                    mSExcelOpenWorkbook["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookenableEvents);
+                    mSExcelOpenWorkbook["EnableEvents"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookenableEvents);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1803,7 +1803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode != null)
                 {
-                    mSExcelOpenWorkbook["PutHTTPWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode);
+                    mSExcelOpenWorkbook["PutHTTPWorkbooksIntoEditMode"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1819,7 +1819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode != null)
                 {
-                    mSExcelOpenWorkbook["PutFilePathWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode);
+                    mSExcelOpenWorkbook["PutFilePathWorkbooksIntoEditMode"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode);
                     mSExcelOpenWorkbookpropCount++;
                 }
 
@@ -1832,7 +1832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelOpenWorkbookpropCount++;
-            mSExcelOpenWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookworkflow);
+            mSExcelOpenWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelOpenWorkbookworkflow);
             if (mSExcelOpenWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelOpenWorkbook;
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPutWorkbookInEditModehandle != null)
                 {
-                    mSExcelPutWorkbookInEditMode["Handle"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModehandle);
+                    mSExcelPutWorkbookInEditMode["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelPutWorkbookInEditModehandle);
                     mSExcelPutWorkbookInEditModepropCount++;
                 }
 
@@ -1867,7 +1867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelPutWorkbookInEditModeworkbookName != null)
             {
-                mSExcelPutWorkbookInEditMode["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeworkbookName);
+                mSExcelPutWorkbookInEditMode["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelPutWorkbookInEditModeworkbookName);
                 mSExcelPutWorkbookInEditModepropCount++;
             }
 
@@ -1875,7 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPutWorkbookInEditModeforce != null)
                 {
-                    mSExcelPutWorkbookInEditMode["Force"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeforce);
+                    mSExcelPutWorkbookInEditMode["Force"] = CSharpExpressionConverter.ConvertToken(mSExcelPutWorkbookInEditModeforce);
                     mSExcelPutWorkbookInEditModepropCount++;
                 }
 
@@ -1888,7 +1888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelPutWorkbookInEditModepropCount++;
-            mSExcelPutWorkbookInEditMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeworkflow);
+            mSExcelPutWorkbookInEditMode["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelPutWorkbookInEditModeworkflow);
             if (mSExcelPutWorkbookInEditModepropCount > 0)
             {
                 callPayload.Body = mSExcelPutWorkbookInEditMode;
@@ -1909,7 +1909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCreateWorkbookhandle != null)
                 {
-                    mSExcelCreateWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookhandle);
+                    mSExcelCreateWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorkbookhandle);
                     mSExcelCreateWorkbookpropCount++;
                 }
 
@@ -1922,7 +1922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCreateWorkbookpropCount++;
-            mSExcelCreateWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookworkflow);
+            mSExcelCreateWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorkbookworkflow);
             if (mSExcelCreateWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCreateWorkbook;
@@ -1943,7 +1943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCloseWorkbookhandle != null)
                 {
-                    mSExcelCloseWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookhandle);
+                    mSExcelCloseWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseWorkbookhandle);
                     mSExcelCloseWorkbookpropCount++;
                 }
 
@@ -1957,7 +1957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCloseWorkbookworkbookName != null)
             {
-                mSExcelCloseWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookworkbookName);
+                mSExcelCloseWorkbook["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseWorkbookworkbookName);
                 mSExcelCloseWorkbookpropCount++;
             }
 
@@ -1965,7 +1965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCloseWorkbooksaveData != null)
                 {
-                    mSExcelCloseWorkbook["SaveData"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbooksaveData);
+                    mSExcelCloseWorkbook["SaveData"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseWorkbooksaveData);
                     mSExcelCloseWorkbookpropCount++;
                 }
 
@@ -1978,7 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCloseWorkbookpropCount++;
-            mSExcelCloseWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookworkflow);
+            mSExcelCloseWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseWorkbookworkflow);
             if (mSExcelCloseWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCloseWorkbook;
@@ -1999,7 +1999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCloseCurrentWorkbookhandle != null)
                 {
-                    mSExcelCloseCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookhandle);
+                    mSExcelCloseCurrentWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseCurrentWorkbookhandle);
                     mSExcelCloseCurrentWorkbookpropCount++;
                 }
 
@@ -2012,7 +2012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCloseCurrentWorkbookpropCount++;
-            mSExcelCloseCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookworkflow);
+            mSExcelCloseCurrentWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCloseCurrentWorkbookworkflow);
             if (mSExcelCloseCurrentWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCloseCurrentWorkbook;
@@ -2033,7 +2033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGoToCellhandle != null)
                 {
-                    mSExcelGoToCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGoToCellhandle);
+                    mSExcelGoToCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGoToCellhandle);
                     mSExcelGoToCellpropCount++;
                 }
 
@@ -2047,20 +2047,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGoToCellworkbookName != null)
             {
-                mSExcelGoToCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGoToCellworkbookName);
+                mSExcelGoToCell["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGoToCellworkbookName);
                 mSExcelGoToCellpropCount++;
             }
 
             if (mSExcelGoToCellworksheetName != null)
             {
-                mSExcelGoToCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGoToCellworksheetName);
+                mSExcelGoToCell["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGoToCellworksheetName);
                 mSExcelGoToCellpropCount++;
             }
 
             mSExcelGoToCellpropCount++;
-            mSExcelGoToCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelGoToCellcellReference);
+            mSExcelGoToCell["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGoToCellcellReference);
             mSExcelGoToCellpropCount++;
-            mSExcelGoToCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGoToCellworkflow);
+            mSExcelGoToCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGoToCellworkflow);
             if (mSExcelGoToCellpropCount > 0)
             {
                 callPayload.Body = mSExcelGoToCell;
@@ -2081,7 +2081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetCellValuehandle != null)
                 {
-                    mSExcelGetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValuehandle);
+                    mSExcelGetCellValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValuehandle);
                     mSExcelGetCellValuepropCount++;
                 }
 
@@ -2095,20 +2095,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetCellValueworkbookName != null)
             {
-                mSExcelGetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworkbookName);
+                mSExcelGetCellValue["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValueworkbookName);
                 mSExcelGetCellValuepropCount++;
             }
 
             if (mSExcelGetCellValueworksheetName != null)
             {
-                mSExcelGetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworksheetName);
+                mSExcelGetCellValue["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValueworksheetName);
                 mSExcelGetCellValuepropCount++;
             }
 
             mSExcelGetCellValuepropCount++;
-            mSExcelGetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValuecellReference);
+            mSExcelGetCellValue["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValuecellReference);
             mSExcelGetCellValuepropCount++;
-            mSExcelGetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworkflow);
+            mSExcelGetCellValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValueworkflow);
             if (mSExcelGetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellValue;
@@ -2129,7 +2129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetCellValue2handle != null)
                 {
-                    mSExcelGetCellValue2["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2handle);
+                    mSExcelGetCellValue2["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValue2handle);
                     mSExcelGetCellValue2propCount++;
                 }
 
@@ -2143,20 +2143,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetCellValue2workbookName != null)
             {
-                mSExcelGetCellValue2["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2workbookName);
+                mSExcelGetCellValue2["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValue2workbookName);
                 mSExcelGetCellValue2propCount++;
             }
 
             if (mSExcelGetCellValue2worksheetName != null)
             {
-                mSExcelGetCellValue2["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2worksheetName);
+                mSExcelGetCellValue2["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValue2worksheetName);
                 mSExcelGetCellValue2propCount++;
             }
 
             mSExcelGetCellValue2propCount++;
-            mSExcelGetCellValue2["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2cellReference);
+            mSExcelGetCellValue2["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValue2cellReference);
             mSExcelGetCellValue2propCount++;
-            mSExcelGetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2workflow);
+            mSExcelGetCellValue2["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellValue2workflow);
             if (mSExcelGetCellValue2propCount > 0)
             {
                 callPayload.Body = mSExcelGetCellValue2;
@@ -2177,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetCellTexthandle != null)
                 {
-                    mSExcelGetCellText["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellTexthandle);
+                    mSExcelGetCellText["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellTexthandle);
                     mSExcelGetCellTextpropCount++;
                 }
 
@@ -2191,20 +2191,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetCellTextworkbookName != null)
             {
-                mSExcelGetCellText["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworkbookName);
+                mSExcelGetCellText["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellTextworkbookName);
                 mSExcelGetCellTextpropCount++;
             }
 
             if (mSExcelGetCellTextworksheetName != null)
             {
-                mSExcelGetCellText["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworksheetName);
+                mSExcelGetCellText["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellTextworksheetName);
                 mSExcelGetCellTextpropCount++;
             }
 
             mSExcelGetCellTextpropCount++;
-            mSExcelGetCellText["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellTextcellReference);
+            mSExcelGetCellText["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellTextcellReference);
             mSExcelGetCellTextpropCount++;
-            mSExcelGetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworkflow);
+            mSExcelGetCellText["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellTextworkflow);
             if (mSExcelGetCellTextpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellText;
@@ -2225,7 +2225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSetCellValuehandle != null)
                 {
-                    mSExcelSetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellValuehandle);
+                    mSExcelSetCellValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValuehandle);
                     mSExcelSetCellValuepropCount++;
                 }
 
@@ -2239,21 +2239,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSetCellValueworkbookName != null)
             {
-                mSExcelSetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworkbookName);
+                mSExcelSetCellValue["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValueworkbookName);
                 mSExcelSetCellValuepropCount++;
             }
 
             if (mSExcelSetCellValueworksheetName != null)
             {
-                mSExcelSetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworksheetName);
+                mSExcelSetCellValue["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValueworksheetName);
                 mSExcelSetCellValuepropCount++;
             }
 
             mSExcelSetCellValuepropCount++;
-            mSExcelSetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellReference);
+            mSExcelSetCellValue["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValuecellReference);
             if (mSExcelSetCellValuecellValue != null)
             {
-                mSExcelSetCellValue["CellValue"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellValue);
+                mSExcelSetCellValue["CellValue"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValuecellValue);
                 mSExcelSetCellValuepropCount++;
             }
 
@@ -2261,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSetCellValuecellValueContainsStoredPassword != null)
                 {
-                    mSExcelSetCellValue["CellValueContainsStoredPassword"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellValueContainsStoredPassword);
+                    mSExcelSetCellValue["CellValueContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValuecellValueContainsStoredPassword);
                     mSExcelSetCellValuepropCount++;
                 }
 
@@ -2274,7 +2274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSetCellValuepropCount++;
-            mSExcelSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworkflow);
+            mSExcelSetCellValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellValueworkflow);
             if (mSExcelSetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelSetCellValue;
@@ -2295,7 +2295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelFindNextCellWithValuehandle != null)
                 {
-                    mSExcelFindNextCellWithValue["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuehandle);
+                    mSExcelFindNextCellWithValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValuehandle);
                     mSExcelFindNextCellWithValuepropCount++;
                 }
 
@@ -2309,25 +2309,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelFindNextCellWithValueworkbookName != null)
             {
-                mSExcelFindNextCellWithValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworkbookName);
+                mSExcelFindNextCellWithValue["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValueworkbookName);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
             if (mSExcelFindNextCellWithValueworksheetName != null)
             {
-                mSExcelFindNextCellWithValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworksheetName);
+                mSExcelFindNextCellWithValue["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValueworksheetName);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
             mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuedirection);
+            mSExcelFindNextCellWithValue["Direction"] = CSharpExpressionConverter.Convert(mSExcelFindNextCellWithValuedirection);
             mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["SearchValue"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuesearchValue);
+            mSExcelFindNextCellWithValue["SearchValue"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValuesearchValue);
             if (mSExcelFindNextCellWithValuecaseSensitive != null)
             {
                 if (mSExcelFindNextCellWithValuecaseSensitive != null)
                 {
-                    mSExcelFindNextCellWithValue["CaseSensitive"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuecaseSensitive);
+                    mSExcelFindNextCellWithValue["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValuecaseSensitive);
                     mSExcelFindNextCellWithValuepropCount++;
                 }
 
@@ -2341,13 +2341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelFindNextCellWithValuecomparisonType != null)
             {
-                mSExcelFindNextCellWithValue["ComparisonType"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuecomparisonType);
+                mSExcelFindNextCellWithValue["ComparisonType"] = CSharpExpressionConverter.Convert(mSExcelFindNextCellWithValuecomparisonType);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
             if (mSExcelFindNextCellWithValuemaxCellsToSearch != null)
             {
-                mSExcelFindNextCellWithValue["MaxCellsToSearch"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuemaxCellsToSearch);
+                mSExcelFindNextCellWithValue["MaxCellsToSearch"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValuemaxCellsToSearch);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
@@ -2355,7 +2355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelFindNextCellWithValueactivateCell != null)
                 {
-                    mSExcelFindNextCellWithValue["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueactivateCell);
+                    mSExcelFindNextCellWithValue["ActivateCell"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValueactivateCell);
                     mSExcelFindNextCellWithValuepropCount++;
                 }
 
@@ -2368,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworkflow);
+            mSExcelFindNextCellWithValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextCellWithValueworkflow);
             if (mSExcelFindNextCellWithValuepropCount > 0)
             {
                 callPayload.Body = mSExcelFindNextCellWithValue;
@@ -2389,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelFindNextEmptyCellhandle != null)
                 {
-                    mSExcelFindNextEmptyCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellhandle);
+                    mSExcelFindNextEmptyCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextEmptyCellhandle);
                     mSExcelFindNextEmptyCellpropCount++;
                 }
 
@@ -2403,23 +2403,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelFindNextEmptyCellworkbookName != null)
             {
-                mSExcelFindNextEmptyCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworkbookName);
+                mSExcelFindNextEmptyCell["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextEmptyCellworkbookName);
                 mSExcelFindNextEmptyCellpropCount++;
             }
 
             if (mSExcelFindNextEmptyCellworksheetName != null)
             {
-                mSExcelFindNextEmptyCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworksheetName);
+                mSExcelFindNextEmptyCell["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextEmptyCellworksheetName);
                 mSExcelFindNextEmptyCellpropCount++;
             }
 
             mSExcelFindNextEmptyCellpropCount++;
-            mSExcelFindNextEmptyCell["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCelldirection);
+            mSExcelFindNextEmptyCell["Direction"] = CSharpExpressionConverter.Convert(mSExcelFindNextEmptyCelldirection);
             if (mSExcelFindNextEmptyCellactivateCell != null)
             {
                 if (mSExcelFindNextEmptyCellactivateCell != null)
                 {
-                    mSExcelFindNextEmptyCell["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellactivateCell);
+                    mSExcelFindNextEmptyCell["ActivateCell"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextEmptyCellactivateCell);
                     mSExcelFindNextEmptyCellpropCount++;
                 }
 
@@ -2432,7 +2432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelFindNextEmptyCellpropCount++;
-            mSExcelFindNextEmptyCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworkflow);
+            mSExcelFindNextEmptyCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelFindNextEmptyCellworkflow);
             if (mSExcelFindNextEmptyCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFindNextEmptyCell;
@@ -2453,7 +2453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGotoNextEmptyCellLefthandle != null)
                 {
-                    mSExcelGotoNextEmptyCellLeft["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLefthandle);
+                    mSExcelGotoNextEmptyCellLeft["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellLefthandle);
                     mSExcelGotoNextEmptyCellLeftpropCount++;
                 }
 
@@ -2467,18 +2467,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGotoNextEmptyCellLeftworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellLeft["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworkbookName);
+                mSExcelGotoNextEmptyCellLeft["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellLeftworkbookName);
                 mSExcelGotoNextEmptyCellLeftpropCount++;
             }
 
             if (mSExcelGotoNextEmptyCellLeftworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellLeft["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworksheetName);
+                mSExcelGotoNextEmptyCellLeft["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellLeftworksheetName);
                 mSExcelGotoNextEmptyCellLeftpropCount++;
             }
 
             mSExcelGotoNextEmptyCellLeftpropCount++;
-            mSExcelGotoNextEmptyCellLeft["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworkflow);
+            mSExcelGotoNextEmptyCellLeft["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellLeftworkflow);
             if (mSExcelGotoNextEmptyCellLeftpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellLeft;
@@ -2499,7 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGotoNextEmptyCellRighthandle != null)
                 {
-                    mSExcelGotoNextEmptyCellRight["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRighthandle);
+                    mSExcelGotoNextEmptyCellRight["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellRighthandle);
                     mSExcelGotoNextEmptyCellRightpropCount++;
                 }
 
@@ -2513,18 +2513,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGotoNextEmptyCellRightworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellRight["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworkbookName);
+                mSExcelGotoNextEmptyCellRight["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellRightworkbookName);
                 mSExcelGotoNextEmptyCellRightpropCount++;
             }
 
             if (mSExcelGotoNextEmptyCellRightworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellRight["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworksheetName);
+                mSExcelGotoNextEmptyCellRight["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellRightworksheetName);
                 mSExcelGotoNextEmptyCellRightpropCount++;
             }
 
             mSExcelGotoNextEmptyCellRightpropCount++;
-            mSExcelGotoNextEmptyCellRight["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworkflow);
+            mSExcelGotoNextEmptyCellRight["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellRightworkflow);
             if (mSExcelGotoNextEmptyCellRightpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellRight;
@@ -2545,7 +2545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGotoNextEmptyCellUphandle != null)
                 {
-                    mSExcelGotoNextEmptyCellUp["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUphandle);
+                    mSExcelGotoNextEmptyCellUp["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellUphandle);
                     mSExcelGotoNextEmptyCellUppropCount++;
                 }
 
@@ -2559,18 +2559,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGotoNextEmptyCellUpworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellUp["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworkbookName);
+                mSExcelGotoNextEmptyCellUp["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellUpworkbookName);
                 mSExcelGotoNextEmptyCellUppropCount++;
             }
 
             if (mSExcelGotoNextEmptyCellUpworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellUp["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworksheetName);
+                mSExcelGotoNextEmptyCellUp["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellUpworksheetName);
                 mSExcelGotoNextEmptyCellUppropCount++;
             }
 
             mSExcelGotoNextEmptyCellUppropCount++;
-            mSExcelGotoNextEmptyCellUp["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworkflow);
+            mSExcelGotoNextEmptyCellUp["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellUpworkflow);
             if (mSExcelGotoNextEmptyCellUppropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellUp;
@@ -2591,7 +2591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGotoNextEmptyCellDownhandle != null)
                 {
-                    mSExcelGotoNextEmptyCellDown["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownhandle);
+                    mSExcelGotoNextEmptyCellDown["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellDownhandle);
                     mSExcelGotoNextEmptyCellDownpropCount++;
                 }
 
@@ -2605,18 +2605,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGotoNextEmptyCellDownworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellDown["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworkbookName);
+                mSExcelGotoNextEmptyCellDown["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellDownworkbookName);
                 mSExcelGotoNextEmptyCellDownpropCount++;
             }
 
             if (mSExcelGotoNextEmptyCellDownworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellDown["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworksheetName);
+                mSExcelGotoNextEmptyCellDown["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellDownworksheetName);
                 mSExcelGotoNextEmptyCellDownpropCount++;
             }
 
             mSExcelGotoNextEmptyCellDownpropCount++;
-            mSExcelGotoNextEmptyCellDown["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworkflow);
+            mSExcelGotoNextEmptyCellDown["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGotoNextEmptyCellDownworkflow);
             if (mSExcelGotoNextEmptyCellDownpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellDown;
@@ -2637,7 +2637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookhandle != null)
                 {
-                    mSExcelSaveWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookhandle);
+                    mSExcelSaveWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookhandle);
                     mSExcelSaveWorkbookpropCount++;
                 }
 
@@ -2651,12 +2651,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSaveWorkbookworkbookName != null)
             {
-                mSExcelSaveWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookworkbookName);
+                mSExcelSaveWorkbook["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookworkbookName);
                 mSExcelSaveWorkbookpropCount++;
             }
 
             mSExcelSaveWorkbookpropCount++;
-            mSExcelSaveWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookworkflow);
+            mSExcelSaveWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookworkflow);
             if (mSExcelSaveWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbook;
@@ -2677,7 +2677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookAshandle != null)
                 {
-                    mSExcelSaveWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAshandle);
+                    mSExcelSaveWorkbookAs["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAshandle);
                     mSExcelSaveWorkbookAspropCount++;
                 }
 
@@ -2691,17 +2691,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSaveWorkbookAsworkbookName != null)
             {
-                mSExcelSaveWorkbookAs["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsworkbookName);
+                mSExcelSaveWorkbookAs["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsworkbookName);
                 mSExcelSaveWorkbookAspropCount++;
             }
 
             mSExcelSaveWorkbookAspropCount++;
-            mSExcelSaveWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAssaveFilename);
+            mSExcelSaveWorkbookAs["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAssaveFilename);
             if (mSExcelSaveWorkbookAsdeleteExistingSaveFilename != null)
             {
                 if (mSExcelSaveWorkbookAsdeleteExistingSaveFilename != null)
                 {
-                    mSExcelSaveWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsdeleteExistingSaveFilename);
+                    mSExcelSaveWorkbookAs["DeleteExistingSaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsdeleteExistingSaveFilename);
                     mSExcelSaveWorkbookAspropCount++;
                 }
 
@@ -2717,7 +2717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookAsexcelFileFormat != null)
                 {
-                    mSExcelSaveWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsexcelFileFormat);
+                    mSExcelSaveWorkbookAs["ExcelFileFormat"] = CSharpExpressionConverter.Convert(mSExcelSaveWorkbookAsexcelFileFormat);
                     mSExcelSaveWorkbookAspropCount++;
                 }
 
@@ -2730,7 +2730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveWorkbookAspropCount++;
-            mSExcelSaveWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsworkflow);
+            mSExcelSaveWorkbookAs["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsworkflow);
             if (mSExcelSaveWorkbookAspropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAs;
@@ -2751,7 +2751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookAsCSVhandle != null)
                 {
-                    mSExcelSaveWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVhandle);
+                    mSExcelSaveWorkbookAsCSV["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsCSVhandle);
                     mSExcelSaveWorkbookAsCSVpropCount++;
                 }
 
@@ -2765,17 +2765,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSaveWorkbookAsCSVworkbookName != null)
             {
-                mSExcelSaveWorkbookAsCSV["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVworkbookName);
+                mSExcelSaveWorkbookAsCSV["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsCSVworkbookName);
                 mSExcelSaveWorkbookAsCSVpropCount++;
             }
 
             mSExcelSaveWorkbookAsCSVpropCount++;
-            mSExcelSaveWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVsaveFilename);
+            mSExcelSaveWorkbookAsCSV["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsCSVsaveFilename);
             if (mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename != null)
             {
                 if (mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename != null)
                 {
-                    mSExcelSaveWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename);
+                    mSExcelSaveWorkbookAsCSV["DeleteExistingSaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename);
                     mSExcelSaveWorkbookAsCSVpropCount++;
                 }
 
@@ -2788,7 +2788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveWorkbookAsCSVpropCount++;
-            mSExcelSaveWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVworkflow);
+            mSExcelSaveWorkbookAsCSV["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsCSVworkflow);
             if (mSExcelSaveWorkbookAsCSVpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAsCSV;
@@ -2809,7 +2809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookAsWithPasswordhandle != null)
                 {
-                    mSExcelSaveWorkbookAsWithPassword["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordhandle);
+                    mSExcelSaveWorkbookAsWithPassword["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPasswordhandle);
                     mSExcelSaveWorkbookAsWithPasswordpropCount++;
                 }
 
@@ -2823,19 +2823,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSaveWorkbookAsWithPasswordworkbookName != null)
             {
-                mSExcelSaveWorkbookAsWithPassword["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordworkbookName);
+                mSExcelSaveWorkbookAsWithPassword["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPasswordworkbookName);
                 mSExcelSaveWorkbookAsWithPasswordpropCount++;
             }
 
             mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordsaveFilename);
+            mSExcelSaveWorkbookAsWithPassword["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPasswordsaveFilename);
             mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["Password"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordpassword);
+            mSExcelSaveWorkbookAsWithPassword["Password"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPasswordpassword);
             if (mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename != null)
             {
                 if (mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename != null)
                 {
-                    mSExcelSaveWorkbookAsWithPassword["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename);
+                    mSExcelSaveWorkbookAsWithPassword["DeleteExistingSaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename);
                     mSExcelSaveWorkbookAsWithPasswordpropCount++;
                 }
 
@@ -2851,7 +2851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveWorkbookAsWithPasswordexcelFileFormat != null)
                 {
-                    mSExcelSaveWorkbookAsWithPassword["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat);
+                    mSExcelSaveWorkbookAsWithPassword["ExcelFileFormat"] = CSharpExpressionConverter.Convert(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat);
                     mSExcelSaveWorkbookAsWithPasswordpropCount++;
                 }
 
@@ -2864,7 +2864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordworkflow);
+            mSExcelSaveWorkbookAsWithPassword["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveWorkbookAsWithPasswordworkflow);
             if (mSExcelSaveWorkbookAsWithPasswordpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAsWithPassword;
@@ -2885,7 +2885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveCurrentWorkbookhandle != null)
                 {
-                    mSExcelSaveCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookhandle);
+                    mSExcelSaveCurrentWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookhandle);
                     mSExcelSaveCurrentWorkbookpropCount++;
                 }
 
@@ -2898,7 +2898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveCurrentWorkbookpropCount++;
-            mSExcelSaveCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookworkflow);
+            mSExcelSaveCurrentWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookworkflow);
             if (mSExcelSaveCurrentWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbook;
@@ -2919,7 +2919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveCurrentWorkbookAshandle != null)
                 {
-                    mSExcelSaveCurrentWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAshandle);
+                    mSExcelSaveCurrentWorkbookAs["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAshandle);
                     mSExcelSaveCurrentWorkbookAspropCount++;
                 }
 
@@ -2933,7 +2933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSaveCurrentWorkbookAssaveFilename != null)
             {
-                mSExcelSaveCurrentWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAssaveFilename);
+                mSExcelSaveCurrentWorkbookAs["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAssaveFilename);
                 mSExcelSaveCurrentWorkbookAspropCount++;
             }
 
@@ -2941,7 +2941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename != null)
                 {
-                    mSExcelSaveCurrentWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename);
+                    mSExcelSaveCurrentWorkbookAs["DeleteExistingSaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename);
                     mSExcelSaveCurrentWorkbookAspropCount++;
                 }
 
@@ -2957,7 +2957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveCurrentWorkbookAsexcelFileFormat != null)
                 {
-                    mSExcelSaveCurrentWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsexcelFileFormat);
+                    mSExcelSaveCurrentWorkbookAs["ExcelFileFormat"] = CSharpExpressionConverter.Convert(mSExcelSaveCurrentWorkbookAsexcelFileFormat);
                     mSExcelSaveCurrentWorkbookAspropCount++;
                 }
 
@@ -2970,7 +2970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveCurrentWorkbookAspropCount++;
-            mSExcelSaveCurrentWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsworkflow);
+            mSExcelSaveCurrentWorkbookAs["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsworkflow);
             if (mSExcelSaveCurrentWorkbookAspropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbookAs;
@@ -2991,7 +2991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSaveCurrentWorkbookAsCSVhandle != null)
                 {
-                    mSExcelSaveCurrentWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVhandle);
+                    mSExcelSaveCurrentWorkbookAsCSV["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsCSVhandle);
                     mSExcelSaveCurrentWorkbookAsCSVpropCount++;
                 }
 
@@ -3004,12 +3004,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveCurrentWorkbookAsCSVpropCount++;
-            mSExcelSaveCurrentWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVsaveFilename);
+            mSExcelSaveCurrentWorkbookAsCSV["SaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsCSVsaveFilename);
             if (mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename != null)
             {
                 if (mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename != null)
                 {
-                    mSExcelSaveCurrentWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename);
+                    mSExcelSaveCurrentWorkbookAsCSV["DeleteExistingSaveFilename"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename);
                     mSExcelSaveCurrentWorkbookAsCSVpropCount++;
                 }
 
@@ -3022,7 +3022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSaveCurrentWorkbookAsCSVpropCount++;
-            mSExcelSaveCurrentWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVworkflow);
+            mSExcelSaveCurrentWorkbookAsCSV["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSaveCurrentWorkbookAsCSVworkflow);
             if (mSExcelSaveCurrentWorkbookAsCSVpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbookAsCSV;
@@ -3043,7 +3043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetNameshandle != null)
                 {
-                    mSExcelGetWorksheetNames["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameshandle);
+                    mSExcelGetWorksheetNames["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNameshandle);
                     mSExcelGetWorksheetNamespropCount++;
                 }
 
@@ -3057,12 +3057,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetNamesworkbookName != null)
             {
-                mSExcelGetWorksheetNames["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesworkbookName);
+                mSExcelGetWorksheetNames["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNamesworkbookName);
                 mSExcelGetWorksheetNamespropCount++;
             }
 
             mSExcelGetWorksheetNamespropCount++;
-            mSExcelGetWorksheetNames["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesworkflow);
+            mSExcelGetWorksheetNames["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNamesworkflow);
             if (mSExcelGetWorksheetNamespropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetNames;
@@ -3083,7 +3083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetNamehandle != null)
                 {
-                    mSExcelGetWorksheetName["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamehandle);
+                    mSExcelGetWorksheetName["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNamehandle);
                     mSExcelGetWorksheetNamepropCount++;
                 }
 
@@ -3097,18 +3097,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetNameworkbookName != null)
             {
-                mSExcelGetWorksheetName["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameworkbookName);
+                mSExcelGetWorksheetName["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNameworkbookName);
                 mSExcelGetWorksheetNamepropCount++;
             }
 
             if (mSExcelGetWorksheetNameposition != null)
             {
-                mSExcelGetWorksheetName["Position"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameposition);
+                mSExcelGetWorksheetName["Position"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNameposition);
                 mSExcelGetWorksheetNamepropCount++;
             }
 
             mSExcelGetWorksheetNamepropCount++;
-            mSExcelGetWorksheetName["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameworkflow);
+            mSExcelGetWorksheetName["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetNameworkflow);
             if (mSExcelGetWorksheetNamepropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetName;
@@ -3129,7 +3129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelActivateWorksheethandle != null)
                 {
-                    mSExcelActivateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheethandle);
+                    mSExcelActivateWorksheet["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelActivateWorksheethandle);
                     mSExcelActivateWorksheetpropCount++;
                 }
 
@@ -3143,13 +3143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelActivateWorksheetworkbookName != null)
             {
-                mSExcelActivateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworkbookName);
+                mSExcelActivateWorksheet["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelActivateWorksheetworkbookName);
                 mSExcelActivateWorksheetpropCount++;
             }
 
             if (mSExcelActivateWorksheetworksheetName != null)
             {
-                mSExcelActivateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworksheetName);
+                mSExcelActivateWorksheet["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelActivateWorksheetworksheetName);
                 mSExcelActivateWorksheetpropCount++;
             }
 
@@ -3157,7 +3157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelActivateWorksheetcreateIfMissing != null)
                 {
-                    mSExcelActivateWorksheet["CreateIfMissing"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetcreateIfMissing);
+                    mSExcelActivateWorksheet["CreateIfMissing"] = CSharpExpressionConverter.ConvertToken(mSExcelActivateWorksheetcreateIfMissing);
                     mSExcelActivateWorksheetpropCount++;
                 }
 
@@ -3170,7 +3170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelActivateWorksheetpropCount++;
-            mSExcelActivateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworkflow);
+            mSExcelActivateWorksheet["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelActivateWorksheetworkflow);
             if (mSExcelActivateWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelActivateWorksheet;
@@ -3191,7 +3191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCreateWorksheethandle != null)
                 {
-                    mSExcelCreateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheethandle);
+                    mSExcelCreateWorksheet["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorksheethandle);
                     mSExcelCreateWorksheetpropCount++;
                 }
 
@@ -3205,18 +3205,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCreateWorksheetworkbookName != null)
             {
-                mSExcelCreateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworkbookName);
+                mSExcelCreateWorksheet["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorksheetworkbookName);
                 mSExcelCreateWorksheetpropCount++;
             }
 
             if (mSExcelCreateWorksheetworksheetName != null)
             {
-                mSExcelCreateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworksheetName);
+                mSExcelCreateWorksheet["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorksheetworksheetName);
                 mSExcelCreateWorksheetpropCount++;
             }
 
             mSExcelCreateWorksheetpropCount++;
-            mSExcelCreateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworkflow);
+            mSExcelCreateWorksheet["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCreateWorksheetworkflow);
             if (mSExcelCreateWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelCreateWorksheet;
@@ -3237,7 +3237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelDeleteWorksheethandle != null)
                 {
-                    mSExcelDeleteWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheethandle);
+                    mSExcelDeleteWorksheet["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteWorksheethandle);
                     mSExcelDeleteWorksheetpropCount++;
                 }
 
@@ -3251,18 +3251,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelDeleteWorksheetworkbookName != null)
             {
-                mSExcelDeleteWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworkbookName);
+                mSExcelDeleteWorksheet["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteWorksheetworkbookName);
                 mSExcelDeleteWorksheetpropCount++;
             }
 
             if (mSExcelDeleteWorksheetworksheetName != null)
             {
-                mSExcelDeleteWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworksheetName);
+                mSExcelDeleteWorksheet["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteWorksheetworksheetName);
                 mSExcelDeleteWorksheetpropCount++;
             }
 
             mSExcelDeleteWorksheetpropCount++;
-            mSExcelDeleteWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworkflow);
+            mSExcelDeleteWorksheet["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteWorksheetworkflow);
             if (mSExcelDeleteWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelDeleteWorksheet;
@@ -3283,7 +3283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedhandle != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedhandle);
+                    mSExcelGetWorksheetAsCollectionEnhanced["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedhandle);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3297,13 +3297,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetAsCollectionEnhancedworkbookName != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworkbookName);
+                mSExcelGetWorksheetAsCollectionEnhanced["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedworkbookName);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
             if (mSExcelGetWorksheetAsCollectionEnhancedworksheetName != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworksheetName);
+                mSExcelGetWorksheetAsCollectionEnhanced["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedworksheetName);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
@@ -3311,7 +3311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhanceduseHeader != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["UseHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhanceduseHeader);
+                    mSExcelGetWorksheetAsCollectionEnhanced["UseHeader"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhanceduseHeader);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3325,7 +3325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetAsCollectionEnhancedstartCell != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["StartCell"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedstartCell);
+                mSExcelGetWorksheetAsCollectionEnhanced["StartCell"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedstartCell);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
@@ -3333,7 +3333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["MaximumColumnNumber"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber);
+                    mSExcelGetWorksheetAsCollectionEnhanced["MaximumColumnNumber"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3349,7 +3349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["SkipBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows);
+                    mSExcelGetWorksheetAsCollectionEnhanced["SkipBlankRows"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3365,7 +3365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["SkipColumnsWithNoHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader);
+                    mSExcelGetWorksheetAsCollectionEnhanced["SkipColumnsWithNoHeader"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3379,7 +3379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetAsCollectionEnhancedkeyColumn != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["KeyColumn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn);
+                mSExcelGetWorksheetAsCollectionEnhanced["KeyColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
@@ -3387,7 +3387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedgetRawData != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["GetRawData"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedgetRawData);
+                    mSExcelGetWorksheetAsCollectionEnhanced["GetRawData"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedgetRawData);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3403,7 +3403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["IgnoreRowsWithLowCellCount"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount);
+                    mSExcelGetWorksheetAsCollectionEnhanced["IgnoreRowsWithLowCellCount"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3419,7 +3419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["MaxConcurrentBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows);
+                    mSExcelGetWorksheetAsCollectionEnhanced["MaxConcurrentBlankRows"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3435,7 +3435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["FirstDataRowToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn);
+                    mSExcelGetWorksheetAsCollectionEnhanced["FirstDataRowToReturn"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3451,7 +3451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn != null)
                 {
-                    mSExcelGetWorksheetAsCollectionEnhanced["MaxNumberOfDataRowsToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn);
+                    mSExcelGetWorksheetAsCollectionEnhanced["MaxNumberOfDataRowsToReturn"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn);
                     mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
                 }
 
@@ -3464,7 +3464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
-            mSExcelGetWorksheetAsCollectionEnhanced["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworkflow);
+            mSExcelGetWorksheetAsCollectionEnhanced["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetAsCollectionEnhancedworkflow);
             if (mSExcelGetWorksheetAsCollectionEnhancedpropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetAsCollectionEnhanced;
@@ -3485,7 +3485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetNumberOfRowshandle != null)
                 {
-                    mSExcelGetNumberOfRows["Handle"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowshandle);
+                    mSExcelGetNumberOfRows["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetNumberOfRowshandle);
                     mSExcelGetNumberOfRowspropCount++;
                 }
 
@@ -3499,18 +3499,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetNumberOfRowsworkbookName != null)
             {
-                mSExcelGetNumberOfRows["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworkbookName);
+                mSExcelGetNumberOfRows["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetNumberOfRowsworkbookName);
                 mSExcelGetNumberOfRowspropCount++;
             }
 
             if (mSExcelGetNumberOfRowsworksheetName != null)
             {
-                mSExcelGetNumberOfRows["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworksheetName);
+                mSExcelGetNumberOfRows["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetNumberOfRowsworksheetName);
                 mSExcelGetNumberOfRowspropCount++;
             }
 
             mSExcelGetNumberOfRowspropCount++;
-            mSExcelGetNumberOfRows["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworkflow);
+            mSExcelGetNumberOfRows["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetNumberOfRowsworkflow);
             if (mSExcelGetNumberOfRowspropCount > 0)
             {
                 callPayload.Body = mSExcelGetNumberOfRows;
@@ -3531,7 +3531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelEvaluateExpressionhandle != null)
                 {
-                    mSExcelEvaluateExpression["Handle"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionhandle);
+                    mSExcelEvaluateExpression["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelEvaluateExpressionhandle);
                     mSExcelEvaluateExpressionpropCount++;
                 }
 
@@ -3544,9 +3544,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelEvaluateExpressionpropCount++;
-            mSExcelEvaluateExpression["Expression"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionexpression);
+            mSExcelEvaluateExpression["Expression"] = CSharpExpressionConverter.ConvertToken(mSExcelEvaluateExpressionexpression);
             mSExcelEvaluateExpressionpropCount++;
-            mSExcelEvaluateExpression["Workflow"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionworkflow);
+            mSExcelEvaluateExpression["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelEvaluateExpressionworkflow);
             if (mSExcelEvaluateExpressionpropCount > 0)
             {
                 callPayload.Body = mSExcelEvaluateExpression;
@@ -3567,7 +3567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetUsedRangehandle != null)
                 {
-                    mSExcelGetWorksheetUsedRange["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangehandle);
+                    mSExcelGetWorksheetUsedRange["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetUsedRangehandle);
                     mSExcelGetWorksheetUsedRangepropCount++;
                 }
 
@@ -3581,18 +3581,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetUsedRangeworkbookName != null)
             {
-                mSExcelGetWorksheetUsedRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworkbookName);
+                mSExcelGetWorksheetUsedRange["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetUsedRangeworkbookName);
                 mSExcelGetWorksheetUsedRangepropCount++;
             }
 
             if (mSExcelGetWorksheetUsedRangeworksheetName != null)
             {
-                mSExcelGetWorksheetUsedRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworksheetName);
+                mSExcelGetWorksheetUsedRange["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetUsedRangeworksheetName);
                 mSExcelGetWorksheetUsedRangepropCount++;
             }
 
             mSExcelGetWorksheetUsedRangepropCount++;
-            mSExcelGetWorksheetUsedRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworkflow);
+            mSExcelGetWorksheetUsedRange["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetUsedRangeworkflow);
             if (mSExcelGetWorksheetUsedRangepropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetUsedRange;
@@ -3613,7 +3613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetCountrySettinghandle != null)
                 {
-                    mSExcelGetCountrySetting["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettinghandle);
+                    mSExcelGetCountrySetting["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCountrySettinghandle);
                     mSExcelGetCountrySettingpropCount++;
                 }
 
@@ -3626,7 +3626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelGetCountrySettingpropCount++;
-            mSExcelGetCountrySetting["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettingworkflow);
+            mSExcelGetCountrySetting["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCountrySettingworkflow);
             if (mSExcelGetCountrySettingpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCountrySetting;
@@ -3647,7 +3647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelWriteCollectionhandle != null)
                 {
-                    mSExcelWriteCollection["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionhandle);
+                    mSExcelWriteCollection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionhandle);
                     mSExcelWriteCollectionpropCount++;
                 }
 
@@ -3661,25 +3661,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelWriteCollectionworkbookName != null)
             {
-                mSExcelWriteCollection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworkbookName);
+                mSExcelWriteCollection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionworkbookName);
                 mSExcelWriteCollectionpropCount++;
             }
 
             if (mSExcelWriteCollectionworksheetName != null)
             {
-                mSExcelWriteCollection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworksheetName);
+                mSExcelWriteCollection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionworksheetName);
                 mSExcelWriteCollectionpropCount++;
             }
 
             mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectioncellReference);
+            mSExcelWriteCollection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectioncellReference);
             mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectioncollectionToWriteJSON);
+            mSExcelWriteCollection["CollectionToWriteJSON"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectioncollectionToWriteJSON);
             if (mSExcelWriteCollectionincludeColumnNames != null)
             {
                 if (mSExcelWriteCollectionincludeColumnNames != null)
                 {
-                    mSExcelWriteCollection["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionincludeColumnNames);
+                    mSExcelWriteCollection["IncludeColumnNames"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionincludeColumnNames);
                     mSExcelWriteCollectionpropCount++;
                 }
 
@@ -3692,7 +3692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworkflow);
+            mSExcelWriteCollection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionworkflow);
             if (mSExcelWriteCollectionpropCount > 0)
             {
                 callPayload.Body = mSExcelWriteCollection;
@@ -3713,7 +3713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelWriteCollectionWithDateshandle != null)
                 {
-                    mSExcelWriteCollectionWithDates["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDateshandle);
+                    mSExcelWriteCollectionWithDates["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDateshandle);
                     mSExcelWriteCollectionWithDatespropCount++;
                 }
 
@@ -3727,25 +3727,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelWriteCollectionWithDatesworkbookName != null)
             {
-                mSExcelWriteCollectionWithDates["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworkbookName);
+                mSExcelWriteCollectionWithDates["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatesworkbookName);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
             if (mSExcelWriteCollectionWithDatesworksheetName != null)
             {
-                mSExcelWriteCollectionWithDates["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworksheetName);
+                mSExcelWriteCollectionWithDates["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatesworksheetName);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
             mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescellReference);
+            mSExcelWriteCollectionWithDates["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatescellReference);
             mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescollectionToWriteJSON);
+            mSExcelWriteCollectionWithDates["CollectionToWriteJSON"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatescollectionToWriteJSON);
             if (mSExcelWriteCollectionWithDatesincludeColumnNames != null)
             {
                 if (mSExcelWriteCollectionWithDatesincludeColumnNames != null)
                 {
-                    mSExcelWriteCollectionWithDates["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesincludeColumnNames);
+                    mSExcelWriteCollectionWithDates["IncludeColumnNames"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatesincludeColumnNames);
                     mSExcelWriteCollectionWithDatespropCount++;
                 }
 
@@ -3761,7 +3761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate != null)
                 {
-                    mSExcelWriteCollectionWithDates["TryToConvertAllFieldsToDate"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate);
+                    mSExcelWriteCollectionWithDates["TryToConvertAllFieldsToDate"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate);
                     mSExcelWriteCollectionWithDatespropCount++;
                 }
 
@@ -3775,12 +3775,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON != null)
             {
-                mSExcelWriteCollectionWithDates["ColumnsToConvertToDateJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON);
+                mSExcelWriteCollectionWithDates["ColumnsToConvertToDateJSON"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
             mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworkflow);
+            mSExcelWriteCollectionWithDates["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteCollectionWithDatesworkflow);
             if (mSExcelWriteCollectionWithDatespropCount > 0)
             {
                 callPayload.Body = mSExcelWriteCollectionWithDates;
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetActiveCellhandle != null)
                 {
-                    mSExcelGetActiveCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellhandle);
+                    mSExcelGetActiveCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetActiveCellhandle);
                     mSExcelGetActiveCellpropCount++;
                 }
 
@@ -3814,7 +3814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelGetActiveCellpropCount++;
-            mSExcelGetActiveCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellworkflow);
+            mSExcelGetActiveCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetActiveCellworkflow);
             if (mSExcelGetActiveCellpropCount > 0)
             {
                 callPayload.Body = mSExcelGetActiveCell;
@@ -3835,7 +3835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelFormatCellhandle != null)
                 {
-                    mSExcelFormatCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCellhandle);
+                    mSExcelFormatCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellhandle);
                     mSExcelFormatCellpropCount++;
                 }
 
@@ -3849,22 +3849,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelFormatCellworkbookName != null)
             {
-                mSExcelFormatCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFormatCellworkbookName);
+                mSExcelFormatCell["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellworkbookName);
                 mSExcelFormatCellpropCount++;
             }
 
             if (mSExcelFormatCellworksheetName != null)
             {
-                mSExcelFormatCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFormatCellworksheetName);
+                mSExcelFormatCell["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellworksheetName);
                 mSExcelFormatCellpropCount++;
             }
 
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelFormatCellcellReference);
+            mSExcelFormatCell["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellcellReference);
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCellcellFormat);
+            mSExcelFormatCell["CellFormat"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellcellFormat);
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCellworkflow);
+            mSExcelFormatCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCellworkflow);
             if (mSExcelFormatCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFormatCell;
@@ -3885,7 +3885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelFormatCurrentCellhandle != null)
                 {
-                    mSExcelFormatCurrentCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellhandle);
+                    mSExcelFormatCurrentCell["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCurrentCellhandle);
                     mSExcelFormatCurrentCellpropCount++;
                 }
 
@@ -3898,9 +3898,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelFormatCurrentCellpropCount++;
-            mSExcelFormatCurrentCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellcellFormat);
+            mSExcelFormatCurrentCell["CellFormat"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCurrentCellcellFormat);
             mSExcelFormatCurrentCellpropCount++;
-            mSExcelFormatCurrentCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellworkflow);
+            mSExcelFormatCurrentCell["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelFormatCurrentCellworkflow);
             if (mSExcelFormatCurrentCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFormatCurrentCell;
@@ -3921,7 +3921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSelectCellRangehandle != null)
                 {
-                    mSExcelSelectCellRange["Handle"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangehandle);
+                    mSExcelSelectCellRange["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangehandle);
                     mSExcelSelectCellRangepropCount++;
                 }
 
@@ -3935,23 +3935,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSelectCellRangeworkbookName != null)
             {
-                mSExcelSelectCellRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworkbookName);
+                mSExcelSelectCellRange["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangeworkbookName);
                 mSExcelSelectCellRangepropCount++;
             }
 
             if (mSExcelSelectCellRangeworksheetName != null)
             {
-                mSExcelSelectCellRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworksheetName);
+                mSExcelSelectCellRange["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangeworksheetName);
                 mSExcelSelectCellRangepropCount++;
             }
 
             mSExcelSelectCellRangepropCount++;
-            mSExcelSelectCellRange["CellReference"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangecellReference);
+            mSExcelSelectCellRange["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangecellReference);
             if (mSExcelSelectCellRangeentireRow != null)
             {
                 if (mSExcelSelectCellRangeentireRow != null)
                 {
-                    mSExcelSelectCellRange["EntireRow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeentireRow);
+                    mSExcelSelectCellRange["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangeentireRow);
                     mSExcelSelectCellRangepropCount++;
                 }
 
@@ -3967,7 +3967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSelectCellRangeentireColumn != null)
                 {
-                    mSExcelSelectCellRange["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeentireColumn);
+                    mSExcelSelectCellRange["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangeentireColumn);
                     mSExcelSelectCellRangepropCount++;
                 }
 
@@ -3980,7 +3980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSelectCellRangepropCount++;
-            mSExcelSelectCellRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworkflow);
+            mSExcelSelectCellRange["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSelectCellRangeworkflow);
             if (mSExcelSelectCellRangepropCount > 0)
             {
                 callPayload.Body = mSExcelSelectCellRange;
@@ -4001,7 +4001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopySelectionhandle != null)
                 {
-                    mSExcelCopySelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCopySelectionhandle);
+                    mSExcelCopySelection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionhandle);
                     mSExcelCopySelectionpropCount++;
                 }
 
@@ -4015,19 +4015,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCopySelectionworkbookName != null)
             {
-                mSExcelCopySelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworkbookName);
+                mSExcelCopySelection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionworkbookName);
                 mSExcelCopySelectionpropCount++;
             }
 
             if (mSExcelCopySelectionworksheetName != null)
             {
-                mSExcelCopySelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworksheetName);
+                mSExcelCopySelection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionworksheetName);
                 mSExcelCopySelectionpropCount++;
             }
 
             if (mSExcelCopySelectioncellReference != null)
             {
-                mSExcelCopySelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCopySelectioncellReference);
+                mSExcelCopySelection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectioncellReference);
                 mSExcelCopySelectionpropCount++;
             }
 
@@ -4035,7 +4035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopySelectionentireRow != null)
                 {
-                    mSExcelCopySelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionentireRow);
+                    mSExcelCopySelection["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionentireRow);
                     mSExcelCopySelectionpropCount++;
                 }
 
@@ -4051,7 +4051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopySelectionentireColumn != null)
                 {
-                    mSExcelCopySelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopySelectionentireColumn);
+                    mSExcelCopySelection["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionentireColumn);
                     mSExcelCopySelectionpropCount++;
                 }
 
@@ -4064,7 +4064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCopySelectionpropCount++;
-            mSExcelCopySelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworkflow);
+            mSExcelCopySelection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCopySelectionworkflow);
             if (mSExcelCopySelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelCopySelection;
@@ -4085,7 +4085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutSelectionhandle != null)
                 {
-                    mSExcelCutSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCutSelectionhandle);
+                    mSExcelCutSelection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionhandle);
                     mSExcelCutSelectionpropCount++;
                 }
 
@@ -4099,19 +4099,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCutSelectionworkbookName != null)
             {
-                mSExcelCutSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworkbookName);
+                mSExcelCutSelection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionworkbookName);
                 mSExcelCutSelectionpropCount++;
             }
 
             if (mSExcelCutSelectionworksheetName != null)
             {
-                mSExcelCutSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworksheetName);
+                mSExcelCutSelection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionworksheetName);
                 mSExcelCutSelectionpropCount++;
             }
 
             if (mSExcelCutSelectioncellReference != null)
             {
-                mSExcelCutSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCutSelectioncellReference);
+                mSExcelCutSelection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectioncellReference);
                 mSExcelCutSelectionpropCount++;
             }
 
@@ -4119,7 +4119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutSelectionentireRow != null)
                 {
-                    mSExcelCutSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionentireRow);
+                    mSExcelCutSelection["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionentireRow);
                     mSExcelCutSelectionpropCount++;
                 }
 
@@ -4135,7 +4135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutSelectionentireColumn != null)
                 {
-                    mSExcelCutSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutSelectionentireColumn);
+                    mSExcelCutSelection["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionentireColumn);
                     mSExcelCutSelectionpropCount++;
                 }
 
@@ -4148,7 +4148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCutSelectionpropCount++;
-            mSExcelCutSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworkflow);
+            mSExcelCutSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCutSelectionworkflow);
             if (mSExcelCutSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelCutSelection;
@@ -4169,7 +4169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPasteIntoSelectionhandle != null)
                 {
-                    mSExcelPasteIntoSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionhandle);
+                    mSExcelPasteIntoSelection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionhandle);
                     mSExcelPasteIntoSelectionpropCount++;
                 }
 
@@ -4183,13 +4183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelPasteIntoSelectionworkbookName != null)
             {
-                mSExcelPasteIntoSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworkbookName);
+                mSExcelPasteIntoSelection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionworkbookName);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
             if (mSExcelPasteIntoSelectionworksheetName != null)
             {
-                mSExcelPasteIntoSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworksheetName);
+                mSExcelPasteIntoSelection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionworksheetName);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
@@ -4197,7 +4197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPasteIntoSelectionvaluesOnly != null)
                 {
-                    mSExcelPasteIntoSelection["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionvaluesOnly);
+                    mSExcelPasteIntoSelection["ValuesOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionvaluesOnly);
                     mSExcelPasteIntoSelectionpropCount++;
                 }
 
@@ -4213,7 +4213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPasteIntoSelectionsimplePasteOnly != null)
                 {
-                    mSExcelPasteIntoSelection["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionsimplePasteOnly);
+                    mSExcelPasteIntoSelection["SimplePasteOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionsimplePasteOnly);
                     mSExcelPasteIntoSelectionpropCount++;
                 }
 
@@ -4227,7 +4227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelPasteIntoSelectioncellReference != null)
             {
-                mSExcelPasteIntoSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectioncellReference);
+                mSExcelPasteIntoSelection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectioncellReference);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
@@ -4235,7 +4235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPasteIntoSelectionentireRow != null)
                 {
-                    mSExcelPasteIntoSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionentireRow);
+                    mSExcelPasteIntoSelection["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionentireRow);
                     mSExcelPasteIntoSelectionpropCount++;
                 }
 
@@ -4251,7 +4251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPasteIntoSelectionentireColumn != null)
                 {
-                    mSExcelPasteIntoSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionentireColumn);
+                    mSExcelPasteIntoSelection["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionentireColumn);
                     mSExcelPasteIntoSelectionpropCount++;
                 }
 
@@ -4264,7 +4264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelPasteIntoSelectionpropCount++;
-            mSExcelPasteIntoSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworkflow);
+            mSExcelPasteIntoSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelPasteIntoSelectionworkflow);
             if (mSExcelPasteIntoSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelPasteIntoSelection;
@@ -4285,7 +4285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelInsertOnSelectionhandle != null)
                 {
-                    mSExcelInsertOnSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionhandle);
+                    mSExcelInsertOnSelection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionhandle);
                     mSExcelInsertOnSelectionpropCount++;
                 }
 
@@ -4299,19 +4299,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelInsertOnSelectionworkbookName != null)
             {
-                mSExcelInsertOnSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworkbookName);
+                mSExcelInsertOnSelection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionworkbookName);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
             if (mSExcelInsertOnSelectionworksheetName != null)
             {
-                mSExcelInsertOnSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworksheetName);
+                mSExcelInsertOnSelection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionworksheetName);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
             if (mSExcelInsertOnSelectioncellReference != null)
             {
-                mSExcelInsertOnSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectioncellReference);
+                mSExcelInsertOnSelection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectioncellReference);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
@@ -4319,7 +4319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelInsertOnSelectionentireRow != null)
                 {
-                    mSExcelInsertOnSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionentireRow);
+                    mSExcelInsertOnSelection["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionentireRow);
                     mSExcelInsertOnSelectionpropCount++;
                 }
 
@@ -4335,7 +4335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelInsertOnSelectionentireColumn != null)
                 {
-                    mSExcelInsertOnSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionentireColumn);
+                    mSExcelInsertOnSelection["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionentireColumn);
                     mSExcelInsertOnSelectionpropCount++;
                 }
 
@@ -4349,12 +4349,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelInsertOnSelectionshift != null)
             {
-                mSExcelInsertOnSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionshift);
+                mSExcelInsertOnSelection["Shift"] = CSharpExpressionConverter.Convert(mSExcelInsertOnSelectionshift);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
             mSExcelInsertOnSelectionpropCount++;
-            mSExcelInsertOnSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworkflow);
+            mSExcelInsertOnSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelInsertOnSelectionworkflow);
             if (mSExcelInsertOnSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelInsertOnSelection;
@@ -4375,7 +4375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelDeleteSelectionhandle != null)
                 {
-                    mSExcelDeleteSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionhandle);
+                    mSExcelDeleteSelection["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionhandle);
                     mSExcelDeleteSelectionpropCount++;
                 }
 
@@ -4389,19 +4389,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelDeleteSelectionworkbookName != null)
             {
-                mSExcelDeleteSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworkbookName);
+                mSExcelDeleteSelection["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionworkbookName);
                 mSExcelDeleteSelectionpropCount++;
             }
 
             if (mSExcelDeleteSelectionworksheetName != null)
             {
-                mSExcelDeleteSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworksheetName);
+                mSExcelDeleteSelection["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionworksheetName);
                 mSExcelDeleteSelectionpropCount++;
             }
 
             if (mSExcelDeleteSelectioncellReference != null)
             {
-                mSExcelDeleteSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectioncellReference);
+                mSExcelDeleteSelection["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectioncellReference);
                 mSExcelDeleteSelectionpropCount++;
             }
 
@@ -4409,7 +4409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelDeleteSelectionentireRow != null)
                 {
-                    mSExcelDeleteSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionentireRow);
+                    mSExcelDeleteSelection["EntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionentireRow);
                     mSExcelDeleteSelectionpropCount++;
                 }
 
@@ -4425,7 +4425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelDeleteSelectionentireColumn != null)
                 {
-                    mSExcelDeleteSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionentireColumn);
+                    mSExcelDeleteSelection["EntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionentireColumn);
                     mSExcelDeleteSelectionpropCount++;
                 }
 
@@ -4439,12 +4439,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelDeleteSelectionshift != null)
             {
-                mSExcelDeleteSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionshift);
+                mSExcelDeleteSelection["Shift"] = CSharpExpressionConverter.Convert(mSExcelDeleteSelectionshift);
                 mSExcelDeleteSelectionpropCount++;
             }
 
             mSExcelDeleteSelectionpropCount++;
-            mSExcelDeleteSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworkflow);
+            mSExcelDeleteSelection["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelDeleteSelectionworkflow);
             if (mSExcelDeleteSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelDeleteSelection;
@@ -4465,7 +4465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelClearExcelClipboardhandle != null)
                 {
-                    mSExcelClearExcelClipboard["Handle"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardhandle);
+                    mSExcelClearExcelClipboard["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelClearExcelClipboardhandle);
                     mSExcelClearExcelClipboardpropCount++;
                 }
 
@@ -4478,7 +4478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelClearExcelClipboardpropCount++;
-            mSExcelClearExcelClipboard["Workflow"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardworkflow);
+            mSExcelClearExcelClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelClearExcelClipboardworkflow);
             if (mSExcelClearExcelClipboardpropCount > 0)
             {
                 callPayload.Body = mSExcelClearExcelClipboard;
@@ -4499,7 +4499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelRunMacrohandle != null)
                 {
-                    mSExcelRunMacro["Handle"] = ExpressionConverter.ConvertO(mSExcelRunMacrohandle);
+                    mSExcelRunMacro["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacrohandle);
                     mSExcelRunMacropropCount++;
                 }
 
@@ -4512,70 +4512,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelRunMacropropCount++;
-            mSExcelRunMacro["MacroName"] = ExpressionConverter.ConvertO(mSExcelRunMacromacroName);
+            mSExcelRunMacro["MacroName"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacromacroName);
             if (mSExcelRunMacronumberOfArguments != null)
             {
-                mSExcelRunMacro["NumberOfArguments"] = ExpressionConverter.ConvertO(mSExcelRunMacronumberOfArguments);
+                mSExcelRunMacro["NumberOfArguments"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacronumberOfArguments);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument1 != null)
             {
-                mSExcelRunMacro["Argument1"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument1);
+                mSExcelRunMacro["Argument1"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument1);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument2 != null)
             {
-                mSExcelRunMacro["Argument2"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument2);
+                mSExcelRunMacro["Argument2"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument2);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument3 != null)
             {
-                mSExcelRunMacro["Argument3"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument3);
+                mSExcelRunMacro["Argument3"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument3);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument4 != null)
             {
-                mSExcelRunMacro["Argument4"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument4);
+                mSExcelRunMacro["Argument4"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument4);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument5 != null)
             {
-                mSExcelRunMacro["Argument5"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument5);
+                mSExcelRunMacro["Argument5"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument5);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument6 != null)
             {
-                mSExcelRunMacro["Argument6"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument6);
+                mSExcelRunMacro["Argument6"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument6);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument7 != null)
             {
-                mSExcelRunMacro["Argument7"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument7);
+                mSExcelRunMacro["Argument7"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument7);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument8 != null)
             {
-                mSExcelRunMacro["Argument8"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument8);
+                mSExcelRunMacro["Argument8"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument8);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument9 != null)
             {
-                mSExcelRunMacro["Argument9"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument9);
+                mSExcelRunMacro["Argument9"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument9);
                 mSExcelRunMacropropCount++;
             }
 
             if (mSExcelRunMacroargument10 != null)
             {
-                mSExcelRunMacro["Argument10"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument10);
+                mSExcelRunMacro["Argument10"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroargument10);
                 mSExcelRunMacropropCount++;
             }
 
@@ -4583,7 +4583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelRunMacrorunInBackground != null)
                 {
-                    mSExcelRunMacro["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelRunMacrorunInBackground);
+                    mSExcelRunMacro["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacrorunInBackground);
                     mSExcelRunMacropropCount++;
                 }
 
@@ -4596,7 +4596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelRunMacropropCount++;
-            mSExcelRunMacro["Workflow"] = ExpressionConverter.ConvertO(mSExcelRunMacroworkflow);
+            mSExcelRunMacro["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelRunMacroworkflow);
             if (mSExcelRunMacropropCount > 0)
             {
                 callPayload.Body = mSExcelRunMacro;
@@ -4617,7 +4617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelAddMacroToWorkbookhandle != null)
                 {
-                    mSExcelAddMacroToWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookhandle);
+                    mSExcelAddMacroToWorkbook["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelAddMacroToWorkbookhandle);
                     mSExcelAddMacroToWorkbookpropCount++;
                 }
 
@@ -4631,14 +4631,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelAddMacroToWorkbookworkbookName != null)
             {
-                mSExcelAddMacroToWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookworkbookName);
+                mSExcelAddMacroToWorkbook["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelAddMacroToWorkbookworkbookName);
                 mSExcelAddMacroToWorkbookpropCount++;
             }
 
             mSExcelAddMacroToWorkbookpropCount++;
-            mSExcelAddMacroToWorkbook["MacroCode"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookmacroCode);
+            mSExcelAddMacroToWorkbook["MacroCode"] = CSharpExpressionConverter.ConvertToken(mSExcelAddMacroToWorkbookmacroCode);
             mSExcelAddMacroToWorkbookpropCount++;
-            mSExcelAddMacroToWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookworkflow);
+            mSExcelAddMacroToWorkbook["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelAddMacroToWorkbookworkflow);
             if (mSExcelAddMacroToWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelAddMacroToWorkbook;
@@ -4657,7 +4657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSExcelTrustVBOMInRegistrypropCount = 0;
             if (mSExcelTrustVBOMInRegistryexcelVersion != null)
             {
-                mSExcelTrustVBOMInRegistry["ExcelVersion"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryexcelVersion);
+                mSExcelTrustVBOMInRegistry["ExcelVersion"] = CSharpExpressionConverter.ConvertToken(mSExcelTrustVBOMInRegistryexcelVersion);
                 mSExcelTrustVBOMInRegistrypropCount++;
             }
 
@@ -4665,7 +4665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelTrustVBOMInRegistrytrustVBOM != null)
                 {
-                    mSExcelTrustVBOMInRegistry["TrustVBOM"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistrytrustVBOM);
+                    mSExcelTrustVBOMInRegistry["TrustVBOM"] = CSharpExpressionConverter.ConvertToken(mSExcelTrustVBOMInRegistrytrustVBOM);
                     mSExcelTrustVBOMInRegistrypropCount++;
                 }
 
@@ -4678,7 +4678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelTrustVBOMInRegistrypropCount++;
-            mSExcelTrustVBOMInRegistry["Workflow"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryworkflow);
+            mSExcelTrustVBOMInRegistry["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelTrustVBOMInRegistryworkflow);
             if (mSExcelTrustVBOMInRegistrypropCount > 0)
             {
                 callPayload.Body = mSExcelTrustVBOMInRegistry;
@@ -4699,7 +4699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSetCalculationModehandle != null)
                 {
-                    mSExcelSetCalculationMode["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModehandle);
+                    mSExcelSetCalculationMode["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCalculationModehandle);
                     mSExcelSetCalculationModepropCount++;
                 }
 
@@ -4712,9 +4712,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelSetCalculationModepropCount++;
-            mSExcelSetCalculationMode["CalculationMode"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModecalculationMode);
+            mSExcelSetCalculationMode["CalculationMode"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCalculationModecalculationMode);
             mSExcelSetCalculationModepropCount++;
-            mSExcelSetCalculationMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModeworkflow);
+            mSExcelSetCalculationMode["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCalculationModeworkflow);
             if (mSExcelSetCalculationModepropCount > 0)
             {
                 callPayload.Body = mSExcelSetCalculationMode;
@@ -4735,7 +4735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelExecuteCommandBarObjecthandle != null)
                 {
-                    mSExcelExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjecthandle);
+                    mSExcelExecuteCommandBarObject["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelExecuteCommandBarObjecthandle);
                     mSExcelExecuteCommandBarObjectpropCount++;
                 }
 
@@ -4748,12 +4748,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelExecuteCommandBarObjectpropCount++;
-            mSExcelExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectobjectId);
+            mSExcelExecuteCommandBarObject["ObjectId"] = CSharpExpressionConverter.ConvertToken(mSExcelExecuteCommandBarObjectobjectId);
             if (mSExcelExecuteCommandBarObjectrunInBackground != null)
             {
                 if (mSExcelExecuteCommandBarObjectrunInBackground != null)
                 {
-                    mSExcelExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectrunInBackground);
+                    mSExcelExecuteCommandBarObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSExcelExecuteCommandBarObjectrunInBackground);
                     mSExcelExecuteCommandBarObjectpropCount++;
                 }
 
@@ -4766,7 +4766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelExecuteCommandBarObjectpropCount++;
-            mSExcelExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectworkflow);
+            mSExcelExecuteCommandBarObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelExecuteCommandBarObjectworkflow);
             if (mSExcelExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelExecuteCommandBarObject;
@@ -4787,7 +4787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellssourceHandle != null)
                 {
-                    mSExcelCopyBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceHandle);
+                    mSExcelCopyBetweenCells["SourceHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceHandle);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4801,23 +4801,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCopyBetweenCellssourceWorkbookName != null)
             {
-                mSExcelCopyBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceWorkbookName);
+                mSExcelCopyBetweenCells["SourceWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceWorkbookName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             if (mSExcelCopyBetweenCellssourceWorksheetName != null)
             {
-                mSExcelCopyBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceWorksheetName);
+                mSExcelCopyBetweenCells["SourceWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceWorksheetName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceCellReference);
+            mSExcelCopyBetweenCells["SourceCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceCellReference);
             if (mSExcelCopyBetweenCellssourceEntireRow != null)
             {
                 if (mSExcelCopyBetweenCellssourceEntireRow != null)
                 {
-                    mSExcelCopyBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceEntireRow);
+                    mSExcelCopyBetweenCells["SourceEntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceEntireRow);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4833,7 +4833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellssourceEntireColumn != null)
                 {
-                    mSExcelCopyBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceEntireColumn);
+                    mSExcelCopyBetweenCells["SourceEntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssourceEntireColumn);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4849,7 +4849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellstargetHandle != null)
                 {
-                    mSExcelCopyBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetHandle);
+                    mSExcelCopyBetweenCells["TargetHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetHandle);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4863,23 +4863,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCopyBetweenCellstargetWorkbookName != null)
             {
-                mSExcelCopyBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetWorkbookName);
+                mSExcelCopyBetweenCells["TargetWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetWorkbookName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             if (mSExcelCopyBetweenCellstargetWorksheetName != null)
             {
-                mSExcelCopyBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetWorksheetName);
+                mSExcelCopyBetweenCells["TargetWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetWorksheetName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetCellReference);
+            mSExcelCopyBetweenCells["TargetCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetCellReference);
             if (mSExcelCopyBetweenCellstargetEntireRow != null)
             {
                 if (mSExcelCopyBetweenCellstargetEntireRow != null)
                 {
-                    mSExcelCopyBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetEntireRow);
+                    mSExcelCopyBetweenCells["TargetEntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetEntireRow);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4895,7 +4895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellstargetEntireColumn != null)
                 {
-                    mSExcelCopyBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetEntireColumn);
+                    mSExcelCopyBetweenCells["TargetEntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellstargetEntireColumn);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4911,7 +4911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellsvaluesOnly != null)
                 {
-                    mSExcelCopyBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsvaluesOnly);
+                    mSExcelCopyBetweenCells["ValuesOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellsvaluesOnly);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4927,7 +4927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCopyBetweenCellssimplePasteOnly != null)
                 {
-                    mSExcelCopyBetweenCells["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssimplePasteOnly);
+                    mSExcelCopyBetweenCells["SimplePasteOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellssimplePasteOnly);
                     mSExcelCopyBetweenCellspropCount++;
                 }
 
@@ -4940,7 +4940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsworkflow);
+            mSExcelCopyBetweenCells["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCopyBetweenCellsworkflow);
             if (mSExcelCopyBetweenCellspropCount > 0)
             {
                 callPayload.Body = mSExcelCopyBetweenCells;
@@ -4961,7 +4961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutBetweenCellssourceHandle != null)
                 {
-                    mSExcelCutBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceHandle);
+                    mSExcelCutBetweenCells["SourceHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceHandle);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -4975,23 +4975,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCutBetweenCellssourceWorkbookName != null)
             {
-                mSExcelCutBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceWorkbookName);
+                mSExcelCutBetweenCells["SourceWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceWorkbookName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             if (mSExcelCutBetweenCellssourceWorksheetName != null)
             {
-                mSExcelCutBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceWorksheetName);
+                mSExcelCutBetweenCells["SourceWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceWorksheetName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceCellReference);
+            mSExcelCutBetweenCells["SourceCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceCellReference);
             if (mSExcelCutBetweenCellssourceEntireRow != null)
             {
                 if (mSExcelCutBetweenCellssourceEntireRow != null)
                 {
-                    mSExcelCutBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceEntireRow);
+                    mSExcelCutBetweenCells["SourceEntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceEntireRow);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5007,7 +5007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutBetweenCellssourceEntireColumn != null)
                 {
-                    mSExcelCutBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceEntireColumn);
+                    mSExcelCutBetweenCells["SourceEntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellssourceEntireColumn);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5023,7 +5023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutBetweenCellstargetHandle != null)
                 {
-                    mSExcelCutBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetHandle);
+                    mSExcelCutBetweenCells["TargetHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetHandle);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5037,23 +5037,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCutBetweenCellstargetWorkbookName != null)
             {
-                mSExcelCutBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetWorkbookName);
+                mSExcelCutBetweenCells["TargetWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetWorkbookName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             if (mSExcelCutBetweenCellstargetWorksheetName != null)
             {
-                mSExcelCutBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetWorksheetName);
+                mSExcelCutBetweenCells["TargetWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetWorksheetName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetCellReference);
+            mSExcelCutBetweenCells["TargetCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetCellReference);
             if (mSExcelCutBetweenCellstargetEntireRow != null)
             {
                 if (mSExcelCutBetweenCellstargetEntireRow != null)
                 {
-                    mSExcelCutBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetEntireRow);
+                    mSExcelCutBetweenCells["TargetEntireRow"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetEntireRow);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5069,7 +5069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutBetweenCellstargetEntireColumn != null)
                 {
-                    mSExcelCutBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetEntireColumn);
+                    mSExcelCutBetweenCells["TargetEntireColumn"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellstargetEntireColumn);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5085,7 +5085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCutBetweenCellsvaluesOnly != null)
                 {
-                    mSExcelCutBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsvaluesOnly);
+                    mSExcelCutBetweenCells["ValuesOnly"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellsvaluesOnly);
                     mSExcelCutBetweenCellspropCount++;
                 }
 
@@ -5098,7 +5098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsworkflow);
+            mSExcelCutBetweenCells["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCutBetweenCellsworkflow);
             if (mSExcelCutBetweenCellspropCount > 0)
             {
                 callPayload.Body = mSExcelCutBetweenCells;
@@ -5119,7 +5119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelMinimiseWindowhandle != null)
                 {
-                    mSExcelMinimiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowhandle);
+                    mSExcelMinimiseWindow["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelMinimiseWindowhandle);
                     mSExcelMinimiseWindowpropCount++;
                 }
 
@@ -5132,7 +5132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelMinimiseWindowpropCount++;
-            mSExcelMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowworkflow);
+            mSExcelMinimiseWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelMinimiseWindowworkflow);
             if (mSExcelMinimiseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelMinimiseWindow;
@@ -5153,7 +5153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelMaximiseWindowhandle != null)
                 {
-                    mSExcelMaximiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowhandle);
+                    mSExcelMaximiseWindow["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelMaximiseWindowhandle);
                     mSExcelMaximiseWindowpropCount++;
                 }
 
@@ -5166,7 +5166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelMaximiseWindowpropCount++;
-            mSExcelMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowworkflow);
+            mSExcelMaximiseWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelMaximiseWindowworkflow);
             if (mSExcelMaximiseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelMaximiseWindow;
@@ -5187,7 +5187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelNormaliseWindowhandle != null)
                 {
-                    mSExcelNormaliseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowhandle);
+                    mSExcelNormaliseWindow["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelNormaliseWindowhandle);
                     mSExcelNormaliseWindowpropCount++;
                 }
 
@@ -5200,7 +5200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelNormaliseWindowpropCount++;
-            mSExcelNormaliseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowworkflow);
+            mSExcelNormaliseWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelNormaliseWindowworkflow);
             if (mSExcelNormaliseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelNormaliseWindow;
@@ -5221,7 +5221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetAndSetCellValuesourceHandle != null)
                 {
-                    mSExcelGetAndSetCellValue["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceHandle);
+                    mSExcelGetAndSetCellValue["SourceHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuesourceHandle);
                     mSExcelGetAndSetCellValuepropCount++;
                 }
 
@@ -5235,23 +5235,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellValuesourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceWorkbookName);
+                mSExcelGetAndSetCellValue["SourceWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuesourceWorkbookName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
             if (mSExcelGetAndSetCellValuesourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceWorksheetName);
+                mSExcelGetAndSetCellValue["SourceWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuesourceWorksheetName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
             mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceCellReference);
+            mSExcelGetAndSetCellValue["SourceCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuesourceCellReference);
             if (mSExcelGetAndSetCellValuetargetHandle != null)
             {
                 if (mSExcelGetAndSetCellValuetargetHandle != null)
                 {
-                    mSExcelGetAndSetCellValue["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetHandle);
+                    mSExcelGetAndSetCellValue["TargetHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuetargetHandle);
                     mSExcelGetAndSetCellValuepropCount++;
                 }
 
@@ -5265,20 +5265,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellValuetargetWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetWorkbookName);
+                mSExcelGetAndSetCellValue["TargetWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuetargetWorkbookName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
             if (mSExcelGetAndSetCellValuetargetWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetWorksheetName);
+                mSExcelGetAndSetCellValue["TargetWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuetargetWorksheetName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
             mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetCellReference);
+            mSExcelGetAndSetCellValue["TargetCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValuetargetCellReference);
             mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueworkflow);
+            mSExcelGetAndSetCellValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValueworkflow);
             if (mSExcelGetAndSetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellValue;
@@ -5299,7 +5299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetAndSetCellValue2sourceHandle != null)
                 {
-                    mSExcelGetAndSetCellValue2["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceHandle);
+                    mSExcelGetAndSetCellValue2["SourceHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2sourceHandle);
                     mSExcelGetAndSetCellValue2propCount++;
                 }
 
@@ -5313,23 +5313,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellValue2sourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue2["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceWorkbookName);
+                mSExcelGetAndSetCellValue2["SourceWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2sourceWorkbookName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
             if (mSExcelGetAndSetCellValue2sourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue2["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceWorksheetName);
+                mSExcelGetAndSetCellValue2["SourceWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2sourceWorksheetName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
             mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceCellReference);
+            mSExcelGetAndSetCellValue2["SourceCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2sourceCellReference);
             if (mSExcelGetAndSetCellValue2targetHandle != null)
             {
                 if (mSExcelGetAndSetCellValue2targetHandle != null)
                 {
-                    mSExcelGetAndSetCellValue2["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetHandle);
+                    mSExcelGetAndSetCellValue2["TargetHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2targetHandle);
                     mSExcelGetAndSetCellValue2propCount++;
                 }
 
@@ -5343,20 +5343,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellValue2targetWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue2["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetWorkbookName);
+                mSExcelGetAndSetCellValue2["TargetWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2targetWorkbookName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
             if (mSExcelGetAndSetCellValue2targetWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue2["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetWorksheetName);
+                mSExcelGetAndSetCellValue2["TargetWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2targetWorksheetName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
             mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetCellReference);
+            mSExcelGetAndSetCellValue2["TargetCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2targetCellReference);
             mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2workflow);
+            mSExcelGetAndSetCellValue2["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellValue2workflow);
             if (mSExcelGetAndSetCellValue2propCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellValue2;
@@ -5377,7 +5377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetAndSetCellTextsourceHandle != null)
                 {
-                    mSExcelGetAndSetCellText["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceHandle);
+                    mSExcelGetAndSetCellText["SourceHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTextsourceHandle);
                     mSExcelGetAndSetCellTextpropCount++;
                 }
 
@@ -5391,23 +5391,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellTextsourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellText["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceWorkbookName);
+                mSExcelGetAndSetCellText["SourceWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTextsourceWorkbookName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
             if (mSExcelGetAndSetCellTextsourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellText["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceWorksheetName);
+                mSExcelGetAndSetCellText["SourceWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTextsourceWorksheetName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
             mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceCellReference);
+            mSExcelGetAndSetCellText["SourceCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTextsourceCellReference);
             if (mSExcelGetAndSetCellTexttargetHandle != null)
             {
                 if (mSExcelGetAndSetCellTexttargetHandle != null)
                 {
-                    mSExcelGetAndSetCellText["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetHandle);
+                    mSExcelGetAndSetCellText["TargetHandle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTexttargetHandle);
                     mSExcelGetAndSetCellTextpropCount++;
                 }
 
@@ -5421,20 +5421,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetAndSetCellTexttargetWorkbookName != null)
             {
-                mSExcelGetAndSetCellText["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetWorkbookName);
+                mSExcelGetAndSetCellText["TargetWorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTexttargetWorkbookName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
             if (mSExcelGetAndSetCellTexttargetWorksheetName != null)
             {
-                mSExcelGetAndSetCellText["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetWorksheetName);
+                mSExcelGetAndSetCellText["TargetWorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTexttargetWorksheetName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
             mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetCellReference);
+            mSExcelGetAndSetCellText["TargetCellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTexttargetCellReference);
             mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextworkflow);
+            mSExcelGetAndSetCellText["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetAndSetCellTextworkflow);
             if (mSExcelGetAndSetCellTextpropCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellText;
@@ -5455,7 +5455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCheckOLEObjecthandle != null)
                 {
-                    mSExcelCheckOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjecthandle);
+                    mSExcelCheckOLEObject["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjecthandle);
                     mSExcelCheckOLEObjectpropCount++;
                 }
 
@@ -5469,23 +5469,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelCheckOLEObjectworkbookName != null)
             {
-                mSExcelCheckOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworkbookName);
+                mSExcelCheckOLEObject["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectworkbookName);
                 mSExcelCheckOLEObjectpropCount++;
             }
 
             if (mSExcelCheckOLEObjectworksheetName != null)
             {
-                mSExcelCheckOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworksheetName);
+                mSExcelCheckOLEObject["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectworksheetName);
                 mSExcelCheckOLEObjectpropCount++;
             }
 
             mSExcelCheckOLEObjectpropCount++;
-            mSExcelCheckOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectoLEObjectName);
+            mSExcelCheckOLEObject["OLEObjectName"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectoLEObjectName);
             if (mSExcelCheckOLEObjectchecked != null)
             {
                 if (mSExcelCheckOLEObjectchecked != null)
                 {
-                    mSExcelCheckOLEObject["Checked"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectchecked);
+                    mSExcelCheckOLEObject["Checked"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectchecked);
                     mSExcelCheckOLEObjectpropCount++;
                 }
 
@@ -5501,7 +5501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelCheckOLEObjectrunInBackground != null)
                 {
-                    mSExcelCheckOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectrunInBackground);
+                    mSExcelCheckOLEObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectrunInBackground);
                     mSExcelCheckOLEObjectpropCount++;
                 }
 
@@ -5514,7 +5514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelCheckOLEObjectpropCount++;
-            mSExcelCheckOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworkflow);
+            mSExcelCheckOLEObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelCheckOLEObjectworkflow);
             if (mSExcelCheckOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelCheckOLEObject;
@@ -5535,7 +5535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelInputTextIntoOLEObjecthandle != null)
                 {
-                    mSExcelInputTextIntoOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjecthandle);
+                    mSExcelInputTextIntoOLEObject["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjecthandle);
                     mSExcelInputTextIntoOLEObjectpropCount++;
                 }
 
@@ -5549,21 +5549,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelInputTextIntoOLEObjectworkbookName != null)
             {
-                mSExcelInputTextIntoOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworkbookName);
+                mSExcelInputTextIntoOLEObject["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjectworkbookName);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
             if (mSExcelInputTextIntoOLEObjectworksheetName != null)
             {
-                mSExcelInputTextIntoOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworksheetName);
+                mSExcelInputTextIntoOLEObject["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjectworksheetName);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
             mSExcelInputTextIntoOLEObjectpropCount++;
-            mSExcelInputTextIntoOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectoLEObjectName);
+            mSExcelInputTextIntoOLEObject["OLEObjectName"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjectoLEObjectName);
             if (mSExcelInputTextIntoOLEObjecttextToInput != null)
             {
-                mSExcelInputTextIntoOLEObject["TextToInput"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjecttextToInput);
+                mSExcelInputTextIntoOLEObject["TextToInput"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjecttextToInput);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
@@ -5571,7 +5571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelInputTextIntoOLEObjectrunInBackground != null)
                 {
-                    mSExcelInputTextIntoOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectrunInBackground);
+                    mSExcelInputTextIntoOLEObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjectrunInBackground);
                     mSExcelInputTextIntoOLEObjectpropCount++;
                 }
 
@@ -5584,7 +5584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelInputTextIntoOLEObjectpropCount++;
-            mSExcelInputTextIntoOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworkflow);
+            mSExcelInputTextIntoOLEObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelInputTextIntoOLEObjectworkflow);
             if (mSExcelInputTextIntoOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelInputTextIntoOLEObject;
@@ -5605,7 +5605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSetCellBackgroundColourhandle != null)
                 {
-                    mSExcelSetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourhandle);
+                    mSExcelSetCellBackgroundColour["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourhandle);
                     mSExcelSetCellBackgroundColourpropCount++;
                 }
 
@@ -5619,22 +5619,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSetCellBackgroundColourworkbookName != null)
             {
-                mSExcelSetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworkbookName);
+                mSExcelSetCellBackgroundColour["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourworkbookName);
                 mSExcelSetCellBackgroundColourpropCount++;
             }
 
             if (mSExcelSetCellBackgroundColourworksheetName != null)
             {
-                mSExcelSetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworksheetName);
+                mSExcelSetCellBackgroundColour["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourworksheetName);
                 mSExcelSetCellBackgroundColourpropCount++;
             }
 
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourcellReference);
+            mSExcelSetCellBackgroundColour["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourcellReference);
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["ColourIndex"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourcolourIndex);
+            mSExcelSetCellBackgroundColour["ColourIndex"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourcolourIndex);
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworkflow);
+            mSExcelSetCellBackgroundColour["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSetCellBackgroundColourworkflow);
             if (mSExcelSetCellBackgroundColourpropCount > 0)
             {
                 callPayload.Body = mSExcelSetCellBackgroundColour;
@@ -5655,7 +5655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetCellBackgroundColourhandle != null)
                 {
-                    mSExcelGetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourhandle);
+                    mSExcelGetCellBackgroundColour["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellBackgroundColourhandle);
                     mSExcelGetCellBackgroundColourpropCount++;
                 }
 
@@ -5669,20 +5669,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetCellBackgroundColourworkbookName != null)
             {
-                mSExcelGetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworkbookName);
+                mSExcelGetCellBackgroundColour["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellBackgroundColourworkbookName);
                 mSExcelGetCellBackgroundColourpropCount++;
             }
 
             if (mSExcelGetCellBackgroundColourworksheetName != null)
             {
-                mSExcelGetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworksheetName);
+                mSExcelGetCellBackgroundColour["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellBackgroundColourworksheetName);
                 mSExcelGetCellBackgroundColourpropCount++;
             }
 
             mSExcelGetCellBackgroundColourpropCount++;
-            mSExcelGetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourcellReference);
+            mSExcelGetCellBackgroundColour["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellBackgroundColourcellReference);
             mSExcelGetCellBackgroundColourpropCount++;
-            mSExcelGetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworkflow);
+            mSExcelGetCellBackgroundColour["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetCellBackgroundColourworkflow);
             if (mSExcelGetCellBackgroundColourpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellBackgroundColour;
@@ -5703,7 +5703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetOLEObjectValuehandle != null)
                 {
-                    mSExcelGetOLEObjectValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValuehandle);
+                    mSExcelGetOLEObjectValue["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetOLEObjectValuehandle);
                     mSExcelGetOLEObjectValuepropCount++;
                 }
 
@@ -5717,20 +5717,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetOLEObjectValueworkbookName != null)
             {
-                mSExcelGetOLEObjectValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworkbookName);
+                mSExcelGetOLEObjectValue["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetOLEObjectValueworkbookName);
                 mSExcelGetOLEObjectValuepropCount++;
             }
 
             if (mSExcelGetOLEObjectValueworksheetName != null)
             {
-                mSExcelGetOLEObjectValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworksheetName);
+                mSExcelGetOLEObjectValue["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetOLEObjectValueworksheetName);
                 mSExcelGetOLEObjectValuepropCount++;
             }
 
             mSExcelGetOLEObjectValuepropCount++;
-            mSExcelGetOLEObjectValue["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueoLEObjectName);
+            mSExcelGetOLEObjectValue["OLEObjectName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetOLEObjectValueoLEObjectName);
             mSExcelGetOLEObjectValuepropCount++;
-            mSExcelGetOLEObjectValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworkflow);
+            mSExcelGetOLEObjectValue["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetOLEObjectValueworkflow);
             if (mSExcelGetOLEObjectValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetOLEObjectValue;
@@ -5751,7 +5751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelDoesOLEObjectExisthandle != null)
                 {
-                    mSExcelDoesOLEObjectExist["Handle"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExisthandle);
+                    mSExcelDoesOLEObjectExist["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelDoesOLEObjectExisthandle);
                     mSExcelDoesOLEObjectExistpropCount++;
                 }
 
@@ -5765,20 +5765,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelDoesOLEObjectExistworkbookName != null)
             {
-                mSExcelDoesOLEObjectExist["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworkbookName);
+                mSExcelDoesOLEObjectExist["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelDoesOLEObjectExistworkbookName);
                 mSExcelDoesOLEObjectExistpropCount++;
             }
 
             if (mSExcelDoesOLEObjectExistworksheetName != null)
             {
-                mSExcelDoesOLEObjectExist["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworksheetName);
+                mSExcelDoesOLEObjectExist["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelDoesOLEObjectExistworksheetName);
                 mSExcelDoesOLEObjectExistpropCount++;
             }
 
             mSExcelDoesOLEObjectExistpropCount++;
-            mSExcelDoesOLEObjectExist["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistoLEObjectName);
+            mSExcelDoesOLEObjectExist["OLEObjectName"] = CSharpExpressionConverter.ConvertToken(mSExcelDoesOLEObjectExistoLEObjectName);
             mSExcelDoesOLEObjectExistpropCount++;
-            mSExcelDoesOLEObjectExist["Workflow"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworkflow);
+            mSExcelDoesOLEObjectExist["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelDoesOLEObjectExistworkflow);
             if (mSExcelDoesOLEObjectExistpropCount > 0)
             {
                 callPayload.Body = mSExcelDoesOLEObjectExist;
@@ -5799,7 +5799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelPressOLEObjecthandle != null)
                 {
-                    mSExcelPressOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjecthandle);
+                    mSExcelPressOLEObject["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjecthandle);
                     mSExcelPressOLEObjectpropCount++;
                 }
 
@@ -5813,23 +5813,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelPressOLEObjectworkbookName != null)
             {
-                mSExcelPressOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworkbookName);
+                mSExcelPressOLEObject["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjectworkbookName);
                 mSExcelPressOLEObjectpropCount++;
             }
 
             if (mSExcelPressOLEObjectworksheetName != null)
             {
-                mSExcelPressOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworksheetName);
+                mSExcelPressOLEObject["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjectworksheetName);
                 mSExcelPressOLEObjectpropCount++;
             }
 
             mSExcelPressOLEObjectpropCount++;
-            mSExcelPressOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectoLEObjectName);
+            mSExcelPressOLEObject["OLEObjectName"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjectoLEObjectName);
             if (mSExcelPressOLEObjectrunInBackground != null)
             {
                 if (mSExcelPressOLEObjectrunInBackground != null)
                 {
-                    mSExcelPressOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectrunInBackground);
+                    mSExcelPressOLEObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjectrunInBackground);
                     mSExcelPressOLEObjectpropCount++;
                 }
 
@@ -5842,7 +5842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSExcelPressOLEObjectpropCount++;
-            mSExcelPressOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworkflow);
+            mSExcelPressOLEObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelPressOLEObjectworkflow);
             if (mSExcelPressOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelPressOLEObject;
@@ -5863,7 +5863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelSetWorksheetSensitivityLabelhandle != null)
                 {
-                    mSExcelSetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelhandle);
+                    mSExcelSetWorksheetSensitivityLabel["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabelhandle);
                     mSExcelSetWorksheetSensitivityLabelpropCount++;
                 }
 
@@ -5877,34 +5877,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelSetWorksheetSensitivityLabelworkbookName != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelworkbookName);
+                mSExcelSetWorksheetSensitivityLabel["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabelworkbookName);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
             mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelassignmentMethod);
+            mSExcelSetWorksheetSensitivityLabel["AssignmentMethod"] = CSharpExpressionConverter.Convert(mSExcelSetWorksheetSensitivityLabelassignmentMethod);
             mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabellabelId);
+            mSExcelSetWorksheetSensitivityLabel["LabelId"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabellabelId);
             if (mSExcelSetWorksheetSensitivityLabellabelName != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabellabelName);
+                mSExcelSetWorksheetSensitivityLabel["LabelName"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabellabelName);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
             if (mSExcelSetWorksheetSensitivityLabelsiteId != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelsiteId);
+                mSExcelSetWorksheetSensitivityLabel["SiteId"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabelsiteId);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
             if (mSExcelSetWorksheetSensitivityLabeljustification != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabeljustification);
+                mSExcelSetWorksheetSensitivityLabel["Justification"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabeljustification);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
             mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelworkflow);
+            mSExcelSetWorksheetSensitivityLabel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelSetWorksheetSensitivityLabelworkflow);
             if (mSExcelSetWorksheetSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSExcelSetWorksheetSensitivityLabel;
@@ -5925,7 +5925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelGetWorksheetSensitivityLabelhandle != null)
                 {
-                    mSExcelGetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelhandle);
+                    mSExcelGetWorksheetSensitivityLabel["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetSensitivityLabelhandle);
                     mSExcelGetWorksheetSensitivityLabelpropCount++;
                 }
 
@@ -5939,12 +5939,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelGetWorksheetSensitivityLabelworkbookName != null)
             {
-                mSExcelGetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelworkbookName);
+                mSExcelGetWorksheetSensitivityLabel["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetSensitivityLabelworkbookName);
                 mSExcelGetWorksheetSensitivityLabelpropCount++;
             }
 
             mSExcelGetWorksheetSensitivityLabelpropCount++;
-            mSExcelGetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelworkflow);
+            mSExcelGetWorksheetSensitivityLabel["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelGetWorksheetSensitivityLabelworkflow);
             if (mSExcelGetWorksheetSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetSensitivityLabel;
@@ -5965,7 +5965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSExcelWriteArrayhandle != null)
                 {
-                    mSExcelWriteArray["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteArrayhandle);
+                    mSExcelWriteArray["Handle"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArrayhandle);
                     mSExcelWriteArraypropCount++;
                 }
 
@@ -5979,24 +5979,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSExcelWriteArrayworkbookName != null)
             {
-                mSExcelWriteArray["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworkbookName);
+                mSExcelWriteArray["WorkbookName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArrayworkbookName);
                 mSExcelWriteArraypropCount++;
             }
 
             if (mSExcelWriteArrayworksheetName != null)
             {
-                mSExcelWriteArray["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworksheetName);
+                mSExcelWriteArray["WorksheetName"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArrayworksheetName);
                 mSExcelWriteArraypropCount++;
             }
 
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteArraycellReference);
+            mSExcelWriteArray["CellReference"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArraycellReference);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["ArrayToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteArrayarrayToWriteJSON);
+            mSExcelWriteArray["ArrayToWriteJSON"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArrayarrayToWriteJSON);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["Direction"] = ExpressionConverter.ConvertO(mSExcelWriteArraydirection);
+            mSExcelWriteArray["Direction"] = CSharpExpressionConverter.Convert(mSExcelWriteArraydirection);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworkflow);
+            mSExcelWriteArray["Workflow"] = CSharpExpressionConverter.ConvertToken(mSExcelWriteArrayworkflow);
             if (mSExcelWriteArraypropCount > 0)
             {
                 callPayload.Body = mSExcelWriteArray;
@@ -6015,7 +6015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookCreateInstancepropCount = 0;
             if (mSOutlookCreateInstanceprofileName != null)
             {
-                mSOutlookCreateInstance["ProfileName"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceprofileName);
+                mSOutlookCreateInstance["ProfileName"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateInstanceprofileName);
                 mSOutlookCreateInstancepropCount++;
             }
 
@@ -6023,7 +6023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookCreateInstanceshowOutlook != null)
                 {
-                    mSOutlookCreateInstance["ShowOutlook"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceshowOutlook);
+                    mSOutlookCreateInstance["ShowOutlook"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateInstanceshowOutlook);
                     mSOutlookCreateInstancepropCount++;
                 }
 
@@ -6036,7 +6036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookCreateInstancepropCount++;
-            mSOutlookCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceworkflow);
+            mSOutlookCreateInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateInstanceworkflow);
             if (mSOutlookCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookCreateInstance;
@@ -6057,7 +6057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookCloseInstancesecondsToWaitForProcessToClose != null)
                 {
-                    mSOutlookCloseInstance["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstancesecondsToWaitForProcessToClose);
+                    mSOutlookCloseInstance["SecondsToWaitForProcessToClose"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstancesecondsToWaitForProcessToClose);
                     mSOutlookCloseInstancepropCount++;
                 }
 
@@ -6070,7 +6070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookCloseInstancepropCount++;
-            mSOutlookCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceworkflow);
+            mSOutlookCloseInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstanceworkflow);
             if (mSOutlookCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookCloseInstance;
@@ -6091,7 +6091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookCloseInstanceUsingWindowuseNativeWindow != null)
                 {
-                    mSOutlookCloseInstanceUsingWindow["UseNativeWindow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowuseNativeWindow);
+                    mSOutlookCloseInstanceUsingWindow["UseNativeWindow"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstanceUsingWindowuseNativeWindow);
                     mSOutlookCloseInstanceUsingWindowpropCount++;
                 }
 
@@ -6107,7 +6107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookCloseInstanceUsingWindowuseUIA != null)
                 {
-                    mSOutlookCloseInstanceUsingWindow["UseUIA"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowuseUIA);
+                    mSOutlookCloseInstanceUsingWindow["UseUIA"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstanceUsingWindowuseUIA);
                     mSOutlookCloseInstanceUsingWindowpropCount++;
                 }
 
@@ -6123,7 +6123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose != null)
                 {
-                    mSOutlookCloseInstanceUsingWindow["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose);
+                    mSOutlookCloseInstanceUsingWindow["SecondsToWaitForProcessToClose"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose);
                     mSOutlookCloseInstanceUsingWindowpropCount++;
                 }
 
@@ -6136,7 +6136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookCloseInstanceUsingWindowpropCount++;
-            mSOutlookCloseInstanceUsingWindow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowworkflow);
+            mSOutlookCloseInstanceUsingWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookCloseInstanceUsingWindowworkflow);
             if (mSOutlookCloseInstanceUsingWindowpropCount > 0)
             {
                 callPayload.Body = mSOutlookCloseInstanceUsingWindow;
@@ -6157,7 +6157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookAttachToExistingInstancetoggleWindow != null)
                 {
-                    mSOutlookAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleWindow);
+                    mSOutlookAttachToExistingInstance["ToggleWindow"] = CSharpExpressionConverter.ConvertToken(mSOutlookAttachToExistingInstancetoggleWindow);
                     mSOutlookAttachToExistingInstancepropCount++;
                 }
 
@@ -6173,7 +6173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
                 {
-                    mSOutlookAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
+                    mSOutlookAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = CSharpExpressionConverter.ConvertToken(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                     mSOutlookAttachToExistingInstancepropCount++;
                 }
 
@@ -6189,7 +6189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookAttachToExistingInstancetoggleDelay != null)
                 {
-                    mSOutlookAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleDelay);
+                    mSOutlookAttachToExistingInstance["ToggleDelay"] = CSharpExpressionConverter.ConvertToken(mSOutlookAttachToExistingInstancetoggleDelay);
                     mSOutlookAttachToExistingInstancepropCount++;
                 }
 
@@ -6202,7 +6202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookAttachToExistingInstancepropCount++;
-            mSOutlookAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceworkflow);
+            mSOutlookAttachToExistingInstance["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookAttachToExistingInstanceworkflow);
             if (mSOutlookAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookAttachToExistingInstance;
@@ -6220,7 +6220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookIsConnected = new JObject();
             var mSOutlookIsConnectedpropCount = 0;
             mSOutlookIsConnectedpropCount++;
-            mSOutlookIsConnected["Workflow"] = ExpressionConverter.ConvertO(mSOutlookIsConnectedworkflow);
+            mSOutlookIsConnected["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookIsConnectedworkflow);
             if (mSOutlookIsConnectedpropCount > 0)
             {
                 callPayload.Body = mSOutlookIsConnected;
@@ -6238,7 +6238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookShow = new JObject();
             var mSOutlookShowpropCount = 0;
             mSOutlookShowpropCount++;
-            mSOutlookShow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookShowworkflow);
+            mSOutlookShow["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookShowworkflow);
             if (mSOutlookShowpropCount > 0)
             {
                 callPayload.Body = mSOutlookShow;
@@ -6256,7 +6256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetNameSpaceInformation = new JObject();
             var mSOutlookGetNameSpaceInformationpropCount = 0;
             mSOutlookGetNameSpaceInformationpropCount++;
-            mSOutlookGetNameSpaceInformation["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNameSpaceInformationworkflow);
+            mSOutlookGetNameSpaceInformation["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNameSpaceInformationworkflow);
             if (mSOutlookGetNameSpaceInformationpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetNameSpaceInformation;
@@ -6275,7 +6275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetMailFolderspropCount = 0;
             if (mSOutlookGetMailFoldersfolderPath != null)
             {
-                mSOutlookGetMailFolders["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersfolderPath);
+                mSOutlookGetMailFolders["FolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetMailFoldersfolderPath);
                 mSOutlookGetMailFolderspropCount++;
             }
 
@@ -6283,7 +6283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetMailFolderssubFolders != null)
                 {
-                    mSOutlookGetMailFolders["SubFolders"] = ExpressionConverter.ConvertO(mSOutlookGetMailFolderssubFolders);
+                    mSOutlookGetMailFolders["SubFolders"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetMailFolderssubFolders);
                     mSOutlookGetMailFolderspropCount++;
                 }
 
@@ -6296,7 +6296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookGetMailFolderspropCount++;
-            mSOutlookGetMailFolders["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersworkflow);
+            mSOutlookGetMailFolders["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetMailFoldersworkflow);
             if (mSOutlookGetMailFolderspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetMailFolders;
@@ -6314,12 +6314,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookMarkEmailAsRead = new JObject();
             var mSOutlookMarkEmailAsReadpropCount = 0;
             mSOutlookMarkEmailAsReadpropCount++;
-            mSOutlookMarkEmailAsRead["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadentryID);
+            mSOutlookMarkEmailAsRead["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookMarkEmailAsReadentryID);
             if (mSOutlookMarkEmailAsReadread != null)
             {
                 if (mSOutlookMarkEmailAsReadread != null)
                 {
-                    mSOutlookMarkEmailAsRead["Read"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadread);
+                    mSOutlookMarkEmailAsRead["Read"] = CSharpExpressionConverter.ConvertToken(mSOutlookMarkEmailAsReadread);
                     mSOutlookMarkEmailAsReadpropCount++;
                 }
 
@@ -6332,7 +6332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookMarkEmailAsReadpropCount++;
-            mSOutlookMarkEmailAsRead["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadworkflow);
+            mSOutlookMarkEmailAsRead["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookMarkEmailAsReadworkflow);
             if (mSOutlookMarkEmailAsReadpropCount > 0)
             {
                 callPayload.Body = mSOutlookMarkEmailAsRead;
@@ -6350,12 +6350,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetEmailBody = new JObject();
             var mSOutlookGetEmailBodypropCount = 0;
             mSOutlookGetEmailBodypropCount++;
-            mSOutlookGetEmailBody["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyentryID);
+            mSOutlookGetEmailBody["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailBodyentryID);
             if (mSOutlookGetEmailBodyclickAllowButtonIfRequired != null)
             {
                 if (mSOutlookGetEmailBodyclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookGetEmailBody["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyclickAllowButtonIfRequired);
+                    mSOutlookGetEmailBody["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailBodyclickAllowButtonIfRequired);
                     mSOutlookGetEmailBodypropCount++;
                 }
 
@@ -6368,7 +6368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookGetEmailBodypropCount++;
-            mSOutlookGetEmailBody["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyworkflow);
+            mSOutlookGetEmailBody["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailBodyworkflow);
             if (mSOutlookGetEmailBodypropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmailBody;
@@ -6386,12 +6386,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetEmailAttachmentFilenames = new JObject();
             var mSOutlookGetEmailAttachmentFilenamespropCount = 0;
             mSOutlookGetEmailAttachmentFilenamespropCount++;
-            mSOutlookGetEmailAttachmentFilenames["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesentryID);
+            mSOutlookGetEmailAttachmentFilenames["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailAttachmentFilenamesentryID);
             if (mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired != null)
             {
                 if (mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookGetEmailAttachmentFilenames["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired);
+                    mSOutlookGetEmailAttachmentFilenames["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired);
                     mSOutlookGetEmailAttachmentFilenamespropCount++;
                 }
 
@@ -6404,7 +6404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookGetEmailAttachmentFilenamespropCount++;
-            mSOutlookGetEmailAttachmentFilenames["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesworkflow);
+            mSOutlookGetEmailAttachmentFilenames["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailAttachmentFilenamesworkflow);
             if (mSOutlookGetEmailAttachmentFilenamespropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmailAttachmentFilenames;
@@ -6422,10 +6422,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookSaveEmailAttachmentsAsFile = new JObject();
             var mSOutlookSaveEmailAttachmentsAsFilepropCount = 0;
             mSOutlookSaveEmailAttachmentsAsFilepropCount++;
-            mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileentryID);
+            mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFileentryID);
             if (mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["SaveFolderPath"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath);
+                mSOutlookSaveEmailAttachmentsAsFile["SaveFolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
@@ -6433,7 +6433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSaveEmailAttachmentsAsFilecreateFolder != null)
                 {
-                    mSOutlookSaveEmailAttachmentsAsFile["CreateFolder"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilecreateFolder);
+                    mSOutlookSaveEmailAttachmentsAsFile["CreateFolder"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFilecreateFolder);
                     mSOutlookSaveEmailAttachmentsAsFilepropCount++;
                 }
 
@@ -6447,7 +6447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["OnlySaveAttachmentsMatchingWildcard"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard);
+                mSOutlookSaveEmailAttachmentsAsFile["OnlySaveAttachmentsMatchingWildcard"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
@@ -6455,7 +6455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments != null)
                 {
-                    mSOutlookSaveEmailAttachmentsAsFile["SaveHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments);
+                    mSOutlookSaveEmailAttachmentsAsFile["SaveHiddenAttachments"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments);
                     mSOutlookSaveEmailAttachmentsAsFilepropCount++;
                 }
 
@@ -6471,7 +6471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookSaveEmailAttachmentsAsFile["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired);
+                    mSOutlookSaveEmailAttachmentsAsFile["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired);
                     mSOutlookSaveEmailAttachmentsAsFilepropCount++;
                 }
 
@@ -6484,7 +6484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookSaveEmailAttachmentsAsFilepropCount++;
-            mSOutlookSaveEmailAttachmentsAsFile["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileworkflow);
+            mSOutlookSaveEmailAttachmentsAsFile["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookSaveEmailAttachmentsAsFileworkflow);
             if (mSOutlookSaveEmailAttachmentsAsFilepropCount > 0)
             {
                 callPayload.Body = mSOutlookSaveEmailAttachmentsAsFile;
@@ -6502,9 +6502,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookDeleteEmail = new JObject();
             var mSOutlookDeleteEmailpropCount = 0;
             mSOutlookDeleteEmailpropCount++;
-            mSOutlookDeleteEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailentryID);
+            mSOutlookDeleteEmail["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookDeleteEmailentryID);
             mSOutlookDeleteEmailpropCount++;
-            mSOutlookDeleteEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailworkflow);
+            mSOutlookDeleteEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookDeleteEmailworkflow);
             if (mSOutlookDeleteEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookDeleteEmail;
@@ -6522,15 +6522,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookMoveEmail = new JObject();
             var mSOutlookMoveEmailpropCount = 0;
             mSOutlookMoveEmailpropCount++;
-            mSOutlookMoveEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailentryID);
+            mSOutlookMoveEmail["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookMoveEmailentryID);
             if (mSOutlookMoveEmaildestinationFolder != null)
             {
-                mSOutlookMoveEmail["DestinationFolder"] = ExpressionConverter.ConvertO(mSOutlookMoveEmaildestinationFolder);
+                mSOutlookMoveEmail["DestinationFolder"] = CSharpExpressionConverter.ConvertToken(mSOutlookMoveEmaildestinationFolder);
                 mSOutlookMoveEmailpropCount++;
             }
 
             mSOutlookMoveEmailpropCount++;
-            mSOutlookMoveEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailworkflow);
+            mSOutlookMoveEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookMoveEmailworkflow);
             if (mSOutlookMoveEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookMoveEmail;
@@ -6549,55 +6549,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookSendEmailpropCount = 0;
             if (mSOutlookSendEmailto != null)
             {
-                mSOutlookSendEmail["To"] = ExpressionConverter.ConvertO(mSOutlookSendEmailto);
+                mSOutlookSendEmail["To"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailto);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailcC != null)
             {
-                mSOutlookSendEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailcC);
+                mSOutlookSendEmail["CC"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailcC);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailbCC != null)
             {
-                mSOutlookSendEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbCC);
+                mSOutlookSendEmail["BCC"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailbCC);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailsubject != null)
             {
-                mSOutlookSendEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookSendEmailsubject);
+                mSOutlookSendEmail["Subject"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailsubject);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailbodyFormat != null)
             {
-                mSOutlookSendEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbodyFormat);
+                mSOutlookSendEmail["BodyFormat"] = CSharpExpressionConverter.Convert(mSOutlookSendEmailbodyFormat);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailbody != null)
             {
-                mSOutlookSendEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbody);
+                mSOutlookSendEmail["Body"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailbody);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailhTMLBody != null)
             {
-                mSOutlookSendEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailhTMLBody);
+                mSOutlookSendEmail["HTMLBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailhTMLBody);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailrTFBody != null)
             {
-                mSOutlookSendEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailrTFBody);
+                mSOutlookSendEmail["RTFBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailrTFBody);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookSendEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookSendEmailattachmentFilenamesJSON);
+                mSOutlookSendEmail["AttachmentFilenamesJSON"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailattachmentFilenamesJSON);
                 mSOutlookSendEmailpropCount++;
             }
 
@@ -6605,7 +6605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSendEmaildontSendIfAttachmentFilenameMissing != null)
                 {
-                    mSOutlookSendEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing);
+                    mSOutlookSendEmail["DontSendIfAttachmentFilenameMissing"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing);
                     mSOutlookSendEmailpropCount++;
                 }
 
@@ -6621,7 +6621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSendEmailclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookSendEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSendEmailclickAllowButtonIfRequired);
+                    mSOutlookSendEmail["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailclickAllowButtonIfRequired);
                     mSOutlookSendEmailpropCount++;
                 }
 
@@ -6635,13 +6635,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookSendEmailvotingOptions != null)
             {
-                mSOutlookSendEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookSendEmailvotingOptions);
+                mSOutlookSendEmail["VotingOptions"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailvotingOptions);
                 mSOutlookSendEmailpropCount++;
             }
 
             if (mSOutlookSendEmailsendAsSMTPAddress != null)
             {
-                mSOutlookSendEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookSendEmailsendAsSMTPAddress);
+                mSOutlookSendEmail["SendAsSMTPAddress"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailsendAsSMTPAddress);
                 mSOutlookSendEmailpropCount++;
             }
 
@@ -6649,7 +6649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSendEmailbodyContainsStoredPassword != null)
                 {
-                    mSOutlookSendEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbodyContainsStoredPassword);
+                    mSOutlookSendEmail["BodyContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailbodyContainsStoredPassword);
                     mSOutlookSendEmailpropCount++;
                 }
 
@@ -6662,7 +6662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookSendEmailpropCount++;
-            mSOutlookSendEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSendEmailworkflow);
+            mSOutlookSendEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookSendEmailworkflow);
             if (mSOutlookSendEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookSendEmail;
@@ -6681,18 +6681,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookCreateMailFolderpropCount = 0;
             if (mSOutlookCreateMailFolderparentFolderPath != null)
             {
-                mSOutlookCreateMailFolder["ParentFolderPath"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderparentFolderPath);
+                mSOutlookCreateMailFolder["ParentFolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateMailFolderparentFolderPath);
                 mSOutlookCreateMailFolderpropCount++;
             }
 
             if (mSOutlookCreateMailFoldernewFolderName != null)
             {
-                mSOutlookCreateMailFolder["NewFolderName"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFoldernewFolderName);
+                mSOutlookCreateMailFolder["NewFolderName"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateMailFoldernewFolderName);
                 mSOutlookCreateMailFolderpropCount++;
             }
 
             mSOutlookCreateMailFolderpropCount++;
-            mSOutlookCreateMailFolder["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderworkflow);
+            mSOutlookCreateMailFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookCreateMailFolderworkflow);
             if (mSOutlookCreateMailFolderpropCount > 0)
             {
                 callPayload.Body = mSOutlookCreateMailFolder;
@@ -6710,12 +6710,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookReplyToEmail = new JObject();
             var mSOutlookReplyToEmailpropCount = 0;
             mSOutlookReplyToEmailpropCount++;
-            mSOutlookReplyToEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailentryID);
+            mSOutlookReplyToEmail["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailentryID);
             if (mSOutlookReplyToEmailreplyToAll != null)
             {
                 if (mSOutlookReplyToEmailreplyToAll != null)
                 {
-                    mSOutlookReplyToEmail["ReplyToAll"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailreplyToAll);
+                    mSOutlookReplyToEmail["ReplyToAll"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailreplyToAll);
                     mSOutlookReplyToEmailpropCount++;
                 }
 
@@ -6729,31 +6729,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookReplyToEmailbodyFormat != null)
             {
-                mSOutlookReplyToEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbodyFormat);
+                mSOutlookReplyToEmail["BodyFormat"] = CSharpExpressionConverter.Convert(mSOutlookReplyToEmailbodyFormat);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             if (mSOutlookReplyToEmailbody != null)
             {
-                mSOutlookReplyToEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbody);
+                mSOutlookReplyToEmail["Body"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailbody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             if (mSOutlookReplyToEmailhTMLBody != null)
             {
-                mSOutlookReplyToEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailhTMLBody);
+                mSOutlookReplyToEmail["HTMLBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailhTMLBody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             if (mSOutlookReplyToEmailrTFBody != null)
             {
-                mSOutlookReplyToEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailrTFBody);
+                mSOutlookReplyToEmail["RTFBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailrTFBody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             if (mSOutlookReplyToEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookReplyToEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailattachmentFilenamesJSON);
+                mSOutlookReplyToEmail["AttachmentFilenamesJSON"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailattachmentFilenamesJSON);
                 mSOutlookReplyToEmailpropCount++;
             }
 
@@ -6761,7 +6761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing != null)
                 {
-                    mSOutlookReplyToEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing);
+                    mSOutlookReplyToEmail["DontSendIfAttachmentFilenameMissing"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing);
                     mSOutlookReplyToEmailpropCount++;
                 }
 
@@ -6777,7 +6777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookReplyToEmailclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookReplyToEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailclickAllowButtonIfRequired);
+                    mSOutlookReplyToEmail["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailclickAllowButtonIfRequired);
                     mSOutlookReplyToEmailpropCount++;
                 }
 
@@ -6791,13 +6791,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookReplyToEmailvotingOptions != null)
             {
-                mSOutlookReplyToEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailvotingOptions);
+                mSOutlookReplyToEmail["VotingOptions"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailvotingOptions);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             if (mSOutlookReplyToEmailsendAsSMTPAddress != null)
             {
-                mSOutlookReplyToEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailsendAsSMTPAddress);
+                mSOutlookReplyToEmail["SendAsSMTPAddress"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailsendAsSMTPAddress);
                 mSOutlookReplyToEmailpropCount++;
             }
 
@@ -6805,7 +6805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookReplyToEmailbodyContainsStoredPassword != null)
                 {
-                    mSOutlookReplyToEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbodyContainsStoredPassword);
+                    mSOutlookReplyToEmail["BodyContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailbodyContainsStoredPassword);
                     mSOutlookReplyToEmailpropCount++;
                 }
 
@@ -6818,7 +6818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookReplyToEmailpropCount++;
-            mSOutlookReplyToEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailworkflow);
+            mSOutlookReplyToEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookReplyToEmailworkflow);
             if (mSOutlookReplyToEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookReplyToEmail;
@@ -6836,22 +6836,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookForwardEmail = new JObject();
             var mSOutlookForwardEmailpropCount = 0;
             mSOutlookForwardEmailpropCount++;
-            mSOutlookForwardEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailentryID);
+            mSOutlookForwardEmail["EntryID"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailentryID);
             if (mSOutlookForwardEmailto != null)
             {
-                mSOutlookForwardEmail["To"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailto);
+                mSOutlookForwardEmail["To"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailto);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailcC != null)
             {
-                mSOutlookForwardEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailcC);
+                mSOutlookForwardEmail["CC"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailcC);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailbCC != null)
             {
-                mSOutlookForwardEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbCC);
+                mSOutlookForwardEmail["BCC"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailbCC);
                 mSOutlookForwardEmailpropCount++;
             }
 
@@ -6859,7 +6859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailoverrideSubject != null)
                 {
-                    mSOutlookForwardEmail["OverrideSubject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailoverrideSubject);
+                    mSOutlookForwardEmail["OverrideSubject"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailoverrideSubject);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -6873,7 +6873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookForwardEmailsubject != null)
             {
-                mSOutlookForwardEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailsubject);
+                mSOutlookForwardEmail["Subject"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailsubject);
                 mSOutlookForwardEmailpropCount++;
             }
 
@@ -6881,7 +6881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailoverrideBody != null)
                 {
-                    mSOutlookForwardEmail["OverrideBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailoverrideBody);
+                    mSOutlookForwardEmail["OverrideBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailoverrideBody);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -6895,25 +6895,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookForwardEmailbodyFormat != null)
             {
-                mSOutlookForwardEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbodyFormat);
+                mSOutlookForwardEmail["BodyFormat"] = CSharpExpressionConverter.Convert(mSOutlookForwardEmailbodyFormat);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailbody != null)
             {
-                mSOutlookForwardEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbody);
+                mSOutlookForwardEmail["Body"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailbody);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailhTMLBody != null)
             {
-                mSOutlookForwardEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailhTMLBody);
+                mSOutlookForwardEmail["HTMLBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailhTMLBody);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailrTFBody != null)
             {
-                mSOutlookForwardEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailrTFBody);
+                mSOutlookForwardEmail["RTFBody"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailrTFBody);
                 mSOutlookForwardEmailpropCount++;
             }
 
@@ -6921,7 +6921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookForwardEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailclickAllowButtonIfRequired);
+                    mSOutlookForwardEmail["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailclickAllowButtonIfRequired);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -6935,13 +6935,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookForwardEmailvotingOptions != null)
             {
-                mSOutlookForwardEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailvotingOptions);
+                mSOutlookForwardEmail["VotingOptions"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailvotingOptions);
                 mSOutlookForwardEmailpropCount++;
             }
 
             if (mSOutlookForwardEmailsendAsSMTPAddress != null)
             {
-                mSOutlookForwardEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailsendAsSMTPAddress);
+                mSOutlookForwardEmail["SendAsSMTPAddress"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailsendAsSMTPAddress);
                 mSOutlookForwardEmailpropCount++;
             }
 
@@ -6949,7 +6949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailincludeExistingHiddenAttachments != null)
                 {
-                    mSOutlookForwardEmail["IncludeExistingHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailincludeExistingHiddenAttachments);
+                    mSOutlookForwardEmail["IncludeExistingHiddenAttachments"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailincludeExistingHiddenAttachments);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -6965,7 +6965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailincludeExistingVisibleAttachments != null)
                 {
-                    mSOutlookForwardEmail["IncludeExistingVisibleAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailincludeExistingVisibleAttachments);
+                    mSOutlookForwardEmail["IncludeExistingVisibleAttachments"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailincludeExistingVisibleAttachments);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -6979,7 +6979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookForwardEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookForwardEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailattachmentFilenamesJSON);
+                mSOutlookForwardEmail["AttachmentFilenamesJSON"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailattachmentFilenamesJSON);
                 mSOutlookForwardEmailpropCount++;
             }
 
@@ -6987,7 +6987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing != null)
                 {
-                    mSOutlookForwardEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing);
+                    mSOutlookForwardEmail["DontSendIfAttachmentFilenameMissing"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -7003,7 +7003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookForwardEmailbodyContainsStoredPassword != null)
                 {
-                    mSOutlookForwardEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbodyContainsStoredPassword);
+                    mSOutlookForwardEmail["BodyContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailbodyContainsStoredPassword);
                     mSOutlookForwardEmailpropCount++;
                 }
 
@@ -7016,7 +7016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookForwardEmailpropCount++;
-            mSOutlookForwardEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailworkflow);
+            mSOutlookForwardEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookForwardEmailworkflow);
             if (mSOutlookForwardEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookForwardEmail;
@@ -7034,7 +7034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetMAPIProfiles = new JObject();
             var mSOutlookGetMAPIProfilespropCount = 0;
             mSOutlookGetMAPIProfilespropCount++;
-            mSOutlookGetMAPIProfiles["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMAPIProfilesworkflow);
+            mSOutlookGetMAPIProfiles["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetMAPIProfilesworkflow);
             if (mSOutlookGetMAPIProfilespropCount > 0)
             {
                 callPayload.Body = mSOutlookGetMAPIProfiles;
@@ -7052,7 +7052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetOutlookProcessId = new JObject();
             var mSOutlookGetOutlookProcessIdpropCount = 0;
             mSOutlookGetOutlookProcessIdpropCount++;
-            mSOutlookGetOutlookProcessId["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetOutlookProcessIdworkflow);
+            mSOutlookGetOutlookProcessId["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetOutlookProcessIdworkflow);
             if (mSOutlookGetOutlookProcessIdpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetOutlookProcessId;
@@ -7073,7 +7073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog != null)
                 {
-                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForDialog"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog);
+                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForDialog"] = CSharpExpressionConverter.ConvertToken(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog);
                     mSOutlookBackgroundMonitorForAllowPopuppropCount++;
                 }
 
@@ -7089,7 +7089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton != null)
                 {
-                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButton"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton);
+                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButton"] = CSharpExpressionConverter.ConvertToken(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton);
                     mSOutlookBackgroundMonitorForAllowPopuppropCount++;
                 }
 
@@ -7105,7 +7105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled != null)
                 {
-                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButtonToBeEnabled"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled);
+                    mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButtonToBeEnabled"] = CSharpExpressionConverter.ConvertToken(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled);
                     mSOutlookBackgroundMonitorForAllowPopuppropCount++;
                 }
 
@@ -7121,7 +7121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName != null)
                 {
-                    mSOutlookBackgroundMonitorForAllowPopup["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName);
+                    mSOutlookBackgroundMonitorForAllowPopup["OutlookAllowButtonName"] = CSharpExpressionConverter.ConvertToken(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName);
                     mSOutlookBackgroundMonitorForAllowPopuppropCount++;
                 }
 
@@ -7134,7 +7134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookBackgroundMonitorForAllowPopuppropCount++;
-            mSOutlookBackgroundMonitorForAllowPopup["Workflow"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupworkflow);
+            mSOutlookBackgroundMonitorForAllowPopup["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookBackgroundMonitorForAllowPopupworkflow);
             if (mSOutlookBackgroundMonitorForAllowPopuppropCount > 0)
             {
                 callPayload.Body = mSOutlookBackgroundMonitorForAllowPopup;
@@ -7155,7 +7155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSetAllowPopupDetailsoutlookAllowButtonName != null)
                 {
-                    mSOutlookSetAllowPopupDetails["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName);
+                    mSOutlookSetAllowPopupDetails["OutlookAllowButtonName"] = CSharpExpressionConverter.ConvertToken(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName);
                     mSOutlookSetAllowPopupDetailspropCount++;
                 }
 
@@ -7171,7 +7171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId != null)
                 {
-                    mSOutlookSetAllowPopupDetails["OutlookAllowButtonAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId);
+                    mSOutlookSetAllowPopupDetails["OutlookAllowButtonAutomationId"] = CSharpExpressionConverter.ConvertToken(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId);
                     mSOutlookSetAllowPopupDetailspropCount++;
                 }
 
@@ -7187,7 +7187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId != null)
                 {
-                    mSOutlookSetAllowPopupDetails["OutlookAllowCheckboxAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId);
+                    mSOutlookSetAllowPopupDetails["OutlookAllowCheckboxAutomationId"] = CSharpExpressionConverter.ConvertToken(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId);
                     mSOutlookSetAllowPopupDetailspropCount++;
                 }
 
@@ -7200,7 +7200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookSetAllowPopupDetailspropCount++;
-            mSOutlookSetAllowPopupDetails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsworkflow);
+            mSOutlookSetAllowPopupDetails["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookSetAllowPopupDetailsworkflow);
             if (mSOutlookSetAllowPopupDetailspropCount > 0)
             {
                 callPayload.Body = mSOutlookSetAllowPopupDetails;
@@ -7218,12 +7218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookExecuteCommandBarObject = new JObject();
             var mSOutlookExecuteCommandBarObjectpropCount = 0;
             mSOutlookExecuteCommandBarObjectpropCount++;
-            mSOutlookExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectobjectId);
+            mSOutlookExecuteCommandBarObject["ObjectId"] = CSharpExpressionConverter.ConvertToken(mSOutlookExecuteCommandBarObjectobjectId);
             if (mSOutlookExecuteCommandBarObjectrunInBackground != null)
             {
                 if (mSOutlookExecuteCommandBarObjectrunInBackground != null)
                 {
-                    mSOutlookExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectrunInBackground);
+                    mSOutlookExecuteCommandBarObject["RunInBackground"] = CSharpExpressionConverter.ConvertToken(mSOutlookExecuteCommandBarObjectrunInBackground);
                     mSOutlookExecuteCommandBarObjectpropCount++;
                 }
 
@@ -7236,7 +7236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookExecuteCommandBarObjectpropCount++;
-            mSOutlookExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectworkflow);
+            mSOutlookExecuteCommandBarObject["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookExecuteCommandBarObjectworkflow);
             if (mSOutlookExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSOutlookExecuteCommandBarObject;
@@ -7255,7 +7255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetEmailspropCount = 0;
             if (mSOutlookGetEmailsfolderPath != null)
             {
-                mSOutlookGetEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsfolderPath);
+                mSOutlookGetEmails["FolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailsfolderPath);
                 mSOutlookGetEmailspropCount++;
             }
 
@@ -7263,7 +7263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetEmailssearchRead != null)
                 {
-                    mSOutlookGetEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchRead);
+                    mSOutlookGetEmails["SearchRead"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchRead);
                     mSOutlookGetEmailspropCount++;
                 }
 
@@ -7279,7 +7279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetEmailssearchUnread != null)
                 {
-                    mSOutlookGetEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchUnread);
+                    mSOutlookGetEmails["SearchUnread"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchUnread);
                     mSOutlookGetEmailspropCount++;
                 }
 
@@ -7293,25 +7293,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetEmailssearchSubject != null)
             {
-                mSOutlookGetEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchSubject);
+                mSOutlookGetEmails["SearchSubject"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchSubject);
                 mSOutlookGetEmailspropCount++;
             }
 
             if (mSOutlookGetEmailssearchFromSMTP != null)
             {
-                mSOutlookGetEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchFromSMTP);
+                mSOutlookGetEmails["SearchFromSMTP"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchFromSMTP);
                 mSOutlookGetEmailspropCount++;
             }
 
             if (mSOutlookGetEmailssearchFromName != null)
             {
-                mSOutlookGetEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchFromName);
+                mSOutlookGetEmails["SearchFromName"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchFromName);
                 mSOutlookGetEmailspropCount++;
             }
 
             if (mSOutlookGetEmailssearchQuery != null)
             {
-                mSOutlookGetEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchQuery);
+                mSOutlookGetEmails["SearchQuery"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchQuery);
                 mSOutlookGetEmailspropCount++;
             }
 
@@ -7319,7 +7319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetEmailssearchMaxAgeInDays != null)
                 {
-                    mSOutlookGetEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchMaxAgeInDays);
+                    mSOutlookGetEmails["SearchMaxAgeInDays"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchMaxAgeInDays);
                     mSOutlookGetEmailspropCount++;
                 }
 
@@ -7333,13 +7333,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetEmailssearchStartDateTimeAsString != null)
             {
-                mSOutlookGetEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchStartDateTimeAsString);
+                mSOutlookGetEmails["SearchStartDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchStartDateTimeAsString);
                 mSOutlookGetEmailspropCount++;
             }
 
             if (mSOutlookGetEmailssearchEndDateTimeAsString != null)
             {
-                mSOutlookGetEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchEndDateTimeAsString);
+                mSOutlookGetEmails["SearchEndDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailssearchEndDateTimeAsString);
                 mSOutlookGetEmailspropCount++;
             }
 
@@ -7347,7 +7347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetEmailsmaxResultsToReturn != null)
                 {
-                    mSOutlookGetEmails["MaxResultsToReturn"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsmaxResultsToReturn);
+                    mSOutlookGetEmails["MaxResultsToReturn"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailsmaxResultsToReturn);
                     mSOutlookGetEmailspropCount++;
                 }
 
@@ -7363,7 +7363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetEmailsclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookGetEmails["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsclickAllowButtonIfRequired);
+                    mSOutlookGetEmails["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailsclickAllowButtonIfRequired);
                     mSOutlookGetEmailspropCount++;
                 }
 
@@ -7376,7 +7376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookGetEmailspropCount++;
-            mSOutlookGetEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsworkflow);
+            mSOutlookGetEmails["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetEmailsworkflow);
             if (mSOutlookGetEmailspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmails;
@@ -7395,7 +7395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetFirstEmailpropCount = 0;
             if (mSOutlookGetFirstEmailfolderPath != null)
             {
-                mSOutlookGetFirstEmail["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailfolderPath);
+                mSOutlookGetFirstEmail["FolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailfolderPath);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
@@ -7403,7 +7403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetFirstEmailsearchRead != null)
                 {
-                    mSOutlookGetFirstEmail["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchRead);
+                    mSOutlookGetFirstEmail["SearchRead"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchRead);
                     mSOutlookGetFirstEmailpropCount++;
                 }
 
@@ -7419,7 +7419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetFirstEmailsearchUnread != null)
                 {
-                    mSOutlookGetFirstEmail["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchUnread);
+                    mSOutlookGetFirstEmail["SearchUnread"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchUnread);
                     mSOutlookGetFirstEmailpropCount++;
                 }
 
@@ -7433,25 +7433,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetFirstEmailsearchSubject != null)
             {
-                mSOutlookGetFirstEmail["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchSubject);
+                mSOutlookGetFirstEmail["SearchSubject"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchSubject);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
             if (mSOutlookGetFirstEmailsearchFromSMTP != null)
             {
-                mSOutlookGetFirstEmail["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchFromSMTP);
+                mSOutlookGetFirstEmail["SearchFromSMTP"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchFromSMTP);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
             if (mSOutlookGetFirstEmailsearchFromName != null)
             {
-                mSOutlookGetFirstEmail["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchFromName);
+                mSOutlookGetFirstEmail["SearchFromName"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchFromName);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
             if (mSOutlookGetFirstEmailsearchQuery != null)
             {
-                mSOutlookGetFirstEmail["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchQuery);
+                mSOutlookGetFirstEmail["SearchQuery"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchQuery);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
@@ -7459,7 +7459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetFirstEmailsearchMaxAgeInDays != null)
                 {
-                    mSOutlookGetFirstEmail["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchMaxAgeInDays);
+                    mSOutlookGetFirstEmail["SearchMaxAgeInDays"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchMaxAgeInDays);
                     mSOutlookGetFirstEmailpropCount++;
                 }
 
@@ -7473,13 +7473,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetFirstEmailsearchStartDateTimeAsString != null)
             {
-                mSOutlookGetFirstEmail["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchStartDateTimeAsString);
+                mSOutlookGetFirstEmail["SearchStartDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchStartDateTimeAsString);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
             if (mSOutlookGetFirstEmailsearchEndDateTimeAsString != null)
             {
-                mSOutlookGetFirstEmail["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchEndDateTimeAsString);
+                mSOutlookGetFirstEmail["SearchEndDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailsearchEndDateTimeAsString);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
@@ -7487,7 +7487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetFirstEmailclickAllowButtonIfRequired != null)
                 {
-                    mSOutlookGetFirstEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailclickAllowButtonIfRequired);
+                    mSOutlookGetFirstEmail["ClickAllowButtonIfRequired"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailclickAllowButtonIfRequired);
                     mSOutlookGetFirstEmailpropCount++;
                 }
 
@@ -7500,7 +7500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             }
 
             mSOutlookGetFirstEmailpropCount++;
-            mSOutlookGetFirstEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailworkflow);
+            mSOutlookGetFirstEmail["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetFirstEmailworkflow);
             if (mSOutlookGetFirstEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetFirstEmail;
@@ -7519,7 +7519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetNumberOfEmailspropCount = 0;
             if (mSOutlookGetNumberOfEmailsfolderPath != null)
             {
-                mSOutlookGetNumberOfEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsfolderPath);
+                mSOutlookGetNumberOfEmails["FolderPath"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailsfolderPath);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
@@ -7527,7 +7527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetNumberOfEmailssearchRead != null)
                 {
-                    mSOutlookGetNumberOfEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchRead);
+                    mSOutlookGetNumberOfEmails["SearchRead"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchRead);
                     mSOutlookGetNumberOfEmailspropCount++;
                 }
 
@@ -7543,7 +7543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetNumberOfEmailssearchUnread != null)
                 {
-                    mSOutlookGetNumberOfEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchUnread);
+                    mSOutlookGetNumberOfEmails["SearchUnread"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchUnread);
                     mSOutlookGetNumberOfEmailspropCount++;
                 }
 
@@ -7557,25 +7557,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetNumberOfEmailssearchSubject != null)
             {
-                mSOutlookGetNumberOfEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchSubject);
+                mSOutlookGetNumberOfEmails["SearchSubject"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchSubject);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             if (mSOutlookGetNumberOfEmailssearchFromSMTP != null)
             {
-                mSOutlookGetNumberOfEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchFromSMTP);
+                mSOutlookGetNumberOfEmails["SearchFromSMTP"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchFromSMTP);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             if (mSOutlookGetNumberOfEmailssearchFromName != null)
             {
-                mSOutlookGetNumberOfEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchFromName);
+                mSOutlookGetNumberOfEmails["SearchFromName"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchFromName);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             if (mSOutlookGetNumberOfEmailssearchQuery != null)
             {
-                mSOutlookGetNumberOfEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchQuery);
+                mSOutlookGetNumberOfEmails["SearchQuery"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchQuery);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
@@ -7583,7 +7583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             {
                 if (mSOutlookGetNumberOfEmailssearchMaxAgeInDays != null)
                 {
-                    mSOutlookGetNumberOfEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchMaxAgeInDays);
+                    mSOutlookGetNumberOfEmails["SearchMaxAgeInDays"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchMaxAgeInDays);
                     mSOutlookGetNumberOfEmailspropCount++;
                 }
 
@@ -7597,18 +7597,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
             if (mSOutlookGetNumberOfEmailssearchStartDateTimeAsString != null)
             {
-                mSOutlookGetNumberOfEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString);
+                mSOutlookGetNumberOfEmails["SearchStartDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             if (mSOutlookGetNumberOfEmailssearchEndDateTimeAsString != null)
             {
-                mSOutlookGetNumberOfEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString);
+                mSOutlookGetNumberOfEmails["SearchEndDateTimeAsString"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             mSOutlookGetNumberOfEmailspropCount++;
-            mSOutlookGetNumberOfEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsworkflow);
+            mSOutlookGetNumberOfEmails["Workflow"] = CSharpExpressionConverter.ConvertToken(mSOutlookGetNumberOfEmailsworkflow);
             if (mSOutlookGetNumberOfEmailspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetNumberOfEmails;

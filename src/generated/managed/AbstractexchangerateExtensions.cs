@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
             var apiCallPath = "/v1/live/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base"] = ExpressionConverter.Convert(@base);
+            callPayload.Queries["base"] = CSharpExpressionConverter.ConvertO(@base);
             if (target != null)
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+                callPayload.Queries["target"] = CSharpExpressionConverter.ConvertO(target);
             return new ApiConnectionAction<LiveRatesResponse>(callPayload);
         }
 
@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
             var apiCallPath = "/v1/convert/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base"] = ExpressionConverter.Convert(@base);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+            callPayload.Queries["base"] = CSharpExpressionConverter.ConvertO(@base);
+            callPayload.Queries["target"] = CSharpExpressionConverter.ConvertO(target);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (baseAmount != null)
-                callPayload.Queries["base_amount"] = ExpressionConverter.Convert(baseAmount);
+                callPayload.Queries["base_amount"] = CSharpExpressionConverter.ConvertO(baseAmount);
             return new ApiConnectionAction<ConvertResponse>(callPayload);
         }
     }

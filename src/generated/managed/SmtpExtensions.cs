@@ -21,61 +21,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
             var emailMessagepropCount = 0;
             if (emailMessagefrom != null)
             {
-                emailMessage["From"] = ExpressionConverter.ConvertO(emailMessagefrom);
+                emailMessage["From"] = CSharpExpressionConverter.ConvertToken(emailMessagefrom);
                 emailMessagepropCount++;
             }
 
             if (emailMessageto != null)
             {
-                emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
+                emailMessage["To"] = CSharpExpressionConverter.ConvertToken(emailMessageto);
                 emailMessagepropCount++;
             }
 
             if (emailMessagecC != null)
             {
-                emailMessage["CC"] = ExpressionConverter.ConvertO(emailMessagecC);
+                emailMessage["CC"] = CSharpExpressionConverter.ConvertToken(emailMessagecC);
                 emailMessagepropCount++;
             }
 
             if (emailMessagesubject != null)
             {
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
+                emailMessage["Subject"] = CSharpExpressionConverter.ConvertToken(emailMessagesubject);
                 emailMessagepropCount++;
             }
 
             if (emailMessagebody != null)
             {
-                emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
+                emailMessage["Body"] = CSharpExpressionConverter.ConvertToken(emailMessagebody);
                 emailMessagepropCount++;
             }
 
             if (emailMessagebcc != null)
             {
-                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebcc);
+                emailMessage["Bcc"] = CSharpExpressionConverter.ConvertToken(emailMessagebcc);
                 emailMessagepropCount++;
             }
 
             if (emailMessageimportance != null)
             {
-                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                emailMessage["Importance"] = CSharpExpressionConverter.Convert(emailMessageimportance);
                 emailMessagepropCount++;
             }
 
             if (emailMessagereadReceipt != null)
             {
-                emailMessage["ReadReceipt"] = ExpressionConverter.ConvertO(emailMessagereadReceipt);
+                emailMessage["ReadReceipt"] = CSharpExpressionConverter.ConvertToken(emailMessagereadReceipt);
                 emailMessagepropCount++;
             }
 
             if (emailMessagedeliveryReceipt != null)
             {
-                emailMessage["DeliveryReceipt"] = ExpressionConverter.ConvertO(emailMessagedeliveryReceipt);
+                emailMessage["DeliveryReceipt"] = CSharpExpressionConverter.ConvertToken(emailMessagedeliveryReceipt);
                 emailMessagepropCount++;
             }
 
             if (emailMessageattachments != null)
             {
-                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                emailMessage["Attachments"] = CSharpExpressionConverter.ConvertToken(emailMessageattachments);
                 emailMessagepropCount++;
             }
 

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> GetContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Contact>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IWorkflowAction DeleteContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -32,34 +32,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
-            var apiCallPath = String.Format("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
@@ -67,31 +67,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var internetObjectpropCount = 0;
             if (bodyinternetemail != null)
             {
-                internetObject["email"] = ExpressionConverter.ConvertO(bodyinternetemail);
+                internetObject["email"] = CSharpExpressionConverter.ConvertToken(bodyinternetemail);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetwebsite != null)
             {
-                internetObject["website"] = ExpressionConverter.ConvertO(bodyinternetwebsite);
+                internetObject["website"] = CSharpExpressionConverter.ConvertToken(bodyinternetwebsite);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetlinkedin != null)
             {
-                internetObject["linkedin"] = ExpressionConverter.ConvertO(bodyinternetlinkedin);
+                internetObject["linkedin"] = CSharpExpressionConverter.ConvertToken(bodyinternetlinkedin);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetfacebook != null)
             {
-                internetObject["facebook"] = ExpressionConverter.ConvertO(bodyinternetfacebook);
+                internetObject["facebook"] = CSharpExpressionConverter.ConvertToken(bodyinternetfacebook);
                 internetObjectpropCount++;
             }
 
             if (bodyinternettwitter != null)
             {
-                internetObject["twitter"] = ExpressionConverter.ConvertO(bodyinternettwitter);
+                internetObject["twitter"] = CSharpExpressionConverter.ConvertToken(bodyinternettwitter);
                 internetObjectpropCount++;
             }
 
@@ -105,25 +105,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var phonesObjectpropCount = 0;
             if (bodyphonesbusinessPhone != null)
             {
-                phonesObject["businessPhone"] = ExpressionConverter.ConvertO(bodyphonesbusinessPhone);
+                phonesObject["businessPhone"] = CSharpExpressionConverter.ConvertToken(bodyphonesbusinessPhone);
                 phonesObjectpropCount++;
             }
 
             if (bodyphonesmobile != null)
             {
-                phonesObject["mobile"] = ExpressionConverter.ConvertO(bodyphonesmobile);
+                phonesObject["mobile"] = CSharpExpressionConverter.ConvertToken(bodyphonesmobile);
                 phonesObjectpropCount++;
             }
 
             if (bodyphoneshome != null)
             {
-                phonesObject["home"] = ExpressionConverter.ConvertO(bodyphoneshome);
+                phonesObject["home"] = CSharpExpressionConverter.ConvertToken(bodyphoneshome);
                 phonesObjectpropCount++;
             }
 
             if (bodyphonesbusinessFax != null)
             {
-                phonesObject["businessFax"] = ExpressionConverter.ConvertO(bodyphonesbusinessFax);
+                phonesObject["businessFax"] = CSharpExpressionConverter.ConvertToken(bodyphonesbusinessFax);
                 phonesObjectpropCount++;
             }
 
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact[]> GetAllContacts(Expression<Func<string>> contactListId)
         {
-            var apiCallPath = String.Format("/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(contactListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/contacts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Contact[]>(callPayload);
@@ -165,34 +165,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> CreateContact(Expression<Func<string>> contactListId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
-            var apiCallPath = String.Format("/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(contactListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/contacts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodygroupId != null)
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
                 bodypropCount++;
             }
 
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
@@ -200,31 +200,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var internetObjectpropCount = 0;
             if (bodyinternetemail != null)
             {
-                internetObject["email"] = ExpressionConverter.ConvertO(bodyinternetemail);
+                internetObject["email"] = CSharpExpressionConverter.ConvertToken(bodyinternetemail);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetwebsite != null)
             {
-                internetObject["website"] = ExpressionConverter.ConvertO(bodyinternetwebsite);
+                internetObject["website"] = CSharpExpressionConverter.ConvertToken(bodyinternetwebsite);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetlinkedin != null)
             {
-                internetObject["linkedin"] = ExpressionConverter.ConvertO(bodyinternetlinkedin);
+                internetObject["linkedin"] = CSharpExpressionConverter.ConvertToken(bodyinternetlinkedin);
                 internetObjectpropCount++;
             }
 
             if (bodyinternetfacebook != null)
             {
-                internetObject["facebook"] = ExpressionConverter.ConvertO(bodyinternetfacebook);
+                internetObject["facebook"] = CSharpExpressionConverter.ConvertToken(bodyinternetfacebook);
                 internetObjectpropCount++;
             }
 
             if (bodyinternettwitter != null)
             {
-                internetObject["twitter"] = ExpressionConverter.ConvertO(bodyinternettwitter);
+                internetObject["twitter"] = CSharpExpressionConverter.ConvertToken(bodyinternettwitter);
                 internetObjectpropCount++;
             }
 
@@ -238,25 +238,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var phonesObjectpropCount = 0;
             if (bodyphonesbusinessPhone != null)
             {
-                phonesObject["businessPhone"] = ExpressionConverter.ConvertO(bodyphonesbusinessPhone);
+                phonesObject["businessPhone"] = CSharpExpressionConverter.ConvertToken(bodyphonesbusinessPhone);
                 phonesObjectpropCount++;
             }
 
             if (bodyphonesmobile != null)
             {
-                phonesObject["mobile"] = ExpressionConverter.ConvertO(bodyphonesmobile);
+                phonesObject["mobile"] = CSharpExpressionConverter.ConvertToken(bodyphonesmobile);
                 phonesObjectpropCount++;
             }
 
             if (bodyphoneshome != null)
             {
-                phonesObject["home"] = ExpressionConverter.ConvertO(bodyphoneshome);
+                phonesObject["home"] = CSharpExpressionConverter.ConvertToken(bodyphoneshome);
                 phonesObjectpropCount++;
             }
 
             if (bodyphonesbusinessFax != null)
             {
-                phonesObject["businessFax"] = ExpressionConverter.ConvertO(bodyphonesbusinessFax);
+                phonesObject["businessFax"] = CSharpExpressionConverter.ConvertToken(bodyphonesbusinessFax);
                 phonesObjectpropCount++;
             }
 
@@ -268,13 +268,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 

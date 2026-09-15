@@ -17,69 +17,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var apiCallPath = "/shipments";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             var fromObject = new JObject();
             var fromObjectpropCount = 0;
             if (bodyfromname != null)
             {
-                fromObject["name"] = ExpressionConverter.ConvertO(bodyfromname);
+                fromObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfromname);
                 fromObjectpropCount++;
             }
 
             if (bodyfromaddress != null)
             {
-                fromObject["address"] = ExpressionConverter.ConvertO(bodyfromaddress);
+                fromObject["address"] = CSharpExpressionConverter.ConvertToken(bodyfromaddress);
                 fromObjectpropCount++;
             }
 
             if (bodyfromcity != null)
             {
-                fromObject["city"] = ExpressionConverter.ConvertO(bodyfromcity);
+                fromObject["city"] = CSharpExpressionConverter.ConvertToken(bodyfromcity);
                 fromObjectpropCount++;
             }
 
             if (bodyfromzipCode != null)
             {
-                fromObject["zipCode"] = ExpressionConverter.ConvertO(bodyfromzipCode);
+                fromObject["zipCode"] = CSharpExpressionConverter.ConvertToken(bodyfromzipCode);
                 fromObjectpropCount++;
             }
 
             if (bodyfromcountryCode != null)
             {
-                fromObject["countryCode"] = ExpressionConverter.ConvertO(bodyfromcountryCode);
+                fromObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodyfromcountryCode);
                 fromObjectpropCount++;
             }
 
             if (bodyfromidNumber != null)
             {
-                fromObject["idNumber"] = ExpressionConverter.ConvertO(bodyfromidNumber);
+                fromObject["idNumber"] = CSharpExpressionConverter.ConvertToken(bodyfromidNumber);
                 fromObjectpropCount++;
             }
 
             if (bodyfromstateCode != null)
             {
-                fromObject["stateCode"] = ExpressionConverter.ConvertO(bodyfromstateCode);
+                fromObject["stateCode"] = CSharpExpressionConverter.ConvertToken(bodyfromstateCode);
                 fromObjectpropCount++;
             }
 
             if (bodyfromphone != null)
             {
-                fromObject["phone"] = ExpressionConverter.ConvertO(bodyfromphone);
+                fromObject["phone"] = CSharpExpressionConverter.ConvertToken(bodyfromphone);
                 fromObjectpropCount++;
             }
 
             if (bodyfromemail != null)
             {
-                fromObject["email"] = ExpressionConverter.ConvertO(bodyfromemail);
+                fromObject["email"] = CSharpExpressionConverter.ConvertToken(bodyfromemail);
                 fromObjectpropCount++;
             }
 
             if (bodyfromdistributionCenterId != null)
             {
-                fromObject["distributionCenterId"] = ExpressionConverter.ConvertO(bodyfromdistributionCenterId);
+                fromObject["distributionCenterId"] = CSharpExpressionConverter.ConvertToken(bodyfromdistributionCenterId);
                 fromObjectpropCount++;
             }
 
@@ -93,67 +93,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var toObjectpropCount = 0;
             if (bodytoname != null)
             {
-                toObject["name"] = ExpressionConverter.ConvertO(bodytoname);
+                toObject["name"] = CSharpExpressionConverter.ConvertToken(bodytoname);
                 toObjectpropCount++;
             }
 
             if (bodytoaddress != null)
             {
-                toObject["address"] = ExpressionConverter.ConvertO(bodytoaddress);
+                toObject["address"] = CSharpExpressionConverter.ConvertToken(bodytoaddress);
                 toObjectpropCount++;
             }
 
             if (bodytocity != null)
             {
-                toObject["city"] = ExpressionConverter.ConvertO(bodytocity);
+                toObject["city"] = CSharpExpressionConverter.ConvertToken(bodytocity);
                 toObjectpropCount++;
             }
 
             if (bodytozipCode != null)
             {
-                toObject["zipCode"] = ExpressionConverter.ConvertO(bodytozipCode);
+                toObject["zipCode"] = CSharpExpressionConverter.ConvertToken(bodytozipCode);
                 toObjectpropCount++;
             }
 
             if (bodytocountryCode != null)
             {
-                toObject["countryCode"] = ExpressionConverter.ConvertO(bodytocountryCode);
+                toObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodytocountryCode);
                 toObjectpropCount++;
             }
 
             if (bodytoidNumber != null)
             {
-                toObject["idNumber"] = ExpressionConverter.ConvertO(bodytoidNumber);
+                toObject["idNumber"] = CSharpExpressionConverter.ConvertToken(bodytoidNumber);
                 toObjectpropCount++;
             }
 
             if (bodytostateCode != null)
             {
-                toObject["stateCode"] = ExpressionConverter.ConvertO(bodytostateCode);
+                toObject["stateCode"] = CSharpExpressionConverter.ConvertToken(bodytostateCode);
                 toObjectpropCount++;
             }
 
             if (bodytoobservations != null)
             {
-                toObject["observations"] = ExpressionConverter.ConvertO(bodytoobservations);
+                toObject["observations"] = CSharpExpressionConverter.ConvertToken(bodytoobservations);
                 toObjectpropCount++;
             }
 
             if (bodytophone != null)
             {
-                toObject["phone"] = ExpressionConverter.ConvertO(bodytophone);
+                toObject["phone"] = CSharpExpressionConverter.ConvertToken(bodytophone);
                 toObjectpropCount++;
             }
 
             if (bodytoemail != null)
             {
-                toObject["email"] = ExpressionConverter.ConvertO(bodytoemail);
+                toObject["email"] = CSharpExpressionConverter.ConvertToken(bodytoemail);
                 toObjectpropCount++;
             }
 
             if (bodytodistributionCenterId != null)
             {
-                toObject["distributionCenterId"] = ExpressionConverter.ConvertO(bodytodistributionCenterId);
+                toObject["distributionCenterId"] = CSharpExpressionConverter.ConvertToken(bodytodistributionCenterId);
                 toObjectpropCount++;
             }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
 
             if (bodycostCenterCode != null)
             {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
+                body["costCenterCode"] = CSharpExpressionConverter.ConvertToken(bodycostCenterCode);
                 bodypropCount++;
             }
 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var clientAdditionalInfoObjectpropCount = 0;
             if (bodyclientAdditionalInfocategory != null)
             {
-                clientAdditionalInfoObject["category"] = ExpressionConverter.ConvertO(bodyclientAdditionalInfocategory);
+                clientAdditionalInfoObject["category"] = CSharpExpressionConverter.ConvertToken(bodyclientAdditionalInfocategory);
                 clientAdditionalInfoObjectpropCount++;
             }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var serviceAttributesObjectpropCount = 0;
             if (bodyserviceAttributescashOnDelivery != null)
             {
-                serviceAttributesObject["cashOnDelivery"] = ExpressionConverter.ConvertO(bodyserviceAttributescashOnDelivery);
+                serviceAttributesObject["cashOnDelivery"] = CSharpExpressionConverter.ConvertToken(bodyserviceAttributescashOnDelivery);
                 serviceAttributesObjectpropCount++;
             }
 
@@ -199,43 +199,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
 
             if (bodyserviceCode != null)
             {
-                body["serviceCode"] = ExpressionConverter.ConvertO(bodyserviceCode);
+                body["serviceCode"] = CSharpExpressionConverter.ConvertToken(bodyserviceCode);
                 bodypropCount++;
             }
 
             if (bodydistributionCenterId != null)
             {
-                body["distributionCenterId"] = ExpressionConverter.ConvertO(bodydistributionCenterId);
+                body["distributionCenterId"] = CSharpExpressionConverter.ConvertToken(bodydistributionCenterId);
                 bodypropCount++;
             }
 
             if (bodycarrierCode != null)
             {
-                body["carrierCode"] = ExpressionConverter.ConvertO(bodycarrierCode);
+                body["carrierCode"] = CSharpExpressionConverter.ConvertToken(bodycarrierCode);
                 bodypropCount++;
             }
 
             if (bodyclientReference != null)
             {
-                body["clientReference"] = ExpressionConverter.ConvertO(bodyclientReference);
+                body["clientReference"] = CSharpExpressionConverter.ConvertToken(bodyclientReference);
                 bodypropCount++;
             }
 
             if (bodyshippingDate != null)
             {
-                body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
+                body["shippingDate"] = CSharpExpressionConverter.ConvertToken(bodyshippingDate);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytotalAmount != null)
             {
-                body["totalAmount"] = ExpressionConverter.ConvertO(bodytotalAmount);
+                body["totalAmount"] = CSharpExpressionConverter.ConvertToken(bodytotalAmount);
                 bodypropCount++;
             }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var customsObjectpropCount = 0;
             if (bodycustomsinvoiceId != null)
             {
-                customsObject["invoiceId"] = ExpressionConverter.ConvertO(bodycustomsinvoiceId);
+                customsObject["invoiceId"] = CSharpExpressionConverter.ConvertToken(bodycustomsinvoiceId);
                 customsObjectpropCount++;
             }
 
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var batchObjectpropCount = 0;
             if (bodybatchreference != null)
             {
-                batchObject["reference"] = ExpressionConverter.ConvertO(bodybatchreference);
+                batchObject["reference"] = CSharpExpressionConverter.ConvertToken(bodybatchreference);
                 batchObjectpropCount++;
             }
 
@@ -269,13 +269,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
 
             if (bodyestimatedDate != null)
             {
-                body["estimatedDate"] = ExpressionConverter.ConvertO(bodyestimatedDate);
+                body["estimatedDate"] = CSharpExpressionConverter.ConvertToken(bodyestimatedDate);
                 bodypropCount++;
             }
 
             if (bodyparcels != null)
             {
-                body["parcels"] = ExpressionConverter.ConvertO(bodyparcels);
+                body["parcels"] = CSharpExpressionConverter.ConvertToken(bodyparcels);
                 bodypropCount++;
             }
 
@@ -290,11 +290,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction Label(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/shipments/{0}/label", ExpressionConverter.ConvertWithUrlEncoding(delivereaReference, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/shipments/{0}/label", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(delivereaReference, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -304,30 +304,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var apiCallPath = "/distribution-centers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<DistributionCentersResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IBodyWorkflowAction<CarriersInDistributionCenterResponse> CarriersInDistributionCenter(Expression<Func<string>> distributionCenter, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/distribution-centers/{0}/carriers", ExpressionConverter.ConvertWithUrlEncoding(distributionCenter, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/distribution-centers/{0}/carriers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(distributionCenter, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction<CarriersInDistributionCenterResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction CancelShipment(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var apiCallPath = String.Format("/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(delivereaReference, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/shipments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(delivereaReference, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
     }

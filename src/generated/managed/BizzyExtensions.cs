@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["message"] = ExpressionConverter.ConvertO(contentreplyText);
+            content["message"] = CSharpExpressionConverter.ConvertToken(contentreplyText);
             contentpropCount++;
-            content["activityJson"] = ExpressionConverter.ConvertO(contentreplyActivity);
+            content["activityJson"] = CSharpExpressionConverter.ConvertToken(contentreplyActivity);
             if (contentshowInChat != null)
             {
                 if (contentshowInChat != null)
                 {
-                    content["showInChat"] = ExpressionConverter.ConvertO(contentshowInChat);
+                    content["showInChat"] = CSharpExpressionConverter.ConvertToken(contentshowInChat);
                     contentpropCount++;
                 }
 
@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (contentcustomChannelData != null)
             {
-                content["customChannelDataJson"] = ExpressionConverter.ConvertO(contentcustomChannelData);
+                content["customChannelDataJson"] = CSharpExpressionConverter.ConvertToken(contentcustomChannelData);
                 contentpropCount++;
             }
 
             if (contentsignalResponseJSON != null)
             {
-                content["signalResponse"] = ExpressionConverter.ConvertO(contentsignalResponseJSON);
+                content["signalResponse"] = CSharpExpressionConverter.ConvertToken(contentsignalResponseJSON);
                 contentpropCount++;
             }
 
             if (contentmessageID != null)
             {
-                content["messageId"] = ExpressionConverter.ConvertO(contentmessageID);
+                content["messageId"] = CSharpExpressionConverter.ConvertToken(contentmessageID);
                 contentpropCount++;
             }
 
@@ -68,20 +68,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
-            var apiCallPath = String.Format("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(selectedCard, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(content);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(content);
             return new ApiConnectionAction<BotReplyResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<JToken> GenerateAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
-            var apiCallPath = String.Format("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(selectedCard, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(content);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(content);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             cardSetpropCount++;
-            cardSet["displayStyle"] = ExpressionConverter.ConvertO(cardSetdisplayStyle);
+            cardSet["displayStyle"] = CSharpExpressionConverter.Convert(cardSetdisplayStyle);
             cardSetpropCount++;
-            cardSet["activityJson"] = ExpressionConverter.ConvertO(cardSetreplyActivity);
+            cardSet["activityJson"] = CSharpExpressionConverter.ConvertToken(cardSetreplyActivity);
             if (cardSetshowInTab != null)
             {
                 if (cardSetshowInTab != null)
                 {
-                    cardSet["showInTab"] = ExpressionConverter.ConvertO(cardSetshowInTab);
+                    cardSet["showInTab"] = CSharpExpressionConverter.ConvertToken(cardSetshowInTab);
                     cardSetpropCount++;
                 }
 
@@ -123,13 +123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (cardSettabButtonLabel != null)
             {
-                cardSet["deepLinkButtonLabel"] = ExpressionConverter.ConvertO(cardSettabButtonLabel);
+                cardSet["deepLinkButtonLabel"] = CSharpExpressionConverter.ConvertToken(cardSettabButtonLabel);
                 cardSetpropCount++;
             }
 
             if (cardSettabButtonMessage != null)
             {
-                cardSet["deepLinkMessage"] = ExpressionConverter.ConvertO(cardSettabButtonMessage);
+                cardSet["deepLinkMessage"] = CSharpExpressionConverter.ConvertToken(cardSettabButtonMessage);
                 cardSetpropCount++;
             }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             cardInfopropCount++;
-            cardInfo["activityJson"] = ExpressionConverter.ConvertO(cardInforeplyActivity);
+            cardInfo["activityJson"] = CSharpExpressionConverter.ConvertToken(cardInforeplyActivity);
             if (cardInfopropCount > 0)
             {
                 callPayload.Body = cardInfo;
@@ -176,11 +176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["EnterpriseBot"] = ExpressionConverter.ConvertO(contenttargetBot);
+            content["EnterpriseBot"] = CSharpExpressionConverter.ConvertToken(contenttargetBot);
             contentpropCount++;
-            content["message"] = ExpressionConverter.ConvertO(contentconversationText);
+            content["message"] = CSharpExpressionConverter.ConvertToken(contentconversationText);
             contentpropCount++;
-            content["user"] = ExpressionConverter.ConvertO(contentuser);
+            content["user"] = CSharpExpressionConverter.ConvertToken(contentuser);
             if (contentpropCount > 0)
             {
                 callPayload.Body = content;
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["EnterpriseBot"] = ExpressionConverter.ConvertO(contenttargetBot);
+            content["EnterpriseBot"] = CSharpExpressionConverter.ConvertToken(contenttargetBot);
             var teamIDStrObject = new JObject();
             var teamIDStrObjectpropCount = 0;
             if (teamIDStrObjectpropCount > 0)
@@ -208,9 +208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             contentpropCount++;
-            content["channelId"] = ExpressionConverter.ConvertO(contentchannelName);
+            content["channelId"] = CSharpExpressionConverter.ConvertToken(contentchannelName);
             contentpropCount++;
-            content["message"] = ExpressionConverter.ConvertO(contentconversationText);
+            content["message"] = CSharpExpressionConverter.ConvertToken(contentconversationText);
             if (contentpropCount > 0)
             {
                 callPayload.Body = content;
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["activityJson"] = ExpressionConverter.ConvertO(contentreplyActivity);
+            content["activityJson"] = CSharpExpressionConverter.ConvertToken(contentreplyActivity);
             var eventObjectObject = new JObject();
             var eventObjectObjectpropCount = 0;
             if (eventObjectObjectpropCount > 0)
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -278,14 +278,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -354,16 +354,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["dateScope"] = ExpressionConverter.ConvertO(webHookdateScope);
+            webHook["dateScope"] = CSharpExpressionConverter.Convert(webHookdateScope);
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -448,16 +448,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["choices"] = ExpressionConverter.ConvertO(webHookchoiceValues);
+            webHook["choices"] = CSharpExpressionConverter.ConvertToken(webHookchoiceValues);
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
                     webHookpropCount++;
                 }
 
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -559,12 +559,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (webHookiconURL != null)
             {
-                webHook["icon"] = ExpressionConverter.ConvertO(webHookiconURL);
+                webHook["icon"] = CSharpExpressionConverter.ConvertToken(webHookiconURL);
                 webHookpropCount++;
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             var choicesObject = new JObject();
             var choicesObjectpropCount = 0;
             if (choicesObjectpropCount > 0)
@@ -574,12 +574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
                     webHookpropCount++;
                 }
 
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -680,22 +680,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["mode"] = ExpressionConverter.ConvertO(webHookmode);
+            webHook["mode"] = CSharpExpressionConverter.Convert(webHookmode);
             if (webHooksearchString != null)
             {
-                webHook["searchstr"] = ExpressionConverter.ConvertO(webHooksearchString);
+                webHook["searchstr"] = CSharpExpressionConverter.ConvertToken(webHooksearchString);
                 webHookpropCount++;
             }
 
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -711,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
                     webHookpropCount++;
                 }
 
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -796,16 +796,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["intentVector"] = ExpressionConverter.ConvertO(webHooklUISIntentVector);
+            webHook["intentVector"] = CSharpExpressionConverter.ConvertToken(webHooklUISIntentVector);
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -890,14 +890,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
             webHookpropCount++;
-            webHook["type"] = ExpressionConverter.ConvertO(webHookmemoryType);
+            webHook["type"] = CSharpExpressionConverter.ConvertToken(webHookmemoryType);
             webHookpropCount++;
-            webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
+            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
             if (webHookiconURL != null)
             {
-                webHook["icon"] = ExpressionConverter.ConvertO(webHookiconURL);
+                webHook["icon"] = CSharpExpressionConverter.ConvertToken(webHookiconURL);
                 webHookpropCount++;
             }
 
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
                     webHookpropCount++;
                 }
 
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (webHooktargetUser != null)
             {
-                webHook["targetUserMemory"] = ExpressionConverter.ConvertO(webHooktargetUser);
+                webHook["targetUserMemory"] = CSharpExpressionConverter.ConvertToken(webHooktargetUser);
                 webHookpropCount++;
             }
 
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
                     webHookpropCount++;
                 }
 
@@ -969,8 +969,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["selectedCard"] = ExpressionConverter.Convert(selectedCard);
-            callPayload.Body = ExpressionConverter.ConvertO(webHook);
+            callPayload.Headers["selectedCard"] = CSharpExpressionConverter.ConvertO(selectedCard);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(webHook);
             return new ApiConnectionAction<WebHook>(callPayload);
         }
 
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -1007,11 +1007,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["participants"] = ExpressionConverter.ConvertO(webHookparticipants);
+            webHook["participants"] = CSharpExpressionConverter.ConvertToken(webHookparticipants);
             webHookpropCount++;
-            webHook["endBridgeCommand"] = ExpressionConverter.ConvertO(webHookendChatCommand);
+            webHook["endBridgeCommand"] = CSharpExpressionConverter.ConvertToken(webHookendChatCommand);
             webHookpropCount++;
-            webHook["idleTimeoutDuration"] = ExpressionConverter.ConvertO(webHookidleTimeout);
+            webHook["idleTimeoutDuration"] = CSharpExpressionConverter.ConvertToken(webHookidleTimeout);
             if (webHookpropCount > 0)
             {
                 callPayload.Body = webHook;
@@ -1029,13 +1029,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["user"] = ExpressionConverter.ConvertO(contentuserPrincipalName);
+            content["user"] = CSharpExpressionConverter.ConvertToken(contentuserPrincipalName);
             contentpropCount++;
-            content["type"] = ExpressionConverter.ConvertO(contentmemoryType);
+            content["type"] = CSharpExpressionConverter.ConvertToken(contentmemoryType);
             contentpropCount++;
-            content["title"] = ExpressionConverter.ConvertO(contenttitle);
+            content["title"] = CSharpExpressionConverter.ConvertToken(contenttitle);
             contentpropCount++;
-            content["value"] = ExpressionConverter.ConvertO(contentvalue);
+            content["value"] = CSharpExpressionConverter.ConvertToken(contentvalue);
             if (contentpropCount > 0)
             {
                 callPayload.Body = content;
@@ -1053,11 +1053,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var content = new JObject();
             var contentpropCount = 0;
             contentpropCount++;
-            content["user"] = ExpressionConverter.ConvertO(contentuserPrincipalName);
+            content["user"] = CSharpExpressionConverter.ConvertToken(contentuserPrincipalName);
             contentpropCount++;
-            content["type"] = ExpressionConverter.ConvertO(contentmemoryType);
+            content["type"] = CSharpExpressionConverter.ConvertToken(contentmemoryType);
             contentpropCount++;
-            content["value"] = ExpressionConverter.ConvertO(contentvalue);
+            content["value"] = CSharpExpressionConverter.ConvertToken(contentvalue);
             if (contentpropCount > 0)
             {
                 callPayload.Body = content;
@@ -1075,9 +1075,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var checkMemoryInfo = new JObject();
             var checkMemoryInfopropCount = 0;
             checkMemoryInfopropCount++;
-            checkMemoryInfo["user"] = ExpressionConverter.ConvertO(checkMemoryInfouserPrincipalName);
+            checkMemoryInfo["user"] = CSharpExpressionConverter.ConvertToken(checkMemoryInfouserPrincipalName);
             checkMemoryInfopropCount++;
-            checkMemoryInfo["type"] = ExpressionConverter.ConvertO(checkMemoryInfomemoryType);
+            checkMemoryInfo["type"] = CSharpExpressionConverter.ConvertToken(checkMemoryInfomemoryType);
             if (checkMemoryInfopropCount > 0)
             {
                 callPayload.Body = checkMemoryInfo;
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -1121,30 +1121,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["triggerDescription"] = ExpressionConverter.ConvertO(webHooktriggerDescription);
+            webHook["triggerDescription"] = CSharpExpressionConverter.ConvertToken(webHooktriggerDescription);
             webHookpropCount++;
-            webHook["triggerType"] = ExpressionConverter.ConvertO(webHookbotTriggerType);
+            webHook["triggerType"] = CSharpExpressionConverter.Convert(webHookbotTriggerType);
             if (webHookkeywords != null)
             {
-                webHook["keywords"] = ExpressionConverter.ConvertO(webHookkeywords);
+                webHook["keywords"] = CSharpExpressionConverter.ConvertToken(webHookkeywords);
                 webHookpropCount++;
             }
 
             if (webHookDeprecatedLUISAPIKey != null)
             {
-                webHook["luisApiKey"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISAPIKey);
+                webHook["luisApiKey"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISAPIKey);
                 webHookpropCount++;
             }
 
             if (webHookDeprecatedLUISApp != null)
             {
-                webHook["luisAppId"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISApp);
+                webHook["luisAppId"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISApp);
                 webHookpropCount++;
             }
 
             if (webHookDeprecatedLUISIntent != null)
             {
-                webHook["luisIntent"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISIntent);
+                webHook["luisIntent"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISIntent);
                 webHookpropCount++;
             }
 
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHookpropCount++;
             if (webHookfilters != null)
             {
-                webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
                 webHookpropCount++;
             }
 
@@ -1188,12 +1188,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             }
 
             webHookpropCount++;
-            webHook["triggerDescription"] = ExpressionConverter.ConvertO(webHooktriggerDescription);
+            webHook["triggerDescription"] = CSharpExpressionConverter.ConvertToken(webHooktriggerDescription);
             webHookpropCount++;
-            webHook["triggerType"] = ExpressionConverter.ConvertO(webHookbotTriggerType);
+            webHook["triggerType"] = CSharpExpressionConverter.Convert(webHookbotTriggerType);
             if (webHooklUISIntentVector != null)
             {
-                webHook["intentVector"] = ExpressionConverter.ConvertO(webHooklUISIntentVector);
+                webHook["intentVector"] = CSharpExpressionConverter.ConvertToken(webHooklUISIntentVector);
                 webHookpropCount++;
             }
 
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
                     webHookpropCount++;
                 }
 

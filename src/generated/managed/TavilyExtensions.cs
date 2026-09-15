@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodytopic != null)
             {
                 if (bodytopic != null)
                 {
-                    body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                    body["topic"] = CSharpExpressionConverter.Convert(bodytopic);
                     bodypropCount++;
                 }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodysearchDepth != null)
                 {
-                    body["search_depth"] = ExpressionConverter.ConvertO(bodysearchDepth);
+                    body["search_depth"] = CSharpExpressionConverter.Convert(bodysearchDepth);
                     bodypropCount++;
                 }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodychunksPerSource != null)
             {
-                body["chunks_per_source"] = ExpressionConverter.ConvertO(bodychunksPerSource);
+                body["chunks_per_source"] = CSharpExpressionConverter.ConvertToken(bodychunksPerSource);
                 bodypropCount++;
             }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodymaxResults != null)
                 {
-                    body["max_results"] = ExpressionConverter.ConvertO(bodymaxResults);
+                    body["max_results"] = CSharpExpressionConverter.ConvertToken(bodymaxResults);
                     bodypropCount++;
                 }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodytimeRange != null)
             {
-                body["time_range"] = ExpressionConverter.ConvertO(bodytimeRange);
+                body["time_range"] = CSharpExpressionConverter.Convert(bodytimeRange);
                 bodypropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodydays != null)
                 {
-                    body["days"] = ExpressionConverter.ConvertO(bodydays);
+                    body["days"] = CSharpExpressionConverter.ConvertToken(bodydays);
                     bodypropCount++;
                 }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyincludeAnswer != null)
                 {
-                    body["include_answer"] = ExpressionConverter.ConvertO(bodyincludeAnswer);
+                    body["include_answer"] = CSharpExpressionConverter.ConvertToken(bodyincludeAnswer);
                     bodypropCount++;
                 }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyincludeRawContent != null)
                 {
-                    body["include_raw_content"] = ExpressionConverter.ConvertO(bodyincludeRawContent);
+                    body["include_raw_content"] = CSharpExpressionConverter.ConvertToken(bodyincludeRawContent);
                     bodypropCount++;
                 }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyincludeImages != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    body["include_images"] = CSharpExpressionConverter.ConvertToken(bodyincludeImages);
                     bodypropCount++;
                 }
 
@@ -147,19 +147,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyincludeImageDescriptions != null)
             {
-                body["include_image_descriptions"] = ExpressionConverter.ConvertO(bodyincludeImageDescriptions);
+                body["include_image_descriptions"] = CSharpExpressionConverter.ConvertToken(bodyincludeImageDescriptions);
                 bodypropCount++;
             }
 
             if (bodyincludeDomains != null)
             {
-                body["include_domains"] = ExpressionConverter.ConvertO(bodyincludeDomains);
+                body["include_domains"] = CSharpExpressionConverter.ConvertToken(bodyincludeDomains);
                 bodypropCount++;
             }
 
             if (bodyexcludeDomains != null)
             {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                body["exclude_domains"] = CSharpExpressionConverter.ConvertToken(bodyexcludeDomains);
                 bodypropCount++;
             }
 
@@ -180,12 +180,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
             if (bodyincludeImages != null)
             {
                 if (bodyincludeImages != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    body["include_images"] = CSharpExpressionConverter.ConvertToken(bodyincludeImages);
                     bodypropCount++;
                 }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyextractDepth != null)
                 {
-                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    body["extract_depth"] = CSharpExpressionConverter.Convert(bodyextractDepth);
                     bodypropCount++;
                 }
 
@@ -230,10 +230,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodymaxDepth != null)
             {
-                body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                body["max_depth"] = CSharpExpressionConverter.ConvertToken(bodymaxDepth);
                 bodypropCount++;
             }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodymaxBreadth != null)
                 {
-                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    body["max_breadth"] = CSharpExpressionConverter.ConvertToken(bodymaxBreadth);
                     bodypropCount++;
                 }
 
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -271,31 +271,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             if (bodyselectPaths != null)
             {
-                body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
+                body["select_paths"] = CSharpExpressionConverter.ConvertToken(bodyselectPaths);
                 bodypropCount++;
             }
 
             if (bodyselectDomains != null)
             {
-                body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
+                body["select_domains"] = CSharpExpressionConverter.ConvertToken(bodyselectDomains);
                 bodypropCount++;
             }
 
             if (bodyexcludePaths != null)
             {
-                body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
+                body["exclude_paths"] = CSharpExpressionConverter.ConvertToken(bodyexcludePaths);
                 bodypropCount++;
             }
 
             if (bodyexcludeDomains != null)
             {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                body["exclude_domains"] = CSharpExpressionConverter.ConvertToken(bodyexcludeDomains);
                 bodypropCount++;
             }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyallowExternal != null)
                 {
-                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    body["allow_external"] = CSharpExpressionConverter.ConvertToken(bodyallowExternal);
                     bodypropCount++;
                 }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyincludeImages != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    body["include_images"] = CSharpExpressionConverter.ConvertToken(bodyincludeImages);
                     bodypropCount++;
                 }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyextractDepth != null)
                 {
-                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    body["extract_depth"] = CSharpExpressionConverter.Convert(bodyextractDepth);
                     bodypropCount++;
                 }
 
@@ -370,12 +370,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodymaxDepth != null)
             {
                 if (bodymaxDepth != null)
                 {
-                    body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                    body["max_depth"] = CSharpExpressionConverter.ConvertToken(bodymaxDepth);
                     bodypropCount++;
                 }
 
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodymaxBreadth != null)
                 {
-                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    body["max_breadth"] = CSharpExpressionConverter.ConvertToken(bodymaxBreadth);
                     bodypropCount++;
                 }
 
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                     bodypropCount++;
                 }
 
@@ -421,31 +421,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             if (bodyselectPaths != null)
             {
-                body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
+                body["select_paths"] = CSharpExpressionConverter.ConvertToken(bodyselectPaths);
                 bodypropCount++;
             }
 
             if (bodyselectDomains != null)
             {
-                body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
+                body["select_domains"] = CSharpExpressionConverter.ConvertToken(bodyselectDomains);
                 bodypropCount++;
             }
 
             if (bodyexcludePaths != null)
             {
-                body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
+                body["exclude_paths"] = CSharpExpressionConverter.ConvertToken(bodyexcludePaths);
                 bodypropCount++;
             }
 
             if (bodyexcludeDomains != null)
             {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                body["exclude_domains"] = CSharpExpressionConverter.ConvertToken(bodyexcludeDomains);
                 bodypropCount++;
             }
 
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             {
                 if (bodyallowExternal != null)
                 {
-                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    body["allow_external"] = CSharpExpressionConverter.ConvertToken(bodyallowExternal);
                     bodypropCount++;
                 }
 
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodycategories != null)
             {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 

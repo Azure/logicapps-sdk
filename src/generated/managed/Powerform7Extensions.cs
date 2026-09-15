@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         public IWorkflowAction SubmitForm(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<object>> query = null)
         {
-            var apiCallPath = String.Format("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
+            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
+            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
             return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
         }
     }
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     {
         public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
+            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
             var callbackUrl = new JObject();
             var callbackUrlpropCount = 0;
             callbackUrl["callback_url"] = "@listCallbackUrl()";

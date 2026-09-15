@@ -14,21 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> GetSigningProcessActivityactivityProcessKeyGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> processKey, Expression<Func<string>> user = null, Expression<Func<flowTypeInput>> flowType = null, Expression<Func<int>> take = null, Expression<Func<int>> skip = null, Expression<Func<string>> flowKey = null)
         {
-            var apiCallPath = String.Format("/signing/activity/{0}", ExpressionConverter.ConvertWithUrlEncoding(processKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signing/activity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (user != null)
-                callPayload.Queries["User"] = ExpressionConverter.Convert(user);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["User"] = CSharpExpressionConverter.ConvertO(user);
+            callPayload.Queries["StartDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (flowType != null)
-                callPayload.Queries["FlowType"] = ExpressionConverter.Convert(flowType);
+                callPayload.Queries["FlowType"] = CSharpExpressionConverter.Convert(flowType);
             if (take != null)
-                callPayload.Queries["Take"] = ExpressionConverter.Convert(take);
+                callPayload.Queries["Take"] = CSharpExpressionConverter.ConvertO(take);
             if (skip != null)
-                callPayload.Queries["Skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["Skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (flowKey != null)
-                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
             return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
         }
 
@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (user != null)
-                callPayload.Queries["User"] = ExpressionConverter.Convert(user);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["User"] = CSharpExpressionConverter.ConvertO(user);
+            callPayload.Queries["StartDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (processKey != null)
-                callPayload.Queries["ProcessKey"] = ExpressionConverter.Convert(processKey);
+                callPayload.Queries["ProcessKey"] = CSharpExpressionConverter.ConvertO(processKey);
             if (flowType != null)
-                callPayload.Queries["FlowType"] = ExpressionConverter.Convert(flowType);
+                callPayload.Queries["FlowType"] = CSharpExpressionConverter.Convert(flowType);
             if (take != null)
-                callPayload.Queries["Take"] = ExpressionConverter.Convert(take);
+                callPayload.Queries["Take"] = CSharpExpressionConverter.ConvertO(take);
             if (skip != null)
-                callPayload.Queries["Skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["Skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (flowKey != null)
-                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
             return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
         }
 
@@ -61,18 +61,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var apiCallPath = "/signing/activity/company";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["StartDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["EndDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (take != null)
-                callPayload.Queries["Take"] = ExpressionConverter.Convert(take);
+                callPayload.Queries["Take"] = CSharpExpressionConverter.ConvertO(take);
             if (skip != null)
-                callPayload.Queries["Skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["Skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (user != null)
-                callPayload.Queries["User"] = ExpressionConverter.Convert(user);
+                callPayload.Queries["User"] = CSharpExpressionConverter.ConvertO(user);
             if (flowType != null)
-                callPayload.Queries["FlowType"] = ExpressionConverter.Convert(flowType);
+                callPayload.Queries["FlowType"] = CSharpExpressionConverter.Convert(flowType);
             if (flowKey != null)
-                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
             return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
         }
 
@@ -85,18 +85,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pdfDocument"] = ExpressionConverter.ConvertO(bodypdfDocument);
+            body["pdfDocument"] = CSharpExpressionConverter.ConvertToken(bodypdfDocument);
             bodypropCount++;
-            body["flowKey"] = ExpressionConverter.ConvertO(bodyflowKey);
+            body["flowKey"] = CSharpExpressionConverter.ConvertToken(bodyflowKey);
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
             if (bodylanguageType != null)
             {
-                body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                body["languageType"] = CSharpExpressionConverter.ConvertToken(bodylanguageType);
                 bodypropCount++;
             }
 
@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (processKey != null)
-                callPayload.Queries["ProcessKey"] = ExpressionConverter.Convert(processKey);
+                callPayload.Queries["ProcessKey"] = CSharpExpressionConverter.ConvertO(processKey);
             if (user != null)
-                callPayload.Queries["User"] = ExpressionConverter.Convert(user);
+                callPayload.Queries["User"] = CSharpExpressionConverter.ConvertO(user);
             return new ApiConnectionAction<SigningProcess>(callPayload);
         }
 
@@ -131,21 +131,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var bodypropCount = 0;
             if (bodypdfDocument != null)
             {
-                body["pdfDocument"] = ExpressionConverter.ConvertO(bodypdfDocument);
+                body["pdfDocument"] = CSharpExpressionConverter.ConvertToken(bodypdfDocument);
                 bodypropCount++;
             }
 
             if (bodypdfFileName != null)
             {
-                body["pdfFileName"] = ExpressionConverter.ConvertO(bodypdfFileName);
+                body["pdfFileName"] = CSharpExpressionConverter.ConvertToken(bodypdfFileName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["flowKey"] = ExpressionConverter.ConvertO(bodyflowKey);
+            body["flowKey"] = CSharpExpressionConverter.ConvertToken(bodyflowKey);
             if (bodycreateSignees != null)
             {
-                body["createSignees"] = ExpressionConverter.ConvertO(bodycreateSignees);
+                body["createSignees"] = CSharpExpressionConverter.ConvertToken(bodycreateSignees);
                 bodypropCount++;
             }
 
@@ -159,61 +159,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
 
             if (bodyattachments != null)
             {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
             if (bodyattachmentReferences != null)
             {
-                body["attachmentReferences"] = ExpressionConverter.ConvertO(bodyattachmentReferences);
+                body["attachmentReferences"] = CSharpExpressionConverter.ConvertToken(bodyattachmentReferences);
                 bodypropCount++;
             }
 
             if (bodyrequiresAuth != null)
             {
-                body["requiresAuth"] = ExpressionConverter.ConvertO(bodyrequiresAuth);
+                body["requiresAuth"] = CSharpExpressionConverter.ConvertToken(bodyrequiresAuth);
                 bodypropCount++;
             }
 
             if (bodysignInOrder != null)
             {
-                body["signInOrder"] = ExpressionConverter.ConvertO(bodysignInOrder);
+                body["signInOrder"] = CSharpExpressionConverter.ConvertToken(bodysignInOrder);
                 bodypropCount++;
             }
 
             if (bodysignatureLocation != null)
             {
-                body["signatureLocation"] = ExpressionConverter.ConvertO(bodysignatureLocation);
+                body["signatureLocation"] = CSharpExpressionConverter.Convert(bodysignatureLocation);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
             if (bodysequenceKey != null)
             {
-                body["sequenceKey"] = ExpressionConverter.ConvertO(bodysequenceKey);
+                body["sequenceKey"] = CSharpExpressionConverter.ConvertToken(bodysequenceKey);
                 bodypropCount++;
             }
 
             if (bodyactivityDisplayName != null)
             {
-                body["activityDisplayName"] = ExpressionConverter.ConvertO(bodyactivityDisplayName);
+                body["activityDisplayName"] = CSharpExpressionConverter.ConvertToken(bodyactivityDisplayName);
                 bodypropCount++;
             }
 
             if (bodyflattenDocument != null)
             {
-                body["flattenDocument"] = ExpressionConverter.ConvertO(bodyflattenDocument);
+                body["flattenDocument"] = CSharpExpressionConverter.ConvertToken(bodyflattenDocument);
                 bodypropCount++;
             }
 
             if (bodyreminderRule != null)
             {
-                body["reminderRule"] = ExpressionConverter.ConvertO(bodyreminderRule);
+                body["reminderRule"] = CSharpExpressionConverter.ConvertToken(bodyreminderRule);
                 bodypropCount++;
             }
 
@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["xmlDocument"] = ExpressionConverter.ConvertO(bodyxmlDocument);
+            body["xmlDocument"] = CSharpExpressionConverter.ConvertToken(bodyxmlDocument);
             bodypropCount++;
-            body["flowKey"] = ExpressionConverter.ConvertO(bodyflowKey);
+            body["flowKey"] = CSharpExpressionConverter.ConvertToken(bodyflowKey);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -251,8 +251,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var apiCallPath = "/management/signing/sequential";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SequenceKey"] = ExpressionConverter.Convert(sequenceKey);
-            callPayload.Queries["User"] = ExpressionConverter.Convert(user);
+            callPayload.Queries["SequenceKey"] = CSharpExpressionConverter.ConvertO(sequenceKey);
+            callPayload.Queries["User"] = CSharpExpressionConverter.ConvertO(user);
             return new ApiConnectionAction<SequentialSigning>(callPayload);
         }
 
@@ -265,18 +265,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["createSigningProcesses"] = ExpressionConverter.ConvertO(bodycreateSigningProcesses);
+            body["createSigningProcesses"] = CSharpExpressionConverter.ConvertToken(bodycreateSigningProcesses);
             bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
+            body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
             if (bodyrequiresAuth != null)
             {
-                body["requiresAuth"] = ExpressionConverter.ConvertO(bodyrequiresAuth);
+                body["requiresAuth"] = CSharpExpressionConverter.ConvertToken(bodyrequiresAuth);
                 bodypropCount++;
             }
 
             if (bodysignInOrder != null)
             {
-                body["signInOrder"] = ExpressionConverter.ConvertO(bodysignInOrder);
+                body["signInOrder"] = CSharpExpressionConverter.ConvertToken(bodysignInOrder);
                 bodypropCount++;
             }
 
@@ -298,20 +298,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var bodypropCount = 0;
             if (bodyssn != null)
             {
-                body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
+                body["ssn"] = CSharpExpressionConverter.ConvertToken(bodyssn);
                 bodypropCount++;
             }
 
             if (bodyphoneNumber != null)
             {
-                body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                body["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["flowKey"] = ExpressionConverter.ConvertO(bodyflowKey);
+            body["flowKey"] = CSharpExpressionConverter.ConvertToken(bodyflowKey);
             bodypropCount++;
-            body["authenticationContextType"] = ExpressionConverter.ConvertO(bodyauthenticationContextType);
+            body["authenticationContextType"] = CSharpExpressionConverter.Convert(bodyauthenticationContextType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -329,11 +329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["authRequestId"] = ExpressionConverter.ConvertO(bodyauthRequestId);
+            body["authRequestId"] = CSharpExpressionConverter.ConvertToken(bodyauthRequestId);
             bodypropCount++;
-            body["flowKey"] = ExpressionConverter.ConvertO(bodyflowKey);
+            body["flowKey"] = CSharpExpressionConverter.ConvertToken(bodyflowKey);
             bodypropCount++;
-            body["lookupType"] = ExpressionConverter.ConvertO(bodylookupType);
+            body["lookupType"] = CSharpExpressionConverter.Convert(bodylookupType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -345,17 +345,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<StartAuthResponse> RequestToViewSequenceStartsequentialSequenceKeyauth(Expression<Func<string>> sequenceKey, Expression<Func<string>> bodysequenceKey, Expression<Func<string>> bodyloginHint, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType)
         {
-            var apiCallPath = String.Format("/signing/sequential/{0}/auth", ExpressionConverter.ConvertWithUrlEncoding(sequenceKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signing/sequential/{0}/auth", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["sequenceKey"] = ExpressionConverter.ConvertO(bodysequenceKey);
+            body["sequenceKey"] = CSharpExpressionConverter.ConvertToken(bodysequenceKey);
             bodypropCount++;
-            body["loginHint"] = ExpressionConverter.ConvertO(bodyloginHint);
+            body["loginHint"] = CSharpExpressionConverter.ConvertToken(bodyloginHint);
             bodypropCount++;
-            body["authenticationContextType"] = ExpressionConverter.ConvertO(bodyauthenticationContextType);
+            body["authenticationContextType"] = CSharpExpressionConverter.Convert(bodyauthenticationContextType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -367,59 +367,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcess> GetSigningProcessBySigneeProcessKeysigneeSigneeKeyGet(Expression<Func<string>> processKey, Expression<Func<string>> signeeKey, Expression<Func<string>> userAgent = null)
         {
-            var apiCallPath = String.Format("/signing/{0}/signee/{1}", ExpressionConverter.ConvertWithUrlEncoding(processKey, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userAgent != null)
-                callPayload.Queries["UserAgent"] = ExpressionConverter.Convert(userAgent);
+                callPayload.Queries["UserAgent"] = CSharpExpressionConverter.ConvertO(userAgent);
             return new ApiConnectionAction<SigningProcess>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<Signee> UpdateSigneeProcessKeysigneeSigneeKeyCreate(Expression<Func<string>> signeeKey, Expression<Func<string>> processKey, Expression<Func<string>> bodysigneeKey, Expression<Func<string>> bodyprocessKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodyuser = null)
         {
-            var apiCallPath = String.Format("/signing/{0}/signee/{1}", ExpressionConverter.ConvertWithUrlEncoding(processKey, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeKey, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyaddress != null)
             {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
                 bodypropCount++;
             }
 
             if (bodypostalCode != null)
             {
-                body["postalCode"] = ExpressionConverter.ConvertO(bodypostalCode);
+                body["postalCode"] = CSharpExpressionConverter.ConvertToken(bodypostalCode);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["signeeKey"] = ExpressionConverter.ConvertO(bodysigneeKey);
+            body["signeeKey"] = CSharpExpressionConverter.ConvertToken(bodysigneeKey);
             bodypropCount++;
-            body["processKey"] = ExpressionConverter.ConvertO(bodyprocessKey);
+            body["processKey"] = CSharpExpressionConverter.ConvertToken(bodyprocessKey);
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 

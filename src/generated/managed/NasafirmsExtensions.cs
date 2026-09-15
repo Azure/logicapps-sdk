@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
         {
-            var apiCallPath = String.Format("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(areaCoord, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dayRange, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
         {
-            var apiCallPath = String.Format("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dayRange, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
             var apiCallPath = "/mapserver/mapkey_status/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(mAPKEY);
+            callPayload.Queries["MAP_KEY"] = CSharpExpressionConverter.ConvertO(mAPKEY);
             return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
         }
 

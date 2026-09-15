@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             var apiCallPath = "/api/v1/playlist.enable";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+            callPayload.Headers["Account Id"] = CSharpExpressionConverter.ConvertO(accountId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             var apiCallPath = "/api/v1/playlist.disable";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+            callPayload.Headers["Account Id"] = CSharpExpressionConverter.ConvertO(accountId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
             var apiCallPath = "/api/v1/playlist.execute";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+            callPayload.Headers["Account Id"] = CSharpExpressionConverter.ConvertO(accountId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

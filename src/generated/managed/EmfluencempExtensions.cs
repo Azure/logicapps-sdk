@@ -18,19 +18,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (groupID != null)
-                callPayload.Queries["groupID"] = ExpressionConverter.Convert(groupID);
+                callPayload.Queries["groupID"] = CSharpExpressionConverter.ConvertO(groupID);
             if (suppressed != null)
-                callPayload.Queries["suppressed"] = ExpressionConverter.Convert(suppressed);
+                callPayload.Queries["suppressed"] = CSharpExpressionConverter.ConvertO(suppressed);
             if (held != null)
-                callPayload.Queries["held"] = ExpressionConverter.Convert(held);
+                callPayload.Queries["held"] = CSharpExpressionConverter.ConvertO(held);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (sortField != null)
-                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
+                callPayload.Queries["sortField"] = CSharpExpressionConverter.Convert(sortField);
             if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
+                callPayload.Queries["sortDirection"] = CSharpExpressionConverter.Convert(sortDirection);
             return new ApiConnectionAction<ContactsSearchSimpleResponse>(callPayload);
         }
 
@@ -45,103 +45,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             var bodypropCount = 0;
             if (bodygroupID != null)
             {
-                body["groupID"] = ExpressionConverter.ConvertO(bodygroupID);
+                body["groupID"] = CSharpExpressionConverter.ConvertToken(bodygroupID);
                 bodypropCount++;
             }
 
             if (bodysuppressed != null)
             {
-                body["suppressed"] = ExpressionConverter.ConvertO(bodysuppressed);
+                body["suppressed"] = CSharpExpressionConverter.ConvertToken(bodysuppressed);
                 bodypropCount++;
             }
 
             if (bodyheld != null)
             {
-                body["held"] = ExpressionConverter.ConvertO(bodyheld);
+                body["held"] = CSharpExpressionConverter.ConvertToken(bodyheld);
                 bodypropCount++;
             }
 
             if (bodycontactIDs != null)
             {
-                body["contactIDs"] = ExpressionConverter.ConvertO(bodycontactIDs);
+                body["contactIDs"] = CSharpExpressionConverter.ConvertToken(bodycontactIDs);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyuserID != null)
             {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                body["userID"] = CSharpExpressionConverter.ConvertToken(bodyuserID);
                 bodypropCount++;
             }
 
             if (bodycustomerID != null)
             {
-                body["customerID"] = ExpressionConverter.ConvertO(bodycustomerID);
+                body["customerID"] = CSharpExpressionConverter.ConvertToken(bodycustomerID);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodyzipCode != null)
             {
-                body["zipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
+                body["zipCode"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
                 bodypropCount++;
             }
 
             if (bodycountry != null)
             {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
                 bodypropCount++;
             }
 
             if (bodypurl != null)
             {
-                body["purl"] = ExpressionConverter.ConvertO(bodypurl);
+                body["purl"] = CSharpExpressionConverter.ConvertToken(bodypurl);
                 bodypropCount++;
             }
 
             if (bodyfields != null)
             {
-                body["fields"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
                 bodypropCount++;
             }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             {
                 if (bodypage != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypage);
+                    body["page"] = CSharpExpressionConverter.ConvertToken(bodypage);
                     bodypropCount++;
                 }
 
@@ -163,19 +163,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
 
             if (bodyrpp != null)
             {
-                body["rpp"] = ExpressionConverter.ConvertO(bodyrpp);
+                body["rpp"] = CSharpExpressionConverter.ConvertToken(bodyrpp);
                 bodypropCount++;
             }
 
             if (bodysortField != null)
             {
-                body["sortField"] = ExpressionConverter.ConvertO(bodysortField);
+                body["sortField"] = CSharpExpressionConverter.Convert(bodysortField);
                 bodypropCount++;
             }
 
             if (bodysortDirection != null)
             {
-                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
+                body["sortDirection"] = CSharpExpressionConverter.Convert(bodysortDirection);
                 bodypropCount++;
             }
 
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             var apiCallPath = "/contacts/lookup";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction<ContactsLookupResponse>(callPayload);
         }
 
@@ -210,139 +210,139 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
             var bodypropCount = 0;
             if (bodycontactID != null)
             {
-                body["contactID"] = ExpressionConverter.ConvertO(bodycontactID);
+                body["contactID"] = CSharpExpressionConverter.ConvertToken(bodycontactID);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyuserID != null)
             {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                body["userID"] = CSharpExpressionConverter.ConvertToken(bodyuserID);
                 bodypropCount++;
             }
 
             if (bodycustomerID != null)
             {
-                body["customerID"] = ExpressionConverter.ConvertO(bodycustomerID);
+                body["customerID"] = CSharpExpressionConverter.ConvertToken(bodycustomerID);
                 bodypropCount++;
             }
 
             if (bodysuppressed != null)
             {
-                body["suppressed"] = ExpressionConverter.ConvertO(bodysuppressed);
+                body["suppressed"] = CSharpExpressionConverter.ConvertToken(bodysuppressed);
                 bodypropCount++;
             }
 
             if (bodyheld != null)
             {
-                body["held"] = ExpressionConverter.ConvertO(bodyheld);
+                body["held"] = CSharpExpressionConverter.ConvertToken(bodyheld);
                 bodypropCount++;
             }
 
             if (bodyoriginalSource != null)
             {
-                body["originalSource"] = ExpressionConverter.ConvertO(bodyoriginalSource);
+                body["originalSource"] = CSharpExpressionConverter.ConvertToken(bodyoriginalSource);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodyaddress1 != null)
             {
-                body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
+                body["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddress1);
                 bodypropCount++;
             }
 
             if (bodyaddress2 != null)
             {
-                body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
+                body["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddress2);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodyzipCode != null)
             {
-                body["zipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
+                body["zipCode"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
                 bodypropCount++;
             }
 
             if (bodycountry != null)
             {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
                 bodypropCount++;
             }
 
             if (bodypurl != null)
             {
-                body["purl"] = ExpressionConverter.ConvertO(bodypurl);
+                body["purl"] = CSharpExpressionConverter.ConvertToken(bodypurl);
                 bodypropCount++;
             }
 
             if (bodydateOfBirth != null)
             {
-                body["dateOfBirth"] = ExpressionConverter.ConvertO(bodydateOfBirth);
+                body["dateOfBirth"] = CSharpExpressionConverter.ConvertToken(bodydateOfBirth);
                 bodypropCount++;
             }
 
             if (bodynotes != null)
             {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                body["notes"] = CSharpExpressionConverter.ConvertToken(bodynotes);
                 bodypropCount++;
             }
 
             if (bodymemo != null)
             {
-                body["memo"] = ExpressionConverter.ConvertO(bodymemo);
+                body["memo"] = CSharpExpressionConverter.ConvertToken(bodymemo);
                 bodypropCount++;
             }
 
@@ -364,13 +364,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
 
             if (bodygroupIDs != null)
             {
-                body["groupIDs"] = ExpressionConverter.ConvertO(bodygroupIDs);
+                body["groupIDs"] = CSharpExpressionConverter.ConvertToken(bodygroupIDs);
                 bodypropCount++;
             }
 
             if (bodyremoveGroupIDs != null)
             {
-                body["removeGroupIDs"] = ExpressionConverter.ConvertO(bodyremoveGroupIDs);
+                body["removeGroupIDs"] = CSharpExpressionConverter.ConvertToken(bodyremoveGroupIDs);
                 bodypropCount++;
             }
 

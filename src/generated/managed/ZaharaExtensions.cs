@@ -30,61 +30,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             var modelpropCount = 0;
             if (modelinvoiceNumber != null)
             {
-                model["InvoiceNumber"] = ExpressionConverter.ConvertO(modelinvoiceNumber);
+                model["InvoiceNumber"] = CSharpExpressionConverter.ConvertToken(modelinvoiceNumber);
                 modelpropCount++;
             }
 
             if (modelpurchaseOrderNumber != null)
             {
-                model["PurchaseOrderNumber"] = ExpressionConverter.ConvertO(modelpurchaseOrderNumber);
+                model["PurchaseOrderNumber"] = CSharpExpressionConverter.ConvertToken(modelpurchaseOrderNumber);
                 modelpropCount++;
             }
 
             if (modelraisedDate != null)
             {
-                model["RaisedDate"] = ExpressionConverter.ConvertO(modelraisedDate);
+                model["RaisedDate"] = CSharpExpressionConverter.ConvertToken(modelraisedDate);
                 modelpropCount++;
             }
 
             if (modeldueDate != null)
             {
-                model["DueDate"] = ExpressionConverter.ConvertO(modeldueDate);
+                model["DueDate"] = CSharpExpressionConverter.ConvertToken(modeldueDate);
                 modelpropCount++;
             }
 
             if (modelsupplierReferenceNumber != null)
             {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
+                model["SupplierReferenceNumber"] = CSharpExpressionConverter.ConvertToken(modelsupplierReferenceNumber);
                 modelpropCount++;
             }
 
             if (modeldescription != null)
             {
-                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
+                model["Description"] = CSharpExpressionConverter.ConvertToken(modeldescription);
                 modelpropCount++;
             }
 
             if (modelcomments != null)
             {
-                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
+                model["Comments"] = CSharpExpressionConverter.ConvertToken(modelcomments);
                 modelpropCount++;
             }
 
             if (modeldivisionName != null)
             {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
+                model["DivisionName"] = CSharpExpressionConverter.ConvertToken(modeldivisionName);
                 modelpropCount++;
             }
 
             if (modelcurrencyCode != null)
             {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
+                model["CurrencyCode"] = CSharpExpressionConverter.ConvertToken(modelcurrencyCode);
                 modelpropCount++;
             }
 
             if (modellineItems != null)
             {
-                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
+                model["LineItems"] = CSharpExpressionConverter.ConvertToken(modellineItems);
                 modelpropCount++;
             }
 
@@ -106,49 +106,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             var modelpropCount = 0;
             if (modelrequisitorName != null)
             {
-                model["RequisitorName"] = ExpressionConverter.ConvertO(modelrequisitorName);
+                model["RequisitorName"] = CSharpExpressionConverter.ConvertToken(modelrequisitorName);
                 modelpropCount++;
             }
 
             if (modelrequiredDate != null)
             {
-                model["RequiredDate"] = ExpressionConverter.ConvertO(modelrequiredDate);
+                model["RequiredDate"] = CSharpExpressionConverter.ConvertToken(modelrequiredDate);
                 modelpropCount++;
             }
 
             if (modelsupplierReferenceNumber != null)
             {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
+                model["SupplierReferenceNumber"] = CSharpExpressionConverter.ConvertToken(modelsupplierReferenceNumber);
                 modelpropCount++;
             }
 
             if (modeldescription != null)
             {
-                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
+                model["Description"] = CSharpExpressionConverter.ConvertToken(modeldescription);
                 modelpropCount++;
             }
 
             if (modelcomments != null)
             {
-                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
+                model["Comments"] = CSharpExpressionConverter.ConvertToken(modelcomments);
                 modelpropCount++;
             }
 
             if (modeldivisionName != null)
             {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
+                model["DivisionName"] = CSharpExpressionConverter.ConvertToken(modeldivisionName);
                 modelpropCount++;
             }
 
             if (modelcurrencyCode != null)
             {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
+                model["CurrencyCode"] = CSharpExpressionConverter.ConvertToken(modelcurrencyCode);
                 modelpropCount++;
             }
 
             if (modellineItems != null)
             {
-                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
+                model["LineItems"] = CSharpExpressionConverter.ConvertToken(modellineItems);
                 modelpropCount++;
             }
 
@@ -170,55 +170,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             var modelpropCount = 0;
             if (modeladdressLines != null)
             {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
+                model["AddressLines"] = CSharpExpressionConverter.ConvertToken(modeladdressLines);
                 modelpropCount++;
             }
 
             if (modelcontactName != null)
             {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
+                model["ContactName"] = CSharpExpressionConverter.ConvertToken(modelcontactName);
                 modelpropCount++;
             }
 
             if (modelcountryCode != null)
             {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
+                model["CountryCode"] = CSharpExpressionConverter.ConvertToken(modelcountryCode);
                 modelpropCount++;
             }
 
             if (modelemail != null)
             {
-                model["Email"] = ExpressionConverter.ConvertO(modelemail);
+                model["Email"] = CSharpExpressionConverter.ConvertToken(modelemail);
                 modelpropCount++;
             }
 
             if (modelpostCode != null)
             {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
+                model["PostCode"] = CSharpExpressionConverter.ConvertToken(modelpostCode);
                 modelpropCount++;
             }
 
             if (modelreferenceNumber != null)
             {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
+                model["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(modelreferenceNumber);
                 modelpropCount++;
             }
 
             if (modelsupplierName != null)
             {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
+                model["SupplierName"] = CSharpExpressionConverter.ConvertToken(modelsupplierName);
                 modelpropCount++;
             }
 
             if (modeltelephone != null)
             {
-                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
+                model["Telephone"] = CSharpExpressionConverter.ConvertToken(modeltelephone);
                 modelpropCount++;
             }
 
             if (modeltype != null)
             {
-                model["Type"] = ExpressionConverter.ConvertO(modeltype);
+                model["Type"] = CSharpExpressionConverter.ConvertToken(modeltype);
                 modelpropCount++;
             }
 
@@ -236,66 +236,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             var apiCallPath = "/api/SupplierIntegration/Update";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var model = new JObject();
             var modelpropCount = 0;
             if (modelid != null)
             {
-                model["Id"] = ExpressionConverter.ConvertO(modelid);
+                model["Id"] = CSharpExpressionConverter.ConvertToken(modelid);
                 modelpropCount++;
             }
 
             if (modeladdressLines != null)
             {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
+                model["AddressLines"] = CSharpExpressionConverter.ConvertToken(modeladdressLines);
                 modelpropCount++;
             }
 
             if (modelcontactName != null)
             {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
+                model["ContactName"] = CSharpExpressionConverter.ConvertToken(modelcontactName);
                 modelpropCount++;
             }
 
             if (modelcountryCode != null)
             {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
+                model["CountryCode"] = CSharpExpressionConverter.ConvertToken(modelcountryCode);
                 modelpropCount++;
             }
 
             if (modelemail != null)
             {
-                model["Email"] = ExpressionConverter.ConvertO(modelemail);
+                model["Email"] = CSharpExpressionConverter.ConvertToken(modelemail);
                 modelpropCount++;
             }
 
             if (modelpostCode != null)
             {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
+                model["PostCode"] = CSharpExpressionConverter.ConvertToken(modelpostCode);
                 modelpropCount++;
             }
 
             if (modelreferenceNumber != null)
             {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
+                model["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(modelreferenceNumber);
                 modelpropCount++;
             }
 
             if (modelsupplierName != null)
             {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
+                model["SupplierName"] = CSharpExpressionConverter.ConvertToken(modelsupplierName);
                 modelpropCount++;
             }
 
             if (modeltelephone != null)
             {
-                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
+                model["Telephone"] = CSharpExpressionConverter.ConvertToken(modeltelephone);
                 modelpropCount++;
             }
 
             if (modeltype != null)
             {
-                model["Type"] = ExpressionConverter.ConvertO(modeltype);
+                model["Type"] = CSharpExpressionConverter.ConvertToken(modeltype);
                 modelpropCount++;
             }
 
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             var apiCallPath = "/api/DocumentsIntegration/GetApproved";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentType"] = ExpressionConverter.Convert(documentType);
+            callPayload.Queries["documentType"] = CSharpExpressionConverter.Convert(documentType);
             return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, triggerName, recurrence);
         }
 

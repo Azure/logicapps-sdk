@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<BooksGetResponseItem[]> BooksGet(Expression<Func<string>> graphId)
         {
-            var apiCallPath = String.Format("/graphs/{0}/books", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graphs/{0}/books", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BooksGetResponseItem[]>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<LinksGetResponseItem[]> LinksGet(Expression<Func<string>> graphId)
         {
-            var apiCallPath = String.Format("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<LinksGetResponseItem[]>(callPayload);
@@ -41,40 +41,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<LinkPostResponseItem[]> Link(Expression<Func<string>> graphId, Expression<Func<string>> bodyurl, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string[]>> bodyhighlights = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyupdatedAt != null)
             {
-                body["updated_at"] = ExpressionConverter.ConvertO(bodyupdatedAt);
+                body["updated_at"] = CSharpExpressionConverter.ConvertToken(bodyupdatedAt);
                 bodypropCount++;
             }
 
             if (bodyhighlights != null)
             {
-                body["highlights"] = ExpressionConverter.ConvertO(bodyhighlights);
+                body["highlights"] = CSharpExpressionConverter.ConvertToken(bodyhighlights);
                 bodypropCount++;
             }
 
@@ -89,20 +89,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<DailyNotePutResponse> DailyNotePut(Expression<Func<string>> graphId, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylistName = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/daily-notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graphs/{0}/daily-notes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             bodypropCount++;
             if (bodylistName != null)
             {
-                body["list_name"] = ExpressionConverter.ConvertO(bodylistName);
+                body["list_name"] = CSharpExpressionConverter.ConvertToken(bodylistName);
                 bodypropCount++;
             }
 
@@ -125,18 +125,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<NotePostResponse> Note(Expression<Func<string>> graphId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycontentMarkdown, Expression<Func<bool>> bodypinned = null)
         {
-            var apiCallPath = String.Format("/graphs/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graphs/{0}/notes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             bodypropCount++;
-            body["content_markdown"] = ExpressionConverter.ConvertO(bodycontentMarkdown);
+            body["content_markdown"] = CSharpExpressionConverter.ConvertToken(bodycontentMarkdown);
             if (bodypinned != null)
             {
-                body["pinned"] = ExpressionConverter.ConvertO(bodypinned);
+                body["pinned"] = CSharpExpressionConverter.ConvertToken(bodypinned);
                 bodypropCount++;
             }
 

@@ -21,31 +21,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
             var bodypropCount = 0;
             if (bodyimage != null)
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
                 bodypropCount++;
             }
 
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
                 bodypropCount++;
             }
 
             if (bodydocumentType != null)
             {
-                body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
+                body["documentType"] = CSharpExpressionConverter.ConvertToken(bodydocumentType);
                 bodypropCount++;
             }
 
             if (bodydefaultDateParsing != null)
             {
-                body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
+                body["defaultDateParsing"] = CSharpExpressionConverter.ConvertToken(bodydefaultDateParsing);
                 bodypropCount++;
             }
 
             if (bodydecimalPlaces != null)
             {
-                body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
+                body["decimalPlaces"] = CSharpExpressionConverter.ConvertToken(bodydecimalPlaces);
                 bodypropCount++;
             }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
         {
-            var apiCallPath = String.Format("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/result/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Result>(callPayload);

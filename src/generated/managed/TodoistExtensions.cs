@@ -20,34 +20,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var newItem = new JObject();
             var newItempropCount = 0;
             newItempropCount++;
-            newItem["content"] = ExpressionConverter.ConvertO(newItemtitle);
+            newItem["content"] = CSharpExpressionConverter.ConvertToken(newItemtitle);
             if (newItemprojectId != null)
             {
-                newItem["project_id"] = ExpressionConverter.ConvertO(newItemprojectId);
+                newItem["project_id"] = CSharpExpressionConverter.ConvertToken(newItemprojectId);
                 newItempropCount++;
             }
 
             if (newItemdueDate != null)
             {
-                newItem["due_string"] = ExpressionConverter.ConvertO(newItemdueDate);
+                newItem["due_string"] = CSharpExpressionConverter.ConvertToken(newItemdueDate);
                 newItempropCount++;
             }
 
             if (newItempriority != null)
             {
-                newItem["priority"] = ExpressionConverter.ConvertO(newItempriority);
+                newItem["priority"] = CSharpExpressionConverter.ConvertToken(newItempriority);
                 newItempropCount++;
             }
 
             if (newItemparentId != null)
             {
-                newItem["parent_id"] = ExpressionConverter.ConvertO(newItemparentId);
+                newItem["parent_id"] = CSharpExpressionConverter.ConvertToken(newItemparentId);
                 newItempropCount++;
             }
 
             if (newItemchildOrder != null)
             {
-                newItem["order"] = ExpressionConverter.ConvertO(newItemchildOrder);
+                newItem["order"] = CSharpExpressionConverter.ConvertToken(newItemchildOrder);
                 newItempropCount++;
             }
 
@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var newLabel = new JObject();
             var newLabelpropCount = 0;
             newLabelpropCount++;
-            newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
+            newLabel["name"] = CSharpExpressionConverter.ConvertToken(newLabelname);
             if (newLabelcolor != null)
             {
-                newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
+                newLabel["color"] = CSharpExpressionConverter.ConvertToken(newLabelcolor);
                 newLabelpropCount++;
             }
 
             if (newLabelorder != null)
             {
-                newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
+                newLabel["order"] = CSharpExpressionConverter.ConvertToken(newLabelorder);
                 newLabelpropCount++;
             }
 
@@ -98,22 +98,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var newProject = new JObject();
             var newProjectpropCount = 0;
             newProjectpropCount++;
-            newProject["name"] = ExpressionConverter.ConvertO(newProjectname);
+            newProject["name"] = CSharpExpressionConverter.ConvertToken(newProjectname);
             if (newProjectcolor != null)
             {
-                newProject["color"] = ExpressionConverter.ConvertO(newProjectcolor);
+                newProject["color"] = CSharpExpressionConverter.ConvertToken(newProjectcolor);
                 newProjectpropCount++;
             }
 
             if (newProjectparentId != null)
             {
-                newProject["parent_id"] = ExpressionConverter.ConvertO(newProjectparentId);
+                newProject["parent_id"] = CSharpExpressionConverter.ConvertToken(newProjectparentId);
                 newProjectpropCount++;
             }
 
             if (newProjectisFavorite != null)
             {
-                newProject["is_favorite"] = ExpressionConverter.ConvertO(newProjectisFavorite);
+                newProject["is_favorite"] = CSharpExpressionConverter.ConvertToken(newProjectisFavorite);
                 newProjectpropCount++;
             }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/tasks/getTasksByProject";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionAction<TaskV2[]>(callPayload);
         }
 
@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/sync/shareProject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             var shareProject = new JObject();
             var shareProjectpropCount = 0;
             shareProjectpropCount++;
-            shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
+            shareProject["email"] = CSharpExpressionConverter.ConvertToken(shareProjectemail);
             if (shareProjectpropCount > 0)
             {
                 callPayload.Body = shareProject;
@@ -187,15 +187,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/tasks/updateTask";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var changeItem = new JObject();
             var changeItempropCount = 0;
             changeItempropCount++;
-            changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
+            changeItem["content"] = CSharpExpressionConverter.ConvertToken(changeItemtitle);
             if (changeItempriority != null)
             {
-                changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
+                changeItem["priority"] = CSharpExpressionConverter.ConvertToken(changeItempriority);
                 changeItempropCount++;
             }
 
@@ -213,24 +213,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/labels/updateLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var changeLabel = new JObject();
             var changeLabelpropCount = 0;
             if (changeLabelname != null)
             {
-                changeLabel["name"] = ExpressionConverter.ConvertO(changeLabelname);
+                changeLabel["name"] = CSharpExpressionConverter.ConvertToken(changeLabelname);
                 changeLabelpropCount++;
             }
 
             if (changeLabelcolor != null)
             {
-                changeLabel["color"] = ExpressionConverter.ConvertO(changeLabelcolor);
+                changeLabel["color"] = CSharpExpressionConverter.ConvertToken(changeLabelcolor);
                 changeLabelpropCount++;
             }
 
             if (changeLabelorder != null)
             {
-                changeLabel["order"] = ExpressionConverter.ConvertO(changeLabelorder);
+                changeLabel["order"] = CSharpExpressionConverter.ConvertToken(changeLabelorder);
                 changeLabelpropCount++;
             }
 
@@ -248,20 +248,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/projects/updateProject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             var changeProject = new JObject();
             var changeProjectpropCount = 0;
             changeProjectpropCount++;
-            changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
+            changeProject["name"] = CSharpExpressionConverter.ConvertToken(changeProjectname);
             if (changeProjectcolor != null)
             {
-                changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
+                changeProject["color"] = CSharpExpressionConverter.ConvertToken(changeProjectcolor);
                 changeProjectpropCount++;
             }
 
             if (changeProjectisFavorite != null)
             {
-                changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
+                changeProject["is_favorite"] = CSharpExpressionConverter.ConvertToken(changeProjectisFavorite);
                 changeProjectpropCount++;
             }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/trigger/completed/get_all";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, triggerName, recurrence);
         }
 
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             var apiCallPath = "/v4/trigger/sync";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, triggerName, recurrence);
         }
     }

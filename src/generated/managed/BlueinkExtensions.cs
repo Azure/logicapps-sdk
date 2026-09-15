@@ -18,17 +18,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (statusIn != null)
-                callPayload.Queries["status__in"] = ExpressionConverter.Convert(statusIn);
+                callPayload.Queries["status__in"] = CSharpExpressionConverter.Convert(statusIn);
             if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (tagIn != null)
-                callPayload.Queries["tag__in"] = ExpressionConverter.Convert(tagIn);
+                callPayload.Queries["tag__in"] = CSharpExpressionConverter.ConvertO(tagIn);
             if (ordering != null)
-                callPayload.Queries["ordering"] = ExpressionConverter.Convert(ordering);
+                callPayload.Queries["ordering"] = CSharpExpressionConverter.Convert(ordering);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             return new ApiConnectionAction<ListPersonsResponseItem[]>(callPayload);
         }
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (enabled != null)
-                callPayload.Queries["enabled"] = ExpressionConverter.Convert(enabled);
+                callPayload.Queries["enabled"] = CSharpExpressionConverter.ConvertO(enabled);
             if (eventType != null)
-                callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                callPayload.Queries["event_type"] = CSharpExpressionConverter.Convert(eventType);
             return new ApiConnectionAction<ListWebhooksResponseItem[]>(callPayload);
         }
 
@@ -72,15 +72,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (webhook != null)
-                callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
+                callPayload.Queries["webhook"] = CSharpExpressionConverter.ConvertO(webhook);
             if (webhookEvent != null)
-                callPayload.Queries["webhook_event"] = ExpressionConverter.Convert(webhookEvent);
+                callPayload.Queries["webhook_event"] = CSharpExpressionConverter.ConvertO(webhookEvent);
             if (eventType != null)
-                callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                callPayload.Queries["event_type"] = CSharpExpressionConverter.Convert(eventType);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             return new ApiConnectionAction<ListWebhookDeliveriesResponseItem[]>(callPayload);
         }
 
@@ -91,15 +91,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (webhook != null)
-                callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
+                callPayload.Queries["webhook"] = CSharpExpressionConverter.ConvertO(webhook);
             if (eventType != null)
-                callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                callPayload.Queries["event_type"] = CSharpExpressionConverter.Convert(eventType);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             if (success != null)
-                callPayload.Queries["success"] = ExpressionConverter.Convert(success);
+                callPayload.Queries["success"] = CSharpExpressionConverter.ConvertO(success);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             return new ApiConnectionAction<ListWebhookEventsResponseItem[]>(callPayload);
         }
 
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (webhook != null)
-                callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
+                callPayload.Queries["webhook"] = CSharpExpressionConverter.ConvertO(webhook);
             if (eventType != null)
-                callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                callPayload.Queries["event_type"] = CSharpExpressionConverter.Convert(eventType);
             return new ApiConnectionAction<ListWebhookExtraHeadersResponseItem[]>(callPayload);
         }
 

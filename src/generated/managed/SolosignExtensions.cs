@@ -21,24 +21,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["request_string"] = ExpressionConverter.ConvertO(bodyrequestString);
+            body["request_string"] = CSharpExpressionConverter.ConvertToken(bodyrequestString);
             bodypropCount++;
-            body["secret_key"] = ExpressionConverter.ConvertO(bodysecretKey);
+            body["secret_key"] = CSharpExpressionConverter.ConvertToken(bodysecretKey);
             if (bodyoutputFormat != null)
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
                 bodypropCount++;
             }
 
             if (bodyencodeType != null)
             {
-                body["encode_type"] = ExpressionConverter.ConvertO(bodyencodeType);
+                body["encode_type"] = CSharpExpressionConverter.Convert(bodyencodeType);
                 bodypropCount++;
             }
 
             if (bodyhashAlgorithm != null)
             {
-                body["hash_algorithm"] = ExpressionConverter.ConvertO(bodyhashAlgorithm);
+                body["hash_algorithm"] = CSharpExpressionConverter.Convert(bodyhashAlgorithm);
                 bodypropCount++;
             }
 

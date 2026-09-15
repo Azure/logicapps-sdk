@@ -18,17 +18,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (when != null)
-                callPayload.Queries["when"] = ExpressionConverter.Convert(when);
+                callPayload.Queries["when"] = CSharpExpressionConverter.Convert(when);
             if (timestampMs != null)
-                callPayload.Queries["timestamp_ms"] = ExpressionConverter.Convert(timestampMs);
+                callPayload.Queries["timestamp_ms"] = CSharpExpressionConverter.ConvertO(timestampMs);
             if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_by"] = CSharpExpressionConverter.Convert(sortBy);
             if (direction != null)
-                callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
+                callPayload.Queries["direction"] = CSharpExpressionConverter.Convert(direction);
             return new ApiConnectionAction<JobsGetResponseItem[]>(callPayload);
         }
 
@@ -46,31 +46,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var faceObjectpropCount = 0;
             if (bodymodelsfacefpsPred != null)
             {
-                faceObject["fps_pred"] = ExpressionConverter.ConvertO(bodymodelsfacefpsPred);
+                faceObject["fps_pred"] = CSharpExpressionConverter.ConvertToken(bodymodelsfacefpsPred);
                 faceObjectpropCount++;
             }
 
             if (bodymodelsfaceprobThreshold != null)
             {
-                faceObject["prob_threshold"] = ExpressionConverter.ConvertO(bodymodelsfaceprobThreshold);
+                faceObject["prob_threshold"] = CSharpExpressionConverter.ConvertToken(bodymodelsfaceprobThreshold);
                 faceObjectpropCount++;
             }
 
             if (bodymodelsfaceidentifyFaces != null)
             {
-                faceObject["identify_faces"] = ExpressionConverter.ConvertO(bodymodelsfaceidentifyFaces);
+                faceObject["identify_faces"] = CSharpExpressionConverter.ConvertToken(bodymodelsfaceidentifyFaces);
                 faceObjectpropCount++;
             }
 
             if (bodymodelsfaceminFaceSize != null)
             {
-                faceObject["min_face_size"] = ExpressionConverter.ConvertO(bodymodelsfaceminFaceSize);
+                faceObject["min_face_size"] = CSharpExpressionConverter.ConvertToken(bodymodelsfaceminFaceSize);
                 faceObjectpropCount++;
             }
 
             if (bodymodelsfacesaveFaces != null)
             {
-                faceObject["save_faces"] = ExpressionConverter.ConvertO(bodymodelsfacesaveFaces);
+                faceObject["save_faces"] = CSharpExpressionConverter.ConvertToken(bodymodelsfacesaveFaces);
                 faceObjectpropCount++;
             }
 
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var prosodyObjectpropCount = 0;
             if (bodymodelsprosodygranularity != null)
             {
-                prosodyObject["granularity"] = ExpressionConverter.ConvertO(bodymodelsprosodygranularity);
+                prosodyObject["granularity"] = CSharpExpressionConverter.ConvertToken(bodymodelsprosodygranularity);
                 prosodyObjectpropCount++;
             }
 
             if (bodymodelsprosodyidentifySpeakers != null)
             {
-                prosodyObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelsprosodyidentifySpeakers);
+                prosodyObject["identify_speakers"] = CSharpExpressionConverter.ConvertToken(bodymodelsprosodyidentifySpeakers);
                 prosodyObjectpropCount++;
             }
 
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var windowObjectpropCount = 0;
             if (bodymodelsprosodywindowlength != null)
             {
-                windowObject["length"] = ExpressionConverter.ConvertO(bodymodelsprosodywindowlength);
+                windowObject["length"] = CSharpExpressionConverter.ConvertToken(bodymodelsprosodywindowlength);
                 windowObjectpropCount++;
             }
 
             if (bodymodelsprosodywindowstep != null)
             {
-                windowObject["step"] = ExpressionConverter.ConvertO(bodymodelsprosodywindowstep);
+                windowObject["step"] = CSharpExpressionConverter.ConvertToken(bodymodelsprosodywindowstep);
                 windowObjectpropCount++;
             }
 
@@ -124,13 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var languageObjectpropCount = 0;
             if (bodymodelslanguagegranularity != null)
             {
-                languageObject["granularity"] = ExpressionConverter.ConvertO(bodymodelslanguagegranularity);
+                languageObject["granularity"] = CSharpExpressionConverter.ConvertToken(bodymodelslanguagegranularity);
                 languageObjectpropCount++;
             }
 
             if (bodymodelslanguageidentifySpeakers != null)
             {
-                languageObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelslanguageidentifySpeakers);
+                languageObject["identify_speakers"] = CSharpExpressionConverter.ConvertToken(bodymodelslanguageidentifySpeakers);
                 languageObjectpropCount++;
             }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var nerObjectpropCount = 0;
             if (bodymodelsneridentifySpeakers != null)
             {
-                nerObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelsneridentifySpeakers);
+                nerObject["identify_speakers"] = CSharpExpressionConverter.ConvertToken(bodymodelsneridentifySpeakers);
                 nerObjectpropCount++;
             }
 
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
             var transcriptionObjectpropCount = 0;
             if (bodytranscriptionlanguage != null)
             {
-                transcriptionObject["language"] = ExpressionConverter.ConvertO(bodytranscriptionlanguage);
+                transcriptionObject["language"] = CSharpExpressionConverter.ConvertToken(bodytranscriptionlanguage);
                 transcriptionObjectpropCount++;
             }
 
@@ -176,19 +176,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
 
             if (bodyurls != null)
             {
-                body["urls"] = ExpressionConverter.ConvertO(bodyurls);
+                body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
                 bodypropCount++;
             }
 
             if (bodycallbackUrl != null)
             {
-                body["callback_url"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                body["callback_url"] = CSharpExpressionConverter.ConvertToken(bodycallbackUrl);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> JobPredictionsGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}/predictions", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/predictions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JobPredictionsGetResponseItem[]>(callPayload);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<string> JobArtifactsGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}/artifacts", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/artifacts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobDetailsGetResponse> JobDetailsGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JobDetailsGetResponse>(callPayload);

@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             var bodypropCount = 0;
             if (bodychannel != null)
             {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                body["channel"] = CSharpExpressionConverter.ConvertToken(bodychannel);
                 bodypropCount++;
             }
 
             if (bodychannelID != null)
             {
-                body["channelID"] = ExpressionConverter.ConvertO(bodychannelID);
+                body["channelID"] = CSharpExpressionConverter.ConvertToken(bodychannelID);
                 bodypropCount++;
             }
 
             if (bodyblocks != null)
             {
-                body["blocks"] = ExpressionConverter.ConvertO(bodyblocks);
+                body["blocks"] = CSharpExpressionConverter.ConvertToken(bodyblocks);
                 bodypropCount++;
             }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["threadID"] = ExpressionConverter.ConvertO(bodythreadID);
+            body["threadID"] = CSharpExpressionConverter.ConvertToken(bodythreadID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -82,19 +82,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             var bodypropCount = 0;
             if (bodychat != null)
             {
-                body["chat"] = ExpressionConverter.ConvertO(bodychat);
+                body["chat"] = CSharpExpressionConverter.ConvertToken(bodychat);
                 bodypropCount++;
             }
 
             if (bodychatID != null)
             {
-                body["chatID"] = ExpressionConverter.ConvertO(bodychatID);
+                body["chatID"] = CSharpExpressionConverter.ConvertToken(bodychatID);
                 bodypropCount++;
             }
 
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             var bodypropCount = 0;
             if (bodymessageID != null)
             {
-                body["messageID"] = ExpressionConverter.ConvertO(bodymessageID);
+                body["messageID"] = CSharpExpressionConverter.ConvertToken(bodymessageID);
                 bodypropCount++;
             }
 

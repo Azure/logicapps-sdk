@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["From"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["From"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -48,21 +48,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["From"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["From"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             if (bodyto != null)
             {
-                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodytoTagName != null)
             {
-                body["ToTagName"] = ExpressionConverter.ConvertO(bodytoTagName);
+                body["ToTagName"] = CSharpExpressionConverter.ConvertToken(bodytoTagName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+            callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
             return new ApiConnectionAction<SearchContactResponseItem[]>(callPayload);
@@ -95,105 +95,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var bodypropCount = 0;
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["MobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+            body["MobileNumber"] = CSharpExpressionConverter.ConvertToken(bodymobileNumber);
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyexternalReference != null)
             {
-                body["ExternalReference"] = ExpressionConverter.ConvertO(bodyexternalReference);
+                body["ExternalReference"] = CSharpExpressionConverter.ConvertToken(bodyexternalReference);
                 bodypropCount++;
             }
 
             if (bodyemailAddress != null)
             {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                body["EmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyemailAddress);
                 bodypropCount++;
             }
 
             if (bodyaddressLine1 != null)
             {
-                body["AddressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                body["AddressLine1"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine1);
                 bodypropCount++;
             }
 
             if (bodyaddressLine2 != null)
             {
-                body["AddressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                body["AddressLine2"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine2);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
+                body["City"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodycounty != null)
             {
-                body["County"] = ExpressionConverter.ConvertO(bodycounty);
+                body["County"] = CSharpExpressionConverter.ConvertToken(bodycounty);
                 bodypropCount++;
             }
 
             if (bodypostcode != null)
             {
-                body["Postcode"] = ExpressionConverter.ConvertO(bodypostcode);
+                body["Postcode"] = CSharpExpressionConverter.ConvertToken(bodypostcode);
                 bodypropCount++;
             }
 
             if (bodycountry != null)
             {
-                body["Country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["Country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
                 bodypropCount++;
             }
 
             if (bodycustom01 != null)
             {
-                body["Custom01"] = ExpressionConverter.ConvertO(bodycustom01);
+                body["Custom01"] = CSharpExpressionConverter.ConvertToken(bodycustom01);
                 bodypropCount++;
             }
 
             if (bodycustom02 != null)
             {
-                body["Custom02"] = ExpressionConverter.ConvertO(bodycustom02);
+                body["Custom02"] = CSharpExpressionConverter.ConvertToken(bodycustom02);
                 bodypropCount++;
             }
 
             if (bodycustom03 != null)
             {
-                body["Custom03"] = ExpressionConverter.ConvertO(bodycustom03);
+                body["Custom03"] = CSharpExpressionConverter.ConvertToken(bodycustom03);
                 bodypropCount++;
             }
 
             if (bodycustom04 != null)
             {
-                body["Custom04"] = ExpressionConverter.ConvertO(bodycustom04);
+                body["Custom04"] = CSharpExpressionConverter.ConvertToken(bodycustom04);
                 bodypropCount++;
             }
 
             if (bodycustom05 != null)
             {
-                body["Custom05"] = ExpressionConverter.ConvertO(bodycustom05);
+                body["Custom05"] = CSharpExpressionConverter.ConvertToken(bodycustom05);
                 bodypropCount++;
             }
 
             if (bodytagNames != null)
             {
-                body["TagNames"] = ExpressionConverter.ConvertO(bodytagNames);
+                body["TagNames"] = CSharpExpressionConverter.ConvertToken(bodytagNames);
                 bodypropCount++;
             }
 
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> DeleteContact(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodymobileNumber = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyexternalReference = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycustom01 = null, Expression<Func<string>> bodycustom02 = null, Expression<Func<string>> bodycustom03 = null, Expression<Func<string>> bodycustom04 = null, Expression<Func<string>> bodycustom05 = null, Expression<Func<bool>> bodyallowSMS = null, Expression<Func<string>> bodytagNames = null)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -228,115 +228,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var bodypropCount = 0;
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodymobileNumber != null)
             {
-                body["MobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                body["MobileNumber"] = CSharpExpressionConverter.ConvertToken(bodymobileNumber);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyexternalReference != null)
             {
-                body["ExternalReference"] = ExpressionConverter.ConvertO(bodyexternalReference);
+                body["ExternalReference"] = CSharpExpressionConverter.ConvertToken(bodyexternalReference);
                 bodypropCount++;
             }
 
             if (bodyemailAddress != null)
             {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                body["EmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyemailAddress);
                 bodypropCount++;
             }
 
             if (bodyaddressLine1 != null)
             {
-                body["AddressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                body["AddressLine1"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine1);
                 bodypropCount++;
             }
 
             if (bodyaddressLine2 != null)
             {
-                body["AddressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                body["AddressLine2"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine2);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
+                body["City"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodycounty != null)
             {
-                body["County"] = ExpressionConverter.ConvertO(bodycounty);
+                body["County"] = CSharpExpressionConverter.ConvertToken(bodycounty);
                 bodypropCount++;
             }
 
             if (bodypostcode != null)
             {
-                body["Postcode"] = ExpressionConverter.ConvertO(bodypostcode);
+                body["Postcode"] = CSharpExpressionConverter.ConvertToken(bodypostcode);
                 bodypropCount++;
             }
 
             if (bodycountry != null)
             {
-                body["Country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["Country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
                 bodypropCount++;
             }
 
             if (bodycustom01 != null)
             {
-                body["Custom01"] = ExpressionConverter.ConvertO(bodycustom01);
+                body["Custom01"] = CSharpExpressionConverter.ConvertToken(bodycustom01);
                 bodypropCount++;
             }
 
             if (bodycustom02 != null)
             {
-                body["Custom02"] = ExpressionConverter.ConvertO(bodycustom02);
+                body["Custom02"] = CSharpExpressionConverter.ConvertToken(bodycustom02);
                 bodypropCount++;
             }
 
             if (bodycustom03 != null)
             {
-                body["Custom03"] = ExpressionConverter.ConvertO(bodycustom03);
+                body["Custom03"] = CSharpExpressionConverter.ConvertToken(bodycustom03);
                 bodypropCount++;
             }
 
             if (bodycustom04 != null)
             {
-                body["Custom04"] = ExpressionConverter.ConvertO(bodycustom04);
+                body["Custom04"] = CSharpExpressionConverter.ConvertToken(bodycustom04);
                 bodypropCount++;
             }
 
             if (bodycustom05 != null)
             {
-                body["Custom05"] = ExpressionConverter.ConvertO(bodycustom05);
+                body["Custom05"] = CSharpExpressionConverter.ConvertToken(bodycustom05);
                 bodypropCount++;
             }
 
             if (bodyallowSMS != null)
             {
-                body["AllowSMS"] = ExpressionConverter.ConvertO(bodyallowSMS);
+                body["AllowSMS"] = CSharpExpressionConverter.ConvertToken(bodyallowSMS);
                 bodypropCount++;
             }
 
             if (bodytagNames != null)
             {
-                body["TagNames"] = ExpressionConverter.ConvertO(bodytagNames);
+                body["TagNames"] = CSharpExpressionConverter.ConvertToken(bodytagNames);
                 bodypropCount++;
             }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<GetContactByExternalReferenceResponse> GetContactByExternalReference(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/external/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> DeleteContactByExternalReference(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/contacts/external/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> UpdateContactByExternalReference(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodymobileNumber = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyexternalReference = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycustom01 = null, Expression<Func<string>> bodycustom02 = null, Expression<Func<string>> bodycustom03 = null, Expression<Func<string>> bodycustom04 = null, Expression<Func<string>> bodycustom05 = null, Expression<Func<bool>> bodyallowSMS = null, Expression<Func<string>> bodytagNames = null)
         {
-            var apiCallPath = String.Format("/contacts/external/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -382,115 +382,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             var bodypropCount = 0;
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodymobileNumber != null)
             {
-                body["MobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                body["MobileNumber"] = CSharpExpressionConverter.ConvertToken(bodymobileNumber);
                 bodypropCount++;
             }
 
             if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
+                body["CompanyName"] = CSharpExpressionConverter.ConvertToken(bodycompanyName);
                 bodypropCount++;
             }
 
             if (bodyexternalReference != null)
             {
-                body["ExternalReference"] = ExpressionConverter.ConvertO(bodyexternalReference);
+                body["ExternalReference"] = CSharpExpressionConverter.ConvertToken(bodyexternalReference);
                 bodypropCount++;
             }
 
             if (bodyemailAddress != null)
             {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                body["EmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyemailAddress);
                 bodypropCount++;
             }
 
             if (bodyaddressLine1 != null)
             {
-                body["AddressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                body["AddressLine1"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine1);
                 bodypropCount++;
             }
 
             if (bodyaddressLine2 != null)
             {
-                body["AddressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                body["AddressLine2"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine2);
                 bodypropCount++;
             }
 
             if (bodycity != null)
             {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
+                body["City"] = CSharpExpressionConverter.ConvertToken(bodycity);
                 bodypropCount++;
             }
 
             if (bodycounty != null)
             {
-                body["County"] = ExpressionConverter.ConvertO(bodycounty);
+                body["County"] = CSharpExpressionConverter.ConvertToken(bodycounty);
                 bodypropCount++;
             }
 
             if (bodypostcode != null)
             {
-                body["Postcode"] = ExpressionConverter.ConvertO(bodypostcode);
+                body["Postcode"] = CSharpExpressionConverter.ConvertToken(bodypostcode);
                 bodypropCount++;
             }
 
             if (bodycountry != null)
             {
-                body["Country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["Country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
                 bodypropCount++;
             }
 
             if (bodycustom01 != null)
             {
-                body["Custom01"] = ExpressionConverter.ConvertO(bodycustom01);
+                body["Custom01"] = CSharpExpressionConverter.ConvertToken(bodycustom01);
                 bodypropCount++;
             }
 
             if (bodycustom02 != null)
             {
-                body["Custom02"] = ExpressionConverter.ConvertO(bodycustom02);
+                body["Custom02"] = CSharpExpressionConverter.ConvertToken(bodycustom02);
                 bodypropCount++;
             }
 
             if (bodycustom03 != null)
             {
-                body["Custom03"] = ExpressionConverter.ConvertO(bodycustom03);
+                body["Custom03"] = CSharpExpressionConverter.ConvertToken(bodycustom03);
                 bodypropCount++;
             }
 
             if (bodycustom04 != null)
             {
-                body["Custom04"] = ExpressionConverter.ConvertO(bodycustom04);
+                body["Custom04"] = CSharpExpressionConverter.ConvertToken(bodycustom04);
                 bodypropCount++;
             }
 
             if (bodycustom05 != null)
             {
-                body["Custom05"] = ExpressionConverter.ConvertO(bodycustom05);
+                body["Custom05"] = CSharpExpressionConverter.ConvertToken(bodycustom05);
                 bodypropCount++;
             }
 
             if (bodyallowSMS != null)
             {
-                body["AllowSMS"] = ExpressionConverter.ConvertO(bodyallowSMS);
+                body["AllowSMS"] = CSharpExpressionConverter.ConvertToken(bodyallowSMS);
                 bodypropCount++;
             }
 
             if (bodytagNames != null)
             {
-                body["TagNames"] = ExpressionConverter.ConvertO(bodytagNames);
+                body["TagNames"] = CSharpExpressionConverter.ConvertToken(bodytagNames);
                 bodypropCount++;
             }
 

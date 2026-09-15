@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallPath = "/commerce/taxonomy/v1/get_default_category_tree_id";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
-            callPayload.Headers["Accept-Language"] = ExpressionConverter.Convert(acceptLanguage);
+            callPayload.Queries["marketplace_id"] = CSharpExpressionConverter.ConvertO(marketplaceId);
+            callPayload.Headers["Accept-Language"] = CSharpExpressionConverter.ConvertO(acceptLanguage);
             return new ApiConnectionAction<GetDefaultCategoryTreeIdResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetCategorySuggestionsResponse> GetCategorySuggestions(Expression<Func<string>> categoryTreeId, Expression<Func<string>> q)
         {
-            var apiCallPath = String.Format("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryTreeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
             callPayload.Headers["Accept-Encoding"] = Convert.ToString("application/gzip");
             return new ApiConnectionAction<GetCategorySuggestionsResponse>(callPayload);
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetItemAspectsResponse> GetItemAspects(Expression<Func<string>> categoryTreeId, Expression<Func<string>> categoryId)
         {
-            var apiCallPath = String.Format("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryTreeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["category_id"] = ExpressionConverter.Convert(categoryId);
+            callPayload.Queries["category_id"] = CSharpExpressionConverter.ConvertO(categoryId);
             return new ApiConnectionAction<GetItemAspectsResponse>(callPayload);
         }
 
@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallPath = "/sell/account/v1/fulfillment_policy";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
+            callPayload.Queries["marketplace_id"] = CSharpExpressionConverter.ConvertO(marketplaceId);
             return new ApiConnectionAction<GetFulfillmentPoliciesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetFulfillmentPolicyResponse> GetFulfillmentPolicy(Expression<Func<string>> fulfillmentPolicyId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/fulfillment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(fulfillmentPolicyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/account/v1/fulfillment_policy/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fulfillmentPolicyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetFulfillmentPolicyResponse>(callPayload);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetPaymentPolicyResponse> GetPaymentPolicy(Expression<Func<string>> paymentPolicyId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/payment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(paymentPolicyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/account/v1/payment_policy/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentPolicyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetPaymentPolicyResponse>(callPayload);
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallPath = "/sell/account/v1/return_policy";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
+            callPayload.Queries["marketplace_id"] = CSharpExpressionConverter.ConvertO(marketplaceId);
             return new ApiConnectionAction<GetReturnPoliciesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetReturnPolicyResponse> GetReturnPolicy(Expression<Func<string>> returnPolicyId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/return_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(returnPolicyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/account/v1/return_policy/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(returnPolicyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetReturnPolicyResponse>(callPayload);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryItemResponse> GetInventoryItem(Expression<Func<string>> sku)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sku, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]>> bodyavailabilitypickupAtLocationAvailability = null, Expression<Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]>> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, Expression<Func<int>> bodyavailabilityshipToLocationAvailabilityquantity = null, Expression<Func<bodyconditionInput>> bodycondition = null, Expression<Func<string>> bodyconditionDescription = null, Expression<Func<double>> bodypackageWeightAndSizedimensionsheight = null, Expression<Func<double>> bodypackageWeightAndSizedimensionslength = null, Expression<Func<bodypackageWeightAndSizedimensionsunitInput>> bodypackageWeightAndSizedimensionsunit = null, Expression<Func<double>> bodypackageWeightAndSizedimensionswidth = null, Expression<Func<bodypackageWeightAndSizepackageTypeInput>> bodypackageWeightAndSizepackageType = null, Expression<Func<bodypackageWeightAndSizeweightunitInput>> bodypackageWeightAndSizeweightunit = null, Expression<Func<double>> bodypackageWeightAndSizeweightvalue = null, Expression<Func<string>> bodyproductbrand = null, Expression<Func<string>> bodyproductdescription = null, Expression<Func<string[]>> bodyproductean = null, Expression<Func<string>> bodyproductepid = null, Expression<Func<string[]>> bodyproductimageUrls = null, Expression<Func<string[]>> bodyproductisbn = null, Expression<Func<string>> bodyproductmpn = null, Expression<Func<string>> bodyproductsubtitle = null, Expression<Func<string>> bodyproducttitle = null, Expression<Func<string[]>> bodyproductupc = null, Expression<Func<string[]>> bodyproductvideoIds = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sku, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            callPayload.Headers["Content-Language"] = ExpressionConverter.Convert(contentLanguage);
+            callPayload.Headers["Content-Language"] = CSharpExpressionConverter.ConvertO(contentLanguage);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var availabilityObjectpropCount = 0;
             if (bodyavailabilitypickupAtLocationAvailability != null)
             {
-                availabilityObject["pickupAtLocationAvailability"] = ExpressionConverter.ConvertO(bodyavailabilitypickupAtLocationAvailability);
+                availabilityObject["pickupAtLocationAvailability"] = CSharpExpressionConverter.ConvertToken(bodyavailabilitypickupAtLocationAvailability);
                 availabilityObjectpropCount++;
             }
 
@@ -124,13 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var shipToLocationAvailabilityObjectpropCount = 0;
             if (bodyavailabilityshipToLocationAvailabilityavailabilityDistributions != null)
             {
-                shipToLocationAvailabilityObject["availabilityDistributions"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions);
+                shipToLocationAvailabilityObject["availabilityDistributions"] = CSharpExpressionConverter.ConvertToken(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions);
                 shipToLocationAvailabilityObjectpropCount++;
             }
 
             if (bodyavailabilityshipToLocationAvailabilityquantity != null)
             {
-                shipToLocationAvailabilityObject["quantity"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityquantity);
+                shipToLocationAvailabilityObject["quantity"] = CSharpExpressionConverter.ConvertToken(bodyavailabilityshipToLocationAvailabilityquantity);
                 shipToLocationAvailabilityObjectpropCount++;
             }
 
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodycondition != null)
             {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                body["condition"] = CSharpExpressionConverter.Convert(bodycondition);
                 bodypropCount++;
             }
 
             if (bodyconditionDescription != null)
             {
-                body["conditionDescription"] = ExpressionConverter.ConvertO(bodyconditionDescription);
+                body["conditionDescription"] = CSharpExpressionConverter.ConvertToken(bodyconditionDescription);
                 bodypropCount++;
             }
 
@@ -164,25 +164,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var dimensionsObjectpropCount = 0;
             if (bodypackageWeightAndSizedimensionsheight != null)
             {
-                dimensionsObject["height"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsheight);
+                dimensionsObject["height"] = CSharpExpressionConverter.ConvertToken(bodypackageWeightAndSizedimensionsheight);
                 dimensionsObjectpropCount++;
             }
 
             if (bodypackageWeightAndSizedimensionslength != null)
             {
-                dimensionsObject["length"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionslength);
+                dimensionsObject["length"] = CSharpExpressionConverter.ConvertToken(bodypackageWeightAndSizedimensionslength);
                 dimensionsObjectpropCount++;
             }
 
             if (bodypackageWeightAndSizedimensionsunit != null)
             {
-                dimensionsObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsunit);
+                dimensionsObject["unit"] = CSharpExpressionConverter.Convert(bodypackageWeightAndSizedimensionsunit);
                 dimensionsObjectpropCount++;
             }
 
             if (bodypackageWeightAndSizedimensionswidth != null)
             {
-                dimensionsObject["width"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionswidth);
+                dimensionsObject["width"] = CSharpExpressionConverter.ConvertToken(bodypackageWeightAndSizedimensionswidth);
                 dimensionsObjectpropCount++;
             }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodypackageWeightAndSizepackageType != null)
             {
-                packageWeightAndSizeObject["packageType"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizepackageType);
+                packageWeightAndSizeObject["packageType"] = CSharpExpressionConverter.Convert(bodypackageWeightAndSizepackageType);
                 packageWeightAndSizeObjectpropCount++;
             }
 
@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var weightObjectpropCount = 0;
             if (bodypackageWeightAndSizeweightunit != null)
             {
-                weightObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightunit);
+                weightObject["unit"] = CSharpExpressionConverter.Convert(bodypackageWeightAndSizeweightunit);
                 weightObjectpropCount++;
             }
 
             if (bodypackageWeightAndSizeweightvalue != null)
             {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightvalue);
+                weightObject["value"] = CSharpExpressionConverter.ConvertToken(bodypackageWeightAndSizeweightvalue);
                 weightObjectpropCount++;
             }
 
@@ -236,67 +236,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodyproductbrand != null)
             {
-                productObject["brand"] = ExpressionConverter.ConvertO(bodyproductbrand);
+                productObject["brand"] = CSharpExpressionConverter.ConvertToken(bodyproductbrand);
                 productObjectpropCount++;
             }
 
             if (bodyproductdescription != null)
             {
-                productObject["description"] = ExpressionConverter.ConvertO(bodyproductdescription);
+                productObject["description"] = CSharpExpressionConverter.ConvertToken(bodyproductdescription);
                 productObjectpropCount++;
             }
 
             if (bodyproductean != null)
             {
-                productObject["ean"] = ExpressionConverter.ConvertO(bodyproductean);
+                productObject["ean"] = CSharpExpressionConverter.ConvertToken(bodyproductean);
                 productObjectpropCount++;
             }
 
             if (bodyproductepid != null)
             {
-                productObject["epid"] = ExpressionConverter.ConvertO(bodyproductepid);
+                productObject["epid"] = CSharpExpressionConverter.ConvertToken(bodyproductepid);
                 productObjectpropCount++;
             }
 
             if (bodyproductimageUrls != null)
             {
-                productObject["imageUrls"] = ExpressionConverter.ConvertO(bodyproductimageUrls);
+                productObject["imageUrls"] = CSharpExpressionConverter.ConvertToken(bodyproductimageUrls);
                 productObjectpropCount++;
             }
 
             if (bodyproductisbn != null)
             {
-                productObject["isbn"] = ExpressionConverter.ConvertO(bodyproductisbn);
+                productObject["isbn"] = CSharpExpressionConverter.ConvertToken(bodyproductisbn);
                 productObjectpropCount++;
             }
 
             if (bodyproductmpn != null)
             {
-                productObject["mpn"] = ExpressionConverter.ConvertO(bodyproductmpn);
+                productObject["mpn"] = CSharpExpressionConverter.ConvertToken(bodyproductmpn);
                 productObjectpropCount++;
             }
 
             if (bodyproductsubtitle != null)
             {
-                productObject["subtitle"] = ExpressionConverter.ConvertO(bodyproductsubtitle);
+                productObject["subtitle"] = CSharpExpressionConverter.ConvertToken(bodyproductsubtitle);
                 productObjectpropCount++;
             }
 
             if (bodyproducttitle != null)
             {
-                productObject["title"] = ExpressionConverter.ConvertO(bodyproducttitle);
+                productObject["title"] = CSharpExpressionConverter.ConvertToken(bodyproducttitle);
                 productObjectpropCount++;
             }
 
             if (bodyproductupc != null)
             {
-                productObject["upc"] = ExpressionConverter.ConvertO(bodyproductupc);
+                productObject["upc"] = CSharpExpressionConverter.ConvertToken(bodyproductupc);
                 productObjectpropCount++;
             }
 
             if (bodyproductvideoIds != null)
             {
-                productObject["videoIds"] = ExpressionConverter.ConvertO(bodyproductvideoIds);
+                productObject["videoIds"] = CSharpExpressionConverter.ConvertToken(bodyproductvideoIds);
                 productObjectpropCount++;
             }
 
@@ -321,9 +321,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                callPayload.Queries[" limit"] = CSharpExpressionConverter.ConvertO(Limit);
             if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                callPayload.Queries[" offset"] = CSharpExpressionConverter.ConvertO(Offset);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
             return new ApiConnectionAction<GetInventoryItemsResponse>(callPayload);
         }
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryLocationResponse> GetInventoryLocation(Expression<Func<string>> merchantLocationKey)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(merchantLocationKey, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetInventoryLocationResponse>(callPayload);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<string> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressaddressLine2 = null, Expression<Func<string>> bodylocationaddresscity = null, Expression<Func<string>> bodylocationaddresscountry = null, Expression<Func<string>> bodylocationaddresscounty = null, Expression<Func<string>> bodylocationaddresspostalCode = null, Expression<Func<string>> bodylocationaddressstateOrProvince = null, Expression<Func<string>> bodylocationgeoCoordinateslatitude = null, Expression<Func<string>> bodylocationgeoCoordinateslongitude = null, Expression<Func<string>> bodylocationAdditionalInformation = null, Expression<Func<string>> bodylocationInstructions = null, Expression<Func<bodylocationTypesInputItem[]>> bodylocationTypes = null, Expression<Func<string>> bodylocationWebUrl = null, Expression<Func<string>> bodymerchantLocationStatus = null, Expression<Func<string>> bodyname = null, Expression<Func<bodyoperatingHoursInputItem[]>> bodyoperatingHours = null, Expression<Func<string>> bodyphone = null, Expression<Func<bodyspecialHoursInputItem[]>> bodyspecialHours = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(merchantLocationKey, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -352,43 +352,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var addressObjectpropCount = 0;
             if (bodylocationaddressaddressLine1 != null)
             {
-                addressObject["addressLine1"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine1);
+                addressObject["addressLine1"] = CSharpExpressionConverter.ConvertToken(bodylocationaddressaddressLine1);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddressaddressLine2 != null)
             {
-                addressObject["addressLine2"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine2);
+                addressObject["addressLine2"] = CSharpExpressionConverter.ConvertToken(bodylocationaddressaddressLine2);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodylocationaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodylocationaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodylocationaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodylocationaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddresscounty != null)
             {
-                addressObject["county"] = ExpressionConverter.ConvertO(bodylocationaddresscounty);
+                addressObject["county"] = CSharpExpressionConverter.ConvertToken(bodylocationaddresscounty);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodylocationaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodylocationaddressstateOrProvince != null)
             {
-                addressObject["stateOrProvince"] = ExpressionConverter.ConvertO(bodylocationaddressstateOrProvince);
+                addressObject["stateOrProvince"] = CSharpExpressionConverter.ConvertToken(bodylocationaddressstateOrProvince);
                 addressObjectpropCount++;
             }
 
@@ -402,13 +402,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var geoCoordinatesObjectpropCount = 0;
             if (bodylocationgeoCoordinateslatitude != null)
             {
-                geoCoordinatesObject["latitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslatitude);
+                geoCoordinatesObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodylocationgeoCoordinateslatitude);
                 geoCoordinatesObjectpropCount++;
             }
 
             if (bodylocationgeoCoordinateslongitude != null)
             {
-                geoCoordinatesObject["longitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslongitude);
+                geoCoordinatesObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodylocationgeoCoordinateslongitude);
                 geoCoordinatesObjectpropCount++;
             }
 
@@ -426,55 +426,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylocationAdditionalInformation != null)
             {
-                body["locationAdditionalInformation"] = ExpressionConverter.ConvertO(bodylocationAdditionalInformation);
+                body["locationAdditionalInformation"] = CSharpExpressionConverter.ConvertToken(bodylocationAdditionalInformation);
                 bodypropCount++;
             }
 
             if (bodylocationInstructions != null)
             {
-                body["locationInstructions"] = ExpressionConverter.ConvertO(bodylocationInstructions);
+                body["locationInstructions"] = CSharpExpressionConverter.ConvertToken(bodylocationInstructions);
                 bodypropCount++;
             }
 
             if (bodylocationTypes != null)
             {
-                body["locationTypes"] = ExpressionConverter.ConvertO(bodylocationTypes);
+                body["locationTypes"] = CSharpExpressionConverter.ConvertToken(bodylocationTypes);
                 bodypropCount++;
             }
 
             if (bodylocationWebUrl != null)
             {
-                body["locationWebUrl"] = ExpressionConverter.ConvertO(bodylocationWebUrl);
+                body["locationWebUrl"] = CSharpExpressionConverter.ConvertToken(bodylocationWebUrl);
                 bodypropCount++;
             }
 
             if (bodymerchantLocationStatus != null)
             {
-                body["merchantLocationStatus"] = ExpressionConverter.ConvertO(bodymerchantLocationStatus);
+                body["merchantLocationStatus"] = CSharpExpressionConverter.ConvertToken(bodymerchantLocationStatus);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyoperatingHours != null)
             {
-                body["operatingHours"] = ExpressionConverter.ConvertO(bodyoperatingHours);
+                body["operatingHours"] = CSharpExpressionConverter.ConvertToken(bodyoperatingHours);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodyspecialHours != null)
             {
-                body["specialHours"] = ExpressionConverter.ConvertO(bodyspecialHours);
+                body["specialHours"] = CSharpExpressionConverter.ConvertToken(bodyspecialHours);
                 bodypropCount++;
             }
 
@@ -493,20 +493,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                callPayload.Queries[" offset"] = CSharpExpressionConverter.ConvertO(Offset);
             if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                callPayload.Queries[" limit"] = CSharpExpressionConverter.ConvertO(Limit);
             return new ApiConnectionAction<GetInventoryLocationsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetItemConditionPoliciesResponse> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> Filter = null)
         {
-            var apiCallPath = String.Format("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", ExpressionConverter.ConvertWithUrlEncoding(marketplaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(marketplaceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Filter != null)
-                callPayload.Queries[" filter"] = ExpressionConverter.Convert(Filter);
+                callPayload.Queries[" filter"] = CSharpExpressionConverter.ConvertO(Filter);
             return new ApiConnectionAction<GetItemConditionPoliciesResponse>(callPayload);
         }
 
@@ -516,15 +516,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var apiCallPath = "/sell/inventory/v1/offer";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sku"] = ExpressionConverter.Convert(sku);
+            callPayload.Queries["sku"] = CSharpExpressionConverter.ConvertO(sku);
             if (MarketplaceId != null)
-                callPayload.Queries[" marketplace_id"] = ExpressionConverter.Convert(MarketplaceId);
+                callPayload.Queries[" marketplace_id"] = CSharpExpressionConverter.ConvertO(MarketplaceId);
             if (Format != null)
-                callPayload.Queries[" format"] = ExpressionConverter.Convert(Format);
+                callPayload.Queries[" format"] = CSharpExpressionConverter.ConvertO(Format);
             if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                callPayload.Queries[" limit"] = CSharpExpressionConverter.ConvertO(Limit);
             if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                callPayload.Queries[" offset"] = CSharpExpressionConverter.ConvertO(Offset);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
             return new ApiConnectionAction<GetOffersResponse>(callPayload);
         }
@@ -541,13 +541,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var bodypropCount = 0;
             if (bodyavailableQuantity != null)
             {
-                body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
+                body["availableQuantity"] = CSharpExpressionConverter.ConvertToken(bodyavailableQuantity);
                 bodypropCount++;
             }
 
             if (bodycategoryId != null)
             {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                body["categoryId"] = CSharpExpressionConverter.ConvertToken(bodycategoryId);
                 bodypropCount++;
             }
 
@@ -555,13 +555,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var charityObjectpropCount = 0;
             if (bodycharitycharityId != null)
             {
-                charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
+                charityObject["charityId"] = CSharpExpressionConverter.ConvertToken(bodycharitycharityId);
                 charityObjectpropCount++;
             }
 
             if (bodycharitydonationPercentage != null)
             {
-                charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
+                charityObject["donationPercentage"] = CSharpExpressionConverter.ConvertToken(bodycharitydonationPercentage);
                 charityObjectpropCount++;
             }
 
@@ -575,25 +575,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var extendedProducerResponsibilityObjectpropCount = 0;
             if (bodyextendedProducerResponsibilityproducerProductId != null)
             {
-                extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
+                extendedProducerResponsibilityObject["producerProductId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproducerProductId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityproductPackageId != null)
             {
-                extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
+                extendedProducerResponsibilityObject["productPackageId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproductPackageId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityshipmentPackageId != null)
             {
-                extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
+                extendedProducerResponsibilityObject["shipmentPackageId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityshipmentPackageId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityproductDocumentationId != null)
             {
-                extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
+                extendedProducerResponsibilityObject["productDocumentationId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproductDocumentationId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
@@ -601,13 +601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var ecoParticipationFeeObjectpropCount = 0;
             if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
             {
-                ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
+                ecoParticipationFeeObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
                 ecoParticipationFeeObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
             {
-                ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
+                ecoParticipationFeeObject["value"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityecoParticipationFeevalue);
                 ecoParticipationFeeObjectpropCount++;
             }
 
@@ -625,31 +625,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                 bodypropCount++;
             }
 
             if (bodyhideBuyerDetails != null)
             {
-                body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
+                body["hideBuyerDetails"] = CSharpExpressionConverter.ConvertToken(bodyhideBuyerDetails);
                 bodypropCount++;
             }
 
             if (bodyincludeCatalogProductDetails != null)
             {
-                body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
+                body["includeCatalogProductDetails"] = CSharpExpressionConverter.ConvertToken(bodyincludeCatalogProductDetails);
                 bodypropCount++;
             }
 
             if (bodylistingDescription != null)
             {
-                body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
+                body["listingDescription"] = CSharpExpressionConverter.ConvertToken(bodylistingDescription);
                 bodypropCount++;
             }
 
             if (bodylistingDuration != null)
             {
-                body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
+                body["listingDuration"] = CSharpExpressionConverter.Convert(bodylistingDuration);
                 bodypropCount++;
             }
 
@@ -661,13 +661,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var autoAcceptPriceObjectpropCount = 0;
             if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
             {
-                autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
+                autoAcceptPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
                 autoAcceptPriceObjectpropCount++;
             }
 
             if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
             {
-                autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
+                autoAcceptPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
                 autoAcceptPriceObjectpropCount++;
             }
 
@@ -681,13 +681,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var autoDeclinePriceObjectpropCount = 0;
             if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
             {
-                autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
+                autoDeclinePriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
                 autoDeclinePriceObjectpropCount++;
             }
 
             if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
             {
-                autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
+                autoDeclinePriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
                 autoDeclinePriceObjectpropCount++;
             }
 
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
             {
-                bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
+                bestOfferTermsObject["bestOfferEnabled"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
                 bestOfferTermsObjectpropCount++;
             }
 
@@ -711,43 +711,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingPolicieseBayPlusIfEligible != null)
             {
-                listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
+                listingPoliciesObject["eBayPlusIfEligible"] = CSharpExpressionConverter.ConvertToken(bodylistingPolicieseBayPlusIfEligible);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesfulfillmentPolicyId != null)
             {
-                listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
+                listingPoliciesObject["fulfillmentPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesfulfillmentPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciespaymentPolicyId != null)
             {
-                listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
+                listingPoliciesObject["paymentPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciespaymentPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesproductCompliancePolicyIds != null)
             {
-                listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
+                listingPoliciesObject["productCompliancePolicyIds"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesproductCompliancePolicyIds);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesreturnPolicyId != null)
             {
-                listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
+                listingPoliciesObject["returnPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesreturnPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesshippingCostOverrides != null)
             {
-                listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
+                listingPoliciesObject["shippingCostOverrides"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesshippingCostOverrides);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciestakeBackPolicyId != null)
             {
-                listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
+                listingPoliciesObject["takeBackPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciestakeBackPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
@@ -759,25 +759,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingStartDate != null)
             {
-                body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
+                body["listingStartDate"] = CSharpExpressionConverter.ConvertToken(bodylistingStartDate);
                 bodypropCount++;
             }
 
             if (bodylotSize != null)
             {
-                body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
+                body["lotSize"] = CSharpExpressionConverter.ConvertToken(bodylotSize);
                 bodypropCount++;
             }
 
             if (bodymarketplaceId != null)
             {
-                body["marketplaceId"] = ExpressionConverter.ConvertO(bodymarketplaceId);
+                body["marketplaceId"] = CSharpExpressionConverter.ConvertToken(bodymarketplaceId);
                 bodypropCount++;
             }
 
             if (bodymerchantLocationKey != null)
             {
-                body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
+                body["merchantLocationKey"] = CSharpExpressionConverter.ConvertToken(bodymerchantLocationKey);
                 bodypropCount++;
             }
 
@@ -787,13 +787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var auctionReservePriceObjectpropCount = 0;
             if (bodypricingSummaryauctionReservePricecurrency != null)
             {
-                auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
+                auctionReservePriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionReservePricecurrency);
                 auctionReservePriceObjectpropCount++;
             }
 
             if (bodypricingSummaryauctionReservePricevalue != null)
             {
-                auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
+                auctionReservePriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionReservePricevalue);
                 auctionReservePriceObjectpropCount++;
             }
 
@@ -807,13 +807,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var auctionStartPriceObjectpropCount = 0;
             if (bodypricingSummaryauctionStartPricecurrency != null)
             {
-                auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
+                auctionStartPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionStartPricecurrency);
                 auctionStartPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryauctionStartPricevalue != null)
             {
-                auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
+                auctionStartPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionStartPricevalue);
                 auctionStartPriceObjectpropCount++;
             }
 
@@ -827,13 +827,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var minimumAdvertisedPriceObjectpropCount = 0;
             if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
             {
-                minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
+                minimumAdvertisedPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryminimumAdvertisedPricecurrency);
                 minimumAdvertisedPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryminimumAdvertisedPricevalue != null)
             {
-                minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
+                minimumAdvertisedPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryminimumAdvertisedPricevalue);
                 minimumAdvertisedPriceObjectpropCount++;
             }
 
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
             {
-                pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
+                pricingSummaryObject["originallySoldForRetailPriceOn"] = CSharpExpressionConverter.Convert(bodypricingSummaryoriginallySoldForRetailPriceOn);
                 pricingSummaryObjectpropCount++;
             }
 
@@ -853,13 +853,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var originalRetailPriceObjectpropCount = 0;
             if (bodypricingSummaryoriginalRetailPricecurrency != null)
             {
-                originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
+                originalRetailPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryoriginalRetailPricecurrency);
                 originalRetailPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryoriginalRetailPricevalue != null)
             {
-                originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
+                originalRetailPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryoriginalRetailPricevalue);
                 originalRetailPriceObjectpropCount++;
             }
 
@@ -873,13 +873,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var priceObjectpropCount = 0;
             if (bodypricingSummarypricecurrency != null)
             {
-                priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
+                priceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummarypricecurrency);
                 priceObjectpropCount++;
             }
 
             if (bodypricingSummarypricevalue != null)
             {
-                priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
+                priceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummarypricevalue);
                 priceObjectpropCount++;
             }
 
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodypricingSummarypricingVisibility != null)
             {
-                pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
+                pricingSummaryObject["pricingVisibility"] = CSharpExpressionConverter.Convert(bodypricingSummarypricingVisibility);
                 pricingSummaryObjectpropCount++;
             }
 
@@ -903,25 +903,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodyquantityLimitPerBuyer != null)
             {
-                body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
+                body["quantityLimitPerBuyer"] = CSharpExpressionConverter.ConvertToken(bodyquantityLimitPerBuyer);
                 bodypropCount++;
             }
 
             if (bodysecondaryCategoryId != null)
             {
-                body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
+                body["secondaryCategoryId"] = CSharpExpressionConverter.ConvertToken(bodysecondaryCategoryId);
                 bodypropCount++;
             }
 
             if (bodysku != null)
             {
-                body["sku"] = ExpressionConverter.ConvertO(bodysku);
+                body["sku"] = CSharpExpressionConverter.ConvertToken(bodysku);
                 bodypropCount++;
             }
 
             if (bodystoreCategoryNames != null)
             {
-                body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
+                body["storeCategoryNames"] = CSharpExpressionConverter.ConvertToken(bodystoreCategoryNames);
                 bodypropCount++;
             }
 
@@ -929,19 +929,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var taxObjectpropCount = 0;
             if (bodytaxapplyTax != null)
             {
-                taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
+                taxObject["applyTax"] = CSharpExpressionConverter.ConvertToken(bodytaxapplyTax);
                 taxObjectpropCount++;
             }
 
             if (bodytaxthirdPartyTaxCategory != null)
             {
-                taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
+                taxObject["thirdPartyTaxCategory"] = CSharpExpressionConverter.ConvertToken(bodytaxthirdPartyTaxCategory);
                 taxObjectpropCount++;
             }
 
             if (bodytaxvatPercentage != null)
             {
-                taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
+                taxObject["vatPercentage"] = CSharpExpressionConverter.ConvertToken(bodytaxvatPercentage);
                 taxObjectpropCount++;
             }
 
@@ -962,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetOfferResponse> GetOffer(Expression<Func<string>> offerId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<string> DeleteOffer(Expression<Func<string>> offerId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<UpdateOfferResponse> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem2[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
@@ -991,13 +991,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var bodypropCount = 0;
             if (bodyavailableQuantity != null)
             {
-                body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
+                body["availableQuantity"] = CSharpExpressionConverter.ConvertToken(bodyavailableQuantity);
                 bodypropCount++;
             }
 
             if (bodycategoryId != null)
             {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                body["categoryId"] = CSharpExpressionConverter.ConvertToken(bodycategoryId);
                 bodypropCount++;
             }
 
@@ -1005,13 +1005,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var charityObjectpropCount = 0;
             if (bodycharitycharityId != null)
             {
-                charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
+                charityObject["charityId"] = CSharpExpressionConverter.ConvertToken(bodycharitycharityId);
                 charityObjectpropCount++;
             }
 
             if (bodycharitydonationPercentage != null)
             {
-                charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
+                charityObject["donationPercentage"] = CSharpExpressionConverter.ConvertToken(bodycharitydonationPercentage);
                 charityObjectpropCount++;
             }
 
@@ -1025,25 +1025,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var extendedProducerResponsibilityObjectpropCount = 0;
             if (bodyextendedProducerResponsibilityproducerProductId != null)
             {
-                extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
+                extendedProducerResponsibilityObject["producerProductId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproducerProductId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityproductPackageId != null)
             {
-                extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
+                extendedProducerResponsibilityObject["productPackageId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproductPackageId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityshipmentPackageId != null)
             {
-                extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
+                extendedProducerResponsibilityObject["shipmentPackageId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityshipmentPackageId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityproductDocumentationId != null)
             {
-                extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
+                extendedProducerResponsibilityObject["productDocumentationId"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityproductDocumentationId);
                 extendedProducerResponsibilityObjectpropCount++;
             }
 
@@ -1051,13 +1051,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var ecoParticipationFeeObjectpropCount = 0;
             if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
             {
-                ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
+                ecoParticipationFeeObject["currency"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
                 ecoParticipationFeeObjectpropCount++;
             }
 
             if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
             {
-                ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
+                ecoParticipationFeeObject["value"] = CSharpExpressionConverter.ConvertToken(bodyextendedProducerResponsibilityecoParticipationFeevalue);
                 ecoParticipationFeeObjectpropCount++;
             }
 
@@ -1075,25 +1075,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodyhideBuyerDetails != null)
             {
-                body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
+                body["hideBuyerDetails"] = CSharpExpressionConverter.ConvertToken(bodyhideBuyerDetails);
                 bodypropCount++;
             }
 
             if (bodyincludeCatalogProductDetails != null)
             {
-                body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
+                body["includeCatalogProductDetails"] = CSharpExpressionConverter.ConvertToken(bodyincludeCatalogProductDetails);
                 bodypropCount++;
             }
 
             if (bodylistingDescription != null)
             {
-                body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
+                body["listingDescription"] = CSharpExpressionConverter.ConvertToken(bodylistingDescription);
                 bodypropCount++;
             }
 
             if (bodylistingDuration != null)
             {
-                body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
+                body["listingDuration"] = CSharpExpressionConverter.Convert(bodylistingDuration);
                 bodypropCount++;
             }
 
@@ -1105,13 +1105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var autoAcceptPriceObjectpropCount = 0;
             if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
             {
-                autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
+                autoAcceptPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
                 autoAcceptPriceObjectpropCount++;
             }
 
             if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
             {
-                autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
+                autoAcceptPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
                 autoAcceptPriceObjectpropCount++;
             }
 
@@ -1125,13 +1125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var autoDeclinePriceObjectpropCount = 0;
             if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
             {
-                autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
+                autoDeclinePriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
                 autoDeclinePriceObjectpropCount++;
             }
 
             if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
             {
-                autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
+                autoDeclinePriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
                 autoDeclinePriceObjectpropCount++;
             }
 
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
             {
-                bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
+                bestOfferTermsObject["bestOfferEnabled"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
                 bestOfferTermsObjectpropCount++;
             }
 
@@ -1155,43 +1155,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingPolicieseBayPlusIfEligible != null)
             {
-                listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
+                listingPoliciesObject["eBayPlusIfEligible"] = CSharpExpressionConverter.ConvertToken(bodylistingPolicieseBayPlusIfEligible);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesfulfillmentPolicyId != null)
             {
-                listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
+                listingPoliciesObject["fulfillmentPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesfulfillmentPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciespaymentPolicyId != null)
             {
-                listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
+                listingPoliciesObject["paymentPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciespaymentPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesproductCompliancePolicyIds != null)
             {
-                listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
+                listingPoliciesObject["productCompliancePolicyIds"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesproductCompliancePolicyIds);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesreturnPolicyId != null)
             {
-                listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
+                listingPoliciesObject["returnPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesreturnPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciesshippingCostOverrides != null)
             {
-                listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
+                listingPoliciesObject["shippingCostOverrides"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciesshippingCostOverrides);
                 listingPoliciesObjectpropCount++;
             }
 
             if (bodylistingPoliciestakeBackPolicyId != null)
             {
-                listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
+                listingPoliciesObject["takeBackPolicyId"] = CSharpExpressionConverter.ConvertToken(bodylistingPoliciestakeBackPolicyId);
                 listingPoliciesObjectpropCount++;
             }
 
@@ -1203,19 +1203,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodylistingStartDate != null)
             {
-                body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
+                body["listingStartDate"] = CSharpExpressionConverter.ConvertToken(bodylistingStartDate);
                 bodypropCount++;
             }
 
             if (bodylotSize != null)
             {
-                body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
+                body["lotSize"] = CSharpExpressionConverter.ConvertToken(bodylotSize);
                 bodypropCount++;
             }
 
             if (bodymerchantLocationKey != null)
             {
-                body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
+                body["merchantLocationKey"] = CSharpExpressionConverter.ConvertToken(bodymerchantLocationKey);
                 bodypropCount++;
             }
 
@@ -1225,13 +1225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var auctionReservePriceObjectpropCount = 0;
             if (bodypricingSummaryauctionReservePricecurrency != null)
             {
-                auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
+                auctionReservePriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionReservePricecurrency);
                 auctionReservePriceObjectpropCount++;
             }
 
             if (bodypricingSummaryauctionReservePricevalue != null)
             {
-                auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
+                auctionReservePriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionReservePricevalue);
                 auctionReservePriceObjectpropCount++;
             }
 
@@ -1245,13 +1245,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var auctionStartPriceObjectpropCount = 0;
             if (bodypricingSummaryauctionStartPricecurrency != null)
             {
-                auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
+                auctionStartPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionStartPricecurrency);
                 auctionStartPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryauctionStartPricevalue != null)
             {
-                auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
+                auctionStartPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryauctionStartPricevalue);
                 auctionStartPriceObjectpropCount++;
             }
 
@@ -1265,13 +1265,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var minimumAdvertisedPriceObjectpropCount = 0;
             if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
             {
-                minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
+                minimumAdvertisedPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryminimumAdvertisedPricecurrency);
                 minimumAdvertisedPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryminimumAdvertisedPricevalue != null)
             {
-                minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
+                minimumAdvertisedPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryminimumAdvertisedPricevalue);
                 minimumAdvertisedPriceObjectpropCount++;
             }
 
@@ -1283,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
             {
-                pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
+                pricingSummaryObject["originallySoldForRetailPriceOn"] = CSharpExpressionConverter.Convert(bodypricingSummaryoriginallySoldForRetailPriceOn);
                 pricingSummaryObjectpropCount++;
             }
 
@@ -1291,13 +1291,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var originalRetailPriceObjectpropCount = 0;
             if (bodypricingSummaryoriginalRetailPricecurrency != null)
             {
-                originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
+                originalRetailPriceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryoriginalRetailPricecurrency);
                 originalRetailPriceObjectpropCount++;
             }
 
             if (bodypricingSummaryoriginalRetailPricevalue != null)
             {
-                originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
+                originalRetailPriceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummaryoriginalRetailPricevalue);
                 originalRetailPriceObjectpropCount++;
             }
 
@@ -1311,13 +1311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var priceObjectpropCount = 0;
             if (bodypricingSummarypricecurrency != null)
             {
-                priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
+                priceObject["currency"] = CSharpExpressionConverter.ConvertToken(bodypricingSummarypricecurrency);
                 priceObjectpropCount++;
             }
 
             if (bodypricingSummarypricevalue != null)
             {
-                priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
+                priceObject["value"] = CSharpExpressionConverter.ConvertToken(bodypricingSummarypricevalue);
                 priceObjectpropCount++;
             }
 
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodypricingSummarypricingVisibility != null)
             {
-                pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
+                pricingSummaryObject["pricingVisibility"] = CSharpExpressionConverter.Convert(bodypricingSummarypricingVisibility);
                 pricingSummaryObjectpropCount++;
             }
 
@@ -1341,19 +1341,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 
             if (bodyquantityLimitPerBuyer != null)
             {
-                body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
+                body["quantityLimitPerBuyer"] = CSharpExpressionConverter.ConvertToken(bodyquantityLimitPerBuyer);
                 bodypropCount++;
             }
 
             if (bodysecondaryCategoryId != null)
             {
-                body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
+                body["secondaryCategoryId"] = CSharpExpressionConverter.ConvertToken(bodysecondaryCategoryId);
                 bodypropCount++;
             }
 
             if (bodystoreCategoryNames != null)
             {
-                body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
+                body["storeCategoryNames"] = CSharpExpressionConverter.ConvertToken(bodystoreCategoryNames);
                 bodypropCount++;
             }
 
@@ -1361,19 +1361,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var taxObjectpropCount = 0;
             if (bodytaxapplyTax != null)
             {
-                taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
+                taxObject["applyTax"] = CSharpExpressionConverter.ConvertToken(bodytaxapplyTax);
                 taxObjectpropCount++;
             }
 
             if (bodytaxthirdPartyTaxCategory != null)
             {
-                taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
+                taxObject["thirdPartyTaxCategory"] = CSharpExpressionConverter.ConvertToken(bodytaxthirdPartyTaxCategory);
                 taxObjectpropCount++;
             }
 
             if (bodytaxvatPercentage != null)
             {
-                taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
+                taxObject["vatPercentage"] = CSharpExpressionConverter.ConvertToken(bodytaxvatPercentage);
                 taxObjectpropCount++;
             }
 
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<WithdrawOfferResponse> WithdrawOffer(Expression<Func<string>> offerId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}/withdraw", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<PublishOfferResponse> PublishOffer(Expression<Func<string>> offerId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}/publish/", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/publish/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");

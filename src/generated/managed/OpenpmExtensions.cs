@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<PackagesResponse>(callPayload);
         }
 
@@ -33,82 +33,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymachineName != null)
             {
-                body["machine_name"] = ExpressionConverter.ConvertO(bodymachineName);
+                body["machine_name"] = CSharpExpressionConverter.ConvertToken(bodymachineName);
                 bodypropCount++;
             }
 
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodyversion != null)
             {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
                 bodypropCount++;
             }
 
             if (bodycreatedAt != null)
             {
-                body["created_at"] = ExpressionConverter.ConvertO(bodycreatedAt);
+                body["created_at"] = CSharpExpressionConverter.ConvertToken(bodycreatedAt);
                 bodypropCount++;
             }
 
             if (bodyupdatedAt != null)
             {
-                body["updated_at"] = ExpressionConverter.ConvertO(bodyupdatedAt);
+                body["updated_at"] = CSharpExpressionConverter.ConvertToken(bodyupdatedAt);
                 bodypropCount++;
             }
 
             if (bodypublishedAt != null)
             {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
+                body["published_at"] = CSharpExpressionConverter.ConvertToken(bodypublishedAt);
                 bodypropCount++;
             }
 
             if (bodylogoUrl != null)
             {
-                body["logo_url"] = ExpressionConverter.ConvertO(bodylogoUrl);
+                body["logo_url"] = CSharpExpressionConverter.ConvertToken(bodylogoUrl);
                 bodypropCount++;
             }
 
             if (bodycontactEmail != null)
             {
-                body["contact_email"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                body["contact_email"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodymachineDescription != null)
             {
-                body["machine_description"] = ExpressionConverter.ConvertO(bodymachineDescription);
+                body["machine_description"] = CSharpExpressionConverter.ConvertToken(bodymachineDescription);
                 bodypropCount++;
             }
 
             if (bodyuserId != null)
             {
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyopenapi != null)
             {
-                body["openapi"] = ExpressionConverter.ConvertO(bodyopenapi);
+                body["openapi"] = CSharpExpressionConverter.ConvertToken(bodyopenapi);
                 bodypropCount++;
             }
 
@@ -127,14 +127,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             return new ApiConnectionAction<Package[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package> PackagesByPackageIdGET(Expression<Func<string>> packageId)
         {
-            var apiCallPath = String.Format("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/packages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Package>(callPayload);
@@ -143,88 +143,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymachineName = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyversion = null, Expression<Func<string>> bodycreatedAt = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodymachineDescription = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyopenapi = null)
         {
-            var apiCallPath = String.Format("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/packages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymachineName != null)
             {
-                body["machine_name"] = ExpressionConverter.ConvertO(bodymachineName);
+                body["machine_name"] = CSharpExpressionConverter.ConvertToken(bodymachineName);
                 bodypropCount++;
             }
 
             if (bodydomain != null)
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                body["domain"] = CSharpExpressionConverter.ConvertToken(bodydomain);
                 bodypropCount++;
             }
 
             if (bodyversion != null)
             {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
                 bodypropCount++;
             }
 
             if (bodycreatedAt != null)
             {
-                body["created_at"] = ExpressionConverter.ConvertO(bodycreatedAt);
+                body["created_at"] = CSharpExpressionConverter.ConvertToken(bodycreatedAt);
                 bodypropCount++;
             }
 
             if (bodyupdatedAt != null)
             {
-                body["updated_at"] = ExpressionConverter.ConvertO(bodyupdatedAt);
+                body["updated_at"] = CSharpExpressionConverter.ConvertToken(bodyupdatedAt);
                 bodypropCount++;
             }
 
             if (bodypublishedAt != null)
             {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
+                body["published_at"] = CSharpExpressionConverter.ConvertToken(bodypublishedAt);
                 bodypropCount++;
             }
 
             if (bodylogoUrl != null)
             {
-                body["logo_url"] = ExpressionConverter.ConvertO(bodylogoUrl);
+                body["logo_url"] = CSharpExpressionConverter.ConvertToken(bodylogoUrl);
                 bodypropCount++;
             }
 
             if (bodycontactEmail != null)
             {
-                body["contact_email"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                body["contact_email"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodymachineDescription != null)
             {
-                body["machine_description"] = ExpressionConverter.ConvertO(bodymachineDescription);
+                body["machine_description"] = CSharpExpressionConverter.ConvertToken(bodymachineDescription);
                 bodypropCount++;
             }
 
             if (bodyuserId != null)
             {
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyopenapi != null)
             {
-                body["openapi"] = ExpressionConverter.ConvertO(bodyopenapi);
+                body["openapi"] = CSharpExpressionConverter.ConvertToken(bodyopenapi);
                 bodypropCount++;
             }
 
@@ -239,18 +239,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<PackagesOpenapiResponse> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/openapi", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/packages/{0}/openapi", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             return new ApiConnectionAction<PackagesOpenapiResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<AiPlugin> PackagesAiPluginByPackageIdGET(Expression<Func<string>> packageId)
         {
-            var apiCallPath = String.Format("/packages/{0}/ai-plugin", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/packages/{0}/ai-plugin", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AiPlugin>(callPayload);
@@ -263,8 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<AiPlugin[]>(callPayload);
         }
 
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             return new ApiConnectionAction<AiPlugin[]>(callPayload);
         }
     }

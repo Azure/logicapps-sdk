@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> UploadFile(Expression<Func<string>> connectedProjectId, Expression<Func<string>> federatedRepositoryId, Expression<Func<string>> documentIdentifier, Expression<Func<string>> xBsFileName, Expression<Func<string>> fileContent = null)
         {
-            var apiCallPath = String.Format("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", ExpressionConverter.ConvertWithUrlEncoding(connectedProjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(federatedRepositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentIdentifier, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectedProjectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(federatedRepositoryId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-bs-file-name"] = ExpressionConverter.Convert(xBsFileName);
-            callPayload.Body = ExpressionConverter.ConvertO(fileContent);
+            callPayload.Headers["x-bs-file-name"] = CSharpExpressionConverter.ConvertO(xBsFileName);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileContent);
             return new ApiConnectionAction<BadRequestObjectResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes(Expression<Func<string>> connection, Expression<Func<string>> documentIdentifier, Expression<Func<attributeSynchronizationModeldirectionInput>> attributeSynchronizationModeldirection)
         {
-            var apiCallPath = String.Format("/api/v2/{0}/documents/{1}/attributeSynchronization", ExpressionConverter.ConvertWithUrlEncoding(connection, 1), ExpressionConverter.ConvertWithUrlEncoding(documentIdentifier, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(connection, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var attributeSynchronizationModel = new JObject();
             var attributeSynchronizationModelpropCount = 0;
             attributeSynchronizationModelpropCount++;
-            attributeSynchronizationModel["direction"] = ExpressionConverter.ConvertO(attributeSynchronizationModeldirection);
+            attributeSynchronizationModel["direction"] = CSharpExpressionConverter.Convert(attributeSynchronizationModeldirection);
             if (attributeSynchronizationModelpropCount > 0)
             {
                 callPayload.Body = attributeSynchronizationModel;

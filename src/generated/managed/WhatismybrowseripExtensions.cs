@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
             var bodypropCount = 0;
             if (bodyheaders != null)
             {
-                body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
+                body["headers"] = CSharpExpressionConverter.ConvertToken(bodyheaders);
                 bodypropCount++;
             }
 

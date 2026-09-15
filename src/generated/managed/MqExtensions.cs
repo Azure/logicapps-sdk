@@ -21,43 +21,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
@@ -101,43 +101,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -159,13 +159,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
             if (optionsbatchSize != null)
             {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
+                options["BatchSize"] = CSharpExpressionConverter.ConvertToken(optionsbatchSize);
                 optionspropCount++;
             }
 
@@ -187,43 +187,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
@@ -267,43 +267,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -325,13 +325,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
             if (optionsbatchSize != null)
             {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
+                options["BatchSize"] = CSharpExpressionConverter.ConvertToken(optionsbatchSize);
                 optionspropCount++;
             }
 
@@ -353,43 +353,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
@@ -433,43 +433,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var optionspropCount = 0;
             if (optionsqueue != null)
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
+                options["Queue"] = CSharpExpressionConverter.ConvertToken(optionsqueue);
                 optionspropCount++;
             }
 
             if (optionsmessageId != null)
             {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
+                options["MessageId"] = CSharpExpressionConverter.ConvertToken(optionsmessageId);
                 optionspropCount++;
             }
 
             if (optionscorrelationId != null)
             {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
+                options["CorrelationId"] = CSharpExpressionConverter.ConvertToken(optionscorrelationId);
                 optionspropCount++;
             }
 
             if (optionsgroupId != null)
             {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
+                options["GroupId"] = CSharpExpressionConverter.ConvertToken(optionsgroupId);
                 optionspropCount++;
             }
 
             if (optionsmessageToken != null)
             {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
+                options["MessageToken"] = CSharpExpressionConverter.ConvertToken(optionsmessageToken);
                 optionspropCount++;
             }
 
             if (optionsoffset != null)
             {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
+                options["Offset"] = CSharpExpressionConverter.ConvertToken(optionsoffset);
                 optionspropCount++;
             }
 
             if (optionslogicalSequenceNumber != null)
             {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
+                options["LogicalSequenceNumber"] = CSharpExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
                 optionspropCount++;
             }
 
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             {
                 if (optionsincludeInfo != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["IncludeInfo"] = CSharpExpressionConverter.Convert(optionsincludeInfo);
                     optionspropCount++;
                 }
 
@@ -491,13 +491,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (optionstimeout != null)
             {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
+                options["Timeout"] = CSharpExpressionConverter.ConvertToken(optionstimeout);
                 optionspropCount++;
             }
 
             if (optionsbatchSize != null)
             {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
+                options["BatchSize"] = CSharpExpressionConverter.ConvertToken(optionsbatchSize);
                 optionspropCount++;
             }
 
@@ -519,17 +519,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var messagepropCount = 0;
             if (messagequeue != null)
             {
-                message["Queue"] = ExpressionConverter.ConvertO(messagequeue);
+                message["Queue"] = CSharpExpressionConverter.ConvertToken(messagequeue);
                 messagepropCount++;
             }
 
             messagepropCount++;
-            message["Message"] = ExpressionConverter.ConvertO(messagemessage);
+            message["Message"] = CSharpExpressionConverter.ConvertToken(messagemessage);
             if (messagemessageType != null)
             {
                 if (messagemessageType != null)
                 {
-                    message["MessageType"] = ExpressionConverter.ConvertO(messagemessageType);
+                    message["MessageType"] = CSharpExpressionConverter.Convert(messagemessageType);
                     messagepropCount++;
                 }
 
@@ -543,43 +543,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
             if (messagecorrelationId != null)
             {
-                message["CorrelationId"] = ExpressionConverter.ConvertO(messagecorrelationId);
+                message["CorrelationId"] = CSharpExpressionConverter.ConvertToken(messagecorrelationId);
                 messagepropCount++;
             }
 
             if (messagemessageId != null)
             {
-                message["MessageId"] = ExpressionConverter.ConvertO(messagemessageId);
+                message["MessageId"] = CSharpExpressionConverter.ConvertToken(messagemessageId);
                 messagepropCount++;
             }
 
             if (messagereplyToQueue != null)
             {
-                message["ReplyToQueue"] = ExpressionConverter.ConvertO(messagereplyToQueue);
+                message["ReplyToQueue"] = CSharpExpressionConverter.ConvertToken(messagereplyToQueue);
                 messagepropCount++;
             }
 
             if (messagereplyToQueueManager != null)
             {
-                message["ReplyToQueueManager"] = ExpressionConverter.ConvertO(messagereplyToQueueManager);
+                message["ReplyToQueueManager"] = CSharpExpressionConverter.ConvertToken(messagereplyToQueueManager);
                 messagepropCount++;
             }
 
             if (messagecodeCharSetId != null)
             {
-                message["CodeCharSetId"] = ExpressionConverter.ConvertO(messagecodeCharSetId);
+                message["CodeCharSetId"] = CSharpExpressionConverter.ConvertToken(messagecodeCharSetId);
                 messagepropCount++;
             }
 
             if (messageoffset != null)
             {
-                message["Offset"] = ExpressionConverter.ConvertO(messageoffset);
+                message["Offset"] = CSharpExpressionConverter.ConvertToken(messageoffset);
                 messagepropCount++;
             }
 
             if (messageformat != null)
             {
-                message["Format"] = ExpressionConverter.ConvertO(messageformat);
+                message["Format"] = CSharpExpressionConverter.ConvertToken(messageformat);
                 messagepropCount++;
             }
 

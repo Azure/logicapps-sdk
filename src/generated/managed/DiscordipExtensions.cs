@@ -41,29 +41,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
         {
-            var apiCallPath = String.Format("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(webhookToken, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookToken, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             if (contentType != null)
-                callPayload.Headers["content-type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["content-type"] = CSharpExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
             if (bodyavatarURL != null)
             {
-                body["avatar-url"] = ExpressionConverter.ConvertO(bodyavatarURL);
+                body["avatar-url"] = CSharpExpressionConverter.ConvertToken(bodyavatarURL);
                 bodypropCount++;
             }
 

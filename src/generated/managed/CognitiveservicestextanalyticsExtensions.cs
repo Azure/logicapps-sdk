@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                callPayload.Queries["model-version"] = CSharpExpressionConverter.ConvertO(modelVersion);
             if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                callPayload.Queries["showStats"] = CSharpExpressionConverter.ConvertO(showStats);
             var input = new JObject();
             var inputpropCount = 0;
             inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            input["documents"] = CSharpExpressionConverter.ConvertToken(inputdocuments);
             if (inputpropCount > 0)
             {
                 callPayload.Body = input;
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                callPayload.Queries["model-version"] = CSharpExpressionConverter.ConvertO(modelVersion);
             if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                callPayload.Queries["showStats"] = CSharpExpressionConverter.ConvertO(showStats);
             var input = new JObject();
             var inputpropCount = 0;
             inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            input["documents"] = CSharpExpressionConverter.ConvertToken(inputdocuments);
             if (inputpropCount > 0)
             {
                 callPayload.Body = input;
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                callPayload.Queries["model-version"] = CSharpExpressionConverter.ConvertO(modelVersion);
             if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                callPayload.Queries["showStats"] = CSharpExpressionConverter.ConvertO(showStats);
             var input = new JObject();
             var inputpropCount = 0;
             inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            input["documents"] = CSharpExpressionConverter.ConvertToken(inputdocuments);
             if (inputpropCount > 0)
             {
                 callPayload.Body = input;
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                callPayload.Queries["model-version"] = CSharpExpressionConverter.ConvertO(modelVersion);
             if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                callPayload.Queries["showStats"] = CSharpExpressionConverter.ConvertO(showStats);
             var input = new JObject();
             var inputpropCount = 0;
             inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            input["documents"] = CSharpExpressionConverter.ConvertToken(inputdocuments);
             if (inputpropCount > 0)
             {
                 callPayload.Body = input;
@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+                callPayload.Queries["model-version"] = CSharpExpressionConverter.ConvertO(modelVersion);
             if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+                callPayload.Queries["showStats"] = CSharpExpressionConverter.ConvertO(showStats);
             var input = new JObject();
             var inputpropCount = 0;
             inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            input["documents"] = CSharpExpressionConverter.ConvertToken(inputdocuments);
             if (inputpropCount > 0)
             {
                 callPayload.Body = input;

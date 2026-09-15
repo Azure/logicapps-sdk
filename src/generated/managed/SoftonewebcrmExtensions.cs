@@ -18,33 +18,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (priorityId != null)
-                callPayload.Queries["PriorityId"] = ExpressionConverter.Convert(priorityId);
+                callPayload.Queries["PriorityId"] = CSharpExpressionConverter.ConvertO(priorityId);
             if (createdBy != null)
-                callPayload.Queries["CreatedBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["CreatedBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             if (lastModifiedBy != null)
-                callPayload.Queries["LastModifiedBy"] = ExpressionConverter.Convert(lastModifiedBy);
+                callPayload.Queries["LastModifiedBy"] = CSharpExpressionConverter.ConvertO(lastModifiedBy);
             if (dueDate != null)
-                callPayload.Queries["DueDate"] = ExpressionConverter.Convert(dueDate);
+                callPayload.Queries["DueDate"] = CSharpExpressionConverter.ConvertO(dueDate);
             if (sortDate != null)
-                callPayload.Queries["SortDate"] = ExpressionConverter.Convert(sortDate);
+                callPayload.Queries["SortDate"] = CSharpExpressionConverter.ConvertO(sortDate);
             if (assignedToId != null)
-                callPayload.Queries["AssignedToId"] = ExpressionConverter.Convert(assignedToId);
+                callPayload.Queries["AssignedToId"] = CSharpExpressionConverter.ConvertO(assignedToId);
             if (relatedToId != null)
-                callPayload.Queries["RelatedToId"] = ExpressionConverter.Convert(relatedToId);
+                callPayload.Queries["RelatedToId"] = CSharpExpressionConverter.ConvertO(relatedToId);
             if (callResultId != null)
-                callPayload.Queries["CallResultId"] = ExpressionConverter.Convert(callResultId);
+                callPayload.Queries["CallResultId"] = CSharpExpressionConverter.ConvertO(callResultId);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO[]>(callPayload);
         }
 
@@ -58,139 +58,139 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycallDuration != null)
             {
-                body["callDuration"] = ExpressionConverter.ConvertO(bodycallDuration);
+                body["callDuration"] = CSharpExpressionConverter.ConvertToken(bodycallDuration);
                 bodypropCount++;
             }
 
             if (bodycallResultId != null)
             {
-                body["callResultId"] = ExpressionConverter.ConvertO(bodycallResultId);
+                body["callResultId"] = CSharpExpressionConverter.ConvertToken(bodycallResultId);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodysortDate != null)
             {
-                body["sortDate"] = ExpressionConverter.ConvertO(bodysortDate);
+                body["sortDate"] = CSharpExpressionConverter.ConvertToken(bodysortDate);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceAssignedToId != null)
             {
-                body["sourceAssignedToId"] = ExpressionConverter.ConvertO(bodysourceAssignedToId);
+                body["sourceAssignedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceAssignedToId);
                 bodypropCount++;
             }
 
             if (bodysourceRelatedToId != null)
             {
-                body["sourceRelatedToId"] = ExpressionConverter.ConvertO(bodysourceRelatedToId);
+                body["sourceRelatedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceRelatedToId);
                 bodypropCount++;
             }
 
             if (bodysourceContactIds != null)
             {
-                body["sourceContactIds"] = ExpressionConverter.ConvertO(bodysourceContactIds);
+                body["sourceContactIds"] = CSharpExpressionConverter.ConvertToken(bodysourceContactIds);
                 bodypropCount++;
             }
 
             if (bodycallDirection != null)
             {
-                body["callDirection"] = ExpressionConverter.ConvertO(bodycallDirection);
+                body["callDirection"] = CSharpExpressionConverter.Convert(bodycallDirection);
                 bodypropCount++;
             }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> CallGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction CallDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -223,158 +223,158 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> CallUpdate(Expression<Func<string>> id, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodyassignedToTypeInput>> bodyassignedToType = null, Expression<Func<string>> bodyassignedToId = null, Expression<Func<bodyrelatedToTypeInput>> bodyrelatedToType = null, Expression<Func<string>> bodyrelatedToId = null, Expression<Func<bodycontactTypeInput>> bodycontactType = null, Expression<Func<string[]>> bodycontactIds = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycallDuration = null, Expression<Func<string>> bodycallResultId = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyeditorBody = null, Expression<Func<string>> bodypriorityId = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyparentId = null, Expression<Func<bool>> bodyreminderSet = null, Expression<Func<string>> bodylastModifiedBy = null, Expression<Func<string>> bodysortDate = null, Expression<Func<string>> bodysourceId = null, Expression<Func<string>> bodysourceAssignedToId = null, Expression<Func<string>> bodysourceRelatedToId = null, Expression<Func<string[]>> bodysourceContactIds = null, Expression<Func<bodycallDirectionInput>> bodycallDirection = null)
         {
-            var apiCallPath = String.Format("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycallDuration != null)
             {
-                body["callDuration"] = ExpressionConverter.ConvertO(bodycallDuration);
+                body["callDuration"] = CSharpExpressionConverter.ConvertToken(bodycallDuration);
                 bodypropCount++;
             }
 
             if (bodycallResultId != null)
             {
-                body["callResultId"] = ExpressionConverter.ConvertO(bodycallResultId);
+                body["callResultId"] = CSharpExpressionConverter.ConvertToken(bodycallResultId);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodysortDate != null)
             {
-                body["sortDate"] = ExpressionConverter.ConvertO(bodysortDate);
+                body["sortDate"] = CSharpExpressionConverter.ConvertToken(bodysortDate);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceAssignedToId != null)
             {
-                body["sourceAssignedToId"] = ExpressionConverter.ConvertO(bodysourceAssignedToId);
+                body["sourceAssignedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceAssignedToId);
                 bodypropCount++;
             }
 
             if (bodysourceRelatedToId != null)
             {
-                body["sourceRelatedToId"] = ExpressionConverter.ConvertO(bodysourceRelatedToId);
+                body["sourceRelatedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceRelatedToId);
                 bodypropCount++;
             }
 
             if (bodysourceContactIds != null)
             {
-                body["sourceContactIds"] = ExpressionConverter.ConvertO(bodysourceContactIds);
+                body["sourceContactIds"] = CSharpExpressionConverter.ConvertToken(bodysourceContactIds);
                 bodypropCount++;
             }
 
             if (bodycallDirection != null)
             {
-                body["callDirection"] = ExpressionConverter.ConvertO(bodycallDirection);
+                body["callDirection"] = CSharpExpressionConverter.Convert(bodycallDirection);
                 bodypropCount++;
             }
 
@@ -393,37 +393,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (eventStatus != null)
-                callPayload.Queries["EventStatus"] = ExpressionConverter.Convert(eventStatus);
+                callPayload.Queries["EventStatus"] = CSharpExpressionConverter.Convert(eventStatus);
             if (startDate != null)
-                callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["StartDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (assignedToId != null)
-                callPayload.Queries["AssignedToId"] = ExpressionConverter.Convert(assignedToId);
+                callPayload.Queries["AssignedToId"] = CSharpExpressionConverter.ConvertO(assignedToId);
             if (relatedToId != null)
-                callPayload.Queries["RelatedToId"] = ExpressionConverter.Convert(relatedToId);
+                callPayload.Queries["RelatedToId"] = CSharpExpressionConverter.ConvertO(relatedToId);
             if (sortDate != null)
-                callPayload.Queries["SortDate"] = ExpressionConverter.Convert(sortDate);
+                callPayload.Queries["SortDate"] = CSharpExpressionConverter.ConvertO(sortDate);
             if (parentId != null)
-                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+                callPayload.Queries["ParentId"] = CSharpExpressionConverter.ConvertO(parentId);
             if (eventResultId != null)
-                callPayload.Queries["EventResultId"] = ExpressionConverter.Convert(eventResultId);
+                callPayload.Queries["EventResultId"] = CSharpExpressionConverter.ConvertO(eventResultId);
             if (priorityId != null)
-                callPayload.Queries["PriorityId"] = ExpressionConverter.Convert(priorityId);
+                callPayload.Queries["PriorityId"] = CSharpExpressionConverter.ConvertO(priorityId);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (lastModifiedBy != null)
-                callPayload.Queries["LastModifiedBy"] = ExpressionConverter.Convert(lastModifiedBy);
+                callPayload.Queries["LastModifiedBy"] = CSharpExpressionConverter.ConvertO(lastModifiedBy);
             if (createdBy != null)
-                callPayload.Queries["CreatedBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["CreatedBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO[]>(callPayload);
         }
 
@@ -437,73 +437,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodyupdateDate != null)
             {
-                body["updateDate"] = ExpressionConverter.ConvertO(bodyupdateDate);
+                body["updateDate"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
@@ -511,13 +511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var locationObjectpropCount = 0;
             if (bodylocationlongitude != null)
             {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(bodylocationlongitude);
+                locationObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodylocationlongitude);
                 locationObjectpropCount++;
             }
 
             if (bodylocationlatitude != null)
             {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(bodylocationlatitude);
+                locationObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodylocationlatitude);
                 locationObjectpropCount++;
             }
 
@@ -529,97 +529,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
             if (bodyrepeat != null)
             {
-                body["repeat"] = ExpressionConverter.ConvertO(bodyrepeat);
+                body["repeat"] = CSharpExpressionConverter.ConvertToken(bodyrepeat);
                 bodypropCount++;
             }
 
             if (bodyeventStatus != null)
             {
-                body["eventStatus"] = ExpressionConverter.ConvertO(bodyeventStatus);
+                body["eventStatus"] = CSharpExpressionConverter.Convert(bodyeventStatus);
                 bodypropCount++;
             }
 
             if (bodyeventResultId != null)
             {
-                body["eventResultId"] = ExpressionConverter.ConvertO(bodyeventResultId);
+                body["eventResultId"] = CSharpExpressionConverter.ConvertToken(bodyeventResultId);
                 bodypropCount++;
             }
 
             if (bodyrecurrenceInterval != null)
             {
-                body["recurrenceInterval"] = ExpressionConverter.ConvertO(bodyrecurrenceInterval);
+                body["recurrenceInterval"] = CSharpExpressionConverter.ConvertToken(bodyrecurrenceInterval);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceAssignedToId != null)
             {
-                body["sourceAssignedToId"] = ExpressionConverter.ConvertO(bodysourceAssignedToId);
+                body["sourceAssignedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceAssignedToId);
                 bodypropCount++;
             }
 
             if (bodysourceRelatedToId != null)
             {
-                body["sourceRelatedToId"] = ExpressionConverter.ConvertO(bodysourceRelatedToId);
+                body["sourceRelatedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceRelatedToId);
                 bodypropCount++;
             }
 
             if (bodysourceContactIds != null)
             {
-                body["sourceContactIds"] = ExpressionConverter.ConvertO(bodysourceContactIds);
+                body["sourceContactIds"] = CSharpExpressionConverter.ConvertToken(bodysourceContactIds);
                 bodypropCount++;
             }
 
             if (bodyteamMembers != null)
             {
-                body["teamMembers"] = ExpressionConverter.ConvertO(bodyteamMembers);
+                body["teamMembers"] = CSharpExpressionConverter.ConvertToken(bodyteamMembers);
                 bodypropCount++;
             }
 
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> EventGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction EventDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -652,80 +652,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> EventUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyupdateDate = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<bodyassignedToTypeInput>> bodyassignedToType = null, Expression<Func<string>> bodyassignedToId = null, Expression<Func<bodyrelatedToTypeInput>> bodyrelatedToType = null, Expression<Func<string>> bodyrelatedToId = null, Expression<Func<bodycontactTypeInput>> bodycontactType = null, Expression<Func<string[]>> bodycontactIds = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyeditorBody = null, Expression<Func<string>> bodypriorityId = null, Expression<Func<string>> bodylocationlongitude = null, Expression<Func<string>> bodylocationlatitude = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyreminderSet = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<string>> bodylastModifiedBy = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodyrepeat = null, Expression<Func<bodyeventStatusInput>> bodyeventStatus = null, Expression<Func<string>> bodyeventResultId = null, Expression<Func<string>> bodyrecurrenceInterval = null, Expression<Func<string>> bodysourceId = null, Expression<Func<string>> bodysourceAssignedToId = null, Expression<Func<string>> bodysourceRelatedToId = null, Expression<Func<string[]>> bodysourceContactIds = null, Expression<Func<string[]>> bodyteamMembers = null)
         {
-            var apiCallPath = String.Format("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyupdateDate != null)
             {
-                body["updateDate"] = ExpressionConverter.ConvertO(bodyupdateDate);
+                body["updateDate"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
@@ -733,13 +733,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var locationObjectpropCount = 0;
             if (bodylocationlongitude != null)
             {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(bodylocationlongitude);
+                locationObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodylocationlongitude);
                 locationObjectpropCount++;
             }
 
             if (bodylocationlatitude != null)
             {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(bodylocationlatitude);
+                locationObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodylocationlatitude);
                 locationObjectpropCount++;
             }
 
@@ -751,97 +751,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
             if (bodyrepeat != null)
             {
-                body["repeat"] = ExpressionConverter.ConvertO(bodyrepeat);
+                body["repeat"] = CSharpExpressionConverter.ConvertToken(bodyrepeat);
                 bodypropCount++;
             }
 
             if (bodyeventStatus != null)
             {
-                body["eventStatus"] = ExpressionConverter.ConvertO(bodyeventStatus);
+                body["eventStatus"] = CSharpExpressionConverter.Convert(bodyeventStatus);
                 bodypropCount++;
             }
 
             if (bodyeventResultId != null)
             {
-                body["eventResultId"] = ExpressionConverter.ConvertO(bodyeventResultId);
+                body["eventResultId"] = CSharpExpressionConverter.ConvertToken(bodyeventResultId);
                 bodypropCount++;
             }
 
             if (bodyrecurrenceInterval != null)
             {
-                body["recurrenceInterval"] = ExpressionConverter.ConvertO(bodyrecurrenceInterval);
+                body["recurrenceInterval"] = CSharpExpressionConverter.ConvertToken(bodyrecurrenceInterval);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceAssignedToId != null)
             {
-                body["sourceAssignedToId"] = ExpressionConverter.ConvertO(bodysourceAssignedToId);
+                body["sourceAssignedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceAssignedToId);
                 bodypropCount++;
             }
 
             if (bodysourceRelatedToId != null)
             {
-                body["sourceRelatedToId"] = ExpressionConverter.ConvertO(bodysourceRelatedToId);
+                body["sourceRelatedToId"] = CSharpExpressionConverter.ConvertToken(bodysourceRelatedToId);
                 bodypropCount++;
             }
 
             if (bodysourceContactIds != null)
             {
-                body["sourceContactIds"] = ExpressionConverter.ConvertO(bodysourceContactIds);
+                body["sourceContactIds"] = CSharpExpressionConverter.ConvertToken(bodysourceContactIds);
                 bodypropCount++;
             }
 
             if (bodyteamMembers != null)
             {
-                body["teamMembers"] = ExpressionConverter.ConvertO(bodyteamMembers);
+                body["teamMembers"] = CSharpExpressionConverter.ConvertToken(bodyteamMembers);
                 bodypropCount++;
             }
 
@@ -860,23 +860,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (relatedToId != null)
-                callPayload.Queries["RelatedToId"] = ExpressionConverter.Convert(relatedToId);
+                callPayload.Queries["RelatedToId"] = CSharpExpressionConverter.ConvertO(relatedToId);
             if (relatedToType != null)
-                callPayload.Queries["RelatedToType"] = ExpressionConverter.Convert(relatedToType);
+                callPayload.Queries["RelatedToType"] = CSharpExpressionConverter.Convert(relatedToType);
             if (createdBy != null)
-                callPayload.Queries["CreatedBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["CreatedBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             if (lastModifiedBy != null)
-                callPayload.Queries["LastModifiedBy"] = ExpressionConverter.Convert(lastModifiedBy);
+                callPayload.Queries["LastModifiedBy"] = CSharpExpressionConverter.ConvertO(lastModifiedBy);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO[]>(callPayload);
         }
 
@@ -890,45 +890,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> NoteGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction NoteDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -961,56 +961,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> NoteUpdate(Expression<Func<string>> id, Expression<Func<bodyrelatedToTypeInput>> bodyrelatedToType = null, Expression<Func<string>> bodyrelatedToId = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyeditorBody = null, Expression<Func<string>> bodylastModifiedBy = null, Expression<Func<string[]>> bodycontactIds = null, Expression<Func<bodycontactTypeInput>> bodycontactType = null)
         {
-            var apiCallPath = String.Format("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
@@ -1029,37 +1029,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.Convert(status);
             if (relatedTo != null)
-                callPayload.Queries["RelatedTo"] = ExpressionConverter.Convert(relatedTo);
+                callPayload.Queries["RelatedTo"] = CSharpExpressionConverter.ConvertO(relatedTo);
             if (relatedToId != null)
-                callPayload.Queries["RelatedToId"] = ExpressionConverter.Convert(relatedToId);
+                callPayload.Queries["RelatedToId"] = CSharpExpressionConverter.ConvertO(relatedToId);
             if (priorityId != null)
-                callPayload.Queries["PriorityId"] = ExpressionConverter.Convert(priorityId);
+                callPayload.Queries["PriorityId"] = CSharpExpressionConverter.ConvertO(priorityId);
             if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["Type"] = CSharpExpressionConverter.Convert(type);
             if (dueDate != null)
-                callPayload.Queries["DueDate"] = ExpressionConverter.Convert(dueDate);
+                callPayload.Queries["DueDate"] = CSharpExpressionConverter.ConvertO(dueDate);
             if (sortDate != null)
-                callPayload.Queries["SortDate"] = ExpressionConverter.Convert(sortDate);
+                callPayload.Queries["SortDate"] = CSharpExpressionConverter.ConvertO(sortDate);
             if (parentId != null)
-                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+                callPayload.Queries["ParentId"] = CSharpExpressionConverter.ConvertO(parentId);
             if (lastModifiedBy != null)
-                callPayload.Queries["LastModifiedBy"] = ExpressionConverter.Convert(lastModifiedBy);
+                callPayload.Queries["LastModifiedBy"] = CSharpExpressionConverter.ConvertO(lastModifiedBy);
             if (createdBy != null)
-                callPayload.Queries["CreatedBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["CreatedBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             if (assignedToId != null)
-                callPayload.Queries["AssignedToId"] = ExpressionConverter.Convert(assignedToId);
+                callPayload.Queries["AssignedToId"] = CSharpExpressionConverter.ConvertO(assignedToId);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO[]>(callPayload);
         }
 
@@ -1073,103 +1073,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodytaskSubTypeId != null)
             {
-                body["taskSubTypeId"] = ExpressionConverter.ConvertO(bodytaskSubTypeId);
+                body["taskSubTypeId"] = CSharpExpressionConverter.ConvertToken(bodytaskSubTypeId);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> TaskGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction TaskDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -1202,122 +1202,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> TaskUpdate(Expression<Func<string>> id, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodypriorityId = null, Expression<Func<string>> bodyassignedToId = null, Expression<Func<bodyassignedToTypeInput>> bodyassignedToType = null, Expression<Func<string[]>> bodycontactIds = null, Expression<Func<bodycontactTypeInput>> bodycontactType = null, Expression<Func<string>> bodyrelatedToId = null, Expression<Func<bodyrelatedToTypeInput>> bodyrelatedToType = null, Expression<Func<string>> bodytaskSubTypeId = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyeditorBody = null, Expression<Func<bool>> bodyreminderSet = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodylastModifiedBy = null)
         {
-            var apiCallPath = String.Format("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytaskType != null)
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodydueDate != null)
             {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
                 bodypropCount++;
             }
 
             if (bodycompletedDate != null)
             {
-                body["completedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
+                body["completedDate"] = CSharpExpressionConverter.ConvertToken(bodycompletedDate);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriorityId != null)
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                body["priorityId"] = CSharpExpressionConverter.ConvertToken(bodypriorityId);
                 bodypropCount++;
             }
 
             if (bodyassignedToId != null)
             {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
+                body["assignedToId"] = CSharpExpressionConverter.ConvertToken(bodyassignedToId);
                 bodypropCount++;
             }
 
             if (bodyassignedToType != null)
             {
-                body["assignedToType"] = ExpressionConverter.ConvertO(bodyassignedToType);
+                body["assignedToType"] = CSharpExpressionConverter.Convert(bodyassignedToType);
                 bodypropCount++;
             }
 
             if (bodycontactIds != null)
             {
-                body["contactIds"] = ExpressionConverter.ConvertO(bodycontactIds);
+                body["contactIds"] = CSharpExpressionConverter.ConvertToken(bodycontactIds);
                 bodypropCount++;
             }
 
             if (bodycontactType != null)
             {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
+                body["contactType"] = CSharpExpressionConverter.Convert(bodycontactType);
                 bodypropCount++;
             }
 
             if (bodyrelatedToId != null)
             {
-                body["relatedToId"] = ExpressionConverter.ConvertO(bodyrelatedToId);
+                body["relatedToId"] = CSharpExpressionConverter.ConvertToken(bodyrelatedToId);
                 bodypropCount++;
             }
 
             if (bodyrelatedToType != null)
             {
-                body["relatedToType"] = ExpressionConverter.ConvertO(bodyrelatedToType);
+                body["relatedToType"] = CSharpExpressionConverter.Convert(bodyrelatedToType);
                 bodypropCount++;
             }
 
             if (bodytaskSubTypeId != null)
             {
-                body["taskSubTypeId"] = ExpressionConverter.ConvertO(bodytaskSubTypeId);
+                body["taskSubTypeId"] = CSharpExpressionConverter.ConvertToken(bodytaskSubTypeId);
                 bodypropCount++;
             }
 
             if (bodycomments != null)
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
                 bodypropCount++;
             }
 
             if (bodyeditorBody != null)
             {
-                body["editorBody"] = ExpressionConverter.ConvertO(bodyeditorBody);
+                body["editorBody"] = CSharpExpressionConverter.ConvertToken(bodyeditorBody);
                 bodypropCount++;
             }
 
             if (bodyreminderSet != null)
             {
-                body["reminderSet"] = ExpressionConverter.ConvertO(bodyreminderSet);
+                body["reminderSet"] = CSharpExpressionConverter.ConvertToken(bodyreminderSet);
                 bodypropCount++;
             }
 
             if (bodyposition != null)
             {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
+                body["position"] = CSharpExpressionConverter.ConvertToken(bodyposition);
                 bodypropCount++;
             }
 
             if (bodyparentId != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
@@ -1336,41 +1336,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                callPayload.Queries["InsertDate"] = CSharpExpressionConverter.ConvertO(insertDate);
             if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (mobilePhone != null)
-                callPayload.Queries["MobilePhone"] = ExpressionConverter.Convert(mobilePhone);
+                callPayload.Queries["MobilePhone"] = CSharpExpressionConverter.ConvertO(mobilePhone);
             if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (ownerId != null)
-                callPayload.Queries["OwnerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["OwnerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (ownerType != null)
-                callPayload.Queries["OwnerType"] = ExpressionConverter.Convert(ownerType);
+                callPayload.Queries["OwnerType"] = CSharpExpressionConverter.Convert(ownerType);
             if (accountSourceTypeId != null)
-                callPayload.Queries["AccountSourceTypeId"] = ExpressionConverter.Convert(accountSourceTypeId);
+                callPayload.Queries["AccountSourceTypeId"] = CSharpExpressionConverter.ConvertO(accountSourceTypeId);
             if (leadStatusId != null)
-                callPayload.Queries["LeadStatusId"] = ExpressionConverter.Convert(leadStatusId);
+                callPayload.Queries["LeadStatusId"] = CSharpExpressionConverter.ConvertO(leadStatusId);
             if (industryId != null)
-                callPayload.Queries["IndustryId"] = ExpressionConverter.Convert(industryId);
+                callPayload.Queries["IndustryId"] = CSharpExpressionConverter.ConvertO(industryId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.ConvertO(status);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto[]>(callPayload);
         }
 
@@ -1384,41 +1384,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodyleadStatusId != null)
             {
-                body["leadStatusId"] = ExpressionConverter.ConvertO(bodyleadStatusId);
+                body["leadStatusId"] = CSharpExpressionConverter.ConvertToken(bodyleadStatusId);
                 bodypropCount++;
             }
 
             var nameObject = new JObject();
             var nameObjectpropCount = 0;
             nameObjectpropCount++;
-            nameObject["firstName"] = ExpressionConverter.ConvertO(bodynamefirstName);
+            nameObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodynamefirstName);
             if (bodynamelastName != null)
             {
-                nameObject["lastName"] = ExpressionConverter.ConvertO(bodynamelastName);
+                nameObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodynamelastName);
                 nameObjectpropCount++;
             }
 
             if (bodynamemiddleName != null)
             {
-                nameObject["middleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                nameObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodynamemiddleName);
                 nameObjectpropCount++;
             }
 
             if (bodynamesalutationId != null)
             {
-                nameObject["salutationId"] = ExpressionConverter.ConvertO(bodynamesalutationId);
+                nameObject["salutationId"] = CSharpExpressionConverter.ConvertToken(bodynamesalutationId);
                 nameObjectpropCount++;
             }
 
             if (bodynamesuffix != null)
             {
-                nameObject["suffix"] = ExpressionConverter.ConvertO(bodynamesuffix);
+                nameObject["suffix"] = CSharpExpressionConverter.ConvertToken(bodynamesuffix);
                 nameObjectpropCount++;
             }
 
@@ -1430,91 +1430,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodymobilePhone != null)
             {
-                body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
+                body["mobilePhone"] = CSharpExpressionConverter.ConvertToken(bodymobilePhone);
                 bodypropCount++;
             }
 
             if (bodyotherEmail != null)
             {
-                body["otherEmail"] = ExpressionConverter.ConvertO(bodyotherEmail);
+                body["otherEmail"] = CSharpExpressionConverter.ConvertToken(bodyotherEmail);
                 bodypropCount++;
             }
 
             if (bodyotherPhone != null)
             {
-                body["otherPhone"] = ExpressionConverter.ConvertO(bodyotherPhone);
+                body["otherPhone"] = CSharpExpressionConverter.ConvertToken(bodyotherPhone);
                 bodypropCount++;
             }
 
             if (bodycallOptOut != null)
             {
-                body["callOptOut"] = ExpressionConverter.ConvertO(bodycallOptOut);
+                body["callOptOut"] = CSharpExpressionConverter.ConvertToken(bodycallOptOut);
                 bodypropCount++;
             }
 
             if (bodyemailOptOut != null)
             {
-                body["emailOptOut"] = ExpressionConverter.ConvertO(bodyemailOptOut);
+                body["emailOptOut"] = CSharpExpressionConverter.ConvertToken(bodyemailOptOut);
                 bodypropCount++;
             }
 
             if (bodyratingId != null)
             {
-                body["ratingId"] = ExpressionConverter.ConvertO(bodyratingId);
+                body["ratingId"] = CSharpExpressionConverter.ConvertToken(bodyratingId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyownerType != null)
             {
-                body["ownerType"] = ExpressionConverter.ConvertO(bodyownerType);
+                body["ownerType"] = CSharpExpressionConverter.Convert(bodyownerType);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodyindustryId != null)
             {
-                body["industryId"] = ExpressionConverter.ConvertO(bodyindustryId);
+                body["industryId"] = CSharpExpressionConverter.ConvertToken(bodyindustryId);
                 bodypropCount++;
             }
 
             if (bodynoOfEmployees != null)
             {
-                body["noOfEmployees"] = ExpressionConverter.ConvertO(bodynoOfEmployees);
+                body["noOfEmployees"] = CSharpExpressionConverter.ConvertToken(bodynoOfEmployees);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
@@ -1522,37 +1522,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
@@ -1564,37 +1564,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyannualRevenue != null)
             {
-                body["annualRevenue"] = ExpressionConverter.ConvertO(bodyannualRevenue);
+                body["annualRevenue"] = CSharpExpressionConverter.ConvertToken(bodyannualRevenue);
                 bodypropCount++;
             }
 
             if (bodylastTransferDate != null)
             {
-                body["lastTransferDate"] = ExpressionConverter.ConvertO(bodylastTransferDate);
+                body["lastTransferDate"] = CSharpExpressionConverter.ConvertToken(bodylastTransferDate);
                 bodypropCount++;
             }
 
             if (bodygenderId != null)
             {
-                body["genderId"] = ExpressionConverter.ConvertO(bodygenderId);
+                body["genderId"] = CSharpExpressionConverter.ConvertToken(bodygenderId);
                 bodypropCount++;
             }
 
             if (bodypronounceId != null)
             {
-                body["pronounceId"] = ExpressionConverter.ConvertO(bodypronounceId);
+                body["pronounceId"] = CSharpExpressionConverter.ConvertToken(bodypronounceId);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
@@ -1617,7 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> LeadGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto>(callPayload);
@@ -1626,7 +1626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction LeadDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -1635,48 +1635,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> LeadUpdate(Expression<Func<string>> id, Expression<Func<string>> bodynamefirstName, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodyleadStatusId = null, Expression<Func<string>> bodynamelastName = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesalutationId = null, Expression<Func<string>> bodynamesuffix = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodymobilePhone = null, Expression<Func<SalesPipelineApiDTOsEmailDTO[]>> bodyotherEmail = null, Expression<Func<SalesPipelineApiDTOsPhoneDTO[]>> bodyotherPhone = null, Expression<Func<bool>> bodycallOptOut = null, Expression<Func<bool>> bodyemailOptOut = null, Expression<Func<string>> bodyratingId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<bodyownerTypeInput>> bodyownerType = null, Expression<Func<string>> bodywebsite = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyindustryId = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddressstate = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodydescription = null, Expression<Func<double>> bodyannualRevenue = null, Expression<Func<string>> bodylastTransferDate = null, Expression<Func<string>> bodygenderId = null, Expression<Func<string>> bodypronounceId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodylastModifiedBy = null)
         {
-            var apiCallPath = String.Format("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodyleadStatusId != null)
             {
-                body["leadStatusId"] = ExpressionConverter.ConvertO(bodyleadStatusId);
+                body["leadStatusId"] = CSharpExpressionConverter.ConvertToken(bodyleadStatusId);
                 bodypropCount++;
             }
 
             var nameObject = new JObject();
             var nameObjectpropCount = 0;
             nameObjectpropCount++;
-            nameObject["firstName"] = ExpressionConverter.ConvertO(bodynamefirstName);
+            nameObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodynamefirstName);
             if (bodynamelastName != null)
             {
-                nameObject["lastName"] = ExpressionConverter.ConvertO(bodynamelastName);
+                nameObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodynamelastName);
                 nameObjectpropCount++;
             }
 
             if (bodynamemiddleName != null)
             {
-                nameObject["middleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                nameObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodynamemiddleName);
                 nameObjectpropCount++;
             }
 
             if (bodynamesalutationId != null)
             {
-                nameObject["salutationId"] = ExpressionConverter.ConvertO(bodynamesalutationId);
+                nameObject["salutationId"] = CSharpExpressionConverter.ConvertToken(bodynamesalutationId);
                 nameObjectpropCount++;
             }
 
             if (bodynamesuffix != null)
             {
-                nameObject["suffix"] = ExpressionConverter.ConvertO(bodynamesuffix);
+                nameObject["suffix"] = CSharpExpressionConverter.ConvertToken(bodynamesuffix);
                 nameObjectpropCount++;
             }
 
@@ -1688,91 +1688,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodymobilePhone != null)
             {
-                body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
+                body["mobilePhone"] = CSharpExpressionConverter.ConvertToken(bodymobilePhone);
                 bodypropCount++;
             }
 
             if (bodyotherEmail != null)
             {
-                body["otherEmail"] = ExpressionConverter.ConvertO(bodyotherEmail);
+                body["otherEmail"] = CSharpExpressionConverter.ConvertToken(bodyotherEmail);
                 bodypropCount++;
             }
 
             if (bodyotherPhone != null)
             {
-                body["otherPhone"] = ExpressionConverter.ConvertO(bodyotherPhone);
+                body["otherPhone"] = CSharpExpressionConverter.ConvertToken(bodyotherPhone);
                 bodypropCount++;
             }
 
             if (bodycallOptOut != null)
             {
-                body["callOptOut"] = ExpressionConverter.ConvertO(bodycallOptOut);
+                body["callOptOut"] = CSharpExpressionConverter.ConvertToken(bodycallOptOut);
                 bodypropCount++;
             }
 
             if (bodyemailOptOut != null)
             {
-                body["emailOptOut"] = ExpressionConverter.ConvertO(bodyemailOptOut);
+                body["emailOptOut"] = CSharpExpressionConverter.ConvertToken(bodyemailOptOut);
                 bodypropCount++;
             }
 
             if (bodyratingId != null)
             {
-                body["ratingId"] = ExpressionConverter.ConvertO(bodyratingId);
+                body["ratingId"] = CSharpExpressionConverter.ConvertToken(bodyratingId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyownerType != null)
             {
-                body["ownerType"] = ExpressionConverter.ConvertO(bodyownerType);
+                body["ownerType"] = CSharpExpressionConverter.Convert(bodyownerType);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodyindustryId != null)
             {
-                body["industryId"] = ExpressionConverter.ConvertO(bodyindustryId);
+                body["industryId"] = CSharpExpressionConverter.ConvertToken(bodyindustryId);
                 bodypropCount++;
             }
 
             if (bodynoOfEmployees != null)
             {
-                body["noOfEmployees"] = ExpressionConverter.ConvertO(bodynoOfEmployees);
+                body["noOfEmployees"] = CSharpExpressionConverter.ConvertToken(bodynoOfEmployees);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
@@ -1780,37 +1780,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
@@ -1822,43 +1822,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyannualRevenue != null)
             {
-                body["annualRevenue"] = ExpressionConverter.ConvertO(bodyannualRevenue);
+                body["annualRevenue"] = CSharpExpressionConverter.ConvertToken(bodyannualRevenue);
                 bodypropCount++;
             }
 
             if (bodylastTransferDate != null)
             {
-                body["lastTransferDate"] = ExpressionConverter.ConvertO(bodylastTransferDate);
+                body["lastTransferDate"] = CSharpExpressionConverter.ConvertToken(bodylastTransferDate);
                 bodypropCount++;
             }
 
             if (bodygenderId != null)
             {
-                body["genderId"] = ExpressionConverter.ConvertO(bodygenderId);
+                body["genderId"] = CSharpExpressionConverter.ConvertToken(bodygenderId);
                 bodypropCount++;
             }
 
             if (bodypronounceId != null)
             {
-                body["pronounceId"] = ExpressionConverter.ConvertO(bodypronounceId);
+                body["pronounceId"] = CSharpExpressionConverter.ConvertToken(bodypronounceId);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
@@ -1885,49 +1885,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (ownerId != null)
-                callPayload.Queries["OwnerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["OwnerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (amount != null)
-                callPayload.Queries["Amount"] = ExpressionConverter.Convert(amount);
+                callPayload.Queries["Amount"] = CSharpExpressionConverter.ConvertO(amount);
             if (closeDate != null)
-                callPayload.Queries["CloseDate"] = ExpressionConverter.Convert(closeDate);
+                callPayload.Queries["CloseDate"] = CSharpExpressionConverter.ConvertO(closeDate);
             if (updateDate != null)
-                callPayload.Queries["UpdateDate"] = ExpressionConverter.Convert(updateDate);
+                callPayload.Queries["UpdateDate"] = CSharpExpressionConverter.ConvertO(updateDate);
             if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                callPayload.Queries["InsertDate"] = CSharpExpressionConverter.ConvertO(insertDate);
             if (accountId != null)
-                callPayload.Queries["AccountId"] = ExpressionConverter.Convert(accountId);
+                callPayload.Queries["AccountId"] = CSharpExpressionConverter.ConvertO(accountId);
             if (forecastCategoryId != null)
-                callPayload.Queries["ForecastCategoryId"] = ExpressionConverter.Convert(forecastCategoryId);
+                callPayload.Queries["ForecastCategoryId"] = CSharpExpressionConverter.ConvertO(forecastCategoryId);
             if (accountSourceTypeId != null)
-                callPayload.Queries["AccountSourceTypeId"] = ExpressionConverter.Convert(accountSourceTypeId);
+                callPayload.Queries["AccountSourceTypeId"] = CSharpExpressionConverter.ConvertO(accountSourceTypeId);
             if (opportunityStatusId != null)
-                callPayload.Queries["OpportunityStatusId"] = ExpressionConverter.Convert(opportunityStatusId);
+                callPayload.Queries["OpportunityStatusId"] = CSharpExpressionConverter.ConvertO(opportunityStatusId);
             if (quoteId != null)
-                callPayload.Queries["QuoteId"] = ExpressionConverter.Convert(quoteId);
+                callPayload.Queries["QuoteId"] = CSharpExpressionConverter.ConvertO(quoteId);
             if (lossReasonId != null)
-                callPayload.Queries["LossReasonId"] = ExpressionConverter.Convert(lossReasonId);
+                callPayload.Queries["LossReasonId"] = CSharpExpressionConverter.ConvertO(lossReasonId);
             if (typeId != null)
-                callPayload.Queries["TypeId"] = ExpressionConverter.Convert(typeId);
+                callPayload.Queries["TypeId"] = CSharpExpressionConverter.ConvertO(typeId);
             if (lastModifiedBy != null)
-                callPayload.Queries["LastModifiedBy"] = ExpressionConverter.Convert(lastModifiedBy);
+                callPayload.Queries["LastModifiedBy"] = CSharpExpressionConverter.ConvertO(lastModifiedBy);
             if (createdBy != null)
-                callPayload.Queries["CreatedBy"] = ExpressionConverter.Convert(createdBy);
+                callPayload.Queries["CreatedBy"] = CSharpExpressionConverter.ConvertO(createdBy);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (salesPipelineId != null)
-                callPayload.Queries["SalesPipelineId"] = ExpressionConverter.Convert(salesPipelineId);
+                callPayload.Queries["SalesPipelineId"] = CSharpExpressionConverter.ConvertO(salesPipelineId);
             if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = CSharpExpressionConverter.ConvertO(status);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[]>(callPayload);
         }
 
@@ -1941,119 +1941,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodytypeId != null)
             {
-                body["typeId"] = ExpressionConverter.ConvertO(bodytypeId);
+                body["typeId"] = CSharpExpressionConverter.ConvertToken(bodytypeId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyaccountId != null)
             {
-                body["accountId"] = ExpressionConverter.ConvertO(bodyaccountId);
+                body["accountId"] = CSharpExpressionConverter.ConvertToken(bodyaccountId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyamount != null)
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
                 bodypropCount++;
             }
 
             if (bodyforecastCategoryId != null)
             {
-                body["forecastCategoryId"] = ExpressionConverter.ConvertO(bodyforecastCategoryId);
+                body["forecastCategoryId"] = CSharpExpressionConverter.ConvertToken(bodyforecastCategoryId);
                 bodypropCount++;
             }
 
             if (bodysalesPipelineId != null)
             {
-                body["salesPipelineId"] = ExpressionConverter.ConvertO(bodysalesPipelineId);
+                body["salesPipelineId"] = CSharpExpressionConverter.ConvertToken(bodysalesPipelineId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["closeDate"] = ExpressionConverter.ConvertO(bodycloseDate);
+            body["closeDate"] = CSharpExpressionConverter.ConvertToken(bodycloseDate);
             if (bodyprobability != null)
             {
-                body["probability"] = ExpressionConverter.ConvertO(bodyprobability);
+                body["probability"] = CSharpExpressionConverter.ConvertToken(bodyprobability);
                 bodypropCount++;
             }
 
             if (bodyscore != null)
             {
-                body["score"] = ExpressionConverter.ConvertO(bodyscore);
+                body["score"] = CSharpExpressionConverter.ConvertToken(bodyscore);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyquoteId != null)
             {
-                body["quoteId"] = ExpressionConverter.ConvertO(bodyquoteId);
+                body["quoteId"] = CSharpExpressionConverter.ConvertToken(bodyquoteId);
                 bodypropCount++;
             }
 
             if (bodyopportunityStatusId != null)
             {
-                body["opportunityStatusId"] = ExpressionConverter.ConvertO(bodyopportunityStatusId);
+                body["opportunityStatusId"] = CSharpExpressionConverter.ConvertToken(bodyopportunityStatusId);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
             if (bodynextStep != null)
             {
-                body["nextStep"] = ExpressionConverter.ConvertO(bodynextStep);
+                body["nextStep"] = CSharpExpressionConverter.ConvertToken(bodynextStep);
                 bodypropCount++;
             }
 
             if (bodybudgetConfirmed != null)
             {
-                body["budgetConfirmed"] = ExpressionConverter.ConvertO(bodybudgetConfirmed);
+                body["budgetConfirmed"] = CSharpExpressionConverter.ConvertToken(bodybudgetConfirmed);
                 bodypropCount++;
             }
 
             if (bodydiscoveryCompleted != null)
             {
-                body["discoveryCompleted"] = ExpressionConverter.ConvertO(bodydiscoveryCompleted);
+                body["discoveryCompleted"] = CSharpExpressionConverter.ConvertToken(bodydiscoveryCompleted);
                 bodypropCount++;
             }
 
             if (bodyexpectedRevenue != null)
             {
-                body["expectedRevenue"] = ExpressionConverter.ConvertO(bodyexpectedRevenue);
+                body["expectedRevenue"] = CSharpExpressionConverter.ConvertToken(bodyexpectedRevenue);
                 bodypropCount++;
             }
 
             if (bodylossReasonId != null)
             {
-                body["lossReasonId"] = ExpressionConverter.ConvertO(bodylossReasonId);
+                body["lossReasonId"] = CSharpExpressionConverter.ConvertToken(bodylossReasonId);
                 bodypropCount++;
             }
 
             if (bodyprivate != null)
             {
-                body["private"] = ExpressionConverter.ConvertO(bodyprivate);
+                body["private"] = CSharpExpressionConverter.ConvertToken(bodyprivate);
                 bodypropCount++;
             }
 
@@ -2076,7 +2076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> OpportunityGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
@@ -2085,7 +2085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction OpportunityDelete(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -2094,140 +2094,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> OpportunityUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytypeId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyforecastCategoryId = null, Expression<Func<string>> bodycloseDate = null, Expression<Func<int>> bodyprobability = null, Expression<Func<int>> bodyscore = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysalesPipelineId = null, Expression<Func<string>> bodyquoteId = null, Expression<Func<string>> bodyopportunityStatusId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodynextStep = null, Expression<Func<bool>> bodybudgetConfirmed = null, Expression<Func<bool>> bodydiscoveryCompleted = null, Expression<Func<double>> bodyexpectedRevenue = null, Expression<Func<string>> bodylossReasonId = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<string>> bodylastModifiedBy = null)
         {
-            var apiCallPath = String.Format("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytypeId != null)
             {
-                body["typeId"] = ExpressionConverter.ConvertO(bodytypeId);
+                body["typeId"] = CSharpExpressionConverter.ConvertToken(bodytypeId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyaccountId != null)
             {
-                body["accountId"] = ExpressionConverter.ConvertO(bodyaccountId);
+                body["accountId"] = CSharpExpressionConverter.ConvertToken(bodyaccountId);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyamount != null)
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
                 bodypropCount++;
             }
 
             if (bodyforecastCategoryId != null)
             {
-                body["forecastCategoryId"] = ExpressionConverter.ConvertO(bodyforecastCategoryId);
+                body["forecastCategoryId"] = CSharpExpressionConverter.ConvertToken(bodyforecastCategoryId);
                 bodypropCount++;
             }
 
             if (bodycloseDate != null)
             {
-                body["closeDate"] = ExpressionConverter.ConvertO(bodycloseDate);
+                body["closeDate"] = CSharpExpressionConverter.ConvertToken(bodycloseDate);
                 bodypropCount++;
             }
 
             if (bodyprobability != null)
             {
-                body["probability"] = ExpressionConverter.ConvertO(bodyprobability);
+                body["probability"] = CSharpExpressionConverter.ConvertToken(bodyprobability);
                 bodypropCount++;
             }
 
             if (bodyscore != null)
             {
-                body["score"] = ExpressionConverter.ConvertO(bodyscore);
+                body["score"] = CSharpExpressionConverter.ConvertToken(bodyscore);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodysalesPipelineId != null)
             {
-                body["salesPipelineId"] = ExpressionConverter.ConvertO(bodysalesPipelineId);
+                body["salesPipelineId"] = CSharpExpressionConverter.ConvertToken(bodysalesPipelineId);
                 bodypropCount++;
             }
 
             if (bodyquoteId != null)
             {
-                body["quoteId"] = ExpressionConverter.ConvertO(bodyquoteId);
+                body["quoteId"] = CSharpExpressionConverter.ConvertToken(bodyquoteId);
                 bodypropCount++;
             }
 
             if (bodyopportunityStatusId != null)
             {
-                body["opportunityStatusId"] = ExpressionConverter.ConvertO(bodyopportunityStatusId);
+                body["opportunityStatusId"] = CSharpExpressionConverter.ConvertToken(bodyopportunityStatusId);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
             if (bodynextStep != null)
             {
-                body["nextStep"] = ExpressionConverter.ConvertO(bodynextStep);
+                body["nextStep"] = CSharpExpressionConverter.ConvertToken(bodynextStep);
                 bodypropCount++;
             }
 
             if (bodybudgetConfirmed != null)
             {
-                body["budgetConfirmed"] = ExpressionConverter.ConvertO(bodybudgetConfirmed);
+                body["budgetConfirmed"] = CSharpExpressionConverter.ConvertToken(bodybudgetConfirmed);
                 bodypropCount++;
             }
 
             if (bodydiscoveryCompleted != null)
             {
-                body["discoveryCompleted"] = ExpressionConverter.ConvertO(bodydiscoveryCompleted);
+                body["discoveryCompleted"] = CSharpExpressionConverter.ConvertToken(bodydiscoveryCompleted);
                 bodypropCount++;
             }
 
             if (bodyexpectedRevenue != null)
             {
-                body["expectedRevenue"] = ExpressionConverter.ConvertO(bodyexpectedRevenue);
+                body["expectedRevenue"] = CSharpExpressionConverter.ConvertToken(bodyexpectedRevenue);
                 bodypropCount++;
             }
 
             if (bodylossReasonId != null)
             {
-                body["lossReasonId"] = ExpressionConverter.ConvertO(bodylossReasonId);
+                body["lossReasonId"] = CSharpExpressionConverter.ConvertToken(bodylossReasonId);
                 bodypropCount++;
             }
 
             if (bodyprivate != null)
             {
-                body["private"] = ExpressionConverter.ConvertO(bodyprivate);
+                body["private"] = CSharpExpressionConverter.ConvertToken(bodyprivate);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
@@ -2250,7 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<IdentityApiBackOfficeUsersGetUserGetUserResponse> UserGetById(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IdentityApiBackOfficeUsersGetUserGetUserResponse>(callPayload);
@@ -2259,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<IdentityApiTeamsDtosGetTeamResponse> TeamGetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/teams/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IdentityApiTeamsDtosGetTeamResponse>(callPayload);
@@ -2268,7 +2268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> AccountGetById(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
@@ -2277,7 +2277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction AccountDelete(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -2286,74 +2286,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> AccountUpdate(Expression<Func<string>> accountId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodytin = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodysourceId = null, Expression<Func<string>> bodysourceParentId = null, Expression<Func<string>> bodysourceOwnerId = null, Expression<Func<string[]>> bodyprimaryContactIds = null, Expression<Func<string>> bodyparentAccountId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddressstate = null, Expression<Func<string>> bodyaddresslatitude = null, Expression<Func<string>> bodyaddresslongtitude = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodyaddressfirstName = null, Expression<Func<string>> bodyaddresslastName = null, Expression<Func<string>> bodyaddressphoneNumber = null, Expression<Func<string>> bodyaddressemail = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodyindustryId = null, Expression<Func<string>> bodytierId = null, Expression<Func<string>> bodywebsite = null, Expression<Func<string>> bodyaccountDescription = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<double>> bodyannualRevenue = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<string>> bodylastModifiedBy = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyownershipId = null, Expression<Func<string>> bodyratingId = null, Expression<Func<string>> bodyclassificationId = null, Expression<Func<string[]>> bodyassignedTeams = null)
         {
-            var apiCallPath = String.Format("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodytin != null)
             {
-                body["tin"] = ExpressionConverter.ConvertO(bodytin);
+                body["tin"] = CSharpExpressionConverter.ConvertToken(bodytin);
                 bodypropCount++;
             }
 
             if (bodycode != null)
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceParentId != null)
             {
-                body["sourceParentId"] = ExpressionConverter.ConvertO(bodysourceParentId);
+                body["sourceParentId"] = CSharpExpressionConverter.ConvertToken(bodysourceParentId);
                 bodypropCount++;
             }
 
             if (bodysourceOwnerId != null)
             {
-                body["sourceOwnerId"] = ExpressionConverter.ConvertO(bodysourceOwnerId);
+                body["sourceOwnerId"] = CSharpExpressionConverter.ConvertToken(bodysourceOwnerId);
                 bodypropCount++;
             }
 
             if (bodyprimaryContactIds != null)
             {
-                body["primaryContactIds"] = ExpressionConverter.ConvertO(bodyprimaryContactIds);
+                body["primaryContactIds"] = CSharpExpressionConverter.ConvertToken(bodyprimaryContactIds);
                 bodypropCount++;
             }
 
             if (bodyparentAccountId != null)
             {
-                body["parentAccountId"] = ExpressionConverter.ConvertO(bodyparentAccountId);
+                body["parentAccountId"] = CSharpExpressionConverter.ConvertToken(bodyparentAccountId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
@@ -2361,79 +2361,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslatitude != null)
             {
-                addressObject["latitude"] = ExpressionConverter.ConvertO(bodyaddresslatitude);
+                addressObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslatitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslongtitude != null)
             {
-                addressObject["longtitude"] = ExpressionConverter.ConvertO(bodyaddresslongtitude);
+                addressObject["longtitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslongtitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountryCode != null)
             {
-                addressObject["countryCode"] = ExpressionConverter.ConvertO(bodyaddresscountryCode);
+                addressObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountryCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressfirstName != null)
             {
-                addressObject["firstName"] = ExpressionConverter.ConvertO(bodyaddressfirstName);
+                addressObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyaddressfirstName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslastName != null)
             {
-                addressObject["lastName"] = ExpressionConverter.ConvertO(bodyaddresslastName);
+                addressObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyaddresslastName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressphoneNumber != null)
             {
-                addressObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyaddressphoneNumber);
+                addressObject["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyaddressphoneNumber);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressemail != null)
             {
-                addressObject["email"] = ExpressionConverter.ConvertO(bodyaddressemail);
+                addressObject["email"] = CSharpExpressionConverter.ConvertToken(bodyaddressemail);
                 addressObjectpropCount++;
             }
 
@@ -2445,79 +2445,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
             if (bodyindustryId != null)
             {
-                body["industryId"] = ExpressionConverter.ConvertO(bodyindustryId);
+                body["industryId"] = CSharpExpressionConverter.ConvertToken(bodyindustryId);
                 bodypropCount++;
             }
 
             if (bodytierId != null)
             {
-                body["tierId"] = ExpressionConverter.ConvertO(bodytierId);
+                body["tierId"] = CSharpExpressionConverter.ConvertToken(bodytierId);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodyaccountDescription != null)
             {
-                body["accountDescription"] = ExpressionConverter.ConvertO(bodyaccountDescription);
+                body["accountDescription"] = CSharpExpressionConverter.ConvertToken(bodyaccountDescription);
                 bodypropCount++;
             }
 
             if (bodynoOfEmployees != null)
             {
-                body["noOfEmployees"] = ExpressionConverter.ConvertO(bodynoOfEmployees);
+                body["noOfEmployees"] = CSharpExpressionConverter.ConvertToken(bodynoOfEmployees);
                 bodypropCount++;
             }
 
             if (bodyannualRevenue != null)
             {
-                body["annualRevenue"] = ExpressionConverter.ConvertO(bodyannualRevenue);
+                body["annualRevenue"] = CSharpExpressionConverter.ConvertToken(bodyannualRevenue);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodyownershipId != null)
             {
-                body["ownershipId"] = ExpressionConverter.ConvertO(bodyownershipId);
+                body["ownershipId"] = CSharpExpressionConverter.ConvertToken(bodyownershipId);
                 bodypropCount++;
             }
 
             if (bodyratingId != null)
             {
-                body["ratingId"] = ExpressionConverter.ConvertO(bodyratingId);
+                body["ratingId"] = CSharpExpressionConverter.ConvertToken(bodyratingId);
                 bodypropCount++;
             }
 
             if (bodyclassificationId != null)
             {
-                body["classificationId"] = ExpressionConverter.ConvertO(bodyclassificationId);
+                body["classificationId"] = CSharpExpressionConverter.ConvertToken(bodyclassificationId);
                 bodypropCount++;
             }
 
@@ -2531,7 +2531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyassignedTeams != null)
             {
-                body["assignedTeams"] = ExpressionConverter.ConvertO(bodyassignedTeams);
+                body["assignedTeams"] = CSharpExpressionConverter.ConvertToken(bodyassignedTeams);
                 bodypropCount++;
             }
 
@@ -2550,39 +2550,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (parentAccount != null)
-                callPayload.Queries["ParentAccount"] = ExpressionConverter.Convert(parentAccount);
+                callPayload.Queries["ParentAccount"] = CSharpExpressionConverter.ConvertO(parentAccount);
             if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (suggestions != null)
-                callPayload.Queries["Suggestions"] = ExpressionConverter.Convert(suggestions);
+                callPayload.Queries["Suggestions"] = CSharpExpressionConverter.ConvertO(suggestions);
             if (ownerId != null)
-                callPayload.Queries["OwnerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["OwnerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (ownershipId != null)
-                callPayload.Queries["OwnershipId"] = ExpressionConverter.Convert(ownershipId);
+                callPayload.Queries["OwnershipId"] = CSharpExpressionConverter.ConvertO(ownershipId);
             if (ratingId != null)
-                callPayload.Queries["RatingId"] = ExpressionConverter.Convert(ratingId);
+                callPayload.Queries["RatingId"] = CSharpExpressionConverter.ConvertO(ratingId);
             if (classificationId != null)
-                callPayload.Queries["ClassificationId"] = ExpressionConverter.Convert(classificationId);
+                callPayload.Queries["ClassificationId"] = CSharpExpressionConverter.ConvertO(classificationId);
             if (industryId != null)
-                callPayload.Queries["IndustryId"] = ExpressionConverter.Convert(industryId);
+                callPayload.Queries["IndustryId"] = CSharpExpressionConverter.ConvertO(industryId);
             if (accountSourceTypeId != null)
-                callPayload.Queries["AccountSourceTypeId"] = ExpressionConverter.Convert(accountSourceTypeId);
+                callPayload.Queries["AccountSourceTypeId"] = CSharpExpressionConverter.ConvertO(accountSourceTypeId);
             if (primaryContactId != null)
-                callPayload.Queries["PrimaryContactId"] = ExpressionConverter.Convert(primaryContactId);
+                callPayload.Queries["PrimaryContactId"] = CSharpExpressionConverter.ConvertO(primaryContactId);
             if (assignedTeams != null)
-                callPayload.Queries["AssignedTeams"] = ExpressionConverter.Convert(assignedTeams);
+                callPayload.Queries["AssignedTeams"] = CSharpExpressionConverter.ConvertO(assignedTeams);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO[]>(callPayload);
         }
 
@@ -2596,75 +2596,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodycompanyId != null)
             {
-                body["companyId"] = ExpressionConverter.ConvertO(bodycompanyId);
+                body["companyId"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodycode != null)
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
                 bodypropCount++;
             }
 
             if (bodytin != null)
             {
-                body["tin"] = ExpressionConverter.ConvertO(bodytin);
+                body["tin"] = CSharpExpressionConverter.ConvertToken(bodytin);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceParentId != null)
             {
-                body["sourceParentId"] = ExpressionConverter.ConvertO(bodysourceParentId);
+                body["sourceParentId"] = CSharpExpressionConverter.ConvertToken(bodysourceParentId);
                 bodypropCount++;
             }
 
             if (bodysourceOwnerId != null)
             {
-                body["sourceOwnerId"] = ExpressionConverter.ConvertO(bodysourceOwnerId);
+                body["sourceOwnerId"] = CSharpExpressionConverter.ConvertToken(bodysourceOwnerId);
                 bodypropCount++;
             }
 
             if (bodyprimaryContactIds != null)
             {
-                body["primaryContactIds"] = ExpressionConverter.ConvertO(bodyprimaryContactIds);
+                body["primaryContactIds"] = CSharpExpressionConverter.ConvertToken(bodyprimaryContactIds);
                 bodypropCount++;
             }
 
             if (bodyparentAccountId != null)
             {
-                body["parentAccountId"] = ExpressionConverter.ConvertO(bodyparentAccountId);
+                body["parentAccountId"] = CSharpExpressionConverter.ConvertToken(bodyparentAccountId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
@@ -2672,79 +2672,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslatitude != null)
             {
-                addressObject["latitude"] = ExpressionConverter.ConvertO(bodyaddresslatitude);
+                addressObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslatitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslongtitude != null)
             {
-                addressObject["longtitude"] = ExpressionConverter.ConvertO(bodyaddresslongtitude);
+                addressObject["longtitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslongtitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountryCode != null)
             {
-                addressObject["countryCode"] = ExpressionConverter.ConvertO(bodyaddresscountryCode);
+                addressObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountryCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressfirstName != null)
             {
-                addressObject["firstName"] = ExpressionConverter.ConvertO(bodyaddressfirstName);
+                addressObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyaddressfirstName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslastName != null)
             {
-                addressObject["lastName"] = ExpressionConverter.ConvertO(bodyaddresslastName);
+                addressObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyaddresslastName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressphoneNumber != null)
             {
-                addressObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyaddressphoneNumber);
+                addressObject["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyaddressphoneNumber);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressemail != null)
             {
-                addressObject["email"] = ExpressionConverter.ConvertO(bodyaddressemail);
+                addressObject["email"] = CSharpExpressionConverter.ConvertToken(bodyaddressemail);
                 addressObjectpropCount++;
             }
 
@@ -2756,97 +2756,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyupdateDate != null)
             {
-                body["updateDate"] = ExpressionConverter.ConvertO(bodyupdateDate);
+                body["updateDate"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
                 bodypropCount++;
             }
 
             if (bodyinsertDate != null)
             {
-                body["insertDate"] = ExpressionConverter.ConvertO(bodyinsertDate);
+                body["insertDate"] = CSharpExpressionConverter.ConvertToken(bodyinsertDate);
                 bodypropCount++;
             }
 
             if (bodytaxOffice != null)
             {
-                body["taxOffice"] = ExpressionConverter.ConvertO(bodytaxOffice);
+                body["taxOffice"] = CSharpExpressionConverter.ConvertToken(bodytaxOffice);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
             if (bodyindustryId != null)
             {
-                body["industryId"] = ExpressionConverter.ConvertO(bodyindustryId);
+                body["industryId"] = CSharpExpressionConverter.ConvertToken(bodyindustryId);
                 bodypropCount++;
             }
 
             if (bodytierId != null)
             {
-                body["tierId"] = ExpressionConverter.ConvertO(bodytierId);
+                body["tierId"] = CSharpExpressionConverter.ConvertToken(bodytierId);
                 bodypropCount++;
             }
 
             if (bodywebsite != null)
             {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                body["website"] = CSharpExpressionConverter.ConvertToken(bodywebsite);
                 bodypropCount++;
             }
 
             if (bodyaccountDescription != null)
             {
-                body["accountDescription"] = ExpressionConverter.ConvertO(bodyaccountDescription);
+                body["accountDescription"] = CSharpExpressionConverter.ConvertToken(bodyaccountDescription);
                 bodypropCount++;
             }
 
             if (bodynoOfEmployees != null)
             {
-                body["noOfEmployees"] = ExpressionConverter.ConvertO(bodynoOfEmployees);
+                body["noOfEmployees"] = CSharpExpressionConverter.ConvertToken(bodynoOfEmployees);
                 bodypropCount++;
             }
 
             if (bodyannualRevenue != null)
             {
-                body["annualRevenue"] = ExpressionConverter.ConvertO(bodyannualRevenue);
+                body["annualRevenue"] = CSharpExpressionConverter.ConvertToken(bodyannualRevenue);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodyownershipId != null)
             {
-                body["ownershipId"] = ExpressionConverter.ConvertO(bodyownershipId);
+                body["ownershipId"] = CSharpExpressionConverter.ConvertToken(bodyownershipId);
                 bodypropCount++;
             }
 
             if (bodyratingId != null)
             {
-                body["ratingId"] = ExpressionConverter.ConvertO(bodyratingId);
+                body["ratingId"] = CSharpExpressionConverter.ConvertToken(bodyratingId);
                 bodypropCount++;
             }
 
             if (bodyclassificationId != null)
             {
-                body["classificationId"] = ExpressionConverter.ConvertO(bodyclassificationId);
+                body["classificationId"] = CSharpExpressionConverter.ConvertToken(bodyclassificationId);
                 bodypropCount++;
             }
 
@@ -2860,31 +2860,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyassignedTeams != null)
             {
-                body["assignedTeams"] = ExpressionConverter.ConvertO(bodyassignedTeams);
+                body["assignedTeams"] = CSharpExpressionConverter.ConvertToken(bodyassignedTeams);
                 bodypropCount++;
             }
 
             if (bodyaiScore != null)
             {
-                body["aiScore"] = ExpressionConverter.ConvertO(bodyaiScore);
+                body["aiScore"] = CSharpExpressionConverter.ConvertToken(bodyaiScore);
                 bodypropCount++;
             }
 
             if (bodyaiScoreReasoning != null)
             {
-                body["aiScoreReasoning"] = ExpressionConverter.ConvertO(bodyaiScoreReasoning);
+                body["aiScoreReasoning"] = CSharpExpressionConverter.ConvertToken(bodyaiScoreReasoning);
                 bodypropCount++;
             }
 
             if (bodyaiSentiment != null)
             {
-                body["aiSentiment"] = ExpressionConverter.ConvertO(bodyaiSentiment);
+                body["aiSentiment"] = CSharpExpressionConverter.Convert(bodyaiSentiment);
                 bodypropCount++;
             }
 
             if (bodyaiGenerationDate != null)
             {
-                body["aiGenerationDate"] = ExpressionConverter.ConvertO(bodyaiGenerationDate);
+                body["aiGenerationDate"] = CSharpExpressionConverter.ConvertToken(bodyaiGenerationDate);
                 bodypropCount++;
             }
 
@@ -2899,7 +2899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContact> ContactGetById(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CustomerApiFeaturesContactsContact>(callPayload);
@@ -2908,7 +2908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction ContactDelete(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -2917,38 +2917,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO> ContactUpdate(Expression<Func<string>> contactId, Expression<Func<string>> bodyownerId = null, Expression<Func<string[]>> bodyaccountIds = null, Expression<Func<string>> bodysourceId = null, Expression<Func<string>> bodysourceOwnerId = null, Expression<Func<string[]>> bodysourceAccountIds = null, Expression<Func<string>> bodynamefirstName = null, Expression<Func<string>> bodynamelastName = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesalutationId = null, Expression<Func<string>> bodynamesuffix = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodymobilePhone = null, Expression<Func<string>> bodyfax = null, Expression<Func<bool>> bodycallOptOut = null, Expression<Func<bool>> bodyemailOptOut = null, Expression<Func<CustomerApiFeaturesContactsEmailDTO[]>> bodyotherEmail = null, Expression<Func<CustomerApiFeaturesContactsPhoneDTO[]>> bodyotherPhone = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodygenderId = null, Expression<Func<string>> bodypronounceId = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddressstate = null, Expression<Func<string>> bodyaddresslatitude = null, Expression<Func<string>> bodyaddresslongtitude = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodyaddressfirstName = null, Expression<Func<string>> bodyaddresslastName = null, Expression<Func<string>> bodyaddressphoneNumber = null, Expression<Func<string>> bodyaddressemail = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<string>> bodylastModifiedBy = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyreportsTo = null, Expression<Func<string>> bodyassistant = null, Expression<Func<string>> bodyassistantPhone = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylastStayInTouchReportedDate = null, Expression<Func<string>> bodylastStayInTouchSaveDate = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string[]>> bodyassignedTeams = null)
         {
-            var apiCallPath = String.Format("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyaccountIds != null)
             {
-                body["accountIds"] = ExpressionConverter.ConvertO(bodyaccountIds);
+                body["accountIds"] = CSharpExpressionConverter.ConvertToken(bodyaccountIds);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceOwnerId != null)
             {
-                body["sourceOwnerId"] = ExpressionConverter.ConvertO(bodysourceOwnerId);
+                body["sourceOwnerId"] = CSharpExpressionConverter.ConvertToken(bodysourceOwnerId);
                 bodypropCount++;
             }
 
             if (bodysourceAccountIds != null)
             {
-                body["sourceAccountIds"] = ExpressionConverter.ConvertO(bodysourceAccountIds);
+                body["sourceAccountIds"] = CSharpExpressionConverter.ConvertToken(bodysourceAccountIds);
                 bodypropCount++;
             }
 
@@ -2956,31 +2956,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var nameObjectpropCount = 0;
             if (bodynamefirstName != null)
             {
-                nameObject["firstName"] = ExpressionConverter.ConvertO(bodynamefirstName);
+                nameObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodynamefirstName);
                 nameObjectpropCount++;
             }
 
             if (bodynamelastName != null)
             {
-                nameObject["lastName"] = ExpressionConverter.ConvertO(bodynamelastName);
+                nameObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodynamelastName);
                 nameObjectpropCount++;
             }
 
             if (bodynamemiddleName != null)
             {
-                nameObject["middleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                nameObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodynamemiddleName);
                 nameObjectpropCount++;
             }
 
             if (bodynamesalutationId != null)
             {
-                nameObject["salutationId"] = ExpressionConverter.ConvertO(bodynamesalutationId);
+                nameObject["salutationId"] = CSharpExpressionConverter.ConvertToken(bodynamesalutationId);
                 nameObjectpropCount++;
             }
 
             if (bodynamesuffix != null)
             {
-                nameObject["suffix"] = ExpressionConverter.ConvertO(bodynamesuffix);
+                nameObject["suffix"] = CSharpExpressionConverter.ConvertToken(bodynamesuffix);
                 nameObjectpropCount++;
             }
 
@@ -2992,67 +2992,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodymobilePhone != null)
             {
-                body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
+                body["mobilePhone"] = CSharpExpressionConverter.ConvertToken(bodymobilePhone);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodycallOptOut != null)
             {
-                body["callOptOut"] = ExpressionConverter.ConvertO(bodycallOptOut);
+                body["callOptOut"] = CSharpExpressionConverter.ConvertToken(bodycallOptOut);
                 bodypropCount++;
             }
 
             if (bodyemailOptOut != null)
             {
-                body["emailOptOut"] = ExpressionConverter.ConvertO(bodyemailOptOut);
+                body["emailOptOut"] = CSharpExpressionConverter.ConvertToken(bodyemailOptOut);
                 bodypropCount++;
             }
 
             if (bodyotherEmail != null)
             {
-                body["otherEmail"] = ExpressionConverter.ConvertO(bodyotherEmail);
+                body["otherEmail"] = CSharpExpressionConverter.ConvertToken(bodyotherEmail);
                 bodypropCount++;
             }
 
             if (bodyotherPhone != null)
             {
-                body["otherPhone"] = ExpressionConverter.ConvertO(bodyotherPhone);
+                body["otherPhone"] = CSharpExpressionConverter.ConvertToken(bodyotherPhone);
                 bodypropCount++;
             }
 
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodygenderId != null)
             {
-                body["genderId"] = ExpressionConverter.ConvertO(bodygenderId);
+                body["genderId"] = CSharpExpressionConverter.ConvertToken(bodygenderId);
                 bodypropCount++;
             }
 
             if (bodypronounceId != null)
             {
-                body["pronounceId"] = ExpressionConverter.ConvertO(bodypronounceId);
+                body["pronounceId"] = CSharpExpressionConverter.ConvertToken(bodypronounceId);
                 bodypropCount++;
             }
 
@@ -3060,79 +3060,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslatitude != null)
             {
-                addressObject["latitude"] = ExpressionConverter.ConvertO(bodyaddresslatitude);
+                addressObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslatitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslongtitude != null)
             {
-                addressObject["longtitude"] = ExpressionConverter.ConvertO(bodyaddresslongtitude);
+                addressObject["longtitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslongtitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountryCode != null)
             {
-                addressObject["countryCode"] = ExpressionConverter.ConvertO(bodyaddresscountryCode);
+                addressObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountryCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressfirstName != null)
             {
-                addressObject["firstName"] = ExpressionConverter.ConvertO(bodyaddressfirstName);
+                addressObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyaddressfirstName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslastName != null)
             {
-                addressObject["lastName"] = ExpressionConverter.ConvertO(bodyaddresslastName);
+                addressObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyaddresslastName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressphoneNumber != null)
             {
-                addressObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyaddressphoneNumber);
+                addressObject["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyaddressphoneNumber);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressemail != null)
             {
-                addressObject["email"] = ExpressionConverter.ConvertO(bodyaddressemail);
+                addressObject["email"] = CSharpExpressionConverter.ConvertToken(bodyaddressemail);
                 addressObjectpropCount++;
             }
 
@@ -3144,67 +3144,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
             if (bodyreportsTo != null)
             {
-                body["reportsTo"] = ExpressionConverter.ConvertO(bodyreportsTo);
+                body["reportsTo"] = CSharpExpressionConverter.ConvertToken(bodyreportsTo);
                 bodypropCount++;
             }
 
             if (bodyassistant != null)
             {
-                body["assistant"] = ExpressionConverter.ConvertO(bodyassistant);
+                body["assistant"] = CSharpExpressionConverter.ConvertToken(bodyassistant);
                 bodypropCount++;
             }
 
             if (bodyassistantPhone != null)
             {
-                body["assistantPhone"] = ExpressionConverter.ConvertO(bodyassistantPhone);
+                body["assistantPhone"] = CSharpExpressionConverter.ConvertToken(bodyassistantPhone);
                 bodypropCount++;
             }
 
             if (bodybirthday != null)
             {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
+                body["birthday"] = CSharpExpressionConverter.ConvertToken(bodybirthday);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodylastStayInTouchReportedDate != null)
             {
-                body["lastStayInTouchReportedDate"] = ExpressionConverter.ConvertO(bodylastStayInTouchReportedDate);
+                body["lastStayInTouchReportedDate"] = CSharpExpressionConverter.ConvertToken(bodylastStayInTouchReportedDate);
                 bodypropCount++;
             }
 
             if (bodylastStayInTouchSaveDate != null)
             {
-                body["lastStayInTouchSaveDate"] = ExpressionConverter.ConvertO(bodylastStayInTouchSaveDate);
+                body["lastStayInTouchSaveDate"] = CSharpExpressionConverter.ConvertToken(bodylastStayInTouchSaveDate);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
@@ -3218,7 +3218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyassignedTeams != null)
             {
-                body["assignedTeams"] = ExpressionConverter.ConvertO(bodyassignedTeams);
+                body["assignedTeams"] = CSharpExpressionConverter.ConvertToken(bodyassignedTeams);
                 bodypropCount++;
             }
 
@@ -3237,37 +3237,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
             if (ownerId != null)
-                callPayload.Queries["OwnerId"] = ExpressionConverter.Convert(ownerId);
+                callPayload.Queries["OwnerId"] = CSharpExpressionConverter.ConvertO(ownerId);
             if (suggestions != null)
-                callPayload.Queries["Suggestions"] = ExpressionConverter.Convert(suggestions);
+                callPayload.Queries["Suggestions"] = CSharpExpressionConverter.ConvertO(suggestions);
             if (accountSourceTypeId != null)
-                callPayload.Queries["AccountSourceTypeId"] = ExpressionConverter.Convert(accountSourceTypeId);
+                callPayload.Queries["AccountSourceTypeId"] = CSharpExpressionConverter.ConvertO(accountSourceTypeId);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["Phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (mobilePhone != null)
-                callPayload.Queries["MobilePhone"] = ExpressionConverter.Convert(mobilePhone);
+                callPayload.Queries["MobilePhone"] = CSharpExpressionConverter.ConvertO(mobilePhone);
             if (accountIds != null)
-                callPayload.Queries["AccountIds"] = ExpressionConverter.Convert(accountIds);
+                callPayload.Queries["AccountIds"] = CSharpExpressionConverter.ConvertO(accountIds);
             if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             if (assignedTeams != null)
-                callPayload.Queries["AssignedTeams"] = ExpressionConverter.Convert(assignedTeams);
+                callPayload.Queries["AssignedTeams"] = CSharpExpressionConverter.ConvertO(assignedTeams);
             if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["Search"] = CSharpExpressionConverter.ConvertO(search);
             if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["Page"] = CSharpExpressionConverter.ConvertO(page);
             if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["Sort"] = CSharpExpressionConverter.ConvertO(sort);
             return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO[]>(callPayload);
         }
 
@@ -3281,43 +3281,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodycompanyId != null)
             {
-                body["companyId"] = ExpressionConverter.ConvertO(bodycompanyId);
+                body["companyId"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
                 bodypropCount++;
             }
 
             if (bodyownerId != null)
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
             }
 
             if (bodyaccountIds != null)
             {
-                body["accountIds"] = ExpressionConverter.ConvertO(bodyaccountIds);
+                body["accountIds"] = CSharpExpressionConverter.ConvertToken(bodyaccountIds);
                 bodypropCount++;
             }
 
             if (bodysourceId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodysourceId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodysourceId);
                 bodypropCount++;
             }
 
             if (bodysourceOwnerId != null)
             {
-                body["sourceOwnerId"] = ExpressionConverter.ConvertO(bodysourceOwnerId);
+                body["sourceOwnerId"] = CSharpExpressionConverter.ConvertToken(bodysourceOwnerId);
                 bodypropCount++;
             }
 
             if (bodysourceAccountIds != null)
             {
-                body["sourceAccountIds"] = ExpressionConverter.ConvertO(bodysourceAccountIds);
+                body["sourceAccountIds"] = CSharpExpressionConverter.ConvertToken(bodysourceAccountIds);
                 bodypropCount++;
             }
 
@@ -3325,31 +3325,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var nameObjectpropCount = 0;
             if (bodynamefirstName != null)
             {
-                nameObject["firstName"] = ExpressionConverter.ConvertO(bodynamefirstName);
+                nameObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodynamefirstName);
                 nameObjectpropCount++;
             }
 
             if (bodynamelastName != null)
             {
-                nameObject["lastName"] = ExpressionConverter.ConvertO(bodynamelastName);
+                nameObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodynamelastName);
                 nameObjectpropCount++;
             }
 
             if (bodynamemiddleName != null)
             {
-                nameObject["middleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                nameObject["middleName"] = CSharpExpressionConverter.ConvertToken(bodynamemiddleName);
                 nameObjectpropCount++;
             }
 
             if (bodynamesalutationId != null)
             {
-                nameObject["salutationId"] = ExpressionConverter.ConvertO(bodynamesalutationId);
+                nameObject["salutationId"] = CSharpExpressionConverter.ConvertToken(bodynamesalutationId);
                 nameObjectpropCount++;
             }
 
             if (bodynamesuffix != null)
             {
-                nameObject["suffix"] = ExpressionConverter.ConvertO(bodynamesuffix);
+                nameObject["suffix"] = CSharpExpressionConverter.ConvertToken(bodynamesuffix);
                 nameObjectpropCount++;
             }
 
@@ -3361,67 +3361,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             if (bodymobilePhone != null)
             {
-                body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
+                body["mobilePhone"] = CSharpExpressionConverter.ConvertToken(bodymobilePhone);
                 bodypropCount++;
             }
 
             if (bodyfax != null)
             {
-                body["fax"] = ExpressionConverter.ConvertO(bodyfax);
+                body["fax"] = CSharpExpressionConverter.ConvertToken(bodyfax);
                 bodypropCount++;
             }
 
             if (bodycallOptOut != null)
             {
-                body["callOptOut"] = ExpressionConverter.ConvertO(bodycallOptOut);
+                body["callOptOut"] = CSharpExpressionConverter.ConvertToken(bodycallOptOut);
                 bodypropCount++;
             }
 
             if (bodyemailOptOut != null)
             {
-                body["emailOptOut"] = ExpressionConverter.ConvertO(bodyemailOptOut);
+                body["emailOptOut"] = CSharpExpressionConverter.ConvertToken(bodyemailOptOut);
                 bodypropCount++;
             }
 
             if (bodyotherEmail != null)
             {
-                body["otherEmail"] = ExpressionConverter.ConvertO(bodyotherEmail);
+                body["otherEmail"] = CSharpExpressionConverter.ConvertToken(bodyotherEmail);
                 bodypropCount++;
             }
 
             if (bodyotherPhone != null)
             {
-                body["otherPhone"] = ExpressionConverter.ConvertO(bodyotherPhone);
+                body["otherPhone"] = CSharpExpressionConverter.ConvertToken(bodyotherPhone);
                 bodypropCount++;
             }
 
             if (bodyjobTitle != null)
             {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["jobTitle"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             if (bodygenderId != null)
             {
-                body["genderId"] = ExpressionConverter.ConvertO(bodygenderId);
+                body["genderId"] = CSharpExpressionConverter.ConvertToken(bodygenderId);
                 bodypropCount++;
             }
 
             if (bodypronounceId != null)
             {
-                body["pronounceId"] = ExpressionConverter.ConvertO(bodypronounceId);
+                body["pronounceId"] = CSharpExpressionConverter.ConvertToken(bodypronounceId);
                 bodypropCount++;
             }
 
@@ -3429,79 +3429,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var addressObjectpropCount = 0;
             if (bodyaddressaddress1 != null)
             {
-                addressObject["address1"] = ExpressionConverter.ConvertO(bodyaddressaddress1);
+                addressObject["address1"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress1);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressaddress2 != null)
             {
-                addressObject["address2"] = ExpressionConverter.ConvertO(bodyaddressaddress2);
+                addressObject["address2"] = CSharpExpressionConverter.ConvertToken(bodyaddressaddress2);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscity != null)
             {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodyaddresscity);
+                addressObject["city"] = CSharpExpressionConverter.ConvertToken(bodyaddresscity);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressstate != null)
             {
-                addressObject["state"] = ExpressionConverter.ConvertO(bodyaddressstate);
+                addressObject["state"] = CSharpExpressionConverter.ConvertToken(bodyaddressstate);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslatitude != null)
             {
-                addressObject["latitude"] = ExpressionConverter.ConvertO(bodyaddresslatitude);
+                addressObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslatitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslongtitude != null)
             {
-                addressObject["longtitude"] = ExpressionConverter.ConvertO(bodyaddresslongtitude);
+                addressObject["longtitude"] = CSharpExpressionConverter.ConvertToken(bodyaddresslongtitude);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountry != null)
             {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodyaddresscountry);
+                addressObject["country"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountry);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresscountryCode != null)
             {
-                addressObject["countryCode"] = ExpressionConverter.ConvertO(bodyaddresscountryCode);
+                addressObject["countryCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresscountryCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresspostalCode != null)
             {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodyaddresspostalCode);
+                addressObject["postalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddresspostalCode);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressfirstName != null)
             {
-                addressObject["firstName"] = ExpressionConverter.ConvertO(bodyaddressfirstName);
+                addressObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyaddressfirstName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddresslastName != null)
             {
-                addressObject["lastName"] = ExpressionConverter.ConvertO(bodyaddresslastName);
+                addressObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyaddresslastName);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressphoneNumber != null)
             {
-                addressObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyaddressphoneNumber);
+                addressObject["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyaddressphoneNumber);
                 addressObjectpropCount++;
             }
 
             if (bodyaddressemail != null)
             {
-                addressObject["email"] = ExpressionConverter.ConvertO(bodyaddressemail);
+                addressObject["email"] = CSharpExpressionConverter.ConvertToken(bodyaddressemail);
                 addressObjectpropCount++;
             }
 
@@ -3513,85 +3513,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyinsertDate != null)
             {
-                body["insertDate"] = ExpressionConverter.ConvertO(bodyinsertDate);
+                body["insertDate"] = CSharpExpressionConverter.ConvertToken(bodyinsertDate);
                 bodypropCount++;
             }
 
             if (bodyupdateDate != null)
             {
-                body["updateDate"] = ExpressionConverter.ConvertO(bodyupdateDate);
+                body["updateDate"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
                 bodypropCount++;
             }
 
             if (bodycreatedBy != null)
             {
-                body["createdBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
+                body["createdBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
                 bodypropCount++;
             }
 
             if (bodylastModifiedBy != null)
             {
-                body["lastModifiedBy"] = ExpressionConverter.ConvertO(bodylastModifiedBy);
+                body["lastModifiedBy"] = CSharpExpressionConverter.ConvertToken(bodylastModifiedBy);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
             if (bodyreportsTo != null)
             {
-                body["reportsTo"] = ExpressionConverter.ConvertO(bodyreportsTo);
+                body["reportsTo"] = CSharpExpressionConverter.ConvertToken(bodyreportsTo);
                 bodypropCount++;
             }
 
             if (bodyassistant != null)
             {
-                body["assistant"] = ExpressionConverter.ConvertO(bodyassistant);
+                body["assistant"] = CSharpExpressionConverter.ConvertToken(bodyassistant);
                 bodypropCount++;
             }
 
             if (bodyassistantPhone != null)
             {
-                body["assistantPhone"] = ExpressionConverter.ConvertO(bodyassistantPhone);
+                body["assistantPhone"] = CSharpExpressionConverter.ConvertToken(bodyassistantPhone);
                 bodypropCount++;
             }
 
             if (bodybirthday != null)
             {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
+                body["birthday"] = CSharpExpressionConverter.ConvertToken(bodybirthday);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodylastStayInTouchReportedDate != null)
             {
-                body["lastStayInTouchReportedDate"] = ExpressionConverter.ConvertO(bodylastStayInTouchReportedDate);
+                body["lastStayInTouchReportedDate"] = CSharpExpressionConverter.ConvertToken(bodylastStayInTouchReportedDate);
                 bodypropCount++;
             }
 
             if (bodylastStayInTouchSaveDate != null)
             {
-                body["lastStayInTouchSaveDate"] = ExpressionConverter.ConvertO(bodylastStayInTouchSaveDate);
+                body["lastStayInTouchSaveDate"] = CSharpExpressionConverter.ConvertToken(bodylastStayInTouchSaveDate);
                 bodypropCount++;
             }
 
             if (bodyaccountSourceTypeId != null)
             {
-                body["accountSourceTypeId"] = ExpressionConverter.ConvertO(bodyaccountSourceTypeId);
+                body["accountSourceTypeId"] = CSharpExpressionConverter.ConvertToken(bodyaccountSourceTypeId);
                 bodypropCount++;
             }
 
             if (bodyfullName != null)
             {
-                body["fullName"] = ExpressionConverter.ConvertO(bodyfullName);
+                body["fullName"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
                 bodypropCount++;
             }
 
@@ -3605,7 +3605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
             if (bodyassignedTeams != null)
             {
-                body["assignedTeams"] = ExpressionConverter.ConvertO(bodyassignedTeams);
+                body["assignedTeams"] = CSharpExpressionConverter.ConvertToken(bodyassignedTeams);
                 bodypropCount++;
             }
 
@@ -3630,7 +3630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3649,7 +3649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3668,7 +3668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3687,7 +3687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3706,7 +3706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3725,7 +3725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3744,7 +3744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3763,7 +3763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3782,7 +3782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3820,7 +3820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3839,7 +3839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3858,7 +3858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3877,7 +3877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3896,7 +3896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

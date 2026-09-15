@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
         {
-            var apiCallPath = String.Format("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
         {
-            var apiCallPath = String.Format("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
         {
-            var apiCallPath = String.Format("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<object>(callPayload);

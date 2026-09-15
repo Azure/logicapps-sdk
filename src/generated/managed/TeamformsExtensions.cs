@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/forms";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             return new ApiConnectionAction<FormMeta[]>(callPayload);
         }
 
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/form";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["formId"] = CSharpExpressionConverter.ConvertO(formId);
             return new ApiConnectionAction<FormSchema>(callPayload);
         }
 
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/files";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["responseId"] = CSharpExpressionConverter.ConvertO(responseId);
             return new ApiConnectionAction<File[]>(callPayload);
         }
 
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/pdf";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["responseId"] = CSharpExpressionConverter.ConvertO(responseId);
             return new ApiConnectionAction<File>(callPayload);
         }
 
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/pdf-content";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["responseId"] = CSharpExpressionConverter.ConvertO(responseId);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/response";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
+            callPayload.Queries["formId"] = CSharpExpressionConverter.ConvertO(formId);
+            callPayload.Queries["responseId"] = CSharpExpressionConverter.ConvertO(responseId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/response-subscription";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["formId"] = CSharpExpressionConverter.ConvertO(formId);
             if (environment != null)
-                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                callPayload.Queries["environment"] = CSharpExpressionConverter.Convert(environment);
             if (triggers != null)
-                callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
+                callPayload.Queries["triggers"] = CSharpExpressionConverter.Convert(triggers);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBody["webHookUrl"] = "@listCallbackUrl()";
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             var apiCallPath = "/response-deletion-subscription";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["formId"] = CSharpExpressionConverter.ConvertO(formId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBody["webHookUrl"] = "@listCallbackUrl()";

@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
             var filterObjectpropCount = 0;
             if (bodyfilterauthorizationProtocols != null)
             {
-                filterObject["authorization_protocols"] = ExpressionConverter.ConvertO(bodyfilterauthorizationProtocols);
+                filterObject["authorization_protocols"] = CSharpExpressionConverter.ConvertToken(bodyfilterauthorizationProtocols);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterauthorizationTechnologies != null)
             {
-                filterObject["authorization_technologies"] = ExpressionConverter.ConvertO(bodyfilterauthorizationTechnologies);
+                filterObject["authorization_technologies"] = CSharpExpressionConverter.ConvertToken(bodyfilterauthorizationTechnologies);
                 filterObjectpropCount++;
             }
 
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
             var breachPropertiesObjectpropCount = 0;
             if (bodyfilterbreachPropertiesdate != null)
             {
-                breachPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesdate);
+                breachPropertiesObject["date"] = CSharpExpressionConverter.ConvertToken(bodyfilterbreachPropertiesdate);
                 breachPropertiesObjectpropCount++;
             }
 
             if (bodyfilterbreachPropertiesname != null)
             {
-                breachPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesname);
+                breachPropertiesObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfilterbreachPropertiesname);
                 breachPropertiesObjectpropCount++;
             }
 
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
             var dumpPropertiesObjectpropCount = 0;
             if (bodyfilterdumpPropertiesdate != null)
             {
-                dumpPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesdate);
+                dumpPropertiesObject["date"] = CSharpExpressionConverter.ConvertToken(bodyfilterdumpPropertiesdate);
                 dumpPropertiesObjectpropCount++;
             }
 
             if (bodyfilterdumpPropertiesname != null)
             {
-                dumpPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesname);
+                dumpPropertiesObject["name"] = CSharpExpressionConverter.ConvertToken(bodyfilterdumpPropertiesname);
                 dumpPropertiesObjectpropCount++;
             }
 
@@ -75,37 +75,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
 
             if (bodyfilterexfiltrationDateGte != null)
             {
-                filterObject["exfiltration_date_gte"] = ExpressionConverter.ConvertO(bodyfilterexfiltrationDateGte);
+                filterObject["exfiltration_date_gte"] = CSharpExpressionConverter.ConvertToken(bodyfilterexfiltrationDateGte);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterfirstDownloadedGte != null)
             {
-                filterObject["first_downloaded_gte"] = ExpressionConverter.ConvertO(bodyfilterfirstDownloadedGte);
+                filterObject["first_downloaded_gte"] = CSharpExpressionConverter.ConvertToken(bodyfilterfirstDownloadedGte);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterlatestDownloadedGte != null)
             {
-                filterObject["latest_downloaded_gte"] = ExpressionConverter.ConvertO(bodyfilterlatestDownloadedGte);
+                filterObject["latest_downloaded_gte"] = CSharpExpressionConverter.ConvertToken(bodyfilterlatestDownloadedGte);
                 filterObjectpropCount++;
             }
 
             if (bodyfiltermalwareFamilies != null)
             {
-                filterObject["malware_families"] = ExpressionConverter.ConvertO(bodyfiltermalwareFamilies);
+                filterObject["malware_families"] = CSharpExpressionConverter.ConvertToken(bodyfiltermalwareFamilies);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterproperties != null)
             {
-                filterObject["properties"] = ExpressionConverter.ConvertO(bodyfilterproperties);
+                filterObject["properties"] = CSharpExpressionConverter.ConvertToken(bodyfilterproperties);
                 filterObjectpropCount++;
             }
 
             if (bodyfilterusernameProperties != null)
             {
-                filterObject["username_properties"] = ExpressionConverter.ConvertO(bodyfilterusernameProperties);
+                filterObject["username_properties"] = CSharpExpressionConverter.ConvertToken(bodyfilterusernameProperties);
                 filterObjectpropCount++;
             }
 
@@ -117,25 +117,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
 
             if (bodyorganizationId != null)
             {
-                body["organization_id"] = ExpressionConverter.ConvertO(bodyorganizationId);
+                body["organization_id"] = CSharpExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
             }
 
             if (bodysubjects != null)
             {
-                body["subjects"] = ExpressionConverter.ConvertO(bodysubjects);
+                body["subjects"] = CSharpExpressionConverter.ConvertToken(bodysubjects);
                 bodypropCount++;
             }
 
             if (bodysubjectsLogin != null)
             {
-                body["subjects_login"] = ExpressionConverter.ConvertO(bodysubjectsLogin);
+                body["subjects_login"] = CSharpExpressionConverter.ConvertToken(bodysubjectsLogin);
                 bodypropCount++;
             }
 
             if (bodysubjectsSha1 != null)
             {
-                body["subjects_sha1"] = ExpressionConverter.ConvertO(bodysubjectsSha1);
+                body["subjects_sha1"] = CSharpExpressionConverter.ConvertToken(bodysubjectsSha1);
                 bodypropCount++;
             }
 

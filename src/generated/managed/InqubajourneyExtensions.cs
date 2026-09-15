@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<AcquireAccessTokenResponse> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            var apiCallPath = String.Format("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(tenantName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/connect/token", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            callPayload.Headers["HostURL"] = ExpressionConverter.Convert(hostURL);
+            callPayload.Headers["HostURL"] = CSharpExpressionConverter.ConvertO(hostURL);
             return new ApiConnectionAction<AcquireAccessTokenResponse>(callPayload);
         }
 
@@ -29,25 +29,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
+            callPayload.Headers["TenantName"] = CSharpExpressionConverter.ConvertO(tenantName);
+            callPayload.Headers["AuthorizationToken"] = CSharpExpressionConverter.ConvertO(authorizationToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyeventDefinitionCode != null)
             {
-                body["eventDefinitionCode"] = ExpressionConverter.ConvertO(bodyeventDefinitionCode);
+                body["eventDefinitionCode"] = CSharpExpressionConverter.ConvertToken(bodyeventDefinitionCode);
                 bodypropCount++;
             }
 
             if (bodyisTest != null)
             {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
+                body["isTest"] = CSharpExpressionConverter.ConvertToken(bodyisTest);
                 bodypropCount++;
             }
 
             if (bodyattributes != null)
             {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
+                body["attributes"] = CSharpExpressionConverter.ConvertToken(bodyattributes);
                 bodypropCount++;
             }
 
@@ -66,25 +66,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
+            callPayload.Headers["TenantName"] = CSharpExpressionConverter.ConvertO(tenantName);
+            callPayload.Headers["AuthorizationToken"] = CSharpExpressionConverter.ConvertO(authorizationToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytransactionDefinitionCode != null)
             {
-                body["transactionDefinitionCode"] = ExpressionConverter.ConvertO(bodytransactionDefinitionCode);
+                body["transactionDefinitionCode"] = CSharpExpressionConverter.ConvertToken(bodytransactionDefinitionCode);
                 bodypropCount++;
             }
 
             if (bodyisTest != null)
             {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
+                body["isTest"] = CSharpExpressionConverter.ConvertToken(bodyisTest);
                 bodypropCount++;
             }
 
             if (bodyattributes != null)
             {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
+                body["attributes"] = CSharpExpressionConverter.ConvertToken(bodyattributes);
                 bodypropCount++;
             }
 

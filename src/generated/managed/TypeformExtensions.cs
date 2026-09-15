@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tag, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
             bodypropCount++;
             if (bodyenabled != null)
             {
-                body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                body["enabled"] = CSharpExpressionConverter.ConvertToken(bodyenabled);
                 bodypropCount++;
             }
 

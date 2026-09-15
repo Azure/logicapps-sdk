@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (term != null)
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<SearchForDadJokesResponse>(callPayload);
         }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
         public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
         {
-            var apiCallPath = String.Format("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(jokeid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/j/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jokeid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");

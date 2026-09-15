@@ -14,27 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
         public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
         {
-            var apiCallPath = String.Format("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(templateToken, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateToken, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["doc-delivery-type"] = Convert.ToString("url");
             if (docDeliveryType != null)
-                callPayload.Queries["doc-delivery-type"] = ExpressionConverter.Convert(docDeliveryType);
+                callPayload.Queries["doc-delivery-type"] = CSharpExpressionConverter.ConvertO(docDeliveryType);
             if (docUrlExpiresIn != null)
-                callPayload.Queries["doc-url-expires-in"] = ExpressionConverter.Convert(docUrlExpiresIn);
+                callPayload.Queries["doc-url-expires-in"] = CSharpExpressionConverter.ConvertO(docUrlExpiresIn);
             callPayload.Queries["latex-compiler"] = Convert.ToString("pdflatex");
             if (latexCompiler != null)
-                callPayload.Queries["latex-compiler"] = ExpressionConverter.Convert(latexCompiler);
+                callPayload.Queries["latex-compiler"] = CSharpExpressionConverter.ConvertO(latexCompiler);
             callPayload.Queries["latex-runs"] = Convert.ToString(1);
             if (latexRuns != null)
-                callPayload.Queries["latex-runs"] = ExpressionConverter.Convert(latexRuns);
+                callPayload.Queries["latex-runs"] = CSharpExpressionConverter.ConvertO(latexRuns);
             if (mainFileName != null)
-                callPayload.Queries["main-file-name"] = ExpressionConverter.Convert(mainFileName);
+                callPayload.Queries["main-file-name"] = CSharpExpressionConverter.ConvertO(mainFileName);
             if (docFileName != null)
-                callPayload.Queries["doc-file-name"] = ExpressionConverter.Convert(docFileName);
+                callPayload.Queries["doc-file-name"] = CSharpExpressionConverter.ConvertO(docFileName);
             callPayload.Queries["encrypt-type"] = Convert.ToString("na");
             if (encryptType != null)
-                callPayload.Queries["encrypt-type"] = ExpressionConverter.Convert(encryptType);
+                callPayload.Queries["encrypt-type"] = CSharpExpressionConverter.ConvertO(encryptType);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodypropCount > 0)

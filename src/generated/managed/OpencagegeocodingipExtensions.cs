@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
             var apiCallPath = "/v1/json/reverse";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Headers["long"] = ExpressionConverter.Convert(@long);
+            callPayload.Headers["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Headers["long"] = CSharpExpressionConverter.ConvertO(@long);
             return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
         }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
             var apiCallPath = "/v1/json/forward";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["placename"] = ExpressionConverter.Convert(placename);
+            callPayload.Headers["placename"] = CSharpExpressionConverter.ConvertO(placename);
             return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
         }
     }

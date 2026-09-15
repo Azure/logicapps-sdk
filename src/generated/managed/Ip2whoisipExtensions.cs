@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip
             var apiCallPath = "/v2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             return new ApiConnectionAction<CheckDomainResponse>(callPayload);
         }
     }

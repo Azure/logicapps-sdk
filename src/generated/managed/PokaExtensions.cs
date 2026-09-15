@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
     {
         public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(item, 1), ExpressionConverter.ConvertWithUrlEncoding(operationName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(item, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodyselectALanguage);
+            body["language"] = CSharpExpressionConverter.ConvertToken(bodyselectALanguage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

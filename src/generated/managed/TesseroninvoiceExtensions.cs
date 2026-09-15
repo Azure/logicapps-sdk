@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
+            body["Skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
             body["PageSize"] = 25;
             bodypropCount++;
             if (bodysearch != null)
             {
-                body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                body["Search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
                 bodypropCount++;
             }
 
             if (bodyorderColumns != null)
             {
-                body["OrderColumns"] = ExpressionConverter.ConvertO(bodyorderColumns);
+                body["OrderColumns"] = CSharpExpressionConverter.ConvertToken(bodyorderColumns);
                 bodypropCount++;
             }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             {
                 if (bodyorderByAsc != null)
                 {
-                    body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                    body["OrderByAsc"] = CSharpExpressionConverter.ConvertToken(bodyorderByAsc);
                     bodypropCount++;
                 }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             {
                 if (bodytakeAll != null)
                 {
-                    body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                    body["TakeAll"] = CSharpExpressionConverter.ConvertToken(bodytakeAll);
                     bodypropCount++;
                 }
 
@@ -71,49 +71,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var additionalSearchDataObjectpropCount = 0;
             if (bodyadditionalSearchDatadateTimeFrom != null)
             {
-                additionalSearchDataObject["DateTimeFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeFrom);
+                additionalSearchDataObject["DateTimeFrom"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeFrom);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDatadateTimeTo != null)
             {
-                additionalSearchDataObject["DateTimeTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeTo);
+                additionalSearchDataObject["DateTimeTo"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeTo);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDataquantityFrom != null)
             {
-                additionalSearchDataObject["QuantityFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityFrom);
+                additionalSearchDataObject["QuantityFrom"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityFrom);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDataquantityTo != null)
             {
-                additionalSearchDataObject["QuantityTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityTo);
+                additionalSearchDataObject["QuantityTo"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityTo);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDatauserIds != null)
             {
-                additionalSearchDataObject["UserIds"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatauserIds);
+                additionalSearchDataObject["UserIds"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatauserIds);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDataserviceArticles != null)
             {
-                additionalSearchDataObject["ServiceArticles"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataserviceArticles);
+                additionalSearchDataObject["ServiceArticles"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataserviceArticles);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDataassignmentStatusId != null)
             {
-                additionalSearchDataObject["AssignmentStatusId"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataassignmentStatusId);
+                additionalSearchDataObject["AssignmentStatusId"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataassignmentStatusId);
                 additionalSearchDataObjectpropCount++;
             }
 
             if (bodyadditionalSearchDataisInvoice != null)
             {
-                additionalSearchDataObject["IsInvoice"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataisInvoice);
+                additionalSearchDataObject["IsInvoice"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataisInvoice);
                 additionalSearchDataObjectpropCount++;
             }
 
@@ -140,46 +140,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
+            body["dateFrom"] = CSharpExpressionConverter.ConvertToken(bodydateFrom);
             if (bodyquantity != null)
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
                 bodypropCount++;
             }
 
             if (bodydateTo != null)
             {
-                body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
+                body["dateTo"] = CSharpExpressionConverter.ConvertToken(bodydateTo);
                 bodypropCount++;
             }
 
             if (bodybookText != null)
             {
-                body["bookText"] = ExpressionConverter.ConvertO(bodybookText);
+                body["bookText"] = CSharpExpressionConverter.ConvertToken(bodybookText);
                 bodypropCount++;
             }
 
             if (bodynoteText != null)
             {
-                body["noteText"] = ExpressionConverter.ConvertO(bodynoteText);
+                body["noteText"] = CSharpExpressionConverter.ConvertToken(bodynoteText);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodyprojectPhaseId != null)
             {
-                body["projectPhaseId"] = ExpressionConverter.ConvertO(bodyprojectPhaseId);
+                body["projectPhaseId"] = CSharpExpressionConverter.ConvertToken(bodyprojectPhaseId);
                 bodypropCount++;
             }
 
             if (bodyticketid != null)
             {
-                body["ticketid"] = ExpressionConverter.ConvertO(bodyticketid);
+                body["ticketid"] = CSharpExpressionConverter.ConvertToken(bodyticketid);
                 bodypropCount++;
             }
 
@@ -200,12 +200,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
+            body["dateFrom"] = CSharpExpressionConverter.ConvertToken(bodydateFrom);
             bodypropCount++;
-            body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
+            body["dateTo"] = CSharpExpressionConverter.ConvertToken(bodydateTo);
             if (bodypause != null)
             {
-                body["pause"] = ExpressionConverter.ConvertO(bodypause);
+                body["pause"] = CSharpExpressionConverter.ConvertToken(bodypause);
                 bodypropCount++;
             }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             {
                 if (bodynoInvoice != null)
                 {
-                    body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                    body["noInvoice"] = CSharpExpressionConverter.ConvertToken(bodynoInvoice);
                     bodypropCount++;
                 }
 
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             {
                 if (bodyextraCharge != null)
                 {
-                    body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                    body["extraCharge"] = CSharpExpressionConverter.ConvertToken(bodyextraCharge);
                     bodypropCount++;
                 }
 
@@ -243,19 +243,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
             if (bodyhint != null)
             {
-                body["hint"] = ExpressionConverter.ConvertO(bodyhint);
+                body["hint"] = CSharpExpressionConverter.ConvertToken(bodyhint);
                 bodypropCount++;
             }
 
             if (bodyserviceContractId != null)
             {
-                body["serviceContractId"] = ExpressionConverter.ConvertO(bodyserviceContractId);
+                body["serviceContractId"] = CSharpExpressionConverter.ConvertToken(bodyserviceContractId);
                 bodypropCount++;
             }
 
             if (bodyuserName != null)
             {
-                body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+                body["userName"] = CSharpExpressionConverter.ConvertToken(bodyuserName);
                 bodypropCount++;
             }
 

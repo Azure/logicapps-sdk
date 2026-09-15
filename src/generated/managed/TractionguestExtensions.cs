@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
         public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
         {
-            var apiCallPath = String.Format("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

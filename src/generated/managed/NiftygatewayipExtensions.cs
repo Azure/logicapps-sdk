@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (contractAddress != null)
-                callPayload.Queries["contractAddress"] = ExpressionConverter.Convert(contractAddress);
+                callPayload.Queries["contractAddress"] = CSharpExpressionConverter.ConvertO(contractAddress);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<NiftiesforUserResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
         {
-            var apiCallPath = String.Format("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(creatorProfileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(creatorProfileName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<NiftiesforCreatorResponse>(callPayload);
         }
     }

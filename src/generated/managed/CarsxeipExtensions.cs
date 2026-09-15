@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/specs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
             return new ApiConnectionAction<SpecGetResponse>(callPayload);
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/marketvalue";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
             return new ApiConnectionAction<ValueGetResponse>(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/history";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
             return new ApiConnectionAction<HistoryGetResponse>(callPayload);
         }
 
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/platedecoder";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["plate"] = ExpressionConverter.Convert(plate);
-            callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+            callPayload.Queries["plate"] = CSharpExpressionConverter.ConvertO(plate);
+            callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
             return new ApiConnectionAction<PlateDecodeResponse>(callPayload);
         }
 
@@ -60,25 +60,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/images";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["make"] = ExpressionConverter.Convert(make);
-            callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+            callPayload.Queries["make"] = CSharpExpressionConverter.ConvertO(make);
+            callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (trim != null)
-                callPayload.Queries["trim"] = ExpressionConverter.Convert(trim);
+                callPayload.Queries["trim"] = CSharpExpressionConverter.ConvertO(trim);
             if (color != null)
-                callPayload.Queries["color"] = ExpressionConverter.Convert(color);
+                callPayload.Queries["color"] = CSharpExpressionConverter.ConvertO(color);
             callPayload.Queries["transparent"] = Convert.ToString(true);
             if (transparent != null)
-                callPayload.Queries["transparent"] = ExpressionConverter.Convert(transparent);
+                callPayload.Queries["transparent"] = CSharpExpressionConverter.ConvertO(transparent);
             if (angle != null)
-                callPayload.Queries["angle"] = ExpressionConverter.Convert(angle);
+                callPayload.Queries["angle"] = CSharpExpressionConverter.Convert(angle);
             if (photoType != null)
-                callPayload.Queries["photoType"] = ExpressionConverter.Convert(photoType);
+                callPayload.Queries["photoType"] = CSharpExpressionConverter.Convert(photoType);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.Convert(size);
             if (license != null)
-                callPayload.Queries["license"] = ExpressionConverter.Convert(license);
+                callPayload.Queries["license"] = CSharpExpressionConverter.Convert(license);
             return new ApiConnectionAction<ImageGetResponse>(callPayload);
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<PlateRecogResponse>(callPayload);
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var apiCallPath = "/obdcodesdecoder";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
             return new ApiConnectionAction<CodeGetResponse>(callPayload);
         }
     }

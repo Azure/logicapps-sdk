@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/lookup/ean";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<BarcodeLookupResponse>(callPayload);
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/generate/qrcode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/generate/upc-a";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/generate/upc-e";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/generate/ean-13";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
             var apiCallPath = "/barcode/generate/ean-8";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

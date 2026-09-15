@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
         {
-            var apiCallPath = String.Format("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserList>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
         {
-            var apiCallPath = String.Format("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserResponse>(callPayload);
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
         {
-            var apiCallPath = String.Format("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/message", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
         {
-            var apiCallPath = String.Format("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     {
         public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
         public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);

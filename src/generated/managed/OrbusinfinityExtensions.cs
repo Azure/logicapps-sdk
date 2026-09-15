@@ -19,21 +19,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["includeIntersectional"] = Convert.ToString(false);
             if (includeIntersectional != null)
-                callPayload.Queries["includeIntersectional"] = ExpressionConverter.Convert(includeIntersectional);
+                callPayload.Queries["includeIntersectional"] = CSharpExpressionConverter.ConvertO(includeIntersectional);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["$count"] = CSharpExpressionConverter.ConvertO(count);
             return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(callPayload);
         }
 
@@ -46,17 +46,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["relationshipTypeId"] = ExpressionConverter.ConvertO(bodyrelationshipTypeId);
+            body["relationshipTypeId"] = CSharpExpressionConverter.ConvertToken(bodyrelationshipTypeId);
             if (bodyrelationshipTypePairId != null)
             {
-                body["relationshipTypePairId"] = ExpressionConverter.ConvertO(bodyrelationshipTypePairId);
+                body["relationshipTypePairId"] = CSharpExpressionConverter.ConvertToken(bodyrelationshipTypePairId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["leadModelItemId"] = ExpressionConverter.ConvertO(bodyleadModelItemId);
+            body["leadModelItemId"] = CSharpExpressionConverter.ConvertToken(bodyleadModelItemId);
             bodypropCount++;
-            body["memberModelItemId"] = ExpressionConverter.ConvertO(bodymemberModelItemId);
+            body["memberModelItemId"] = CSharpExpressionConverter.ConvertToken(bodymemberModelItemId);
             var attributeValuesFlatObject = new JObject();
             var attributeValuesFlatObjectpropCount = 0;
             if (attributeValuesFlatObjectpropCount > 0)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             }
 
             bodypropCount++;
-            body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
+            body["modelId"] = CSharpExpressionConverter.ConvertToken(bodymodelId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -78,20 +78,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<OfficeArchitectContractsODataModelRelationshipLevel0>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(callPayload);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -128,19 +128,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["$count"] = CSharpExpressionConverter.ConvertO(count);
             return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(callPayload);
         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["objectTypeId"] = ExpressionConverter.ConvertO(bodyobjectTypeId);
+            body["objectTypeId"] = CSharpExpressionConverter.ConvertToken(bodyobjectTypeId);
             var attributeValuesFlatObject = new JObject();
             var attributeValuesFlatObjectpropCount = 0;
             if (attributeValuesFlatObjectpropCount > 0)
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             }
 
             bodypropCount++;
-            body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
+            body["modelId"] = CSharpExpressionConverter.ConvertToken(bodymodelId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -175,20 +175,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<OfficeArchitectContractsODataModelObjectLevel0>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(callPayload);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -230,17 +230,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var bodypropCount = 0;
             if (bodysecret != null)
             {
-                body["secret"] = ExpressionConverter.ConvertO(bodysecret);
+                body["secret"] = CSharpExpressionConverter.ConvertToken(bodysecret);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+            body["eventType"] = CSharpExpressionConverter.ConvertToken(bodyeventType);
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodyexpirationDate != null)
             {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                body["expirationDate"] = CSharpExpressionConverter.ConvertToken(bodyexpirationDate);
                 bodypropCount++;
             }
 

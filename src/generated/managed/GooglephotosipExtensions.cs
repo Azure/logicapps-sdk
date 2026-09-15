@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
             var apiCallPath = "/v1/albums";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
             var apiCallPath = "/v1/mediaItems:batchGet";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mediaItemIds"] = ExpressionConverter.Convert(mediaItemIds);
+            callPayload.Queries["mediaItemIds"] = CSharpExpressionConverter.ConvertO(mediaItemIds);
             return new ApiConnectionAction(callPayload);
         }
 

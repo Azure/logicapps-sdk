@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
         {
-            var apiCallPath = String.Format("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(requestBody);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
         {
-            var apiCallPath = String.Format("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportInstanceName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(requestBody);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

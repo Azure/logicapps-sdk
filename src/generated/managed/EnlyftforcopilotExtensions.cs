@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (personId != null)
-                callPayload.Queries["person_id"] = ExpressionConverter.Convert(personId);
+                callPayload.Queries["person_id"] = CSharpExpressionConverter.ConvertO(personId);
             if (userEmail != null)
-                callPayload.Queries["userEmail"] = ExpressionConverter.Convert(userEmail);
+                callPayload.Queries["userEmail"] = CSharpExpressionConverter.ConvertO(userEmail);
             return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
         }
     }

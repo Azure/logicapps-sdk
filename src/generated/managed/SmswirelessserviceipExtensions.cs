@@ -21,20 +21,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             if (bodyrecipients != null)
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
+            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyconcatenation != null)
             {
-                body["concatenation"] = ExpressionConverter.ConvertO(bodyconcatenation);
+                body["concatenation"] = CSharpExpressionConverter.ConvertToken(bodyconcatenation);
                 bodypropCount++;
             }
 
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
             bodypropCount++;
             if (bodyoriginator != null)
             {
-                body["originator"] = ExpressionConverter.ConvertO(bodyoriginator);
+                body["originator"] = CSharpExpressionConverter.ConvertToken(bodyoriginator);
                 bodypropCount++;
             }
 
             if (bodytest != null)
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
                 bodypropCount++;
             }
 

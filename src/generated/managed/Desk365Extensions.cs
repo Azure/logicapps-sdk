@@ -19,19 +19,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             callPayload.Queries["order_by"] = Convert.ToString("created_time");
             if (orderBy != null)
-                callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["order_by"] = CSharpExpressionConverter.Convert(orderBy);
             callPayload.Queries["order_type"] = Convert.ToString("desc");
             if (orderType != null)
-                callPayload.Queries["order_type"] = ExpressionConverter.Convert(orderType);
+                callPayload.Queries["order_type"] = CSharpExpressionConverter.Convert(orderType);
             callPayload.Queries["updated_since"] = Convert.ToString("");
             if (updatedSince != null)
-                callPayload.Queries["updated_since"] = ExpressionConverter.Convert(updatedSince);
+                callPayload.Queries["updated_since"] = CSharpExpressionConverter.ConvertO(updatedSince);
             callPayload.Queries["include_description"] = Convert.ToString("No");
             if (includeDescription != null)
-                callPayload.Queries["include_description"] = ExpressionConverter.Convert(includeDescription);
+                callPayload.Queries["include_description"] = CSharpExpressionConverter.Convert(includeDescription);
             callPayload.Queries["src"] = Convert.ToString(2);
             return new ApiConnectionAction<GetAllTicketsResponse>(callPayload);
         }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ticketNumber != null)
-                callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
+                callPayload.Queries["ticket_number"] = CSharpExpressionConverter.ConvertO(ticketNumber);
             callPayload.Queries["src"] = Convert.ToString(2);
             return new ApiConnectionAction<GetTicketResponse>(callPayload);
         }
@@ -59,37 +59,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var bodypropCount = 0;
             if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                body["Agent"] = CSharpExpressionConverter.ConvertToken(bodyagent);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.Convert(bodypriority);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["Subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodytype != null)
             {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                body["Type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
@@ -107,49 +107,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var apiCallPath = "/power_automate/tickets/update";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
+            callPayload.Queries["ticket_number"] = CSharpExpressionConverter.ConvertO(ticketNumber);
             callPayload.Queries["src"] = Convert.ToString(2);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.Convert(bodypriority);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodyassignTo != null)
             {
-                body["assign_to"] = ExpressionConverter.ConvertO(bodyassignTo);
+                body["assign_to"] = CSharpExpressionConverter.ConvertToken(bodyassignTo);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -167,20 +167,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var apiCallPath = "/power_automate/tickets/add_note";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
+            callPayload.Queries["ticket_number"] = CSharpExpressionConverter.ConvertO(ticketNumber);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["Content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             if (bodyagentEmail != null)
             {
-                body["AgentEmail"] = ExpressionConverter.ConvertO(bodyagentEmail);
+                body["AgentEmail"] = CSharpExpressionConverter.ConvertToken(bodyagentEmail);
                 bodypropCount++;
             }
 
             if (bodynotifyAgent != null)
             {
-                body["NotifyAgent"] = ExpressionConverter.ConvertO(bodynotifyAgent);
+                body["NotifyAgent"] = CSharpExpressionConverter.ConvertToken(bodynotifyAgent);
                 bodypropCount++;
             }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             {
                 if (bodyprivate != null)
                 {
-                    body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
+                    body["Private"] = CSharpExpressionConverter.Convert(bodyprivate);
                     bodypropCount++;
                 }
 
@@ -220,37 +220,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var bodypropCount = 0;
             if (bodycontactEmail != null)
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                body["ContactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["Subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                body["Agent"] = CSharpExpressionConverter.ConvertToken(bodyagent);
                 bodypropCount++;
             }
 
             if (bodygroup != null)
             {
-                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["Group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 
@@ -273,37 +273,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var bodypropCount = 0;
             if (bodycontactEmail != null)
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                body["ContactEmail"] = CSharpExpressionConverter.ConvertToken(bodycontactEmail);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["Subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
             if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                body["Agent"] = CSharpExpressionConverter.ConvertToken(bodyagent);
                 bodypropCount++;
             }
 
             if (bodygroup != null)
             {
-                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["Group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
                 bodypropCount++;
             }
 
@@ -326,19 +326,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var bodypropCount = 0;
             if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                body["Agent"] = CSharpExpressionConverter.ConvertToken(bodyagent);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["Content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodyprivate != null)
             {
-                body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
+                body["Private"] = CSharpExpressionConverter.Convert(bodyprivate);
                 bodypropCount++;
             }
 
@@ -361,13 +361,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var bodypropCount = 0;
             if (bodycontent != null)
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["Content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
+                body["ResponseType"] = CSharpExpressionConverter.Convert(bodyresponseType);
                 bodypropCount++;
             }
 

@@ -20,32 +20,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
             var projectSettings = new JObject();
             var projectSettingspropCount = 0;
             projectSettingspropCount++;
-            projectSettings["customerId"] = ExpressionConverter.ConvertO(projectSettingscustomerId);
+            projectSettings["customerId"] = CSharpExpressionConverter.ConvertToken(projectSettingscustomerId);
             projectSettingspropCount++;
-            projectSettings["id"] = ExpressionConverter.ConvertO(projectSettingsid);
+            projectSettings["id"] = CSharpExpressionConverter.ConvertToken(projectSettingsid);
             projectSettingspropCount++;
-            projectSettings["name"] = ExpressionConverter.ConvertO(projectSettingsname);
+            projectSettings["name"] = CSharpExpressionConverter.ConvertToken(projectSettingsname);
             if (projectSettingsaddress != null)
             {
-                projectSettings["address"] = ExpressionConverter.ConvertO(projectSettingsaddress);
+                projectSettings["address"] = CSharpExpressionConverter.ConvertToken(projectSettingsaddress);
                 projectSettingspropCount++;
             }
 
             projectSettingspropCount++;
-            projectSettings["contactPhone"] = ExpressionConverter.ConvertO(projectSettingscontactPhone);
+            projectSettings["contactPhone"] = CSharpExpressionConverter.ConvertToken(projectSettingscontactPhone);
             projectSettingspropCount++;
-            projectSettings["contactEmail"] = ExpressionConverter.ConvertO(projectSettingscontactEmail);
+            projectSettings["contactEmail"] = CSharpExpressionConverter.ConvertToken(projectSettingscontactEmail);
             projectSettingspropCount++;
-            projectSettings["responsible"] = ExpressionConverter.ConvertO(projectSettingsresponsible);
+            projectSettings["responsible"] = CSharpExpressionConverter.ConvertToken(projectSettingsresponsible);
             projectSettingspropCount++;
-            projectSettings["services"] = ExpressionConverter.ConvertO(projectSettingsservices);
+            projectSettings["services"] = CSharpExpressionConverter.ConvertToken(projectSettingsservices);
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
             if (projectSettingssettingsprojectAdminMembersAccess != null)
             {
                 if (projectSettingssettingsprojectAdminMembersAccess != null)
                 {
-                    settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                    settingsObject["projectAdminMembersAccess"] = CSharpExpressionConverter.ConvertToken(projectSettingssettingsprojectAdminMembersAccess);
                     settingsObjectpropCount++;
                 }
 

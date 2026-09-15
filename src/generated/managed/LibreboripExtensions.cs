@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
             var apiCallPath = "/company/search/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (province != null)
-                callPayload.Queries["province"] = ExpressionConverter.Convert(province);
+                callPayload.Queries["province"] = CSharpExpressionConverter.ConvertO(province);
             return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
         }
     }

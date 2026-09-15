@@ -17,21 +17,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (sessionId != null)
-                callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["session_id"] = CSharpExpressionConverter.ConvertO(sessionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                callPayload.Queries["countries"] = CSharpExpressionConverter.ConvertO(countries);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             return new ApiConnectionAction<SearchGetResponse>(callPayload);
         }
 
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
             return new ApiConnectionAction<PIPGetResponse>(callPayload);
         }
     }

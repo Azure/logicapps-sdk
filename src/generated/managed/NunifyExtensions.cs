@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
         public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyticketTypeId = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["map_by_labels"] = Convert.ToString(true);
@@ -24,31 +24,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodydesignation != null)
             {
-                body["designation"] = ExpressionConverter.ConvertO(bodydesignation);
+                body["designation"] = CSharpExpressionConverter.ConvertToken(bodydesignation);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             {
                 if (bodyticketTypeId != null)
                 {
-                    body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                    body["ticket_type_id"] = CSharpExpressionConverter.ConvertToken(bodyticketTypeId);
                     bodypropCount++;
                 }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     {
         public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
         public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

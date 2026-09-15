@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["llmName"] = ExpressionConverter.ConvertO(bodyllmName);
+            body["llmName"] = CSharpExpressionConverter.ConvertToken(bodyllmName);
             bodypropCount++;
-            body["llmId"] = ExpressionConverter.ConvertO(bodyllmId);
+            body["llmId"] = CSharpExpressionConverter.ConvertToken(bodyllmId);
             bodypropCount++;
-            body["datasetNames"] = ExpressionConverter.ConvertO(bodydatasetNames);
+            body["datasetNames"] = CSharpExpressionConverter.ConvertToken(bodydatasetNames);
             bodypropCount++;
-            body["queryString"] = ExpressionConverter.ConvertO(bodyqueryString);
+            body["queryString"] = CSharpExpressionConverter.ConvertToken(bodyqueryString);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
             var apiCallPath = "/iris-enrich/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             return new ApiConnectionAction<EnrichResponse>(callPayload);
         }
 

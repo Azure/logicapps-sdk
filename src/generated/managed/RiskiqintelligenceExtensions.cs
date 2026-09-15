@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/pdns/data/ip";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
+            callPayload.Queries["ip"] = CSharpExpressionConverter.ConvertO(ip);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (lastSeenAfter != null)
-                callPayload.Queries["lastSeenAfter"] = ExpressionConverter.Convert(lastSeenAfter);
+                callPayload.Queries["lastSeenAfter"] = CSharpExpressionConverter.ConvertO(lastSeenAfter);
             if (firstSeenBefore != null)
-                callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(firstSeenBefore);
+                callPayload.Queries["firstSeenBefore"] = CSharpExpressionConverter.ConvertO(firstSeenBefore);
             return new ApiConnectionAction<RRSets>(callPayload);
         }
 
@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/pdns/data/name";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (lastSeenAfter != null)
-                callPayload.Queries["lastSeenAfter"] = ExpressionConverter.Convert(lastSeenAfter);
+                callPayload.Queries["lastSeenAfter"] = CSharpExpressionConverter.ConvertO(lastSeenAfter);
             if (firstSeenBefore != null)
-                callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(firstSeenBefore);
+                callPayload.Queries["firstSeenBefore"] = CSharpExpressionConverter.ConvertO(firstSeenBefore);
             return new ApiConnectionAction<RRSets>(callPayload);
         }
 
@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (lastSeenAfter != null)
-                callPayload.Queries["lastSeenAfter"] = ExpressionConverter.Convert(lastSeenAfter);
+                callPayload.Queries["lastSeenAfter"] = CSharpExpressionConverter.ConvertO(lastSeenAfter);
             if (firstSeenBefore != null)
-                callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(firstSeenBefore);
-            callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
+                callPayload.Queries["firstSeenBefore"] = CSharpExpressionConverter.ConvertO(firstSeenBefore);
+            callPayload.Queries["hex"] = CSharpExpressionConverter.ConvertO(hex);
             return new ApiConnectionAction<RRSets>(callPayload);
         }
 
@@ -69,15 +69,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/pdns/name";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (lastSeenAfter != null)
-                callPayload.Queries["lastSeenAfter"] = ExpressionConverter.Convert(lastSeenAfter);
+                callPayload.Queries["lastSeenAfter"] = CSharpExpressionConverter.ConvertO(lastSeenAfter);
             if (firstSeenBefore != null)
-                callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(firstSeenBefore);
+                callPayload.Queries["firstSeenBefore"] = CSharpExpressionConverter.ConvertO(firstSeenBefore);
             return new ApiConnectionAction<RRSets>(callPayload);
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v1/ssl/cert/host";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["host"] = ExpressionConverter.Convert(host);
+            callPayload.Queries["host"] = CSharpExpressionConverter.ConvertO(host);
             return new ApiConnectionAction<SslCertWithHostPage>(callPayload);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v1/ssl/cert/serial";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["serial"] = ExpressionConverter.Convert(serial);
+            callPayload.Queries["serial"] = CSharpExpressionConverter.ConvertO(serial);
             return new ApiConnectionAction<SslCertPage>(callPayload);
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v1/ssl/cert/sha1";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sha1"] = ExpressionConverter.Convert(sha1);
+            callPayload.Queries["sha1"] = CSharpExpressionConverter.ConvertO(sha1);
             return new ApiConnectionAction<SslCert>(callPayload);
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v1/ssl/host";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["certSha1"] = ExpressionConverter.Convert(certSha1);
+            callPayload.Queries["certSha1"] = CSharpExpressionConverter.ConvertO(certSha1);
             return new ApiConnectionAction<SslCertHostPage>(callPayload);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v1/ssl/cert/name";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             return new ApiConnectionAction<SslCertPage>(callPayload);
         }
 
@@ -137,11 +137,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/address";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+            callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -151,11 +151,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/domain";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/email";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/name";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -193,11 +193,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/nameserver";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nameserver"] = ExpressionConverter.Convert(nameserver);
+            callPayload.Queries["nameserver"] = CSharpExpressionConverter.ConvertO(nameserver);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -207,11 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/org";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["org"] = ExpressionConverter.Convert(org);
+            callPayload.Queries["org"] = CSharpExpressionConverter.ConvertO(org);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
@@ -221,298 +221,298 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var apiCallPath = "/v0/whois/phone";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+            callPayload.Queries["phone"] = CSharpExpressionConverter.ConvertO(phone);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<WhoisResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/hosts/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostAttributeResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/domains/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/trackers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostAttributeResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/addresses/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(address, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/trackers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostAttributeResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSCHILD(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/hosts/trackers/children/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/children/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostPairsResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSPARENT(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/hosts/trackers/parents/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/parents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostPairsResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/hosts/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/components/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostComponentsResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/domains/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/components/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostComponentsResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/addresses/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(address, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/components/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostComponentsResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/hosts/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/cookies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostCookieResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var apiCallPath = String.Format("/v0/hostattributes/addresses/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(address, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/cookies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (beforeDay != null)
-                callPayload.Queries["beforeDay"] = ExpressionConverter.Convert(beforeDay);
+                callPayload.Queries["beforeDay"] = CSharpExpressionConverter.ConvertO(beforeDay);
             if (afterDay != null)
-                callPayload.Queries["afterDay"] = ExpressionConverter.Convert(afterDay);
+                callPayload.Queries["afterDay"] = CSharpExpressionConverter.ConvertO(afterDay);
             if (exact != null)
-                callPayload.Queries["exact"] = ExpressionConverter.Convert(exact);
+                callPayload.Queries["exact"] = CSharpExpressionConverter.ConvertO(exact);
             return new ApiConnectionAction<HostCookieResult>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTHOST(Expression<Func<string>> host, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> ipDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> recentPDNS = null, Expression<Func<bool>> subDomainPDNS = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
-            var apiCallPath = String.Format("/v0/enrich/host/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/enrich/host/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["whois"] = Convert.ToString(true);
             if (whois != null)
-                callPayload.Queries["whois"] = ExpressionConverter.Convert(whois);
+                callPayload.Queries["whois"] = CSharpExpressionConverter.ConvertO(whois);
             callPayload.Queries["hostDetails"] = Convert.ToString(true);
             if (hostDetails != null)
-                callPayload.Queries["hostDetails"] = ExpressionConverter.Convert(hostDetails);
+                callPayload.Queries["hostDetails"] = CSharpExpressionConverter.ConvertO(hostDetails);
             callPayload.Queries["ipDetails"] = Convert.ToString(true);
             if (ipDetails != null)
-                callPayload.Queries["ipDetails"] = ExpressionConverter.Convert(ipDetails);
+                callPayload.Queries["ipDetails"] = CSharpExpressionConverter.ConvertO(ipDetails);
             callPayload.Queries["linkedAssetCounts"] = Convert.ToString(true);
             if (linkedAssetCounts != null)
-                callPayload.Queries["linkedAssetCounts"] = ExpressionConverter.Convert(linkedAssetCounts);
+                callPayload.Queries["linkedAssetCounts"] = CSharpExpressionConverter.ConvertO(linkedAssetCounts);
             callPayload.Queries["recentPDNS"] = Convert.ToString(true);
             if (recentPDNS != null)
-                callPayload.Queries["recentPDNS"] = ExpressionConverter.Convert(recentPDNS);
+                callPayload.Queries["recentPDNS"] = CSharpExpressionConverter.ConvertO(recentPDNS);
             callPayload.Queries["subDomainPDNS"] = Convert.ToString(true);
             if (subDomainPDNS != null)
-                callPayload.Queries["subDomainPDNS"] = ExpressionConverter.Convert(subDomainPDNS);
+                callPayload.Queries["subDomainPDNS"] = CSharpExpressionConverter.ConvertO(subDomainPDNS);
             callPayload.Queries["openPorts"] = Convert.ToString(true);
             if (openPorts != null)
-                callPayload.Queries["openPorts"] = ExpressionConverter.Convert(openPorts);
+                callPayload.Queries["openPorts"] = CSharpExpressionConverter.ConvertO(openPorts);
             callPayload.Queries["certificates"] = Convert.ToString(true);
             if (certificates != null)
-                callPayload.Queries["certificates"] = ExpressionConverter.Convert(certificates);
+                callPayload.Queries["certificates"] = CSharpExpressionConverter.ConvertO(certificates);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTIP(Expression<Func<string>> ip, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
-            var apiCallPath = String.Format("/v0/enrich/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v0/enrich/ip/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["whois"] = Convert.ToString(true);
             if (whois != null)
-                callPayload.Queries["whois"] = ExpressionConverter.Convert(whois);
+                callPayload.Queries["whois"] = CSharpExpressionConverter.ConvertO(whois);
             callPayload.Queries["hostDetails"] = Convert.ToString(true);
             if (hostDetails != null)
-                callPayload.Queries["hostDetails"] = ExpressionConverter.Convert(hostDetails);
+                callPayload.Queries["hostDetails"] = CSharpExpressionConverter.ConvertO(hostDetails);
             callPayload.Queries["linkedAssetCounts"] = Convert.ToString(true);
             if (linkedAssetCounts != null)
-                callPayload.Queries["linkedAssetCounts"] = ExpressionConverter.Convert(linkedAssetCounts);
+                callPayload.Queries["linkedAssetCounts"] = CSharpExpressionConverter.ConvertO(linkedAssetCounts);
             callPayload.Queries["openPorts"] = Convert.ToString(true);
             if (openPorts != null)
-                callPayload.Queries["openPorts"] = ExpressionConverter.Convert(openPorts);
+                callPayload.Queries["openPorts"] = CSharpExpressionConverter.ConvertO(openPorts);
             callPayload.Queries["certificates"] = Convert.ToString(true);
             if (certificates != null)
-                callPayload.Queries["certificates"] = ExpressionConverter.Convert(certificates);
+                callPayload.Queries["certificates"] = CSharpExpressionConverter.ConvertO(certificates);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -14,14 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
         public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
         {
-            var apiCallPath = String.Format("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodystartData != null)
             {
-                body["startData"] = ExpressionConverter.ConvertO(bodystartData);
+                body["startData"] = CSharpExpressionConverter.ConvertToken(bodystartData);
                 bodypropCount++;
             }
 

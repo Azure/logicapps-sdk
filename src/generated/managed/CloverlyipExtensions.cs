@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<bodyweightunitsInput>> bodyweightunits = null, Expression<Func<string[]>> bodyprojectMatchlocationlatlng = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/carbon", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/carbon", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var weightObjectpropCount = 0;
             if (bodyweightvalue != null)
             {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+                weightObject["value"] = CSharpExpressionConverter.ConvertToken(bodyweightvalue);
                 weightObjectpropCount++;
             }
 
             if (bodyweightunits != null)
             {
-                weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+                weightObject["units"] = CSharpExpressionConverter.Convert(bodyweightunits);
                 weightObjectpropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationlatlng != null)
             {
-                locationObject["latlng"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationlatlng);
+                locationObject["latlng"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationlatlng);
                 locationObjectpropCount++;
             }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyunitCostUsdCents = null)
         {
-            var apiCallPath = String.Format("/{0}/currency", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/currency", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var currencyObjectpropCount = 0;
             if (bodycurrencyvalue != null)
             {
-                currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
+                currencyObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyvalue);
                 currencyObjectpropCount++;
             }
 
             if (bodycurrencyunits != null)
             {
-                currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
+                currencyObject["units"] = CSharpExpressionConverter.ConvertToken(bodycurrencyunits);
                 currencyObjectpropCount++;
             }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodyunitCostUsdCents != null)
             {
-                body["unit_cost_usd_cents"] = ExpressionConverter.ConvertO(bodyunitCostUsdCents);
+                body["unit_cost_usd_cents"] = CSharpExpressionConverter.ConvertToken(bodyunitCostUsdCents);
                 bodypropCount++;
             }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<string>> bodyweightunits = null, Expression<Func<string>> bodymode = null, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyfrompostalCode = null, Expression<Func<string>> bodyfromcountry = null, Expression<Func<string>> bodytopostalCode = null, Expression<Func<string>> bodytocountry = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/shipping", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/shipping", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var weightObjectpropCount = 0;
             if (bodyweightvalue != null)
             {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+                weightObject["value"] = CSharpExpressionConverter.ConvertToken(bodyweightvalue);
                 weightObjectpropCount++;
             }
 
             if (bodyweightunits != null)
             {
-                weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+                weightObject["units"] = CSharpExpressionConverter.ConvertToken(bodyweightunits);
                 weightObjectpropCount++;
             }
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodymode != null)
             {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                body["mode"] = CSharpExpressionConverter.ConvertToken(bodymode);
                 bodypropCount++;
             }
 
@@ -175,13 +175,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var distanceObjectpropCount = 0;
             if (bodydistancevalue != null)
             {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                distanceObject["value"] = CSharpExpressionConverter.ConvertToken(bodydistancevalue);
                 distanceObjectpropCount++;
             }
 
             if (bodydistanceunits != null)
             {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                distanceObject["units"] = CSharpExpressionConverter.ConvertToken(bodydistanceunits);
                 distanceObjectpropCount++;
             }
 
@@ -195,13 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var fromObjectpropCount = 0;
             if (bodyfrompostalCode != null)
             {
-                fromObject["postal_code"] = ExpressionConverter.ConvertO(bodyfrompostalCode);
+                fromObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyfrompostalCode);
                 fromObjectpropCount++;
             }
 
             if (bodyfromcountry != null)
             {
-                fromObject["country"] = ExpressionConverter.ConvertO(bodyfromcountry);
+                fromObject["country"] = CSharpExpressionConverter.ConvertToken(bodyfromcountry);
                 fromObjectpropCount++;
             }
 
@@ -215,13 +215,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var toObjectpropCount = 0;
             if (bodytopostalCode != null)
             {
-                toObject["postal_code"] = ExpressionConverter.ConvertO(bodytopostalCode);
+                toObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodytopostalCode);
                 toObjectpropCount++;
             }
 
             if (bodytocountry != null)
             {
-                toObject["country"] = ExpressionConverter.ConvertO(bodytocountry);
+                toObject["country"] = CSharpExpressionConverter.ConvertToken(bodytocountry);
                 toObjectpropCount++;
             }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -243,13 +243,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -288,14 +288,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<int>> bodymccCode = null, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/mcc", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/mcc", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymccCode != null)
             {
-                body["mcc_code"] = ExpressionConverter.ConvertO(bodymccCode);
+                body["mcc_code"] = CSharpExpressionConverter.ConvertToken(bodymccCode);
                 bodypropCount++;
             }
 
@@ -303,13 +303,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var currencyObjectpropCount = 0;
             if (bodycurrencyvalue != null)
             {
-                currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
+                currencyObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyvalue);
                 currencyObjectpropCount++;
             }
 
             if (bodycurrencyunits != null)
             {
-                currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
+                currencyObject["units"] = CSharpExpressionConverter.ConvertToken(bodycurrencyunits);
                 currencyObjectpropCount++;
             }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -331,13 +331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue, Expression<Func<string>> bodyweightunits, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/freight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/freight", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -384,9 +384,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var weightObject = new JObject();
             var weightObjectpropCount = 0;
             weightObjectpropCount++;
-            weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+            weightObject["value"] = CSharpExpressionConverter.ConvertToken(bodyweightvalue);
             weightObjectpropCount++;
-            weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+            weightObject["units"] = CSharpExpressionConverter.ConvertToken(bodyweightunits);
             if (weightObjectpropCount > 0)
             {
                 body["weight"] = weightObject;
@@ -395,13 +395,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodymode != null)
             {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                body["mode"] = CSharpExpressionConverter.ConvertToken(bodymode);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
@@ -409,13 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var distanceObjectpropCount = 0;
             if (bodydistancevalue != null)
             {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                distanceObject["value"] = CSharpExpressionConverter.ConvertToken(bodydistancevalue);
                 distanceObjectpropCount++;
             }
 
             if (bodydistanceunits != null)
             {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                distanceObject["units"] = CSharpExpressionConverter.ConvertToken(bodydistanceunits);
                 distanceObjectpropCount++;
             }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -437,13 +437,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -482,18 +482,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<string[]>> bodyairports, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/flight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/flight", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["airports"] = ExpressionConverter.ConvertO(bodyairports);
+            body["airports"] = CSharpExpressionConverter.ConvertToken(bodyairports);
             var projectMatchObject = new JObject();
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -501,13 +501,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<double>> bodyfuelEfficiencyvalue = null, Expression<Func<string>> bodyfuelEfficiencyunits = null, Expression<Func<string>> bodyfuelEfficiencyof = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/vehicle", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/vehicle", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -555,13 +555,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var distanceObjectpropCount = 0;
             if (bodydistancevalue != null)
             {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                distanceObject["value"] = CSharpExpressionConverter.ConvertToken(bodydistancevalue);
                 distanceObjectpropCount++;
             }
 
             if (bodydistanceunits != null)
             {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                distanceObject["units"] = CSharpExpressionConverter.ConvertToken(bodydistanceunits);
                 distanceObjectpropCount++;
             }
 
@@ -575,19 +575,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var fuelEfficiencyObjectpropCount = 0;
             if (bodyfuelEfficiencyvalue != null)
             {
-                fuelEfficiencyObject["value"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyvalue);
+                fuelEfficiencyObject["value"] = CSharpExpressionConverter.ConvertToken(bodyfuelEfficiencyvalue);
                 fuelEfficiencyObjectpropCount++;
             }
 
             if (bodyfuelEfficiencyunits != null)
             {
-                fuelEfficiencyObject["units"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyunits);
+                fuelEfficiencyObject["units"] = CSharpExpressionConverter.ConvertToken(bodyfuelEfficiencyunits);
                 fuelEfficiencyObjectpropCount++;
             }
 
             if (bodyfuelEfficiencyof != null)
             {
-                fuelEfficiencyObject["of"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyof);
+                fuelEfficiencyObject["of"] = CSharpExpressionConverter.ConvertToken(bodyfuelEfficiencyof);
                 fuelEfficiencyObjectpropCount++;
             }
 
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -609,13 +609,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyenergyvalue = null, Expression<Func<bodyenergyunitsInput>> bodyenergyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/electricity", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/electricity", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -663,13 +663,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var energyObjectpropCount = 0;
             if (bodyenergyvalue != null)
             {
-                energyObject["value"] = ExpressionConverter.ConvertO(bodyenergyvalue);
+                energyObject["value"] = CSharpExpressionConverter.ConvertToken(bodyenergyvalue);
                 energyObjectpropCount++;
             }
 
             if (bodyenergyunits != null)
             {
-                energyObject["units"] = ExpressionConverter.ConvertO(bodyenergyunits);
+                energyObject["units"] = CSharpExpressionConverter.Convert(bodyenergyunits);
                 energyObjectpropCount++;
             }
 
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var projectMatchObjectpropCount = 0;
             if (bodyprojectMatchtype != null)
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                projectMatchObject["type"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchtype);
                 projectMatchObjectpropCount++;
             }
 
@@ -691,13 +691,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var locationObjectpropCount = 0;
             if (bodyprojectMatchlocationpostalCode != null)
             {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                locationObject["postal_code"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationpostalCode);
                 locationObjectpropCount++;
             }
 
             if (bodyprojectMatchlocationcountry != null)
             {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                locationObject["country"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchlocationcountry);
                 locationObjectpropCount++;
             }
 
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodyprojectMatchnote != null)
             {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                projectMatchObject["note"] = CSharpExpressionConverter.ConvertToken(bodyprojectMatchnote);
                 projectMatchObjectpropCount++;
             }
 
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails(Expression<Func<string>> portfolioId)
         {
-            var apiCallPath = String.Format("/portfolio/{0}", ExpressionConverter.ConvertWithUrlEncoding(portfolioId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/portfolio/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(portfolioId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PortfolioDetailsResponse>(callPayload);
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["transaction_ID"] = ExpressionConverter.ConvertO(bodytransactionID);
+            body["transaction_ID"] = CSharpExpressionConverter.ConvertToken(bodytransactionID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

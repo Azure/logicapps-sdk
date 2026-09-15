@@ -18,16 +18,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<BreedResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedIDResponse> BreedID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BreedIDResponse>(callPayload);
@@ -36,26 +36,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies(Expression<Func<string>> species, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/search/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(species, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<BreedSpeciesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/animals/species/{0}/breeds/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<BreedSpeciesIDResponse>(callPayload);
         }
 
@@ -66,16 +66,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<OrganizationResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OrganizationIDResponse>(callPayload);
@@ -88,29 +88,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<AnimalResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus(Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(status, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/animals/search/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<AnimalStatusResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalIDResponse> AnimalID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/animals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AnimalIDResponse>(callPayload);
@@ -119,26 +119,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<OrganizationAnimalResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus(Expression<Func<string>> id, Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/search/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<OrganizationAnimalStatusResponse>(callPayload);
         }
     }

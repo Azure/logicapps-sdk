@@ -14,145 +14,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<EntityItemList> ListRecords(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> expand = null, Expression<Func<string>> fetchXml = null, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> partitionId = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (fetchXml != null)
-                callPayload.Queries["fetchXml"] = ExpressionConverter.Convert(fetchXml);
+                callPayload.Queries["fetchXml"] = CSharpExpressionConverter.ConvertO(fetchXml);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
             if (partitionId != null)
-                callPayload.Queries["partitionId"] = ExpressionConverter.Convert(partitionId);
+                callPayload.Queries["partitionId"] = CSharpExpressionConverter.ConvertO(partitionId);
             callPayload.Headers["prefer"] = Convert.ToString("odata.include-annotations=*");
             callPayload.Headers["accept"] = Convert.ToString("application/json;odata.metadata=full");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             return new ApiConnectionAction<EntityItemList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString("return=representation,odata.include-annotations=*");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> GetItemCodeless(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> partitionId = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (partitionId != null)
-                callPayload.Queries["partitionId"] = ExpressionConverter.Convert(partitionId);
+                callPayload.Queries["partitionId"] = CSharpExpressionConverter.ConvertO(partitionId);
             callPayload.Headers["prefer"] = Convert.ToString("odata.include-annotations=*");
             callPayload.Headers["accept"] = Convert.ToString("application/json;odata.metadata=full");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction DeleteRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> partitionId = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (partitionId != null)
-                callPayload.Queries["partitionId"] = ExpressionConverter.Convert(partitionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+                callPayload.Queries["partitionId"] = CSharpExpressionConverter.ConvertO(partitionId);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString("return=representation,odata.include-annotations=*");
             callPayload.Headers["accept"] = Convert.ToString("application/json;odata.metadata=full");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction UpdateEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> xMsFileName, Expression<Func<string>> item = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(fileImageFieldName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileImageFieldName, 2));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-file-name"] = ExpressionConverter.Convert(xMsFileName);
+            callPayload.Queries["x-ms-file-name"] = CSharpExpressionConverter.ConvertO(xMsFileName);
             callPayload.Headers["content-type"] = Convert.ToString("application/octet-stream");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<string> GetEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> size = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$value", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(fileImageFieldName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$value", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileImageFieldName, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             callPayload.Headers["Range"] = Convert.ToString("bytes=0-4194303");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> PerformUnboundAction(Expression<Func<string>> organization, Expression<Func<string>> actionName, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.2/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionName, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> PerformBoundAction(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> actionName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
         {
-            var apiCallPath = String.Format("/api/data/v9.2/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(actionName, 2));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}({1})/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionName, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction AssociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> itemrelateWith)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(associationEntityRelationship, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(associationEntityRelationship, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             var item = new JObject();
             var itempropCount = 0;
             itempropCount++;
-            item["@odata.id"] = ExpressionConverter.ConvertO(itemrelateWith);
+            item["@odata.id"] = CSharpExpressionConverter.ConvertToken(itemrelateWith);
             if (itempropCount > 0)
             {
                 callPayload.Body = item;
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction DisassociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(associationEntityRelationship, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(associationEntityRelationship, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Queries["$id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -178,62 +178,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var apiCallPath = "/api/search/v1.0/query";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             var searchRequest = new JObject();
             var searchRequestpropCount = 0;
             searchRequestpropCount++;
-            searchRequest["search"] = ExpressionConverter.ConvertO(searchRequestsearchTerm);
+            searchRequest["search"] = CSharpExpressionConverter.ConvertToken(searchRequestsearchTerm);
             if (searchRequestsearchType != null)
             {
-                searchRequest["searchtype"] = ExpressionConverter.ConvertO(searchRequestsearchType);
+                searchRequest["searchtype"] = CSharpExpressionConverter.ConvertToken(searchRequestsearchType);
                 searchRequestpropCount++;
             }
 
             if (searchRequestsearchMode != null)
             {
-                searchRequest["searchmode"] = ExpressionConverter.ConvertO(searchRequestsearchMode);
+                searchRequest["searchmode"] = CSharpExpressionConverter.ConvertToken(searchRequestsearchMode);
                 searchRequestpropCount++;
             }
 
             if (searchRequestrowCount != null)
             {
-                searchRequest["top"] = ExpressionConverter.ConvertO(searchRequestrowCount);
+                searchRequest["top"] = CSharpExpressionConverter.ConvertToken(searchRequestrowCount);
                 searchRequestpropCount++;
             }
 
             if (searchRequestrowFilter != null)
             {
-                searchRequest["filter"] = ExpressionConverter.ConvertO(searchRequestrowFilter);
+                searchRequest["filter"] = CSharpExpressionConverter.ConvertToken(searchRequestrowFilter);
                 searchRequestpropCount++;
             }
 
             if (searchRequesttableFilter != null)
             {
-                searchRequest["entities"] = ExpressionConverter.ConvertO(searchRequesttableFilter);
+                searchRequest["entities"] = CSharpExpressionConverter.ConvertToken(searchRequesttableFilter);
                 searchRequestpropCount++;
             }
 
             if (searchRequestsortBy != null)
             {
-                searchRequest["orderby"] = ExpressionConverter.ConvertO(searchRequestsortBy);
+                searchRequest["orderby"] = CSharpExpressionConverter.ConvertToken(searchRequestsortBy);
                 searchRequestpropCount++;
             }
 
             if (searchRequestfacetQuery != null)
             {
-                searchRequest["facets"] = ExpressionConverter.ConvertO(searchRequestfacetQuery);
+                searchRequest["facets"] = CSharpExpressionConverter.ConvertToken(searchRequestfacetQuery);
                 searchRequestpropCount++;
             }
 
             if (searchRequestskipRows != null)
             {
-                searchRequest["skip"] = ExpressionConverter.ConvertO(searchRequestskipRows);
+                searchRequest["skip"] = CSharpExpressionConverter.ConvertToken(searchRequestskipRows);
                 searchRequestpropCount++;
             }
 
             if (searchRequestreturnRowCount != null)
             {
-                searchRequest["returntotalrecordcount"] = ExpressionConverter.ConvertO(searchRequestreturnRowCount);
+                searchRequest["returntotalrecordcount"] = CSharpExpressionConverter.ConvertToken(searchRequestreturnRowCount);
                 searchRequestpropCount++;
             }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             callPayload.Headers["Consistency"] = Convert.ToString("Strong");
             callPayload.Headers["catalog"] = Convert.ToString("all");
             callPayload.Headers["category"] = Convert.ToString("all");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
             var subscriptionRequest = new JObject();
             var subscriptionRequestpropCount = 0;
             subscriptionRequest["version"] = 1;
@@ -273,32 +273,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             subscriptionRequest["url"] = "@listCallbackUrl()";
             subscriptionRequestpropCount++;
             subscriptionRequestpropCount++;
-            subscriptionRequest["entityname"] = ExpressionConverter.ConvertO(subscriptionRequesttableName);
+            subscriptionRequest["entityname"] = CSharpExpressionConverter.ConvertToken(subscriptionRequesttableName);
             subscriptionRequestpropCount++;
-            subscriptionRequest["message"] = ExpressionConverter.ConvertO(subscriptionRequestchangeType);
+            subscriptionRequest["message"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestchangeType);
             subscriptionRequestpropCount++;
-            subscriptionRequest["scope"] = ExpressionConverter.ConvertO(subscriptionRequestscope);
+            subscriptionRequest["scope"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestscope);
             if (subscriptionRequestselectColumns != null)
             {
-                subscriptionRequest["filteringattributes"] = ExpressionConverter.ConvertO(subscriptionRequestselectColumns);
+                subscriptionRequest["filteringattributes"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestselectColumns);
                 subscriptionRequestpropCount++;
             }
 
             if (subscriptionRequestfilterRows != null)
             {
-                subscriptionRequest["filterexpression"] = ExpressionConverter.ConvertO(subscriptionRequestfilterRows);
+                subscriptionRequest["filterexpression"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestfilterRows);
                 subscriptionRequestpropCount++;
             }
 
             if (subscriptionRequestdelayUntil != null)
             {
-                subscriptionRequest["postponeuntil"] = ExpressionConverter.ConvertO(subscriptionRequestdelayUntil);
+                subscriptionRequest["postponeuntil"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestdelayUntil);
                 subscriptionRequestpropCount++;
             }
 
             if (subscriptionRequestrunAs != null)
             {
-                subscriptionRequest["runas"] = ExpressionConverter.ConvertO(subscriptionRequestrunAs);
+                subscriptionRequest["runas"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestrunAs);
                 subscriptionRequestpropCount++;
             }
 
@@ -316,9 +316,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Consistency"] = Convert.ToString("Strong");
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Headers["catalog"] = ExpressionConverter.Convert(catalog);
-            callPayload.Headers["category"] = ExpressionConverter.Convert(category);
+            callPayload.Headers["organization"] = CSharpExpressionConverter.ConvertO(organization);
+            callPayload.Headers["catalog"] = CSharpExpressionConverter.ConvertO(catalog);
+            callPayload.Headers["category"] = CSharpExpressionConverter.ConvertO(category);
             var subscriptionRequest = new JObject();
             var subscriptionRequestpropCount = 0;
             subscriptionRequest["version"] = 3;
@@ -328,9 +328,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             subscriptionRequest["scope"] = 4;
             subscriptionRequestpropCount++;
             subscriptionRequestpropCount++;
-            subscriptionRequest["entityname"] = ExpressionConverter.ConvertO(subscriptionRequesttableName);
+            subscriptionRequest["entityname"] = CSharpExpressionConverter.ConvertToken(subscriptionRequesttableName);
             subscriptionRequestpropCount++;
-            subscriptionRequest["sdkmessagename"] = ExpressionConverter.ConvertO(subscriptionRequestactionName);
+            subscriptionRequest["sdkmessagename"] = CSharpExpressionConverter.ConvertToken(subscriptionRequestactionName);
             if (subscriptionRequestpropCount > 0)
             {
                 callPayload.Body = subscriptionRequest;

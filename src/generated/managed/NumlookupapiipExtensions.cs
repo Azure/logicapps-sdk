@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
         {
-            var apiCallPath = String.Format("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/validate/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<NumberGetResponse>(callPayload);
         }
 

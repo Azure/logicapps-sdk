@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> id, Expression<Func<string>> cabGuid = null)
         {
-            var apiCallPath = String.Format("/v1/User/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/User/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cabGuid != null)
-                callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
+                callPayload.Queries["cabGuid"] = CSharpExpressionConverter.ConvertO(cabGuid);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
         }
@@ -36,34 +36,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<NewVersionResponse> NewVersion(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<string>> versionDescription = null, Expression<Func<string>> verName = null, Expression<Func<bool>> official = null, Expression<Func<bool>> addToRecent = null, Expression<Func<string>> srcVer = null, Expression<Func<bool>> allocatesubversion = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/new", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/new", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (extension != null)
-                callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
+                callPayload.Queries["extension"] = CSharpExpressionConverter.ConvertO(extension);
             if (versionDescription != null)
-                callPayload.Queries["version_description"] = ExpressionConverter.Convert(versionDescription);
+                callPayload.Queries["version_description"] = CSharpExpressionConverter.ConvertO(versionDescription);
             if (verName != null)
-                callPayload.Queries["verName"] = ExpressionConverter.Convert(verName);
+                callPayload.Queries["verName"] = CSharpExpressionConverter.ConvertO(verName);
             callPayload.Queries["official"] = Convert.ToString(true);
             if (official != null)
-                callPayload.Queries["official"] = ExpressionConverter.Convert(official);
+                callPayload.Queries["official"] = CSharpExpressionConverter.ConvertO(official);
             if (addToRecent != null)
-                callPayload.Queries["addToRecent"] = ExpressionConverter.Convert(addToRecent);
+                callPayload.Queries["addToRecent"] = CSharpExpressionConverter.ConvertO(addToRecent);
             if (srcVer != null)
-                callPayload.Queries["srcVer"] = ExpressionConverter.Convert(srcVer);
+                callPayload.Queries["srcVer"] = CSharpExpressionConverter.ConvertO(srcVer);
             callPayload.Queries["allocatesubversion"] = Convert.ToString(false);
             if (allocatesubversion != null)
-                callPayload.Queries["allocatesubversion"] = ExpressionConverter.Convert(allocatesubversion);
+                callPayload.Queries["allocatesubversion"] = CSharpExpressionConverter.ConvertO(allocatesubversion);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<NewVersionResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocInfo(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RenameDocument(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var standardAttributesObject = new JObject();
             var standardAttributesObjectpropCount = 0;
             standardAttributesObjectpropCount++;
-            standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
+            standardAttributesObject["name"] = CSharpExpressionConverter.ConvertToken(renameBodystandardAttributesnewName);
             if (standardAttributesObjectpropCount > 0)
             {
                 renameBody["standardAttributes"] = standardAttributesObject;
@@ -100,24 +100,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocContent(Expression<Func<string>> id, Expression<Func<bool>> base64 = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["base64"] = Convert.ToString(false);
             if (base64 != null)
-                callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
+                callPayload.Queries["base64"] = CSharpExpressionConverter.ConvertO(base64);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteDoc(Expression<Func<string>> id, Expression<Func<bool>> permanent = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["permanent"] = Convert.ToString(false);
             if (permanent != null)
-                callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
+                callPayload.Queries["permanent"] = CSharpExpressionConverter.ConvertO(permanent);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
         }
@@ -125,16 +125,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (extension != null)
-                callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
+                callPayload.Queries["extension"] = CSharpExpressionConverter.ConvertO(extension);
             callPayload.Queries["base64"] = Convert.ToString(true);
             if (base64 != null)
-                callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
+                callPayload.Queries["base64"] = CSharpExpressionConverter.ConvertO(base64);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -151,11 +151,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetFldContent(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
         }
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction FileFolder(Expression<Func<string>> id, Expression<Func<string>> item, Expression<Func<actionInput>> action)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -172,15 +172,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteFolder(Expression<Func<string>> id, Expression<Func<bool>> permanent = null, Expression<Func<bool>> deleteContents = null)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["permanent"] = Convert.ToString(false);
             if (permanent != null)
-                callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
+                callPayload.Queries["permanent"] = CSharpExpressionConverter.ConvertO(permanent);
             callPayload.Queries["deleteContents"] = Convert.ToString(false);
             if (deleteContents != null)
-                callPayload.Queries["deleteContents"] = ExpressionConverter.Convert(deleteContents);
+                callPayload.Queries["deleteContents"] = CSharpExpressionConverter.ConvertO(deleteContents);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
         }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RenameFolder(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var standardAttributesObject = new JObject();
             var standardAttributesObjectpropCount = 0;
             standardAttributesObjectpropCount++;
-            standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
+            standardAttributesObject["name"] = CSharpExpressionConverter.ConvertToken(renameBodystandardAttributesnewName);
             if (standardAttributesObjectpropCount > 0)
             {
                 renameBody["standardAttributes"] = standardAttributesObject;
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction FollowFolder(Expression<Func<string>> id, Expression<Func<string>> recipients, Expression<Func<sendInput>> send = null)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}/follow", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/follow", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (cabGuid != null)
-                callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
+                callPayload.Queries["cabGuid"] = CSharpExpressionConverter.ConvertO(cabGuid);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<GetCurrentUserInfoResponse>(callPayload);
         }
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocumentVersions(Expression<Func<string>> documentID)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/versionList", ExpressionConverter.ConvertWithUrlEncoding(documentID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/versionList", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocHistory(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> CreateWorkspaceParentChild(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/{1}/{2}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/{2}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateWorkspaceSingleResponse> CreateWorkspaceSingle(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID)
         {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/{1}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetWorkspaceInformation(Expression<Func<string>> workspaceID)
         {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateChildEntryResponse> CreateChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAttributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childID, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -357,37 +357,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var lookupEntryBodypropCount = 0;
             if (lookupEntryBodydescription != null)
             {
-                lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
+                lookupEntryBody["description"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodydescription);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodytype != null)
             {
-                lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
+                lookupEntryBody["defaulting"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodytype);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodylitigationHold != null)
             {
-                lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
+                lookupEntryBody["hold"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodylitigationHold);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodyclosedDate != null)
             {
-                lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
+                lookupEntryBody["closed"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyclosedDate);
                 lookupEntryBodypropCount++;
             }
 
             var accessObject = new JObject();
             var accessObjectpropCount = 0;
             accessObjectpropCount++;
-            accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
+            accessObject["filtered_permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccessfilteredPermissions);
             accessObjectpropCount++;
-            accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
+            accessObject["force_permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccessforcePermssions);
             if (lookupEntryBodyaccesspermissions != null)
             {
-                accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                accessObject["permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccesspermissions);
                 accessObjectpropCount++;
             }
 
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAttributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<DeleteChildEntryResponse> DeleteChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAttributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateEntryResponse> CreateEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -439,37 +439,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var lookupEntryBodypropCount = 0;
             if (lookupEntryBodydescription != null)
             {
-                lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
+                lookupEntryBody["description"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodydescription);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodytype != null)
             {
-                lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
+                lookupEntryBody["defaulting"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodytype);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodylitigationHold != null)
             {
-                lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
+                lookupEntryBody["hold"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodylitigationHold);
                 lookupEntryBodypropCount++;
             }
 
             if (lookupEntryBodyclosedDate != null)
             {
-                lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
+                lookupEntryBody["closed"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyclosedDate);
                 lookupEntryBodypropCount++;
             }
 
             var accessObject = new JObject();
             var accessObjectpropCount = 0;
             accessObjectpropCount++;
-            accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
+            accessObject["filtered_permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccessfilteredPermissions);
             accessObjectpropCount++;
-            accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
+            accessObject["force_permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccessforcePermssions);
             if (lookupEntryBodyaccesspermissions != null)
             {
-                accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                accessObject["permissions"] = CSharpExpressionConverter.ConvertToken(lookupEntryBodyaccesspermissions);
                 accessObjectpropCount++;
             }
 
@@ -490,20 +490,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<orderbyInput>> orderby = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["$orderby"] = Convert.ToString("key");
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.Convert(orderby);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<DeleteLookupEntryResponse> DeleteLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attributeID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -523,17 +523,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<SearchLookupEntriesResponse> SearchLookupEntries(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attributeID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["$orderby"] = Convert.ToString("key");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -546,17 +546,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
             var apiCallPath = "/v2/Search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cabinets"] = ExpressionConverter.Convert(cabinets);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+            callPayload.Queries["cabinets"] = CSharpExpressionConverter.ConvertO(cabinets);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
+            callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (skiptoken != null)
-                callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RefreshWorkspace(Expression<Func<string>> workspaceID)
         {
-            var apiCallPath = String.Format("/v1/Workspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -576,11 +576,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction LockDocument(Expression<Func<string>> id, Expression<Func<string>> comment = null)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/lock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/lock", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+                callPayload.Queries["comment"] = CSharpExpressionConverter.ConvertO(comment);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction UnockDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/unlock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/unlock", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -600,15 +600,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetRepositoryLog(Expression<Func<string>> repositoryID, Expression<Func<logtypeInput>> logtype, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/log", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/log", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["format"] = Convert.ToString("json");
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            callPayload.Queries["Logtype"] = ExpressionConverter.Convert(logtype);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
+            callPayload.Queries["Logtype"] = CSharpExpressionConverter.Convert(logtype);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetRepositoryInformation(Expression<Func<string>> repositoryID)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> GetRepositoryUsers(Expression<Func<string>> repositoryID)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/users", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -639,21 +639,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<string[]> GetRepositoryGroups(Expression<Func<string>> repositoryID, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<bool>> paging = null, Expression<Func<string>> skiptoken = null, Expression<Func<returnInfoInput>> returnInfo = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/groups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["paging"] = Convert.ToString(false);
             if (paging != null)
-                callPayload.Queries["paging"] = ExpressionConverter.Convert(paging);
+                callPayload.Queries["paging"] = CSharpExpressionConverter.ConvertO(paging);
             if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
             callPayload.Queries["returnInfo"] = Convert.ToString("");
             if (returnInfo != null)
-                callPayload.Queries["returnInfo"] = ExpressionConverter.Convert(returnInfo);
+                callPayload.Queries["returnInfo"] = CSharpExpressionConverter.Convert(returnInfo);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<string[]>(callPayload);
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateRepositoryGroupResponse> CreateRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> name, Expression<Func<bool>> external, Expression<Func<bool>> hidden, Expression<Func<bool>> hideMembership)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/group", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/group/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddOrRemoveUserRepository(Expression<Func<string>> repositoryID, Expression<Func<actionInput>> action, Expression<Func<string>> member, Expression<Func<bool>> external, Expression<Func<bool>> deleteIfFederated = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateCollabSpaceResponse> CreateCollabSpace(Expression<Func<string>> workspaceID, Expression<Func<string>> name, Expression<Func<string>> description = null)
         {
-            var apiCallPath = String.Format("/v2/container/{0}/collabspace", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/container/{0}/collabspace", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetCabinetSettings(Expression<Func<string>> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/settings", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/settings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetCabinetInformation(Expression<Func<string>> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<JToken[]> GetCabinetCustomAttributes(Expression<Func<string>> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/customAttributes", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/customAttributes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> GetCabinetDefaultAccess(Expression<Func<string>> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddToOrRemoveGroupFromCabinet(Expression<Func<string>> cabinetID, Expression<Func<actionInput>> action, Expression<Func<string>> id, Expression<Func<bool>> view, Expression<Func<bool>> edit, Expression<Func<bool>> share, Expression<Func<bool>> administer, Expression<Func<bool>> noAccess)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> GetCabinetGroups(Expression<Func<string>> cabinetID)
         {
-            var apiCallPath = String.Format("/v2/cabinet/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/groups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> CreateCabinetExternalGroup(Expression<Func<string>> cabinetID, Expression<Func<string>> name, Expression<Func<optionsInput>> options = null, Expression<Func<accessInput>> access = null, Expression<Func<string>> collaborationSpaceId = null, Expression<Func<collaborationspaceaccessInput>> collaborationspaceaccess = null, Expression<Func<string>> topwsattributegroupkey = null)
         {
-            var apiCallPath = String.Format("/v2/cabinet/{0}/group/external", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/group/external", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction SearchCabinetModifyACLs(Expression<Func<string>> cabinetID, Expression<Func<string>> q, Expression<Func<modeInput>> mode, Expression<Func<string>> newAcl, Expression<Func<string>> email = null, Expression<Func<completionEmailInput>> completionEmail = null)
         {
-            var apiCallPath = String.Format("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -804,16 +804,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetContainerContents(Expression<Func<string>> containerID, Expression<Func<string>> select, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> orderby = null)
         {
-            var apiCallPath = String.Format("/v2/container/{0}", ExpressionConverter.ConvertWithUrlEncoding(containerID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/container/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+            callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             if (skiptoken != null)
-                callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
             if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction(callPayload);
@@ -822,12 +822,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetGroupInformationResponse> GetGroupInformation(Expression<Func<string>> groupID, Expression<Func<bool>> cabMembership = null)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["cabMembership"] = Convert.ToString(false);
             if (cabMembership != null)
-                callPayload.Queries["cabMembership"] = ExpressionConverter.Convert(cabMembership);
+                callPayload.Queries["cabMembership"] = CSharpExpressionConverter.ConvertO(cabMembership);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             return new ApiConnectionAction<GetGroupInformationResponse>(callPayload);
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> GetGroupMembership(Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddOrRemoveGroupMember(Expression<Func<string>> groupID, Expression<Func<actionInput>> action, Expression<Func<string>> member)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -860,17 +860,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     {
         public IWorkflowTrigger SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Queries["$orderby"] = Convert.ToString("relevance desc");
             if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Queries["$orderby"] = CSharpExpressionConverter.Convert(orderby);
             if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }

@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
             var apiCallPath = "/virtual/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-CMI-TENANT-NAME"] = ExpressionConverter.Convert(xCMITENANTNAME);
+            callPayload.Headers["X-CMI-TENANT-NAME"] = CSharpExpressionConverter.ConvertO(xCMITENANTNAME);
             var parameters = new JObject();
             var parameterspropCount = 0;
             parameterspropCount++;
-            parameters["method"] = ExpressionConverter.ConvertO(parametersmethod);
+            parameters["method"] = CSharpExpressionConverter.Convert(parametersmethod);
             parameterspropCount++;
-            parameters["path"] = ExpressionConverter.ConvertO(parameterspath);
+            parameters["path"] = CSharpExpressionConverter.ConvertToken(parameterspath);
             var headersObject = new JObject();
             var headersObjectpropCount = 0;
             if (headersObjectpropCount > 0)
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
 
             if (parametersbody != null)
             {
-                parameters["body"] = ExpressionConverter.ConvertO(parametersbody);
+                parameters["body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
                 parameterspropCount++;
             }
 

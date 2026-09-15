@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             var files = new JObject();
             var filespropCount = 0;
             filespropCount++;
-            files["fileContent"] = ExpressionConverter.ConvertO(filesfileContent);
+            files["fileContent"] = CSharpExpressionConverter.ConvertToken(filesfileContent);
             if (filespropCount > 0)
             {
                 callPayload.Body = files;
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             var file = new JObject();
             var filepropCount = 0;
             filepropCount++;
-            file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+            file["fileContent"] = CSharpExpressionConverter.ConvertToken(filefileContent);
             filepropCount++;
-            file["watermarkText"] = ExpressionConverter.ConvertO(filewatermarkText);
+            file["watermarkText"] = CSharpExpressionConverter.ConvertToken(filewatermarkText);
             if (filepropCount > 0)
             {
                 callPayload.Body = file;
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             var file = new JObject();
             var filepropCount = 0;
             filepropCount++;
-            file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+            file["fileContent"] = CSharpExpressionConverter.ConvertToken(filefileContent);
             filepropCount++;
-            file["password"] = ExpressionConverter.ConvertO(filepassword);
+            file["password"] = CSharpExpressionConverter.ConvertToken(filepassword);
             if (filepropCount > 0)
             {
                 callPayload.Body = file;
@@ -78,24 +78,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             var file = new JObject();
             var filepropCount = 0;
             filepropCount++;
-            file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+            file["fileContent"] = CSharpExpressionConverter.ConvertToken(filefileContent);
             filepropCount++;
-            file["imageContent"] = ExpressionConverter.ConvertO(fileimageContent);
+            file["imageContent"] = CSharpExpressionConverter.ConvertToken(fileimageContent);
             filepropCount++;
-            file["positionX"] = ExpressionConverter.ConvertO(filepositionX);
+            file["positionX"] = CSharpExpressionConverter.ConvertToken(filepositionX);
             filepropCount++;
-            file["positionY"] = ExpressionConverter.ConvertO(filepositionY);
+            file["positionY"] = CSharpExpressionConverter.ConvertToken(filepositionY);
             filepropCount++;
-            file["addType"] = ExpressionConverter.ConvertO(fileaddType);
+            file["addType"] = CSharpExpressionConverter.ConvertToken(fileaddType);
             if (filefromPage != null)
             {
-                file["fromPage"] = ExpressionConverter.ConvertO(filefromPage);
+                file["fromPage"] = CSharpExpressionConverter.ConvertToken(filefromPage);
                 filepropCount++;
             }
 
             if (filetoPage != null)
             {
-                file["toPage"] = ExpressionConverter.ConvertO(filetoPage);
+                file["toPage"] = CSharpExpressionConverter.ConvertToken(filetoPage);
                 filepropCount++;
             }
 

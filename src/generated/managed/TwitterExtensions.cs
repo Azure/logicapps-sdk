@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/usertimeline";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<TweetModel[]>(callPayload);
         }
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<TweetModel[]>(callPayload);
         }
 
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/searchtweets";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
+            callPayload.Queries["searchQuery"] = CSharpExpressionConverter.ConvertO(searchQuery);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             if (sinceId != null)
-                callPayload.Queries["sinceId"] = ExpressionConverter.Convert(sinceId);
+                callPayload.Queries["sinceId"] = CSharpExpressionConverter.ConvertO(sinceId);
             return new ApiConnectionAction<TweetModel[]>(callPayload);
         }
 
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/followers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
         }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
         }
 
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/friends";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["maxResults"] = Convert.ToString(20);
             if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/user";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
             return new ApiConnectionAction<UserDetailsModel>(callPayload);
         }
 
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (tweetText != null)
-                callPayload.Queries["tweetText"] = ExpressionConverter.Convert(tweetText);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["tweetText"] = CSharpExpressionConverter.ConvertO(tweetText);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<TweetResponseModel>(callPayload);
         }
 
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/retweet";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tweetId"] = ExpressionConverter.Convert(tweetId);
+            callPayload.Queries["tweetId"] = CSharpExpressionConverter.ConvertO(tweetId);
             callPayload.Queries["trimUser"] = Convert.ToString(false);
             if (trimUser != null)
-                callPayload.Queries["trimUser"] = ExpressionConverter.Convert(trimUser);
+                callPayload.Queries["trimUser"] = CSharpExpressionConverter.ConvertO(trimUser);
             return new ApiConnectionAction<TweetResponseModel>(callPayload);
         }
     }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
             var apiCallPath = "/onnewtweet";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
+            callPayload.Queries["searchQuery"] = CSharpExpressionConverter.ConvertO(searchQuery);
             return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, triggerName, recurrence);
         }
     }

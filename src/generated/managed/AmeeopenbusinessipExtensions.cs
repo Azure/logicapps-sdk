@@ -18,52 +18,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (companyName != null)
-                callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
+                callPayload.Queries["company_name"] = CSharpExpressionConverter.ConvertO(companyName);
             if (gupAmeeCompanyId != null)
-                callPayload.Queries["gup_amee_company_id"] = ExpressionConverter.Convert(gupAmeeCompanyId);
+                callPayload.Queries["gup_amee_company_id"] = CSharpExpressionConverter.ConvertO(gupAmeeCompanyId);
             if (isGup != null)
-                callPayload.Queries["is_gup"] = ExpressionConverter.Convert(isGup);
+                callPayload.Queries["is_gup"] = CSharpExpressionConverter.ConvertO(isGup);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (postcode != null)
-                callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
+                callPayload.Queries["postcode"] = CSharpExpressionConverter.ConvertO(postcode);
             if (provinceName != null)
-                callPayload.Queries["province_name"] = ExpressionConverter.Convert(provinceName);
+                callPayload.Queries["province_name"] = CSharpExpressionConverter.ConvertO(provinceName);
             if (ukSic2007 != null)
-                callPayload.Queries["uk_sic_2007"] = ExpressionConverter.Convert(ukSic2007);
+                callPayload.Queries["uk_sic_2007"] = CSharpExpressionConverter.ConvertO(ukSic2007);
             if (minEmployees != null)
-                callPayload.Queries["min_employees"] = ExpressionConverter.Convert(minEmployees);
+                callPayload.Queries["min_employees"] = CSharpExpressionConverter.ConvertO(minEmployees);
             if (maxEmployees != null)
-                callPayload.Queries["max_employees"] = ExpressionConverter.Convert(maxEmployees);
+                callPayload.Queries["max_employees"] = CSharpExpressionConverter.ConvertO(maxEmployees);
             if (minAnnualSalesLocal != null)
-                callPayload.Queries["min_annual_sales_local"] = ExpressionConverter.Convert(minAnnualSalesLocal);
+                callPayload.Queries["min_annual_sales_local"] = CSharpExpressionConverter.ConvertO(minAnnualSalesLocal);
             if (maxAnnualSalesLocal != null)
-                callPayload.Queries["max_annual_sales_local"] = ExpressionConverter.Convert(maxAnnualSalesLocal);
+                callPayload.Queries["max_annual_sales_local"] = CSharpExpressionConverter.ConvertO(maxAnnualSalesLocal);
             if (minScore != null)
-                callPayload.Queries["min_score"] = ExpressionConverter.Convert(minScore);
+                callPayload.Queries["min_score"] = CSharpExpressionConverter.ConvertO(minScore);
             if (maxScore != null)
-                callPayload.Queries["max_score"] = ExpressionConverter.Convert(maxScore);
+                callPayload.Queries["max_score"] = CSharpExpressionConverter.ConvertO(maxScore);
             if (fromLatLon != null)
-                callPayload.Queries["from_lat_lon"] = ExpressionConverter.Convert(fromLatLon);
+                callPayload.Queries["from_lat_lon"] = CSharpExpressionConverter.ConvertO(fromLatLon);
             if (distance != null)
-                callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
+                callPayload.Queries["distance"] = CSharpExpressionConverter.ConvertO(distance);
             if (stats != null)
-                callPayload.Queries["stats"] = ExpressionConverter.Convert(stats);
+                callPayload.Queries["stats"] = CSharpExpressionConverter.ConvertO(stats);
             return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
         {
-            var apiCallPath = String.Format("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             return new ApiConnectionAction<GetCompanyResponse>(callPayload);
         }
     }

@@ -20,46 +20,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             requestpropCount++;
-            request["template"] = ExpressionConverter.ConvertO(requesttemplate);
+            request["template"] = CSharpExpressionConverter.ConvertToken(requesttemplate);
             requestpropCount++;
-            request["leafUrl"] = ExpressionConverter.ConvertO(requestleafURL);
+            request["leafUrl"] = CSharpExpressionConverter.ConvertToken(requestleafURL);
             if (requestdescription != null)
             {
-                request["description"] = ExpressionConverter.ConvertO(requestdescription);
+                request["description"] = CSharpExpressionConverter.ConvertToken(requestdescription);
                 requestpropCount++;
             }
 
             if (requestlcid != null)
             {
-                request["lcid"] = ExpressionConverter.ConvertO(requestlcid);
+                request["lcid"] = CSharpExpressionConverter.ConvertToken(requestlcid);
                 requestpropCount++;
             }
 
             if (requestinheritPermissions != null)
             {
-                request["inheritPermissions"] = ExpressionConverter.ConvertO(requestinheritPermissions);
+                request["inheritPermissions"] = CSharpExpressionConverter.ConvertToken(requestinheritPermissions);
                 requestpropCount++;
             }
 
             if (requestinheritNavigation != null)
             {
-                request["inheritNavigation"] = ExpressionConverter.ConvertO(requestinheritNavigation);
+                request["inheritNavigation"] = CSharpExpressionConverter.ConvertToken(requestinheritNavigation);
                 requestpropCount++;
             }
 
             if (requestonTopNavigation != null)
             {
-                request["onTopNav"] = ExpressionConverter.ConvertO(requestonTopNavigation);
+                request["onTopNav"] = CSharpExpressionConverter.ConvertToken(requestonTopNavigation);
                 requestpropCount++;
             }
 
             if (requestonQuickLaunch != null)
             {
-                request["onQuickLaunch"] = ExpressionConverter.ConvertO(requestonQuickLaunch);
+                request["onQuickLaunch"] = CSharpExpressionConverter.ConvertToken(requestonQuickLaunch);
                 requestpropCount++;
             }
 
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ChangePermissions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
+            callPayload.Queries["actionType"] = CSharpExpressionConverter.Convert(actionType);
+            callPayload.Queries["target"] = CSharpExpressionConverter.Convert(target);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(request);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -92,12 +92,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["featureId"] = ExpressionConverter.ConvertO(requestfeatureID);
+            request["featureId"] = CSharpExpressionConverter.ConvertToken(requestfeatureID);
             if (requestforce != null)
             {
-                request["force"] = ExpressionConverter.ConvertO(requestforce);
+                request["force"] = CSharpExpressionConverter.ConvertToken(requestforce);
                 requestpropCount++;
             }
 
@@ -118,12 +118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["featureId"] = ExpressionConverter.ConvertO(requestfeatureID);
+            request["featureId"] = CSharpExpressionConverter.ConvertToken(requestfeatureID);
             if (requestforce != null)
             {
-                request["force"] = ExpressionConverter.ConvertO(requestforce);
+                request["force"] = CSharpExpressionConverter.ConvertToken(requestforce);
                 requestpropCount++;
             }
 
@@ -144,26 +144,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             requestpropCount++;
-            request["template"] = ExpressionConverter.ConvertO(requesttemplate);
+            request["template"] = CSharpExpressionConverter.ConvertToken(requesttemplate);
             if (requestpartialURL != null)
             {
-                request["partialUrl"] = ExpressionConverter.ConvertO(requestpartialURL);
+                request["partialUrl"] = CSharpExpressionConverter.ConvertToken(requestpartialURL);
                 requestpropCount++;
             }
 
             if (requestdescription != null)
             {
-                request["description"] = ExpressionConverter.ConvertO(requestdescription);
+                request["description"] = CSharpExpressionConverter.ConvertToken(requestdescription);
                 requestpropCount++;
             }
 
             if (requestonQuickLaunch != null)
             {
-                request["onQuickLaunch"] = ExpressionConverter.ConvertO(requestonQuickLaunch);
+                request["onQuickLaunch"] = CSharpExpressionConverter.ConvertToken(requestonQuickLaunch);
                 requestpropCount++;
             }
 
@@ -184,11 +184,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupType"] = ExpressionConverter.ConvertO(requestgroupType);
+            request["groupType"] = CSharpExpressionConverter.Convert(requestgroupType);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -206,11 +206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -250,9 +250,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestdocumentURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -270,14 +270,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["documentSetName"] = ExpressionConverter.ConvertO(requestdocumentSetName);
+            request["documentSetName"] = CSharpExpressionConverter.ConvertToken(requestdocumentSetName);
             requestpropCount++;
-            request["targetListUrl"] = ExpressionConverter.ConvertO(requesttargetList);
+            request["targetListUrl"] = CSharpExpressionConverter.ConvertToken(requesttargetList);
             if (requestcontentType != null)
             {
-                request["contentType"] = ExpressionConverter.ConvertO(requestcontentType);
+                request["contentType"] = CSharpExpressionConverter.ConvertToken(requestcontentType);
                 requestpropCount++;
             }
 
@@ -298,11 +298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -320,11 +320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -342,9 +342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["folderUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
+            request["folderUrl"] = CSharpExpressionConverter.ConvertToken(requestfolderURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -362,11 +362,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["targetListUrl"] = ExpressionConverter.ConvertO(requesttargetList);
+            request["targetListUrl"] = CSharpExpressionConverter.ConvertToken(requesttargetList);
             requestpropCount++;
-            request["folderPath"] = ExpressionConverter.ConvertO(requestfolderPath);
+            request["folderPath"] = CSharpExpressionConverter.ConvertToken(requestfolderPath);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -384,9 +384,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestfolderURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -404,11 +404,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -426,11 +426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
+            request["sourceUrl"] = CSharpExpressionConverter.ConvertToken(requestsourceURL);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -448,12 +448,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["documentUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
+            request["documentUrl"] = CSharpExpressionConverter.ConvertToken(requestdocumentURL);
             if (requestcomment != null)
             {
-                request["comment"] = ExpressionConverter.ConvertO(requestcomment);
+                request["comment"] = CSharpExpressionConverter.ConvertToken(requestcomment);
                 requestpropCount++;
             }
 
@@ -474,9 +474,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["documentUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
+            request["documentUrl"] = CSharpExpressionConverter.ConvertToken(requestdocumentURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -491,8 +491,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateModernSite";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteType"] = ExpressionConverter.Convert(siteType);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
+            callPayload.Queries["siteType"] = CSharpExpressionConverter.Convert(siteType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(request);
             return new ApiConnectionAction<WebUrlResponse>(callPayload);
         }
 
@@ -505,9 +505,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["url"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["siteDesign"] = ExpressionConverter.ConvertO(requestsiteDesign);
+            request["siteDesign"] = CSharpExpressionConverter.ConvertToken(requestsiteDesign);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -525,18 +525,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             if (requestgroupDescription != null)
             {
-                request["groupDescription"] = ExpressionConverter.ConvertO(requestgroupDescription);
+                request["groupDescription"] = CSharpExpressionConverter.ConvertToken(requestgroupDescription);
                 requestpropCount++;
             }
 
             if (requestgroupOwner != null)
             {
-                request["userLogin"] = ExpressionConverter.ConvertO(requestgroupOwner);
+                request["userLogin"] = CSharpExpressionConverter.ConvertToken(requestgroupOwner);
                 requestpropCount++;
             }
 
@@ -557,9 +557,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -577,56 +577,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             var propertiesObject = new JObject();
             var propertiesObjectpropCount = 0;
             if (requestpropertiestitle != null)
             {
-                propertiesObject["title"] = ExpressionConverter.ConvertO(requestpropertiestitle);
+                propertiesObject["title"] = CSharpExpressionConverter.ConvertToken(requestpropertiestitle);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesdescription != null)
             {
-                propertiesObject["description"] = ExpressionConverter.ConvertO(requestpropertiesdescription);
+                propertiesObject["description"] = CSharpExpressionConverter.ConvertToken(requestpropertiesdescription);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesowner != null)
             {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(requestpropertiesowner);
+                propertiesObject["owner"] = CSharpExpressionConverter.ConvertToken(requestpropertiesowner);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesallowMembersEditMembership != null)
             {
-                propertiesObject["allowMembersEditMembership"] = ExpressionConverter.ConvertO(requestpropertiesallowMembersEditMembership);
+                propertiesObject["allowMembersEditMembership"] = CSharpExpressionConverter.ConvertToken(requestpropertiesallowMembersEditMembership);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesallowRequestToJoinLeave != null)
             {
-                propertiesObject["allowRequestToJoinLeave"] = ExpressionConverter.ConvertO(requestpropertiesallowRequestToJoinLeave);
+                propertiesObject["allowRequestToJoinLeave"] = CSharpExpressionConverter.ConvertToken(requestpropertiesallowRequestToJoinLeave);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesautoAcceptRequestToJoinLeave != null)
             {
-                propertiesObject["autoAcceptRequestToJoinLeave"] = ExpressionConverter.ConvertO(requestpropertiesautoAcceptRequestToJoinLeave);
+                propertiesObject["autoAcceptRequestToJoinLeave"] = CSharpExpressionConverter.ConvertToken(requestpropertiesautoAcceptRequestToJoinLeave);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesonlyAllowMembersViewMembership != null)
             {
-                propertiesObject["onlyAllowMembersViewMembership"] = ExpressionConverter.ConvertO(requestpropertiesonlyAllowMembersViewMembership);
+                propertiesObject["onlyAllowMembersViewMembership"] = CSharpExpressionConverter.ConvertToken(requestpropertiesonlyAllowMembersViewMembership);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesrequestToJoinLeaveEmailSetting != null)
             {
-                propertiesObject["requestToJoinLeaveEmailSetting"] = ExpressionConverter.ConvertO(requestpropertiesrequestToJoinLeaveEmailSetting);
+                propertiesObject["requestToJoinLeaveEmailSetting"] = CSharpExpressionConverter.ConvertToken(requestpropertiesrequestToJoinLeaveEmailSetting);
                 propertiesObjectpropCount++;
             }
 
@@ -653,9 +653,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -673,14 +673,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
+            request["userLogin"] = CSharpExpressionConverter.ConvertToken(requestuser);
             if (requestsendEmail != null)
             {
-                request["sendEmail"] = ExpressionConverter.ConvertO(requestsendEmail);
+                request["sendEmail"] = CSharpExpressionConverter.ConvertToken(requestsendEmail);
                 requestpropCount++;
             }
 
@@ -701,11 +701,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
+            request["userLogin"] = CSharpExpressionConverter.ConvertToken(requestuser);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -723,9 +723,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -743,11 +743,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
+            request["groupName"] = CSharpExpressionConverter.ConvertToken(requestgroupName);
             requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
+            request["userLogin"] = CSharpExpressionConverter.ConvertToken(requestuser);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -765,138 +765,138 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             var propertiesObject = new JObject();
             var propertiesObjectpropCount = 0;
             if (requestpropertiestitle != null)
             {
-                propertiesObject["title"] = ExpressionConverter.ConvertO(requestpropertiestitle);
+                propertiesObject["title"] = CSharpExpressionConverter.ConvertToken(requestpropertiestitle);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesdescription != null)
             {
-                propertiesObject["description"] = ExpressionConverter.ConvertO(requestpropertiesdescription);
+                propertiesObject["description"] = CSharpExpressionConverter.ConvertToken(requestpropertiesdescription);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesquickLaunchEnabled != null)
             {
-                propertiesObject["quickLaunchEnabled"] = ExpressionConverter.ConvertO(requestpropertiesquickLaunchEnabled);
+                propertiesObject["quickLaunchEnabled"] = CSharpExpressionConverter.ConvertToken(requestpropertiesquickLaunchEnabled);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiestreeViewEnabled != null)
             {
-                propertiesObject["treeViewEnabled"] = ExpressionConverter.ConvertO(requestpropertiestreeViewEnabled);
+                propertiesObject["treeViewEnabled"] = CSharpExpressionConverter.ConvertToken(requestpropertiestreeViewEnabled);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiessiteLogoURL != null)
             {
-                propertiesObject["siteLogoUrl"] = ExpressionConverter.ConvertO(requestpropertiessiteLogoURL);
+                propertiesObject["siteLogoUrl"] = CSharpExpressionConverter.ConvertToken(requestpropertiessiteLogoURL);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesalternateCssURL != null)
             {
-                propertiesObject["alternateCssUrl"] = ExpressionConverter.ConvertO(requestpropertiesalternateCssURL);
+                propertiesObject["alternateCssUrl"] = CSharpExpressionConverter.ConvertToken(requestpropertiesalternateCssURL);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesassociatedMemberGroup != null)
             {
-                propertiesObject["associatedMemberGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedMemberGroup);
+                propertiesObject["associatedMemberGroup"] = CSharpExpressionConverter.ConvertToken(requestpropertiesassociatedMemberGroup);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesassociatedOwnerGroup != null)
             {
-                propertiesObject["associatedOwnerGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedOwnerGroup);
+                propertiesObject["associatedOwnerGroup"] = CSharpExpressionConverter.ConvertToken(requestpropertiesassociatedOwnerGroup);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesassociatedVisitorGroup != null)
             {
-                propertiesObject["associatedVisitorGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedVisitorGroup);
+                propertiesObject["associatedVisitorGroup"] = CSharpExpressionConverter.ConvertToken(requestpropertiesassociatedVisitorGroup);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiescontainsConfidentialInfo != null)
             {
-                propertiesObject["containsConfidentialInfo"] = ExpressionConverter.ConvertO(requestpropertiescontainsConfidentialInfo);
+                propertiesObject["containsConfidentialInfo"] = CSharpExpressionConverter.ConvertToken(requestpropertiescontainsConfidentialInfo);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiescustomMasterURL != null)
             {
-                propertiesObject["customMasterUrl"] = ExpressionConverter.ConvertO(requestpropertiescustomMasterURL);
+                propertiesObject["customMasterUrl"] = CSharpExpressionConverter.ConvertToken(requestpropertiescustomMasterURL);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesenableMinimalDownload != null)
             {
-                propertiesObject["enableMinimalDownload"] = ExpressionConverter.ConvertO(requestpropertiesenableMinimalDownload);
+                propertiesObject["enableMinimalDownload"] = CSharpExpressionConverter.ConvertToken(requestpropertiesenableMinimalDownload);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesisMultilingual != null)
             {
-                propertiesObject["isMultilingual"] = ExpressionConverter.ConvertO(requestpropertiesisMultilingual);
+                propertiesObject["isMultilingual"] = CSharpExpressionConverter.ConvertToken(requestpropertiesisMultilingual);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesmasterURL != null)
             {
-                propertiesObject["masterUrl"] = ExpressionConverter.ConvertO(requestpropertiesmasterURL);
+                propertiesObject["masterUrl"] = CSharpExpressionConverter.ConvertToken(requestpropertiesmasterURL);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesmembersCanShare != null)
             {
-                propertiesObject["membersCanShare"] = ExpressionConverter.ConvertO(requestpropertiesmembersCanShare);
+                propertiesObject["membersCanShare"] = CSharpExpressionConverter.ConvertToken(requestpropertiesmembersCanShare);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesnoCrawl != null)
             {
-                propertiesObject["noCrawl"] = ExpressionConverter.ConvertO(requestpropertiesnoCrawl);
+                propertiesObject["noCrawl"] = CSharpExpressionConverter.ConvertToken(requestpropertiesnoCrawl);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesoverwriteTranslationsOnChange != null)
             {
-                propertiesObject["overwriteTranslationsOnChange"] = ExpressionConverter.ConvertO(requestpropertiesoverwriteTranslationsOnChange);
+                propertiesObject["overwriteTranslationsOnChange"] = CSharpExpressionConverter.ConvertToken(requestpropertiesoverwriteTranslationsOnChange);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesrequestAccessEmail != null)
             {
-                propertiesObject["requestAccessEmail"] = ExpressionConverter.ConvertO(requestpropertiesrequestAccessEmail);
+                propertiesObject["requestAccessEmail"] = CSharpExpressionConverter.ConvertToken(requestpropertiesrequestAccessEmail);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiessaveSiteAsTemplateEnabled != null)
             {
-                propertiesObject["saveSiteAsTemplateEnabled"] = ExpressionConverter.ConvertO(requestpropertiessaveSiteAsTemplateEnabled);
+                propertiesObject["saveSiteAsTemplateEnabled"] = CSharpExpressionConverter.ConvertToken(requestpropertiessaveSiteAsTemplateEnabled);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesserverRelativeURL != null)
             {
-                propertiesObject["serverRelativeUrl"] = ExpressionConverter.ConvertO(requestpropertiesserverRelativeURL);
+                propertiesObject["serverRelativeUrl"] = CSharpExpressionConverter.ConvertToken(requestpropertiesserverRelativeURL);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiessyndicationEnabled != null)
             {
-                propertiesObject["syndicationEnabled"] = ExpressionConverter.ConvertO(requestpropertiessyndicationEnabled);
+                propertiesObject["syndicationEnabled"] = CSharpExpressionConverter.ConvertToken(requestpropertiessyndicationEnabled);
                 propertiesObjectpropCount++;
             }
 
             if (requestpropertiesuIVersion != null)
             {
-                propertiesObject["uiVersion"] = ExpressionConverter.ConvertO(requestpropertiesuIVersion);
+                propertiesObject["uiVersion"] = CSharpExpressionConverter.ConvertToken(requestpropertiesuIVersion);
                 propertiesObjectpropCount++;
             }
 
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -941,9 +941,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["optionName"] = ExpressionConverter.ConvertO(requestoptionName);
+            request["optionName"] = CSharpExpressionConverter.ConvertToken(requestoptionName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -958,8 +958,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/InviteExternalUserToSharePoint";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
+            callPayload.Queries["target"] = CSharpExpressionConverter.Convert(target);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(request);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -972,16 +972,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationFolderURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationFolderURL);
             if (requestoverwrite != null)
             {
-                request["overwrite"] = ExpressionConverter.ConvertO(requestoverwrite);
+                request["overwrite"] = CSharpExpressionConverter.ConvertToken(requestoverwrite);
                 requestpropCount++;
             }
 
@@ -1002,16 +1002,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationFolderURL);
+            request["destinationUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationFolderURL);
             if (requestoverwrite != null)
             {
-                request["overwrite"] = ExpressionConverter.ConvertO(requestoverwrite);
+                request["overwrite"] = CSharpExpressionConverter.ConvertToken(requestoverwrite);
                 requestpropCount++;
             }
 
@@ -1032,14 +1032,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["contentTypeName"] = ExpressionConverter.ConvertO(requestcontentTypeName);
+            request["contentTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontentTypeName);
             if (requestmakeItDefault != null)
             {
-                request["makeItDefault"] = ExpressionConverter.ConvertO(requestmakeItDefault);
+                request["makeItDefault"] = CSharpExpressionConverter.ConvertToken(requestmakeItDefault);
                 requestpropCount++;
             }
 
@@ -1060,16 +1060,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             requestpropCount++;
-            request["destinationListUrl"] = ExpressionConverter.ConvertO(requestdestinationListURL);
+            request["destinationListUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationListURL);
             if (requestcopyAttachments != null)
             {
-                request["copyAttachments"] = ExpressionConverter.ConvertO(requestcopyAttachments);
+                request["copyAttachments"] = CSharpExpressionConverter.ConvertToken(requestcopyAttachments);
                 requestpropCount++;
             }
 
@@ -1090,16 +1090,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             requestpropCount++;
-            request["destinationListUrl"] = ExpressionConverter.ConvertO(requestdestinationListURL);
+            request["destinationListUrl"] = CSharpExpressionConverter.ConvertToken(requestdestinationListURL);
             if (requestmoveAttachments != null)
             {
-                request["copyAttachments"] = ExpressionConverter.ConvertO(requestmoveAttachments);
+                request["copyAttachments"] = CSharpExpressionConverter.ConvertToken(requestmoveAttachments);
                 requestpropCount++;
             }
 
@@ -1120,9 +1120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["workflowName"] = ExpressionConverter.ConvertO(requestworkflowName);
+            request["workflowName"] = CSharpExpressionConverter.ConvertToken(requestworkflowName);
             var inputParametersObject = new JObject();
             var inputParametersObjectpropCount = 0;
             if (inputParametersObjectpropCount > 0)
@@ -1132,9 +1132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             }
 
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1152,9 +1152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["workflowName"] = ExpressionConverter.ConvertO(requestworkflowName);
+            request["workflowName"] = CSharpExpressionConverter.ConvertToken(requestworkflowName);
             var inputParametersObject = new JObject();
             var inputParametersObjectpropCount = 0;
             if (inputParametersObjectpropCount > 0)
@@ -1180,17 +1180,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             if (requestfolderURL != null)
             {
-                request["folderUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
+                request["folderUrl"] = CSharpExpressionConverter.ConvertToken(requestfolderURL);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["camlQuery"] = ExpressionConverter.ConvertO(requestcAMLQuery);
+            request["camlQuery"] = CSharpExpressionConverter.ConvertToken(requestcAMLQuery);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1208,13 +1208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
+            request["listUrl"] = CSharpExpressionConverter.ConvertToken(requestlistURL);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemID);
             requestpropCount++;
-            request["fieldName"] = ExpressionConverter.ConvertO(requestfieldName);
+            request["fieldName"] = CSharpExpressionConverter.ConvertToken(requestfieldName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1232,54 +1232,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["xmlTemplateContent"] = ExpressionConverter.ConvertO(requesttemplateContent);
+            request["xmlTemplateContent"] = CSharpExpressionConverter.ConvertToken(requesttemplateContent);
             if (requestoverwriteSystemPropertyBagValues != null)
             {
-                request["overwriteSystemPropertyBagValues"] = ExpressionConverter.ConvertO(requestoverwriteSystemPropertyBagValues);
+                request["overwriteSystemPropertyBagValues"] = CSharpExpressionConverter.ConvertToken(requestoverwriteSystemPropertyBagValues);
                 requestpropCount++;
             }
 
             if (requestignoreDuplicateDataRowErrors != null)
             {
-                request["ignoreDuplicateDataRowErrors"] = ExpressionConverter.ConvertO(requestignoreDuplicateDataRowErrors);
+                request["ignoreDuplicateDataRowErrors"] = CSharpExpressionConverter.ConvertToken(requestignoreDuplicateDataRowErrors);
                 requestpropCount++;
             }
 
             if (requestclearNavigation != null)
             {
-                request["clearNavigation"] = ExpressionConverter.ConvertO(requestclearNavigation);
+                request["clearNavigation"] = CSharpExpressionConverter.ConvertToken(requestclearNavigation);
                 requestpropCount++;
             }
 
             if (requestprovisionContentTypesToSubWebs != null)
             {
-                request["provisionContentTypesToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionContentTypesToSubWebs);
+                request["provisionContentTypesToSubWebs"] = CSharpExpressionConverter.ConvertToken(requestprovisionContentTypesToSubWebs);
                 requestpropCount++;
             }
 
             if (requestprovisionFieldsToSubWebs != null)
             {
-                request["provisionFieldsToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionFieldsToSubWebs);
+                request["provisionFieldsToSubWebs"] = CSharpExpressionConverter.ConvertToken(requestprovisionFieldsToSubWebs);
                 requestpropCount++;
             }
 
             if (requesthandlers != null)
             {
-                request["handlers"] = ExpressionConverter.ConvertO(requesthandlers);
+                request["handlers"] = CSharpExpressionConverter.ConvertToken(requesthandlers);
                 requestpropCount++;
             }
 
             if (requestexcludeHandlers != null)
             {
-                request["excludeHandlers"] = ExpressionConverter.ConvertO(requestexcludeHandlers);
+                request["excludeHandlers"] = CSharpExpressionConverter.ConvertToken(requestexcludeHandlers);
                 requestpropCount++;
             }
 
             if (requestparameters != null)
             {
-                request["parameters"] = ExpressionConverter.ConvertO(requestparameters);
+                request["parameters"] = CSharpExpressionConverter.ConvertToken(requestparameters);
                 requestpropCount++;
             }
 
@@ -1300,54 +1300,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["xmlTemplateContent"] = ExpressionConverter.ConvertO(requesttemplateContent);
+            request["xmlTemplateContent"] = CSharpExpressionConverter.ConvertToken(requesttemplateContent);
             if (requestoverwriteSystemPropertyBagValues != null)
             {
-                request["overwriteSystemPropertyBagValues"] = ExpressionConverter.ConvertO(requestoverwriteSystemPropertyBagValues);
+                request["overwriteSystemPropertyBagValues"] = CSharpExpressionConverter.ConvertToken(requestoverwriteSystemPropertyBagValues);
                 requestpropCount++;
             }
 
             if (requestignoreDuplicateDataRowErrors != null)
             {
-                request["ignoreDuplicateDataRowErrors"] = ExpressionConverter.ConvertO(requestignoreDuplicateDataRowErrors);
+                request["ignoreDuplicateDataRowErrors"] = CSharpExpressionConverter.ConvertToken(requestignoreDuplicateDataRowErrors);
                 requestpropCount++;
             }
 
             if (requestclearNavigation != null)
             {
-                request["clearNavigation"] = ExpressionConverter.ConvertO(requestclearNavigation);
+                request["clearNavigation"] = CSharpExpressionConverter.ConvertToken(requestclearNavigation);
                 requestpropCount++;
             }
 
             if (requestprovisionContentTypesToSubWebs != null)
             {
-                request["provisionContentTypesToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionContentTypesToSubWebs);
+                request["provisionContentTypesToSubWebs"] = CSharpExpressionConverter.ConvertToken(requestprovisionContentTypesToSubWebs);
                 requestpropCount++;
             }
 
             if (requestprovisionFieldsToSubWebs != null)
             {
-                request["provisionFieldsToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionFieldsToSubWebs);
+                request["provisionFieldsToSubWebs"] = CSharpExpressionConverter.ConvertToken(requestprovisionFieldsToSubWebs);
                 requestpropCount++;
             }
 
             if (requesthandlers != null)
             {
-                request["handlers"] = ExpressionConverter.ConvertO(requesthandlers);
+                request["handlers"] = CSharpExpressionConverter.ConvertToken(requesthandlers);
                 requestpropCount++;
             }
 
             if (requestexcludeHandlers != null)
             {
-                request["excludeHandlers"] = ExpressionConverter.ConvertO(requestexcludeHandlers);
+                request["excludeHandlers"] = CSharpExpressionConverter.ConvertToken(requestexcludeHandlers);
                 requestpropCount++;
             }
 
             if (requestparameters != null)
             {
-                request["parameters"] = ExpressionConverter.ConvertO(requestparameters);
+                request["parameters"] = CSharpExpressionConverter.ConvertToken(requestparameters);
                 requestpropCount++;
             }
 
@@ -1368,26 +1368,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["location"] = ExpressionConverter.ConvertO(requestlocation);
+            request["location"] = CSharpExpressionConverter.Convert(requestlocation);
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             if (requestparent != null)
             {
-                request["parent"] = ExpressionConverter.ConvertO(requestparent);
+                request["parent"] = CSharpExpressionConverter.ConvertToken(requestparent);
                 requestpropCount++;
             }
 
             if (requesturl != null)
             {
-                request["url"] = ExpressionConverter.ConvertO(requesturl);
+                request["url"] = CSharpExpressionConverter.ConvertToken(requesturl);
                 requestpropCount++;
             }
 
             if (requestprepend != null)
             {
-                request["prepend"] = ExpressionConverter.ConvertO(requestprepend);
+                request["prepend"] = CSharpExpressionConverter.ConvertToken(requestprepend);
                 requestpropCount++;
             }
 
@@ -1408,14 +1408,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["location"] = ExpressionConverter.ConvertO(requestlocation);
+            request["location"] = CSharpExpressionConverter.Convert(requestlocation);
             requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
+            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
             if (requestparent != null)
             {
-                request["parent"] = ExpressionConverter.ConvertO(requestparent);
+                request["parent"] = CSharpExpressionConverter.ConvertToken(requestparent);
                 requestpropCount++;
             }
 
@@ -1436,11 +1436,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
+            request["listName"] = CSharpExpressionConverter.ConvertToken(requestlistName);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemIDOrURL);
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (dataObjectpropCount > 0)
@@ -1466,11 +1466,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
+            request["listName"] = CSharpExpressionConverter.ConvertToken(requestlistName);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemIDOrURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1488,11 +1488,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
+            request["spUrl"] = CSharpExpressionConverter.ConvertToken(requestsharePointSiteURL);
             requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
+            request["listName"] = CSharpExpressionConverter.ConvertToken(requestlistName);
             requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
+            request["itemId"] = CSharpExpressionConverter.ConvertToken(requestitemIDOrURL);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1510,10 +1510,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["content"] = ExpressionConverter.ConvertO(requestcontentOfCSVDocument);
+            request["content"] = CSharpExpressionConverter.ConvertToken(requestcontentOfCSVDocument);
             if (requestdelimiter != null)
             {
-                request["delimiter"] = ExpressionConverter.ConvertO(requestdelimiter);
+                request["delimiter"] = CSharpExpressionConverter.Convert(requestdelimiter);
                 requestpropCount++;
             }
 
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             {
                 if (requestlocale != null)
                 {
-                    request["locale"] = ExpressionConverter.ConvertO(requestlocale);
+                    request["locale"] = CSharpExpressionConverter.Convert(requestlocale);
                     requestpropCount++;
                 }
 
@@ -1535,15 +1535,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
             if (requestlimit != null)
             {
-                request["limit"] = ExpressionConverter.ConvertO(requestlimit);
+                request["limit"] = CSharpExpressionConverter.ConvertToken(requestlimit);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["headers"] = ExpressionConverter.ConvertO(requestheaders);
+            request["headers"] = CSharpExpressionConverter.ConvertToken(requestheaders);
             if (requestskipFirstLine != null)
             {
-                request["skipFirstLine"] = ExpressionConverter.ConvertO(requestskipFirstLine);
+                request["skipFirstLine"] = CSharpExpressionConverter.ConvertToken(requestskipFirstLine);
                 requestpropCount++;
             }
 
@@ -1564,9 +1564,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
+            request["pattern"] = CSharpExpressionConverter.ConvertToken(requestpattern);
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requesttext);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -1584,12 +1584,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
+            request["pattern"] = CSharpExpressionConverter.ConvertToken(requestpattern);
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requesttext);
             if (requestreplacement != null)
             {
-                request["replacement"] = ExpressionConverter.ConvertO(requestreplacement);
+                request["replacement"] = CSharpExpressionConverter.ConvertToken(requestreplacement);
                 requestpropCount++;
             }
 
@@ -1610,9 +1610,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
+            request["pattern"] = CSharpExpressionConverter.ConvertToken(requestpattern);
             requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
+            request["text"] = CSharpExpressionConverter.ConvertToken(requesttext);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;

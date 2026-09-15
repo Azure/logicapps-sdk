@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             var sendMessageOperationInputpropCount = 0;
             if (sendMessageOperationInputmessageVisibilityDelayInSeconds != null)
             {
-                sendMessageOperationInput["messageVisibilityDelaySeconds"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageVisibilityDelayInSeconds);
+                sendMessageOperationInput["messageVisibilityDelaySeconds"] = CSharpExpressionConverter.ConvertToken(sendMessageOperationInputmessageVisibilityDelayInSeconds);
                 sendMessageOperationInputpropCount++;
             }
 
             if (sendMessageOperationInputmessageContent != null)
             {
-                sendMessageOperationInput["messageContent"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageContent);
+                sendMessageOperationInput["messageContent"] = CSharpExpressionConverter.ConvertToken(sendMessageOperationInputmessageContent);
                 sendMessageOperationInputpropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             var apiCallPath = "/message";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["messageReceiptHandle"] = ExpressionConverter.Convert(messageReceiptHandle);
+            callPayload.Queries["messageReceiptHandle"] = CSharpExpressionConverter.ConvertO(messageReceiptHandle);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (messageVisibilityTimeoutSeconds != null)
-                callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
+                callPayload.Queries["messageVisibilityTimeoutSeconds"] = CSharpExpressionConverter.ConvertO(messageVisibilityTimeoutSeconds);
             callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
             if (requestWaitTimeoutSeconds != null)
-                callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
+                callPayload.Queries["requestWaitTimeoutSeconds"] = CSharpExpressionConverter.ConvertO(requestWaitTimeoutSeconds);
             if (messageAttributeNames != null)
-                callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
+                callPayload.Queries["messageAttributeNames"] = CSharpExpressionConverter.ConvertO(messageAttributeNames);
             return new ApiConnectionTrigger<QueueMessage>(callPayload, triggerName, recurrence);
         }
 
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["maximumNumberOfMessages"] = Convert.ToString(10);
             if (maximumNumberOfMessages != null)
-                callPayload.Queries["maximumNumberOfMessages"] = ExpressionConverter.Convert(maximumNumberOfMessages);
+                callPayload.Queries["maximumNumberOfMessages"] = CSharpExpressionConverter.ConvertO(maximumNumberOfMessages);
             if (messageVisibilityTimeoutSeconds != null)
-                callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
+                callPayload.Queries["messageVisibilityTimeoutSeconds"] = CSharpExpressionConverter.ConvertO(messageVisibilityTimeoutSeconds);
             callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
             if (requestWaitTimeoutSeconds != null)
-                callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
+                callPayload.Queries["requestWaitTimeoutSeconds"] = CSharpExpressionConverter.ConvertO(requestWaitTimeoutSeconds);
             if (messageAttributeNames != null)
-                callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
+                callPayload.Queries["messageAttributeNames"] = CSharpExpressionConverter.ConvertO(messageAttributeNames);
             return new ApiConnectionTrigger<QueueMessage[]>(callPayload, triggerName, recurrence);
         }
     }

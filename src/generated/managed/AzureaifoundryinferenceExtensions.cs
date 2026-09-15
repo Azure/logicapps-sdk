@@ -18,36 +18,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (apiVersion != null)
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = CSharpExpressionConverter.ConvertO(apiVersion);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessages != null)
             {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                 bodypropCount++;
             }
 
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
                 bodypropCount++;
             }
 

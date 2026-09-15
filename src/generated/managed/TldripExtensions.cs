@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodyminLength != null)
             {
                 if (bodyminLength != null)
                 {
-                    body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                    body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
                     bodypropCount++;
                 }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             {
                 if (bodymaxLength != null)
                 {
-                    body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                    body["max_length"] = CSharpExpressionConverter.ConvertToken(bodymaxLength);
                     bodypropCount++;
                 }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
 
             if (bodyisDetailed != null)
             {
-                body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                body["is_detailed"] = CSharpExpressionConverter.ConvertToken(bodyisDetailed);
                 bodypropCount++;
             }
 
@@ -76,10 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodynumSentences != null)
             {
-                body["num_sentences"] = ExpressionConverter.ConvertO(bodynumSentences);
+                body["num_sentences"] = CSharpExpressionConverter.ConvertToken(bodynumSentences);
                 bodypropCount++;
             }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             {
                 if (bodyisDetailed != null)
                 {
-                    body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                    body["is_detailed"] = CSharpExpressionConverter.ConvertToken(bodyisDetailed);
                     bodypropCount++;
                 }
 
@@ -116,12 +116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodyminLength != null)
             {
                 if (bodyminLength != null)
                 {
-                    body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                    body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
                     bodypropCount++;
                 }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             {
                 if (bodymaxLength != null)
                 {
-                    body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                    body["max_length"] = CSharpExpressionConverter.ConvertToken(bodymaxLength);
                     bodypropCount++;
                 }
 
@@ -166,10 +166,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodynumSentences != null)
             {
-                body["num_sentences"] = ExpressionConverter.ConvertO(bodynumSentences);
+                body["num_sentences"] = CSharpExpressionConverter.ConvertToken(bodynumSentences);
                 bodypropCount++;
             }
 

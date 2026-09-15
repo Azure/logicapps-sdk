@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             body["channel"] = "viber";
             bodypropCount++;
             bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
+            body["rateType"] = CSharpExpressionConverter.ConvertToken(bodyrateType);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObject["contentType"] = "components";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var componentsObjectpropCount = 0;
             if (bodycontentcomponentsbody != null)
             {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontentcomponentsbody);
+                componentsObject["body"] = CSharpExpressionConverter.ConvertToken(bodycontentcomponentsbody);
                 componentsObjectpropCount++;
             }
 
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             body["channel"] = "viber";
             bodypropCount++;
             bodypropCount++;
-            body["messagePurpose"] = ExpressionConverter.ConvertO(bodymessagePurpose);
+            body["messagePurpose"] = CSharpExpressionConverter.ConvertToken(bodymessagePurpose);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObject["contentType"] = "file";
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var fileObject = new JObject();
             var fileObjectpropCount = 0;
             fileObjectpropCount++;
-            fileObject["url"] = ExpressionConverter.ConvertO(bodycontentfileurl);
+            fileObject["url"] = CSharpExpressionConverter.ConvertToken(bodycontentfileurl);
             fileObjectpropCount++;
-            fileObject["filename"] = ExpressionConverter.ConvertO(bodycontentfilefilename);
+            fileObject["filename"] = CSharpExpressionConverter.ConvertToken(bodycontentfilefilename);
             fileObjectpropCount++;
-            fileObject["filetype"] = ExpressionConverter.ConvertO(bodycontentfilefiletype);
+            fileObject["filetype"] = CSharpExpressionConverter.ConvertToken(bodycontentfilefiletype);
             if (fileObjectpropCount > 0)
             {
                 contentObject["file"] = fileObject;
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             body["channel"] = "viber";
             bodypropCount++;
             bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
+            body["rateType"] = CSharpExpressionConverter.ConvertToken(bodyrateType);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObject["contentType"] = "image";
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var imageObject = new JObject();
             var imageObjectpropCount = 0;
             imageObjectpropCount++;
-            imageObject["url"] = ExpressionConverter.ConvertO(bodycontentimageurl);
+            imageObject["url"] = CSharpExpressionConverter.ConvertToken(bodycontentimageurl);
             if (imageObjectpropCount > 0)
             {
                 contentObject["image"] = imageObject;
@@ -160,20 +160,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             body["channel"] = "viber";
             bodypropCount++;
             bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
+            body["rateType"] = CSharpExpressionConverter.ConvertToken(bodyrateType);
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObject["contentType"] = "text";
             contentObjectpropCount++;
             if (bodycontenttext != null)
             {
-                contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
+                contentObject["text"] = CSharpExpressionConverter.ConvertToken(bodycontenttext);
                 contentObjectpropCount++;
             }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
     {
         public IWorkflowTrigger Incoming(Expression<Func<string>> viberServiceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(viberServiceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(viberServiceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

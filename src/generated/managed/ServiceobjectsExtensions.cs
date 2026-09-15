@@ -18,25 +18,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (address1 != null)
-                callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
+                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
             if (address2 != null)
-                callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
+                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
             if (address3 != null)
-                callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
+                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
             if (address4 != null)
-                callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
+                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
             if (address5 != null)
-                callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
+                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
             if (locality != null)
-                callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
+                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
             if (administrativeArea != null)
-                callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(administrativeArea);
+                callPayload.Queries["AdministrativeArea"] = CSharpExpressionConverter.ConvertO(administrativeArea);
             if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             if (outputLanguage != null)
-                callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(outputLanguage);
+                callPayload.Queries["OutputLanguage"] = CSharpExpressionConverter.ConvertO(outputLanguage);
             return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
         }
 
@@ -47,33 +47,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (singleLine != null)
-                callPayload.Queries["SingleLine"] = ExpressionConverter.Convert(singleLine);
+                callPayload.Queries["SingleLine"] = CSharpExpressionConverter.ConvertO(singleLine);
             if (address1 != null)
-                callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
+                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
             if (address2 != null)
-                callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
+                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
             if (address3 != null)
-                callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
+                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
             if (address4 != null)
-                callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
+                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
             if (address5 != null)
-                callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
+                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
             if (locality != null)
-                callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
+                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
             if (administrativeArea != null)
-                callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(administrativeArea);
+                callPayload.Queries["AdministrativeArea"] = CSharpExpressionConverter.ConvertO(administrativeArea);
             if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             if (boundaries != null)
-                callPayload.Queries["Boundaries"] = ExpressionConverter.Convert(boundaries);
+                callPayload.Queries["Boundaries"] = CSharpExpressionConverter.ConvertO(boundaries);
             if (maxResults != null)
-                callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             if (searchType != null)
-                callPayload.Queries["SearchType"] = ExpressionConverter.Convert(searchType);
+                callPayload.Queries["SearchType"] = CSharpExpressionConverter.ConvertO(searchType);
             if (extras != null)
-                callPayload.Queries["Extras"] = ExpressionConverter.Convert(extras);
+                callPayload.Queries["Extras"] = CSharpExpressionConverter.ConvertO(extras);
             return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
         }
 
@@ -84,17 +84,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (latitude != null)
-                callPayload.Queries["Latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["Latitude"] = CSharpExpressionConverter.ConvertO(latitude);
             if (longitude != null)
-                callPayload.Queries["Longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["Longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (searchRadius != null)
-                callPayload.Queries["SearchRadius"] = ExpressionConverter.Convert(searchRadius);
+                callPayload.Queries["SearchRadius"] = CSharpExpressionConverter.ConvertO(searchRadius);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             if (maxResults != null)
-                callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
             if (searchType != null)
-                callPayload.Queries["SearchType"] = ExpressionConverter.Convert(searchType);
+                callPayload.Queries["SearchType"] = CSharpExpressionConverter.ConvertO(searchType);
             return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
         }
 
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (phoneNumber != null)
-                callPayload.Queries["PhoneNumber"] = ExpressionConverter.Convert(phoneNumber);
+                callPayload.Queries["PhoneNumber"] = CSharpExpressionConverter.ConvertO(phoneNumber);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(callPayload);
         }
 
@@ -118,55 +118,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (fullName != null)
-                callPayload.Queries["FullName"] = ExpressionConverter.Convert(fullName);
+                callPayload.Queries["FullName"] = CSharpExpressionConverter.ConvertO(fullName);
             if (salutation != null)
-                callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
+                callPayload.Queries["Salutation"] = CSharpExpressionConverter.ConvertO(salutation);
             if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
+                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
             if (lastName != null)
-                callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
+                callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
             if (businessName != null)
-                callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(businessName);
+                callPayload.Queries["BusinessName"] = CSharpExpressionConverter.ConvertO(businessName);
             if (businessDomain != null)
-                callPayload.Queries["BusinessDomain"] = ExpressionConverter.Convert(businessDomain);
+                callPayload.Queries["BusinessDomain"] = CSharpExpressionConverter.ConvertO(businessDomain);
             if (businessEIN != null)
-                callPayload.Queries["BusinessEIN"] = ExpressionConverter.Convert(businessEIN);
+                callPayload.Queries["BusinessEIN"] = CSharpExpressionConverter.ConvertO(businessEIN);
             if (address1 != null)
-                callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
+                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
             if (address2 != null)
-                callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
+                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
             if (address3 != null)
-                callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
+                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
             if (address4 != null)
-                callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
+                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
             if (address5 != null)
-                callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
+                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
             if (locality != null)
-                callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
+                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
             if (adminArea != null)
-                callPayload.Queries["AdminArea"] = ExpressionConverter.Convert(adminArea);
+                callPayload.Queries["AdminArea"] = CSharpExpressionConverter.ConvertO(adminArea);
             if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
             if (phone1 != null)
-                callPayload.Queries["Phone1"] = ExpressionConverter.Convert(phone1);
+                callPayload.Queries["Phone1"] = CSharpExpressionConverter.ConvertO(phone1);
             if (phone2 != null)
-                callPayload.Queries["Phone2"] = ExpressionConverter.Convert(phone2);
+                callPayload.Queries["Phone2"] = CSharpExpressionConverter.ConvertO(phone2);
             if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
             if (iPAddress != null)
-                callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
+                callPayload.Queries["IPAddress"] = CSharpExpressionConverter.ConvertO(iPAddress);
             if (gender != null)
-                callPayload.Queries["Gender"] = ExpressionConverter.Convert(gender);
+                callPayload.Queries["Gender"] = CSharpExpressionConverter.ConvertO(gender);
             if (dateOfBirth != null)
-                callPayload.Queries["DateOfBirth"] = ExpressionConverter.Convert(dateOfBirth);
+                callPayload.Queries["DateOfBirth"] = CSharpExpressionConverter.ConvertO(dateOfBirth);
             if (uTCCaptureTime != null)
-                callPayload.Queries["UTCCaptureTime"] = ExpressionConverter.Convert(uTCCaptureTime);
+                callPayload.Queries["UTCCaptureTime"] = CSharpExpressionConverter.ConvertO(uTCCaptureTime);
             if (outputLanguage != null)
-                callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(outputLanguage);
+                callPayload.Queries["OutputLanguage"] = CSharpExpressionConverter.ConvertO(outputLanguage);
             if (testType != null)
-                callPayload.Queries["TestType"] = ExpressionConverter.Convert(testType);
+                callPayload.Queries["TestType"] = CSharpExpressionConverter.ConvertO(testType);
             return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
         }
 
@@ -177,17 +177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (businessName != null)
-                callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(businessName);
+                callPayload.Queries["BusinessName"] = CSharpExpressionConverter.ConvertO(businessName);
             if (address != null)
-                callPayload.Queries["Address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["Address"] = CSharpExpressionConverter.ConvertO(address);
             if (address2 != null)
-                callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
+                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
             if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
             if (state != null)
-                callPayload.Queries["State"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["State"] = CSharpExpressionConverter.ConvertO(state);
             if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
             return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
         }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (iPAddress != null)
-                callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
+                callPayload.Queries["IPAddress"] = CSharpExpressionConverter.ConvertO(iPAddress);
             return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
         }
     }

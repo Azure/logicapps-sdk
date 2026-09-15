@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (unixtimestamp != null)
-                callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(unixtimestamp);
+                callPayload.Queries["unixtimestamp"] = CSharpExpressionConverter.ConvertO(unixtimestamp);
             return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
         }
 
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
             var bodypropCount = 0;
             if (bodyunixTimeStamp != null)
             {
-                body["UnixTimeStamp"] = ExpressionConverter.ConvertO(bodyunixTimeStamp);
+                body["UnixTimeStamp"] = CSharpExpressionConverter.ConvertToken(bodyunixTimeStamp);
                 bodypropCount++;
             }
 
             if (bodytimezone != null)
             {
-                body["Timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["Timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["datetime"] = Convert.ToString("now");
             if (datetime != null)
-                callPayload.Queries["datetime"] = ExpressionConverter.Convert(datetime);
+                callPayload.Queries["datetime"] = CSharpExpressionConverter.ConvertO(datetime);
             return new ApiConnectionAction<DateTime2UnixTimestampResponse>(callPayload);
         }
     }

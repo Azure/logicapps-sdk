@@ -18,20 +18,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                callPayload.Queries["ada"] = CSharpExpressionConverter.ConvertO(ada);
             if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                callPayload.Queries["unisex"] = CSharpExpressionConverter.ConvertO(unisex);
             if (updated != null)
-                callPayload.Queries["updated"] = ExpressionConverter.Convert(updated);
-            callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["updated"] = CSharpExpressionConverter.ConvertO(updated);
+            callPayload.Queries["day"] = CSharpExpressionConverter.ConvertO(day);
+            callPayload.Queries["month"] = CSharpExpressionConverter.ConvertO(month);
+            callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
         }
 
@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                callPayload.Queries["ada"] = CSharpExpressionConverter.ConvertO(ada);
             if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["unisex"] = CSharpExpressionConverter.ConvertO(unisex);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
         }
 
@@ -63,16 +63,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                callPayload.Queries["ada"] = CSharpExpressionConverter.ConvertO(ada);
             if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["unisex"] = CSharpExpressionConverter.ConvertO(unisex);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
         }
 
@@ -83,15 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                callPayload.Queries["ada"] = CSharpExpressionConverter.ConvertO(ada);
             if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                callPayload.Queries["unisex"] = CSharpExpressionConverter.ConvertO(unisex);
             return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
         }
     }

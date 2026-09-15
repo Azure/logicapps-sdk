@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             var bodypropCount = 0;
             if (bodyaccountEnabled != null)
             {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                body["accountEnabled"] = CSharpExpressionConverter.ConvertToken(bodyaccountEnabled);
                 bodypropCount++;
             }
 
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodymailNickname != null)
             {
-                body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
+                body["mailNickname"] = CSharpExpressionConverter.ConvertToken(bodymailNickname);
                 bodypropCount++;
             }
 
             if (bodyuserPrincipalName != null)
             {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                body["userPrincipalName"] = CSharpExpressionConverter.ConvertToken(bodyuserPrincipalName);
                 bodypropCount++;
             }
 
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             var passwordProfileObjectpropCount = 0;
             if (bodypasswordProfileforceChangePasswordNextSignIn != null)
             {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
+                passwordProfileObject["forceChangePasswordNextSignIn"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfileforceChangePasswordNextSignIn);
                 passwordProfileObjectpropCount++;
             }
 
             if (bodypasswordProfilepassword != null)
             {
-                passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
+                passwordProfileObject["password"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfilepassword);
                 passwordProfileObjectpropCount++;
             }
 
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
 
             if (bodyidentities != null)
             {
-                body["identities"] = ExpressionConverter.ConvertO(bodyidentities);
+                body["identities"] = CSharpExpressionConverter.ConvertToken(bodyidentities);
                 bodypropCount++;
             }
 
             if (bodyonPremisesImmutableId != null)
             {
-                body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(bodyonPremisesImmutableId);
+                body["onPremisesImmutableId"] = CSharpExpressionConverter.ConvertToken(bodyonPremisesImmutableId);
                 bodypropCount++;
             }
 
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
             var bodypropCount = 0;
             if (bodyinvitedUserEmailAddress != null)
             {
-                body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
+                body["invitedUserEmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserEmailAddress);
                 bodypropCount++;
             }
 
             if (bodyinviteRedirectUrl != null)
             {
-                body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
+                body["inviteRedirectUrl"] = CSharpExpressionConverter.ConvertToken(bodyinviteRedirectUrl);
                 bodypropCount++;
             }
 
@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
         public IBodyWorkflowAction<string> MembersPatch(Expression<Func<string>> groupId, Expression<Func<string[]>> bodymembersOdataBind)
         {
-            var apiCallPath = String.Format("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["members@odata.bind"] = ExpressionConverter.ConvertO(bodymembersOdataBind);
+            body["members@odata.bind"] = CSharpExpressionConverter.ConvertToken(bodymembersOdataBind);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

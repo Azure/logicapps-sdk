@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
         public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
         {
-            var apiCallPath = String.Format("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var command = new JObject();
             var commandpropCount = 0;
             commandpropCount++;
-            command["template_id"] = ExpressionConverter.ConvertO(commandtemplateId);
+            command["template_id"] = CSharpExpressionConverter.ConvertToken(commandtemplateId);
             commandpropCount++;
-            command["payload"] = ExpressionConverter.ConvertO(commandpayload);
+            command["payload"] = CSharpExpressionConverter.ConvertToken(commandpayload);
             if (commandreferenceId != null)
             {
-                command["reference_id"] = ExpressionConverter.ConvertO(commandreferenceId);
+                command["reference_id"] = CSharpExpressionConverter.ConvertToken(commandreferenceId);
                 commandpropCount++;
             }
 

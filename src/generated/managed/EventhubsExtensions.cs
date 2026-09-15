@@ -14,16 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvent(Expression<Func<string>> eventHubName, Expression<Func<string>> eventDatacontent = null, Expression<Func<string>> partitionKey = null)
         {
-            var apiCallPath = String.Format("/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(eventHubName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (partitionKey != null)
-                callPayload.Queries["partitionKey"] = ExpressionConverter.Convert(partitionKey);
+                callPayload.Queries["partitionKey"] = CSharpExpressionConverter.ConvertO(partitionKey);
             var eventData = new JObject();
             var eventDatapropCount = 0;
             if (eventDatacontent != null)
             {
-                eventData["ContentData"] = ExpressionConverter.ConvertO(eventDatacontent);
+                eventData["ContentData"] = CSharpExpressionConverter.ConvertToken(eventDatacontent);
                 eventDatapropCount++;
             }
 
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> partitionKey, Expression<Func<SendEvent[]>> events = null)
         {
-            var apiCallPath = String.Format("/{0}/events/batch", ExpressionConverter.ConvertWithUrlEncoding(eventHubName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/events/batch", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["partitionKey"] = ExpressionConverter.Convert(partitionKey);
-            callPayload.Body = ExpressionConverter.ConvertO(events);
+            callPayload.Queries["partitionKey"] = CSharpExpressionConverter.ConvertO(partitionKey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(events);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -59,24 +59,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     {
         public IBodyWorkflowTrigger<Event[]> OnNewEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> contentType = null, Expression<Func<string>> contentSchema = null, Expression<Func<string>> consumerGroupName = null, Expression<Func<string>> minimumPartitionKey = null, Expression<Func<string>> maximumPartitionKey = null, Expression<Func<int>> maximumEventsCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/events/batch/head", ExpressionConverter.ConvertWithUrlEncoding(eventHubName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/events/batch/head", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["contentType"] = Convert.ToString("application/octet-stream");
             if (contentType != null)
-                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Queries["contentType"] = CSharpExpressionConverter.ConvertO(contentType);
             if (contentSchema != null)
-                callPayload.Queries["contentSchema"] = ExpressionConverter.Convert(contentSchema);
+                callPayload.Queries["contentSchema"] = CSharpExpressionConverter.ConvertO(contentSchema);
             callPayload.Queries["consumerGroupName"] = Convert.ToString("$Default");
             if (consumerGroupName != null)
-                callPayload.Queries["consumerGroupName"] = ExpressionConverter.Convert(consumerGroupName);
+                callPayload.Queries["consumerGroupName"] = CSharpExpressionConverter.ConvertO(consumerGroupName);
             if (minimumPartitionKey != null)
-                callPayload.Queries["minimumPartitionKey"] = ExpressionConverter.Convert(minimumPartitionKey);
+                callPayload.Queries["minimumPartitionKey"] = CSharpExpressionConverter.ConvertO(minimumPartitionKey);
             if (maximumPartitionKey != null)
-                callPayload.Queries["maximumPartitionKey"] = ExpressionConverter.Convert(maximumPartitionKey);
+                callPayload.Queries["maximumPartitionKey"] = CSharpExpressionConverter.ConvertO(maximumPartitionKey);
             callPayload.Queries["maximumEventsCount"] = Convert.ToString(50);
             if (maximumEventsCount != null)
-                callPayload.Queries["maximumEventsCount"] = ExpressionConverter.Convert(maximumEventsCount);
+                callPayload.Queries["maximumEventsCount"] = CSharpExpressionConverter.ConvertO(maximumEventsCount);
             return new ApiConnectionTrigger<Event[]>(callPayload, triggerName, recurrence);
         }
     }

@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IBodyWorkflowAction<GetEntitiesResponseItem[]> GetEntities(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId)
         {
-            var apiCallPath = String.Format("/instances/{0}/manage/dataflows/entities", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/dataflows/entities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             callPayload.Queries["$select"] = Convert.ToString("id,name");
             return new ApiConnectionAction<GetEntitiesResponseItem[]>(callPayload);
         }
@@ -25,30 +25,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItems(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string>> entityName, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = String.Format("/instances/{0}/data/{1}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(entityName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["top"] = Convert.ToString("100");
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
             callPayload.Queries["skip"] = Convert.ToString("0");
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItem(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string>> entityName, Expression<Func<string>> itemId)
         {
-            var apiCallPath = String.Format("/instances/{0}/data/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(entityName, 1), ExpressionConverter.ConvertWithUrlEncoding(itemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
     {
         public IWorkflowTrigger OnDataflowRefreshComplete(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/instances/{0}/manage/hooks/dataflow_refresh_complete", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_complete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Events"] = ExpressionConverter.ConvertO(bodyevents);
+            body["Events"] = CSharpExpressionConverter.ConvertToken(bodyevents);
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -77,14 +77,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
 
         public IWorkflowTrigger OnDataflowRefreshFail(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/instances/{0}/manage/hooks/dataflow_refresh_fail", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_fail", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenantId"] = ExpressionConverter.Convert(tenantId);
+            callPayload.Queries["tenantId"] = CSharpExpressionConverter.ConvertO(tenantId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Events"] = ExpressionConverter.ConvertO(bodyevents);
+            body["Events"] = CSharpExpressionConverter.ConvertToken(bodyevents);
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

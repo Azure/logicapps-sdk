@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             var listScheduledRequestpropCount = 0;
             if (listScheduledRequestto != null)
             {
-                listScheduledRequest["To"] = ExpressionConverter.ConvertO(listScheduledRequestto);
+                listScheduledRequest["To"] = CSharpExpressionConverter.ConvertToken(listScheduledRequestto);
                 listScheduledRequestpropCount++;
             }
 
@@ -54,49 +54,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             var messageObjectpropCount = 0;
             if (sendMessageRequestmessagecontentOfTheMessage != null)
             {
-                messageObject["html"] = ExpressionConverter.ConvertO(sendMessageRequestmessagecontentOfTheMessage);
+                messageObject["html"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagecontentOfTheMessage);
                 messageObjectpropCount++;
             }
 
             messageObjectpropCount++;
-            messageObject["subject"] = ExpressionConverter.ConvertO(sendMessageRequestmessagesubject);
+            messageObject["subject"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagesubject);
             messageObjectpropCount++;
-            messageObject["from_email"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefromEmail);
+            messageObject["from_email"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagefromEmail);
             if (sendMessageRequestmessagefromName != null)
             {
-                messageObject["from_name"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefromName);
+                messageObject["from_name"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagefromName);
                 messageObjectpropCount++;
             }
 
             messageObjectpropCount++;
-            messageObject["to"] = ExpressionConverter.ConvertO(sendMessageRequestmessagesendTo);
+            messageObject["to"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagesendTo);
             if (sendMessageRequestmessageextraHeaders != null)
             {
-                messageObject["headers"] = ExpressionConverter.ConvertO(sendMessageRequestmessageextraHeaders);
+                messageObject["headers"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageextraHeaders);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessageisThisMessageImportantTrueFalse != null)
             {
-                messageObject["important"] = ExpressionConverter.ConvertO(sendMessageRequestmessageisThisMessageImportantTrueFalse);
+                messageObject["important"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageisThisMessageImportantTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagetrackWhenMessageOpensTrueFalse != null)
             {
-                messageObject["track_opens"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse);
+                messageObject["track_opens"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagetrackClicksForThisMessageTrueFalse != null)
             {
-                messageObject["track_clicks"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse);
+                messageObject["track_clicks"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse != null)
             {
-                messageObject["auto_text"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse);
+                messageObject["auto_text"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse);
                 messageObjectpropCount++;
             }
 
@@ -104,49 +104,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             messageObjectpropCount++;
             if (sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse != null)
             {
-                messageObject["inline_css"] = ExpressionConverter.ConvertO(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse);
+                messageObject["inline_css"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse != null)
             {
-                messageObject["url_strip_qs"] = ExpressionConverter.ConvertO(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse);
+                messageObject["url_strip_qs"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse != null)
             {
-                messageObject["preserve_recipients"] = ExpressionConverter.ConvertO(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse);
+                messageObject["preserve_recipients"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessageremoveContentLoggingTrueFalse != null)
             {
-                messageObject["view_content_link"] = ExpressionConverter.ConvertO(sendMessageRequestmessageremoveContentLoggingTrueFalse);
+                messageObject["view_content_link"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageremoveContentLoggingTrueFalse);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessageoptionalBCCAddress != null)
             {
-                messageObject["bcc_address"] = ExpressionConverter.ConvertO(sendMessageRequestmessageoptionalBCCAddress);
+                messageObject["bcc_address"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageoptionalBCCAddress);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagecustomDomaingForTracking != null)
             {
-                messageObject["tracking_domain"] = ExpressionConverter.ConvertO(sendMessageRequestmessagecustomDomaingForTracking);
+                messageObject["tracking_domain"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagecustomDomaingForTracking);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessagetags != null)
             {
-                messageObject["tags"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetags);
+                messageObject["tags"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagetags);
                 messageObjectpropCount++;
             }
 
             if (sendMessageRequestmessageattachments != null)
             {
-                messageObject["attachments"] = ExpressionConverter.ConvertO(sendMessageRequestmessageattachments);
+                messageObject["attachments"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessageattachments);
                 messageObjectpropCount++;
             }
 
@@ -158,19 +158,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
             if (sendMessageRequestsendAt != null)
             {
-                sendMessageRequest["send_at"] = ExpressionConverter.ConvertO(sendMessageRequestsendAt);
+                sendMessageRequest["send_at"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestsendAt);
                 sendMessageRequestpropCount++;
             }
 
             if (sendMessageRequestenableAsyncTrueFalse != null)
             {
-                sendMessageRequest["async"] = ExpressionConverter.ConvertO(sendMessageRequestenableAsyncTrueFalse);
+                sendMessageRequest["async"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestenableAsyncTrueFalse);
                 sendMessageRequestpropCount++;
             }
 
             if (sendMessageRequestdedicatedIpPoolName != null)
             {
-                sendMessageRequest["ip_pool"] = ExpressionConverter.ConvertO(sendMessageRequestdedicatedIpPoolName);
+                sendMessageRequest["ip_pool"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestdedicatedIpPoolName);
                 sendMessageRequestpropCount++;
             }
 

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> GetTimeSlots(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/booking-calendars/{0}/time-slots", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/time-slots", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTimeSlotsResponseItem[]>(callPayload);
@@ -23,26 +23,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IWorkflowAction BookATimeSlot(Expression<Func<string>> id, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyguestTimeZone, Expression<Func<string>> bodybookingFormname = null, Expression<Func<string>> bodybookingFormemail = null, Expression<Func<bodylocationTypeInput>> bodylocationType = null, Expression<Func<string>> bodylocationValue = null)
         {
-            var apiCallPath = String.Format("/v2/booking-calendars/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/schedule", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+            body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
             bodypropCount++;
-            body["guest_time_zone"] = ExpressionConverter.ConvertO(bodyguestTimeZone);
+            body["guest_time_zone"] = CSharpExpressionConverter.ConvertToken(bodyguestTimeZone);
             var bookingFormObject = new JObject();
             var bookingFormObjectpropCount = 0;
             if (bodybookingFormname != null)
             {
-                bookingFormObject["name"] = ExpressionConverter.ConvertO(bodybookingFormname);
+                bookingFormObject["name"] = CSharpExpressionConverter.ConvertToken(bodybookingFormname);
                 bookingFormObjectpropCount++;
             }
 
             if (bodybookingFormemail != null)
             {
-                bookingFormObject["email"] = ExpressionConverter.ConvertO(bodybookingFormemail);
+                bookingFormObject["email"] = CSharpExpressionConverter.ConvertToken(bodybookingFormemail);
                 bookingFormObjectpropCount++;
             }
 
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
 
             if (bodylocationType != null)
             {
-                body["location_type"] = ExpressionConverter.ConvertO(bodylocationType);
+                body["location_type"] = CSharpExpressionConverter.Convert(bodylocationType);
                 bodypropCount++;
             }
 
             if (bodylocationValue != null)
             {
-                body["location_value"] = ExpressionConverter.ConvertO(bodylocationValue);
+                body["location_value"] = CSharpExpressionConverter.ConvertToken(bodylocationValue);
                 bodypropCount++;
             }
 

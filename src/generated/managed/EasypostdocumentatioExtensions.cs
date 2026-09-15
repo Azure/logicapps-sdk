@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
             var apiCallPath = "/publicinterface/get_session_id.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<GetSessionIdResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IWorkflowAction PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent = null)
         {
-            var apiCallPath = String.Format("/direct_upload/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileContent);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileContent);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
             var apiCallPath = "/publicinterface/end_session.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
+            callPayload.Queries["session_id"] = CSharpExpressionConverter.ConvertO(sessionId);
             return new ApiConnectionAction<EndSessionResponse>(callPayload);
         }
     }

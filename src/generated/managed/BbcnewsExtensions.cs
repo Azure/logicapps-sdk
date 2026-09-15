@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (topic != null)
-                callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
+                callPayload.Queries["topic"] = CSharpExpressionConverter.ConvertO(topic);
             callPayload.Queries["limit"] = Convert.ToString(10);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             return new ApiConnectionAction<NewsResponse>(callPayload);
         }
 
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["limit"] = Convert.ToString(10);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             return new ApiConnectionAction<NewsResponse>(callPayload);
         }
 

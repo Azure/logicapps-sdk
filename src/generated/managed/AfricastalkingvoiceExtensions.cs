@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
+            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["actions"] = ExpressionConverter.ConvertO(bodyactions);
+            body["actions"] = CSharpExpressionConverter.ConvertToken(bodyactions);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

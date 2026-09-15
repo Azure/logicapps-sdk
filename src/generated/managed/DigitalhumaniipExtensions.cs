@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<EnterpriseGetResponse> EnterpriseGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/enterprise/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enterprise/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<EnterpriseGetResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<ProjectGetAResponse> ProjectGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectGetAResponse>(callPayload);
@@ -48,25 +48,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var bodypropCount = 0;
             if (bodytreeCount != null)
             {
-                body["treeCount"] = ExpressionConverter.ConvertO(bodytreeCount);
+                body["treeCount"] = CSharpExpressionConverter.ConvertToken(bodytreeCount);
                 bodypropCount++;
             }
 
             if (bodyenterpriseId != null)
             {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["enterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
@@ -85,16 +85,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (enterpriseId != null)
-                callPayload.Queries["enterpriseId"] = ExpressionConverter.Convert(enterpriseId);
+                callPayload.Queries["enterpriseId"] = CSharpExpressionConverter.ConvertO(enterpriseId);
             if (user != null)
-                callPayload.Queries["user"] = ExpressionConverter.Convert(user);
+                callPayload.Queries["user"] = CSharpExpressionConverter.ConvertO(user);
             return new ApiConnectionAction<TreeCountResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeDetailsResponse> TreeDetails(Expression<Func<string>> uuidOfTreePlanted)
         {
-            var apiCallPath = String.Format("/tree/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuidOfTreePlanted, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tree/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuidOfTreePlanted, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TreeDetailsResponse>(callPayload);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeCountMonthResponse> TreeCountMonth(Expression<Func<string>> id, Expression<Func<string>> yYYYMM)
         {
-            var apiCallPath = String.Format("/enterprise/{0}/treeCount/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(yYYYMM, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(yYYYMM, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TreeCountMonthResponse>(callPayload);
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeCountDatesResponse> TreeCountDates(Expression<Func<string>> id, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
-            var apiCallPath = String.Format("/enterprise/{0}/treeCount", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<TreeCountDatesResponse>(callPayload);
         }
     }

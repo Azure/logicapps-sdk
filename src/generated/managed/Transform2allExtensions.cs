@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["base64Content"] = ExpressionConverter.ConvertO(bodybase64Content);
+            body["base64Content"] = CSharpExpressionConverter.ConvertToken(bodybase64Content);
             bodypropCount++;
-            body["configId"] = ExpressionConverter.ConvertO(bodyconfigId);
+            body["configId"] = CSharpExpressionConverter.ConvertToken(bodyconfigId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
             var apiCallPath = "/flow.php";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["msisdn"] = ExpressionConverter.Convert(msisdn);
-            callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
+            callPayload.Queries["msisdn"] = CSharpExpressionConverter.ConvertO(msisdn);
+            callPayload.Queries["msg"] = CSharpExpressionConverter.ConvertO(msg);
             if (sender != null)
-                callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
+                callPayload.Queries["sender"] = CSharpExpressionConverter.ConvertO(sender);
             if (serviceid != null)
-                callPayload.Queries["serviceid"] = ExpressionConverter.Convert(serviceid);
+                callPayload.Queries["serviceid"] = CSharpExpressionConverter.ConvertO(serviceid);
             if (timetosend != null)
-                callPayload.Queries["timetosend"] = ExpressionConverter.Convert(timetosend);
+                callPayload.Queries["timetosend"] = CSharpExpressionConverter.ConvertO(timetosend);
             if (remoteid != null)
-                callPayload.Queries["remoteid"] = ExpressionConverter.Convert(remoteid);
+                callPayload.Queries["remoteid"] = CSharpExpressionConverter.ConvertO(remoteid);
             return new ApiConnectionAction<SendSmsResponse>(callPayload);
         }
     }

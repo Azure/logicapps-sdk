@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
         public IWorkflowAction SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
         {
-            var apiCallPath = String.Format("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(campaign, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaign, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -24,25 +24,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var respondentObjectpropCount = 0;
             if (bodyrespondentemailAddress != null)
             {
-                respondentObject["emailAddress"] = ExpressionConverter.ConvertO(bodyrespondentemailAddress);
+                respondentObject["emailAddress"] = CSharpExpressionConverter.ConvertToken(bodyrespondentemailAddress);
                 respondentObjectpropCount++;
             }
 
             if (bodyrespondentfirstName != null)
             {
-                respondentObject["firstName"] = ExpressionConverter.ConvertO(bodyrespondentfirstName);
+                respondentObject["firstName"] = CSharpExpressionConverter.ConvertToken(bodyrespondentfirstName);
                 respondentObjectpropCount++;
             }
 
             if (bodyrespondentlastName != null)
             {
-                respondentObject["lastName"] = ExpressionConverter.ConvertO(bodyrespondentlastName);
+                respondentObject["lastName"] = CSharpExpressionConverter.ConvertToken(bodyrespondentlastName);
                 respondentObjectpropCount++;
             }
 
             if (bodyrespondentphoneNumber != null)
             {
-                respondentObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyrespondentphoneNumber);
+                respondentObject["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyrespondentphoneNumber);
                 respondentObjectpropCount++;
             }
 
@@ -71,55 +71,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydepartment != null)
             {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                body["department"] = CSharpExpressionConverter.ConvertToken(bodydepartment);
                 bodypropCount++;
             }
 
             if (bodyteam != null)
             {
-                body["team"] = ExpressionConverter.ConvertO(bodyteam);
+                body["team"] = CSharpExpressionConverter.ConvertToken(bodyteam);
                 bodypropCount++;
             }
 
             if (bodydivision != null)
             {
-                body["division"] = ExpressionConverter.ConvertO(bodydivision);
+                body["division"] = CSharpExpressionConverter.ConvertToken(bodydivision);
                 bodypropCount++;
             }
 
             if (bodyphoneNumber != null)
             {
-                body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                body["phoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
                 bodypropCount++;
             }
 
             if (bodyactive != null)
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
                 bodypropCount++;
             }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var bodypropCount = 0;
             if (bodycampaignId != null)
             {
-                body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                body["campaignId"] = CSharpExpressionConverter.ConvertToken(bodycampaignId);
                 bodypropCount++;
             }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var bodypropCount = 0;
             if (bodycampaignId != null)
             {
-                body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                body["campaignId"] = CSharpExpressionConverter.ConvertToken(bodycampaignId);
                 bodypropCount++;
             }
 

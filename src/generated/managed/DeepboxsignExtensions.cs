@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Document> GetDocumentDetails(Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Document>(callPayload);
@@ -32,32 +32,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Observer> AddObserver(Expression<Func<string>> documentId, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodylanguage = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/observers", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyisAdmin != null)
             {
-                body["isAdmin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                body["isAdmin"] = CSharpExpressionConverter.ConvertToken(bodyisAdmin);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveObserver(Expression<Func<string>> documentId, Expression<Func<string>> observerId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/observers/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(observerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(observerId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee[]> GetSignees(Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Signee[]>(callPayload);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> AddSignee(Expression<Func<string>> documentId, Expression<Func<double>> bodyautographPositionheight = null, Expression<Func<int>> bodyautographPositionpageNumber = null, Expression<Func<double>> bodyautographPositionwidth = null, Expression<Func<double>> bodyautographPositionx = null, Expression<Func<double>> bodyautographPositiony = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysignFieldName = null, Expression<Func<int>> bodysignOrder = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -99,31 +99,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var autographPositionObjectpropCount = 0;
             if (bodyautographPositionheight != null)
             {
-                autographPositionObject["height"] = ExpressionConverter.ConvertO(bodyautographPositionheight);
+                autographPositionObject["height"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionheight);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionpageNumber != null)
             {
-                autographPositionObject["pageNumber"] = ExpressionConverter.ConvertO(bodyautographPositionpageNumber);
+                autographPositionObject["pageNumber"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionpageNumber);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionwidth != null)
             {
-                autographPositionObject["width"] = ExpressionConverter.ConvertO(bodyautographPositionwidth);
+                autographPositionObject["width"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionwidth);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionx != null)
             {
-                autographPositionObject["x"] = ExpressionConverter.ConvertO(bodyautographPositionx);
+                autographPositionObject["x"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionx);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositiony != null)
             {
-                autographPositionObject["y"] = ExpressionConverter.ConvertO(bodyautographPositiony);
+                autographPositionObject["y"] = CSharpExpressionConverter.ConvertToken(bodyautographPositiony);
                 autographPositionObjectpropCount++;
             }
 
@@ -135,31 +135,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
 
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodysignFieldName != null)
             {
-                body["signFieldName"] = ExpressionConverter.ConvertO(bodysignFieldName);
+                body["signFieldName"] = CSharpExpressionConverter.ConvertToken(bodysignFieldName);
                 bodypropCount++;
             }
 
             if (bodysignOrder != null)
             {
-                body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
+                body["signOrder"] = CSharpExpressionConverter.ConvertToken(bodysignOrder);
                 bodypropCount++;
             }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> GetSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Signee>(callPayload);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> UpdateSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId, Expression<Func<double>> bodyautographPositionheight = null, Expression<Func<int>> bodyautographPositionpageNumber = null, Expression<Func<double>> bodyautographPositionwidth = null, Expression<Func<double>> bodyautographPositionx = null, Expression<Func<double>> bodyautographPositiony = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<int>> bodysignOrder = null)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -201,31 +201,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var autographPositionObjectpropCount = 0;
             if (bodyautographPositionheight != null)
             {
-                autographPositionObject["height"] = ExpressionConverter.ConvertO(bodyautographPositionheight);
+                autographPositionObject["height"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionheight);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionpageNumber != null)
             {
-                autographPositionObject["pageNumber"] = ExpressionConverter.ConvertO(bodyautographPositionpageNumber);
+                autographPositionObject["pageNumber"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionpageNumber);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionwidth != null)
             {
-                autographPositionObject["width"] = ExpressionConverter.ConvertO(bodyautographPositionwidth);
+                autographPositionObject["width"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionwidth);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositionx != null)
             {
-                autographPositionObject["x"] = ExpressionConverter.ConvertO(bodyautographPositionx);
+                autographPositionObject["x"] = CSharpExpressionConverter.ConvertToken(bodyautographPositionx);
                 autographPositionObjectpropCount++;
             }
 
             if (bodyautographPositiony != null)
             {
-                autographPositionObject["y"] = ExpressionConverter.ConvertO(bodyautographPositiony);
+                autographPositionObject["y"] = CSharpExpressionConverter.ConvertToken(bodyautographPositiony);
                 autographPositionObjectpropCount++;
             }
 
@@ -237,25 +237,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
 
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodysignOrder != null)
             {
-                body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
+                body["signOrder"] = CSharpExpressionConverter.ConvertToken(bodysignOrder);
                 bodypropCount++;
             }
 
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction ResendInvitation(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/signees/{1}/resend-invitation", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(signeeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}/resend-invitation", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction StartSignatureProcess(Expression<Func<string>> documentId)
         {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);

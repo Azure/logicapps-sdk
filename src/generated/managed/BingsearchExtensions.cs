@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
             var apiCallPath = "/news/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Queries["mkt"] = Convert.ToString("en-US");
             if (mkt != null)
-                callPayload.Queries["mkt"] = ExpressionConverter.Convert(mkt);
+                callPayload.Queries["mkt"] = CSharpExpressionConverter.Convert(mkt);
             callPayload.Queries["safeSearch"] = Convert.ToString("Moderate");
             if (safeSearch != null)
-                callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(safeSearch);
+                callPayload.Queries["safeSearch"] = CSharpExpressionConverter.Convert(safeSearch);
             callPayload.Queries["count"] = Convert.ToString("20");
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<NewsArticle[]>(callPayload);
         }
     }
@@ -40,18 +40,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
             var apiCallPath = "/trigger/news/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             callPayload.Queries["mkt"] = Convert.ToString("en-US");
             if (mkt != null)
-                callPayload.Queries["mkt"] = ExpressionConverter.Convert(mkt);
+                callPayload.Queries["mkt"] = CSharpExpressionConverter.Convert(mkt);
             callPayload.Queries["safeSearch"] = Convert.ToString("Moderate");
             if (safeSearch != null)
-                callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(safeSearch);
+                callPayload.Queries["safeSearch"] = CSharpExpressionConverter.Convert(safeSearch);
             callPayload.Queries["count"] = Convert.ToString("20");
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionTrigger<NewsArticle[]>(callPayload, triggerName, recurrence);
         }
     }

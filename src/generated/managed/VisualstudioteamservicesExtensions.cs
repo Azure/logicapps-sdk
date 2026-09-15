@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Profile>(callPayload);
@@ -32,33 +32,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team)
         {
-            var apiCallPath = String.Format("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/iterations", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             return new ApiConnectionAction<VstsListTeamSettingsIteration>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<BuildResult> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<string>> buildDetailssourceBranch = null, Expression<Func<string>> buildDetailsparameters = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["buildDefId"] = ExpressionConverter.Convert(buildDefId);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["buildDefId"] = CSharpExpressionConverter.ConvertO(buildDefId);
             var buildDetails = new JObject();
             var buildDetailspropCount = 0;
             if (buildDetailssourceBranch != null)
             {
-                buildDetails["sourceBranch"] = ExpressionConverter.ConvertO(buildDetailssourceBranch);
+                buildDetails["sourceBranch"] = CSharpExpressionConverter.ConvertToken(buildDetailssourceBranch);
                 buildDetailspropCount++;
             }
 
             if (buildDetailsparameters != null)
             {
-                buildDetails["parameters"] = ExpressionConverter.ConvertO(buildDetailsparameters);
+                buildDetails["parameters"] = CSharpExpressionConverter.ConvertToken(buildDetailsparameters);
                 buildDetailspropCount++;
             }
 
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/git/repositories", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<VstsListGitRepository>(callPayload);
         }
 
@@ -86,51 +86,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var apiCallPath = "/_apis/projects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<VstsListProject>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/definitions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<VstsListReleaseDefinition>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Release> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<string>> releaseStartMetadatadescription = null, Expression<Func<bool>> releaseStartMetadataisDraft = null, Expression<Func<releaseStartMetadatareasonInput>> releaseStartMetadatareason = null, Expression<Func<ConfigurationVariable[]>> releaseStartMetadatareleaseVariables = null)
         {
-            var apiCallPath = String.Format("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/releases", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["releaseDefId"] = ExpressionConverter.Convert(releaseDefId);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["releaseDefId"] = CSharpExpressionConverter.ConvertO(releaseDefId);
             var releaseStartMetadata = new JObject();
             var releaseStartMetadatapropCount = 0;
             if (releaseStartMetadatadescription != null)
             {
-                releaseStartMetadata["Description"] = ExpressionConverter.ConvertO(releaseStartMetadatadescription);
+                releaseStartMetadata["Description"] = CSharpExpressionConverter.ConvertToken(releaseStartMetadatadescription);
                 releaseStartMetadatapropCount++;
             }
 
             if (releaseStartMetadataisDraft != null)
             {
-                releaseStartMetadata["IsDraft"] = ExpressionConverter.ConvertO(releaseStartMetadataisDraft);
+                releaseStartMetadata["IsDraft"] = CSharpExpressionConverter.ConvertToken(releaseStartMetadataisDraft);
                 releaseStartMetadatapropCount++;
             }
 
             if (releaseStartMetadatareason != null)
             {
-                releaseStartMetadata["Reason"] = ExpressionConverter.ConvertO(releaseStartMetadatareason);
+                releaseStartMetadata["Reason"] = CSharpExpressionConverter.Convert(releaseStartMetadatareason);
                 releaseStartMetadatapropCount++;
             }
 
             if (releaseStartMetadatareleaseVariables != null)
             {
-                releaseStartMetadata["Variables"] = ExpressionConverter.ConvertO(releaseStartMetadatareleaseVariables);
+                releaseStartMetadata["Variables"] = CSharpExpressionConverter.ConvertToken(releaseStartMetadatareleaseVariables);
                 releaseStartMetadatapropCount++;
             }
 
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var apiCallPath = "/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             var parameters = new JObject();
             var parameterspropCount = 0;
             parameterspropCount++;
-            parameters["Method"] = ExpressionConverter.ConvertO(parametersmethod);
+            parameters["Method"] = CSharpExpressionConverter.Convert(parametersmethod);
             parameterspropCount++;
-            parameters["Uri"] = ExpressionConverter.ConvertO(parametersrelativeURI);
+            parameters["Uri"] = CSharpExpressionConverter.ConvertToken(parametersrelativeURI);
             var headersObject = new JObject();
             var headersObjectpropCount = 0;
             if (headersObjectpropCount > 0)
@@ -165,13 +165,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
             if (parametersbody != null)
             {
-                parameters["Body"] = ExpressionConverter.ConvertO(parametersbody);
+                parameters["Body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
                 parameterspropCount++;
             }
 
             if (parametersbodyIsBase64 != null)
             {
-                parameters["IsBase64"] = ExpressionConverter.ConvertO(parametersbodyIsBase64);
+                parameters["IsBase64"] = CSharpExpressionConverter.ConvertToken(parametersbodyIsBase64);
                 parameterspropCount++;
             }
 
@@ -189,87 +189,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var apiCallPath = "/_apis/wit/workitemtypes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["typeName"] = ExpressionConverter.Convert(typeName);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["typeName"] = CSharpExpressionConverter.ConvertO(typeName);
             return new ApiConnectionAction<DynamicWorkItemResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project = null, Expression<Func<string>> type = null, Expression<Func<string>> workItemtitle = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
         {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (project != null)
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
             var workItem = new JObject();
             var workItempropCount = 0;
             if (workItemtitle != null)
             {
-                workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
+                workItem["title"] = CSharpExpressionConverter.ConvertToken(workItemtitle);
                 workItempropCount++;
             }
 
             if (workItemdescription != null)
             {
-                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                workItem["description"] = CSharpExpressionConverter.ConvertToken(workItemdescription);
                 workItempropCount++;
             }
 
             if (workItempriority != null)
             {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                workItem["priority"] = CSharpExpressionConverter.ConvertToken(workItempriority);
                 workItempropCount++;
             }
 
             if (workItemiterationPath != null)
             {
-                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                workItem["iteration"] = CSharpExpressionConverter.ConvertToken(workItemiterationPath);
                 workItempropCount++;
             }
 
             if (workItemareaPath != null)
             {
-                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                workItem["area"] = CSharpExpressionConverter.ConvertToken(workItemareaPath);
                 workItempropCount++;
             }
 
             if (workItemlinkURL != null)
             {
-                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                workItem["linkUrl"] = CSharpExpressionConverter.ConvertToken(workItemlinkURL);
                 workItempropCount++;
             }
 
             if (workItemlinkType != null)
             {
-                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                workItem["linkType"] = CSharpExpressionConverter.Convert(workItemlinkType);
                 workItempropCount++;
             }
 
             if (workItemlinkComment != null)
             {
-                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                workItem["linkComment"] = CSharpExpressionConverter.ConvertToken(workItemlinkComment);
                 workItempropCount++;
             }
 
             if (workItemdynamicFields != null)
             {
-                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                workItem["dynamicFields"] = CSharpExpressionConverter.ConvertToken(workItemdynamicFields);
                 workItempropCount++;
             }
 
@@ -292,75 +292,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> id, Expression<Func<string>> workItemType = null)
         {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/children", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             callPayload.Queries["workItemType"] = Convert.ToString("");
             if (workItemType != null)
-                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+                callPayload.Queries["workItemType"] = CSharpExpressionConverter.ConvertO(workItemType);
             return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<string>> workItemtitle, Expression<Func<bool>> shouldReturnAllFields = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems/${1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (shouldReturnAllFields != null)
-                callPayload.Queries["shouldReturnAllFields"] = ExpressionConverter.Convert(shouldReturnAllFields);
+                callPayload.Queries["shouldReturnAllFields"] = CSharpExpressionConverter.ConvertO(shouldReturnAllFields);
             var workItem = new JObject();
             var workItempropCount = 0;
             workItempropCount++;
-            workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
+            workItem["title"] = CSharpExpressionConverter.ConvertToken(workItemtitle);
             if (workItemdescription != null)
             {
-                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                workItem["description"] = CSharpExpressionConverter.ConvertToken(workItemdescription);
                 workItempropCount++;
             }
 
             if (workItempriority != null)
             {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                workItem["priority"] = CSharpExpressionConverter.ConvertToken(workItempriority);
                 workItempropCount++;
             }
 
             if (workItemiterationPath != null)
             {
-                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                workItem["iteration"] = CSharpExpressionConverter.ConvertToken(workItemiterationPath);
                 workItempropCount++;
             }
 
             if (workItemareaPath != null)
             {
-                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                workItem["area"] = CSharpExpressionConverter.ConvertToken(workItemareaPath);
                 workItempropCount++;
             }
 
             if (workItemlinkURL != null)
             {
-                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                workItem["linkUrl"] = CSharpExpressionConverter.ConvertToken(workItemlinkURL);
                 workItempropCount++;
             }
 
             if (workItemlinkType != null)
             {
-                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                workItem["linkType"] = CSharpExpressionConverter.Convert(workItemlinkType);
                 workItempropCount++;
             }
 
             if (workItemlinkComment != null)
             {
-                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                workItem["linkComment"] = CSharpExpressionConverter.ConvertToken(workItemlinkComment);
                 workItempropCount++;
             }
 
             if (workItemdynamicFields != null)
             {
-                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                workItem["dynamicFields"] = CSharpExpressionConverter.ConvertToken(workItemdynamicFields);
                 workItempropCount++;
             }
 
@@ -383,70 +383,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/queries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
         {
-            var apiCallPath = String.Format("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/queriesInFolder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
             return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> workItemIds, Expression<Func<string>> workItemType = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["workItemIds"] = ExpressionConverter.Convert(workItemIds);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["workItemIds"] = CSharpExpressionConverter.ConvertO(workItemIds);
             callPayload.Queries["workItemType"] = Convert.ToString("");
             if (workItemType != null)
-                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+                callPayload.Queries["workItemType"] = CSharpExpressionConverter.ConvertO(workItemType);
             return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Pipeline> ListPipelines(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<Pipeline>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Run> ListPipelineRuns(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> pipelineId)
         {
-            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncodingWithInt(pipelineId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pipelineId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             return new ApiConnectionAction<Run>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
         {
-            var apiCallPath = String.Format("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/{0}/queryResults/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(queryId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             callPayload.Queries["workItemsCount"] = Convert.ToString(200);
             if (workItemsCount != null)
-                callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
+                callPayload.Queries["workItemsCount"] = CSharpExpressionConverter.ConvertO(workItemsCount);
             if (throwIfQueryChanged != null)
-                callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
+                callPayload.Queries["throwIfQueryChanged"] = CSharpExpressionConverter.ConvertO(throwIfQueryChanged);
             return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
         }
     }
@@ -455,51 +455,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     {
         public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (resultFilter != null)
-                callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(resultFilter);
+                callPayload.Queries["resultFilter"] = CSharpExpressionConverter.Convert(resultFilter);
             if (definitions != null)
-                callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
+                callPayload.Queries["definitions"] = CSharpExpressionConverter.ConvertO(definitions);
             return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (refName != null)
-                callPayload.Queries["refName"] = ExpressionConverter.Convert(refName);
+                callPayload.Queries["refName"] = CSharpExpressionConverter.ConvertO(refName);
             return new ApiConnectionTrigger<VstsListGitPush>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (sourceRefName != null)
-                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+                callPayload.Queries["sourceRefName"] = CSharpExpressionConverter.ConvertO(sourceRefName);
             if (targetRefName != null)
-                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+                callPayload.Queries["targetRefName"] = CSharpExpressionConverter.ConvertO(targetRefName);
             return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (sourceRefName != null)
-                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+                callPayload.Queries["sourceRefName"] = CSharpExpressionConverter.ConvertO(sourceRefName);
             if (targetRefName != null)
-                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+                callPayload.Queries["targetRefName"] = CSharpExpressionConverter.ConvertO(targetRefName);
             return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
         }
 
@@ -508,131 +508,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             if (author != null)
-                callPayload.Queries["author"] = ExpressionConverter.Convert(author);
+                callPayload.Queries["author"] = CSharpExpressionConverter.ConvertO(author);
             return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
+            callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
+            callPayload.Queries["wiql__System_AssignedTo"] = CSharpExpressionConverter.ConvertO(wiqlSystemAssignedTo);
             if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                callPayload.Queries["wiql__System_WorkItemType"] = CSharpExpressionConverter.ConvertO(wiqlSystemWorkItemType);
             if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["wiql__System_AreaPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
             if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                callPayload.Queries["areaPathComparison"] = CSharpExpressionConverter.Convert(areaPathComparison);
             if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["wiql__System_IterationPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemIterationPath);
             callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
             if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                callPayload.Queries["iterationPathComparison"] = CSharpExpressionConverter.Convert(iterationPathComparison);
             if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = CSharpExpressionConverter.ConvertO(wiqlMicrosoftVSTSCommonPriority);
             if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                callPayload.Queries["wiql__System_CreatedBy"] = CSharpExpressionConverter.ConvertO(wiqlSystemCreatedBy);
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             if (wiqlSystemAssignedTo != null)
-                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                callPayload.Queries["wiql__System_AssignedTo"] = CSharpExpressionConverter.ConvertO(wiqlSystemAssignedTo);
             callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
             if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                callPayload.Queries["wiql__System_WorkItemType"] = CSharpExpressionConverter.ConvertO(wiqlSystemWorkItemType);
             callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
             if (closedState != null)
-                callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
+                callPayload.Queries["closedState"] = CSharpExpressionConverter.ConvertO(closedState);
             if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["wiql__System_AreaPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
             if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                callPayload.Queries["areaPathComparison"] = CSharpExpressionConverter.Convert(areaPathComparison);
             if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["wiql__System_IterationPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemIterationPath);
             callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
             if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                callPayload.Queries["iterationPathComparison"] = CSharpExpressionConverter.Convert(iterationPathComparison);
             if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = CSharpExpressionConverter.ConvertO(wiqlMicrosoftVSTSCommonPriority);
             if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                callPayload.Queries["wiql__System_CreatedBy"] = CSharpExpressionConverter.ConvertO(wiqlSystemCreatedBy);
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             if (wiqlSystemAssignedTo != null)
-                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                callPayload.Queries["wiql__System_AssignedTo"] = CSharpExpressionConverter.ConvertO(wiqlSystemAssignedTo);
             callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
             if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                callPayload.Queries["wiql__System_WorkItemType"] = CSharpExpressionConverter.ConvertO(wiqlSystemWorkItemType);
             if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["wiql__System_AreaPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
             if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                callPayload.Queries["areaPathComparison"] = CSharpExpressionConverter.Convert(areaPathComparison);
             if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["wiql__System_IterationPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemIterationPath);
             callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
             if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                callPayload.Queries["iterationPathComparison"] = CSharpExpressionConverter.Convert(iterationPathComparison);
             if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = CSharpExpressionConverter.ConvertO(wiqlMicrosoftVSTSCommonPriority);
             if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                callPayload.Queries["wiql__System_CreatedBy"] = CSharpExpressionConverter.ConvertO(wiqlSystemCreatedBy);
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
             if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             if (wiqlSystemAssignedTo != null)
-                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                callPayload.Queries["wiql__System_AssignedTo"] = CSharpExpressionConverter.ConvertO(wiqlSystemAssignedTo);
             if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                callPayload.Queries["wiql__System_WorkItemType"] = CSharpExpressionConverter.ConvertO(wiqlSystemWorkItemType);
             if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["wiql__System_AreaPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
             if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                callPayload.Queries["areaPathComparison"] = CSharpExpressionConverter.Convert(areaPathComparison);
             if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["wiql__System_IterationPath"] = CSharpExpressionConverter.ConvertO(wiqlSystemIterationPath);
             callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
             if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                callPayload.Queries["iterationPathComparison"] = CSharpExpressionConverter.Convert(iterationPathComparison);
             if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = CSharpExpressionConverter.ConvertO(wiqlMicrosoftVSTSCommonPriority);
             if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                callPayload.Queries["wiql__System_CreatedBy"] = CSharpExpressionConverter.ConvertO(wiqlSystemCreatedBy);
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
     }

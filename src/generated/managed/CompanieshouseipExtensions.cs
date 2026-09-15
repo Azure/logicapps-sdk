@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListPscResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pCSId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IndividualPscResponse>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
         {
-            var apiCallPath = String.Format("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(officerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
         {
-            var apiCallPath = String.Format("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(chargeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
         {
-            var apiCallPath = String.Format("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appointmentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);

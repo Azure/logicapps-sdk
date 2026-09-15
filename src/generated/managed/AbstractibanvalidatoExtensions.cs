@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
+            callPayload.Queries["iban"] = CSharpExpressionConverter.ConvertO(iban);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
     }

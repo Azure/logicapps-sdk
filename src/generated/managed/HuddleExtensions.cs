@@ -14,27 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodytextContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
         {
-            var apiCallPath = String.Format("/v2/file/upload/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             if (requestBodytextContent != null)
             {
-                requestBody["content"] = ExpressionConverter.ConvertO(requestBodytextContent);
+                requestBody["content"] = CSharpExpressionConverter.ConvertToken(requestBodytextContent);
                 requestBodypropCount++;
             }
 
             if (requestBodydescription != null)
             {
-                requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
                 requestBodypropCount++;
             }
 
             if (requestBodytitle != null)
             {
-                requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+                requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
                 requestBodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/v2/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder(Expression<Func<string>> folderId)
         {
-            var apiCallPath = String.Format("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteFolderResponse>(callPayload);
@@ -67,16 +67,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<Folder> CreateFolder(Expression<Func<string>> folderId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodydescription = null)
         {
-            var apiCallPath = String.Format("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+            requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
             if (requestBodydescription != null)
             {
-                requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
                 requestBodypropCount++;
             }
 
@@ -91,27 +91,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodyfileContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
         {
-            var apiCallPath = String.Format("/v2/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             if (requestBodyfileContent != null)
             {
-                requestBody["content"] = ExpressionConverter.ConvertO(requestBodyfileContent);
+                requestBody["content"] = CSharpExpressionConverter.ConvertToken(requestBodyfileContent);
                 requestBodypropCount++;
             }
 
             if (requestBodydescription != null)
             {
-                requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
                 requestBodypropCount++;
             }
 
             if (requestBodytitle != null)
             {
-                requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+                requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
                 requestBodypropCount++;
             }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<TaskObject> MarkTaskComplete(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/v2/task/{0}/markComplete", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskObject>(callPayload);
@@ -135,49 +135,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
         public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileID = null, Expression<Func<string>> requestBodytaskID = null, Expression<Func<string>> requestBodystatus = null)
         {
-            var apiCallPath = String.Format("/v2/workspace/{0}/task", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             if (requestBodyassignee != null)
             {
-                requestBody["assignee"] = ExpressionConverter.ConvertO(requestBodyassignee);
+                requestBody["assignee"] = CSharpExpressionConverter.ConvertToken(requestBodyassignee);
                 requestBodypropCount++;
             }
 
             if (requestBodydescription != null)
             {
-                requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
                 requestBodypropCount++;
             }
 
             if (requestBodydueDate != null)
             {
-                requestBody["dueDate"] = ExpressionConverter.ConvertO(requestBodydueDate);
+                requestBody["dueDate"] = CSharpExpressionConverter.ConvertToken(requestBodydueDate);
                 requestBodypropCount++;
             }
 
             if (requestBodyfileID != null)
             {
-                requestBody["fileId"] = ExpressionConverter.ConvertO(requestBodyfileID);
+                requestBody["fileId"] = CSharpExpressionConverter.ConvertToken(requestBodyfileID);
                 requestBodypropCount++;
             }
 
             if (requestBodytaskID != null)
             {
-                requestBody["id"] = ExpressionConverter.ConvertO(requestBodytaskID);
+                requestBody["id"] = CSharpExpressionConverter.ConvertToken(requestBodytaskID);
                 requestBodypropCount++;
             }
 
             if (requestBodystatus != null)
             {
-                requestBody["status"] = ExpressionConverter.ConvertO(requestBodystatus);
+                requestBody["status"] = CSharpExpressionConverter.ConvertToken(requestBodystatus);
                 requestBodypropCount++;
             }
 
             requestBodypropCount++;
-            requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+            requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -191,16 +191,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
     {
         public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
             return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, triggerName, recurrence);

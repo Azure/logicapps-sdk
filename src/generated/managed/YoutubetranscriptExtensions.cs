@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
             }
 
             bodypropCount++;
-            body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
+            body["externalVideoId"] = CSharpExpressionConverter.ConvertToken(bodyyouTubeVideoID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

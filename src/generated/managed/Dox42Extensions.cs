@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dox42
             var apiCallPath = "/dox42RestService.ashx";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["querystring"] = ExpressionConverter.Convert(querystring);
-            callPayload.Headers["domainname"] = ExpressionConverter.Convert(domainname);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["querystring"] = CSharpExpressionConverter.ConvertO(querystring);
+            callPayload.Headers["domainname"] = CSharpExpressionConverter.ConvertO(domainname);
+            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
             callPayload.Headers["accept"] = Convert.ToString("application/json");
             if (accept != null)
-                callPayload.Headers["accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
     }

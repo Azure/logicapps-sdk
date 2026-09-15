@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
             var apiCallPath = "/api/v2/holidays";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                callPayload.Queries["day"] = CSharpExpressionConverter.ConvertO(day);
             if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                callPayload.Queries["month"] = CSharpExpressionConverter.ConvertO(month);
             if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             return new ApiConnectionAction<ListHolidaysResponse>(callPayload);
         }
 

@@ -17,23 +17,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
             var apiCallPath = "/v1/messages";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(autoUnicode);
+            callPayload.Queries["auto-unicode"] = CSharpExpressionConverter.ConvertO(autoUnicode);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
+            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
             bodypropCount++;
             bodypropCount++;
-            body["longMessageMaxParts"] = ExpressionConverter.ConvertO(bodylongMessageMaxParts);
+            body["longMessageMaxParts"] = CSharpExpressionConverter.ConvertToken(bodylongMessageMaxParts);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

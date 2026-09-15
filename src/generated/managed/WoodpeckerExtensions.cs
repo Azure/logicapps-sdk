@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (activity != null)
-                callPayload.Queries["activity"] = ExpressionConverter.Convert(activity);
+                callPayload.Queries["activity"] = CSharpExpressionConverter.ConvertO(activity);
             if (campaignId != null)
-                callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
+                callPayload.Queries["campaign_id"] = CSharpExpressionConverter.ConvertO(campaignId);
             if (campaignsDetail != null)
-                callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(campaignsDetail);
+                callPayload.Queries["campaigns_detail"] = CSharpExpressionConverter.ConvertO(campaignsDetail);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             callPayload.Queries["per_page"] = Convert.ToString(100);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
         }
 
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (campaignsId != null)
-                callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(campaignsId);
+                callPayload.Queries["campaigns_id"] = CSharpExpressionConverter.ConvertO(campaignsId);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -60,19 +60,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             var bodypropCount = 0;
             if (bodyupdate != null)
             {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                body["update"] = CSharpExpressionConverter.Convert(bodyupdate);
                 bodypropCount++;
             }
 
             if (bodyforce != null)
             {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                body["force"] = CSharpExpressionConverter.Convert(bodyforce);
                 bodypropCount++;
             }
 
             if (bodyprospects != null)
             {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                body["prospects"] = CSharpExpressionConverter.ConvertToken(bodyprospects);
                 bodypropCount++;
             }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             var campaignObjectpropCount = 0;
             if (bodycampaigncampaignId != null)
             {
-                campaignObject["campaign_id"] = ExpressionConverter.ConvertO(bodycampaigncampaignId);
+                campaignObject["campaign_id"] = CSharpExpressionConverter.ConvertToken(bodycampaigncampaignId);
                 campaignObjectpropCount++;
             }
 
@@ -108,19 +108,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 
             if (bodyupdate != null)
             {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                body["update"] = CSharpExpressionConverter.Convert(bodyupdate);
                 bodypropCount++;
             }
 
             if (bodyforce != null)
             {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                body["force"] = CSharpExpressionConverter.Convert(bodyforce);
                 bodypropCount++;
             }
 
             if (bodyprospects != null)
             {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                body["prospects"] = CSharpExpressionConverter.ConvertToken(bodyprospects);
                 bodypropCount++;
             }
 
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
         }
     }

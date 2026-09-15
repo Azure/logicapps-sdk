@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
             if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
+                callPayload.Queries["voice"] = CSharpExpressionConverter.Convert(voice);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -49,16 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
             if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
+                callPayload.Queries["voice"] = CSharpExpressionConverter.Convert(voice);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             return new ApiConnectionAction<PronunciationResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
         {
-            var apiCallPath = String.Format("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(voice, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetVoiceResponse>(callPayload);

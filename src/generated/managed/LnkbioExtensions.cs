@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["link"] = ExpressionConverter.ConvertO(bodylink);
+            body["link"] = CSharpExpressionConverter.ConvertToken(bodylink);
             if (bodyimage != null)
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
                 bodypropCount++;
             }
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
@@ -51,54 +51,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             var fieldsObject = new JObject();
             var fieldsObjectpropCount = 0;
             if (bodyfieldssystemNickname != null)
             {
-                fieldsObject["additional-name"] = ExpressionConverter.ConvertO(bodyfieldssystemNickname);
+                fieldsObject["additional-name"] = CSharpExpressionConverter.ConvertToken(bodyfieldssystemNickname);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldssystemOwner != null)
             {
-                fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(bodyfieldssystemOwner);
+                fieldsObject["additional-owner"] = CSharpExpressionConverter.ConvertToken(bodyfieldssystemOwner);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldssystemAdministrator != null)
             {
-                fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(bodyfieldssystemAdministrator);
+                fieldsObject["additional-admin"] = CSharpExpressionConverter.ConvertToken(bodyfieldssystemAdministrator);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldscostCenter != null)
             {
-                fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(bodyfieldscostCenter);
+                fieldsObject["additional-cost"] = CSharpExpressionConverter.ConvertToken(bodyfieldscostCenter);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldslinkedSystems != null)
             {
-                fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystems);
+                fieldsObject["additional-linksystems"] = CSharpExpressionConverter.ConvertToken(bodyfieldslinkedSystems);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldsdataSystemPurpose != null)
             {
-                fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(bodyfieldsdataSystemPurpose);
+                fieldsObject["units-purpose"] = CSharpExpressionConverter.ConvertToken(bodyfieldsdataSystemPurpose);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldslinkedSystemProviders != null)
             {
-                fieldsObject["processors-block"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystemProviders);
+                fieldsObject["processors-block"] = CSharpExpressionConverter.ConvertToken(bodyfieldslinkedSystemProviders);
                 fieldsObjectpropCount++;
             }
 
             if (bodyfieldspartnerResponsibilityDetails != null)
             {
-                fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(bodyfieldspartnerResponsibilityDetails);
+                fieldsObject["processors-resptext"] = CSharpExpressionConverter.ConvertToken(bodyfieldspartnerResponsibilityDetails);
                 fieldsObjectpropCount++;
             }
 

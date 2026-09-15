@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Type"] = ExpressionConverter.ConvertO(bodytype);
+            body["Type"] = CSharpExpressionConverter.ConvertToken(bodytype);
             bodypropCount++;
-            body["ServiceId"] = ExpressionConverter.ConvertO(bodyserviceId);
+            body["ServiceId"] = CSharpExpressionConverter.ConvertToken(bodyserviceId);
             bodypropCount++;
-            body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["Subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             bodypropCount++;
-            body["SubmitterEmail"] = ExpressionConverter.ConvertO(bodysubmitterEmail);
+            body["SubmitterEmail"] = CSharpExpressionConverter.ConvertToken(bodysubmitterEmail);
             if (bodysolverUserProviderKey != null)
             {
-                body["SolverUserProviderKey"] = ExpressionConverter.ConvertO(bodysolverUserProviderKey);
+                body["SolverUserProviderKey"] = CSharpExpressionConverter.ConvertToken(bodysolverUserProviderKey);
                 bodypropCount++;
             }
 
@@ -52,96 +52,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["UserName"] = ExpressionConverter.ConvertO(bodyuserName);
+            body["UserName"] = CSharpExpressionConverter.ConvertToken(bodyuserName);
             if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodyroleEndUser != null)
             {
-                body["RoleEndUser"] = ExpressionConverter.ConvertO(bodyroleEndUser);
+                body["RoleEndUser"] = CSharpExpressionConverter.ConvertToken(bodyroleEndUser);
                 bodypropCount++;
             }
 
             if (bodyroleSmartUser != null)
             {
-                body["RoleSmartUser"] = ExpressionConverter.ConvertO(bodyroleSmartUser);
+                body["RoleSmartUser"] = CSharpExpressionConverter.ConvertToken(bodyroleSmartUser);
                 bodypropCount++;
             }
 
             if (bodyroleOperator != null)
             {
-                body["RoleOperator"] = ExpressionConverter.ConvertO(bodyroleOperator);
+                body["RoleOperator"] = CSharpExpressionConverter.ConvertToken(bodyroleOperator);
                 bodypropCount++;
             }
 
             if (bodyroleSuperOperator != null)
             {
-                body["RoleSuperOperator"] = ExpressionConverter.ConvertO(bodyroleSuperOperator);
+                body["RoleSuperOperator"] = CSharpExpressionConverter.ConvertToken(bodyroleSuperOperator);
                 bodypropCount++;
             }
 
             if (bodyroleAdministrator != null)
             {
-                body["RoleAdministrator"] = ExpressionConverter.ConvertO(bodyroleAdministrator);
+                body["RoleAdministrator"] = CSharpExpressionConverter.ConvertToken(bodyroleAdministrator);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["FirstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodymiddleName != null)
             {
-                body["MiddleName"] = ExpressionConverter.ConvertO(bodymiddleName);
+                body["MiddleName"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
                 bodypropCount++;
             }
 
             if (bodydisplayName != null)
             {
-                body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["DisplayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodyphone != null)
             {
-                body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
+                body["Phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ChangePasswordAfterLogging"] = ExpressionConverter.ConvertO(bodychangePasswordAfterLogging);
+            body["ChangePasswordAfterLogging"] = CSharpExpressionConverter.ConvertToken(bodychangePasswordAfterLogging);
             if (bodyadminNote != null)
             {
-                body["AdminNote"] = ExpressionConverter.ConvertO(bodyadminNote);
+                body["AdminNote"] = CSharpExpressionConverter.ConvertToken(bodyadminNote);
                 bodypropCount++;
             }
 
             if (bodyadditionalInformation != null)
             {
-                body["AdditionalInformation"] = ExpressionConverter.ConvertO(bodyadditionalInformation);
+                body["AdditionalInformation"] = CSharpExpressionConverter.ConvertToken(bodyadditionalInformation);
                 bodypropCount++;
             }
 
             if (bodycustomerNames != null)
             {
-                body["CustomerNames"] = ExpressionConverter.ConvertO(bodycustomerNames);
+                body["CustomerNames"] = CSharpExpressionConverter.ConvertToken(bodycustomerNames);
                 bodypropCount++;
             }
 

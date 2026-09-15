@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
             var apiCallPath = "/api/attachments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+            callPayload.Queries["fileUrl"] = CSharpExpressionConverter.ConvertO(fileUrl);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
             var apiCallPath = "/api/attachments";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileUrl);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileUrl);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
         {
-            var apiCallPath = String.Format("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(submissionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(submissionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
             subscriber["callbackUrl"] = "@listCallbackUrl()";
             subscriberpropCount++;
             subscriberpropCount++;
-            subscriber["formId"] = ExpressionConverter.ConvertO(subscriberform);
+            subscriber["formId"] = CSharpExpressionConverter.ConvertToken(subscriberform);
             if (subscriberpropCount > 0)
             {
                 callPayload.Body = subscriber;

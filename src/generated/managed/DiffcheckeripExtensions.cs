@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
             callPayload.Queries["output_type"] = Convert.ToString("json");
             callPayload.Queries["diff_level"] = Convert.ToString("word");
             if (diffLevel != null)
-                callPayload.Queries["diff_level"] = ExpressionConverter.Convert(diffLevel);
+                callPayload.Queries["diff_level"] = CSharpExpressionConverter.Convert(diffLevel);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["left"] = ExpressionConverter.ConvertO(bodyleft);
+            body["left"] = CSharpExpressionConverter.ConvertToken(bodyleft);
             bodypropCount++;
-            body["right"] = ExpressionConverter.ConvertO(bodyright);
+            body["right"] = CSharpExpressionConverter.ConvertToken(bodyright);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["left_image"] = ExpressionConverter.ConvertO(bodyleftImage);
+            body["left_image"] = CSharpExpressionConverter.ConvertToken(bodyleftImage);
             bodypropCount++;
-            body["right_image"] = ExpressionConverter.ConvertO(bodyrightImage);
+            body["right_image"] = CSharpExpressionConverter.ConvertToken(bodyrightImage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

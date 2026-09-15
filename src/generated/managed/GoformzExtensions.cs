@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<string> ExportForm(Expression<Func<string>> formId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodypages = null)
         {
-            var apiCallPath = String.Format("/v2/formz/{0}/exports", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodypages != null)
             {
-                body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
                 bodypropCount++;
             }
 
@@ -47,24 +47,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["runCalculations"] = Convert.ToString(false);
             if (runCalculations != null)
-                callPayload.Queries["runCalculations"] = ExpressionConverter.Convert(runCalculations);
+                callPayload.Queries["runCalculations"] = CSharpExpressionConverter.ConvertO(runCalculations);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyoverrideDefaultFormName != null)
             {
-                body["overrideDefaultFormName"] = ExpressionConverter.ConvertO(bodyoverrideDefaultFormName);
+                body["overrideDefaultFormName"] = CSharpExpressionConverter.ConvertToken(bodyoverrideDefaultFormName);
                 bodypropCount++;
             }
 
             if (bodytemplateId != null)
             {
-                body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
@@ -72,19 +72,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             var assignmentObjectpropCount = 0;
             if (bodyassignmentid != null)
             {
-                assignmentObject["id"] = ExpressionConverter.ConvertO(bodyassignmentid);
+                assignmentObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassignmentid);
                 assignmentObjectpropCount++;
             }
 
             if (bodyassignmenttype != null)
             {
-                assignmentObject["type"] = ExpressionConverter.ConvertO(bodyassignmenttype);
+                assignmentObject["type"] = CSharpExpressionConverter.ConvertToken(bodyassignmenttype);
                 assignmentObjectpropCount++;
             }
 
             if (bodyassignmenturl != null)
             {
-                assignmentObject["url"] = ExpressionConverter.ConvertO(bodyassignmenturl);
+                assignmentObject["url"] = CSharpExpressionConverter.ConvertToken(bodyassignmenturl);
                 assignmentObjectpropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<FormDto> GetForm(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/formz/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FormDto>(callPayload);
@@ -131,17 +131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
             var bodypropCount = 0;
             if (bodyeventType != null)
             {
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = CSharpExpressionConverter.ConvertToken(bodyeventType);
                 bodypropCount++;
             }
 
             body["targetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["entityId"] = ExpressionConverter.ConvertO(bodyentityId);
+            body["entityId"] = CSharpExpressionConverter.ConvertToken(bodyentityId);
             if (bodyenabled != null)
             {
-                body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                body["enabled"] = CSharpExpressionConverter.ConvertToken(bodyenabled);
                 bodypropCount++;
             }
 

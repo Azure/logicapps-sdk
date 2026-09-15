@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
             var apiCallPath = "/RegexMultiGroup";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["pattern"] = CSharpExpressionConverter.ConvertO(pattern);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<RegexMultiGroupResponse>(callPayload);
         }
     }

@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["aggregationType"] = ExpressionConverter.ConvertO(bodyaggregationType);
+            body["aggregationType"] = CSharpExpressionConverter.Convert(bodyaggregationType);
             bodypropCount++;
-            body["aggregateBy"] = ExpressionConverter.ConvertO(bodyaggregateBy);
+            body["aggregateBy"] = CSharpExpressionConverter.ConvertToken(bodyaggregateBy);
             bodypropCount++;
-            body["aggregateOn"] = ExpressionConverter.ConvertO(bodyaggregateOn);
+            body["aggregateOn"] = CSharpExpressionConverter.ConvertToken(bodyaggregateOn);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -156,22 +156,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["field"] = ExpressionConverter.ConvertO(bodyfield);
+            body["field"] = CSharpExpressionConverter.ConvertToken(bodyfield);
             if (bodyseparator != null)
             {
-                body["separator"] = ExpressionConverter.ConvertO(bodyseparator);
+                body["separator"] = CSharpExpressionConverter.ConvertToken(bodyseparator);
                 bodypropCount++;
             }
 
             if (bodyignoreEmpty != null)
             {
-                body["ignoreEmpty"] = ExpressionConverter.ConvertO(bodyignoreEmpty);
+                body["ignoreEmpty"] = CSharpExpressionConverter.ConvertToken(bodyignoreEmpty);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -195,13 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["expression"] = ExpressionConverter.ConvertO(bodyexpression);
+            body["expression"] = CSharpExpressionConverter.ConvertToken(bodyexpression);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["script"] = ExpressionConverter.ConvertO(bodyscript);
+            body["script"] = CSharpExpressionConverter.ConvertToken(bodyscript);
             if (bodyclassDefinitions != null)
             {
-                body["classDefinitions"] = ExpressionConverter.ConvertO(bodyclassDefinitions);
+                body["classDefinitions"] = CSharpExpressionConverter.ConvertToken(bodyclassDefinitions);
                 bodypropCount++;
             }
 
@@ -285,37 +285,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyheaderRow != null)
             {
-                body["headerRow"] = ExpressionConverter.ConvertO(bodyheaderRow);
+                body["headerRow"] = CSharpExpressionConverter.ConvertToken(bodyheaderRow);
                 bodypropCount++;
             }
 
             if (bodyrowSeparator != null)
             {
-                body["rowSeparator"] = ExpressionConverter.ConvertO(bodyrowSeparator);
+                body["rowSeparator"] = CSharpExpressionConverter.ConvertToken(bodyrowSeparator);
                 bodypropCount++;
             }
 
             if (bodydelimiter != null)
             {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                body["delimiter"] = CSharpExpressionConverter.ConvertToken(bodydelimiter);
                 bodypropCount++;
             }
 
             if (bodyescapeCharacter != null)
             {
-                body["escapeCharacter"] = ExpressionConverter.ConvertO(bodyescapeCharacter);
+                body["escapeCharacter"] = CSharpExpressionConverter.ConvertToken(bodyescapeCharacter);
                 bodypropCount++;
             }
 
             if (bodyencoding != null)
             {
-                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                body["encoding"] = CSharpExpressionConverter.Convert(bodyencoding);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -339,13 +339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -374,10 +374,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fields"] = ExpressionConverter.ConvertO(bodyfields);
+            body["fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -401,13 +401,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             var schemaObject = new JObject();
             var schemaObjectpropCount = 0;
             if (schemaObjectpropCount > 0)
@@ -453,13 +453,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -494,10 +494,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+            body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -518,12 +518,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+            body["delimiter"] = CSharpExpressionConverter.ConvertToken(bodydelimiter);
             bodypropCount++;
-            body["balancedOutput"] = ExpressionConverter.ConvertO(bodybalancedOutput);
+            body["balancedOutput"] = CSharpExpressionConverter.ConvertToken(bodybalancedOutput);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -547,13 +547,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -611,13 +611,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -686,20 +686,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["joinType"] = ExpressionConverter.ConvertO(bodyjoinType);
+            body["joinType"] = CSharpExpressionConverter.Convert(bodyjoinType);
             bodypropCount++;
-            body["joinFields"] = ExpressionConverter.ConvertO(bodyjoinFields);
+            body["joinFields"] = CSharpExpressionConverter.ConvertToken(bodyjoinFields);
             bodypropCount++;
-            body["fields"] = ExpressionConverter.ConvertO(bodyfields);
+            body["fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
             if (bodyforceFullyQualifiedFieldNames != null)
             {
-                body["forceFullyQualifiedFieldNames"] = ExpressionConverter.ConvertO(bodyforceFullyQualifiedFieldNames);
+                body["forceFullyQualifiedFieldNames"] = CSharpExpressionConverter.ConvertToken(bodyforceFullyQualifiedFieldNames);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -723,13 +723,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -797,19 +797,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodypath != null)
             {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
                 bodypropCount++;
             }
 
             if (bodybalancedOutput != null)
             {
-                body["balancedOutput"] = ExpressionConverter.ConvertO(bodybalancedOutput);
+                body["balancedOutput"] = CSharpExpressionConverter.ConvertToken(bodybalancedOutput);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -833,13 +833,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -875,19 +875,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyheaderRow != null)
             {
-                body["headerRow"] = ExpressionConverter.ConvertO(bodyheaderRow);
+                body["headerRow"] = CSharpExpressionConverter.ConvertToken(bodyheaderRow);
                 bodypropCount++;
             }
 
             if (bodyrowSeparator != null)
             {
-                body["rowSeparator"] = ExpressionConverter.ConvertO(bodyrowSeparator);
+                body["rowSeparator"] = CSharpExpressionConverter.ConvertToken(bodyrowSeparator);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -911,13 +911,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -951,25 +951,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyheaderRow != null)
             {
-                body["headerRow"] = ExpressionConverter.ConvertO(bodyheaderRow);
+                body["headerRow"] = CSharpExpressionConverter.ConvertToken(bodyheaderRow);
                 bodypropCount++;
             }
 
             if (bodyrowSeparator != null)
             {
-                body["rowSeparator"] = ExpressionConverter.ConvertO(bodyrowSeparator);
+                body["rowSeparator"] = CSharpExpressionConverter.ConvertToken(bodyrowSeparator);
                 bodypropCount++;
             }
 
             if (bodyescapeCharacter != null)
             {
-                body["escapeCharacter"] = ExpressionConverter.ConvertO(bodyescapeCharacter);
+                body["escapeCharacter"] = CSharpExpressionConverter.ConvertToken(bodyescapeCharacter);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -993,13 +993,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1050,50 +1050,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["baseValue"] = ExpressionConverter.ConvertO(bodybaseValue);
+            body["baseValue"] = CSharpExpressionConverter.ConvertToken(bodybaseValue);
             bodypropCount++;
-            body["comparisonValues"] = ExpressionConverter.ConvertO(bodycomparisonValues);
+            body["comparisonValues"] = CSharpExpressionConverter.ConvertToken(bodycomparisonValues);
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
             if (bodysettingsratioThreshold != null)
             {
-                settingsObject["ratioThreshold"] = ExpressionConverter.ConvertO(bodysettingsratioThreshold);
+                settingsObject["ratioThreshold"] = CSharpExpressionConverter.ConvertToken(bodysettingsratioThreshold);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsapplyRatioThresholdTo != null)
             {
-                settingsObject["applyRatioThresholdTo"] = ExpressionConverter.ConvertO(bodysettingsapplyRatioThresholdTo);
+                settingsObject["applyRatioThresholdTo"] = CSharpExpressionConverter.Convert(bodysettingsapplyRatioThresholdTo);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsratioSelectionType != null)
             {
-                settingsObject["ratioSelectionType"] = ExpressionConverter.ConvertO(bodysettingsratioSelectionType);
+                settingsObject["ratioSelectionType"] = CSharpExpressionConverter.Convert(bodysettingsratioSelectionType);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingstokenSortType != null)
             {
-                settingsObject["tokenSortType"] = ExpressionConverter.ConvertO(bodysettingstokenSortType);
+                settingsObject["tokenSortType"] = CSharpExpressionConverter.Convert(bodysettingstokenSortType);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingscaseSensitive != null)
             {
-                settingsObject["caseSensitive"] = ExpressionConverter.ConvertO(bodysettingscaseSensitive);
+                settingsObject["caseSensitive"] = CSharpExpressionConverter.ConvertToken(bodysettingscaseSensitive);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsremoveWhitespace != null)
             {
-                settingsObject["removeWhitespace"] = ExpressionConverter.ConvertO(bodysettingsremoveWhitespace);
+                settingsObject["removeWhitespace"] = CSharpExpressionConverter.ConvertToken(bodysettingsremoveWhitespace);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsremoveSpecialCharacters != null)
             {
-                settingsObject["removeSpecialCharacters"] = ExpressionConverter.ConvertO(bodysettingsremoveSpecialCharacters);
+                settingsObject["removeSpecialCharacters"] = CSharpExpressionConverter.ConvertToken(bodysettingsremoveSpecialCharacters);
                 settingsObjectpropCount++;
             }
 
@@ -1121,25 +1121,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyvalidateOnly != null)
             {
-                body["validateOnly"] = ExpressionConverter.ConvertO(bodyvalidateOnly);
+                body["validateOnly"] = CSharpExpressionConverter.ConvertToken(bodyvalidateOnly);
                 bodypropCount++;
             }
 
             if (bodyskip != null)
             {
-                body["skip"] = ExpressionConverter.ConvertO(bodyskip);
+                body["skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
                 bodypropCount++;
             }
 
             if (bodytake != null)
             {
-                body["take"] = ExpressionConverter.ConvertO(bodytake);
+                body["take"] = CSharpExpressionConverter.ConvertToken(bodytake);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -1163,13 +1163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1180,7 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1198,10 +1198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+            body["pattern"] = CSharpExpressionConverter.ConvertToken(bodypattern);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -1225,13 +1225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1261,25 +1261,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyseparator != null)
             {
-                body["separator"] = ExpressionConverter.ConvertO(bodyseparator);
+                body["separator"] = CSharpExpressionConverter.ConvertToken(bodyseparator);
                 bodypropCount++;
             }
 
             if (bodyignoreEmpty != null)
             {
-                body["ignoreEmpty"] = ExpressionConverter.ConvertO(bodyignoreEmpty);
+                body["ignoreEmpty"] = CSharpExpressionConverter.ConvertToken(bodyignoreEmpty);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
             if (bodysortOrder != null)
             {
-                body["sortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                body["sortOrder"] = CSharpExpressionConverter.Convert(bodysortOrder);
                 bodypropCount++;
             }
 
@@ -1295,13 +1295,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1312,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1330,16 +1330,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["field"] = ExpressionConverter.ConvertO(bodyfield);
+            body["field"] = CSharpExpressionConverter.ConvertToken(bodyfield);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
             if (bodysortOrder != null)
             {
-                body["sortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                body["sortOrder"] = CSharpExpressionConverter.Convert(bodysortOrder);
                 bodypropCount++;
             }
 
@@ -1355,13 +1355,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1424,10 +1424,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["splits"] = ExpressionConverter.ConvertO(bodysplits);
+            body["splits"] = CSharpExpressionConverter.ConvertToken(bodysplits);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -1451,13 +1451,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1469,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1491,31 +1491,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyheaderRow != null)
             {
-                body["headerRow"] = ExpressionConverter.ConvertO(bodyheaderRow);
+                body["headerRow"] = CSharpExpressionConverter.ConvertToken(bodyheaderRow);
                 bodypropCount++;
             }
 
             if (bodyrowSeparator != null)
             {
-                body["rowSeparator"] = ExpressionConverter.ConvertO(bodyrowSeparator);
+                body["rowSeparator"] = CSharpExpressionConverter.ConvertToken(bodyrowSeparator);
                 bodypropCount++;
             }
 
             if (bodydelimiter != null)
             {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                body["delimiter"] = CSharpExpressionConverter.ConvertToken(bodydelimiter);
                 bodypropCount++;
             }
 
             if (bodyencoding != null)
             {
-                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                body["encoding"] = CSharpExpressionConverter.Convert(bodyencoding);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -1539,13 +1539,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1556,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1583,13 +1583,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodypreserveAllProperties != null)
             {
-                body["preserveAllProperties"] = ExpressionConverter.ConvertO(bodypreserveAllProperties);
+                body["preserveAllProperties"] = CSharpExpressionConverter.ConvertToken(bodypreserveAllProperties);
                 bodypropCount++;
             }
 
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 
@@ -1613,13 +1613,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var advancedOptionsObjectpropCount = 0;
             if (bodyadvancedOptionscultureName != null)
             {
-                advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(bodyadvancedOptionscultureName);
+                advancedOptionsObject["cultureName"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionscultureName);
                 advancedOptionsObjectpropCount++;
             }
 
             if (bodyadvancedOptionsisBoolean != null)
             {
-                advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(bodyadvancedOptionsisBoolean);
+                advancedOptionsObject["isBoolean"] = CSharpExpressionConverter.ConvertToken(bodyadvancedOptionsisBoolean);
                 advancedOptionsObjectpropCount++;
             }
 
@@ -1631,7 +1631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodydata != null)
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
             }
 
@@ -1653,7 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var bodypropCount = 0;
             if (bodyprimaryLoopAtElement != null)
             {
-                body["primaryLoopAtElement"] = ExpressionConverter.ConvertO(bodyprimaryLoopAtElement);
+                body["primaryLoopAtElement"] = CSharpExpressionConverter.ConvertToken(bodyprimaryLoopAtElement);
                 bodypropCount++;
             }
 
@@ -1667,12 +1667,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
             if (bodysubLoopAtElements != null)
             {
-                body["subLoopAtElements"] = ExpressionConverter.ConvertO(bodysubLoopAtElements);
+                body["subLoopAtElements"] = CSharpExpressionConverter.ConvertToken(bodysubLoopAtElements);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1690,12 +1690,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
+            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
             bodypropCount++;
-            body["getFileContents"] = ExpressionConverter.ConvertO(bodygetFileContents);
+            body["getFileContents"] = CSharpExpressionConverter.ConvertToken(bodygetFileContents);
             if (bodyfilter != null)
             {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                body["filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
                 bodypropCount++;
             }
 

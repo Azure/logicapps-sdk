@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodyinclude != null)
             {
-                body["include"] = ExpressionConverter.ConvertO(bodyinclude);
+                body["include"] = CSharpExpressionConverter.ConvertToken(bodyinclude);
                 bodypropCount++;
             }
 
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<DocumentInfoResponse> PutDocument(Expression<Func<string>> fileName, Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
         {
-            var apiCallPath = String.Format("/post/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/{0}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
+            callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(file);
             return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
         }
 
@@ -75,67 +75,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyexternalSsoUserID != null)
             {
-                body["externalSsoUserId"] = ExpressionConverter.ConvertO(bodyexternalSsoUserID);
+                body["externalSsoUserId"] = CSharpExpressionConverter.ConvertToken(bodyexternalSsoUserID);
                 bodypropCount++;
             }
 
             if (bodyhandle != null)
             {
-                body["handle"] = ExpressionConverter.ConvertO(bodyhandle);
+                body["handle"] = CSharpExpressionConverter.ConvertToken(bodyhandle);
                 bodypropCount++;
             }
 
             if (bodyfirstName != null)
             {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
             if (bodydivisionIDs != null)
             {
-                body["divisionIds"] = ExpressionConverter.ConvertO(bodydivisionIDs);
+                body["divisionIds"] = CSharpExpressionConverter.ConvertToken(bodydivisionIDs);
                 bodypropCount++;
             }
 
             if (bodytargetIDs != null)
             {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
+                body["targetIds"] = CSharpExpressionConverter.ConvertToken(bodytargetIDs);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodysendInvitationEmail != null)
             {
-                body["sendInvitationEmail"] = ExpressionConverter.ConvertO(bodysendInvitationEmail);
+                body["sendInvitationEmail"] = CSharpExpressionConverter.ConvertToken(bodysendInvitationEmail);
                 bodypropCount++;
             }
 
             if (bodyinvitationMessage != null)
             {
-                body["invitationMessage"] = ExpressionConverter.ConvertO(bodyinvitationMessage);
+                body["invitationMessage"] = CSharpExpressionConverter.ConvertToken(bodyinvitationMessage);
                 bodypropCount++;
             }
 
             if (bodynotificationsDefault != null)
             {
-                body["notificationsDefault"] = ExpressionConverter.ConvertO(bodynotificationsDefault);
+                body["notificationsDefault"] = CSharpExpressionConverter.Convert(bodynotificationsDefault);
                 bodypropCount++;
             }
 
@@ -143,25 +143,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var privilegesObjectpropCount = 0;
             if (bodyvaluecanSharePosts != null)
             {
-                privilegesObject["canSharePosts"] = ExpressionConverter.ConvertO(bodyvaluecanSharePosts);
+                privilegesObject["canSharePosts"] = CSharpExpressionConverter.ConvertToken(bodyvaluecanSharePosts);
                 privilegesObjectpropCount++;
             }
 
             if (bodyvaluecanCommentPosts != null)
             {
-                privilegesObject["canCommentPosts"] = ExpressionConverter.ConvertO(bodyvaluecanCommentPosts);
+                privilegesObject["canCommentPosts"] = CSharpExpressionConverter.ConvertToken(bodyvaluecanCommentPosts);
                 privilegesObjectpropCount++;
             }
 
             if (bodyvaluecanSubmitPosts != null)
             {
-                privilegesObject["canSubmitPosts"] = ExpressionConverter.ConvertO(bodyvaluecanSubmitPosts);
+                privilegesObject["canSubmitPosts"] = CSharpExpressionConverter.ConvertToken(bodyvaluecanSubmitPosts);
                 privilegesObjectpropCount++;
             }
 
             if (bodyvaluecanManageOrganization != null)
             {
-                privilegesObject["canManageOrganization"] = ExpressionConverter.ConvertO(bodyvaluecanManageOrganization);
+                privilegesObject["canManageOrganization"] = CSharpExpressionConverter.ConvertToken(bodyvaluecanManageOrganization);
                 privilegesObjectpropCount++;
             }
 
@@ -185,19 +185,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var apiCallPath = "/manage/images";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(file);
             return new ApiConnectionAction<UploadImageResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<PostResponse> Get(Expression<Func<string>> id, Expression<Func<int>> userId = null)
         {
-            var apiCallPath = String.Format("/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             return new ApiConnectionAction<PostResponse>(callPayload);
         }
 
@@ -211,159 +211,159 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytagLine != null)
             {
-                body["tagLine"] = ExpressionConverter.ConvertO(bodytagLine);
+                body["tagLine"] = CSharpExpressionConverter.ConvertToken(bodytagLine);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodycreatorComments != null)
             {
-                body["creatorComments"] = ExpressionConverter.ConvertO(bodycreatorComments);
+                body["creatorComments"] = CSharpExpressionConverter.ConvertToken(bodycreatorComments);
                 bodypropCount++;
             }
 
             if (bodypermaLink != null)
             {
-                body["permaLink"] = ExpressionConverter.ConvertO(bodypermaLink);
+                body["permaLink"] = CSharpExpressionConverter.ConvertToken(bodypermaLink);
                 bodypropCount++;
             }
 
             if (bodyinternalDiscussionsEnabled != null)
             {
-                body["internalDiscussionsEnabled"] = ExpressionConverter.ConvertO(bodyinternalDiscussionsEnabled);
+                body["internalDiscussionsEnabled"] = CSharpExpressionConverter.ConvertToken(bodyinternalDiscussionsEnabled);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodymemberVideoUrl != null)
             {
-                body["memberVideoUrl"] = ExpressionConverter.ConvertO(bodymemberVideoUrl);
+                body["memberVideoUrl"] = CSharpExpressionConverter.ConvertToken(bodymemberVideoUrl);
                 bodypropCount++;
             }
 
             if (bodypostType != null)
             {
-                body["postType"] = ExpressionConverter.ConvertO(bodypostType);
+                body["postType"] = CSharpExpressionConverter.Convert(bodypostType);
                 bodypropCount++;
             }
 
             if (bodyapprovalState != null)
             {
-                body["approvalState"] = ExpressionConverter.ConvertO(bodyapprovalState);
+                body["approvalState"] = CSharpExpressionConverter.Convert(bodyapprovalState);
                 bodypropCount++;
             }
 
             if (bodydisplayMode != null)
             {
-                body["displayMode"] = ExpressionConverter.ConvertO(bodydisplayMode);
+                body["displayMode"] = CSharpExpressionConverter.Convert(bodydisplayMode);
                 bodypropCount++;
             }
 
             if (bodysharable != null)
             {
-                body["sharable"] = ExpressionConverter.ConvertO(bodysharable);
+                body["sharable"] = CSharpExpressionConverter.ConvertToken(bodysharable);
                 bodypropCount++;
             }
 
             if (bodystartDate != null)
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodysuggestedShareText != null)
             {
-                body["suggestedShareText"] = ExpressionConverter.ConvertO(bodysuggestedShareText);
+                body["suggestedShareText"] = CSharpExpressionConverter.ConvertToken(bodysuggestedShareText);
                 bodypropCount++;
             }
 
             if (bodyshortSuggestedShareText != null)
             {
-                body["shortSuggestedShareText"] = ExpressionConverter.ConvertO(bodyshortSuggestedShareText);
+                body["shortSuggestedShareText"] = CSharpExpressionConverter.ConvertToken(bodyshortSuggestedShareText);
                 bodypropCount++;
             }
 
             if (bodysharePoints != null)
             {
-                body["sharePoints"] = ExpressionConverter.ConvertO(bodysharePoints);
+                body["sharePoints"] = CSharpExpressionConverter.ConvertToken(bodysharePoints);
                 bodypropCount++;
             }
 
             if (bodyclickPoints != null)
             {
-                body["clickPoints"] = ExpressionConverter.ConvertO(bodyclickPoints);
+                body["clickPoints"] = CSharpExpressionConverter.ConvertToken(bodyclickPoints);
                 bodypropCount++;
             }
 
             if (bodyshareWithImages != null)
             {
-                body["shareWithImages"] = ExpressionConverter.ConvertO(bodyshareWithImages);
+                body["shareWithImages"] = CSharpExpressionConverter.ConvertToken(bodyshareWithImages);
                 bodypropCount++;
             }
 
             if (bodyshareImagesOnly != null)
             {
-                body["shareImagesOnly"] = ExpressionConverter.ConvertO(bodyshareImagesOnly);
+                body["shareImagesOnly"] = CSharpExpressionConverter.ConvertToken(bodyshareImagesOnly);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
             if (bodycreatorID != null)
             {
-                body["creatorId"] = ExpressionConverter.ConvertO(bodycreatorID);
+                body["creatorId"] = CSharpExpressionConverter.ConvertToken(bodycreatorID);
                 bodypropCount++;
             }
 
             if (bodydisplayCreator != null)
             {
-                body["displayCreator"] = ExpressionConverter.ConvertO(bodydisplayCreator);
+                body["displayCreator"] = CSharpExpressionConverter.ConvertToken(bodydisplayCreator);
                 bodypropCount++;
             }
 
             if (bodycategoryIDs != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIDs);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIDs);
                 bodypropCount++;
             }
 
             if (bodytargetIDs != null)
             {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
+                body["targetIds"] = CSharpExpressionConverter.ConvertToken(bodytargetIDs);
                 bodypropCount++;
             }
 
@@ -378,24 +378,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<SuccessResponse> PutImageTo(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
         {
-            var apiCallPath = String.Format("/post/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/{0}/image", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(file);
             return new ApiConnectionAction<SuccessResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<SuccessResponse> AddImageTo(Expression<Func<string>> id, Expression<Func<string>> bodyurl)
         {
-            var apiCallPath = String.Format("/post/{0}/imageurl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/{0}/imageurl", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -407,50 +407,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<PostResponse> Update(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null)
         {
-            var apiCallPath = String.Format("/manage/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/manage/post/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytagLine != null)
             {
-                body["tagLine"] = ExpressionConverter.ConvertO(bodytagLine);
+                body["tagLine"] = CSharpExpressionConverter.ConvertToken(bodytagLine);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodycreatorComments != null)
             {
-                body["creatorComments"] = ExpressionConverter.ConvertO(bodycreatorComments);
+                body["creatorComments"] = CSharpExpressionConverter.ConvertToken(bodycreatorComments);
                 bodypropCount++;
             }
 
             if (bodypermaLink != null)
             {
-                body["permaLink"] = ExpressionConverter.ConvertO(bodypermaLink);
+                body["permaLink"] = CSharpExpressionConverter.ConvertToken(bodypermaLink);
                 bodypropCount++;
             }
 
             if (bodyinternalDiscussionsEnabled != null)
             {
-                body["internalDiscussionsEnabled"] = ExpressionConverter.ConvertO(bodyinternalDiscussionsEnabled);
+                body["internalDiscussionsEnabled"] = CSharpExpressionConverter.ConvertToken(bodyinternalDiscussionsEnabled);
                 bodypropCount++;
             }
 
@@ -498,34 +498,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["postIds"] = ExpressionConverter.ConvertO(bodypostIDs);
+            body["postIds"] = CSharpExpressionConverter.ConvertToken(bodypostIDs);
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodydivisionIDs != null)
             {
-                body["divisionIds"] = ExpressionConverter.ConvertO(bodydivisionIDs);
+                body["divisionIds"] = CSharpExpressionConverter.ConvertToken(bodydivisionIDs);
                 bodypropCount++;
             }
 
             if (bodycategoryIDs != null)
             {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIDs);
+                body["categoryIds"] = CSharpExpressionConverter.ConvertToken(bodycategoryIDs);
                 bodypropCount++;
             }
 
             if (bodytargetIDs != null)
             {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
+                body["targetIds"] = CSharpExpressionConverter.ConvertToken(bodytargetIDs);
                 bodypropCount++;
             }
 
             if (bodyapprovalState != null)
             {
-                body["approvalState"] = ExpressionConverter.ConvertO(bodyapprovalState);
+                body["approvalState"] = CSharpExpressionConverter.Convert(bodyapprovalState);
                 bodypropCount++;
             }
 

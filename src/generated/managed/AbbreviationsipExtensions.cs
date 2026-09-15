@@ -17,15 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
             var apiCallPath = "/abbr.php";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+            callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
             if (categoryid != null)
-                callPayload.Queries["categoryid"] = ExpressionConverter.Convert(categoryid);
+                callPayload.Queries["categoryid"] = CSharpExpressionConverter.ConvertO(categoryid);
             callPayload.Queries["sortby"] = Convert.ToString("p");
             if (sortby != null)
-                callPayload.Queries["sortby"] = ExpressionConverter.Convert(sortby);
+                callPayload.Queries["sortby"] = CSharpExpressionConverter.Convert(sortby);
             callPayload.Queries["searchtype"] = Convert.ToString("e");
             if (searchtype != null)
-                callPayload.Queries["searchtype"] = ExpressionConverter.Convert(searchtype);
+                callPayload.Queries["searchtype"] = CSharpExpressionConverter.Convert(searchtype);
             callPayload.Queries["format"] = Convert.ToString("json");
             return new ApiConnectionAction<AbbrGetResponse>(callPayload);
         }

@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["limit"] = Convert.ToString(20);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["archived"] = Convert.ToString(false);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             {
                 if (dataformType != null)
                 {
-                    data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                    data["formType"] = CSharpExpressionConverter.ConvertToken(dataformType);
                     datapropCount++;
                 }
 
@@ -52,19 +52,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (dataname != null)
             {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
+                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
                 datapropCount++;
             }
 
             if (datacreatedAt != null)
             {
-                data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
+                data["createdAt"] = CSharpExpressionConverter.ConvertToken(datacreatedAt);
                 datapropCount++;
             }
 
             if (dataupdatedAt != null)
             {
-                data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
+                data["updatedAt"] = CSharpExpressionConverter.ConvertToken(dataupdatedAt);
                 datapropCount++;
             }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             {
                 if (dataarchived != null)
                 {
-                    data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+                    data["archived"] = CSharpExpressionConverter.ConvertToken(dataarchived);
                     datapropCount++;
                 }
 
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (dataarchivedAt != null)
             {
-                data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                data["archivedAt"] = CSharpExpressionConverter.ConvertToken(dataarchivedAt);
                 datapropCount++;
             }
 
             if (datafieldGroups != null)
             {
-                data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
+                data["fieldGroups"] = CSharpExpressionConverter.ConvertToken(datafieldGroups);
                 datapropCount++;
             }
 
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var configurationObjectpropCount = 0;
             if (dataconfigurationlanguage != null)
             {
-                configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
+                configurationObject["language"] = CSharpExpressionConverter.ConvertToken(dataconfigurationlanguage);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationcloneable != null)
             {
-                configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
+                configurationObject["cloneable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationcloneable);
                 configurationObjectpropCount++;
             }
 
@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var postSubmitActionObjectpropCount = 0;
             if (dataconfigurationpostSubmitActiontype != null)
             {
-                postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
+                postSubmitActionObject["type"] = CSharpExpressionConverter.ConvertToken(dataconfigurationpostSubmitActiontype);
                 postSubmitActionObjectpropCount++;
             }
 
             if (dataconfigurationpostSubmitActionvalue != null)
             {
-                postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
+                postSubmitActionObject["value"] = CSharpExpressionConverter.ConvertToken(dataconfigurationpostSubmitActionvalue);
                 postSubmitActionObjectpropCount++;
             }
 
@@ -132,49 +132,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (dataconfigurationeditable != null)
             {
-                configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
+                configurationObject["editable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationeditable);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationarchivable != null)
             {
-                configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
+                configurationObject["archivable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationarchivable);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationrecaptchaEnabled != null)
             {
-                configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
+                configurationObject["recaptchaEnabled"] = CSharpExpressionConverter.ConvertToken(dataconfigurationrecaptchaEnabled);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationnotifyContactOwner != null)
             {
-                configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
+                configurationObject["notifyContactOwner"] = CSharpExpressionConverter.ConvertToken(dataconfigurationnotifyContactOwner);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationnotifyRecipients != null)
             {
-                configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
+                configurationObject["notifyRecipients"] = CSharpExpressionConverter.ConvertToken(dataconfigurationnotifyRecipients);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationcreateNewContactForNewEmail != null)
             {
-                configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
+                configurationObject["createNewContactForNewEmail"] = CSharpExpressionConverter.ConvertToken(dataconfigurationcreateNewContactForNewEmail);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationprePopulateKnownValues != null)
             {
-                configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
+                configurationObject["prePopulateKnownValues"] = CSharpExpressionConverter.ConvertToken(dataconfigurationprePopulateKnownValues);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationallowLinkToResetKnownValues != null)
             {
-                configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
+                configurationObject["allowLinkToResetKnownValues"] = CSharpExpressionConverter.ConvertToken(dataconfigurationallowLinkToResetKnownValues);
                 configurationObjectpropCount++;
             }
 
@@ -188,19 +188,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var displayOptionsObjectpropCount = 0;
             if (datadisplayOptionsrenderRawHtml != null)
             {
-                displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
+                displayOptionsObject["renderRawHtml"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsrenderRawHtml);
                 displayOptionsObjectpropCount++;
             }
 
             if (datadisplayOptionstheme != null)
             {
-                displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
+                displayOptionsObject["theme"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionstheme);
                 displayOptionsObjectpropCount++;
             }
 
             if (datadisplayOptionssubmitButtonText != null)
             {
-                displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
+                displayOptionsObject["submitButtonText"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionssubmitButtonText);
                 displayOptionsObjectpropCount++;
             }
 
@@ -208,73 +208,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var styleObjectpropCount = 0;
             if (datadisplayOptionsstylefontFamily != null)
             {
-                styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
+                styleObject["fontFamily"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylefontFamily);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylebackgroundWidth != null)
             {
-                styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
+                styleObject["backgroundWidth"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylebackgroundWidth);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelabelTextColor != null)
             {
-                styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
+                styleObject["labelTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelabelTextSize != null)
             {
-                styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
+                styleObject["labelTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylehelpTextColor != null)
             {
-                styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
+                styleObject["helpTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylehelpTextSize != null)
             {
-                styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
+                styleObject["helpTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelegalConsentTextColor != null)
             {
-                styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
+                styleObject["legalConsentTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelegalConsentTextSize != null)
             {
-                styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
+                styleObject["legalConsentTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitColor != null)
             {
-                styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
+                styleObject["submitColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitAlignment != null)
             {
-                styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
+                styleObject["submitAlignment"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitAlignment);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitFontColor != null)
             {
-                styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
+                styleObject["submitFontColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitFontColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitSize != null)
             {
-                styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
+                styleObject["submitSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitSize);
                 styleObjectpropCount++;
             }
 
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (datadisplayOptionscssClass != null)
             {
-                displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
+                displayOptionsObject["cssClass"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionscssClass);
                 displayOptionsObjectpropCount++;
             }
 
@@ -307,19 +307,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsRead(Expression<Func<string>> formId, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["archived"] = Convert.ToString(false);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsArchive(Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -328,36 +328,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsUpdate(Expression<Func<string>> formId, Expression<Func<string>> dataformType, Expression<Func<string>> dataid, Expression<Func<string>> datacreatedAt, Expression<Func<string>> dataupdatedAt, Expression<Func<bool>> dataarchived, Expression<Func<string>> dataname = null, Expression<Func<string>> dataarchivedAt = null, Expression<Func<datafieldGroupsInputItem[]>> datafieldGroups = null, Expression<Func<string>> dataconfigurationlanguage = null, Expression<Func<bool>> dataconfigurationcloneable = null, Expression<Func<string>> dataconfigurationpostSubmitActiontype = null, Expression<Func<string>> dataconfigurationpostSubmitActionvalue = null, Expression<Func<bool>> dataconfigurationeditable = null, Expression<Func<bool>> dataconfigurationarchivable = null, Expression<Func<bool>> dataconfigurationrecaptchaEnabled = null, Expression<Func<bool>> dataconfigurationnotifyContactOwner = null, Expression<Func<string[]>> dataconfigurationnotifyRecipients = null, Expression<Func<bool>> dataconfigurationcreateNewContactForNewEmail = null, Expression<Func<bool>> dataconfigurationprePopulateKnownValues = null, Expression<Func<bool>> dataconfigurationallowLinkToResetKnownValues = null, Expression<Func<bool>> datadisplayOptionsrenderRawHtml = null, Expression<Func<string>> datadisplayOptionstheme = null, Expression<Func<string>> datadisplayOptionssubmitButtonText = null, Expression<Func<string>> datadisplayOptionsstylefontFamily = null, Expression<Func<string>> datadisplayOptionsstylebackgroundWidth = null, Expression<Func<string>> datadisplayOptionsstylelabelTextColor = null, Expression<Func<string>> datadisplayOptionsstylelabelTextSize = null, Expression<Func<string>> datadisplayOptionsstylehelpTextColor = null, Expression<Func<string>> datadisplayOptionsstylehelpTextSize = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextColor = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextSize = null, Expression<Func<string>> datadisplayOptionsstylesubmitColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitAlignment = null, Expression<Func<string>> datadisplayOptionsstylesubmitFontColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitSize = null, Expression<Func<string>> datadisplayOptionscssClass = null)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var data = new JObject();
             var datapropCount = 0;
             datapropCount++;
-            data["formType"] = ExpressionConverter.ConvertO(dataformType);
+            data["formType"] = CSharpExpressionConverter.ConvertToken(dataformType);
             datapropCount++;
-            data["id"] = ExpressionConverter.ConvertO(dataid);
+            data["id"] = CSharpExpressionConverter.ConvertToken(dataid);
             if (dataname != null)
             {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
+                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
                 datapropCount++;
             }
 
             datapropCount++;
-            data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
+            data["createdAt"] = CSharpExpressionConverter.ConvertToken(datacreatedAt);
             datapropCount++;
-            data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
+            data["updatedAt"] = CSharpExpressionConverter.ConvertToken(dataupdatedAt);
             datapropCount++;
-            data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+            data["archived"] = CSharpExpressionConverter.ConvertToken(dataarchived);
             if (dataarchivedAt != null)
             {
-                data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                data["archivedAt"] = CSharpExpressionConverter.ConvertToken(dataarchivedAt);
                 datapropCount++;
             }
 
             if (datafieldGroups != null)
             {
-                data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
+                data["fieldGroups"] = CSharpExpressionConverter.ConvertToken(datafieldGroups);
                 datapropCount++;
             }
 
@@ -365,13 +365,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var configurationObjectpropCount = 0;
             if (dataconfigurationlanguage != null)
             {
-                configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
+                configurationObject["language"] = CSharpExpressionConverter.ConvertToken(dataconfigurationlanguage);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationcloneable != null)
             {
-                configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
+                configurationObject["cloneable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationcloneable);
                 configurationObjectpropCount++;
             }
 
@@ -379,13 +379,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var postSubmitActionObjectpropCount = 0;
             if (dataconfigurationpostSubmitActiontype != null)
             {
-                postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
+                postSubmitActionObject["type"] = CSharpExpressionConverter.ConvertToken(dataconfigurationpostSubmitActiontype);
                 postSubmitActionObjectpropCount++;
             }
 
             if (dataconfigurationpostSubmitActionvalue != null)
             {
-                postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
+                postSubmitActionObject["value"] = CSharpExpressionConverter.ConvertToken(dataconfigurationpostSubmitActionvalue);
                 postSubmitActionObjectpropCount++;
             }
 
@@ -397,49 +397,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (dataconfigurationeditable != null)
             {
-                configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
+                configurationObject["editable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationeditable);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationarchivable != null)
             {
-                configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
+                configurationObject["archivable"] = CSharpExpressionConverter.ConvertToken(dataconfigurationarchivable);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationrecaptchaEnabled != null)
             {
-                configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
+                configurationObject["recaptchaEnabled"] = CSharpExpressionConverter.ConvertToken(dataconfigurationrecaptchaEnabled);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationnotifyContactOwner != null)
             {
-                configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
+                configurationObject["notifyContactOwner"] = CSharpExpressionConverter.ConvertToken(dataconfigurationnotifyContactOwner);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationnotifyRecipients != null)
             {
-                configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
+                configurationObject["notifyRecipients"] = CSharpExpressionConverter.ConvertToken(dataconfigurationnotifyRecipients);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationcreateNewContactForNewEmail != null)
             {
-                configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
+                configurationObject["createNewContactForNewEmail"] = CSharpExpressionConverter.ConvertToken(dataconfigurationcreateNewContactForNewEmail);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationprePopulateKnownValues != null)
             {
-                configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
+                configurationObject["prePopulateKnownValues"] = CSharpExpressionConverter.ConvertToken(dataconfigurationprePopulateKnownValues);
                 configurationObjectpropCount++;
             }
 
             if (dataconfigurationallowLinkToResetKnownValues != null)
             {
-                configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
+                configurationObject["allowLinkToResetKnownValues"] = CSharpExpressionConverter.ConvertToken(dataconfigurationallowLinkToResetKnownValues);
                 configurationObjectpropCount++;
             }
 
@@ -453,19 +453,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var displayOptionsObjectpropCount = 0;
             if (datadisplayOptionsrenderRawHtml != null)
             {
-                displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
+                displayOptionsObject["renderRawHtml"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsrenderRawHtml);
                 displayOptionsObjectpropCount++;
             }
 
             if (datadisplayOptionstheme != null)
             {
-                displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
+                displayOptionsObject["theme"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionstheme);
                 displayOptionsObjectpropCount++;
             }
 
             if (datadisplayOptionssubmitButtonText != null)
             {
-                displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
+                displayOptionsObject["submitButtonText"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionssubmitButtonText);
                 displayOptionsObjectpropCount++;
             }
 
@@ -473,73 +473,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var styleObjectpropCount = 0;
             if (datadisplayOptionsstylefontFamily != null)
             {
-                styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
+                styleObject["fontFamily"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylefontFamily);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylebackgroundWidth != null)
             {
-                styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
+                styleObject["backgroundWidth"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylebackgroundWidth);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelabelTextColor != null)
             {
-                styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
+                styleObject["labelTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelabelTextSize != null)
             {
-                styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
+                styleObject["labelTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylehelpTextColor != null)
             {
-                styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
+                styleObject["helpTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylehelpTextSize != null)
             {
-                styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
+                styleObject["helpTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelegalConsentTextColor != null)
             {
-                styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
+                styleObject["legalConsentTextColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylelegalConsentTextSize != null)
             {
-                styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
+                styleObject["legalConsentTextSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextSize);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitColor != null)
             {
-                styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
+                styleObject["submitColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitAlignment != null)
             {
-                styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
+                styleObject["submitAlignment"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitAlignment);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitFontColor != null)
             {
-                styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
+                styleObject["submitFontColor"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitFontColor);
                 styleObjectpropCount++;
             }
 
             if (datadisplayOptionsstylesubmitSize != null)
             {
-                styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
+                styleObject["submitSize"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitSize);
                 styleObjectpropCount++;
             }
 
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (datadisplayOptionscssClass != null)
             {
-                displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
+                displayOptionsObject["cssClass"] = CSharpExpressionConverter.ConvertToken(datadisplayOptionscssClass);
                 displayOptionsObjectpropCount++;
             }
 
@@ -572,81 +572,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventRead(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
+            callPayload.Queries["externalAccountId"] = CSharpExpressionConverter.ConvertO(externalAccountId);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventsArchive(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
+            callPayload.Queries["externalAccountId"] = CSharpExpressionConverter.ConvertO(externalAccountId);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventsUpdateCreateOrUpdate(Expression<Func<string>> externalEventId, Expression<Func<string>> dataeventName, Expression<Func<string>> dataeventOrganizer, Expression<Func<string>> dataexternalAccountId, Expression<Func<string>> dataexternalEventId, Expression<Func<dataeventTypeInput>> dataeventType = null, Expression<Func<string>> datastartDateTime = null, Expression<Func<string>> dataendDateTime = null, Expression<Func<string>> dataeventDescription = null, Expression<Func<string>> dataeventUrl = null, Expression<Func<bool>> dataeventCancelled = null, Expression<Func<datacustomPropertiesInputItem[]>> datacustomProperties = null)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var data = new JObject();
             var datapropCount = 0;
             datapropCount++;
-            data["eventName"] = ExpressionConverter.ConvertO(dataeventName);
+            data["eventName"] = CSharpExpressionConverter.ConvertToken(dataeventName);
             if (dataeventType != null)
             {
-                data["eventType"] = ExpressionConverter.ConvertO(dataeventType);
+                data["eventType"] = CSharpExpressionConverter.Convert(dataeventType);
                 datapropCount++;
             }
 
             if (datastartDateTime != null)
             {
-                data["startDateTime"] = ExpressionConverter.ConvertO(datastartDateTime);
+                data["startDateTime"] = CSharpExpressionConverter.ConvertToken(datastartDateTime);
                 datapropCount++;
             }
 
             if (dataendDateTime != null)
             {
-                data["endDateTime"] = ExpressionConverter.ConvertO(dataendDateTime);
+                data["endDateTime"] = CSharpExpressionConverter.ConvertToken(dataendDateTime);
                 datapropCount++;
             }
 
             datapropCount++;
-            data["eventOrganizer"] = ExpressionConverter.ConvertO(dataeventOrganizer);
+            data["eventOrganizer"] = CSharpExpressionConverter.ConvertToken(dataeventOrganizer);
             if (dataeventDescription != null)
             {
-                data["eventDescription"] = ExpressionConverter.ConvertO(dataeventDescription);
+                data["eventDescription"] = CSharpExpressionConverter.ConvertToken(dataeventDescription);
                 datapropCount++;
             }
 
             if (dataeventUrl != null)
             {
-                data["eventUrl"] = ExpressionConverter.ConvertO(dataeventUrl);
+                data["eventUrl"] = CSharpExpressionConverter.ConvertToken(dataeventUrl);
                 datapropCount++;
             }
 
             if (dataeventCancelled != null)
             {
-                data["eventCancelled"] = ExpressionConverter.ConvertO(dataeventCancelled);
+                data["eventCancelled"] = CSharpExpressionConverter.ConvertToken(dataeventCancelled);
                 datapropCount++;
             }
 
             if (datacustomProperties != null)
             {
-                data["customProperties"] = ExpressionConverter.ConvertO(datacustomProperties);
+                data["customProperties"] = CSharpExpressionConverter.ConvertToken(datacustomProperties);
                 datapropCount++;
             }
 
             datapropCount++;
-            data["externalAccountId"] = ExpressionConverter.ConvertO(dataexternalAccountId);
+            data["externalAccountId"] = CSharpExpressionConverter.ConvertToken(dataexternalAccountId);
             datapropCount++;
-            data["externalEventId"] = ExpressionConverter.ConvertO(dataexternalEventId);
+            data["externalEventId"] = CSharpExpressionConverter.ConvertToken(dataexternalEventId);
             if (datapropCount > 0)
             {
                 callPayload.Body = data;
@@ -663,17 +663,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["limit"] = Convert.ToString(10);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Queries["orderBy"] = Convert.ToString("created");
             if (orderBy != null)
-                callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["orderBy"] = CSharpExpressionConverter.ConvertO(orderBy);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsRead(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsArchive(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -691,26 +691,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodysubject = null)
         {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyfromName != null)
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsCampaignRead(Expression<Func<string>> campaignId)
         {
-            var apiCallPath = String.Format("/email/public/v1/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -740,10 +740,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 

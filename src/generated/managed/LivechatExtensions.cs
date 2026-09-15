@@ -29,36 +29,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["login"] = ExpressionConverter.ConvertO(bodyemail);
+            body["login"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyloginStatus != null)
             {
-                body["login_status"] = ExpressionConverter.ConvertO(bodyloginStatus);
+                body["login_status"] = CSharpExpressionConverter.Convert(bodyloginStatus);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["job_title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["job_title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodypermission != null)
             {
-                body["permission"] = ExpressionConverter.ConvertO(bodypermission);
+                body["permission"] = CSharpExpressionConverter.Convert(bodypermission);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
             if (bodymaxChatCounts != null)
             {
-                body["max_chats_count"] = ExpressionConverter.ConvertO(bodymaxChatCounts);
+                body["max_chats_count"] = CSharpExpressionConverter.ConvertToken(bodymaxChatCounts);
                 bodypropCount++;
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent(Expression<Func<string>> login)
         {
-            var apiCallPath = String.Format("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(login, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/agents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(login, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteAgentResponse>(callPayload);
@@ -97,18 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             var requesterObject = new JObject();
             var requesterObjectpropCount = 0;
             if (bodyrequesterrequesterSEmail != null)
             {
-                requesterObject["mail"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSEmail);
+                requesterObject["mail"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
                 requesterObjectpropCount++;
             }
 
             if (bodyrequesterrequesterSName != null)
             {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSName);
+                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
                 requesterObjectpropCount++;
             }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var assigneeObjectpropCount = 0;
             if (bodyassigneeassigneeId != null)
             {
-                assigneeObject["id"] = ExpressionConverter.ConvertO(bodyassigneeassigneeId);
+                assigneeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassigneeassigneeId);
                 assigneeObjectpropCount++;
             }
 
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var sourceObjectpropCount = 0;
             if (bodysourcesourceType != null)
             {
-                sourceObject["type"] = ExpressionConverter.ConvertO(bodysourcesourceType);
+                sourceObject["type"] = CSharpExpressionConverter.Convert(bodysourcesourceType);
                 sourceObjectpropCount++;
             }
 
             if (bodysourcesourceURL != null)
             {
-                sourceObject["url"] = ExpressionConverter.ConvertO(bodysourcesourceURL);
+                sourceObject["url"] = CSharpExpressionConverter.ConvertToken(bodysourcesourceURL);
                 sourceObjectpropCount++;
             }
 
@@ -169,24 +169,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
-            var apiCallPath = String.Format("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             var requesterObject = new JObject();
             var requesterObjectpropCount = 0;
             requesterObjectpropCount++;
-            requesterObject["mail"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSEmail);
+            requesterObject["mail"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
             if (bodyrequesterrequesterSName != null)
             {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSName);
+                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
                 requesterObjectpropCount++;
             }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var assigneeObjectpropCount = 0;
             if (bodyassigneeassigneeId != null)
             {
-                assigneeObject["id"] = ExpressionConverter.ConvertO(bodyassigneeassigneeId);
+                assigneeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassigneeassigneeId);
                 assigneeObjectpropCount++;
             }
 
@@ -220,13 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var sourceObjectpropCount = 0;
             if (bodysourcesourceType != null)
             {
-                sourceObject["type"] = ExpressionConverter.ConvertO(bodysourcesourceType);
+                sourceObject["type"] = CSharpExpressionConverter.Convert(bodysourcesourceType);
                 sourceObjectpropCount++;
             }
 
             if (bodysourcesourceURL != null)
             {
-                sourceObject["url"] = ExpressionConverter.ConvertO(bodysourcesourceURL);
+                sourceObject["url"] = CSharpExpressionConverter.ConvertToken(bodysourcesourceURL);
                 sourceObjectpropCount++;
             }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> GetTicket(Expression<Func<string>> ticketId)
         {
-            var apiCallPath = String.Format("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TicketResponse>(callPayload);

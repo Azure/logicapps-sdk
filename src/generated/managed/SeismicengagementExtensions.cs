@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (enabled != null)
-                callPayload.Queries["Enabled"] = ExpressionConverter.Convert(enabled);
+                callPayload.Queries["Enabled"] = CSharpExpressionConverter.ConvertO(enabled);
             return new ApiConnectionAction<SeismicDeliveryDeliveryOption[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
         {
-            var apiCallPath = String.Format("/customDelivery/{0}", ExpressionConverter.ConvertWithUrlEncoding(deliveryOptionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryOptionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(callPayload);
@@ -41,25 +41,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var bodypropCount = 0;
             if (bodydeliveryOption != null)
             {
-                body["deliveryOption"] = ExpressionConverter.ConvertO(bodydeliveryOption);
+                body["deliveryOption"] = CSharpExpressionConverter.ConvertToken(bodydeliveryOption);
                 bodypropCount++;
             }
 
             if (bodydeliveryOptionId != null)
             {
-                body["deliveryOptionId"] = ExpressionConverter.ConvertO(bodydeliveryOptionId);
+                body["deliveryOptionId"] = CSharpExpressionConverter.ConvertToken(bodydeliveryOptionId);
                 bodypropCount++;
             }
 
             if (bodyadHocInput != null)
             {
-                body["adHocInputs"] = ExpressionConverter.ConvertO(bodyadHocInput);
+                body["adHocInputs"] = CSharpExpressionConverter.ConvertToken(bodyadHocInput);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var workspaceOptionsObjectpropCount = 0;
             if (bodyworkspaceOptionsworkspaceFolderId != null)
             {
-                workspaceOptionsObject["workspaceFolderId"] = ExpressionConverter.ConvertO(bodyworkspaceOptionsworkspaceFolderId);
+                workspaceOptionsObject["workspaceFolderId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceOptionsworkspaceFolderId);
                 workspaceOptionsObjectpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var bodypropCount = 0;
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
@@ -125,31 +125,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var settingsObjectpropCount = 0;
             if (bodysettingsexpiresAt != null)
             {
-                settingsObject["expiresAt"] = ExpressionConverter.ConvertO(bodysettingsexpiresAt);
+                settingsObject["expiresAt"] = CSharpExpressionConverter.ConvertToken(bodysettingsexpiresAt);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingspassword != null)
             {
-                settingsObject["password"] = ExpressionConverter.ConvertO(bodysettingspassword);
+                settingsObject["password"] = CSharpExpressionConverter.ConvertToken(bodysettingspassword);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsallowDownload != null)
             {
-                settingsObject["allowDownload"] = ExpressionConverter.ConvertO(bodysettingsallowDownload);
+                settingsObject["allowDownload"] = CSharpExpressionConverter.ConvertToken(bodysettingsallowDownload);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingsnotificationType != null)
             {
-                settingsObject["notificationType"] = ExpressionConverter.ConvertO(bodysettingsnotificationType);
+                settingsObject["notificationType"] = CSharpExpressionConverter.ConvertToken(bodysettingsnotificationType);
                 settingsObjectpropCount++;
             }
 
             if (bodysettingssingleView != null)
             {
-                settingsObject["singleView"] = ExpressionConverter.ConvertO(bodysettingssingleView);
+                settingsObject["singleView"] = CSharpExpressionConverter.ConvertToken(bodysettingssingleView);
                 settingsObjectpropCount++;
             }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 

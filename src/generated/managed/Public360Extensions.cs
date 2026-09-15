@@ -17,44 +17,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/FileService/CreateFile";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hosturl"] = ExpressionConverter.Convert(hosturl);
+            callPayload.Queries["hosturl"] = CSharpExpressionConverter.ConvertO(hosturl);
             var body = new JObject();
             var bodypropCount = 0;
             var parameterObject = new JObject();
             var parameterObjectpropCount = 0;
             if (bodyparametertitle != null)
             {
-                parameterObject["Title"] = ExpressionConverter.ConvertO(bodyparametertitle);
+                parameterObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyparametertitle);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterdocumentNumber != null)
             {
-                parameterObject["DocumentNumber"] = ExpressionConverter.ConvertO(bodyparameterdocumentNumber);
+                parameterObject["DocumentNumber"] = CSharpExpressionConverter.ConvertToken(bodyparameterdocumentNumber);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterdocumentRecno != null)
             {
-                parameterObject["DocumentRecno"] = ExpressionConverter.ConvertO(bodyparameterdocumentRecno);
+                parameterObject["DocumentRecno"] = CSharpExpressionConverter.ConvertToken(bodyparameterdocumentRecno);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterformat != null)
             {
-                parameterObject["Format"] = ExpressionConverter.ConvertO(bodyparameterformat);
+                parameterObject["Format"] = CSharpExpressionConverter.ConvertToken(bodyparameterformat);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterbase64Data != null)
             {
-                parameterObject["Base64Data"] = ExpressionConverter.ConvertO(bodyparameterbase64Data);
+                parameterObject["Base64Data"] = CSharpExpressionConverter.ConvertToken(bodyparameterbase64Data);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameteradditionalFields != null)
             {
-                parameterObject["AdditionalFields"] = ExpressionConverter.ConvertO(bodyparameteradditionalFields);
+                parameterObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(bodyparameteradditionalFields);
                 parameterObjectpropCount++;
             }
 
@@ -78,74 +78,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/DocumentService/CreateDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hosturl"] = ExpressionConverter.Convert(hosturl);
+            callPayload.Queries["hosturl"] = CSharpExpressionConverter.ConvertO(hosturl);
             var body = new JObject();
             var bodypropCount = 0;
             var parameterObject = new JObject();
             var parameterObjectpropCount = 0;
             if (bodyparametertitle != null)
             {
-                parameterObject["Title"] = ExpressionConverter.ConvertO(bodyparametertitle);
+                parameterObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyparametertitle);
                 parameterObjectpropCount++;
             }
 
             if (bodyparametercaseNumber != null)
             {
-                parameterObject["CaseNumber"] = ExpressionConverter.ConvertO(bodyparametercaseNumber);
+                parameterObject["CaseNumber"] = CSharpExpressionConverter.ConvertToken(bodyparametercaseNumber);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterdefaultValueSet != null)
             {
-                parameterObject["DefaultValueSet"] = ExpressionConverter.ConvertO(bodyparameterdefaultValueSet);
+                parameterObject["DefaultValueSet"] = CSharpExpressionConverter.ConvertToken(bodyparameterdefaultValueSet);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterunofficialTitle != null)
             {
-                parameterObject["UnofficialTitle"] = ExpressionConverter.ConvertO(bodyparameterunofficialTitle);
+                parameterObject["UnofficialTitle"] = CSharpExpressionConverter.ConvertToken(bodyparameterunofficialTitle);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterresponsiblePersonEmail != null)
             {
-                parameterObject["ResponsiblePersonEmail"] = ExpressionConverter.ConvertO(bodyparameterresponsiblePersonEmail);
+                parameterObject["ResponsiblePersonEmail"] = CSharpExpressionConverter.ConvertToken(bodyparameterresponsiblePersonEmail);
                 parameterObjectpropCount++;
             }
 
             if (bodyparametercategory != null)
             {
-                parameterObject["Category"] = ExpressionConverter.ConvertO(bodyparametercategory);
+                parameterObject["Category"] = CSharpExpressionConverter.ConvertToken(bodyparametercategory);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterstatus != null)
             {
-                parameterObject["Status"] = ExpressionConverter.ConvertO(bodyparameterstatus);
+                parameterObject["Status"] = CSharpExpressionConverter.ConvertToken(bodyparameterstatus);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterarchive != null)
             {
-                parameterObject["Archive"] = ExpressionConverter.ConvertO(bodyparameterarchive);
+                parameterObject["Archive"] = CSharpExpressionConverter.ConvertToken(bodyparameterarchive);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameternotes != null)
             {
-                parameterObject["Notes"] = ExpressionConverter.ConvertO(bodyparameternotes);
+                parameterObject["Notes"] = CSharpExpressionConverter.ConvertToken(bodyparameternotes);
                 parameterObjectpropCount++;
             }
 
             if (bodyparametercontacts != null)
             {
-                parameterObject["Contacts"] = ExpressionConverter.ConvertO(bodyparametercontacts);
+                parameterObject["Contacts"] = CSharpExpressionConverter.ConvertToken(bodyparametercontacts);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameteradditionalFields != null)
             {
-                parameterObject["AdditionalFields"] = ExpressionConverter.ConvertO(bodyparameteradditionalFields);
+                parameterObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(bodyparameteradditionalFields);
                 parameterObjectpropCount++;
             }
 
@@ -169,62 +169,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/CaseService/CreateCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hosturl"] = ExpressionConverter.Convert(hosturl);
+            callPayload.Queries["hosturl"] = CSharpExpressionConverter.ConvertO(hosturl);
             var body = new JObject();
             var bodypropCount = 0;
             var parameterObject = new JObject();
             var parameterObjectpropCount = 0;
             if (bodyparametertitle != null)
             {
-                parameterObject["Title"] = ExpressionConverter.ConvertO(bodyparametertitle);
+                parameterObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyparametertitle);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterdefaultValueSet != null)
             {
-                parameterObject["DefaultValueSet"] = ExpressionConverter.ConvertO(bodyparameterdefaultValueSet);
+                parameterObject["DefaultValueSet"] = CSharpExpressionConverter.ConvertToken(bodyparameterdefaultValueSet);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterunofficialTitle != null)
             {
-                parameterObject["UnofficialTitle"] = ExpressionConverter.ConvertO(bodyparameterunofficialTitle);
+                parameterObject["UnofficialTitle"] = CSharpExpressionConverter.ConvertToken(bodyparameterunofficialTitle);
                 parameterObjectpropCount++;
             }
 
             if (bodyparametercaseType != null)
             {
-                parameterObject["CaseType"] = ExpressionConverter.ConvertO(bodyparametercaseType);
+                parameterObject["CaseType"] = CSharpExpressionConverter.ConvertToken(bodyparametercaseType);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterresponsiblePersonEmail != null)
             {
-                parameterObject["ResponsiblePersonEmail"] = ExpressionConverter.ConvertO(bodyparameterresponsiblePersonEmail);
+                parameterObject["ResponsiblePersonEmail"] = CSharpExpressionConverter.ConvertToken(bodyparameterresponsiblePersonEmail);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterresponsiblePersonIdNumber != null)
             {
-                parameterObject["ResponsiblePersonIdNumber"] = ExpressionConverter.ConvertO(bodyparameterresponsiblePersonIdNumber);
+                parameterObject["ResponsiblePersonIdNumber"] = CSharpExpressionConverter.ConvertToken(bodyparameterresponsiblePersonIdNumber);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterresponsibleEnterpriseNumber != null)
             {
-                parameterObject["ResponsibleEnterpriseNumber"] = ExpressionConverter.ConvertO(bodyparameterresponsibleEnterpriseNumber);
+                parameterObject["ResponsibleEnterpriseNumber"] = CSharpExpressionConverter.ConvertToken(bodyparameterresponsibleEnterpriseNumber);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameterprogressPlanId != null)
             {
-                parameterObject["ProgressPlanId"] = ExpressionConverter.ConvertO(bodyparameterprogressPlanId);
+                parameterObject["ProgressPlanId"] = CSharpExpressionConverter.ConvertToken(bodyparameterprogressPlanId);
                 parameterObjectpropCount++;
             }
 
             if (bodyparameteradditionalFields != null)
             {
-                parameterObject["AdditionalFields"] = ExpressionConverter.ConvertO(bodyparameteradditionalFields);
+                parameterObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(bodyparameteradditionalFields);
                 parameterObjectpropCount++;
             }
 

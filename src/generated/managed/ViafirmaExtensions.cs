@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var apiCallPath = "/documents/api/v3/messages/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
+            body["groupCode"] = CSharpExpressionConverter.ConvertToken(bodygroupCode);
             var workflowObject = new JObject();
             var workflowObjectpropCount = 0;
             workflowObject["type"] = "WEB";
@@ -37,23 +37,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var notificationObjectpropCount = 0;
             if (bodynotificationtext != null)
             {
-                notificationObject["text"] = ExpressionConverter.ConvertO(bodynotificationtext);
+                notificationObject["text"] = CSharpExpressionConverter.ConvertToken(bodynotificationtext);
                 notificationObjectpropCount++;
             }
 
             if (bodynotificationdetail != null)
             {
-                notificationObject["detail"] = ExpressionConverter.ConvertO(bodynotificationdetail);
+                notificationObject["detail"] = CSharpExpressionConverter.ConvertToken(bodynotificationdetail);
                 notificationObjectpropCount++;
             }
 
             var sharedLinkObject = new JObject();
             var sharedLinkObjectpropCount = 0;
             sharedLinkObjectpropCount++;
-            sharedLinkObject["email"] = ExpressionConverter.ConvertO(bodynotificationsharedLinkemail);
+            sharedLinkObject["email"] = CSharpExpressionConverter.ConvertToken(bodynotificationsharedLinkemail);
             if (bodynotificationsharedLinksubject != null)
             {
-                sharedLinkObject["subject"] = ExpressionConverter.ConvertO(bodynotificationsharedLinksubject);
+                sharedLinkObject["subject"] = CSharpExpressionConverter.ConvertToken(bodynotificationsharedLinksubject);
                 sharedLinkObjectpropCount++;
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var documentObjectpropCount = 0;
             if (bodydocumenttemplateCode != null)
             {
-                documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
+                documentObject["templateCode"] = CSharpExpressionConverter.ConvertToken(bodydocumenttemplateCode);
                 documentObjectpropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
             if (bodycallbackMails != null)
             {
-                body["callbackMails"] = ExpressionConverter.ConvertO(bodycallbackMails);
+                body["callbackMails"] = CSharpExpressionConverter.ConvertToken(bodycallbackMails);
                 bodypropCount++;
             }
 
@@ -103,12 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var apiCallPath = "/documents/api/v3/messages/dispatch";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
+            body["groupCode"] = CSharpExpressionConverter.ConvertToken(bodygroupCode);
             var workflowObject = new JObject();
             var workflowObjectpropCount = 0;
             workflowObject["type"] = "PRESENTIAL";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var documentObjectpropCount = 0;
             if (bodydocumenttemplateCode != null)
             {
-                documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
+                documentObject["templateCode"] = CSharpExpressionConverter.ConvertToken(bodydocumenttemplateCode);
                 documentObjectpropCount++;
             }
 

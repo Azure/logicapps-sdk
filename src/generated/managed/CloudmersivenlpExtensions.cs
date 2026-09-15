@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToAnalyze != null)
             {
-                input["TextToAnalyze"] = ExpressionConverter.ConvertO(inputtextToAnalyze);
+                input["TextToAnalyze"] = CSharpExpressionConverter.ConvertToken(inputtextToAnalyze);
                 inputpropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToAnalyze != null)
             {
-                input["TextToAnalyze"] = ExpressionConverter.ConvertO(inputtextToAnalyze);
+                input["TextToAnalyze"] = CSharpExpressionConverter.ConvertToken(inputtextToAnalyze);
                 inputpropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToAnalyze != null)
             {
-                input["TextToAnalyze"] = ExpressionConverter.ConvertO(inputtextToAnalyze);
+                input["TextToAnalyze"] = CSharpExpressionConverter.ConvertToken(inputtextToAnalyze);
                 inputpropCount++;
             }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var valuepropCount = 0;
             if (valueinputString != null)
             {
-                value["InputString"] = ExpressionConverter.ConvertO(valueinputString);
+                value["InputString"] = CSharpExpressionConverter.ConvertToken(valueinputString);
                 valuepropCount++;
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToDetect != null)
             {
-                input["textToDetect"] = ExpressionConverter.ConvertO(inputtextToDetect);
+                input["textToDetect"] = CSharpExpressionConverter.ConvertToken(inputtextToDetect);
                 inputpropCount++;
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToTranslate != null)
             {
-                input["TextToTranslate"] = ExpressionConverter.ConvertO(inputtextToTranslate);
+                input["TextToTranslate"] = CSharpExpressionConverter.ConvertToken(inputtextToTranslate);
                 inputpropCount++;
             }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToTranslate != null)
             {
-                input["TextToTranslate"] = ExpressionConverter.ConvertO(inputtextToTranslate);
+                input["TextToTranslate"] = CSharpExpressionConverter.ConvertToken(inputtextToTranslate);
                 inputpropCount++;
             }
 
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToTranslate != null)
             {
-                input["TextToTranslate"] = ExpressionConverter.ConvertO(inputtextToTranslate);
+                input["TextToTranslate"] = CSharpExpressionConverter.ConvertToken(inputtextToTranslate);
                 inputpropCount++;
             }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToTranslate != null)
             {
-                input["TextToTranslate"] = ExpressionConverter.ConvertO(inputtextToTranslate);
+                input["TextToTranslate"] = CSharpExpressionConverter.ConvertToken(inputtextToTranslate);
                 inputpropCount++;
             }
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputinputString != null)
             {
-                input["InputString"] = ExpressionConverter.ConvertO(inputinputString);
+                input["InputString"] = CSharpExpressionConverter.ConvertToken(inputinputString);
                 inputpropCount++;
             }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var requestpropCount = 0;
             if (requestinputText != null)
             {
-                request["InputText"] = ExpressionConverter.ConvertO(requestinputText);
+                request["InputText"] = CSharpExpressionConverter.ConvertToken(requestinputText);
                 requestpropCount++;
             }
 
@@ -373,13 +373,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputtextToTranslate != null)
             {
-                input["TextToTranslate"] = ExpressionConverter.ConvertO(inputtextToTranslate);
+                input["TextToTranslate"] = CSharpExpressionConverter.ConvertToken(inputtextToTranslate);
                 inputpropCount++;
             }
 
             if (inputtargetRephrasingCount != null)
             {
-                input["TargetRephrasingCount"] = ExpressionConverter.ConvertO(inputtargetRephrasingCount);
+                input["TargetRephrasingCount"] = CSharpExpressionConverter.ConvertToken(inputtargetRephrasingCount);
                 inputpropCount++;
             }
 
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputinputString != null)
             {
-                input["InputString"] = ExpressionConverter.ConvertO(inputinputString);
+                input["InputString"] = CSharpExpressionConverter.ConvertToken(inputinputString);
                 inputpropCount++;
             }
 
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var inputpropCount = 0;
             if (inputinputText != null)
             {
-                input["InputText"] = ExpressionConverter.ConvertO(inputinputText);
+                input["InputText"] = CSharpExpressionConverter.ConvertToken(inputinputText);
                 inputpropCount++;
             }
 
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var valuepropCount = 0;
             if (valueword != null)
             {
-                value["Word"] = ExpressionConverter.ConvertO(valueword);
+                value["Word"] = CSharpExpressionConverter.ConvertToken(valueword);
                 valuepropCount++;
             }
 
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
             var valuepropCount = 0;
             if (valuesentence != null)
             {
-                value["Sentence"] = ExpressionConverter.ConvertO(valuesentence);
+                value["Sentence"] = CSharpExpressionConverter.ConvertToken(valuesentence);
                 valuepropCount++;
             }
 

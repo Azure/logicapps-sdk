@@ -18,70 +18,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (minAccessRole != null)
-                callPayload.Queries["minAccessRole"] = ExpressionConverter.Convert(minAccessRole);
+                callPayload.Queries["minAccessRole"] = CSharpExpressionConverter.Convert(minAccessRole);
             return new ApiConnectionAction<CalendarList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<CalendarEventList> ListEvents(Expression<Func<string>> calendarId, Expression<Func<string>> timeMin = null, Expression<Func<string>> timeMax = null, Expression<Func<string>> q = null)
         {
-            var apiCallPath = String.Format("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (timeMin != null)
-                callPayload.Queries["timeMin"] = ExpressionConverter.Convert(timeMin);
+                callPayload.Queries["timeMin"] = CSharpExpressionConverter.ConvertO(timeMin);
             if (timeMax != null)
-                callPayload.Queries["timeMax"] = ExpressionConverter.Convert(timeMax);
+                callPayload.Queries["timeMax"] = CSharpExpressionConverter.ConvertO(timeMax);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<CalendarEventList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> CreateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> newEventstartTime, Expression<Func<string>> newEventendTime, Expression<Func<string>> newEventtitle = null, Expression<Func<string>> newEventdescription = null, Expression<Func<string>> newEventlocation = null, Expression<Func<string>> newEventattendees = null, Expression<Func<newEventstatusInput>> newEventstatus = null, Expression<Func<bool>> newEventisAllDay = null)
         {
-            var apiCallPath = String.Format("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var newEvent = new JObject();
             var newEventpropCount = 0;
             if (newEventtitle != null)
             {
-                newEvent["summary"] = ExpressionConverter.ConvertO(newEventtitle);
+                newEvent["summary"] = CSharpExpressionConverter.ConvertToken(newEventtitle);
                 newEventpropCount++;
             }
 
             newEventpropCount++;
-            newEvent["start"] = ExpressionConverter.ConvertO(newEventstartTime);
+            newEvent["start"] = CSharpExpressionConverter.ConvertToken(newEventstartTime);
             newEventpropCount++;
-            newEvent["end"] = ExpressionConverter.ConvertO(newEventendTime);
+            newEvent["end"] = CSharpExpressionConverter.ConvertToken(newEventendTime);
             if (newEventdescription != null)
             {
-                newEvent["description"] = ExpressionConverter.ConvertO(newEventdescription);
+                newEvent["description"] = CSharpExpressionConverter.ConvertToken(newEventdescription);
                 newEventpropCount++;
             }
 
             if (newEventlocation != null)
             {
-                newEvent["location"] = ExpressionConverter.ConvertO(newEventlocation);
+                newEvent["location"] = CSharpExpressionConverter.ConvertToken(newEventlocation);
                 newEventpropCount++;
             }
 
             if (newEventattendees != null)
             {
-                newEvent["attendees"] = ExpressionConverter.ConvertO(newEventattendees);
+                newEvent["attendees"] = CSharpExpressionConverter.ConvertToken(newEventattendees);
                 newEventpropCount++;
             }
 
             if (newEventstatus != null)
             {
-                newEvent["status"] = ExpressionConverter.ConvertO(newEventstatus);
+                newEvent["status"] = CSharpExpressionConverter.Convert(newEventstatus);
                 newEventpropCount++;
             }
 
             if (newEventisAllDay != null)
             {
-                newEvent["isAllDay"] = ExpressionConverter.ConvertO(newEventisAllDay);
+                newEvent["isAllDay"] = CSharpExpressionConverter.ConvertToken(newEventisAllDay);
                 newEventpropCount++;
             }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> GetEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ResponseEvent>(callPayload);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<JToken> DeleteEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -114,56 +114,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<string>> updatedEventtitle = null, Expression<Func<string>> updatedEventstartTime = null, Expression<Func<string>> updatedEventendTime = null, Expression<Func<string>> updatedEventdescription = null, Expression<Func<string>> updatedEventlocation = null, Expression<Func<string>> updatedEventattendees = null, Expression<Func<updatedEventstatusInput>> updatedEventstatus = null, Expression<Func<bool>> updatedEventisAllDay = null)
         {
-            var apiCallPath = String.Format("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var updatedEvent = new JObject();
             var updatedEventpropCount = 0;
             if (updatedEventtitle != null)
             {
-                updatedEvent["summary"] = ExpressionConverter.ConvertO(updatedEventtitle);
+                updatedEvent["summary"] = CSharpExpressionConverter.ConvertToken(updatedEventtitle);
                 updatedEventpropCount++;
             }
 
             if (updatedEventstartTime != null)
             {
-                updatedEvent["start"] = ExpressionConverter.ConvertO(updatedEventstartTime);
+                updatedEvent["start"] = CSharpExpressionConverter.ConvertToken(updatedEventstartTime);
                 updatedEventpropCount++;
             }
 
             if (updatedEventendTime != null)
             {
-                updatedEvent["end"] = ExpressionConverter.ConvertO(updatedEventendTime);
+                updatedEvent["end"] = CSharpExpressionConverter.ConvertToken(updatedEventendTime);
                 updatedEventpropCount++;
             }
 
             if (updatedEventdescription != null)
             {
-                updatedEvent["description"] = ExpressionConverter.ConvertO(updatedEventdescription);
+                updatedEvent["description"] = CSharpExpressionConverter.ConvertToken(updatedEventdescription);
                 updatedEventpropCount++;
             }
 
             if (updatedEventlocation != null)
             {
-                updatedEvent["location"] = ExpressionConverter.ConvertO(updatedEventlocation);
+                updatedEvent["location"] = CSharpExpressionConverter.ConvertToken(updatedEventlocation);
                 updatedEventpropCount++;
             }
 
             if (updatedEventattendees != null)
             {
-                updatedEvent["attendees"] = ExpressionConverter.ConvertO(updatedEventattendees);
+                updatedEvent["attendees"] = CSharpExpressionConverter.ConvertToken(updatedEventattendees);
                 updatedEventpropCount++;
             }
 
             if (updatedEventstatus != null)
             {
-                updatedEvent["status"] = ExpressionConverter.ConvertO(updatedEventstatus);
+                updatedEvent["status"] = CSharpExpressionConverter.Convert(updatedEventstatus);
                 updatedEventpropCount++;
             }
 
             if (updatedEventisAllDay != null)
             {
-                updatedEvent["isAllDay"] = ExpressionConverter.ConvertO(updatedEventisAllDay);
+                updatedEvent["isAllDay"] = CSharpExpressionConverter.ConvertToken(updatedEventisAllDay);
                 updatedEventpropCount++;
             }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     {
         public IBodyWorkflowTrigger<CalendarEventList> OnNewEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger1/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger2/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger2/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger3/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger3/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
@@ -204,17 +204,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger4/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger4/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (singleEvents != null)
-                callPayload.Queries["singleEvents"] = ExpressionConverter.Convert(singleEvents);
+                callPayload.Queries["singleEvents"] = CSharpExpressionConverter.ConvertO(singleEvents);
             return new ApiConnectionTrigger<CalendarEventChangedList>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<CalendarEventList> OnEventStarted(Expression<Func<string>> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/eventstarted/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/eventstarted/calendars/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
         public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions(Expression<Func<string>> iD)
         {
-            var apiCallPath = String.Format("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
         public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers(Expression<Func<string>> iD)
         {
-            var apiCallPath = String.Format("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);

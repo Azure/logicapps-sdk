@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var apiCallPath = "/tag/predict";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+            callPayload.Queries["keyword"] = CSharpExpressionConverter.ConvertO(keyword);
             return new ApiConnectionAction<HashtagsSimilarGetResponse>(callPayload);
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var apiCallPath = "/tag/count";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+            callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
             return new ApiConnectionAction<PostCountGetResponse>(callPayload);
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["image"] = ExpressionConverter.ConvertO(bodyimage);
+            body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/categories/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CategoryGetResponse>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CategoryTagsGetResponse>(callPayload);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet(Expression<Func<string>> countryName)
         {
-            var apiCallPath = String.Format("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CountryTagsGetResponse>(callPayload);

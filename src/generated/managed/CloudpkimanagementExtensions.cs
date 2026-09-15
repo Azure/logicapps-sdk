@@ -14,40 +14,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryCertificatesResponseItem[]> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<timevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/certificates", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (timevalid != null)
-                callPayload.Queries["timevalid"] = ExpressionConverter.Convert(timevalid);
+                callPayload.Queries["timevalid"] = CSharpExpressionConverter.Convert(timevalid);
             if (important != null)
-                callPayload.Queries["important"] = ExpressionConverter.Convert(important);
+                callPayload.Queries["important"] = CSharpExpressionConverter.ConvertO(important);
             if (renewalstatus != null)
-                callPayload.Queries["renewalstatus"] = ExpressionConverter.Convert(renewalstatus);
+                callPayload.Queries["renewalstatus"] = CSharpExpressionConverter.ConvertO(renewalstatus);
             if (expiring != null)
-                callPayload.Queries["expiring"] = ExpressionConverter.Convert(expiring);
+                callPayload.Queries["expiring"] = CSharpExpressionConverter.ConvertO(expiring);
             if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (serialnumber != null)
-                callPayload.Queries["serialnumber"] = ExpressionConverter.Convert(serialnumber);
+                callPayload.Queries["serialnumber"] = CSharpExpressionConverter.ConvertO(serialnumber);
             if (ski != null)
-                callPayload.Queries["ski"] = ExpressionConverter.Convert(ski);
+                callPayload.Queries["ski"] = CSharpExpressionConverter.ConvertO(ski);
             if (aki != null)
-                callPayload.Queries["aki"] = ExpressionConverter.Convert(aki);
+                callPayload.Queries["aki"] = CSharpExpressionConverter.ConvertO(aki);
             if (keytype != null)
-                callPayload.Queries["keytype"] = ExpressionConverter.Convert(keytype);
+                callPayload.Queries["keytype"] = CSharpExpressionConverter.ConvertO(keytype);
             if (keylength != null)
-                callPayload.Queries["keylength"] = ExpressionConverter.Convert(keylength);
+                callPayload.Queries["keylength"] = CSharpExpressionConverter.ConvertO(keylength);
             if (owneremail != null)
-                callPayload.Queries["owneremail"] = ExpressionConverter.Convert(owneremail);
+                callPayload.Queries["owneremail"] = CSharpExpressionConverter.ConvertO(owneremail);
             return new ApiConnectionAction<QueryCertificatesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetCertificateResponse> GetCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/certificates/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(thumbprint, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCertificateResponse>(callPayload);
@@ -56,46 +56,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateCertificateResponse> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodyowneremail = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/certificates/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(thumbprint, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["powerapps"] = ExpressionConverter.Convert(powerapps);
+            callPayload.Queries["powerapps"] = CSharpExpressionConverter.Convert(powerapps);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyimportant != null)
             {
-                body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                body["important"] = CSharpExpressionConverter.Convert(bodyimportant);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyrenewalstatus != null)
             {
-                body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                body["renewalstatus"] = CSharpExpressionConverter.Convert(bodyrenewalstatus);
                 bodypropCount++;
             }
 
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
             if (bodyowneremail != null)
             {
-                body["owneremail"] = ExpressionConverter.ConvertO(bodyowneremail);
+                body["owneremail"] = CSharpExpressionConverter.ConvertToken(bodyowneremail);
                 bodypropCount++;
             }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetTemplateResponse> GetTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/templates/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(templateid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTemplateResponse>(callPayload);
@@ -119,40 +119,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateTemplateResponse> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<bodyhiddenInput>> bodyhidden = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyautoapproveid = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/templates/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(templateid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateid, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["powerapps"] = ExpressionConverter.Convert(powerapps);
+            callPayload.Queries["powerapps"] = CSharpExpressionConverter.Convert(powerapps);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyimportant != null)
             {
-                body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                body["important"] = CSharpExpressionConverter.Convert(bodyimportant);
                 bodypropCount++;
             }
 
             if (bodyrenewalstatus != null)
             {
-                body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                body["renewalstatus"] = CSharpExpressionConverter.Convert(bodyrenewalstatus);
                 bodypropCount++;
             }
 
             if (bodyhidden != null)
             {
-                body["hidden"] = ExpressionConverter.ConvertO(bodyhidden);
+                body["hidden"] = CSharpExpressionConverter.Convert(bodyhidden);
                 bodypropCount++;
             }
 
             if (bodyowneremail != null)
             {
-                body["owneremail"] = ExpressionConverter.ConvertO(bodyowneremail);
+                body["owneremail"] = CSharpExpressionConverter.ConvertToken(bodyowneremail);
                 bodypropCount++;
             }
 
             if (bodyautoapproveid != null)
             {
-                body["autoapproveid"] = ExpressionConverter.ConvertO(bodyautoapproveid);
+                body["autoapproveid"] = CSharpExpressionConverter.ConvertToken(bodyautoapproveid);
                 bodypropCount++;
             }
 
@@ -167,34 +167,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryTemplatesResponseItem[]> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<keytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/templates", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.Convert(version);
             if (templateoid != null)
-                callPayload.Queries["templateoid"] = ExpressionConverter.Convert(templateoid);
+                callPayload.Queries["templateoid"] = CSharpExpressionConverter.ConvertO(templateoid);
             if (keytype != null)
-                callPayload.Queries["keytype"] = ExpressionConverter.Convert(keytype);
+                callPayload.Queries["keytype"] = CSharpExpressionConverter.Convert(keytype);
             if (minMinkeylength != null)
-                callPayload.Queries["min-minkeylength"] = ExpressionConverter.Convert(minMinkeylength);
+                callPayload.Queries["min-minkeylength"] = CSharpExpressionConverter.ConvertO(minMinkeylength);
             if (maxMinkeylength != null)
-                callPayload.Queries["max-minkeylength"] = ExpressionConverter.Convert(maxMinkeylength);
+                callPayload.Queries["max-minkeylength"] = CSharpExpressionConverter.ConvertO(maxMinkeylength);
             if (minValidity != null)
-                callPayload.Queries["min-validity"] = ExpressionConverter.Convert(minValidity);
+                callPayload.Queries["min-validity"] = CSharpExpressionConverter.ConvertO(minValidity);
             if (maxValidity != null)
-                callPayload.Queries["max-validity"] = ExpressionConverter.Convert(maxValidity);
+                callPayload.Queries["max-validity"] = CSharpExpressionConverter.ConvertO(maxValidity);
             return new ApiConnectionAction<QueryTemplatesResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetCRLResponse> GetCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/crls/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(crlid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/crls/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(crlid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCRLResponse>(callPayload);
@@ -203,83 +203,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryCRLsResponseItem[]> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/crls", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/crls", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (crlid != null)
-                callPayload.Queries["crlid"] = ExpressionConverter.Convert(crlid);
+                callPayload.Queries["crlid"] = CSharpExpressionConverter.ConvertO(crlid);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (issued != null)
-                callPayload.Queries["issued"] = ExpressionConverter.Convert(issued);
+                callPayload.Queries["issued"] = CSharpExpressionConverter.ConvertO(issued);
             if (expiring != null)
-                callPayload.Queries["expiring"] = ExpressionConverter.Convert(expiring);
+                callPayload.Queries["expiring"] = CSharpExpressionConverter.ConvertO(expiring);
             if (crlnumber != null)
-                callPayload.Queries["crlnumber"] = ExpressionConverter.Convert(crlnumber);
+                callPayload.Queries["crlnumber"] = CSharpExpressionConverter.ConvertO(crlnumber);
             if (crlnumberdecimal != null)
-                callPayload.Queries["crlnumberdecimal"] = ExpressionConverter.Convert(crlnumberdecimal);
+                callPayload.Queries["crlnumberdecimal"] = CSharpExpressionConverter.ConvertO(crlnumberdecimal);
             if (aki != null)
-                callPayload.Queries["aki"] = ExpressionConverter.Convert(aki);
+                callPayload.Queries["aki"] = CSharpExpressionConverter.ConvertO(aki);
             if (serialnumber != null)
-                callPayload.Queries["serialnumber"] = ExpressionConverter.Convert(serialnumber);
+                callPayload.Queries["serialnumber"] = CSharpExpressionConverter.ConvertO(serialnumber);
             return new ApiConnectionAction<QueryCRLsResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryRequestsResponseItem[]> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/requests", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             if (approverid != null)
-                callPayload.Queries["approverid"] = ExpressionConverter.Convert(approverid);
+                callPayload.Queries["approverid"] = CSharpExpressionConverter.ConvertO(approverid);
             if (approveremail != null)
-                callPayload.Queries["approveremail"] = ExpressionConverter.Convert(approveremail);
+                callPayload.Queries["approveremail"] = CSharpExpressionConverter.ConvertO(approveremail);
             if (submitterid != null)
-                callPayload.Queries["submitterid"] = ExpressionConverter.Convert(submitterid);
+                callPayload.Queries["submitterid"] = CSharpExpressionConverter.ConvertO(submitterid);
             if (submitteremail != null)
-                callPayload.Queries["submitteremail"] = ExpressionConverter.Convert(submitteremail);
+                callPayload.Queries["submitteremail"] = CSharpExpressionConverter.ConvertO(submitteremail);
             if (owneremail != null)
-                callPayload.Queries["owneremail"] = ExpressionConverter.Convert(owneremail);
+                callPayload.Queries["owneremail"] = CSharpExpressionConverter.ConvertO(owneremail);
             return new ApiConnectionAction<QueryRequestsResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<NewRequestResponse> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<string>> bodycsr, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalInput>> bodyrenewal = null, Expression<Func<string>> bodypreviouscertificate = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/requests", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["powerapps"] = ExpressionConverter.Convert(powerapps);
+            callPayload.Queries["powerapps"] = CSharpExpressionConverter.Convert(powerapps);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["csr"] = ExpressionConverter.ConvertO(bodycsr);
+            body["csr"] = CSharpExpressionConverter.ConvertToken(bodycsr);
             if (bodytemplateid != null)
             {
-                body["templateid"] = ExpressionConverter.ConvertO(bodytemplateid);
+                body["templateid"] = CSharpExpressionConverter.ConvertToken(bodytemplateid);
                 bodypropCount++;
             }
 
             if (bodyowneremail != null)
             {
-                body["owneremail"] = ExpressionConverter.ConvertO(bodyowneremail);
+                body["owneremail"] = CSharpExpressionConverter.ConvertToken(bodyowneremail);
                 bodypropCount++;
             }
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             {
                 if (bodyurgent != null)
                 {
-                    body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                    body["urgent"] = CSharpExpressionConverter.Convert(bodyurgent);
                     bodypropCount++;
                 }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             {
                 if (bodyimportant != null)
                 {
-                    body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                    body["important"] = CSharpExpressionConverter.Convert(bodyimportant);
                     bodypropCount++;
                 }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             {
                 if (bodyrenewal != null)
                 {
-                    body["renewal"] = ExpressionConverter.ConvertO(bodyrenewal);
+                    body["renewal"] = CSharpExpressionConverter.Convert(bodyrenewal);
                     bodypropCount++;
                 }
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             {
                 if (bodypreviouscertificate != null)
                 {
-                    body["previouscertificate"] = ExpressionConverter.ConvertO(bodypreviouscertificate);
+                    body["previouscertificate"] = CSharpExpressionConverter.ConvertToken(bodypreviouscertificate);
                     bodypropCount++;
                 }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             {
                 if (bodyrenewalstatus != null)
                 {
-                    body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                    body["renewalstatus"] = CSharpExpressionConverter.Convert(bodyrenewalstatus);
                     bodypropCount++;
                 }
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetRequestResponse> GetRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/requests/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(requestid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetRequestResponse>(callPayload);
@@ -383,54 +383,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/requests/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(requestid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestid, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["powerapps"] = ExpressionConverter.Convert(powerapps);
+            callPayload.Queries["powerapps"] = CSharpExpressionConverter.Convert(powerapps);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
+            body["status"] = CSharpExpressionConverter.Convert(bodystatus);
             if (bodycomment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
                 bodypropCount++;
             }
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
             if (bodyurgent != null)
             {
-                body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                body["urgent"] = CSharpExpressionConverter.Convert(bodyurgent);
                 bodypropCount++;
             }
 
             if (bodyimportant != null)
             {
-                body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                body["important"] = CSharpExpressionConverter.Convert(bodyimportant);
                 bodypropCount++;
             }
 
             if (bodyrenewalstatus != null)
             {
-                body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                body["renewalstatus"] = CSharpExpressionConverter.Convert(bodyrenewalstatus);
                 bodypropCount++;
             }
 
             if (bodytemplateid != null)
             {
-                body["templateid"] = ExpressionConverter.ConvertO(bodytemplateid);
+                body["templateid"] = CSharpExpressionConverter.ConvertToken(bodytemplateid);
                 bodypropCount++;
             }
 
             if (bodyowneremail != null)
             {
-                body["owneremail"] = ExpressionConverter.ConvertO(bodyowneremail);
+                body["owneremail"] = CSharpExpressionConverter.ConvertToken(bodyowneremail);
                 bodypropCount++;
             }
 
@@ -445,43 +445,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryHooksResponseItem[]> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<@eventInput>> @event = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (@event != null)
-                callPayload.Queries["event"] = ExpressionConverter.Convert(@event);
+                callPayload.Queries["event"] = CSharpExpressionConverter.Convert(@event);
             return new ApiConnectionAction<QueryHooksResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<NewHookResponse> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyeventsInputItem[]>> bodyevents, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodycallbackurl = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["powerapps"] = ExpressionConverter.Convert(powerapps);
+            callPayload.Queries["powerapps"] = CSharpExpressionConverter.Convert(powerapps);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodycallbackurl != null)
             {
-                body["callbackurl"] = ExpressionConverter.ConvertO(bodycallbackurl);
+                body["callbackurl"] = CSharpExpressionConverter.ConvertToken(bodycallbackurl);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
+            body["events"] = CSharpExpressionConverter.ConvertToken(bodyevents);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetHookResponse> GetHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(hookid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetHookResponse>(callPayload);
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<string> DeleteHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(hookid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookid, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<string> GetPublishedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/published/certificates/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(thumbprint, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/published/certificates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetPublishedTemplatesResponseItem[]> GetPublishedTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/published/templates", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/published/templates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetPublishedTemplatesResponseItem[]>(callPayload);
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetConnectorActionResponse> GetConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> connectoractionid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/connectoractions/{2}", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1), ExpressionConverter.ConvertWithUrlEncoding(connectoractionid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/connectoractions/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectoractionid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetConnectorActionResponse>(callPayload);
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetActionsResponseItem[]> GetActions(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/actions", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetActionsResponseItem[]>(callPayload);
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     {
         public IBodyWorkflowTrigger<AddedHookResponse> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/added-hook", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/added-hook", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RemovedHookResponse> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/removed-hook", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/issued-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/revoked-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/expiring-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/expired-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/renewing-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<PendingRequestResponse> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/pending-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/pending-request", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/approved-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/approved-request", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<DeniedRequestResponse> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/denied-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/denied-request", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-request", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<FailedRequestResponse> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/failed-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/failed-request", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/published-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/published-template", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/unpublished-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-template", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<IssuedCRLResponse> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/issued-crl", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/new-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/completed-action", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/completed-action", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/failed-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/stalled-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

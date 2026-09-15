@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
             var apiCallPath = "/api/v2/odata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["host_url"] = ExpressionConverter.Convert(hostUrl);
-            callPayload.Headers["role-id"] = ExpressionConverter.Convert(roleId);
-            callPayload.Headers["role-secret"] = ExpressionConverter.Convert(roleSecret);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
+            callPayload.Queries["host_url"] = CSharpExpressionConverter.ConvertO(hostUrl);
+            callPayload.Headers["role-id"] = CSharpExpressionConverter.ConvertO(roleId);
+            callPayload.Headers["role-secret"] = CSharpExpressionConverter.ConvertO(roleSecret);
             return new ApiConnectionAction(callPayload);
         }
     }

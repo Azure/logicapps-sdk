@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
             var apiCallPath = "/v1/current_time";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+            callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
             return new ApiConnectionAction<GetCurrentTimeResponse>(callPayload);
         }
 
@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
             var apiCallPath = "/v1/convert_time";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base_location"] = ExpressionConverter.Convert(baseLocation);
-            callPayload.Queries["target_location"] = ExpressionConverter.Convert(targetLocation);
+            callPayload.Queries["base_location"] = CSharpExpressionConverter.ConvertO(baseLocation);
+            callPayload.Queries["target_location"] = CSharpExpressionConverter.ConvertO(targetLocation);
             if (baseDatetime != null)
-                callPayload.Queries["base_datetime"] = ExpressionConverter.Convert(baseDatetime);
+                callPayload.Queries["base_datetime"] = CSharpExpressionConverter.ConvertO(baseDatetime);
             return new ApiConnectionAction<ConvertTimeResponse>(callPayload);
         }
     }

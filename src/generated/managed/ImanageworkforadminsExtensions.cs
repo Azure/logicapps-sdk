@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var apiCallPath = "/getLibraryRoles";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
+            callPayload.Queries["libraryId"] = CSharpExpressionConverter.ConvertO(libraryId);
             if (isExternal != null)
-                callPayload.Queries["is_external"] = ExpressionConverter.Convert(isExternal);
+                callPayload.Queries["is_external"] = CSharpExpressionConverter.ConvertO(isExternal);
             callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
             return new ApiConnectionAction<GetLibraryRolesResponse>(callPayload);
         }
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var apiCallPath = "/getLookupAliases";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
+            callPayload.Queries["libraryId"] = CSharpExpressionConverter.ConvertO(libraryId);
+            callPayload.Queries["lookupFieldId"] = CSharpExpressionConverter.ConvertO(lookupFieldId);
             if (parentAlias != null)
-                callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
+                callPayload.Queries["parentAlias"] = CSharpExpressionConverter.ConvertO(parentAlias);
             callPayload.Queries["getParentAliases"] = Convert.ToString(false);
             callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
             return new ApiConnectionAction<GetLookupAliasesResponse>(callPayload);
@@ -45,20 +45,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var apiCallPath = "/searchCustomPropertyAliases";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
+            callPayload.Queries["libraryId"] = CSharpExpressionConverter.ConvertO(libraryId);
+            callPayload.Queries["lookupFieldId"] = CSharpExpressionConverter.ConvertO(lookupFieldId);
             if (parentAlias != null)
-                callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
+                callPayload.Queries["parentAlias"] = CSharpExpressionConverter.ConvertO(parentAlias);
             if (alias != null)
-                callPayload.Queries["alias"] = ExpressionConverter.Convert(alias);
+                callPayload.Queries["alias"] = CSharpExpressionConverter.ConvertO(alias);
             if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             callPayload.Queries["hipaa"] = Convert.ToString(false);
             if (hipaa != null)
-                callPayload.Queries["hipaa"] = ExpressionConverter.Convert(hipaa);
+                callPayload.Queries["hipaa"] = CSharpExpressionConverter.ConvertO(hipaa);
             callPayload.Queries["enabled_state"] = Convert.ToString("Both Enabled and Disabled");
             if (enabledState != null)
-                callPayload.Queries["enabled_state"] = ExpressionConverter.Convert(enabledState);
+                callPayload.Queries["enabled_state"] = CSharpExpressionConverter.Convert(enabledState);
             callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
             return new ApiConnectionAction<SearchCustomPropertyResponseBody>(callPayload);
         }
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+            body["libraryId"] = CSharpExpressionConverter.ConvertToken(bodylibraryId);
             bodypropCount++;
-            body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
+            body["lookupFieldId"] = CSharpExpressionConverter.ConvertToken(bodylookupFieldId);
             bodypropCount++;
-            body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
+            body["aliasInfo"] = CSharpExpressionConverter.ConvertToken(bodyaliasInfo);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -96,23 +96,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
+            body["full_name"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
             bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
+            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             bodypropCount++;
-            body["is_external"] = ExpressionConverter.ConvertO(bodyisExternal);
+            body["is_external"] = CSharpExpressionConverter.ConvertToken(bodyisExternal);
             bodypropCount++;
-            body["preferred_library"] = ExpressionConverter.ConvertO(bodypreferredLibrary);
+            body["preferred_library"] = CSharpExpressionConverter.ConvertToken(bodypreferredLibrary);
             bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
+            body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
             bodypropCount++;
-            body["ignore_if_user_already_exists"] = ExpressionConverter.ConvertO(bodyignoreIfUserAlreadyExists);
+            body["ignore_if_user_already_exists"] = CSharpExpressionConverter.ConvertToken(bodyignoreIfUserAlreadyExists);
             bodypropCount++;
-            body["password_create_method"] = ExpressionConverter.ConvertO(bodypasswordCreateMethod);
+            body["password_create_method"] = CSharpExpressionConverter.Convert(bodypasswordCreateMethod);
             bodypropCount++;
-            body["create_password"] = ExpressionConverter.ConvertO(bodycreatePassword);
+            body["create_password"] = CSharpExpressionConverter.ConvertToken(bodycreatePassword);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+            body["libraryId"] = CSharpExpressionConverter.ConvertToken(bodylibraryId);
             bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
+            body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
             bodypropCount++;
-            body["is_preferred_library"] = ExpressionConverter.ConvertO(bodyisPreferredLibrary);
+            body["is_preferred_library"] = CSharpExpressionConverter.ConvertToken(bodyisPreferredLibrary);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -156,40 +156,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+            body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
             bodypropCount++;
-            body["parentType"] = ExpressionConverter.ConvertO(bodyparentType);
+            body["parentType"] = CSharpExpressionConverter.Convert(bodyparentType);
             bodypropCount++;
-            body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+            body["default_security"] = CSharpExpressionConverter.Convert(bodydefaultSecurity);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyowner != null)
             {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["owner"] = CSharpExpressionConverter.ConvertToken(bodyowner);
                 bodypropCount++;
             }
 
             if (bodyClass != null)
             {
-                body["class"] = ExpressionConverter.ConvertO(bodyClass);
+                body["class"] = CSharpExpressionConverter.ConvertToken(bodyClass);
                 bodypropCount++;
             }
 
             if (bodysubclass != null)
             {
-                body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
+                body["subclass"] = CSharpExpressionConverter.ConvertToken(bodysubclass);
                 bodypropCount++;
             }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             {
                 if (bodyisExternalAsNormal != null)
                 {
-                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    body["is_external_as_normal"] = CSharpExpressionConverter.ConvertToken(bodyisExternalAsNormal);
                     bodypropCount++;
                 }
 
@@ -210,10 +210,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             }
 
             bodypropCount++;
-            body["inherit_profile_from_workspace"] = ExpressionConverter.ConvertO(bodyinheritProfileFromWorkspace);
+            body["inherit_profile_from_workspace"] = CSharpExpressionConverter.Convert(bodyinheritProfileFromWorkspace);
             if (bodyprofileProperties != null)
             {
-                body["profileProperties"] = ExpressionConverter.ConvertO(bodyprofileProperties);
+                body["profileProperties"] = CSharpExpressionConverter.ConvertToken(bodyprofileProperties);
                 bodypropCount++;
             }
 
@@ -235,20 +235,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+            body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparentId);
             bodypropCount++;
-            body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+            body["default_security"] = CSharpExpressionConverter.Convert(bodydefaultSecurity);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyowner != null)
             {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["owner"] = CSharpExpressionConverter.ConvertToken(bodyowner);
                 bodypropCount++;
             }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var apiCallPath = "/getMyMattersCategories";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["user_id"] = ExpressionConverter.Convert(userId);
+            callPayload.Queries["user_id"] = CSharpExpressionConverter.ConvertO(userId);
             callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
             return new ApiConnectionAction<GetMyMattersCategoriesResponse>(callPayload);
         }
@@ -281,12 +281,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspace_id"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             if (bodycategoryId != null)
             {
-                body["category_id"] = ExpressionConverter.ConvertO(bodycategoryId);
+                body["category_id"] = CSharpExpressionConverter.ConvertToken(bodycategoryId);
                 bodypropCount++;
             }
 
@@ -308,11 +308,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+            body["libraryId"] = CSharpExpressionConverter.ConvertToken(bodylibraryId);
             bodypropCount++;
-            body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
+            body["lookupFieldId"] = CSharpExpressionConverter.ConvertToken(bodylookupFieldId);
             bodypropCount++;
-            body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
+            body["aliasInfo"] = CSharpExpressionConverter.ConvertToken(bodyaliasInfo);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -331,14 +331,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["column_names"] = ExpressionConverter.ConvertO(bodycolumnNames);
+            body["column_names"] = CSharpExpressionConverter.ConvertToken(bodycolumnNames);
             if (bodylatest != null)
             {
                 if (bodylatest != null)
                 {
-                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    body["latest"] = CSharpExpressionConverter.ConvertToken(bodylatest);
                     bodypropCount++;
                 }
 
@@ -368,9 +368,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["folder_id"] = ExpressionConverter.ConvertO(bodyfolderId);
+            body["folder_id"] = CSharpExpressionConverter.ConvertToken(bodyfolderId);
             bodypropCount++;
-            body["destination_id"] = ExpressionConverter.ConvertO(bodydestinationId);
+            body["destination_id"] = CSharpExpressionConverter.ConvertToken(bodydestinationId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -389,10 +389,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+            body["folderId"] = CSharpExpressionConverter.ConvertToken(bodyfolderId);
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             {
                 if (bodydefaultSecurity != null)
                 {
-                    body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+                    body["default_security"] = CSharpExpressionConverter.Convert(bodydefaultSecurity);
                     bodypropCount++;
                 }
 
@@ -414,31 +414,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyowner != null)
             {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["owner"] = CSharpExpressionConverter.ConvertToken(bodyowner);
                 bodypropCount++;
             }
 
             if (bodyClass != null)
             {
-                body["class"] = ExpressionConverter.ConvertO(bodyClass);
+                body["class"] = CSharpExpressionConverter.ConvertToken(bodyClass);
                 bodypropCount++;
             }
 
             if (bodysubclass != null)
             {
-                body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
+                body["subclass"] = CSharpExpressionConverter.ConvertToken(bodysubclass);
                 bodypropCount++;
             }
 
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             {
                 if (bodyisExternalAsNormal != null)
                 {
-                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    body["is_external_as_normal"] = CSharpExpressionConverter.ConvertToken(bodyisExternalAsNormal);
                     bodypropCount++;
                 }
 
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
             if (bodyprofile != null)
             {
-                body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
+                body["profile"] = CSharpExpressionConverter.ConvertToken(bodyprofile);
                 bodypropCount++;
             }
 

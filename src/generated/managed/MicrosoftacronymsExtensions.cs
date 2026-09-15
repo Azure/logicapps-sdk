@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             var bodypropCount = 0;
             if (bodyrequests != null)
             {
-                body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
+                body["requests"] = CSharpExpressionConverter.ConvertToken(bodyrequests);
                 bodypropCount++;
             }
 
@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
             bodypropCount++;
-            body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
+            body["standsFor"] = CSharpExpressionConverter.ConvertToken(bodystandsFor);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodywebUrl != null)
             {
-                body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+                body["webUrl"] = CSharpExpressionConverter.ConvertToken(bodywebUrl);
                 bodypropCount++;
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             {
                 if (bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = CSharpExpressionConverter.Convert(bodystate);
                     bodypropCount++;
                 }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymGetResponse> AcronymGet(Expression<Func<string>> acronymsId)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<AcronymGetResponse>(callPayload);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymDelete(Expression<Func<string>> acronymsId)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -111,32 +111,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymPatch(Expression<Func<string>> acronymsId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodystandsFor = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydisplayName != null)
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
             }
 
             if (bodystandsFor != null)
             {
-                body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
+                body["standsFor"] = CSharpExpressionConverter.ConvertToken(bodystandsFor);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodywebUrl != null)
             {
-                body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+                body["webUrl"] = CSharpExpressionConverter.ConvertToken(bodywebUrl);
                 bodypropCount++;
             }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             {
                 if (bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = CSharpExpressionConverter.Convert(bodystate);
                     bodypropCount++;
                 }
 

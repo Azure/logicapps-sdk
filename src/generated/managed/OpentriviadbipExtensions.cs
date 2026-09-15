@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
             var apiCallPath = "/api.php";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
+            callPayload.Queries["amount"] = CSharpExpressionConverter.ConvertO(amount);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (difficulty != null)
-                callPayload.Queries["difficulty"] = ExpressionConverter.Convert(difficulty);
+                callPayload.Queries["difficulty"] = CSharpExpressionConverter.Convert(difficulty);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<GetQuestionResponse>(callPayload);
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
             var apiCallPath = "/api_count.php";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+            callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
         }
 

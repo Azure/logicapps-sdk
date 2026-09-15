@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
             var bodypropCount = 0;
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 

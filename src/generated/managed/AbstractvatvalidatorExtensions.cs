@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
             var apiCallPath = "/v1/validate/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
+            callPayload.Queries["vat_number"] = CSharpExpressionConverter.ConvertO(vatNumber);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
 
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
             var apiCallPath = "/v1/calculate/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+            callPayload.Queries["amount"] = CSharpExpressionConverter.ConvertO(amount);
+            callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             if (isVatIncl != null)
-                callPayload.Queries["is_vat_incl"] = ExpressionConverter.Convert(isVatIncl);
+                callPayload.Queries["is_vat_incl"] = CSharpExpressionConverter.ConvertO(isVatIncl);
             if (vatCategory != null)
-                callPayload.Queries["vat_category"] = ExpressionConverter.Convert(vatCategory);
+                callPayload.Queries["vat_category"] = CSharpExpressionConverter.ConvertO(vatCategory);
             return new ApiConnectionAction<CalculateResponse>(callPayload);
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
             var apiCallPath = "/v1/categories/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+            callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
             return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
         }
     }

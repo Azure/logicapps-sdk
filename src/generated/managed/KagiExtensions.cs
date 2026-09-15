@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var bodypropCount = 0;
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             {
                 if (bodyengine != null)
                 {
-                    body["engine"] = ExpressionConverter.ConvertO(bodyengine);
+                    body["engine"] = CSharpExpressionConverter.Convert(bodyengine);
                     bodypropCount++;
                 }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             {
                 if (bodysummaryType != null)
                 {
-                    body["summary_type"] = ExpressionConverter.ConvertO(bodysummaryType);
+                    body["summary_type"] = CSharpExpressionConverter.Convert(bodysummaryType);
                     bodypropCount++;
                 }
 
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 
             if (bodytargetLanguage != null)
             {
-                body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                body["target_language"] = CSharpExpressionConverter.Convert(bodytargetLanguage);
                 bodypropCount++;
             }
 
             if (bodycache != null)
             {
-                body["cache"] = ExpressionConverter.ConvertO(bodycache);
+                body["cache"] = CSharpExpressionConverter.ConvertToken(bodycache);
                 bodypropCount++;
             }
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var apiCallPath = "/v0/search/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<SearchGetResponse>(callPayload);
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var apiCallPath = "/v0/enrich/web";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<EnrichmentWebGetResponse>(callPayload);
         }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var apiCallPath = "/v0/enrich/news";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<EnrichmentNewsGetResponse>(callPayload);
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<SmallWebGetResponse>(callPayload);
         }
     }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
             var apiCallPath = "/powerAutomateFlow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(connectionString);
+            callPayload.Headers["Connection-String"] = CSharpExpressionConverter.ConvertO(connectionString);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";

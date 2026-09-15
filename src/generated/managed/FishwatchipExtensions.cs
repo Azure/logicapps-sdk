@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
         public IBodyWorkflowAction<SpeciesResponseItem[]> GetSpecies(Expression<Func<string>> species)
         {
-            var apiCallPath = String.Format("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/species/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(species, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);

@@ -20,25 +20,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
+            body["isavailable"] = CSharpExpressionConverter.ConvertToken(bodyisavailable);
             if (bodyotherlabels != null)
             {
-                body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                body["otherlabels"] = CSharpExpressionConverter.ConvertToken(bodyotherlabels);
                 bodypropCount++;
             }
 
             if (bodyparentterm != null)
             {
-                body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                body["parentterm"] = CSharpExpressionConverter.ConvertToken(bodyparentterm);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
+            body["termlabel"] = CSharpExpressionConverter.ConvertToken(bodytermlabel);
             bodypropCount++;
-            body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
+            body["termsgroup"] = CSharpExpressionConverter.ConvertToken(bodytermsgroup);
             bodypropCount++;
-            body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
+            body["termsset"] = CSharpExpressionConverter.ConvertToken(bodytermsset);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -56,27 +56,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["isavailable"] = ExpressionConverter.ConvertO(bodyisavailable);
+            body["isavailable"] = CSharpExpressionConverter.ConvertToken(bodyisavailable);
             bodypropCount++;
-            body["keyvalue"] = ExpressionConverter.ConvertO(bodykeyvalue);
+            body["keyvalue"] = CSharpExpressionConverter.ConvertToken(bodykeyvalue);
             if (bodyotherlabels != null)
             {
-                body["otherlabels"] = ExpressionConverter.ConvertO(bodyotherlabels);
+                body["otherlabels"] = CSharpExpressionConverter.ConvertToken(bodyotherlabels);
                 bodypropCount++;
             }
 
             if (bodyparentterm != null)
             {
-                body["parentterm"] = ExpressionConverter.ConvertO(bodyparentterm);
+                body["parentterm"] = CSharpExpressionConverter.ConvertToken(bodyparentterm);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["termlabel"] = ExpressionConverter.ConvertO(bodytermlabel);
+            body["termlabel"] = CSharpExpressionConverter.ConvertToken(bodytermlabel);
             bodypropCount++;
-            body["termsgroup"] = ExpressionConverter.ConvertO(bodytermsgroup);
+            body["termsgroup"] = CSharpExpressionConverter.ConvertToken(bodytermsgroup);
             bodypropCount++;
-            body["termsset"] = ExpressionConverter.ConvertO(bodytermsset);
+            body["termsset"] = CSharpExpressionConverter.ConvertToken(bodytermsset);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["searchProperty"] = Convert.ToString("KeyValue");
-            callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
+            callPayload.Queries["searchValue"] = CSharpExpressionConverter.ConvertO(searchValue);
             return new ApiConnectionAction<GetTermByKeyValueResponseItem[]>(callPayload);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var apiCallPath = "/GetTermsByTermLabel";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchValue"] = ExpressionConverter.Convert(searchValue);
+            callPayload.Queries["searchValue"] = CSharpExpressionConverter.ConvertO(searchValue);
             return new ApiConnectionAction<GetTermByLabelResponseItem[]>(callPayload);
         }
 
@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+            body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -135,9 +135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             bodypropCount++;
-            body["outputformat"] = ExpressionConverter.ConvertO(bodyoutputformat);
+            body["outputformat"] = CSharpExpressionConverter.Convert(bodyoutputformat);
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (dataObjectpropCount > 0)

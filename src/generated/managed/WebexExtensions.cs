@@ -20,21 +20,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
+            body["isModerator"] = CSharpExpressionConverter.ConvertToken(bodyisModerator);
             if (bodypersonEmail != null)
             {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                body["personEmail"] = CSharpExpressionConverter.ConvertToken(bodypersonEmail);
                 bodypropCount++;
             }
 
             if (bodypersonId != null)
             {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                body["personId"] = CSharpExpressionConverter.ConvertToken(bodypersonId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
+            body["roomId"] = CSharpExpressionConverter.ConvertToken(bodyroomId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -49,15 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var apiCallPath = "/v1/messages";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
+            callPayload.Queries["roomId"] = CSharpExpressionConverter.ConvertO(roomId);
             if (mentionedPeople != null)
-                callPayload.Queries["mentionedPeople"] = ExpressionConverter.Convert(mentionedPeople);
+                callPayload.Queries["mentionedPeople"] = CSharpExpressionConverter.ConvertO(mentionedPeople);
             if (beforeMessage != null)
-                callPayload.Queries["beforeMessage"] = ExpressionConverter.Convert(beforeMessage);
+                callPayload.Queries["beforeMessage"] = CSharpExpressionConverter.ConvertO(beforeMessage);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             return new ApiConnectionAction<GetMessagesResponse>(callPayload);
         }
 
@@ -71,37 +71,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var bodypropCount = 0;
             if (bodyfiles != null)
             {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                body["files"] = CSharpExpressionConverter.ConvertToken(bodyfiles);
                 bodypropCount++;
             }
 
             if (bodymarkdown != null)
             {
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdown);
+                body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdown);
                 bodypropCount++;
             }
 
             if (bodyroomId != null)
             {
-                body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
+                body["roomId"] = CSharpExpressionConverter.ConvertToken(bodyroomId);
                 bodypropCount++;
             }
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodytoPersonEmail != null)
             {
-                body["toPersonEmail"] = ExpressionConverter.ConvertO(bodytoPersonEmail);
+                body["toPersonEmail"] = CSharpExpressionConverter.ConvertToken(bodytoPersonEmail);
                 bodypropCount++;
             }
 
             if (bodytoPersonId != null)
             {
-                body["toPersonId"] = ExpressionConverter.ConvertO(bodytoPersonId);
+                body["toPersonId"] = CSharpExpressionConverter.ConvertToken(bodytoPersonId);
                 bodypropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetMessageDetailsResponse>(callPayload);
@@ -129,9 +129,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             return new ApiConnectionAction<GetPeopleResponse>(callPayload);
         }
 
@@ -151,12 +151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             callPayload.Queries["sortBy"] = Convert.ToString("lastactivity");
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.Convert(sortBy);
             return new ApiConnectionAction<GetSpacesResponse>(callPayload);
         }
 
@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var bodypropCount = 0;
             if (bodyteamId != null)
             {
-                body["teamId"] = ExpressionConverter.ConvertO(bodyteamId);
+                body["teamId"] = CSharpExpressionConverter.ConvertToken(bodyteamId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail(Expression<Func<string>> roomId)
         {
-            var apiCallPath = String.Format("/v1/rooms/{0}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/rooms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSpaceDetailResponse>(callPayload);
@@ -202,21 +202,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
+            body["isModerator"] = CSharpExpressionConverter.ConvertToken(bodyisModerator);
             if (bodypersonEmail != null)
             {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                body["personEmail"] = CSharpExpressionConverter.ConvertToken(bodypersonEmail);
                 bodypropCount++;
             }
 
             if (bodypersonId != null)
             {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                body["personId"] = CSharpExpressionConverter.ConvertToken(bodypersonId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["teamId"] = ExpressionConverter.ConvertO(bodyteamId);
+            body["teamId"] = CSharpExpressionConverter.ConvertToken(bodyteamId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

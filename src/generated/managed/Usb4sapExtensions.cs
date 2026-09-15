@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
             var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+            callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             if (format != null)
-                callPayload.Queries["$format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["$format"] = CSharpExpressionConverter.ConvertO(format);
             return new ApiConnectionAction(callPayload);
         }
     }

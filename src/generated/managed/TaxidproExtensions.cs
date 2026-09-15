@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
             var apiCallPath = "/validate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["tin"] = CSharpExpressionConverter.ConvertO(tin);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.Convert(locale);
             if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
+                callPayload.Queries["is_irs"] = CSharpExpressionConverter.ConvertO(isIrs);
             return new ApiConnectionAction<ValidateResponse>(callPayload);
         }
 
@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
             var apiCallPath = "/lookup";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
+            callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
+            callPayload.Queries["tin"] = CSharpExpressionConverter.ConvertO(tin);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["locale"] = CSharpExpressionConverter.Convert(locale);
             if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
+                callPayload.Queries["is_irs"] = CSharpExpressionConverter.ConvertO(isIrs);
             return new ApiConnectionAction<LookupResponse>(callPayload);
         }
     }

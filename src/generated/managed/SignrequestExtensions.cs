@@ -21,207 +21,207 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             var datapropCount = 0;
             if (dataautoDeleteDays != null)
             {
-                data["auto_delete_days"] = ExpressionConverter.ConvertO(dataautoDeleteDays);
+                data["auto_delete_days"] = CSharpExpressionConverter.ConvertToken(dataautoDeleteDays);
                 datapropCount++;
             }
 
             if (dataautoExpireDays != null)
             {
-                data["auto_expire_days"] = ExpressionConverter.ConvertO(dataautoExpireDays);
+                data["auto_expire_days"] = CSharpExpressionConverter.ConvertToken(dataautoExpireDays);
                 datapropCount++;
             }
 
             if (datadisableAttachments != null)
             {
-                data["disable_attachments"] = ExpressionConverter.ConvertO(datadisableAttachments);
+                data["disable_attachments"] = CSharpExpressionConverter.ConvertToken(datadisableAttachments);
                 datapropCount++;
             }
 
             if (datadisableBlockchainProof != null)
             {
-                data["disable_blockchain_proof"] = ExpressionConverter.ConvertO(datadisableBlockchainProof);
+                data["disable_blockchain_proof"] = CSharpExpressionConverter.ConvertToken(datadisableBlockchainProof);
                 datapropCount++;
             }
 
             if (datadisableDate != null)
             {
-                data["disable_date"] = ExpressionConverter.ConvertO(datadisableDate);
+                data["disable_date"] = CSharpExpressionConverter.ConvertToken(datadisableDate);
                 datapropCount++;
             }
 
             if (datadisableEmails != null)
             {
-                data["disable_emails"] = ExpressionConverter.ConvertO(datadisableEmails);
+                data["disable_emails"] = CSharpExpressionConverter.ConvertToken(datadisableEmails);
                 datapropCount++;
             }
 
             if (datadisableText != null)
             {
-                data["disable_text"] = ExpressionConverter.ConvertO(datadisableText);
+                data["disable_text"] = CSharpExpressionConverter.ConvertToken(datadisableText);
                 datapropCount++;
             }
 
             if (datadisableTextSignatures != null)
             {
-                data["disable_text_signatures"] = ExpressionConverter.ConvertO(datadisableTextSignatures);
+                data["disable_text_signatures"] = CSharpExpressionConverter.ConvertToken(datadisableTextSignatures);
                 datapropCount++;
             }
 
             if (datadisableUploadSignatures != null)
             {
-                data["disable_upload_signatures"] = ExpressionConverter.ConvertO(datadisableUploadSignatures);
+                data["disable_upload_signatures"] = CSharpExpressionConverter.ConvertToken(datadisableUploadSignatures);
                 datapropCount++;
             }
 
             if (datadocument != null)
             {
-                data["document"] = ExpressionConverter.ConvertO(datadocument);
+                data["document"] = CSharpExpressionConverter.ConvertToken(datadocument);
                 datapropCount++;
             }
 
             if (dataeventsCallbackUrl != null)
             {
-                data["events_callback_url"] = ExpressionConverter.ConvertO(dataeventsCallbackUrl);
+                data["events_callback_url"] = CSharpExpressionConverter.ConvertToken(dataeventsCallbackUrl);
                 datapropCount++;
             }
 
             if (dataexternalId != null)
             {
-                data["external_id"] = ExpressionConverter.ConvertO(dataexternalId);
+                data["external_id"] = CSharpExpressionConverter.ConvertToken(dataexternalId);
                 datapropCount++;
             }
 
             if (datafile != null)
             {
-                data["file"] = ExpressionConverter.ConvertO(datafile);
+                data["file"] = CSharpExpressionConverter.ConvertToken(datafile);
                 datapropCount++;
             }
 
             if (datafileFromContent != null)
             {
-                data["file_from_content"] = ExpressionConverter.ConvertO(datafileFromContent);
+                data["file_from_content"] = CSharpExpressionConverter.ConvertToken(datafileFromContent);
                 datapropCount++;
             }
 
             if (datafileFromContentName != null)
             {
-                data["file_from_content_name"] = ExpressionConverter.ConvertO(datafileFromContentName);
+                data["file_from_content_name"] = CSharpExpressionConverter.ConvertToken(datafileFromContentName);
                 datapropCount++;
             }
 
             if (datafileFromUrl != null)
             {
-                data["file_from_url"] = ExpressionConverter.ConvertO(datafileFromUrl);
+                data["file_from_url"] = CSharpExpressionConverter.ConvertToken(datafileFromUrl);
                 datapropCount++;
             }
 
             if (datafromEmail != null)
             {
-                data["from_email"] = ExpressionConverter.ConvertO(datafromEmail);
+                data["from_email"] = CSharpExpressionConverter.ConvertToken(datafromEmail);
                 datapropCount++;
             }
 
             if (datafromEmailName != null)
             {
-                data["from_email_name"] = ExpressionConverter.ConvertO(datafromEmailName);
+                data["from_email_name"] = CSharpExpressionConverter.ConvertToken(datafromEmailName);
                 datapropCount++;
             }
 
             if (datafrontendId != null)
             {
-                data["frontend_id"] = ExpressionConverter.ConvertO(datafrontendId);
+                data["frontend_id"] = CSharpExpressionConverter.ConvertToken(datafrontendId);
                 datapropCount++;
             }
 
             if (dataisBeingPrepared != null)
             {
-                data["is_being_prepared"] = ExpressionConverter.ConvertO(dataisBeingPrepared);
+                data["is_being_prepared"] = CSharpExpressionConverter.ConvertToken(dataisBeingPrepared);
                 datapropCount++;
             }
 
             if (datamessage != null)
             {
-                data["message"] = ExpressionConverter.ConvertO(datamessage);
+                data["message"] = CSharpExpressionConverter.ConvertToken(datamessage);
                 datapropCount++;
             }
 
             if (dataname != null)
             {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
+                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
                 datapropCount++;
             }
 
             if (dataprefillTags != null)
             {
-                data["prefill_tags"] = ExpressionConverter.ConvertO(dataprefillTags);
+                data["prefill_tags"] = CSharpExpressionConverter.ConvertToken(dataprefillTags);
                 datapropCount++;
             }
 
             if (dataprepareUrl != null)
             {
-                data["prepare_url"] = ExpressionConverter.ConvertO(dataprepareUrl);
+                data["prepare_url"] = CSharpExpressionConverter.ConvertToken(dataprepareUrl);
                 datapropCount++;
             }
 
             if (dataredirectUrl != null)
             {
-                data["redirect_url"] = ExpressionConverter.ConvertO(dataredirectUrl);
+                data["redirect_url"] = CSharpExpressionConverter.ConvertToken(dataredirectUrl);
                 datapropCount++;
             }
 
             if (dataredirectUrlDeclined != null)
             {
-                data["redirect_url_declined"] = ExpressionConverter.ConvertO(dataredirectUrlDeclined);
+                data["redirect_url_declined"] = CSharpExpressionConverter.ConvertToken(dataredirectUrlDeclined);
                 datapropCount++;
             }
 
             if (datarequiredAttachments != null)
             {
-                data["required_attachments"] = ExpressionConverter.ConvertO(datarequiredAttachments);
+                data["required_attachments"] = CSharpExpressionConverter.ConvertToken(datarequiredAttachments);
                 datapropCount++;
             }
 
             if (datasendReminders != null)
             {
-                data["send_reminders"] = ExpressionConverter.ConvertO(datasendReminders);
+                data["send_reminders"] = CSharpExpressionConverter.ConvertToken(datasendReminders);
                 datapropCount++;
             }
 
             datapropCount++;
-            data["signers"] = ExpressionConverter.ConvertO(datasigners);
+            data["signers"] = CSharpExpressionConverter.ConvertToken(datasigners);
             if (datasubdomain != null)
             {
-                data["subdomain"] = ExpressionConverter.ConvertO(datasubdomain);
+                data["subdomain"] = CSharpExpressionConverter.ConvertToken(datasubdomain);
                 datapropCount++;
             }
 
             if (datasubject != null)
             {
-                data["subject"] = ExpressionConverter.ConvertO(datasubject);
+                data["subject"] = CSharpExpressionConverter.ConvertToken(datasubject);
                 datapropCount++;
             }
 
             if (datatemplate != null)
             {
-                data["template"] = ExpressionConverter.ConvertO(datatemplate);
+                data["template"] = CSharpExpressionConverter.ConvertToken(datatemplate);
                 datapropCount++;
             }
 
             if (datatextMessageVerificationLocked != null)
             {
-                data["text_message_verification_locked"] = ExpressionConverter.ConvertO(datatextMessageVerificationLocked);
+                data["text_message_verification_locked"] = CSharpExpressionConverter.ConvertToken(datatextMessageVerificationLocked);
                 datapropCount++;
             }
 
             if (dataurl != null)
             {
-                data["url"] = ExpressionConverter.ConvertO(dataurl);
+                data["url"] = CSharpExpressionConverter.ConvertToken(dataurl);
                 datapropCount++;
             }
 
             if (datauuid != null)
             {
-                data["uuid"] = ExpressionConverter.ConvertO(datauuid);
+                data["uuid"] = CSharpExpressionConverter.ConvertToken(datauuid);
                 datapropCount++;
             }
 
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             {
                 if (datawho != null)
                 {
-                    data["who"] = ExpressionConverter.ConvertO(datawho);
+                    data["who"] = CSharpExpressionConverter.Convert(datawho);
                     datapropCount++;
                 }
 
@@ -263,21 +263,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             datapropCount++;
             if (datacreated != null)
             {
-                data["created"] = ExpressionConverter.ConvertO(datacreated);
+                data["created"] = CSharpExpressionConverter.ConvertToken(datacreated);
                 datapropCount++;
             }
 
             datapropCount++;
-            data["event_type"] = ExpressionConverter.ConvertO(dataeventType);
+            data["event_type"] = CSharpExpressionConverter.Convert(dataeventType);
             if (dataname != null)
             {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
+                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
                 datapropCount++;
             }
 
             if (datasubdomain != null)
             {
-                data["subdomain"] = ExpressionConverter.ConvertO(datasubdomain);
+                data["subdomain"] = CSharpExpressionConverter.ConvertToken(datasubdomain);
                 datapropCount++;
             }
 
@@ -285,19 +285,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             var teamObjectpropCount = 0;
             if (datateamname != null)
             {
-                teamObject["name"] = ExpressionConverter.ConvertO(datateamname);
+                teamObject["name"] = CSharpExpressionConverter.ConvertToken(datateamname);
                 teamObjectpropCount++;
             }
 
             if (datateamsubdomain != null)
             {
-                teamObject["subdomain"] = ExpressionConverter.ConvertO(datateamsubdomain);
+                teamObject["subdomain"] = CSharpExpressionConverter.ConvertToken(datateamsubdomain);
                 teamObjectpropCount++;
             }
 
             if (datateamurl != null)
             {
-                teamObject["url"] = ExpressionConverter.ConvertO(datateamurl);
+                teamObject["url"] = CSharpExpressionConverter.ConvertToken(datateamurl);
                 teamObjectpropCount++;
             }
 
@@ -309,13 +309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
             if (dataurl != null)
             {
-                data["url"] = ExpressionConverter.ConvertO(dataurl);
+                data["url"] = CSharpExpressionConverter.ConvertToken(dataurl);
                 datapropCount++;
             }
 
             if (datauuid != null)
             {
-                data["uuid"] = ExpressionConverter.ConvertO(datauuid);
+                data["uuid"] = CSharpExpressionConverter.ConvertToken(datauuid);
                 datapropCount++;
             }
 

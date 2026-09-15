@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/file/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             {
                 if (bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                     bodypropCount++;
                 }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             }
 
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetKeyResponse> GetKey(Expression<Func<string>> keyId)
         {
-            var apiCallPath = String.Format("/key/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/key/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetKeyResponse>(callPayload);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetProjectResponse>(callPayload);
@@ -94,15 +94,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetSegmentResponse> GetSegments(Expression<Func<string>> projectId, Expression<Func<string>> fileId, Expression<Func<string>> languageId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = String.Format("/project/{0}/segments/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1), ExpressionConverter.ConvertWithUrlEncoding(languageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/{0}/segments/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(languageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["page_size"] = Convert.ToString(100);
             if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["page_size"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<GetSegmentResponse>(callPayload);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetWorkflowResponse> GetWorkflow(Expression<Func<string>> workflowId)
         {
-            var apiCallPath = String.Format("/workflow/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetWorkflowResponse>(callPayload);

@@ -20,44 +20,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             if (bodycc != null)
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycc);
+                body["cc"] = CSharpExpressionConverter.ConvertToken(bodycc);
                 bodypropCount++;
             }
 
             if (bodybcc != null)
             {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybcc);
+                body["bcc"] = CSharpExpressionConverter.ConvertToken(bodybcc);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
             if (bodyhtml != null)
             {
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
                 bodypropCount++;
             }
 
             if (bodyattachments != null)
             {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
             if (bodyreplyTo != null)
             {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                body["reply_to"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
                 bodypropCount++;
             }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet(Expression<Func<string>> emailId)
         {
-            var apiCallPath = String.Format("/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/emails/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RetrieveGetResponse>(callPayload);
@@ -96,12 +96,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyregion != null)
             {
                 if (bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = CSharpExpressionConverter.Convert(bodyregion);
                     bodypropCount++;
                 }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> DomainDelete(Expression<Func<string>> domainId)
         {
-            var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
         {
-            var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);

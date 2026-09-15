@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userFormId"] = ExpressionConverter.ConvertO(bodyuserFormId);
+            body["userFormId"] = CSharpExpressionConverter.ConvertToken(bodyuserFormId);
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["includeSubFormData"] = ExpressionConverter.ConvertO(bodyincludeSubFormData);
+            body["includeSubFormData"] = CSharpExpressionConverter.ConvertToken(bodyincludeSubFormData);
             body["description"] = "Power Automate";
             bodypropCount++;
             if (bodypropCount > 0)

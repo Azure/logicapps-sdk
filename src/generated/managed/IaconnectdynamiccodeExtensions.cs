@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var importAssemblyFromLocalFile = new JObject();
             var importAssemblyFromLocalFilepropCount = 0;
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["LocalAssemblyFilePath"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilelocalAssemblyFilePath);
+            importAssemblyFromLocalFile["LocalAssemblyFilePath"] = CSharpExpressionConverter.ConvertToken(importAssemblyFromLocalFilelocalAssemblyFilePath);
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["AssemblyName"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileassemblyName);
+            importAssemblyFromLocalFile["AssemblyName"] = CSharpExpressionConverter.ConvertToken(importAssemblyFromLocalFileassemblyName);
             if (importAssemblyFromLocalFilecompress != null)
             {
                 if (importAssemblyFromLocalFilecompress != null)
                 {
-                    importAssemblyFromLocalFile["Compress"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilecompress);
+                    importAssemblyFromLocalFile["Compress"] = CSharpExpressionConverter.ConvertToken(importAssemblyFromLocalFilecompress);
                     importAssemblyFromLocalFilepropCount++;
                 }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             }
 
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["Workflow"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileworkflow);
+            importAssemblyFromLocalFile["Workflow"] = CSharpExpressionConverter.ConvertToken(importAssemblyFromLocalFileworkflow);
             if (importAssemblyFromLocalFilepropCount > 0)
             {
                 callPayload.Body = importAssemblyFromLocalFile;
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var addAssemblySearchFolder = new JObject();
             var addAssemblySearchFolderpropCount = 0;
             addAssemblySearchFolderpropCount++;
-            addAssemblySearchFolder["FolderPath"] = ExpressionConverter.ConvertO(addAssemblySearchFolderfolderPath);
+            addAssemblySearchFolder["FolderPath"] = CSharpExpressionConverter.ConvertToken(addAssemblySearchFolderfolderPath);
             addAssemblySearchFolderpropCount++;
-            addAssemblySearchFolder["Workflow"] = ExpressionConverter.ConvertO(addAssemblySearchFolderworkflow);
+            addAssemblySearchFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(addAssemblySearchFolderworkflow);
             if (addAssemblySearchFolderpropCount > 0)
             {
                 callPayload.Body = addAssemblySearchFolder;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var clearAssemblySearchFolders = new JObject();
             var clearAssemblySearchFolderspropCount = 0;
             clearAssemblySearchFolderspropCount++;
-            clearAssemblySearchFolders["Workflow"] = ExpressionConverter.ConvertO(clearAssemblySearchFoldersworkflow);
+            clearAssemblySearchFolders["Workflow"] = CSharpExpressionConverter.ConvertToken(clearAssemblySearchFoldersworkflow);
             if (clearAssemblySearchFolderspropCount > 0)
             {
                 callPayload.Body = clearAssemblySearchFolders;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var isPowerShellAutomationInstalled = new JObject();
             var isPowerShellAutomationInstalledpropCount = 0;
             isPowerShellAutomationInstalledpropCount++;
-            isPowerShellAutomationInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellAutomationInstalledworkflow);
+            isPowerShellAutomationInstalled["Workflow"] = CSharpExpressionConverter.ConvertToken(isPowerShellAutomationInstalledworkflow);
             if (isPowerShellAutomationInstalledpropCount > 0)
             {
                 callPayload.Body = isPowerShellAutomationInstalled;
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var isPowerShellModuleInstalled = new JObject();
             var isPowerShellModuleInstalledpropCount = 0;
             isPowerShellModuleInstalledpropCount++;
-            isPowerShellModuleInstalled["PowerShellModuleName"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledpowerShellModuleName);
+            isPowerShellModuleInstalled["PowerShellModuleName"] = CSharpExpressionConverter.ConvertToken(isPowerShellModuleInstalledpowerShellModuleName);
             isPowerShellModuleInstalledpropCount++;
-            isPowerShellModuleInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledworkflow);
+            isPowerShellModuleInstalled["Workflow"] = CSharpExpressionConverter.ConvertToken(isPowerShellModuleInstalledworkflow);
             if (isPowerShellModuleInstalledpropCount > 0)
             {
                 callPayload.Body = isPowerShellModuleInstalled;
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var runPowerShellAutomationScriptpropCount = 0;
             if (runPowerShellAutomationScriptpowerShellScriptContents != null)
             {
-                runPowerShellAutomationScript["PowerShellScriptContents"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpowerShellScriptContents);
+                runPowerShellAutomationScript["PowerShellScriptContents"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpowerShellScriptContents);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptcomputerName != null)
             {
-                runPowerShellAutomationScript["ComputerName"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptcomputerName);
+                runPowerShellAutomationScript["ComputerName"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptcomputerName);
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptisNoResultAnError != null)
                 {
-                    runPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptisNoResultAnError);
+                    runPowerShellAutomationScript["IsNoResultAnError"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptisNoResultAnError);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptreturnComplexTypes != null)
                 {
-                    runPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnComplexTypes);
+                    runPowerShellAutomationScript["ReturnComplexTypes"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptreturnComplexTypes);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptreturnBooleanAsBoolean != null)
                 {
-                    runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptreturnBooleanAsBoolean);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptreturnNumericAsDecimal != null)
                 {
-                    runPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnNumericAsDecimal);
+                    runPowerShellAutomationScript["ReturnNumericAsDecimal"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptreturnNumericAsDecimal);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptreturnDateAsDate != null)
                 {
-                    runPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnDateAsDate);
+                    runPowerShellAutomationScript["ReturnDateAsDate"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptreturnDateAsDate);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -227,13 +227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON != null)
             {
-                runPowerShellAutomationScript["PropertiesToReturnAsCollectionJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
+                runPowerShellAutomationScript["PropertiesToReturnAsCollectionJSON"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptauthenticationMechanism != null)
             {
-                runPowerShellAutomationScript["AuthenticationMechanism"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptauthenticationMechanism);
+                runPowerShellAutomationScript["AuthenticationMechanism"] = CSharpExpressionConverter.Convert(runPowerShellAutomationScriptauthenticationMechanism);
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptconnectionAttempts != null)
                 {
-                    runPowerShellAutomationScript["ConnectionAttempts"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptconnectionAttempts);
+                    runPowerShellAutomationScript["ConnectionAttempts"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptconnectionAttempts);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -255,13 +255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptusername != null)
             {
-                runPowerShellAutomationScript["Username"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptusername);
+                runPowerShellAutomationScript["Username"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptusername);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptpassword != null)
             {
-                runPowerShellAutomationScript["Password"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpassword);
+                runPowerShellAutomationScript["Password"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpassword);
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptrunScriptAsThread != null)
                 {
-                    runPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptrunScriptAsThread);
+                    runPowerShellAutomationScript["RunScriptAsThread"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptrunScriptAsThread);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptretrieveOutputDataFromThreadId != null)
             {
-                runPowerShellAutomationScript["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptretrieveOutputDataFromThreadId);
+                runPowerShellAutomationScript["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptretrieveOutputDataFromThreadId);
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptsecondsToWaitForThread != null)
                 {
-                    runPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptsecondsToWaitForThread);
+                    runPowerShellAutomationScript["SecondsToWaitForThread"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptsecondsToWaitForThread);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptscriptContainsStoredPassword != null)
                 {
-                    runPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptscriptContainsStoredPassword);
+                    runPowerShellAutomationScript["ScriptContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptscriptContainsStoredPassword);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptlogVerboseOutput != null)
                 {
-                    runPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptlogVerboseOutput);
+                    runPowerShellAutomationScript["LogVerboseOutput"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptlogVerboseOutput);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (runPowerShellAutomationScriptreturnSecureStrings != null)
                 {
-                    runPowerShellAutomationScript["ReturnSecureStrings"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnSecureStrings);
+                    runPowerShellAutomationScript["ReturnSecureStrings"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptreturnSecureStrings);
                     runPowerShellAutomationScriptpropCount++;
                 }
 
@@ -353,24 +353,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptpropertyNamesToSerializeJSON != null)
             {
-                runPowerShellAutomationScript["PropertyNamesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertyNamesToSerializeJSON);
+                runPowerShellAutomationScript["PropertyNamesToSerializeJSON"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpropertyNamesToSerializeJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptpropertyTypesToSerializeJSON != null)
             {
-                runPowerShellAutomationScript["PropertyTypesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertyTypesToSerializeJSON);
+                runPowerShellAutomationScript["PropertyTypesToSerializeJSON"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpropertyTypesToSerializeJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptpowerShellCommandParameters != null)
             {
-                runPowerShellAutomationScript["PowerShellCommandParameters"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpowerShellCommandParameters);
+                runPowerShellAutomationScript["PowerShellCommandParameters"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptpowerShellCommandParameters);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             runPowerShellAutomationScriptpropCount++;
-            runPowerShellAutomationScript["Workflow"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptworkflow);
+            runPowerShellAutomationScript["Workflow"] = CSharpExpressionConverter.ConvertToken(runPowerShellAutomationScriptworkflow);
             if (runPowerShellAutomationScriptpropCount > 0)
             {
                 callPayload.Body = runPowerShellAutomationScript;
@@ -389,13 +389,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getPowerShellVersionpropCount = 0;
             if (getPowerShellVersioncomputerName != null)
             {
-                getPowerShellVersion["ComputerName"] = ExpressionConverter.ConvertO(getPowerShellVersioncomputerName);
+                getPowerShellVersion["ComputerName"] = CSharpExpressionConverter.ConvertToken(getPowerShellVersioncomputerName);
                 getPowerShellVersionpropCount++;
             }
 
             if (getPowerShellVersionauthenticationMechanism != null)
             {
-                getPowerShellVersion["AuthenticationMechanism"] = ExpressionConverter.ConvertO(getPowerShellVersionauthenticationMechanism);
+                getPowerShellVersion["AuthenticationMechanism"] = CSharpExpressionConverter.Convert(getPowerShellVersionauthenticationMechanism);
                 getPowerShellVersionpropCount++;
             }
 
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getPowerShellVersionconnectionAttempts != null)
                 {
-                    getPowerShellVersion["ConnectionAttempts"] = ExpressionConverter.ConvertO(getPowerShellVersionconnectionAttempts);
+                    getPowerShellVersion["ConnectionAttempts"] = CSharpExpressionConverter.ConvertToken(getPowerShellVersionconnectionAttempts);
                     getPowerShellVersionpropCount++;
                 }
 
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             }
 
             getPowerShellVersionpropCount++;
-            getPowerShellVersion["Workflow"] = ExpressionConverter.ConvertO(getPowerShellVersionworkflow);
+            getPowerShellVersion["Workflow"] = CSharpExpressionConverter.ConvertToken(getPowerShellVersionworkflow);
             if (getPowerShellVersionpropCount > 0)
             {
                 callPayload.Body = getPowerShellVersion;
@@ -434,14 +434,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexMatch = new JObject();
             var getRegexMatchpropCount = 0;
             getRegexMatchpropCount++;
-            getRegexMatch["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchtextToMatch);
+            getRegexMatch["TextToMatch"] = CSharpExpressionConverter.ConvertToken(getRegexMatchtextToMatch);
             getRegexMatchpropCount++;
-            getRegexMatch["Regex"] = ExpressionConverter.ConvertO(getRegexMatchregex);
+            getRegexMatch["Regex"] = CSharpExpressionConverter.ConvertToken(getRegexMatchregex);
             if (getRegexMatchsearchIndex != null)
             {
                 if (getRegexMatchsearchIndex != null)
                 {
-                    getRegexMatch["SearchIndex"] = ExpressionConverter.ConvertO(getRegexMatchsearchIndex);
+                    getRegexMatch["SearchIndex"] = CSharpExpressionConverter.ConvertToken(getRegexMatchsearchIndex);
                     getRegexMatchpropCount++;
                 }
 
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchcaseSensitive != null)
                 {
-                    getRegexMatch["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchcaseSensitive);
+                    getRegexMatch["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(getRegexMatchcaseSensitive);
                     getRegexMatchpropCount++;
                 }
 
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchregexTimeoutInSeconds != null)
                 {
-                    getRegexMatch["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchregexTimeoutInSeconds);
+                    getRegexMatch["RegexTimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(getRegexMatchregexTimeoutInSeconds);
                     getRegexMatchpropCount++;
                 }
 
@@ -502,14 +502,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexMatches = new JObject();
             var getRegexMatchespropCount = 0;
             getRegexMatchespropCount++;
-            getRegexMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchestextToMatch);
+            getRegexMatches["TextToMatch"] = CSharpExpressionConverter.ConvertToken(getRegexMatchestextToMatch);
             getRegexMatchespropCount++;
-            getRegexMatches["Regex"] = ExpressionConverter.ConvertO(getRegexMatchesregex);
+            getRegexMatches["Regex"] = CSharpExpressionConverter.ConvertToken(getRegexMatchesregex);
             if (getRegexMatchesmaximumMatches != null)
             {
                 if (getRegexMatchesmaximumMatches != null)
                 {
-                    getRegexMatches["MaximumMatches"] = ExpressionConverter.ConvertO(getRegexMatchesmaximumMatches);
+                    getRegexMatches["MaximumMatches"] = CSharpExpressionConverter.ConvertToken(getRegexMatchesmaximumMatches);
                     getRegexMatchespropCount++;
                 }
 
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchescaseSensitive != null)
                 {
-                    getRegexMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchescaseSensitive);
+                    getRegexMatches["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(getRegexMatchescaseSensitive);
                     getRegexMatchespropCount++;
                 }
 
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchestrimResults != null)
                 {
-                    getRegexMatches["TrimResults"] = ExpressionConverter.ConvertO(getRegexMatchestrimResults);
+                    getRegexMatches["TrimResults"] = CSharpExpressionConverter.ConvertToken(getRegexMatchestrimResults);
                     getRegexMatchespropCount++;
                 }
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchesremoveEmptyResults != null)
                 {
-                    getRegexMatches["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexMatchesremoveEmptyResults);
+                    getRegexMatches["RemoveEmptyResults"] = CSharpExpressionConverter.ConvertToken(getRegexMatchesremoveEmptyResults);
                     getRegexMatchespropCount++;
                 }
 
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexMatchesregexTimeoutInSeconds != null)
                 {
-                    getRegexMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchesregexTimeoutInSeconds);
+                    getRegexMatches["RegexTimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(getRegexMatchesregexTimeoutInSeconds);
                     getRegexMatchespropCount++;
                 }
 
@@ -602,14 +602,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexSplit = new JObject();
             var getRegexSplitpropCount = 0;
             getRegexSplitpropCount++;
-            getRegexSplit["TextToSplit"] = ExpressionConverter.ConvertO(getRegexSplittextToSplit);
+            getRegexSplit["TextToSplit"] = CSharpExpressionConverter.ConvertToken(getRegexSplittextToSplit);
             getRegexSplitpropCount++;
-            getRegexSplit["Regex"] = ExpressionConverter.ConvertO(getRegexSplitregex);
+            getRegexSplit["Regex"] = CSharpExpressionConverter.ConvertToken(getRegexSplitregex);
             if (getRegexSplitcaseSensitive != null)
             {
                 if (getRegexSplitcaseSensitive != null)
                 {
-                    getRegexSplit["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexSplitcaseSensitive);
+                    getRegexSplit["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(getRegexSplitcaseSensitive);
                     getRegexSplitpropCount++;
                 }
 
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexSplittrimResults != null)
                 {
-                    getRegexSplit["TrimResults"] = ExpressionConverter.ConvertO(getRegexSplittrimResults);
+                    getRegexSplit["TrimResults"] = CSharpExpressionConverter.ConvertToken(getRegexSplittrimResults);
                     getRegexSplitpropCount++;
                 }
 
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexSplitremoveEmptyResults != null)
                 {
-                    getRegexSplit["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexSplitremoveEmptyResults);
+                    getRegexSplit["RemoveEmptyResults"] = CSharpExpressionConverter.ConvertToken(getRegexSplitremoveEmptyResults);
                     getRegexSplitpropCount++;
                 }
 
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexSplitregexTimeoutInSeconds != null)
                 {
-                    getRegexSplit["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexSplitregexTimeoutInSeconds);
+                    getRegexSplit["RegexTimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(getRegexSplitregexTimeoutInSeconds);
                     getRegexSplitpropCount++;
                 }
 
@@ -686,12 +686,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexGroupMatches = new JObject();
             var getRegexGroupMatchespropCount = 0;
             getRegexGroupMatchespropCount++;
-            getRegexGroupMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexGroupMatchestextToMatch);
+            getRegexGroupMatches["TextToMatch"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchestextToMatch);
             getRegexGroupMatchespropCount++;
-            getRegexGroupMatches["Regex"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregex);
+            getRegexGroupMatches["Regex"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchesregex);
             if (getRegexGroupMatchesgroupsToRetrieve != null)
             {
-                getRegexGroupMatches["GroupsToRetrieve"] = ExpressionConverter.ConvertO(getRegexGroupMatchesgroupsToRetrieve);
+                getRegexGroupMatches["GroupsToRetrieve"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchesgroupsToRetrieve);
                 getRegexGroupMatchespropCount++;
             }
 
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexGroupMatchessearchIndex != null)
                 {
-                    getRegexGroupMatches["SearchIndex"] = ExpressionConverter.ConvertO(getRegexGroupMatchessearchIndex);
+                    getRegexGroupMatches["SearchIndex"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchessearchIndex);
                     getRegexGroupMatchespropCount++;
                 }
 
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexGroupMatchescaseSensitive != null)
                 {
-                    getRegexGroupMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexGroupMatchescaseSensitive);
+                    getRegexGroupMatches["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchescaseSensitive);
                     getRegexGroupMatchespropCount++;
                 }
 
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getRegexGroupMatchesregexTimeoutInSeconds != null)
                 {
-                    getRegexGroupMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregexTimeoutInSeconds);
+                    getRegexGroupMatches["RegexTimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(getRegexGroupMatchesregexTimeoutInSeconds);
                     getRegexGroupMatchespropCount++;
                 }
 
@@ -760,9 +760,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var createJSONFromInputVariables = new JObject();
             var createJSONFromInputVariablespropCount = 0;
             createJSONFromInputVariablespropCount++;
-            createJSONFromInputVariables["InputVariables"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesinputVariables);
+            createJSONFromInputVariables["InputVariables"] = CSharpExpressionConverter.ConvertToken(createJSONFromInputVariablesinputVariables);
             createJSONFromInputVariablespropCount++;
-            createJSONFromInputVariables["ReturnAsJSONTable"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesreturnAsJSONTable);
+            createJSONFromInputVariables["ReturnAsJSONTable"] = CSharpExpressionConverter.ConvertToken(createJSONFromInputVariablesreturnAsJSONTable);
             if (createJSONFromInputVariablespropCount > 0)
             {
                 callPayload.Body = createJSONFromInputVariables;
@@ -780,14 +780,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getJSONTableFromStringArray = new JObject();
             var getJSONTableFromStringArraypropCount = 0;
             getJSONTableFromStringArraypropCount++;
-            getJSONTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getJSONTableFromStringArrayinputArray);
+            getJSONTableFromStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(getJSONTableFromStringArrayinputArray);
             getJSONTableFromStringArraypropCount++;
-            getJSONTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraycolumnName);
+            getJSONTableFromStringArray["ColumnName"] = CSharpExpressionConverter.ConvertToken(getJSONTableFromStringArraycolumnName);
             if (getJSONTableFromStringArraydropEmptyItems != null)
             {
                 if (getJSONTableFromStringArraydropEmptyItems != null)
                 {
-                    getJSONTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraydropEmptyItems);
+                    getJSONTableFromStringArray["DropEmptyItems"] = CSharpExpressionConverter.ConvertToken(getJSONTableFromStringArraydropEmptyItems);
                     getJSONTableFromStringArraypropCount++;
                 }
 
@@ -816,12 +816,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterJSONTable = new JObject();
             var filterJSONTablepropCount = 0;
             filterJSONTablepropCount++;
-            filterJSONTable["JSONTable"] = ExpressionConverter.ConvertO(filterJSONTablejSONTable);
+            filterJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(filterJSONTablejSONTable);
             filterJSONTablepropCount++;
-            filterJSONTable["Filter"] = ExpressionConverter.ConvertO(filterJSONTablefilter);
+            filterJSONTable["Filter"] = CSharpExpressionConverter.ConvertToken(filterJSONTablefilter);
             if (filterJSONTablesortColumnName != null)
             {
-                filterJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName);
+                filterJSONTable["SortColumnName"] = CSharpExpressionConverter.ConvertToken(filterJSONTablesortColumnName);
                 filterJSONTablepropCount++;
             }
 
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterJSONTableascending != null)
                 {
-                    filterJSONTable["Ascending"] = ExpressionConverter.ConvertO(filterJSONTableascending);
+                    filterJSONTable["Ascending"] = CSharpExpressionConverter.ConvertToken(filterJSONTableascending);
                     filterJSONTablepropCount++;
                 }
 
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterJSONTablesortColumnName2 != null)
             {
-                filterJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName2);
+                filterJSONTable["SortColumnName2"] = CSharpExpressionConverter.ConvertToken(filterJSONTablesortColumnName2);
                 filterJSONTablepropCount++;
             }
 
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterJSONTableascending2 != null)
                 {
-                    filterJSONTable["Ascending2"] = ExpressionConverter.ConvertO(filterJSONTableascending2);
+                    filterJSONTable["Ascending2"] = CSharpExpressionConverter.ConvertToken(filterJSONTableascending2);
                     filterJSONTablepropCount++;
                 }
 
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterJSONTablesortColumnName3 != null)
             {
-                filterJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName3);
+                filterJSONTable["SortColumnName3"] = CSharpExpressionConverter.ConvertToken(filterJSONTablesortColumnName3);
                 filterJSONTablepropCount++;
             }
 
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterJSONTableascending3 != null)
                 {
-                    filterJSONTable["Ascending3"] = ExpressionConverter.ConvertO(filterJSONTableascending3);
+                    filterJSONTable["Ascending3"] = CSharpExpressionConverter.ConvertToken(filterJSONTableascending3);
                     filterJSONTablepropCount++;
                 }
 
@@ -902,12 +902,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterTable = new JObject();
             var filterTablepropCount = 0;
             filterTablepropCount++;
-            filterTable["InputTable"] = ExpressionConverter.ConvertO(filterTableinputTable);
+            filterTable["InputTable"] = CSharpExpressionConverter.ConvertToken(filterTableinputTable);
             filterTablepropCount++;
-            filterTable["Filter"] = ExpressionConverter.ConvertO(filterTablefilter);
+            filterTable["Filter"] = CSharpExpressionConverter.ConvertToken(filterTablefilter);
             if (filterTablesortColumnName != null)
             {
-                filterTable["SortColumnName"] = ExpressionConverter.ConvertO(filterTablesortColumnName);
+                filterTable["SortColumnName"] = CSharpExpressionConverter.ConvertToken(filterTablesortColumnName);
                 filterTablepropCount++;
             }
 
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterTableascending != null)
                 {
-                    filterTable["Ascending"] = ExpressionConverter.ConvertO(filterTableascending);
+                    filterTable["Ascending"] = CSharpExpressionConverter.ConvertToken(filterTableascending);
                     filterTablepropCount++;
                 }
 
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterTablesortColumnName2 != null)
             {
-                filterTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterTablesortColumnName2);
+                filterTable["SortColumnName2"] = CSharpExpressionConverter.ConvertToken(filterTablesortColumnName2);
                 filterTablepropCount++;
             }
 
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterTableascending2 != null)
                 {
-                    filterTable["Ascending2"] = ExpressionConverter.ConvertO(filterTableascending2);
+                    filterTable["Ascending2"] = CSharpExpressionConverter.ConvertToken(filterTableascending2);
                     filterTablepropCount++;
                 }
 
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterTablesortColumnName3 != null)
             {
-                filterTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterTablesortColumnName3);
+                filterTable["SortColumnName3"] = CSharpExpressionConverter.ConvertToken(filterTablesortColumnName3);
                 filterTablepropCount++;
             }
 
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (filterTableascending3 != null)
                 {
-                    filterTable["Ascending3"] = ExpressionConverter.ConvertO(filterTableascending3);
+                    filterTable["Ascending3"] = CSharpExpressionConverter.ConvertToken(filterTableascending3);
                     filterTablepropCount++;
                 }
 
@@ -988,14 +988,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortTable = new JObject();
             var sortTablepropCount = 0;
             sortTablepropCount++;
-            sortTable["InputTable"] = ExpressionConverter.ConvertO(sortTableinputTable);
+            sortTable["InputTable"] = CSharpExpressionConverter.ConvertToken(sortTableinputTable);
             sortTablepropCount++;
-            sortTable["SortColumnName"] = ExpressionConverter.ConvertO(sortTablesortColumnName);
+            sortTable["SortColumnName"] = CSharpExpressionConverter.ConvertToken(sortTablesortColumnName);
             sortTablepropCount++;
-            sortTable["Ascending"] = ExpressionConverter.ConvertO(sortTableascending);
+            sortTable["Ascending"] = CSharpExpressionConverter.ConvertToken(sortTableascending);
             if (sortTablesortColumnName2 != null)
             {
-                sortTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortTablesortColumnName2);
+                sortTable["SortColumnName2"] = CSharpExpressionConverter.ConvertToken(sortTablesortColumnName2);
                 sortTablepropCount++;
             }
 
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (sortTableascending2 != null)
                 {
-                    sortTable["Ascending2"] = ExpressionConverter.ConvertO(sortTableascending2);
+                    sortTable["Ascending2"] = CSharpExpressionConverter.ConvertToken(sortTableascending2);
                     sortTablepropCount++;
                 }
 
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortTablesortColumnName3 != null)
             {
-                sortTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortTablesortColumnName3);
+                sortTable["SortColumnName3"] = CSharpExpressionConverter.ConvertToken(sortTablesortColumnName3);
                 sortTablepropCount++;
             }
 
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (sortTableascending3 != null)
                 {
-                    sortTable["Ascending3"] = ExpressionConverter.ConvertO(sortTableascending3);
+                    sortTable["Ascending3"] = CSharpExpressionConverter.ConvertToken(sortTableascending3);
                     sortTablepropCount++;
                 }
 
@@ -1054,14 +1054,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortJSONTable = new JObject();
             var sortJSONTablepropCount = 0;
             sortJSONTablepropCount++;
-            sortJSONTable["JSONTable"] = ExpressionConverter.ConvertO(sortJSONTablejSONTable);
+            sortJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(sortJSONTablejSONTable);
             sortJSONTablepropCount++;
-            sortJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName);
+            sortJSONTable["SortColumnName"] = CSharpExpressionConverter.ConvertToken(sortJSONTablesortColumnName);
             if (sortJSONTableascending != null)
             {
                 if (sortJSONTableascending != null)
                 {
-                    sortJSONTable["Ascending"] = ExpressionConverter.ConvertO(sortJSONTableascending);
+                    sortJSONTable["Ascending"] = CSharpExpressionConverter.ConvertToken(sortJSONTableascending);
                     sortJSONTablepropCount++;
                 }
 
@@ -1075,7 +1075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortJSONTablesortColumnName2 != null)
             {
-                sortJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName2);
+                sortJSONTable["SortColumnName2"] = CSharpExpressionConverter.ConvertToken(sortJSONTablesortColumnName2);
                 sortJSONTablepropCount++;
             }
 
@@ -1083,7 +1083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (sortJSONTableascending2 != null)
                 {
-                    sortJSONTable["Ascending2"] = ExpressionConverter.ConvertO(sortJSONTableascending2);
+                    sortJSONTable["Ascending2"] = CSharpExpressionConverter.ConvertToken(sortJSONTableascending2);
                     sortJSONTablepropCount++;
                 }
 
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortJSONTablesortColumnName3 != null)
             {
-                sortJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName3);
+                sortJSONTable["SortColumnName3"] = CSharpExpressionConverter.ConvertToken(sortJSONTablesortColumnName3);
                 sortJSONTablepropCount++;
             }
 
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (sortJSONTableascending3 != null)
                 {
-                    sortJSONTable["Ascending3"] = ExpressionConverter.ConvertO(sortJSONTableascending3);
+                    sortJSONTable["Ascending3"] = CSharpExpressionConverter.ConvertToken(sortJSONTableascending3);
                     sortJSONTablepropCount++;
                 }
 
@@ -1134,14 +1134,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getTableFromStringArray = new JObject();
             var getTableFromStringArraypropCount = 0;
             getTableFromStringArraypropCount++;
-            getTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getTableFromStringArrayinputArray);
+            getTableFromStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(getTableFromStringArrayinputArray);
             getTableFromStringArraypropCount++;
-            getTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getTableFromStringArraycolumnName);
+            getTableFromStringArray["ColumnName"] = CSharpExpressionConverter.ConvertToken(getTableFromStringArraycolumnName);
             if (getTableFromStringArraydropEmptyItems != null)
             {
                 if (getTableFromStringArraydropEmptyItems != null)
                 {
-                    getTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getTableFromStringArraydropEmptyItems);
+                    getTableFromStringArray["DropEmptyItems"] = CSharpExpressionConverter.ConvertToken(getTableFromStringArraydropEmptyItems);
                     getTableFromStringArraypropCount++;
                 }
 
@@ -1170,12 +1170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getTableFromJSON = new JObject();
             var getTableFromJSONpropCount = 0;
             getTableFromJSONpropCount++;
-            getTableFromJSON["JSONTable"] = ExpressionConverter.ConvertO(getTableFromJSONjSONTable);
+            getTableFromJSON["JSONTable"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONjSONTable);
             getTableFromJSONpropCount++;
-            getTableFromJSON["StartRowIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartRowIndex);
+            getTableFromJSON["StartRowIndex"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONstartRowIndex);
             if (getTableFromJSONnumberOfRowsToRetrieve != null)
             {
-                getTableFromJSON["NumberOfRowsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONnumberOfRowsToRetrieve);
+                getTableFromJSON["NumberOfRowsToRetrieve"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONnumberOfRowsToRetrieve);
                 getTableFromJSONpropCount++;
             }
 
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getTableFromJSONstartColumnIndex != null)
                 {
-                    getTableFromJSON["StartColumnIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnIndex);
+                    getTableFromJSON["StartColumnIndex"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONstartColumnIndex);
                     getTableFromJSONpropCount++;
                 }
 
@@ -1197,13 +1197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getTableFromJSONstartColumnName != null)
             {
-                getTableFromJSON["StartColumnName"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnName);
+                getTableFromJSON["StartColumnName"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONstartColumnName);
                 getTableFromJSONpropCount++;
             }
 
             if (getTableFromJSONnumberOfColumnsToRetrieve != null)
             {
-                getTableFromJSON["NumberOfColumnsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONnumberOfColumnsToRetrieve);
+                getTableFromJSON["NumberOfColumnsToRetrieve"] = CSharpExpressionConverter.ConvertToken(getTableFromJSONnumberOfColumnsToRetrieve);
                 getTableFromJSONpropCount++;
             }
 
@@ -1224,12 +1224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortStringArray = new JObject();
             var sortStringArraypropCount = 0;
             sortStringArraypropCount++;
-            sortStringArray["InputArray"] = ExpressionConverter.ConvertO(sortStringArrayinputArray);
+            sortStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(sortStringArrayinputArray);
             if (sortStringArrayascending != null)
             {
                 if (sortStringArrayascending != null)
                 {
-                    sortStringArray["Ascending"] = ExpressionConverter.ConvertO(sortStringArrayascending);
+                    sortStringArray["Ascending"] = CSharpExpressionConverter.ConvertToken(sortStringArrayascending);
                     sortStringArraypropCount++;
                 }
 
@@ -1245,7 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (sortStringArraycaseSensitive != null)
                 {
-                    sortStringArray["CaseSensitive"] = ExpressionConverter.ConvertO(sortStringArraycaseSensitive);
+                    sortStringArray["CaseSensitive"] = CSharpExpressionConverter.ConvertToken(sortStringArraycaseSensitive);
                     sortStringArraypropCount++;
                 }
 
@@ -1274,11 +1274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterStringArray = new JObject();
             var filterStringArraypropCount = 0;
             filterStringArraypropCount++;
-            filterStringArray["InputArray"] = ExpressionConverter.ConvertO(filterStringArrayinputArray);
+            filterStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(filterStringArrayinputArray);
             filterStringArraypropCount++;
-            filterStringArray["ColumnName"] = ExpressionConverter.ConvertO(filterStringArraycolumnName);
+            filterStringArray["ColumnName"] = CSharpExpressionConverter.ConvertToken(filterStringArraycolumnName);
             filterStringArraypropCount++;
-            filterStringArray["Filter"] = ExpressionConverter.ConvertO(filterStringArrayfilter);
+            filterStringArray["Filter"] = CSharpExpressionConverter.ConvertToken(filterStringArrayfilter);
             if (filterStringArraypropCount > 0)
             {
                 callPayload.Body = filterStringArray;
@@ -1296,12 +1296,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInStringArray = new JObject();
             var insertRowInStringArraypropCount = 0;
             insertRowInStringArraypropCount++;
-            insertRowInStringArray["InputArray"] = ExpressionConverter.ConvertO(insertRowInStringArrayinputArray);
+            insertRowInStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(insertRowInStringArrayinputArray);
             insertRowInStringArraypropCount++;
-            insertRowInStringArray["RowIndex"] = ExpressionConverter.ConvertO(insertRowInStringArrayrowIndex);
+            insertRowInStringArray["RowIndex"] = CSharpExpressionConverter.ConvertToken(insertRowInStringArrayrowIndex);
             if (insertRowInStringArrayvalueToInsert != null)
             {
-                insertRowInStringArray["ValueToInsert"] = ExpressionConverter.ConvertO(insertRowInStringArrayvalueToInsert);
+                insertRowInStringArray["ValueToInsert"] = CSharpExpressionConverter.ConvertToken(insertRowInStringArrayvalueToInsert);
                 insertRowInStringArraypropCount++;
             }
 
@@ -1322,12 +1322,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInTable = new JObject();
             var insertRowInTablepropCount = 0;
             insertRowInTablepropCount++;
-            insertRowInTable["InputTable"] = ExpressionConverter.ConvertO(insertRowInTableinputTable);
+            insertRowInTable["InputTable"] = CSharpExpressionConverter.ConvertToken(insertRowInTableinputTable);
             insertRowInTablepropCount++;
-            insertRowInTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInTablerowIndex);
+            insertRowInTable["RowIndex"] = CSharpExpressionConverter.ConvertToken(insertRowInTablerowIndex);
             if (insertRowInTablerowToInsertJSON != null)
             {
-                insertRowInTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInTablerowToInsertJSON);
+                insertRowInTable["RowToInsertJSON"] = CSharpExpressionConverter.ConvertToken(insertRowInTablerowToInsertJSON);
                 insertRowInTablepropCount++;
             }
 
@@ -1348,12 +1348,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInJSONTable = new JObject();
             var insertRowInJSONTablepropCount = 0;
             insertRowInJSONTablepropCount++;
-            insertRowInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTablejSONTable);
+            insertRowInJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTablejSONTable);
             insertRowInJSONTablepropCount++;
-            insertRowInJSONTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTablerowIndex);
+            insertRowInJSONTable["RowIndex"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTablerowIndex);
             if (insertRowInJSONTablerowToInsertJSON != null)
             {
-                insertRowInJSONTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInJSONTablerowToInsertJSON);
+                insertRowInJSONTable["RowToInsertJSON"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTablerowToInsertJSON);
                 insertRowInJSONTablepropCount++;
             }
 
@@ -1374,11 +1374,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInJSONTableFromInputVariables = new JObject();
             var insertRowInJSONTableFromInputVariablespropCount = 0;
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesjSONTable);
+            insertRowInJSONTableFromInputVariables["JSONTable"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTableFromInputVariablesjSONTable);
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesrowIndex);
+            insertRowInJSONTableFromInputVariables["RowIndex"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTableFromInputVariablesrowIndex);
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["RowToInsertInputVariables"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables);
+            insertRowInJSONTableFromInputVariables["RowToInsertInputVariables"] = CSharpExpressionConverter.ConvertToken(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables);
             if (insertRowInJSONTableFromInputVariablespropCount > 0)
             {
                 callPayload.Body = insertRowInJSONTableFromInputVariables;
@@ -1396,11 +1396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteItemsInStringArray = new JObject();
             var deleteItemsInStringArraypropCount = 0;
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["InputArray"] = ExpressionConverter.ConvertO(deleteItemsInStringArrayinputArray);
+            deleteItemsInStringArray["InputArray"] = CSharpExpressionConverter.ConvertToken(deleteItemsInStringArrayinputArray);
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["StartItemIndex"] = ExpressionConverter.ConvertO(deleteItemsInStringArraystartItemIndex);
+            deleteItemsInStringArray["StartItemIndex"] = CSharpExpressionConverter.ConvertToken(deleteItemsInStringArraystartItemIndex);
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["NumberOfItemsToDelete"] = ExpressionConverter.ConvertO(deleteItemsInStringArraynumberOfItemsToDelete);
+            deleteItemsInStringArray["NumberOfItemsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteItemsInStringArraynumberOfItemsToDelete);
             if (deleteItemsInStringArraypropCount > 0)
             {
                 callPayload.Body = deleteItemsInStringArray;
@@ -1418,11 +1418,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteRowsInTable = new JObject();
             var deleteRowsInTablepropCount = 0;
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteRowsInTableinputTable);
+            deleteRowsInTable["InputTable"] = CSharpExpressionConverter.ConvertToken(deleteRowsInTableinputTable);
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInTablestartRowIndex);
+            deleteRowsInTable["StartRowIndex"] = CSharpExpressionConverter.ConvertToken(deleteRowsInTablestartRowIndex);
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInTablenumberOfRowsToDelete);
+            deleteRowsInTable["NumberOfRowsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteRowsInTablenumberOfRowsToDelete);
             if (deleteRowsInTablepropCount > 0)
             {
                 callPayload.Body = deleteRowsInTable;
@@ -1440,11 +1440,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteRowsInJSONTable = new JObject();
             var deleteRowsInJSONTablepropCount = 0;
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablejSONTable);
+            deleteRowsInJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(deleteRowsInJSONTablejSONTable);
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablestartRowIndex);
+            deleteRowsInJSONTable["StartRowIndex"] = CSharpExpressionConverter.ConvertToken(deleteRowsInJSONTablestartRowIndex);
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablenumberOfRowsToDelete);
+            deleteRowsInJSONTable["NumberOfRowsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteRowsInJSONTablenumberOfRowsToDelete);
             if (deleteRowsInJSONTablepropCount > 0)
             {
                 callPayload.Body = deleteRowsInJSONTable;
@@ -1462,11 +1462,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var renameColumnInTable = new JObject();
             var renameColumnInTablepropCount = 0;
             renameColumnInTablepropCount++;
-            renameColumnInTable["InputTable"] = ExpressionConverter.ConvertO(renameColumnInTableinputTable);
+            renameColumnInTable["InputTable"] = CSharpExpressionConverter.ConvertToken(renameColumnInTableinputTable);
             renameColumnInTablepropCount++;
-            renameColumnInTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInTablesourceColumnName);
+            renameColumnInTable["SourceColumnName"] = CSharpExpressionConverter.ConvertToken(renameColumnInTablesourceColumnName);
             renameColumnInTablepropCount++;
-            renameColumnInTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInTablenewColumnName);
+            renameColumnInTable["NewColumnName"] = CSharpExpressionConverter.ConvertToken(renameColumnInTablenewColumnName);
             if (renameColumnInTablepropCount > 0)
             {
                 callPayload.Body = renameColumnInTable;
@@ -1484,11 +1484,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var renameColumnInJSONTable = new JObject();
             var renameColumnInJSONTablepropCount = 0;
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(renameColumnInJSONTablejSONTable);
+            renameColumnInJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(renameColumnInJSONTablejSONTable);
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTablesourceColumnName);
+            renameColumnInJSONTable["SourceColumnName"] = CSharpExpressionConverter.ConvertToken(renameColumnInJSONTablesourceColumnName);
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTablenewColumnName);
+            renameColumnInJSONTable["NewColumnName"] = CSharpExpressionConverter.ConvertToken(renameColumnInJSONTablenewColumnName);
             if (renameColumnInJSONTablepropCount > 0)
             {
                 callPayload.Body = renameColumnInJSONTable;
@@ -1506,21 +1506,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteColumnsInTable = new JObject();
             var deleteColumnsInTablepropCount = 0;
             deleteColumnsInTablepropCount++;
-            deleteColumnsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteColumnsInTableinputTable);
+            deleteColumnsInTable["InputTable"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInTableinputTable);
             if (deleteColumnsInTablestartColumnIndex != null)
             {
-                deleteColumnsInTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInTablestartColumnIndex);
+                deleteColumnsInTable["StartColumnIndex"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInTablestartColumnIndex);
                 deleteColumnsInTablepropCount++;
             }
 
             if (deleteColumnsInTablecolumnNameToDelete != null)
             {
-                deleteColumnsInTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTablecolumnNameToDelete);
+                deleteColumnsInTable["ColumnNameToDelete"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInTablecolumnNameToDelete);
                 deleteColumnsInTablepropCount++;
             }
 
             deleteColumnsInTablepropCount++;
-            deleteColumnsInTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTablenumberOfColumnsToDelete);
+            deleteColumnsInTable["NumberOfColumnsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInTablenumberOfColumnsToDelete);
             if (deleteColumnsInTablepropCount > 0)
             {
                 callPayload.Body = deleteColumnsInTable;
@@ -1538,21 +1538,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteColumnsInJSONTable = new JObject();
             var deleteColumnsInJSONTablepropCount = 0;
             deleteColumnsInJSONTablepropCount++;
-            deleteColumnsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablejSONTable);
+            deleteColumnsInJSONTable["JSONTable"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInJSONTablejSONTable);
             if (deleteColumnsInJSONTablestartColumnIndex != null)
             {
-                deleteColumnsInJSONTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablestartColumnIndex);
+                deleteColumnsInJSONTable["StartColumnIndex"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInJSONTablestartColumnIndex);
                 deleteColumnsInJSONTablepropCount++;
             }
 
             if (deleteColumnsInJSONTablecolumnNameToDelete != null)
             {
-                deleteColumnsInJSONTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablecolumnNameToDelete);
+                deleteColumnsInJSONTable["ColumnNameToDelete"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInJSONTablecolumnNameToDelete);
                 deleteColumnsInJSONTablepropCount++;
             }
 
             deleteColumnsInJSONTablepropCount++;
-            deleteColumnsInJSONTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablenumberOfColumnsToDelete);
+            deleteColumnsInJSONTable["NumberOfColumnsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteColumnsInJSONTablenumberOfColumnsToDelete);
             if (deleteColumnsInJSONTablepropCount > 0)
             {
                 callPayload.Body = deleteColumnsInJSONTable;
@@ -1570,16 +1570,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringArrayFromTableColumn = new JObject();
             var getStringArrayFromTableColumnpropCount = 0;
             getStringArrayFromTableColumnpropCount++;
-            getStringArrayFromTableColumn["InputTable"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumninputTable);
+            getStringArrayFromTableColumn["InputTable"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromTableColumninputTable);
             if (getStringArrayFromTableColumncolumnIndex != null)
             {
-                getStringArrayFromTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumncolumnIndex);
+                getStringArrayFromTableColumn["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromTableColumncolumnIndex);
                 getStringArrayFromTableColumnpropCount++;
             }
 
             if (getStringArrayFromTableColumncolumnName != null)
             {
-                getStringArrayFromTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumncolumnName);
+                getStringArrayFromTableColumn["ColumnName"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromTableColumncolumnName);
                 getStringArrayFromTableColumnpropCount++;
             }
 
@@ -1600,16 +1600,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringArrayFromJSONTableColumn = new JObject();
             var getStringArrayFromJSONTableColumnpropCount = 0;
             getStringArrayFromJSONTableColumnpropCount++;
-            getStringArrayFromJSONTableColumn["JSONTable"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumnjSONTable);
+            getStringArrayFromJSONTableColumn["JSONTable"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromJSONTableColumnjSONTable);
             if (getStringArrayFromJSONTableColumncolumnIndex != null)
             {
-                getStringArrayFromJSONTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumncolumnIndex);
+                getStringArrayFromJSONTableColumn["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromJSONTableColumncolumnIndex);
                 getStringArrayFromJSONTableColumnpropCount++;
             }
 
             if (getStringArrayFromJSONTableColumncolumnName != null)
             {
-                getStringArrayFromJSONTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumncolumnName);
+                getStringArrayFromJSONTableColumn["ColumnName"] = CSharpExpressionConverter.ConvertToken(getStringArrayFromJSONTableColumncolumnName);
                 getStringArrayFromJSONTableColumnpropCount++;
             }
 
@@ -1630,22 +1630,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringFromJSONTableCell = new JObject();
             var getStringFromJSONTableCellpropCount = 0;
             getStringFromJSONTableCellpropCount++;
-            getStringFromJSONTableCell["JSONTable"] = ExpressionConverter.ConvertO(getStringFromJSONTableCelljSONTable);
+            getStringFromJSONTableCell["JSONTable"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCelljSONTable);
             if (getStringFromJSONTableCellrowIndex != null)
             {
-                getStringFromJSONTableCell["RowIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellrowIndex);
+                getStringFromJSONTableCell["RowIndex"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCellrowIndex);
                 getStringFromJSONTableCellpropCount++;
             }
 
             if (getStringFromJSONTableCellcolumnIndex != null)
             {
-                getStringFromJSONTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellcolumnIndex);
+                getStringFromJSONTableCell["ColumnIndex"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCellcolumnIndex);
                 getStringFromJSONTableCellpropCount++;
             }
 
             if (getStringFromJSONTableCellcolumnName != null)
             {
-                getStringFromJSONTableCell["ColumnName"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellcolumnName);
+                getStringFromJSONTableCell["ColumnName"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCellcolumnName);
                 getStringFromJSONTableCellpropCount++;
             }
 
@@ -1653,7 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringFromJSONTableCellfallBackIfCellDoesNotExist != null)
                 {
-                    getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
+                    getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
                     getStringFromJSONTableCellpropCount++;
                 }
 
@@ -1667,7 +1667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getStringFromJSONTableCellfallbackValue != null)
             {
-                getStringFromJSONTableCell["FallbackValue"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallbackValue);
+                getStringFromJSONTableCell["FallbackValue"] = CSharpExpressionConverter.ConvertToken(getStringFromJSONTableCellfallbackValue);
                 getStringFromJSONTableCellpropCount++;
             }
 
@@ -1689,19 +1689,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringBetweenpropCount = 0;
             if (getStringBetweeninputString != null)
             {
-                getStringBetween["InputString"] = ExpressionConverter.ConvertO(getStringBetweeninputString);
+                getStringBetween["InputString"] = CSharpExpressionConverter.ConvertToken(getStringBetweeninputString);
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweenstartSearchString != null)
             {
-                getStringBetween["StartSearchString"] = ExpressionConverter.ConvertO(getStringBetweenstartSearchString);
+                getStringBetween["StartSearchString"] = CSharpExpressionConverter.ConvertToken(getStringBetweenstartSearchString);
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweenendSearchString != null)
             {
-                getStringBetween["EndSearchString"] = ExpressionConverter.ConvertO(getStringBetweenendSearchString);
+                getStringBetween["EndSearchString"] = CSharpExpressionConverter.ConvertToken(getStringBetweenendSearchString);
                 getStringBetweenpropCount++;
             }
 
@@ -1709,7 +1709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringBetweensearchLineByLine != null)
                 {
-                    getStringBetween["SearchLineByLine"] = ExpressionConverter.ConvertO(getStringBetweensearchLineByLine);
+                    getStringBetween["SearchLineByLine"] = CSharpExpressionConverter.ConvertToken(getStringBetweensearchLineByLine);
                     getStringBetweenpropCount++;
                 }
 
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringBetweenthrowExceptionIfNotFound != null)
                 {
-                    getStringBetween["ThrowExceptionIfNotFound"] = ExpressionConverter.ConvertO(getStringBetweenthrowExceptionIfNotFound);
+                    getStringBetween["ThrowExceptionIfNotFound"] = CSharpExpressionConverter.ConvertToken(getStringBetweenthrowExceptionIfNotFound);
                     getStringBetweenpropCount++;
                 }
 
@@ -1741,7 +1741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringBetweentrimResult != null)
                 {
-                    getStringBetween["TrimResult"] = ExpressionConverter.ConvertO(getStringBetweentrimResult);
+                    getStringBetween["TrimResult"] = CSharpExpressionConverter.ConvertToken(getStringBetweentrimResult);
                     getStringBetweenpropCount++;
                 }
 
@@ -1757,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringBetweensearchIsRegularExpression != null)
                 {
-                    getStringBetween["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(getStringBetweensearchIsRegularExpression);
+                    getStringBetween["SearchIsRegularExpression"] = CSharpExpressionConverter.ConvertToken(getStringBetweensearchIsRegularExpression);
                     getStringBetweenpropCount++;
                 }
 
@@ -1773,7 +1773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getStringBetweencaseSensitiveSearch != null)
                 {
-                    getStringBetween["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(getStringBetweencaseSensitiveSearch);
+                    getStringBetween["CaseSensitiveSearch"] = CSharpExpressionConverter.ConvertToken(getStringBetweencaseSensitiveSearch);
                     getStringBetweenpropCount++;
                 }
 
@@ -1802,11 +1802,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var loadIAConnectLookupTable = new JObject();
             var loadIAConnectLookupTablepropCount = 0;
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["Path"] = ExpressionConverter.ConvertO(loadIAConnectLookupTablepath);
+            loadIAConnectLookupTable["Path"] = CSharpExpressionConverter.ConvertToken(loadIAConnectLookupTablepath);
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["RaiseExceptionIfAnyTableFailsToLoad"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad);
+            loadIAConnectLookupTable["RaiseExceptionIfAnyTableFailsToLoad"] = CSharpExpressionConverter.ConvertToken(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad);
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableworkflow);
+            loadIAConnectLookupTable["Workflow"] = CSharpExpressionConverter.ConvertToken(loadIAConnectLookupTableworkflow);
             if (loadIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = loadIAConnectLookupTable;
@@ -1824,7 +1824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectLookupTableSummary = new JObject();
             var getIAConnectLookupTableSummarypropCount = 0;
             getIAConnectLookupTableSummarypropCount++;
-            getIAConnectLookupTableSummary["Workflow"] = ExpressionConverter.ConvertO(getIAConnectLookupTableSummaryworkflow);
+            getIAConnectLookupTableSummary["Workflow"] = CSharpExpressionConverter.ConvertToken(getIAConnectLookupTableSummaryworkflow);
             if (getIAConnectLookupTableSummarypropCount > 0)
             {
                 callPayload.Body = getIAConnectLookupTableSummary;
@@ -1842,9 +1842,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var removeIAConnectLookupTable = new JObject();
             var removeIAConnectLookupTablepropCount = 0;
             removeIAConnectLookupTablepropCount++;
-            removeIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(removeIAConnectLookupTablelookupTableName);
+            removeIAConnectLookupTable["LookupTableName"] = CSharpExpressionConverter.ConvertToken(removeIAConnectLookupTablelookupTableName);
             removeIAConnectLookupTablepropCount++;
-            removeIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(removeIAConnectLookupTableworkflow);
+            removeIAConnectLookupTable["Workflow"] = CSharpExpressionConverter.ConvertToken(removeIAConnectLookupTableworkflow);
             if (removeIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = removeIAConnectLookupTable;
@@ -1862,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var removeAllIAConnectLookupTables = new JObject();
             var removeAllIAConnectLookupTablespropCount = 0;
             removeAllIAConnectLookupTablespropCount++;
-            removeAllIAConnectLookupTables["Workflow"] = ExpressionConverter.ConvertO(removeAllIAConnectLookupTablesworkflow);
+            removeAllIAConnectLookupTables["Workflow"] = CSharpExpressionConverter.ConvertToken(removeAllIAConnectLookupTablesworkflow);
             if (removeAllIAConnectLookupTablespropCount > 0)
             {
                 callPayload.Body = removeAllIAConnectLookupTables;
@@ -1880,20 +1880,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupValueFromIAConnectLookupTable = new JObject();
             var lookupValueFromIAConnectLookupTablepropCount = 0;
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablelookupTableName);
+            lookupValueFromIAConnectLookupTable["LookupTableName"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTablelookupTableName);
             if (lookupValueFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupValueFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableinputDataJSON);
+                lookupValueFromIAConnectLookupTable["InputDataJSON"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTableinputDataJSON);
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["SearchResultValueColumnName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnName);
+            lookupValueFromIAConnectLookupTable["SearchResultValueColumnName"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTablesearchResultValueColumnName);
             if (lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex != null)
             {
                 if (lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex != null)
                 {
-                    lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
+                    lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
                     lookupValueFromIAConnectLookupTablepropCount++;
                 }
 
@@ -1909,7 +1909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
                 {
-                    lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
                     lookupValueFromIAConnectLookupTablepropCount++;
                 }
 
@@ -1922,7 +1922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             }
 
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableworkflow);
+            lookupValueFromIAConnectLookupTable["Workflow"] = CSharpExpressionConverter.ConvertToken(lookupValueFromIAConnectLookupTableworkflow);
             if (lookupValueFromIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = lookupValueFromIAConnectLookupTable;
@@ -1940,20 +1940,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupColumnsFromIAConnectLookupTable = new JObject();
             var lookupColumnsFromIAConnectLookupTablepropCount = 0;
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablelookupTableName);
+            lookupColumnsFromIAConnectLookupTable["LookupTableName"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTablelookupTableName);
             if (lookupColumnsFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupColumnsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableinputDataJSON);
+                lookupColumnsFromIAConnectLookupTable["InputDataJSON"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTableinputDataJSON);
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["SearchResultTableColumnName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName);
+            lookupColumnsFromIAConnectLookupTable["SearchResultTableColumnName"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName);
             if (lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
                 if (lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
                 {
-                    lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
                     lookupColumnsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupColumnsFromIAConnectLookupTablereturnBlankCells != null)
                 {
-                    lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
+                    lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
                     lookupColumnsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -1985,7 +1985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupColumnsFromIAConnectLookupTablereturnFormat != null)
                 {
-                    lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnFormat);
+                    lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = CSharpExpressionConverter.Convert(lookupColumnsFromIAConnectLookupTablereturnFormat);
                     lookupColumnsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             }
 
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableworkflow);
+            lookupColumnsFromIAConnectLookupTable["Workflow"] = CSharpExpressionConverter.ConvertToken(lookupColumnsFromIAConnectLookupTableworkflow);
             if (lookupColumnsFromIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = lookupColumnsFromIAConnectLookupTable;
@@ -2017,13 +2017,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var removeCharactersFromStringpropCount = 0;
             if (removeCharactersFromStringinputString != null)
             {
-                removeCharactersFromString["InputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringinputString);
+                removeCharactersFromString["InputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringinputString);
                 removeCharactersFromStringpropCount++;
             }
 
             if (removeCharactersFromStringcharactersToRemoveFromInputString != null)
             {
-                removeCharactersFromString["CharactersToRemoveFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringcharactersToRemoveFromInputString);
+                removeCharactersFromString["CharactersToRemoveFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringcharactersToRemoveFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
@@ -2031,7 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (removeCharactersFromStringremoveDiacriticsFromInputString != null)
                 {
-                    removeCharactersFromString["RemoveDiacriticsFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveDiacriticsFromInputString);
+                    removeCharactersFromString["RemoveDiacriticsFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringremoveDiacriticsFromInputString);
                     removeCharactersFromStringpropCount++;
                 }
 
@@ -2047,7 +2047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (removeCharactersFromStringremoveNonAlphaNumericFromInputString != null)
                 {
-                    removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
+                    removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
                     removeCharactersFromStringpropCount++;
                 }
 
@@ -2063,7 +2063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (removeCharactersFromStringremoveNumericFromInputString != null)
                 {
-                    removeCharactersFromString["RemoveNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNumericFromInputString);
+                    removeCharactersFromString["RemoveNumericFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringremoveNumericFromInputString);
                     removeCharactersFromStringpropCount++;
                 }
 
@@ -2079,7 +2079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (removeCharactersFromStringremoveLowercaseCharactersFromInputString != null)
                 {
-                    removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
+                    removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
                     removeCharactersFromStringpropCount++;
                 }
 
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (removeCharactersFromStringremoveUppercaseCharactersFromInputString != null)
                 {
-                    removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
+                    removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = CSharpExpressionConverter.ConvertToken(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
                     removeCharactersFromStringpropCount++;
                 }
 
@@ -2124,12 +2124,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getColumnFromIAConnectList = new JObject();
             var getColumnFromIAConnectListpropCount = 0;
             getColumnFromIAConnectListpropCount++;
-            getColumnFromIAConnectList["ListName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListlistName);
+            getColumnFromIAConnectList["ListName"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListlistName);
             if (getColumnFromIAConnectListsearchColumnIndex != null)
             {
                 if (getColumnFromIAConnectListsearchColumnIndex != null)
                 {
-                    getColumnFromIAConnectList["SearchColumnIndex"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnIndex);
+                    getColumnFromIAConnectList["SearchColumnIndex"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListsearchColumnIndex);
                     getColumnFromIAConnectListpropCount++;
                 }
 
@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getColumnFromIAConnectListsearchColumnName != null)
             {
-                getColumnFromIAConnectList["SearchColumnName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnName);
+                getColumnFromIAConnectList["SearchColumnName"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListsearchColumnName);
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -2151,7 +2151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getColumnFromIAConnectListreturnBlankCells != null)
                 {
-                    getColumnFromIAConnectList["ReturnBlankCells"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnBlankCells);
+                    getColumnFromIAConnectList["ReturnBlankCells"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListreturnBlankCells);
                     getColumnFromIAConnectListpropCount++;
                 }
 
@@ -2167,7 +2167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getColumnFromIAConnectListfallBackIfListDoesNotExist != null)
                 {
-                    getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallBackIfListDoesNotExist);
+                    getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListfallBackIfListDoesNotExist);
                     getColumnFromIAConnectListpropCount++;
                 }
 
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getColumnFromIAConnectListfallbackValue != null)
             {
-                getColumnFromIAConnectList["FallbackValue"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallbackValue);
+                getColumnFromIAConnectList["FallbackValue"] = CSharpExpressionConverter.ConvertToken(getColumnFromIAConnectListfallbackValue);
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -2189,7 +2189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (getColumnFromIAConnectListreturnFormat != null)
                 {
-                    getColumnFromIAConnectList["ReturnFormat"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnFormat);
+                    getColumnFromIAConnectList["ReturnFormat"] = CSharpExpressionConverter.Convert(getColumnFromIAConnectListreturnFormat);
                     getColumnFromIAConnectListpropCount++;
                 }
 
@@ -2218,12 +2218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectListContents = new JObject();
             var getIAConnectListContentspropCount = 0;
             getIAConnectListContentspropCount++;
-            getIAConnectListContents["ListName"] = ExpressionConverter.ConvertO(getIAConnectListContentslistName);
+            getIAConnectListContents["ListName"] = CSharpExpressionConverter.ConvertToken(getIAConnectListContentslistName);
             if (getIAConnectListContentsreturnFormat != null)
             {
                 if (getIAConnectListContentsreturnFormat != null)
                 {
-                    getIAConnectListContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectListContentsreturnFormat);
+                    getIAConnectListContents["ReturnFormat"] = CSharpExpressionConverter.Convert(getIAConnectListContentsreturnFormat);
                     getIAConnectListContentspropCount++;
                 }
 
@@ -2252,10 +2252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupDataCellsFromIAConnectLookupTable = new JObject();
             var lookupDataCellsFromIAConnectLookupTablepropCount = 0;
             lookupDataCellsFromIAConnectLookupTablepropCount++;
-            lookupDataCellsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablelookupTableName);
+            lookupDataCellsFromIAConnectLookupTable["LookupTableName"] = CSharpExpressionConverter.ConvertToken(lookupDataCellsFromIAConnectLookupTablelookupTableName);
             if (lookupDataCellsFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableinputDataJSON);
+                lookupDataCellsFromIAConnectLookupTable["InputDataJSON"] = CSharpExpressionConverter.ConvertToken(lookupDataCellsFromIAConnectLookupTableinputDataJSON);
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
@@ -2263,7 +2263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
                 {
-                    lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = CSharpExpressionConverter.ConvertToken(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
                     lookupDataCellsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -2279,7 +2279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupDataCellsFromIAConnectLookupTablereturnBlankCells != null)
                 {
-                    lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
+                    lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = CSharpExpressionConverter.ConvertToken(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
                     lookupDataCellsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -2295,7 +2295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             {
                 if (lookupDataCellsFromIAConnectLookupTablereturnFormat != null)
                 {
-                    lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnFormat);
+                    lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = CSharpExpressionConverter.Convert(lookupDataCellsFromIAConnectLookupTablereturnFormat);
                     lookupDataCellsFromIAConnectLookupTablepropCount++;
                 }
 
@@ -2324,12 +2324,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectLookupTableContents = new JObject();
             var getIAConnectLookupTableContentspropCount = 0;
             getIAConnectLookupTableContentspropCount++;
-            getIAConnectLookupTableContents["LookupTableName"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentslookupTableName);
+            getIAConnectLookupTableContents["LookupTableName"] = CSharpExpressionConverter.ConvertToken(getIAConnectLookupTableContentslookupTableName);
             if (getIAConnectLookupTableContentsreturnFormat != null)
             {
                 if (getIAConnectLookupTableContentsreturnFormat != null)
                 {
-                    getIAConnectLookupTableContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsreturnFormat);
+                    getIAConnectLookupTableContents["ReturnFormat"] = CSharpExpressionConverter.Convert(getIAConnectLookupTableContentsreturnFormat);
                     getIAConnectLookupTableContentspropCount++;
                 }
 
@@ -2358,14 +2358,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var uploadCSVToIAConnectLookupTable = new JObject();
             var uploadCSVToIAConnectLookupTablepropCount = 0;
             uploadCSVToIAConnectLookupTablepropCount++;
-            uploadCSVToIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablelookupTableName);
+            uploadCSVToIAConnectLookupTable["LookupTableName"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectLookupTablelookupTableName);
             uploadCSVToIAConnectLookupTablepropCount++;
-            uploadCSVToIAConnectLookupTable["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecSVData);
+            uploadCSVToIAConnectLookupTable["CSVData"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectLookupTablecSVData);
             if (uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist != null)
             {
                 if (uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist != null)
                 {
-                    uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
+                    uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
                     uploadCSVToIAConnectLookupTablepropCount++;
                 }
 
@@ -2394,14 +2394,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var uploadCSVToIAConnectList = new JObject();
             var uploadCSVToIAConnectListpropCount = 0;
             uploadCSVToIAConnectListpropCount++;
-            uploadCSVToIAConnectList["ListName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListlistName);
+            uploadCSVToIAConnectList["ListName"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectListlistName);
             uploadCSVToIAConnectListpropCount++;
-            uploadCSVToIAConnectList["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcSVData);
+            uploadCSVToIAConnectList["CSVData"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectListcSVData);
             if (uploadCSVToIAConnectListcreateListIfNotExist != null)
             {
                 if (uploadCSVToIAConnectListcreateListIfNotExist != null)
                 {
-                    uploadCSVToIAConnectList["CreateListIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcreateListIfNotExist);
+                    uploadCSVToIAConnectList["CreateListIfNotExist"] = CSharpExpressionConverter.ConvertToken(uploadCSVToIAConnectListcreateListIfNotExist);
                     uploadCSVToIAConnectListpropCount++;
                 }
 
@@ -2430,7 +2430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var convertArrayToJSON = new JObject();
             var convertArrayToJSONpropCount = 0;
             convertArrayToJSONpropCount++;
-            convertArrayToJSON["InputObject"] = ExpressionConverter.ConvertO(convertArrayToJSONinputObject);
+            convertArrayToJSON["InputObject"] = CSharpExpressionConverter.ConvertToken(convertArrayToJSONinputObject);
             if (convertArrayToJSONpropCount > 0)
             {
                 callPayload.Body = convertArrayToJSON;

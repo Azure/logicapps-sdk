@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
+            body["string"] = CSharpExpressionConverter.ConvertToken(bodystring);
             if (bodytype != null)
             {
                 if (bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = CSharpExpressionConverter.Convert(bodytype);
                     bodypropCount++;
                 }
 

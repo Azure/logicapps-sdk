@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var apiCallPath = "/departments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction<GetDepartmentsResponseItem[]>(callPayload);
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var apiCallPath = "/leave-types";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction<GetLeaveTypesResponseItem[]>(callPayload);
         }
 
@@ -46,15 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var apiCallPath = "/reports/summary-allowances";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
+            callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
+            callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (employee != null)
-                callPayload.Queries["employee"] = ExpressionConverter.Convert(employee);
+                callPayload.Queries["employee"] = CSharpExpressionConverter.ConvertO(employee);
             if (department != null)
-                callPayload.Queries["department"] = ExpressionConverter.Convert(department);
+                callPayload.Queries["department"] = CSharpExpressionConverter.ConvertO(department);
             if (allowanceType != null)
-                callPayload.Queries["allowance_type"] = ExpressionConverter.Convert(allowanceType);
+                callPayload.Queries["allowance_type"] = CSharpExpressionConverter.ConvertO(allowanceType);
             return new ApiConnectionAction<GetAllowanceSummaryResponse>(callPayload);
         }
 
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var apiCallPath = "/employments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             if (departmentId != null)
-                callPayload.Queries["department_id"] = ExpressionConverter.Convert(departmentId);
+                callPayload.Queries["department_id"] = CSharpExpressionConverter.ConvertO(departmentId);
             return new ApiConnectionAction<GetEmployeesResponseItem[]>(callPayload);
         }
 
@@ -81,37 +81,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var bodypropCount = 0;
             if (bodyjobTitle != null)
             {
-                body["job_title"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["job_title"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
+            body["full_name"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
+            body["company_id"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
             if (bodyapproverId != null)
             {
-                body["approver_id"] = ExpressionConverter.ConvertO(bodyapproverId);
+                body["approver_id"] = CSharpExpressionConverter.ConvertToken(bodyapproverId);
                 bodypropCount++;
             }
 
             if (bodydepartmentId != null)
             {
-                body["department_id"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                body["department_id"] = CSharpExpressionConverter.ConvertToken(bodydepartmentId);
                 bodypropCount++;
             }
 
             if (bodyemployeeCode != null)
             {
-                body["employee_code"] = ExpressionConverter.ConvertO(bodyemployeeCode);
+                body["employee_code"] = CSharpExpressionConverter.ConvertToken(bodyemployeeCode);
                 bodypropCount++;
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             {
                 if (bodyisAdmin != null)
                 {
-                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    body["is_admin"] = CSharpExpressionConverter.ConvertToken(bodyisAdmin);
                     bodypropCount++;
                 }
 
@@ -133,31 +133,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodystartDate != null)
             {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["start_date"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["end_date"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyholidayLocation != null)
             {
-                body["holiday_location"] = ExpressionConverter.ConvertO(bodyholidayLocation);
+                body["holiday_location"] = CSharpExpressionConverter.ConvertToken(bodyholidayLocation);
                 bodypropCount++;
             }
 
             if (bodyallowanceUnitIsDays != null)
             {
-                body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(bodyallowanceUnitIsDays);
+                body["allowance_unit_is_days"] = CSharpExpressionConverter.ConvertToken(bodyallowanceUnitIsDays);
                 bodypropCount++;
             }
 
             if (bodyminutesPerWorkingDay != null)
             {
-                body["minutes_per_working_day"] = ExpressionConverter.ConvertO(bodyminutesPerWorkingDay);
+                body["minutes_per_working_day"] = CSharpExpressionConverter.ConvertToken(bodyminutesPerWorkingDay);
                 bodypropCount++;
             }
 
@@ -172,24 +172,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/employments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction<GetDetailsEmployeeResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<JToken> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
         {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/employments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
+            body["company_id"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
         {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/employments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -209,37 +209,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var bodypropCount = 0;
             if (bodyjobTitle != null)
             {
-                body["job_title"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                body["job_title"] = CSharpExpressionConverter.ConvertToken(bodyjobTitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
+            body["full_name"] = CSharpExpressionConverter.ConvertToken(bodyfullName);
             bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
+            body["company_id"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
             if (bodyapproverId != null)
             {
-                body["approver_id"] = ExpressionConverter.ConvertO(bodyapproverId);
+                body["approver_id"] = CSharpExpressionConverter.ConvertToken(bodyapproverId);
                 bodypropCount++;
             }
 
             if (bodydepartmentId != null)
             {
-                body["department_id"] = ExpressionConverter.ConvertO(bodydepartmentId);
+                body["department_id"] = CSharpExpressionConverter.ConvertToken(bodydepartmentId);
                 bodypropCount++;
             }
 
             if (bodyemployeeCode != null)
             {
-                body["employee_code"] = ExpressionConverter.ConvertO(bodyemployeeCode);
+                body["employee_code"] = CSharpExpressionConverter.ConvertToken(bodyemployeeCode);
                 bodypropCount++;
             }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             {
                 if (bodyisAdmin != null)
                 {
-                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    body["is_admin"] = CSharpExpressionConverter.ConvertToken(bodyisAdmin);
                     bodypropCount++;
                 }
 
@@ -261,31 +261,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodystartDate != null)
             {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["start_date"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
             }
 
             if (bodyendDate != null)
             {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["end_date"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
                 bodypropCount++;
             }
 
             if (bodyholidayLocation != null)
             {
-                body["holiday_location"] = ExpressionConverter.ConvertO(bodyholidayLocation);
+                body["holiday_location"] = CSharpExpressionConverter.ConvertToken(bodyholidayLocation);
                 bodypropCount++;
             }
 
             if (bodyallowanceUnitIsDays != null)
             {
-                body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(bodyallowanceUnitIsDays);
+                body["allowance_unit_is_days"] = CSharpExpressionConverter.ConvertToken(bodyallowanceUnitIsDays);
                 bodypropCount++;
             }
 
             if (bodyminutesPerWorkingDay != null)
             {
-                body["minutes_per_working_day"] = ExpressionConverter.ConvertO(bodyminutesPerWorkingDay);
+                body["minutes_per_working_day"] = CSharpExpressionConverter.ConvertToken(bodyminutesPerWorkingDay);
                 bodypropCount++;
             }
 
@@ -300,47 +300,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/leaves/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction<GetLeaveDetailsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<string[]> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
         {
-            var apiCallPath = String.Format("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/leaves/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["content-type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
+            body["company_id"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
             if (bodyfrom != null)
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
                 bodypropCount++;
             }
 
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["type_id"] = ExpressionConverter.ConvertO(bodytypeId);
+            body["type_id"] = CSharpExpressionConverter.ConvertToken(bodytypeId);
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
             if (bodyleaveBreakdowns != null)
             {
-                body["leave_breakdowns"] = ExpressionConverter.ConvertO(bodyleaveBreakdowns);
+                body["leave_breakdowns"] = CSharpExpressionConverter.ConvertToken(bodyleaveBreakdowns);
                 bodypropCount++;
             }
 
@@ -362,16 +362,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
+            body["company_id"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
             bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
             bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
+            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["type_id"] = ExpressionConverter.ConvertO(bodytypeId);
+            body["type_id"] = CSharpExpressionConverter.ConvertToken(bodytypeId);
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
                 bodypropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             {
                 if (bodyisPrivate != null)
                 {
-                    body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["is_private"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
                     bodypropCount++;
                 }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodyleaveBreakdowns != null)
             {
-                body["leave_breakdowns"] = ExpressionConverter.ConvertO(bodyleaveBreakdowns);
+                body["leave_breakdowns"] = CSharpExpressionConverter.ConvertToken(bodyleaveBreakdowns);
                 bodypropCount++;
             }
 
@@ -408,20 +408,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction ApproveLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/leaves/{0}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction CancelLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/leaves/{0}/cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
             return new ApiConnectionAction(callPayload);
         }
     }

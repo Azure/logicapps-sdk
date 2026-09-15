@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
             var apiCallPath = "/common/v1/user/validate/email";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (teamName != null)
-                callPayload.Queries["team_name"] = ExpressionConverter.Convert(teamName);
+                callPayload.Queries["team_name"] = CSharpExpressionConverter.ConvertO(teamName);
             return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
         }
     }

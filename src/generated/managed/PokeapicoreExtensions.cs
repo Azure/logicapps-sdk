@@ -18,16 +18,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetAbilityResponse> GetAbility(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/ability/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/ability/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAbilityResponse>(callPayload);
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetCharacteristicsResponse> GetCharacteristics(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v2/characteristic/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/characteristic/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCharacteristicsResponse>(callPayload);
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
@@ -75,16 +75,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetGenderResponse> GetGender(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/gender/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/gender/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetGenderResponse>(callPayload);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetGrowthRatesResponse> GetGrowthRates(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/growth-rate/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/growth-rate/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetGrowthRatesResponse>(callPayload);
@@ -106,16 +106,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetPokemonResponse> GetPokemon(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/pokemon/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/pokemon/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetPokemonResponse>(callPayload);
@@ -128,16 +128,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetTypeResponse> GetType(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/type/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/type/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTypeResponse>(callPayload);
@@ -150,16 +150,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetEvolutionChainResponse> GetEvolutionChain(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/v2/evolution-chain/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-chain/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEvolutionChainResponse>(callPayload);
@@ -172,16 +172,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<ListResults>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetEvolutionTriggerResponse> GetEvolutionTrigger(Expression<Func<string>> idOrName)
         {
-            var apiCallPath = String.Format("/api/v2/evolution-trigger/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-trigger/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEvolutionTriggerResponse>(callPayload);

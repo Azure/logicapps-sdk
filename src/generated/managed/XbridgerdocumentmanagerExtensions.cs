@@ -20,22 +20,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
+            request["FileContent"] = CSharpExpressionConverter.ConvertToken(requestfileContent);
             if (requestfolderPath != null)
             {
-                request["FolderPath"] = ExpressionConverter.ConvertO(requestfolderPath);
+                request["FolderPath"] = CSharpExpressionConverter.ConvertToken(requestfolderPath);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["SiteUrl"] = ExpressionConverter.ConvertO(requestsiteUrl);
+            request["SiteUrl"] = CSharpExpressionConverter.ConvertToken(requestsiteUrl);
             requestpropCount++;
-            request["PageTitle"] = ExpressionConverter.ConvertO(requestpageTitle);
+            request["PageTitle"] = CSharpExpressionConverter.ConvertToken(requestpageTitle);
             requestpropCount++;
-            request["Author"] = ExpressionConverter.ConvertO(requestauthor);
+            request["Author"] = CSharpExpressionConverter.ConvertToken(requestauthor);
             if (requestbannerImageUrl != null)
             {
-                request["BannerImageUrl"] = ExpressionConverter.ConvertO(requestbannerImageUrl);
+                request["BannerImageUrl"] = CSharpExpressionConverter.ConvertToken(requestbannerImageUrl);
                 requestpropCount++;
             }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
+            request["FileContent"] = CSharpExpressionConverter.ConvertToken(requestfileContent);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["DocumentTitle"] = ExpressionConverter.ConvertO(requestdocumentTitle);
+            request["DocumentTitle"] = CSharpExpressionConverter.ConvertToken(requestdocumentTitle);
             requestpropCount++;
-            request["Data"] = ExpressionConverter.ConvertO(requestdata);
+            request["Data"] = CSharpExpressionConverter.ConvertToken(requestdata);
             requestpropCount++;
-            request["FieldArray"] = ExpressionConverter.ConvertO(requestfieldArray);
+            request["FieldArray"] = CSharpExpressionConverter.ConvertToken(requestfieldArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
+            request["FileContent"] = CSharpExpressionConverter.ConvertToken(requestfileContent);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContentArray"] = ExpressionConverter.ConvertO(requestfileContentArray);
+            request["FileContentArray"] = CSharpExpressionConverter.ConvertToken(requestfileContentArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContentArray"] = ExpressionConverter.ConvertO(requestfileContentArray);
+            request["FileContentArray"] = CSharpExpressionConverter.ConvertToken(requestfileContentArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
+            request["FileContent"] = CSharpExpressionConverter.ConvertToken(requestfileContent);
             requestpropCount++;
-            request["FileName"] = ExpressionConverter.ConvertO(requestfileName);
+            request["FileName"] = CSharpExpressionConverter.ConvertToken(requestfileName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;

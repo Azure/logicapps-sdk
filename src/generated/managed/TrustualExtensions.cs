@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             var bodypropCount = 0;
             if (bodyfileContent != null)
             {
-                body["file_base_64"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["file_base_64"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             {
                 if (bodycertificateLanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    body["language"] = CSharpExpressionConverter.Convert(bodycertificateLanguage);
                     bodypropCount++;
                 }
 
@@ -43,19 +43,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
             if (bodytimeZoneOffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                body["offset"] = CSharpExpressionConverter.ConvertToken(bodytimeZoneOffset);
                 bodypropCount++;
             }
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
             if (bodysandboxMode != null)
             {
-                body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                body["sandbox"] = CSharpExpressionConverter.ConvertToken(bodysandboxMode);
                 bodypropCount++;
             }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             var bodypropCount = 0;
             if (bodyhash != null)
             {
-                body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                body["hash"] = CSharpExpressionConverter.ConvertToken(bodyhash);
                 bodypropCount++;
             }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
             {
                 if (bodycertificateLanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    body["language"] = CSharpExpressionConverter.Convert(bodycertificateLanguage);
                     bodypropCount++;
                 }
 
@@ -99,19 +99,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
             if (bodytimeZoneOffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                body["offset"] = CSharpExpressionConverter.ConvertToken(bodytimeZoneOffset);
                 bodypropCount++;
             }
 
             if (bodyreference != null)
             {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
                 bodypropCount++;
             }
 
             if (bodysandboxMode != null)
             {
-                body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                body["sandbox"] = CSharpExpressionConverter.ConvertToken(bodysandboxMode);
                 bodypropCount++;
             }
 

@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip_address"] = ExpressionConverter.Convert(ipAddress);
+            callPayload.Queries["ip_address"] = CSharpExpressionConverter.ConvertO(ipAddress);
             if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
             return new ApiConnectionAction<AnalyzeResponse>(callPayload);
         }
     }

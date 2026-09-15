@@ -26,19 +26,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var projectObjectpropCount = 0;
             if (bodyprojectid != null)
             {
-                projectObject["id"] = ExpressionConverter.ConvertO(bodyprojectid);
+                projectObject["id"] = CSharpExpressionConverter.ConvertToken(bodyprojectid);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectname != null)
             {
-                projectObject["name"] = ExpressionConverter.ConvertO(bodyprojectname);
+                projectObject["name"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectcanBeDownloaded != null)
             {
-                projectObject["can_be_downloaded"] = ExpressionConverter.ConvertO(bodyprojectcanBeDownloaded);
+                projectObject["can_be_downloaded"] = CSharpExpressionConverter.ConvertToken(bodyprojectcanBeDownloaded);
                 projectObjectpropCount++;
             }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             {
                 if (bodyprojectconsultable != null)
                 {
-                    projectObject["consultable"] = ExpressionConverter.ConvertO(bodyprojectconsultable);
+                    projectObject["consultable"] = CSharpExpressionConverter.ConvertToken(bodyprojectconsultable);
                     projectObjectpropCount++;
                 }
 
@@ -60,19 +60,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             if (bodyprojectconsultableUntil != null)
             {
-                projectObject["consultable_until"] = ExpressionConverter.ConvertO(bodyprojectconsultableUntil);
+                projectObject["consultable_until"] = CSharpExpressionConverter.ConvertToken(bodyprojectconsultableUntil);
                 projectObjectpropCount++;
             }
 
             if (bodyprojecttags != null)
             {
-                projectObject["tags"] = ExpressionConverter.ConvertO(bodyprojecttags);
+                projectObject["tags"] = CSharpExpressionConverter.ConvertToken(bodyprojecttags);
                 projectObjectpropCount++;
             }
 
             if (bodyprojectcollaborators != null)
             {
-                projectObject["collaborators"] = ExpressionConverter.ConvertO(bodyprojectcollaborators);
+                projectObject["collaborators"] = CSharpExpressionConverter.ConvertToken(bodyprojectcollaborators);
                 projectObjectpropCount++;
             }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             {
                 if (bodyprojectisTemplate != null)
                 {
-                    projectObject["is_template"] = ExpressionConverter.ConvertO(bodyprojectisTemplate);
+                    projectObject["is_template"] = CSharpExpressionConverter.ConvertToken(bodyprojectisTemplate);
                     projectObjectpropCount++;
                 }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             if (bodyprojectexternalId != null)
             {
-                projectObject["external_id"] = ExpressionConverter.ConvertO(bodyprojectexternalId);
+                projectObject["external_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectexternalId);
                 projectObjectpropCount++;
             }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var themeObjectpropCount = 0;
             if (bodyprojectthemeid != null)
             {
-                themeObject["id"] = ExpressionConverter.ConvertO(bodyprojectthemeid);
+                themeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyprojectthemeid);
                 themeObjectpropCount++;
             }
 
@@ -120,13 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
             if (bodyperson != null)
             {
-                body["person"] = ExpressionConverter.ConvertO(bodyperson);
+                body["person"] = CSharpExpressionConverter.ConvertToken(bodyperson);
                 bodypropCount++;
             }
 
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var apiCallPath = "/projects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            callPayload.Queries["is_template"] = ExpressionConverter.Convert(isTemplate);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
+            callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
+            callPayload.Queries["is_template"] = CSharpExpressionConverter.ConvertO(isTemplate);
             if (tags != null)
-                callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
+                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
             if (tagOperator != null)
-                callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(tagOperator);
-            callPayload.Queries["is_owner"] = ExpressionConverter.Convert(isOwner);
+                callPayload.Queries["tagOperator"] = CSharpExpressionConverter.ConvertO(tagOperator);
+            callPayload.Queries["is_owner"] = CSharpExpressionConverter.ConvertO(isOwner);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["iframe_url"] = Convert.ToString(true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodycanBeDownloaded = null, Expression<Func<bool>> bodyconsultable = null, Expression<Func<string>> bodyconsultableUntil = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodystarred = null, Expression<Func<string[]>> bodytags = null, Expression<Func<bodyverdictInput>> bodyverdict = null, Expression<Func<JToken[]>> bodycollaborators = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyvcardId = null, Expression<Func<bool>> bodyalertOn = null, Expression<Func<string[]>> bodyemailCible = null, Expression<Func<int>> bodythemeid = null)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -187,85 +187,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodycanBeDownloaded != null)
             {
-                body["can_be_downloaded"] = ExpressionConverter.ConvertO(bodycanBeDownloaded);
+                body["can_be_downloaded"] = CSharpExpressionConverter.ConvertToken(bodycanBeDownloaded);
                 bodypropCount++;
             }
 
             if (bodyconsultable != null)
             {
-                body["consultable"] = ExpressionConverter.ConvertO(bodyconsultable);
+                body["consultable"] = CSharpExpressionConverter.ConvertToken(bodyconsultable);
                 bodypropCount++;
             }
 
             if (bodyconsultableUntil != null)
             {
-                body["consultable_until"] = ExpressionConverter.ConvertO(bodyconsultableUntil);
+                body["consultable_until"] = CSharpExpressionConverter.ConvertToken(bodyconsultableUntil);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
             if (bodyexternalId != null)
             {
-                body["external_id"] = ExpressionConverter.ConvertO(bodyexternalId);
+                body["external_id"] = CSharpExpressionConverter.ConvertToken(bodyexternalId);
                 bodypropCount++;
             }
 
             if (bodystarred != null)
             {
-                body["starred"] = ExpressionConverter.ConvertO(bodystarred);
+                body["starred"] = CSharpExpressionConverter.ConvertToken(bodystarred);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodyverdict != null)
             {
-                body["verdict"] = ExpressionConverter.ConvertO(bodyverdict);
+                body["verdict"] = CSharpExpressionConverter.Convert(bodyverdict);
                 bodypropCount++;
             }
 
             if (bodycollaborators != null)
             {
-                body["collaborators"] = ExpressionConverter.ConvertO(bodycollaborators);
+                body["collaborators"] = CSharpExpressionConverter.ConvertToken(bodycollaborators);
                 bodypropCount++;
             }
 
             if (bodyisTemplate != null)
             {
-                body["is_template"] = ExpressionConverter.ConvertO(bodyisTemplate);
+                body["is_template"] = CSharpExpressionConverter.ConvertToken(bodyisTemplate);
                 bodypropCount++;
             }
 
             if (bodyvcardId != null)
             {
-                body["vcard_id"] = ExpressionConverter.ConvertO(bodyvcardId);
+                body["vcard_id"] = CSharpExpressionConverter.ConvertToken(bodyvcardId);
                 bodypropCount++;
             }
 
             if (bodyalertOn != null)
             {
-                body["alert_on"] = ExpressionConverter.ConvertO(bodyalertOn);
+                body["alert_on"] = CSharpExpressionConverter.ConvertToken(bodyalertOn);
                 bodypropCount++;
             }
 
             if (bodyemailCible != null)
             {
-                body["email_cible"] = ExpressionConverter.ConvertO(bodyemailCible);
+                body["email_cible"] = CSharpExpressionConverter.ConvertToken(bodyemailCible);
                 bodypropCount++;
             }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var themeObjectpropCount = 0;
             if (bodythemeid != null)
             {
-                themeObject["id"] = ExpressionConverter.ConvertO(bodythemeid);
+                themeObject["id"] = CSharpExpressionConverter.ConvertToken(bodythemeid);
                 themeObjectpropCount++;
             }
 
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<bodyaccessLinkInputItem[]>> bodyaccessLink = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/tokens", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var bodypropCount = 0;
             if (bodyaccessLink != null)
             {
-                body["persons"] = ExpressionConverter.ConvertO(bodyaccessLink);
+                body["persons"] = CSharpExpressionConverter.ConvertToken(bodyaccessLink);
                 bodypropCount++;
             }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<bodyitemsInputItem[]>> bodyitems = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/add_items", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var bodypropCount = 0;
             if (bodyitems != null)
             {
-                body["items"] = ExpressionConverter.ConvertO(bodyitems);
+                body["items"] = CSharpExpressionConverter.ConvertToken(bodyitems);
                 bodypropCount++;
             }
 
@@ -349,14 +349,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var apiCallPath = "/items";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
+            callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (tags != null)
-                callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
+                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
             if (tagOperator != null)
-                callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(tagOperator);
+                callPayload.Queries["tagOperator"] = CSharpExpressionConverter.ConvertO(tagOperator);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<ItemCreateResponseItem[]>(callPayload);
         }
 
@@ -382,10 +382,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var apiCallPath = "/direct_upload_data";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            callPayload.Queries["original_filename"] = ExpressionConverter.Convert(originalFilename);
+            callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
+            callPayload.Queries["original_filename"] = CSharpExpressionConverter.ConvertO(originalFilename);
             if (checkExisting != null)
-                callPayload.Queries["check_existing"] = ExpressionConverter.Convert(checkExisting);
+                callPayload.Queries["check_existing"] = CSharpExpressionConverter.ConvertO(checkExisting);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -406,16 +406,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["rule"] = ExpressionConverter.ConvertO(bodyrule);
+            body["rule"] = CSharpExpressionConverter.Convert(bodyrule);
             if (bodyuserId != null)
             {
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
@@ -445,13 +445,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             bodypropCount++;
             if (bodyuserId != null)
             {
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
@@ -481,13 +481,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             bodypropCount++;
             if (bodyuserId != null)
             {
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 

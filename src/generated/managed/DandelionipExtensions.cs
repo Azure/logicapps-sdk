@@ -18,31 +18,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (html != null)
-                callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
             if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
+                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             if (topEntities != null)
-                callPayload.Queries["top_entities"] = ExpressionConverter.Convert(topEntities);
+                callPayload.Queries["top_entities"] = CSharpExpressionConverter.ConvertO(topEntities);
             if (minConfidence != null)
-                callPayload.Queries["min_confidence"] = ExpressionConverter.Convert(minConfidence);
+                callPayload.Queries["min_confidence"] = CSharpExpressionConverter.ConvertO(minConfidence);
             if (minLength != null)
-                callPayload.Queries["min_length"] = ExpressionConverter.Convert(minLength);
+                callPayload.Queries["min_length"] = CSharpExpressionConverter.ConvertO(minLength);
             if (socialHashtag != null)
-                callPayload.Queries["social.hashtag"] = ExpressionConverter.Convert(socialHashtag);
+                callPayload.Queries["social.hashtag"] = CSharpExpressionConverter.ConvertO(socialHashtag);
             if (socialMention != null)
-                callPayload.Queries["social.mention"] = ExpressionConverter.Convert(socialMention);
+                callPayload.Queries["social.mention"] = CSharpExpressionConverter.ConvertO(socialMention);
             if (include != null)
-                callPayload.Queries["include"] = ExpressionConverter.Convert(include);
+                callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
             if (extraTypes != null)
-                callPayload.Queries["extra_types"] = ExpressionConverter.Convert(extraTypes);
+                callPayload.Queries["extra_types"] = CSharpExpressionConverter.ConvertO(extraTypes);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (epsilon != null)
-                callPayload.Queries["epsilon"] = ExpressionConverter.Convert(epsilon);
+                callPayload.Queries["epsilon"] = CSharpExpressionConverter.ConvertO(epsilon);
             return new ApiConnectionAction<EntityGetResponse>(callPayload);
         }
 
@@ -53,21 +53,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text1 != null)
-                callPayload.Queries["text1"] = ExpressionConverter.Convert(text1);
+                callPayload.Queries["text1"] = CSharpExpressionConverter.ConvertO(text1);
             if (html1 != null)
-                callPayload.Queries["html1"] = ExpressionConverter.Convert(html1);
+                callPayload.Queries["html1"] = CSharpExpressionConverter.ConvertO(html1);
             if (htmlFragment1 != null)
-                callPayload.Queries["html_fragment1"] = ExpressionConverter.Convert(htmlFragment1);
+                callPayload.Queries["html_fragment1"] = CSharpExpressionConverter.ConvertO(htmlFragment1);
             if (text2 != null)
-                callPayload.Queries["text2"] = ExpressionConverter.Convert(text2);
+                callPayload.Queries["text2"] = CSharpExpressionConverter.ConvertO(text2);
             if (html2 != null)
-                callPayload.Queries["html2"] = ExpressionConverter.Convert(html2);
+                callPayload.Queries["html2"] = CSharpExpressionConverter.ConvertO(html2);
             if (htmlFragment2 != null)
-                callPayload.Queries["html_fragment2"] = ExpressionConverter.Convert(htmlFragment2);
+                callPayload.Queries["html_fragment2"] = CSharpExpressionConverter.ConvertO(htmlFragment2);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             if (bow != null)
-                callPayload.Queries["bow"] = ExpressionConverter.Convert(bow);
+                callPayload.Queries["bow"] = CSharpExpressionConverter.Convert(bow);
             return new ApiConnectionAction<SimilarityGetResponse>(callPayload);
         }
 
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (html != null)
-                callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
             if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
+                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
             if (clean != null)
-                callPayload.Queries["clean"] = ExpressionConverter.Convert(clean);
+                callPayload.Queries["clean"] = CSharpExpressionConverter.ConvertO(clean);
             return new ApiConnectionAction<LanguageGetResponse>(callPayload);
         }
 
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (html != null)
-                callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
             if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
+                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
             if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
             return new ApiConnectionAction<SentimentGetResponse>(callPayload);
         }
 
@@ -111,16 +111,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var apiCallPath = "/datagraph/wikisearch/v1";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+            callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
+            callPayload.Queries["lang"] = CSharpExpressionConverter.Convert(lang);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.Convert(query);
             if (include != null)
-                callPayload.Queries["include"] = ExpressionConverter.Convert(include);
+                callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
             return new ApiConnectionAction<WikipediaGetResponse>(callPayload);
         }
     }

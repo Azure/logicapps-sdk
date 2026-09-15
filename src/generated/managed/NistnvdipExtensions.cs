@@ -18,37 +18,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (addOns != null)
-                callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
+                callPayload.Queries["addOns"] = CSharpExpressionConverter.Convert(addOns);
             if (cpeMatchString != null)
-                callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
+                callPayload.Queries["cpeMatchString"] = CSharpExpressionConverter.ConvertO(cpeMatchString);
             if (cvssV2Metrics != null)
-                callPayload.Queries["cvssV2Metrics"] = ExpressionConverter.Convert(cvssV2Metrics);
+                callPayload.Queries["cvssV2Metrics"] = CSharpExpressionConverter.ConvertO(cvssV2Metrics);
             if (cvssV2Severity != null)
-                callPayload.Queries["cvssV2Severity"] = ExpressionConverter.Convert(cvssV2Severity);
+                callPayload.Queries["cvssV2Severity"] = CSharpExpressionConverter.Convert(cvssV2Severity);
             if (cvssV3Metrics != null)
-                callPayload.Queries["cvssV3Metrics"] = ExpressionConverter.Convert(cvssV3Metrics);
+                callPayload.Queries["cvssV3Metrics"] = CSharpExpressionConverter.ConvertO(cvssV3Metrics);
             if (cvssV3Severity != null)
-                callPayload.Queries["cvssV3Severity"] = ExpressionConverter.Convert(cvssV3Severity);
+                callPayload.Queries["cvssV3Severity"] = CSharpExpressionConverter.Convert(cvssV3Severity);
             if (cweId != null)
-                callPayload.Queries["cweId"] = ExpressionConverter.Convert(cweId);
+                callPayload.Queries["cweId"] = CSharpExpressionConverter.ConvertO(cweId);
             if (includeMatchStringChange != null)
-                callPayload.Queries["includeMatchStringChange"] = ExpressionConverter.Convert(includeMatchStringChange);
+                callPayload.Queries["includeMatchStringChange"] = CSharpExpressionConverter.ConvertO(includeMatchStringChange);
             if (isExactMatch != null)
-                callPayload.Queries["isExactMatch"] = ExpressionConverter.Convert(isExactMatch);
+                callPayload.Queries["isExactMatch"] = CSharpExpressionConverter.ConvertO(isExactMatch);
             if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                callPayload.Queries["keyword"] = CSharpExpressionConverter.ConvertO(keyword);
             if (modStartDate != null)
-                callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
+                callPayload.Queries["modStartDate"] = CSharpExpressionConverter.ConvertO(modStartDate);
             if (modEndDate != null)
-                callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
+                callPayload.Queries["modEndDate"] = CSharpExpressionConverter.ConvertO(modEndDate);
             if (pubStartDate != null)
-                callPayload.Queries["pubStartDate"] = ExpressionConverter.Convert(pubStartDate);
+                callPayload.Queries["pubStartDate"] = CSharpExpressionConverter.ConvertO(pubStartDate);
             if (pubEndDate != null)
-                callPayload.Queries["pubEndDate"] = ExpressionConverter.Convert(pubEndDate);
+                callPayload.Queries["pubEndDate"] = CSharpExpressionConverter.ConvertO(pubEndDate);
             if (resultsPerPage != null)
-                callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                callPayload.Queries["resultsPerPage"] = CSharpExpressionConverter.ConvertO(resultsPerPage);
             if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["startIndex"] = CSharpExpressionConverter.ConvertO(startIndex);
             return new ApiConnectionAction<GetCVECollectionResponse>(callPayload);
         }
 
@@ -59,23 +59,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (addOns != null)
-                callPayload.Queries["addOns"] = ExpressionConverter.Convert(addOns);
+                callPayload.Queries["addOns"] = CSharpExpressionConverter.Convert(addOns);
             callPayload.Queries["cpeMatchString"] = Convert.ToString("cpe:2.3:*:microsoft");
             if (cpeMatchString != null)
-                callPayload.Queries["cpeMatchString"] = ExpressionConverter.Convert(cpeMatchString);
+                callPayload.Queries["cpeMatchString"] = CSharpExpressionConverter.ConvertO(cpeMatchString);
             callPayload.Queries["includeDeprecated"] = Convert.ToString(false);
             if (includeDeprecated != null)
-                callPayload.Queries["includeDeprecated"] = ExpressionConverter.Convert(includeDeprecated);
+                callPayload.Queries["includeDeprecated"] = CSharpExpressionConverter.ConvertO(includeDeprecated);
             if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                callPayload.Queries["keyword"] = CSharpExpressionConverter.ConvertO(keyword);
             if (modStartDate != null)
-                callPayload.Queries["modStartDate"] = ExpressionConverter.Convert(modStartDate);
+                callPayload.Queries["modStartDate"] = CSharpExpressionConverter.ConvertO(modStartDate);
             if (modEndDate != null)
-                callPayload.Queries["modEndDate"] = ExpressionConverter.Convert(modEndDate);
+                callPayload.Queries["modEndDate"] = CSharpExpressionConverter.ConvertO(modEndDate);
             if (resultsPerPage != null)
-                callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                callPayload.Queries["resultsPerPage"] = CSharpExpressionConverter.ConvertO(resultsPerPage);
             if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["startIndex"] = CSharpExpressionConverter.ConvertO(startIndex);
             return new ApiConnectionAction<GetCPECollectionResponse>(callPayload);
         }
     }

@@ -17,15 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/weather/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["params"] = ExpressionConverter.Convert(@params);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
+            callPayload.Queries["params"] = CSharpExpressionConverter.ConvertO(@params);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<WeatherPointRequestResponse>(callPayload);
         }
 
@@ -35,15 +35,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/bio/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["params"] = ExpressionConverter.Convert(@params);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
+            callPayload.Queries["params"] = CSharpExpressionConverter.ConvertO(@params);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<BioPointRequestResponse>(callPayload);
         }
 
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/tide/extremes/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (datum != null)
-                callPayload.Queries["datum"] = ExpressionConverter.Convert(datum);
+                callPayload.Queries["datum"] = CSharpExpressionConverter.ConvertO(datum);
             return new ApiConnectionAction<TimeExtremesPointRequestResponse>(callPayload);
         }
 
@@ -70,14 +70,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/tide/sea-level/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (datum != null)
-                callPayload.Queries["datum"] = ExpressionConverter.Convert(datum);
+                callPayload.Queries["datum"] = CSharpExpressionConverter.ConvertO(datum);
             return new ApiConnectionAction<TimeSealLevelPointRequestResponse>(callPayload);
         }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/tide/stations/area";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["box"] = ExpressionConverter.Convert(box);
+            callPayload.Queries["box"] = CSharpExpressionConverter.ConvertO(box);
             return new ApiConnectionAction<GetTideStationsAreaResponse>(callPayload);
         }
 
@@ -106,12 +106,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/astronomy/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             return new ApiConnectionAction<AstronomyPointRequestResponse>(callPayload);
         }
 
@@ -121,15 +121,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/solar/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["params"] = ExpressionConverter.Convert(@params);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
+            callPayload.Queries["params"] = CSharpExpressionConverter.ConvertO(@params);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             return new ApiConnectionAction<SolarPointRequestResponse>(callPayload);
         }
 
@@ -139,8 +139,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var apiCallPath = "/elevation/point";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             return new ApiConnectionAction<ElevationPointRequestResponse>(callPayload);
         }
     }

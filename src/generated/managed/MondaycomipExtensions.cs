@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
             var bodypropCount = 0;
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 

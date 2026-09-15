@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
             var apiCallPath = "/api/v1/lookup";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["locations"] = ExpressionConverter.Convert(locations);
+            callPayload.Queries["locations"] = CSharpExpressionConverter.ConvertO(locations);
             return new ApiConnectionAction<LookupResponse>(callPayload);
         }
     }

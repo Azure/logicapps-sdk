@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
             webhook["callback_url"] = "@listCallbackUrl()";
             webhookpropCount++;
             webhookpropCount++;
-            webhook["form_id"] = ExpressionConverter.ConvertO(webhookform);
+            webhook["form_id"] = CSharpExpressionConverter.ConvertToken(webhookform);
             if (webhookpropCount > 0)
             {
                 callPayload.Body = webhook;

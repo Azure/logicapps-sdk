@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+            body["partyId"] = CSharpExpressionConverter.ConvertToken(bodypartyId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+            body["partyId"] = CSharpExpressionConverter.ConvertToken(bodypartyId);
             bodypropCount++;
-            body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+            body["partyEmail"] = CSharpExpressionConverter.ConvertToken(bodypartyEmail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> NewDocumentFromTemplate(Expression<Func<string>> templateIdDynamic)
         {
-            var apiCallPath = String.Format("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -169,9 +169,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["documentJson"] = ExpressionConverter.ConvertO(bodydocumentJson);
+            body["documentJson"] = CSharpExpressionConverter.ConvertToken(bodydocumentJson);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -183,20 +183,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesFields(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
         {
-            var apiCallPath = String.Format("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIDDynamic, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateSchema);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicTemplateSchema);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesProperties(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
         {
-            var apiCallPath = String.Format("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIDDynamic, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateMetaSchema);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicTemplateMetaSchema);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -210,9 +210,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+            body["pdfContent"] = CSharpExpressionConverter.ConvertToken(bodypdfContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -231,9 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+            body["pdfContent"] = CSharpExpressionConverter.ConvertToken(bodypdfContent);
             bodypropCount++;
-            body["authorRole"] = ExpressionConverter.ConvertO(bodyauthorRole);
+            body["authorRole"] = CSharpExpressionConverter.Convert(bodyauthorRole);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -252,9 +252,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+            body["pdfContent"] = CSharpExpressionConverter.ConvertToken(bodypdfContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -292,44 +292,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+            body["partyEmail"] = CSharpExpressionConverter.ConvertToken(bodypartyEmail);
             bodypropCount++;
-            body["partyRole"] = ExpressionConverter.ConvertO(bodypartyRole);
+            body["partyRole"] = CSharpExpressionConverter.Convert(bodypartyRole);
             if (bodyfirstname != null)
             {
-                body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                body["firstname"] = CSharpExpressionConverter.ConvertToken(bodyfirstname);
                 bodypropCount++;
             }
 
             if (bodylastname != null)
             {
-                body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                body["lastname"] = CSharpExpressionConverter.ConvertToken(bodylastname);
                 bodypropCount++;
             }
 
             if (bodycompany != null)
             {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
                 bodypropCount++;
             }
 
             if (bodymobile != null)
             {
-                body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
+                body["mobile"] = CSharpExpressionConverter.ConvertToken(bodymobile);
                 bodypropCount++;
             }
 
             if (bodypersonalNumber != null)
             {
-                body["personalNumber"] = ExpressionConverter.ConvertO(bodypersonalNumber);
+                body["personalNumber"] = CSharpExpressionConverter.ConvertToken(bodypersonalNumber);
                 bodypropCount++;
             }
 
             if (bodysignOrder != null)
             {
-                body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
+                body["signOrder"] = CSharpExpressionConverter.ConvertToken(bodysignOrder);
                 bodypropCount++;
             }
 
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             {
                 if (bodydeliveryMethod != null)
                 {
-                    body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
+                    body["deliveryMethod"] = CSharpExpressionConverter.Convert(bodydeliveryMethod);
                     bodypropCount++;
                 }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             {
                 if (bodyauthenticationToView != null)
                 {
-                    body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
+                    body["authenticationToView"] = CSharpExpressionConverter.Convert(bodyauthenticationToView);
                     bodypropCount++;
                 }
 
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             {
                 if (bodyauthenticationToViewArchived != null)
                 {
-                    body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
+                    body["authenticationToViewArchived"] = CSharpExpressionConverter.Convert(bodyauthenticationToViewArchived);
                     bodypropCount++;
                 }
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             {
                 if (bodyauthenticationToSign != null)
                 {
-                    body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
+                    body["authenticationToSign"] = CSharpExpressionConverter.Convert(bodyauthenticationToSign);
                     bodypropCount++;
                 }
 
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             {
                 if (bodyconfirmation != null)
                 {
-                    body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
+                    body["confirmation"] = CSharpExpressionConverter.Convert(bodyconfirmation);
                     bodypropCount++;
                 }
 
@@ -431,21 +431,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var bodypropCount = 0;
             if (bodyfileId != null)
             {
-                body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+                body["fileId"] = CSharpExpressionConverter.ConvertToken(bodyfileId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["attachmentName"] = ExpressionConverter.ConvertO(bodyattachmentName);
+            body["attachmentName"] = CSharpExpressionConverter.ConvertToken(bodyattachmentName);
             bodypropCount++;
-            body["required"] = ExpressionConverter.ConvertO(bodyrequired);
+            body["required"] = CSharpExpressionConverter.Convert(bodyrequired);
             bodypropCount++;
-            body["addToSealedFile"] = ExpressionConverter.ConvertO(bodyaddToSealedFile);
+            body["addToSealedFile"] = CSharpExpressionConverter.Convert(bodyaddToSealedFile);
             if (bodypdfContent != null)
             {
-                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                body["pdfContent"] = CSharpExpressionConverter.ConvertToken(bodypdfContent);
                 bodypropCount++;
             }
 
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             body["webhookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
         public IBodyWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

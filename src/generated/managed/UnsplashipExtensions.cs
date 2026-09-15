@@ -14,56 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Users> UserGet(Expression<Func<string>> username, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (w != null)
-                callPayload.Queries["w"] = ExpressionConverter.Convert(w);
+                callPayload.Queries["w"] = CSharpExpressionConverter.ConvertO(w);
             if (h != null)
-                callPayload.Queries["h"] = ExpressionConverter.Convert(h);
+                callPayload.Queries["h"] = CSharpExpressionConverter.ConvertO(h);
             return new ApiConnectionAction<Users>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetPhotos(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var apiCallPath = String.Format("/users/{0}/photos", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/photos", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (orderBy != null)
-                callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["order_by"] = CSharpExpressionConverter.ConvertO(orderBy);
             return new ApiConnectionAction<Photos[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetLiked(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var apiCallPath = String.Format("/users/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/likes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (orderBy != null)
-                callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["order_by"] = CSharpExpressionConverter.ConvertO(orderBy);
             return new ApiConnectionAction<Photos[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Collections[]> UserGetCollections(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/users/{0}/collections", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/collections", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<Collections[]>(callPayload);
         }
 
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (orderBy != null)
-                callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                callPayload.Queries["order_by"] = CSharpExpressionConverter.ConvertO(orderBy);
             return new ApiConnectionAction<Photos[]>(callPayload);
         }
 
@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             var apiCallPath = "/photos/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
+            callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             return new ApiConnectionAction<Photos[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photo> PhotoGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/photos/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/photos/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Photo>(callPayload);
@@ -109,18 +109,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (collections != null)
-                callPayload.Queries["collections"] = ExpressionConverter.Convert(collections);
+                callPayload.Queries["collections"] = CSharpExpressionConverter.ConvertO(collections);
             if (topics != null)
-                callPayload.Queries["topics"] = ExpressionConverter.Convert(topics);
+                callPayload.Queries["topics"] = CSharpExpressionConverter.ConvertO(topics);
             if (username != null)
-                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (orientation != null)
-                callPayload.Queries["orientation"] = ExpressionConverter.Convert(orientation);
+                callPayload.Queries["orientation"] = CSharpExpressionConverter.Convert(orientation);
             callPayload.Queries["content_filter"] = Convert.ToString("low");
             if (contentFilter != null)
-                callPayload.Queries["content_filter"] = ExpressionConverter.Convert(contentFilter);
+                callPayload.Queries["content_filter"] = CSharpExpressionConverter.Convert(contentFilter);
             return new ApiConnectionAction<Photo>(callPayload);
         }
     }

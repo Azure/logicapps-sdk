@@ -23,54 +23,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SendMailResponse> SendMail(Expression<Func<string>> accountId, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["fromAddress"] = ExpressionConverter.ConvertO(bodyfromAddress);
+            body["fromAddress"] = CSharpExpressionConverter.ConvertToken(bodyfromAddress);
             bodypropCount++;
-            body["toAddress"] = ExpressionConverter.ConvertO(bodytoAddress);
+            body["toAddress"] = CSharpExpressionConverter.ConvertToken(bodytoAddress);
             if (bodyccAddress != null)
             {
-                body["ccAddress"] = ExpressionConverter.ConvertO(bodyccAddress);
+                body["ccAddress"] = CSharpExpressionConverter.ConvertToken(bodyccAddress);
                 bodypropCount++;
             }
 
             if (bodybccAddress != null)
             {
-                body["bccAddress"] = ExpressionConverter.ConvertO(bodybccAddress);
+                body["bccAddress"] = CSharpExpressionConverter.ConvertToken(bodybccAddress);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodyaskReceipt != null)
             {
-                body["askReceipt"] = ExpressionConverter.ConvertO(bodyaskReceipt);
+                body["askReceipt"] = CSharpExpressionConverter.Convert(bodyaskReceipt);
                 bodypropCount++;
             }
 
             if (bodymailFormat != null)
             {
-                body["mailFormat"] = ExpressionConverter.ConvertO(bodymailFormat);
+                body["mailFormat"] = CSharpExpressionConverter.Convert(bodymailFormat);
                 bodypropCount++;
             }
 
             if (bodyattachment != null)
             {
-                body["attachmentDetails"] = ExpressionConverter.ConvertO(bodyattachment);
+                body["attachmentDetails"] = CSharpExpressionConverter.ConvertToken(bodyattachment);
                 bodypropCount++;
             }
 
@@ -85,56 +85,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SaveDraftResponse> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages/draft", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/draft", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
+            body["mode"] = CSharpExpressionConverter.Convert(bodymode);
             bodypropCount++;
-            body["fromAddress"] = ExpressionConverter.ConvertO(bodyfromAddress);
+            body["fromAddress"] = CSharpExpressionConverter.ConvertToken(bodyfromAddress);
             bodypropCount++;
-            body["toAddress"] = ExpressionConverter.ConvertO(bodytoAddress);
+            body["toAddress"] = CSharpExpressionConverter.ConvertToken(bodytoAddress);
             if (bodyccAddress != null)
             {
-                body["ccAddress"] = ExpressionConverter.ConvertO(bodyccAddress);
+                body["ccAddress"] = CSharpExpressionConverter.ConvertToken(bodyccAddress);
                 bodypropCount++;
             }
 
             if (bodybccAddress != null)
             {
-                body["bccAddress"] = ExpressionConverter.ConvertO(bodybccAddress);
+                body["bccAddress"] = CSharpExpressionConverter.ConvertToken(bodybccAddress);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodyaskReceipt != null)
             {
-                body["askReceipt"] = ExpressionConverter.ConvertO(bodyaskReceipt);
+                body["askReceipt"] = CSharpExpressionConverter.Convert(bodyaskReceipt);
                 bodypropCount++;
             }
 
             if (bodymailFormat != null)
             {
-                body["mailFormat"] = ExpressionConverter.ConvertO(bodymailFormat);
+                body["mailFormat"] = CSharpExpressionConverter.Convert(bodymailFormat);
                 bodypropCount++;
             }
 
             if (bodyattachment != null)
             {
-                body["attachmentDetails"] = ExpressionConverter.ConvertO(bodyattachment);
+                body["attachmentDetails"] = CSharpExpressionConverter.ConvertToken(bodyattachment);
                 bodypropCount++;
             }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetSenderDetailsResponse> GetSenderDetails(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetSenderDetailsResponse>(callPayload);
@@ -158,88 +158,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SearchMailResponse> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages/search", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+            callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
+            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyentire != null)
             {
-                body["entire"] = ExpressionConverter.ConvertO(bodyentire);
+                body["entire"] = CSharpExpressionConverter.ConvertToken(bodyentire);
                 bodypropCount++;
             }
 
             if (bodycontent != null)
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
                 bodypropCount++;
             }
 
             if (bodysender != null)
             {
-                body["sender"] = ExpressionConverter.ConvertO(bodysender);
+                body["sender"] = CSharpExpressionConverter.ConvertToken(bodysender);
                 bodypropCount++;
             }
 
             if (bodyto != null)
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
             }
 
             if (bodycc != null)
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycc);
+                body["cc"] = CSharpExpressionConverter.ConvertToken(bodycc);
                 bodypropCount++;
             }
 
             if (bodysubject != null)
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
             }
 
             if (bodyfileName != null)
             {
-                body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["fileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
                 bodypropCount++;
             }
 
             if (bodyfileContent != null)
             {
-                body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["fileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
                 bodypropCount++;
             }
 
             if (bodyfromDate != null)
             {
-                body["fromDate"] = ExpressionConverter.ConvertO(bodyfromDate);
+                body["fromDate"] = CSharpExpressionConverter.ConvertToken(bodyfromDate);
                 bodypropCount++;
             }
 
             if (bodytoDate != null)
             {
-                body["toDate"] = ExpressionConverter.ConvertO(bodytoDate);
+                body["toDate"] = CSharpExpressionConverter.ConvertToken(bodytoDate);
                 bodypropCount++;
             }
 
             if (bodygroupResult != null)
             {
-                body["groupResult"] = ExpressionConverter.ConvertO(bodygroupResult);
+                body["groupResult"] = CSharpExpressionConverter.ConvertToken(bodygroupResult);
                 bodypropCount++;
             }
 
             if (bodyin != null)
             {
-                body["in"] = ExpressionConverter.ConvertO(bodyin);
+                body["in"] = CSharpExpressionConverter.ConvertToken(bodyin);
                 bodypropCount++;
             }
 
             if (bodylabel != null)
             {
-                body["label"] = ExpressionConverter.ConvertO(bodylabel);
+                body["label"] = CSharpExpressionConverter.ConvertToken(bodylabel);
                 bodypropCount++;
             }
 
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllFolderResponse> GetAllFolder(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAllFolderResponse>(callPayload);
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllLabelResponse> GetAllLabel(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/labels", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAllLabelResponse>(callPayload);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailContentResponse> GetEmailContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["includeBlockContent"] = Convert.ToString(true);
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailAttachmentInfoResponse> GetEmailAttachmentInfo(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEmailAttachmentInfoResponse>(callPayload);
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<string> GetEmailAttachmentContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(attachmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -305,12 +305,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["accId"] = ExpressionConverter.Convert(accId);
+            callPayload.Queries["accId"] = CSharpExpressionConverter.ConvertO(accId);
             callPayload.Queries["category"] = Convert.ToString(3);
             callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
             callPayload.Queries["metaOnly"] = Convert.ToString(false);
             callPayload.Queries["matchingCondition"] = Convert.ToString("and");
-            callPayload.Queries["criterias"] = ExpressionConverter.Convert(criterias);
+            callPayload.Queries["criterias"] = CSharpExpressionConverter.ConvertO(criterias);
             var body = new JObject();
             var bodypropCount = 0;
             body["webhookURL"] = "@listCallbackUrl()";
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["accId"] = ExpressionConverter.Convert(accId);
+            callPayload.Queries["accId"] = CSharpExpressionConverter.ConvertO(accId);
             callPayload.Queries["category"] = Convert.ToString(3);
             callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
             callPayload.Queries["metaOnly"] = Convert.ToString(false);
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["criterias"] = ExpressionConverter.ConvertO(bodycriterias);
+            body["criterias"] = CSharpExpressionConverter.ConvertToken(bodycriterias);
             body["webhookURL"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

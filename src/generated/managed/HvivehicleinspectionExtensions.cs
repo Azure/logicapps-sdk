@@ -19,21 +19,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2016-06-01");
             callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
-            callPayload.Queries["sv"] = ExpressionConverter.Convert(sv);
+            callPayload.Queries["sv"] = CSharpExpressionConverter.ConvertO(sv);
             callPayload.Queries["sig"] = Convert.ToString("byht1JYW63X3X6hvP1B3cRjYvZExaWoV9BsLb_Mm_vI");
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["master_email"] = ExpressionConverter.ConvertO(bodymasterEmail);
+            body["master_email"] = CSharpExpressionConverter.ConvertToken(bodymasterEmail);
             bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             bodypropCount++;
-            body["vehicle_number"] = ExpressionConverter.ConvertO(bodyvehicleNumber);
+            body["vehicle_number"] = CSharpExpressionConverter.ConvertToken(bodyvehicleNumber);
             bodypropCount++;
-            body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+            body["start_date"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
             bodypropCount++;
-            body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+            body["end_date"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

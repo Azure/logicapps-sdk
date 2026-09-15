@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetRiskUserResult>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
             var bodypropCount = 0;
             if (bodyuserIds != null)
             {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
+                body["userIds"] = CSharpExpressionConverter.ConvertToken(bodyuserIds);
                 bodypropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskDetection> RiskDetections(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/beta/riskDetections/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/riskDetections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetRiskDetection>(callPayload);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
             var bodypropCount = 0;
             if (bodyuserIds != null)
             {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
+                body["userIds"] = CSharpExpressionConverter.ConvertToken(bodyuserIds);
                 bodypropCount++;
             }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetRiskHistory>(callPayload);

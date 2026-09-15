@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -46,21 +46,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+            body["GooglePlaceId"] = CSharpExpressionConverter.ConvertToken(bodygooglePlaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -78,12 +78,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -104,14 +104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -132,19 +132,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -162,19 +162,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -192,18 +192,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+            body["GooglePlaceId"] = CSharpExpressionConverter.ConvertToken(bodygooglePlaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -224,18 +224,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -256,12 +256,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -282,19 +282,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -312,14 +312,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+            body["GooglePlaceId"] = CSharpExpressionConverter.ConvertToken(bodygooglePlaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -340,14 +340,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+            body["GooglePlaceId"] = CSharpExpressionConverter.ConvertToken(bodygooglePlaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -368,18 +368,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -400,18 +400,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -432,18 +432,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -464,12 +464,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -490,18 +490,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -522,16 +522,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -552,18 +552,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -584,14 +584,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -612,12 +612,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -638,14 +638,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -666,18 +666,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -698,20 +698,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -733,23 +733,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var bodypropCount = 0;
             if (bodycontactName != null)
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                body["ContactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
                 bodypropCount++;
             }
 
             if (bodycontactLastName != null)
             {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactLastName"] = CSharpExpressionConverter.ConvertToken(bodycontactLastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -771,29 +771,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var bodypropCount = 0;
             if (bodycontactName != null)
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                body["ContactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
                 bodypropCount++;
             }
 
             if (bodycontactLastName != null)
             {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactLastName"] = CSharpExpressionConverter.ConvertToken(bodycontactLastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            body["ReviewText"] = CSharpExpressionConverter.ConvertToken(bodyreviewText);
             bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+            body["GooglePlaceId"] = CSharpExpressionConverter.ConvertToken(bodygooglePlaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -815,25 +815,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var bodypropCount = 0;
             if (bodycontactName != null)
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                body["ContactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
                 bodypropCount++;
             }
 
             if (bodycontactLastName != null)
             {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactLastName"] = CSharpExpressionConverter.ConvertToken(bodycontactLastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            body["ReviewText"] = CSharpExpressionConverter.ConvertToken(bodyreviewText);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -854,20 +854,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            body["ReviewText"] = CSharpExpressionConverter.ConvertToken(bodyreviewText);
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -888,16 +888,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            body["ReviewText"] = CSharpExpressionConverter.ConvertToken(bodyreviewText);
             bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["GroupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+            body["PlaceId"] = CSharpExpressionConverter.ConvertToken(bodyplaceId);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -919,27 +919,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var bodypropCount = 0;
             if (bodycontactName != null)
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                body["ContactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
                 bodypropCount++;
             }
 
             if (bodycontactLastName != null)
             {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactLastName"] = CSharpExpressionConverter.ConvertToken(bodycontactLastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["Message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+            body["ScheduledDate"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
             bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+            body["ScheduledTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduledTime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -960,16 +960,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
+            body["Phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
             if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["LastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
             }
 
@@ -991,29 +991,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var bodypropCount = 0;
             if (bodycontactName != null)
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                body["ContactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
                 bodypropCount++;
             }
 
             if (bodycontactLastName != null)
             {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactLastName"] = CSharpExpressionConverter.ConvertToken(bodycontactLastName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+            body["ReminderText"] = CSharpExpressionConverter.ConvertToken(bodyreminderText);
             bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+            body["EventDate"] = CSharpExpressionConverter.ConvertToken(bodyeventDate);
             bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
+            body["Day"] = CSharpExpressionConverter.ConvertToken(bodyday);
             bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
+            body["Time"] = CSharpExpressionConverter.ConvertToken(bodytime);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -1034,22 +1034,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Contact"] = ExpressionConverter.ConvertO(bodycontact);
+            body["Contact"] = CSharpExpressionConverter.ConvertToken(bodycontact);
             if (bodyupdatedContactName != null)
             {
-                body["UpdatedContactName"] = ExpressionConverter.ConvertO(bodyupdatedContactName);
+                body["UpdatedContactName"] = CSharpExpressionConverter.ConvertToken(bodyupdatedContactName);
                 bodypropCount++;
             }
 
             if (bodyupdatedContactLastName != null)
             {
-                body["UpdatedContactLastName"] = ExpressionConverter.ConvertO(bodyupdatedContactLastName);
+                body["UpdatedContactLastName"] = CSharpExpressionConverter.ConvertToken(bodyupdatedContactLastName);
                 bodypropCount++;
             }
 
             if (bodyupdatedContactNumber != null)
             {
-                body["UpdatedContactNumber"] = ExpressionConverter.ConvertO(bodyupdatedContactNumber);
+                body["UpdatedContactNumber"] = CSharpExpressionConverter.ConvertToken(bodyupdatedContactNumber);
                 bodypropCount++;
             }
 
@@ -1070,12 +1070,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
+            body["ContactNumber"] = CSharpExpressionConverter.ConvertToken(bodycontactNumber);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 
@@ -1096,12 +1096,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
+            body["To"] = CSharpExpressionConverter.ConvertToken(bodyto);
             bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
+            body["Body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodyreplySTOPToOptOut != null)
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReplySTOPToOptOut"] = CSharpExpressionConverter.ConvertToken(bodyreplySTOPToOptOut);
                 bodypropCount++;
             }
 

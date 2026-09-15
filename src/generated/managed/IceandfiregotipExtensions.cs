@@ -18,23 +18,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (fromReleaseDate != null)
-                callPayload.Queries["fromReleaseDate"] = ExpressionConverter.Convert(fromReleaseDate);
+                callPayload.Queries["fromReleaseDate"] = CSharpExpressionConverter.ConvertO(fromReleaseDate);
             if (toReleaseDate != null)
-                callPayload.Queries["toReleaseDate"] = ExpressionConverter.Convert(toReleaseDate);
+                callPayload.Queries["toReleaseDate"] = CSharpExpressionConverter.ConvertO(toReleaseDate);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["pageSize"] = Convert.ToString(10);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<BookGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetAResponse> BookGetA(Expression<Func<string>> number)
         {
-            var apiCallPath = String.Format("/api/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(number, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/books/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BookGetAResponse>(callPayload);
@@ -47,30 +47,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (gender != null)
-                callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
+                callPayload.Queries["gender"] = CSharpExpressionConverter.ConvertO(gender);
             if (culture != null)
-                callPayload.Queries["culture"] = ExpressionConverter.Convert(culture);
+                callPayload.Queries["culture"] = CSharpExpressionConverter.ConvertO(culture);
             if (born != null)
-                callPayload.Queries["born"] = ExpressionConverter.Convert(born);
+                callPayload.Queries["born"] = CSharpExpressionConverter.ConvertO(born);
             if (died != null)
-                callPayload.Queries["died"] = ExpressionConverter.Convert(died);
+                callPayload.Queries["died"] = CSharpExpressionConverter.ConvertO(died);
             callPayload.Queries["isAlive"] = Convert.ToString(true);
             if (isAlive != null)
-                callPayload.Queries["isAlive"] = ExpressionConverter.Convert(isAlive);
+                callPayload.Queries["isAlive"] = CSharpExpressionConverter.ConvertO(isAlive);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["pageSize"] = Convert.ToString(10);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<CharacterGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/characters/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/characters/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CharacterGetAResponse>(callPayload);
@@ -83,33 +83,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
             if (words != null)
-                callPayload.Queries["words"] = ExpressionConverter.Convert(words);
+                callPayload.Queries["words"] = CSharpExpressionConverter.ConvertO(words);
             if (hasWords != null)
-                callPayload.Queries["hasWords"] = ExpressionConverter.Convert(hasWords);
+                callPayload.Queries["hasWords"] = CSharpExpressionConverter.ConvertO(hasWords);
             if (hasTitles != null)
-                callPayload.Queries["hasTitles"] = ExpressionConverter.Convert(hasTitles);
+                callPayload.Queries["hasTitles"] = CSharpExpressionConverter.ConvertO(hasTitles);
             if (hasSeats != null)
-                callPayload.Queries["hasSeats"] = ExpressionConverter.Convert(hasSeats);
+                callPayload.Queries["hasSeats"] = CSharpExpressionConverter.ConvertO(hasSeats);
             if (hasDiedOut != null)
-                callPayload.Queries["hasDiedOut"] = ExpressionConverter.Convert(hasDiedOut);
+                callPayload.Queries["hasDiedOut"] = CSharpExpressionConverter.ConvertO(hasDiedOut);
             if (hasAncestralWeapons != null)
-                callPayload.Queries["hasAncestralWeapons"] = ExpressionConverter.Convert(hasAncestralWeapons);
+                callPayload.Queries["hasAncestralWeapons"] = CSharpExpressionConverter.ConvertO(hasAncestralWeapons);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["pageSize"] = Convert.ToString(10);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             return new ApiConnectionAction<HouseGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetAResponse> HouseGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/houses/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/houses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<HouseGetAResponse>(callPayload);

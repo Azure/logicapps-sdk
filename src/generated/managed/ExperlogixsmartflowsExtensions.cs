@@ -18,24 +18,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                callPayload.Headers["Mcp-Session-Id"] = CSharpExpressionConverter.ConvertO(mcpSessionId);
             var queryRequest = new JObject();
             var queryRequestpropCount = 0;
             if (queryRequestjsonrpc != null)
             {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                queryRequest["jsonrpc"] = CSharpExpressionConverter.ConvertToken(queryRequestjsonrpc);
                 queryRequestpropCount++;
             }
 
             if (queryRequestid != null)
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                queryRequest["id"] = CSharpExpressionConverter.ConvertToken(queryRequestid);
                 queryRequestpropCount++;
             }
 
             if (queryRequestmethod != null)
             {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                queryRequest["method"] = CSharpExpressionConverter.ConvertToken(queryRequestmethod);
                 queryRequestpropCount++;
             }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
+            req["executionId"] = CSharpExpressionConverter.ConvertToken(reqexecutionId);
             if (reqpropCount > 0)
             {
                 callPayload.Body = req;
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
+            req["executionId"] = CSharpExpressionConverter.ConvertToken(reqexecutionId);
             if (reqpropCount > 0)
             {
                 callPayload.Body = req;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["documentId"] = ExpressionConverter.ConvertO(reqdocumentId);
+            req["documentId"] = CSharpExpressionConverter.ConvertToken(reqdocumentId);
             if (reqpropCount > 0)
             {
                 callPayload.Body = req;
@@ -134,12 +134,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["flowId"] = ExpressionConverter.ConvertO(reqflowId);
+            req["flowId"] = CSharpExpressionConverter.ConvertToken(reqflowId);
             reqpropCount++;
-            req["executionData"] = ExpressionConverter.ConvertO(reqexecutionData);
+            req["executionData"] = CSharpExpressionConverter.ConvertToken(reqexecutionData);
             if (reqpriority != null)
             {
-                req["priority"] = ExpressionConverter.ConvertO(reqpriority);
+                req["priority"] = CSharpExpressionConverter.ConvertToken(reqpriority);
                 reqpropCount++;
             }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             {
                 if (reqenableAsynchronousRequestReplyPattern != null)
                 {
-                    req["enableAsynchronousRequestReplyPattern"] = ExpressionConverter.ConvertO(reqenableAsynchronousRequestReplyPattern);
+                    req["enableAsynchronousRequestReplyPattern"] = CSharpExpressionConverter.ConvertToken(reqenableAsynchronousRequestReplyPattern);
                     reqpropCount++;
                 }
 
@@ -176,22 +176,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["recordType"] = ExpressionConverter.ConvertO(reqrecordType);
+            req["recordType"] = CSharpExpressionConverter.Convert(reqrecordType);
             reqpropCount++;
-            req["exportMode"] = ExpressionConverter.ConvertO(reqexportMode);
+            req["exportMode"] = CSharpExpressionConverter.Convert(reqexportMode);
             if (reqrecords != null)
             {
-                req["records"] = ExpressionConverter.ConvertO(reqrecords);
+                req["records"] = CSharpExpressionConverter.ConvertToken(reqrecords);
                 reqpropCount++;
             }
 
             reqpropCount++;
-            req["includeAllDependencies"] = ExpressionConverter.ConvertO(reqincludeAllDependencies);
+            req["includeAllDependencies"] = CSharpExpressionConverter.ConvertToken(reqincludeAllDependencies);
             if (reqincludeTemplateHistory != null)
             {
                 if (reqincludeTemplateHistory != null)
                 {
-                    req["includeTemplateHistory"] = ExpressionConverter.ConvertO(reqincludeTemplateHistory);
+                    req["includeTemplateHistory"] = CSharpExpressionConverter.ConvertToken(reqincludeTemplateHistory);
                     reqpropCount++;
                 }
 
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             {
                 if (reqincludeSamples != null)
                 {
-                    req["includeSamples"] = ExpressionConverter.ConvertO(reqincludeSamples);
+                    req["includeSamples"] = CSharpExpressionConverter.ConvertToken(reqincludeSamples);
                     reqpropCount++;
                 }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var apiCallPath = "/api/Import";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["overwriteExisting"] = ExpressionConverter.Convert(overwriteExisting);
+            callPayload.Queries["overwriteExisting"] = CSharpExpressionConverter.ConvertO(overwriteExisting);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -246,12 +246,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var req = new JObject();
             var reqpropCount = 0;
             reqpropCount++;
-            req["includeHistory"] = ExpressionConverter.ConvertO(reqincludeHistory);
+            req["includeHistory"] = CSharpExpressionConverter.ConvertToken(reqincludeHistory);
             if (req00000000000000000000000000000000 != null)
             {
                 if (req00000000000000000000000000000000 != null)
                 {
-                    req["00000000-0000-0000-0000-000000000000"] = ExpressionConverter.ConvertO(req00000000000000000000000000000000);
+                    req["00000000-0000-0000-0000-000000000000"] = CSharpExpressionConverter.ConvertToken(req00000000000000000000000000000000);
                     reqpropCount++;
                 }
 

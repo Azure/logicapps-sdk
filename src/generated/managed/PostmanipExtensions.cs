@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<ListWorkspacesResponse>(callPayload);
         }
 
@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             var workspaceObject = new JObject();
             var workspaceObjectpropCount = 0;
             workspaceObjectpropCount++;
-            workspaceObject["name"] = ExpressionConverter.ConvertO(bodyworkspacename);
+            workspaceObject["name"] = CSharpExpressionConverter.ConvertToken(bodyworkspacename);
             if (bodyworkspacedescription != null)
             {
-                workspaceObject["description"] = ExpressionConverter.ConvertO(bodyworkspacedescription);
+                workspaceObject["description"] = CSharpExpressionConverter.ConvertToken(bodyworkspacedescription);
                 workspaceObjectpropCount++;
             }
 
             workspaceObjectpropCount++;
-            workspaceObject["type"] = ExpressionConverter.ConvertO(bodyworkspacetype);
+            workspaceObject["type"] = CSharpExpressionConverter.Convert(bodyworkspacetype);
             if (workspaceObjectpropCount > 0)
             {
                 body["workspace"] = workspaceObject;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace(Expression<Func<string>> workspaceId)
         {
-            var apiCallPath = String.Format("/workspaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workspaces/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetWorkspaceResponse>(callPayload);
@@ -82,14 +82,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+                callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
             return new ApiConnectionAction<ListEnvironmentsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment(Expression<Func<string>> environmentId)
         {
-            var apiCallPath = String.Format("/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/environments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEnvironmentResponse>(callPayload);
@@ -102,18 +102,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+                callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
             return new ApiConnectionAction<ListCollectionsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetCollectionResponse> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (accessKey != null)
-                callPayload.Queries["access_key"] = ExpressionConverter.Convert(accessKey);
+                callPayload.Queries["access_key"] = CSharpExpressionConverter.ConvertO(accessKey);
             return new ApiConnectionAction<GetCollectionResponse>(callPayload);
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+                callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;

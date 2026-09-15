@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
         }

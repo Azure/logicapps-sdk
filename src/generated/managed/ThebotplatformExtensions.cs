@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             var attributesObjectpropCount = 0;
             if (bodydataattributesmessages != null)
             {
-                attributesObject["messages"] = ExpressionConverter.ConvertO(bodydataattributesmessages);
+                attributesObject["messages"] = CSharpExpressionConverter.ConvertToken(bodydataattributesmessages);
                 attributesObjectpropCount++;
             }
 
             if (bodydataattributesrecipient != null)
             {
-                attributesObject["recipient"] = ExpressionConverter.ConvertO(bodydataattributesrecipient);
+                attributesObject["recipient"] = CSharpExpressionConverter.ConvertToken(bodydataattributesrecipient);
                 attributesObjectpropCount++;
             }
 
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             var attributesObjectpropCount = 0;
             if (bodydataattributesname != null)
             {
-                attributesObject["name"] = ExpressionConverter.ConvertO(bodydataattributesname);
+                attributesObject["name"] = CSharpExpressionConverter.ConvertToken(bodydataattributesname);
                 attributesObjectpropCount++;
             }
 
             if (bodydataattributesisPii != null)
             {
-                attributesObject["is_pii"] = ExpressionConverter.ConvertO(bodydataattributesisPii);
+                attributesObject["is_pii"] = CSharpExpressionConverter.Convert(bodydataattributesisPii);
                 attributesObjectpropCount++;
             }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailaddress, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailaddress, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
             var attributesObject = new JObject();
             var attributesObjectpropCount = 0;
             attributesObjectpropCount++;
-            attributesObject["state"] = ExpressionConverter.ConvertO(bodydataattributesstate);
+            attributesObject["state"] = CSharpExpressionConverter.ConvertToken(bodydataattributesstate);
             if (attributesObjectpropCount > 0)
             {
                 dataObject["attributes"] = attributesObject;

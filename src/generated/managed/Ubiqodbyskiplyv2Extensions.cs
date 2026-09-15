@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
             bodypropCount++;
             if (bodyhookName != null)
             {
-                body["hookName"] = ExpressionConverter.ConvertO(bodyhookName);
+                body["hookName"] = CSharpExpressionConverter.ConvertToken(bodyhookName);
                 bodypropCount++;
             }
 
             if (bodydispatchId != null)
             {
-                body["dispatchId"] = ExpressionConverter.ConvertO(bodydispatchId);
+                body["dispatchId"] = CSharpExpressionConverter.ConvertToken(bodydispatchId);
                 bodypropCount++;
             }
 

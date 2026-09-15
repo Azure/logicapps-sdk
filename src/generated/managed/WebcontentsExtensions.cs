@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
             var apiCallPath = "/GetFileContent";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
+            request["method"] = CSharpExpressionConverter.Convert(requestmethod);
             requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
+            request["url"] = CSharpExpressionConverter.ConvertToken(requesturlOfTheRequest);
             var headersObject = new JObject();
             var headersObjectpropCount = 0;
             if (headersObjectpropCount > 0)
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
 
             if (requestbodyOfTheRequest != null)
             {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["body"] = CSharpExpressionConverter.ConvertToken(requestbodyOfTheRequest);
                 requestpropCount++;
             }
 

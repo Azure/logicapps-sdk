@@ -14,51 +14,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/reports/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/reports/{0}/data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<Reports[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/agencies/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(agencyName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/agencies/{0}/reports/{1}/data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(agencyName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<Reports[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/domain/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(domain, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domain/{0}/reports/{1}/data", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             return new ApiConnectionAction<Reports[]>(callPayload);
         }
     }

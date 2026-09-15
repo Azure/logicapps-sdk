@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["author"] = ExpressionConverter.ConvertO(bodycompany);
+            body["author"] = CSharpExpressionConverter.ConvertToken(bodycompany);
             bodypropCount++;
-            body["commentary"] = ExpressionConverter.ConvertO(bodycommentary);
+            body["commentary"] = CSharpExpressionConverter.ConvertToken(bodycommentary);
             bodypropCount++;
-            body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+            body["visibility"] = CSharpExpressionConverter.Convert(bodyvisibility);
             body["lifecycleState"] = "PUBLISHED";
             bodypropCount++;
             if (bodyisReshareDisabledByAuthor != null)
             {
                 if (bodyisReshareDisabledByAuthor != null)
                 {
-                    body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                    body["isReshareDisabledByAuthor"] = CSharpExpressionConverter.ConvertToken(bodyisReshareDisabledByAuthor);
                     bodypropCount++;
                 }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             {
                 if (bodycontentarticledescription != null)
                 {
-                    articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                    articleObject["description"] = CSharpExpressionConverter.ConvertToken(bodycontentarticledescription);
                     articleObjectpropCount++;
                 }
 
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             }
 
             articleObjectpropCount++;
-            articleObject["source"] = ExpressionConverter.ConvertO(bodycontentarticleuRLOfTheArticle);
+            articleObject["source"] = CSharpExpressionConverter.ConvertToken(bodycontentarticleuRLOfTheArticle);
             articleObjectpropCount++;
-            articleObject["title"] = ExpressionConverter.ConvertO(bodycontentarticletitle);
+            articleObject["title"] = CSharpExpressionConverter.ConvertToken(bodycontentarticletitle);
             if (bodycontentarticlethumbnailURL != null)
             {
-                articleObject["thumbnail"] = ExpressionConverter.ConvertO(bodycontentarticlethumbnailURL);
+                articleObject["thumbnail"] = CSharpExpressionConverter.ConvertToken(bodycontentarticlethumbnailURL);
                 articleObjectpropCount++;
             }
 
@@ -112,16 +112,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["commentary"] = ExpressionConverter.ConvertO(bodycommentary);
+            body["commentary"] = CSharpExpressionConverter.ConvertToken(bodycommentary);
             bodypropCount++;
-            body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+            body["visibility"] = CSharpExpressionConverter.Convert(bodyvisibility);
             body["lifecycleState"] = "PUBLISHED";
             bodypropCount++;
             if (bodyisReshareDisabledByAuthor != null)
             {
                 if (bodyisReshareDisabledByAuthor != null)
                 {
-                    body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                    body["isReshareDisabledByAuthor"] = CSharpExpressionConverter.ConvertToken(bodyisReshareDisabledByAuthor);
                     bodypropCount++;
                 }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             {
                 if (bodycontentarticledescription != null)
                 {
-                    articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                    articleObject["description"] = CSharpExpressionConverter.ConvertToken(bodycontentarticledescription);
                     articleObjectpropCount++;
                 }
 
@@ -164,12 +164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             }
 
             articleObjectpropCount++;
-            articleObject["source"] = ExpressionConverter.ConvertO(bodycontentarticleuRLOfTheArticle);
+            articleObject["source"] = CSharpExpressionConverter.ConvertToken(bodycontentarticleuRLOfTheArticle);
             articleObjectpropCount++;
-            articleObject["title"] = ExpressionConverter.ConvertO(bodycontentarticletitle);
+            articleObject["title"] = CSharpExpressionConverter.ConvertToken(bodycontentarticletitle);
             if (bodycontentarticlethumbnailURL != null)
             {
-                articleObject["thumbnail"] = ExpressionConverter.ConvertO(bodycontentarticlethumbnailURL);
+                articleObject["thumbnail"] = CSharpExpressionConverter.ConvertToken(bodycontentarticlethumbnailURL);
                 articleObjectpropCount++;
             }
 

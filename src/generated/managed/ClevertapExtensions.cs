@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["d"] = ExpressionConverter.ConvertO(bodyd);
+            body["d"] = CSharpExpressionConverter.ConvertToken(bodyd);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

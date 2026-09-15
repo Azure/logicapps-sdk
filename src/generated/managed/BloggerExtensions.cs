@@ -23,33 +23,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<PostList> ListPosts(Expression<Func<string>> blogId, Expression<Func<string>> status = null)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["status"] = Convert.ToString("live");
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             return new ApiConnectionAction<PostList>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Create(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["isDraft"] = Convert.ToString(false);
             if (isDraft != null)
-                callPayload.Queries["isDraft"] = ExpressionConverter.Convert(isDraft);
+                callPayload.Queries["isDraft"] = CSharpExpressionConverter.ConvertO(isDraft);
             var post = new JObject();
             var postpropCount = 0;
             postpropCount++;
-            post["title"] = ExpressionConverter.ConvertO(posttitle);
+            post["title"] = CSharpExpressionConverter.ConvertToken(posttitle);
             postpropCount++;
-            post["content"] = ExpressionConverter.ConvertO(postcontent);
+            post["content"] = CSharpExpressionConverter.ConvertToken(postcontent);
             if (postlabels != null)
             {
-                post["labels"] = ExpressionConverter.ConvertO(postlabels);
+                post["labels"] = CSharpExpressionConverter.ConvertToken(postlabels);
                 postpropCount++;
             }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Get(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Post>(callPayload);
@@ -73,26 +73,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var post = new JObject();
             var postpropCount = 0;
             if (posttitle != null)
             {
-                post["title"] = ExpressionConverter.ConvertO(posttitle);
+                post["title"] = CSharpExpressionConverter.ConvertToken(posttitle);
                 postpropCount++;
             }
 
             if (postcontent != null)
             {
-                post["content"] = ExpressionConverter.ConvertO(postcontent);
+                post["content"] = CSharpExpressionConverter.ConvertToken(postcontent);
                 postpropCount++;
             }
 
             if (postlabels != null)
             {
-                post["labels"] = ExpressionConverter.ConvertO(postlabels);
+                post["labels"] = CSharpExpressionConverter.ConvertToken(postlabels);
                 postpropCount++;
             }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IWorkflowAction Delete(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Publish(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}/publish", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/publish", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Post>(callPayload);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Revert(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/blogs/{0}/posts/{1}/revert", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/revert", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Post>(callPayload);
@@ -136,10 +136,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
     {
         public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<statusInput>> status, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger1/blogs/{0}/posts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+            callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
         }
     }

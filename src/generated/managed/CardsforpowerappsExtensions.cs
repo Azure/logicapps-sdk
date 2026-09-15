@@ -14,14 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}/instances", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var cardRequest = new JObject();
             var cardRequestpropCount = 0;
             if (cardRequestinputs != null)
             {
-                cardRequest["inputs"] = ExpressionConverter.ConvertO(cardRequestinputs);
+                cardRequest["inputs"] = CSharpExpressionConverter.ConvertToken(cardRequestinputs);
                 cardRequestpropCount++;
             }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PowerCardDescription>(callPayload);
@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
 
             if (generateCardRequestactions != null)
             {
-                generateCardRequest["actions"] = ExpressionConverter.ConvertO(generateCardRequestactions);
+                generateCardRequest["actions"] = CSharpExpressionConverter.ConvertToken(generateCardRequestactions);
                 generateCardRequestpropCount++;
             }
 
             if (generateCardRequestdescription != null)
             {
-                generateCardRequest["description"] = ExpressionConverter.ConvertO(generateCardRequestdescription);
+                generateCardRequest["description"] = CSharpExpressionConverter.ConvertToken(generateCardRequestdescription);
                 generateCardRequestpropCount++;
             }
 

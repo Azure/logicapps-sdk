@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
             var apiCallPath = "/api/resthooks";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["formlinkname"] = ExpressionConverter.Convert(formlinkname);
+            callPayload.Queries["formlinkname"] = CSharpExpressionConverter.ConvertO(formlinkname);
             callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
             callPayload.Headers["zf_version"] = Convert.ToString(2);
             callPayload.Headers["webhooks_url"] = Convert.ToString("@listCallbackUrl()");

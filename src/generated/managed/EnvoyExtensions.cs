@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
             var bodypropCount = 0;
             if (bodytoken != null)
             {
-                body["token"] = ExpressionConverter.ConvertO(bodytoken);
+                body["token"] = CSharpExpressionConverter.ConvertToken(bodytoken);
                 bodypropCount++;
             }
 

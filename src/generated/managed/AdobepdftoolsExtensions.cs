@@ -18,12 +18,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-credential-id"] = ExpressionConverter.Convert(xCredentialId);
-            callPayload.Headers["x-auth-pin"] = ExpressionConverter.Convert(xAuthPin);
-            callPayload.Headers["x-auth-token"] = ExpressionConverter.Convert(xAuthToken);
+            callPayload.Headers["x-credential-id"] = CSharpExpressionConverter.ConvertO(xCredentialId);
+            callPayload.Headers["x-auth-pin"] = CSharpExpressionConverter.ConvertO(xAuthPin);
+            callPayload.Headers["x-auth-token"] = CSharpExpressionConverter.ConvertO(xAuthToken);
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ESealResponse>(callPayload);
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CreatePDFResponse>(callPayload);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
         }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExportedImages>(callPayload);
         }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
         }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<CompressPDFResponse>(callPayload);
         }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<LinearizePDFResponse>(callPayload);
         }
 
@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             var filesArray = new JObject();
             var filesArraypropCount = 0;
             filesArraypropCount++;
-            filesArray["outputFileName"] = ExpressionConverter.ConvertO(filesArraymergedPDFFileName);
+            filesArray["outputFileName"] = CSharpExpressionConverter.ConvertToken(filesArraymergedPDFFileName);
             filesArraypropCount++;
-            filesArray["files"] = ExpressionConverter.ConvertO(filesArrayfiles);
+            filesArray["files"] = CSharpExpressionConverter.ConvertToken(filesArrayfiles);
             if (filesArraypropCount > 0)
             {
                 callPayload.Body = filesArray;
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<OCRPDFResponse>(callPayload);
         }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
         }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
         }
 
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
         }
 
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<UnProtectPDFResponse>(callPayload);
         }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseSplitDocument>(callPayload);
         }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExtractImages>(callPayload);
         }
 
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExtractTables>(callPayload);
         }
 
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExtractJSONFile>(callPayload);
         }
 
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExtractJsonObject>(callPayload);
         }
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseExtractDocument>(callPayload);
         }
 
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponsePDFProperties>(callPayload);
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DocGenResponse>(callPayload);
         }
 
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
             callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
             callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
             if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+                callPayload.Headers["x-region-value"] = CSharpExpressionConverter.Convert(xRegionValue);
             return new ApiConnectionAction<DtoResponseAutotagPDF>(callPayload);
         }
     }

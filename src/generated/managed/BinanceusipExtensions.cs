@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
             return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
             return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
         }
 
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
             var apiCallPath = "/trades";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+            callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
         }
     }

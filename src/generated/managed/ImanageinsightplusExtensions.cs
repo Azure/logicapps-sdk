@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             bodypropCount++;
-            body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+            body["latest"] = CSharpExpressionConverter.ConvertToken(bodylatest);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,118 +40,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
             if (bodyapprover != null)
             {
-                body["approver"] = ExpressionConverter.ConvertO(bodyapprover);
+                body["approver"] = CSharpExpressionConverter.ConvertToken(bodyapprover);
                 bodypropCount++;
             }
 
             if (bodydraftingNotes != null)
             {
-                body["drafting_notes"] = ExpressionConverter.ConvertO(bodydraftingNotes);
+                body["drafting_notes"] = CSharpExpressionConverter.ConvertToken(bodydraftingNotes);
                 bodypropCount++;
             }
 
             if (bodyisMaintained != null)
             {
-                body["is_maintained"] = ExpressionConverter.ConvertO(bodyisMaintained);
+                body["is_maintained"] = CSharpExpressionConverter.ConvertToken(bodyisMaintained);
                 bodypropCount++;
             }
 
             if (bodyknowledgeOwner != null)
             {
-                body["knowledge_owner"] = ExpressionConverter.ConvertO(bodyknowledgeOwner);
+                body["knowledge_owner"] = CSharpExpressionConverter.ConvertToken(bodyknowledgeOwner);
                 bodypropCount++;
             }
 
             if (bodyknowledgeType != null)
             {
-                body["knowledge_type"] = ExpressionConverter.ConvertO(bodyknowledgeType);
+                body["knowledge_type"] = CSharpExpressionConverter.ConvertToken(bodyknowledgeType);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodylastReviewDate != null)
             {
-                body["last_review_date"] = ExpressionConverter.ConvertO(bodylastReviewDate);
+                body["last_review_date"] = CSharpExpressionConverter.ConvertToken(bodylastReviewDate);
                 bodypropCount++;
             }
 
             if (bodyminiSummary != null)
             {
-                body["mini_summary"] = ExpressionConverter.ConvertO(bodyminiSummary);
+                body["mini_summary"] = CSharpExpressionConverter.ConvertToken(bodyminiSummary);
                 bodypropCount++;
             }
 
             if (bodynextReviewDate != null)
             {
-                body["next_review_date"] = ExpressionConverter.ConvertO(bodynextReviewDate);
+                body["next_review_date"] = CSharpExpressionConverter.ConvertToken(bodynextReviewDate);
                 bodypropCount++;
             }
 
             if (bodyotherNoteworthy != null)
             {
-                body["other_noteworthy"] = ExpressionConverter.ConvertO(bodyotherNoteworthy);
+                body["other_noteworthy"] = CSharpExpressionConverter.ConvertToken(bodyotherNoteworthy);
                 bodypropCount++;
             }
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
                 bodypropCount++;
             }
 
             if (bodysubmitDate != null)
             {
-                body["submit_date"] = ExpressionConverter.ConvertO(bodysubmitDate);
+                body["submit_date"] = CSharpExpressionConverter.ConvertToken(bodysubmitDate);
                 bodypropCount++;
             }
 
             if (bodytaxonomy1 != null)
             {
-                body["taxonomy1"] = ExpressionConverter.ConvertO(bodytaxonomy1);
+                body["taxonomy1"] = CSharpExpressionConverter.ConvertToken(bodytaxonomy1);
                 bodypropCount++;
             }
 
             if (bodytaxonomy2 != null)
             {
-                body["taxonomy2"] = ExpressionConverter.ConvertO(bodytaxonomy2);
+                body["taxonomy2"] = CSharpExpressionConverter.ConvertToken(bodytaxonomy2);
                 bodypropCount++;
             }
 
             if (bodytaxonomy3 != null)
             {
-                body["taxonomy3"] = ExpressionConverter.ConvertO(bodytaxonomy3);
+                body["taxonomy3"] = CSharpExpressionConverter.ConvertToken(bodytaxonomy3);
                 bodypropCount++;
             }
 
             if (bodytaxonomy4 != null)
             {
-                body["taxonomy4"] = ExpressionConverter.ConvertO(bodytaxonomy4);
+                body["taxonomy4"] = CSharpExpressionConverter.ConvertToken(bodytaxonomy4);
                 bodypropCount++;
             }
 
             if (bodytaxonomy5 != null)
             {
-                body["taxonomy5"] = ExpressionConverter.ConvertO(bodytaxonomy5);
+                body["taxonomy5"] = CSharpExpressionConverter.ConvertToken(bodytaxonomy5);
                 bodypropCount++;
             }
 
             if (bodysubmitter != null)
             {
-                body["submitter"] = ExpressionConverter.ConvertO(bodysubmitter);
+                body["submitter"] = CSharpExpressionConverter.ConvertToken(bodysubmitter);
                 bodypropCount++;
             }
 
             if (bodysubmittedDocId != null)
             {
-                body["submitted_doc_id"] = ExpressionConverter.ConvertO(bodysubmittedDocId);
+                body["submitted_doc_id"] = CSharpExpressionConverter.ConvertToken(bodysubmittedDocId);
                 bodypropCount++;
             }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var apiCallPath = "/getKnowledgeTypes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
+            callPayload.Queries["libraryId"] = CSharpExpressionConverter.ConvertO(libraryId);
             return new ApiConnectionAction<GetKnowledgeTypesResponse>(callPayload);
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var apiCallPath = "/getCurationConfiguration";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
+            callPayload.Queries["libraryId"] = CSharpExpressionConverter.ConvertO(libraryId);
             return new ApiConnectionAction<GetCurationConfigurationResponse>(callPayload);
         }
 
@@ -192,18 +192,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+            body["libraryId"] = CSharpExpressionConverter.ConvertToken(bodylibraryId);
             bodypropCount++;
-            body["taxonomyProperty"] = ExpressionConverter.ConvertO(bodytaxonomyProperty);
+            body["taxonomyProperty"] = CSharpExpressionConverter.ConvertToken(bodytaxonomyProperty);
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             {
                 if (bodyenabledState != null)
                 {
-                    body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                    body["enabled_state"] = CSharpExpressionConverter.Convert(bodyenabledState);
                     bodypropCount++;
                 }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             {
                 if (bodyincludePath != null)
                 {
-                    body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                    body["include_path"] = CSharpExpressionConverter.ConvertToken(bodyincludePath);
                     bodypropCount++;
                 }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
             if (bodychildrenOfSsid != null)
             {
-                body["children_of_ssid"] = ExpressionConverter.ConvertO(bodychildrenOfSsid);
+                body["children_of_ssid"] = CSharpExpressionConverter.ConvertToken(bodychildrenOfSsid);
                 bodypropCount++;
             }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             {
                 if (bodyimmediateChildrenOnly != null)
                 {
-                    body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                    body["immediate_children_only"] = CSharpExpressionConverter.ConvertToken(bodyimmediateChildrenOnly);
                     bodypropCount++;
                 }
 

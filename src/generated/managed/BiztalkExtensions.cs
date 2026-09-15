@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
+                callPayload.Queries["documentSpec"] = CSharpExpressionConverter.ConvertO(documentSpec);
             var requestContent = new JObject();
             var requestContentpropCount = 0;
             if (requestContentpropCount > 0)
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["documentSpec"] = CSharpExpressionConverter.ConvertO(documentSpec);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
             var apiCallPath = "/Send";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["receiveLocationAddress"] = ExpressionConverter.Convert(receiveLocationAddress);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Queries["receiveLocationAddress"] = CSharpExpressionConverter.ConvertO(receiveLocationAddress);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

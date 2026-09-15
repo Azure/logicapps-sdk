@@ -18,65 +18,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                callPayload.Queries["model"] = CSharpExpressionConverter.Convert(model);
             if (tier != null)
-                callPayload.Queries["tier"] = ExpressionConverter.Convert(tier);
+                callPayload.Queries["tier"] = CSharpExpressionConverter.Convert(tier);
             if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = CSharpExpressionConverter.Convert(version);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             if (detectLanguage != null)
-                callPayload.Queries["detect_language"] = ExpressionConverter.Convert(detectLanguage);
+                callPayload.Queries["detect_language"] = CSharpExpressionConverter.ConvertO(detectLanguage);
             if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
+                callPayload.Queries["punctuate"] = CSharpExpressionConverter.ConvertO(punctuate);
             if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
+                callPayload.Queries["profanity_filter"] = CSharpExpressionConverter.ConvertO(profanityFilter);
             if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
+                callPayload.Queries["redact"] = CSharpExpressionConverter.Convert(redact);
             if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
+                callPayload.Queries["diarize"] = CSharpExpressionConverter.ConvertO(diarize);
             if (diarizeVersion != null)
-                callPayload.Queries["diarize_version"] = ExpressionConverter.Convert(diarizeVersion);
+                callPayload.Queries["diarize_version"] = CSharpExpressionConverter.ConvertO(diarizeVersion);
             if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
+                callPayload.Queries["smart_format"] = CSharpExpressionConverter.ConvertO(smartFormat);
             if (fillerWords != null)
-                callPayload.Queries["filler_words"] = ExpressionConverter.Convert(fillerWords);
+                callPayload.Queries["filler_words"] = CSharpExpressionConverter.ConvertO(fillerWords);
             if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
+                callPayload.Queries["multichannel"] = CSharpExpressionConverter.ConvertO(multichannel);
             if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
+                callPayload.Queries["alternatives"] = CSharpExpressionConverter.ConvertO(alternatives);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
+                callPayload.Queries["replace"] = CSharpExpressionConverter.ConvertO(replace);
             if (callback != null)
-                callPayload.Queries["callback"] = ExpressionConverter.Convert(callback);
+                callPayload.Queries["callback"] = CSharpExpressionConverter.ConvertO(callback);
             if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
             if (paragraphs != null)
-                callPayload.Queries["paragraphs"] = ExpressionConverter.Convert(paragraphs);
+                callPayload.Queries["paragraphs"] = CSharpExpressionConverter.ConvertO(paragraphs);
             if (summarize != null)
-                callPayload.Queries["summarize"] = ExpressionConverter.Convert(summarize);
+                callPayload.Queries["summarize"] = CSharpExpressionConverter.ConvertO(summarize);
             if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
+                callPayload.Queries["detect_topics"] = CSharpExpressionConverter.ConvertO(detectTopics);
             if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
+                callPayload.Queries["utterances"] = CSharpExpressionConverter.ConvertO(utterances);
             if (uttSplit != null)
-                callPayload.Queries["utt_split"] = ExpressionConverter.Convert(uttSplit);
+                callPayload.Queries["utt_split"] = CSharpExpressionConverter.ConvertO(uttSplit);
             if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
+                callPayload.Queries["numerals"] = CSharpExpressionConverter.ConvertO(numerals);
             if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
+                callPayload.Queries["ner"] = CSharpExpressionConverter.ConvertO(ner);
             if (measurements != null)
-                callPayload.Queries["measurements"] = ExpressionConverter.Convert(measurements);
+                callPayload.Queries["measurements"] = CSharpExpressionConverter.ConvertO(measurements);
             if (dictation != null)
-                callPayload.Queries["dictation"] = ExpressionConverter.Convert(dictation);
+                callPayload.Queries["dictation"] = CSharpExpressionConverter.ConvertO(dictation);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectGetResponse>(callPayload);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<JToken> ProjectDelete(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -133,24 +133,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestsGetResponse> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             return new ApiConnectionAction<RequestsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestGetResponse> RequestGet(Expression<Func<string>> projectId, Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RequestGetResponse>(callPayload);
@@ -159,64 +159,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<UsageGetResponse> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (accessor != null)
-                callPayload.Queries["accessor"] = ExpressionConverter.Convert(accessor);
+                callPayload.Queries["accessor"] = CSharpExpressionConverter.ConvertO(accessor);
             if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
             if (method != null)
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Queries["method"] = CSharpExpressionConverter.Convert(method);
             if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
             if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
+                callPayload.Queries["multichannel"] = CSharpExpressionConverter.ConvertO(multichannel);
             if (interimResults != null)
-                callPayload.Queries["interim_results"] = ExpressionConverter.Convert(interimResults);
+                callPayload.Queries["interim_results"] = CSharpExpressionConverter.ConvertO(interimResults);
             if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
+                callPayload.Queries["punctuate"] = CSharpExpressionConverter.ConvertO(punctuate);
             if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
+                callPayload.Queries["ner"] = CSharpExpressionConverter.ConvertO(ner);
             if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
+                callPayload.Queries["utterances"] = CSharpExpressionConverter.ConvertO(utterances);
             if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
+                callPayload.Queries["replace"] = CSharpExpressionConverter.ConvertO(replace);
             if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
+                callPayload.Queries["profanity_filter"] = CSharpExpressionConverter.ConvertO(profanityFilter);
             if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
             if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
+                callPayload.Queries["detect_topics"] = CSharpExpressionConverter.ConvertO(detectTopics);
             if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
+                callPayload.Queries["diarize"] = CSharpExpressionConverter.ConvertO(diarize);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
+                callPayload.Queries["redact"] = CSharpExpressionConverter.ConvertO(redact);
             if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
+                callPayload.Queries["alternatives"] = CSharpExpressionConverter.ConvertO(alternatives);
             if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
+                callPayload.Queries["numerals"] = CSharpExpressionConverter.ConvertO(numerals);
             if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
+                callPayload.Queries["smart_format"] = CSharpExpressionConverter.ConvertO(smartFormat);
             return new ApiConnectionAction<UsageGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<FieldsGetResponse> FieldsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage/fields", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             return new ApiConnectionAction<FieldsGetResponse>(callPayload);
         }
     }

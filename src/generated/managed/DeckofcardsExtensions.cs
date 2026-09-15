@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<CardGetResponse> CardGet(Expression<Func<string>> deckId, Expression<Func<string>> cards, Expression<Func<int>> count = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/draw/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
+            callPayload.Queries["cards"] = CSharpExpressionConverter.ConvertO(cards);
             return new ApiConnectionAction<CardGetResponse>(callPayload);
         }
 
@@ -30,37 +30,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (deckCount != null)
-                callPayload.Queries["deck_count"] = ExpressionConverter.Convert(deckCount);
+                callPayload.Queries["deck_count"] = CSharpExpressionConverter.ConvertO(deckCount);
             if (cards != null)
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                callPayload.Queries["cards"] = CSharpExpressionConverter.ConvertO(cards);
             return new ApiConnectionAction<ShuffleGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet(Expression<Func<string>> deckId, Expression<Func<bool>> remaining = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/shuffle/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (remaining != null)
-                callPayload.Queries["remaining"] = ExpressionConverter.Convert(remaining);
+                callPayload.Queries["remaining"] = CSharpExpressionConverter.ConvertO(remaining);
             return new ApiConnectionAction<ReshuffleGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<PileGetResponse> PileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<string>> cards)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/add/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pileName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+            callPayload.Queries["cards"] = CSharpExpressionConverter.ConvertO(cards);
             return new ApiConnectionAction<PileGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/shuffle/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pileName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ShufflePileGetResponse>(callPayload);
@@ -69,21 +69,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<int>> count = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/draw/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pileName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             return new ApiConnectionAction<DrawPileGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
         public IBodyWorkflowAction<ReturnGetResponse> ReturnGet(Expression<Func<string>> deckId, Expression<Func<string>> cards)
         {
-            var apiCallPath = String.Format("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/deck/{0}/return/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deckId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+            callPayload.Queries["cards"] = CSharpExpressionConverter.ConvertO(cards);
             return new ApiConnectionAction<ReturnGetResponse>(callPayload);
         }
     }

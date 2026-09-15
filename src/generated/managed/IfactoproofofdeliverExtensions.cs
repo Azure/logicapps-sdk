@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<ListCompanyResponse> ListCompany(Expression<Func<string>> bcenvironment)
         {
-            var apiCallPath = String.Format("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListCompanyResponse>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
         {
-            var apiCallPath = String.Format("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCompanyResponse>(callPayload);

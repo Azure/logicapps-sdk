@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallPath = "/api/Account/GetCurrentUser";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsUserViewModel>(callPayload);
         }
 
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
         }
 
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
         }
 
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
         }
 
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
         }
 
@@ -90,8 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
         }
 
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
         }
 
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
         }
 
@@ -130,10 +130,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
         }
 
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -156,8 +156,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
         }
 
@@ -182,10 +182,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
         }
 
@@ -196,12 +196,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
         }
 
@@ -212,8 +212,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
         }
 
@@ -224,8 +224,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
         }
 
@@ -236,19 +236,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             callPayload.Queries["includeCount"] = Convert.ToString(false);
             if (includeCount != null)
-                callPayload.Queries["includeCount"] = ExpressionConverter.Convert(includeCount);
+                callPayload.Queries["includeCount"] = CSharpExpressionConverter.ConvertO(includeCount);
             callPayload.Queries["includeSettings"] = Convert.ToString(true);
             if (includeSettings != null)
-                callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(includeSettings);
+                callPayload.Queries["includeSettings"] = CSharpExpressionConverter.ConvertO(includeSettings);
             callPayload.Queries["includeChildren"] = Convert.ToString(false);
             if (includeChildren != null)
-                callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(includeChildren);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["includeChildren"] = CSharpExpressionConverter.ConvertO(includeChildren);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
         }
 
@@ -259,17 +259,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.Convert(category);
             if (grouping != null)
-                callPayload.Queries["grouping"] = ExpressionConverter.Convert(grouping);
+                callPayload.Queries["grouping"] = CSharpExpressionConverter.Convert(grouping);
             callPayload.Queries["includeverification"] = Convert.ToString(true);
             if (includeverification != null)
-                callPayload.Queries["includeverification"] = ExpressionConverter.Convert(includeverification);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["includeverification"] = CSharpExpressionConverter.ConvertO(includeverification);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
         }
 
@@ -280,13 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             callPayload.Queries["includeverification"] = Convert.ToString(true);
             if (includeverification != null)
-                callPayload.Queries["includeverification"] = ExpressionConverter.Convert(includeverification);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["includeverification"] = CSharpExpressionConverter.ConvertO(includeverification);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
         }
 
@@ -297,8 +297,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (paramid != null)
-                callPayload.Queries["paramid"] = ExpressionConverter.Convert(paramid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["paramid"] = CSharpExpressionConverter.ConvertO(paramid);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
         }
 
@@ -309,8 +309,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["verificationId"] = CSharpExpressionConverter.ConvertO(verificationId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
         }
 
@@ -321,8 +321,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocParamSummary[]>(callPayload);
         }
 
@@ -333,8 +333,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (docid != null)
-                callPayload.Queries["docid"] = ExpressionConverter.Convert(docid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["docid"] = CSharpExpressionConverter.ConvertO(docid);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentExtraction[]>(callPayload);
         }
 
@@ -345,8 +345,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsProjectViewModel[]>(callPayload);
         }
 
@@ -357,10 +357,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
         }
 
@@ -371,26 +371,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (groupId != null)
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             callPayload.Queries["includeCount"] = Convert.ToString(false);
             if (includeCount != null)
-                callPayload.Queries["includeCount"] = ExpressionConverter.Convert(includeCount);
+                callPayload.Queries["includeCount"] = CSharpExpressionConverter.ConvertO(includeCount);
             callPayload.Queries["onlyServices"] = Convert.ToString(false);
             if (onlyServices != null)
-                callPayload.Queries["onlyServices"] = ExpressionConverter.Convert(onlyServices);
+                callPayload.Queries["onlyServices"] = CSharpExpressionConverter.ConvertO(onlyServices);
             callPayload.Queries["includeSettings"] = Convert.ToString(true);
             if (includeSettings != null)
-                callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(includeSettings);
+                callPayload.Queries["includeSettings"] = CSharpExpressionConverter.ConvertO(includeSettings);
             callPayload.Queries["includeChildren"] = Convert.ToString(false);
             if (includeChildren != null)
-                callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(includeChildren);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["includeChildren"] = CSharpExpressionConverter.ConvertO(includeChildren);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
         }
 
@@ -401,10 +401,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectName != null)
-                callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["projectName"] = CSharpExpressionConverter.ConvertO(projectName);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
         }
 
@@ -415,14 +415,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stlfilter != null)
-                callPayload.Queries["stlfilter"] = ExpressionConverter.Convert(stlfilter);
+                callPayload.Queries["stlfilter"] = CSharpExpressionConverter.ConvertO(stlfilter);
             if (enginefilter != null)
-                callPayload.Queries["enginefilter"] = ExpressionConverter.Convert(enginefilter);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["enginefilter"] = CSharpExpressionConverter.ConvertO(enginefilter);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
         }
 
@@ -433,8 +433,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
         }
 
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallPath = "/api/System/GetSystemDate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallPath = "/api/System/GetSystemInfo";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallPath = "/api/System/GetDataTypes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDataTypeViewModel[]>(callPayload);
         }
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallPath = "/api/System/GetEnumData";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsEnumDataViewModel[]>(callPayload);
         }
 
@@ -485,8 +485,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["verificationId"] = CSharpExpressionConverter.ConvertO(verificationId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
         }
 
@@ -497,10 +497,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
             if (parameterId != null)
-                callPayload.Queries["parameterId"] = ExpressionConverter.Convert(parameterId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["parameterId"] = CSharpExpressionConverter.ConvertO(parameterId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel[]>(callPayload);
         }
 
@@ -511,12 +511,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
             if (parameterId != null)
-                callPayload.Queries["parameterId"] = ExpressionConverter.Convert(parameterId);
+                callPayload.Queries["parameterId"] = CSharpExpressionConverter.ConvertO(parameterId);
             if (pdId != null)
-                callPayload.Queries["pdId"] = ExpressionConverter.Convert(pdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["pdId"] = CSharpExpressionConverter.ConvertO(pdId);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
         }
 
@@ -527,17 +527,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
+                callPayload.Queries["docId"] = CSharpExpressionConverter.ConvertO(docId);
             if (parId != null)
-                callPayload.Queries["parId"] = ExpressionConverter.Convert(parId);
+                callPayload.Queries["parId"] = CSharpExpressionConverter.ConvertO(parId);
             if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
+                callPayload.Queries["verificationId"] = CSharpExpressionConverter.ConvertO(verificationId);
             callPayload.Queries["inline"] = Convert.ToString(false);
             if (inline != null)
-                callPayload.Queries["inline"] = ExpressionConverter.Convert(inline);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["inline"] = CSharpExpressionConverter.ConvertO(inline);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -548,15 +548,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (pdId != null)
-                callPayload.Queries["pdId"] = ExpressionConverter.Convert(pdId);
+                callPayload.Queries["pdId"] = CSharpExpressionConverter.ConvertO(pdId);
             callPayload.Queries["latestOnly"] = Convert.ToString(true);
             if (latestOnly != null)
-                callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(latestOnly);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["latestOnly"] = CSharpExpressionConverter.ConvertO(latestOnly);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
         }
 
@@ -567,13 +567,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             callPayload.Queries["latestOnly"] = Convert.ToString(true);
             if (latestOnly != null)
-                callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(latestOnly);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["latestOnly"] = CSharpExpressionConverter.ConvertO(latestOnly);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
         }
 
@@ -584,12 +584,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -600,20 +600,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (contentType != null)
-                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
+                callPayload.Queries["contentType"] = CSharpExpressionConverter.ConvertO(contentType);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (blobid != null)
-                callPayload.Queries["blobid"] = ExpressionConverter.Convert(blobid);
+                callPayload.Queries["blobid"] = CSharpExpressionConverter.ConvertO(blobid);
             if (pageindex != null)
-                callPayload.Queries["pageindex"] = ExpressionConverter.Convert(pageindex);
+                callPayload.Queries["pageindex"] = CSharpExpressionConverter.ConvertO(pageindex);
             if (imagesCount != null)
-                callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(imagesCount);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["imagesCount"] = CSharpExpressionConverter.ConvertO(imagesCount);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
         }
 
@@ -624,48 +624,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
             if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
             if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+                callPayload.Queries["stpdId"] = CSharpExpressionConverter.ConvertO(stpdId);
             if (usage != null)
-                callPayload.Queries["usage"] = ExpressionConverter.Convert(usage);
+                callPayload.Queries["usage"] = CSharpExpressionConverter.Convert(usage);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
             if (classname != null)
-                callPayload.Queries["classname"] = ExpressionConverter.Convert(classname);
+                callPayload.Queries["classname"] = CSharpExpressionConverter.ConvertO(classname);
             if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
             if (filetype != null)
-                callPayload.Queries["filetype"] = ExpressionConverter.Convert(filetype);
+                callPayload.Queries["filetype"] = CSharpExpressionConverter.ConvertO(filetype);
             if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
             if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             if (masterid != null)
-                callPayload.Queries["masterid"] = ExpressionConverter.Convert(masterid);
+                callPayload.Queries["masterid"] = CSharpExpressionConverter.ConvertO(masterid);
             if (pageNo != null)
-                callPayload.Queries["pageNo"] = ExpressionConverter.Convert(pageNo);
+                callPayload.Queries["pageNo"] = CSharpExpressionConverter.ConvertO(pageNo);
             if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
             if (sortField != null)
-                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
+                callPayload.Queries["sortField"] = CSharpExpressionConverter.Convert(sortField);
             if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
+                callPayload.Queries["sortDirection"] = CSharpExpressionConverter.Convert(sortDirection);
             if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+                callPayload.Queries["comment"] = CSharpExpressionConverter.ConvertO(comment);
             if (result != null)
-                callPayload.Queries["result"] = ExpressionConverter.Convert(result);
+                callPayload.Queries["result"] = CSharpExpressionConverter.ConvertO(result);
             if (resultId != null)
-                callPayload.Queries["resultId"] = ExpressionConverter.Convert(resultId);
+                callPayload.Queries["resultId"] = CSharpExpressionConverter.ConvertO(resultId);
             if (resultIndex != null)
-                callPayload.Queries["resultIndex"] = ExpressionConverter.Convert(resultIndex);
+                callPayload.Queries["resultIndex"] = CSharpExpressionConverter.ConvertO(resultIndex);
             if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                callPayload.Queries["externalId"] = CSharpExpressionConverter.ConvertO(externalId);
             if (docGuid != null)
-                callPayload.Queries["docGuid"] = ExpressionConverter.Convert(docGuid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+                callPayload.Queries["docGuid"] = CSharpExpressionConverter.ConvertO(docGuid);
+            callPayload.Headers["X-Api-Version"] = CSharpExpressionConverter.ConvertO(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
         }
     }

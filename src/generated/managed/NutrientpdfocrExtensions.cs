@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatalanguage != null)
                 {
-                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
                     inputDatapropCount++;
                 }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
                     inputDatapropCount++;
                 }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
                     inputDatapropCount++;
                 }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatacharacters != null)
             {
-                inputData["characters"] = ExpressionConverter.ConvertO(inputDatacharacters);
+                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
                 inputDatapropCount++;
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
                     inputDatapropCount++;
                 }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDataregions != null)
             {
-                inputData["regions"] = ExpressionConverter.ConvertO(inputDataregions);
+                inputData["regions"] = CSharpExpressionConverter.ConvertToken(inputDataregions);
                 inputDatapropCount++;
             }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatalanguage != null)
                 {
-                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
                     inputDatapropCount++;
                 }
 
@@ -175,25 +175,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatawidth != null)
             {
-                inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+                inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
                 inputDatapropCount++;
             }
 
             if (inputDataheight != null)
             {
-                inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+                inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
                 inputDatapropCount++;
             }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatapageNumber != null)
                 {
-                    inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                    inputData["page_number"] = CSharpExpressionConverter.ConvertToken(inputDatapageNumber);
                     inputDatapropCount++;
                 }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
                     inputDatapropCount++;
                 }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
                     inputDatapropCount++;
                 }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatacharacters != null)
             {
-                inputData["characters"] = ExpressionConverter.ConvertO(inputDatacharacters);
+                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
                 inputDatapropCount++;
             }
 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
                     inputDatapropCount++;
                 }
 
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 

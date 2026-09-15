@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<ListedScorecards> GetScorecards(Expression<Func<string>> groupid)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<CreatedScorecard> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<string>> scorecardname, Expression<Func<string>> scorecarddescription = null)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
             var scorecard = new JObject();
             var scorecardpropCount = 0;
             scorecardpropCount++;
-            scorecard["name"] = ExpressionConverter.ConvertO(scorecardname);
+            scorecard["name"] = CSharpExpressionConverter.ConvertToken(scorecardname);
             if (scorecarddescription != null)
             {
-                scorecard["description"] = ExpressionConverter.ConvertO(scorecarddescription);
+                scorecard["description"] = CSharpExpressionConverter.ConvertToken(scorecarddescription);
                 scorecardpropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<FetchedGoals> GetMultipleGoals(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$expand"] = Convert.ToString("aggregations");
@@ -60,29 +60,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalname, Expression<Func<string>> goalowner = null, Expression<Func<string>> goalcurrentValue = null, Expression<Func<string>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null, Expression<Func<string>> goalnote = null, Expression<Func<string>> goalparentGoalId = null)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
             var goal = new JObject();
             var goalpropCount = 0;
             goalpropCount++;
-            goal["name"] = ExpressionConverter.ConvertO(goalname);
+            goal["name"] = CSharpExpressionConverter.ConvertToken(goalname);
             if (goalowner != null)
             {
-                goal["owner"] = ExpressionConverter.ConvertO(goalowner);
+                goal["owner"] = CSharpExpressionConverter.ConvertToken(goalowner);
                 goalpropCount++;
             }
 
             if (goalcurrentValue != null)
             {
-                goal["value"] = ExpressionConverter.ConvertO(goalcurrentValue);
+                goal["value"] = CSharpExpressionConverter.ConvertToken(goalcurrentValue);
                 goalpropCount++;
             }
 
             if (goaltargetValue != null)
             {
-                goal["target"] = ExpressionConverter.ConvertO(goaltargetValue);
+                goal["target"] = CSharpExpressionConverter.ConvertToken(goaltargetValue);
                 goalpropCount++;
             }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             {
                 if (goalstatus != null)
                 {
-                    goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                    goal["status"] = CSharpExpressionConverter.Convert(goalstatus);
                     goalpropCount++;
                 }
 
@@ -104,25 +104,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (goalstartDate != null)
             {
-                goal["startDate"] = ExpressionConverter.ConvertO(goalstartDate);
+                goal["startDate"] = CSharpExpressionConverter.ConvertToken(goalstartDate);
                 goalpropCount++;
             }
 
             if (goalcompletionDate != null)
             {
-                goal["completionDate"] = ExpressionConverter.ConvertO(goalcompletionDate);
+                goal["completionDate"] = CSharpExpressionConverter.ConvertToken(goalcompletionDate);
                 goalpropCount++;
             }
 
             if (goalnote != null)
             {
-                goal["note"] = ExpressionConverter.ConvertO(goalnote);
+                goal["note"] = CSharpExpressionConverter.ConvertToken(goalnote);
                 goalpropCount++;
             }
 
             if (goalparentGoalId != null)
             {
-                goal["parentId"] = ExpressionConverter.ConvertO(goalparentGoalId);
+                goal["parentId"] = CSharpExpressionConverter.ConvertToken(goalparentGoalId);
                 goalpropCount++;
             }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<FetchedGoal> GetGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
         {
-            var apiCallPath = String.Format("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -156,25 +156,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var goalpropCount = 0;
             if (goalname != null)
             {
-                goal["name"] = ExpressionConverter.ConvertO(goalname);
+                goal["name"] = CSharpExpressionConverter.ConvertToken(goalname);
                 goalpropCount++;
             }
 
             if (goalowner != null)
             {
-                goal["owner"] = ExpressionConverter.ConvertO(goalowner);
+                goal["owner"] = CSharpExpressionConverter.ConvertToken(goalowner);
                 goalpropCount++;
             }
 
             if (goalcurrentValue != null)
             {
-                goal["value"] = ExpressionConverter.ConvertO(goalcurrentValue);
+                goal["value"] = CSharpExpressionConverter.ConvertToken(goalcurrentValue);
                 goalpropCount++;
             }
 
             if (goaltargetValue != null)
             {
-                goal["target"] = ExpressionConverter.ConvertO(goaltargetValue);
+                goal["target"] = CSharpExpressionConverter.ConvertToken(goaltargetValue);
                 goalpropCount++;
             }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             {
                 if (goalstatus != null)
                 {
-                    goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                    goal["status"] = CSharpExpressionConverter.Convert(goalstatus);
                     goalpropCount++;
                 }
 
@@ -196,13 +196,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (goalstartDate != null)
             {
-                goal["startDate"] = ExpressionConverter.ConvertO(goalstartDate);
+                goal["startDate"] = CSharpExpressionConverter.ConvertToken(goalstartDate);
                 goalpropCount++;
             }
 
             if (goalcompletionDate != null)
             {
-                goal["completionDate"] = ExpressionConverter.ConvertO(goalcompletionDate);
+                goal["completionDate"] = CSharpExpressionConverter.ConvertToken(goalcompletionDate);
                 goalpropCount++;
             }
 
@@ -217,21 +217,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<QueryExecutionResults> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> specificationqueryText, Expression<Func<bool>> specificationserializerSettingsnullsIncluded = null, Expression<Func<string>> specificationimpersonateUser = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
             var specification = new JObject();
             var specificationpropCount = 0;
             specificationpropCount++;
-            specification["query"] = ExpressionConverter.ConvertO(specificationqueryText);
+            specification["query"] = CSharpExpressionConverter.ConvertToken(specificationqueryText);
             var serializerSettingsObject = new JObject();
             var serializerSettingsObjectpropCount = 0;
             if (specificationserializerSettingsnullsIncluded != null)
             {
                 if (specificationserializerSettingsnullsIncluded != null)
                 {
-                    serializerSettingsObject["includeNulls"] = ExpressionConverter.ConvertO(specificationserializerSettingsnullsIncluded);
+                    serializerSettingsObject["includeNulls"] = CSharpExpressionConverter.ConvertToken(specificationserializerSettingsnullsIncluded);
                     serializerSettingsObjectpropCount++;
                 }
 
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (specificationimpersonateUser != null)
             {
-                specification["impersonatedUserName"] = ExpressionConverter.ConvertO(specificationimpersonateUser);
+                specification["impersonatedUserName"] = CSharpExpressionConverter.ConvertToken(specificationimpersonateUser);
                 specificationpropCount++;
             }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<JToken> ExecuteDatasetQueriesJson(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
-            var apiCallPath = String.Format("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -283,39 +283,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction AddRows(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> tablename, Expression<Func<object>> payload = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1), ExpressionConverter.ConvertWithUrlEncoding(tablename, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tablename, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
-            callPayload.Body = ExpressionConverter.ConvertO(payload);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(payload);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction GoalValueCheckinNote(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<string>> note = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
-            callPayload.Body = ExpressionConverter.ConvertO(note);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(note);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> checkindate, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null, Expression<Func<string>> checkinnote = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
             var checkin = new JObject();
             var checkinpropCount = 0;
             checkinpropCount++;
-            checkin["timestamp"] = ExpressionConverter.ConvertO(checkindate);
+            checkin["timestamp"] = CSharpExpressionConverter.ConvertToken(checkindate);
             if (checkinvalue != null)
             {
-                checkin["value"] = ExpressionConverter.ConvertO(checkinvalue);
+                checkin["value"] = CSharpExpressionConverter.ConvertToken(checkinvalue);
                 checkinpropCount++;
             }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             {
                 if (checkinstatus != null)
                 {
-                    checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                    checkin["status"] = CSharpExpressionConverter.Convert(checkinstatus);
                     checkinpropCount++;
                 }
 
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (checkinnote != null)
             {
-                checkin["note"] = ExpressionConverter.ConvertO(checkinnote);
+                checkin["note"] = CSharpExpressionConverter.ConvertToken(checkinnote);
                 checkinpropCount++;
             }
 
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<GetGoalCheckinsResponse> GetGoalCheckins(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var checkinpropCount = 0;
             if (checkinvalue != null)
             {
-                checkin["value"] = ExpressionConverter.ConvertO(checkinvalue);
+                checkin["value"] = CSharpExpressionConverter.ConvertToken(checkinvalue);
                 checkinpropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             {
                 if (checkinstatus != null)
                 {
-                    checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                    checkin["status"] = CSharpExpressionConverter.Convert(checkinstatus);
                     checkinpropCount++;
                 }
 
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<GetGoalCheckinResponse> GetGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction RefreshDataset(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -423,26 +423,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(reportid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var exportPayloadPowerBIReport = new JObject();
             var exportPayloadPowerBIReportpropCount = 0;
             exportPayloadPowerBIReportpropCount++;
-            exportPayloadPowerBIReport["format"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportformat);
+            exportPayloadPowerBIReport["format"] = CSharpExpressionConverter.Convert(exportPayloadPowerBIReportformat);
             var powerBIReportExportConfigurationObject = new JObject();
             var powerBIReportExportConfigurationObjectpropCount = 0;
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale != null)
             {
-                settingsObject["locale"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
+                settingsObject["locale"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
                 settingsObjectpropCount++;
             }
 
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages != null)
             {
-                settingsObject["includeHiddenPages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
+                settingsObject["includeHiddenPages"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
                 settingsObjectpropCount++;
             }
 
@@ -456,13 +456,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var defaultBookmarkObjectpropCount = 0;
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname != null)
             {
-                defaultBookmarkObject["name"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
+                defaultBookmarkObject["name"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
                 defaultBookmarkObjectpropCount++;
             }
 
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate != null)
             {
-                defaultBookmarkObject["state"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
+                defaultBookmarkObject["state"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
                 defaultBookmarkObjectpropCount++;
             }
 
@@ -474,19 +474,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters != null)
             {
-                powerBIReportExportConfigurationObject["reportLevelFilters"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
+                powerBIReportExportConfigurationObject["reportLevelFilters"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
                 powerBIReportExportConfigurationObjectpropCount++;
             }
 
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationpages != null)
             {
-                powerBIReportExportConfigurationObject["pages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
+                powerBIReportExportConfigurationObject["pages"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
                 powerBIReportExportConfigurationObjectpropCount++;
             }
 
             if (exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities != null)
             {
-                powerBIReportExportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
+                powerBIReportExportConfigurationObject["identities"] = CSharpExpressionConverter.ConvertToken(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
                 powerBIReportExportConfigurationObjectpropCount++;
             }
 
@@ -507,18 +507,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<string> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPaginatedReportformatInput>> exportPayloadPaginatedReportformat, Expression<Func<EffectiveIdentity[]>> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, Expression<Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]>> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
         {
-            var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(reportid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var exportPayloadPaginatedReport = new JObject();
             var exportPayloadPaginatedReportpropCount = 0;
             exportPayloadPaginatedReportpropCount++;
-            exportPayloadPaginatedReport["format"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportformat);
+            exportPayloadPaginatedReport["format"] = CSharpExpressionConverter.Convert(exportPayloadPaginatedReportformat);
             var paginatedReportConfigurationObject = new JObject();
             var paginatedReportConfigurationObjectpropCount = 0;
             if (exportPayloadPaginatedReportpaginatedReportConfigurationidentities != null)
             {
-                paginatedReportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportpaginatedReportConfigurationidentities);
+                paginatedReportConfigurationObject["identities"] = CSharpExpressionConverter.ConvertToken(exportPayloadPaginatedReportpaginatedReportConfigurationidentities);
                 paginatedReportConfigurationObjectpropCount++;
             }
 
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues != null)
             {
-                paginatedReportConfigurationObject["parameterValues"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues);
+                paginatedReportConfigurationObject["parameterValues"] = CSharpExpressionConverter.ConvertToken(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues);
                 paginatedReportConfigurationObjectpropCount++;
             }
 

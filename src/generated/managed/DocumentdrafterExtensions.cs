@@ -14,77 +14,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace(Expression<Func<string>> siteUrl, Expression<Func<string>> workspaceNameRoute, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> masterWorkSpace = null, Expression<Func<bool>> copyStyling = null, Expression<Func<bool>> copyFolders = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateWorkspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceNameRoute, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceNameRoute, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
             if (masterWorkSpace != null)
-                callPayload.Queries["MasterWorkSpace"] = ExpressionConverter.Convert(masterWorkSpace);
+                callPayload.Queries["MasterWorkSpace"] = CSharpExpressionConverter.ConvertO(masterWorkSpace);
             if (copyStyling != null)
-                callPayload.Queries["CopyStyling"] = ExpressionConverter.Convert(copyStyling);
+                callPayload.Queries["CopyStyling"] = CSharpExpressionConverter.ConvertO(copyStyling);
             if (copyFolders != null)
-                callPayload.Queries["CopyFolders"] = ExpressionConverter.Convert(copyFolders);
+                callPayload.Queries["CopyFolders"] = CSharpExpressionConverter.ConvertO(copyFolders);
             return new ApiConnectionAction<GetCreateWorkspaceResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> folderName, Expression<Func<string>> parentId)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
+            callPayload.Queries["ParentId"] = CSharpExpressionConverter.ConvertO(parentId);
             return new ApiConnectionAction<GetCreateFolderResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> role = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateGroup/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
             if (role != null)
-                callPayload.Queries["Role"] = ExpressionConverter.Convert(role);
+                callPayload.Queries["Role"] = CSharpExpressionConverter.ConvertO(role);
             return new ApiConnectionAction<GetCreateGroupResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> folderId)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateAccessFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["FolderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
+            callPayload.Queries["FolderId"] = CSharpExpressionConverter.ConvertO(folderId);
             return new ApiConnectionAction<GetCreateAccessFolderResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupName, Expression<Func<string>> email, Expression<Func<bool>> sendInvite)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["GroupName"] = ExpressionConverter.Convert(groupName);
-            callPayload.Queries["sendInvite"] = ExpressionConverter.Convert(sendInvite);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
+            callPayload.Queries["GroupName"] = CSharpExpressionConverter.ConvertO(groupName);
+            callPayload.Queries["sendInvite"] = CSharpExpressionConverter.ConvertO(sendInvite);
             return new ApiConnectionAction<GetCreateUserResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder(Expression<Func<string>> siteUrl, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> fileBase64)
         {
-            var apiCallPath = String.Format("/PowerAutomateSaveStaticFileToFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             return new ApiConnectionAction<SaveStaticFileToFolderResponse>(callPayload);
         }
 
@@ -94,23 +94,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/PowerAutomateCreateMagicLink";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
-            callPayload.Queries["ExpireDays"] = ExpressionConverter.Convert(expireDays);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["Scope"] = CSharpExpressionConverter.ConvertO(scope);
+            callPayload.Queries["ExpireDays"] = CSharpExpressionConverter.ConvertO(expireDays);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
         {
-            var apiCallPath = String.Format("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<CreateQuestionnaireResponse>(callPayload);
         }
 
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/DeleteAllShareLinksOnDocument";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -132,13 +132,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/AddShare";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            callPayload.Queries["GroupOrMail"] = ExpressionConverter.Convert(groupOrMail);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
+            callPayload.Queries["GroupOrMail"] = CSharpExpressionConverter.ConvertO(groupOrMail);
             callPayload.Queries["SelectedQuestions"] = Convert.ToString(false);
             if (selectedQuestions != null)
-                callPayload.Queries["SelectedQuestions"] = ExpressionConverter.Convert(selectedQuestions);
+                callPayload.Queries["SelectedQuestions"] = CSharpExpressionConverter.ConvertO(selectedQuestions);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -148,24 +148,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/FlowSetState";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
+            callPayload.Queries["State"] = CSharpExpressionConverter.ConvertO(state);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> GetVariablesForTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetTagsForDocument/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -175,22 +175,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/PowerAutomateQuestionsWithTags";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             if (documentId != null)
-                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser, Expression<Func<string>> jsonData)
         {
-            var apiCallPath = String.Format("/PowerAutomateDataModelCreateDoc/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
             return new ApiConnectionAction<ProcessJsonResponse>(callPayload);
         }
 
@@ -200,8 +200,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/PowerAutomateGetFlowInformation";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/PowerAutomateGetDocument";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            callPayload.Queries["OutputFormat"] = ExpressionConverter.Convert(outputFormat);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
+            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
+            callPayload.Queries["OutputFormat"] = CSharpExpressionConverter.Convert(outputFormat);
             return new ApiConnectionAction<GetDocumentsResponse>(callPayload);
         }
     }
@@ -226,8 +226,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/FlowWaitForSubmitPolling";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
+            callPayload.Queries["Scope"] = CSharpExpressionConverter.ConvertO(scope);
             return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, triggerName, recurrence);
         }
 
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var apiCallPath = "/FlowTriggerPolling";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
+            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
             return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, triggerName, recurrence);
         }
     }

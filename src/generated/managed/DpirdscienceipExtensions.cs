@@ -18,26 +18,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             return new ApiConnectionAction<GetStationsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode)
         {
-            var apiCallPath = String.Format("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/station/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetStationResponse>(callPayload);
@@ -49,41 +49,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var apiCallPath = "/stations/nearby";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+            callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
+            callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                callPayload.Queries["group"] = CSharpExpressionConverter.Convert(group);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             return new ApiConnectionAction<GetNearbyWeatherStationsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationRainfallResponse> GetStationRainfall(Expression<Func<string>> stationCode, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/rainfall/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/rainfall/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (summerStartDate != null)
-                callPayload.Queries["summerStartDate"] = ExpressionConverter.Convert(summerStartDate);
+                callPayload.Queries["summerStartDate"] = CSharpExpressionConverter.ConvertO(summerStartDate);
             if (growingSeasonStartDate != null)
-                callPayload.Queries["growingSeasonStartDate"] = ExpressionConverter.Convert(growingSeasonStartDate);
+                callPayload.Queries["growingSeasonStartDate"] = CSharpExpressionConverter.ConvertO(growingSeasonStartDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (forecastDate != null)
-                callPayload.Queries["forecastDate"] = ExpressionConverter.Convert(forecastDate);
+                callPayload.Queries["forecastDate"] = CSharpExpressionConverter.ConvertO(forecastDate);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetStationRainfallResponse>(callPayload);
         }
 
@@ -94,23 +94,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (latitude != null)
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
             if (longitude != null)
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
             if (summerStartDate != null)
-                callPayload.Queries["summerStartDate"] = ExpressionConverter.Convert(summerStartDate);
+                callPayload.Queries["summerStartDate"] = CSharpExpressionConverter.ConvertO(summerStartDate);
             if (growingSeasonStartDate != null)
-                callPayload.Queries["growingSeasonStartDate"] = ExpressionConverter.Convert(growingSeasonStartDate);
+                callPayload.Queries["growingSeasonStartDate"] = CSharpExpressionConverter.ConvertO(growingSeasonStartDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             if (forecastDate != null)
-                callPayload.Queries["forecastDate"] = ExpressionConverter.Convert(forecastDate);
+                callPayload.Queries["forecastDate"] = CSharpExpressionConverter.ConvertO(forecastDate);
             if (waterUseEfficiency != null)
-                callPayload.Queries["waterUseEfficiency"] = ExpressionConverter.Convert(waterUseEfficiency);
+                callPayload.Queries["waterUseEfficiency"] = CSharpExpressionConverter.ConvertO(waterUseEfficiency);
             if (evaporation != null)
-                callPayload.Queries["evaporation"] = ExpressionConverter.Convert(evaporation);
+                callPayload.Queries["evaporation"] = CSharpExpressionConverter.ConvertO(evaporation);
             return new ApiConnectionAction<GetPotentialYieldResponse>(callPayload);
         }
 
@@ -121,34 +121,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (latitude != null)
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["latitude"] = CSharpExpressionConverter.ConvertO(latitude);
             if (longitude != null)
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["soilType"] = ExpressionConverter.Convert(soilType);
+                callPayload.Queries["longitude"] = CSharpExpressionConverter.ConvertO(longitude);
+            callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
+            callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
+            callPayload.Queries["soilType"] = CSharpExpressionConverter.Convert(soilType);
             if (faoInitialisationDays != null)
-                callPayload.Queries["faoInitialisationDays"] = ExpressionConverter.Convert(faoInitialisationDays);
+                callPayload.Queries["faoInitialisationDays"] = CSharpExpressionConverter.ConvertO(faoInitialisationDays);
             if (faoInitialisationCropCoefficient != null)
-                callPayload.Queries["faoInitialisationCropCoefficient"] = ExpressionConverter.Convert(faoInitialisationCropCoefficient);
+                callPayload.Queries["faoInitialisationCropCoefficient"] = CSharpExpressionConverter.ConvertO(faoInitialisationCropCoefficient);
             if (faoDevelopmentDays != null)
-                callPayload.Queries["faoDevelopmentDays"] = ExpressionConverter.Convert(faoDevelopmentDays);
+                callPayload.Queries["faoDevelopmentDays"] = CSharpExpressionConverter.ConvertO(faoDevelopmentDays);
             if (faoDevelopmentCropCoefficient != null)
-                callPayload.Queries["faoDevelopmentCropCoefficient"] = ExpressionConverter.Convert(faoDevelopmentCropCoefficient);
+                callPayload.Queries["faoDevelopmentCropCoefficient"] = CSharpExpressionConverter.ConvertO(faoDevelopmentCropCoefficient);
             if (faoMidSeasonDays != null)
-                callPayload.Queries["faoMidSeasonDays"] = ExpressionConverter.Convert(faoMidSeasonDays);
+                callPayload.Queries["faoMidSeasonDays"] = CSharpExpressionConverter.ConvertO(faoMidSeasonDays);
             if (faoMidSeasonCropCoefficient != null)
-                callPayload.Queries["faoMidSeasonCropCoefficient"] = ExpressionConverter.Convert(faoMidSeasonCropCoefficient);
+                callPayload.Queries["faoMidSeasonCropCoefficient"] = CSharpExpressionConverter.ConvertO(faoMidSeasonCropCoefficient);
             if (faoLateSeasonDays != null)
-                callPayload.Queries["faoLateSeasonDays"] = ExpressionConverter.Convert(faoLateSeasonDays);
+                callPayload.Queries["faoLateSeasonDays"] = CSharpExpressionConverter.ConvertO(faoLateSeasonDays);
             if (faoLateSeasonCropCoefficient != null)
-                callPayload.Queries["faoLateSeasonCropCoefficient"] = ExpressionConverter.Convert(faoLateSeasonCropCoefficient);
+                callPayload.Queries["faoLateSeasonCropCoefficient"] = CSharpExpressionConverter.ConvertO(faoLateSeasonCropCoefficient);
             if (faoBreakOfSeason3Days25April != null)
-                callPayload.Queries["faoBreakOfSeason3Days25April"] = ExpressionConverter.Convert(faoBreakOfSeason3Days25April);
+                callPayload.Queries["faoBreakOfSeason3Days25April"] = CSharpExpressionConverter.ConvertO(faoBreakOfSeason3Days25April);
             if (faoBreakOfSeason3Days5June != null)
-                callPayload.Queries["faoBreakOfSeason3Days5June"] = ExpressionConverter.Convert(faoBreakOfSeason3Days5June);
+                callPayload.Queries["faoBreakOfSeason3Days5June"] = CSharpExpressionConverter.ConvertO(faoBreakOfSeason3Days5June);
             return new ApiConnectionAction<GetSoilWaterResponse>(callPayload);
         }
 
@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["stationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetYellowSpotResponse>(callPayload);
         }
     }

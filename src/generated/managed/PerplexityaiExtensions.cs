@@ -20,42 +20,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.Convert(bodymodel);
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 
             if (bodytopK != null)
             {
-                body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
+                body["top_k"] = CSharpExpressionConverter.ConvertToken(bodytopK);
                 bodypropCount++;
             }
 
             if (bodypresencePenalty != null)
             {
-                body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                body["presence_penalty"] = CSharpExpressionConverter.ConvertToken(bodypresencePenalty);
                 bodypropCount++;
             }
 
             if (bodyfrequencyPenalty != null)
             {
-                body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                body["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(bodyfrequencyPenalty);
                 bodypropCount++;
             }
 

@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
             var batch = new JObject();
             var batchpropCount = 0;
             batchpropCount++;
-            batch["Data"] = ExpressionConverter.ConvertO(batchimportData);
+            batch["Data"] = CSharpExpressionConverter.ConvertToken(batchimportData);
             batchpropCount++;
-            batch["FileName"] = ExpressionConverter.ConvertO(batchnameForImport);
+            batch["FileName"] = CSharpExpressionConverter.ConvertToken(batchnameForImport);
             batchpropCount++;
-            batch["SecurityKey"] = ExpressionConverter.ConvertO(batchsecurityToken);
+            batch["SecurityKey"] = CSharpExpressionConverter.ConvertToken(batchsecurityToken);
             batchpropCount++;
-            batch["Version"] = ExpressionConverter.ConvertO(batchrPAEnvironment);
+            batch["Version"] = CSharpExpressionConverter.Convert(batchrPAEnvironment);
             if (batchpropCount > 0)
             {
                 callPayload.Body = batch;

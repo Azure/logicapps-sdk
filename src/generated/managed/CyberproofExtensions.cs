@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             var actionReq = new JObject();
             var actionReqpropCount = 0;
             actionReqpropCount++;
-            actionReq["action"] = ExpressionConverter.ConvertO(actionReqselectAction);
+            actionReq["action"] = CSharpExpressionConverter.ConvertToken(actionReqselectAction);
             actionReqpropCount++;
-            actionReq["parameters"] = ExpressionConverter.ConvertO(actionReqparameters);
+            actionReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionReqparameters);
             if (actionReqpropCount > 0)
             {
                 callPayload.Body = actionReq;
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             actionReq["url"] = "@listCallbackUrl()";
             actionReqpropCount++;
             actionReqpropCount++;
-            actionReq["action"] = ExpressionConverter.ConvertO(actionReqselectAction);
+            actionReq["action"] = CSharpExpressionConverter.ConvertToken(actionReqselectAction);
             actionReqpropCount++;
-            actionReq["parameters"] = ExpressionConverter.ConvertO(actionReqparameters);
+            actionReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionReqparameters);
             if (actionReqpropCount > 0)
             {
                 callPayload.Body = actionReq;
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             var actionCustomReq = new JObject();
             var actionCustomReqpropCount = 0;
             actionCustomReqpropCount++;
-            actionCustomReq["alert_id"] = ExpressionConverter.ConvertO(actionCustomReqalertId);
+            actionCustomReq["alert_id"] = CSharpExpressionConverter.ConvertToken(actionCustomReqalertId);
             actionCustomReqpropCount++;
-            actionCustomReq["classifications"] = ExpressionConverter.ConvertO(actionCustomReqselectClassification);
+            actionCustomReq["classifications"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectClassification);
             actionCustomReqpropCount++;
-            actionCustomReq["parameters"] = ExpressionConverter.ConvertO(actionCustomReqselectField);
+            actionCustomReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectField);
             if (actionCustomReqpropCount > 0)
             {
                 callPayload.Body = actionCustomReq;
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             var actionCustomReq = new JObject();
             var actionCustomReqpropCount = 0;
             actionCustomReqpropCount++;
-            actionCustomReq["alert_id"] = ExpressionConverter.ConvertO(actionCustomReqalertId);
+            actionCustomReq["alert_id"] = CSharpExpressionConverter.ConvertToken(actionCustomReqalertId);
             actionCustomReqpropCount++;
-            actionCustomReq["classifications"] = ExpressionConverter.ConvertO(actionCustomReqselectClassification);
+            actionCustomReq["classifications"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectClassification);
             actionCustomReqpropCount++;
-            actionCustomReq["parameters"] = ExpressionConverter.ConvertO(actionCustomReqselectField);
+            actionCustomReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectField);
             if (actionCustomReqpropCount > 0)
             {
                 callPayload.Body = actionCustomReq;
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             var actionCustomReq = new JObject();
             var actionCustomReqpropCount = 0;
             actionCustomReqpropCount++;
-            actionCustomReq["incident_id"] = ExpressionConverter.ConvertO(actionCustomReqincidentId);
+            actionCustomReq["incident_id"] = CSharpExpressionConverter.ConvertToken(actionCustomReqincidentId);
             actionCustomReqpropCount++;
-            actionCustomReq["parameters"] = ExpressionConverter.ConvertO(actionCustomReqselectIncidentSummary);
+            actionCustomReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectIncidentSummary);
             if (actionCustomReqpropCount > 0)
             {
                 callPayload.Body = actionCustomReq;
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             var actionCustomReq = new JObject();
             var actionCustomReqpropCount = 0;
             actionCustomReqpropCount++;
-            actionCustomReq["incident_id"] = ExpressionConverter.ConvertO(actionCustomReqincidentId);
+            actionCustomReq["incident_id"] = CSharpExpressionConverter.ConvertToken(actionCustomReqincidentId);
             actionCustomReqpropCount++;
-            actionCustomReq["parameters"] = ExpressionConverter.ConvertO(actionCustomReqselectValue);
+            actionCustomReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionCustomReqselectValue);
             if (actionCustomReqpropCount > 0)
             {
                 callPayload.Body = actionCustomReq;
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
             actionReq["url"] = "@listCallbackUrl()";
             actionReqpropCount++;
             actionReqpropCount++;
-            actionReq["action"] = ExpressionConverter.ConvertO(actionReqselectTrigger);
+            actionReq["action"] = CSharpExpressionConverter.ConvertToken(actionReqselectTrigger);
             actionReqpropCount++;
-            actionReq["parameters"] = ExpressionConverter.ConvertO(actionReqparameters);
+            actionReq["parameters"] = CSharpExpressionConverter.ConvertToken(actionReqparameters);
             if (actionReqpropCount > 0)
             {
                 callPayload.Body = actionReq;

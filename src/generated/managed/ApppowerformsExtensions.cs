@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["formTitle"] = ExpressionConverter.ConvertO(bodyformName);
+            body["formTitle"] = CSharpExpressionConverter.ConvertToken(bodyformName);
             if (bodyformDescription != null)
             {
-                body["welcomeText"] = ExpressionConverter.ConvertO(bodyformDescription);
+                body["welcomeText"] = CSharpExpressionConverter.ConvertToken(bodyformDescription);
                 bodypropCount++;
             }
 
             if (bodythankYouText != null)
             {
-                body["thankYouText"] = ExpressionConverter.ConvertO(bodythankYouText);
+                body["thankYouText"] = CSharpExpressionConverter.ConvertToken(bodythankYouText);
                 bodypropCount++;
             }
 
@@ -50,16 +50,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["instanceId"] = ExpressionConverter.ConvertO(bodyformID);
+            body["instanceId"] = CSharpExpressionConverter.ConvertToken(bodyformID);
             bodypropCount++;
-            body["formName"] = ExpressionConverter.ConvertO(bodyformName);
+            body["formName"] = CSharpExpressionConverter.ConvertToken(bodyformName);
             bodypropCount++;
-            body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
+            body["fieldName"] = CSharpExpressionConverter.ConvertToken(bodyfieldName);
             bodypropCount++;
-            body["fieldType"] = ExpressionConverter.ConvertO(bodyfieldType);
+            body["fieldType"] = CSharpExpressionConverter.ConvertToken(bodyfieldType);
             if (bodyfieldConfiguration != null)
             {
-                body["fieldConfiguration"] = ExpressionConverter.ConvertO(bodyfieldConfiguration);
+                body["fieldConfiguration"] = CSharpExpressionConverter.ConvertToken(bodyfieldConfiguration);
                 bodypropCount++;
             }
 
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["card"] = ExpressionConverter.ConvertO(bodycard);
+            body["card"] = CSharpExpressionConverter.ConvertToken(bodycard);
             if (bodycardAfterSubmit != null)
             {
-                body["cardAfterSubmit"] = ExpressionConverter.ConvertO(bodycardAfterSubmit);
+                body["cardAfterSubmit"] = CSharpExpressionConverter.ConvertToken(bodycardAfterSubmit);
                 bodypropCount++;
             }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<JToken> GetCardResponse(Expression<Func<string>> instanceId, Expression<Func<string>> name)
         {
-            var apiCallPath = String.Format("/GetCardResponse/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<string> GetFormAdaptiveCardJson(Expression<Func<string>> instanceId)
         {
-            var apiCallPath = String.Format("/GetFormAdaptiveCardJson/{0}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     {
         public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/TriggerGetCardResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");

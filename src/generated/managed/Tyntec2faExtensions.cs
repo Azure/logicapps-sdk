@@ -17,33 +17,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var apiCallPath = "/2fa/v1/otp";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
+            callPayload.Queries["number"] = CSharpExpressionConverter.ConvertO(number);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (pinLength != null)
-                callPayload.Queries["pinLength"] = ExpressionConverter.Convert(pinLength);
+                callPayload.Queries["pinLength"] = CSharpExpressionConverter.ConvertO(pinLength);
             callPayload.Queries["via"] = Convert.ToString("AUTO");
             if (via != null)
-                callPayload.Queries["via"] = ExpressionConverter.Convert(via);
+                callPayload.Queries["via"] = CSharpExpressionConverter.Convert(via);
             if (applicationId != null)
-                callPayload.Queries["applicationId"] = ExpressionConverter.Convert(applicationId);
+                callPayload.Queries["applicationId"] = CSharpExpressionConverter.ConvertO(applicationId);
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
             if (otpCode != null)
-                callPayload.Queries["otpCode"] = ExpressionConverter.Convert(otpCode);
+                callPayload.Queries["otpCode"] = CSharpExpressionConverter.ConvertO(otpCode);
             if (sender != null)
-                callPayload.Queries["Sender"] = ExpressionConverter.Convert(sender);
+                callPayload.Queries["Sender"] = CSharpExpressionConverter.ConvertO(sender);
             if (caller != null)
-                callPayload.Queries["Caller"] = ExpressionConverter.Convert(caller);
+                callPayload.Queries["Caller"] = CSharpExpressionConverter.ConvertO(caller);
             return new ApiConnectionAction<SendOTPResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<DeleteOTPResponse> DeleteOTP(Expression<Func<string>> otpID)
         {
-            var apiCallPath = String.Format("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(otpID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DeleteOTPResponse>(callPayload);
@@ -52,23 +52,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<ResendOTPResponse> ResendOTP(Expression<Func<string>> otpID, Expression<Func<viaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
-            var apiCallPath = String.Format("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(otpID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["via"] = Convert.ToString("AUTO");
             if (via != null)
-                callPayload.Queries["via"] = ExpressionConverter.Convert(via);
+                callPayload.Queries["via"] = CSharpExpressionConverter.Convert(via);
             if (sender != null)
-                callPayload.Queries["Sender"] = ExpressionConverter.Convert(sender);
+                callPayload.Queries["Sender"] = CSharpExpressionConverter.ConvertO(sender);
             if (caller != null)
-                callPayload.Queries["Caller"] = ExpressionConverter.Convert(caller);
+                callPayload.Queries["Caller"] = CSharpExpressionConverter.ConvertO(caller);
             return new ApiConnectionAction<ResendOTPResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<StatusOTPResponse> StatusOTP(Expression<Func<string>> otpID)
         {
-            var apiCallPath = String.Format("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(otpID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<StatusOTPResponse>(callPayload);
@@ -77,11 +77,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<VerifyOTPResponse> VerifyOTP(Expression<Func<string>> otpID, Expression<Func<int>> otpCode = null)
         {
-            var apiCallPath = String.Format("/2fa/v1/otp/{0}/check", ExpressionConverter.ConvertWithUrlEncoding(otpID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}/check", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (otpCode != null)
-                callPayload.Queries["otpCode"] = ExpressionConverter.Convert(otpCode);
+                callPayload.Queries["otpCode"] = CSharpExpressionConverter.ConvertO(otpCode);
             return new ApiConnectionAction<VerifyOTPResponse>(callPayload);
         }
     }

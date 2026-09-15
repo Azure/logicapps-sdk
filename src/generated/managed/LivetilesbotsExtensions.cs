@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/String";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Number";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Form";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             bodypropCount++;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
+            body["formFields"] = CSharpExpressionConverter.ConvertToken(bodyformFields);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -100,12 +100,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Bool";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
@@ -125,18 +125,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Choice";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
             if (bodyoptions != null)
             {
-                body["options"] = ExpressionConverter.ConvertO(bodyoptions);
+                body["options"] = CSharpExpressionConverter.ConvertToken(bodyoptions);
                 bodypropCount++;
             }
 
@@ -156,18 +156,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/File";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyprompt != null)
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
                 bodypropCount++;
             }
 
             if (bodycontentTypes != null)
             {
-                body["contentTypes"] = ExpressionConverter.ConvertO(bodycontentTypes);
+                body["contentTypes"] = CSharpExpressionConverter.ConvertToken(bodycontentTypes);
                 bodypropCount++;
             }
 
@@ -187,18 +187,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Message";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodyattachments != null)
             {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                body["attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
                 bodypropCount++;
             }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var apiCallPath = "/flowCallback/Done";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -231,9 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             var subscription = new JObject();
             var subscriptionpropCount = 0;
             subscriptionpropCount++;
-            subscription["bot"] = ExpressionConverter.ConvertO(subscriptionbot);
+            subscription["bot"] = CSharpExpressionConverter.ConvertToken(subscriptionbot);
             subscriptionpropCount++;
-            subscription["key"] = ExpressionConverter.ConvertO(subscriptionflow);
+            subscription["key"] = CSharpExpressionConverter.ConvertToken(subscriptionflow);
             subscription["callbackUri"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)

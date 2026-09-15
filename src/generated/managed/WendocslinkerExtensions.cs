@@ -21,43 +21,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var requestBodypropCount = 0;
             if (requestBodydocName != null)
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
+                requestBody["docName"] = CSharpExpressionConverter.ConvertToken(requestBodydocName);
                 requestBodypropCount++;
             }
 
             if (requestBodydocumentTemplateData != null)
             {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
+                requestBody["documentTemplateData"] = CSharpExpressionConverter.ConvertToken(requestBodydocumentTemplateData);
                 requestBodypropCount++;
             }
 
             if (requestBodyjsonData != null)
             {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
+                requestBody["jsonData"] = CSharpExpressionConverter.ConvertToken(requestBodyjsonData);
                 requestBodypropCount++;
             }
 
             if (requestBodylogLevel != null)
             {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
+                requestBody["logLevel"] = CSharpExpressionConverter.ConvertToken(requestBodylogLevel);
                 requestBodypropCount++;
             }
 
             if (requestBodylanguage != null)
             {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+                requestBody["language"] = CSharpExpressionConverter.ConvertToken(requestBodylanguage);
                 requestBodypropCount++;
             }
 
             if (requestBodycountry != null)
             {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
+                requestBody["country"] = CSharpExpressionConverter.ConvertToken(requestBodycountry);
                 requestBodypropCount++;
             }
 
             if (requestBodyclientType != null)
             {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
+                requestBody["clientType"] = CSharpExpressionConverter.ConvertToken(requestBodyclientType);
                 requestBodypropCount++;
             }
 
@@ -79,43 +79,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var requestBodypropCount = 0;
             if (requestBodydocName != null)
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
+                requestBody["docName"] = CSharpExpressionConverter.ConvertToken(requestBodydocName);
                 requestBodypropCount++;
             }
 
             if (requestBodydocumentTemplateData != null)
             {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
+                requestBody["documentTemplateData"] = CSharpExpressionConverter.ConvertToken(requestBodydocumentTemplateData);
                 requestBodypropCount++;
             }
 
             if (requestBodyjsonData != null)
             {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
+                requestBody["jsonData"] = CSharpExpressionConverter.ConvertToken(requestBodyjsonData);
                 requestBodypropCount++;
             }
 
             if (requestBodylogLevel != null)
             {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
+                requestBody["logLevel"] = CSharpExpressionConverter.ConvertToken(requestBodylogLevel);
                 requestBodypropCount++;
             }
 
             if (requestBodylanguage != null)
             {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+                requestBody["language"] = CSharpExpressionConverter.ConvertToken(requestBodylanguage);
                 requestBodypropCount++;
             }
 
             if (requestBodycountry != null)
             {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
+                requestBody["country"] = CSharpExpressionConverter.ConvertToken(requestBodycountry);
                 requestBodypropCount++;
             }
 
             if (requestBodyclientType != null)
             {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
+                requestBody["clientType"] = CSharpExpressionConverter.ConvertToken(requestBodyclientType);
                 requestBodypropCount++;
             }
 
@@ -137,43 +137,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var requestBodypropCount = 0;
             if (requestBodydocName != null)
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
+                requestBody["docName"] = CSharpExpressionConverter.ConvertToken(requestBodydocName);
                 requestBodypropCount++;
             }
 
             if (requestBodydocumentTemplateData != null)
             {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
+                requestBody["documentTemplateData"] = CSharpExpressionConverter.ConvertToken(requestBodydocumentTemplateData);
                 requestBodypropCount++;
             }
 
             if (requestBodyjsonData != null)
             {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
+                requestBody["jsonData"] = CSharpExpressionConverter.ConvertToken(requestBodyjsonData);
                 requestBodypropCount++;
             }
 
             if (requestBodylogLevel != null)
             {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
+                requestBody["logLevel"] = CSharpExpressionConverter.ConvertToken(requestBodylogLevel);
                 requestBodypropCount++;
             }
 
             if (requestBodylanguage != null)
             {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+                requestBody["language"] = CSharpExpressionConverter.ConvertToken(requestBodylanguage);
                 requestBodypropCount++;
             }
 
             if (requestBodycountry != null)
             {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
+                requestBody["country"] = CSharpExpressionConverter.ConvertToken(requestBodycountry);
                 requestBodypropCount++;
             }
 
             if (requestBodyclientType != null)
             {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
+                requestBody["clientType"] = CSharpExpressionConverter.ConvertToken(requestBodyclientType);
                 requestBodypropCount++;
             }
 

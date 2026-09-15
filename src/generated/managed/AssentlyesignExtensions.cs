@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/getCase";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
             callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
             callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(findCasesModel);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(findCasesModel);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/findTemplates";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(findTemplatesModel);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(findTemplatesModel);
             return new ApiConnectionAction<JToken[]>(callPayload);
         }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/createCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(caseModel);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(caseModel);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/createCaseFromTemplate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(createCaseFromTemplateModel);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(createCaseFromTemplateModel);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/updateCaseMetadata";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(updateCaseMetadataModel);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(updateCaseMetadataModel);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/sendCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/requestApproval";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/remindCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/deleteCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/recallCase";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/getCaseByTemporaryId";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -157,8 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/v2/getdocumentdata";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["caseid"] = ExpressionConverter.Convert(caseid);
-            callPayload.Queries["documentid"] = ExpressionConverter.Convert(documentid);
+            callPayload.Queries["caseid"] = CSharpExpressionConverter.ConvertO(caseid);
+            callPayload.Queries["documentid"] = CSharpExpressionConverter.ConvertO(documentid);
             return new ApiConnectionAction<string>(callPayload);
         }
     }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
             var apiCallPath = "/hook/v1/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EventPath"] = ExpressionConverter.Convert(eventPath);
+            callPayload.Queries["EventPath"] = CSharpExpressionConverter.ConvertO(eventPath);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
         public IBodyWorkflowAction<OdataError> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
         {
-            var apiCallPath = String.Format("/{0}('{1}')", ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (ifMatch != null)
-                callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
+                callPayload.Headers["If-Match"] = CSharpExpressionConverter.ConvertO(ifMatch);
             return new ApiConnectionAction<OdataError>(callPayload);
         }
     }
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
             var apiCallPath = "/$hook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["$action"] = ExpressionConverter.Convert(action);
+            callPayload.Queries["$entity"] = CSharpExpressionConverter.ConvertO(entity);
+            callPayload.Queries["$action"] = CSharpExpressionConverter.Convert(action);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";

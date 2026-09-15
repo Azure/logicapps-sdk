@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+            body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

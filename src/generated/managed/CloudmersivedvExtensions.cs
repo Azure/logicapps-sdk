@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputaddressString != null)
             {
-                input["AddressString"] = ExpressionConverter.ConvertO(inputaddressString);
+                input["AddressString"] = CSharpExpressionConverter.ConvertToken(inputaddressString);
                 inputpropCount++;
             }
 
             if (inputcapitalizationMode != null)
             {
-                input["CapitalizationMode"] = ExpressionConverter.ConvertO(inputcapitalizationMode);
+                input["CapitalizationMode"] = CSharpExpressionConverter.ConvertToken(inputcapitalizationMode);
                 inputpropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var apiCallPath = "/validate/domain/check";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(domain);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(domain);
             return new ApiConnectionAction<CheckResponse>(callPayload);
         }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var requestpropCount = 0;
             if (requestuRL != null)
             {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
+                request["URL"] = CSharpExpressionConverter.ConvertToken(requestuRL);
                 requestpropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var requestpropCount = 0;
             if (requestuRL != null)
             {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
+                request["URL"] = CSharpExpressionConverter.ConvertToken(requestuRL);
                 requestpropCount++;
             }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var apiCallPath = "/validate/domain/whois";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(domain);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(domain);
             return new ApiConnectionAction<WhoisResponse>(callPayload);
         }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var apiCallPath = "/validate/email/address/full";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(email);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(email);
             return new ApiConnectionAction<FullEmailValidationResponse>(callPayload);
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var apiCallPath = "/validate/ip/geolocate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(value);
             return new ApiConnectionAction<GeolocateResponse>(callPayload);
         }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputfirstName != null)
             {
-                input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
+                input["FirstName"] = CSharpExpressionConverter.ConvertToken(inputfirstName);
                 inputpropCount++;
             }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputfullNameString != null)
             {
-                input["FullNameString"] = ExpressionConverter.ConvertO(inputfullNameString);
+                input["FullNameString"] = CSharpExpressionConverter.ConvertToken(inputfullNameString);
                 inputpropCount++;
             }
 
@@ -177,13 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputcountryCode != null)
             {
-                input["CountryCode"] = ExpressionConverter.ConvertO(inputcountryCode);
+                input["CountryCode"] = CSharpExpressionConverter.ConvertToken(inputcountryCode);
                 inputpropCount++;
             }
 
             if (inputfirstName != null)
             {
-                input["FirstName"] = ExpressionConverter.ConvertO(inputfirstName);
+                input["FirstName"] = CSharpExpressionConverter.ConvertToken(inputfirstName);
                 inputpropCount++;
             }
 
@@ -205,49 +205,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputallowHyphens != null)
             {
-                input["AllowHyphens"] = ExpressionConverter.ConvertO(inputallowHyphens);
+                input["AllowHyphens"] = CSharpExpressionConverter.ConvertToken(inputallowHyphens);
                 inputpropCount++;
             }
 
             if (inputallowNumbers != null)
             {
-                input["AllowNumbers"] = ExpressionConverter.ConvertO(inputallowNumbers);
+                input["AllowNumbers"] = CSharpExpressionConverter.ConvertToken(inputallowNumbers);
                 inputpropCount++;
             }
 
             if (inputallowPeriods != null)
             {
-                input["AllowPeriods"] = ExpressionConverter.ConvertO(inputallowPeriods);
+                input["AllowPeriods"] = CSharpExpressionConverter.ConvertToken(inputallowPeriods);
                 inputpropCount++;
             }
 
             if (inputallowUnderscore != null)
             {
-                input["AllowUnderscore"] = ExpressionConverter.ConvertO(inputallowUnderscore);
+                input["AllowUnderscore"] = CSharpExpressionConverter.ConvertToken(inputallowUnderscore);
                 inputpropCount++;
             }
 
             if (inputallowWhitespace != null)
             {
-                input["AllowWhitespace"] = ExpressionConverter.ConvertO(inputallowWhitespace);
+                input["AllowWhitespace"] = CSharpExpressionConverter.ConvertToken(inputallowWhitespace);
                 inputpropCount++;
             }
 
             if (inputinput != null)
             {
-                input["Input"] = ExpressionConverter.ConvertO(inputinput);
+                input["Input"] = CSharpExpressionConverter.ConvertToken(inputinput);
                 inputpropCount++;
             }
 
             if (inputmaxLength != null)
             {
-                input["MaxLength"] = ExpressionConverter.ConvertO(inputmaxLength);
+                input["MaxLength"] = CSharpExpressionConverter.ConvertToken(inputmaxLength);
                 inputpropCount++;
             }
 
             if (inputminLength != null)
             {
-                input["MinLength"] = ExpressionConverter.ConvertO(inputminLength);
+                input["MinLength"] = CSharpExpressionConverter.ConvertToken(inputminLength);
                 inputpropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputlastName != null)
             {
-                input["LastName"] = ExpressionConverter.ConvertO(inputlastName);
+                input["LastName"] = CSharpExpressionConverter.ConvertToken(inputlastName);
                 inputpropCount++;
             }
 
@@ -291,13 +291,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var valuepropCount = 0;
             if (valuedefaultCountryCode != null)
             {
-                value["DefaultCountryCode"] = ExpressionConverter.ConvertO(valuedefaultCountryCode);
+                value["DefaultCountryCode"] = CSharpExpressionConverter.ConvertToken(valuedefaultCountryCode);
                 valuepropCount++;
             }
 
             if (valuephoneNumber != null)
             {
-                value["PhoneNumber"] = ExpressionConverter.ConvertO(valuephoneNumber);
+                value["PhoneNumber"] = CSharpExpressionConverter.ConvertToken(valuephoneNumber);
                 valuepropCount++;
             }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var requestpropCount = 0;
             if (requestuserAgentString != null)
             {
-                request["UserAgentString"] = ExpressionConverter.ConvertO(requestuserAgentString);
+                request["UserAgentString"] = CSharpExpressionConverter.ConvertToken(requestuserAgentString);
                 requestpropCount++;
             }
 
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
             var inputpropCount = 0;
             if (inputvatCode != null)
             {
-                input["VatCode"] = ExpressionConverter.ConvertO(inputvatCode);
+                input["VatCode"] = CSharpExpressionConverter.ConvertToken(inputvatCode);
                 inputpropCount++;
             }
 

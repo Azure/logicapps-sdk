@@ -20,26 +20,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["email"] = ExpressionConverter.ConvertO(modelemail);
+            model["email"] = CSharpExpressionConverter.ConvertToken(modelemail);
             if (modelname != null)
             {
-                model["name"] = ExpressionConverter.ConvertO(modelname);
+                model["name"] = CSharpExpressionConverter.ConvertToken(modelname);
                 modelpropCount++;
             }
 
             modelpropCount++;
-            model["score"] = ExpressionConverter.ConvertO(modelscore);
+            model["score"] = CSharpExpressionConverter.ConvertToken(modelscore);
             modelpropCount++;
-            model["ratingDate"] = ExpressionConverter.ConvertO(modelratingDate);
+            model["ratingDate"] = CSharpExpressionConverter.ConvertToken(modelratingDate);
             if (modelcomments != null)
             {
-                model["comments"] = ExpressionConverter.ConvertO(modelcomments);
+                model["comments"] = CSharpExpressionConverter.ConvertToken(modelcomments);
                 modelpropCount++;
             }
 
             if (modeladditionalData != null)
             {
-                model["additionalData"] = ExpressionConverter.ConvertO(modeladditionalData);
+                model["additionalData"] = CSharpExpressionConverter.ConvertToken(modeladditionalData);
                 modelpropCount++;
             }
 
@@ -60,24 +60,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
             var model = new JObject();
             var modelpropCount = 0;
             modelpropCount++;
-            model["source"] = ExpressionConverter.ConvertO(modelsource);
+            model["source"] = CSharpExpressionConverter.ConvertToken(modelsource);
             modelpropCount++;
-            model["title"] = ExpressionConverter.ConvertO(modeltitle);
+            model["title"] = CSharpExpressionConverter.ConvertToken(modeltitle);
             modelpropCount++;
-            model["description"] = ExpressionConverter.ConvertO(modeldescription);
+            model["description"] = CSharpExpressionConverter.ConvertToken(modeldescription);
             modelpropCount++;
-            model["toDisplayName"] = ExpressionConverter.ConvertO(modeltoDisplayName);
+            model["toDisplayName"] = CSharpExpressionConverter.ConvertToken(modeltoDisplayName);
             modelpropCount++;
-            model["toEmail"] = ExpressionConverter.ConvertO(modeltoEmail);
+            model["toEmail"] = CSharpExpressionConverter.ConvertToken(modeltoEmail);
             modelpropCount++;
-            model["fromDisplayName"] = ExpressionConverter.ConvertO(modelfromDisplayName);
+            model["fromDisplayName"] = CSharpExpressionConverter.ConvertToken(modelfromDisplayName);
             modelpropCount++;
-            model["fromEmail"] = ExpressionConverter.ConvertO(modelfromEmail);
+            model["fromEmail"] = CSharpExpressionConverter.ConvertToken(modelfromEmail);
             modelpropCount++;
-            model["createdByDateTime"] = ExpressionConverter.ConvertO(modelcreatedByDateTime);
+            model["createdByDateTime"] = CSharpExpressionConverter.ConvertToken(modelcreatedByDateTime);
             if (modelculture != null)
             {
-                model["culture"] = ExpressionConverter.ConvertO(modelculture);
+                model["culture"] = CSharpExpressionConverter.ConvertToken(modelculture);
                 modelpropCount++;
             }
 

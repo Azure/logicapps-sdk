@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense[]> ListExpenses(Expression<Func<string>> accountid)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var amountObject = new JObject();
             var amountObjectpropCount = 0;
             amountObjectpropCount++;
-            amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
+            amountObject["amount"] = CSharpExpressionConverter.ConvertToken(bodyexpenseamountamount);
             if (bodyexpenseamountcurrency != null)
             {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                amountObject["code"] = CSharpExpressionConverter.Convert(bodyexpenseamountcurrency);
                 amountObjectpropCount++;
             }
 
@@ -50,31 +50,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
             if (bodyexpensecategory != null)
             {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                expenseObject["categoryid"] = CSharpExpressionConverter.ConvertToken(bodyexpensecategory);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensestaff != null)
             {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                expenseObject["staffid"] = CSharpExpressionConverter.ConvertToken(bodyexpensestaff);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensedate != null)
             {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                expenseObject["date"] = CSharpExpressionConverter.ConvertToken(bodyexpensedate);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensevendor != null)
             {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                expenseObject["vendor"] = CSharpExpressionConverter.ConvertToken(bodyexpensevendor);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensenotes != null)
             {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                expenseObject["notes"] = CSharpExpressionConverter.ConvertToken(bodyexpensenotes);
                 expenseObjectpropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -107,13 +107,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var amountObjectpropCount = 0;
             if (bodyexpenseamountamount != null)
             {
-                amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
+                amountObject["amount"] = CSharpExpressionConverter.ConvertToken(bodyexpenseamountamount);
                 amountObjectpropCount++;
             }
 
             if (bodyexpenseamountcurrency != null)
             {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                amountObject["code"] = CSharpExpressionConverter.Convert(bodyexpenseamountcurrency);
                 amountObjectpropCount++;
             }
 
@@ -125,31 +125,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
             if (bodyexpensecategory != null)
             {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                expenseObject["categoryid"] = CSharpExpressionConverter.ConvertToken(bodyexpensecategory);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensestaff != null)
             {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                expenseObject["staffid"] = CSharpExpressionConverter.ConvertToken(bodyexpensestaff);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensedate != null)
             {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                expenseObject["date"] = CSharpExpressionConverter.ConvertToken(bodyexpensedate);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensevendor != null)
             {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                expenseObject["vendor"] = CSharpExpressionConverter.ConvertToken(bodyexpensevendor);
                 expenseObjectpropCount++;
             }
 
             if (bodyexpensenotes != null)
             {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                expenseObject["notes"] = CSharpExpressionConverter.ConvertToken(bodyexpensenotes);
                 expenseObjectpropCount++;
             }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
         {
-            var apiCallPath = String.Format("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -207,73 +207,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var clientObjectpropCount = 0;
             if (bodyclientfirstName != null)
             {
-                clientObject["fname"] = ExpressionConverter.ConvertO(bodyclientfirstName);
+                clientObject["fname"] = CSharpExpressionConverter.ConvertToken(bodyclientfirstName);
                 clientObjectpropCount++;
             }
 
             if (bodyclientlastName != null)
             {
-                clientObject["lname"] = ExpressionConverter.ConvertO(bodyclientlastName);
+                clientObject["lname"] = CSharpExpressionConverter.ConvertToken(bodyclientlastName);
                 clientObjectpropCount++;
             }
 
             if (bodyclientorganization != null)
             {
-                clientObject["organization"] = ExpressionConverter.ConvertO(bodyclientorganization);
+                clientObject["organization"] = CSharpExpressionConverter.ConvertToken(bodyclientorganization);
                 clientObjectpropCount++;
             }
 
             if (bodyclientemailAddress != null)
             {
-                clientObject["email"] = ExpressionConverter.ConvertO(bodyclientemailAddress);
+                clientObject["email"] = CSharpExpressionConverter.ConvertToken(bodyclientemailAddress);
                 clientObjectpropCount++;
             }
 
             if (bodyclientphoneNumber != null)
             {
-                clientObject["bus_phone"] = ExpressionConverter.ConvertO(bodyclientphoneNumber);
+                clientObject["bus_phone"] = CSharpExpressionConverter.ConvertToken(bodyclientphoneNumber);
                 clientObjectpropCount++;
             }
 
             if (bodyclientcurrency != null)
             {
-                clientObject["currency_code"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                clientObject["currency_code"] = CSharpExpressionConverter.Convert(bodyclientcurrency);
                 clientObjectpropCount++;
             }
 
             if (bodyclientstreetAddress1 != null)
             {
-                clientObject["p_street"] = ExpressionConverter.ConvertO(bodyclientstreetAddress1);
+                clientObject["p_street"] = CSharpExpressionConverter.ConvertToken(bodyclientstreetAddress1);
                 clientObjectpropCount++;
             }
 
             if (bodyclientstreetAddress2 != null)
             {
-                clientObject["p_street2"] = ExpressionConverter.ConvertO(bodyclientstreetAddress2);
+                clientObject["p_street2"] = CSharpExpressionConverter.ConvertToken(bodyclientstreetAddress2);
                 clientObjectpropCount++;
             }
 
             if (bodyclientcity != null)
             {
-                clientObject["p_city"] = ExpressionConverter.ConvertO(bodyclientcity);
+                clientObject["p_city"] = CSharpExpressionConverter.ConvertToken(bodyclientcity);
                 clientObjectpropCount++;
             }
 
             if (bodyclientpostalCode != null)
             {
-                clientObject["p_code"] = ExpressionConverter.ConvertO(bodyclientpostalCode);
+                clientObject["p_code"] = CSharpExpressionConverter.ConvertToken(bodyclientpostalCode);
                 clientObjectpropCount++;
             }
 
             if (bodyclientcountry != null)
             {
-                clientObject["p_country"] = ExpressionConverter.ConvertO(bodyclientcountry);
+                clientObject["p_country"] = CSharpExpressionConverter.ConvertToken(bodyclientcountry);
                 clientObjectpropCount++;
             }
 
             if (bodyclientprovince != null)
             {
-                clientObject["p_province"] = ExpressionConverter.ConvertO(bodyclientprovince);
+                clientObject["p_province"] = CSharpExpressionConverter.ConvertToken(bodyclientprovince);
                 clientObjectpropCount++;
             }
 
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     {
         public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["include[]"] = Convert.ToString("client");
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["include[]"] = Convert.ToString("client");

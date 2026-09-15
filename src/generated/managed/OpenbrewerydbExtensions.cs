@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery> GetBrewery(Expression<Func<string>> obdbId)
         {
-            var apiCallPath = String.Format("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(obdbId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/breweries/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(obdbId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RefBrewery>(callPayload);
@@ -27,23 +27,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (byCity != null)
-                callPayload.Queries["by_city"] = ExpressionConverter.Convert(byCity);
+                callPayload.Queries["by_city"] = CSharpExpressionConverter.ConvertO(byCity);
             if (byCountry != null)
-                callPayload.Queries["by_country"] = ExpressionConverter.Convert(byCountry);
+                callPayload.Queries["by_country"] = CSharpExpressionConverter.ConvertO(byCountry);
             if (byDist != null)
-                callPayload.Queries["by_dist"] = ExpressionConverter.Convert(byDist);
+                callPayload.Queries["by_dist"] = CSharpExpressionConverter.ConvertO(byDist);
             if (byName != null)
-                callPayload.Queries["by_name"] = ExpressionConverter.Convert(byName);
+                callPayload.Queries["by_name"] = CSharpExpressionConverter.ConvertO(byName);
             if (byState != null)
-                callPayload.Queries["by_state"] = ExpressionConverter.Convert(byState);
+                callPayload.Queries["by_state"] = CSharpExpressionConverter.ConvertO(byState);
             if (byPostal != null)
-                callPayload.Queries["by_postal"] = ExpressionConverter.Convert(byPostal);
+                callPayload.Queries["by_postal"] = CSharpExpressionConverter.ConvertO(byPostal);
             if (byType != null)
-                callPayload.Queries["by_type"] = ExpressionConverter.Convert(byType);
+                callPayload.Queries["by_type"] = CSharpExpressionConverter.Convert(byType);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<RefBrewery[]>(callPayload);
         }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             return new ApiConnectionAction<RefBrewery[]>(callPayload);
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var apiCallPath = "/v1/breweries/search";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             return new ApiConnectionAction<RefBrewery[]>(callPayload);
         }
 
@@ -75,17 +75,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (byCity != null)
-                callPayload.Queries["by_city"] = ExpressionConverter.Convert(byCity);
+                callPayload.Queries["by_city"] = CSharpExpressionConverter.ConvertO(byCity);
             if (byCountry != null)
-                callPayload.Queries["by_country"] = ExpressionConverter.Convert(byCountry);
+                callPayload.Queries["by_country"] = CSharpExpressionConverter.ConvertO(byCountry);
             if (byName != null)
-                callPayload.Queries["by_name"] = ExpressionConverter.Convert(byName);
+                callPayload.Queries["by_name"] = CSharpExpressionConverter.ConvertO(byName);
             if (byState != null)
-                callPayload.Queries["by_state"] = ExpressionConverter.Convert(byState);
+                callPayload.Queries["by_state"] = CSharpExpressionConverter.ConvertO(byState);
             if (byPostal != null)
-                callPayload.Queries["by_postal"] = ExpressionConverter.Convert(byPostal);
+                callPayload.Queries["by_postal"] = CSharpExpressionConverter.ConvertO(byPostal);
             if (byType != null)
-                callPayload.Queries["by_type"] = ExpressionConverter.Convert(byType);
+                callPayload.Queries["by_type"] = CSharpExpressionConverter.Convert(byType);
             return new ApiConnectionAction<CountBreweriesResponse>(callPayload);
         }
     }

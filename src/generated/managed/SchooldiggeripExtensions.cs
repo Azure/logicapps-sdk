@@ -17,23 +17,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var apiCallPath = "/v2.0/autocomplete/schools";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (qSearchCityStateName != null)
-                callPayload.Queries["qSearchCityStateName"] = ExpressionConverter.Convert(qSearchCityStateName);
+                callPayload.Queries["qSearchCityStateName"] = CSharpExpressionConverter.ConvertO(qSearchCityStateName);
             if (st != null)
-                callPayload.Queries["st"] = ExpressionConverter.Convert(st);
+                callPayload.Queries["st"] = CSharpExpressionConverter.ConvertO(st);
             if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
+                callPayload.Queries["level"] = CSharpExpressionConverter.Convert(level);
             if (boxLatitudeNW != null)
-                callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
+                callPayload.Queries["boxLatitudeNW"] = CSharpExpressionConverter.ConvertO(boxLatitudeNW);
             if (boxLongitudeNW != null)
-                callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
+                callPayload.Queries["boxLongitudeNW"] = CSharpExpressionConverter.ConvertO(boxLongitudeNW);
             if (boxLatitudeSE != null)
-                callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
+                callPayload.Queries["boxLatitudeSE"] = CSharpExpressionConverter.ConvertO(boxLatitudeSE);
             if (boxLongitudeSE != null)
-                callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
+                callPayload.Queries["boxLongitudeSE"] = CSharpExpressionConverter.ConvertO(boxLongitudeSE);
             if (returnCount != null)
-                callPayload.Queries["returnCount"] = ExpressionConverter.Convert(returnCount);
+                callPayload.Queries["returnCount"] = CSharpExpressionConverter.ConvertO(returnCount);
             return new ApiConnectionAction<APIAutocompleteSchoolResult>(callPayload);
         }
 
@@ -43,46 +43,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var apiCallPath = "/v2.0/districts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["st"] = ExpressionConverter.Convert(st);
+            callPayload.Queries["st"] = CSharpExpressionConverter.ConvertO(st);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (zip != null)
-                callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
+                callPayload.Queries["zip"] = CSharpExpressionConverter.ConvertO(zip);
             if (nearLatitude != null)
-                callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(nearLatitude);
+                callPayload.Queries["nearLatitude"] = CSharpExpressionConverter.ConvertO(nearLatitude);
             if (nearLongitude != null)
-                callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(nearLongitude);
+                callPayload.Queries["nearLongitude"] = CSharpExpressionConverter.ConvertO(nearLongitude);
             if (boundaryAddress != null)
-                callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(boundaryAddress);
+                callPayload.Queries["boundaryAddress"] = CSharpExpressionConverter.ConvertO(boundaryAddress);
             if (distanceMiles != null)
-                callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(distanceMiles);
+                callPayload.Queries["distanceMiles"] = CSharpExpressionConverter.ConvertO(distanceMiles);
             if (isInBoundaryOnly != null)
-                callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(isInBoundaryOnly);
+                callPayload.Queries["isInBoundaryOnly"] = CSharpExpressionConverter.ConvertO(isInBoundaryOnly);
             if (boxLatitudeNW != null)
-                callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
+                callPayload.Queries["boxLatitudeNW"] = CSharpExpressionConverter.ConvertO(boxLatitudeNW);
             if (boxLongitudeNW != null)
-                callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
+                callPayload.Queries["boxLongitudeNW"] = CSharpExpressionConverter.ConvertO(boxLongitudeNW);
             if (boxLatitudeSE != null)
-                callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
+                callPayload.Queries["boxLatitudeSE"] = CSharpExpressionConverter.ConvertO(boxLatitudeSE);
             if (boxLongitudeSE != null)
-                callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
+                callPayload.Queries["boxLongitudeSE"] = CSharpExpressionConverter.ConvertO(boxLongitudeSE);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["perPage"] = CSharpExpressionConverter.ConvertO(perPage);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.Convert(sortBy);
             if (includeUnrankedDistrictsInRankSort != null)
-                callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(includeUnrankedDistrictsInRankSort);
+                callPayload.Queries["includeUnrankedDistrictsInRankSort"] = CSharpExpressionConverter.ConvertO(includeUnrankedDistrictsInRankSort);
             return new ApiConnectionAction<APIDistrictList2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2.0/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<APIDistrict12>(callPayload);
@@ -91,32 +91,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchoolListRank2> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v2.0/rankings/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(st, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(st, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
+                callPayload.Queries["level"] = CSharpExpressionConverter.Convert(level);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["perPage"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<APISchoolListRank2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v2.0/rankings/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(st, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(st, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["perPage"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<APIDistrictListRank2>(callPayload);
         }
 
@@ -126,68 +126,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var apiCallPath = "/v2.0/schools";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["st"] = ExpressionConverter.Convert(st);
+            callPayload.Queries["st"] = CSharpExpressionConverter.ConvertO(st);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (qSearchSchoolNameOnly != null)
-                callPayload.Queries["qSearchSchoolNameOnly"] = ExpressionConverter.Convert(qSearchSchoolNameOnly);
+                callPayload.Queries["qSearchSchoolNameOnly"] = CSharpExpressionConverter.ConvertO(qSearchSchoolNameOnly);
             if (districtID != null)
-                callPayload.Queries["districtID"] = ExpressionConverter.Convert(districtID);
+                callPayload.Queries["districtID"] = CSharpExpressionConverter.ConvertO(districtID);
             if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
+                callPayload.Queries["level"] = CSharpExpressionConverter.Convert(level);
             if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
             if (zip != null)
-                callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
+                callPayload.Queries["zip"] = CSharpExpressionConverter.ConvertO(zip);
             if (isMagnet != null)
-                callPayload.Queries["isMagnet"] = ExpressionConverter.Convert(isMagnet);
+                callPayload.Queries["isMagnet"] = CSharpExpressionConverter.ConvertO(isMagnet);
             if (isCharter != null)
-                callPayload.Queries["isCharter"] = ExpressionConverter.Convert(isCharter);
+                callPayload.Queries["isCharter"] = CSharpExpressionConverter.ConvertO(isCharter);
             if (isVirtual != null)
-                callPayload.Queries["isVirtual"] = ExpressionConverter.Convert(isVirtual);
+                callPayload.Queries["isVirtual"] = CSharpExpressionConverter.ConvertO(isVirtual);
             if (isTitleI != null)
-                callPayload.Queries["isTitleI"] = ExpressionConverter.Convert(isTitleI);
+                callPayload.Queries["isTitleI"] = CSharpExpressionConverter.ConvertO(isTitleI);
             if (isTitleISchoolwide != null)
-                callPayload.Queries["isTitleISchoolwide"] = ExpressionConverter.Convert(isTitleISchoolwide);
+                callPayload.Queries["isTitleISchoolwide"] = CSharpExpressionConverter.ConvertO(isTitleISchoolwide);
             if (nearLatitude != null)
-                callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(nearLatitude);
+                callPayload.Queries["nearLatitude"] = CSharpExpressionConverter.ConvertO(nearLatitude);
             if (nearLongitude != null)
-                callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(nearLongitude);
+                callPayload.Queries["nearLongitude"] = CSharpExpressionConverter.ConvertO(nearLongitude);
             if (nearAddress != null)
-                callPayload.Queries["nearAddress"] = ExpressionConverter.Convert(nearAddress);
+                callPayload.Queries["nearAddress"] = CSharpExpressionConverter.ConvertO(nearAddress);
             if (distanceMiles != null)
-                callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(distanceMiles);
+                callPayload.Queries["distanceMiles"] = CSharpExpressionConverter.ConvertO(distanceMiles);
             if (boundaryLatitude != null)
-                callPayload.Queries["boundaryLatitude"] = ExpressionConverter.Convert(boundaryLatitude);
+                callPayload.Queries["boundaryLatitude"] = CSharpExpressionConverter.ConvertO(boundaryLatitude);
             if (boundaryLongitude != null)
-                callPayload.Queries["boundaryLongitude"] = ExpressionConverter.Convert(boundaryLongitude);
+                callPayload.Queries["boundaryLongitude"] = CSharpExpressionConverter.ConvertO(boundaryLongitude);
             if (boundaryAddress != null)
-                callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(boundaryAddress);
+                callPayload.Queries["boundaryAddress"] = CSharpExpressionConverter.ConvertO(boundaryAddress);
             if (isInBoundaryOnly != null)
-                callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(isInBoundaryOnly);
+                callPayload.Queries["isInBoundaryOnly"] = CSharpExpressionConverter.ConvertO(isInBoundaryOnly);
             if (boxLatitudeNW != null)
-                callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
+                callPayload.Queries["boxLatitudeNW"] = CSharpExpressionConverter.ConvertO(boxLatitudeNW);
             if (boxLongitudeNW != null)
-                callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
+                callPayload.Queries["boxLongitudeNW"] = CSharpExpressionConverter.ConvertO(boxLongitudeNW);
             if (boxLatitudeSE != null)
-                callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
+                callPayload.Queries["boxLatitudeSE"] = CSharpExpressionConverter.ConvertO(boxLatitudeSE);
             if (boxLongitudeSE != null)
-                callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
+                callPayload.Queries["boxLongitudeSE"] = CSharpExpressionConverter.ConvertO(boxLongitudeSE);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["perPage"] = CSharpExpressionConverter.ConvertO(perPage);
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.Convert(sortBy);
             if (includeUnrankedSchoolsInRankSort != null)
-                callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(includeUnrankedSchoolsInRankSort);
+                callPayload.Queries["includeUnrankedSchoolsInRankSort"] = CSharpExpressionConverter.ConvertO(includeUnrankedSchoolsInRankSort);
             return new ApiConnectionAction<APISchoolList2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2.0/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<APISchool20Full>(callPayload);

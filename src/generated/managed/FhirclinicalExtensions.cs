@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETAdverseEventResponse>(callPayload);
         }
 
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var identifierObjectpropCount = 0;
             if (bodyidentifiersystem != null)
             {
-                identifierObject["system"] = ExpressionConverter.ConvertO(bodyidentifiersystem);
+                identifierObject["system"] = CSharpExpressionConverter.ConvertToken(bodyidentifiersystem);
                 identifierObjectpropCount++;
             }
 
             if (bodyidentifiervalue != null)
             {
-                identifierObject["value"] = ExpressionConverter.ConvertO(bodyidentifiervalue);
+                identifierObject["value"] = CSharpExpressionConverter.ConvertToken(bodyidentifiervalue);
                 identifierObjectpropCount++;
             }
 
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyactuality != null)
             {
-                body["actuality"] = ExpressionConverter.ConvertO(bodyactuality);
+                body["actuality"] = CSharpExpressionConverter.ConvertToken(bodyactuality);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var @eventObjectpropCount = 0;
             if (bodyEventcoding != null)
             {
-                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyEventcoding);
                 @eventObjectpropCount++;
             }
 
             if (bodyEventtext != null)
             {
-                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObject["text"] = CSharpExpressionConverter.ConvertToken(bodyEventtext);
                 @eventObjectpropCount++;
             }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var seriousnessObjectpropCount = 0;
             if (bodyseriousnesscoding != null)
             {
-                seriousnessObject["coding"] = ExpressionConverter.ConvertO(bodyseriousnesscoding);
+                seriousnessObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseriousnesscoding);
                 seriousnessObjectpropCount++;
             }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysuspectEntity != null)
             {
-                body["suspectEntity"] = ExpressionConverter.ConvertO(bodysuspectEntity);
+                body["suspectEntity"] = CSharpExpressionConverter.ConvertToken(bodysuspectEntity);
                 bodypropCount++;
             }
 
@@ -177,33 +177,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAdverseEventIDResponse> GETAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETAdverseEventIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEAdverseEventIDResponse> DELETEAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
         {
-            var apiCallPath = String.Format("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -211,13 +211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var identifierObjectpropCount = 0;
             if (bodyidentifiersystem != null)
             {
-                identifierObject["system"] = ExpressionConverter.ConvertO(bodyidentifiersystem);
+                identifierObject["system"] = CSharpExpressionConverter.ConvertToken(bodyidentifiersystem);
                 identifierObjectpropCount++;
             }
 
             if (bodyidentifiervalue != null)
             {
-                identifierObject["value"] = ExpressionConverter.ConvertO(bodyidentifiervalue);
+                identifierObject["value"] = CSharpExpressionConverter.ConvertToken(bodyidentifiervalue);
                 identifierObjectpropCount++;
             }
 
@@ -249,13 +249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyactuality != null)
             {
-                body["actuality"] = ExpressionConverter.ConvertO(bodyactuality);
+                body["actuality"] = CSharpExpressionConverter.ConvertToken(bodyactuality);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -263,13 +263,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var @eventObjectpropCount = 0;
             if (bodyEventcoding != null)
             {
-                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyEventcoding);
                 @eventObjectpropCount++;
             }
 
             if (bodyEventtext != null)
             {
-                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObject["text"] = CSharpExpressionConverter.ConvertToken(bodyEventtext);
                 @eventObjectpropCount++;
             }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var seriousnessObjectpropCount = 0;
             if (bodyseriousnesscoding != null)
             {
-                seriousnessObject["coding"] = ExpressionConverter.ConvertO(bodyseriousnesscoding);
+                seriousnessObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseriousnesscoding);
                 seriousnessObjectpropCount++;
             }
 
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysuspectEntity != null)
             {
-                body["suspectEntity"] = ExpressionConverter.ConvertO(bodysuspectEntity);
+                body["suspectEntity"] = CSharpExpressionConverter.ConvertToken(bodysuspectEntity);
                 bodypropCount++;
             }
 
@@ -358,20 +358,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTAdverseEventIDResponse> PUTAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
         {
-            var apiCallPath = String.Format("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -379,13 +379,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var identifierObjectpropCount = 0;
             if (bodyidentifiersystem != null)
             {
-                identifierObject["system"] = ExpressionConverter.ConvertO(bodyidentifiersystem);
+                identifierObject["system"] = CSharpExpressionConverter.ConvertToken(bodyidentifiersystem);
                 identifierObjectpropCount++;
             }
 
             if (bodyidentifiervalue != null)
             {
-                identifierObject["value"] = ExpressionConverter.ConvertO(bodyidentifiervalue);
+                identifierObject["value"] = CSharpExpressionConverter.ConvertToken(bodyidentifiervalue);
                 identifierObjectpropCount++;
             }
 
@@ -417,13 +417,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyactuality != null)
             {
-                body["actuality"] = ExpressionConverter.ConvertO(bodyactuality);
+                body["actuality"] = CSharpExpressionConverter.ConvertToken(bodyactuality);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -431,13 +431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var @eventObjectpropCount = 0;
             if (bodyEventcoding != null)
             {
-                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyEventcoding);
                 @eventObjectpropCount++;
             }
 
             if (bodyEventtext != null)
             {
-                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObject["text"] = CSharpExpressionConverter.ConvertToken(bodyEventtext);
                 @eventObjectpropCount++;
             }
 
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var seriousnessObjectpropCount = 0;
             if (bodyseriousnesscoding != null)
             {
-                seriousnessObject["coding"] = ExpressionConverter.ConvertO(bodyseriousnesscoding);
+                seriousnessObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseriousnesscoding);
                 seriousnessObjectpropCount++;
             }
 
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysuspectEntity != null)
             {
-                body["suspectEntity"] = ExpressionConverter.ConvertO(bodysuspectEntity);
+                body["suspectEntity"] = CSharpExpressionConverter.ConvertToken(bodysuspectEntity);
                 bodypropCount++;
             }
 
@@ -530,11 +530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETAllergyIntoleranceResponse>(callPayload);
         }
 
@@ -548,13 +548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -562,13 +562,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -622,19 +622,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodycriticality != null)
             {
-                body["criticality"] = ExpressionConverter.ConvertO(bodycriticality);
+                body["criticality"] = CSharpExpressionConverter.ConvertToken(bodycriticality);
                 bodypropCount++;
             }
 
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var patientObjectpropCount = 0;
             if (bodypatientreference != null)
             {
-                patientObject["reference"] = ExpressionConverter.ConvertO(bodypatientreference);
+                patientObject["reference"] = CSharpExpressionConverter.ConvertToken(bodypatientreference);
                 patientObjectpropCount++;
             }
 
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyrecordedDate != null)
             {
-                body["recordedDate"] = ExpressionConverter.ConvertO(bodyrecordedDate);
+                body["recordedDate"] = CSharpExpressionConverter.ConvertToken(bodyrecordedDate);
                 bodypropCount++;
             }
 
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreaction != null)
             {
-                body["reaction"] = ExpressionConverter.ConvertO(bodyreaction);
+                body["reaction"] = CSharpExpressionConverter.ConvertToken(bodyreaction);
                 bodypropCount++;
             }
 
@@ -703,33 +703,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAllergyIntoleranceIDResponse> GETAllergyIntoleranceID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETAllergyIntoleranceIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEAllergyIntoleranceIDResponse> DELETEAllergyIntoleranceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<string>> bodytype = null, Expression<Func<string[]>> bodycategory = null, Expression<Func<string>> bodycriticality = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodypatientreference = null, Expression<Func<string>> bodyrecordedDate = null)
         {
-            var apiCallPath = String.Format("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -737,13 +737,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -783,19 +783,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodycriticality != null)
             {
-                body["criticality"] = ExpressionConverter.ConvertO(bodycriticality);
+                body["criticality"] = CSharpExpressionConverter.ConvertToken(bodycriticality);
                 bodypropCount++;
             }
 
@@ -803,13 +803,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var patientObjectpropCount = 0;
             if (bodypatientreference != null)
             {
-                patientObject["reference"] = ExpressionConverter.ConvertO(bodypatientreference);
+                patientObject["reference"] = CSharpExpressionConverter.ConvertToken(bodypatientreference);
                 patientObjectpropCount++;
             }
 
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyrecordedDate != null)
             {
-                body["recordedDate"] = ExpressionConverter.ConvertO(bodyrecordedDate);
+                body["recordedDate"] = CSharpExpressionConverter.ConvertToken(bodyrecordedDate);
                 bodypropCount++;
             }
 
@@ -850,20 +850,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTAllergyIntoleranceIDResponse> PUTAllergyIntoleranceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<string>> bodytype = null, Expression<Func<string[]>> bodycategory = null, Expression<Func<string>> bodycriticality = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodypatientreference = null, Expression<Func<string>> bodyrecordedDate = null)
         {
-            var apiCallPath = String.Format("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -871,13 +871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -917,19 +917,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodycriticality != null)
             {
-                body["criticality"] = ExpressionConverter.ConvertO(bodycriticality);
+                body["criticality"] = CSharpExpressionConverter.ConvertToken(bodycriticality);
                 bodypropCount++;
             }
 
@@ -937,13 +937,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var patientObjectpropCount = 0;
             if (bodypatientreference != null)
             {
-                patientObject["reference"] = ExpressionConverter.ConvertO(bodypatientreference);
+                patientObject["reference"] = CSharpExpressionConverter.ConvertToken(bodypatientreference);
                 patientObjectpropCount++;
             }
 
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyrecordedDate != null)
             {
-                body["recordedDate"] = ExpressionConverter.ConvertO(bodyrecordedDate);
+                body["recordedDate"] = CSharpExpressionConverter.ConvertToken(bodyrecordedDate);
                 bodypropCount++;
             }
 
@@ -988,11 +988,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETCarePlanResponse>(callPayload);
         }
 
@@ -1006,13 +1006,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1020,13 +1020,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1052,31 +1052,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -1098,7 +1098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var encounterObjectpropCount = 0;
             if (bodyencounterreference != null)
             {
-                encounterObject["reference"] = ExpressionConverter.ConvertO(bodyencounterreference);
+                encounterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyencounterreference);
                 encounterObjectpropCount++;
             }
 
@@ -1112,13 +1112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var periodObjectpropCount = 0;
             if (bodyperiodstart != null)
             {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
+                periodObject["start"] = CSharpExpressionConverter.ConvertToken(bodyperiodstart);
                 periodObjectpropCount++;
             }
 
             if (bodyperiodend != null)
             {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
+                periodObject["end"] = CSharpExpressionConverter.ConvertToken(bodyperiodend);
                 periodObjectpropCount++;
             }
 
@@ -1130,19 +1130,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycareTeam != null)
             {
-                body["careTeam"] = ExpressionConverter.ConvertO(bodycareTeam);
+                body["careTeam"] = CSharpExpressionConverter.ConvertToken(bodycareTeam);
                 bodypropCount++;
             }
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodyactivity != null)
             {
-                body["activity"] = ExpressionConverter.ConvertO(bodyactivity);
+                body["activity"] = CSharpExpressionConverter.ConvertToken(bodyactivity);
                 bodypropCount++;
             }
 
@@ -1157,33 +1157,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCarePlanIDResponse> GETCarePlanID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETCarePlanIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETECarePlanIDResponse> DELETECarePlanID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem[]>> bodycontained = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<bodycareTeamInputItem[]>> bodycareTeam = null, Expression<Func<bodyaddressesInputItem2[]>> bodyaddresses = null, Expression<Func<bodygoalInputItem[]>> bodygoal = null, Expression<Func<bodyactivityInputItem2[]>> bodyactivity = null)
         {
-            var apiCallPath = String.Format("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1191,13 +1191,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -1211,7 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1223,19 +1223,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
@@ -1243,13 +1243,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var periodObjectpropCount = 0;
             if (bodyperiodstart != null)
             {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
+                periodObject["start"] = CSharpExpressionConverter.ConvertToken(bodyperiodstart);
                 periodObjectpropCount++;
             }
 
@@ -1275,25 +1275,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycareTeam != null)
             {
-                body["careTeam"] = ExpressionConverter.ConvertO(bodycareTeam);
+                body["careTeam"] = CSharpExpressionConverter.ConvertToken(bodycareTeam);
                 bodypropCount++;
             }
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodygoal != null)
             {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
                 bodypropCount++;
             }
 
             if (bodyactivity != null)
             {
-                body["activity"] = ExpressionConverter.ConvertO(bodyactivity);
+                body["activity"] = CSharpExpressionConverter.ConvertToken(bodyactivity);
                 bodypropCount++;
             }
 
@@ -1308,20 +1308,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTCarePlanIDResponse> PUTCarePlanID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem[]>> bodycontained = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<bodycareTeamInputItem[]>> bodycareTeam = null, Expression<Func<bodyaddressesInputItem2[]>> bodyaddresses = null, Expression<Func<bodygoalInputItem[]>> bodygoal = null, Expression<Func<bodyactivityInputItem2[]>> bodyactivity = null)
         {
-            var apiCallPath = String.Format("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1329,13 +1329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -1349,7 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1361,19 +1361,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
@@ -1381,13 +1381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -1401,7 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var periodObjectpropCount = 0;
             if (bodyperiodstart != null)
             {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
+                periodObject["start"] = CSharpExpressionConverter.ConvertToken(bodyperiodstart);
                 periodObjectpropCount++;
             }
 
@@ -1413,25 +1413,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycareTeam != null)
             {
-                body["careTeam"] = ExpressionConverter.ConvertO(bodycareTeam);
+                body["careTeam"] = CSharpExpressionConverter.ConvertToken(bodycareTeam);
                 bodypropCount++;
             }
 
             if (bodyaddresses != null)
             {
-                body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
                 bodypropCount++;
             }
 
             if (bodygoal != null)
             {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
                 bodypropCount++;
             }
 
             if (bodyactivity != null)
             {
-                body["activity"] = ExpressionConverter.ConvertO(bodyactivity);
+                body["activity"] = CSharpExpressionConverter.ConvertToken(bodyactivity);
                 bodypropCount++;
             }
 
@@ -1450,11 +1450,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETConditionResponse>(callPayload);
         }
 
@@ -1468,13 +1468,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1482,7 +1482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1496,7 +1496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -1544,13 +1544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -1562,7 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodybodySite != null)
             {
-                body["bodySite"] = ExpressionConverter.ConvertO(bodybodySite);
+                body["bodySite"] = CSharpExpressionConverter.ConvertToken(bodybodySite);
                 bodypropCount++;
             }
 
@@ -1570,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyonsetDateTime != null)
             {
-                body["onsetDateTime"] = ExpressionConverter.ConvertO(bodyonsetDateTime);
+                body["onsetDateTime"] = CSharpExpressionConverter.ConvertToken(bodyonsetDateTime);
                 bodypropCount++;
             }
 
@@ -1597,33 +1597,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETConditionIDResponse> GETConditionID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Condition/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETConditionIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEConditionIDResponse> DELETEConditionID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<bodybodySiteInputItem[]>> bodybodySite = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyonsetDateTime = null)
         {
-            var apiCallPath = String.Format("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Condition/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1631,13 +1631,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -1651,7 +1651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1665,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -1679,7 +1679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -1691,7 +1691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -1713,13 +1713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -1731,7 +1731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodybodySite != null)
             {
-                body["bodySite"] = ExpressionConverter.ConvertO(bodybodySite);
+                body["bodySite"] = CSharpExpressionConverter.ConvertToken(bodybodySite);
                 bodypropCount++;
             }
 
@@ -1739,7 +1739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyonsetDateTime != null)
             {
-                body["onsetDateTime"] = ExpressionConverter.ConvertO(bodyonsetDateTime);
+                body["onsetDateTime"] = CSharpExpressionConverter.ConvertToken(bodyonsetDateTime);
                 bodypropCount++;
             }
 
@@ -1766,20 +1766,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTConditionIDResponse> PUTConditionID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<bodybodySiteInputItem[]>> bodybodySite = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyonsetDateTime = null)
         {
-            var apiCallPath = String.Format("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Condition/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1787,13 +1787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1821,7 +1821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var clinicalStatusObjectpropCount = 0;
             if (bodyclinicalStatuscoding != null)
             {
-                clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(bodyclinicalStatuscoding);
+                clinicalStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyclinicalStatuscoding);
                 clinicalStatusObjectpropCount++;
             }
 
@@ -1835,7 +1835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var verificationStatusObjectpropCount = 0;
             if (bodyverificationStatuscoding != null)
             {
-                verificationStatusObject["coding"] = ExpressionConverter.ConvertO(bodyverificationStatuscoding);
+                verificationStatusObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyverificationStatuscoding);
                 verificationStatusObjectpropCount++;
             }
 
@@ -1847,7 +1847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -1855,7 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var severityObjectpropCount = 0;
             if (bodyseveritycoding != null)
             {
-                severityObject["coding"] = ExpressionConverter.ConvertO(bodyseveritycoding);
+                severityObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyseveritycoding);
                 severityObjectpropCount++;
             }
 
@@ -1869,13 +1869,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -1887,7 +1887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodybodySite != null)
             {
-                body["bodySite"] = ExpressionConverter.ConvertO(bodybodySite);
+                body["bodySite"] = CSharpExpressionConverter.ConvertToken(bodybodySite);
                 bodypropCount++;
             }
 
@@ -1895,7 +1895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -1907,7 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyonsetDateTime != null)
             {
-                body["onsetDateTime"] = ExpressionConverter.ConvertO(bodyonsetDateTime);
+                body["onsetDateTime"] = CSharpExpressionConverter.ConvertToken(bodyonsetDateTime);
                 bodypropCount++;
             }
 
@@ -1926,11 +1926,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETDiagnosticReportResponse>(callPayload);
         }
 
@@ -1944,13 +1944,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -1958,7 +1958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -1970,25 +1970,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodybasedOn != null)
             {
-                body["basedOn"] = ExpressionConverter.ConvertO(bodybasedOn);
+                body["basedOn"] = CSharpExpressionConverter.ConvertToken(bodybasedOn);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -1996,7 +1996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2010,13 +2010,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -2028,25 +2028,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyresult != null)
             {
-                body["result"] = ExpressionConverter.ConvertO(bodyresult);
+                body["result"] = CSharpExpressionConverter.ConvertToken(bodyresult);
                 bodypropCount++;
             }
 
             if (bodyconclusion != null)
             {
-                body["conclusion"] = ExpressionConverter.ConvertO(bodyconclusion);
+                body["conclusion"] = CSharpExpressionConverter.ConvertToken(bodyconclusion);
                 bodypropCount++;
             }
 
@@ -2061,33 +2061,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETDiagnosticReportIDResponse> GETDiagnosticReportID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETDiagnosticReportIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEDiagnosticReportIDResponse> DELETEDiagnosticReportID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem[]>> bodyperformer = null, Expression<Func<bodyresultInputItem[]>> bodyresult = null, Expression<Func<string>> bodyconclusion = null)
         {
-            var apiCallPath = String.Format("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2095,13 +2095,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -2115,7 +2115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -2127,25 +2127,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodybasedOn != null)
             {
-                body["basedOn"] = ExpressionConverter.ConvertO(bodybasedOn);
+                body["basedOn"] = CSharpExpressionConverter.ConvertToken(bodybasedOn);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -2153,7 +2153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2167,13 +2167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -2185,25 +2185,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyresult != null)
             {
-                body["result"] = ExpressionConverter.ConvertO(bodyresult);
+                body["result"] = CSharpExpressionConverter.ConvertToken(bodyresult);
                 bodypropCount++;
             }
 
             if (bodyconclusion != null)
             {
-                body["conclusion"] = ExpressionConverter.ConvertO(bodyconclusion);
+                body["conclusion"] = CSharpExpressionConverter.ConvertToken(bodyconclusion);
                 bodypropCount++;
             }
 
@@ -2218,20 +2218,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTDiagnosticReportIDResponse> PUTDiagnosticReportID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem[]>> bodyperformer = null, Expression<Func<bodyresultInputItem[]>> bodyresult = null, Expression<Func<string>> bodyconclusion = null)
         {
-            var apiCallPath = String.Format("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2239,13 +2239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -2259,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -2271,25 +2271,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodybasedOn != null)
             {
-                body["basedOn"] = ExpressionConverter.ConvertO(bodybasedOn);
+                body["basedOn"] = CSharpExpressionConverter.ConvertToken(bodybasedOn);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -2297,7 +2297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2311,13 +2311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -2329,25 +2329,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyresult != null)
             {
-                body["result"] = ExpressionConverter.ConvertO(bodyresult);
+                body["result"] = CSharpExpressionConverter.ConvertToken(bodyresult);
                 bodypropCount++;
             }
 
             if (bodyconclusion != null)
             {
-                body["conclusion"] = ExpressionConverter.ConvertO(bodyconclusion);
+                body["conclusion"] = CSharpExpressionConverter.ConvertToken(bodyconclusion);
                 bodypropCount++;
             }
 
@@ -2366,11 +2366,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETMedicationResponse>(callPayload);
         }
 
@@ -2384,13 +2384,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2398,7 +2398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -2410,7 +2410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
@@ -2418,7 +2418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2430,7 +2430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -2438,7 +2438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var manufacturerObjectpropCount = 0;
             if (bodymanufacturerreference != null)
             {
-                manufacturerObject["reference"] = ExpressionConverter.ConvertO(bodymanufacturerreference);
+                manufacturerObject["reference"] = CSharpExpressionConverter.ConvertToken(bodymanufacturerreference);
                 manufacturerObjectpropCount++;
             }
 
@@ -2452,7 +2452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var formObjectpropCount = 0;
             if (bodyformcoding != null)
             {
-                formObject["coding"] = ExpressionConverter.ConvertO(bodyformcoding);
+                formObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyformcoding);
                 formObjectpropCount++;
             }
 
@@ -2464,7 +2464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyingredient != null)
             {
-                body["ingredient"] = ExpressionConverter.ConvertO(bodyingredient);
+                body["ingredient"] = CSharpExpressionConverter.ConvertToken(bodyingredient);
                 bodypropCount++;
             }
 
@@ -2472,13 +2472,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var batchObjectpropCount = 0;
             if (bodybatchlotNumber != null)
             {
-                batchObject["lotNumber"] = ExpressionConverter.ConvertO(bodybatchlotNumber);
+                batchObject["lotNumber"] = CSharpExpressionConverter.ConvertToken(bodybatchlotNumber);
                 batchObjectpropCount++;
             }
 
             if (bodybatchexpirationDate != null)
             {
-                batchObject["expirationDate"] = ExpressionConverter.ConvertO(bodybatchexpirationDate);
+                batchObject["expirationDate"] = CSharpExpressionConverter.ConvertToken(bodybatchexpirationDate);
                 batchObjectpropCount++;
             }
 
@@ -2499,33 +2499,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationIDResponse> GETMedicationID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Medication/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETMedicationIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEMedicationIDResponse> DELETEMedicationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem2[]>> bodycontained = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymanufacturerreference = null, Expression<Func<bodyformcodingInputItem[]>> bodyformcoding = null, Expression<Func<bodyingredientInputItem[]>> bodyingredient = null, Expression<Func<string>> bodybatchlotNumber = null, Expression<Func<string>> bodybatchexpirationDate = null)
         {
-            var apiCallPath = String.Format("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Medication/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2533,13 +2533,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -2553,7 +2553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -2565,7 +2565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
@@ -2573,7 +2573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2585,7 +2585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -2593,7 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var manufacturerObjectpropCount = 0;
             if (bodymanufacturerreference != null)
             {
-                manufacturerObject["reference"] = ExpressionConverter.ConvertO(bodymanufacturerreference);
+                manufacturerObject["reference"] = CSharpExpressionConverter.ConvertToken(bodymanufacturerreference);
                 manufacturerObjectpropCount++;
             }
 
@@ -2607,7 +2607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var formObjectpropCount = 0;
             if (bodyformcoding != null)
             {
-                formObject["coding"] = ExpressionConverter.ConvertO(bodyformcoding);
+                formObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyformcoding);
                 formObjectpropCount++;
             }
 
@@ -2619,7 +2619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyingredient != null)
             {
-                body["ingredient"] = ExpressionConverter.ConvertO(bodyingredient);
+                body["ingredient"] = CSharpExpressionConverter.ConvertToken(bodyingredient);
                 bodypropCount++;
             }
 
@@ -2627,13 +2627,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var batchObjectpropCount = 0;
             if (bodybatchlotNumber != null)
             {
-                batchObject["lotNumber"] = ExpressionConverter.ConvertO(bodybatchlotNumber);
+                batchObject["lotNumber"] = CSharpExpressionConverter.ConvertToken(bodybatchlotNumber);
                 batchObjectpropCount++;
             }
 
             if (bodybatchexpirationDate != null)
             {
-                batchObject["expirationDate"] = ExpressionConverter.ConvertO(bodybatchexpirationDate);
+                batchObject["expirationDate"] = CSharpExpressionConverter.ConvertToken(bodybatchexpirationDate);
                 batchObjectpropCount++;
             }
 
@@ -2654,20 +2654,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationIDResponse> PUTMedicationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodycontainedInputItem2[]>> bodycontained = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymanufacturerreference = null, Expression<Func<bodyformcodingInputItem[]>> bodyformcoding = null, Expression<Func<bodyingredientInputItem[]>> bodyingredient = null, Expression<Func<string>> bodybatchlotNumber = null, Expression<Func<string>> bodybatchexpirationDate = null)
         {
-            var apiCallPath = String.Format("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Medication/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2675,13 +2675,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
             if (bodytextdiv != null)
             {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
+                textObject["div"] = CSharpExpressionConverter.ConvertToken(bodytextdiv);
                 textObjectpropCount++;
             }
 
@@ -2693,7 +2693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
@@ -2701,7 +2701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
@@ -2713,7 +2713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -2721,7 +2721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var manufacturerObjectpropCount = 0;
             if (bodymanufacturerreference != null)
             {
-                manufacturerObject["reference"] = ExpressionConverter.ConvertO(bodymanufacturerreference);
+                manufacturerObject["reference"] = CSharpExpressionConverter.ConvertToken(bodymanufacturerreference);
                 manufacturerObjectpropCount++;
             }
 
@@ -2735,7 +2735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var formObjectpropCount = 0;
             if (bodyformcoding != null)
             {
-                formObject["coding"] = ExpressionConverter.ConvertO(bodyformcoding);
+                formObject["coding"] = CSharpExpressionConverter.ConvertToken(bodyformcoding);
                 formObjectpropCount++;
             }
 
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyingredient != null)
             {
-                body["ingredient"] = ExpressionConverter.ConvertO(bodyingredient);
+                body["ingredient"] = CSharpExpressionConverter.ConvertToken(bodyingredient);
                 bodypropCount++;
             }
 
@@ -2755,13 +2755,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var batchObjectpropCount = 0;
             if (bodybatchlotNumber != null)
             {
-                batchObject["lotNumber"] = ExpressionConverter.ConvertO(bodybatchlotNumber);
+                batchObject["lotNumber"] = CSharpExpressionConverter.ConvertToken(bodybatchlotNumber);
                 batchObjectpropCount++;
             }
 
             if (bodybatchexpirationDate != null)
             {
-                batchObject["expirationDate"] = ExpressionConverter.ConvertO(bodybatchexpirationDate);
+                batchObject["expirationDate"] = CSharpExpressionConverter.ConvertToken(bodybatchexpirationDate);
                 batchObjectpropCount++;
             }
 
@@ -2786,11 +2786,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETMedicationRequestResponse>(callPayload);
         }
 
@@ -2804,13 +2804,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -2818,7 +2818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -2830,25 +2830,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
@@ -2856,7 +2856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationCodeableConceptObjectpropCount = 0;
             if (bodymedicationCodeableConceptcoding != null)
             {
-                medicationCodeableConceptObject["coding"] = ExpressionConverter.ConvertO(bodymedicationCodeableConceptcoding);
+                medicationCodeableConceptObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymedicationCodeableConceptcoding);
                 medicationCodeableConceptObjectpropCount++;
             }
 
@@ -2870,13 +2870,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -2890,13 +2890,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var encounterObjectpropCount = 0;
             if (bodyencounterreference != null)
             {
-                encounterObject["reference"] = ExpressionConverter.ConvertO(bodyencounterreference);
+                encounterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyencounterreference);
                 encounterObjectpropCount++;
             }
 
             if (bodyencounterdisplay != null)
             {
-                encounterObject["display"] = ExpressionConverter.ConvertO(bodyencounterdisplay);
+                encounterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyencounterdisplay);
                 encounterObjectpropCount++;
             }
 
@@ -2908,13 +2908,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysupportingInformation != null)
             {
-                body["supportingInformation"] = ExpressionConverter.ConvertO(bodysupportingInformation);
+                body["supportingInformation"] = CSharpExpressionConverter.ConvertToken(bodysupportingInformation);
                 bodypropCount++;
             }
 
             if (bodyauthoredOn != null)
             {
-                body["authoredOn"] = ExpressionConverter.ConvertO(bodyauthoredOn);
+                body["authoredOn"] = CSharpExpressionConverter.ConvertToken(bodyauthoredOn);
                 bodypropCount++;
             }
 
@@ -2922,13 +2922,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var requesterObjectpropCount = 0;
             if (bodyrequesterreference != null)
             {
-                requesterObject["reference"] = ExpressionConverter.ConvertO(bodyrequesterreference);
+                requesterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrequesterreference);
                 requesterObjectpropCount++;
             }
 
             if (bodyrequesterdisplay != null)
             {
-                requesterObject["display"] = ExpressionConverter.ConvertO(bodyrequesterdisplay);
+                requesterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrequesterdisplay);
                 requesterObjectpropCount++;
             }
 
@@ -2940,19 +2940,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosageInstruction != null)
             {
-                body["dosageInstruction"] = ExpressionConverter.ConvertO(bodydosageInstruction);
+                body["dosageInstruction"] = CSharpExpressionConverter.ConvertToken(bodydosageInstruction);
                 bodypropCount++;
             }
 
@@ -2962,13 +2962,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var validityPeriodObjectpropCount = 0;
             if (bodydispenseRequestvalidityPeriodstart != null)
             {
-                validityPeriodObject["start"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodstart);
+                validityPeriodObject["start"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodstart);
                 validityPeriodObjectpropCount++;
             }
 
             if (bodydispenseRequestvalidityPeriodend != null)
             {
-                validityPeriodObject["end"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodend);
+                validityPeriodObject["end"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodend);
                 validityPeriodObjectpropCount++;
             }
 
@@ -2980,7 +2980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydispenseRequestnumberOfRepeatsAllowed != null)
             {
-                dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(bodydispenseRequestnumberOfRepeatsAllowed);
+                dispenseRequestObject["numberOfRepeatsAllowed"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestnumberOfRepeatsAllowed);
                 dispenseRequestObjectpropCount++;
             }
 
@@ -2988,25 +2988,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var quantityObjectpropCount = 0;
             if (bodydispenseRequestquantityvalue != null)
             {
-                quantityObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityvalue);
+                quantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityvalue);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantityunit != null)
             {
-                quantityObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityunit);
+                quantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityunit);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitysystem != null)
             {
-                quantityObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitysystem);
+                quantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitysystem);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitycode != null)
             {
-                quantityObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitycode);
+                quantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitycode);
                 quantityObjectpropCount++;
             }
 
@@ -3020,25 +3020,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var expectedSupplyDurationObjectpropCount = 0;
             if (bodydispenseRequestexpectedSupplyDurationvalue != null)
             {
-                expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationvalue);
+                expectedSupplyDurationObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationvalue);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationunit != null)
             {
-                expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationunit);
+                expectedSupplyDurationObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationunit);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationsystem != null)
             {
-                expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationsystem);
+                expectedSupplyDurationObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationsystem);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationcode != null)
             {
-                expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationcode);
+                expectedSupplyDurationObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationcode);
                 expectedSupplyDurationObjectpropCount++;
             }
 
@@ -3058,7 +3058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var substitutionObjectpropCount = 0;
             if (bodysubstitutionallowedBoolean != null)
             {
-                substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(bodysubstitutionallowedBoolean);
+                substitutionObject["allowedBoolean"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionallowedBoolean);
                 substitutionObjectpropCount++;
             }
 
@@ -3066,7 +3066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var reasonObjectpropCount = 0;
             if (bodysubstitutionreasoncoding != null)
             {
-                reasonObject["coding"] = ExpressionConverter.ConvertO(bodysubstitutionreasoncoding);
+                reasonObject["coding"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionreasoncoding);
                 reasonObjectpropCount++;
             }
 
@@ -3093,33 +3093,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationRequestIDResponse> GETMedicationRequestID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETMedicationRequestIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEMedicationRequestIDResponse> DELETEMedicationRequestID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem22[]>> bodycontained = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodymedicationReferencereference = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyencounterdisplay = null, Expression<Func<bodysupportingInformationInputItem[]>> bodysupportingInformation = null, Expression<Func<string>> bodyauthoredOn = null, Expression<Func<string>> bodyrequesterreference = null, Expression<Func<string>> bodyrequesterdisplay = null, Expression<Func<bodyreasonCodeInputItem[]>> bodyreasonCode = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInstructionInputItem[]>> bodydosageInstruction = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodstart = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodend = null, Expression<Func<int>> bodydispenseRequestnumberOfRepeatsAllowed = null, Expression<Func<int>> bodydispenseRequestquantityvalue = null, Expression<Func<string>> bodydispenseRequestquantityunit = null, Expression<Func<string>> bodydispenseRequestquantitysystem = null, Expression<Func<string>> bodydispenseRequestquantitycode = null, Expression<Func<int>> bodydispenseRequestexpectedSupplyDurationvalue = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationunit = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationsystem = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationcode = null, Expression<Func<bool>> bodysubstitutionallowedBoolean = null, Expression<Func<bodysubstitutionreasoncodingInputItem[]>> bodysubstitutionreasoncoding = null)
         {
-            var apiCallPath = String.Format("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -3127,7 +3127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -3139,25 +3139,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
@@ -3165,7 +3165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationReferenceObjectpropCount = 0;
             if (bodymedicationReferencereference != null)
             {
-                medicationReferenceObject["reference"] = ExpressionConverter.ConvertO(bodymedicationReferencereference);
+                medicationReferenceObject["reference"] = CSharpExpressionConverter.ConvertToken(bodymedicationReferencereference);
                 medicationReferenceObjectpropCount++;
             }
 
@@ -3179,13 +3179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -3199,13 +3199,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var encounterObjectpropCount = 0;
             if (bodyencounterreference != null)
             {
-                encounterObject["reference"] = ExpressionConverter.ConvertO(bodyencounterreference);
+                encounterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyencounterreference);
                 encounterObjectpropCount++;
             }
 
             if (bodyencounterdisplay != null)
             {
-                encounterObject["display"] = ExpressionConverter.ConvertO(bodyencounterdisplay);
+                encounterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyencounterdisplay);
                 encounterObjectpropCount++;
             }
 
@@ -3217,13 +3217,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysupportingInformation != null)
             {
-                body["supportingInformation"] = ExpressionConverter.ConvertO(bodysupportingInformation);
+                body["supportingInformation"] = CSharpExpressionConverter.ConvertToken(bodysupportingInformation);
                 bodypropCount++;
             }
 
             if (bodyauthoredOn != null)
             {
-                body["authoredOn"] = ExpressionConverter.ConvertO(bodyauthoredOn);
+                body["authoredOn"] = CSharpExpressionConverter.ConvertToken(bodyauthoredOn);
                 bodypropCount++;
             }
 
@@ -3231,13 +3231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var requesterObjectpropCount = 0;
             if (bodyrequesterreference != null)
             {
-                requesterObject["reference"] = ExpressionConverter.ConvertO(bodyrequesterreference);
+                requesterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrequesterreference);
                 requesterObjectpropCount++;
             }
 
             if (bodyrequesterdisplay != null)
             {
-                requesterObject["display"] = ExpressionConverter.ConvertO(bodyrequesterdisplay);
+                requesterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrequesterdisplay);
                 requesterObjectpropCount++;
             }
 
@@ -3249,19 +3249,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosageInstruction != null)
             {
-                body["dosageInstruction"] = ExpressionConverter.ConvertO(bodydosageInstruction);
+                body["dosageInstruction"] = CSharpExpressionConverter.ConvertToken(bodydosageInstruction);
                 bodypropCount++;
             }
 
@@ -3271,13 +3271,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var validityPeriodObjectpropCount = 0;
             if (bodydispenseRequestvalidityPeriodstart != null)
             {
-                validityPeriodObject["start"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodstart);
+                validityPeriodObject["start"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodstart);
                 validityPeriodObjectpropCount++;
             }
 
             if (bodydispenseRequestvalidityPeriodend != null)
             {
-                validityPeriodObject["end"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodend);
+                validityPeriodObject["end"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodend);
                 validityPeriodObjectpropCount++;
             }
 
@@ -3289,7 +3289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydispenseRequestnumberOfRepeatsAllowed != null)
             {
-                dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(bodydispenseRequestnumberOfRepeatsAllowed);
+                dispenseRequestObject["numberOfRepeatsAllowed"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestnumberOfRepeatsAllowed);
                 dispenseRequestObjectpropCount++;
             }
 
@@ -3297,25 +3297,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var quantityObjectpropCount = 0;
             if (bodydispenseRequestquantityvalue != null)
             {
-                quantityObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityvalue);
+                quantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityvalue);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantityunit != null)
             {
-                quantityObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityunit);
+                quantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityunit);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitysystem != null)
             {
-                quantityObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitysystem);
+                quantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitysystem);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitycode != null)
             {
-                quantityObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitycode);
+                quantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitycode);
                 quantityObjectpropCount++;
             }
 
@@ -3329,25 +3329,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var expectedSupplyDurationObjectpropCount = 0;
             if (bodydispenseRequestexpectedSupplyDurationvalue != null)
             {
-                expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationvalue);
+                expectedSupplyDurationObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationvalue);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationunit != null)
             {
-                expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationunit);
+                expectedSupplyDurationObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationunit);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationsystem != null)
             {
-                expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationsystem);
+                expectedSupplyDurationObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationsystem);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationcode != null)
             {
-                expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationcode);
+                expectedSupplyDurationObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationcode);
                 expectedSupplyDurationObjectpropCount++;
             }
 
@@ -3367,7 +3367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var substitutionObjectpropCount = 0;
             if (bodysubstitutionallowedBoolean != null)
             {
-                substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(bodysubstitutionallowedBoolean);
+                substitutionObject["allowedBoolean"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionallowedBoolean);
                 substitutionObjectpropCount++;
             }
 
@@ -3375,7 +3375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var reasonObjectpropCount = 0;
             if (bodysubstitutionreasoncoding != null)
             {
-                reasonObject["coding"] = ExpressionConverter.ConvertO(bodysubstitutionreasoncoding);
+                reasonObject["coding"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionreasoncoding);
                 reasonObjectpropCount++;
             }
 
@@ -3402,20 +3402,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationRequestIDResponse> PUTMedicationRequestID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem22[]>> bodycontained = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodymedicationReferencereference = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyencounterdisplay = null, Expression<Func<bodysupportingInformationInputItem[]>> bodysupportingInformation = null, Expression<Func<string>> bodyauthoredOn = null, Expression<Func<string>> bodyrequesterreference = null, Expression<Func<string>> bodyrequesterdisplay = null, Expression<Func<bodyreasonCodeInputItem[]>> bodyreasonCode = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInstructionInputItem[]>> bodydosageInstruction = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodstart = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodend = null, Expression<Func<int>> bodydispenseRequestnumberOfRepeatsAllowed = null, Expression<Func<int>> bodydispenseRequestquantityvalue = null, Expression<Func<string>> bodydispenseRequestquantityunit = null, Expression<Func<string>> bodydispenseRequestquantitysystem = null, Expression<Func<string>> bodydispenseRequestquantitycode = null, Expression<Func<int>> bodydispenseRequestexpectedSupplyDurationvalue = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationunit = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationsystem = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationcode = null, Expression<Func<bool>> bodysubstitutionallowedBoolean = null, Expression<Func<bodysubstitutionreasoncodingInputItem[]>> bodysubstitutionreasoncoding = null)
         {
-            var apiCallPath = String.Format("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -3423,7 +3423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -3435,25 +3435,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodycontained != null)
             {
-                body["contained"] = ExpressionConverter.ConvertO(bodycontained);
+                body["contained"] = CSharpExpressionConverter.ConvertToken(bodycontained);
                 bodypropCount++;
             }
 
             if (bodyidentifier != null)
             {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
+                body["identifier"] = CSharpExpressionConverter.ConvertToken(bodyidentifier);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyintent != null)
             {
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
             }
 
@@ -3461,7 +3461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationReferenceObjectpropCount = 0;
             if (bodymedicationReferencereference != null)
             {
-                medicationReferenceObject["reference"] = ExpressionConverter.ConvertO(bodymedicationReferencereference);
+                medicationReferenceObject["reference"] = CSharpExpressionConverter.ConvertToken(bodymedicationReferencereference);
                 medicationReferenceObjectpropCount++;
             }
 
@@ -3475,13 +3475,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -3495,13 +3495,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var encounterObjectpropCount = 0;
             if (bodyencounterreference != null)
             {
-                encounterObject["reference"] = ExpressionConverter.ConvertO(bodyencounterreference);
+                encounterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyencounterreference);
                 encounterObjectpropCount++;
             }
 
             if (bodyencounterdisplay != null)
             {
-                encounterObject["display"] = ExpressionConverter.ConvertO(bodyencounterdisplay);
+                encounterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyencounterdisplay);
                 encounterObjectpropCount++;
             }
 
@@ -3513,13 +3513,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodysupportingInformation != null)
             {
-                body["supportingInformation"] = ExpressionConverter.ConvertO(bodysupportingInformation);
+                body["supportingInformation"] = CSharpExpressionConverter.ConvertToken(bodysupportingInformation);
                 bodypropCount++;
             }
 
             if (bodyauthoredOn != null)
             {
-                body["authoredOn"] = ExpressionConverter.ConvertO(bodyauthoredOn);
+                body["authoredOn"] = CSharpExpressionConverter.ConvertToken(bodyauthoredOn);
                 bodypropCount++;
             }
 
@@ -3527,13 +3527,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var requesterObjectpropCount = 0;
             if (bodyrequesterreference != null)
             {
-                requesterObject["reference"] = ExpressionConverter.ConvertO(bodyrequesterreference);
+                requesterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrequesterreference);
                 requesterObjectpropCount++;
             }
 
             if (bodyrequesterdisplay != null)
             {
-                requesterObject["display"] = ExpressionConverter.ConvertO(bodyrequesterdisplay);
+                requesterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrequesterdisplay);
                 requesterObjectpropCount++;
             }
 
@@ -3545,19 +3545,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosageInstruction != null)
             {
-                body["dosageInstruction"] = ExpressionConverter.ConvertO(bodydosageInstruction);
+                body["dosageInstruction"] = CSharpExpressionConverter.ConvertToken(bodydosageInstruction);
                 bodypropCount++;
             }
 
@@ -3567,13 +3567,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var validityPeriodObjectpropCount = 0;
             if (bodydispenseRequestvalidityPeriodstart != null)
             {
-                validityPeriodObject["start"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodstart);
+                validityPeriodObject["start"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodstart);
                 validityPeriodObjectpropCount++;
             }
 
             if (bodydispenseRequestvalidityPeriodend != null)
             {
-                validityPeriodObject["end"] = ExpressionConverter.ConvertO(bodydispenseRequestvalidityPeriodend);
+                validityPeriodObject["end"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestvalidityPeriodend);
                 validityPeriodObjectpropCount++;
             }
 
@@ -3585,7 +3585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodydispenseRequestnumberOfRepeatsAllowed != null)
             {
-                dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(bodydispenseRequestnumberOfRepeatsAllowed);
+                dispenseRequestObject["numberOfRepeatsAllowed"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestnumberOfRepeatsAllowed);
                 dispenseRequestObjectpropCount++;
             }
 
@@ -3593,25 +3593,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var quantityObjectpropCount = 0;
             if (bodydispenseRequestquantityvalue != null)
             {
-                quantityObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityvalue);
+                quantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityvalue);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantityunit != null)
             {
-                quantityObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestquantityunit);
+                quantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantityunit);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitysystem != null)
             {
-                quantityObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitysystem);
+                quantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitysystem);
                 quantityObjectpropCount++;
             }
 
             if (bodydispenseRequestquantitycode != null)
             {
-                quantityObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestquantitycode);
+                quantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestquantitycode);
                 quantityObjectpropCount++;
             }
 
@@ -3625,25 +3625,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var expectedSupplyDurationObjectpropCount = 0;
             if (bodydispenseRequestexpectedSupplyDurationvalue != null)
             {
-                expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationvalue);
+                expectedSupplyDurationObject["value"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationvalue);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationunit != null)
             {
-                expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationunit);
+                expectedSupplyDurationObject["unit"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationunit);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationsystem != null)
             {
-                expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationsystem);
+                expectedSupplyDurationObject["system"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationsystem);
                 expectedSupplyDurationObjectpropCount++;
             }
 
             if (bodydispenseRequestexpectedSupplyDurationcode != null)
             {
-                expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(bodydispenseRequestexpectedSupplyDurationcode);
+                expectedSupplyDurationObject["code"] = CSharpExpressionConverter.ConvertToken(bodydispenseRequestexpectedSupplyDurationcode);
                 expectedSupplyDurationObjectpropCount++;
             }
 
@@ -3663,7 +3663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var substitutionObjectpropCount = 0;
             if (bodysubstitutionallowedBoolean != null)
             {
-                substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(bodysubstitutionallowedBoolean);
+                substitutionObject["allowedBoolean"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionallowedBoolean);
                 substitutionObjectpropCount++;
             }
 
@@ -3671,7 +3671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var reasonObjectpropCount = 0;
             if (bodysubstitutionreasoncoding != null)
             {
-                reasonObject["coding"] = ExpressionConverter.ConvertO(bodysubstitutionreasoncoding);
+                reasonObject["coding"] = CSharpExpressionConverter.ConvertToken(bodysubstitutionreasoncoding);
                 reasonObjectpropCount++;
             }
 
@@ -3702,11 +3702,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETMedicationStatementResponse>(callPayload);
         }
 
@@ -3720,13 +3720,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -3734,7 +3734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -3746,7 +3746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -3754,7 +3754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationCodeableConceptObjectpropCount = 0;
             if (bodymedicationCodeableConcepttext != null)
             {
-                medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(bodymedicationCodeableConcepttext);
+                medicationCodeableConceptObject["text"] = CSharpExpressionConverter.ConvertToken(bodymedicationCodeableConcepttext);
                 medicationCodeableConceptObjectpropCount++;
             }
 
@@ -3768,13 +3768,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -3786,13 +3786,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyeffectiveDateTime != null)
             {
-                body["effectiveDateTime"] = ExpressionConverter.ConvertO(bodyeffectiveDateTime);
+                body["effectiveDateTime"] = CSharpExpressionConverter.ConvertToken(bodyeffectiveDateTime);
                 bodypropCount++;
             }
 
             if (bodydateAsserted != null)
             {
-                body["dateAsserted"] = ExpressionConverter.ConvertO(bodydateAsserted);
+                body["dateAsserted"] = CSharpExpressionConverter.ConvertToken(bodydateAsserted);
                 bodypropCount++;
             }
 
@@ -3800,13 +3800,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var informationSourceObjectpropCount = 0;
             if (bodyinformationSourcereference != null)
             {
-                informationSourceObject["reference"] = ExpressionConverter.ConvertO(bodyinformationSourcereference);
+                informationSourceObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcereference);
                 informationSourceObjectpropCount++;
             }
 
             if (bodyinformationSourcedisplay != null)
             {
-                informationSourceObject["display"] = ExpressionConverter.ConvertO(bodyinformationSourcedisplay);
+                informationSourceObject["display"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcedisplay);
                 informationSourceObjectpropCount++;
             }
 
@@ -3818,19 +3818,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonReference != null)
             {
-                body["reasonReference"] = ExpressionConverter.ConvertO(bodyreasonReference);
+                body["reasonReference"] = CSharpExpressionConverter.ConvertToken(bodyreasonReference);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosage != null)
             {
-                body["dosage"] = ExpressionConverter.ConvertO(bodydosage);
+                body["dosage"] = CSharpExpressionConverter.ConvertToken(bodydosage);
                 bodypropCount++;
             }
 
@@ -3845,33 +3845,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationStatementIDResponse> GETMedicationStatementID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETMedicationStatementIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IWorkflowAction DELETEMedicationStatementID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymedicationCodeableConcepttext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyeffectiveDateTime = null, Expression<Func<string>> bodydateAsserted = null, Expression<Func<string>> bodyinformationSourcereference = null, Expression<Func<string>> bodyinformationSourcedisplay = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInputItem[]>> bodydosage = null)
         {
-            var apiCallPath = String.Format("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -3879,7 +3879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -3891,7 +3891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -3899,7 +3899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationCodeableConceptObjectpropCount = 0;
             if (bodymedicationCodeableConcepttext != null)
             {
-                medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(bodymedicationCodeableConcepttext);
+                medicationCodeableConceptObject["text"] = CSharpExpressionConverter.ConvertToken(bodymedicationCodeableConcepttext);
                 medicationCodeableConceptObjectpropCount++;
             }
 
@@ -3913,13 +3913,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -3931,13 +3931,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyeffectiveDateTime != null)
             {
-                body["effectiveDateTime"] = ExpressionConverter.ConvertO(bodyeffectiveDateTime);
+                body["effectiveDateTime"] = CSharpExpressionConverter.ConvertToken(bodyeffectiveDateTime);
                 bodypropCount++;
             }
 
             if (bodydateAsserted != null)
             {
-                body["dateAsserted"] = ExpressionConverter.ConvertO(bodydateAsserted);
+                body["dateAsserted"] = CSharpExpressionConverter.ConvertToken(bodydateAsserted);
                 bodypropCount++;
             }
 
@@ -3945,13 +3945,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var informationSourceObjectpropCount = 0;
             if (bodyinformationSourcereference != null)
             {
-                informationSourceObject["reference"] = ExpressionConverter.ConvertO(bodyinformationSourcereference);
+                informationSourceObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcereference);
                 informationSourceObjectpropCount++;
             }
 
             if (bodyinformationSourcedisplay != null)
             {
-                informationSourceObject["display"] = ExpressionConverter.ConvertO(bodyinformationSourcedisplay);
+                informationSourceObject["display"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcedisplay);
                 informationSourceObjectpropCount++;
             }
 
@@ -3963,19 +3963,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonReference != null)
             {
-                body["reasonReference"] = ExpressionConverter.ConvertO(bodyreasonReference);
+                body["reasonReference"] = CSharpExpressionConverter.ConvertToken(bodyreasonReference);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosage != null)
             {
-                body["dosage"] = ExpressionConverter.ConvertO(bodydosage);
+                body["dosage"] = CSharpExpressionConverter.ConvertToken(bodydosage);
                 bodypropCount++;
             }
 
@@ -3990,20 +3990,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationStatementIDResponse> PUTMedicationStatementID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymedicationCodeableConcepttext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyeffectiveDateTime = null, Expression<Func<string>> bodydateAsserted = null, Expression<Func<string>> bodyinformationSourcereference = null, Expression<Func<string>> bodyinformationSourcedisplay = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInputItem[]>> bodydosage = null)
         {
-            var apiCallPath = String.Format("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4011,7 +4011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4023,7 +4023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -4031,7 +4031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var medicationCodeableConceptObjectpropCount = 0;
             if (bodymedicationCodeableConcepttext != null)
             {
-                medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(bodymedicationCodeableConcepttext);
+                medicationCodeableConceptObject["text"] = CSharpExpressionConverter.ConvertToken(bodymedicationCodeableConcepttext);
                 medicationCodeableConceptObjectpropCount++;
             }
 
@@ -4045,13 +4045,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -4063,13 +4063,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyeffectiveDateTime != null)
             {
-                body["effectiveDateTime"] = ExpressionConverter.ConvertO(bodyeffectiveDateTime);
+                body["effectiveDateTime"] = CSharpExpressionConverter.ConvertToken(bodyeffectiveDateTime);
                 bodypropCount++;
             }
 
             if (bodydateAsserted != null)
             {
-                body["dateAsserted"] = ExpressionConverter.ConvertO(bodydateAsserted);
+                body["dateAsserted"] = CSharpExpressionConverter.ConvertToken(bodydateAsserted);
                 bodypropCount++;
             }
 
@@ -4077,13 +4077,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var informationSourceObjectpropCount = 0;
             if (bodyinformationSourcereference != null)
             {
-                informationSourceObject["reference"] = ExpressionConverter.ConvertO(bodyinformationSourcereference);
+                informationSourceObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcereference);
                 informationSourceObjectpropCount++;
             }
 
             if (bodyinformationSourcedisplay != null)
             {
-                informationSourceObject["display"] = ExpressionConverter.ConvertO(bodyinformationSourcedisplay);
+                informationSourceObject["display"] = CSharpExpressionConverter.ConvertToken(bodyinformationSourcedisplay);
                 informationSourceObjectpropCount++;
             }
 
@@ -4095,19 +4095,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreasonReference != null)
             {
-                body["reasonReference"] = ExpressionConverter.ConvertO(bodyreasonReference);
+                body["reasonReference"] = CSharpExpressionConverter.ConvertToken(bodyreasonReference);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
             if (bodydosage != null)
             {
-                body["dosage"] = ExpressionConverter.ConvertO(bodydosage);
+                body["dosage"] = CSharpExpressionConverter.ConvertToken(bodydosage);
                 bodypropCount++;
             }
 
@@ -4126,13 +4126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             if (encounter != null)
-                callPayload.Queries["encounter"] = ExpressionConverter.Convert(encounter);
+                callPayload.Queries["encounter"] = CSharpExpressionConverter.ConvertO(encounter);
             return new ApiConnectionAction<GETObservationResponse>(callPayload);
         }
 
@@ -4146,13 +4146,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4160,7 +4160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4172,13 +4172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -4186,13 +4186,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -4206,13 +4206,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -4226,7 +4226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var encounterObjectpropCount = 0;
             if (bodyencounterreference != null)
             {
-                encounterObject["reference"] = ExpressionConverter.ConvertO(bodyencounterreference);
+                encounterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyencounterreference);
                 encounterObjectpropCount++;
             }
 
@@ -4238,13 +4238,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
@@ -4252,25 +4252,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var valueQuantityObjectpropCount = 0;
             if (bodyvalueQuantityvalue != null)
             {
-                valueQuantityObject["value"] = ExpressionConverter.ConvertO(bodyvalueQuantityvalue);
+                valueQuantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityvalue);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantityunit != null)
             {
-                valueQuantityObject["unit"] = ExpressionConverter.ConvertO(bodyvalueQuantityunit);
+                valueQuantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityunit);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitysystem != null)
             {
-                valueQuantityObject["system"] = ExpressionConverter.ConvertO(bodyvalueQuantitysystem);
+                valueQuantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitysystem);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitycode != null)
             {
-                valueQuantityObject["code"] = ExpressionConverter.ConvertO(bodyvalueQuantitycode);
+                valueQuantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitycode);
                 valueQuantityObjectpropCount++;
             }
 
@@ -4282,7 +4282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyinterpretation != null)
             {
-                body["interpretation"] = ExpressionConverter.ConvertO(bodyinterpretation);
+                body["interpretation"] = CSharpExpressionConverter.ConvertToken(bodyinterpretation);
                 bodypropCount++;
             }
 
@@ -4290,7 +4290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodySiteObjectpropCount = 0;
             if (bodybodySitecoding != null)
             {
-                bodySiteObject["coding"] = ExpressionConverter.ConvertO(bodybodySitecoding);
+                bodySiteObject["coding"] = CSharpExpressionConverter.ConvertToken(bodybodySitecoding);
                 bodySiteObjectpropCount++;
             }
 
@@ -4304,7 +4304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -4316,7 +4316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreferenceRange != null)
             {
-                body["referenceRange"] = ExpressionConverter.ConvertO(bodyreferenceRange);
+                body["referenceRange"] = CSharpExpressionConverter.ConvertToken(bodyreferenceRange);
                 bodypropCount++;
             }
 
@@ -4331,33 +4331,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETObservationIDResponse> GETObservationID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Observation/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETObservationIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEObservationIDResponse> DELETEObservationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem2[]>> bodyperformer = null, Expression<Func<int>> bodyvalueQuantityvalue = null, Expression<Func<string>> bodyvalueQuantityunit = null, Expression<Func<string>> bodyvalueQuantitysystem = null, Expression<Func<string>> bodyvalueQuantitycode = null, Expression<Func<bodyinterpretationInputItem[]>> bodyinterpretation = null, Expression<Func<bodybodySitecodingInputItem[]>> bodybodySitecoding = null, Expression<Func<bodymethodcodingInputItem[]>> bodymethodcoding = null, Expression<Func<bodyreferenceRangeInputItem[]>> bodyreferenceRange = null)
         {
-            var apiCallPath = String.Format("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Observation/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4365,7 +4365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4377,13 +4377,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -4391,13 +4391,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -4411,13 +4411,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -4429,13 +4429,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
@@ -4443,25 +4443,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var valueQuantityObjectpropCount = 0;
             if (bodyvalueQuantityvalue != null)
             {
-                valueQuantityObject["value"] = ExpressionConverter.ConvertO(bodyvalueQuantityvalue);
+                valueQuantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityvalue);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantityunit != null)
             {
-                valueQuantityObject["unit"] = ExpressionConverter.ConvertO(bodyvalueQuantityunit);
+                valueQuantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityunit);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitysystem != null)
             {
-                valueQuantityObject["system"] = ExpressionConverter.ConvertO(bodyvalueQuantitysystem);
+                valueQuantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitysystem);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitycode != null)
             {
-                valueQuantityObject["code"] = ExpressionConverter.ConvertO(bodyvalueQuantitycode);
+                valueQuantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitycode);
                 valueQuantityObjectpropCount++;
             }
 
@@ -4473,7 +4473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyinterpretation != null)
             {
-                body["interpretation"] = ExpressionConverter.ConvertO(bodyinterpretation);
+                body["interpretation"] = CSharpExpressionConverter.ConvertToken(bodyinterpretation);
                 bodypropCount++;
             }
 
@@ -4481,7 +4481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodySiteObjectpropCount = 0;
             if (bodybodySitecoding != null)
             {
-                bodySiteObject["coding"] = ExpressionConverter.ConvertO(bodybodySitecoding);
+                bodySiteObject["coding"] = CSharpExpressionConverter.ConvertToken(bodybodySitecoding);
                 bodySiteObjectpropCount++;
             }
 
@@ -4495,7 +4495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -4507,7 +4507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreferenceRange != null)
             {
-                body["referenceRange"] = ExpressionConverter.ConvertO(bodyreferenceRange);
+                body["referenceRange"] = CSharpExpressionConverter.ConvertToken(bodyreferenceRange);
                 bodypropCount++;
             }
 
@@ -4522,20 +4522,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTObservationIDResponse> PUTObservationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem2[]>> bodyperformer = null, Expression<Func<int>> bodyvalueQuantityvalue = null, Expression<Func<string>> bodyvalueQuantityunit = null, Expression<Func<string>> bodyvalueQuantitysystem = null, Expression<Func<string>> bodyvalueQuantitycode = null, Expression<Func<bodyinterpretationInputItem[]>> bodyinterpretation = null, Expression<Func<bodybodySitecodingInputItem[]>> bodybodySitecoding = null, Expression<Func<bodymethodcodingInputItem[]>> bodymethodcoding = null, Expression<Func<bodyreferenceRangeInputItem[]>> bodyreferenceRange = null)
         {
-            var apiCallPath = String.Format("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Observation/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4543,7 +4543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4555,13 +4555,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodycategory != null)
             {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
                 bodypropCount++;
             }
 
@@ -4569,13 +4569,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -4589,13 +4589,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
             if (bodysubjectdisplay != null)
             {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
+                subjectObject["display"] = CSharpExpressionConverter.ConvertToken(bodysubjectdisplay);
                 subjectObjectpropCount++;
             }
 
@@ -4607,13 +4607,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyissued != null)
             {
-                body["issued"] = ExpressionConverter.ConvertO(bodyissued);
+                body["issued"] = CSharpExpressionConverter.ConvertToken(bodyissued);
                 bodypropCount++;
             }
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
@@ -4621,25 +4621,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var valueQuantityObjectpropCount = 0;
             if (bodyvalueQuantityvalue != null)
             {
-                valueQuantityObject["value"] = ExpressionConverter.ConvertO(bodyvalueQuantityvalue);
+                valueQuantityObject["value"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityvalue);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantityunit != null)
             {
-                valueQuantityObject["unit"] = ExpressionConverter.ConvertO(bodyvalueQuantityunit);
+                valueQuantityObject["unit"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantityunit);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitysystem != null)
             {
-                valueQuantityObject["system"] = ExpressionConverter.ConvertO(bodyvalueQuantitysystem);
+                valueQuantityObject["system"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitysystem);
                 valueQuantityObjectpropCount++;
             }
 
             if (bodyvalueQuantitycode != null)
             {
-                valueQuantityObject["code"] = ExpressionConverter.ConvertO(bodyvalueQuantitycode);
+                valueQuantityObject["code"] = CSharpExpressionConverter.ConvertToken(bodyvalueQuantitycode);
                 valueQuantityObjectpropCount++;
             }
 
@@ -4651,7 +4651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyinterpretation != null)
             {
-                body["interpretation"] = ExpressionConverter.ConvertO(bodyinterpretation);
+                body["interpretation"] = CSharpExpressionConverter.ConvertToken(bodyinterpretation);
                 bodypropCount++;
             }
 
@@ -4659,7 +4659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodySiteObjectpropCount = 0;
             if (bodybodySitecoding != null)
             {
-                bodySiteObject["coding"] = ExpressionConverter.ConvertO(bodybodySitecoding);
+                bodySiteObject["coding"] = CSharpExpressionConverter.ConvertToken(bodybodySitecoding);
                 bodySiteObjectpropCount++;
             }
 
@@ -4673,7 +4673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -4685,7 +4685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyreferenceRange != null)
             {
-                body["referenceRange"] = ExpressionConverter.ConvertO(bodyreferenceRange);
+                body["referenceRange"] = CSharpExpressionConverter.ConvertToken(bodyreferenceRange);
                 bodypropCount++;
             }
 
@@ -4704,11 +4704,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETProcedureResponse>(callPayload);
         }
 
@@ -4722,13 +4722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4736,7 +4736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4748,7 +4748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -4756,13 +4756,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -4776,7 +4776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -4788,7 +4788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformedDateTime != null)
             {
-                body["performedDateTime"] = ExpressionConverter.ConvertO(bodyperformedDateTime);
+                body["performedDateTime"] = CSharpExpressionConverter.ConvertToken(bodyperformedDateTime);
                 bodypropCount++;
             }
 
@@ -4796,13 +4796,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
             if (bodyrecorderdisplay != null)
             {
-                recorderObject["display"] = ExpressionConverter.ConvertO(bodyrecorderdisplay);
+                recorderObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrecorderdisplay);
                 recorderObjectpropCount++;
             }
 
@@ -4816,13 +4816,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var asserterObjectpropCount = 0;
             if (bodyasserterreference != null)
             {
-                asserterObject["reference"] = ExpressionConverter.ConvertO(bodyasserterreference);
+                asserterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyasserterreference);
                 asserterObjectpropCount++;
             }
 
             if (bodyasserterdisplay != null)
             {
-                asserterObject["display"] = ExpressionConverter.ConvertO(bodyasserterdisplay);
+                asserterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyasserterdisplay);
                 asserterObjectpropCount++;
             }
 
@@ -4834,25 +4834,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodyfollowUp != null)
             {
-                body["followUp"] = ExpressionConverter.ConvertO(bodyfollowUp);
+                body["followUp"] = CSharpExpressionConverter.ConvertToken(bodyfollowUp);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -4867,33 +4867,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETProcedureIDResponse> GETProcedureID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETProcedureIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEProcedureIDResponse> DELETEProcedureID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyperformedDateTime = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<string>> bodyrecorderdisplay = null, Expression<Func<string>> bodyasserterreference = null, Expression<Func<string>> bodyasserterdisplay = null, Expression<Func<bodyperformerInputItem22[]>> bodyperformer = null, Expression<Func<bodyreasonCodeInputItem2[]>> bodyreasonCode = null, Expression<Func<bodyfollowUpInputItem[]>> bodyfollowUp = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
         {
-            var apiCallPath = String.Format("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -4901,13 +4901,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -4921,7 +4921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -4933,7 +4933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -4941,13 +4941,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -4961,7 +4961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -4973,7 +4973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformedDateTime != null)
             {
-                body["performedDateTime"] = ExpressionConverter.ConvertO(bodyperformedDateTime);
+                body["performedDateTime"] = CSharpExpressionConverter.ConvertToken(bodyperformedDateTime);
                 bodypropCount++;
             }
 
@@ -4981,13 +4981,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
             if (bodyrecorderdisplay != null)
             {
-                recorderObject["display"] = ExpressionConverter.ConvertO(bodyrecorderdisplay);
+                recorderObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrecorderdisplay);
                 recorderObjectpropCount++;
             }
 
@@ -5001,13 +5001,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var asserterObjectpropCount = 0;
             if (bodyasserterreference != null)
             {
-                asserterObject["reference"] = ExpressionConverter.ConvertO(bodyasserterreference);
+                asserterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyasserterreference);
                 asserterObjectpropCount++;
             }
 
             if (bodyasserterdisplay != null)
             {
-                asserterObject["display"] = ExpressionConverter.ConvertO(bodyasserterdisplay);
+                asserterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyasserterdisplay);
                 asserterObjectpropCount++;
             }
 
@@ -5019,25 +5019,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodyfollowUp != null)
             {
-                body["followUp"] = ExpressionConverter.ConvertO(bodyfollowUp);
+                body["followUp"] = CSharpExpressionConverter.ConvertToken(bodyfollowUp);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -5052,20 +5052,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTProcedureIDResponse> PUTProcedureID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyperformedDateTime = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<string>> bodyrecorderdisplay = null, Expression<Func<string>> bodyasserterreference = null, Expression<Func<string>> bodyasserterdisplay = null, Expression<Func<bodyperformerInputItem22[]>> bodyperformer = null, Expression<Func<bodyreasonCodeInputItem2[]>> bodyreasonCode = null, Expression<Func<bodyfollowUpInputItem[]>> bodyfollowUp = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
         {
-            var apiCallPath = String.Format("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -5073,13 +5073,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var metaObjectpropCount = 0;
             if (bodymetaversionId != null)
             {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
+                metaObject["versionId"] = CSharpExpressionConverter.ConvertToken(bodymetaversionId);
                 metaObjectpropCount++;
             }
 
             if (bodymetalastUpdated != null)
             {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
+                metaObject["lastUpdated"] = CSharpExpressionConverter.ConvertToken(bodymetalastUpdated);
                 metaObjectpropCount++;
             }
 
@@ -5093,7 +5093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -5105,7 +5105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -5113,13 +5113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var codeObjectpropCount = 0;
             if (bodycodecoding != null)
             {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
+                codeObject["coding"] = CSharpExpressionConverter.ConvertToken(bodycodecoding);
                 codeObjectpropCount++;
             }
 
             if (bodycodetext != null)
             {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
+                codeObject["text"] = CSharpExpressionConverter.ConvertToken(bodycodetext);
                 codeObjectpropCount++;
             }
 
@@ -5133,7 +5133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -5145,7 +5145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformedDateTime != null)
             {
-                body["performedDateTime"] = ExpressionConverter.ConvertO(bodyperformedDateTime);
+                body["performedDateTime"] = CSharpExpressionConverter.ConvertToken(bodyperformedDateTime);
                 bodypropCount++;
             }
 
@@ -5153,13 +5153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var recorderObjectpropCount = 0;
             if (bodyrecorderreference != null)
             {
-                recorderObject["reference"] = ExpressionConverter.ConvertO(bodyrecorderreference);
+                recorderObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyrecorderreference);
                 recorderObjectpropCount++;
             }
 
             if (bodyrecorderdisplay != null)
             {
-                recorderObject["display"] = ExpressionConverter.ConvertO(bodyrecorderdisplay);
+                recorderObject["display"] = CSharpExpressionConverter.ConvertToken(bodyrecorderdisplay);
                 recorderObjectpropCount++;
             }
 
@@ -5173,13 +5173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var asserterObjectpropCount = 0;
             if (bodyasserterreference != null)
             {
-                asserterObject["reference"] = ExpressionConverter.ConvertO(bodyasserterreference);
+                asserterObject["reference"] = CSharpExpressionConverter.ConvertToken(bodyasserterreference);
                 asserterObjectpropCount++;
             }
 
             if (bodyasserterdisplay != null)
             {
-                asserterObject["display"] = ExpressionConverter.ConvertO(bodyasserterdisplay);
+                asserterObject["display"] = CSharpExpressionConverter.ConvertToken(bodyasserterdisplay);
                 asserterObjectpropCount++;
             }
 
@@ -5191,25 +5191,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyperformer != null)
             {
-                body["performer"] = ExpressionConverter.ConvertO(bodyperformer);
+                body["performer"] = CSharpExpressionConverter.ConvertToken(bodyperformer);
                 bodypropCount++;
             }
 
             if (bodyreasonCode != null)
             {
-                body["reasonCode"] = ExpressionConverter.ConvertO(bodyreasonCode);
+                body["reasonCode"] = CSharpExpressionConverter.ConvertToken(bodyreasonCode);
                 bodypropCount++;
             }
 
             if (bodyfollowUp != null)
             {
-                body["followUp"] = ExpressionConverter.ConvertO(bodyfollowUp);
+                body["followUp"] = CSharpExpressionConverter.ConvertToken(bodyfollowUp);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -5228,11 +5228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETRiskAssessmentResponse>(callPayload);
         }
 
@@ -5246,13 +5246,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -5260,7 +5260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -5272,7 +5272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -5280,7 +5280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -5294,7 +5294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -5306,25 +5306,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyoccurrenceDateTime != null)
             {
-                body["occurrenceDateTime"] = ExpressionConverter.ConvertO(bodyoccurrenceDateTime);
+                body["occurrenceDateTime"] = CSharpExpressionConverter.ConvertToken(bodyoccurrenceDateTime);
                 bodypropCount++;
             }
 
             if (bodybasis != null)
             {
-                body["basis"] = ExpressionConverter.ConvertO(bodybasis);
+                body["basis"] = CSharpExpressionConverter.ConvertToken(bodybasis);
                 bodypropCount++;
             }
 
             if (bodyprediction != null)
             {
-                body["prediction"] = ExpressionConverter.ConvertO(bodyprediction);
+                body["prediction"] = CSharpExpressionConverter.ConvertToken(bodyprediction);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -5339,33 +5339,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETRiskAssessmentIDResponse> GETRiskAssessmentID(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
-            var apiCallPath = String.Format("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             return new ApiConnectionAction<GETRiskAssessmentIDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETERiskAssessmentIDResponse> DELETERiskAssessmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodymethodcodingInputItem2[]>> bodymethodcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyoccurrenceDateTime = null, Expression<Func<bodybasisInputItem[]>> bodybasis = null, Expression<Func<bodypredictionInputItem[]>> bodyprediction = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
         {
-            var apiCallPath = String.Format("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -5373,7 +5373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -5385,7 +5385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -5393,7 +5393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -5407,7 +5407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -5419,25 +5419,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyoccurrenceDateTime != null)
             {
-                body["occurrenceDateTime"] = ExpressionConverter.ConvertO(bodyoccurrenceDateTime);
+                body["occurrenceDateTime"] = CSharpExpressionConverter.ConvertToken(bodyoccurrenceDateTime);
                 bodypropCount++;
             }
 
             if (bodybasis != null)
             {
-                body["basis"] = ExpressionConverter.ConvertO(bodybasis);
+                body["basis"] = CSharpExpressionConverter.ConvertToken(bodybasis);
                 bodypropCount++;
             }
 
             if (bodyprediction != null)
             {
-                body["prediction"] = ExpressionConverter.ConvertO(bodyprediction);
+                body["prediction"] = CSharpExpressionConverter.ConvertToken(bodyprediction);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -5452,20 +5452,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTRiskAssessmentIDResponse> PUTRiskAssessmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodymethodcodingInputItem2[]>> bodymethodcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyoccurrenceDateTime = null, Expression<Func<bodybasisInputItem[]>> bodybasis = null, Expression<Func<bodypredictionInputItem[]>> bodyprediction = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
         {
-            var apiCallPath = String.Format("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyresourceType != null)
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
+                body["resourceType"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
             }
 
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
@@ -5473,7 +5473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var textObjectpropCount = 0;
             if (bodytextstatus != null)
             {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
+                textObject["status"] = CSharpExpressionConverter.ConvertToken(bodytextstatus);
                 textObjectpropCount++;
             }
 
@@ -5485,7 +5485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
@@ -5493,7 +5493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var methodObjectpropCount = 0;
             if (bodymethodcoding != null)
             {
-                methodObject["coding"] = ExpressionConverter.ConvertO(bodymethodcoding);
+                methodObject["coding"] = CSharpExpressionConverter.ConvertToken(bodymethodcoding);
                 methodObjectpropCount++;
             }
 
@@ -5507,7 +5507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var subjectObjectpropCount = 0;
             if (bodysubjectreference != null)
             {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
+                subjectObject["reference"] = CSharpExpressionConverter.ConvertToken(bodysubjectreference);
                 subjectObjectpropCount++;
             }
 
@@ -5519,25 +5519,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
             if (bodyoccurrenceDateTime != null)
             {
-                body["occurrenceDateTime"] = ExpressionConverter.ConvertO(bodyoccurrenceDateTime);
+                body["occurrenceDateTime"] = CSharpExpressionConverter.ConvertToken(bodyoccurrenceDateTime);
                 bodypropCount++;
             }
 
             if (bodybasis != null)
             {
-                body["basis"] = ExpressionConverter.ConvertO(bodybasis);
+                body["basis"] = CSharpExpressionConverter.ConvertToken(bodybasis);
                 bodypropCount++;
             }
 
             if (bodyprediction != null)
             {
-                body["prediction"] = ExpressionConverter.ConvertO(bodyprediction);
+                body["prediction"] = CSharpExpressionConverter.ConvertToken(bodyprediction);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 
@@ -5556,18 +5556,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
+                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
             if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
+                callPayload.Queries["_sort"] = CSharpExpressionConverter.ConvertO(Sort);
             if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
+                callPayload.Queries["patient"] = CSharpExpressionConverter.ConvertO(patient);
             return new ApiConnectionAction<GETCareTeamResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCareTeamIDResponse> GETCareTeamID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/CareTeam/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/CareTeam/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GETCareTeamIDResponse>(callPayload);

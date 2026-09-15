@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
             bodypropCount++;
             if (bodyflowName != null)
             {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                body["flowName"] = CSharpExpressionConverter.ConvertToken(bodyflowName);
                 bodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
             bodypropCount++;
             if (bodyflowName != null)
             {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                body["flowName"] = CSharpExpressionConverter.ConvertToken(bodyflowName);
                 bodypropCount++;
             }
 

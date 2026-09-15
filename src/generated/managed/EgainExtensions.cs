@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
         public IWorkflowAction KbSearch(Expression<Func<string>> portalId, Expression<Func<string>> q, Expression<Func<string>> lang, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<string>> acceptLanguage, Expression<Func<string>> accept, Expression<Func<string>> attribute = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> pagesize = null)
         {
-            var apiCallPath = String.Format("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(portalId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["$lang"] = ExpressionConverter.Convert(lang);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
+            callPayload.Queries["$lang"] = CSharpExpressionConverter.ConvertO(lang);
             if (attribute != null)
-                callPayload.Queries["$attribute"] = ExpressionConverter.Convert(attribute);
+                callPayload.Queries["$attribute"] = CSharpExpressionConverter.ConvertO(attribute);
             if (pagenum != null)
-                callPayload.Queries["$pagenum"] = ExpressionConverter.Convert(pagenum);
+                callPayload.Queries["$pagenum"] = CSharpExpressionConverter.ConvertO(pagenum);
             if (pagesize != null)
-                callPayload.Queries["$pagesize"] = ExpressionConverter.Convert(pagesize);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            callPayload.Headers["Accept-language"] = ExpressionConverter.Convert(acceptLanguage);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Queries["$pagesize"] = CSharpExpressionConverter.ConvertO(pagesize);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
+            callPayload.Queries["shortName"] = CSharpExpressionConverter.ConvertO(shortName);
+            callPayload.Headers["Accept-language"] = CSharpExpressionConverter.ConvertO(acceptLanguage);
+            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -39,38 +39,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var apiCallPath = "/core/aiservices/v3/internal/instantanswers/generative";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
+                callPayload.Queries["departmentId"] = CSharpExpressionConverter.ConvertO(departmentId);
             if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Queries["portalId"] = ExpressionConverter.Convert(portalId);
-            callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
+                callPayload.Queries["userId"] = CSharpExpressionConverter.ConvertO(userId);
+            callPayload.Queries["portalId"] = CSharpExpressionConverter.ConvertO(portalId);
+            callPayload.Queries["languageCode"] = CSharpExpressionConverter.ConvertO(languageCode);
             if (personalizationProfileId != null)
-                callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                callPayload.Queries["personalizationProfileId"] = CSharpExpressionConverter.ConvertO(personalizationProfileId);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
+            callPayload.Queries["shortName"] = CSharpExpressionConverter.ConvertO(shortName);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
         public IWorkflowAction Search(Expression<Func<string>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> q, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
         {
-            var apiCallPath = String.Format("/core/aiservices/v3/internal/instantanswers/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(portalId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/core/aiservices/v3/internal/instantanswers/{0}/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(portalId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["languageCode"] = ExpressionConverter.Convert(languageCode);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["languageCode"] = CSharpExpressionConverter.ConvertO(languageCode);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (personalizationProfileId != null)
-                callPayload.Queries["personalizationProfileId"] = ExpressionConverter.Convert(personalizationProfileId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
+                callPayload.Queries["personalizationProfileId"] = CSharpExpressionConverter.ConvertO(personalizationProfileId);
+            callPayload.Queries["authToken"] = CSharpExpressionConverter.ConvertO(authToken);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
+            callPayload.Queries["shortName"] = CSharpExpressionConverter.ConvertO(shortName);
             if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
             return new ApiConnectionAction(callPayload);
         }
     }

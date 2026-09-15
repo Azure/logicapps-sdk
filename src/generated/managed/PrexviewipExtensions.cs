@@ -21,29 +21,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
             var bodypropCount = 0;
             if (bodyxml != null)
             {
-                body["xml"] = ExpressionConverter.ConvertO(bodyxml);
+                body["xml"] = CSharpExpressionConverter.ConvertToken(bodyxml);
                 bodypropCount++;
             }
 
             if (bodyjson != null)
             {
-                body["json"] = ExpressionConverter.ConvertO(bodyjson);
+                body["json"] = CSharpExpressionConverter.ConvertToken(bodyjson);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["output"] = ExpressionConverter.ConvertO(bodyoutput);
+            body["output"] = CSharpExpressionConverter.Convert(bodyoutput);
             bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+            body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
             if (bodytemplateBackup != null)
             {
-                body["templateBackup"] = ExpressionConverter.ConvertO(bodytemplateBackup);
+                body["templateBackup"] = CSharpExpressionConverter.ConvertToken(bodytemplateBackup);
                 bodypropCount++;
             }
 
             if (bodynote != null)
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
                 bodypropCount++;
             }
 

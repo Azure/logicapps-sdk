@@ -14,61 +14,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1/actions/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(recordType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/actions/create/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         public IBodyWorkflowAction<JToken> ListRecords(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> where = null, Expression<Func<string>> order = null, Expression<Func<int>> top = null, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1/actions/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(recordType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/actions/list/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (where != null)
-                callPayload.Queries["where"] = ExpressionConverter.Convert(where);
+                callPayload.Queries["where"] = CSharpExpressionConverter.ConvertO(where);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         public IBodyWorkflowAction<JToken> GetRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1/actions/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(recordType, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/actions/get/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1/actions/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(recordType, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/actions/update/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
         public IBodyWorkflowAction<JToken> DeleteRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1/actions/delete/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(recordType, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/actions/delete/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -78,22 +78,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             var apiCallPath = "/v1/actions/sendhttprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["method"] = ExpressionConverter.ConvertO(bodymethod);
+            body["method"] = CSharpExpressionConverter.Convert(bodymethod);
             bodypropCount++;
-            body["uri"] = ExpressionConverter.ConvertO(bodyuri);
+            body["uri"] = CSharpExpressionConverter.ConvertToken(bodyuri);
             if (bodyheaders != null)
             {
-                body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
+                body["headers"] = CSharpExpressionConverter.ConvertToken(bodyheaders);
                 bodypropCount++;
             }
 
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
             var apiCallPath = "/v1/webhook/register";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["eventType"] = ExpressionConverter.Convert(eventType);
-            callPayload.Queries["eventCategory"] = ExpressionConverter.Convert(eventCategory);
-            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Queries["eventType"] = CSharpExpressionConverter.Convert(eventType);
+            callPayload.Queries["eventCategory"] = CSharpExpressionConverter.Convert(eventCategory);
+            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
             var body = new JObject();
             var bodypropCount = 0;
             body["webhookUrl"] = "@listCallbackUrl()";

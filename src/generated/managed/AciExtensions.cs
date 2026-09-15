@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList(Expression<Func<string>> subscriptionId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> resourceid = null, Expression<Func<string>> resourcename = null, Expression<Func<string>> resourcetype = null, Expression<Func<string>> resourcelocation = null, Expression<Func<string[]>> resourcezones = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -52,25 +52,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var resourcepropCount = 0;
             if (resourceid != null)
             {
-                resource["id"] = ExpressionConverter.ConvertO(resourceid);
+                resource["id"] = CSharpExpressionConverter.ConvertToken(resourceid);
                 resourcepropCount++;
             }
 
             if (resourcename != null)
             {
-                resource["name"] = ExpressionConverter.ConvertO(resourcename);
+                resource["name"] = CSharpExpressionConverter.ConvertToken(resourcename);
                 resourcepropCount++;
             }
 
             if (resourcetype != null)
             {
-                resource["type"] = ExpressionConverter.ConvertO(resourcetype);
+                resource["type"] = CSharpExpressionConverter.ConvertToken(resourcetype);
                 resourcepropCount++;
             }
 
             if (resourcelocation != null)
             {
-                resource["location"] = ExpressionConverter.ConvertO(resourcelocation);
+                resource["location"] = CSharpExpressionConverter.ConvertToken(resourcelocation);
                 resourcepropCount++;
             }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
 
             if (resourcezones != null)
             {
-                resource["zones"] = ExpressionConverter.ConvertO(resourcezones);
+                resource["zones"] = CSharpExpressionConverter.ConvertToken(resourcezones);
                 resourcepropCount++;
             }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<UsageListResult> LocationListUsage(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -149,19 +149,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<Logs> ContainerLogsList(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<int>> tail = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
             if (tail != null)
-                callPayload.Queries["tail"] = ExpressionConverter.Convert(tail);
+                callPayload.Queries["tail"] = CSharpExpressionConverter.ConvertO(tail);
             return new ApiConnectionAction<Logs>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<string>> containerExecRequestcommand = null, Expression<Func<int>> containerExecRequestterminalSizerows = null, Expression<Func<int>> containerExecRequestterminalSizecols = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var containerExecRequestpropCount = 0;
             if (containerExecRequestcommand != null)
             {
-                containerExecRequest["command"] = ExpressionConverter.ConvertO(containerExecRequestcommand);
+                containerExecRequest["command"] = CSharpExpressionConverter.ConvertToken(containerExecRequestcommand);
                 containerExecRequestpropCount++;
             }
 
@@ -177,13 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var terminalSizeObjectpropCount = 0;
             if (containerExecRequestterminalSizerows != null)
             {
-                terminalSizeObject["rows"] = ExpressionConverter.ConvertO(containerExecRequestterminalSizerows);
+                terminalSizeObject["rows"] = CSharpExpressionConverter.ConvertToken(containerExecRequestterminalSizerows);
                 terminalSizeObjectpropCount++;
             }
 
             if (containerExecRequestterminalSizecols != null)
             {
-                terminalSizeObject["cols"] = ExpressionConverter.ConvertO(containerExecRequestterminalSizecols);
+                terminalSizeObject["cols"] = CSharpExpressionConverter.ConvertToken(containerExecRequestterminalSizecols);
                 terminalSizeObjectpropCount++;
             }
 
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction SubnetServiceAssociationLinkDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualNetworkName, Expression<Func<string>> subnetName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(subnetName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualNetworkName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subnetName, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");

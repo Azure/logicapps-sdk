@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/NextBusService.svc/json/jPredictions";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
+            callPayload.Queries["StopID"] = CSharpExpressionConverter.ConvertO(stopID);
             return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
         }
 
@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (routeID != null)
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
+                callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
             if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
             return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
         }
 
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Bus.svc/json/jRouteDetails";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
+            callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
             if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
             return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
         }
 
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Bus.svc/json/jRouteSchedule";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
+            callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
             if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
             return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
         }
 
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Bus.svc/json/jStopSchedule";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
+            callPayload.Queries["StopID"] = CSharpExpressionConverter.ConvertO(stopID);
             if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
             return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
         }
 
@@ -90,18 +90,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
             return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains(Expression<Func<string>> stationCodes)
         {
-            var apiCallPath = String.Format("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCodes, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCodes, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
         }
 
@@ -133,8 +133,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Rail.svc/json/jPath";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-            callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
+            callPayload.Queries["FromStationCode"] = CSharpExpressionConverter.ConvertO(fromStationCode);
+            callPayload.Queries["ToStationCode"] = CSharpExpressionConverter.ConvertO(toStationCode);
             return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
         }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lineCode != null)
-                callPayload.Queries["LineCode"] = ExpressionConverter.Convert(lineCode);
+                callPayload.Queries["LineCode"] = CSharpExpressionConverter.ConvertO(lineCode);
             return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
         }
 
@@ -156,11 +156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
+                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
             if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
             return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
         }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Rail.svc/json/jStationInfo";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+            callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
         }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Rail.svc/json/jStationTimes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+            callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
         }
 
@@ -190,8 +190,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-            callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
+            callPayload.Queries["FromStationCode"] = CSharpExpressionConverter.ConvertO(fromStationCode);
+            callPayload.Queries["ToStationCode"] = CSharpExpressionConverter.ConvertO(toStationCode);
             return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
         }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (route != null)
-                callPayload.Queries["Route"] = ExpressionConverter.Convert(route);
+                callPayload.Queries["Route"] = CSharpExpressionConverter.ConvertO(route);
             return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (stationCode != null)
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
             return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
         }
 

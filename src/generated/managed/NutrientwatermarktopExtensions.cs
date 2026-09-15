@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["watermark_data"] = ExpressionConverter.ConvertO(inputDatawatermarkData);
+            inputData["watermark_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkData);
             if (inputDatafailOnError != null)
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -73,16 +73,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -92,18 +92,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -147,37 +147,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafillColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatafillColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafillColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatalineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatalineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -215,19 +215,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -265,16 +265,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["image_file"] = ExpressionConverter.ConvertO(inputDataimage);
+            inputData["image_file"] = CSharpExpressionConverter.ConvertToken(inputDataimage);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -284,20 +284,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -341,37 +341,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -409,19 +409,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -459,16 +459,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -478,18 +478,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinateStart);
+            inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateStart);
             inputDatapropCount++;
-            inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinateStart);
+            inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateStart);
             inputDatapropCount++;
-            inputData["end_x"] = ExpressionConverter.ConvertO(inputDataxCoordinateEnd);
+            inputData["end_x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateEnd);
             inputDatapropCount++;
-            inputData["end_y"] = ExpressionConverter.ConvertO(inputDatayCoordinateEnd);
+            inputData["end_y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateEnd);
             if (inputDatalayer != null)
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -525,31 +525,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatalineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatalineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatalineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -587,19 +587,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -637,16 +637,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatabarcodeContent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -656,12 +656,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["barcode_type"] = ExpressionConverter.ConvertO(inputDatabarcodeType);
+            inputData["barcode_type"] = CSharpExpressionConverter.Convert(inputDatabarcodeType);
             if (inputDataomitEncodingOfStartStopSymbols != null)
             {
                 if (inputDataomitEncodingOfStartStopSymbols != null)
                 {
-                    inputData["omit_start_stop_symbols"] = ExpressionConverter.ConvertO(inputDataomitEncodingOfStartStopSymbols);
+                    inputData["omit_start_stop_symbols"] = CSharpExpressionConverter.Convert(inputDataomitEncodingOfStartStopSymbols);
                     inputDatapropCount++;
                 }
 
@@ -674,30 +674,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["disable_checkdigit"] = ExpressionConverter.ConvertO(inputDatadisableCheckDigit);
+            inputData["disable_checkdigit"] = CSharpExpressionConverter.Convert(inputDatadisableCheckDigit);
             inputDatapropCount++;
-            inputData["show_checkdigit"] = ExpressionConverter.ConvertO(inputDatashowCheckDigit);
+            inputData["show_checkdigit"] = CSharpExpressionConverter.Convert(inputDatashowCheckDigit);
             if (inputDatamargin != null)
             {
-                inputData["margin"] = ExpressionConverter.ConvertO(inputDatamargin);
+                inputData["margin"] = CSharpExpressionConverter.ConvertToken(inputDatamargin);
                 inputDatapropCount++;
             }
 
             if (inputDatafontFamily != null)
             {
-                inputData["font_family_name"] = ExpressionConverter.ConvertO(inputDatafontFamily);
+                inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamily);
                 inputDatapropCount++;
             }
 
             if (inputDatafontSize != null)
             {
-                inputData["font_size"] = ExpressionConverter.ConvertO(inputDatafontSize);
+                inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
                 inputDatapropCount++;
             }
 
             if (inputDatafontStyle != null)
             {
-                inputData["font_style"] = ExpressionConverter.ConvertO(inputDatafontStyle);
+                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
                 inputDatapropCount++;
             }
 
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalabelPlacement != null)
                 {
-                    inputData["label_placement"] = ExpressionConverter.ConvertO(inputDatalabelPlacement);
+                    inputData["label_placement"] = CSharpExpressionConverter.Convert(inputDatalabelPlacement);
                     inputDatapropCount++;
                 }
 
@@ -718,20 +718,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -775,31 +775,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatabarcodeBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatabarcodeBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatabarcodeBarColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatabarcodeBarColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBarColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -837,19 +837,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -887,16 +887,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["pdf_file"] = ExpressionConverter.ConvertO(inputDatapDFWatermark);
+            inputData["pdf_file"] = CSharpExpressionConverter.ConvertToken(inputDatapDFWatermark);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -906,20 +906,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -963,19 +963,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1013,19 +1013,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1063,16 +1063,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatacontent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatacontent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1082,26 +1082,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["version"] = ExpressionConverter.ConvertO(inputDataversion);
+            inputData["version"] = CSharpExpressionConverter.Convert(inputDataversion);
             inputDatapropCount++;
-            inputData["input_mode"] = ExpressionConverter.ConvertO(inputDatainputMode);
+            inputData["input_mode"] = CSharpExpressionConverter.Convert(inputDatainputMode);
             inputDatapropCount++;
-            inputData["error_correction_level"] = ExpressionConverter.ConvertO(inputDataerrorCorrectionLevel);
+            inputData["error_correction_level"] = CSharpExpressionConverter.Convert(inputDataerrorCorrectionLevel);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -1145,31 +1145,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkForegroundColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkForegroundColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkForegroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1207,19 +1207,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1257,16 +1257,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1276,18 +1276,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -1317,7 +1317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -1331,37 +1331,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -1369,7 +1369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1385,7 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1399,19 +1399,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1419,7 +1419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1449,16 +1449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["rtf_data"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
+            inputData["rtf_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1468,20 +1468,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -1489,7 +1489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -1503,7 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -1511,7 +1511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -1525,37 +1525,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkBackgroundColor != null)
             {
-                inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatawatermarkBackgroundColor);
+                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatawatermarkOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1579,7 +1579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1593,19 +1593,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1613,7 +1613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 
@@ -1643,16 +1643,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             var inputDatapropCount = 0;
             if (inputDatasourceFileName != null)
             {
-                inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
+                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
             }
 
             inputData["use_async_pattern"] = false;
             inputDatapropCount++;
             inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
+            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
             inputDatapropCount++;
-            inputData["content"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
+            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
             var sharepointFileObject = new JObject();
             var sharepointFileObjectpropCount = 0;
             if (sharepointFileObjectpropCount > 0)
@@ -1662,30 +1662,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             }
 
             inputDatapropCount++;
-            inputData["font_family_name"] = ExpressionConverter.ConvertO(inputDatafontFamilyName);
+            inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamilyName);
             inputDatapropCount++;
-            inputData["font_size"] = ExpressionConverter.ConvertO(inputDatafontSize);
+            inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
             inputDatapropCount++;
-            inputData["fill_color"] = ExpressionConverter.ConvertO(inputDatafontColor);
+            inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontColor);
             inputDatapropCount++;
-            inputData["alignment"] = ExpressionConverter.ConvertO(inputDatatextAlignment);
+            inputData["alignment"] = CSharpExpressionConverter.Convert(inputDatatextAlignment);
             inputDatapropCount++;
-            inputData["word_wrap"] = ExpressionConverter.ConvertO(inputDatawordWrap);
+            inputData["word_wrap"] = CSharpExpressionConverter.Convert(inputDatawordWrap);
             inputDatapropCount++;
-            inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
+            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
             inputDatapropCount++;
-            inputData["width"] = ExpressionConverter.ConvertO(inputDatawidth);
+            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
             inputDatapropCount++;
-            inputData["height"] = ExpressionConverter.ConvertO(inputDataheight);
+            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
             if (inputDataxCoordinate != null)
             {
-                inputData["x"] = ExpressionConverter.ConvertO(inputDataxCoordinate);
+                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
             }
 
             if (inputDatayCoordinate != null)
             {
-                inputData["y"] = ExpressionConverter.ConvertO(inputDatayCoordinate);
+                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
                 inputDatapropCount++;
             }
 
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
                     inputDatapropCount++;
                 }
 
@@ -1707,7 +1707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatarotation != null)
             {
-                inputData["rotation"] = ExpressionConverter.ConvertO(inputDatarotation);
+                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
                 inputDatapropCount++;
             }
 
@@ -1715,7 +1715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
                     inputDatapropCount++;
                 }
 
@@ -1729,37 +1729,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafontStyle != null)
             {
-                inputData["font_style"] = ExpressionConverter.ConvertO(inputDatafontStyle);
+                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
                 inputDatapropCount++;
             }
 
             if (inputDatafontOutlineColor != null)
             {
-                inputData["line_color"] = ExpressionConverter.ConvertO(inputDatafontOutlineColor);
+                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineColor);
                 inputDatapropCount++;
             }
 
             if (inputDatafontOutlineWidth != null)
             {
-                inputData["line_width"] = ExpressionConverter.ConvertO(inputDatafontOutlineWidth);
+                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineWidth);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkStartPage != null)
             {
-                inputData["start_page"] = ExpressionConverter.ConvertO(inputDatawatermarkStartPage);
+                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndPage != null)
             {
-                inputData["end_page"] = ExpressionConverter.ConvertO(inputDatawatermarkEndPage);
+                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageInterval != null)
             {
-                inputData["page_interval"] = ExpressionConverter.ConvertO(inputDatawatermarkPageInterval);
+                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
                 inputDatapropCount++;
             }
 
@@ -1767,7 +1767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
                     inputDatapropCount++;
                 }
 
@@ -1783,7 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
                     inputDatapropCount++;
                 }
 
@@ -1797,19 +1797,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkStartSection != null)
             {
-                inputData["start_section"] = ExpressionConverter.ConvertO(inputDatawatermarkStartSection);
+                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkEndSection != null)
             {
-                inputData["end_section"] = ExpressionConverter.ConvertO(inputDatawatermarkEndSection);
+                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
                 inputDatapropCount++;
             }
 
             if (inputDatawatermarkPageType != null)
             {
-                inputData["page_type"] = ExpressionConverter.ConvertO(inputDatawatermarkPageType);
+                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
                 inputDatapropCount++;
             }
 
@@ -1817,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
                     inputDatapropCount++;
                 }
 

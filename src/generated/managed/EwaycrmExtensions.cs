@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteCompanyWrapperpropCount = 0;
             if (deleteCompanyWrapperitemGuid != null)
             {
-                deleteCompanyWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteCompanyWrapperitemGuid);
+                deleteCompanyWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteCompanyWrapperitemGuid);
                 deleteCompanyWrapperpropCount++;
             }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteContactWrapperpropCount = 0;
             if (deleteContactWrapperitemGuid != null)
             {
-                deleteContactWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteContactWrapperitemGuid);
+                deleteContactWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteContactWrapperitemGuid);
                 deleteContactWrapperpropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteJournalWrapperpropCount = 0;
             if (deleteJournalWrapperitemGuid != null)
             {
-                deleteJournalWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteJournalWrapperitemGuid);
+                deleteJournalWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteJournalWrapperitemGuid);
                 deleteJournalWrapperpropCount++;
             }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteLeadWrapperpropCount = 0;
             if (deleteLeadWrapperitemGuid != null)
             {
-                deleteLeadWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteLeadWrapperitemGuid);
+                deleteLeadWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteLeadWrapperitemGuid);
                 deleteLeadWrapperpropCount++;
             }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteProjectWrapperpropCount = 0;
             if (deleteProjectWrapperitemGuid != null)
             {
-                deleteProjectWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteProjectWrapperitemGuid);
+                deleteProjectWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteProjectWrapperitemGuid);
                 deleteProjectWrapperpropCount++;
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var deleteTaskWrapperpropCount = 0;
             if (deleteTaskWrapperitemGuid != null)
             {
-                deleteTaskWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteTaskWrapperitemGuid);
+                deleteTaskWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(deleteTaskWrapperitemGuid);
                 deleteTaskWrapperpropCount++;
             }
 
@@ -155,403 +155,403 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveCompanyWrappertransmitObjectaccountNumber != null)
             {
-                transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaccountNumber);
+                transmitObjectObject["AccountNumber"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaccountNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1POBox != null)
             {
-                transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1POBox);
+                transmitObjectObject["Address1POBox"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1Street != null)
             {
-                transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1Street);
+                transmitObjectObject["Address1Street"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1City != null)
             {
-                transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1City);
+                transmitObjectObject["Address1City"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1City);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1State != null)
             {
-                transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1State);
+                transmitObjectObject["Address1State"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1State);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1CountryEn != null)
             {
-                transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1CountryEn);
+                transmitObjectObject["Address1CountryEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress1PostalCode != null)
             {
-                transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1PostalCode);
+                transmitObjectObject["Address1PostalCode"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress1PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2POBox != null)
             {
-                transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2POBox);
+                transmitObjectObject["Address2POBox"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2Street != null)
             {
-                transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2Street);
+                transmitObjectObject["Address2Street"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2City != null)
             {
-                transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2City);
+                transmitObjectObject["Address2City"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2City);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2State != null)
             {
-                transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2State);
+                transmitObjectObject["Address2State"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2State);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2CountryEn != null)
             {
-                transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2CountryEn);
+                transmitObjectObject["Address2CountryEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress2PostalCode != null)
             {
-                transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2PostalCode);
+                transmitObjectObject["Address2PostalCode"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress2PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3POBox != null)
             {
-                transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3POBox);
+                transmitObjectObject["Address3POBox"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3Street != null)
             {
-                transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3Street);
+                transmitObjectObject["Address3Street"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3City != null)
             {
-                transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3City);
+                transmitObjectObject["Address3City"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3City);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3State != null)
             {
-                transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3State);
+                transmitObjectObject["Address3State"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3State);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3CountryEn != null)
             {
-                transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3CountryEn);
+                transmitObjectObject["Address3CountryEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectaddress3PostalCode != null)
             {
-                transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3PostalCode);
+                transmitObjectObject["Address3PostalCode"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectaddress3PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectcompanyName != null)
             {
-                transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcompanyName);
+                transmitObjectObject["CompanyName"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectcompanyName);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectdepartment != null)
             {
-                transmitObjectObject["Department"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectdepartment);
+                transmitObjectObject["Department"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectdepartment);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectemail != null)
             {
-                transmitObjectObject["Email"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemail);
+                transmitObjectObject["Email"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectemail);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectemployeesCount != null)
             {
-                transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemployeesCount);
+                transmitObjectObject["EmployeesCount"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectemployeesCount);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectfax != null)
             {
-                transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfax);
+                transmitObjectObject["Fax"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectfax);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectfirstContactEn != null)
             {
-                transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfirstContactEn);
+                transmitObjectObject["FirstContactEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectfirstContactEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectiCQ != null)
             {
-                transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectiCQ);
+                transmitObjectObject["ICQ"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectiCQ);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectidentificationNumber != null)
             {
-                transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectidentificationNumber);
+                transmitObjectObject["IdentificationNumber"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectidentificationNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectlineOfBusiness != null)
             {
-                transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectlineOfBusiness);
+                transmitObjectObject["LineOfBusiness"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectlineOfBusiness);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectmailingListOther != null)
             {
-                transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmailingListOther);
+                transmitObjectObject["MailingListOther"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectmailingListOther);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectmobile != null)
             {
-                transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmobile);
+                transmitObjectObject["Mobile"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectmobile);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectmobileNormalized != null)
             {
-                transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmobileNormalized);
+                transmitObjectObject["MobileNormalized"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectmobileNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectmSN != null)
             {
-                transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmSN);
+                transmitObjectObject["MSN"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectmSN);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectpurchaser != null)
             {
-                transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpurchaser);
+                transmitObjectObject["Purchaser"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectpurchaser);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectreversal != null)
             {
-                transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectreversal);
+                transmitObjectObject["Reversal"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectreversal);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectskype != null)
             {
-                transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectskype);
+                transmitObjectObject["Skype"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectskype);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectsuppliers != null)
             {
-                transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectsuppliers);
+                transmitObjectObject["Suppliers"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectsuppliers);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectvATNumber != null)
             {
-                transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectvATNumber);
+                transmitObjectObject["VATNumber"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectvATNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectwebPage != null)
             {
-                transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectwebPage);
+                transmitObjectObject["WebPage"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectwebPage);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectadditionalDiscount != null)
             {
-                transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectadditionalDiscount);
+                transmitObjectObject["AdditionalDiscount"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectadditionalDiscount);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectiD != null)
             {
-                transmitObjectObject["ID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectiD);
+                transmitObjectObject["ID"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectiD);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectcompetitor != null)
             {
-                transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcompetitor);
+                transmitObjectObject["Competitor"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectcompetitor);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectsalePriceGuid != null)
             {
-                transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectsalePriceGuid);
+                transmitObjectObject["SalePriceGuid"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectsalePriceGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectnotificationByEmail != null)
             {
-                transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnotificationByEmail);
+                transmitObjectObject["NotificationByEmail"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectnotificationByEmail);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectnotificationBy != null)
             {
-                transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnotificationBy);
+                transmitObjectObject["NotificationBy"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectnotificationBy);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectemailOptOut != null)
             {
-                transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemailOptOut);
+                transmitObjectObject["EmailOptOut"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectemailOptOut);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveCompanyWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -563,13 +563,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveCompanyWrapperdieOnItemConflict != null)
             {
-                saveCompanyWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveCompanyWrapperdieOnItemConflict);
+                saveCompanyWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrapperdieOnItemConflict);
                 saveCompanyWrapperpropCount++;
             }
 
             if (saveCompanyWrapperignoredUserErrorMessages != null)
             {
-                saveCompanyWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveCompanyWrapperignoredUserErrorMessages);
+                saveCompanyWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveCompanyWrapperignoredUserErrorMessages);
                 saveCompanyWrapperpropCount++;
             }
 
@@ -593,403 +593,403 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveContactWrappertransmitObjectbusinessAddressStreet != null)
             {
-                transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressStreet);
+                transmitObjectObject["BusinessAddressStreet"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectbusinessAddressCity != null)
             {
-                transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressCity);
+                transmitObjectObject["BusinessAddressCity"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectbusinessAddressState != null)
             {
-                transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressState);
+                transmitObjectObject["BusinessAddressState"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectbusinessAddressCountryEn != null)
             {
-                transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressCountryEn);
+                transmitObjectObject["BusinessAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectbusinessAddressPOBox != null)
             {
-                transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressPOBox);
+                transmitObjectObject["BusinessAddressPOBox"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectbusinessAddressPostalCode != null)
             {
-                transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressPostalCode);
+                transmitObjectObject["BusinessAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectbusinessAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressStreet != null)
             {
-                transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressStreet);
+                transmitObjectObject["HomeAddressStreet"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressCity != null)
             {
-                transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressCity);
+                transmitObjectObject["HomeAddressCity"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressState != null)
             {
-                transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressState);
+                transmitObjectObject["HomeAddressState"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressCountryEn != null)
             {
-                transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressCountryEn);
+                transmitObjectObject["HomeAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressPOBox != null)
             {
-                transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressPOBox);
+                transmitObjectObject["HomeAddressPOBox"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecthomeAddressPostalCode != null)
             {
-                transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressPostalCode);
+                transmitObjectObject["HomeAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecthomeAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressStreet != null)
             {
-                transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressStreet);
+                transmitObjectObject["OtherAddressStreet"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressCity != null)
             {
-                transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressCity);
+                transmitObjectObject["OtherAddressCity"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressState != null)
             {
-                transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressState);
+                transmitObjectObject["OtherAddressState"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressCountryEn != null)
             {
-                transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressCountryEn);
+                transmitObjectObject["OtherAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressPOBox != null)
             {
-                transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressPOBox);
+                transmitObjectObject["OtherAddressPOBox"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectotherAddressPostalCode != null)
             {
-                transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressPostalCode);
+                transmitObjectObject["OtherAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectotherAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectcompany != null)
             {
-                transmitObjectObject["Company"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcompany);
+                transmitObjectObject["Company"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectcompany);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectemail1Address != null)
             {
-                transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail1Address);
+                transmitObjectObject["Email1Address"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectemail1Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectemail2Address != null)
             {
-                transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail2Address);
+                transmitObjectObject["Email2Address"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectemail2Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectemail3Address != null)
             {
-                transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail3Address);
+                transmitObjectObject["Email3Address"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectemail3Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectfirstName != null)
             {
-                transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectfirstName);
+                transmitObjectObject["FirstName"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectfirstName);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectiCQ != null)
             {
-                transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectiCQ);
+                transmitObjectObject["ICQ"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectiCQ);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectlastName != null)
             {
-                transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectlastName);
+                transmitObjectObject["LastName"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectlastName);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectmiddleName != null)
             {
-                transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmiddleName);
+                transmitObjectObject["MiddleName"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectmiddleName);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectmSN != null)
             {
-                transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmSN);
+                transmitObjectObject["MSN"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectmSN);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectprefixEn != null)
             {
-                transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprefixEn);
+                transmitObjectObject["PrefixEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectprefixEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectsuffixEn != null)
             {
-                transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectsuffixEn);
+                transmitObjectObject["SuffixEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectsuffixEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectskype != null)
             {
-                transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectskype);
+                transmitObjectObject["Skype"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectskype);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber1 != null)
             {
-                transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber1);
+                transmitObjectObject["TelephoneNumber1"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber1);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber2 != null)
             {
-                transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber2);
+                transmitObjectObject["TelephoneNumber2"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber2);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber3 != null)
             {
-                transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber3);
+                transmitObjectObject["TelephoneNumber3"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber3);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber4 != null)
             {
-                transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber4);
+                transmitObjectObject["TelephoneNumber4"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber4);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber5 != null)
             {
-                transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber5);
+                transmitObjectObject["TelephoneNumber5"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber5);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber6 != null)
             {
-                transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber6);
+                transmitObjectObject["TelephoneNumber6"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber6);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber1Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber1Normalized);
+                transmitObjectObject["TelephoneNumber1Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber1Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber2Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber2Normalized);
+                transmitObjectObject["TelephoneNumber2Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber2Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber3Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber3Normalized);
+                transmitObjectObject["TelephoneNumber3Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber3Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber4Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber4Normalized);
+                transmitObjectObject["TelephoneNumber4Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber4Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber5Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber5Normalized);
+                transmitObjectObject["TelephoneNumber5Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber5Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttelephoneNumber6Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber6Normalized);
+                transmitObjectObject["TelephoneNumber6Normalized"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttelephoneNumber6Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectdepartment != null)
             {
-                transmitObjectObject["Department"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectdepartment);
+                transmitObjectObject["Department"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectdepartment);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttitle != null)
             {
-                transmitObjectObject["Title"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttitle);
+                transmitObjectObject["Title"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttitle);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectwebPage != null)
             {
-                transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectwebPage);
+                transmitObjectObject["WebPage"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectwebPage);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectdoNotSendNewsletter != null)
             {
-                transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectdoNotSendNewsletter);
+                transmitObjectObject["DoNotSendNewsletter"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectdoNotSendNewsletter);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectprofilePicture != null)
             {
-                transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePicture);
+                transmitObjectObject["ProfilePicture"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectprofilePicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectprofilePictureWidth != null)
             {
-                transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePictureWidth);
+                transmitObjectObject["ProfilePictureWidth"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectprofilePictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectprofilePictureHeight != null)
             {
-                transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePictureHeight);
+                transmitObjectObject["ProfilePictureHeight"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectprofilePictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveContactWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveContactWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -1001,13 +1001,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveContactWrapperdieOnItemConflict != null)
             {
-                saveContactWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveContactWrapperdieOnItemConflict);
+                saveContactWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveContactWrapperdieOnItemConflict);
                 saveContactWrapperpropCount++;
             }
 
             if (saveContactWrapperignoredUserErrorMessages != null)
             {
-                saveContactWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveContactWrapperignoredUserErrorMessages);
+                saveContactWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveContactWrapperignoredUserErrorMessages);
                 saveContactWrapperpropCount++;
             }
 
@@ -1031,205 +1031,205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveJournalWrappertransmitObjectcalendarEntryID != null)
             {
-                transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcalendarEntryID);
+                transmitObjectObject["CalendarEntryID"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectcalendarEntryID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectcalendarORIGIN != null)
             {
-                transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcalendarORIGIN);
+                transmitObjectObject["Calendar_ORIGIN"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectcalendarORIGIN);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectchangedField != null)
             {
-                transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectchangedField);
+                transmitObjectObject["ChangedField"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectchangedField);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjecteventEnd != null)
             {
-                transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecteventEnd);
+                transmitObjectObject["EventEnd"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjecteventEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjecteventStart != null)
             {
-                transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecteventStart);
+                transmitObjectObject["EventStart"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjecteventStart);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectfieldValue != null)
             {
-                transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectfieldValue);
+                transmitObjectObject["FieldValue"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectfieldValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectprevFieldValue != null)
             {
-                transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprevFieldValue);
+                transmitObjectObject["PrevFieldValue"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectprevFieldValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectisSystem != null)
             {
-                transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisSystem);
+                transmitObjectObject["IsSystem"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectisSystem);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectisGdprRelevant != null)
             {
-                transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisGdprRelevant);
+                transmitObjectObject["IsGdprRelevant"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectisGdprRelevant);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectcontactsContactGuid != null)
             {
-                transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcontactsContactGuid);
+                transmitObjectObject["Contacts_ContactGuid"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectcontactsContactGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectleadsSuperiorItemGuid != null)
             {
-                transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectleadsSuperiorItemGuid);
+                transmitObjectObject["Leads_SuperiorItemGuid"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectleadsSuperiorItemGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectprojectsSuperiorItemGuid != null)
             {
-                transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid);
+                transmitObjectObject["Projects_SuperiorItemGuid"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectmarketingMarketingGuid != null)
             {
-                transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectmarketingMarketingGuid);
+                transmitObjectObject["Marketing_MarketingGuid"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectmarketingMarketingGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveJournalWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveJournalWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -1241,13 +1241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveJournalWrapperdieOnItemConflict != null)
             {
-                saveJournalWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveJournalWrapperdieOnItemConflict);
+                saveJournalWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveJournalWrapperdieOnItemConflict);
                 saveJournalWrapperpropCount++;
             }
 
             if (saveJournalWrapperignoredUserErrorMessages != null)
             {
-                saveJournalWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveJournalWrapperignoredUserErrorMessages);
+                saveJournalWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveJournalWrapperignoredUserErrorMessages);
                 saveJournalWrapperpropCount++;
             }
 
@@ -1271,265 +1271,265 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveLeadWrappertransmitObjectcity != null)
             {
-                transmitObjectObject["City"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcity);
+                transmitObjectObject["City"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcontactPerson != null)
             {
-                transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcontactPerson);
+                transmitObjectObject["ContactPerson"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcontactPerson);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcurrencyEn != null)
             {
-                transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcurrencyEn);
+                transmitObjectObject["CurrencyEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcurrencyEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcustomer != null)
             {
-                transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcustomer);
+                transmitObjectObject["Customer"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcustomer);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectemail != null)
             {
-                transmitObjectObject["Email"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectemail);
+                transmitObjectObject["Email"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectemail);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectestimatedEnd != null)
             {
-                transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectestimatedEnd);
+                transmitObjectObject["EstimatedEnd"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectestimatedEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjecthID != null)
             {
-                transmitObjectObject["HID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjecthID);
+                transmitObjectObject["HID"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjecthID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectleadOriginEn != null)
             {
-                transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectleadOriginEn);
+                transmitObjectObject["LeadOriginEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectleadOriginEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectprice != null)
             {
-                transmitObjectObject["Price"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprice);
+                transmitObjectObject["Price"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectprice);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpriceChanged != null)
             {
-                transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpriceChanged);
+                transmitObjectObject["PriceChanged"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpriceDefaultCurrency != null)
             {
-                transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpriceDefaultCurrency);
+                transmitObjectObject["PriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectprobability != null)
             {
-                transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprobability);
+                transmitObjectObject["Probability"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectprobability);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectreceiveDate != null)
             {
-                transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectreceiveDate);
+                transmitObjectObject["ReceiveDate"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectreceiveDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectstreet != null)
             {
-                transmitObjectObject["Street"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstreet);
+                transmitObjectObject["Street"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectstreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectzip != null)
             {
-                transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectzip);
+                transmitObjectObject["Zip"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectzip);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectestimatedValue != null)
             {
-                transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectestimatedValue);
+                transmitObjectObject["EstimatedValue"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectestimatedValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcountryEn != null)
             {
-                transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcountryEn);
+                transmitObjectObject["CountryEn"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectstate != null)
             {
-                transmitObjectObject["State"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstate);
+                transmitObjectObject["State"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectstate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpOBox != null)
             {
-                transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpOBox);
+                transmitObjectObject["POBox"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectemailOptOut != null)
             {
-                transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectemailOptOut);
+                transmitObjectObject["EmailOptOut"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectemailOptOut);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcompaniesCustomerGuid != null)
             {
-                transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcompaniesCustomerGuid);
+                transmitObjectObject["Companies_CustomerGuid"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcompaniesCustomerGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcontactsContactPersonGuid != null)
             {
-                transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcontactsContactPersonGuid);
+                transmitObjectObject["Contacts_ContactPersonGuid"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcontactsContactPersonGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectmarketingMarketingGuid != null)
             {
-                transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectmarketingMarketingGuid);
+                transmitObjectObject["Marketing_MarketingGuid"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectmarketingMarketingGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveLeadWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveLeadWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -1541,13 +1541,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveLeadWrapperdieOnItemConflict != null)
             {
-                saveLeadWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveLeadWrapperdieOnItemConflict);
+                saveLeadWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveLeadWrapperdieOnItemConflict);
                 saveLeadWrapperpropCount++;
             }
 
             if (saveLeadWrapperignoredUserErrorMessages != null)
             {
-                saveLeadWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveLeadWrapperignoredUserErrorMessages);
+                saveLeadWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveLeadWrapperignoredUserErrorMessages);
                 saveLeadWrapperpropCount++;
             }
 
@@ -1571,397 +1571,397 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveProjectWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprice != null)
             {
-                transmitObjectObject["Price"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprice);
+                transmitObjectObject["Price"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprice);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectEnd != null)
             {
-                transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectEnd);
+                transmitObjectObject["ProjectEnd"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectName != null)
             {
-                transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectName);
+                transmitObjectObject["ProjectName"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectName);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpeopleExpenses != null)
             {
-                transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpenses);
+                transmitObjectObject["PeopleExpenses"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpeopleExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectRealEnd != null)
             {
-                transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectRealEnd);
+                transmitObjectObject["ProjectRealEnd"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectRealEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPrice != null)
             {
-                transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPrice);
+                transmitObjectObject["EstimatedPrice"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPrice);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjecthID != null)
             {
-                transmitObjectObject["HID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecthID);
+                transmitObjectObject["HID"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjecthID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectOriginEn != null)
             {
-                transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectOriginEn);
+                transmitObjectObject["ProjectOriginEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectOriginEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpaymentTypeEn != null)
             {
-                transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpaymentTypeEn);
+                transmitObjectObject["PaymentTypeEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpaymentTypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectotherExpenses != null)
             {
-                transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpenses);
+                transmitObjectObject["OtherExpenses"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectotherExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectmargin != null)
             {
-                transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectmargin);
+                transmitObjectObject["Margin"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectmargin);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprofit != null)
             {
-                transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprofit);
+                transmitObjectObject["Profit"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprofit);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpaymentMaturity != null)
             {
-                transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpaymentMaturity);
+                transmitObjectObject["PaymentMaturity"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpaymentMaturity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectinvoicePaymentDate != null)
             {
-                transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectinvoicePaymentDate);
+                transmitObjectObject["InvoicePaymentDate"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectinvoicePaymentDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectinvoiceIssueDate != null)
             {
-                transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectinvoiceIssueDate);
+                transmitObjectObject["InvoiceIssueDate"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectinvoiceIssueDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedMargin != null)
             {
-                transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedMargin);
+                transmitObjectObject["EstimatedMargin"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedMargin);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedProfit != null)
             {
-                transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedProfit);
+                transmitObjectObject["EstimatedProfit"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedProfit);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPeopleExpenses != null)
             {
-                transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpenses);
+                transmitObjectObject["EstimatedPeopleExpenses"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPeopleExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedOtherExpenses != null)
             {
-                transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpenses);
+                transmitObjectObject["EstimatedOtherExpenses"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedOtherExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectlicensesCount != null)
             {
-                transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensesCount);
+                transmitObjectObject["LicensesCount"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectlicensesCount);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectlicensePrice != null)
             {
-                transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePrice);
+                transmitObjectObject["LicensePrice"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectlicensePrice);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectshowInCaplan != null)
             {
-                transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectshowInCaplan);
+                transmitObjectObject["ShowInCaplan"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectshowInCaplan);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectStart != null)
             {
-                transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectStart);
+                transmitObjectObject["ProjectStart"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectStart);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedWorkHours != null)
             {
-                transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedWorkHours);
+                transmitObjectObject["EstimatedWorkHours"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjecttotalWorkHours != null)
             {
-                transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecttotalWorkHours);
+                transmitObjectObject["TotalWorkHours"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjecttotalWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+                transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+                transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency);
+                transmitObjectObject["EstimatedPriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency);
+                transmitObjectObject["PeopleExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectotherExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency);
+                transmitObjectObject["OtherExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpriceDefaultCurrency != null)
             {
-                transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpriceDefaultCurrency);
+                transmitObjectObject["PriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprofitDefaultCurrency != null)
             {
-                transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprofitDefaultCurrency);
+                transmitObjectObject["ProfitDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprofitDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency);
+                transmitObjectObject["EstimatedProfitDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectcurrencyEn != null)
             {
-                transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcurrencyEn);
+                transmitObjectObject["CurrencyEn"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectcurrencyEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged != null)
             {
-                transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged);
+                transmitObjectObject["EstimatedPeopleExpensesChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedOtherExpensesChanged != null)
             {
-                transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged);
+                transmitObjectObject["EstimatedOtherExpensesChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectotherExpensesChanged != null)
             {
-                transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpensesChanged);
+                transmitObjectObject["OtherExpensesChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectotherExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectestimatedPriceChanged != null)
             {
-                transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPriceChanged);
+                transmitObjectObject["EstimatedPriceChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectestimatedPriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpriceChanged != null)
             {
-                transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpriceChanged);
+                transmitObjectObject["PriceChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectlicensePriceChanged != null)
             {
-                transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePriceChanged);
+                transmitObjectObject["LicensePriceChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectlicensePriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectlicensePriceDefaultCurrency != null)
             {
-                transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency);
+                transmitObjectObject["LicensePriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpeopleExpensesChanged != null)
             {
-                transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpensesChanged);
+                transmitObjectObject["PeopleExpensesChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpeopleExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectcompaniesCustomerGuid != null)
             {
-                transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcompaniesCustomerGuid);
+                transmitObjectObject["Companies_CustomerGuid"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectcompaniesCustomerGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectcontactsContactPersonGuid != null)
             {
-                transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcontactsContactPersonGuid);
+                transmitObjectObject["Contacts_ContactPersonGuid"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectcontactsContactPersonGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectleadsProjectOriginGuid != null)
             {
-                transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectleadsProjectOriginGuid);
+                transmitObjectObject["Leads_Project_OriginGuid"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectleadsProjectOriginGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid != null)
             {
-                transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid);
+                transmitObjectObject["Projects_SuperiorProjectGuid"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectusersSupervisorGuid != null)
             {
-                transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectusersSupervisorGuid);
+                transmitObjectObject["Users_SupervisorGuid"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectusersSupervisorGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveProjectWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveProjectWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -1973,13 +1973,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveProjectWrapperdieOnItemConflict != null)
             {
-                saveProjectWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveProjectWrapperdieOnItemConflict);
+                saveProjectWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveProjectWrapperdieOnItemConflict);
                 saveProjectWrapperpropCount++;
             }
 
             if (saveProjectWrapperignoredUserErrorMessages != null)
             {
-                saveProjectWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveProjectWrapperignoredUserErrorMessages);
+                saveProjectWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveProjectWrapperignoredUserErrorMessages);
                 saveProjectWrapperpropCount++;
             }
 
@@ -2003,25 +2003,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveRelationWrappertransmitObjectitemGUID1 != null)
             {
-                transmitObjectObject["ItemGUID1"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectitemGUID1);
+                transmitObjectObject["ItemGUID1"] = CSharpExpressionConverter.ConvertToken(saveRelationWrappertransmitObjectitemGUID1);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveRelationWrappertransmitObjectitemGUID2 != null)
             {
-                transmitObjectObject["ItemGUID2"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectitemGUID2);
+                transmitObjectObject["ItemGUID2"] = CSharpExpressionConverter.ConvertToken(saveRelationWrappertransmitObjectitemGUID2);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveRelationWrappertransmitObjectfolderName1 != null)
             {
-                transmitObjectObject["FolderName1"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectfolderName1);
+                transmitObjectObject["FolderName1"] = CSharpExpressionConverter.Convert(saveRelationWrappertransmitObjectfolderName1);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveRelationWrappertransmitObjectfolderName2 != null)
             {
-                transmitObjectObject["FolderName2"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectfolderName2);
+                transmitObjectObject["FolderName2"] = CSharpExpressionConverter.Convert(saveRelationWrappertransmitObjectfolderName2);
                 transmitObjectObjectpropCount++;
             }
 
@@ -2053,229 +2053,229 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (saveTaskWrappertransmitObjectbody != null)
             {
-                transmitObjectObject["Body"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectbody);
+                transmitObjectObject["Body"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectbody);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectisCompleted != null)
             {
-                transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisCompleted);
+                transmitObjectObject["IsCompleted"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectisCompleted);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectdueDate != null)
             {
-                transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectdueDate);
+                transmitObjectObject["DueDate"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectdueDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectpercentCompleteDecimal != null)
             {
-                transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpercentCompleteDecimal);
+                transmitObjectObject["PercentCompleteDecimal"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectpercentCompleteDecimal);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectstartDate != null)
             {
-                transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectstartDate);
+                transmitObjectObject["StartDate"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectstartDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectsubject != null)
             {
-                transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectsubject);
+                transmitObjectObject["Subject"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectsubject);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectlevel != null)
             {
-                transmitObjectObject["Level"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectlevel);
+                transmitObjectObject["Level"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectlevel);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectactualWorkHours != null)
             {
-                transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectactualWorkHours);
+                transmitObjectObject["ActualWorkHours"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectactualWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectestimatedWorkHours != null)
             {
-                transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectestimatedWorkHours);
+                transmitObjectObject["EstimatedWorkHours"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectestimatedWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectisReminderSet != null)
             {
-                transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisReminderSet);
+                transmitObjectObject["IsReminderSet"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectisReminderSet);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectreminderDate != null)
             {
-                transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectreminderDate);
+                transmitObjectObject["ReminderDate"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectreminderDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectcompletedDate != null)
             {
-                transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcompletedDate);
+                transmitObjectObject["CompletedDate"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectcompletedDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectleadsTaskParentGuid != null)
             {
-                transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectleadsTaskParentGuid);
+                transmitObjectObject["Leads_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectleadsTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectprojectsTaskParentGuid != null)
             {
-                transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectprojectsTaskParentGuid);
+                transmitObjectObject["Projects_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectprojectsTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjecttasksTaskParentGuid != null)
             {
-                transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttasksTaskParentGuid);
+                transmitObjectObject["Tasks_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjecttasksTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectmarketingTaskParentGuid != null)
             {
-                transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectmarketingTaskParentGuid);
+                transmitObjectObject["Marketing_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectmarketingTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectcontactsContactGuid != null)
             {
-                transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcontactsContactGuid);
+                transmitObjectObject["Contacts_ContactGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectcontactsContactGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectusersTaskDelegatorGuid != null)
             {
-                transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectusersTaskDelegatorGuid);
+                transmitObjectObject["Users_TaskDelegatorGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectusersTaskDelegatorGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectusersTaskSolverGuid != null)
             {
-                transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectusersTaskSolverGuid);
+                transmitObjectObject["Users_TaskSolverGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectusersTaskSolverGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjecttasksTaskOriginGuid != null)
             {
-                transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttasksTaskOriginGuid);
+                transmitObjectObject["Tasks_TaskOriginGuid"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjecttasksTaskOriginGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (saveTaskWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(saveTaskWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -2287,13 +2287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (saveTaskWrapperdieOnItemConflict != null)
             {
-                saveTaskWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveTaskWrapperdieOnItemConflict);
+                saveTaskWrapper["dieOnItemConflict"] = CSharpExpressionConverter.ConvertToken(saveTaskWrapperdieOnItemConflict);
                 saveTaskWrapperpropCount++;
             }
 
             if (saveTaskWrapperignoredUserErrorMessages != null)
             {
-                saveTaskWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveTaskWrapperignoredUserErrorMessages);
+                saveTaskWrapper["ignoredUserErrorMessages"] = CSharpExpressionConverter.ConvertToken(saveTaskWrapperignoredUserErrorMessages);
                 saveTaskWrapperpropCount++;
             }
 
@@ -2317,421 +2317,421 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchCompaniesWrappertransmitObjectaccountNumber != null)
             {
-                transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaccountNumber);
+                transmitObjectObject["AccountNumber"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaccountNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1POBox != null)
             {
-                transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1POBox);
+                transmitObjectObject["Address1POBox"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1Street != null)
             {
-                transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1Street);
+                transmitObjectObject["Address1Street"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1City != null)
             {
-                transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1City);
+                transmitObjectObject["Address1City"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1City);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1State != null)
             {
-                transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1State);
+                transmitObjectObject["Address1State"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1State);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1CountryEn != null)
             {
-                transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1CountryEn);
+                transmitObjectObject["Address1CountryEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress1PostalCode != null)
             {
-                transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1PostalCode);
+                transmitObjectObject["Address1PostalCode"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress1PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2POBox != null)
             {
-                transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2POBox);
+                transmitObjectObject["Address2POBox"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2Street != null)
             {
-                transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2Street);
+                transmitObjectObject["Address2Street"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2City != null)
             {
-                transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2City);
+                transmitObjectObject["Address2City"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2City);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2State != null)
             {
-                transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2State);
+                transmitObjectObject["Address2State"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2State);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2CountryEn != null)
             {
-                transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2CountryEn);
+                transmitObjectObject["Address2CountryEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress2PostalCode != null)
             {
-                transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2PostalCode);
+                transmitObjectObject["Address2PostalCode"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress2PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3POBox != null)
             {
-                transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3POBox);
+                transmitObjectObject["Address3POBox"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3POBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3Street != null)
             {
-                transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3Street);
+                transmitObjectObject["Address3Street"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3Street);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3City != null)
             {
-                transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3City);
+                transmitObjectObject["Address3City"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3City);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3State != null)
             {
-                transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3State);
+                transmitObjectObject["Address3State"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3State);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3CountryEn != null)
             {
-                transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3CountryEn);
+                transmitObjectObject["Address3CountryEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3CountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectaddress3PostalCode != null)
             {
-                transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3PostalCode);
+                transmitObjectObject["Address3PostalCode"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectaddress3PostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectcompanyName != null)
             {
-                transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcompanyName);
+                transmitObjectObject["CompanyName"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectcompanyName);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectdepartment != null)
             {
-                transmitObjectObject["Department"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectdepartment);
+                transmitObjectObject["Department"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectdepartment);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectemail != null)
             {
-                transmitObjectObject["Email"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemail);
+                transmitObjectObject["Email"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectemail);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectemployeesCount != null)
             {
-                transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemployeesCount);
+                transmitObjectObject["EmployeesCount"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectemployeesCount);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectfax != null)
             {
-                transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfax);
+                transmitObjectObject["Fax"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectfax);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectfirstContactEn != null)
             {
-                transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfirstContactEn);
+                transmitObjectObject["FirstContactEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectfirstContactEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectiCQ != null)
             {
-                transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectiCQ);
+                transmitObjectObject["ICQ"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectiCQ);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectidentificationNumber != null)
             {
-                transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectidentificationNumber);
+                transmitObjectObject["IdentificationNumber"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectidentificationNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectlineOfBusiness != null)
             {
-                transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectlineOfBusiness);
+                transmitObjectObject["LineOfBusiness"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectlineOfBusiness);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectmailingListOther != null)
             {
-                transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmailingListOther);
+                transmitObjectObject["MailingListOther"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectmailingListOther);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectmobile != null)
             {
-                transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmobile);
+                transmitObjectObject["Mobile"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectmobile);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectmobileNormalized != null)
             {
-                transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmobileNormalized);
+                transmitObjectObject["MobileNormalized"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectmobileNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectmSN != null)
             {
-                transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmSN);
+                transmitObjectObject["MSN"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectmSN);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectpurchaser != null)
             {
-                transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpurchaser);
+                transmitObjectObject["Purchaser"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectpurchaser);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectreversal != null)
             {
-                transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectreversal);
+                transmitObjectObject["Reversal"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectreversal);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectskype != null)
             {
-                transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectskype);
+                transmitObjectObject["Skype"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectskype);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectsuppliers != null)
             {
-                transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectsuppliers);
+                transmitObjectObject["Suppliers"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectsuppliers);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectvATNumber != null)
             {
-                transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectvATNumber);
+                transmitObjectObject["VATNumber"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectvATNumber);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectwebPage != null)
             {
-                transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectwebPage);
+                transmitObjectObject["WebPage"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectwebPage);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectadditionalDiscount != null)
             {
-                transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectadditionalDiscount);
+                transmitObjectObject["AdditionalDiscount"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectadditionalDiscount);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectiD != null)
             {
-                transmitObjectObject["ID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectiD);
+                transmitObjectObject["ID"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectiD);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectcompetitor != null)
             {
-                transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcompetitor);
+                transmitObjectObject["Competitor"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectcompetitor);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectsalePriceGuid != null)
             {
-                transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectsalePriceGuid);
+                transmitObjectObject["SalePriceGuid"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectsalePriceGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectnotificationByEmail != null)
             {
-                transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnotificationByEmail);
+                transmitObjectObject["NotificationByEmail"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectnotificationByEmail);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectnotificationBy != null)
             {
-                transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnotificationBy);
+                transmitObjectObject["NotificationBy"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectnotificationBy);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectemailOptOut != null)
             {
-                transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemailOptOut);
+                transmitObjectObject["EmailOptOut"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectemailOptOut);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchCompaniesWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -2743,7 +2743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchCompaniesWrapperincludeRelations != null)
             {
-                searchCompaniesWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchCompaniesWrapperincludeRelations);
+                searchCompaniesWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrapperincludeRelations);
                 searchCompaniesWrapperpropCount++;
             }
 
@@ -2751,13 +2751,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchCompaniesWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchCompaniesWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchCompaniesWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchCompaniesWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -2769,7 +2769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchCompaniesWrapperbinaryLogicalOperator != null)
             {
-                searchCompaniesWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchCompaniesWrapperbinaryLogicalOperator);
+                searchCompaniesWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchCompaniesWrapperbinaryLogicalOperator);
                 searchCompaniesWrapperpropCount++;
             }
 
@@ -2793,421 +2793,421 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchContactsWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressStreet != null)
             {
-                transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressStreet);
+                transmitObjectObject["BusinessAddressStreet"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressCity != null)
             {
-                transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressCity);
+                transmitObjectObject["BusinessAddressCity"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressState != null)
             {
-                transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressState);
+                transmitObjectObject["BusinessAddressState"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressCountryEn != null)
             {
-                transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressCountryEn);
+                transmitObjectObject["BusinessAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressPOBox != null)
             {
-                transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressPOBox);
+                transmitObjectObject["BusinessAddressPOBox"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectbusinessAddressPostalCode != null)
             {
-                transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressPostalCode);
+                transmitObjectObject["BusinessAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectbusinessAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressStreet != null)
             {
-                transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressStreet);
+                transmitObjectObject["HomeAddressStreet"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressCity != null)
             {
-                transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressCity);
+                transmitObjectObject["HomeAddressCity"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressState != null)
             {
-                transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressState);
+                transmitObjectObject["HomeAddressState"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressCountryEn != null)
             {
-                transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressCountryEn);
+                transmitObjectObject["HomeAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressPOBox != null)
             {
-                transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressPOBox);
+                transmitObjectObject["HomeAddressPOBox"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecthomeAddressPostalCode != null)
             {
-                transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressPostalCode);
+                transmitObjectObject["HomeAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecthomeAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressStreet != null)
             {
-                transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressStreet);
+                transmitObjectObject["OtherAddressStreet"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressStreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressCity != null)
             {
-                transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressCity);
+                transmitObjectObject["OtherAddressCity"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressCity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressState != null)
             {
-                transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressState);
+                transmitObjectObject["OtherAddressState"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressState);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressCountryEn != null)
             {
-                transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressCountryEn);
+                transmitObjectObject["OtherAddressCountryEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressCountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressPOBox != null)
             {
-                transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressPOBox);
+                transmitObjectObject["OtherAddressPOBox"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressPOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectotherAddressPostalCode != null)
             {
-                transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressPostalCode);
+                transmitObjectObject["OtherAddressPostalCode"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectotherAddressPostalCode);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectcompany != null)
             {
-                transmitObjectObject["Company"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcompany);
+                transmitObjectObject["Company"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectcompany);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectemail1Address != null)
             {
-                transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail1Address);
+                transmitObjectObject["Email1Address"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectemail1Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectemail2Address != null)
             {
-                transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail2Address);
+                transmitObjectObject["Email2Address"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectemail2Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectemail3Address != null)
             {
-                transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail3Address);
+                transmitObjectObject["Email3Address"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectemail3Address);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectfirstName != null)
             {
-                transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectfirstName);
+                transmitObjectObject["FirstName"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectfirstName);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectiCQ != null)
             {
-                transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectiCQ);
+                transmitObjectObject["ICQ"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectiCQ);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectlastName != null)
             {
-                transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectlastName);
+                transmitObjectObject["LastName"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectlastName);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectmiddleName != null)
             {
-                transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmiddleName);
+                transmitObjectObject["MiddleName"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectmiddleName);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectmSN != null)
             {
-                transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmSN);
+                transmitObjectObject["MSN"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectmSN);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectprefixEn != null)
             {
-                transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprefixEn);
+                transmitObjectObject["PrefixEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectprefixEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectsuffixEn != null)
             {
-                transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectsuffixEn);
+                transmitObjectObject["SuffixEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectsuffixEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectskype != null)
             {
-                transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectskype);
+                transmitObjectObject["Skype"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectskype);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber1 != null)
             {
-                transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber1);
+                transmitObjectObject["TelephoneNumber1"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber1);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber2 != null)
             {
-                transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber2);
+                transmitObjectObject["TelephoneNumber2"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber2);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber3 != null)
             {
-                transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber3);
+                transmitObjectObject["TelephoneNumber3"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber3);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber4 != null)
             {
-                transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber4);
+                transmitObjectObject["TelephoneNumber4"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber4);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber5 != null)
             {
-                transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber5);
+                transmitObjectObject["TelephoneNumber5"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber5);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber6 != null)
             {
-                transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber6);
+                transmitObjectObject["TelephoneNumber6"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber6);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber1Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber1Normalized);
+                transmitObjectObject["TelephoneNumber1Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber1Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber2Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber2Normalized);
+                transmitObjectObject["TelephoneNumber2Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber2Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber3Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber3Normalized);
+                transmitObjectObject["TelephoneNumber3Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber3Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber4Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber4Normalized);
+                transmitObjectObject["TelephoneNumber4Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber4Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber5Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber5Normalized);
+                transmitObjectObject["TelephoneNumber5Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber5Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttelephoneNumber6Normalized != null)
             {
-                transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber6Normalized);
+                transmitObjectObject["TelephoneNumber6Normalized"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttelephoneNumber6Normalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectdepartment != null)
             {
-                transmitObjectObject["Department"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectdepartment);
+                transmitObjectObject["Department"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectdepartment);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttitle != null)
             {
-                transmitObjectObject["Title"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttitle);
+                transmitObjectObject["Title"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttitle);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectwebPage != null)
             {
-                transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectwebPage);
+                transmitObjectObject["WebPage"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectwebPage);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectdoNotSendNewsletter != null)
             {
-                transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectdoNotSendNewsletter);
+                transmitObjectObject["DoNotSendNewsletter"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectdoNotSendNewsletter);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectprofilePicture != null)
             {
-                transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePicture);
+                transmitObjectObject["ProfilePicture"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectprofilePicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectprofilePictureWidth != null)
             {
-                transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePictureWidth);
+                transmitObjectObject["ProfilePictureWidth"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectprofilePictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectprofilePictureHeight != null)
             {
-                transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePictureHeight);
+                transmitObjectObject["ProfilePictureHeight"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectprofilePictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchContactsWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchContactsWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -3219,7 +3219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchContactsWrapperincludeRelations != null)
             {
-                searchContactsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchContactsWrapperincludeRelations);
+                searchContactsWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchContactsWrapperincludeRelations);
                 searchContactsWrapperpropCount++;
             }
 
@@ -3227,13 +3227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchContactsWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchContactsWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchContactsWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchContactsWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchContactsWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchContactsWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -3245,13 +3245,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchContactsWrapperincludeProfilePictures != null)
             {
-                searchContactsWrapper["includeProfilePictures"] = ExpressionConverter.ConvertO(searchContactsWrapperincludeProfilePictures);
+                searchContactsWrapper["includeProfilePictures"] = CSharpExpressionConverter.ConvertToken(searchContactsWrapperincludeProfilePictures);
                 searchContactsWrapperpropCount++;
             }
 
             if (searchContactsWrapperbinaryLogicalOperator != null)
             {
-                searchContactsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchContactsWrapperbinaryLogicalOperator);
+                searchContactsWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchContactsWrapperbinaryLogicalOperator);
                 searchContactsWrapperpropCount++;
             }
 
@@ -3275,229 +3275,229 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid != null)
             {
-                transmitObjectObject["Marketing_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid);
+                transmitObjectObject["Marketing_SuperiorItemGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectcontactsContactGuid != null)
             {
-                transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcontactsContactGuid);
+                transmitObjectObject["Contacts_ContactGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectcontactsContactGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectleadsSuperiorItemGuid != null)
             {
-                transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid);
+                transmitObjectObject["Leads_SuperiorItemGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid != null)
             {
-                transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid);
+                transmitObjectObject["Projects_SuperiorItemGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectmarketingMarketingGuid != null)
             {
-                transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmarketingMarketingGuid);
+                transmitObjectObject["Marketing_MarketingGuid"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectmarketingMarketingGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectcalendarEntryID != null)
             {
-                transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcalendarEntryID);
+                transmitObjectObject["CalendarEntryID"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectcalendarEntryID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectcalendarORIGIN != null)
             {
-                transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcalendarORIGIN);
+                transmitObjectObject["Calendar_ORIGIN"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectcalendarORIGIN);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectchangedField != null)
             {
-                transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectchangedField);
+                transmitObjectObject["ChangedField"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectchangedField);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjecteventEnd != null)
             {
-                transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecteventEnd);
+                transmitObjectObject["EventEnd"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjecteventEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjecteventStart != null)
             {
-                transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecteventStart);
+                transmitObjectObject["EventStart"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjecteventStart);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectfieldValue != null)
             {
-                transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectfieldValue);
+                transmitObjectObject["FieldValue"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectfieldValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectprevFieldValue != null)
             {
-                transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprevFieldValue);
+                transmitObjectObject["PrevFieldValue"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectprevFieldValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectisSystem != null)
             {
-                transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisSystem);
+                transmitObjectObject["IsSystem"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectisSystem);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectisGdprRelevant != null)
             {
-                transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisGdprRelevant);
+                transmitObjectObject["IsGdprRelevant"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectisGdprRelevant);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchJournalsWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -3509,7 +3509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchJournalsWrapperincludeRelations != null)
             {
-                searchJournalsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchJournalsWrapperincludeRelations);
+                searchJournalsWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrapperincludeRelations);
                 searchJournalsWrapperpropCount++;
             }
 
@@ -3517,13 +3517,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchJournalsWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchJournalsWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchJournalsWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchJournalsWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -3535,7 +3535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchJournalsWrapperbinaryLogicalOperator != null)
             {
-                searchJournalsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchJournalsWrapperbinaryLogicalOperator);
+                searchJournalsWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchJournalsWrapperbinaryLogicalOperator);
                 searchJournalsWrapperpropCount++;
             }
 
@@ -3559,307 +3559,307 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchLeadsWrappertransmitObjectcompaniesCustomerGuid != null)
             {
-                transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcompaniesCustomerGuid);
+                transmitObjectObject["Companies_CustomerGuid"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcompaniesCustomerGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcontactsContactPersonGuid != null)
             {
-                transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcontactsContactPersonGuid);
+                transmitObjectObject["Contacts_ContactPersonGuid"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcontactsContactPersonGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectmarketingMarketingGuid != null)
             {
-                transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectmarketingMarketingGuid);
+                transmitObjectObject["Marketing_MarketingGuid"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectmarketingMarketingGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcity != null)
             {
-                transmitObjectObject["City"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcity);
+                transmitObjectObject["City"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcontactPerson != null)
             {
-                transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcontactPerson);
+                transmitObjectObject["ContactPerson"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcontactPerson);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcurrencyEn != null)
             {
-                transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcurrencyEn);
+                transmitObjectObject["CurrencyEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcurrencyEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcustomer != null)
             {
-                transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcustomer);
+                transmitObjectObject["Customer"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcustomer);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectemail != null)
             {
-                transmitObjectObject["Email"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectemail);
+                transmitObjectObject["Email"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectemail);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectestimatedEnd != null)
             {
-                transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectestimatedEnd);
+                transmitObjectObject["EstimatedEnd"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectestimatedEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjecthID != null)
             {
-                transmitObjectObject["HID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjecthID);
+                transmitObjectObject["HID"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjecthID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectleadOriginEn != null)
             {
-                transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectleadOriginEn);
+                transmitObjectObject["LeadOriginEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectleadOriginEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectphone != null)
             {
-                transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectphone);
+                transmitObjectObject["Phone"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectphone);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectphoneNormalized != null)
             {
-                transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectphoneNormalized);
+                transmitObjectObject["PhoneNormalized"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectphoneNormalized);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectprice != null)
             {
-                transmitObjectObject["Price"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprice);
+                transmitObjectObject["Price"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectprice);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpriceChanged != null)
             {
-                transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpriceChanged);
+                transmitObjectObject["PriceChanged"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpriceDefaultCurrency != null)
             {
-                transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpriceDefaultCurrency);
+                transmitObjectObject["PriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectprobability != null)
             {
-                transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprobability);
+                transmitObjectObject["Probability"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectprobability);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectreceiveDate != null)
             {
-                transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectreceiveDate);
+                transmitObjectObject["ReceiveDate"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectreceiveDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectstreet != null)
             {
-                transmitObjectObject["Street"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstreet);
+                transmitObjectObject["Street"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectstreet);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectzip != null)
             {
-                transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectzip);
+                transmitObjectObject["Zip"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectzip);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectestimatedValue != null)
             {
-                transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectestimatedValue);
+                transmitObjectObject["EstimatedValue"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectestimatedValue);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectisCompleted != null)
             {
-                transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisCompleted);
+                transmitObjectObject["IsCompleted"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectisCompleted);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectisLost != null)
             {
-                transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisLost);
+                transmitObjectObject["IsLost"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectisLost);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcountryEn != null)
             {
-                transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcountryEn);
+                transmitObjectObject["CountryEn"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcountryEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectstate != null)
             {
-                transmitObjectObject["State"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstate);
+                transmitObjectObject["State"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectstate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpOBox != null)
             {
-                transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpOBox);
+                transmitObjectObject["POBox"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpOBox);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectemailOptOut != null)
             {
-                transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectemailOptOut);
+                transmitObjectObject["EmailOptOut"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectemailOptOut);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcompletedDate != null)
             {
-                transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcompletedDate);
+                transmitObjectObject["CompletedDate"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcompletedDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectlostDate != null)
             {
-                transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectlostDate);
+                transmitObjectObject["LostDate"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectlostDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchLeadsWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -3871,7 +3871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchLeadsWrapperincludeRelations != null)
             {
-                searchLeadsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchLeadsWrapperincludeRelations);
+                searchLeadsWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrapperincludeRelations);
                 searchLeadsWrapperpropCount++;
             }
 
@@ -3879,13 +3879,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchLeadsWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchLeadsWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchLeadsWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchLeadsWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -3897,7 +3897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchLeadsWrapperbinaryLogicalOperator != null)
             {
-                searchLeadsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchLeadsWrapperbinaryLogicalOperator);
+                searchLeadsWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchLeadsWrapperbinaryLogicalOperator);
                 searchLeadsWrapperpropCount++;
             }
 
@@ -3921,439 +3921,439 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchProjectsWrappertransmitObjectcompaniesCustomerGuid != null)
             {
-                transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcompaniesCustomerGuid);
+                transmitObjectObject["Companies_CustomerGuid"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectcompaniesCustomerGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectcontactsContactPersonGuid != null)
             {
-                transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcontactsContactPersonGuid);
+                transmitObjectObject["Contacts_ContactPersonGuid"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectcontactsContactPersonGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectleadsProjectOriginGuid != null)
             {
-                transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectleadsProjectOriginGuid);
+                transmitObjectObject["Leads_Project_OriginGuid"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectleadsProjectOriginGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid != null)
             {
-                transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid);
+                transmitObjectObject["Projects_SuperiorProjectGuid"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectusersSupervisorGuid != null)
             {
-                transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectusersSupervisorGuid);
+                transmitObjectObject["Users_SupervisorGuid"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectusersSupervisorGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectnote != null)
             {
-                transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectnote);
+                transmitObjectObject["Note"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectnote);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprice != null)
             {
-                transmitObjectObject["Price"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprice);
+                transmitObjectObject["Price"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprice);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectEnd != null)
             {
-                transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectEnd);
+                transmitObjectObject["ProjectEnd"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectName != null)
             {
-                transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectName);
+                transmitObjectObject["ProjectName"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectName);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpeopleExpenses != null)
             {
-                transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpenses);
+                transmitObjectObject["PeopleExpenses"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpeopleExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectRealEnd != null)
             {
-                transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectRealEnd);
+                transmitObjectObject["ProjectRealEnd"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectRealEnd);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPrice != null)
             {
-                transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPrice);
+                transmitObjectObject["EstimatedPrice"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPrice);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjecthID != null)
             {
-                transmitObjectObject["HID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecthID);
+                transmitObjectObject["HID"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjecthID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectOriginEn != null)
             {
-                transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectOriginEn);
+                transmitObjectObject["ProjectOriginEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectOriginEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpaymentTypeEn != null)
             {
-                transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpaymentTypeEn);
+                transmitObjectObject["PaymentTypeEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpaymentTypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectotherExpenses != null)
             {
-                transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpenses);
+                transmitObjectObject["OtherExpenses"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectotherExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectmargin != null)
             {
-                transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectmargin);
+                transmitObjectObject["Margin"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectmargin);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprofit != null)
             {
-                transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprofit);
+                transmitObjectObject["Profit"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprofit);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpaymentMaturity != null)
             {
-                transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpaymentMaturity);
+                transmitObjectObject["PaymentMaturity"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpaymentMaturity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectinvoicePaymentDate != null)
             {
-                transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectinvoicePaymentDate);
+                transmitObjectObject["InvoicePaymentDate"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectinvoicePaymentDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectinvoiceIssueDate != null)
             {
-                transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectinvoiceIssueDate);
+                transmitObjectObject["InvoiceIssueDate"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectinvoiceIssueDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedMargin != null)
             {
-                transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedMargin);
+                transmitObjectObject["EstimatedMargin"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedMargin);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedProfit != null)
             {
-                transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedProfit);
+                transmitObjectObject["EstimatedProfit"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedProfit);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPeopleExpenses != null)
             {
-                transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpenses);
+                transmitObjectObject["EstimatedPeopleExpenses"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPeopleExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedOtherExpenses != null)
             {
-                transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpenses);
+                transmitObjectObject["EstimatedOtherExpenses"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedOtherExpenses);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlicensesCount != null)
             {
-                transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensesCount);
+                transmitObjectObject["LicensesCount"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlicensesCount);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlicensePrice != null)
             {
-                transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePrice);
+                transmitObjectObject["LicensePrice"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlicensePrice);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectshowInCaplan != null)
             {
-                transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectshowInCaplan);
+                transmitObjectObject["ShowInCaplan"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectshowInCaplan);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprojectStart != null)
             {
-                transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectStart);
+                transmitObjectObject["ProjectStart"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprojectStart);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedWorkHours != null)
             {
-                transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedWorkHours);
+                transmitObjectObject["EstimatedWorkHours"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjecttotalWorkHours != null)
             {
-                transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecttotalWorkHours);
+                transmitObjectObject["TotalWorkHours"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjecttotalWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+                transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+                transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency);
+                transmitObjectObject["EstimatedPriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency);
+                transmitObjectObject["PeopleExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency != null)
             {
-                transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency);
+                transmitObjectObject["OtherExpensesDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpriceDefaultCurrency != null)
             {
-                transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpriceDefaultCurrency);
+                transmitObjectObject["PriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectprofitDefaultCurrency != null)
             {
-                transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprofitDefaultCurrency);
+                transmitObjectObject["ProfitDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectprofitDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency != null)
             {
-                transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency);
+                transmitObjectObject["EstimatedProfitDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectcurrencyEn != null)
             {
-                transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcurrencyEn);
+                transmitObjectObject["CurrencyEn"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectcurrencyEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged != null)
             {
-                transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged);
+                transmitObjectObject["EstimatedPeopleExpensesChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged != null)
             {
-                transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged);
+                transmitObjectObject["EstimatedOtherExpensesChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectotherExpensesChanged != null)
             {
-                transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpensesChanged);
+                transmitObjectObject["OtherExpensesChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectotherExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectestimatedPriceChanged != null)
             {
-                transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPriceChanged);
+                transmitObjectObject["EstimatedPriceChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectestimatedPriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpriceChanged != null)
             {
-                transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpriceChanged);
+                transmitObjectObject["PriceChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlicensePriceChanged != null)
             {
-                transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePriceChanged);
+                transmitObjectObject["LicensePriceChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlicensePriceChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency != null)
             {
-                transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency);
+                transmitObjectObject["LicensePriceDefaultCurrency"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlastActivity != null)
             {
-                transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlastActivity);
+                transmitObjectObject["LastActivity"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlastActivity);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectnextStep != null)
             {
-                transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectnextStep);
+                transmitObjectObject["NextStep"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectnextStep);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectcompletedDate != null)
             {
-                transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcompletedDate);
+                transmitObjectObject["CompletedDate"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectcompletedDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectisCompleted != null)
             {
-                transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisCompleted);
+                transmitObjectObject["IsCompleted"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectisCompleted);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectlostDate != null)
             {
-                transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlostDate);
+                transmitObjectObject["LostDate"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectlostDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectisLost != null)
             {
-                transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisLost);
+                transmitObjectObject["IsLost"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectisLost);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpeopleExpensesChanged != null)
             {
-                transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpensesChanged);
+                transmitObjectObject["PeopleExpensesChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpeopleExpensesChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchProjectsWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -4365,7 +4365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchProjectsWrapperincludeRelations != null)
             {
-                searchProjectsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchProjectsWrapperincludeRelations);
+                searchProjectsWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrapperincludeRelations);
                 searchProjectsWrapperpropCount++;
             }
 
@@ -4373,13 +4373,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchProjectsWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchProjectsWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchProjectsWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchProjectsWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -4391,7 +4391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchProjectsWrapperbinaryLogicalOperator != null)
             {
-                searchProjectsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchProjectsWrapperbinaryLogicalOperator);
+                searchProjectsWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchProjectsWrapperbinaryLogicalOperator);
                 searchProjectsWrapperpropCount++;
             }
 
@@ -4415,265 +4415,265 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var transmitObjectObjectpropCount = 0;
             if (searchTasksWrappertransmitObjectleadsTopLevelProjectGuid != null)
             {
-                transmitObjectObject["Leads_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid);
+                transmitObjectObject["Leads_TopLevelProjectGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectleadsTaskParentGuid != null)
             {
-                transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectleadsTaskParentGuid);
+                transmitObjectObject["Leads_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectleadsTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid != null)
             {
-                transmitObjectObject["Projects_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid);
+                transmitObjectObject["Projects_TopLevelProjectGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectprojectsTaskParentGuid != null)
             {
-                transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprojectsTaskParentGuid);
+                transmitObjectObject["Projects_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectprojectsTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjecttasksTaskParentGuid != null)
             {
-                transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttasksTaskParentGuid);
+                transmitObjectObject["Tasks_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjecttasksTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid != null)
             {
-                transmitObjectObject["Marketing_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid);
+                transmitObjectObject["Marketing_TopLevelProjectGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectmarketingTaskParentGuid != null)
             {
-                transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmarketingTaskParentGuid);
+                transmitObjectObject["Marketing_TaskParentGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectmarketingTaskParentGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectcompaniesCompanyGuid != null)
             {
-                transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcompaniesCompanyGuid);
+                transmitObjectObject["Companies_CompanyGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectcompaniesCompanyGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectcontactsContactGuid != null)
             {
-                transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcontactsContactGuid);
+                transmitObjectObject["Contacts_ContactGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectcontactsContactGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectusersTaskDelegatorGuid != null)
             {
-                transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectusersTaskDelegatorGuid);
+                transmitObjectObject["Users_TaskDelegatorGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectusersTaskDelegatorGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectusersTaskSolverGuid != null)
             {
-                transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectusersTaskSolverGuid);
+                transmitObjectObject["Users_TaskSolverGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectusersTaskSolverGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjecttasksTaskOriginGuid != null)
             {
-                transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttasksTaskOriginGuid);
+                transmitObjectObject["Tasks_TaskOriginGuid"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjecttasksTaskOriginGuid);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectbody != null)
             {
-                transmitObjectObject["Body"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectbody);
+                transmitObjectObject["Body"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectbody);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectisCompleted != null)
             {
-                transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisCompleted);
+                transmitObjectObject["IsCompleted"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectisCompleted);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectdueDate != null)
             {
-                transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectdueDate);
+                transmitObjectObject["DueDate"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectdueDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectpercentCompleteDecimal != null)
             {
-                transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpercentCompleteDecimal);
+                transmitObjectObject["PercentCompleteDecimal"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectpercentCompleteDecimal);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectprevStateEn != null)
             {
-                transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprevStateEn);
+                transmitObjectObject["PrevStateEn"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectprevStateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectstartDate != null)
             {
-                transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectstartDate);
+                transmitObjectObject["StartDate"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectstartDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectstateEn != null)
             {
-                transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectstateEn);
+                transmitObjectObject["StateEn"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectstateEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectsubject != null)
             {
-                transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectsubject);
+                transmitObjectObject["Subject"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectsubject);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjecttypeEn != null)
             {
-                transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttypeEn);
+                transmitObjectObject["TypeEn"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjecttypeEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectlevel != null)
             {
-                transmitObjectObject["Level"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectlevel);
+                transmitObjectObject["Level"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectlevel);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectimportanceEn != null)
             {
-                transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectimportanceEn);
+                transmitObjectObject["ImportanceEn"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectimportanceEn);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectactualWorkHours != null)
             {
-                transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectactualWorkHours);
+                transmitObjectObject["ActualWorkHours"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectactualWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectestimatedWorkHours != null)
             {
-                transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectestimatedWorkHours);
+                transmitObjectObject["EstimatedWorkHours"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectestimatedWorkHours);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectisReminderSet != null)
             {
-                transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisReminderSet);
+                transmitObjectObject["IsReminderSet"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectisReminderSet);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectreminderDate != null)
             {
-                transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectreminderDate);
+                transmitObjectObject["ReminderDate"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectreminderDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectcompletedDate != null)
             {
-                transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcompletedDate);
+                transmitObjectObject["CompletedDate"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectcompletedDate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectpicture != null)
             {
-                transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpicture);
+                transmitObjectObject["Picture"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectpicture);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectpictureWidth != null)
             {
-                transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpictureWidth);
+                transmitObjectObject["PictureWidth"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectpictureWidth);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectpictureHeight != null)
             {
-                transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpictureHeight);
+                transmitObjectObject["PictureHeight"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectpictureHeight);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectisPrivate != null)
             {
-                transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisPrivate);
+                transmitObjectObject["IsPrivate"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectisPrivate);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectserverItemCreated != null)
             {
-                transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectserverItemCreated);
+                transmitObjectObject["Server_ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectserverItemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectserverItemChanged != null)
             {
-                transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectserverItemChanged);
+                transmitObjectObject["Server_ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectserverItemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectitemCreated != null)
             {
-                transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemCreated);
+                transmitObjectObject["ItemCreated"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectitemCreated);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectitemChanged != null)
             {
-                transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemChanged);
+                transmitObjectObject["ItemChanged"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectitemChanged);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectfileAs != null)
             {
-                transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectfileAs);
+                transmitObjectObject["FileAs"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectfileAs);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectownerGUID != null)
             {
-                transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectownerGUID);
+                transmitObjectObject["OwnerGUID"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectownerGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectcreatedByGUID != null)
             {
-                transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcreatedByGUID);
+                transmitObjectObject["CreatedByGUID"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectcreatedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectmodifiedByGUID != null)
             {
-                transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmodifiedByGUID);
+                transmitObjectObject["ModifiedByGUID"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectmodifiedByGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectadditionalFields != null)
             {
-                transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectadditionalFields);
+                transmitObjectObject["AdditionalFields"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectadditionalFields);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectrelations != null)
             {
-                transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectrelations);
+                transmitObjectObject["Relations"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectrelations);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectitemGUID != null)
             {
-                transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemGUID);
+                transmitObjectObject["ItemGUID"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectitemGUID);
                 transmitObjectObjectpropCount++;
             }
 
             if (searchTasksWrappertransmitObjectitemVersion != null)
             {
-                transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemVersion);
+                transmitObjectObject["ItemVersion"] = CSharpExpressionConverter.ConvertToken(searchTasksWrappertransmitObjectitemVersion);
                 transmitObjectObjectpropCount++;
             }
 
@@ -4685,7 +4685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchTasksWrapperincludeRelations != null)
             {
-                searchTasksWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchTasksWrapperincludeRelations);
+                searchTasksWrapper["includeRelations"] = CSharpExpressionConverter.ConvertToken(searchTasksWrapperincludeRelations);
                 searchTasksWrapperpropCount++;
             }
 
@@ -4693,13 +4693,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var relationsFilterObjectpropCount = 0;
             if (searchTasksWrapperrelationsFilterrelationType != null)
             {
-                relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchTasksWrapperrelationsFilterrelationType);
+                relationsFilterObject["RelationType"] = CSharpExpressionConverter.ConvertToken(searchTasksWrapperrelationsFilterrelationType);
                 relationsFilterObjectpropCount++;
             }
 
             if (searchTasksWrapperrelationsFilterforeignFolderName != null)
             {
-                relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchTasksWrapperrelationsFilterforeignFolderName);
+                relationsFilterObject["ForeignFolderName"] = CSharpExpressionConverter.ConvertToken(searchTasksWrapperrelationsFilterforeignFolderName);
                 relationsFilterObjectpropCount++;
             }
 
@@ -4711,7 +4711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
             if (searchTasksWrapperbinaryLogicalOperator != null)
             {
-                searchTasksWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchTasksWrapperbinaryLogicalOperator);
+                searchTasksWrapper["binaryLogicalOperator"] = CSharpExpressionConverter.ConvertToken(searchTasksWrapperbinaryLogicalOperator);
                 searchTasksWrapperpropCount++;
             }
 
@@ -4733,31 +4733,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             var unlinkItemsWrapperpropCount = 0;
             if (unlinkItemsWrapperitemGuid != null)
             {
-                unlinkItemsWrapper["itemGuid"] = ExpressionConverter.ConvertO(unlinkItemsWrapperitemGuid);
+                unlinkItemsWrapper["itemGuid"] = CSharpExpressionConverter.ConvertToken(unlinkItemsWrapperitemGuid);
                 unlinkItemsWrapperpropCount++;
             }
 
             if (unlinkItemsWrapperfolderName != null)
             {
-                unlinkItemsWrapper["folderName"] = ExpressionConverter.ConvertO(unlinkItemsWrapperfolderName);
+                unlinkItemsWrapper["folderName"] = CSharpExpressionConverter.Convert(unlinkItemsWrapperfolderName);
                 unlinkItemsWrapperpropCount++;
             }
 
             if (unlinkItemsWrapperrelatedItemGuids != null)
             {
-                unlinkItemsWrapper["relatedItemGuids"] = ExpressionConverter.ConvertO(unlinkItemsWrapperrelatedItemGuids);
+                unlinkItemsWrapper["relatedItemGuids"] = CSharpExpressionConverter.ConvertToken(unlinkItemsWrapperrelatedItemGuids);
                 unlinkItemsWrapperpropCount++;
             }
 
             if (unlinkItemsWrapperrelatedFolderName != null)
             {
-                unlinkItemsWrapper["relatedFolderName"] = ExpressionConverter.ConvertO(unlinkItemsWrapperrelatedFolderName);
+                unlinkItemsWrapper["relatedFolderName"] = CSharpExpressionConverter.Convert(unlinkItemsWrapperrelatedFolderName);
                 unlinkItemsWrapperpropCount++;
             }
 
             if (unlinkItemsWrapperskipUnlinkAvailabilityCheck != null)
             {
-                unlinkItemsWrapper["skipUnlinkAvailabilityCheck"] = ExpressionConverter.ConvertO(unlinkItemsWrapperskipUnlinkAvailabilityCheck);
+                unlinkItemsWrapper["skipUnlinkAvailabilityCheck"] = CSharpExpressionConverter.ConvertToken(unlinkItemsWrapperskipUnlinkAvailabilityCheck);
                 unlinkItemsWrapperpropCount++;
             }
 

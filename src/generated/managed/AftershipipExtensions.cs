@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var trackingObjectpropCount = 0;
             if (bodytrackingtrackingNumber != null)
             {
-                trackingObject["tracking_number"] = ExpressionConverter.ConvertO(bodytrackingtrackingNumber);
+                trackingObject["tracking_number"] = CSharpExpressionConverter.ConvertToken(bodytrackingtrackingNumber);
                 trackingObjectpropCount++;
             }
 
@@ -85,43 +85,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var trackingObjectpropCount = 0;
             if (bodytrackingslug != null)
             {
-                trackingObject["slug"] = ExpressionConverter.ConvertO(bodytrackingslug);
+                trackingObject["slug"] = CSharpExpressionConverter.ConvertToken(bodytrackingslug);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingtrackingNumber != null)
             {
-                trackingObject["tracking_number"] = ExpressionConverter.ConvertO(bodytrackingtrackingNumber);
+                trackingObject["tracking_number"] = CSharpExpressionConverter.ConvertToken(bodytrackingtrackingNumber);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingtitle != null)
             {
-                trackingObject["title"] = ExpressionConverter.ConvertO(bodytrackingtitle);
+                trackingObject["title"] = CSharpExpressionConverter.ConvertToken(bodytrackingtitle);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingsmses != null)
             {
-                trackingObject["smses"] = ExpressionConverter.ConvertO(bodytrackingsmses);
+                trackingObject["smses"] = CSharpExpressionConverter.ConvertToken(bodytrackingsmses);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingemails != null)
             {
-                trackingObject["emails"] = ExpressionConverter.ConvertO(bodytrackingemails);
+                trackingObject["emails"] = CSharpExpressionConverter.ConvertToken(bodytrackingemails);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingorderId != null)
             {
-                trackingObject["order_id"] = ExpressionConverter.ConvertO(bodytrackingorderId);
+                trackingObject["order_id"] = CSharpExpressionConverter.ConvertToken(bodytrackingorderId);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingorderIdPath != null)
             {
-                trackingObject["order_id_path"] = ExpressionConverter.ConvertO(bodytrackingorderIdPath);
+                trackingObject["order_id_path"] = CSharpExpressionConverter.ConvertToken(bodytrackingorderIdPath);
                 trackingObjectpropCount++;
             }
 
@@ -129,13 +129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var customFieldsObjectpropCount = 0;
             if (bodytrackingcustomFieldsproductName != null)
             {
-                customFieldsObject["product_name"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductName);
+                customFieldsObject["product_name"] = CSharpExpressionConverter.ConvertToken(bodytrackingcustomFieldsproductName);
                 customFieldsObjectpropCount++;
             }
 
             if (bodytrackingcustomFieldsproductPrice != null)
             {
-                customFieldsObject["product_price"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductPrice);
+                customFieldsObject["product_price"] = CSharpExpressionConverter.ConvertToken(bodytrackingcustomFieldsproductPrice);
                 customFieldsObjectpropCount++;
             }
 
@@ -147,31 +147,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
 
             if (bodytrackinglanguage != null)
             {
-                trackingObject["language"] = ExpressionConverter.ConvertO(bodytrackinglanguage);
+                trackingObject["language"] = CSharpExpressionConverter.ConvertToken(bodytrackinglanguage);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingorderPromisedDeliveryDate != null)
             {
-                trackingObject["order_promised_delivery_date"] = ExpressionConverter.ConvertO(bodytrackingorderPromisedDeliveryDate);
+                trackingObject["order_promised_delivery_date"] = CSharpExpressionConverter.ConvertToken(bodytrackingorderPromisedDeliveryDate);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingdeliveryType != null)
             {
-                trackingObject["delivery_type"] = ExpressionConverter.ConvertO(bodytrackingdeliveryType);
+                trackingObject["delivery_type"] = CSharpExpressionConverter.ConvertToken(bodytrackingdeliveryType);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingpickupLocation != null)
             {
-                trackingObject["pickup_location"] = ExpressionConverter.ConvertO(bodytrackingpickupLocation);
+                trackingObject["pickup_location"] = CSharpExpressionConverter.ConvertToken(bodytrackingpickupLocation);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingpickupNote != null)
             {
-                trackingObject["pickup_note"] = ExpressionConverter.ConvertO(bodytrackingpickupNote);
+                trackingObject["pickup_note"] = CSharpExpressionConverter.ConvertToken(bodytrackingpickupNote);
                 trackingObjectpropCount++;
             }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetATrackingResponse> GetATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<string>> bodytrackingnote = null)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -222,13 +222,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var trackingObjectpropCount = 0;
             if (bodytrackingtitle != null)
             {
-                trackingObject["title"] = ExpressionConverter.ConvertO(bodytrackingtitle);
+                trackingObject["title"] = CSharpExpressionConverter.ConvertToken(bodytrackingtitle);
                 trackingObjectpropCount++;
             }
 
             if (bodytrackingnote != null)
             {
-                trackingObject["note"] = ExpressionConverter.ConvertO(bodytrackingnote);
+                trackingObject["note"] = CSharpExpressionConverter.ConvertToken(bodytrackingnote);
                 trackingObjectpropCount++;
             }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}/retrack", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/retrack", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<bodyreasonInput>> bodyreason = null)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}/mark-as-completed", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/mark-as-completed", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var bodypropCount = 0;
             if (bodyreason != null)
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                body["reason"] = CSharpExpressionConverter.Convert(bodyreason);
                 bodypropCount++;
             }
 
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<AddANotificationResponse> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}/add", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/add", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}/remove", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/remove", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var apiCallPath = String.Format("/last_checkpoint/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/last_checkpoint/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

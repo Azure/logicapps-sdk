@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+            body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+            body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -60,56 +60,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+            body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodysubtitle != null)
             {
-                body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
                 bodypropCount++;
             }
 
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["isCarousel"] = ExpressionConverter.ConvertO(bodyisCarousel);
+            body["isCarousel"] = CSharpExpressionConverter.ConvertToken(bodyisCarousel);
             if (bodybuttontitle1 != null)
             {
-                body["buttontitle1"] = ExpressionConverter.ConvertO(bodybuttontitle1);
+                body["buttontitle1"] = CSharpExpressionConverter.ConvertToken(bodybuttontitle1);
                 bodypropCount++;
             }
 
             if (bodybuttonpostback1 != null)
             {
-                body["buttonpostback1"] = ExpressionConverter.ConvertO(bodybuttonpostback1);
+                body["buttonpostback1"] = CSharpExpressionConverter.ConvertToken(bodybuttonpostback1);
                 bodypropCount++;
             }
 
             if (bodybuttontitle2 != null)
             {
-                body["buttontitle2"] = ExpressionConverter.ConvertO(bodybuttontitle2);
+                body["buttontitle2"] = CSharpExpressionConverter.ConvertToken(bodybuttontitle2);
                 bodypropCount++;
             }
 
             if (bodybuttonpostback2 != null)
             {
-                body["buttonpostback2"] = ExpressionConverter.ConvertO(bodybuttonpostback2);
+                body["buttonpostback2"] = CSharpExpressionConverter.ConvertToken(bodybuttonpostback2);
                 bodypropCount++;
             }
 
             if (bodybuttontitle3 != null)
             {
-                body["buttontitle3"] = ExpressionConverter.ConvertO(bodybuttontitle3);
+                body["buttontitle3"] = CSharpExpressionConverter.ConvertToken(bodybuttontitle3);
                 bodypropCount++;
             }
 
             if (bodybuttonpostback3 != null)
             {
-                body["buttonpostback3"] = ExpressionConverter.ConvertO(bodybuttonpostback3);
+                body["buttonpostback3"] = CSharpExpressionConverter.ConvertToken(bodybuttonpostback3);
                 bodypropCount++;
             }
 
@@ -130,11 +130,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+            body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+            body["platform"] = CSharpExpressionConverter.ConvertToken(bodyplatform);
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             bodypropCount++;
-            body["mediaType"] = ExpressionConverter.ConvertO(bodymediaType);
+            body["mediaType"] = CSharpExpressionConverter.Convert(bodymediaType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -174,34 +174,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["sessionId"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["sessionId"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             bodypropCount++;
-            body["useGlossary"] = ExpressionConverter.ConvertO(bodyuseGlossary);
+            body["useGlossary"] = CSharpExpressionConverter.ConvertToken(bodyuseGlossary);
             bodypropCount++;
-            body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+            body["targetLanguage"] = CSharpExpressionConverter.ConvertToken(bodytargetLanguage);
             var webhookResponseObject = new JObject();
             var webhookResponseObjectpropCount = 0;
             if (bodywebhookResponsefulfillmentMessages != null)
             {
-                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
+                webhookResponseObject["FulfillmentMessages"] = CSharpExpressionConverter.ConvertToken(bodywebhookResponsefulfillmentMessages);
                 webhookResponseObjectpropCount++;
             }
 
             if (bodywebhookResponseselectTheEventYouWouldLikeToInvoke != null)
             {
-                webhookResponseObject["EventName"] = ExpressionConverter.ConvertO(bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
+                webhookResponseObject["EventName"] = CSharpExpressionConverter.ConvertToken(bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
                 webhookResponseObjectpropCount++;
             }
 
             if (bodywebhookResponseapplySpecificContextToResponse != null)
             {
-                webhookResponseObject["OutputContextName"] = ExpressionConverter.ConvertO(bodywebhookResponseapplySpecificContextToResponse);
+                webhookResponseObject["OutputContextName"] = CSharpExpressionConverter.ConvertToken(bodywebhookResponseapplySpecificContextToResponse);
                 webhookResponseObjectpropCount++;
             }
 
             if (bodywebhookResponsedurationOfContext != null)
             {
-                webhookResponseObject["OutputContextLifespan"] = ExpressionConverter.ConvertO(bodywebhookResponsedurationOfContext);
+                webhookResponseObject["OutputContextLifespan"] = CSharpExpressionConverter.ConvertToken(bodywebhookResponsedurationOfContext);
                 webhookResponseObjectpropCount++;
             }
 
@@ -228,16 +228,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["sessionId"] = ExpressionConverter.ConvertO(bodysessionId);
+            body["sessionId"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
             bodypropCount++;
-            body["useGlossary"] = ExpressionConverter.ConvertO(bodyuseGlossary);
+            body["useGlossary"] = CSharpExpressionConverter.ConvertToken(bodyuseGlossary);
             bodypropCount++;
-            body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+            body["targetLanguage"] = CSharpExpressionConverter.ConvertToken(bodytargetLanguage);
             var webhookResponseObject = new JObject();
             var webhookResponseObjectpropCount = 0;
             if (bodywebhookResponsefulfillmentMessages != null)
             {
-                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
+                webhookResponseObject["FulfillmentMessages"] = CSharpExpressionConverter.ConvertToken(bodywebhookResponsefulfillmentMessages);
                 webhookResponseObjectpropCount++;
             }
 
@@ -268,9 +268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["intent"] = ExpressionConverter.ConvertO(bodyselectIntentYouWouldLikeToTriggerOn);
+            body["intent"] = CSharpExpressionConverter.ConvertToken(bodyselectIntentYouWouldLikeToTriggerOn);
             bodypropCount++;
-            body["platform"] = ExpressionConverter.ConvertO(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
+            body["platform"] = CSharpExpressionConverter.Convert(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

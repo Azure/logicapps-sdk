@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

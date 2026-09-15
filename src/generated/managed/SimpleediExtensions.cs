@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+            body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
+            body["inputString"] = CSharpExpressionConverter.ConvertToken(bodyinputString);
             bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
+            body["liquidTemplate"] = CSharpExpressionConverter.ConvertToken(bodyliquidTemplate);
             if (bodylogFileName != null)
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                body["logFileName"] = CSharpExpressionConverter.ConvertToken(bodylogFileName);
                 bodypropCount++;
             }
 

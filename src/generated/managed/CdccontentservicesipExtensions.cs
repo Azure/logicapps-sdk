@@ -18,54 +18,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (mediatypes != null)
-                callPayload.Queries["mediatypes"] = ExpressionConverter.Convert(mediatypes);
+                callPayload.Queries["mediatypes"] = CSharpExpressionConverter.ConvertO(mediatypes);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             if (topic != null)
-                callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
+                callPayload.Queries["topic"] = CSharpExpressionConverter.ConvertO(topic);
             if (topicids != null)
-                callPayload.Queries["topicids"] = ExpressionConverter.Convert(topicids);
+                callPayload.Queries["topicids"] = CSharpExpressionConverter.ConvertO(topicids);
             if (audience != null)
-                callPayload.Queries["audience"] = ExpressionConverter.Convert(audience);
+                callPayload.Queries["audience"] = CSharpExpressionConverter.ConvertO(audience);
             if (languagename != null)
-                callPayload.Queries["languagename"] = ExpressionConverter.Convert(languagename);
+                callPayload.Queries["languagename"] = CSharpExpressionConverter.ConvertO(languagename);
             if (languageisocode != null)
-                callPayload.Queries["languageisocode"] = ExpressionConverter.Convert(languageisocode);
+                callPayload.Queries["languageisocode"] = CSharpExpressionConverter.ConvertO(languageisocode);
             if (sourcename != null)
-                callPayload.Queries["sourcename"] = ExpressionConverter.Convert(sourcename);
+                callPayload.Queries["sourcename"] = CSharpExpressionConverter.ConvertO(sourcename);
             if (sourceacronym != null)
-                callPayload.Queries["sourceacronym"] = ExpressionConverter.Convert(sourceacronym);
+                callPayload.Queries["sourceacronym"] = CSharpExpressionConverter.ConvertO(sourceacronym);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (pagenum != null)
-                callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
+                callPayload.Queries["pagenum"] = CSharpExpressionConverter.ConvertO(pagenum);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<MediaSearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaGetResponse> MediaGet(Expression<Func<string>> mediaId, Expression<Func<string>> sort = null, Expression<Func<string>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/resources/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/media/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                callPayload.Queries["max"] = CSharpExpressionConverter.ConvertO(max);
             if (pagenum != null)
-                callPayload.Queries["pagenum"] = ExpressionConverter.Convert(pagenum);
+                callPayload.Queries["pagenum"] = CSharpExpressionConverter.ConvertO(pagenum);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<MediaGetResponse>(callPayload);
         }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaTagResponse> MediaTag(Expression<Func<string>> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}/media", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MediaTagResponse>(callPayload);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagRelatedResponse> TagRelated(Expression<Func<string>> tAGID)
         {
-            var apiCallPath = String.Format("/resources/tags/{0}/related", ExpressionConverter.ConvertWithUrlEncoding(tAGID, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TagRelatedResponse>(callPayload);

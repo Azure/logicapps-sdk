@@ -14,29 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction ApproveEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})/Approve", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<EnrollUserToCourseResponse> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<string>> bodyuserLoginName, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Courses({0})/Enroll", ExpressionConverter.ConvertWithUrlEncoding(courseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userLoginName"] = ExpressionConverter.ConvertO(bodyuserLoginName);
+            body["userLoginName"] = CSharpExpressionConverter.ConvertToken(bodyuserLoginName);
             if (bodycourseSessionId != null)
             {
-                body["courseSessionId"] = ExpressionConverter.ConvertO(bodycourseSessionId);
+                body["courseSessionId"] = CSharpExpressionConverter.ConvertToken(bodycourseSessionId);
                 bodypropCount++;
             }
 
@@ -51,16 +51,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> bodymessage = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})/Reject", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetCourseCategoriesResponse>(callPayload);
         }
 
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Name"] = ExpressionConverter.ConvertO(bodycategoryName);
+            body["Name"] = CSharpExpressionConverter.ConvertToken(bodycategoryName);
             bodypropCount++;
-            body["CourseCatalogId"] = ExpressionConverter.ConvertO(bodycourseCatalogId);
+            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -112,110 +112,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["CourseCatalogId"] = ExpressionConverter.ConvertO(bodycourseCatalogId);
+            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
             bodypropCount++;
-            body["CourseType"] = ExpressionConverter.ConvertO(bodycoursetype);
+            body["CourseType"] = CSharpExpressionConverter.Convert(bodycoursetype);
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytrainingTitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytrainingTitle);
             bodypropCount++;
-            body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+            body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
             bodypropCount++;
-            body["UICulture"] = ExpressionConverter.ConvertO(bodyuICulture);
+            body["UICulture"] = CSharpExpressionConverter.ConvertToken(bodyuICulture);
             if (bodycategories != null)
             {
-                body["Categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["Categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
                 bodypropCount++;
             }
 
             if (bodytags != null)
             {
-                body["Tags"] = ExpressionConverter.ConvertO(bodytags);
+                body["Tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
                 bodypropCount++;
             }
 
             if (bodyenrollmentFlow != null)
             {
-                body["EnrollmentFlow"] = ExpressionConverter.ConvertO(bodyenrollmentFlow);
+                body["EnrollmentFlow"] = CSharpExpressionConverter.Convert(bodyenrollmentFlow);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodysiteTemplate != null)
             {
-                body["SiteTemplate"] = ExpressionConverter.ConvertO(bodysiteTemplate);
+                body["SiteTemplate"] = CSharpExpressionConverter.ConvertToken(bodysiteTemplate);
                 bodypropCount++;
             }
 
             if (bodylearningModules != null)
             {
-                body["LearningModules"] = ExpressionConverter.ConvertO(bodylearningModules);
+                body["LearningModules"] = CSharpExpressionConverter.ConvertToken(bodylearningModules);
                 bodypropCount++;
             }
 
             if (bodyquizzes != null)
             {
-                body["Quizzes"] = ExpressionConverter.ConvertO(bodyquizzes);
+                body["Quizzes"] = CSharpExpressionConverter.ConvertToken(bodyquizzes);
                 bodypropCount++;
             }
 
             if (bodyautoResolveUrlConflict != null)
             {
-                body["AutoResolveUrlConflict"] = ExpressionConverter.ConvertO(bodyautoResolveUrlConflict);
+                body["AutoResolveUrlConflict"] = CSharpExpressionConverter.ConvertToken(bodyautoResolveUrlConflict);
                 bodypropCount++;
             }
 
             if (bodycourseLayoutId != null)
             {
-                body["CourseLayoutId"] = ExpressionConverter.ConvertO(bodycourseLayoutId);
+                body["CourseLayoutId"] = CSharpExpressionConverter.ConvertToken(bodycourseLayoutId);
                 bodypropCount++;
             }
 
             if (bodycourseSessionEnrollmentType != null)
             {
-                body["CourseSessionEnrollmentType"] = ExpressionConverter.ConvertO(bodycourseSessionEnrollmentType);
+                body["CourseSessionEnrollmentType"] = CSharpExpressionConverter.Convert(bodycourseSessionEnrollmentType);
                 bodypropCount++;
             }
 
             if (bodyteacherLogins != null)
             {
-                body["TeacherLogins"] = ExpressionConverter.ConvertO(bodyteacherLogins);
+                body["TeacherLogins"] = CSharpExpressionConverter.ConvertToken(bodyteacherLogins);
                 bodypropCount++;
             }
 
             if (bodytrainerLogins != null)
             {
-                body["TrainerLogins"] = ExpressionConverter.ConvertO(bodytrainerLogins);
+                body["TrainerLogins"] = CSharpExpressionConverter.ConvertToken(bodytrainerLogins);
                 bodypropCount++;
             }
 
             if (bodycertificateTemplateId != null)
             {
-                body["CertificateTemplateId"] = ExpressionConverter.ConvertO(bodycertificateTemplateId);
+                body["CertificateTemplateId"] = CSharpExpressionConverter.ConvertToken(bodycertificateTemplateId);
                 bodypropCount++;
             }
 
             if (bodycourseID != null)
             {
-                body["CourseID"] = ExpressionConverter.ConvertO(bodycourseID);
+                body["CourseID"] = CSharpExpressionConverter.ConvertToken(bodycourseID);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["Duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["Duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
             if (bodylongDescription != null)
             {
-                body["LongDescription"] = ExpressionConverter.ConvertO(bodylongDescription);
+                body["LongDescription"] = CSharpExpressionConverter.ConvertToken(bodylongDescription);
                 bodypropCount++;
             }
 
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             {
                 if (bodypublishingSettingsisEnabled != null)
                 {
-                    publishingSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodypublishingSettingsisEnabled);
+                    publishingSettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsisEnabled);
                     publishingSettingsObjectpropCount++;
                 }
 
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
             if (bodypublishingSettingsstartDate != null)
             {
-                publishingSettingsObject["StartDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsstartDate);
+                publishingSettingsObject["StartDate"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsstartDate);
                 publishingSettingsObjectpropCount++;
             }
 
             if (bodypublishingSettingsendDate != null)
             {
-                publishingSettingsObject["EndDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsendDate);
+                publishingSettingsObject["EndDate"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsendDate);
                 publishingSettingsObjectpropCount++;
             }
 
@@ -259,19 +259,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var expirySettingsObjectpropCount = 0;
             if (bodyexpirySettingsisEnabled != null)
             {
-                expirySettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodyexpirySettingsisEnabled);
+                expirySettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsisEnabled);
                 expirySettingsObjectpropCount++;
             }
 
             if (bodyexpirySettingsfixedDate != null)
             {
-                expirySettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodyexpirySettingsfixedDate);
+                expirySettingsObject["FixedDate"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsfixedDate);
                 expirySettingsObjectpropCount++;
             }
 
             if (bodyexpirySettingsdaysAfterCompletion != null)
             {
-                expirySettingsObject["DaysAfterCompletion"] = ExpressionConverter.ConvertO(bodyexpirySettingsdaysAfterCompletion);
+                expirySettingsObject["DaysAfterCompletion"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsdaysAfterCompletion);
                 expirySettingsObjectpropCount++;
             }
 
@@ -285,19 +285,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var dueDateSettingsObjectpropCount = 0;
             if (bodydueDateSettingsisEnabled != null)
             {
-                dueDateSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodydueDateSettingsisEnabled);
+                dueDateSettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsisEnabled);
                 dueDateSettingsObjectpropCount++;
             }
 
             if (bodydueDateSettingsfixedDate != null)
             {
-                dueDateSettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodydueDateSettingsfixedDate);
+                dueDateSettingsObject["FixedDate"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsfixedDate);
                 dueDateSettingsObjectpropCount++;
             }
 
             if (bodydueDateSettingsdaysAfterEnrollment != null)
             {
-                dueDateSettingsObject["DaysAfterEnrollment"] = ExpressionConverter.ConvertO(bodydueDateSettingsdaysAfterEnrollment);
+                dueDateSettingsObject["DaysAfterEnrollment"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsdaysAfterEnrollment);
                 dueDateSettingsObjectpropCount++;
             }
 
@@ -309,25 +309,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
             if (bodyshowInCatalog != null)
             {
-                body["ShowInCatalog"] = ExpressionConverter.ConvertO(bodyshowInCatalog);
+                body["ShowInCatalog"] = CSharpExpressionConverter.ConvertToken(bodyshowInCatalog);
                 bodypropCount++;
             }
 
             if (bodycontinuingEducationUnits != null)
             {
-                body["CEU"] = ExpressionConverter.ConvertO(bodycontinuingEducationUnits);
+                body["CEU"] = CSharpExpressionConverter.ConvertToken(bodycontinuingEducationUnits);
                 bodypropCount++;
             }
 
             if (bodyimageUrl != null)
             {
-                body["ImageUrl"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                body["ImageUrl"] = CSharpExpressionConverter.ConvertToken(bodyimageUrl);
                 bodypropCount++;
             }
 
             if (bodyfailedCourseId != null)
             {
-                body["FailedCourseId"] = ExpressionConverter.ConvertO(bodyfailedCourseId);
+                body["FailedCourseId"] = CSharpExpressionConverter.ConvertToken(bodyfailedCourseId);
                 bodypropCount++;
             }
 
@@ -342,39 +342,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseInfoResponse> GetCourseInfo(Expression<Func<string>> courseId, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Courses({0})", ExpressionConverter.ConvertWithUrlEncoding(courseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$expand"] = Convert.ToString("DueDate,Publishing,CertificateExpiry,SharepointWeb($select=Url),Categories,Tags,CourseSessions,ProvisioningProgress,Trainers");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<GetCourseInfoResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CompleteEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})/Complete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})/Retake", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycourseSessionId != null)
             {
-                body["courseSessionId"] = ExpressionConverter.ConvertO(bodycourseSessionId);
+                body["courseSessionId"] = CSharpExpressionConverter.ConvertToken(bodycourseSessionId);
                 bodypropCount++;
             }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetCourseTagsResponse>(callPayload);
         }
 
@@ -404,13 +404,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Name"] = ExpressionConverter.ConvertO(bodyname);
+            body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["CourseCatalogId"] = ExpressionConverter.ConvertO(bodycourseCatalogId);
+            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -427,31 +427,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$expand"] = Convert.ToString("ProvisioningProgress,SharepointWeb");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             callPayload.Queries["$select"] = Convert.ToString("Id");
             if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
             return new ApiConnectionAction<GetCourseProvisioningStatusResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCoursesFromCatalogResponse> GetCoursesFromCatalog(Expression<Func<string>> courseCatalogId, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/v2/CourseCatalogs({0})", ExpressionConverter.ConvertWithUrlEncoding(courseCatalogId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseCatalogId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$expand"] = Convert.ToString("Courses($expand=SharepointWeb)");
             if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
             return new ApiConnectionAction<GetCoursesFromCatalogResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetEnrollmentByIdResponse> GetEnrollmentById(Expression<Func<string>> enrollmentId)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})", ExpressionConverter.ConvertWithUrlEncoding(enrollmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEnrollmentByIdResponse>(callPayload);
@@ -460,16 +460,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<string>> bodycancellationMessage = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Enrollments({0})/Cancel", ExpressionConverter.ConvertWithUrlEncoding(enrollmentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycancellationMessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodycancellationMessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodycancellationMessage);
                 bodypropCount++;
             }
 
@@ -489,31 +489,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$filter"] = Convert.ToString("Email eq '{UserEmail}'");
             if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetUsersResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyenrollmentDeadline = null, Expression<Func<string>> bodyroomemailAddress = null, Expression<Func<string>> bodyroomtitle = null, Expression<Func<string>> bodyroomlocation = null, Expression<Func<bodyroomsourceInput>> bodyroomsource = null, Expression<Func<string>> bodymeetingUrl = null, Expression<Func<string>> bodymaxAttendees = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var apiCallPath = String.Format("/odata/v2/Courses({0})/CourseSessions", ExpressionConverter.ConvertWithUrlEncoding(courseId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(lMS365UserId);
+                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
+            body["StartDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
             bodypropCount++;
-            body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
+            body["EndDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
             bodypropCount++;
-            body["TimeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+            body["TimeZone"] = CSharpExpressionConverter.Convert(bodytimeZone);
             if (bodyenrollmentDeadline != null)
             {
-                body["EnrollmentDeadline"] = ExpressionConverter.ConvertO(bodyenrollmentDeadline);
+                body["EnrollmentDeadline"] = CSharpExpressionConverter.ConvertToken(bodyenrollmentDeadline);
                 bodypropCount++;
             }
 
@@ -521,19 +521,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var roomObjectpropCount = 0;
             if (bodyroomemailAddress != null)
             {
-                roomObject["EmailAddress"] = ExpressionConverter.ConvertO(bodyroomemailAddress);
+                roomObject["EmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyroomemailAddress);
                 roomObjectpropCount++;
             }
 
             if (bodyroomtitle != null)
             {
-                roomObject["Title"] = ExpressionConverter.ConvertO(bodyroomtitle);
+                roomObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyroomtitle);
                 roomObjectpropCount++;
             }
 
             if (bodyroomlocation != null)
             {
-                roomObject["Location"] = ExpressionConverter.ConvertO(bodyroomlocation);
+                roomObject["Location"] = CSharpExpressionConverter.ConvertToken(bodyroomlocation);
                 roomObjectpropCount++;
             }
 
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             {
                 if (bodyroomsource != null)
                 {
-                    roomObject["Source"] = ExpressionConverter.ConvertO(bodyroomsource);
+                    roomObject["Source"] = CSharpExpressionConverter.Convert(bodyroomsource);
                     roomObjectpropCount++;
                 }
 
@@ -561,13 +561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
             if (bodymeetingUrl != null)
             {
-                body["MeetingUrl"] = ExpressionConverter.ConvertO(bodymeetingUrl);
+                body["MeetingUrl"] = CSharpExpressionConverter.ConvertToken(bodymeetingUrl);
                 bodypropCount++;
             }
 
             if (bodymaxAttendees != null)
             {
-                body["MaxAttendees"] = ExpressionConverter.ConvertO(bodymaxAttendees);
+                body["MaxAttendees"] = CSharpExpressionConverter.ConvertToken(bodymaxAttendees);
                 bodypropCount++;
             }
 
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction FileUpload(Expression<Func<string>> fileUploadUrl, Expression<Func<object>> file)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileUploadUrl, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileUploadUrl, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -597,9 +597,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var parameters = new JObject();
             var parameterspropCount = 0;
             parameterspropCount++;
-            parameters["method"] = ExpressionConverter.ConvertO(parametersmethod);
+            parameters["method"] = CSharpExpressionConverter.Convert(parametersmethod);
             parameterspropCount++;
-            parameters["uri"] = ExpressionConverter.ConvertO(parametersuri);
+            parameters["uri"] = CSharpExpressionConverter.ConvertToken(parametersuri);
             var headersObject = new JObject();
             var headersObjectpropCount = 0;
             if (headersObjectpropCount > 0)
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
             if (parametersbody != null)
             {
-                parameters["body"] = ExpressionConverter.ConvertO(parametersbody);
+                parameters["body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
                 parameterspropCount++;
             }
 

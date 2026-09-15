@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = CSharpExpressionConverter.ConvertO(xUIPATHOrganizationUnitId);
             var body = new JObject();
             var bodypropCount = 0;
             var startInfoObject = new JObject();
             var startInfoObjectpropCount = 0;
             if (bodystartInfoprocessName != null)
             {
-                startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                startInfoObject["ReleaseKey"] = CSharpExpressionConverter.ConvertToken(bodystartInfoprocessName);
                 startInfoObjectpropCount++;
             }
 
@@ -32,37 +32,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             startInfoObjectpropCount++;
             if (bodystartInfojobsCount != null)
             {
-                startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
+                startInfoObject["JobsCount"] = CSharpExpressionConverter.ConvertToken(bodystartInfojobsCount);
                 startInfoObjectpropCount++;
             }
 
             if (bodystartInfosource != null)
             {
-                startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
+                startInfoObject["Source"] = CSharpExpressionConverter.Convert(bodystartInfosource);
                 startInfoObjectpropCount++;
             }
 
             if (bodystartInfojobPriority != null)
             {
-                startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
+                startInfoObject["JobPriority"] = CSharpExpressionConverter.Convert(bodystartInfojobPriority);
                 startInfoObjectpropCount++;
             }
 
             if (bodystartInforuntimeType != null)
             {
-                startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
+                startInfoObject["RuntimeType"] = CSharpExpressionConverter.Convert(bodystartInforuntimeType);
                 startInfoObjectpropCount++;
             }
 
             if (bodystartInfoinputArguments != null)
             {
-                startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
+                startInfoObject["InputArguments"] = CSharpExpressionConverter.ConvertToken(bodystartInfoinputArguments);
                 startInfoObjectpropCount++;
             }
 
             if (bodystartInforeference != null)
             {
-                startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
+                startInfoObject["Reference"] = CSharpExpressionConverter.ConvertToken(bodystartInforeference);
                 startInfoObjectpropCount++;
             }
 
@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = CSharpExpressionConverter.ConvertO(xUIPATHOrganizationUnitId);
             var body = new JObject();
             var bodypropCount = 0;
             var itemDataObject = new JObject();
             var itemDataObjectpropCount = 0;
             if (bodyitemDataname != null)
             {
-                itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
+                itemDataObject["Name"] = CSharpExpressionConverter.ConvertToken(bodyitemDataname);
                 itemDataObjectpropCount++;
             }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             {
                 if (bodyitemDatapriority != null)
                 {
-                    itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                    itemDataObject["Priority"] = CSharpExpressionConverter.Convert(bodyitemDatapriority);
                     itemDataObjectpropCount++;
                 }
 
@@ -123,31 +123,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
             if (bodyitemDatadeferDate != null)
             {
-                itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(bodyitemDatadeferDate);
+                itemDataObject["DeferDate"] = CSharpExpressionConverter.ConvertToken(bodyitemDatadeferDate);
                 itemDataObjectpropCount++;
             }
 
             if (bodyitemDatadueDate != null)
             {
-                itemDataObject["DueDate"] = ExpressionConverter.ConvertO(bodyitemDatadueDate);
+                itemDataObject["DueDate"] = CSharpExpressionConverter.ConvertToken(bodyitemDatadueDate);
                 itemDataObjectpropCount++;
             }
 
             if (bodyitemDatariskSLADate != null)
             {
-                itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(bodyitemDatariskSLADate);
+                itemDataObject["RiskSlaDate"] = CSharpExpressionConverter.ConvertToken(bodyitemDatariskSLADate);
                 itemDataObjectpropCount++;
             }
 
             if (bodyitemDatareference != null)
             {
-                itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
+                itemDataObject["Reference"] = CSharpExpressionConverter.ConvertToken(bodyitemDatareference);
                 itemDataObjectpropCount++;
             }
 
             if (bodyitemDataprogress != null)
             {
-                itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
+                itemDataObject["Progress"] = CSharpExpressionConverter.ConvertToken(bodyitemDataprogress);
                 itemDataObjectpropCount++;
             }
 

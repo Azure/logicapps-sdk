@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -40,17 +40,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<ListResponse>(callPayload);
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -87,26 +87,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadResponse> Read(Expression<Func<string>> companyId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<ReadResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive(Expression<Func<string>> companyId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateResponse> Update(Expression<Func<string>> companyId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -176,13 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -204,37 +204,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -275,17 +275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List16Response>(callPayload);
         }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -322,24 +322,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read18Response> Read18(Expression<Func<string>> contactId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<Read18Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive19(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update20Response> Update20(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -379,13 +379,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -407,13 +407,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -435,37 +435,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -506,17 +506,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List28Response>(callPayload);
         }
 
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -553,26 +553,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read30Response> Read30(Expression<Func<string>> dealId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read30Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive31(Expression<Func<string>> dealId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -581,11 +581,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update32Response> Update32(Expression<Func<string>> dealId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -614,13 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -642,13 +642,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -670,37 +670,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -737,26 +737,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read40Response> Read40(Expression<Func<string>> feeId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read40Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive41(Expression<Func<string>> feeId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -765,11 +765,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update42Response> Update42(Expression<Func<string>> feeId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -795,17 +795,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List43Response>(callPayload);
         }
 
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -849,13 +849,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -877,13 +877,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -905,37 +905,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -972,26 +972,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read52Response> Read52(Expression<Func<string>> goalTargetId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read52Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive53(Expression<Func<string>> goalTargetId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1000,11 +1000,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update54Response> Update54(Expression<Func<string>> goalTargetId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -1030,17 +1030,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List55Response>(callPayload);
         }
 
@@ -1054,7 +1054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -1084,13 +1084,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -1112,13 +1112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -1140,37 +1140,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -1192,7 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -1211,17 +1211,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List64Response>(callPayload);
         }
 
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -1258,26 +1258,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read66Response> Read66(Expression<Func<string>> lineItemId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read66Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive67(Expression<Func<string>> lineItemId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1286,11 +1286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update68Response> Update68(Expression<Func<string>> lineItemId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -1319,13 +1319,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -1347,13 +1347,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -1375,37 +1375,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -1423,26 +1423,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallPath = "/crm/v3/owners/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<GetAPageOfOwnersResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid(Expression<Func<string>> ownerId, Expression<Func<string>> idProperty = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/owners/{0}", ExpressionConverter.ConvertWithUrlEncoding(ownerId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/owners/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ownerId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<ReadAnOwnerByGivenidOruseridResponse>(callPayload);
         }
 
@@ -1456,7 +1456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -1475,17 +1475,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List78Response>(callPayload);
         }
 
@@ -1499,7 +1499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -1522,26 +1522,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read80Response> Read80(Expression<Func<string>> productId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read80Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive81(Expression<Func<string>> productId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1550,11 +1550,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update82Response> Update82(Expression<Func<string>> productId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -1583,13 +1583,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -1611,13 +1611,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -1639,37 +1639,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -1684,14 +1684,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/batch/archive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -1706,26 +1706,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadObjectResponse> ReadObject(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<ReadObjectResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1734,11 +1734,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -1760,35 +1760,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListObjectResponse> ListObject(Expression<Func<string>> objectType, Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<ListObjectResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -1811,20 +1811,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/merge", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/merge", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -1839,20 +1839,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/gdpr-delete", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/gdpr-delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -1867,44 +1867,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/search", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -1926,7 +1926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -1941,26 +1941,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read16Response> Read16(Expression<Func<string>> discountId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read16Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive17(Expression<Func<string>> discountId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1969,11 +1969,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update18Response> Update18(Expression<Func<string>> discountId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -1999,17 +1999,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List19Response>(callPayload);
         }
 
@@ -2023,7 +2023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -2031,7 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var propertiesObjectpropCount = 0;
             if (bodypropertiesnostrudcf != null)
             {
-                propertiesObject["nostrudcf"] = ExpressionConverter.ConvertO(bodypropertiesnostrudcf);
+                propertiesObject["nostrudcf"] = CSharpExpressionConverter.ConvertToken(bodypropertiesnostrudcf);
                 propertiesObjectpropCount++;
             }
 
@@ -2059,13 +2059,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -2087,13 +2087,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -2115,37 +2115,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -2167,7 +2167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -2182,26 +2182,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read28Response> Read28(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read28Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive29(Expression<Func<string>> feedbackSubmissionId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -2210,11 +2210,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update30Response> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -2240,17 +2240,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List31Response>(callPayload);
         }
 
@@ -2264,7 +2264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -2294,13 +2294,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -2322,13 +2322,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -2350,37 +2350,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -2402,7 +2402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -2421,17 +2421,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List40Response>(callPayload);
         }
 
@@ -2445,7 +2445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -2453,7 +2453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var propertiesObjectpropCount = 0;
             if (bodypropertieselit26 != null)
             {
-                propertiesObject["elit_26"] = ExpressionConverter.ConvertO(bodypropertieselit26);
+                propertiesObject["elit_26"] = CSharpExpressionConverter.ConvertToken(bodypropertieselit26);
                 propertiesObjectpropCount++;
             }
 
@@ -2474,26 +2474,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read42Response> Read42(Expression<Func<string>> quoteId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read42Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive43(Expression<Func<string>> quoteId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -2502,11 +2502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update44Response> Update44(Expression<Func<string>> quoteId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -2535,13 +2535,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -2563,13 +2563,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -2591,37 +2591,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -2643,7 +2643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -2662,17 +2662,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List52Response>(callPayload);
         }
 
@@ -2686,7 +2686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -2709,26 +2709,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read54Response> Read54(Expression<Func<string>> taxId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read54Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive55(Expression<Func<string>> taxId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -2737,11 +2737,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update56Response> Update56(Expression<Func<string>> taxId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -2770,13 +2770,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -2798,13 +2798,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -2826,37 +2826,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -2878,7 +2878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -2893,26 +2893,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read64Response> Read64(Expression<Func<string>> ticketId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             return new ApiConnectionAction<Read64Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive65(Expression<Func<string>> ticketId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -2921,11 +2921,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update66Response> Update66(Expression<Func<string>> ticketId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                callPayload.Queries["idProperty"] = CSharpExpressionConverter.ConvertO(idProperty);
             var body = new JObject();
             var bodypropCount = 0;
             var propertiesObject = new JObject();
@@ -2951,17 +2951,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                callPayload.Queries["properties"] = CSharpExpressionConverter.ConvertO(properties);
             if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                callPayload.Queries["propertiesWithHistory"] = CSharpExpressionConverter.ConvertO(propertiesWithHistory);
             if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                callPayload.Queries["associations"] = CSharpExpressionConverter.ConvertO(associations);
             if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
             return new ApiConnectionAction<List67Response>(callPayload);
         }
 
@@ -2975,7 +2975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyassociations != null)
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                body["associations"] = CSharpExpressionConverter.ConvertToken(bodyassociations);
                 bodypropCount++;
             }
 
@@ -3005,13 +3005,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectIdToMerge != null)
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                body["objectIdToMerge"] = CSharpExpressionConverter.ConvertToken(bodyobjectIdToMerge);
                 bodypropCount++;
             }
 
             if (bodyprimaryObjectId != null)
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                body["primaryObjectId"] = CSharpExpressionConverter.ConvertToken(bodyprimaryObjectId);
                 bodypropCount++;
             }
 
@@ -3033,13 +3033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyobjectId != null)
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                body["objectId"] = CSharpExpressionConverter.ConvertToken(bodyobjectId);
                 bodypropCount++;
             }
 
             if (bodyidProperty != null)
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                body["idProperty"] = CSharpExpressionConverter.ConvertToken(bodyidProperty);
                 bodypropCount++;
             }
 
@@ -3061,37 +3061,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyafter != null)
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                body["after"] = CSharpExpressionConverter.ConvertToken(bodyafter);
                 bodypropCount++;
             }
 
             if (bodyfilterGroups != null)
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                body["filterGroups"] = CSharpExpressionConverter.ConvertToken(bodyfilterGroups);
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
                 bodypropCount++;
             }
 
             if (bodyproperties != null)
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                body["properties"] = CSharpExpressionConverter.ConvertToken(bodyproperties);
                 bodypropCount++;
             }
 
             if (bodysorts != null)
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                body["sorts"] = CSharpExpressionConverter.ConvertToken(bodysorts);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -3106,7 +3106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType)
         {
-            var apiCallPath = String.Format("/crm/v3/associations/{0}/{1}/types", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/associations/{0}/{1}/types", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListAssociationTypesResponse>(callPayload);
@@ -3115,14 +3115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem2[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/labels/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/labels/archive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -3137,14 +3137,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem22[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/archive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -3159,14 +3159,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem222[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/associate/default", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/associate/default", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -3181,7 +3181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete6(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -3190,17 +3190,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create7Response> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<Create7Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault(Expression<Func<string>> fromObjectType, Expression<Func<string>> fromObjectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(fromObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CreateDefaultResponse>(callPayload);
@@ -3209,20 +3209,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<ListAssociationsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards(Expression<Func<string>> appId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetAllCardsResponse>(callPayload);
@@ -3231,7 +3231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard(Expression<Func<string>> appId, Expression<Func<string[]>> bodyactionsbaseUrls = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -3240,7 +3240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var actionsObjectpropCount = 0;
             if (bodyactionsbaseUrls != null)
             {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
+                actionsObject["baseUrls"] = CSharpExpressionConverter.ConvertToken(bodyactionsbaseUrls);
                 actionsObjectpropCount++;
             }
 
@@ -3254,7 +3254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var displayObjectpropCount = 0;
             if (bodydisplayproperties != null)
             {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
+                displayObject["properties"] = CSharpExpressionConverter.ConvertToken(bodydisplayproperties);
                 displayObjectpropCount++;
             }
 
@@ -3268,25 +3268,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var fetchObjectpropCount = 0;
             if (bodyfetchobjectTypes != null)
             {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
+                fetchObject["objectTypes"] = CSharpExpressionConverter.ConvertToken(bodyfetchobjectTypes);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchtargetUrl != null)
             {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
+                fetchObject["targetUrl"] = CSharpExpressionConverter.ConvertToken(bodyfetchtargetUrl);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchcardType != null)
             {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
+                fetchObject["cardType"] = CSharpExpressionConverter.ConvertToken(bodyfetchcardType);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchserverlessFunction != null)
             {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
+                fetchObject["serverlessFunction"] = CSharpExpressionConverter.ConvertToken(bodyfetchserverlessFunction);
                 fetchObjectpropCount++;
             }
 
@@ -3298,7 +3298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
@@ -3313,7 +3313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetACardResponse> GetACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetACardResponse>(callPayload);
@@ -3322,7 +3322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -3331,14 +3331,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateACardResponse> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<string>> bodytitle = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<string[]>> bodyactionsbaseUrls = null)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
@@ -3346,25 +3346,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var fetchObjectpropCount = 0;
             if (bodyfetchobjectTypes != null)
             {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
+                fetchObject["objectTypes"] = CSharpExpressionConverter.ConvertToken(bodyfetchobjectTypes);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchcardType != null)
             {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
+                fetchObject["cardType"] = CSharpExpressionConverter.ConvertToken(bodyfetchcardType);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchtargetUrl != null)
             {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
+                fetchObject["targetUrl"] = CSharpExpressionConverter.ConvertToken(bodyfetchtargetUrl);
                 fetchObjectpropCount++;
             }
 
             if (bodyfetchserverlessFunction != null)
             {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
+                fetchObject["serverlessFunction"] = CSharpExpressionConverter.ConvertToken(bodyfetchserverlessFunction);
                 fetchObjectpropCount++;
             }
 
@@ -3378,7 +3378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var displayObjectpropCount = 0;
             if (bodydisplayproperties != null)
             {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
+                displayObject["properties"] = CSharpExpressionConverter.ConvertToken(bodydisplayproperties);
                 displayObjectpropCount++;
             }
 
@@ -3392,7 +3392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var actionsObjectpropCount = 0;
             if (bodyactionsbaseUrls != null)
             {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
+                actionsObject["baseUrls"] = CSharpExpressionConverter.ConvertToken(bodyactionsbaseUrls);
                 actionsObjectpropCount++;
             }
 
@@ -3422,7 +3422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/crm/v3/exports/export/async/tasks/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/exports/export/async/tasks/{0}/status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(callPayload);
@@ -3438,43 +3438,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyexportName != null)
             {
-                body["exportName"] = ExpressionConverter.ConvertO(bodyexportName);
+                body["exportName"] = CSharpExpressionConverter.ConvertToken(bodyexportName);
                 bodypropCount++;
             }
 
             if (bodyexportType != null)
             {
-                body["exportType"] = ExpressionConverter.ConvertO(bodyexportType);
+                body["exportType"] = CSharpExpressionConverter.ConvertToken(bodyexportType);
                 bodypropCount++;
             }
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                body["format"] = CSharpExpressionConverter.ConvertToken(bodyformat);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodyobjectProperties != null)
             {
-                body["objectProperties"] = ExpressionConverter.ConvertO(bodyobjectProperties);
+                body["objectProperties"] = CSharpExpressionConverter.ConvertToken(bodyobjectProperties);
                 bodypropCount++;
             }
 
             if (bodyobjectType != null)
             {
-                body["objectType"] = ExpressionConverter.ConvertO(bodyobjectType);
+                body["objectType"] = CSharpExpressionConverter.ConvertToken(bodyobjectType);
                 bodypropCount++;
             }
 
             if (bodyassociatedObjectType != null)
             {
-                body["associatedObjectType"] = ExpressionConverter.ConvertO(bodyassociatedObjectType);
+                body["associatedObjectType"] = CSharpExpressionConverter.ConvertToken(bodyassociatedObjectType);
                 bodypropCount++;
             }
 
@@ -3482,19 +3482,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var publicCrmSearchRequestObjectpropCount = 0;
             if (bodypublicCrmSearchRequestfilters != null)
             {
-                publicCrmSearchRequestObject["filters"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestfilters);
+                publicCrmSearchRequestObject["filters"] = CSharpExpressionConverter.ConvertToken(bodypublicCrmSearchRequestfilters);
                 publicCrmSearchRequestObjectpropCount++;
             }
 
             if (bodypublicCrmSearchRequestquery != null)
             {
-                publicCrmSearchRequestObject["query"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestquery);
+                publicCrmSearchRequestObject["query"] = CSharpExpressionConverter.ConvertToken(bodypublicCrmSearchRequestquery);
                 publicCrmSearchRequestObjectpropCount++;
             }
 
             if (bodypublicCrmSearchRequestsorts != null)
             {
-                publicCrmSearchRequestObject["sorts"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestsorts);
+                publicCrmSearchRequestObject["sorts"] = CSharpExpressionConverter.ConvertToken(bodypublicCrmSearchRequestsorts);
                 publicCrmSearchRequestObjectpropCount++;
             }
 
@@ -3515,7 +3515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport(Expression<Func<string>> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTheInformationOnAnyImportResponse>(callPayload);
@@ -3524,7 +3524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport(Expression<Func<string>> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<CancelAnActiveImportResponse>(callPayload);
@@ -3537,11 +3537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<GetActiveImportsResponse>(callPayload);
         }
 
@@ -3551,40 +3551,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var apiCallPath = "/crm/v3/imports/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
             return new ApiConnectionAction<StartANewImportResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors(Expression<Func<string>> importId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/errors", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/errors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> bodyrecordIdsToAdd = null, Expression<Func<string[]>> bodyrecordIdsToRemove = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-and-remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-and-remove", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyrecordIdsToAdd != null)
             {
-                body["recordIdsToAdd"] = ExpressionConverter.ConvertO(bodyrecordIdsToAdd);
+                body["recordIdsToAdd"] = CSharpExpressionConverter.ConvertToken(bodyrecordIdsToAdd);
                 bodypropCount++;
             }
 
             if (bodyrecordIdsToRemove != null)
             {
-                body["recordIdsToRemove"] = ExpressionConverter.ConvertO(bodyrecordIdsToRemove);
+                body["recordIdsToRemove"] = CSharpExpressionConverter.ConvertToken(bodyrecordIdsToRemove);
                 bodypropCount++;
             }
 
@@ -3599,17 +3599,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<AddRecordsToAListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList(Expression<Func<string>> listId, Expression<Func<string>> sourceListId)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-from/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(sourceListId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-from/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sourceListId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -3618,22 +3618,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById(Expression<Func<string>> listId, Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<FetchListMembershipsOrderedByIdResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteAllRecordsFromAList(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -3642,10 +3642,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/remove", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<RemoveRecordsFromAListResponse>(callPayload);
         }
 
@@ -3659,25 +3659,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
             var bodypropCount = 0;
             if (bodyadditionalProperties != null)
             {
-                body["additionalProperties"] = ExpressionConverter.ConvertO(bodyadditionalProperties);
+                body["additionalProperties"] = CSharpExpressionConverter.ConvertToken(bodyadditionalProperties);
                 bodypropCount++;
             }
 
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
                 bodypropCount++;
             }
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
             if (bodycount != null)
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                body["count"] = CSharpExpressionConverter.ConvertToken(bodycount);
                 bodypropCount++;
             }
 

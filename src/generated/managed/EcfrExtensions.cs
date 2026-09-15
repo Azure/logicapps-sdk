@@ -17,17 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             var apiCallPath = "/search/v1/results";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (lastModifiedOnOrAfter != null)
-                callPayload.Queries["last_modified_on_or_after"] = ExpressionConverter.Convert(lastModifiedOnOrAfter);
+                callPayload.Queries["last_modified_on_or_after"] = CSharpExpressionConverter.ConvertO(lastModifiedOnOrAfter);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
             if (paginateBy != null)
-                callPayload.Queries["paginate_by"] = ExpressionConverter.Convert(paginateBy);
+                callPayload.Queries["paginate_by"] = CSharpExpressionConverter.Convert(paginateBy);
             return new ApiConnectionAction<SearchResultsResponse>(callPayload);
         }
 
@@ -37,42 +37,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             var apiCallPath = "/search/v1/counts/hierarchy";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (agencySlugs != null)
-                callPayload.Queries["agency_slugs"] = ExpressionConverter.Convert(agencySlugs);
+                callPayload.Queries["agency_slugs"] = CSharpExpressionConverter.ConvertO(agencySlugs);
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (lastModifiedAfter != null)
-                callPayload.Queries["last_modified_after"] = ExpressionConverter.Convert(lastModifiedAfter);
+                callPayload.Queries["last_modified_after"] = CSharpExpressionConverter.ConvertO(lastModifiedAfter);
             if (lastModifiedOnOrAfter != null)
-                callPayload.Queries["last_modified_on_or_after"] = ExpressionConverter.Convert(lastModifiedOnOrAfter);
+                callPayload.Queries["last_modified_on_or_after"] = CSharpExpressionConverter.ConvertO(lastModifiedOnOrAfter);
             if (lastModifiedBefore != null)
-                callPayload.Queries["last_modified_before"] = ExpressionConverter.Convert(lastModifiedBefore);
+                callPayload.Queries["last_modified_before"] = CSharpExpressionConverter.ConvertO(lastModifiedBefore);
             if (lastModifiedOnOrBefore != null)
-                callPayload.Queries["last_modified_on_or_before"] = ExpressionConverter.Convert(lastModifiedOnOrBefore);
+                callPayload.Queries["last_modified_on_or_before"] = CSharpExpressionConverter.ConvertO(lastModifiedOnOrBefore);
             return new ApiConnectionAction<HierarchyCountResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<object> GetFullRegulationXML(Expression<Func<string>> date, Expression<Func<string>> title, Expression<Func<string>> subtitle = null, Expression<Func<string>> chapter = null, Expression<Func<string>> subchapter = null, Expression<Func<string>> part = null, Expression<Func<string>> subpart = null, Expression<Func<string>> section = null, Expression<Func<string>> appendix = null)
         {
-            var apiCallPath = String.Format("/versioner/v1/full/{0}/title-{1}.xml", ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(title, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/versioner/v1/full/{0}/title-{1}.xml", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (subtitle != null)
-                callPayload.Queries["subtitle"] = ExpressionConverter.Convert(subtitle);
+                callPayload.Queries["subtitle"] = CSharpExpressionConverter.ConvertO(subtitle);
             if (chapter != null)
-                callPayload.Queries["chapter"] = ExpressionConverter.Convert(chapter);
+                callPayload.Queries["chapter"] = CSharpExpressionConverter.ConvertO(chapter);
             if (subchapter != null)
-                callPayload.Queries["subchapter"] = ExpressionConverter.Convert(subchapter);
+                callPayload.Queries["subchapter"] = CSharpExpressionConverter.ConvertO(subchapter);
             if (part != null)
-                callPayload.Queries["part"] = ExpressionConverter.Convert(part);
+                callPayload.Queries["part"] = CSharpExpressionConverter.ConvertO(part);
             if (subpart != null)
-                callPayload.Queries["subpart"] = ExpressionConverter.Convert(subpart);
+                callPayload.Queries["subpart"] = CSharpExpressionConverter.ConvertO(subpart);
             if (section != null)
-                callPayload.Queries["section"] = ExpressionConverter.Convert(section);
+                callPayload.Queries["section"] = CSharpExpressionConverter.ConvertO(section);
             if (appendix != null)
-                callPayload.Queries["appendix"] = ExpressionConverter.Convert(appendix);
+                callPayload.Queries["appendix"] = CSharpExpressionConverter.ConvertO(appendix);
             return new ApiConnectionAction<object>(callPayload);
         }
     }

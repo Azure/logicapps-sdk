@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var bodypropCount = 0;
             if (bodytexts != null)
             {
-                body["texts"] = ExpressionConverter.ConvertO(bodytexts);
+                body["texts"] = CSharpExpressionConverter.ConvertToken(bodytexts);
                 bodypropCount++;
             }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.Convert(bodymodel);
                     bodypropCount++;
                 }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 
             if (bodytruncate != null)
             {
-                body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
+                body["truncate"] = CSharpExpressionConverter.Convert(bodytruncate);
                 bodypropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.Convert(bodymodel);
                     bodypropCount++;
                 }
 
@@ -87,19 +87,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 
             if (bodyexamples != null)
             {
-                body["examples"] = ExpressionConverter.ConvertO(bodyexamples);
+                body["examples"] = CSharpExpressionConverter.ConvertToken(bodyexamples);
                 bodypropCount++;
             }
 
             if (bodypreset != null)
             {
-                body["preset"] = ExpressionConverter.ConvertO(bodypreset);
+                body["preset"] = CSharpExpressionConverter.ConvertToken(bodypreset);
                 bodypropCount++;
             }
 
             if (bodytruncate != null)
             {
-                body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
+                body["truncate"] = CSharpExpressionConverter.Convert(bodytruncate);
                 bodypropCount++;
             }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var bodypropCount = 0;
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
             }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var bodypropCount = 0;
             if (bodytokens != null)
             {
-                body["tokens"] = ExpressionConverter.ConvertO(bodytokens);
+                body["tokens"] = CSharpExpressionConverter.ConvertToken(bodytokens);
                 bodypropCount++;
             }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var bodypropCount = 0;
             if (bodytexts != null)
             {
-                body["texts"] = ExpressionConverter.ConvertO(bodytexts);
+                body["texts"] = CSharpExpressionConverter.ConvertToken(bodytexts);
                 bodypropCount++;
             }
 
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodymodel != null)
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
                     bodypropCount++;
                 }
 
@@ -205,109 +205,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 
             if (bodypreamble != null)
             {
-                body["preamble"] = ExpressionConverter.ConvertO(bodypreamble);
+                body["preamble"] = CSharpExpressionConverter.ConvertToken(bodypreamble);
                 bodypropCount++;
             }
 
             if (bodychatHistory != null)
             {
-                body["chat_history"] = ExpressionConverter.ConvertO(bodychatHistory);
+                body["chat_history"] = CSharpExpressionConverter.ConvertToken(bodychatHistory);
                 bodypropCount++;
             }
 
             if (bodyconversationId != null)
             {
-                body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
+                body["conversation_id"] = CSharpExpressionConverter.ConvertToken(bodyconversationId);
                 bodypropCount++;
             }
 
             if (bodypromptTruncation != null)
             {
-                body["prompt_truncation"] = ExpressionConverter.ConvertO(bodypromptTruncation);
+                body["prompt_truncation"] = CSharpExpressionConverter.Convert(bodypromptTruncation);
                 bodypropCount++;
             }
 
             if (bodyconnectors != null)
             {
-                body["connectors"] = ExpressionConverter.ConvertO(bodyconnectors);
+                body["connectors"] = CSharpExpressionConverter.ConvertToken(bodyconnectors);
                 bodypropCount++;
             }
 
             if (bodysearchQueriesOnly != null)
             {
-                body["search_queries_only"] = ExpressionConverter.ConvertO(bodysearchQueriesOnly);
+                body["search_queries_only"] = CSharpExpressionConverter.ConvertToken(bodysearchQueriesOnly);
                 bodypropCount++;
             }
 
             if (bodydocuments != null)
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
             }
 
             if (bodycitationQuality != null)
             {
-                body["citation_quality"] = ExpressionConverter.ConvertO(bodycitationQuality);
+                body["citation_quality"] = CSharpExpressionConverter.Convert(bodycitationQuality);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                 bodypropCount++;
             }
 
             if (bodymaxInputTokens != null)
             {
-                body["max_input_tokens"] = ExpressionConverter.ConvertO(bodymaxInputTokens);
+                body["max_input_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxInputTokens);
                 bodypropCount++;
             }
 
             if (bodyk != null)
             {
-                body["k"] = ExpressionConverter.ConvertO(bodyk);
+                body["k"] = CSharpExpressionConverter.ConvertToken(bodyk);
                 bodypropCount++;
             }
 
             if (bodyp != null)
             {
-                body["p"] = ExpressionConverter.ConvertO(bodyp);
+                body["p"] = CSharpExpressionConverter.ConvertToken(bodyp);
                 bodypropCount++;
             }
 
             if (bodyseed != null)
             {
-                body["seed"] = ExpressionConverter.ConvertO(bodyseed);
+                body["seed"] = CSharpExpressionConverter.ConvertToken(bodyseed);
                 bodypropCount++;
             }
 
             if (bodystopSequences != null)
             {
-                body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                body["stop_sequences"] = CSharpExpressionConverter.ConvertToken(bodystopSequences);
                 bodypropCount++;
             }
 
             if (bodyfrequencyPenalty != null)
             {
-                body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                body["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(bodyfrequencyPenalty);
                 bodypropCount++;
             }
 
             if (bodypresencePenalty != null)
             {
-                body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                body["presence_penalty"] = CSharpExpressionConverter.ConvertToken(bodypresencePenalty);
                 bodypropCount++;
             }
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 

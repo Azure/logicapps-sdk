@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<VideoListResponse>(callPayload);
         }
 
@@ -34,25 +34,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var bodypropCount = 0;
             if (bodytest != null)
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyvisibility != null)
             {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                body["visibility"] = CSharpExpressionConverter.ConvertToken(bodyvisibility);
                 bodypropCount++;
             }
 
@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var ctaSettingsObjectpropCount = 0;
             if (bodyctaSettingslabel != null)
             {
-                ctaSettingsObject["label"] = ExpressionConverter.ConvertO(bodyctaSettingslabel);
+                ctaSettingsObject["label"] = CSharpExpressionConverter.ConvertToken(bodyctaSettingslabel);
                 ctaSettingsObjectpropCount++;
             }
 
             if (bodyctaSettingsurl != null)
             {
-                ctaSettingsObject["url"] = ExpressionConverter.ConvertO(bodyctaSettingsurl);
+                ctaSettingsObject["url"] = CSharpExpressionConverter.ConvertToken(bodyctaSettingsurl);
                 ctaSettingsObjectpropCount++;
             }
 
@@ -78,15 +78,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
             if (bodycallbackId != null)
             {
-                body["callbackId"] = ExpressionConverter.ConvertO(bodycallbackId);
+                body["callbackId"] = CSharpExpressionConverter.ConvertToken(bodycallbackId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
+            body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
             if (bodysoundtrack != null)
             {
-                body["soundtrack"] = ExpressionConverter.ConvertO(bodysoundtrack);
+                body["soundtrack"] = CSharpExpressionConverter.ConvertToken(bodysoundtrack);
                 bodypropCount++;
             }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoStatusResponse> VideoStatus(Expression<Func<string>> videoId)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/videos/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<VideoStatusResponse>(callPayload);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<string> VideoDelete(Expression<Func<string>> videoId)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/videos/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -119,20 +119,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoPatchResponse> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/videos/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var ctaSettingsObjectpropCount = 0;
             if (bodyctaSettingslabel != null)
             {
-                ctaSettingsObject["label"] = ExpressionConverter.ConvertO(bodyctaSettingslabel);
+                ctaSettingsObject["label"] = CSharpExpressionConverter.ConvertToken(bodyctaSettingslabel);
                 ctaSettingsObjectpropCount++;
             }
 
             if (bodyctaSettingsurl != null)
             {
-                ctaSettingsObject["url"] = ExpressionConverter.ConvertO(bodyctaSettingsurl);
+                ctaSettingsObject["url"] = CSharpExpressionConverter.ConvertToken(bodyctaSettingsurl);
                 ctaSettingsObjectpropCount++;
             }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
             if (bodyvisibility != null)
             {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                body["visibility"] = CSharpExpressionConverter.ConvertToken(bodyvisibility);
                 bodypropCount++;
             }
 
@@ -177,16 +177,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             return new ApiConnectionAction<TemplateListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateGetResponse>(callPayload);
@@ -202,29 +202,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyvisibility != null)
             {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                body["visibility"] = CSharpExpressionConverter.ConvertToken(bodyvisibility);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
             var templateDataObject = new JObject();
             var templateDataObjectpropCount = 0;
             if (bodytemplateDataname != null)
             {
-                templateDataObject["name"] = ExpressionConverter.ConvertO(bodytemplateDataname);
+                templateDataObject["name"] = CSharpExpressionConverter.ConvertToken(bodytemplateDataname);
                 templateDataObjectpropCount++;
             }
 
@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
             if (bodytest != null)
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
                 bodypropCount++;
             }
 
             if (bodycallbackId != null)
             {
-                body["callbackId"] = ExpressionConverter.ConvertO(bodycallbackId);
+                body["callbackId"] = CSharpExpressionConverter.ConvertToken(bodycallbackId);
                 bodypropCount++;
             }
 

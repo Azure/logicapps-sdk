@@ -21,23 +21,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyboardId != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             bodypropCount++;
-            body["itemName"] = ExpressionConverter.ConvertO(bodyitemName);
+            body["itemName"] = CSharpExpressionConverter.ConvertToken(bodyitemName);
             if (bodycolumnValues != null)
             {
-                body["columnValues"] = ExpressionConverter.ConvertO(bodycolumnValues);
+                body["columnValues"] = CSharpExpressionConverter.ConvertToken(bodycolumnValues);
                 bodypropCount++;
             }
 
@@ -58,31 +58,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["sourceWorkspaceId"] = ExpressionConverter.ConvertO(bodysourceWorkspaceId);
+            body["sourceWorkspaceId"] = CSharpExpressionConverter.ConvertToken(bodysourceWorkspaceId);
             bodypropCount++;
-            body["sourceBoardId"] = ExpressionConverter.ConvertO(bodysourceBoardId);
+            body["sourceBoardId"] = CSharpExpressionConverter.ConvertToken(bodysourceBoardId);
             if (bodyduplicatedBoardName != null)
             {
-                body["duplicatedBoardName"] = ExpressionConverter.ConvertO(bodyduplicatedBoardName);
+                body["duplicatedBoardName"] = CSharpExpressionConverter.ConvertToken(bodyduplicatedBoardName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["duplicationType"] = ExpressionConverter.ConvertO(bodyduplicationType);
+            body["duplicationType"] = CSharpExpressionConverter.Convert(bodyduplicationType);
             if (bodydestinationWorkspaceId != null)
             {
-                body["destinationWorkspaceId"] = ExpressionConverter.ConvertO(bodydestinationWorkspaceId);
+                body["destinationWorkspaceId"] = CSharpExpressionConverter.ConvertToken(bodydestinationWorkspaceId);
                 bodypropCount++;
             }
 
             if (bodydestinationFolder != null)
             {
-                body["destinationFolder"] = ExpressionConverter.ConvertO(bodydestinationFolder);
+                body["destinationFolder"] = CSharpExpressionConverter.ConvertToken(bodydestinationFolder);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["keepBoardSubscribers"] = ExpressionConverter.ConvertO(bodykeepBoardSubscribers);
+            body["keepBoardSubscribers"] = CSharpExpressionConverter.ConvertToken(bodykeepBoardSubscribers);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardName"] = ExpressionConverter.ConvertO(bodyboardName);
+            body["boardName"] = CSharpExpressionConverter.ConvertToken(bodyboardName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -121,26 +121,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyboardId != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["columnType"] = ExpressionConverter.ConvertO(bodycolumnType);
+            body["columnType"] = CSharpExpressionConverter.Convert(bodycolumnType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -159,18 +159,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyboardId != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["groupName"] = ExpressionConverter.ConvertO(bodygroupName);
+            body["groupName"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -188,20 +188,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             if (bodycolumnId != null)
             {
-                body["columnId"] = ExpressionConverter.ConvertO(bodycolumnId);
+                body["columnId"] = CSharpExpressionConverter.ConvertToken(bodycolumnId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
+            body["itemId"] = CSharpExpressionConverter.ConvertToken(bodyitemId);
             if (bodycolumnValues != null)
             {
-                body["columnValues"] = ExpressionConverter.ConvertO(bodycolumnValues);
+                body["columnValues"] = CSharpExpressionConverter.ConvertToken(bodycolumnValues);
                 bodypropCount++;
             }
 
@@ -222,20 +222,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             bodypropCount++;
-            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
+            body["itemId"] = CSharpExpressionConverter.ConvertToken(bodyitemId);
             if (bodyitemName != null)
             {
-                body["itemName"] = ExpressionConverter.ConvertO(bodyitemName);
+                body["itemName"] = CSharpExpressionConverter.ConvertToken(bodyitemName);
                 bodypropCount++;
             }
 
             if (bodycolumnValues != null)
             {
-                body["columnValues"] = ExpressionConverter.ConvertO(bodycolumnValues);
+                body["columnValues"] = CSharpExpressionConverter.ConvertToken(bodycolumnValues);
                 bodypropCount++;
             }
 
@@ -257,20 +257,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyboardId != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             bodypropCount++;
-            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
+            body["itemId"] = CSharpExpressionConverter.ConvertToken(bodyitemId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -288,11 +288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+            body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
             bodypropCount++;
-            body["targetId"] = ExpressionConverter.ConvertO(bodytargetId);
+            body["targetId"] = CSharpExpressionConverter.ConvertToken(bodytargetId);
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -311,19 +311,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             bodypropCount++;
-            body["parentItemId"] = ExpressionConverter.ConvertO(bodyparentItemId);
+            body["parentItemId"] = CSharpExpressionConverter.ConvertToken(bodyparentItemId);
             bodypropCount++;
-            body["itemName"] = ExpressionConverter.ConvertO(bodyitemName);
+            body["itemName"] = CSharpExpressionConverter.ConvertToken(bodyitemName);
             if (bodycolumnValues != null)
             {
-                body["columnValues"] = ExpressionConverter.ConvertO(bodycolumnValues);
+                body["columnValues"] = CSharpExpressionConverter.ConvertToken(bodycolumnValues);
                 bodypropCount++;
             }
 
@@ -341,9 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var apiCallPath = "/getData/getSubitems";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["itemId"] = ExpressionConverter.Convert(itemId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
+            callPayload.Queries["boardId"] = CSharpExpressionConverter.ConvertO(boardId);
+            callPayload.Queries["itemId"] = CSharpExpressionConverter.ConvertO(itemId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -357,22 +357,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var bodypropCount = 0;
             if (bodyworkspaceId != null)
             {
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
             }
 
             if (bodyboardId != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             bodypropCount++;
-            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
+            body["itemId"] = CSharpExpressionConverter.ConvertToken(bodyitemId);
             bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
+            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -387,9 +387,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var apiCallPath = "/getData/getItemById";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["itemId"] = ExpressionConverter.Convert(itemId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
+            callPayload.Queries["itemId"] = CSharpExpressionConverter.ConvertO(itemId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
+            callPayload.Queries["boardId"] = CSharpExpressionConverter.ConvertO(boardId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -402,10 +402,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -423,33 +423,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var apiCallPath = "/getData/getItemsV2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
+            callPayload.Queries["boardId"] = CSharpExpressionConverter.ConvertO(boardId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             if (filter1Column != null)
-                callPayload.Queries["filter1Column"] = ExpressionConverter.Convert(filter1Column);
+                callPayload.Queries["filter1Column"] = CSharpExpressionConverter.ConvertO(filter1Column);
             if (filter1Operator != null)
-                callPayload.Queries["filter1Operator"] = ExpressionConverter.Convert(filter1Operator);
+                callPayload.Queries["filter1Operator"] = CSharpExpressionConverter.ConvertO(filter1Operator);
             if (filter1Value != null)
-                callPayload.Queries["filter1Value"] = ExpressionConverter.Convert(filter1Value);
+                callPayload.Queries["filter1Value"] = CSharpExpressionConverter.ConvertO(filter1Value);
             if (filter2Column != null)
-                callPayload.Queries["filter2Column"] = ExpressionConverter.Convert(filter2Column);
+                callPayload.Queries["filter2Column"] = CSharpExpressionConverter.ConvertO(filter2Column);
             if (filter2Operator != null)
-                callPayload.Queries["filter2Operator"] = ExpressionConverter.Convert(filter2Operator);
+                callPayload.Queries["filter2Operator"] = CSharpExpressionConverter.ConvertO(filter2Operator);
             if (filter2Value != null)
-                callPayload.Queries["filter2Value"] = ExpressionConverter.Convert(filter2Value);
+                callPayload.Queries["filter2Value"] = CSharpExpressionConverter.ConvertO(filter2Value);
             if (filter3Column != null)
-                callPayload.Queries["filter3Column"] = ExpressionConverter.Convert(filter3Column);
+                callPayload.Queries["filter3Column"] = CSharpExpressionConverter.ConvertO(filter3Column);
             if (filter3Operator != null)
-                callPayload.Queries["filter3Operator"] = ExpressionConverter.Convert(filter3Operator);
+                callPayload.Queries["filter3Operator"] = CSharpExpressionConverter.ConvertO(filter3Operator);
             if (filter3Value != null)
-                callPayload.Queries["filter3Value"] = ExpressionConverter.Convert(filter3Value);
+                callPayload.Queries["filter3Value"] = CSharpExpressionConverter.ConvertO(filter3Value);
             if (filter4Column != null)
-                callPayload.Queries["filter4Column"] = ExpressionConverter.Convert(filter4Column);
+                callPayload.Queries["filter4Column"] = CSharpExpressionConverter.ConvertO(filter4Column);
             if (filter4Operator != null)
-                callPayload.Queries["filter4Operator"] = ExpressionConverter.Convert(filter4Operator);
+                callPayload.Queries["filter4Operator"] = CSharpExpressionConverter.ConvertO(filter4Operator);
             if (filter4Value != null)
-                callPayload.Queries["filter4Value"] = ExpressionConverter.Convert(filter4Value);
+                callPayload.Queries["filter4Value"] = CSharpExpressionConverter.ConvertO(filter4Value);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -482,9 +482,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -503,9 +503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -524,9 +524,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -545,9 +545,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -566,9 +566,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -587,11 +587,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             bodypropCount++;
-            body["columnId"] = ExpressionConverter.ConvertO(bodycolumnId);
+            body["columnId"] = CSharpExpressionConverter.ConvertToken(bodycolumnId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -610,9 +610,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -631,9 +631,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
             bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
+            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

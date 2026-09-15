@@ -14,22 +14,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IBodyWorkflowAction<JToken> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
         {
-            var apiCallPath = String.Format("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIDDynamic, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["barcode_value"] = ExpressionConverter.Convert(barcodeValue);
+            callPayload.Queries["barcode_value"] = CSharpExpressionConverter.ConvertO(barcodeValue);
             if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IWorkflowAction CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
         {
-            var apiCallPath = String.Format("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIDDynamic, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicListSchema);
             return new ApiConnectionAction(callPayload);
         }
     }

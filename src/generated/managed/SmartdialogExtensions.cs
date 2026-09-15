@@ -17,51 +17,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var apiCallPath = "/messages";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+            callPayload.Headers["Customer-Id"] = CSharpExpressionConverter.ConvertO(customerId);
+            callPayload.Headers["Service-Id"] = CSharpExpressionConverter.ConvertO(serviceId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
+            requestBody["Sender"] = CSharpExpressionConverter.ConvertToken(requestBodysender);
             requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+            requestBody["Content"] = CSharpExpressionConverter.ConvertToken(requestBodycontent);
             requestBodypropCount++;
-            requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
+            requestBody["Protocol"] = CSharpExpressionConverter.Convert(requestBodyprotocol);
             if (requestBodysendDateTime != null)
             {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                requestBody["SendDateTime"] = CSharpExpressionConverter.ConvertToken(requestBodysendDateTime);
                 requestBodypropCount++;
             }
 
             requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+            requestBody["Recipients"] = CSharpExpressionConverter.ConvertToken(requestBodyrecipients);
             if (requestBodyattachmentUri != null)
             {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                requestBody["AttachmentUri"] = CSharpExpressionConverter.ConvertToken(requestBodyattachmentUri);
                 requestBodypropCount++;
             }
 
             if (requestBodycustomerData != null)
             {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                requestBody["CustomerData"] = CSharpExpressionConverter.ConvertToken(requestBodycustomerData);
                 requestBodypropCount++;
             }
 
             if (requestBodyadMessage != null)
             {
-                requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                requestBody["AdMessage"] = CSharpExpressionConverter.ConvertToken(requestBodyadMessage);
                 requestBodypropCount++;
             }
 
             if (requestBodydlrUrl != null)
             {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                requestBody["DlrUrl"] = CSharpExpressionConverter.ConvertToken(requestBodydlrUrl);
                 requestBodypropCount++;
             }
 
             if (requestBodyrequestId != null)
             {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                requestBody["RequestId"] = CSharpExpressionConverter.ConvertToken(requestBodyrequestId);
                 requestBodypropCount++;
             }
 
@@ -76,54 +76,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            var apiCallPath = String.Format("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(parentMessageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentMessageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+            callPayload.Headers["Customer-Id"] = CSharpExpressionConverter.ConvertO(customerId);
+            callPayload.Headers["Service-Id"] = CSharpExpressionConverter.ConvertO(serviceId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
+            requestBody["Sender"] = CSharpExpressionConverter.ConvertToken(requestBodysender);
             requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+            requestBody["Content"] = CSharpExpressionConverter.ConvertToken(requestBodycontent);
             requestBodypropCount++;
-            requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
+            requestBody["Protocol"] = CSharpExpressionConverter.Convert(requestBodyprotocol);
             if (requestBodysendDateTime != null)
             {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                requestBody["SendDateTime"] = CSharpExpressionConverter.ConvertToken(requestBodysendDateTime);
                 requestBodypropCount++;
             }
 
             requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+            requestBody["Recipients"] = CSharpExpressionConverter.ConvertToken(requestBodyrecipients);
             if (requestBodyattachmentUri != null)
             {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                requestBody["AttachmentUri"] = CSharpExpressionConverter.ConvertToken(requestBodyattachmentUri);
                 requestBodypropCount++;
             }
 
             if (requestBodycustomerData != null)
             {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                requestBody["CustomerData"] = CSharpExpressionConverter.ConvertToken(requestBodycustomerData);
                 requestBodypropCount++;
             }
 
             if (requestBodyadMessage != null)
             {
-                requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                requestBody["AdMessage"] = CSharpExpressionConverter.ConvertToken(requestBodyadMessage);
                 requestBodypropCount++;
             }
 
             if (requestBodydlrUrl != null)
             {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                requestBody["DlrUrl"] = CSharpExpressionConverter.ConvertToken(requestBodydlrUrl);
                 requestBodypropCount++;
             }
 
             if (requestBodyrequestId != null)
             {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                requestBody["RequestId"] = CSharpExpressionConverter.ConvertToken(requestBodyrequestId);
                 requestBodypropCount++;
             }
 
@@ -141,16 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var apiCallPath = "/messages/discussion/reply";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["CustomerId"] = ExpressionConverter.Convert(customerId);
+            callPayload.Headers["CustomerId"] = CSharpExpressionConverter.ConvertO(customerId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["ThreadId"] = ExpressionConverter.ConvertO(requestBodythreadId);
+            requestBody["ThreadId"] = CSharpExpressionConverter.ConvertToken(requestBodythreadId);
             requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+            requestBody["Content"] = CSharpExpressionConverter.ConvertToken(requestBodycontent);
             if (requestBodycustomerData != null)
             {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                requestBody["CustomerData"] = CSharpExpressionConverter.ConvertToken(requestBodycustomerData);
                 requestBodypropCount++;
             }
 
@@ -165,28 +165,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IWorkflowAction CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<string>> requestBodydisplayName, Expression<Func<string>> requestBodyrawContent, Expression<Func<string>> requestBodycategory, Expression<Func<string>> requestBodylanguage, Expression<Func<requestBodybuttonsInputItem[]>> requestBodybuttons = null, Expression<Func<string>> requestBodyattachmentUrl = null)
         {
-            var apiCallPath = String.Format("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(identityNumber, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityNumber, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["DisplayName"] = ExpressionConverter.ConvertO(requestBodydisplayName);
+            requestBody["DisplayName"] = CSharpExpressionConverter.ConvertToken(requestBodydisplayName);
             requestBodypropCount++;
-            requestBody["RawContent"] = ExpressionConverter.ConvertO(requestBodyrawContent);
+            requestBody["RawContent"] = CSharpExpressionConverter.ConvertToken(requestBodyrawContent);
             requestBodypropCount++;
-            requestBody["Category"] = ExpressionConverter.ConvertO(requestBodycategory);
+            requestBody["Category"] = CSharpExpressionConverter.ConvertToken(requestBodycategory);
             requestBodypropCount++;
-            requestBody["Language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+            requestBody["Language"] = CSharpExpressionConverter.ConvertToken(requestBodylanguage);
             if (requestBodybuttons != null)
             {
-                requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                requestBody["Buttons"] = CSharpExpressionConverter.ConvertToken(requestBodybuttons);
                 requestBodypropCount++;
             }
 
             if (requestBodyattachmentUrl != null)
             {
-                requestBody["AttachmentUrl"] = ExpressionConverter.ConvertO(requestBodyattachmentUrl);
+                requestBody["AttachmentUrl"] = CSharpExpressionConverter.ConvertToken(requestBodyattachmentUrl);
                 requestBodypropCount++;
             }
 
@@ -204,65 +204,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var apiCallPath = "/messages/templates/whatsapp";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+            callPayload.Headers["Customer-Id"] = CSharpExpressionConverter.ConvertO(customerId);
+            callPayload.Headers["Service-Id"] = CSharpExpressionConverter.ConvertO(serviceId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["TemplateName"] = ExpressionConverter.ConvertO(requestBodytemplateName);
+            requestBody["TemplateName"] = CSharpExpressionConverter.ConvertToken(requestBodytemplateName);
             requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+            requestBody["Recipients"] = CSharpExpressionConverter.ConvertToken(requestBodyrecipients);
             if (requestBodybodyParameters != null)
             {
-                requestBody["BodyParameters"] = ExpressionConverter.ConvertO(requestBodybodyParameters);
+                requestBody["BodyParameters"] = CSharpExpressionConverter.ConvertToken(requestBodybodyParameters);
                 requestBodypropCount++;
             }
 
             if (requestBodyheaderParameters != null)
             {
-                requestBody["HeaderParameters"] = ExpressionConverter.ConvertO(requestBodyheaderParameters);
+                requestBody["HeaderParameters"] = CSharpExpressionConverter.ConvertToken(requestBodyheaderParameters);
                 requestBodypropCount++;
             }
 
             if (requestBodybuttons != null)
             {
-                requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                requestBody["Buttons"] = CSharpExpressionConverter.ConvertToken(requestBodybuttons);
                 requestBodypropCount++;
             }
 
             if (requestBodysendDateTime != null)
             {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                requestBody["SendDateTime"] = CSharpExpressionConverter.ConvertToken(requestBodysendDateTime);
                 requestBodypropCount++;
             }
 
             if (requestBodyattachmentUri != null)
             {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                requestBody["AttachmentUri"] = CSharpExpressionConverter.ConvertToken(requestBodyattachmentUri);
                 requestBodypropCount++;
             }
 
             if (requestBodyuseSmsFallback != null)
             {
-                requestBody["UseSmsFallback"] = ExpressionConverter.ConvertO(requestBodyuseSmsFallback);
+                requestBody["UseSmsFallback"] = CSharpExpressionConverter.ConvertToken(requestBodyuseSmsFallback);
                 requestBodypropCount++;
             }
 
             if (requestBodydlrUrl != null)
             {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                requestBody["DlrUrl"] = CSharpExpressionConverter.ConvertToken(requestBodydlrUrl);
                 requestBodypropCount++;
             }
 
             if (requestBodycustomerData != null)
             {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                requestBody["CustomerData"] = CSharpExpressionConverter.ConvertToken(requestBodycustomerData);
                 requestBodypropCount++;
             }
 
             if (requestBodyrequestId != null)
             {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                requestBody["RequestId"] = CSharpExpressionConverter.ConvertToken(requestBodyrequestId);
                 requestBodypropCount++;
             }
 
@@ -277,18 +277,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<string>> region = null)
         {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (region != null)
-                callPayload.Queries["Region"] = ExpressionConverter.Convert(region);
+                callPayload.Queries["Region"] = CSharpExpressionConverter.ConvertO(region);
             return new ApiConnectionAction<GetGroupContactResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone)
         {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<bool>(callPayload);
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             {
                 if (requestBodyactive != null)
                 {
-                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBody["active"] = CSharpExpressionConverter.ConvertToken(requestBodyactive);
                     requestBodypropCount++;
                 }
 
@@ -320,67 +320,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
             if (requestBodyemail != null)
             {
-                requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                requestBody["email"] = CSharpExpressionConverter.ConvertToken(requestBodyemail);
                 requestBodypropCount++;
             }
 
             if (requestBodyfirstName != null)
             {
-                requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                requestBody["firstName"] = CSharpExpressionConverter.ConvertToken(requestBodyfirstName);
                 requestBodypropCount++;
             }
 
             if (requestBodylastName != null)
             {
-                requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                requestBody["lastName"] = CSharpExpressionConverter.ConvertToken(requestBodylastName);
                 requestBodypropCount++;
             }
 
             if (requestBodygender != null)
             {
-                requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                requestBody["gender"] = CSharpExpressionConverter.Convert(requestBodygender);
                 requestBodypropCount++;
             }
 
             if (requestBodybirthYear != null)
             {
-                requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                requestBody["birthYear"] = CSharpExpressionConverter.ConvertToken(requestBodybirthYear);
                 requestBodypropCount++;
             }
 
             if (requestBodystreetAddress != null)
             {
-                requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                requestBody["streetAddress"] = CSharpExpressionConverter.ConvertToken(requestBodystreetAddress);
                 requestBodypropCount++;
             }
 
             if (requestBodyzipCode != null)
             {
-                requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                requestBody["zipCode"] = CSharpExpressionConverter.ConvertToken(requestBodyzipCode);
                 requestBodypropCount++;
             }
 
             if (requestBodycity != null)
             {
-                requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                requestBody["city"] = CSharpExpressionConverter.ConvertToken(requestBodycity);
                 requestBodypropCount++;
             }
 
             if (requestBodycountryCode != null)
             {
-                requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                requestBody["countryCode"] = CSharpExpressionConverter.ConvertToken(requestBodycountryCode);
                 requestBodypropCount++;
             }
 
             if (requestBodycustomContactProperties != null)
             {
-                requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                requestBody["customContactProperties"] = CSharpExpressionConverter.ConvertToken(requestBodycustomContactProperties);
                 requestBodypropCount++;
             }
 
             if (requestBodyphoneNumberRegions != null)
             {
-                requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                requestBody["phoneNumberRegions"] = CSharpExpressionConverter.ConvertToken(requestBodyphoneNumberRegions);
                 requestBodypropCount++;
             }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteAllGroupContacts(Expression<Func<string>> customer, Expression<Func<string>> groupService)
         {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<bool>(callPayload);
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<string> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> requestBodyphone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             {
                 if (requestBodyactive != null)
                 {
-                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBody["active"] = CSharpExpressionConverter.ConvertToken(requestBodyactive);
                     requestBodypropCount++;
                 }
 
@@ -426,70 +426,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             }
 
             requestBodypropCount++;
-            requestBody["phone"] = ExpressionConverter.ConvertO(requestBodyphone);
+            requestBody["phone"] = CSharpExpressionConverter.ConvertToken(requestBodyphone);
             if (requestBodyemail != null)
             {
-                requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                requestBody["email"] = CSharpExpressionConverter.ConvertToken(requestBodyemail);
                 requestBodypropCount++;
             }
 
             if (requestBodyfirstName != null)
             {
-                requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                requestBody["firstName"] = CSharpExpressionConverter.ConvertToken(requestBodyfirstName);
                 requestBodypropCount++;
             }
 
             if (requestBodylastName != null)
             {
-                requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                requestBody["lastName"] = CSharpExpressionConverter.ConvertToken(requestBodylastName);
                 requestBodypropCount++;
             }
 
             if (requestBodygender != null)
             {
-                requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                requestBody["gender"] = CSharpExpressionConverter.Convert(requestBodygender);
                 requestBodypropCount++;
             }
 
             if (requestBodybirthYear != null)
             {
-                requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                requestBody["birthYear"] = CSharpExpressionConverter.ConvertToken(requestBodybirthYear);
                 requestBodypropCount++;
             }
 
             if (requestBodystreetAddress != null)
             {
-                requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                requestBody["streetAddress"] = CSharpExpressionConverter.ConvertToken(requestBodystreetAddress);
                 requestBodypropCount++;
             }
 
             if (requestBodyzipCode != null)
             {
-                requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                requestBody["zipCode"] = CSharpExpressionConverter.ConvertToken(requestBodyzipCode);
                 requestBodypropCount++;
             }
 
             if (requestBodycity != null)
             {
-                requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                requestBody["city"] = CSharpExpressionConverter.ConvertToken(requestBodycity);
                 requestBodypropCount++;
             }
 
             if (requestBodycountryCode != null)
             {
-                requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                requestBody["countryCode"] = CSharpExpressionConverter.ConvertToken(requestBodycountryCode);
                 requestBodypropCount++;
             }
 
             if (requestBodycustomContactProperties != null)
             {
-                requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                requestBody["customContactProperties"] = CSharpExpressionConverter.ConvertToken(requestBodycustomContactProperties);
                 requestBodypropCount++;
             }
 
             if (requestBodyphoneNumberRegions != null)
             {
-                requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                requestBody["phoneNumberRegions"] = CSharpExpressionConverter.ConvertToken(requestBodyphoneNumberRegions);
                 requestBodypropCount++;
             }
 
@@ -506,10 +506,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     {
         public IBodyWorkflowTrigger<NewMessageResponse> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer"] = ExpressionConverter.Convert(customer);
+            callPayload.Headers["Customer"] = CSharpExpressionConverter.ConvertO(customer);
             var createWebhookRequestBody = new JObject();
             var createWebhookRequestBodypropCount = 0;
             createWebhookRequestBody["name"] = "PowerAutomate (Auto Created Webhook)";

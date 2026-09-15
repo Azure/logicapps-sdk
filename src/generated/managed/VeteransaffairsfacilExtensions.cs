@@ -18,38 +18,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (facilityIds != null)
-                callPayload.Queries["facilityIds"] = ExpressionConverter.Convert(facilityIds);
+                callPayload.Queries["facilityIds"] = CSharpExpressionConverter.ConvertO(facilityIds);
             if (zip != null)
-                callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
+                callPayload.Queries["zip"] = CSharpExpressionConverter.ConvertO(zip);
             if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
             if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
             if (@long != null)
-                callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
+                callPayload.Queries["long"] = CSharpExpressionConverter.ConvertO(@long);
             if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
             if (bbox != null)
-                callPayload.Queries["bbox[]"] = ExpressionConverter.Convert(bbox);
+                callPayload.Queries["bbox[]"] = CSharpExpressionConverter.ConvertO(bbox);
             if (visn != null)
-                callPayload.Queries["visn"] = ExpressionConverter.Convert(visn);
+                callPayload.Queries["visn"] = CSharpExpressionConverter.ConvertO(visn);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (services != null)
-                callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
+                callPayload.Queries["services[]"] = CSharpExpressionConverter.ConvertO(services);
             if (mobile != null)
-                callPayload.Queries["mobile"] = ExpressionConverter.Convert(mobile);
+                callPayload.Queries["mobile"] = CSharpExpressionConverter.ConvertO(mobile);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<FacilitiesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById(Expression<Func<string>> facilityId)
         {
-            var apiCallPath = String.Format("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/facilities/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(facilityId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FacilityReadResponse>(callPayload);
@@ -58,20 +58,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
         {
-            var apiCallPath = String.Format("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(facilityId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (serviceIds != null)
-                callPayload.Queries["serviceIds"] = ExpressionConverter.Convert(serviceIds);
+                callPayload.Queries["serviceIds"] = CSharpExpressionConverter.ConvertO(serviceIds);
             if (serviceType != null)
-                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
+                callPayload.Queries["serviceType"] = CSharpExpressionConverter.ConvertO(serviceType);
             return new ApiConnectionAction<DetailedServicesResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
         {
-            var apiCallPath = String.Format("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(serviceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(facilityId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DetailedServiceResponse>(callPayload);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             return new ApiConnectionAction<FacilitiesIdsResponse>(callPayload);
         }
 
@@ -94,16 +94,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var apiCallPath = "/nearby";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["long"] = CSharpExpressionConverter.ConvertO(@long);
             if (driveTime != null)
-                callPayload.Queries["drive_time"] = ExpressionConverter.Convert(driveTime);
+                callPayload.Queries["drive_time"] = CSharpExpressionConverter.ConvertO(driveTime);
             if (services != null)
-                callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
+                callPayload.Queries["services[]"] = CSharpExpressionConverter.ConvertO(services);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<NearbyResponse>(callPayload);
         }
     }

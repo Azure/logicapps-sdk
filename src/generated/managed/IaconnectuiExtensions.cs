@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesTopLevelWindowExistpropCount = 0;
             if (uIADoesTopLevelWindowExistsearchClassName != null)
             {
-                uIADoesTopLevelWindowExist["SearchClassName"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchClassName);
+                uIADoesTopLevelWindowExist["SearchClassName"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistsearchClassName);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
             if (uIADoesTopLevelWindowExistsearchWindowTitle != null)
             {
-                uIADoesTopLevelWindowExist["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchWindowTitle);
+                uIADoesTopLevelWindowExist["SearchWindowTitle"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistsearchWindowTitle);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
             if (uIADoesTopLevelWindowExistsearchProcessId != null)
             {
-                uIADoesTopLevelWindowExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchProcessId);
+                uIADoesTopLevelWindowExist["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistsearchProcessId);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesTopLevelWindowExistmatchIndex != null)
                 {
-                    uIADoesTopLevelWindowExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistmatchIndex);
+                    uIADoesTopLevelWindowExist["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistmatchIndex);
                     uIADoesTopLevelWindowExistpropCount++;
                 }
 
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesTopLevelWindowExistsearchFilter != null)
             {
-                uIADoesTopLevelWindowExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchFilter);
+                uIADoesTopLevelWindowExist["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistsearchFilter);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
             uIADoesTopLevelWindowExistpropCount++;
-            uIADoesTopLevelWindowExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistworkflow);
+            uIADoesTopLevelWindowExist["Workflow"] = CSharpExpressionConverter.ConvertToken(uIADoesTopLevelWindowExistworkflow);
             if (uIADoesTopLevelWindowExistpropCount > 0)
             {
                 callPayload.Body = uIADoesTopLevelWindowExist;
@@ -79,19 +79,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForTopLevelWindowpropCount = 0;
             if (uIAGetHandleForTopLevelWindowsearchClassName != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchClassName);
+                uIAGetHandleForTopLevelWindow["SearchClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowsearchClassName);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
             if (uIAGetHandleForTopLevelWindowsearchWindowTitle != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchWindowTitle);
+                uIAGetHandleForTopLevelWindow["SearchWindowTitle"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowsearchWindowTitle);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
             if (uIAGetHandleForTopLevelWindowsearchProcessId != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchProcessId);
+                uIAGetHandleForTopLevelWindow["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowsearchProcessId);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetHandleForTopLevelWindowmatchIndex != null)
                 {
-                    uIAGetHandleForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndex);
+                    uIAGetHandleForTopLevelWindow["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowmatchIndex);
                     uIAGetHandleForTopLevelWindowpropCount++;
                 }
 
@@ -113,13 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetHandleForTopLevelWindowsearchFilter != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchFilter);
+                uIAGetHandleForTopLevelWindow["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowsearchFilter);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
             if (uIAGetHandleForTopLevelWindowsortByColumn != null)
             {
-                uIAGetHandleForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsortByColumn);
+                uIAGetHandleForTopLevelWindow["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowsortByColumn);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetHandleForTopLevelWindowmatchIndexAscending != null)
                 {
-                    uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndexAscending);
+                    uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowmatchIndexAscending);
                     uIAGetHandleForTopLevelWindowpropCount++;
                 }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetHandleForTopLevelWindowpropCount++;
-            uIAGetHandleForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowworkflow);
+            uIAGetHandleForTopLevelWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForTopLevelWindowworkflow);
             if (uIAGetHandleForTopLevelWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForTopLevelWindow;
@@ -159,21 +159,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForTopLevelWindowpropCount = 0;
             if (uIAWaitForTopLevelWindowsearchClassName != null)
             {
-                uIAWaitForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchClassName);
+                uIAWaitForTopLevelWindow["SearchClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsearchClassName);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
             if (uIAWaitForTopLevelWindowsearchWindowTitle != null)
             {
-                uIAWaitForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchWindowTitle);
+                uIAWaitForTopLevelWindow["SearchWindowTitle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsearchWindowTitle);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
             uIAWaitForTopLevelWindowpropCount++;
-            uIAWaitForTopLevelWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsecondsToWait);
+            uIAWaitForTopLevelWindow["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsecondsToWait);
             if (uIAWaitForTopLevelWindowsearchProcessId != null)
             {
-                uIAWaitForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchProcessId);
+                uIAWaitForTopLevelWindow["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsearchProcessId);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForTopLevelWindowmatchIndex != null)
                 {
-                    uIAWaitForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndex);
+                    uIAWaitForTopLevelWindow["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowmatchIndex);
                     uIAWaitForTopLevelWindowpropCount++;
                 }
 
@@ -195,13 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForTopLevelWindowsearchFilter != null)
             {
-                uIAWaitForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchFilter);
+                uIAWaitForTopLevelWindow["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsearchFilter);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
             if (uIAWaitForTopLevelWindowsortByColumn != null)
             {
-                uIAWaitForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsortByColumn);
+                uIAWaitForTopLevelWindow["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowsortByColumn);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForTopLevelWindowmatchIndexAscending != null)
                 {
-                    uIAWaitForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndexAscending);
+                    uIAWaitForTopLevelWindow["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowmatchIndexAscending);
                     uIAWaitForTopLevelWindowpropCount++;
                 }
 
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound != null)
                 {
-                    uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound);
+                    uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound);
                     uIAWaitForTopLevelWindowpropCount++;
                 }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForTopLevelWindowpropCount++;
-            uIAWaitForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowworkflow);
+            uIAWaitForTopLevelWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForTopLevelWindowworkflow);
             if (uIAWaitForTopLevelWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForTopLevelWindow;
@@ -256,9 +256,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesProcessHaveWindow = new JObject();
             var uIADoesProcessHaveWindowpropCount = 0;
             uIADoesProcessHaveWindowpropCount++;
-            uIADoesProcessHaveWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowsearchProcessName);
+            uIADoesProcessHaveWindow["SearchProcessName"] = CSharpExpressionConverter.ConvertToken(uIADoesProcessHaveWindowsearchProcessName);
             uIADoesProcessHaveWindowpropCount++;
-            uIADoesProcessHaveWindow["Workflow"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowworkflow);
+            uIADoesProcessHaveWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIADoesProcessHaveWindowworkflow);
             if (uIADoesProcessHaveWindowpropCount > 0)
             {
                 callPayload.Body = uIADoesProcessHaveWindow;
@@ -276,9 +276,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForProcessMainWindow = new JObject();
             var uIAGetHandleForProcessMainWindowpropCount = 0;
             uIAGetHandleForProcessMainWindowpropCount++;
-            uIAGetHandleForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowsearchProcessName);
+            uIAGetHandleForProcessMainWindow["SearchProcessName"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForProcessMainWindowsearchProcessName);
             uIAGetHandleForProcessMainWindowpropCount++;
-            uIAGetHandleForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowworkflow);
+            uIAGetHandleForProcessMainWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForProcessMainWindowworkflow);
             if (uIAGetHandleForProcessMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForProcessMainWindow;
@@ -296,11 +296,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForProcessMainWindow = new JObject();
             var uIAWaitForProcessMainWindowpropCount = 0;
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowsearchProcessName);
+            uIAWaitForProcessMainWindow["SearchProcessName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessMainWindowsearchProcessName);
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowsecondsToWait);
+            uIAWaitForProcessMainWindow["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessMainWindowsecondsToWait);
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowworkflow);
+            uIAWaitForProcessMainWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessMainWindowworkflow);
             if (uIAWaitForProcessMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForProcessMainWindow;
@@ -318,9 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForProcessIdMainWindow = new JObject();
             var uIAGetHandleForProcessIdMainWindowpropCount = 0;
             uIAGetHandleForProcessIdMainWindowpropCount++;
-            uIAGetHandleForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowprocessId);
+            uIAGetHandleForProcessIdMainWindow["ProcessId"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForProcessIdMainWindowprocessId);
             uIAGetHandleForProcessIdMainWindowpropCount++;
-            uIAGetHandleForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowworkflow);
+            uIAGetHandleForProcessIdMainWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForProcessIdMainWindowworkflow);
             if (uIAGetHandleForProcessIdMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForProcessIdMainWindow;
@@ -338,11 +338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForProcessIdMainWindow = new JObject();
             var uIAWaitForProcessIdMainWindowpropCount = 0;
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowprocessId);
+            uIAWaitForProcessIdMainWindow["ProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessIdMainWindowprocessId);
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowsecondsToWait);
+            uIAWaitForProcessIdMainWindow["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessIdMainWindowsecondsToWait);
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowworkflow);
+            uIAWaitForProcessIdMainWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForProcessIdMainWindowworkflow);
             if (uIAWaitForProcessIdMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForProcessIdMainWindow;
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForFocussedElement = new JObject();
             var uIAGetHandleForFocussedElementpropCount = 0;
             uIAGetHandleForFocussedElementpropCount++;
-            uIAGetHandleForFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForFocussedElementworkflow);
+            uIAGetHandleForFocussedElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForFocussedElementworkflow);
             if (uIAGetHandleForFocussedElementpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForFocussedElement;
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForMainWindowOfFocussedElement = new JObject();
             var uIAGetHandleForMainWindowOfFocussedElementpropCount = 0;
             uIAGetHandleForMainWindowOfFocussedElementpropCount++;
-            uIAGetHandleForMainWindowOfFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForMainWindowOfFocussedElementworkflow);
+            uIAGetHandleForMainWindowOfFocussedElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForMainWindowOfFocussedElementworkflow);
             if (uIAGetHandleForMainWindowOfFocussedElementpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForMainWindowOfFocussedElement;
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForDesktop = new JObject();
             var uIAGetHandleForDesktoppropCount = 0;
             uIAGetHandleForDesktoppropCount++;
-            uIAGetHandleForDesktop["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForDesktopworkflow);
+            uIAGetHandleForDesktop["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetHandleForDesktopworkflow);
             if (uIAGetHandleForDesktoppropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForDesktop;
@@ -414,12 +414,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetForegroundWindow = new JObject();
             var uIASetForegroundWindowpropCount = 0;
             uIASetForegroundWindowpropCount++;
-            uIASetForegroundWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIASetForegroundWindowwindowHandle);
+            uIASetForegroundWindow["WindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASetForegroundWindowwindowHandle);
             if (uIASetForegroundWindowtoggleWindow != null)
             {
                 if (uIASetForegroundWindowtoggleWindow != null)
                 {
-                    uIASetForegroundWindow["ToggleWindow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleWindow);
+                    uIASetForegroundWindow["ToggleWindow"] = CSharpExpressionConverter.ConvertToken(uIASetForegroundWindowtoggleWindow);
                     uIASetForegroundWindowpropCount++;
                 }
 
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent != null)
                 {
-                    uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent);
+                    uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = CSharpExpressionConverter.ConvertToken(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent);
                     uIASetForegroundWindowpropCount++;
                 }
 
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetForegroundWindowtoggleDelay != null)
                 {
-                    uIASetForegroundWindow["ToggleDelay"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleDelay);
+                    uIASetForegroundWindow["ToggleDelay"] = CSharpExpressionConverter.ConvertToken(uIASetForegroundWindowtoggleDelay);
                     uIASetForegroundWindowpropCount++;
                 }
 
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIASetForegroundWindowpropCount++;
-            uIASetForegroundWindow["Workflow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowworkflow);
+            uIASetForegroundWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetForegroundWindowworkflow);
             if (uIASetForegroundWindowpropCount > 0)
             {
                 callPayload.Body = uIASetForegroundWindow;
@@ -482,9 +482,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMaximiseWindow = new JObject();
             var uIAMaximiseWindowpropCount = 0;
             uIAMaximiseWindowpropCount++;
-            uIAMaximiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMaximiseWindowwindowHandle);
+            uIAMaximiseWindow["WindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAMaximiseWindowwindowHandle);
             uIAMaximiseWindowpropCount++;
-            uIAMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMaximiseWindowworkflow);
+            uIAMaximiseWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAMaximiseWindowworkflow);
             if (uIAMaximiseWindowpropCount > 0)
             {
                 callPayload.Body = uIAMaximiseWindow;
@@ -502,9 +502,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMinimiseWindow = new JObject();
             var uIAMinimiseWindowpropCount = 0;
             uIAMinimiseWindowpropCount++;
-            uIAMinimiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMinimiseWindowwindowHandle);
+            uIAMinimiseWindow["WindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAMinimiseWindowwindowHandle);
             uIAMinimiseWindowpropCount++;
-            uIAMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMinimiseWindowworkflow);
+            uIAMinimiseWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAMinimiseWindowworkflow);
             if (uIAMinimiseWindowpropCount > 0)
             {
                 callPayload.Body = uIAMinimiseWindow;
@@ -522,9 +522,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetWindowToNormal = new JObject();
             var uIASetWindowToNormalpropCount = 0;
             uIASetWindowToNormalpropCount++;
-            uIASetWindowToNormal["WindowHandle"] = ExpressionConverter.ConvertO(uIASetWindowToNormalwindowHandle);
+            uIASetWindowToNormal["WindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASetWindowToNormalwindowHandle);
             uIASetWindowToNormalpropCount++;
-            uIASetWindowToNormal["Workflow"] = ExpressionConverter.ConvertO(uIASetWindowToNormalworkflow);
+            uIASetWindowToNormal["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetWindowToNormalworkflow);
             if (uIASetWindowToNormalpropCount > 0)
             {
                 callPayload.Body = uIASetWindowToNormal;
@@ -542,34 +542,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesElementExist = new JObject();
             var uIADoesElementExistpropCount = 0;
             uIADoesElementExistpropCount++;
-            uIADoesElementExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistparentWindowHandle);
+            uIADoesElementExist["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistparentWindowHandle);
             if (uIADoesElementExistsearchElementName != null)
             {
-                uIADoesElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementName);
+                uIADoesElementExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchElementName);
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistsearchElementClassName != null)
             {
-                uIADoesElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementClassName);
+                uIADoesElementExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchElementClassName);
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistsearchElementAutomationId != null)
             {
-                uIADoesElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementAutomationId);
+                uIADoesElementExist["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchElementAutomationId);
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistsearchLocalizedControlType != null)
             {
-                uIADoesElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchLocalizedControlType);
+                uIADoesElementExist["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchLocalizedControlType);
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistsearchProcessId != null)
             {
-                uIADoesElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchProcessId);
+                uIADoesElementExist["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchProcessId);
                 uIADoesElementExistpropCount++;
             }
 
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistsearchSubTree != null)
                 {
-                    uIADoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchSubTree);
+                    uIADoesElementExist["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchSubTree);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistreturnElementHandle != null)
                 {
-                    uIADoesElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistreturnElementHandle);
+                    uIADoesElementExist["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistreturnElementHandle);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistmatchIndex != null)
                 {
-                    uIADoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndex);
+                    uIADoesElementExist["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistmatchIndex);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -623,13 +623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesElementExistsearchFilter != null)
             {
-                uIADoesElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchFilter);
+                uIADoesElementExist["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsearchFilter);
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistsortByColumn != null)
             {
-                uIADoesElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesElementExistsortByColumn);
+                uIADoesElementExist["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistsortByColumn);
                 uIADoesElementExistpropCount++;
             }
 
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistmatchIndexAscending != null)
                 {
-                    uIADoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndexAscending);
+                    uIADoesElementExist["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistmatchIndexAscending);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistincludeChildProcesses != null)
                 {
-                    uIADoesElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesElementExistincludeChildProcesses);
+                    uIADoesElementExist["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistincludeChildProcesses);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistmaxElementsToSearch != null)
                 {
-                    uIADoesElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxElementsToSearch);
+                    uIADoesElementExist["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistmaxElementsToSearch);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistmaxRelativeSearchDepth != null)
                 {
-                    uIADoesElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxRelativeSearchDepth);
+                    uIADoesElementExist["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistmaxRelativeSearchDepth);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesElementExistmaxChildElementsToSearchPerNode != null)
                 {
-                    uIADoesElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxChildElementsToSearchPerNode);
+                    uIADoesElementExist["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistmaxChildElementsToSearchPerNode);
                     uIADoesElementExistpropCount++;
                 }
 
@@ -715,12 +715,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesElementExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADoesElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesElementExistelementLocalizedControlTypesNotToTraverse);
+                uIADoesElementExist["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistelementLocalizedControlTypesNotToTraverse);
                 uIADoesElementExistpropCount++;
             }
 
             uIADoesElementExistpropCount++;
-            uIADoesElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesElementExistworkflow);
+            uIADoesElementExist["Workflow"] = CSharpExpressionConverter.ConvertToken(uIADoesElementExistworkflow);
             if (uIADoesElementExistpropCount > 0)
             {
                 callPayload.Body = uIADoesElementExist;
@@ -739,31 +739,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesDesktopElementExistpropCount = 0;
             if (uIADoesDesktopElementExistsearchElementName != null)
             {
-                uIADoesDesktopElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementName);
+                uIADoesDesktopElementExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchElementName);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistsearchElementClassName != null)
             {
-                uIADoesDesktopElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementClassName);
+                uIADoesDesktopElementExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchElementClassName);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistsearchElementAutomationId != null)
             {
-                uIADoesDesktopElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementAutomationId);
+                uIADoesDesktopElementExist["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchElementAutomationId);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistsearchLocalizedControlType != null)
             {
-                uIADoesDesktopElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchLocalizedControlType);
+                uIADoesDesktopElementExist["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchLocalizedControlType);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistsearchProcessId != null)
             {
-                uIADoesDesktopElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchProcessId);
+                uIADoesDesktopElementExist["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchProcessId);
                 uIADoesDesktopElementExistpropCount++;
             }
 
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistsearchSubTree != null)
                 {
-                    uIADoesDesktopElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchSubTree);
+                    uIADoesDesktopElementExist["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchSubTree);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -787,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistreturnElementHandle != null)
                 {
-                    uIADoesDesktopElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistreturnElementHandle);
+                    uIADoesDesktopElementExist["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistreturnElementHandle);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistmatchIndex != null)
                 {
-                    uIADoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndex);
+                    uIADoesDesktopElementExist["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistmatchIndex);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -817,13 +817,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesDesktopElementExistsearchFilter != null)
             {
-                uIADoesDesktopElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchFilter);
+                uIADoesDesktopElementExist["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsearchFilter);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistsortByColumn != null)
             {
-                uIADoesDesktopElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsortByColumn);
+                uIADoesDesktopElementExist["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistsortByColumn);
                 uIADoesDesktopElementExistpropCount++;
             }
 
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistmatchIndexAscending != null)
                 {
-                    uIADoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndexAscending);
+                    uIADoesDesktopElementExist["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistmatchIndexAscending);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistincludeChildProcesses != null)
                 {
-                    uIADoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistincludeChildProcesses);
+                    uIADoesDesktopElementExist["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistincludeChildProcesses);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistmaxElementsToSearch != null)
                 {
-                    uIADoesDesktopElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxElementsToSearch);
+                    uIADoesDesktopElementExist["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistmaxElementsToSearch);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistmaxRelativeSearchDepth != null)
                 {
-                    uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxRelativeSearchDepth);
+                    uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistmaxRelativeSearchDepth);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADoesDesktopElementExistmaxChildElementsToSearchPerNode != null)
                 {
-                    uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode);
+                    uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode);
                     uIADoesDesktopElementExistpropCount++;
                 }
 
@@ -909,12 +909,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADoesDesktopElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse);
+                uIADoesDesktopElementExist["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             uIADoesDesktopElementExistpropCount++;
-            uIADoesDesktopElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistworkflow);
+            uIADoesDesktopElementExist["Workflow"] = CSharpExpressionConverter.ConvertToken(uIADoesDesktopElementExistworkflow);
             if (uIADoesDesktopElementExistpropCount > 0)
             {
                 callPayload.Body = uIADoesDesktopElementExist;
@@ -932,34 +932,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForElement = new JObject();
             var uIAWaitForElementpropCount = 0;
             uIAWaitForElementpropCount++;
-            uIAWaitForElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementparentWindowHandle);
+            uIAWaitForElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementparentWindowHandle);
             if (uIAWaitForElementsearchElementName != null)
             {
-                uIAWaitForElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementName);
+                uIAWaitForElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchElementName);
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementsearchElementClassName != null)
             {
-                uIAWaitForElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementClassName);
+                uIAWaitForElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchElementClassName);
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementsearchElementAutomationId != null)
             {
-                uIAWaitForElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementAutomationId);
+                uIAWaitForElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchElementAutomationId);
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementsearchLocalizedControlType != null)
             {
-                uIAWaitForElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchLocalizedControlType);
+                uIAWaitForElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchLocalizedControlType);
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementsearchProcessId != null)
             {
-                uIAWaitForElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchProcessId);
+                uIAWaitForElement["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchProcessId);
                 uIAWaitForElementpropCount++;
             }
 
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementsearchSubTree != null)
                 {
-                    uIAWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchSubTree);
+                    uIAWaitForElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchSubTree);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementreturnElementHandle != null)
                 {
-                    uIAWaitForElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementreturnElementHandle);
+                    uIAWaitForElement["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementreturnElementHandle);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -996,12 +996,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForElementpropCount++;
-            uIAWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementsecondsToWait);
+            uIAWaitForElement["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsecondsToWait);
             if (uIAWaitForElementmatchIndex != null)
             {
                 if (uIAWaitForElementmatchIndex != null)
                 {
-                    uIAWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndex);
+                    uIAWaitForElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementmatchIndex);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1015,13 +1015,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementsearchFilter != null)
             {
-                uIAWaitForElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchFilter);
+                uIAWaitForElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsearchFilter);
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementsortByColumn != null)
             {
-                uIAWaitForElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementsortByColumn);
+                uIAWaitForElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementsortByColumn);
                 uIAWaitForElementpropCount++;
             }
 
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementmatchIndexAscending != null)
                 {
-                    uIAWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndexAscending);
+                    uIAWaitForElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementmatchIndexAscending);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementincludeChildProcesses != null)
                 {
-                    uIAWaitForElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementincludeChildProcesses);
+                    uIAWaitForElement["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementincludeChildProcesses);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementraiseExceptionIfElementNotFound != null)
                 {
-                    uIAWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForElementraiseExceptionIfElementNotFound);
+                    uIAWaitForElement["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementraiseExceptionIfElementNotFound);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1077,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementmaxElementsToSearch != null)
                 {
-                    uIAWaitForElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxElementsToSearch);
+                    uIAWaitForElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementmaxElementsToSearch);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxRelativeSearchDepth);
+                    uIAWaitForElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementmaxRelativeSearchDepth);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementmaxChildElementsToSearchPerNode);
                     uIAWaitForElementpropCount++;
                 }
 
@@ -1123,12 +1123,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForElementpropCount++;
             }
 
             uIAWaitForElementpropCount++;
-            uIAWaitForElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementworkflow);
+            uIAWaitForElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementworkflow);
             if (uIAWaitForElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForElement;
@@ -1147,25 +1147,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForDesktopElementpropCount = 0;
             if (uIAWaitForDesktopElementsearchElementName != null)
             {
-                uIAWaitForDesktopElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementName);
+                uIAWaitForDesktopElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchElementName);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementsearchElementClassName != null)
             {
-                uIAWaitForDesktopElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementClassName);
+                uIAWaitForDesktopElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchElementClassName);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementsearchElementAutomationId != null)
             {
-                uIAWaitForDesktopElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementAutomationId);
+                uIAWaitForDesktopElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchElementAutomationId);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementsearchLocalizedControlType != null)
             {
-                uIAWaitForDesktopElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchLocalizedControlType);
+                uIAWaitForDesktopElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchLocalizedControlType);
                 uIAWaitForDesktopElementpropCount++;
             }
 
@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementsearchProcessId != null)
                 {
-                    uIAWaitForDesktopElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchProcessId);
+                    uIAWaitForDesktopElement["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchProcessId);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1189,7 +1189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementsearchSubTree != null)
                 {
-                    uIAWaitForDesktopElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchSubTree);
+                    uIAWaitForDesktopElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchSubTree);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementreturnElementHandle != null)
                 {
-                    uIAWaitForDesktopElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementreturnElementHandle);
+                    uIAWaitForDesktopElement["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementreturnElementHandle);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1218,12 +1218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForDesktopElementpropCount++;
-            uIAWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsecondsToWait);
+            uIAWaitForDesktopElement["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsecondsToWait);
             if (uIAWaitForDesktopElementmatchIndex != null)
             {
                 if (uIAWaitForDesktopElementmatchIndex != null)
                 {
-                    uIAWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndex);
+                    uIAWaitForDesktopElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementmatchIndex);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1237,13 +1237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementsearchFilter != null)
             {
-                uIAWaitForDesktopElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchFilter);
+                uIAWaitForDesktopElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsearchFilter);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementsortByColumn != null)
             {
-                uIAWaitForDesktopElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsortByColumn);
+                uIAWaitForDesktopElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementsortByColumn);
                 uIAWaitForDesktopElementpropCount++;
             }
 
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementmatchIndexAscending != null)
                 {
-                    uIAWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndexAscending);
+                    uIAWaitForDesktopElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementmatchIndexAscending);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1267,7 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementincludeChildProcesses != null)
                 {
-                    uIAWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementincludeChildProcesses);
+                    uIAWaitForDesktopElement["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementincludeChildProcesses);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1283,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementraiseExceptionIfElementNotFound != null)
                 {
-                    uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementraiseExceptionIfElementNotFound);
+                    uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementraiseExceptionIfElementNotFound);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementmaxElementsToSearch != null)
                 {
-                    uIAWaitForDesktopElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxElementsToSearch);
+                    uIAWaitForDesktopElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementmaxElementsToSearch);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1315,7 +1315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxRelativeSearchDepth);
+                    uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementmaxRelativeSearchDepth);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode);
                     uIAWaitForDesktopElementpropCount++;
                 }
 
@@ -1345,12 +1345,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForDesktopElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             uIAWaitForDesktopElementpropCount++;
-            uIAWaitForDesktopElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementworkflow);
+            uIAWaitForDesktopElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementworkflow);
             if (uIAWaitForDesktopElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForDesktopElement;
@@ -1368,34 +1368,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForElementToNotExist = new JObject();
             var uIAWaitForElementToNotExistpropCount = 0;
             uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistparentWindowHandle);
+            uIAWaitForElementToNotExist["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistparentWindowHandle);
             if (uIAWaitForElementToNotExistsearchElementName != null)
             {
-                uIAWaitForElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementName);
+                uIAWaitForElementToNotExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchElementName);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistsearchElementClassName != null)
             {
-                uIAWaitForElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementClassName);
+                uIAWaitForElementToNotExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchElementClassName);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistsearchElementAutomationId != null)
             {
-                uIAWaitForElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementAutomationId);
+                uIAWaitForElementToNotExist["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchElementAutomationId);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistsearchLocalizedControlType != null)
             {
-                uIAWaitForElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchLocalizedControlType);
+                uIAWaitForElementToNotExist["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchLocalizedControlType);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistsearchProcessId != null)
             {
-                uIAWaitForElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchProcessId);
+                uIAWaitForElementToNotExist["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchProcessId);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistsearchSubTree != null)
                 {
-                    uIAWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchSubTree);
+                    uIAWaitForElementToNotExist["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchSubTree);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1416,12 +1416,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsecondsToWait);
+            uIAWaitForElementToNotExist["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsecondsToWait);
             if (uIAWaitForElementToNotExistmatchIndex != null)
             {
                 if (uIAWaitForElementToNotExistmatchIndex != null)
                 {
-                    uIAWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndex);
+                    uIAWaitForElementToNotExist["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistmatchIndex);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1435,13 +1435,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementToNotExistsearchFilter != null)
             {
-                uIAWaitForElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchFilter);
+                uIAWaitForElementToNotExist["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsearchFilter);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistsortByColumn != null)
             {
-                uIAWaitForElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsortByColumn);
+                uIAWaitForElementToNotExist["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistsortByColumn);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
@@ -1449,7 +1449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistmatchIndexAscending != null)
                 {
-                    uIAWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndexAscending);
+                    uIAWaitForElementToNotExist["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistmatchIndexAscending);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1465,7 +1465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistincludeChildProcesses != null)
                 {
-                    uIAWaitForElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistincludeChildProcesses);
+                    uIAWaitForElementToNotExist["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistincludeChildProcesses);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
                 {
-                    uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                    uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1497,7 +1497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistmaxElementsToSearch != null)
                 {
-                    uIAWaitForElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxElementsToSearch);
+                    uIAWaitForElementToNotExist["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistmaxElementsToSearch);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1513,7 +1513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxRelativeSearchDepth);
+                    uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistmaxRelativeSearchDepth);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1529,7 +1529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode);
+                    uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode);
                     uIAWaitForElementToNotExistpropCount++;
                 }
 
@@ -1543,12 +1543,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistworkflow);
+            uIAWaitForElementToNotExist["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForElementToNotExistworkflow);
             if (uIAWaitForElementToNotExistpropCount > 0)
             {
                 callPayload.Body = uIAWaitForElementToNotExist;
@@ -1567,31 +1567,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForDesktopElementToNotExistpropCount = 0;
             if (uIAWaitForDesktopElementToNotExistsearchElementName != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementName);
+                uIAWaitForDesktopElementToNotExist["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchElementName);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistsearchElementClassName != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementClassName);
+                uIAWaitForDesktopElementToNotExist["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchElementClassName);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistsearchElementAutomationId != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementAutomationId);
+                uIAWaitForDesktopElementToNotExist["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchElementAutomationId);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistsearchLocalizedControlType != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchLocalizedControlType);
+                uIAWaitForDesktopElementToNotExist["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchLocalizedControlType);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistsearchProcessId != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchProcessId);
+                uIAWaitForDesktopElementToNotExist["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchProcessId);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1599,7 +1599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistsearchSubTree != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchSubTree);
+                    uIAWaitForDesktopElementToNotExist["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchSubTree);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1612,12 +1612,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForDesktopElementToNotExistpropCount++;
-            uIAWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsecondsToWait);
+            uIAWaitForDesktopElementToNotExist["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsecondsToWait);
             if (uIAWaitForDesktopElementToNotExistmatchIndex != null)
             {
                 if (uIAWaitForDesktopElementToNotExistmatchIndex != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndex);
+                    uIAWaitForDesktopElementToNotExist["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistmatchIndex);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1631,13 +1631,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementToNotExistsearchFilter != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchFilter);
+                uIAWaitForDesktopElementToNotExist["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsearchFilter);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistsortByColumn != null)
             {
-                uIAWaitForDesktopElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsortByColumn);
+                uIAWaitForDesktopElementToNotExist["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistsortByColumn);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistmatchIndexAscending != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndexAscending);
+                    uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistmatchIndexAscending);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistincludeChildProcesses != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistincludeChildProcesses);
+                    uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistincludeChildProcesses);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1677,7 +1677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                    uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistmaxElementsToSearch != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxElementsToSearch);
+                    uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistmaxElementsToSearch);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1709,7 +1709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth);
+                    uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode);
+                    uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode);
                     uIAWaitForDesktopElementToNotExistpropCount++;
                 }
 
@@ -1739,12 +1739,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForDesktopElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             uIAWaitForDesktopElementToNotExistpropCount++;
-            uIAWaitForDesktopElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistworkflow);
+            uIAWaitForDesktopElementToNotExist["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForDesktopElementToNotExistworkflow);
             if (uIAWaitForDesktopElementToNotExistpropCount > 0)
             {
                 callPayload.Body = uIAWaitForDesktopElementToNotExist;
@@ -1762,28 +1762,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAPressElement = new JObject();
             var uIAPressElementpropCount = 0;
             uIAPressElementpropCount++;
-            uIAPressElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAPressElementparentWindowHandle);
+            uIAPressElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAPressElementparentWindowHandle);
             if (uIAPressElementsearchElementName != null)
             {
-                uIAPressElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementName);
+                uIAPressElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchElementName);
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementsearchElementClassName != null)
             {
-                uIAPressElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementClassName);
+                uIAPressElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchElementClassName);
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementsearchElementAutomationId != null)
             {
-                uIAPressElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementAutomationId);
+                uIAPressElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchElementAutomationId);
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementsearchLocalizedControlType != null)
             {
-                uIAPressElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAPressElementsearchLocalizedControlType);
+                uIAPressElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchLocalizedControlType);
                 uIAPressElementpropCount++;
             }
 
@@ -1791,7 +1791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementsearchSubTree != null)
                 {
-                    uIAPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAPressElementsearchSubTree);
+                    uIAPressElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchSubTree);
                     uIAPressElementpropCount++;
                 }
 
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementwait != null)
                 {
-                    uIAPressElement["Wait"] = ExpressionConverter.ConvertO(uIAPressElementwait);
+                    uIAPressElement["Wait"] = CSharpExpressionConverter.ConvertToken(uIAPressElementwait);
                     uIAPressElementpropCount++;
                 }
 
@@ -1823,7 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementwin32ClickButton != null)
                 {
-                    uIAPressElement["Win32ClickButton"] = ExpressionConverter.ConvertO(uIAPressElementwin32ClickButton);
+                    uIAPressElement["Win32ClickButton"] = CSharpExpressionConverter.ConvertToken(uIAPressElementwin32ClickButton);
                     uIAPressElementpropCount++;
                 }
 
@@ -1839,7 +1839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementmatchIndex != null)
                 {
-                    uIAPressElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndex);
+                    uIAPressElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAPressElementmatchIndex);
                     uIAPressElementpropCount++;
                 }
 
@@ -1853,13 +1853,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAPressElementsearchFilter != null)
             {
-                uIAPressElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAPressElementsearchFilter);
+                uIAPressElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsearchFilter);
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementsortByColumn != null)
             {
-                uIAPressElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAPressElementsortByColumn);
+                uIAPressElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAPressElementsortByColumn);
                 uIAPressElementpropCount++;
             }
 
@@ -1867,7 +1867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementmatchIndexAscending != null)
                 {
-                    uIAPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndexAscending);
+                    uIAPressElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAPressElementmatchIndexAscending);
                     uIAPressElementpropCount++;
                 }
 
@@ -1883,7 +1883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementmaxElementsToSearch != null)
                 {
-                    uIAPressElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAPressElementmaxElementsToSearch);
+                    uIAPressElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAPressElementmaxElementsToSearch);
                     uIAPressElementpropCount++;
                 }
 
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementmaxRelativeSearchDepth != null)
                 {
-                    uIAPressElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAPressElementmaxRelativeSearchDepth);
+                    uIAPressElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAPressElementmaxRelativeSearchDepth);
                     uIAPressElementpropCount++;
                 }
 
@@ -1915,7 +1915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAPressElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAPressElementmaxChildElementsToSearchPerNode);
+                    uIAPressElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAPressElementmaxChildElementsToSearchPerNode);
                     uIAPressElementpropCount++;
                 }
 
@@ -1929,7 +1929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAPressElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAPressElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAPressElementelementLocalizedControlTypesNotToTraverse);
+                uIAPressElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAPressElementelementLocalizedControlTypesNotToTraverse);
                 uIAPressElementpropCount++;
             }
 
@@ -1937,7 +1937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementtryInvokePattern != null)
                 {
-                    uIAPressElement["TryInvokePattern"] = ExpressionConverter.ConvertO(uIAPressElementtryInvokePattern);
+                    uIAPressElement["TryInvokePattern"] = CSharpExpressionConverter.ConvertToken(uIAPressElementtryInvokePattern);
                     uIAPressElementpropCount++;
                 }
 
@@ -1953,7 +1953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAPressElementtryLegacyPattern != null)
                 {
-                    uIAPressElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAPressElementtryLegacyPattern);
+                    uIAPressElement["TryLegacyPattern"] = CSharpExpressionConverter.ConvertToken(uIAPressElementtryLegacyPattern);
                     uIAPressElementpropCount++;
                 }
 
@@ -1966,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAPressElementpropCount++;
-            uIAPressElement["Workflow"] = ExpressionConverter.ConvertO(uIAPressElementworkflow);
+            uIAPressElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAPressElementworkflow);
             if (uIAPressElementpropCount > 0)
             {
                 callPayload.Body = uIAPressElement;
@@ -1984,28 +1984,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMouseClickOnElement = new JObject();
             var uIAGlobalMouseClickOnElementpropCount = 0;
             uIAGlobalMouseClickOnElementpropCount++;
-            uIAGlobalMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementparentWindowHandle);
+            uIAGlobalMouseClickOnElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementparentWindowHandle);
             if (uIAGlobalMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementName);
+                uIAGlobalMouseClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchElementName);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementClassName);
+                uIAGlobalMouseClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchElementClassName);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementAutomationId);
+                uIAGlobalMouseClickOnElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchLocalizedControlType);
+                uIAGlobalMouseClickOnElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -2013,7 +2013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementsearchSubTree != null)
                 {
-                    uIAGlobalMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchSubTree);
+                    uIAGlobalMouseClickOnElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchSubTree);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2029,7 +2029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementfocusElementFirst != null)
                 {
-                    uIAGlobalMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementfocusElementFirst);
+                    uIAGlobalMouseClickOnElement["FocusElementFirst"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementfocusElementFirst);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2045,7 +2045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementmatchIndex != null)
                 {
-                    uIAGlobalMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndex);
+                    uIAGlobalMouseClickOnElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementmatchIndex);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2059,13 +2059,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchFilter);
+                uIAGlobalMouseClickOnElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsearchFilter);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsortByColumn);
+                uIAGlobalMouseClickOnElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementsortByColumn);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -2073,7 +2073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementmatchIndexAscending != null)
                 {
-                    uIAGlobalMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalMouseClickOnElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementmatchIndexAscending);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2089,7 +2089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementclickOffsetX != null)
                 {
-                    uIAGlobalMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetX);
+                    uIAGlobalMouseClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementclickOffsetX);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2105,7 +2105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementclickOffsetY != null)
                 {
-                    uIAGlobalMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetY);
+                    uIAGlobalMouseClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementclickOffsetY);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2119,7 +2119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementoffsetRelativeTo);
+                uIAGlobalMouseClickOnElement["OffsetRelativeTo"] = CSharpExpressionConverter.Convert(uIAGlobalMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -2127,7 +2127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementmaxElementsToSearch);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2159,7 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2173,7 +2173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalMouseClickOnElementpropCount++;
                 }
 
@@ -2194,7 +2194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalMouseClickOnElementpropCount++;
-            uIAGlobalMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementworkflow);
+            uIAGlobalMouseClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickOnElementworkflow);
             if (uIAGlobalMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMouseClickOnElement;
@@ -2212,28 +2212,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalRightMouseClickOnElement = new JObject();
             var uIAGlobalRightMouseClickOnElementpropCount = 0;
             uIAGlobalRightMouseClickOnElementpropCount++;
-            uIAGlobalRightMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementparentWindowHandle);
+            uIAGlobalRightMouseClickOnElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementparentWindowHandle);
             if (uIAGlobalRightMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementName);
+                uIAGlobalRightMouseClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchElementName);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementClassName);
+                uIAGlobalRightMouseClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchElementClassName);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementAutomationId);
+                uIAGlobalRightMouseClickOnElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchLocalizedControlType);
+                uIAGlobalRightMouseClickOnElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -2241,7 +2241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementsearchSubTree != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchSubTree);
+                    uIAGlobalRightMouseClickOnElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchSubTree);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2257,7 +2257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementfocusElementFirst != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementfocusElementFirst);
+                    uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementfocusElementFirst);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2273,7 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementmatchIndex != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndex);
+                    uIAGlobalRightMouseClickOnElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementmatchIndex);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2287,13 +2287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchFilter);
+                uIAGlobalRightMouseClickOnElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsearchFilter);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalRightMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsortByColumn);
+                uIAGlobalRightMouseClickOnElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementsortByColumn);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -2301,7 +2301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementmatchIndexAscending != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementmatchIndexAscending);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2317,7 +2317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementclickOffsetX != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetX);
+                    uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementclickOffsetX);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2333,7 +2333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementclickOffsetY != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetY);
+                    uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementclickOffsetY);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalRightMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementoffsetRelativeTo);
+                uIAGlobalRightMouseClickOnElement["OffsetRelativeTo"] = CSharpExpressionConverter.Convert(uIAGlobalRightMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -2355,7 +2355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementmaxElementsToSearch);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2371,7 +2371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2387,7 +2387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2401,7 +2401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalRightMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalRightMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -2409,7 +2409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalRightMouseClickOnElementpropCount++;
                 }
 
@@ -2422,7 +2422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalRightMouseClickOnElementpropCount++;
-            uIAGlobalRightMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementworkflow);
+            uIAGlobalRightMouseClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalRightMouseClickOnElementworkflow);
             if (uIAGlobalRightMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalRightMouseClickOnElement;
@@ -2440,28 +2440,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMiddleMouseClickOnElement = new JObject();
             var uIAGlobalMiddleMouseClickOnElementpropCount = 0;
             uIAGlobalMiddleMouseClickOnElementpropCount++;
-            uIAGlobalMiddleMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementparentWindowHandle);
+            uIAGlobalMiddleMouseClickOnElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementparentWindowHandle);
             if (uIAGlobalMiddleMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementName);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchElementName);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementClassName);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchElementClassName);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType);
+                uIAGlobalMiddleMouseClickOnElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementsearchSubTree != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchSubTree);
+                    uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchSubTree);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementfocusElementFirst != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementfocusElementFirst);
+                    uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementfocusElementFirst);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2501,7 +2501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementmatchIndex != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndex);
+                    uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementmatchIndex);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2515,13 +2515,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchFilter);
+                uIAGlobalMiddleMouseClickOnElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsearchFilter);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsortByColumn);
+                uIAGlobalMiddleMouseClickOnElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementsortByColumn);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -2529,7 +2529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2545,7 +2545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementclickOffsetX != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetX);
+                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementclickOffsetX);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2561,7 +2561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementclickOffsetY != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetY);
+                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementclickOffsetY);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2575,7 +2575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo);
+                uIAGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = CSharpExpressionConverter.Convert(uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -2583,7 +2583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2599,7 +2599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2615,7 +2615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2629,7 +2629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMiddleMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -2637,7 +2637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalMiddleMouseClickOnElementpropCount++;
                 }
 
@@ -2650,7 +2650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalMiddleMouseClickOnElementpropCount++;
-            uIAGlobalMiddleMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementworkflow);
+            uIAGlobalMiddleMouseClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMiddleMouseClickOnElementworkflow);
             if (uIAGlobalMiddleMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMiddleMouseClickOnElement;
@@ -2668,28 +2668,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalDoubleLeftMouseClickOnElement = new JObject();
             var uIAGlobalDoubleLeftMouseClickOnElementpropCount = 0;
             uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
-            uIAGlobalDoubleLeftMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle);
+            uIAGlobalDoubleLeftMouseClickOnElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle);
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementName);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchElementName);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2697,7 +2697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree);
+                    uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2713,7 +2713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
+                    uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2729,7 +2729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst);
+                    uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2745,7 +2745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex);
+                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2759,13 +2759,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchFilter);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsearchFilter);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsortByColumn);
+                uIAGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementsortByColumn);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2773,7 +2773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2789,7 +2789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX);
+                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2805,7 +2805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY);
+                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2819,7 +2819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo);
+                uIAGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = CSharpExpressionConverter.Convert(uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2827,7 +2827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2859,7 +2859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2873,7 +2873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalDoubleLeftMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2881,7 +2881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
                 }
 
@@ -2894,7 +2894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
-            uIAGlobalDoubleLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementworkflow);
+            uIAGlobalDoubleLeftMouseClickOnElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalDoubleLeftMouseClickOnElementworkflow);
             if (uIAGlobalDoubleLeftMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalDoubleLeftMouseClickOnElement;
@@ -2912,28 +2912,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASelectElement = new JObject();
             var uIASelectElementpropCount = 0;
             uIASelectElementpropCount++;
-            uIASelectElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASelectElementparentWindowHandle);
+            uIASelectElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASelectElementparentWindowHandle);
             if (uIASelectElementsearchElementName != null)
             {
-                uIASelectElement["SearchElementName"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementName);
+                uIASelectElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchElementName);
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementsearchElementClassName != null)
             {
-                uIASelectElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementClassName);
+                uIASelectElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchElementClassName);
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementsearchElementAutomationId != null)
             {
-                uIASelectElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementAutomationId);
+                uIASelectElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchElementAutomationId);
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementsearchLocalizedControlType != null)
             {
-                uIASelectElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASelectElementsearchLocalizedControlType);
+                uIASelectElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchLocalizedControlType);
                 uIASelectElementpropCount++;
             }
 
@@ -2941,7 +2941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementsearchSubTree != null)
                 {
-                    uIASelectElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIASelectElementsearchSubTree);
+                    uIASelectElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchSubTree);
                     uIASelectElementpropCount++;
                 }
 
@@ -2957,7 +2957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementmatchIndex != null)
                 {
-                    uIASelectElement["MatchIndex"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndex);
+                    uIASelectElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIASelectElementmatchIndex);
                     uIASelectElementpropCount++;
                 }
 
@@ -2971,13 +2971,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASelectElementsearchFilter != null)
             {
-                uIASelectElement["SearchFilter"] = ExpressionConverter.ConvertO(uIASelectElementsearchFilter);
+                uIASelectElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsearchFilter);
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementsortByColumn != null)
             {
-                uIASelectElement["SortByColumn"] = ExpressionConverter.ConvertO(uIASelectElementsortByColumn);
+                uIASelectElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIASelectElementsortByColumn);
                 uIASelectElementpropCount++;
             }
 
@@ -2985,7 +2985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementmatchIndexAscending != null)
                 {
-                    uIASelectElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndexAscending);
+                    uIASelectElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIASelectElementmatchIndexAscending);
                     uIASelectElementpropCount++;
                 }
 
@@ -3001,7 +3001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementmaxElementsToSearch != null)
                 {
-                    uIASelectElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASelectElementmaxElementsToSearch);
+                    uIASelectElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIASelectElementmaxElementsToSearch);
                     uIASelectElementpropCount++;
                 }
 
@@ -3017,7 +3017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementmaxRelativeSearchDepth != null)
                 {
-                    uIASelectElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASelectElementmaxRelativeSearchDepth);
+                    uIASelectElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIASelectElementmaxRelativeSearchDepth);
                     uIASelectElementpropCount++;
                 }
 
@@ -3033,7 +3033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASelectElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIASelectElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASelectElementmaxChildElementsToSearchPerNode);
+                    uIASelectElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIASelectElementmaxChildElementsToSearchPerNode);
                     uIASelectElementpropCount++;
                 }
 
@@ -3047,12 +3047,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASelectElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASelectElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASelectElementelementLocalizedControlTypesNotToTraverse);
+                uIASelectElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIASelectElementelementLocalizedControlTypesNotToTraverse);
                 uIASelectElementpropCount++;
             }
 
             uIASelectElementpropCount++;
-            uIASelectElement["Workflow"] = ExpressionConverter.ConvertO(uIASelectElementworkflow);
+            uIASelectElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASelectElementworkflow);
             if (uIASelectElementpropCount > 0)
             {
                 callPayload.Body = uIASelectElement;
@@ -3070,28 +3070,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputPasswordIntoElement = new JObject();
             var uIAInputPasswordIntoElementpropCount = 0;
             uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementparentWindowHandle);
+            uIAInputPasswordIntoElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementparentWindowHandle);
             if (uIAInputPasswordIntoElementsearchElementName != null)
             {
-                uIAInputPasswordIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementName);
+                uIAInputPasswordIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchElementName);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementsearchElementClassName != null)
             {
-                uIAInputPasswordIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementClassName);
+                uIAInputPasswordIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchElementClassName);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementsearchElementAutomationId != null)
             {
-                uIAInputPasswordIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementAutomationId);
+                uIAInputPasswordIntoElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchElementAutomationId);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputPasswordIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchLocalizedControlType);
+                uIAInputPasswordIntoElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchLocalizedControlType);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -3099,7 +3099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementsearchSubTree != null)
                 {
-                    uIAInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchSubTree);
+                    uIAInputPasswordIntoElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchSubTree);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3112,12 +3112,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordToInput);
+            uIAInputPasswordIntoElement["PasswordToInput"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementpasswordToInput);
             if (uIAInputPasswordIntoElementmatchIndex != null)
             {
                 if (uIAInputPasswordIntoElementmatchIndex != null)
                 {
-                    uIAInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndex);
+                    uIAInputPasswordIntoElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementmatchIndex);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3131,13 +3131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputPasswordIntoElementsearchFilter != null)
             {
-                uIAInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchFilter);
+                uIAInputPasswordIntoElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsearchFilter);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementsortByColumn != null)
             {
-                uIAInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsortByColumn);
+                uIAInputPasswordIntoElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementsortByColumn);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -3145,7 +3145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementmatchIndexAscending != null)
                 {
-                    uIAInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndexAscending);
+                    uIAInputPasswordIntoElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementmatchIndexAscending);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3161,7 +3161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementpasswordContainsStoredPassword != null)
                 {
-                    uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordContainsStoredPassword);
+                    uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementpasswordContainsStoredPassword);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3177,7 +3177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementmaxElementsToSearch != null)
                 {
-                    uIAInputPasswordIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxElementsToSearch);
+                    uIAInputPasswordIntoElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementmaxElementsToSearch);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3193,7 +3193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementmaxRelativeSearchDepth != null)
                 {
-                    uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxRelativeSearchDepth);
+                    uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementmaxRelativeSearchDepth);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3209,7 +3209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3223,7 +3223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAInputPasswordIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAInputPasswordIntoElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -3231,7 +3231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementtryValuePattern != null)
                 {
-                    uIAInputPasswordIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryValuePattern);
+                    uIAInputPasswordIntoElement["TryValuePattern"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementtryValuePattern);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3247,7 +3247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputPasswordIntoElementtryLegacyPattern != null)
                 {
-                    uIAInputPasswordIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryLegacyPattern);
+                    uIAInputPasswordIntoElement["TryLegacyPattern"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementtryLegacyPattern);
                     uIAInputPasswordIntoElementpropCount++;
                 }
 
@@ -3260,7 +3260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementworkflow);
+            uIAInputPasswordIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAInputPasswordIntoElementworkflow);
             if (uIAInputPasswordIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputPasswordIntoElement;
@@ -3278,28 +3278,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputTextIntoElement = new JObject();
             var uIAInputTextIntoElementpropCount = 0;
             uIAInputTextIntoElementpropCount++;
-            uIAInputTextIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementparentWindowHandle);
+            uIAInputTextIntoElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementparentWindowHandle);
             if (uIAInputTextIntoElementsearchElementName != null)
             {
-                uIAInputTextIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementName);
+                uIAInputTextIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchElementName);
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementsearchElementClassName != null)
             {
-                uIAInputTextIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementClassName);
+                uIAInputTextIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchElementClassName);
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementsearchElementAutomationId != null)
             {
-                uIAInputTextIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementAutomationId);
+                uIAInputTextIntoElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchElementAutomationId);
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputTextIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchLocalizedControlType);
+                uIAInputTextIntoElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchLocalizedControlType);
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -3307,7 +3307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementsearchSubTree != null)
                 {
-                    uIAInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchSubTree);
+                    uIAInputTextIntoElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchSubTree);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3321,7 +3321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementtextToInput != null)
             {
-                uIAInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtextToInput);
+                uIAInputTextIntoElement["TextToInput"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementtextToInput);
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -3329,7 +3329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementmatchIndex != null)
                 {
-                    uIAInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndex);
+                    uIAInputTextIntoElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementmatchIndex);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3343,13 +3343,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementsearchFilter != null)
             {
-                uIAInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchFilter);
+                uIAInputTextIntoElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsearchFilter);
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementsortByColumn != null)
             {
-                uIAInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsortByColumn);
+                uIAInputTextIntoElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementsortByColumn);
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -3357,7 +3357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementmatchIndexAscending != null)
                 {
-                    uIAInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndexAscending);
+                    uIAInputTextIntoElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementmatchIndexAscending);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3373,7 +3373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementreplaceExistingValue != null)
                 {
-                    uIAInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementreplaceExistingValue);
+                    uIAInputTextIntoElement["ReplaceExistingValue"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementreplaceExistingValue);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3389,7 +3389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementinsertPosition != null)
                 {
-                    uIAInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementinsertPosition);
+                    uIAInputTextIntoElement["InsertPosition"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementinsertPosition);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3405,7 +3405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementmaxElementsToSearch != null)
                 {
-                    uIAInputTextIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxElementsToSearch);
+                    uIAInputTextIntoElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementmaxElementsToSearch);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3421,7 +3421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementmaxRelativeSearchDepth != null)
                 {
-                    uIAInputTextIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxRelativeSearchDepth);
+                    uIAInputTextIntoElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementmaxRelativeSearchDepth);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3437,7 +3437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementmaxChildElementsToSearchPerNode);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3451,7 +3451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAInputTextIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAInputTextIntoElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -3459,7 +3459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementraiseExceptionIfInputValidationFails != null)
                 {
-                    uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementraiseExceptionIfInputValidationFails);
+                    uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementraiseExceptionIfInputValidationFails);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3475,7 +3475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementtryValuePattern != null)
                 {
-                    uIAInputTextIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryValuePattern);
+                    uIAInputTextIntoElement["TryValuePattern"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementtryValuePattern);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3491,7 +3491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputTextIntoElementtryLegacyPattern != null)
                 {
-                    uIAInputTextIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryLegacyPattern);
+                    uIAInputTextIntoElement["TryLegacyPattern"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementtryLegacyPattern);
                     uIAInputTextIntoElementpropCount++;
                 }
 
@@ -3504,7 +3504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAInputTextIntoElementpropCount++;
-            uIAInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementworkflow);
+            uIAInputTextIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoElementworkflow);
             if (uIAInputTextIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputTextIntoElement;
@@ -3522,9 +3522,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputTextIntoMultipleElements = new JObject();
             var uIAInputTextIntoMultipleElementspropCount = 0;
             uIAInputTextIntoMultipleElementspropCount++;
-            uIAInputTextIntoMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsinputElementsJSON);
+            uIAInputTextIntoMultipleElements["InputElementsJSON"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoMultipleElementsinputElementsJSON);
             uIAInputTextIntoMultipleElementspropCount++;
-            uIAInputTextIntoMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsworkflow);
+            uIAInputTextIntoMultipleElements["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAInputTextIntoMultipleElementsworkflow);
             if (uIAInputTextIntoMultipleElementspropCount > 0)
             {
                 callPayload.Body = uIAInputTextIntoMultipleElements;
@@ -3542,28 +3542,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputReturnIntoElement = new JObject();
             var uIAInputReturnIntoElementpropCount = 0;
             uIAInputReturnIntoElementpropCount++;
-            uIAInputReturnIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementparentWindowHandle);
+            uIAInputReturnIntoElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementparentWindowHandle);
             if (uIAInputReturnIntoElementsearchElementName != null)
             {
-                uIAInputReturnIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementName);
+                uIAInputReturnIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchElementName);
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementsearchElementClassName != null)
             {
-                uIAInputReturnIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementClassName);
+                uIAInputReturnIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchElementClassName);
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementsearchElementAutomationId != null)
             {
-                uIAInputReturnIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementAutomationId);
+                uIAInputReturnIntoElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchElementAutomationId);
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputReturnIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchLocalizedControlType);
+                uIAInputReturnIntoElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchLocalizedControlType);
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -3571,7 +3571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementsearchSubTree != null)
                 {
-                    uIAInputReturnIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchSubTree);
+                    uIAInputReturnIntoElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchSubTree);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3587,7 +3587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementmatchIndex != null)
                 {
-                    uIAInputReturnIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndex);
+                    uIAInputReturnIntoElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementmatchIndex);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3601,13 +3601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementsearchFilter != null)
             {
-                uIAInputReturnIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchFilter);
+                uIAInputReturnIntoElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsearchFilter);
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementsortByColumn != null)
             {
-                uIAInputReturnIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsortByColumn);
+                uIAInputReturnIntoElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementsortByColumn);
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -3615,7 +3615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementmatchIndexAscending != null)
                 {
-                    uIAInputReturnIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndexAscending);
+                    uIAInputReturnIntoElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementmatchIndexAscending);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3631,7 +3631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementreplaceExistingValue != null)
                 {
-                    uIAInputReturnIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementreplaceExistingValue);
+                    uIAInputReturnIntoElement["ReplaceExistingValue"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementreplaceExistingValue);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3645,7 +3645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementinsertPosition != null)
             {
-                uIAInputReturnIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementinsertPosition);
+                uIAInputReturnIntoElement["InsertPosition"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementinsertPosition);
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -3653,7 +3653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementmaxElementsToSearch != null)
                 {
-                    uIAInputReturnIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxElementsToSearch);
+                    uIAInputReturnIntoElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementmaxElementsToSearch);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3669,7 +3669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementmaxRelativeSearchDepth != null)
                 {
-                    uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxRelativeSearchDepth);
+                    uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementmaxRelativeSearchDepth);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3685,7 +3685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3699,7 +3699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAInputReturnIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAInputReturnIntoElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -3707,7 +3707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementraiseExceptionIfInputValidationFails != null)
                 {
-                    uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails);
+                    uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3723,7 +3723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementtryValuePattern != null)
                 {
-                    uIAInputReturnIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryValuePattern);
+                    uIAInputReturnIntoElement["TryValuePattern"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementtryValuePattern);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3739,7 +3739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAInputReturnIntoElementtryLegacyPattern != null)
                 {
-                    uIAInputReturnIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryLegacyPattern);
+                    uIAInputReturnIntoElement["TryLegacyPattern"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementtryLegacyPattern);
                     uIAInputReturnIntoElementpropCount++;
                 }
 
@@ -3752,7 +3752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAInputReturnIntoElementpropCount++;
-            uIAInputReturnIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementworkflow);
+            uIAInputReturnIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAInputReturnIntoElementworkflow);
             if (uIAInputReturnIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputReturnIntoElement;
@@ -3770,28 +3770,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAFocusElement = new JObject();
             var uIAFocusElementpropCount = 0;
             uIAFocusElementpropCount++;
-            uIAFocusElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAFocusElementparentWindowHandle);
+            uIAFocusElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementparentWindowHandle);
             if (uIAFocusElementsearchElementName != null)
             {
-                uIAFocusElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementName);
+                uIAFocusElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchElementName);
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementsearchElementClassName != null)
             {
-                uIAFocusElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementClassName);
+                uIAFocusElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchElementClassName);
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementsearchElementAutomationId != null)
             {
-                uIAFocusElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementAutomationId);
+                uIAFocusElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchElementAutomationId);
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementsearchLocalizedControlType != null)
             {
-                uIAFocusElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAFocusElementsearchLocalizedControlType);
+                uIAFocusElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchLocalizedControlType);
                 uIAFocusElementpropCount++;
             }
 
@@ -3799,7 +3799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementsearchSubTree != null)
                 {
-                    uIAFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAFocusElementsearchSubTree);
+                    uIAFocusElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchSubTree);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3815,7 +3815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementmatchIndex != null)
                 {
-                    uIAFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndex);
+                    uIAFocusElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementmatchIndex);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3829,13 +3829,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAFocusElementsearchFilter != null)
             {
-                uIAFocusElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAFocusElementsearchFilter);
+                uIAFocusElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsearchFilter);
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementsortByColumn != null)
             {
-                uIAFocusElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAFocusElementsortByColumn);
+                uIAFocusElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementsortByColumn);
                 uIAFocusElementpropCount++;
             }
 
@@ -3843,7 +3843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementmatchIndexAscending != null)
                 {
-                    uIAFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndexAscending);
+                    uIAFocusElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementmatchIndexAscending);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3859,7 +3859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementmaxElementsToSearch != null)
                 {
-                    uIAFocusElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAFocusElementmaxElementsToSearch);
+                    uIAFocusElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementmaxElementsToSearch);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3875,7 +3875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementmaxRelativeSearchDepth != null)
                 {
-                    uIAFocusElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAFocusElementmaxRelativeSearchDepth);
+                    uIAFocusElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementmaxRelativeSearchDepth);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3891,7 +3891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAFocusElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAFocusElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAFocusElementmaxChildElementsToSearchPerNode);
+                    uIAFocusElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementmaxChildElementsToSearchPerNode);
                     uIAFocusElementpropCount++;
                 }
 
@@ -3905,12 +3905,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAFocusElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAFocusElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAFocusElementelementLocalizedControlTypesNotToTraverse);
+                uIAFocusElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementelementLocalizedControlTypesNotToTraverse);
                 uIAFocusElementpropCount++;
             }
 
             uIAFocusElementpropCount++;
-            uIAFocusElement["Workflow"] = ExpressionConverter.ConvertO(uIAFocusElementworkflow);
+            uIAFocusElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAFocusElementworkflow);
             if (uIAFocusElementpropCount > 0)
             {
                 callPayload.Body = uIAFocusElement;
@@ -3928,28 +3928,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAToggleElement = new JObject();
             var uIAToggleElementpropCount = 0;
             uIAToggleElementpropCount++;
-            uIAToggleElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAToggleElementparentWindowHandle);
+            uIAToggleElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementparentWindowHandle);
             if (uIAToggleElementsearchElementName != null)
             {
-                uIAToggleElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementName);
+                uIAToggleElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchElementName);
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementsearchElementClassName != null)
             {
-                uIAToggleElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementClassName);
+                uIAToggleElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchElementClassName);
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementsearchElementAutomationId != null)
             {
-                uIAToggleElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementAutomationId);
+                uIAToggleElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchElementAutomationId);
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementsearchLocalizedControlType != null)
             {
-                uIAToggleElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAToggleElementsearchLocalizedControlType);
+                uIAToggleElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchLocalizedControlType);
                 uIAToggleElementpropCount++;
             }
 
@@ -3957,7 +3957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementsearchSubTree != null)
                 {
-                    uIAToggleElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAToggleElementsearchSubTree);
+                    uIAToggleElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchSubTree);
                     uIAToggleElementpropCount++;
                 }
 
@@ -3973,7 +3973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementmatchIndex != null)
                 {
-                    uIAToggleElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndex);
+                    uIAToggleElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementmatchIndex);
                     uIAToggleElementpropCount++;
                 }
 
@@ -3987,13 +3987,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAToggleElementsearchFilter != null)
             {
-                uIAToggleElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAToggleElementsearchFilter);
+                uIAToggleElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsearchFilter);
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementsortByColumn != null)
             {
-                uIAToggleElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAToggleElementsortByColumn);
+                uIAToggleElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementsortByColumn);
                 uIAToggleElementpropCount++;
             }
 
@@ -4001,7 +4001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementmatchIndexAscending != null)
                 {
-                    uIAToggleElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndexAscending);
+                    uIAToggleElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementmatchIndexAscending);
                     uIAToggleElementpropCount++;
                 }
 
@@ -4017,7 +4017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementmaxElementsToSearch != null)
                 {
-                    uIAToggleElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAToggleElementmaxElementsToSearch);
+                    uIAToggleElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementmaxElementsToSearch);
                     uIAToggleElementpropCount++;
                 }
 
@@ -4033,7 +4033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementmaxRelativeSearchDepth != null)
                 {
-                    uIAToggleElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAToggleElementmaxRelativeSearchDepth);
+                    uIAToggleElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementmaxRelativeSearchDepth);
                     uIAToggleElementpropCount++;
                 }
 
@@ -4049,7 +4049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAToggleElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAToggleElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAToggleElementmaxChildElementsToSearchPerNode);
+                    uIAToggleElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementmaxChildElementsToSearchPerNode);
                     uIAToggleElementpropCount++;
                 }
 
@@ -4063,12 +4063,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAToggleElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAToggleElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAToggleElementelementLocalizedControlTypesNotToTraverse);
+                uIAToggleElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementelementLocalizedControlTypesNotToTraverse);
                 uIAToggleElementpropCount++;
             }
 
             uIAToggleElementpropCount++;
-            uIAToggleElement["Workflow"] = ExpressionConverter.ConvertO(uIAToggleElementworkflow);
+            uIAToggleElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAToggleElementworkflow);
             if (uIAToggleElementpropCount > 0)
             {
                 callPayload.Body = uIAToggleElement;
@@ -4086,28 +4086,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACheckElement = new JObject();
             var uIACheckElementpropCount = 0;
             uIACheckElementpropCount++;
-            uIACheckElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACheckElementparentWindowHandle);
+            uIACheckElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIACheckElementparentWindowHandle);
             if (uIACheckElementsearchElementName != null)
             {
-                uIACheckElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementName);
+                uIACheckElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchElementName);
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementsearchElementClassName != null)
             {
-                uIACheckElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementClassName);
+                uIACheckElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchElementClassName);
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementsearchElementAutomationId != null)
             {
-                uIACheckElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementAutomationId);
+                uIACheckElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchElementAutomationId);
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementsearchLocalizedControlType != null)
             {
-                uIACheckElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACheckElementsearchLocalizedControlType);
+                uIACheckElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchLocalizedControlType);
                 uIACheckElementpropCount++;
             }
 
@@ -4115,7 +4115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementsearchSubTree != null)
                 {
-                    uIACheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACheckElementsearchSubTree);
+                    uIACheckElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchSubTree);
                     uIACheckElementpropCount++;
                 }
 
@@ -4131,7 +4131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementcheckElement != null)
                 {
-                    uIACheckElement["CheckElement"] = ExpressionConverter.ConvertO(uIACheckElementcheckElement);
+                    uIACheckElement["CheckElement"] = CSharpExpressionConverter.ConvertToken(uIACheckElementcheckElement);
                     uIACheckElementpropCount++;
                 }
 
@@ -4147,7 +4147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementmatchIndex != null)
                 {
-                    uIACheckElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndex);
+                    uIACheckElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIACheckElementmatchIndex);
                     uIACheckElementpropCount++;
                 }
 
@@ -4161,13 +4161,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACheckElementsearchFilter != null)
             {
-                uIACheckElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACheckElementsearchFilter);
+                uIACheckElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsearchFilter);
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementsortByColumn != null)
             {
-                uIACheckElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACheckElementsortByColumn);
+                uIACheckElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIACheckElementsortByColumn);
                 uIACheckElementpropCount++;
             }
 
@@ -4175,7 +4175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementmatchIndexAscending != null)
                 {
-                    uIACheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndexAscending);
+                    uIACheckElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIACheckElementmatchIndexAscending);
                     uIACheckElementpropCount++;
                 }
 
@@ -4191,7 +4191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementmaxElementsToSearch != null)
                 {
-                    uIACheckElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACheckElementmaxElementsToSearch);
+                    uIACheckElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIACheckElementmaxElementsToSearch);
                     uIACheckElementpropCount++;
                 }
 
@@ -4207,7 +4207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementmaxRelativeSearchDepth != null)
                 {
-                    uIACheckElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACheckElementmaxRelativeSearchDepth);
+                    uIACheckElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIACheckElementmaxRelativeSearchDepth);
                     uIACheckElementpropCount++;
                 }
 
@@ -4223,7 +4223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACheckElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIACheckElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACheckElementmaxChildElementsToSearchPerNode);
+                    uIACheckElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIACheckElementmaxChildElementsToSearchPerNode);
                     uIACheckElementpropCount++;
                 }
 
@@ -4237,12 +4237,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACheckElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACheckElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACheckElementelementLocalizedControlTypesNotToTraverse);
+                uIACheckElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIACheckElementelementLocalizedControlTypesNotToTraverse);
                 uIACheckElementpropCount++;
             }
 
             uIACheckElementpropCount++;
-            uIACheckElement["Workflow"] = ExpressionConverter.ConvertO(uIACheckElementworkflow);
+            uIACheckElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIACheckElementworkflow);
             if (uIACheckElementpropCount > 0)
             {
                 callPayload.Body = uIACheckElement;
@@ -4260,9 +4260,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACheckMultipleElements = new JObject();
             var uIACheckMultipleElementspropCount = 0;
             uIACheckMultipleElementspropCount++;
-            uIACheckMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsinputElementsJSON);
+            uIACheckMultipleElements["InputElementsJSON"] = CSharpExpressionConverter.ConvertToken(uIACheckMultipleElementsinputElementsJSON);
             uIACheckMultipleElementspropCount++;
-            uIACheckMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsworkflow);
+            uIACheckMultipleElements["Workflow"] = CSharpExpressionConverter.ConvertToken(uIACheckMultipleElementsworkflow);
             if (uIACheckMultipleElementspropCount > 0)
             {
                 callPayload.Body = uIACheckMultipleElements;
@@ -4280,28 +4280,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAIsElementChecked = new JObject();
             var uIAIsElementCheckedpropCount = 0;
             uIAIsElementCheckedpropCount++;
-            uIAIsElementChecked["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAIsElementCheckedparentWindowHandle);
+            uIAIsElementChecked["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedparentWindowHandle);
             if (uIAIsElementCheckedsearchElementName != null)
             {
-                uIAIsElementChecked["SearchElementName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementName);
+                uIAIsElementChecked["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchElementName);
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedsearchElementClassName != null)
             {
-                uIAIsElementChecked["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementClassName);
+                uIAIsElementChecked["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchElementClassName);
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedsearchElementAutomationId != null)
             {
-                uIAIsElementChecked["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementAutomationId);
+                uIAIsElementChecked["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchElementAutomationId);
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedsearchLocalizedControlType != null)
             {
-                uIAIsElementChecked["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchLocalizedControlType);
+                uIAIsElementChecked["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchLocalizedControlType);
                 uIAIsElementCheckedpropCount++;
             }
 
@@ -4309,7 +4309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedsearchSubTree != null)
                 {
-                    uIAIsElementChecked["SearchSubTree"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchSubTree);
+                    uIAIsElementChecked["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchSubTree);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4325,7 +4325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedmatchIndex != null)
                 {
-                    uIAIsElementChecked["MatchIndex"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndex);
+                    uIAIsElementChecked["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedmatchIndex);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4339,13 +4339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAIsElementCheckedsearchFilter != null)
             {
-                uIAIsElementChecked["SearchFilter"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchFilter);
+                uIAIsElementChecked["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsearchFilter);
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedsortByColumn != null)
             {
-                uIAIsElementChecked["SortByColumn"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsortByColumn);
+                uIAIsElementChecked["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedsortByColumn);
                 uIAIsElementCheckedpropCount++;
             }
 
@@ -4353,7 +4353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedmatchIndexAscending != null)
                 {
-                    uIAIsElementChecked["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndexAscending);
+                    uIAIsElementChecked["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedmatchIndexAscending);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4369,7 +4369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedmaxElementsToSearch != null)
                 {
-                    uIAIsElementChecked["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxElementsToSearch);
+                    uIAIsElementChecked["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedmaxElementsToSearch);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4385,7 +4385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedmaxRelativeSearchDepth != null)
                 {
-                    uIAIsElementChecked["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxRelativeSearchDepth);
+                    uIAIsElementChecked["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedmaxRelativeSearchDepth);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4401,7 +4401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAIsElementCheckedmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxChildElementsToSearchPerNode);
+                    uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedmaxChildElementsToSearchPerNode);
                     uIAIsElementCheckedpropCount++;
                 }
 
@@ -4415,12 +4415,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAIsElementChecked["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse);
+                uIAIsElementChecked["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse);
                 uIAIsElementCheckedpropCount++;
             }
 
             uIAIsElementCheckedpropCount++;
-            uIAIsElementChecked["Workflow"] = ExpressionConverter.ConvertO(uIAIsElementCheckedworkflow);
+            uIAIsElementChecked["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAIsElementCheckedworkflow);
             if (uIAIsElementCheckedpropCount > 0)
             {
                 callPayload.Body = uIAIsElementChecked;
@@ -4438,28 +4438,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACloseElementWindow = new JObject();
             var uIACloseElementWindowpropCount = 0;
             uIACloseElementWindowpropCount++;
-            uIACloseElementWindow["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACloseElementWindowparentWindowHandle);
+            uIACloseElementWindow["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowparentWindowHandle);
             if (uIACloseElementWindowsearchElementName != null)
             {
-                uIACloseElementWindow["SearchElementName"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementName);
+                uIACloseElementWindow["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchElementName);
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowsearchElementClassName != null)
             {
-                uIACloseElementWindow["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementClassName);
+                uIACloseElementWindow["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchElementClassName);
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowsearchElementAutomationId != null)
             {
-                uIACloseElementWindow["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementAutomationId);
+                uIACloseElementWindow["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchElementAutomationId);
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowsearchLocalizedControlType != null)
             {
-                uIACloseElementWindow["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchLocalizedControlType);
+                uIACloseElementWindow["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchLocalizedControlType);
                 uIACloseElementWindowpropCount++;
             }
 
@@ -4467,7 +4467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowsearchSubTree != null)
                 {
-                    uIACloseElementWindow["SearchSubTree"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchSubTree);
+                    uIACloseElementWindow["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchSubTree);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4483,7 +4483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowmatchIndex != null)
                 {
-                    uIACloseElementWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndex);
+                    uIACloseElementWindow["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowmatchIndex);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4497,13 +4497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACloseElementWindowsearchFilter != null)
             {
-                uIACloseElementWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchFilter);
+                uIACloseElementWindow["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsearchFilter);
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowsortByColumn != null)
             {
-                uIACloseElementWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIACloseElementWindowsortByColumn);
+                uIACloseElementWindow["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowsortByColumn);
                 uIACloseElementWindowpropCount++;
             }
 
@@ -4511,7 +4511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowmatchIndexAscending != null)
                 {
-                    uIACloseElementWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndexAscending);
+                    uIACloseElementWindow["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowmatchIndexAscending);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4527,7 +4527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowmaxElementsToSearch != null)
                 {
-                    uIACloseElementWindow["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxElementsToSearch);
+                    uIACloseElementWindow["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowmaxElementsToSearch);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4543,7 +4543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowmaxRelativeSearchDepth != null)
                 {
-                    uIACloseElementWindow["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxRelativeSearchDepth);
+                    uIACloseElementWindow["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowmaxRelativeSearchDepth);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4559,7 +4559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACloseElementWindowmaxChildElementsToSearchPerNode != null)
                 {
-                    uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxChildElementsToSearchPerNode);
+                    uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowmaxChildElementsToSearchPerNode);
                     uIACloseElementWindowpropCount++;
                 }
 
@@ -4573,12 +4573,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACloseElementWindowelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACloseElementWindow["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACloseElementWindowelementLocalizedControlTypesNotToTraverse);
+                uIACloseElementWindow["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowelementLocalizedControlTypesNotToTraverse);
                 uIACloseElementWindowpropCount++;
             }
 
             uIACloseElementWindowpropCount++;
-            uIACloseElementWindow["Workflow"] = ExpressionConverter.ConvertO(uIACloseElementWindowworkflow);
+            uIACloseElementWindow["Workflow"] = CSharpExpressionConverter.ConvertToken(uIACloseElementWindowworkflow);
             if (uIACloseElementWindowpropCount > 0)
             {
                 callPayload.Body = uIACloseElementWindow;
@@ -4596,28 +4596,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementTextValue = new JObject();
             var uIAGetElementTextValuepropCount = 0;
             uIAGetElementTextValuepropCount++;
-            uIAGetElementTextValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementTextValueparentWindowHandle);
+            uIAGetElementTextValue["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValueparentWindowHandle);
             if (uIAGetElementTextValuesearchElementName != null)
             {
-                uIAGetElementTextValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementName);
+                uIAGetElementTextValue["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchElementName);
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuesearchElementClassName != null)
             {
-                uIAGetElementTextValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementClassName);
+                uIAGetElementTextValue["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchElementClassName);
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuesearchElementAutomationId != null)
             {
-                uIAGetElementTextValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementAutomationId);
+                uIAGetElementTextValue["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchElementAutomationId);
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuesearchLocalizedControlType != null)
             {
-                uIAGetElementTextValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchLocalizedControlType);
+                uIAGetElementTextValue["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchLocalizedControlType);
                 uIAGetElementTextValuepropCount++;
             }
 
@@ -4625,7 +4625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuesearchSubTree != null)
                 {
-                    uIAGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchSubTree);
+                    uIAGetElementTextValue["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchSubTree);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4641,7 +4641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuematchIndex != null)
                 {
-                    uIAGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndex);
+                    uIAGetElementTextValue["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuematchIndex);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4655,13 +4655,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementTextValuesearchFilter != null)
             {
-                uIAGetElementTextValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchFilter);
+                uIAGetElementTextValue["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesearchFilter);
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuesortByColumn != null)
             {
-                uIAGetElementTextValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesortByColumn);
+                uIAGetElementTextValue["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuesortByColumn);
                 uIAGetElementTextValuepropCount++;
             }
 
@@ -4669,7 +4669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuematchIndexAscending != null)
                 {
-                    uIAGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndexAscending);
+                    uIAGetElementTextValue["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuematchIndexAscending);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4685,7 +4685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuemaxElementsToSearch != null)
                 {
-                    uIAGetElementTextValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxElementsToSearch);
+                    uIAGetElementTextValue["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuemaxElementsToSearch);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4701,7 +4701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuemaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementTextValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxRelativeSearchDepth);
+                    uIAGetElementTextValue["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuemaxRelativeSearchDepth);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4717,7 +4717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementTextValuemaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValuemaxChildElementsToSearchPerNode);
                     uIAGetElementTextValuepropCount++;
                 }
 
@@ -4731,12 +4731,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementTextValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse);
+                uIAGetElementTextValue["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementTextValuepropCount++;
             }
 
             uIAGetElementTextValuepropCount++;
-            uIAGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementTextValueworkflow);
+            uIAGetElementTextValue["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementTextValueworkflow);
             if (uIAGetElementTextValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementTextValue;
@@ -4754,28 +4754,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementValue = new JObject();
             var uIAGetElementValuepropCount = 0;
             uIAGetElementValuepropCount++;
-            uIAGetElementValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementValueparentWindowHandle);
+            uIAGetElementValue["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValueparentWindowHandle);
             if (uIAGetElementValuesearchElementName != null)
             {
-                uIAGetElementValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementName);
+                uIAGetElementValue["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchElementName);
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuesearchElementClassName != null)
             {
-                uIAGetElementValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementClassName);
+                uIAGetElementValue["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchElementClassName);
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuesearchElementAutomationId != null)
             {
-                uIAGetElementValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementAutomationId);
+                uIAGetElementValue["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchElementAutomationId);
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuesearchLocalizedControlType != null)
             {
-                uIAGetElementValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchLocalizedControlType);
+                uIAGetElementValue["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchLocalizedControlType);
                 uIAGetElementValuepropCount++;
             }
 
@@ -4783,7 +4783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuesearchSubTree != null)
                 {
-                    uIAGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchSubTree);
+                    uIAGetElementValue["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchSubTree);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4799,7 +4799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuematchIndex != null)
                 {
-                    uIAGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndex);
+                    uIAGetElementValue["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuematchIndex);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4813,13 +4813,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementValuesearchFilter != null)
             {
-                uIAGetElementValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchFilter);
+                uIAGetElementValue["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesearchFilter);
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuesortByColumn != null)
             {
-                uIAGetElementValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementValuesortByColumn);
+                uIAGetElementValue["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuesortByColumn);
                 uIAGetElementValuepropCount++;
             }
 
@@ -4827,7 +4827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuematchIndexAscending != null)
                 {
-                    uIAGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndexAscending);
+                    uIAGetElementValue["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuematchIndexAscending);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4843,7 +4843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuemaxElementsToSearch != null)
                 {
-                    uIAGetElementValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxElementsToSearch);
+                    uIAGetElementValue["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuemaxElementsToSearch);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4859,7 +4859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuemaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxRelativeSearchDepth);
+                    uIAGetElementValue["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuemaxRelativeSearchDepth);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4875,7 +4875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementValuemaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementValue["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValuemaxChildElementsToSearchPerNode);
                     uIAGetElementValuepropCount++;
                 }
 
@@ -4889,12 +4889,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementValueelementLocalizedControlTypesNotToTraverse);
+                uIAGetElementValue["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementValuepropCount++;
             }
 
             uIAGetElementValuepropCount++;
-            uIAGetElementValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementValueworkflow);
+            uIAGetElementValue["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementValueworkflow);
             if (uIAGetElementValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementValue;
@@ -4912,28 +4912,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementLabelValue = new JObject();
             var uIAGetElementLabelValuepropCount = 0;
             uIAGetElementLabelValuepropCount++;
-            uIAGetElementLabelValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueparentWindowHandle);
+            uIAGetElementLabelValue["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValueparentWindowHandle);
             if (uIAGetElementLabelValuesearchElementName != null)
             {
-                uIAGetElementLabelValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementName);
+                uIAGetElementLabelValue["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchElementName);
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuesearchElementClassName != null)
             {
-                uIAGetElementLabelValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementClassName);
+                uIAGetElementLabelValue["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchElementClassName);
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuesearchElementAutomationId != null)
             {
-                uIAGetElementLabelValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementAutomationId);
+                uIAGetElementLabelValue["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchElementAutomationId);
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuesearchLocalizedControlType != null)
             {
-                uIAGetElementLabelValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchLocalizedControlType);
+                uIAGetElementLabelValue["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchLocalizedControlType);
                 uIAGetElementLabelValuepropCount++;
             }
 
@@ -4941,7 +4941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuesearchSubTree != null)
                 {
-                    uIAGetElementLabelValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchSubTree);
+                    uIAGetElementLabelValue["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchSubTree);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -4957,7 +4957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuematchIndex != null)
                 {
-                    uIAGetElementLabelValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndex);
+                    uIAGetElementLabelValue["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuematchIndex);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -4971,13 +4971,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementLabelValuesearchFilter != null)
             {
-                uIAGetElementLabelValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchFilter);
+                uIAGetElementLabelValue["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesearchFilter);
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuesortByColumn != null)
             {
-                uIAGetElementLabelValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesortByColumn);
+                uIAGetElementLabelValue["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuesortByColumn);
                 uIAGetElementLabelValuepropCount++;
             }
 
@@ -4985,7 +4985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuematchIndexAscending != null)
                 {
-                    uIAGetElementLabelValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndexAscending);
+                    uIAGetElementLabelValue["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuematchIndexAscending);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -5001,7 +5001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuemaxElementsToSearch != null)
                 {
-                    uIAGetElementLabelValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxElementsToSearch);
+                    uIAGetElementLabelValue["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuemaxElementsToSearch);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -5017,7 +5017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuemaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementLabelValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxRelativeSearchDepth);
+                    uIAGetElementLabelValue["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuemaxRelativeSearchDepth);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -5033,7 +5033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementLabelValuemaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValuemaxChildElementsToSearchPerNode);
                     uIAGetElementLabelValuepropCount++;
                 }
 
@@ -5047,12 +5047,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementLabelValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse);
+                uIAGetElementLabelValue["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementLabelValuepropCount++;
             }
 
             uIAGetElementLabelValuepropCount++;
-            uIAGetElementLabelValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueworkflow);
+            uIAGetElementLabelValue["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementLabelValueworkflow);
             if (uIAGetElementLabelValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementLabelValue;
@@ -5070,28 +5070,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementProperties = new JObject();
             var uIAGetElementPropertiespropCount = 0;
             uIAGetElementPropertiespropCount++;
-            uIAGetElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesparentWindowHandle);
+            uIAGetElementProperties["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesparentWindowHandle);
             if (uIAGetElementPropertiessearchElementName != null)
             {
-                uIAGetElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementName);
+                uIAGetElementProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchElementName);
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiessearchElementClassName != null)
             {
-                uIAGetElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementClassName);
+                uIAGetElementProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchElementClassName);
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiessearchElementAutomationId != null)
             {
-                uIAGetElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementAutomationId);
+                uIAGetElementProperties["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchElementAutomationId);
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiessearchLocalizedControlType != null)
             {
-                uIAGetElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchLocalizedControlType);
+                uIAGetElementProperties["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchLocalizedControlType);
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -5099,7 +5099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiessearchSubTree != null)
                 {
-                    uIAGetElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchSubTree);
+                    uIAGetElementProperties["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchSubTree);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5115,7 +5115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesreturnElementHandle != null)
                 {
-                    uIAGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementHandle);
+                    uIAGetElementProperties["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesreturnElementHandle);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5131,7 +5131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesreturnElementValue != null)
                 {
-                    uIAGetElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementValue);
+                    uIAGetElementProperties["ReturnElementValue"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesreturnElementValue);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5147,7 +5147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesmatchIndex != null)
                 {
-                    uIAGetElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndex);
+                    uIAGetElementProperties["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesmatchIndex);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5161,13 +5161,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPropertiessearchFilter != null)
             {
-                uIAGetElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchFilter);
+                uIAGetElementProperties["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessearchFilter);
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiessortByColumn != null)
             {
-                uIAGetElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessortByColumn);
+                uIAGetElementProperties["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiessortByColumn);
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -5175,7 +5175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesmatchIndexAscending != null)
                 {
-                    uIAGetElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndexAscending);
+                    uIAGetElementProperties["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesmatchIndexAscending);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5191,7 +5191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesmaxElementsToSearch != null)
                 {
-                    uIAGetElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxElementsToSearch);
+                    uIAGetElementProperties["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesmaxElementsToSearch);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5207,7 +5207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesmaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxRelativeSearchDepth);
+                    uIAGetElementProperties["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesmaxRelativeSearchDepth);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5223,7 +5223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxChildElementsToSearchPerNode);
+                    uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesmaxChildElementsToSearchPerNode);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5237,7 +5237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse);
+                uIAGetElementProperties["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse);
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -5245,7 +5245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary);
+                    uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary);
                     uIAGetElementPropertiespropCount++;
                 }
 
@@ -5258,7 +5258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetElementPropertiespropCount++;
-            uIAGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesworkflow);
+            uIAGetElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesworkflow);
             if (uIAGetElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetElementProperties;
@@ -5276,10 +5276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetMultipleElementProperties = new JObject();
             var uIAGetMultipleElementPropertiespropCount = 0;
             uIAGetMultipleElementPropertiespropCount++;
-            uIAGetMultipleElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesparentWindowHandle);
+            uIAGetMultipleElementProperties["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesparentWindowHandle);
             if (uIAGetMultipleElementPropertiessearchElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementProperties["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchElementLocalizedControlType);
+                uIAGetMultipleElementProperties["SearchElementLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiessearchElementLocalizedControlType);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
@@ -5287,7 +5287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementPropertiessearchDescendants != null)
                 {
-                    uIAGetMultipleElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchDescendants);
+                    uIAGetMultipleElementProperties["SearchDescendants"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiessearchDescendants);
                     uIAGetMultipleElementPropertiespropCount++;
                 }
 
@@ -5303,7 +5303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementPropertiesreturnElementHandle != null)
                 {
-                    uIAGetMultipleElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementHandle);
+                    uIAGetMultipleElementProperties["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesreturnElementHandle);
                     uIAGetMultipleElementPropertiespropCount++;
                 }
 
@@ -5319,7 +5319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementPropertiesreturnElementValue != null)
                 {
-                    uIAGetMultipleElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementValue);
+                    uIAGetMultipleElementProperties["ReturnElementValue"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesreturnElementValue);
                     uIAGetMultipleElementPropertiespropCount++;
                 }
 
@@ -5335,7 +5335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementPropertiesfirstItemToReturn != null)
                 {
-                    uIAGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesfirstItemToReturn);
+                    uIAGetMultipleElementProperties["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesfirstItemToReturn);
                     uIAGetMultipleElementPropertiespropCount++;
                 }
 
@@ -5351,7 +5351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementPropertiesmaxItemsToReturn != null)
                 {
-                    uIAGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesmaxItemsToReturn);
+                    uIAGetMultipleElementProperties["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesmaxItemsToReturn);
                     uIAGetMultipleElementPropertiespropCount++;
                 }
 
@@ -5364,7 +5364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetMultipleElementPropertiespropCount++;
-            uIAGetMultipleElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesworkflow);
+            uIAGetMultipleElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementPropertiesworkflow);
             if (uIAGetMultipleElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleElementProperties;
@@ -5383,7 +5383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetDesktopElementspropCount = 0;
             if (uIAGetDesktopElementssearchElementLocalizedControlType != null)
             {
-                uIAGetDesktopElements["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchElementLocalizedControlType);
+                uIAGetDesktopElements["SearchElementLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementssearchElementLocalizedControlType);
                 uIAGetDesktopElementspropCount++;
             }
 
@@ -5391,7 +5391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDesktopElementssearchProcessID != null)
                 {
-                    uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchProcessID);
+                    uIAGetDesktopElements["SearchProcessID"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementssearchProcessID);
                     uIAGetDesktopElementspropCount++;
                 }
 
@@ -5407,7 +5407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDesktopElementsreturnElementHandle != null)
                 {
-                    uIAGetDesktopElements["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsreturnElementHandle);
+                    uIAGetDesktopElements["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementsreturnElementHandle);
                     uIAGetDesktopElementspropCount++;
                 }
 
@@ -5423,7 +5423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDesktopElementsfirstItemToReturn != null)
                 {
-                    uIAGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsfirstItemToReturn);
+                    uIAGetDesktopElements["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementsfirstItemToReturn);
                     uIAGetDesktopElementspropCount++;
                 }
 
@@ -5439,7 +5439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDesktopElementsmaxItemsToReturn != null)
                 {
-                    uIAGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsmaxItemsToReturn);
+                    uIAGetDesktopElements["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementsmaxItemsToReturn);
                     uIAGetDesktopElementspropCount++;
                 }
 
@@ -5455,7 +5455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDesktopElementsincludeChildProcesses != null)
                 {
-                    uIAGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsincludeChildProcesses);
+                    uIAGetDesktopElements["IncludeChildProcesses"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementsincludeChildProcesses);
                     uIAGetDesktopElementspropCount++;
                 }
 
@@ -5468,7 +5468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetDesktopElementspropCount++;
-            uIAGetDesktopElements["Workflow"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsworkflow);
+            uIAGetDesktopElements["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetDesktopElementsworkflow);
             if (uIAGetDesktopElementspropCount > 0)
             {
                 callPayload.Body = uIAGetDesktopElements;
@@ -5486,28 +5486,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAExpandElement = new JObject();
             var uIAExpandElementpropCount = 0;
             uIAExpandElementpropCount++;
-            uIAExpandElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAExpandElementparentWindowHandle);
+            uIAExpandElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementparentWindowHandle);
             if (uIAExpandElementsearchElementName != null)
             {
-                uIAExpandElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementName);
+                uIAExpandElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchElementName);
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementsearchElementClassName != null)
             {
-                uIAExpandElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementClassName);
+                uIAExpandElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchElementClassName);
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementsearchElementAutomationId != null)
             {
-                uIAExpandElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementAutomationId);
+                uIAExpandElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchElementAutomationId);
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementsearchLocalizedControlType != null)
             {
-                uIAExpandElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAExpandElementsearchLocalizedControlType);
+                uIAExpandElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchLocalizedControlType);
                 uIAExpandElementpropCount++;
             }
 
@@ -5515,7 +5515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementsearchSubTree != null)
                 {
-                    uIAExpandElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAExpandElementsearchSubTree);
+                    uIAExpandElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchSubTree);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5531,7 +5531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementmatchIndex != null)
                 {
-                    uIAExpandElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndex);
+                    uIAExpandElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementmatchIndex);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5545,13 +5545,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAExpandElementsearchFilter != null)
             {
-                uIAExpandElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAExpandElementsearchFilter);
+                uIAExpandElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsearchFilter);
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementsortByColumn != null)
             {
-                uIAExpandElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAExpandElementsortByColumn);
+                uIAExpandElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementsortByColumn);
                 uIAExpandElementpropCount++;
             }
 
@@ -5559,7 +5559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementmatchIndexAscending != null)
                 {
-                    uIAExpandElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndexAscending);
+                    uIAExpandElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementmatchIndexAscending);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5575,7 +5575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementmaxElementsToSearch != null)
                 {
-                    uIAExpandElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAExpandElementmaxElementsToSearch);
+                    uIAExpandElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementmaxElementsToSearch);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5591,7 +5591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementmaxRelativeSearchDepth != null)
                 {
-                    uIAExpandElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAExpandElementmaxRelativeSearchDepth);
+                    uIAExpandElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementmaxRelativeSearchDepth);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5607,7 +5607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAExpandElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAExpandElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAExpandElementmaxChildElementsToSearchPerNode);
+                    uIAExpandElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementmaxChildElementsToSearchPerNode);
                     uIAExpandElementpropCount++;
                 }
 
@@ -5621,12 +5621,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAExpandElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAExpandElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAExpandElementelementLocalizedControlTypesNotToTraverse);
+                uIAExpandElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementelementLocalizedControlTypesNotToTraverse);
                 uIAExpandElementpropCount++;
             }
 
             uIAExpandElementpropCount++;
-            uIAExpandElement["Workflow"] = ExpressionConverter.ConvertO(uIAExpandElementworkflow);
+            uIAExpandElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAExpandElementworkflow);
             if (uIAExpandElementpropCount > 0)
             {
                 callPayload.Body = uIAExpandElement;
@@ -5644,28 +5644,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACollapseElement = new JObject();
             var uIACollapseElementpropCount = 0;
             uIACollapseElementpropCount++;
-            uIACollapseElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACollapseElementparentWindowHandle);
+            uIACollapseElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementparentWindowHandle);
             if (uIACollapseElementsearchElementName != null)
             {
-                uIACollapseElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementName);
+                uIACollapseElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchElementName);
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementsearchElementClassName != null)
             {
-                uIACollapseElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementClassName);
+                uIACollapseElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchElementClassName);
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementsearchElementAutomationId != null)
             {
-                uIACollapseElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementAutomationId);
+                uIACollapseElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchElementAutomationId);
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementsearchLocalizedControlType != null)
             {
-                uIACollapseElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACollapseElementsearchLocalizedControlType);
+                uIACollapseElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchLocalizedControlType);
                 uIACollapseElementpropCount++;
             }
 
@@ -5673,7 +5673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementsearchSubTree != null)
                 {
-                    uIACollapseElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACollapseElementsearchSubTree);
+                    uIACollapseElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchSubTree);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5689,7 +5689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementmatchIndex != null)
                 {
-                    uIACollapseElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndex);
+                    uIACollapseElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementmatchIndex);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5703,13 +5703,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACollapseElementsearchFilter != null)
             {
-                uIACollapseElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACollapseElementsearchFilter);
+                uIACollapseElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsearchFilter);
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementsortByColumn != null)
             {
-                uIACollapseElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACollapseElementsortByColumn);
+                uIACollapseElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementsortByColumn);
                 uIACollapseElementpropCount++;
             }
 
@@ -5717,7 +5717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementmatchIndexAscending != null)
                 {
-                    uIACollapseElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndexAscending);
+                    uIACollapseElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementmatchIndexAscending);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5733,7 +5733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementmaxElementsToSearch != null)
                 {
-                    uIACollapseElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACollapseElementmaxElementsToSearch);
+                    uIACollapseElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementmaxElementsToSearch);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5749,7 +5749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementmaxRelativeSearchDepth != null)
                 {
-                    uIACollapseElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACollapseElementmaxRelativeSearchDepth);
+                    uIACollapseElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementmaxRelativeSearchDepth);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5765,7 +5765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIACollapseElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIACollapseElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACollapseElementmaxChildElementsToSearchPerNode);
+                    uIACollapseElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementmaxChildElementsToSearchPerNode);
                     uIACollapseElementpropCount++;
                 }
 
@@ -5779,12 +5779,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACollapseElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACollapseElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACollapseElementelementLocalizedControlTypesNotToTraverse);
+                uIACollapseElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementelementLocalizedControlTypesNotToTraverse);
                 uIACollapseElementpropCount++;
             }
 
             uIACollapseElementpropCount++;
-            uIACollapseElement["Workflow"] = ExpressionConverter.ConvertO(uIACollapseElementworkflow);
+            uIACollapseElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIACollapseElementworkflow);
             if (uIACollapseElementpropCount > 0)
             {
                 callPayload.Body = uIACollapseElement;
@@ -5802,28 +5802,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIATakeScreenShotOfElementLocation = new JObject();
             var uIATakeScreenShotOfElementLocationpropCount = 0;
             uIATakeScreenShotOfElementLocationpropCount++;
-            uIATakeScreenShotOfElementLocation["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationparentWindowHandle);
+            uIATakeScreenShotOfElementLocation["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationparentWindowHandle);
             if (uIATakeScreenShotOfElementLocationsearchElementName != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementName);
+                uIATakeScreenShotOfElementLocation["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchElementName);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationsearchElementClassName != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementClassName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementClassName);
+                uIATakeScreenShotOfElementLocation["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchElementClassName);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationsearchElementAutomationId != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementAutomationId);
+                uIATakeScreenShotOfElementLocation["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchElementAutomationId);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationsearchLocalizedControlType != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchLocalizedControlType);
+                uIATakeScreenShotOfElementLocation["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchLocalizedControlType);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -5831,7 +5831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationsearchSubTree != null)
                 {
-                    uIATakeScreenShotOfElementLocation["SearchSubTree"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchSubTree);
+                    uIATakeScreenShotOfElementLocation["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchSubTree);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5845,7 +5845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationimageFormat != null)
             {
-                uIATakeScreenShotOfElementLocation["ImageFormat"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationimageFormat);
+                uIATakeScreenShotOfElementLocation["ImageFormat"] = CSharpExpressionConverter.Convert(uIATakeScreenShotOfElementLocationimageFormat);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -5853,7 +5853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationmatchIndex != null)
                 {
-                    uIATakeScreenShotOfElementLocation["MatchIndex"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndex);
+                    uIATakeScreenShotOfElementLocation["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationmatchIndex);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5867,13 +5867,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationsearchFilter != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchFilter"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchFilter);
+                uIATakeScreenShotOfElementLocation["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsearchFilter);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationsortByColumn != null)
             {
-                uIATakeScreenShotOfElementLocation["SortByColumn"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsortByColumn);
+                uIATakeScreenShotOfElementLocation["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationsortByColumn);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -5881,7 +5881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationmatchIndexAscending != null)
                 {
-                    uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndexAscending);
+                    uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationmatchIndexAscending);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5897,7 +5897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationhideAgent != null)
                 {
-                    uIATakeScreenShotOfElementLocation["HideAgent"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationhideAgent);
+                    uIATakeScreenShotOfElementLocation["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationhideAgent);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5913,7 +5913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationmaxElementsToSearch != null)
                 {
-                    uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxElementsToSearch);
+                    uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationmaxElementsToSearch);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5929,7 +5929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth != null)
                 {
-                    uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth);
+                    uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5945,7 +5945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode != null)
                 {
-                    uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode);
+                    uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode);
                     uIATakeScreenShotOfElementLocationpropCount++;
                 }
 
@@ -5959,12 +5959,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIATakeScreenShotOfElementLocation["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse);
+                uIATakeScreenShotOfElementLocation["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             uIATakeScreenShotOfElementLocationpropCount++;
-            uIATakeScreenShotOfElementLocation["Workflow"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationworkflow);
+            uIATakeScreenShotOfElementLocation["Workflow"] = CSharpExpressionConverter.ConvertToken(uIATakeScreenShotOfElementLocationworkflow);
             if (uIATakeScreenShotOfElementLocationpropCount > 0)
             {
                 callPayload.Body = uIATakeScreenShotOfElementLocation;
@@ -5982,28 +5982,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADrawRectangleAroundElement = new JObject();
             var uIADrawRectangleAroundElementpropCount = 0;
             uIADrawRectangleAroundElementpropCount++;
-            uIADrawRectangleAroundElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementparentWindowHandle);
+            uIADrawRectangleAroundElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementparentWindowHandle);
             if (uIADrawRectangleAroundElementsearchElementName != null)
             {
-                uIADrawRectangleAroundElement["SearchElementName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementName);
+                uIADrawRectangleAroundElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchElementName);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementsearchElementClassName != null)
             {
-                uIADrawRectangleAroundElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementClassName);
+                uIADrawRectangleAroundElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchElementClassName);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementsearchElementAutomationId != null)
             {
-                uIADrawRectangleAroundElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementAutomationId);
+                uIADrawRectangleAroundElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchElementAutomationId);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementsearchLocalizedControlType != null)
             {
-                uIADrawRectangleAroundElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchLocalizedControlType);
+                uIADrawRectangleAroundElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchLocalizedControlType);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
@@ -6011,7 +6011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementsearchSubTree != null)
                 {
-                    uIADrawRectangleAroundElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchSubTree);
+                    uIADrawRectangleAroundElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchSubTree);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6027,7 +6027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementpenColour != null)
                 {
-                    uIADrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenColour);
+                    uIADrawRectangleAroundElement["PenColour"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementpenColour);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6043,7 +6043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementpenThicknessPixels != null)
                 {
-                    uIADrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenThicknessPixels);
+                    uIADrawRectangleAroundElement["PenThicknessPixels"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementpenThicknessPixels);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6059,7 +6059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementmatchIndex != null)
                 {
-                    uIADrawRectangleAroundElement["MatchIndex"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndex);
+                    uIADrawRectangleAroundElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementmatchIndex);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6073,13 +6073,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADrawRectangleAroundElementsearchFilter != null)
             {
-                uIADrawRectangleAroundElement["SearchFilter"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchFilter);
+                uIADrawRectangleAroundElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsearchFilter);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementsortByColumn != null)
             {
-                uIADrawRectangleAroundElement["SortByColumn"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsortByColumn);
+                uIADrawRectangleAroundElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementsortByColumn);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
@@ -6087,7 +6087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementmatchIndexAscending != null)
                 {
-                    uIADrawRectangleAroundElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndexAscending);
+                    uIADrawRectangleAroundElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementmatchIndexAscending);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6103,7 +6103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementmaxElementsToSearch != null)
                 {
-                    uIADrawRectangleAroundElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxElementsToSearch);
+                    uIADrawRectangleAroundElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementmaxElementsToSearch);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6119,7 +6119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementmaxRelativeSearchDepth != null)
                 {
-                    uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxRelativeSearchDepth);
+                    uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementmaxRelativeSearchDepth);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6135,7 +6135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode);
+                    uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode);
                     uIADrawRectangleAroundElementpropCount++;
                 }
 
@@ -6149,12 +6149,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADrawRectangleAroundElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse);
+                uIADrawRectangleAroundElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             uIADrawRectangleAroundElementpropCount++;
-            uIADrawRectangleAroundElement["Workflow"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementworkflow);
+            uIADrawRectangleAroundElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIADrawRectangleAroundElementworkflow);
             if (uIADrawRectangleAroundElementpropCount > 0)
             {
                 callPayload.Body = uIADrawRectangleAroundElement;
@@ -6172,9 +6172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetParentElementHandle = new JObject();
             var uIAGetParentElementHandlepropCount = 0;
             uIAGetParentElementHandlepropCount++;
-            uIAGetParentElementHandle["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleelementHandle);
+            uIAGetParentElementHandle["ElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetParentElementHandleelementHandle);
             uIAGetParentElementHandlepropCount++;
-            uIAGetParentElementHandle["Workflow"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleworkflow);
+            uIAGetParentElementHandle["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetParentElementHandleworkflow);
             if (uIAGetParentElementHandlepropCount > 0)
             {
                 callPayload.Body = uIAGetParentElementHandle;
@@ -6193,31 +6193,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetDataGridElementContentspropCount = 0;
             if (uIAGetDataGridElementContentsparentWindowHandle != null)
             {
-                uIAGetDataGridElementContents["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsparentWindowHandle);
+                uIAGetDataGridElementContents["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsparentWindowHandle);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentssearchElementName != null)
             {
-                uIAGetDataGridElementContents["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementName);
+                uIAGetDataGridElementContents["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchElementName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentssearchElementClassName != null)
             {
-                uIAGetDataGridElementContents["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementClassName);
+                uIAGetDataGridElementContents["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchElementClassName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentssearchElementAutomationId != null)
             {
-                uIAGetDataGridElementContents["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementAutomationId);
+                uIAGetDataGridElementContents["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchElementAutomationId);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentssearchLocalizedControlType != null)
             {
-                uIAGetDataGridElementContents["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchLocalizedControlType);
+                uIAGetDataGridElementContents["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchLocalizedControlType);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6225,7 +6225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentssearchSubTree != null)
                 {
-                    uIAGetDataGridElementContents["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchSubTree);
+                    uIAGetDataGridElementContents["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchSubTree);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6241,7 +6241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsonScreenColumnsOnly != null)
                 {
-                    uIAGetDataGridElementContents["OnScreenColumnsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenColumnsOnly);
+                    uIAGetDataGridElementContents["OnScreenColumnsOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsonScreenColumnsOnly);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6257,7 +6257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsonScreenRowsOnly != null)
                 {
-                    uIAGetDataGridElementContents["OnScreenRowsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenRowsOnly);
+                    uIAGetDataGridElementContents["OnScreenRowsOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsonScreenRowsOnly);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6273,7 +6273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsreturnNullValuesAsBlank != null)
                 {
-                    uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnNullValuesAsBlank);
+                    uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsreturnNullValuesAsBlank);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6287,7 +6287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsalternativeHeaderRowName != null)
             {
-                uIAGetDataGridElementContents["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsalternativeHeaderRowName);
+                uIAGetDataGridElementContents["AlternativeHeaderRowName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsalternativeHeaderRowName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6295,7 +6295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsreturnRowUIAName != null)
                 {
-                    uIAGetDataGridElementContents["ReturnRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnRowUIAName);
+                    uIAGetDataGridElementContents["ReturnRowUIAName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsreturnRowUIAName);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6309,7 +6309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName != null)
             {
-                uIAGetDataGridElementContents["NameOfColumnToStoreRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName);
+                uIAGetDataGridElementContents["NameOfColumnToStoreRowUIAName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6317,7 +6317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmatchIndex != null)
                 {
-                    uIAGetDataGridElementContents["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndex);
+                    uIAGetDataGridElementContents["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmatchIndex);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6331,13 +6331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentssearchFilter != null)
             {
-                uIAGetDataGridElementContents["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchFilter);
+                uIAGetDataGridElementContents["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssearchFilter);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentssortByColumn != null)
             {
-                uIAGetDataGridElementContents["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssortByColumn);
+                uIAGetDataGridElementContents["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssortByColumn);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6345,7 +6345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmatchIndexAscending != null)
                 {
-                    uIAGetDataGridElementContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndexAscending);
+                    uIAGetDataGridElementContents["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmatchIndexAscending);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6361,7 +6361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsfirstItemToReturn != null)
                 {
-                    uIAGetDataGridElementContents["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsfirstItemToReturn);
+                    uIAGetDataGridElementContents["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsfirstItemToReturn);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6377,7 +6377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmaxItemsToReturn != null)
                 {
-                    uIAGetDataGridElementContents["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxItemsToReturn);
+                    uIAGetDataGridElementContents["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmaxItemsToReturn);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6393,7 +6393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows != null)
                 {
-                    uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows);
+                    uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6409,7 +6409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsreadTableAsThread != null)
                 {
-                    uIAGetDataGridElementContents["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreadTableAsThread);
+                    uIAGetDataGridElementContents["ReadTableAsThread"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsreadTableAsThread);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6423,7 +6423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsretrieveOutputDataFromThreadId != null)
             {
-                uIAGetDataGridElementContents["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsretrieveOutputDataFromThreadId);
+                uIAGetDataGridElementContents["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsretrieveOutputDataFromThreadId);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6431,7 +6431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentssecondsToWaitForThread != null)
                 {
-                    uIAGetDataGridElementContents["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssecondsToWaitForThread);
+                    uIAGetDataGridElementContents["SecondsToWaitForThread"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentssecondsToWaitForThread);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6447,7 +6447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent != null)
                 {
-                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent);
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6463,7 +6463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows != null)
                 {
-                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows);
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6479,7 +6479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle != null)
                 {
-                    uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle);
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6495,7 +6495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsminimumDataGridRowsForScrolling != null)
                 {
-                    uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling);
+                    uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6511,7 +6511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsraiseExceptionIfCannotScroll != null)
                 {
-                    uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll);
+                    uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6525,7 +6525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsalternativeVerticalScrollbarName != null)
             {
-                uIAGetDataGridElementContents["AlternativeVerticalScrollbarName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsalternativeVerticalScrollbarName);
+                uIAGetDataGridElementContents["AlternativeVerticalScrollbarName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsalternativeVerticalScrollbarName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -6533,7 +6533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmaxElementsToSearch != null)
                 {
-                    uIAGetDataGridElementContents["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxElementsToSearch);
+                    uIAGetDataGridElementContents["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmaxElementsToSearch);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6549,7 +6549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmaxRelativeSearchDepth != null)
                 {
-                    uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxRelativeSearchDepth);
+                    uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmaxRelativeSearchDepth);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6565,7 +6565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode);
+                    uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode);
                     uIAGetDataGridElementContentspropCount++;
                 }
 
@@ -6579,12 +6579,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetDataGridElementContents["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse);
+                uIAGetDataGridElementContents["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             uIAGetDataGridElementContentspropCount++;
-            uIAGetDataGridElementContents["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsworkflow);
+            uIAGetDataGridElementContents["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementContentsworkflow);
             if (uIAGetDataGridElementContentspropCount > 0)
             {
                 callPayload.Body = uIAGetDataGridElementContents;
@@ -6602,28 +6602,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetDataGridElementProperties = new JObject();
             var uIAGetDataGridElementPropertiespropCount = 0;
             uIAGetDataGridElementPropertiespropCount++;
-            uIAGetDataGridElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesparentWindowHandle);
+            uIAGetDataGridElementProperties["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesparentWindowHandle);
             if (uIAGetDataGridElementPropertiessearchElementName != null)
             {
-                uIAGetDataGridElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementName);
+                uIAGetDataGridElementProperties["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchElementName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiessearchElementClassName != null)
             {
-                uIAGetDataGridElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementClassName);
+                uIAGetDataGridElementProperties["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchElementClassName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiessearchElementAutomationId != null)
             {
-                uIAGetDataGridElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementAutomationId);
+                uIAGetDataGridElementProperties["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchElementAutomationId);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiessearchLocalizedControlType != null)
             {
-                uIAGetDataGridElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchLocalizedControlType);
+                uIAGetDataGridElementProperties["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchLocalizedControlType);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -6631,7 +6631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiessearchSubTree != null)
                 {
-                    uIAGetDataGridElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchSubTree);
+                    uIAGetDataGridElementProperties["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchSubTree);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6645,7 +6645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertiesalternativeHeaderRowName != null)
             {
-                uIAGetDataGridElementProperties["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesalternativeHeaderRowName);
+                uIAGetDataGridElementProperties["AlternativeHeaderRowName"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesalternativeHeaderRowName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -6653,7 +6653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiesmatchIndex != null)
                 {
-                    uIAGetDataGridElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndex);
+                    uIAGetDataGridElementProperties["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesmatchIndex);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6667,13 +6667,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertiessearchFilter != null)
             {
-                uIAGetDataGridElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchFilter);
+                uIAGetDataGridElementProperties["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessearchFilter);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiessortByColumn != null)
             {
-                uIAGetDataGridElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessortByColumn);
+                uIAGetDataGridElementProperties["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiessortByColumn);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -6681,7 +6681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiesmatchIndexAscending != null)
                 {
-                    uIAGetDataGridElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndexAscending);
+                    uIAGetDataGridElementProperties["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesmatchIndexAscending);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6697,7 +6697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiesmaxElementsToSearch != null)
                 {
-                    uIAGetDataGridElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxElementsToSearch);
+                    uIAGetDataGridElementProperties["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesmaxElementsToSearch);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6713,7 +6713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiesmaxRelativeSearchDepth != null)
                 {
-                    uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth);
+                    uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6729,7 +6729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode);
+                    uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode);
                     uIAGetDataGridElementPropertiespropCount++;
                 }
 
@@ -6743,12 +6743,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetDataGridElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse);
+                uIAGetDataGridElementProperties["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             uIAGetDataGridElementPropertiespropCount++;
-            uIAGetDataGridElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesworkflow);
+            uIAGetDataGridElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetDataGridElementPropertiesworkflow);
             if (uIAGetDataGridElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetDataGridElementProperties;
@@ -6766,28 +6766,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetListElementItems = new JObject();
             var uIAGetListElementItemspropCount = 0;
             uIAGetListElementItemspropCount++;
-            uIAGetListElementItems["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetListElementItemsparentWindowHandle);
+            uIAGetListElementItems["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsparentWindowHandle);
             if (uIAGetListElementItemssearchElementName != null)
             {
-                uIAGetListElementItems["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementName);
+                uIAGetListElementItems["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchElementName);
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemssearchElementClassName != null)
             {
-                uIAGetListElementItems["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementClassName);
+                uIAGetListElementItems["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchElementClassName);
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemssearchElementAutomationId != null)
             {
-                uIAGetListElementItems["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementAutomationId);
+                uIAGetListElementItems["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchElementAutomationId);
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemssearchLocalizedControlType != null)
             {
-                uIAGetListElementItems["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchLocalizedControlType);
+                uIAGetListElementItems["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchLocalizedControlType);
                 uIAGetListElementItemspropCount++;
             }
 
@@ -6795,7 +6795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemssearchSubTree != null)
                 {
-                    uIAGetListElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchSubTree);
+                    uIAGetListElementItems["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchSubTree);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6811,7 +6811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsexpandFirst != null)
                 {
-                    uIAGetListElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(uIAGetListElementItemsexpandFirst);
+                    uIAGetListElementItems["ExpandFirst"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsexpandFirst);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6827,7 +6827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemscollapseAfter != null)
                 {
-                    uIAGetListElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(uIAGetListElementItemscollapseAfter);
+                    uIAGetListElementItems["CollapseAfter"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemscollapseAfter);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6843,7 +6843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemscheckForSelectedItems != null)
                 {
-                    uIAGetListElementItems["CheckForSelectedItems"] = ExpressionConverter.ConvertO(uIAGetListElementItemscheckForSelectedItems);
+                    uIAGetListElementItems["CheckForSelectedItems"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemscheckForSelectedItems);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6859,7 +6859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemssecondsBetweenExpandCollapse != null)
                 {
-                    uIAGetListElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAGetListElementItemssecondsBetweenExpandCollapse);
+                    uIAGetListElementItems["SecondsBetweenExpandCollapse"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssecondsBetweenExpandCollapse);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6875,7 +6875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsmatchIndex != null)
                 {
-                    uIAGetListElementItems["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndex);
+                    uIAGetListElementItems["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsmatchIndex);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6889,13 +6889,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetListElementItemssearchFilter != null)
             {
-                uIAGetListElementItems["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchFilter);
+                uIAGetListElementItems["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssearchFilter);
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemssortByColumn != null)
             {
-                uIAGetListElementItems["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetListElementItemssortByColumn);
+                uIAGetListElementItems["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemssortByColumn);
                 uIAGetListElementItemspropCount++;
             }
 
@@ -6903,7 +6903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsmatchIndexAscending != null)
                 {
-                    uIAGetListElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndexAscending);
+                    uIAGetListElementItems["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsmatchIndexAscending);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6919,7 +6919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsmaxElementsToSearch != null)
                 {
-                    uIAGetListElementItems["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxElementsToSearch);
+                    uIAGetListElementItems["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsmaxElementsToSearch);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6935,7 +6935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsmaxRelativeSearchDepth != null)
                 {
-                    uIAGetListElementItems["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxRelativeSearchDepth);
+                    uIAGetListElementItems["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsmaxRelativeSearchDepth);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6951,7 +6951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetListElementItemsmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxChildElementsToSearchPerNode);
+                    uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsmaxChildElementsToSearchPerNode);
                     uIAGetListElementItemspropCount++;
                 }
 
@@ -6965,12 +6965,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetListElementItemselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetListElementItems["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetListElementItemselementLocalizedControlTypesNotToTraverse);
+                uIAGetListElementItems["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemselementLocalizedControlTypesNotToTraverse);
                 uIAGetListElementItemspropCount++;
             }
 
             uIAGetListElementItemspropCount++;
-            uIAGetListElementItems["Workflow"] = ExpressionConverter.ConvertO(uIAGetListElementItemsworkflow);
+            uIAGetListElementItems["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetListElementItemsworkflow);
             if (uIAGetListElementItemspropCount > 0)
             {
                 callPayload.Body = uIAGetListElementItems;
@@ -6988,28 +6988,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAClickListElementItemByName = new JObject();
             var uIAClickListElementItemByNamepropCount = 0;
             uIAClickListElementItemByNamepropCount++;
-            uIAClickListElementItemByName["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameparentWindowHandle);
+            uIAClickListElementItemByName["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNameparentWindowHandle);
             if (uIAClickListElementItemByNamesearchElementName != null)
             {
-                uIAClickListElementItemByName["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementName);
+                uIAClickListElementItemByName["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchElementName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamesearchElementClassName != null)
             {
-                uIAClickListElementItemByName["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementClassName);
+                uIAClickListElementItemByName["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchElementClassName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamesearchElementAutomationId != null)
             {
-                uIAClickListElementItemByName["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementAutomationId);
+                uIAClickListElementItemByName["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchElementAutomationId);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamesearchLocalizedControlType != null)
             {
-                uIAClickListElementItemByName["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchLocalizedControlType);
+                uIAClickListElementItemByName["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchLocalizedControlType);
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -7017,7 +7017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamesearchSubTree != null)
                 {
-                    uIAClickListElementItemByName["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchSubTree);
+                    uIAClickListElementItemByName["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchSubTree);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7033,7 +7033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNameexpandFirst != null)
                 {
-                    uIAClickListElementItemByName["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameexpandFirst);
+                    uIAClickListElementItemByName["ExpandFirst"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNameexpandFirst);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7049,7 +7049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamecollapseAfter != null)
                 {
-                    uIAClickListElementItemByName["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamecollapseAfter);
+                    uIAClickListElementItemByName["CollapseAfter"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamecollapseAfter);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7063,13 +7063,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNameitemName != null)
             {
-                uIAClickListElementItemByName["ItemName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameitemName);
+                uIAClickListElementItemByName["ItemName"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNameitemName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamesecondsBetweenExpandCollapse != null)
             {
-                uIAClickListElementItemByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesecondsBetweenExpandCollapse);
+                uIAClickListElementItemByName["SecondsBetweenExpandCollapse"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesecondsBetweenExpandCollapse);
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -7077,7 +7077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamematchIndex != null)
                 {
-                    uIAClickListElementItemByName["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndex);
+                    uIAClickListElementItemByName["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamematchIndex);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7091,13 +7091,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNamesearchFilter != null)
             {
-                uIAClickListElementItemByName["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchFilter);
+                uIAClickListElementItemByName["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesearchFilter);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamesortByColumn != null)
             {
-                uIAClickListElementItemByName["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesortByColumn);
+                uIAClickListElementItemByName["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamesortByColumn);
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -7105,7 +7105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamematchIndexAscending != null)
                 {
-                    uIAClickListElementItemByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndexAscending);
+                    uIAClickListElementItemByName["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamematchIndexAscending);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7121,7 +7121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamemaxElementsToSearch != null)
                 {
-                    uIAClickListElementItemByName["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxElementsToSearch);
+                    uIAClickListElementItemByName["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamemaxElementsToSearch);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7137,7 +7137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamemaxRelativeSearchDepth != null)
                 {
-                    uIAClickListElementItemByName["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxRelativeSearchDepth);
+                    uIAClickListElementItemByName["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamemaxRelativeSearchDepth);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7153,7 +7153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByNamemaxChildElementsToSearchPerNode != null)
                 {
-                    uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode);
+                    uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode);
                     uIAClickListElementItemByNamepropCount++;
                 }
 
@@ -7167,12 +7167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAClickListElementItemByName["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse);
+                uIAClickListElementItemByName["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             uIAClickListElementItemByNamepropCount++;
-            uIAClickListElementItemByName["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameworkflow);
+            uIAClickListElementItemByName["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByNameworkflow);
             if (uIAClickListElementItemByNamepropCount > 0)
             {
                 callPayload.Body = uIAClickListElementItemByName;
@@ -7190,28 +7190,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAClickListElementItemByIndex = new JObject();
             var uIAClickListElementItemByIndexpropCount = 0;
             uIAClickListElementItemByIndexpropCount++;
-            uIAClickListElementItemByIndex["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexparentWindowHandle);
+            uIAClickListElementItemByIndex["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexparentWindowHandle);
             if (uIAClickListElementItemByIndexsearchElementName != null)
             {
-                uIAClickListElementItemByIndex["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementName);
+                uIAClickListElementItemByIndex["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchElementName);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexsearchElementClassName != null)
             {
-                uIAClickListElementItemByIndex["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementClassName);
+                uIAClickListElementItemByIndex["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchElementClassName);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexsearchElementAutomationId != null)
             {
-                uIAClickListElementItemByIndex["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementAutomationId);
+                uIAClickListElementItemByIndex["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchElementAutomationId);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexsearchLocalizedControlType != null)
             {
-                uIAClickListElementItemByIndex["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchLocalizedControlType);
+                uIAClickListElementItemByIndex["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchLocalizedControlType);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -7219,7 +7219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexsearchSubTree != null)
                 {
-                    uIAClickListElementItemByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchSubTree);
+                    uIAClickListElementItemByIndex["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchSubTree);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7235,7 +7235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexexpandFirst != null)
                 {
-                    uIAClickListElementItemByIndex["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexexpandFirst);
+                    uIAClickListElementItemByIndex["ExpandFirst"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexexpandFirst);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7251,7 +7251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexcollapseAfter != null)
                 {
-                    uIAClickListElementItemByIndex["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexcollapseAfter);
+                    uIAClickListElementItemByIndex["CollapseAfter"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexcollapseAfter);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7267,7 +7267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexitemIndex != null)
                 {
-                    uIAClickListElementItemByIndex["ItemIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexitemIndex);
+                    uIAClickListElementItemByIndex["ItemIndex"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexitemIndex);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7281,7 +7281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexsecondsBetweenExpandCollapse != null)
             {
-                uIAClickListElementItemByIndex["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsecondsBetweenExpandCollapse);
+                uIAClickListElementItemByIndex["SecondsBetweenExpandCollapse"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsecondsBetweenExpandCollapse);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -7289,7 +7289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexmatchIndex != null)
                 {
-                    uIAClickListElementItemByIndex["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndex);
+                    uIAClickListElementItemByIndex["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexmatchIndex);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7303,13 +7303,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexsearchFilter != null)
             {
-                uIAClickListElementItemByIndex["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchFilter);
+                uIAClickListElementItemByIndex["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsearchFilter);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexsortByColumn != null)
             {
-                uIAClickListElementItemByIndex["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsortByColumn);
+                uIAClickListElementItemByIndex["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexsortByColumn);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -7317,7 +7317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexmatchIndexAscending != null)
                 {
-                    uIAClickListElementItemByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndexAscending);
+                    uIAClickListElementItemByIndex["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexmatchIndexAscending);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7333,7 +7333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexmaxElementsToSearch != null)
                 {
-                    uIAClickListElementItemByIndex["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxElementsToSearch);
+                    uIAClickListElementItemByIndex["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexmaxElementsToSearch);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7349,7 +7349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexmaxRelativeSearchDepth != null)
                 {
-                    uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxRelativeSearchDepth);
+                    uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexmaxRelativeSearchDepth);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7365,7 +7365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode);
+                    uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode);
                     uIAClickListElementItemByIndexpropCount++;
                 }
 
@@ -7379,12 +7379,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAClickListElementItemByIndex["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse);
+                uIAClickListElementItemByIndex["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             uIAClickListElementItemByIndexpropCount++;
-            uIAClickListElementItemByIndex["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexworkflow);
+            uIAClickListElementItemByIndex["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAClickListElementItemByIndexworkflow);
             if (uIAClickListElementItemByIndexpropCount > 0)
             {
                 callPayload.Body = uIAClickListElementItemByIndex;
@@ -7402,28 +7402,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementToNumericValue = new JObject();
             var uIASetElementToNumericValuepropCount = 0;
             uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueparentWindowHandle);
+            uIASetElementToNumericValue["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValueparentWindowHandle);
             if (uIASetElementToNumericValuesearchElementName != null)
             {
-                uIASetElementToNumericValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementName);
+                uIASetElementToNumericValue["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchElementName);
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuesearchElementClassName != null)
             {
-                uIASetElementToNumericValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementClassName);
+                uIASetElementToNumericValue["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchElementClassName);
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuesearchElementAutomationId != null)
             {
-                uIASetElementToNumericValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementAutomationId);
+                uIASetElementToNumericValue["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchElementAutomationId);
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuesearchLocalizedControlType != null)
             {
-                uIASetElementToNumericValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchLocalizedControlType);
+                uIASetElementToNumericValue["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchLocalizedControlType);
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -7431,7 +7431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuesearchSubTree != null)
                 {
-                    uIASetElementToNumericValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchSubTree);
+                    uIASetElementToNumericValue["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchSubTree);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7447,7 +7447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuematchIndex != null)
                 {
-                    uIASetElementToNumericValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndex);
+                    uIASetElementToNumericValue["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuematchIndex);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7461,13 +7461,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericValuesearchFilter != null)
             {
-                uIASetElementToNumericValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchFilter);
+                uIASetElementToNumericValue["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesearchFilter);
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuesortByColumn != null)
             {
-                uIASetElementToNumericValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesortByColumn);
+                uIASetElementToNumericValue["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuesortByColumn);
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -7475,7 +7475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuematchIndexAscending != null)
                 {
-                    uIASetElementToNumericValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndexAscending);
+                    uIASetElementToNumericValue["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuematchIndexAscending);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7488,12 +7488,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuenewValue);
+            uIASetElementToNumericValue["NewValue"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuenewValue);
             if (uIASetElementToNumericValuemaxElementsToSearch != null)
             {
                 if (uIASetElementToNumericValuemaxElementsToSearch != null)
                 {
-                    uIASetElementToNumericValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxElementsToSearch);
+                    uIASetElementToNumericValue["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuemaxElementsToSearch);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7509,7 +7509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuemaxRelativeSearchDepth != null)
                 {
-                    uIASetElementToNumericValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxRelativeSearchDepth);
+                    uIASetElementToNumericValue["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuemaxRelativeSearchDepth);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7525,7 +7525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuemaxChildElementsToSearchPerNode != null)
                 {
-                    uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxChildElementsToSearchPerNode);
+                    uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuemaxChildElementsToSearchPerNode);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7539,7 +7539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASetElementToNumericValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse);
+                uIASetElementToNumericValue["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse);
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -7547,7 +7547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValueraiseExceptionIfInputValidationFails != null)
                 {
-                    uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueraiseExceptionIfInputValidationFails);
+                    uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValueraiseExceptionIfInputValidationFails);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7563,7 +7563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuetryValuePattern != null)
                 {
-                    uIASetElementToNumericValue["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryValuePattern);
+                    uIASetElementToNumericValue["TryValuePattern"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuetryValuePattern);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7579,7 +7579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericValuetryLegacyPattern != null)
                 {
-                    uIASetElementToNumericValue["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryLegacyPattern);
+                    uIASetElementToNumericValue["TryLegacyPattern"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValuetryLegacyPattern);
                     uIASetElementToNumericValuepropCount++;
                 }
 
@@ -7592,7 +7592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueworkflow);
+            uIASetElementToNumericValue["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericValueworkflow);
             if (uIASetElementToNumericValuepropCount > 0)
             {
                 callPayload.Body = uIASetElementToNumericValue;
@@ -7610,28 +7610,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementToNumericRangeValue = new JObject();
             var uIASetElementToNumericRangeValuepropCount = 0;
             uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueparentWindowHandle);
+            uIASetElementToNumericRangeValue["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValueparentWindowHandle);
             if (uIASetElementToNumericRangeValuesearchElementName != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementName);
+                uIASetElementToNumericRangeValue["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchElementName);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuesearchElementClassName != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementClassName);
+                uIASetElementToNumericRangeValue["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchElementClassName);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuesearchElementAutomationId != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementAutomationId);
+                uIASetElementToNumericRangeValue["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchElementAutomationId);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuesearchLocalizedControlType != null)
             {
-                uIASetElementToNumericRangeValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchLocalizedControlType);
+                uIASetElementToNumericRangeValue["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchLocalizedControlType);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
@@ -7639,7 +7639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuesearchSubTree != null)
                 {
-                    uIASetElementToNumericRangeValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchSubTree);
+                    uIASetElementToNumericRangeValue["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchSubTree);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7655,7 +7655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuematchIndex != null)
                 {
-                    uIASetElementToNumericRangeValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndex);
+                    uIASetElementToNumericRangeValue["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuematchIndex);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7669,13 +7669,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericRangeValuesearchFilter != null)
             {
-                uIASetElementToNumericRangeValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchFilter);
+                uIASetElementToNumericRangeValue["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesearchFilter);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuesortByColumn != null)
             {
-                uIASetElementToNumericRangeValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesortByColumn);
+                uIASetElementToNumericRangeValue["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuesortByColumn);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
@@ -7683,7 +7683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuematchIndexAscending != null)
                 {
-                    uIASetElementToNumericRangeValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndexAscending);
+                    uIASetElementToNumericRangeValue["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuematchIndexAscending);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7696,12 +7696,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValue);
+            uIASetElementToNumericRangeValue["NewValue"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuenewValue);
             if (uIASetElementToNumericRangeValuenewValueIsPercentage != null)
             {
                 if (uIASetElementToNumericRangeValuenewValueIsPercentage != null)
                 {
-                    uIASetElementToNumericRangeValue["NewValueIsPercentage"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValueIsPercentage);
+                    uIASetElementToNumericRangeValue["NewValueIsPercentage"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuenewValueIsPercentage);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7717,7 +7717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuemaxElementsToSearch != null)
                 {
-                    uIASetElementToNumericRangeValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxElementsToSearch);
+                    uIASetElementToNumericRangeValue["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuemaxElementsToSearch);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7733,7 +7733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuemaxRelativeSearchDepth != null)
                 {
-                    uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxRelativeSearchDepth);
+                    uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuemaxRelativeSearchDepth);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7749,7 +7749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode != null)
                 {
-                    uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode);
+                    uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode);
                     uIASetElementToNumericRangeValuepropCount++;
                 }
 
@@ -7763,12 +7763,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASetElementToNumericRangeValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse);
+                uIASetElementToNumericRangeValue["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueworkflow);
+            uIASetElementToNumericRangeValue["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetElementToNumericRangeValueworkflow);
             if (uIASetElementToNumericRangeValuepropCount > 0)
             {
                 callPayload.Body = uIASetElementToNumericRangeValue;
@@ -7786,7 +7786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAResetAllElementHandles = new JObject();
             var uIAResetAllElementHandlespropCount = 0;
             uIAResetAllElementHandlespropCount++;
-            uIAResetAllElementHandles["Workflow"] = ExpressionConverter.ConvertO(uIAResetAllElementHandlesworkflow);
+            uIAResetAllElementHandles["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAResetAllElementHandlesworkflow);
             if (uIAResetAllElementHandlespropCount > 0)
             {
                 callPayload.Body = uIAResetAllElementHandles;
@@ -7804,28 +7804,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalPasswordInputIntoElement = new JObject();
             var uIAGlobalPasswordInputIntoElementpropCount = 0;
             uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementparentWindowHandle);
+            uIAGlobalPasswordInputIntoElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementparentWindowHandle);
             if (uIAGlobalPasswordInputIntoElementsearchElementName != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementName);
+                uIAGlobalPasswordInputIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchElementName);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementsearchElementClassName != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementClassName);
+                uIAGlobalPasswordInputIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchElementClassName);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementsearchElementAutomationId != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementAutomationId);
+                uIAGlobalPasswordInputIntoElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchElementAutomationId);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementsearchLocalizedControlType != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchLocalizedControlType);
+                uIAGlobalPasswordInputIntoElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchLocalizedControlType);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -7833,7 +7833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementsearchSubTree != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchSubTree);
+                    uIAGlobalPasswordInputIntoElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchSubTree);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7849,7 +7849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementmatchIndex != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndex);
+                    uIAGlobalPasswordInputIntoElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementmatchIndex);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7863,13 +7863,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalPasswordInputIntoElementsearchFilter != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchFilter);
+                uIAGlobalPasswordInputIntoElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsearchFilter);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementsortByColumn != null)
             {
-                uIAGlobalPasswordInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsortByColumn);
+                uIAGlobalPasswordInputIntoElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsortByColumn);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -7877,7 +7877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementmatchIndexAscending != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndexAscending);
+                    uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementmatchIndexAscending);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7893,7 +7893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementfocusElement != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementfocusElement);
+                    uIAGlobalPasswordInputIntoElement["FocusElement"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementfocusElement);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7909,7 +7909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement);
+                    uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7925,7 +7925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7941,7 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7954,12 +7954,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordToInput);
+            uIAGlobalPasswordInputIntoElement["PasswordToInput"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementpasswordToInput);
             if (uIAGlobalPasswordInputIntoElementsendKeyEvents != null)
             {
                 if (uIAGlobalPasswordInputIntoElementsendKeyEvents != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsendKeyEvents);
+                    uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementsendKeyEvents);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7975,7 +7975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementinterval != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementinterval);
+                    uIAGlobalPasswordInputIntoElement["Interval"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementinterval);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -7991,7 +7991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementdontInterpretSymbols != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementdontInterpretSymbols);
+                    uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementdontInterpretSymbols);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8007,7 +8007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword);
+                    uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8023,7 +8023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxElementsToSearch);
+                    uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementmaxElementsToSearch);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8039,7 +8039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth);
+                    uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8055,7 +8055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8069,7 +8069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalPasswordInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalPasswordInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -8077,7 +8077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalPasswordInputIntoElementpropCount++;
                 }
 
@@ -8090,7 +8090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementworkflow);
+            uIAGlobalPasswordInputIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalPasswordInputIntoElementworkflow);
             if (uIAGlobalPasswordInputIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalPasswordInputIntoElement;
@@ -8108,28 +8108,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalTextInputIntoElement = new JObject();
             var uIAGlobalTextInputIntoElementpropCount = 0;
             uIAGlobalTextInputIntoElementpropCount++;
-            uIAGlobalTextInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementparentWindowHandle);
+            uIAGlobalTextInputIntoElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementparentWindowHandle);
             if (uIAGlobalTextInputIntoElementsearchElementName != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementName);
+                uIAGlobalTextInputIntoElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchElementName);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementsearchElementClassName != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementClassName);
+                uIAGlobalTextInputIntoElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchElementClassName);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementsearchElementAutomationId != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementAutomationId);
+                uIAGlobalTextInputIntoElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchElementAutomationId);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementsearchLocalizedControlType != null)
             {
-                uIAGlobalTextInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchLocalizedControlType);
+                uIAGlobalTextInputIntoElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchLocalizedControlType);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -8137,7 +8137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementsearchSubTree != null)
                 {
-                    uIAGlobalTextInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchSubTree);
+                    uIAGlobalTextInputIntoElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchSubTree);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8153,7 +8153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementmatchIndex != null)
                 {
-                    uIAGlobalTextInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndex);
+                    uIAGlobalTextInputIntoElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementmatchIndex);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8167,13 +8167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementsearchFilter != null)
             {
-                uIAGlobalTextInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchFilter);
+                uIAGlobalTextInputIntoElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsearchFilter);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementsortByColumn != null)
             {
-                uIAGlobalTextInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsortByColumn);
+                uIAGlobalTextInputIntoElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsortByColumn);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -8181,7 +8181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementmatchIndexAscending != null)
                 {
-                    uIAGlobalTextInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndexAscending);
+                    uIAGlobalTextInputIntoElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementmatchIndexAscending);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8197,7 +8197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementfocusElement != null)
                 {
-                    uIAGlobalTextInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementfocusElement);
+                    uIAGlobalTextInputIntoElement["FocusElement"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementfocusElement);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8213,7 +8213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementglobalMouseClickOnElement != null)
                 {
-                    uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementglobalMouseClickOnElement);
+                    uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementglobalMouseClickOnElement);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8229,7 +8229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
                 {
-                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8245,7 +8245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
                 {
-                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8259,7 +8259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementtextToInput != null)
             {
-                uIAGlobalTextInputIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementtextToInput);
+                uIAGlobalTextInputIntoElement["TextToInput"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementtextToInput);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -8267,7 +8267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementsendKeyEvents != null)
                 {
-                    uIAGlobalTextInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsendKeyEvents);
+                    uIAGlobalTextInputIntoElement["SendKeyEvents"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementsendKeyEvents);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8283,7 +8283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementinterval != null)
                 {
-                    uIAGlobalTextInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementinterval);
+                    uIAGlobalTextInputIntoElement["Interval"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementinterval);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8299,7 +8299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementdontInterpretSymbols != null)
                 {
-                    uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementdontInterpretSymbols);
+                    uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementdontInterpretSymbols);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8315,7 +8315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementmaxElementsToSearch != null)
                 {
-                    uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxElementsToSearch);
+                    uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementmaxElementsToSearch);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8331,7 +8331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth);
+                    uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8347,7 +8347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8361,7 +8361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalTextInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalTextInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -8369,7 +8369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary != null)
                 {
-                    uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary);
                     uIAGlobalTextInputIntoElementpropCount++;
                 }
 
@@ -8382,7 +8382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalTextInputIntoElementpropCount++;
-            uIAGlobalTextInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementworkflow);
+            uIAGlobalTextInputIntoElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalTextInputIntoElementworkflow);
             if (uIAGlobalTextInputIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalTextInputIntoElement;
@@ -8400,9 +8400,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementPropertiesAsList = new JObject();
             var uIAGetElementPropertiesAsListpropCount = 0;
             uIAGetElementPropertiesAsListpropCount++;
-            uIAGetElementPropertiesAsList["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListelementHandle);
+            uIAGetElementPropertiesAsList["ElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesAsListelementHandle);
             uIAGetElementPropertiesAsListpropCount++;
-            uIAGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListworkflow);
+            uIAGetElementPropertiesAsList["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPropertiesAsListworkflow);
             if (uIAGetElementPropertiesAsListpropCount > 0)
             {
                 callPayload.Body = uIAGetElementPropertiesAsList;
@@ -8420,9 +8420,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetTransactionTimeout = new JObject();
             var uIASetTransactionTimeoutpropCount = 0;
             uIASetTransactionTimeoutpropCount++;
-            uIASetTransactionTimeout["TimeoutInSeconds"] = ExpressionConverter.ConvertO(uIASetTransactionTimeouttimeoutInSeconds);
+            uIASetTransactionTimeout["TimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(uIASetTransactionTimeouttimeoutInSeconds);
             uIASetTransactionTimeoutpropCount++;
-            uIASetTransactionTimeout["Workflow"] = ExpressionConverter.ConvertO(uIASetTransactionTimeoutworkflow);
+            uIASetTransactionTimeout["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetTransactionTimeoutworkflow);
             if (uIASetTransactionTimeoutpropCount > 0)
             {
                 callPayload.Body = uIASetTransactionTimeout;
@@ -8443,7 +8443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementAtCoordinatesxCoord != null)
                 {
-                    uIAGetElementAtCoordinates["XCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesxCoord);
+                    uIAGetElementAtCoordinates["XCoord"] = CSharpExpressionConverter.ConvertToken(uIAGetElementAtCoordinatesxCoord);
                     uIAGetElementAtCoordinatespropCount++;
                 }
 
@@ -8459,7 +8459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementAtCoordinatesyCoord != null)
                 {
-                    uIAGetElementAtCoordinates["YCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesyCoord);
+                    uIAGetElementAtCoordinates["YCoord"] = CSharpExpressionConverter.ConvertToken(uIAGetElementAtCoordinatesyCoord);
                     uIAGetElementAtCoordinatespropCount++;
                 }
 
@@ -8475,7 +8475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound != null)
                 {
-                    uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound);
+                    uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = CSharpExpressionConverter.ConvertToken(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound);
                     uIAGetElementAtCoordinatespropCount++;
                 }
 
@@ -8488,7 +8488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetElementAtCoordinatespropCount++;
-            uIAGetElementAtCoordinates["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesworkflow);
+            uIAGetElementAtCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementAtCoordinatesworkflow);
             if (uIAGetElementAtCoordinatespropCount > 0)
             {
                 callPayload.Body = uIAGetElementAtCoordinates;
@@ -8506,12 +8506,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetMultipleParentElementProperties = new JObject();
             var uIAGetMultipleParentElementPropertiespropCount = 0;
             uIAGetMultipleParentElementPropertiespropCount++;
-            uIAGetMultipleParentElementProperties["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertieselementHandle);
+            uIAGetMultipleParentElementProperties["ElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleParentElementPropertieselementHandle);
             if (uIAGetMultipleParentElementPropertiesmaxParentsToProcess != null)
             {
                 if (uIAGetMultipleParentElementPropertiesmaxParentsToProcess != null)
                 {
-                    uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesmaxParentsToProcess);
+                    uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleParentElementPropertiesmaxParentsToProcess);
                     uIAGetMultipleParentElementPropertiespropCount++;
                 }
 
@@ -8524,7 +8524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetMultipleParentElementPropertiespropCount++;
-            uIAGetMultipleParentElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesworkflow);
+            uIAGetMultipleParentElementProperties["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleParentElementPropertiesworkflow);
             if (uIAGetMultipleParentElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleParentElementProperties;
@@ -8542,16 +8542,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASearchForFirstParentElement = new JObject();
             var uIASearchForFirstParentElementpropCount = 0;
             uIASearchForFirstParentElementpropCount++;
-            uIASearchForFirstParentElement["ElementHandle"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementelementHandle);
+            uIASearchForFirstParentElement["ElementHandle"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementelementHandle);
             if (uIASearchForFirstParentElementsearchParentLocalizedControlType != null)
             {
-                uIASearchForFirstParentElement["SearchParentLocalizedControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementsearchParentLocalizedControlType);
+                uIASearchForFirstParentElement["SearchParentLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementsearchParentLocalizedControlType);
                 uIASearchForFirstParentElementpropCount++;
             }
 
             if (uIASearchForFirstParentElementsearchParentControlType != null)
             {
-                uIASearchForFirstParentElement["SearchParentControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementsearchParentControlType);
+                uIASearchForFirstParentElement["SearchParentControlType"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementsearchParentControlType);
                 uIASearchForFirstParentElementpropCount++;
             }
 
@@ -8559,7 +8559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASearchForFirstParentElementmaxParentsToProcess != null)
                 {
-                    uIASearchForFirstParentElement["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementmaxParentsToProcess);
+                    uIASearchForFirstParentElement["MaxParentsToProcess"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementmaxParentsToProcess);
                     uIASearchForFirstParentElementpropCount++;
                 }
 
@@ -8575,7 +8575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound != null)
                 {
-                    uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound);
+                    uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound);
                     uIASearchForFirstParentElementpropCount++;
                 }
 
@@ -8588,7 +8588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIASearchForFirstParentElementpropCount++;
-            uIASearchForFirstParentElement["Workflow"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementworkflow);
+            uIASearchForFirstParentElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASearchForFirstParentElementworkflow);
             if (uIASearchForFirstParentElementpropCount > 0)
             {
                 callPayload.Body = uIASearchForFirstParentElement;
@@ -8607,31 +8607,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetMultipleElementsAsTablepropCount = 0;
             if (uIAGetMultipleElementsAsTableparentWindowHandle != null)
             {
-                uIAGetMultipleElementsAsTable["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableparentWindowHandle);
+                uIAGetMultipleElementsAsTable["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableparentWindowHandle);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchElementName != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementName);
+                uIAGetMultipleElementsAsTable["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchElementName);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchElementClassName != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementClassName);
+                uIAGetMultipleElementsAsTable["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchElementClassName);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchElementAutomationId != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementAutomationId);
+                uIAGetMultipleElementsAsTable["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchElementAutomationId);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -8639,7 +8639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchSubTree != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchSubTree);
+                    uIAGetMultipleElementsAsTable["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchSubTree);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8655,7 +8655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablematchIndex != null)
                 {
-                    uIAGetMultipleElementsAsTable["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndex);
+                    uIAGetMultipleElementsAsTable["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablematchIndex);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8669,13 +8669,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablesearchFilter != null)
             {
-                uIAGetMultipleElementsAsTable["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchFilter);
+                uIAGetMultipleElementsAsTable["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchFilter);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesortByColumn != null)
             {
-                uIAGetMultipleElementsAsTable["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesortByColumn);
+                uIAGetMultipleElementsAsTable["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesortByColumn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -8683,7 +8683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablematchIndexAscending != null)
                 {
-                    uIAGetMultipleElementsAsTable["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndexAscending);
+                    uIAGetMultipleElementsAsTable["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablematchIndexAscending);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8697,25 +8697,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType);
+                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementControlType);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -8723,7 +8723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements);
+                    uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8739,7 +8739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn != null)
                 {
-                    uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn);
+                    uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8755,7 +8755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn != null)
                 {
-                    uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn);
+                    uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8771,7 +8771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablefirstCellSubElementToReturn != null)
                 {
-                    uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn);
+                    uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8787,7 +8787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn != null)
                 {
-                    uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn);
+                    uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8803,7 +8803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablerequestedNumberOfColumns != null)
                 {
-                    uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablerequestedNumberOfColumns);
+                    uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablerequestedNumberOfColumns);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8819,7 +8819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablecellSubElementValuePriority != null)
                 {
-                    uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementValuePriority);
+                    uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablecellSubElementValuePriority);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8835,7 +8835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablecellSubElementTextValuePriority != null)
                 {
-                    uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority);
+                    uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8851,7 +8851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablecellSubElementNameValuePriority != null)
                 {
-                    uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority);
+                    uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8867,7 +8867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTableminimumCellSubElementWidth != null)
                 {
-                    uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementWidth);
+                    uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableminimumCellSubElementWidth);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8883,7 +8883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTableminimumCellSubElementHeight != null)
                 {
-                    uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementHeight);
+                    uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableminimumCellSubElementHeight);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8899,7 +8899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft);
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8915,7 +8915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight);
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8931,7 +8931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop);
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8947,7 +8947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom != null)
                 {
-                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom);
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8963,7 +8963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablereadTableAsThread != null)
                 {
-                    uIAGetMultipleElementsAsTable["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablereadTableAsThread);
+                    uIAGetMultipleElementsAsTable["ReadTableAsThread"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablereadTableAsThread);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -8977,7 +8977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId != null)
             {
-                uIAGetMultipleElementsAsTable["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId);
+                uIAGetMultipleElementsAsTable["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -8985,7 +8985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablesecondsToWaitForThread != null)
                 {
-                    uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesecondsToWaitForThread);
+                    uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablesecondsToWaitForThread);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -9001,7 +9001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablemaxElementsToSearch != null)
                 {
-                    uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxElementsToSearch);
+                    uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablemaxElementsToSearch);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -9017,7 +9017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablemaxRelativeSearchDepth != null)
                 {
-                    uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth);
+                    uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -9033,7 +9033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode);
+                    uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode);
                     uIAGetMultipleElementsAsTablepropCount++;
                 }
 
@@ -9047,12 +9047,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetMultipleElementsAsTable["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse);
+                uIAGetMultipleElementsAsTable["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             uIAGetMultipleElementsAsTablepropCount++;
-            uIAGetMultipleElementsAsTable["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableworkflow);
+            uIAGetMultipleElementsAsTable["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetMultipleElementsAsTableworkflow);
             if (uIAGetMultipleElementsAsTablepropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleElementsAsTable;
@@ -9070,28 +9070,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementScrollPercentage = new JObject();
             var uIASetElementScrollPercentagepropCount = 0;
             uIASetElementScrollPercentagepropCount++;
-            uIASetElementScrollPercentage["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageparentWindowHandle);
+            uIASetElementScrollPercentage["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentageparentWindowHandle);
             if (uIASetElementScrollPercentagesearchElementName != null)
             {
-                uIASetElementScrollPercentage["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementName);
+                uIASetElementScrollPercentage["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchElementName);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagesearchElementClassName != null)
             {
-                uIASetElementScrollPercentage["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementClassName);
+                uIASetElementScrollPercentage["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchElementClassName);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagesearchElementAutomationId != null)
             {
-                uIASetElementScrollPercentage["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementAutomationId);
+                uIASetElementScrollPercentage["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchElementAutomationId);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagesearchLocalizedControlType != null)
             {
-                uIASetElementScrollPercentage["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchLocalizedControlType);
+                uIASetElementScrollPercentage["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchLocalizedControlType);
                 uIASetElementScrollPercentagepropCount++;
             }
 
@@ -9099,7 +9099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagesearchSubTree != null)
                 {
-                    uIASetElementScrollPercentage["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchSubTree);
+                    uIASetElementScrollPercentage["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchSubTree);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9115,7 +9115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagematchIndex != null)
                 {
-                    uIASetElementScrollPercentage["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndex);
+                    uIASetElementScrollPercentage["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagematchIndex);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9129,13 +9129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementScrollPercentagesearchFilter != null)
             {
-                uIASetElementScrollPercentage["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchFilter);
+                uIASetElementScrollPercentage["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesearchFilter);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagesortByColumn != null)
             {
-                uIASetElementScrollPercentage["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesortByColumn);
+                uIASetElementScrollPercentage["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagesortByColumn);
                 uIASetElementScrollPercentagepropCount++;
             }
 
@@ -9143,7 +9143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagematchIndexAscending != null)
                 {
-                    uIASetElementScrollPercentage["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndexAscending);
+                    uIASetElementScrollPercentage["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagematchIndexAscending);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9159,7 +9159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagehorizontalScrollPercentage != null)
                 {
-                    uIASetElementScrollPercentage["HorizontalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagehorizontalScrollPercentage);
+                    uIASetElementScrollPercentage["HorizontalScrollPercentage"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagehorizontalScrollPercentage);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9175,7 +9175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentageverticalScrollPercentage != null)
                 {
-                    uIASetElementScrollPercentage["VerticalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageverticalScrollPercentage);
+                    uIASetElementScrollPercentage["VerticalScrollPercentage"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentageverticalScrollPercentage);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9191,7 +9191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagetryScrollPattern != null)
                 {
-                    uIASetElementScrollPercentage["TryScrollPattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryScrollPattern);
+                    uIASetElementScrollPercentage["TryScrollPattern"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagetryScrollPattern);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9207,7 +9207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagetryRangeValuePattern != null)
                 {
-                    uIASetElementScrollPercentage["TryRangeValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryRangeValuePattern);
+                    uIASetElementScrollPercentage["TryRangeValuePattern"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagetryRangeValuePattern);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9223,7 +9223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagetryValuePattern != null)
                 {
-                    uIASetElementScrollPercentage["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryValuePattern);
+                    uIASetElementScrollPercentage["TryValuePattern"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagetryValuePattern);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9239,7 +9239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagemaxElementsToSearch != null)
                 {
-                    uIASetElementScrollPercentage["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxElementsToSearch);
+                    uIASetElementScrollPercentage["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagemaxElementsToSearch);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9255,7 +9255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagemaxRelativeSearchDepth != null)
                 {
-                    uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxRelativeSearchDepth);
+                    uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagemaxRelativeSearchDepth);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9271,7 +9271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIASetElementScrollPercentagemaxChildElementsToSearchPerNode != null)
                 {
-                    uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode);
+                    uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode);
                     uIASetElementScrollPercentagepropCount++;
                 }
 
@@ -9285,12 +9285,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASetElementScrollPercentage["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse);
+                uIASetElementScrollPercentage["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             uIASetElementScrollPercentagepropCount++;
-            uIASetElementScrollPercentage["Workflow"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageworkflow);
+            uIASetElementScrollPercentage["Workflow"] = CSharpExpressionConverter.ConvertToken(uIASetElementScrollPercentageworkflow);
             if (uIASetElementScrollPercentagepropCount > 0)
             {
                 callPayload.Body = uIASetElementScrollPercentage;
@@ -9308,28 +9308,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementSearchColourRegion = new JObject();
             var uIAGetElementSearchColourRegionpropCount = 0;
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionparentWindowHandle);
+            uIAGetElementSearchColourRegion["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionparentWindowHandle);
             if (uIAGetElementSearchColourRegionsearchElementName != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementName);
+                uIAGetElementSearchColourRegion["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchElementName);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionsearchElementClassName != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementClassName);
+                uIAGetElementSearchColourRegion["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchElementClassName);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionsearchElementAutomationId != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementAutomationId);
+                uIAGetElementSearchColourRegion["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchElementAutomationId);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionsearchLocalizedControlType != null)
             {
-                uIAGetElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchLocalizedControlType);
+                uIAGetElementSearchColourRegion["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchLocalizedControlType);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -9337,7 +9337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionsearchSubTree != null)
                 {
-                    uIAGetElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchSubTree);
+                    uIAGetElementSearchColourRegion["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchSubTree);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9353,7 +9353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionmatchIndex != null)
                 {
-                    uIAGetElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndex);
+                    uIAGetElementSearchColourRegion["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmatchIndex);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9367,13 +9367,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementSearchColourRegionsearchFilter != null)
             {
-                uIAGetElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchFilter);
+                uIAGetElementSearchColourRegion["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchFilter);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionsortByColumn != null)
             {
-                uIAGetElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsortByColumn);
+                uIAGetElementSearchColourRegion["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsortByColumn);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -9381,7 +9381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionmatchIndexAscending != null)
                 {
-                    uIAGetElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndexAscending);
+                    uIAGetElementSearchColourRegion["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmatchIndexAscending);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9394,30 +9394,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchColour);
+            uIAGetElementSearchColourRegion["SearchColour"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionsearchColour);
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxColourDeviation);
+            uIAGetElementSearchColourRegion["MaxColourDeviation"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmaxColourDeviation);
             if (uIAGetElementSearchColourRegionleftPixelXOffset != null)
             {
-                uIAGetElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionleftPixelXOffset);
+                uIAGetElementSearchColourRegion["LeftPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionleftPixelXOffset);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionrightPixelXOffset != null)
             {
-                uIAGetElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionrightPixelXOffset);
+                uIAGetElementSearchColourRegion["RightPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionrightPixelXOffset);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegiontopPixelYOffset != null)
             {
-                uIAGetElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegiontopPixelYOffset);
+                uIAGetElementSearchColourRegion["TopPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegiontopPixelYOffset);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionbottomPixelYOffset != null)
             {
-                uIAGetElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionbottomPixelYOffset);
+                uIAGetElementSearchColourRegion["BottomPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionbottomPixelYOffset);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -9425,7 +9425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionhideAgent != null)
                 {
-                    uIAGetElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionhideAgent);
+                    uIAGetElementSearchColourRegion["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionhideAgent);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9441,7 +9441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionreturnPhysicalCoordinates != null)
                 {
-                    uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionreturnPhysicalCoordinates);
+                    uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionreturnPhysicalCoordinates);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9457,7 +9457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionmaxElementsToSearch != null)
                 {
-                    uIAGetElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxElementsToSearch);
+                    uIAGetElementSearchColourRegion["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmaxElementsToSearch);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9473,7 +9473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionmaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxRelativeSearchDepth);
+                    uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmaxRelativeSearchDepth);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9489,7 +9489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                    uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode);
                     uIAGetElementSearchColourRegionpropCount++;
                 }
 
@@ -9503,12 +9503,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
+                uIAGetElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionworkflow);
+            uIAGetElementSearchColourRegion["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementSearchColourRegionworkflow);
             if (uIAGetElementSearchColourRegionpropCount > 0)
             {
                 callPayload.Body = uIAGetElementSearchColourRegion;
@@ -9526,28 +9526,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMouseClickElementSearchColourRegion = new JObject();
             var uIAGlobalMouseClickElementSearchColourRegionpropCount = 0;
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle);
+            uIAGlobalMouseClickElementSearchColourRegion["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle);
             if (uIAGlobalMouseClickElementSearchColourRegionsearchElementName != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementName);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchElementName);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -9555,7 +9555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionsearchSubTree != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree);
+                    uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9571,7 +9571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmatchIndex != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndex);
+                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmatchIndex);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9585,13 +9585,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickElementSearchColourRegionsearchFilter != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchFilter);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchFilter);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionsortByColumn != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsortByColumn);
+                uIAGlobalMouseClickElementSearchColourRegion["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsortByColumn);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -9599,7 +9599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending);
+                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9612,30 +9612,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchColour);
+            uIAGlobalMouseClickElementSearchColourRegion["SearchColour"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionsearchColour);
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation);
+            uIAGlobalMouseClickElementSearchColourRegion["MaxColourDeviation"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation);
             if (uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset);
+                uIAGlobalMouseClickElementSearchColourRegion["LeftPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset);
+                uIAGlobalMouseClickElementSearchColourRegion["RightPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset);
+                uIAGlobalMouseClickElementSearchColourRegion["TopPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset);
+                uIAGlobalMouseClickElementSearchColourRegion["BottomPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -9643,7 +9643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmouseButton != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmouseButton);
+                    uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = CSharpExpressionConverter.Convert(uIAGlobalMouseClickElementSearchColourRegionmouseButton);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9659,7 +9659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetX != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX);
+                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9675,7 +9675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetY != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY);
+                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9691,7 +9691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo);
+                    uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = CSharpExpressionConverter.Convert(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9707,7 +9707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds);
+                    uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9723,7 +9723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionhideAgent != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionhideAgent);
+                    uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionhideAgent);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9739,7 +9739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch);
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9755,7 +9755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth);
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9771,7 +9771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode);
                     uIAGlobalMouseClickElementSearchColourRegionpropCount++;
                 }
 
@@ -9785,12 +9785,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMouseClickElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionworkflow);
+            uIAGlobalMouseClickElementSearchColourRegion["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGlobalMouseClickElementSearchColourRegionworkflow);
             if (uIAGlobalMouseClickElementSearchColourRegionpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMouseClickElementSearchColourRegion;
@@ -9809,13 +9809,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetWin32WindowspropCount = 0;
             if (uIAGetWin32WindowssearchClassName != null)
             {
-                uIAGetWin32Windows["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchClassName);
+                uIAGetWin32Windows["SearchClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowssearchClassName);
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowssearchWindowTitle != null)
             {
-                uIAGetWin32Windows["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchWindowTitle);
+                uIAGetWin32Windows["SearchWindowTitle"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowssearchWindowTitle);
                 uIAGetWin32WindowspropCount++;
             }
 
@@ -9823,7 +9823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowstopLevelWindowsOnly != null)
                 {
-                    uIAGetWin32Windows["TopLevelWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowstopLevelWindowsOnly);
+                    uIAGetWin32Windows["TopLevelWindowsOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowstopLevelWindowsOnly);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9839,7 +9839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsvisibleWindowsOnly != null)
                 {
-                    uIAGetWin32Windows["VisibleWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsvisibleWindowsOnly);
+                    uIAGetWin32Windows["VisibleWindowsOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsvisibleWindowsOnly);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9855,7 +9855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowswindowsWithTitlebarOnly != null)
                 {
-                    uIAGetWin32Windows["WindowsWithTitlebarOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitlebarOnly);
+                    uIAGetWin32Windows["WindowsWithTitlebarOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowswindowsWithTitlebarOnly);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9871,7 +9871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowswindowsWithTitleOnly != null)
                 {
-                    uIAGetWin32Windows["WindowsWithTitleOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitleOnly);
+                    uIAGetWin32Windows["WindowsWithTitleOnly"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowswindowsWithTitleOnly);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9887,7 +9887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsignoreTransparentWindows != null)
                 {
-                    uIAGetWin32Windows["IgnoreTransparentWindows"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsignoreTransparentWindows);
+                    uIAGetWin32Windows["IgnoreTransparentWindows"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsignoreTransparentWindows);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9901,19 +9901,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetWin32WindowssearchProcessId != null)
             {
-                uIAGetWin32Windows["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchProcessId);
+                uIAGetWin32Windows["SearchProcessId"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowssearchProcessId);
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowssearchFilter != null)
             {
-                uIAGetWin32Windows["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchFilter);
+                uIAGetWin32Windows["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowssearchFilter);
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowssortByColumn != null)
             {
-                uIAGetWin32Windows["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssortByColumn);
+                uIAGetWin32Windows["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowssortByColumn);
                 uIAGetWin32WindowspropCount++;
             }
 
@@ -9921,7 +9921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsmatchIndexAscending != null)
                 {
-                    uIAGetWin32Windows["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmatchIndexAscending);
+                    uIAGetWin32Windows["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsmatchIndexAscending);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9937,7 +9937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsreturnElementHandle != null)
                 {
-                    uIAGetWin32Windows["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsreturnElementHandle);
+                    uIAGetWin32Windows["ReturnElementHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsreturnElementHandle);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9953,7 +9953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsfirstItemToReturn != null)
                 {
-                    uIAGetWin32Windows["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsfirstItemToReturn);
+                    uIAGetWin32Windows["FirstItemToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsfirstItemToReturn);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9969,7 +9969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetWin32WindowsmaxItemsToReturn != null)
                 {
-                    uIAGetWin32Windows["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmaxItemsToReturn);
+                    uIAGetWin32Windows["MaxItemsToReturn"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32WindowsmaxItemsToReturn);
                     uIAGetWin32WindowspropCount++;
                 }
 
@@ -9982,7 +9982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAGetWin32WindowspropCount++;
-            uIAGetWin32Windows["Workflow"] = ExpressionConverter.ConvertO(uIAGetWin32Windowsworkflow);
+            uIAGetWin32Windows["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetWin32Windowsworkflow);
             if (uIAGetWin32WindowspropCount > 0)
             {
                 callPayload.Body = uIAGetWin32Windows;
@@ -10000,9 +10000,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var setUIAElementSearchMode = new JObject();
             var setUIAElementSearchModepropCount = 0;
             setUIAElementSearchModepropCount++;
-            setUIAElementSearchMode["UIAElementSearchMode"] = ExpressionConverter.ConvertO(setUIAElementSearchModeuIAElementSearchMode);
+            setUIAElementSearchMode["UIAElementSearchMode"] = CSharpExpressionConverter.Convert(setUIAElementSearchModeuIAElementSearchMode);
             setUIAElementSearchModepropCount++;
-            setUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(setUIAElementSearchModeworkflow);
+            setUIAElementSearchMode["Workflow"] = CSharpExpressionConverter.ConvertToken(setUIAElementSearchModeworkflow);
             if (setUIAElementSearchModepropCount > 0)
             {
                 callPayload.Body = setUIAElementSearchMode;
@@ -10020,7 +10020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var getUIAElementSearchMode = new JObject();
             var getUIAElementSearchModepropCount = 0;
             getUIAElementSearchModepropCount++;
-            getUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(getUIAElementSearchModeworkflow);
+            getUIAElementSearchMode["Workflow"] = CSharpExpressionConverter.ConvertToken(getUIAElementSearchModeworkflow);
             if (getUIAElementSearchModepropCount > 0)
             {
                 callPayload.Body = getUIAElementSearchMode;
@@ -10038,28 +10038,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementPatterns = new JObject();
             var uIAGetElementPatternspropCount = 0;
             uIAGetElementPatternspropCount++;
-            uIAGetElementPatterns["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPatternsparentWindowHandle);
+            uIAGetElementPatterns["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsparentWindowHandle);
             if (uIAGetElementPatternssearchElementName != null)
             {
-                uIAGetElementPatterns["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementName);
+                uIAGetElementPatterns["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchElementName);
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternssearchElementClassName != null)
             {
-                uIAGetElementPatterns["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementClassName);
+                uIAGetElementPatterns["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchElementClassName);
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternssearchElementAutomationId != null)
             {
-                uIAGetElementPatterns["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementAutomationId);
+                uIAGetElementPatterns["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchElementAutomationId);
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternssearchLocalizedControlType != null)
             {
-                uIAGetElementPatterns["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchLocalizedControlType);
+                uIAGetElementPatterns["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchLocalizedControlType);
                 uIAGetElementPatternspropCount++;
             }
 
@@ -10067,7 +10067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternssearchSubTree != null)
                 {
-                    uIAGetElementPatterns["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchSubTree);
+                    uIAGetElementPatterns["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchSubTree);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10083,7 +10083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternsmatchIndex != null)
                 {
-                    uIAGetElementPatterns["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndex);
+                    uIAGetElementPatterns["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsmatchIndex);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10097,13 +10097,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPatternssearchFilter != null)
             {
-                uIAGetElementPatterns["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchFilter);
+                uIAGetElementPatterns["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssearchFilter);
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternssortByColumn != null)
             {
-                uIAGetElementPatterns["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPatternssortByColumn);
+                uIAGetElementPatterns["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternssortByColumn);
                 uIAGetElementPatternspropCount++;
             }
 
@@ -10111,7 +10111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternsmatchIndexAscending != null)
                 {
-                    uIAGetElementPatterns["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndexAscending);
+                    uIAGetElementPatterns["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsmatchIndexAscending);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10127,7 +10127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternsmaxElementsToSearch != null)
                 {
-                    uIAGetElementPatterns["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxElementsToSearch);
+                    uIAGetElementPatterns["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsmaxElementsToSearch);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10143,7 +10143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternsmaxRelativeSearchDepth != null)
                 {
-                    uIAGetElementPatterns["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxRelativeSearchDepth);
+                    uIAGetElementPatterns["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsmaxRelativeSearchDepth);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10159,7 +10159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAGetElementPatternsmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxChildElementsToSearchPerNode);
+                    uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsmaxChildElementsToSearchPerNode);
                     uIAGetElementPatternspropCount++;
                 }
 
@@ -10173,12 +10173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPatternselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementPatterns["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPatternselementLocalizedControlTypesNotToTraverse);
+                uIAGetElementPatterns["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternselementLocalizedControlTypesNotToTraverse);
                 uIAGetElementPatternspropCount++;
             }
 
             uIAGetElementPatternspropCount++;
-            uIAGetElementPatterns["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPatternsworkflow);
+            uIAGetElementPatterns["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAGetElementPatternsworkflow);
             if (uIAGetElementPatternspropCount > 0)
             {
                 callPayload.Body = uIAGetElementPatterns;
@@ -10196,28 +10196,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMoveElement = new JObject();
             var uIAMoveElementpropCount = 0;
             uIAMoveElementpropCount++;
-            uIAMoveElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAMoveElementparentWindowHandle);
+            uIAMoveElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementparentWindowHandle);
             if (uIAMoveElementsearchElementName != null)
             {
-                uIAMoveElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementName);
+                uIAMoveElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchElementName);
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementsearchElementClassName != null)
             {
-                uIAMoveElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementClassName);
+                uIAMoveElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchElementClassName);
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementsearchElementAutomationId != null)
             {
-                uIAMoveElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementAutomationId);
+                uIAMoveElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchElementAutomationId);
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementsearchLocalizedControlType != null)
             {
-                uIAMoveElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAMoveElementsearchLocalizedControlType);
+                uIAMoveElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchLocalizedControlType);
                 uIAMoveElementpropCount++;
             }
 
@@ -10225,7 +10225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementsearchSubTree != null)
                 {
-                    uIAMoveElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAMoveElementsearchSubTree);
+                    uIAMoveElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchSubTree);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10241,7 +10241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementmatchIndex != null)
                 {
-                    uIAMoveElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndex);
+                    uIAMoveElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementmatchIndex);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10255,13 +10255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAMoveElementsearchFilter != null)
             {
-                uIAMoveElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAMoveElementsearchFilter);
+                uIAMoveElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsearchFilter);
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementsortByColumn != null)
             {
-                uIAMoveElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAMoveElementsortByColumn);
+                uIAMoveElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementsortByColumn);
                 uIAMoveElementpropCount++;
             }
 
@@ -10269,7 +10269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementmatchIndexAscending != null)
                 {
-                    uIAMoveElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndexAscending);
+                    uIAMoveElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementmatchIndexAscending);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10285,7 +10285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementmaxElementsToSearch != null)
                 {
-                    uIAMoveElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAMoveElementmaxElementsToSearch);
+                    uIAMoveElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementmaxElementsToSearch);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10301,7 +10301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementmaxRelativeSearchDepth != null)
                 {
-                    uIAMoveElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAMoveElementmaxRelativeSearchDepth);
+                    uIAMoveElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementmaxRelativeSearchDepth);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10317,7 +10317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAMoveElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAMoveElementmaxChildElementsToSearchPerNode);
+                    uIAMoveElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementmaxChildElementsToSearchPerNode);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10331,7 +10331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAMoveElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAMoveElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAMoveElementelementLocalizedControlTypesNotToTraverse);
+                uIAMoveElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementelementLocalizedControlTypesNotToTraverse);
                 uIAMoveElementpropCount++;
             }
 
@@ -10339,7 +10339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAMoveElementhorizontalMovementType != null)
                 {
-                    uIAMoveElement["HorizontalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalMovementType);
+                    uIAMoveElement["HorizontalMovementType"] = CSharpExpressionConverter.Convert(uIAMoveElementhorizontalMovementType);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10352,12 +10352,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAMoveElementpropCount++;
-            uIAMoveElement["HorizontalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalPosition);
+            uIAMoveElement["HorizontalPosition"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementhorizontalPosition);
             if (uIAMoveElementverticalMovementType != null)
             {
                 if (uIAMoveElementverticalMovementType != null)
                 {
-                    uIAMoveElement["VerticalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementverticalMovementType);
+                    uIAMoveElement["VerticalMovementType"] = CSharpExpressionConverter.Convert(uIAMoveElementverticalMovementType);
                     uIAMoveElementpropCount++;
                 }
 
@@ -10370,9 +10370,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAMoveElementpropCount++;
-            uIAMoveElement["VerticalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementverticalPosition);
+            uIAMoveElement["VerticalPosition"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementverticalPosition);
             uIAMoveElementpropCount++;
-            uIAMoveElement["Workflow"] = ExpressionConverter.ConvertO(uIAMoveElementworkflow);
+            uIAMoveElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAMoveElementworkflow);
             if (uIAMoveElementpropCount > 0)
             {
                 callPayload.Body = uIAMoveElement;
@@ -10390,28 +10390,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAResizeElement = new JObject();
             var uIAResizeElementpropCount = 0;
             uIAResizeElementpropCount++;
-            uIAResizeElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAResizeElementparentWindowHandle);
+            uIAResizeElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementparentWindowHandle);
             if (uIAResizeElementsearchElementName != null)
             {
-                uIAResizeElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementName);
+                uIAResizeElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchElementName);
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementsearchElementClassName != null)
             {
-                uIAResizeElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementClassName);
+                uIAResizeElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchElementClassName);
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementsearchElementAutomationId != null)
             {
-                uIAResizeElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementAutomationId);
+                uIAResizeElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchElementAutomationId);
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementsearchLocalizedControlType != null)
             {
-                uIAResizeElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAResizeElementsearchLocalizedControlType);
+                uIAResizeElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchLocalizedControlType);
                 uIAResizeElementpropCount++;
             }
 
@@ -10419,7 +10419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementsearchSubTree != null)
                 {
-                    uIAResizeElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAResizeElementsearchSubTree);
+                    uIAResizeElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchSubTree);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10435,7 +10435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementmatchIndex != null)
                 {
-                    uIAResizeElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndex);
+                    uIAResizeElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementmatchIndex);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10449,13 +10449,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAResizeElementsearchFilter != null)
             {
-                uIAResizeElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAResizeElementsearchFilter);
+                uIAResizeElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsearchFilter);
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementsortByColumn != null)
             {
-                uIAResizeElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAResizeElementsortByColumn);
+                uIAResizeElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementsortByColumn);
                 uIAResizeElementpropCount++;
             }
 
@@ -10463,7 +10463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementmatchIndexAscending != null)
                 {
-                    uIAResizeElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndexAscending);
+                    uIAResizeElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementmatchIndexAscending);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10479,7 +10479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementmaxElementsToSearch != null)
                 {
-                    uIAResizeElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAResizeElementmaxElementsToSearch);
+                    uIAResizeElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementmaxElementsToSearch);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10495,7 +10495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementmaxRelativeSearchDepth != null)
                 {
-                    uIAResizeElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAResizeElementmaxRelativeSearchDepth);
+                    uIAResizeElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementmaxRelativeSearchDepth);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10511,7 +10511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAResizeElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAResizeElementmaxChildElementsToSearchPerNode);
+                    uIAResizeElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementmaxChildElementsToSearchPerNode);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10525,7 +10525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAResizeElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAResizeElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAResizeElementelementLocalizedControlTypesNotToTraverse);
+                uIAResizeElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementelementLocalizedControlTypesNotToTraverse);
                 uIAResizeElementpropCount++;
             }
 
@@ -10533,7 +10533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAResizeElementresizeWidthType != null)
                 {
-                    uIAResizeElement["ResizeWidthType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeWidthType);
+                    uIAResizeElement["ResizeWidthType"] = CSharpExpressionConverter.Convert(uIAResizeElementresizeWidthType);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10546,12 +10546,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAResizeElementpropCount++;
-            uIAResizeElement["NewWidth"] = ExpressionConverter.ConvertO(uIAResizeElementnewWidth);
+            uIAResizeElement["NewWidth"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementnewWidth);
             if (uIAResizeElementresizeHeightType != null)
             {
                 if (uIAResizeElementresizeHeightType != null)
                 {
-                    uIAResizeElement["ResizeHeightType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeHeightType);
+                    uIAResizeElement["ResizeHeightType"] = CSharpExpressionConverter.Convert(uIAResizeElementresizeHeightType);
                     uIAResizeElementpropCount++;
                 }
 
@@ -10564,9 +10564,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAResizeElementpropCount++;
-            uIAResizeElement["NewHeight"] = ExpressionConverter.ConvertO(uIAResizeElementnewHeight);
+            uIAResizeElement["NewHeight"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementnewHeight);
             uIAResizeElementpropCount++;
-            uIAResizeElement["Workflow"] = ExpressionConverter.ConvertO(uIAResizeElementworkflow);
+            uIAResizeElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAResizeElementworkflow);
             if (uIAResizeElementpropCount > 0)
             {
                 callPayload.Body = uIAResizeElement;
@@ -10584,28 +10584,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIALocateVisibleSearchImageWithinElement = new JObject();
             var uIALocateVisibleSearchImageWithinElementpropCount = 0;
             uIALocateVisibleSearchImageWithinElementpropCount++;
-            uIALocateVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementparentWindowHandle);
+            uIALocateVisibleSearchImageWithinElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementparentWindowHandle);
             if (uIALocateVisibleSearchImageWithinElementsearchElementName != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementName);
+                uIALocateVisibleSearchImageWithinElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchElementName);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchElementClassName != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementClassName);
+                uIALocateVisibleSearchImageWithinElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchElementClassName);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchElementAutomationId != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementAutomationId);
+                uIALocateVisibleSearchImageWithinElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchElementAutomationId);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType);
+                uIALocateVisibleSearchImageWithinElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10613,7 +10613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementsearchSubTree != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchSubTree);
+                    uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchSubTree);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10629,7 +10629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmatchIndex != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndex);
+                    uIALocateVisibleSearchImageWithinElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmatchIndex);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10643,13 +10643,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementsearchFilter != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchFilter);
+                uIALocateVisibleSearchImageWithinElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchFilter);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsortByColumn != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsortByColumn);
+                uIALocateVisibleSearchImageWithinElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsortByColumn);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10657,7 +10657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmatchIndexAscending != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndexAscending);
+                    uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmatchIndexAscending);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10673,7 +10673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxElementsToSearch != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch);
+                    uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10689,7 +10689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                    uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10705,7 +10705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                    uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10719,19 +10719,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
+                uIALocateVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchImageType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageType);
+                uIALocateVisibleSearchImageWithinElement["SearchImageType"] = CSharpExpressionConverter.Convert(uIALocateVisibleSearchImageWithinElementsearchImageType);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchImage != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImage);
+                uIALocateVisibleSearchImageWithinElement["SearchImage"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchImage);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10739,7 +10739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementaltSearchImageType != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImageType);
+                    uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = CSharpExpressionConverter.Convert(uIALocateVisibleSearchImageWithinElementaltSearchImageType);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10753,7 +10753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementaltSearchImage != null)
             {
-                uIALocateVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImage);
+                uIALocateVisibleSearchImageWithinElement["AltSearchImage"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementaltSearchImage);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10761,7 +10761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxColourDeviation != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxColourDeviation);
+                    uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxColourDeviation);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10777,7 +10777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxPixelDifferences != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences);
+                    uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10793,7 +10793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                    uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10807,25 +10807,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementleftPixelXOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementleftPixelXOffset);
+                uIALocateVisibleSearchImageWithinElement["LeftPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementleftPixelXOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementrightPixelXOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementrightPixelXOffset);
+                uIALocateVisibleSearchImageWithinElement["RightPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementrightPixelXOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementtopPixelYOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementtopPixelYOffset);
+                uIALocateVisibleSearchImageWithinElement["TopPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementtopPixelYOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementbottomPixelYOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementbottomPixelYOffset);
+                uIALocateVisibleSearchImageWithinElement["BottomPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementbottomPixelYOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10833,7 +10833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                    uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = CSharpExpressionConverter.Convert(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10849,7 +10849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                    uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = CSharpExpressionConverter.Convert(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10865,7 +10865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementsearchImageIndex != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageIndex);
+                    uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementsearchImageIndex);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10881,7 +10881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementimageSearchDirection != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementimageSearchDirection);
+                    uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = CSharpExpressionConverter.Convert(uIALocateVisibleSearchImageWithinElementimageSearchDirection);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10897,7 +10897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementhideAgent != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementhideAgent);
+                    uIALocateVisibleSearchImageWithinElement["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementhideAgent);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10913,7 +10913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                    uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10929,7 +10929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIALocateVisibleSearchImageWithinElementshowHighlightRectangle != null)
                 {
-                    uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle);
+                    uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle);
                     uIALocateVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -10942,7 +10942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIALocateVisibleSearchImageWithinElementpropCount++;
-            uIALocateVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementworkflow);
+            uIALocateVisibleSearchImageWithinElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIALocateVisibleSearchImageWithinElementworkflow);
             if (uIALocateVisibleSearchImageWithinElementpropCount > 0)
             {
                 callPayload.Body = uIALocateVisibleSearchImageWithinElement;
@@ -10961,31 +10961,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForVisibleSearchImageWithinElementpropCount = 0;
             if (uIAWaitForVisibleSearchImageWithinElementparentWindowHandle != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementparentWindowHandle);
+                uIAWaitForVisibleSearchImageWithinElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementparentWindowHandle);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchElementName != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementName);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchElementName);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchElementClassName != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementClassName);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchElementClassName);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType);
+                uIAWaitForVisibleSearchImageWithinElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -10993,7 +10993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementsearchSubTree != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchSubTree);
+                    uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchSubTree);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11009,7 +11009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmatchIndex != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndex);
+                    uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmatchIndex);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11023,13 +11023,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchFilter != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchFilter);
+                uIAWaitForVisibleSearchImageWithinElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchFilter);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsortByColumn != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsortByColumn);
+                uIAWaitForVisibleSearchImageWithinElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsortByColumn);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -11037,7 +11037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending);
+                    uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11053,7 +11053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11069,7 +11069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11085,7 +11085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11099,19 +11099,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageType);
+                uIAWaitForVisibleSearchImageWithinElement["SearchImageType"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageWithinElementsearchImageType);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchImage != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImage);
+                uIAWaitForVisibleSearchImageWithinElement["SearchImage"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchImage);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -11119,7 +11119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementaltSearchImageType != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType);
+                    uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11133,7 +11133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementaltSearchImage != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImage);
+                uIAWaitForVisibleSearchImageWithinElement["AltSearchImage"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementaltSearchImage);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -11141,7 +11141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11157,7 +11157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11173,7 +11173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                    uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11187,25 +11187,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset);
+                uIAWaitForVisibleSearchImageWithinElement["LeftPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset);
+                uIAWaitForVisibleSearchImageWithinElement["RightPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset);
+                uIAWaitForVisibleSearchImageWithinElement["TopPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset);
+                uIAWaitForVisibleSearchImageWithinElement["BottomPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -11213,7 +11213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                    uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11229,7 +11229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                    uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11245,7 +11245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementsearchImageIndex != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex);
+                    uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11261,7 +11261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementimageSearchDirection != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection);
+                    uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11277,7 +11277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementhideAgent != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementhideAgent);
+                    uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementhideAgent);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11293,7 +11293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                    uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11309,7 +11309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle);
+                    uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11325,7 +11325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementsecondsToWait != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsecondsToWait);
+                    uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementsecondsToWait);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11341,7 +11341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches);
+                    uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11357,7 +11357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound);
+                    uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11371,7 +11371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId);
+                uIAWaitForVisibleSearchImageWithinElement["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -11379,7 +11379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageWithinElementwaitForThread != null)
                 {
-                    uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementwaitForThread);
+                    uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementwaitForThread);
                     uIAWaitForVisibleSearchImageWithinElementpropCount++;
                 }
 
@@ -11392,7 +11392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForVisibleSearchImageWithinElementpropCount++;
-            uIAWaitForVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementworkflow);
+            uIAWaitForVisibleSearchImageWithinElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageWithinElementworkflow);
             if (uIAWaitForVisibleSearchImageWithinElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForVisibleSearchImageWithinElement;
@@ -11411,31 +11411,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount = 0;
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ParentWindowHandle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementClassName"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementAutomationId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchLocalizedControlType"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11443,7 +11443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11459,7 +11459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11473,13 +11473,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchFilter"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SortByColumn"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11487,7 +11487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11503,7 +11503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11519,7 +11519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11535,7 +11535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11549,19 +11549,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ElementLocalizedControlTypesNotToTraverse"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageType"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImage"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11569,7 +11569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11583,7 +11583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImage"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11591,7 +11591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11607,7 +11607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11623,7 +11623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11637,25 +11637,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["LeftPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RightPixelXOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["TopPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["BottomPixelYOffset"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11663,7 +11663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11679,7 +11679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11695,7 +11695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11711,7 +11711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = CSharpExpressionConverter.Convert(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11727,7 +11727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11743,7 +11743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11759,7 +11759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11775,7 +11775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11791,7 +11791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11805,7 +11805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -11813,7 +11813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             {
                 if (uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread != null)
                 {
-                    uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread);
                     uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
                 }
 
@@ -11826,7 +11826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             }
 
             uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
-            uIAWaitForVisibleSearchImageToNotExistWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow);
+            uIAWaitForVisibleSearchImageToNotExistWithinElement["Workflow"] = CSharpExpressionConverter.ConvertToken(uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow);
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForVisibleSearchImageToNotExistWithinElement;

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<AssistantsGetResponse>(callPayload);
         }
 
@@ -36,38 +36,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 
             if (bodyfileIds != null)
             {
-                body["file_ids"] = ExpressionConverter.ConvertO(bodyfileIds);
+                body["file_ids"] = CSharpExpressionConverter.ConvertToken(bodyfileIds);
                 bodypropCount++;
             }
 
@@ -90,44 +90,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantGetResponse> AssistantGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var apiCallPath = String.Format("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<AssistantGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantDeleteResponse> AssistantDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var apiCallPath = String.Format("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<AssistantDeleteResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilesGetResponse> FilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var apiCallPath = String.Format("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<FilesGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> bodyfileId)
         {
-            var apiCallPath = String.Format("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["file_id"] = ExpressionConverter.ConvertO(bodyfileId);
+            body["file_id"] = CSharpExpressionConverter.ConvertToken(bodyfileId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -139,20 +139,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileGetResponse> FileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<FileGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<FileDeleteResponse>(callPayload);
         }
 
@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             var apiCallPath = "/threads";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -178,30 +178,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadGetResponse> ThreadGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<ThreadGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             var metadataObject = new JObject();
@@ -223,38 +223,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagesGetResponse> MessagesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<MessagesGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<MessagePostResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             var metadataObject = new JObject();
@@ -276,67 +276,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFileGetResponse> MessageFileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages/{1}/files/{2}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<MessageFileGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFilesGetResponse> MessageFilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<MessageFilesGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunsGetResponse> RunsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<RunsGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunPostResponse> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyassistantId = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyassistantId != null)
             {
-                body["assistant_id"] = ExpressionConverter.ConvertO(bodyassistantId);
+                body["assistant_id"] = CSharpExpressionConverter.ConvertToken(bodyassistantId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 
@@ -359,20 +359,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunGetResponse> RunGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<RunGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunModifyPostResponse> RunModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             var metadataObject = new JObject();
@@ -394,15 +394,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<bodytoolOutputsInputItem[]>> bodytoolOutputs = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}/submit_tool_outputs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/submit_tool_outputs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytoolOutputs != null)
             {
-                body["tool_outputs"] = ExpressionConverter.ConvertO(bodytoolOutputs);
+                body["tool_outputs"] = CSharpExpressionConverter.ConvertToken(bodytoolOutputs);
                 bodypropCount++;
             }
 
@@ -417,10 +417,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunCancelPostResponse> RunCancel(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}/cancel", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<RunCancelPostResponse>(callPayload);
         }
 
@@ -430,12 +430,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             var apiCallPath = "/threads/runs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyassistantId != null)
             {
-                body["assistant_id"] = ExpressionConverter.ConvertO(bodyassistantId);
+                body["assistant_id"] = CSharpExpressionConverter.ConvertToken(bodyassistantId);
                 bodypropCount++;
             }
 
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
             var threadObjectpropCount = 0;
             if (bodythreadmessages != null)
             {
-                threadObject["messages"] = ExpressionConverter.ConvertO(bodythreadmessages);
+                threadObject["messages"] = CSharpExpressionConverter.ConvertToken(bodythreadmessages);
                 threadObjectpropCount++;
             }
 
@@ -455,19 +455,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
                 bodypropCount++;
             }
 
             if (bodyinstructions != null)
             {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
                 bodypropCount++;
             }
 
             if (bodytools != null)
             {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                body["tools"] = CSharpExpressionConverter.ConvertToken(bodytools);
                 bodypropCount++;
             }
 
@@ -490,28 +490,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepGetResponse> RunStepGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<string>> stepId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}/steps/{2}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1), ExpressionConverter.ConvertWithUrlEncoding(stepId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<RunStepGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepsGetResponse> RunStepsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}/steps", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(openAIBeta);
+                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
+            callPayload.Headers["OpenAI-Beta"] = CSharpExpressionConverter.ConvertO(openAIBeta);
             return new ApiConnectionAction<RunStepsGetResponse>(callPayload);
         }
     }

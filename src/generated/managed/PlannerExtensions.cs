@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IWorkflowAction DeleteTask(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/unassignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["assignments"] = ExpressionConverter.ConvertO(bodyremoveAssignedUsers);
+            body["assignments"] = CSharpExpressionConverter.ConvertToken(bodyremoveAssignedUsers);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/assignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/assignusers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
+            body["assignments"] = CSharpExpressionConverter.ConvertToken(bodyassignedUserIds);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/planner/plans", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/planner/plans", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListMyPlansResponse>(callPayload);
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             bodypropCount++;
-            body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
+            body["planId"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -99,32 +99,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             bodypropCount++;
-            body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
+            body["planId"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodybucketId != null)
             {
-                body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
+                body["bucketId"] = CSharpExpressionConverter.ConvertToken(bodybucketId);
                 bodypropCount++;
             }
 
             if (bodystartDateTime != null)
             {
-                body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                body["startDateTime"] = CSharpExpressionConverter.ConvertToken(bodystartDateTime);
                 bodypropCount++;
             }
 
             if (bodydueDateTime != null)
             {
-                body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
+                body["dueDateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTime);
                 bodypropCount++;
             }
 
             if (bodyassignedUserIds != null)
             {
-                body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
+                body["assignments"] = CSharpExpressionConverter.ConvertToken(bodyassignedUserIds);
                 bodypropCount++;
             }
 
@@ -132,151 +132,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var appliedCategoriesObjectpropCount = 0;
             if (bodyappliedCategoriespink != null)
             {
-                appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
+                appliedCategoriesObject["category1"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespink);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesred != null)
             {
-                appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
+                appliedCategoriesObject["category2"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesred);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesyellow != null)
             {
-                appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
+                appliedCategoriesObject["category3"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesyellow);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesgreen != null)
             {
-                appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
+                appliedCategoriesObject["category4"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesgreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesblue != null)
             {
-                appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
+                appliedCategoriesObject["category5"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesblue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriespurple != null)
             {
-                appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
+                appliedCategoriesObject["category6"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespurple);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesbronze != null)
             {
-                appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
+                appliedCategoriesObject["category7"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesbronze);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslime != null)
             {
-                appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
+                appliedCategoriesObject["category8"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslime);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesaqua != null)
             {
-                appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
+                appliedCategoriesObject["category9"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesaqua);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesgray != null)
             {
-                appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
+                appliedCategoriesObject["category10"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesgray);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriessilver != null)
             {
-                appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
+                appliedCategoriesObject["category11"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriessilver);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesbrown != null)
             {
-                appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
+                appliedCategoriesObject["category12"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesbrown);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriescranberry != null)
             {
-                appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
+                appliedCategoriesObject["category13"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriescranberry);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesorange != null)
             {
-                appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
+                appliedCategoriesObject["category14"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesorange);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriespeach != null)
             {
-                appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
+                appliedCategoriesObject["category15"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespeach);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesmarigold != null)
             {
-                appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
+                appliedCategoriesObject["category16"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesmarigold);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightGreen != null)
             {
-                appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
+                appliedCategoriesObject["category17"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightGreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkGreen != null)
             {
-                appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
+                appliedCategoriesObject["category18"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkGreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesteal != null)
             {
-                appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
+                appliedCategoriesObject["category19"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesteal);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightBlue != null)
             {
-                appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
+                appliedCategoriesObject["category20"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightBlue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkBlue != null)
             {
-                appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
+                appliedCategoriesObject["category21"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkBlue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslavender != null)
             {
-                appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
+                appliedCategoriesObject["category22"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslavender);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesplum != null)
             {
-                appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
+                appliedCategoriesObject["category23"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesplum);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightGray != null)
             {
-                appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
+                appliedCategoriesObject["category24"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightGray);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkGray != null)
             {
-                appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
+                appliedCategoriesObject["category25"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkGray);
                 appliedCategoriesObjectpropCount++;
             }
 
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
                 bodypropCount++;
             }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> GetTask(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
@@ -321,10 +321,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListBucketsResponse> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/plans/{0}/buckets", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             return new ApiConnectionAction<ListBucketsResponse>(callPayload);
         }
 
@@ -340,17 +340,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListTasksResponseV2> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
@@ -358,31 +358,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var bodypropCount = 0;
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodydueDateTime != null)
             {
-                body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
+                body["dueDateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTime);
                 bodypropCount++;
             }
 
             if (bodystartDateTime != null)
             {
-                body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                body["startDateTime"] = CSharpExpressionConverter.ConvertToken(bodystartDateTime);
                 bodypropCount++;
             }
 
             if (bodypercentComplete != null)
             {
-                body["percentComplete"] = ExpressionConverter.ConvertO(bodypercentComplete);
+                body["percentComplete"] = CSharpExpressionConverter.ConvertToken(bodypercentComplete);
                 bodypropCount++;
             }
 
             if (bodybucketId != null)
             {
-                body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
+                body["bucketId"] = CSharpExpressionConverter.ConvertToken(bodybucketId);
                 bodypropCount++;
             }
 
@@ -390,151 +390,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var appliedCategoriesObjectpropCount = 0;
             if (bodyappliedCategoriespink != null)
             {
-                appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
+                appliedCategoriesObject["category1"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespink);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesred != null)
             {
-                appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
+                appliedCategoriesObject["category2"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesred);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesyellow != null)
             {
-                appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
+                appliedCategoriesObject["category3"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesyellow);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesgreen != null)
             {
-                appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
+                appliedCategoriesObject["category4"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesgreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesblue != null)
             {
-                appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
+                appliedCategoriesObject["category5"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesblue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriespurple != null)
             {
-                appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
+                appliedCategoriesObject["category6"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespurple);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesbronze != null)
             {
-                appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
+                appliedCategoriesObject["category7"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesbronze);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslime != null)
             {
-                appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
+                appliedCategoriesObject["category8"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslime);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesaqua != null)
             {
-                appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
+                appliedCategoriesObject["category9"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesaqua);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesgray != null)
             {
-                appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
+                appliedCategoriesObject["category10"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesgray);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriessilver != null)
             {
-                appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
+                appliedCategoriesObject["category11"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriessilver);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesbrown != null)
             {
-                appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
+                appliedCategoriesObject["category12"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesbrown);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriescranberry != null)
             {
-                appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
+                appliedCategoriesObject["category13"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriescranberry);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesorange != null)
             {
-                appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
+                appliedCategoriesObject["category14"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesorange);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriespeach != null)
             {
-                appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
+                appliedCategoriesObject["category15"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriespeach);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesmarigold != null)
             {
-                appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
+                appliedCategoriesObject["category16"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesmarigold);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightGreen != null)
             {
-                appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
+                appliedCategoriesObject["category17"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightGreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkGreen != null)
             {
-                appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
+                appliedCategoriesObject["category18"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkGreen);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesteal != null)
             {
-                appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
+                appliedCategoriesObject["category19"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesteal);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightBlue != null)
             {
-                appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
+                appliedCategoriesObject["category20"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightBlue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkBlue != null)
             {
-                appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
+                appliedCategoriesObject["category21"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkBlue);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslavender != null)
             {
-                appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
+                appliedCategoriesObject["category22"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslavender);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesplum != null)
             {
-                appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
+                appliedCategoriesObject["category23"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesplum);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategorieslightGray != null)
             {
-                appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
+                appliedCategoriesObject["category24"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategorieslightGray);
                 appliedCategoriesObjectpropCount++;
             }
 
             if (bodyappliedCategoriesdarkGray != null)
             {
-                appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
+                appliedCategoriesObject["category25"] = CSharpExpressionConverter.ConvertToken(bodyappliedCategoriesdarkGray);
                 appliedCategoriesObjectpropCount++;
             }
 
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
@@ -563,19 +563,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodyreferences != null)
             {
-                body["references"] = ExpressionConverter.ConvertO(bodyreferences);
+                body["references"] = CSharpExpressionConverter.ConvertToken(bodyreferences);
                 bodypropCount++;
             }
 
             if (bodychecklist != null)
             {
-                body["checklist"] = ExpressionConverter.ConvertO(bodychecklist);
+                body["checklist"] = CSharpExpressionConverter.ConvertToken(bodychecklist);
                 bodypropCount++;
             }
 
@@ -592,19 +592,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
     {
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            callPayload.Queries["groupId"] = CSharpExpressionConverter.ConvertO(groupId);
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
         }
 

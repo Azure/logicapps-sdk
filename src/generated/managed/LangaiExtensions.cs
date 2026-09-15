@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -42,18 +42,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodydate != null)
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
             }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<TagsResponse> Tags(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/api/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["PdfFileContent"] = ExpressionConverter.ConvertO(bodypDFFileContent);
+            body["PdfFileContent"] = CSharpExpressionConverter.ConvertToken(bodypDFFileContent);
             if (bodymode != null)
             {
                 if (bodymode != null)
                 {
-                    body["Mode"] = ExpressionConverter.ConvertO(bodymode);
+                    body["Mode"] = CSharpExpressionConverter.Convert(bodymode);
                     bodypropCount++;
                 }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
             {
                 if (bodygarbageLevel != null)
                 {
-                    body["Garbage"] = ExpressionConverter.ConvertO(bodygarbageLevel);
+                    body["Garbage"] = CSharpExpressionConverter.ConvertToken(bodygarbageLevel);
                     bodypropCount++;
                 }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
             {
                 if (bodydeflate != null)
                 {
-                    body["Deflate"] = ExpressionConverter.ConvertO(bodydeflate);
+                    body["Deflate"] = CSharpExpressionConverter.ConvertToken(bodydeflate);
                     bodypropCount++;
                 }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
             {
                 if (bodyclean != null)
                 {
-                    body["Clean"] = ExpressionConverter.ConvertO(bodyclean);
+                    body["Clean"] = CSharpExpressionConverter.ConvertToken(bodyclean);
                     bodypropCount++;
                 }
 

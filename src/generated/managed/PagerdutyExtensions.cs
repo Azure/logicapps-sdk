@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var apiCallPath = "/action8/incidents";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["incident_key"] = ExpressionConverter.Convert(incidentKey);
+            callPayload.Queries["incident_key"] = CSharpExpressionConverter.ConvertO(incidentKey);
             return new ApiConnectionAction<Incident>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<User>(callPayload);
@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
         {
-            var apiCallPath = String.Format("/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/incidents/{0}/notes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestaddedBy);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestaddedBy);
             requestpropCount++;
-            request["note"] = ExpressionConverter.ConvertO(requestnote);
+            request["note"] = CSharpExpressionConverter.ConvertToken(requestnote);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
         {
-            var apiCallPath = String.Format("/action1/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/action1/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestacknowledgedBy);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestacknowledgedBy);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
         {
-            var apiCallPath = String.Format("/action2/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/action2/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestresolvedBy);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestresolvedBy);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -89,15 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
         {
-            var apiCallPath = String.Format("/action3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/action3/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestfromUser);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestfromUser);
             requestpropCount++;
-            request["reassignUserId"] = ExpressionConverter.ConvertO(requesttoUser);
+            request["reassignUserId"] = CSharpExpressionConverter.ConvertToken(requesttoUser);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -109,15 +109,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
         {
-            var apiCallPath = String.Format("/action4/incidents/{0}/snooze", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/action4/incidents/{0}/snooze", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestsnoozedBy);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestsnoozedBy);
             requestpropCount++;
-            request["duration"] = ExpressionConverter.ConvertO(requestsnooze);
+            request["duration"] = CSharpExpressionConverter.ConvertToken(requestsnooze);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -129,15 +129,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
         {
-            var apiCallPath = String.Format("/action5/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/action5/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestescalatedBy);
+            request["userId"] = CSharpExpressionConverter.ConvertToken(requestescalatedBy);
             requestpropCount++;
-            request["policyId"] = ExpressionConverter.ConvertO(requestescalationPolicy);
+            request["policyId"] = CSharpExpressionConverter.ConvertToken(requestescalationPolicy);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -155,9 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["service_key"] = ExpressionConverter.ConvertO(requestserviceKey);
+            request["service_key"] = CSharpExpressionConverter.ConvertToken(requestserviceKey);
             requestpropCount++;
-            request["description"] = ExpressionConverter.ConvertO(requestdescription);
+            request["description"] = CSharpExpressionConverter.ConvertToken(requestdescription);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
     {
         public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<NotesResponse>(callPayload, triggerName, recurrence);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
         public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);

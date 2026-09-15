@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+            body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
             var @paramsObject = new JObject();
             var @paramsObjectpropCount = 0;
             if (@paramsObjectpropCount > 0)
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             {
                 if (bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                     bodypropCount++;
                 }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/images/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/images/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ImageGetResponse>(callPayload);
@@ -80,22 +80,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodyParams != null)
             {
-                body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                body["params"] = CSharpExpressionConverter.ConvertToken(bodyParams);
                 bodypropCount++;
             }
 
             if (bodywidth != null)
             {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
             }
 
             if (bodyheight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
                 bodypropCount++;
             }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateGetResponse>(callPayload);

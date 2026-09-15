@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -524,10 +524,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+            body["markdown"] = CSharpExpressionConverter.ConvertToken(bodymarkdownContent);
             if (bodytheme != null)
             {
-                body["theme"] = ExpressionConverter.ConvertO(bodytheme);
+                body["theme"] = CSharpExpressionConverter.ConvertToken(bodytheme);
                 bodypropCount++;
             }
 

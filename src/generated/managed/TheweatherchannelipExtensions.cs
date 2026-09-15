@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             var apiCallPath = "/wx/observations/current";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+            callPayload.Queries["geocode"] = CSharpExpressionConverter.ConvertO(geocode);
+            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
+            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
+            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             return new ApiConnectionAction<SuccessSchema>(callPayload);
         }
 
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             var apiCallPath = "/alerts/headlines";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(acceptHeader);
+            callPayload.Queries["geocode"] = CSharpExpressionConverter.ConvertO(geocode);
+            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
+            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
+            callPayload.Headers["acceptHeader"] = CSharpExpressionConverter.ConvertO(acceptHeader);
             return new ApiConnectionAction<SuccessSchema>(callPayload);
         }
 
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
             var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+            callPayload.Queries["geocode"] = CSharpExpressionConverter.ConvertO(geocode);
+            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
+            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
+            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             return new ApiConnectionAction<SuccessSchema>(callPayload);
         }
     }

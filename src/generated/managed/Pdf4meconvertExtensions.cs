@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             bodypropCount++;
-            body["docName"] = ExpressionConverter.ConvertO(bodydocName);
+            body["docName"] = CSharpExpressionConverter.ConvertToken(bodydocName);
             if (bodyindexFilePath != null)
             {
-                body["indexFilePath"] = ExpressionConverter.ConvertO(bodyindexFilePath);
+                body["indexFilePath"] = CSharpExpressionConverter.ConvertToken(bodyindexFilePath);
                 bodypropCount++;
             }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodylayout != null)
                 {
-                    body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                    body["layout"] = CSharpExpressionConverter.Convert(bodylayout);
                     bodypropCount++;
                 }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                     bodypropCount++;
                 }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyscale != null)
                 {
-                    body["scale"] = ExpressionConverter.ConvertO(bodyscale);
+                    body["scale"] = CSharpExpressionConverter.ConvertToken(bodyscale);
                     bodypropCount++;
                 }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodytopMargin != null)
                 {
-                    body["topMargin"] = ExpressionConverter.ConvertO(bodytopMargin);
+                    body["topMargin"] = CSharpExpressionConverter.ConvertToken(bodytopMargin);
                     bodypropCount++;
                 }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodybottomMargin != null)
                 {
-                    body["bottomMargin"] = ExpressionConverter.ConvertO(bodybottomMargin);
+                    body["bottomMargin"] = CSharpExpressionConverter.ConvertToken(bodybottomMargin);
                     bodypropCount++;
                 }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyleftMargin != null)
                 {
-                    body["leftMargin"] = ExpressionConverter.ConvertO(bodyleftMargin);
+                    body["leftMargin"] = CSharpExpressionConverter.ConvertToken(bodyleftMargin);
                     bodypropCount++;
                 }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyrightMargin != null)
                 {
-                    body["rightMargin"] = ExpressionConverter.ConvertO(bodyrightMargin);
+                    body["rightMargin"] = CSharpExpressionConverter.ConvertToken(bodyrightMargin);
                     bodypropCount++;
                 }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyprintBackground != null)
                 {
-                    body["printBackground"] = ExpressionConverter.ConvertO(bodyprintBackground);
+                    body["printBackground"] = CSharpExpressionConverter.ConvertToken(bodyprintBackground);
                     bodypropCount++;
                 }
 
@@ -174,12 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyfirstRow != null)
                 {
-                    body["firstRow"] = ExpressionConverter.ConvertO(bodyfirstRow);
+                    body["firstRow"] = CSharpExpressionConverter.ConvertToken(bodyfirstRow);
                     bodypropCount++;
                 }
 
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyfirstColumn != null)
                 {
-                    body["firstColumn"] = ExpressionConverter.ConvertO(bodyfirstColumn);
+                    body["firstColumn"] = CSharpExpressionConverter.ConvertToken(bodyfirstColumn);
                     bodypropCount++;
                 }
 
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyworksheetName != null)
                 {
-                    body["worksheetName"] = ExpressionConverter.ConvertO(bodyworksheetName);
+                    body["worksheetName"] = CSharpExpressionConverter.ConvertToken(bodyworksheetName);
                     bodypropCount++;
                 }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyconvertNumberAndDate != null)
                 {
-                    body["convertNumberAndDate"] = ExpressionConverter.ConvertO(bodyconvertNumberAndDate);
+                    body["convertNumberAndDate"] = CSharpExpressionConverter.ConvertToken(bodyconvertNumberAndDate);
                     bodypropCount++;
                 }
 
@@ -255,13 +255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
 
             if (bodydateFormat != null)
             {
-                body["dateFormat"] = ExpressionConverter.ConvertO(bodydateFormat);
+                body["dateFormat"] = CSharpExpressionConverter.ConvertToken(bodydateFormat);
                 bodypropCount++;
             }
 
             if (bodynumberFormat != null)
             {
-                body["numberFormat"] = ExpressionConverter.ConvertO(bodynumberFormat);
+                body["numberFormat"] = CSharpExpressionConverter.ConvertToken(bodynumberFormat);
                 bodypropCount++;
             }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyignoreNullValues != null)
                 {
-                    body["ignoreNullValues"] = ExpressionConverter.ConvertO(bodyignoreNullValues);
+                    body["ignoreNullValues"] = CSharpExpressionConverter.ConvertToken(bodyignoreNullValues);
                     bodypropCount++;
                 }
 
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyisTitleBold != null)
                 {
-                    body["isTitleBold"] = ExpressionConverter.ConvertO(bodyisTitleBold);
+                    body["isTitleBold"] = CSharpExpressionConverter.ConvertToken(bodyisTitleBold);
                     bodypropCount++;
                 }
 
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyisTitleWrapText != null)
                 {
-                    body["isTitleWrapText"] = ExpressionConverter.ConvertO(bodyisTitleWrapText);
+                    body["isTitleWrapText"] = CSharpExpressionConverter.ConvertToken(bodyisTitleWrapText);
                     bodypropCount++;
                 }
 
@@ -330,12 +330,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             bodypropCount++;
-            body["docName"] = ExpressionConverter.ConvertO(bodydocName);
+            body["docName"] = CSharpExpressionConverter.ConvertToken(bodydocName);
             if (bodymdFilePath != null)
             {
-                body["mdFilePath"] = ExpressionConverter.ConvertO(bodymdFilePath);
+                body["mdFilePath"] = CSharpExpressionConverter.ConvertToken(bodymdFilePath);
                 bodypropCount++;
             }
 
@@ -356,12 +356,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -388,12 +388,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+            body["webUrl"] = CSharpExpressionConverter.ConvertToken(bodywebUrl);
             if (bodyauthType != null)
             {
                 if (bodyauthType != null)
                 {
-                    body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+                    body["authType"] = CSharpExpressionConverter.Convert(bodyauthType);
                     bodypropCount++;
                 }
 
@@ -407,13 +407,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
 
             if (bodyusername != null)
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
             }
 
             if (bodypassword != null)
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
             }
 
@@ -433,8 +433,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["schemaVal"] = Convert.ToString("PDF");
             if (schemaVal != null)
-                callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-            callPayload.Body = ExpressionConverter.ConvertO(operation);
+                callPayload.Queries["schemaVal"] = CSharpExpressionConverter.Convert(schemaVal);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(operation);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -447,12 +447,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -479,14 +479,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["compliance"] = ExpressionConverter.ConvertO(bodycompliance);
+            body["compliance"] = CSharpExpressionConverter.Convert(bodycompliance);
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyallowUpgrade != null)
                 {
-                    body["allowUpgrade"] = ExpressionConverter.ConvertO(bodyallowUpgrade);
+                    body["allowUpgrade"] = CSharpExpressionConverter.ConvertToken(bodyallowUpgrade);
                     bodypropCount++;
                 }
 
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyallowDowngrade != null)
                 {
-                    body["allowDowngrade"] = ExpressionConverter.ConvertO(bodyallowDowngrade);
+                    body["allowDowngrade"] = CSharpExpressionConverter.ConvertToken(bodyallowDowngrade);
                     bodypropCount++;
                 }
 
@@ -539,11 +539,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -556,12 +556,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -572,10 +572,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             }
 
             bodypropCount++;
-            body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
+            body["qualityType"] = CSharpExpressionConverter.Convert(bodyqualityType);
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodymergeAllSheets != null)
                 {
-                    body["mergeAllSheets"] = ExpressionConverter.ConvertO(bodymergeAllSheets);
+                    body["mergeAllSheets"] = CSharpExpressionConverter.ConvertToken(bodymergeAllSheets);
                     bodypropCount++;
                 }
 
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyoutputFormat != null)
                 {
-                    body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["outputFormat"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
                     bodypropCount++;
                 }
 
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyisAsync != null)
                 {
-                    body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                    body["isAsync"] = CSharpExpressionConverter.ConvertToken(bodyisAsync);
                     bodypropCount++;
                 }
 
@@ -644,12 +644,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyqualityType != null)
                 {
-                    body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
+                    body["qualityType"] = CSharpExpressionConverter.Convert(bodyqualityType);
                     bodypropCount++;
                 }
 
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyisAsync != null)
                 {
-                    body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                    body["isAsync"] = CSharpExpressionConverter.ConvertToken(bodyisAsync);
                     bodypropCount++;
                 }
 
@@ -714,12 +714,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -730,10 +730,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             }
 
             bodypropCount++;
-            body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
+            body["qualityType"] = CSharpExpressionConverter.Convert(bodyqualityType);
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
             {
                 if (bodyisAsync != null)
                 {
-                    body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                    body["isAsync"] = CSharpExpressionConverter.ConvertToken(bodyisAsync);
                     bodypropCount++;
                 }
 

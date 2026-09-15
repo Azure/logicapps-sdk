@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getMachineName = new JObject();
             var getMachineNamepropCount = 0;
             getMachineNamepropCount++;
-            getMachineName["Workflow"] = ExpressionConverter.ConvertO(getMachineNameworkflow);
+            getMachineName["Workflow"] = CSharpExpressionConverter.ConvertToken(getMachineNameworkflow);
             if (getMachineNamepropCount > 0)
             {
                 callPayload.Body = getMachineName;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getMachineDomain = new JObject();
             var getMachineDomainpropCount = 0;
             getMachineDomainpropCount++;
-            getMachineDomain["Workflow"] = ExpressionConverter.ConvertO(getMachineDomainworkflow);
+            getMachineDomain["Workflow"] = CSharpExpressionConverter.ConvertToken(getMachineDomainworkflow);
             if (getMachineDomainpropCount > 0)
             {
                 callPayload.Body = getMachineDomain;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getRemoteSessionClientHostname = new JObject();
             var getRemoteSessionClientHostnamepropCount = 0;
             getRemoteSessionClientHostnamepropCount++;
-            getRemoteSessionClientHostname["Workflow"] = ExpressionConverter.ConvertO(getRemoteSessionClientHostnameworkflow);
+            getRemoteSessionClientHostname["Workflow"] = CSharpExpressionConverter.ConvertToken(getRemoteSessionClientHostnameworkflow);
             if (getRemoteSessionClientHostnamepropCount > 0)
             {
                 callPayload.Body = getRemoteSessionClientHostname;
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var expandEnvironmentVariable = new JObject();
             var expandEnvironmentVariablepropCount = 0;
             expandEnvironmentVariablepropCount++;
-            expandEnvironmentVariable["InputString"] = ExpressionConverter.ConvertO(expandEnvironmentVariableinputString);
+            expandEnvironmentVariable["InputString"] = CSharpExpressionConverter.ConvertToken(expandEnvironmentVariableinputString);
             expandEnvironmentVariablepropCount++;
-            expandEnvironmentVariable["Workflow"] = ExpressionConverter.ConvertO(expandEnvironmentVariableworkflow);
+            expandEnvironmentVariable["Workflow"] = CSharpExpressionConverter.ConvertToken(expandEnvironmentVariableworkflow);
             if (expandEnvironmentVariablepropCount > 0)
             {
                 callPayload.Body = expandEnvironmentVariable;
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var killProcess = new JObject();
             var killProcesspropCount = 0;
             killProcesspropCount++;
-            killProcess["ProcessName"] = ExpressionConverter.ConvertO(killProcessprocessName);
+            killProcess["ProcessName"] = CSharpExpressionConverter.ConvertToken(killProcessprocessName);
             killProcesspropCount++;
-            killProcess["Workflow"] = ExpressionConverter.ConvertO(killProcessworkflow);
+            killProcess["Workflow"] = CSharpExpressionConverter.ConvertToken(killProcessworkflow);
             if (killProcesspropCount > 0)
             {
                 callPayload.Body = killProcess;
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var killProcessID = new JObject();
             var killProcessIDpropCount = 0;
             killProcessIDpropCount++;
-            killProcessID["ProcessID"] = ExpressionConverter.ConvertO(killProcessIDprocessID);
+            killProcessID["ProcessID"] = CSharpExpressionConverter.ConvertToken(killProcessIDprocessID);
             killProcessIDpropCount++;
-            killProcessID["Workflow"] = ExpressionConverter.ConvertO(killProcessIDworkflow);
+            killProcessID["Workflow"] = CSharpExpressionConverter.ConvertToken(killProcessIDworkflow);
             if (killProcessIDpropCount > 0)
             {
                 callPayload.Body = killProcessID;
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getProcessCountByName = new JObject();
             var getProcessCountByNamepropCount = 0;
             getProcessCountByNamepropCount++;
-            getProcessCountByName["ProcessName"] = ExpressionConverter.ConvertO(getProcessCountByNameprocessName);
+            getProcessCountByName["ProcessName"] = CSharpExpressionConverter.ConvertToken(getProcessCountByNameprocessName);
             getProcessCountByNamepropCount++;
-            getProcessCountByName["Workflow"] = ExpressionConverter.ConvertO(getProcessCountByNameworkflow);
+            getProcessCountByName["Workflow"] = CSharpExpressionConverter.ConvertToken(getProcessCountByNameworkflow);
             if (getProcessCountByNamepropCount > 0)
             {
                 callPayload.Body = getProcessCountByName;
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAgentProcessCount = new JObject();
             var getAgentProcessCountpropCount = 0;
             getAgentProcessCountpropCount++;
-            getAgentProcessCount["Workflow"] = ExpressionConverter.ConvertO(getAgentProcessCountworkflow);
+            getAgentProcessCount["Workflow"] = CSharpExpressionConverter.ConvertToken(getAgentProcessCountworkflow);
             if (getAgentProcessCountpropCount > 0)
             {
                 callPayload.Body = getAgentProcessCount;
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var killAllOtherAgents = new JObject();
             var killAllOtherAgentspropCount = 0;
             killAllOtherAgentspropCount++;
-            killAllOtherAgents["Workflow"] = ExpressionConverter.ConvertO(killAllOtherAgentsworkflow);
+            killAllOtherAgents["Workflow"] = CSharpExpressionConverter.ConvertToken(killAllOtherAgentsworkflow);
             if (killAllOtherAgentspropCount > 0)
             {
                 callPayload.Body = killAllOtherAgents;
@@ -190,9 +190,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getProcessByPID = new JObject();
             var getProcessByPIDpropCount = 0;
             getProcessByPIDpropCount++;
-            getProcessByPID["ProcessId"] = ExpressionConverter.ConvertO(getProcessByPIDprocessId);
+            getProcessByPID["ProcessId"] = CSharpExpressionConverter.ConvertToken(getProcessByPIDprocessId);
             getProcessByPIDpropCount++;
-            getProcessByPID["Workflow"] = ExpressionConverter.ConvertO(getProcessByPIDworkflow);
+            getProcessByPID["Workflow"] = CSharpExpressionConverter.ConvertToken(getProcessByPIDworkflow);
             if (getProcessByPIDpropCount > 0)
             {
                 callPayload.Body = getProcessByPID;
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getProcessespropCount = 0;
             if (getProcessesprocessName != null)
             {
-                getProcesses["ProcessName"] = ExpressionConverter.ConvertO(getProcessesprocessName);
+                getProcesses["ProcessName"] = CSharpExpressionConverter.ConvertToken(getProcessesprocessName);
                 getProcessespropCount++;
             }
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getProcessesgetProcessCommandLine != null)
                 {
-                    getProcesses["GetProcessCommandLine"] = ExpressionConverter.ConvertO(getProcessesgetProcessCommandLine);
+                    getProcesses["GetProcessCommandLine"] = CSharpExpressionConverter.ConvertToken(getProcessesgetProcessCommandLine);
                     getProcessespropCount++;
                 }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getProcessespropCount++;
-            getProcesses["Workflow"] = ExpressionConverter.ConvertO(getProcessesworkflow);
+            getProcesses["Workflow"] = CSharpExpressionConverter.ConvertToken(getProcessesworkflow);
             if (getProcessespropCount > 0)
             {
                 callPayload.Body = getProcesses;
@@ -250,16 +250,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var runProcess = new JObject();
             var runProcesspropCount = 0;
             runProcesspropCount++;
-            runProcess["ProcessName"] = ExpressionConverter.ConvertO(runProcessprocessName);
+            runProcess["ProcessName"] = CSharpExpressionConverter.ConvertToken(runProcessprocessName);
             if (runProcessarguments != null)
             {
-                runProcess["Arguments"] = ExpressionConverter.ConvertO(runProcessarguments);
+                runProcess["Arguments"] = CSharpExpressionConverter.ConvertToken(runProcessarguments);
                 runProcesspropCount++;
             }
 
             if (runProcessworkingDirectory != null)
             {
-                runProcess["WorkingDirectory"] = ExpressionConverter.ConvertO(runProcessworkingDirectory);
+                runProcess["WorkingDirectory"] = CSharpExpressionConverter.ConvertToken(runProcessworkingDirectory);
                 runProcesspropCount++;
             }
 
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessuseShellExecute != null)
                 {
-                    runProcess["UseShellExecute"] = ExpressionConverter.ConvertO(runProcessuseShellExecute);
+                    runProcess["UseShellExecute"] = CSharpExpressionConverter.ConvertToken(runProcessuseShellExecute);
                     runProcesspropCount++;
                 }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcesscreateNoWindow != null)
                 {
-                    runProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runProcesscreateNoWindow);
+                    runProcess["CreateNoWindow"] = CSharpExpressionConverter.ConvertToken(runProcesscreateNoWindow);
                     runProcesspropCount++;
                 }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcesswindowStyle != null)
                 {
-                    runProcess["WindowStyle"] = ExpressionConverter.ConvertO(runProcesswindowStyle);
+                    runProcess["WindowStyle"] = CSharpExpressionConverter.Convert(runProcesswindowStyle);
                     runProcesspropCount++;
                 }
 
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcesswaitForProcess != null)
                 {
-                    runProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runProcesswaitForProcess);
+                    runProcess["WaitForProcess"] = CSharpExpressionConverter.ConvertToken(runProcesswaitForProcess);
                     runProcesspropCount++;
                 }
 
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessredirectStandardOutput != null)
                 {
-                    runProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardOutput);
+                    runProcess["RedirectStandardOutput"] = CSharpExpressionConverter.ConvertToken(runProcessredirectStandardOutput);
                     runProcesspropCount++;
                 }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessredirectStandardError != null)
                 {
-                    runProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runProcessredirectStandardError);
+                    runProcess["RedirectStandardError"] = CSharpExpressionConverter.ConvertToken(runProcessredirectStandardError);
                     runProcesspropCount++;
                 }
 
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessredirectStandardErrorToOutput != null)
                 {
-                    runProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardErrorToOutput);
+                    runProcess["RedirectStandardErrorToOutput"] = CSharpExpressionConverter.ConvertToken(runProcessredirectStandardErrorToOutput);
                     runProcesspropCount++;
                 }
 
@@ -377,31 +377,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runProcessstandardOutputEncoding != null)
             {
-                runProcess["StandardOutputEncoding"] = ExpressionConverter.ConvertO(runProcessstandardOutputEncoding);
+                runProcess["StandardOutputEncoding"] = CSharpExpressionConverter.Convert(runProcessstandardOutputEncoding);
                 runProcesspropCount++;
             }
 
             if (runProcessstandardErrorEncoding != null)
             {
-                runProcess["StandardErrorEncoding"] = ExpressionConverter.ConvertO(runProcessstandardErrorEncoding);
+                runProcess["StandardErrorEncoding"] = CSharpExpressionConverter.Convert(runProcessstandardErrorEncoding);
                 runProcesspropCount++;
             }
 
             if (runProcessrunAsDomain != null)
             {
-                runProcess["RunAsDomain"] = ExpressionConverter.ConvertO(runProcessrunAsDomain);
+                runProcess["RunAsDomain"] = CSharpExpressionConverter.ConvertToken(runProcessrunAsDomain);
                 runProcesspropCount++;
             }
 
             if (runProcessrunAsUsername != null)
             {
-                runProcess["RunAsUsername"] = ExpressionConverter.ConvertO(runProcessrunAsUsername);
+                runProcess["RunAsUsername"] = CSharpExpressionConverter.ConvertToken(runProcessrunAsUsername);
                 runProcesspropCount++;
             }
 
             if (runProcessrunAsPassword != null)
             {
-                runProcess["RunAsPassword"] = ExpressionConverter.ConvertO(runProcessrunAsPassword);
+                runProcess["RunAsPassword"] = CSharpExpressionConverter.ConvertToken(runProcessrunAsPassword);
                 runProcesspropCount++;
             }
 
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessrunAsLoadUserProfile != null)
                 {
-                    runProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runProcessrunAsLoadUserProfile);
+                    runProcess["RunAsLoadUserProfile"] = CSharpExpressionConverter.ConvertToken(runProcessrunAsLoadUserProfile);
                     runProcesspropCount++;
                 }
 
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcessrunAsElevate != null)
                 {
-                    runProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runProcessrunAsElevate);
+                    runProcess["RunAsElevate"] = CSharpExpressionConverter.ConvertToken(runProcessrunAsElevate);
                     runProcesspropCount++;
                 }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runProcesstimeoutInSeconds != null)
                 {
-                    runProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runProcesstimeoutInSeconds);
+                    runProcess["TimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(runProcesstimeoutInSeconds);
                     runProcesspropCount++;
                 }
 
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             runProcesspropCount++;
-            runProcess["Workflow"] = ExpressionConverter.ConvertO(runProcessworkflow);
+            runProcess["Workflow"] = CSharpExpressionConverter.ConvertToken(runProcessworkflow);
             if (runProcesspropCount > 0)
             {
                 callPayload.Body = runProcess;
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcesspowerShellExecutable != null)
                 {
-                    runPowerShellProcess["PowerShellExecutable"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellExecutable);
+                    runPowerShellProcess["PowerShellExecutable"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesspowerShellExecutable);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -489,19 +489,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runPowerShellProcesspowerShellScriptFilePath != null)
             {
-                runPowerShellProcess["PowerShellScriptFilePath"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellScriptFilePath);
+                runPowerShellProcess["PowerShellScriptFilePath"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesspowerShellScriptFilePath);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcesspowerShellScriptContents != null)
             {
-                runPowerShellProcess["PowerShellScriptContents"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellScriptContents);
+                runPowerShellProcess["PowerShellScriptContents"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesspowerShellScriptContents);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessworkingDirectory != null)
             {
-                runPowerShellProcess["WorkingDirectory"] = ExpressionConverter.ConvertO(runPowerShellProcessworkingDirectory);
+                runPowerShellProcess["WorkingDirectory"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessworkingDirectory);
                 runPowerShellProcesspropCount++;
             }
 
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcesscreateNoWindow != null)
                 {
-                    runPowerShellProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runPowerShellProcesscreateNoWindow);
+                    runPowerShellProcess["CreateNoWindow"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesscreateNoWindow);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcesswindowStyle != null)
                 {
-                    runPowerShellProcess["WindowStyle"] = ExpressionConverter.ConvertO(runPowerShellProcesswindowStyle);
+                    runPowerShellProcess["WindowStyle"] = CSharpExpressionConverter.Convert(runPowerShellProcesswindowStyle);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcesswaitForProcess != null)
                 {
-                    runPowerShellProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runPowerShellProcesswaitForProcess);
+                    runPowerShellProcess["WaitForProcess"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesswaitForProcess);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcessredirectStandardOutput != null)
                 {
-                    runPowerShellProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardOutput);
+                    runPowerShellProcess["RedirectStandardOutput"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessredirectStandardOutput);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcessredirectStandardError != null)
                 {
-                    runPowerShellProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardError);
+                    runPowerShellProcess["RedirectStandardError"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessredirectStandardError);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcessredirectStandardErrorToOutput != null)
                 {
-                    runPowerShellProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardErrorToOutput);
+                    runPowerShellProcess["RedirectStandardErrorToOutput"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessredirectStandardErrorToOutput);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -603,31 +603,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runPowerShellProcessstandardOutputEncoding != null)
             {
-                runPowerShellProcess["StandardOutputEncoding"] = ExpressionConverter.ConvertO(runPowerShellProcessstandardOutputEncoding);
+                runPowerShellProcess["StandardOutputEncoding"] = CSharpExpressionConverter.Convert(runPowerShellProcessstandardOutputEncoding);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessstandardErrorEncoding != null)
             {
-                runPowerShellProcess["StandardErrorEncoding"] = ExpressionConverter.ConvertO(runPowerShellProcessstandardErrorEncoding);
+                runPowerShellProcess["StandardErrorEncoding"] = CSharpExpressionConverter.Convert(runPowerShellProcessstandardErrorEncoding);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessrunAsDomain != null)
             {
-                runPowerShellProcess["RunAsDomain"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsDomain);
+                runPowerShellProcess["RunAsDomain"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessrunAsDomain);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessrunAsUsername != null)
             {
-                runPowerShellProcess["RunAsUsername"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsUsername);
+                runPowerShellProcess["RunAsUsername"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessrunAsUsername);
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessrunAsPassword != null)
             {
-                runPowerShellProcess["RunAsPassword"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsPassword);
+                runPowerShellProcess["RunAsPassword"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessrunAsPassword);
                 runPowerShellProcesspropCount++;
             }
 
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcessrunAsLoadUserProfile != null)
                 {
-                    runPowerShellProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsLoadUserProfile);
+                    runPowerShellProcess["RunAsLoadUserProfile"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessrunAsLoadUserProfile);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcessrunAsElevate != null)
                 {
-                    runPowerShellProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsElevate);
+                    runPowerShellProcess["RunAsElevate"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessrunAsElevate);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runPowerShellProcesstimeoutInSeconds != null)
                 {
-                    runPowerShellProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runPowerShellProcesstimeoutInSeconds);
+                    runPowerShellProcess["TimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesstimeoutInSeconds);
                     runPowerShellProcesspropCount++;
                 }
 
@@ -681,12 +681,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runPowerShellProcesspowerShellScriptTempFolder != null)
             {
-                runPowerShellProcess["PowerShellScriptTempFolder"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellScriptTempFolder);
+                runPowerShellProcess["PowerShellScriptTempFolder"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcesspowerShellScriptTempFolder);
                 runPowerShellProcesspropCount++;
             }
 
             runPowerShellProcesspropCount++;
-            runPowerShellProcess["Workflow"] = ExpressionConverter.ConvertO(runPowerShellProcessworkflow);
+            runPowerShellProcess["Workflow"] = CSharpExpressionConverter.ConvertToken(runPowerShellProcessworkflow);
             if (runPowerShellProcesspropCount > 0)
             {
                 callPayload.Body = runPowerShellProcess;
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getScreenResolution = new JObject();
             var getScreenResolutionpropCount = 0;
             getScreenResolutionpropCount++;
-            getScreenResolution["Workflow"] = ExpressionConverter.ConvertO(getScreenResolutionworkflow);
+            getScreenResolution["Workflow"] = CSharpExpressionConverter.ConvertToken(getScreenResolutionworkflow);
             if (getScreenResolutionpropCount > 0)
             {
                 callPayload.Body = getScreenResolution;
@@ -722,9 +722,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setDefaultPrinter = new JObject();
             var setDefaultPrinterpropCount = 0;
             setDefaultPrinterpropCount++;
-            setDefaultPrinter["DefaultPrinterName"] = ExpressionConverter.ConvertO(setDefaultPrinterdefaultPrinterName);
+            setDefaultPrinter["DefaultPrinterName"] = CSharpExpressionConverter.ConvertToken(setDefaultPrinterdefaultPrinterName);
             setDefaultPrinterpropCount++;
-            setDefaultPrinter["Workflow"] = ExpressionConverter.ConvertO(setDefaultPrinterworkflow);
+            setDefaultPrinter["Workflow"] = CSharpExpressionConverter.ConvertToken(setDefaultPrinterworkflow);
             if (setDefaultPrinterpropCount > 0)
             {
                 callPayload.Body = setDefaultPrinter;
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getDefaultPrinter = new JObject();
             var getDefaultPrinterpropCount = 0;
             getDefaultPrinterpropCount++;
-            getDefaultPrinter["Workflow"] = ExpressionConverter.ConvertO(getDefaultPrinterworkflow);
+            getDefaultPrinter["Workflow"] = CSharpExpressionConverter.ConvertToken(getDefaultPrinterworkflow);
             if (getDefaultPrinterpropCount > 0)
             {
                 callPayload.Body = getDefaultPrinter;
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getListOfPrinterslistLocalPrinters != null)
                 {
-                    getListOfPrinters["ListLocalPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistLocalPrinters);
+                    getListOfPrinters["ListLocalPrinters"] = CSharpExpressionConverter.ConvertToken(getListOfPrinterslistLocalPrinters);
                     getListOfPrinterspropCount++;
                 }
 
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getListOfPrinterslistNetworkPrinters != null)
                 {
-                    getListOfPrinters["ListNetworkPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistNetworkPrinters);
+                    getListOfPrinters["ListNetworkPrinters"] = CSharpExpressionConverter.ConvertToken(getListOfPrinterslistNetworkPrinters);
                     getListOfPrinterspropCount++;
                 }
 
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getListOfPrintersreturnDetailedInformation != null)
                 {
-                    getListOfPrinters["ReturnDetailedInformation"] = ExpressionConverter.ConvertO(getListOfPrintersreturnDetailedInformation);
+                    getListOfPrinters["ReturnDetailedInformation"] = CSharpExpressionConverter.ConvertToken(getListOfPrintersreturnDetailedInformation);
                     getListOfPrinterspropCount++;
                 }
 
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getListOfPrinterspropCount++;
-            getListOfPrinters["Workflow"] = ExpressionConverter.ConvertO(getListOfPrintersworkflow);
+            getListOfPrinters["Workflow"] = CSharpExpressionConverter.ConvertToken(getListOfPrintersworkflow);
             if (getListOfPrinterspropCount > 0)
             {
                 callPayload.Body = getListOfPrinters;
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setMouseMultipliermouseXMultiplier != null)
                 {
-                    setMouseMultiplier["MouseXMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseXMultiplier);
+                    setMouseMultiplier["MouseXMultiplier"] = CSharpExpressionConverter.ConvertToken(setMouseMultipliermouseXMultiplier);
                     setMouseMultiplierpropCount++;
                 }
 
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setMouseMultipliermouseYMultiplier != null)
                 {
-                    setMouseMultiplier["MouseYMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseYMultiplier);
+                    setMouseMultiplier["MouseYMultiplier"] = CSharpExpressionConverter.ConvertToken(setMouseMultipliermouseYMultiplier);
                     setMouseMultiplierpropCount++;
                 }
 
@@ -861,7 +861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setMouseMultiplierapplyToMouseEvent != null)
                 {
-                    setMouseMultiplier["ApplyToMouseEvent"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToMouseEvent);
+                    setMouseMultiplier["ApplyToMouseEvent"] = CSharpExpressionConverter.ConvertToken(setMouseMultiplierapplyToMouseEvent);
                     setMouseMultiplierpropCount++;
                 }
 
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setMouseMultiplierapplyToSetCursorPos != null)
                 {
-                    setMouseMultiplier["ApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToSetCursorPos);
+                    setMouseMultiplier["ApplyToSetCursorPos"] = CSharpExpressionConverter.ConvertToken(setMouseMultiplierapplyToSetCursorPos);
                     setMouseMultiplierpropCount++;
                 }
 
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setMouseMultiplierapplyToCurrentMouseMoveMethod != null)
                 {
-                    setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToCurrentMouseMoveMethod);
+                    setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = CSharpExpressionConverter.ConvertToken(setMouseMultiplierapplyToCurrentMouseMoveMethod);
                     setMouseMultiplierpropCount++;
                 }
 
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setMouseMultiplierpropCount++;
-            setMouseMultiplier["Workflow"] = ExpressionConverter.ConvertO(setMouseMultiplierworkflow);
+            setMouseMultiplier["Workflow"] = CSharpExpressionConverter.ConvertToken(setMouseMultiplierworkflow);
             if (setMouseMultiplierpropCount > 0)
             {
                 callPayload.Body = setMouseMultiplier;
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getMouseMultiplier = new JObject();
             var getMouseMultiplierpropCount = 0;
             getMouseMultiplierpropCount++;
-            getMouseMultiplier["Workflow"] = ExpressionConverter.ConvertO(getMouseMultiplierworkflow);
+            getMouseMultiplier["Workflow"] = CSharpExpressionConverter.ConvertToken(getMouseMultiplierworkflow);
             if (getMouseMultiplierpropCount > 0)
             {
                 callPayload.Body = getMouseMultiplier;
@@ -942,11 +942,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var moveMouseToCoordinate = new JObject();
             var moveMouseToCoordinatepropCount = 0;
             moveMouseToCoordinatepropCount++;
-            moveMouseToCoordinate["XCoord"] = ExpressionConverter.ConvertO(moveMouseToCoordinatexCoord);
+            moveMouseToCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseToCoordinatexCoord);
             moveMouseToCoordinatepropCount++;
-            moveMouseToCoordinate["YCoord"] = ExpressionConverter.ConvertO(moveMouseToCoordinateyCoord);
+            moveMouseToCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseToCoordinateyCoord);
             moveMouseToCoordinatepropCount++;
-            moveMouseToCoordinate["Workflow"] = ExpressionConverter.ConvertO(moveMouseToCoordinateworkflow);
+            moveMouseToCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(moveMouseToCoordinateworkflow);
             if (moveMouseToCoordinatepropCount > 0)
             {
                 callPayload.Body = moveMouseToCoordinate;
@@ -964,11 +964,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var moveMouseRelative = new JObject();
             var moveMouseRelativepropCount = 0;
             moveMouseRelativepropCount++;
-            moveMouseRelative["XCoord"] = ExpressionConverter.ConvertO(moveMouseRelativexCoord);
+            moveMouseRelative["XCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseRelativexCoord);
             moveMouseRelativepropCount++;
-            moveMouseRelative["YCoord"] = ExpressionConverter.ConvertO(moveMouseRelativeyCoord);
+            moveMouseRelative["YCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseRelativeyCoord);
             moveMouseRelativepropCount++;
-            moveMouseRelative["Workflow"] = ExpressionConverter.ConvertO(moveMouseRelativeworkflow);
+            moveMouseRelative["Workflow"] = CSharpExpressionConverter.ConvertToken(moveMouseRelativeworkflow);
             if (moveMouseRelativepropCount > 0)
             {
                 callPayload.Body = moveMouseRelative;
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftMouseButtonDown = new JObject();
             var leftMouseButtonDownpropCount = 0;
             leftMouseButtonDownpropCount++;
-            leftMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(leftMouseButtonDownworkflow);
+            leftMouseButtonDown["Workflow"] = CSharpExpressionConverter.ConvertToken(leftMouseButtonDownworkflow);
             if (leftMouseButtonDownpropCount > 0)
             {
                 callPayload.Body = leftMouseButtonDown;
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftMouseButtonUp = new JObject();
             var leftMouseButtonUppropCount = 0;
             leftMouseButtonUppropCount++;
-            leftMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(leftMouseButtonUpworkflow);
+            leftMouseButtonUp["Workflow"] = CSharpExpressionConverter.ConvertToken(leftMouseButtonUpworkflow);
             if (leftMouseButtonUppropCount > 0)
             {
                 callPayload.Body = leftMouseButtonUp;
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftClickMouse = new JObject();
             var leftClickMousepropCount = 0;
             leftClickMousepropCount++;
-            leftClickMouse["Workflow"] = ExpressionConverter.ConvertO(leftClickMouseworkflow);
+            leftClickMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(leftClickMouseworkflow);
             if (leftClickMousepropCount > 0)
             {
                 callPayload.Body = leftClickMouse;
@@ -1040,11 +1040,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftClickMouseAtCoordinate = new JObject();
             var leftClickMouseAtCoordinatepropCount = 0;
             leftClickMouseAtCoordinatepropCount++;
-            leftClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(leftClickMouseAtCoordinatexCoord);
+            leftClickMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(leftClickMouseAtCoordinatexCoord);
             leftClickMouseAtCoordinatepropCount++;
-            leftClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(leftClickMouseAtCoordinateyCoord);
+            leftClickMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(leftClickMouseAtCoordinateyCoord);
             leftClickMouseAtCoordinatepropCount++;
-            leftClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(leftClickMouseAtCoordinateworkflow);
+            leftClickMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(leftClickMouseAtCoordinateworkflow);
             if (leftClickMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = leftClickMouseAtCoordinate;
@@ -1062,9 +1062,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftHoldMouse = new JObject();
             var leftHoldMousepropCount = 0;
             leftHoldMousepropCount++;
-            leftHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(leftHoldMousesecondsToHold);
+            leftHoldMouse["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(leftHoldMousesecondsToHold);
             leftHoldMousepropCount++;
-            leftHoldMouse["Workflow"] = ExpressionConverter.ConvertO(leftHoldMouseworkflow);
+            leftHoldMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(leftHoldMouseworkflow);
             if (leftHoldMousepropCount > 0)
             {
                 callPayload.Body = leftHoldMouse;
@@ -1082,13 +1082,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftHoldMouseAtCoordinate = new JObject();
             var leftHoldMouseAtCoordinatepropCount = 0;
             leftHoldMouseAtCoordinatepropCount++;
-            leftHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(leftHoldMouseAtCoordinatexCoord);
+            leftHoldMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(leftHoldMouseAtCoordinatexCoord);
             leftHoldMouseAtCoordinatepropCount++;
-            leftHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(leftHoldMouseAtCoordinateyCoord);
+            leftHoldMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(leftHoldMouseAtCoordinateyCoord);
             leftHoldMouseAtCoordinatepropCount++;
-            leftHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(leftHoldMouseAtCoordinatesecondsToHold);
+            leftHoldMouseAtCoordinate["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(leftHoldMouseAtCoordinatesecondsToHold);
             leftHoldMouseAtCoordinatepropCount++;
-            leftHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(leftHoldMouseAtCoordinateworkflow);
+            leftHoldMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(leftHoldMouseAtCoordinateworkflow);
             if (leftHoldMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = leftHoldMouseAtCoordinate;
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightMouseButtonDown = new JObject();
             var rightMouseButtonDownpropCount = 0;
             rightMouseButtonDownpropCount++;
-            rightMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(rightMouseButtonDownworkflow);
+            rightMouseButtonDown["Workflow"] = CSharpExpressionConverter.ConvertToken(rightMouseButtonDownworkflow);
             if (rightMouseButtonDownpropCount > 0)
             {
                 callPayload.Body = rightMouseButtonDown;
@@ -1124,7 +1124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightMouseButtonUp = new JObject();
             var rightMouseButtonUppropCount = 0;
             rightMouseButtonUppropCount++;
-            rightMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(rightMouseButtonUpworkflow);
+            rightMouseButtonUp["Workflow"] = CSharpExpressionConverter.ConvertToken(rightMouseButtonUpworkflow);
             if (rightMouseButtonUppropCount > 0)
             {
                 callPayload.Body = rightMouseButtonUp;
@@ -1142,7 +1142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightClickMouse = new JObject();
             var rightClickMousepropCount = 0;
             rightClickMousepropCount++;
-            rightClickMouse["Workflow"] = ExpressionConverter.ConvertO(rightClickMouseworkflow);
+            rightClickMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(rightClickMouseworkflow);
             if (rightClickMousepropCount > 0)
             {
                 callPayload.Body = rightClickMouse;
@@ -1160,11 +1160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightClickMouseAtCoordinate = new JObject();
             var rightClickMouseAtCoordinatepropCount = 0;
             rightClickMouseAtCoordinatepropCount++;
-            rightClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(rightClickMouseAtCoordinatexCoord);
+            rightClickMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(rightClickMouseAtCoordinatexCoord);
             rightClickMouseAtCoordinatepropCount++;
-            rightClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(rightClickMouseAtCoordinateyCoord);
+            rightClickMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(rightClickMouseAtCoordinateyCoord);
             rightClickMouseAtCoordinatepropCount++;
-            rightClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(rightClickMouseAtCoordinateworkflow);
+            rightClickMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(rightClickMouseAtCoordinateworkflow);
             if (rightClickMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = rightClickMouseAtCoordinate;
@@ -1182,9 +1182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightHoldMouse = new JObject();
             var rightHoldMousepropCount = 0;
             rightHoldMousepropCount++;
-            rightHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(rightHoldMousesecondsToHold);
+            rightHoldMouse["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(rightHoldMousesecondsToHold);
             rightHoldMousepropCount++;
-            rightHoldMouse["Workflow"] = ExpressionConverter.ConvertO(rightHoldMouseworkflow);
+            rightHoldMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(rightHoldMouseworkflow);
             if (rightHoldMousepropCount > 0)
             {
                 callPayload.Body = rightHoldMouse;
@@ -1202,13 +1202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightHoldMouseAtCoordinate = new JObject();
             var rightHoldMouseAtCoordinatepropCount = 0;
             rightHoldMouseAtCoordinatepropCount++;
-            rightHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(rightHoldMouseAtCoordinatexCoord);
+            rightHoldMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(rightHoldMouseAtCoordinatexCoord);
             rightHoldMouseAtCoordinatepropCount++;
-            rightHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(rightHoldMouseAtCoordinateyCoord);
+            rightHoldMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(rightHoldMouseAtCoordinateyCoord);
             rightHoldMouseAtCoordinatepropCount++;
-            rightHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(rightHoldMouseAtCoordinatesecondsToHold);
+            rightHoldMouseAtCoordinate["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(rightHoldMouseAtCoordinatesecondsToHold);
             rightHoldMouseAtCoordinatepropCount++;
-            rightHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(rightHoldMouseAtCoordinateworkflow);
+            rightHoldMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(rightHoldMouseAtCoordinateworkflow);
             if (rightHoldMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = rightHoldMouseAtCoordinate;
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleMouseButtonDown = new JObject();
             var middleMouseButtonDownpropCount = 0;
             middleMouseButtonDownpropCount++;
-            middleMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(middleMouseButtonDownworkflow);
+            middleMouseButtonDown["Workflow"] = CSharpExpressionConverter.ConvertToken(middleMouseButtonDownworkflow);
             if (middleMouseButtonDownpropCount > 0)
             {
                 callPayload.Body = middleMouseButtonDown;
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleMouseButtonUp = new JObject();
             var middleMouseButtonUppropCount = 0;
             middleMouseButtonUppropCount++;
-            middleMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(middleMouseButtonUpworkflow);
+            middleMouseButtonUp["Workflow"] = CSharpExpressionConverter.ConvertToken(middleMouseButtonUpworkflow);
             if (middleMouseButtonUppropCount > 0)
             {
                 callPayload.Body = middleMouseButtonUp;
@@ -1262,7 +1262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleClickMouse = new JObject();
             var middleClickMousepropCount = 0;
             middleClickMousepropCount++;
-            middleClickMouse["Workflow"] = ExpressionConverter.ConvertO(middleClickMouseworkflow);
+            middleClickMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(middleClickMouseworkflow);
             if (middleClickMousepropCount > 0)
             {
                 callPayload.Body = middleClickMouse;
@@ -1280,11 +1280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleClickMouseAtCoordinate = new JObject();
             var middleClickMouseAtCoordinatepropCount = 0;
             middleClickMouseAtCoordinatepropCount++;
-            middleClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(middleClickMouseAtCoordinatexCoord);
+            middleClickMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(middleClickMouseAtCoordinatexCoord);
             middleClickMouseAtCoordinatepropCount++;
-            middleClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(middleClickMouseAtCoordinateyCoord);
+            middleClickMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(middleClickMouseAtCoordinateyCoord);
             middleClickMouseAtCoordinatepropCount++;
-            middleClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(middleClickMouseAtCoordinateworkflow);
+            middleClickMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(middleClickMouseAtCoordinateworkflow);
             if (middleClickMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = middleClickMouseAtCoordinate;
@@ -1302,9 +1302,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleHoldMouse = new JObject();
             var middleHoldMousepropCount = 0;
             middleHoldMousepropCount++;
-            middleHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(middleHoldMousesecondsToHold);
+            middleHoldMouse["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(middleHoldMousesecondsToHold);
             middleHoldMousepropCount++;
-            middleHoldMouse["Workflow"] = ExpressionConverter.ConvertO(middleHoldMouseworkflow);
+            middleHoldMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(middleHoldMouseworkflow);
             if (middleHoldMousepropCount > 0)
             {
                 callPayload.Body = middleHoldMouse;
@@ -1322,13 +1322,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleHoldMouseAtCoordinate = new JObject();
             var middleHoldMouseAtCoordinatepropCount = 0;
             middleHoldMouseAtCoordinatepropCount++;
-            middleHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(middleHoldMouseAtCoordinatexCoord);
+            middleHoldMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(middleHoldMouseAtCoordinatexCoord);
             middleHoldMouseAtCoordinatepropCount++;
-            middleHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(middleHoldMouseAtCoordinateyCoord);
+            middleHoldMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(middleHoldMouseAtCoordinateyCoord);
             middleHoldMouseAtCoordinatepropCount++;
-            middleHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(middleHoldMouseAtCoordinatesecondsToHold);
+            middleHoldMouseAtCoordinate["SecondsToHold"] = CSharpExpressionConverter.ConvertToken(middleHoldMouseAtCoordinatesecondsToHold);
             middleHoldMouseAtCoordinatepropCount++;
-            middleHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(middleHoldMouseAtCoordinateworkflow);
+            middleHoldMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(middleHoldMouseAtCoordinateworkflow);
             if (middleHoldMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = middleHoldMouseAtCoordinate;
@@ -1349,7 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (doubleLeftClickMousedelayInMilliseconds != null)
                 {
-                    doubleLeftClickMouse["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMousedelayInMilliseconds);
+                    doubleLeftClickMouse["DelayInMilliseconds"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMousedelayInMilliseconds);
                     doubleLeftClickMousepropCount++;
                 }
 
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             doubleLeftClickMousepropCount++;
-            doubleLeftClickMouse["Workflow"] = ExpressionConverter.ConvertO(doubleLeftClickMouseworkflow);
+            doubleLeftClickMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMouseworkflow);
             if (doubleLeftClickMousepropCount > 0)
             {
                 callPayload.Body = doubleLeftClickMouse;
@@ -1380,14 +1380,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var doubleLeftClickMouseAtCoordinate = new JObject();
             var doubleLeftClickMouseAtCoordinatepropCount = 0;
             doubleLeftClickMouseAtCoordinatepropCount++;
-            doubleLeftClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinatexCoord);
+            doubleLeftClickMouseAtCoordinate["XCoord"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMouseAtCoordinatexCoord);
             doubleLeftClickMouseAtCoordinatepropCount++;
-            doubleLeftClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinateyCoord);
+            doubleLeftClickMouseAtCoordinate["YCoord"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMouseAtCoordinateyCoord);
             if (doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
             {
                 if (doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
                 {
-                    doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
+                    doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
                     doubleLeftClickMouseAtCoordinatepropCount++;
                 }
 
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             doubleLeftClickMouseAtCoordinatepropCount++;
-            doubleLeftClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinateworkflow);
+            doubleLeftClickMouseAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(doubleLeftClickMouseAtCoordinateworkflow);
             if (doubleLeftClickMouseAtCoordinatepropCount > 0)
             {
                 callPayload.Body = doubleLeftClickMouseAtCoordinate;
@@ -1418,18 +1418,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var leftMouseDragBetweenCoordinates = new JObject();
             var leftMouseDragBetweenCoordinatespropCount = 0;
             leftMouseDragBetweenCoordinatespropCount++;
-            leftMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesstartXCoord);
+            leftMouseDragBetweenCoordinates["StartXCoord"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesstartXCoord);
             leftMouseDragBetweenCoordinatespropCount++;
-            leftMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesstartYCoord);
+            leftMouseDragBetweenCoordinates["StartYCoord"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesstartYCoord);
             leftMouseDragBetweenCoordinatespropCount++;
-            leftMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesendXCoord);
+            leftMouseDragBetweenCoordinates["EndXCoord"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesendXCoord);
             leftMouseDragBetweenCoordinatespropCount++;
-            leftMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesendYCoord);
+            leftMouseDragBetweenCoordinates["EndYCoord"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesendYCoord);
             if (leftMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
                 if (leftMouseDragBetweenCoordinatesnumberOfSteps != null)
                 {
-                    leftMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesnumberOfSteps);
+                    leftMouseDragBetweenCoordinates["NumberOfSteps"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesnumberOfSteps);
                     leftMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1445,7 +1445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (leftMouseDragBetweenCoordinatestotalTimeInSeconds != null)
                 {
-                    leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatestotalTimeInSeconds);
                     leftMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1459,13 +1459,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
             {
-                leftMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
+                leftMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
                 leftMouseDragBetweenCoordinatespropCount++;
             }
 
             if (leftMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
             {
-                leftMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter);
+                leftMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter);
                 leftMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1473,7 +1473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
                 {
-                    leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
                     leftMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1486,7 +1486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             leftMouseDragBetweenCoordinatespropCount++;
-            leftMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesworkflow);
+            leftMouseDragBetweenCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(leftMouseDragBetweenCoordinatesworkflow);
             if (leftMouseDragBetweenCoordinatespropCount > 0)
             {
                 callPayload.Body = leftMouseDragBetweenCoordinates;
@@ -1504,18 +1504,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var rightMouseDragBetweenCoordinates = new JObject();
             var rightMouseDragBetweenCoordinatespropCount = 0;
             rightMouseDragBetweenCoordinatespropCount++;
-            rightMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesstartXCoord);
+            rightMouseDragBetweenCoordinates["StartXCoord"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesstartXCoord);
             rightMouseDragBetweenCoordinatespropCount++;
-            rightMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesstartYCoord);
+            rightMouseDragBetweenCoordinates["StartYCoord"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesstartYCoord);
             rightMouseDragBetweenCoordinatespropCount++;
-            rightMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesendXCoord);
+            rightMouseDragBetweenCoordinates["EndXCoord"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesendXCoord);
             rightMouseDragBetweenCoordinatespropCount++;
-            rightMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesendYCoord);
+            rightMouseDragBetweenCoordinates["EndYCoord"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesendYCoord);
             if (rightMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
                 if (rightMouseDragBetweenCoordinatesnumberOfSteps != null)
                 {
-                    rightMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesnumberOfSteps);
+                    rightMouseDragBetweenCoordinates["NumberOfSteps"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesnumberOfSteps);
                     rightMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1531,7 +1531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (rightMouseDragBetweenCoordinatestotalTimeInSeconds != null)
                 {
-                    rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatestotalTimeInSeconds);
                     rightMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1545,13 +1545,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
             {
-                rightMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
+                rightMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
                 rightMouseDragBetweenCoordinatespropCount++;
             }
 
             if (rightMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
             {
-                rightMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter);
+                rightMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter);
                 rightMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1559,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
                 {
-                    rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
                     rightMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1572,7 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             rightMouseDragBetweenCoordinatespropCount++;
-            rightMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesworkflow);
+            rightMouseDragBetweenCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(rightMouseDragBetweenCoordinatesworkflow);
             if (rightMouseDragBetweenCoordinatespropCount > 0)
             {
                 callPayload.Body = rightMouseDragBetweenCoordinates;
@@ -1590,18 +1590,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var middleMouseDragBetweenCoordinates = new JObject();
             var middleMouseDragBetweenCoordinatespropCount = 0;
             middleMouseDragBetweenCoordinatespropCount++;
-            middleMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesstartXCoord);
+            middleMouseDragBetweenCoordinates["StartXCoord"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesstartXCoord);
             middleMouseDragBetweenCoordinatespropCount++;
-            middleMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesstartYCoord);
+            middleMouseDragBetweenCoordinates["StartYCoord"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesstartYCoord);
             middleMouseDragBetweenCoordinatespropCount++;
-            middleMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesendXCoord);
+            middleMouseDragBetweenCoordinates["EndXCoord"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesendXCoord);
             middleMouseDragBetweenCoordinatespropCount++;
-            middleMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesendYCoord);
+            middleMouseDragBetweenCoordinates["EndYCoord"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesendYCoord);
             if (middleMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
                 if (middleMouseDragBetweenCoordinatesnumberOfSteps != null)
                 {
-                    middleMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesnumberOfSteps);
+                    middleMouseDragBetweenCoordinates["NumberOfSteps"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesnumberOfSteps);
                     middleMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1617,7 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (middleMouseDragBetweenCoordinatestotalTimeInSeconds != null)
                 {
-                    middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatestotalTimeInSeconds);
                     middleMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1631,13 +1631,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
             {
-                middleMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
+                middleMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
                 middleMouseDragBetweenCoordinatespropCount++;
             }
 
             if (middleMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
             {
-                middleMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter);
+                middleMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter);
                 middleMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
                 {
-                    middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
                     middleMouseDragBetweenCoordinatespropCount++;
                 }
 
@@ -1658,7 +1658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             middleMouseDragBetweenCoordinatespropCount++;
-            middleMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesworkflow);
+            middleMouseDragBetweenCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(middleMouseDragBetweenCoordinatesworkflow);
             if (middleMouseDragBetweenCoordinatespropCount > 0)
             {
                 callPayload.Body = middleMouseDragBetweenCoordinates;
@@ -1676,18 +1676,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var moveMouseBetweenCoordinates = new JObject();
             var moveMouseBetweenCoordinatespropCount = 0;
             moveMouseBetweenCoordinatespropCount++;
-            moveMouseBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesstartXCoord);
+            moveMouseBetweenCoordinates["StartXCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesstartXCoord);
             moveMouseBetweenCoordinatespropCount++;
-            moveMouseBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesstartYCoord);
+            moveMouseBetweenCoordinates["StartYCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesstartYCoord);
             moveMouseBetweenCoordinatespropCount++;
-            moveMouseBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesendXCoord);
+            moveMouseBetweenCoordinates["EndXCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesendXCoord);
             moveMouseBetweenCoordinatespropCount++;
-            moveMouseBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesendYCoord);
+            moveMouseBetweenCoordinates["EndYCoord"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesendYCoord);
             if (moveMouseBetweenCoordinatesnumberOfSteps != null)
             {
                 if (moveMouseBetweenCoordinatesnumberOfSteps != null)
                 {
-                    moveMouseBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesnumberOfSteps);
+                    moveMouseBetweenCoordinates["NumberOfSteps"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesnumberOfSteps);
                     moveMouseBetweenCoordinatespropCount++;
                 }
 
@@ -1703,7 +1703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (moveMouseBetweenCoordinatestotalTimeInSeconds != null)
                 {
-                    moveMouseBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatestotalTimeInSeconds);
+                    moveMouseBetweenCoordinates["TotalTimeInSeconds"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatestotalTimeInSeconds);
                     moveMouseBetweenCoordinatespropCount++;
                 }
 
@@ -1717,13 +1717,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (moveMouseBetweenCoordinatesmaximumMovementPixelJitter != null)
             {
-                moveMouseBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesmaximumMovementPixelJitter);
+                moveMouseBetweenCoordinates["MaximumMovementPixelJitter"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesmaximumMovementPixelJitter);
                 moveMouseBetweenCoordinatespropCount++;
             }
 
             if (moveMouseBetweenCoordinatesmaximumEndPixelJitter != null)
             {
-                moveMouseBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesmaximumEndPixelJitter);
+                moveMouseBetweenCoordinates["MaximumEndPixelJitter"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesmaximumEndPixelJitter);
                 moveMouseBetweenCoordinatespropCount++;
             }
 
@@ -1731,7 +1731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
                 {
-                    moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
                     moveMouseBetweenCoordinatespropCount++;
                 }
 
@@ -1744,7 +1744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             moveMouseBetweenCoordinatespropCount++;
-            moveMouseBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesworkflow);
+            moveMouseBetweenCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(moveMouseBetweenCoordinatesworkflow);
             if (moveMouseBetweenCoordinatespropCount > 0)
             {
                 callPayload.Body = moveMouseBetweenCoordinates;
@@ -1762,9 +1762,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var turnMouseWheel = new JObject();
             var turnMouseWheelpropCount = 0;
             turnMouseWheelpropCount++;
-            turnMouseWheel["WheelTurns"] = ExpressionConverter.ConvertO(turnMouseWheelwheelTurns);
+            turnMouseWheel["WheelTurns"] = CSharpExpressionConverter.ConvertToken(turnMouseWheelwheelTurns);
             turnMouseWheelpropCount++;
-            turnMouseWheel["Workflow"] = ExpressionConverter.ConvertO(turnMouseWheelworkflow);
+            turnMouseWheel["Workflow"] = CSharpExpressionConverter.ConvertToken(turnMouseWheelworkflow);
             if (turnMouseWheelpropCount > 0)
             {
                 callPayload.Body = turnMouseWheel;
@@ -1782,11 +1782,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setCursorPos = new JObject();
             var setCursorPospropCount = 0;
             setCursorPospropCount++;
-            setCursorPos["X"] = ExpressionConverter.ConvertO(setCursorPosx);
+            setCursorPos["X"] = CSharpExpressionConverter.ConvertToken(setCursorPosx);
             setCursorPospropCount++;
-            setCursorPos["Y"] = ExpressionConverter.ConvertO(setCursorPosy);
+            setCursorPos["Y"] = CSharpExpressionConverter.ConvertToken(setCursorPosy);
             setCursorPospropCount++;
-            setCursorPos["Workflow"] = ExpressionConverter.ConvertO(setCursorPosworkflow);
+            setCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(setCursorPosworkflow);
             if (setCursorPospropCount > 0)
             {
                 callPayload.Body = setCursorPos;
@@ -1804,7 +1804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getCursorPos = new JObject();
             var getCursorPospropCount = 0;
             getCursorPospropCount++;
-            getCursorPos["Workflow"] = ExpressionConverter.ConvertO(getCursorPosworkflow);
+            getCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(getCursorPosworkflow);
             if (getCursorPospropCount > 0)
             {
                 callPayload.Body = getCursorPos;
@@ -1825,7 +1825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (calibrateMouseEventcalibrationSizeInPixels != null)
                 {
-                    calibrateMouseEvent["CalibrationSizeInPixels"] = ExpressionConverter.ConvertO(calibrateMouseEventcalibrationSizeInPixels);
+                    calibrateMouseEvent["CalibrationSizeInPixels"] = CSharpExpressionConverter.ConvertToken(calibrateMouseEventcalibrationSizeInPixels);
                     calibrateMouseEventpropCount++;
                 }
 
@@ -1838,7 +1838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             calibrateMouseEventpropCount++;
-            calibrateMouseEvent["Workflow"] = ExpressionConverter.ConvertO(calibrateMouseEventworkflow);
+            calibrateMouseEvent["Workflow"] = CSharpExpressionConverter.ConvertToken(calibrateMouseEventworkflow);
             if (calibrateMouseEventpropCount > 0)
             {
                 callPayload.Body = calibrateMouseEvent;
@@ -1856,7 +1856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getMouseMoveMethod = new JObject();
             var getMouseMoveMethodpropCount = 0;
             getMouseMoveMethodpropCount++;
-            getMouseMoveMethod["Workflow"] = ExpressionConverter.ConvertO(getMouseMoveMethodworkflow);
+            getMouseMoveMethod["Workflow"] = CSharpExpressionConverter.ConvertToken(getMouseMoveMethodworkflow);
             if (getMouseMoveMethodpropCount > 0)
             {
                 callPayload.Body = getMouseMoveMethod;
@@ -1874,9 +1874,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setMouseMoveMethod = new JObject();
             var setMouseMoveMethodpropCount = 0;
             setMouseMoveMethodpropCount++;
-            setMouseMoveMethod["MouseMoveMethod"] = ExpressionConverter.ConvertO(setMouseMoveMethodmouseMoveMethod);
+            setMouseMoveMethod["MouseMoveMethod"] = CSharpExpressionConverter.Convert(setMouseMoveMethodmouseMoveMethod);
             setMouseMoveMethodpropCount++;
-            setMouseMoveMethod["Workflow"] = ExpressionConverter.ConvertO(setMouseMoveMethodworkflow);
+            setMouseMoveMethod["Workflow"] = CSharpExpressionConverter.ConvertToken(setMouseMoveMethodworkflow);
             if (setMouseMoveMethodpropCount > 0)
             {
                 callPayload.Body = setMouseMoveMethod;
@@ -1897,7 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (wiggleMousexWiggle != null)
                 {
-                    wiggleMouse["XWiggle"] = ExpressionConverter.ConvertO(wiggleMousexWiggle);
+                    wiggleMouse["XWiggle"] = CSharpExpressionConverter.ConvertToken(wiggleMousexWiggle);
                     wiggleMousepropCount++;
                 }
 
@@ -1911,7 +1911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (wiggleMouseyWiggle != null)
             {
-                wiggleMouse["YWiggle"] = ExpressionConverter.ConvertO(wiggleMouseyWiggle);
+                wiggleMouse["YWiggle"] = CSharpExpressionConverter.ConvertToken(wiggleMouseyWiggle);
                 wiggleMousepropCount++;
             }
 
@@ -1919,7 +1919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (wiggleMousewiggleDelayInSeconds != null)
                 {
-                    wiggleMouse["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(wiggleMousewiggleDelayInSeconds);
+                    wiggleMouse["WiggleDelayInSeconds"] = CSharpExpressionConverter.ConvertToken(wiggleMousewiggleDelayInSeconds);
                     wiggleMousepropCount++;
                 }
 
@@ -1932,7 +1932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             wiggleMousepropCount++;
-            wiggleMouse["Workflow"] = ExpressionConverter.ConvertO(wiggleMouseworkflow);
+            wiggleMouse["Workflow"] = CSharpExpressionConverter.ConvertToken(wiggleMouseworkflow);
             if (wiggleMousepropCount > 0)
             {
                 callPayload.Body = wiggleMouse;
@@ -1950,12 +1950,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var sendKeyEvents = new JObject();
             var sendKeyEventspropCount = 0;
             sendKeyEventspropCount++;
-            sendKeyEvents["Text"] = ExpressionConverter.ConvertO(sendKeyEventstext);
+            sendKeyEvents["Text"] = CSharpExpressionConverter.ConvertToken(sendKeyEventstext);
             if (sendKeyEventsinterval != null)
             {
                 if (sendKeyEventsinterval != null)
                 {
-                    sendKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendKeyEventsinterval);
+                    sendKeyEvents["Interval"] = CSharpExpressionConverter.ConvertToken(sendKeyEventsinterval);
                     sendKeyEventspropCount++;
                 }
 
@@ -1971,7 +1971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendKeyEventsisPassword != null)
                 {
-                    sendKeyEvents["IsPassword"] = ExpressionConverter.ConvertO(sendKeyEventsisPassword);
+                    sendKeyEvents["IsPassword"] = CSharpExpressionConverter.ConvertToken(sendKeyEventsisPassword);
                     sendKeyEventspropCount++;
                 }
 
@@ -1987,7 +1987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendKeyEventsdontInterpretSymbols != null)
                 {
-                    sendKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeyEventsdontInterpretSymbols);
+                    sendKeyEvents["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(sendKeyEventsdontInterpretSymbols);
                     sendKeyEventspropCount++;
                 }
 
@@ -2000,7 +2000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             sendKeyEventspropCount++;
-            sendKeyEvents["Workflow"] = ExpressionConverter.ConvertO(sendKeyEventsworkflow);
+            sendKeyEvents["Workflow"] = CSharpExpressionConverter.ConvertToken(sendKeyEventsworkflow);
             if (sendKeyEventspropCount > 0)
             {
                 callPayload.Body = sendKeyEvents;
@@ -2018,12 +2018,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var sendPasswordKeyEvents = new JObject();
             var sendPasswordKeyEventspropCount = 0;
             sendPasswordKeyEventspropCount++;
-            sendPasswordKeyEvents["Password"] = ExpressionConverter.ConvertO(sendPasswordKeyEventspassword);
+            sendPasswordKeyEvents["Password"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyEventspassword);
             if (sendPasswordKeyEventsinterval != null)
             {
                 if (sendPasswordKeyEventsinterval != null)
                 {
-                    sendPasswordKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsinterval);
+                    sendPasswordKeyEvents["Interval"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyEventsinterval);
                     sendPasswordKeyEventspropCount++;
                 }
 
@@ -2039,7 +2039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendPasswordKeyEventsdontInterpretSymbols != null)
                 {
-                    sendPasswordKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsdontInterpretSymbols);
+                    sendPasswordKeyEvents["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyEventsdontInterpretSymbols);
                     sendPasswordKeyEventspropCount++;
                 }
 
@@ -2055,7 +2055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendPasswordKeyEventspasswordContainsStoredPassword != null)
                 {
-                    sendPasswordKeyEvents["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyEventspasswordContainsStoredPassword);
+                    sendPasswordKeyEvents["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyEventspasswordContainsStoredPassword);
                     sendPasswordKeyEventspropCount++;
                 }
 
@@ -2068,7 +2068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             sendPasswordKeyEventspropCount++;
-            sendPasswordKeyEvents["Workflow"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsworkflow);
+            sendPasswordKeyEvents["Workflow"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyEventsworkflow);
             if (sendPasswordKeyEventspropCount > 0)
             {
                 callPayload.Body = sendPasswordKeyEvents;
@@ -2086,12 +2086,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var sendKeys = new JObject();
             var sendKeyspropCount = 0;
             sendKeyspropCount++;
-            sendKeys["Text"] = ExpressionConverter.ConvertO(sendKeystext);
+            sendKeys["Text"] = CSharpExpressionConverter.ConvertToken(sendKeystext);
             if (sendKeysinterval != null)
             {
                 if (sendKeysinterval != null)
                 {
-                    sendKeys["Interval"] = ExpressionConverter.ConvertO(sendKeysinterval);
+                    sendKeys["Interval"] = CSharpExpressionConverter.ConvertToken(sendKeysinterval);
                     sendKeyspropCount++;
                 }
 
@@ -2107,7 +2107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendKeysisPassword != null)
                 {
-                    sendKeys["IsPassword"] = ExpressionConverter.ConvertO(sendKeysisPassword);
+                    sendKeys["IsPassword"] = CSharpExpressionConverter.ConvertToken(sendKeysisPassword);
                     sendKeyspropCount++;
                 }
 
@@ -2123,7 +2123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendKeysdontInterpretSymbols != null)
                 {
-                    sendKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeysdontInterpretSymbols);
+                    sendKeys["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(sendKeysdontInterpretSymbols);
                     sendKeyspropCount++;
                 }
 
@@ -2136,7 +2136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             sendKeyspropCount++;
-            sendKeys["Workflow"] = ExpressionConverter.ConvertO(sendKeysworkflow);
+            sendKeys["Workflow"] = CSharpExpressionConverter.ConvertToken(sendKeysworkflow);
             if (sendKeyspropCount > 0)
             {
                 callPayload.Body = sendKeys;
@@ -2154,12 +2154,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var sendPasswordKeys = new JObject();
             var sendPasswordKeyspropCount = 0;
             sendPasswordKeyspropCount++;
-            sendPasswordKeys["Password"] = ExpressionConverter.ConvertO(sendPasswordKeyspassword);
+            sendPasswordKeys["Password"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyspassword);
             if (sendPasswordKeysinterval != null)
             {
                 if (sendPasswordKeysinterval != null)
                 {
-                    sendPasswordKeys["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeysinterval);
+                    sendPasswordKeys["Interval"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeysinterval);
                     sendPasswordKeyspropCount++;
                 }
 
@@ -2175,7 +2175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendPasswordKeysdontInterpretSymbols != null)
                 {
-                    sendPasswordKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeysdontInterpretSymbols);
+                    sendPasswordKeys["DontInterpretSymbols"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeysdontInterpretSymbols);
                     sendPasswordKeyspropCount++;
                 }
 
@@ -2191,7 +2191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendPasswordKeyspasswordContainsStoredPassword != null)
                 {
-                    sendPasswordKeys["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyspasswordContainsStoredPassword);
+                    sendPasswordKeys["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeyspasswordContainsStoredPassword);
                     sendPasswordKeyspropCount++;
                 }
 
@@ -2204,7 +2204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             sendPasswordKeyspropCount++;
-            sendPasswordKeys["Workflow"] = ExpressionConverter.ConvertO(sendPasswordKeysworkflow);
+            sendPasswordKeys["Workflow"] = CSharpExpressionConverter.ConvertToken(sendPasswordKeysworkflow);
             if (sendPasswordKeyspropCount > 0)
             {
                 callPayload.Body = sendPasswordKeys;
@@ -2222,7 +2222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var clearClipboard = new JObject();
             var clearClipboardpropCount = 0;
             clearClipboardpropCount++;
-            clearClipboard["Workflow"] = ExpressionConverter.ConvertO(clearClipboardworkflow);
+            clearClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(clearClipboardworkflow);
             if (clearClipboardpropCount > 0)
             {
                 callPayload.Body = clearClipboard;
@@ -2241,12 +2241,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setClipboardDatapropCount = 0;
             if (setClipboardDatanewClipboardData != null)
             {
-                setClipboardData["NewClipboardData"] = ExpressionConverter.ConvertO(setClipboardDatanewClipboardData);
+                setClipboardData["NewClipboardData"] = CSharpExpressionConverter.ConvertToken(setClipboardDatanewClipboardData);
                 setClipboardDatapropCount++;
             }
 
             setClipboardDatapropCount++;
-            setClipboardData["Workflow"] = ExpressionConverter.ConvertO(setClipboardDataworkflow);
+            setClipboardData["Workflow"] = CSharpExpressionConverter.ConvertToken(setClipboardDataworkflow);
             if (setClipboardDatapropCount > 0)
             {
                 callPayload.Body = setClipboardData;
@@ -2264,7 +2264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getClipboardData = new JObject();
             var getClipboardDatapropCount = 0;
             getClipboardDatapropCount++;
-            getClipboardData["Workflow"] = ExpressionConverter.ConvertO(getClipboardDataworkflow);
+            getClipboardData["Workflow"] = CSharpExpressionConverter.ConvertToken(getClipboardDataworkflow);
             if (getClipboardDatapropCount > 0)
             {
                 callPayload.Body = getClipboardData;
@@ -2285,7 +2285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (takeScreenshotfullscreen != null)
                 {
-                    takeScreenshot["Fullscreen"] = ExpressionConverter.ConvertO(takeScreenshotfullscreen);
+                    takeScreenshot["Fullscreen"] = CSharpExpressionConverter.ConvertToken(takeScreenshotfullscreen);
                     takeScreenshotpropCount++;
                 }
 
@@ -2299,31 +2299,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (takeScreenshotleftXPixels != null)
             {
-                takeScreenshot["LeftXPixels"] = ExpressionConverter.ConvertO(takeScreenshotleftXPixels);
+                takeScreenshot["LeftXPixels"] = CSharpExpressionConverter.ConvertToken(takeScreenshotleftXPixels);
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshottopYPixels != null)
             {
-                takeScreenshot["TopYPixels"] = ExpressionConverter.ConvertO(takeScreenshottopYPixels);
+                takeScreenshot["TopYPixels"] = CSharpExpressionConverter.ConvertToken(takeScreenshottopYPixels);
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshotwidthPixels != null)
             {
-                takeScreenshot["WidthPixels"] = ExpressionConverter.ConvertO(takeScreenshotwidthPixels);
+                takeScreenshot["WidthPixels"] = CSharpExpressionConverter.ConvertToken(takeScreenshotwidthPixels);
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshotheightPixels != null)
             {
-                takeScreenshot["HeightPixels"] = ExpressionConverter.ConvertO(takeScreenshotheightPixels);
+                takeScreenshot["HeightPixels"] = CSharpExpressionConverter.ConvertToken(takeScreenshotheightPixels);
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshotimageFormat != null)
             {
-                takeScreenshot["ImageFormat"] = ExpressionConverter.ConvertO(takeScreenshotimageFormat);
+                takeScreenshot["ImageFormat"] = CSharpExpressionConverter.Convert(takeScreenshotimageFormat);
                 takeScreenshotpropCount++;
             }
 
@@ -2331,7 +2331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (takeScreenshotuseDisplayDevice != null)
                 {
-                    takeScreenshot["UseDisplayDevice"] = ExpressionConverter.ConvertO(takeScreenshotuseDisplayDevice);
+                    takeScreenshot["UseDisplayDevice"] = CSharpExpressionConverter.ConvertToken(takeScreenshotuseDisplayDevice);
                     takeScreenshotpropCount++;
                 }
 
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (takeScreenshotraiseExceptionOnError != null)
                 {
-                    takeScreenshot["RaiseExceptionOnError"] = ExpressionConverter.ConvertO(takeScreenshotraiseExceptionOnError);
+                    takeScreenshot["RaiseExceptionOnError"] = CSharpExpressionConverter.ConvertToken(takeScreenshotraiseExceptionOnError);
                     takeScreenshotpropCount++;
                 }
 
@@ -2363,7 +2363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (takeScreenshothideAgent != null)
                 {
-                    takeScreenshot["HideAgent"] = ExpressionConverter.ConvertO(takeScreenshothideAgent);
+                    takeScreenshot["HideAgent"] = CSharpExpressionConverter.ConvertToken(takeScreenshothideAgent);
                     takeScreenshotpropCount++;
                 }
 
@@ -2379,7 +2379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (takeScreenshotusePhysicalCoordinates != null)
                 {
-                    takeScreenshot["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(takeScreenshotusePhysicalCoordinates);
+                    takeScreenshot["UsePhysicalCoordinates"] = CSharpExpressionConverter.ConvertToken(takeScreenshotusePhysicalCoordinates);
                     takeScreenshotpropCount++;
                 }
 
@@ -2393,12 +2393,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (takeScreenshotdisplayDeviceId != null)
             {
-                takeScreenshot["DisplayDeviceId"] = ExpressionConverter.ConvertO(takeScreenshotdisplayDeviceId);
+                takeScreenshot["DisplayDeviceId"] = CSharpExpressionConverter.ConvertToken(takeScreenshotdisplayDeviceId);
                 takeScreenshotpropCount++;
             }
 
             takeScreenshotpropCount++;
-            takeScreenshot["Workflow"] = ExpressionConverter.ConvertO(takeScreenshotworkflow);
+            takeScreenshot["Workflow"] = CSharpExpressionConverter.ConvertToken(takeScreenshotworkflow);
             if (takeScreenshotpropCount > 0)
             {
                 callPayload.Body = takeScreenshot;
@@ -2416,7 +2416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getEnvironmentInfo = new JObject();
             var getEnvironmentInfopropCount = 0;
             getEnvironmentInfopropCount++;
-            getEnvironmentInfo["Workflow"] = ExpressionConverter.ConvertO(getEnvironmentInfoworkflow);
+            getEnvironmentInfo["Workflow"] = CSharpExpressionConverter.ConvertToken(getEnvironmentInfoworkflow);
             if (getEnvironmentInfopropCount > 0)
             {
                 callPayload.Body = getEnvironmentInfo;
@@ -2434,7 +2434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var isScreenReaderEnabled = new JObject();
             var isScreenReaderEnabledpropCount = 0;
             isScreenReaderEnabledpropCount++;
-            isScreenReaderEnabled["Workflow"] = ExpressionConverter.ConvertO(isScreenReaderEnabledworkflow);
+            isScreenReaderEnabled["Workflow"] = CSharpExpressionConverter.ConvertToken(isScreenReaderEnabledworkflow);
             if (isScreenReaderEnabledpropCount > 0)
             {
                 callPayload.Body = isScreenReaderEnabled;
@@ -2455,7 +2455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setScreenReaderenableScreenReader != null)
                 {
-                    setScreenReader["EnableScreenReader"] = ExpressionConverter.ConvertO(setScreenReaderenableScreenReader);
+                    setScreenReader["EnableScreenReader"] = CSharpExpressionConverter.ConvertToken(setScreenReaderenableScreenReader);
                     setScreenReaderpropCount++;
                 }
 
@@ -2468,7 +2468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setScreenReaderpropCount++;
-            setScreenReader["Workflow"] = ExpressionConverter.ConvertO(setScreenReaderworkflow);
+            setScreenReader["Workflow"] = CSharpExpressionConverter.ConvertToken(setScreenReaderworkflow);
             if (setScreenReaderpropCount > 0)
             {
                 callPayload.Body = setScreenReader;
@@ -2486,9 +2486,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getParentProcessId = new JObject();
             var getParentProcessIdpropCount = 0;
             getParentProcessIdpropCount++;
-            getParentProcessId["ProcessId"] = ExpressionConverter.ConvertO(getParentProcessIdprocessId);
+            getParentProcessId["ProcessId"] = CSharpExpressionConverter.ConvertToken(getParentProcessIdprocessId);
             getParentProcessIdpropCount++;
-            getParentProcessId["Workflow"] = ExpressionConverter.ConvertO(getParentProcessIdworkflow);
+            getParentProcessId["Workflow"] = CSharpExpressionConverter.ConvertToken(getParentProcessIdworkflow);
             if (getParentProcessIdpropCount > 0)
             {
                 callPayload.Body = getParentProcessId;
@@ -2506,9 +2506,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getProcessIdCommandLine = new JObject();
             var getProcessIdCommandLinepropCount = 0;
             getProcessIdCommandLinepropCount++;
-            getProcessIdCommandLine["ProcessId"] = ExpressionConverter.ConvertO(getProcessIdCommandLineprocessId);
+            getProcessIdCommandLine["ProcessId"] = CSharpExpressionConverter.ConvertToken(getProcessIdCommandLineprocessId);
             getProcessIdCommandLinepropCount++;
-            getProcessIdCommandLine["Workflow"] = ExpressionConverter.ConvertO(getProcessIdCommandLineworkflow);
+            getProcessIdCommandLine["Workflow"] = CSharpExpressionConverter.ConvertToken(getProcessIdCommandLineworkflow);
             if (getProcessIdCommandLinepropCount > 0)
             {
                 callPayload.Body = getProcessIdCommandLine;
@@ -2526,7 +2526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getLastInputInfo = new JObject();
             var getLastInputInfopropCount = 0;
             getLastInputInfopropCount++;
-            getLastInputInfo["Workflow"] = ExpressionConverter.ConvertO(getLastInputInfoworkflow);
+            getLastInputInfo["Workflow"] = CSharpExpressionConverter.ConvertToken(getLastInputInfoworkflow);
             if (getLastInputInfopropCount > 0)
             {
                 callPayload.Body = getLastInputInfo;
@@ -2547,7 +2547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (keepSessionAlivexWiggle != null)
                 {
-                    keepSessionAlive["XWiggle"] = ExpressionConverter.ConvertO(keepSessionAlivexWiggle);
+                    keepSessionAlive["XWiggle"] = CSharpExpressionConverter.ConvertToken(keepSessionAlivexWiggle);
                     keepSessionAlivepropCount++;
                 }
 
@@ -2561,7 +2561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (keepSessionAliveyWiggle != null)
             {
-                keepSessionAlive["YWiggle"] = ExpressionConverter.ConvertO(keepSessionAliveyWiggle);
+                keepSessionAlive["YWiggle"] = CSharpExpressionConverter.ConvertToken(keepSessionAliveyWiggle);
                 keepSessionAlivepropCount++;
             }
 
@@ -2569,7 +2569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (keepSessionAlivewiggleDelayInSeconds != null)
                 {
-                    keepSessionAlive["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivewiggleDelayInSeconds);
+                    keepSessionAlive["WiggleDelayInSeconds"] = CSharpExpressionConverter.ConvertToken(keepSessionAlivewiggleDelayInSeconds);
                     keepSessionAlivepropCount++;
                 }
 
@@ -2585,7 +2585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (keepSessionAliveidleThresholdInSeconds != null)
                 {
-                    keepSessionAlive["IdleThresholdInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleThresholdInSeconds);
+                    keepSessionAlive["IdleThresholdInSeconds"] = CSharpExpressionConverter.ConvertToken(keepSessionAliveidleThresholdInSeconds);
                     keepSessionAlivepropCount++;
                 }
 
@@ -2601,7 +2601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (keepSessionAliveidleCheckPeriodInSeconds != null)
                 {
-                    keepSessionAlive["IdleCheckPeriodInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleCheckPeriodInSeconds);
+                    keepSessionAlive["IdleCheckPeriodInSeconds"] = CSharpExpressionConverter.ConvertToken(keepSessionAliveidleCheckPeriodInSeconds);
                     keepSessionAlivepropCount++;
                 }
 
@@ -2617,7 +2617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (keepSessionAlivetotalKeepaliveRuntimeInSeconds != null)
                 {
-                    keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivetotalKeepaliveRuntimeInSeconds);
+                    keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = CSharpExpressionConverter.ConvertToken(keepSessionAlivetotalKeepaliveRuntimeInSeconds);
                     keepSessionAlivepropCount++;
                 }
 
@@ -2630,7 +2630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             keepSessionAlivepropCount++;
-            keepSessionAlive["Workflow"] = ExpressionConverter.ConvertO(keepSessionAliveworkflow);
+            keepSessionAlive["Workflow"] = CSharpExpressionConverter.ConvertToken(keepSessionAliveworkflow);
             if (keepSessionAlivepropCount > 0)
             {
                 callPayload.Body = keepSessionAlive;
@@ -2648,7 +2648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var stopKeepSessionAlive = new JObject();
             var stopKeepSessionAlivepropCount = 0;
             stopKeepSessionAlivepropCount++;
-            stopKeepSessionAlive["Workflow"] = ExpressionConverter.ConvertO(stopKeepSessionAliveworkflow);
+            stopKeepSessionAlive["Workflow"] = CSharpExpressionConverter.ConvertToken(stopKeepSessionAliveworkflow);
             if (stopKeepSessionAlivepropCount > 0)
             {
                 callPayload.Body = stopKeepSessionAlive;
@@ -2666,12 +2666,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var copyFileToClipboard = new JObject();
             var copyFileToClipboardpropCount = 0;
             copyFileToClipboardpropCount++;
-            copyFileToClipboard["Filepath"] = ExpressionConverter.ConvertO(copyFileToClipboardfilepath);
+            copyFileToClipboard["Filepath"] = CSharpExpressionConverter.ConvertToken(copyFileToClipboardfilepath);
             if (copyFileToClipboardcut != null)
             {
                 if (copyFileToClipboardcut != null)
                 {
-                    copyFileToClipboard["Cut"] = ExpressionConverter.ConvertO(copyFileToClipboardcut);
+                    copyFileToClipboard["Cut"] = CSharpExpressionConverter.ConvertToken(copyFileToClipboardcut);
                     copyFileToClipboardpropCount++;
                 }
 
@@ -2684,7 +2684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             copyFileToClipboardpropCount++;
-            copyFileToClipboard["Workflow"] = ExpressionConverter.ConvertO(copyFileToClipboardworkflow);
+            copyFileToClipboard["Workflow"] = CSharpExpressionConverter.ConvertToken(copyFileToClipboardworkflow);
             if (copyFileToClipboardpropCount > 0)
             {
                 callPayload.Body = copyFileToClipboard;
@@ -2702,7 +2702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getRemoteSessionInfo = new JObject();
             var getRemoteSessionInfopropCount = 0;
             getRemoteSessionInfopropCount++;
-            getRemoteSessionInfo["Workflow"] = ExpressionConverter.ConvertO(getRemoteSessionInfoworkflow);
+            getRemoteSessionInfo["Workflow"] = CSharpExpressionConverter.ConvertToken(getRemoteSessionInfoworkflow);
             if (getRemoteSessionInfopropCount > 0)
             {
                 callPayload.Body = getRemoteSessionInfo;
@@ -2720,10 +2720,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var generatePassword = new JObject();
             var generatePasswordpropCount = 0;
             generatePasswordpropCount++;
-            generatePassword["PasswordFormat"] = ExpressionConverter.ConvertO(generatePasswordpasswordFormat);
+            generatePassword["PasswordFormat"] = CSharpExpressionConverter.ConvertToken(generatePasswordpasswordFormat);
             if (generatePasswordminimumLength != null)
             {
-                generatePassword["MinimumLength"] = ExpressionConverter.ConvertO(generatePasswordminimumLength);
+                generatePassword["MinimumLength"] = CSharpExpressionConverter.ConvertToken(generatePasswordminimumLength);
                 generatePasswordpropCount++;
             }
 
@@ -2731,7 +2731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordreturnAsPlainText != null)
                 {
-                    generatePassword["ReturnAsPlainText"] = ExpressionConverter.ConvertO(generatePasswordreturnAsPlainText);
+                    generatePassword["ReturnAsPlainText"] = CSharpExpressionConverter.ConvertToken(generatePasswordreturnAsPlainText);
                     generatePasswordpropCount++;
                 }
 
@@ -2745,13 +2745,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (generatePasswordstorePasswordAsIdentifier != null)
             {
-                generatePassword["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(generatePasswordstorePasswordAsIdentifier);
+                generatePassword["StorePasswordAsIdentifier"] = CSharpExpressionConverter.ConvertToken(generatePasswordstorePasswordAsIdentifier);
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordsupportedSymbols != null)
             {
-                generatePassword["SupportedSymbols"] = ExpressionConverter.ConvertO(generatePasswordsupportedSymbols);
+                generatePassword["SupportedSymbols"] = CSharpExpressionConverter.ConvertToken(generatePasswordsupportedSymbols);
                 generatePasswordpropCount++;
             }
 
@@ -2759,7 +2759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordattemptUniquePasswords != null)
                 {
-                    generatePassword["AttemptUniquePasswords"] = ExpressionConverter.ConvertO(generatePasswordattemptUniquePasswords);
+                    generatePassword["AttemptUniquePasswords"] = CSharpExpressionConverter.ConvertToken(generatePasswordattemptUniquePasswords);
                     generatePasswordpropCount++;
                 }
 
@@ -2775,7 +2775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordgenerateAt != null)
                 {
-                    generatePassword["GenerateAt"] = ExpressionConverter.ConvertO(generatePasswordgenerateAt);
+                    generatePassword["GenerateAt"] = CSharpExpressionConverter.Convert(generatePasswordgenerateAt);
                     generatePasswordpropCount++;
                 }
 
@@ -2791,7 +2791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordminimumLowercase != null)
                 {
-                    generatePassword["MinimumLowercase"] = ExpressionConverter.ConvertO(generatePasswordminimumLowercase);
+                    generatePassword["MinimumLowercase"] = CSharpExpressionConverter.ConvertToken(generatePasswordminimumLowercase);
                     generatePasswordpropCount++;
                 }
 
@@ -2807,7 +2807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordminimumUppercase != null)
                 {
-                    generatePassword["MinimumUppercase"] = ExpressionConverter.ConvertO(generatePasswordminimumUppercase);
+                    generatePassword["MinimumUppercase"] = CSharpExpressionConverter.ConvertToken(generatePasswordminimumUppercase);
                     generatePasswordpropCount++;
                 }
 
@@ -2823,7 +2823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordminimumNumbers != null)
                 {
-                    generatePassword["MinimumNumbers"] = ExpressionConverter.ConvertO(generatePasswordminimumNumbers);
+                    generatePassword["MinimumNumbers"] = CSharpExpressionConverter.ConvertToken(generatePasswordminimumNumbers);
                     generatePasswordpropCount++;
                 }
 
@@ -2839,7 +2839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generatePasswordminimumSymbols != null)
                 {
-                    generatePassword["MinimumSymbols"] = ExpressionConverter.ConvertO(generatePasswordminimumSymbols);
+                    generatePassword["MinimumSymbols"] = CSharpExpressionConverter.ConvertToken(generatePasswordminimumSymbols);
                     generatePasswordpropCount++;
                 }
 
@@ -2852,7 +2852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             generatePasswordpropCount++;
-            generatePassword["Workflow"] = ExpressionConverter.ConvertO(generatePasswordworkflow);
+            generatePassword["Workflow"] = CSharpExpressionConverter.ConvertToken(generatePasswordworkflow);
             if (generatePasswordpropCount > 0)
             {
                 callPayload.Body = generatePassword;
@@ -2871,12 +2871,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getStoredPasswordpropCount = 0;
             if (getStoredPasswordpasswordIdentifier != null)
             {
-                getStoredPassword["PasswordIdentifier"] = ExpressionConverter.ConvertO(getStoredPasswordpasswordIdentifier);
+                getStoredPassword["PasswordIdentifier"] = CSharpExpressionConverter.ConvertToken(getStoredPasswordpasswordIdentifier);
                 getStoredPasswordpropCount++;
             }
 
             getStoredPasswordpropCount++;
-            getStoredPassword["Workflow"] = ExpressionConverter.ConvertO(getStoredPasswordworkflow);
+            getStoredPassword["Workflow"] = CSharpExpressionConverter.ConvertToken(getStoredPasswordworkflow);
             if (getStoredPasswordpropCount > 0)
             {
                 callPayload.Body = getStoredPassword;
@@ -2895,12 +2895,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var expandPasswordStringpropCount = 0;
             if (expandPasswordStringinputString != null)
             {
-                expandPasswordString["InputString"] = ExpressionConverter.ConvertO(expandPasswordStringinputString);
+                expandPasswordString["InputString"] = CSharpExpressionConverter.ConvertToken(expandPasswordStringinputString);
                 expandPasswordStringpropCount++;
             }
 
             expandPasswordStringpropCount++;
-            expandPasswordString["Workflow"] = ExpressionConverter.ConvertO(expandPasswordStringworkflow);
+            expandPasswordString["Workflow"] = CSharpExpressionConverter.ConvertToken(expandPasswordStringworkflow);
             if (expandPasswordStringpropCount > 0)
             {
                 callPayload.Body = expandPasswordString;
@@ -2918,11 +2918,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var storePasswordInAgentMemory = new JObject();
             var storePasswordInAgentMemorypropCount = 0;
             storePasswordInAgentMemorypropCount++;
-            storePasswordInAgentMemory["Identifier"] = ExpressionConverter.ConvertO(storePasswordInAgentMemoryidentifier);
+            storePasswordInAgentMemory["Identifier"] = CSharpExpressionConverter.ConvertToken(storePasswordInAgentMemoryidentifier);
             storePasswordInAgentMemorypropCount++;
-            storePasswordInAgentMemory["Password"] = ExpressionConverter.ConvertO(storePasswordInAgentMemorypassword);
+            storePasswordInAgentMemory["Password"] = CSharpExpressionConverter.ConvertToken(storePasswordInAgentMemorypassword);
             storePasswordInAgentMemorypropCount++;
-            storePasswordInAgentMemory["Workflow"] = ExpressionConverter.ConvertO(storePasswordInAgentMemoryworkflow);
+            storePasswordInAgentMemory["Workflow"] = CSharpExpressionConverter.ConvertToken(storePasswordInAgentMemoryworkflow);
             if (storePasswordInAgentMemorypropCount > 0)
             {
                 callPayload.Body = storePasswordInAgentMemory;
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (deletePasswordInAgentMemorydeleteAllPasswords != null)
                 {
-                    deletePasswordInAgentMemory["DeleteAllPasswords"] = ExpressionConverter.ConvertO(deletePasswordInAgentMemorydeleteAllPasswords);
+                    deletePasswordInAgentMemory["DeleteAllPasswords"] = CSharpExpressionConverter.ConvertToken(deletePasswordInAgentMemorydeleteAllPasswords);
                     deletePasswordInAgentMemorypropCount++;
                 }
 
@@ -2957,12 +2957,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (deletePasswordInAgentMemoryidentifier != null)
             {
-                deletePasswordInAgentMemory["Identifier"] = ExpressionConverter.ConvertO(deletePasswordInAgentMemoryidentifier);
+                deletePasswordInAgentMemory["Identifier"] = CSharpExpressionConverter.ConvertToken(deletePasswordInAgentMemoryidentifier);
                 deletePasswordInAgentMemorypropCount++;
             }
 
             deletePasswordInAgentMemorypropCount++;
-            deletePasswordInAgentMemory["Workflow"] = ExpressionConverter.ConvertO(deletePasswordInAgentMemoryworkflow);
+            deletePasswordInAgentMemory["Workflow"] = CSharpExpressionConverter.ConvertToken(deletePasswordInAgentMemoryworkflow);
             if (deletePasswordInAgentMemorypropCount > 0)
             {
                 callPayload.Body = deletePasswordInAgentMemory;
@@ -2980,18 +2980,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var credentialWrite = new JObject();
             var credentialWritepropCount = 0;
             credentialWritepropCount++;
-            credentialWrite["CredentialAddress"] = ExpressionConverter.ConvertO(credentialWritecredentialAddress);
+            credentialWrite["CredentialAddress"] = CSharpExpressionConverter.ConvertToken(credentialWritecredentialAddress);
             credentialWritepropCount++;
-            credentialWrite["UserName"] = ExpressionConverter.ConvertO(credentialWriteuserName);
+            credentialWrite["UserName"] = CSharpExpressionConverter.ConvertToken(credentialWriteuserName);
             credentialWritepropCount++;
-            credentialWrite["Password"] = ExpressionConverter.ConvertO(credentialWritepassword);
+            credentialWrite["Password"] = CSharpExpressionConverter.ConvertToken(credentialWritepassword);
             credentialWritepropCount++;
-            credentialWrite["CredentialType"] = ExpressionConverter.ConvertO(credentialWritecredentialType);
+            credentialWrite["CredentialType"] = CSharpExpressionConverter.Convert(credentialWritecredentialType);
             if (credentialWritecredentialPersistence != null)
             {
                 if (credentialWritecredentialPersistence != null)
                 {
-                    credentialWrite["CredentialPersistence"] = ExpressionConverter.ConvertO(credentialWritecredentialPersistence);
+                    credentialWrite["CredentialPersistence"] = CSharpExpressionConverter.Convert(credentialWritecredentialPersistence);
                     credentialWritepropCount++;
                 }
 
@@ -3005,18 +3005,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (credentialWritesymmetricKey != null)
             {
-                credentialWrite["SymmetricKey"] = ExpressionConverter.ConvertO(credentialWritesymmetricKey);
+                credentialWrite["SymmetricKey"] = CSharpExpressionConverter.ConvertToken(credentialWritesymmetricKey);
                 credentialWritepropCount++;
             }
 
             if (credentialWritestorePasswordAsIdentifier != null)
             {
-                credentialWrite["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(credentialWritestorePasswordAsIdentifier);
+                credentialWrite["StorePasswordAsIdentifier"] = CSharpExpressionConverter.ConvertToken(credentialWritestorePasswordAsIdentifier);
                 credentialWritepropCount++;
             }
 
             credentialWritepropCount++;
-            credentialWrite["Workflow"] = ExpressionConverter.ConvertO(credentialWriteworkflow);
+            credentialWrite["Workflow"] = CSharpExpressionConverter.ConvertToken(credentialWriteworkflow);
             if (credentialWritepropCount > 0)
             {
                 callPayload.Body = credentialWrite;
@@ -3034,18 +3034,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var credentialRead = new JObject();
             var credentialReadpropCount = 0;
             credentialReadpropCount++;
-            credentialRead["CredentialAddress"] = ExpressionConverter.ConvertO(credentialReadcredentialAddress);
+            credentialRead["CredentialAddress"] = CSharpExpressionConverter.ConvertToken(credentialReadcredentialAddress);
             credentialReadpropCount++;
-            credentialRead["CredentialType"] = ExpressionConverter.ConvertO(credentialReadcredentialType);
+            credentialRead["CredentialType"] = CSharpExpressionConverter.Convert(credentialReadcredentialType);
             if (credentialReadsymmetricKey != null)
             {
-                credentialRead["SymmetricKey"] = ExpressionConverter.ConvertO(credentialReadsymmetricKey);
+                credentialRead["SymmetricKey"] = CSharpExpressionConverter.ConvertToken(credentialReadsymmetricKey);
                 credentialReadpropCount++;
             }
 
             if (credentialReadstorePasswordAsIdentifier != null)
             {
-                credentialRead["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(credentialReadstorePasswordAsIdentifier);
+                credentialRead["StorePasswordAsIdentifier"] = CSharpExpressionConverter.ConvertToken(credentialReadstorePasswordAsIdentifier);
                 credentialReadpropCount++;
             }
 
@@ -3053,7 +3053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (credentialReaddontReturnPassword != null)
                 {
-                    credentialRead["DontReturnPassword"] = ExpressionConverter.ConvertO(credentialReaddontReturnPassword);
+                    credentialRead["DontReturnPassword"] = CSharpExpressionConverter.ConvertToken(credentialReaddontReturnPassword);
                     credentialReadpropCount++;
                 }
 
@@ -3066,7 +3066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             credentialReadpropCount++;
-            credentialRead["Workflow"] = ExpressionConverter.ConvertO(credentialReadworkflow);
+            credentialRead["Workflow"] = CSharpExpressionConverter.ConvertToken(credentialReadworkflow);
             if (credentialReadpropCount > 0)
             {
                 callPayload.Body = credentialRead;
@@ -3084,11 +3084,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var credentialDelete = new JObject();
             var credentialDeletepropCount = 0;
             credentialDeletepropCount++;
-            credentialDelete["CredentialAddress"] = ExpressionConverter.ConvertO(credentialDeletecredentialAddress);
+            credentialDelete["CredentialAddress"] = CSharpExpressionConverter.ConvertToken(credentialDeletecredentialAddress);
             credentialDeletepropCount++;
-            credentialDelete["CredentialType"] = ExpressionConverter.ConvertO(credentialDeletecredentialType);
+            credentialDelete["CredentialType"] = CSharpExpressionConverter.Convert(credentialDeletecredentialType);
             credentialDeletepropCount++;
-            credentialDelete["Workflow"] = ExpressionConverter.ConvertO(credentialDeleteworkflow);
+            credentialDelete["Workflow"] = CSharpExpressionConverter.ConvertToken(credentialDeleteworkflow);
             if (credentialDeletepropCount > 0)
             {
                 callPayload.Body = credentialDelete;
@@ -3106,16 +3106,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var generateRDPFile = new JObject();
             var generateRDPFilepropCount = 0;
             generateRDPFilepropCount++;
-            generateRDPFile["RemoteAddress"] = ExpressionConverter.ConvertO(generateRDPFileremoteAddress);
+            generateRDPFile["RemoteAddress"] = CSharpExpressionConverter.ConvertToken(generateRDPFileremoteAddress);
             generateRDPFilepropCount++;
-            generateRDPFile["OutputFolderPath"] = ExpressionConverter.ConvertO(generateRDPFileoutputFolderPath);
+            generateRDPFile["OutputFolderPath"] = CSharpExpressionConverter.ConvertToken(generateRDPFileoutputFolderPath);
             generateRDPFilepropCount++;
-            generateRDPFile["RDPFileName"] = ExpressionConverter.ConvertO(generateRDPFilerDPFileName);
+            generateRDPFile["RDPFileName"] = CSharpExpressionConverter.ConvertToken(generateRDPFilerDPFileName);
             if (generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
             {
                 if (generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
                 {
-                    generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = ExpressionConverter.ConvertO(generateRDPFileoverwriteRDPFileIfAlreadyExists);
+                    generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = CSharpExpressionConverter.ConvertToken(generateRDPFileoverwriteRDPFileIfAlreadyExists);
                     generateRDPFilepropCount++;
                 }
 
@@ -3131,7 +3131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFiletrustRemoteComputer != null)
                 {
-                    generateRDPFile["TrustRemoteComputer"] = ExpressionConverter.ConvertO(generateRDPFiletrustRemoteComputer);
+                    generateRDPFile["TrustRemoteComputer"] = CSharpExpressionConverter.ConvertToken(generateRDPFiletrustRemoteComputer);
                     generateRDPFilepropCount++;
                 }
 
@@ -3147,7 +3147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilestoreCredentials != null)
                 {
-                    generateRDPFile["StoreCredentials"] = ExpressionConverter.ConvertO(generateRDPFilestoreCredentials);
+                    generateRDPFile["StoreCredentials"] = CSharpExpressionConverter.ConvertToken(generateRDPFilestoreCredentials);
                     generateRDPFilepropCount++;
                 }
 
@@ -3161,13 +3161,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (generateRDPFileuserName != null)
             {
-                generateRDPFile["UserName"] = ExpressionConverter.ConvertO(generateRDPFileuserName);
+                generateRDPFile["UserName"] = CSharpExpressionConverter.ConvertToken(generateRDPFileuserName);
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilepassword != null)
             {
-                generateRDPFile["Password"] = ExpressionConverter.ConvertO(generateRDPFilepassword);
+                generateRDPFile["Password"] = CSharpExpressionConverter.ConvertToken(generateRDPFilepassword);
                 generateRDPFilepropCount++;
             }
 
@@ -3175,7 +3175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilecredentialType != null)
                 {
-                    generateRDPFile["CredentialType"] = ExpressionConverter.ConvertO(generateRDPFilecredentialType);
+                    generateRDPFile["CredentialType"] = CSharpExpressionConverter.Convert(generateRDPFilecredentialType);
                     generateRDPFilepropCount++;
                 }
 
@@ -3191,7 +3191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilecredentialPersistence != null)
                 {
-                    generateRDPFile["CredentialPersistence"] = ExpressionConverter.ConvertO(generateRDPFilecredentialPersistence);
+                    generateRDPFile["CredentialPersistence"] = CSharpExpressionConverter.Convert(generateRDPFilecredentialPersistence);
                     generateRDPFilepropCount++;
                 }
 
@@ -3207,7 +3207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFileredirectPrinters != null)
                 {
-                    generateRDPFile["RedirectPrinters"] = ExpressionConverter.ConvertO(generateRDPFileredirectPrinters);
+                    generateRDPFile["RedirectPrinters"] = CSharpExpressionConverter.ConvertToken(generateRDPFileredirectPrinters);
                     generateRDPFilepropCount++;
                 }
 
@@ -3223,7 +3223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFileredirectAllDrives != null)
                 {
-                    generateRDPFile["RedirectAllDrives"] = ExpressionConverter.ConvertO(generateRDPFileredirectAllDrives);
+                    generateRDPFile["RedirectAllDrives"] = CSharpExpressionConverter.ConvertToken(generateRDPFileredirectAllDrives);
                     generateRDPFilepropCount++;
                 }
 
@@ -3239,7 +3239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFileredirectClipboard != null)
                 {
-                    generateRDPFile["RedirectClipboard"] = ExpressionConverter.ConvertO(generateRDPFileredirectClipboard);
+                    generateRDPFile["RedirectClipboard"] = CSharpExpressionConverter.ConvertToken(generateRDPFileredirectClipboard);
                     generateRDPFilepropCount++;
                 }
 
@@ -3255,7 +3255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilefullscreen != null)
                 {
-                    generateRDPFile["Fullscreen"] = ExpressionConverter.ConvertO(generateRDPFilefullscreen);
+                    generateRDPFile["Fullscreen"] = CSharpExpressionConverter.ConvertToken(generateRDPFilefullscreen);
                     generateRDPFilepropCount++;
                 }
 
@@ -3271,7 +3271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFiledesktopWidth != null)
                 {
-                    generateRDPFile["DesktopWidth"] = ExpressionConverter.ConvertO(generateRDPFiledesktopWidth);
+                    generateRDPFile["DesktopWidth"] = CSharpExpressionConverter.ConvertToken(generateRDPFiledesktopWidth);
                     generateRDPFilepropCount++;
                 }
 
@@ -3287,7 +3287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFiledesktopHeight != null)
                 {
-                    generateRDPFile["DesktopHeight"] = ExpressionConverter.ConvertO(generateRDPFiledesktopHeight);
+                    generateRDPFile["DesktopHeight"] = CSharpExpressionConverter.ConvertToken(generateRDPFiledesktopHeight);
                     generateRDPFilepropCount++;
                 }
 
@@ -3303,7 +3303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFileuseMultiMonitor != null)
                 {
-                    generateRDPFile["UseMultiMonitor"] = ExpressionConverter.ConvertO(generateRDPFileuseMultiMonitor);
+                    generateRDPFile["UseMultiMonitor"] = CSharpExpressionConverter.ConvertToken(generateRDPFileuseMultiMonitor);
                     generateRDPFilepropCount++;
                 }
 
@@ -3319,7 +3319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilesessionBPP != null)
                 {
-                    generateRDPFile["SessionBPP"] = ExpressionConverter.ConvertO(generateRDPFilesessionBPP);
+                    generateRDPFile["SessionBPP"] = CSharpExpressionConverter.ConvertToken(generateRDPFilesessionBPP);
                     generateRDPFilepropCount++;
                 }
 
@@ -3335,7 +3335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (generateRDPFilesmartSizing != null)
                 {
-                    generateRDPFile["SmartSizing"] = ExpressionConverter.ConvertO(generateRDPFilesmartSizing);
+                    generateRDPFile["SmartSizing"] = CSharpExpressionConverter.ConvertToken(generateRDPFilesmartSizing);
                     generateRDPFilepropCount++;
                 }
 
@@ -3348,7 +3348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             generateRDPFilepropCount++;
-            generateRDPFile["Workflow"] = ExpressionConverter.ConvertO(generateRDPFileworkflow);
+            generateRDPFile["Workflow"] = CSharpExpressionConverter.ConvertToken(generateRDPFileworkflow);
             if (generateRDPFilepropCount > 0)
             {
                 callPayload.Body = generateRDPFile;
@@ -3366,12 +3366,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var launchRemoteDesktopSession = new JObject();
             var launchRemoteDesktopSessionpropCount = 0;
             launchRemoteDesktopSessionpropCount++;
-            launchRemoteDesktopSession["RDPFilePath"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessionrDPFilePath);
+            launchRemoteDesktopSession["RDPFilePath"] = CSharpExpressionConverter.ConvertToken(launchRemoteDesktopSessionrDPFilePath);
             if (launchRemoteDesktopSessiontrustRemoteComputer != null)
             {
                 if (launchRemoteDesktopSessiontrustRemoteComputer != null)
                 {
-                    launchRemoteDesktopSession["TrustRemoteComputer"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessiontrustRemoteComputer);
+                    launchRemoteDesktopSession["TrustRemoteComputer"] = CSharpExpressionConverter.ConvertToken(launchRemoteDesktopSessiontrustRemoteComputer);
                     launchRemoteDesktopSessionpropCount++;
                 }
 
@@ -3384,7 +3384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             launchRemoteDesktopSessionpropCount++;
-            launchRemoteDesktopSession["Workflow"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessionworkflow);
+            launchRemoteDesktopSession["Workflow"] = CSharpExpressionConverter.ConvertToken(launchRemoteDesktopSessionworkflow);
             if (launchRemoteDesktopSessionpropCount > 0)
             {
                 callPayload.Body = launchRemoteDesktopSession;
@@ -3402,14 +3402,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var isTCPPortResponding = new JObject();
             var isTCPPortRespondingpropCount = 0;
             isTCPPortRespondingpropCount++;
-            isTCPPortResponding["RemoteHost"] = ExpressionConverter.ConvertO(isTCPPortRespondingremoteHost);
+            isTCPPortResponding["RemoteHost"] = CSharpExpressionConverter.ConvertToken(isTCPPortRespondingremoteHost);
             isTCPPortRespondingpropCount++;
-            isTCPPortResponding["TCPPort"] = ExpressionConverter.ConvertO(isTCPPortRespondingtCPPort);
+            isTCPPortResponding["TCPPort"] = CSharpExpressionConverter.ConvertToken(isTCPPortRespondingtCPPort);
             if (isTCPPortRespondingtimeoutInSeconds != null)
             {
                 if (isTCPPortRespondingtimeoutInSeconds != null)
                 {
-                    isTCPPortResponding["TimeoutInSeconds"] = ExpressionConverter.ConvertO(isTCPPortRespondingtimeoutInSeconds);
+                    isTCPPortResponding["TimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(isTCPPortRespondingtimeoutInSeconds);
                     isTCPPortRespondingpropCount++;
                 }
 
@@ -3422,7 +3422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             isTCPPortRespondingpropCount++;
-            isTCPPortResponding["Workflow"] = ExpressionConverter.ConvertO(isTCPPortRespondingworkflow);
+            isTCPPortResponding["Workflow"] = CSharpExpressionConverter.ConvertToken(isTCPPortRespondingworkflow);
             if (isTCPPortRespondingpropCount > 0)
             {
                 callPayload.Body = isTCPPortResponding;
@@ -3440,12 +3440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var unlockSession = new JObject();
             var unlockSessionpropCount = 0;
             unlockSessionpropCount++;
-            unlockSession["UnlockPassword"] = ExpressionConverter.ConvertO(unlockSessionunlockPassword);
+            unlockSession["UnlockPassword"] = CSharpExpressionConverter.ConvertToken(unlockSessionunlockPassword);
             if (unlockSessionpasswordContainsStoredPassword != null)
             {
                 if (unlockSessionpasswordContainsStoredPassword != null)
                 {
-                    unlockSession["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(unlockSessionpasswordContainsStoredPassword);
+                    unlockSession["PasswordContainsStoredPassword"] = CSharpExpressionConverter.ConvertToken(unlockSessionpasswordContainsStoredPassword);
                     unlockSessionpropCount++;
                 }
 
@@ -3458,14 +3458,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             unlockSessionpropCount++;
-            unlockSession["DetectIfLocked"] = ExpressionConverter.ConvertO(unlockSessiondetectIfLocked);
+            unlockSession["DetectIfLocked"] = CSharpExpressionConverter.ConvertToken(unlockSessiondetectIfLocked);
             unlockSessionpropCount++;
-            unlockSession["DetectCredentialProvider"] = ExpressionConverter.ConvertO(unlockSessiondetectCredentialProvider);
+            unlockSession["DetectCredentialProvider"] = CSharpExpressionConverter.ConvertToken(unlockSessiondetectCredentialProvider);
             if (unlockSessionsecondsToWaitForUnlock != null)
             {
                 if (unlockSessionsecondsToWaitForUnlock != null)
                 {
-                    unlockSession["SecondsToWaitForUnlock"] = ExpressionConverter.ConvertO(unlockSessionsecondsToWaitForUnlock);
+                    unlockSession["SecondsToWaitForUnlock"] = CSharpExpressionConverter.ConvertToken(unlockSessionsecondsToWaitForUnlock);
                     unlockSessionpropCount++;
                 }
 
@@ -3478,7 +3478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             unlockSessionpropCount++;
-            unlockSession["Workflow"] = ExpressionConverter.ConvertO(unlockSessionworkflow);
+            unlockSession["Workflow"] = CSharpExpressionConverter.ConvertToken(unlockSessionworkflow);
             if (unlockSessionpropCount > 0)
             {
                 callPayload.Body = unlockSession;
@@ -3499,7 +3499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (lockSessionlockAfterMinutesOfActionInactivity != null)
                 {
-                    lockSession["LockAfterMinutesOfActionInactivity"] = ExpressionConverter.ConvertO(lockSessionlockAfterMinutesOfActionInactivity);
+                    lockSession["LockAfterMinutesOfActionInactivity"] = CSharpExpressionConverter.ConvertToken(lockSessionlockAfterMinutesOfActionInactivity);
                     lockSessionpropCount++;
                 }
 
@@ -3515,7 +3515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (lockSessionsecondsToWaitAfterLock != null)
                 {
-                    lockSession["SecondsToWaitAfterLock"] = ExpressionConverter.ConvertO(lockSessionsecondsToWaitAfterLock);
+                    lockSession["SecondsToWaitAfterLock"] = CSharpExpressionConverter.ConvertToken(lockSessionsecondsToWaitAfterLock);
                     lockSessionpropCount++;
                 }
 
@@ -3528,7 +3528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             lockSessionpropCount++;
-            lockSession["Workflow"] = ExpressionConverter.ConvertO(lockSessionworkflow);
+            lockSession["Workflow"] = CSharpExpressionConverter.ConvertToken(lockSessionworkflow);
             if (lockSessionpropCount > 0)
             {
                 callPayload.Body = lockSession;
@@ -3546,7 +3546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var isSessionLocked = new JObject();
             var isSessionLockedpropCount = 0;
             isSessionLockedpropCount++;
-            isSessionLocked["Workflow"] = ExpressionConverter.ConvertO(isSessionLockedworkflow);
+            isSessionLocked["Workflow"] = CSharpExpressionConverter.ConvertToken(isSessionLockedworkflow);
             if (isSessionLockedpropCount > 0)
             {
                 callPayload.Body = isSessionLocked;
@@ -3565,7 +3565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getGenericCredentialFromOrchestratorpropCount = 0;
             if (getGenericCredentialFromOrchestratorfriendlyName != null)
             {
-                getGenericCredentialFromOrchestrator["FriendlyName"] = ExpressionConverter.ConvertO(getGenericCredentialFromOrchestratorfriendlyName);
+                getGenericCredentialFromOrchestrator["FriendlyName"] = CSharpExpressionConverter.ConvertToken(getGenericCredentialFromOrchestratorfriendlyName);
                 getGenericCredentialFromOrchestratorpropCount++;
             }
 
@@ -3573,7 +3573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getGenericCredentialFromOrchestratorretrievePlainTextPassword != null)
                 {
-                    getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = ExpressionConverter.ConvertO(getGenericCredentialFromOrchestratorretrievePlainTextPassword);
+                    getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = CSharpExpressionConverter.ConvertToken(getGenericCredentialFromOrchestratorretrievePlainTextPassword);
                     getGenericCredentialFromOrchestratorpropCount++;
                 }
 
@@ -3602,18 +3602,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var drawRectangleOnScreen = new JObject();
             var drawRectangleOnScreenpropCount = 0;
             drawRectangleOnScreenpropCount++;
-            drawRectangleOnScreen["RectangleLeftPixelXCoord"] = ExpressionConverter.ConvertO(drawRectangleOnScreenrectangleLeftPixelXCoord);
+            drawRectangleOnScreen["RectangleLeftPixelXCoord"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenrectangleLeftPixelXCoord);
             drawRectangleOnScreenpropCount++;
-            drawRectangleOnScreen["RectangleRightPixelXCoord"] = ExpressionConverter.ConvertO(drawRectangleOnScreenrectangleRightPixelXCoord);
+            drawRectangleOnScreen["RectangleRightPixelXCoord"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenrectangleRightPixelXCoord);
             drawRectangleOnScreenpropCount++;
-            drawRectangleOnScreen["RectangleTopPixelYCoord"] = ExpressionConverter.ConvertO(drawRectangleOnScreenrectangleTopPixelYCoord);
+            drawRectangleOnScreen["RectangleTopPixelYCoord"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenrectangleTopPixelYCoord);
             drawRectangleOnScreenpropCount++;
-            drawRectangleOnScreen["RectangleBottomPixelYCoord"] = ExpressionConverter.ConvertO(drawRectangleOnScreenrectangleBottomPixelYCoord);
+            drawRectangleOnScreen["RectangleBottomPixelYCoord"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenrectangleBottomPixelYCoord);
             if (drawRectangleOnScreenpenColour != null)
             {
                 if (drawRectangleOnScreenpenColour != null)
                 {
-                    drawRectangleOnScreen["PenColour"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenColour);
+                    drawRectangleOnScreen["PenColour"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenpenColour);
                     drawRectangleOnScreenpropCount++;
                 }
 
@@ -3629,7 +3629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (drawRectangleOnScreenpenThicknessPixels != null)
                 {
-                    drawRectangleOnScreen["PenThicknessPixels"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenThicknessPixels);
+                    drawRectangleOnScreen["PenThicknessPixels"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenpenThicknessPixels);
                     drawRectangleOnScreenpropCount++;
                 }
 
@@ -3645,7 +3645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (drawRectangleOnScreensecondsToDisplay != null)
                 {
-                    drawRectangleOnScreen["SecondsToDisplay"] = ExpressionConverter.ConvertO(drawRectangleOnScreensecondsToDisplay);
+                    drawRectangleOnScreen["SecondsToDisplay"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreensecondsToDisplay);
                     drawRectangleOnScreenpropCount++;
                 }
 
@@ -3661,7 +3661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (drawRectangleOnScreencoordinatesArePhysical != null)
                 {
-                    drawRectangleOnScreen["CoordinatesArePhysical"] = ExpressionConverter.ConvertO(drawRectangleOnScreencoordinatesArePhysical);
+                    drawRectangleOnScreen["CoordinatesArePhysical"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreencoordinatesArePhysical);
                     drawRectangleOnScreenpropCount++;
                 }
 
@@ -3674,7 +3674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             drawRectangleOnScreenpropCount++;
-            drawRectangleOnScreen["Workflow"] = ExpressionConverter.ConvertO(drawRectangleOnScreenworkflow);
+            drawRectangleOnScreen["Workflow"] = CSharpExpressionConverter.ConvertToken(drawRectangleOnScreenworkflow);
             if (drawRectangleOnScreenpropCount > 0)
             {
                 callPayload.Body = drawRectangleOnScreen;
@@ -3692,12 +3692,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFailedActionErrorMessageFromPowerAutomateResultJSON = new JObject();
             var getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount = 0;
             getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
-            getFailedActionErrorMessageFromPowerAutomateResultJSON["PowerAutomateResultJSON"] = ExpressionConverter.ConvertO(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON);
+            getFailedActionErrorMessageFromPowerAutomateResultJSON["PowerAutomateResultJSON"] = CSharpExpressionConverter.ConvertToken(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON);
             if (getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
             {
                 if (getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
                 {
-                    getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = ExpressionConverter.ConvertO(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
+                    getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = CSharpExpressionConverter.ConvertToken(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
                     getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
                 }
 
@@ -3726,14 +3726,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getPixelColourAtCoordinate = new JObject();
             var getPixelColourAtCoordinatepropCount = 0;
             getPixelColourAtCoordinatepropCount++;
-            getPixelColourAtCoordinate["LeftXPixels"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinateleftXPixels);
+            getPixelColourAtCoordinate["LeftXPixels"] = CSharpExpressionConverter.ConvertToken(getPixelColourAtCoordinateleftXPixels);
             getPixelColourAtCoordinatepropCount++;
-            getPixelColourAtCoordinate["TopYPixels"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinatetopYPixels);
+            getPixelColourAtCoordinate["TopYPixels"] = CSharpExpressionConverter.ConvertToken(getPixelColourAtCoordinatetopYPixels);
             if (getPixelColourAtCoordinatehideAgent != null)
             {
                 if (getPixelColourAtCoordinatehideAgent != null)
                 {
-                    getPixelColourAtCoordinate["HideAgent"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinatehideAgent);
+                    getPixelColourAtCoordinate["HideAgent"] = CSharpExpressionConverter.ConvertToken(getPixelColourAtCoordinatehideAgent);
                     getPixelColourAtCoordinatepropCount++;
                 }
 
@@ -3749,7 +3749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getPixelColourAtCoordinateusePhysicalCoordinates != null)
                 {
-                    getPixelColourAtCoordinate["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinateusePhysicalCoordinates);
+                    getPixelColourAtCoordinate["UsePhysicalCoordinates"] = CSharpExpressionConverter.ConvertToken(getPixelColourAtCoordinateusePhysicalCoordinates);
                     getPixelColourAtCoordinatepropCount++;
                 }
 
@@ -3762,7 +3762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getPixelColourAtCoordinatepropCount++;
-            getPixelColourAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinateworkflow);
+            getPixelColourAtCoordinate["Workflow"] = CSharpExpressionConverter.ConvertToken(getPixelColourAtCoordinateworkflow);
             if (getPixelColourAtCoordinatepropCount > 0)
             {
                 callPayload.Body = getPixelColourAtCoordinate;
@@ -3780,17 +3780,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var convertRectangleCoordinates = new JObject();
             var convertRectangleCoordinatespropCount = 0;
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["RectangleLeftPixelXCoord"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesrectangleLeftPixelXCoord);
+            convertRectangleCoordinates["RectangleLeftPixelXCoord"] = CSharpExpressionConverter.ConvertToken(convertRectangleCoordinatesrectangleLeftPixelXCoord);
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["RectangleTopPixelYCoord"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesrectangleTopPixelYCoord);
+            convertRectangleCoordinates["RectangleTopPixelYCoord"] = CSharpExpressionConverter.ConvertToken(convertRectangleCoordinatesrectangleTopPixelYCoord);
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["RectangleRightPixelXCoord"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesrectangleRightPixelXCoord);
+            convertRectangleCoordinates["RectangleRightPixelXCoord"] = CSharpExpressionConverter.ConvertToken(convertRectangleCoordinatesrectangleRightPixelXCoord);
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["RectangleBottomPixelYCoord"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesrectangleBottomPixelYCoord);
+            convertRectangleCoordinates["RectangleBottomPixelYCoord"] = CSharpExpressionConverter.ConvertToken(convertRectangleCoordinatesrectangleBottomPixelYCoord);
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["ConversionType"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesconversionType);
+            convertRectangleCoordinates["ConversionType"] = CSharpExpressionConverter.Convert(convertRectangleCoordinatesconversionType);
             convertRectangleCoordinatespropCount++;
-            convertRectangleCoordinates["Workflow"] = ExpressionConverter.ConvertO(convertRectangleCoordinatesworkflow);
+            convertRectangleCoordinates["Workflow"] = CSharpExpressionConverter.ConvertToken(convertRectangleCoordinatesworkflow);
             if (convertRectangleCoordinatespropCount > 0)
             {
                 callPayload.Body = convertRectangleCoordinates;
@@ -3809,7 +3809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var sendMessageToWebAPIpropCount = 0;
             if (sendMessageToWebAPIuRL != null)
             {
-                sendMessageToWebAPI["URL"] = ExpressionConverter.ConvertO(sendMessageToWebAPIuRL);
+                sendMessageToWebAPI["URL"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIuRL);
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -3817,7 +3817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPImethod != null)
                 {
-                    sendMessageToWebAPI["Method"] = ExpressionConverter.ConvertO(sendMessageToWebAPImethod);
+                    sendMessageToWebAPI["Method"] = CSharpExpressionConverter.Convert(sendMessageToWebAPImethod);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3833,7 +3833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPItimeoutInSeconds != null)
                 {
-                    sendMessageToWebAPI["TimeoutInSeconds"] = ExpressionConverter.ConvertO(sendMessageToWebAPItimeoutInSeconds);
+                    sendMessageToWebAPI["TimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPItimeoutInSeconds);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3849,7 +3849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIcontentType != null)
                 {
-                    sendMessageToWebAPI["ContentType"] = ExpressionConverter.ConvertO(sendMessageToWebAPIcontentType);
+                    sendMessageToWebAPI["ContentType"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIcontentType);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3865,7 +3865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIaccept != null)
                 {
-                    sendMessageToWebAPI["Accept"] = ExpressionConverter.ConvertO(sendMessageToWebAPIaccept);
+                    sendMessageToWebAPI["Accept"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIaccept);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3879,7 +3879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPImessageBody != null)
             {
-                sendMessageToWebAPI["MessageBody"] = ExpressionConverter.ConvertO(sendMessageToWebAPImessageBody);
+                sendMessageToWebAPI["MessageBody"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPImessageBody);
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -3887,7 +3887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPItransmitEncoding != null)
                 {
-                    sendMessageToWebAPI["TransmitEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPItransmitEncoding);
+                    sendMessageToWebAPI["TransmitEncoding"] = CSharpExpressionConverter.Convert(sendMessageToWebAPItransmitEncoding);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3903,7 +3903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIresponseEncoding != null)
                 {
-                    sendMessageToWebAPI["ResponseEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPIresponseEncoding);
+                    sendMessageToWebAPI["ResponseEncoding"] = CSharpExpressionConverter.Convert(sendMessageToWebAPIresponseEncoding);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3919,7 +3919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIbufferSize != null)
                 {
-                    sendMessageToWebAPI["BufferSize"] = ExpressionConverter.ConvertO(sendMessageToWebAPIbufferSize);
+                    sendMessageToWebAPI["BufferSize"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIbufferSize);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3933,7 +3933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPIhTTPRequestHeadersList != null)
             {
-                sendMessageToWebAPI["HTTPRequestHeadersList"] = ExpressionConverter.ConvertO(sendMessageToWebAPIhTTPRequestHeadersList);
+                sendMessageToWebAPI["HTTPRequestHeadersList"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIhTTPRequestHeadersList);
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -3941,7 +3941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPInegotiateTLS10 != null)
                 {
-                    sendMessageToWebAPI["NegotiateTLS10"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS10);
+                    sendMessageToWebAPI["NegotiateTLS10"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPInegotiateTLS10);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3957,7 +3957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPInegotiateTLS11 != null)
                 {
-                    sendMessageToWebAPI["NegotiateTLS11"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS11);
+                    sendMessageToWebAPI["NegotiateTLS11"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPInegotiateTLS11);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3973,7 +3973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPInegotiateTLS12 != null)
                 {
-                    sendMessageToWebAPI["NegotiateTLS12"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS12);
+                    sendMessageToWebAPI["NegotiateTLS12"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPInegotiateTLS12);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -3989,7 +3989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPInegotiateTLS13 != null)
                 {
-                    sendMessageToWebAPI["NegotiateTLS13"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS13);
+                    sendMessageToWebAPI["NegotiateTLS13"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPInegotiateTLS13);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4005,7 +4005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIkeepAlive != null)
                 {
-                    sendMessageToWebAPI["KeepAlive"] = ExpressionConverter.ConvertO(sendMessageToWebAPIkeepAlive);
+                    sendMessageToWebAPI["KeepAlive"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIkeepAlive);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4021,7 +4021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIexpect100Continue != null)
                 {
-                    sendMessageToWebAPI["Expect100Continue"] = ExpressionConverter.ConvertO(sendMessageToWebAPIexpect100Continue);
+                    sendMessageToWebAPI["Expect100Continue"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIexpect100Continue);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4037,7 +4037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIreturnResponseHeaders != null)
                 {
-                    sendMessageToWebAPI["ReturnResponseHeaders"] = ExpressionConverter.ConvertO(sendMessageToWebAPIreturnResponseHeaders);
+                    sendMessageToWebAPI["ReturnResponseHeaders"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIreturnResponseHeaders);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4053,7 +4053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIrunAsThread != null)
                 {
-                    sendMessageToWebAPI["RunAsThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIrunAsThread);
+                    sendMessageToWebAPI["RunAsThread"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIrunAsThread);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4069,7 +4069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (sendMessageToWebAPIwaitForThread != null)
                 {
-                    sendMessageToWebAPI["WaitForThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIwaitForThread);
+                    sendMessageToWebAPI["WaitForThread"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIwaitForThread);
                     sendMessageToWebAPIpropCount++;
                 }
 
@@ -4083,12 +4083,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPIretrieveOutputDataFromThreadId != null)
             {
-                sendMessageToWebAPI["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(sendMessageToWebAPIretrieveOutputDataFromThreadId);
+                sendMessageToWebAPI["RetrieveOutputDataFromThreadId"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIretrieveOutputDataFromThreadId);
                 sendMessageToWebAPIpropCount++;
             }
 
             sendMessageToWebAPIpropCount++;
-            sendMessageToWebAPI["Workflow"] = ExpressionConverter.ConvertO(sendMessageToWebAPIworkflow);
+            sendMessageToWebAPI["Workflow"] = CSharpExpressionConverter.ConvertToken(sendMessageToWebAPIworkflow);
             if (sendMessageToWebAPIpropCount > 0)
             {
                 callPayload.Body = sendMessageToWebAPI;
@@ -4109,7 +4109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewTasksetAutomationName != null)
                 {
-                    tasksAddNewTask["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewTasksetAutomationName);
+                    tasksAddNewTask["SetAutomationName"] = CSharpExpressionConverter.Convert(tasksAddNewTasksetAutomationName);
                     tasksAddNewTaskpropCount++;
                 }
 
@@ -4123,19 +4123,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTaskautomationName != null)
             {
-                tasksAddNewTask["AutomationName"] = ExpressionConverter.ConvertO(tasksAddNewTaskautomationName);
+                tasksAddNewTask["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskautomationName);
                 tasksAddNewTaskpropCount++;
             }
 
             if (tasksAddNewTasktaskInputData != null)
             {
-                tasksAddNewTask["TaskInputData"] = ExpressionConverter.ConvertO(tasksAddNewTasktaskInputData);
+                tasksAddNewTask["TaskInputData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTasktaskInputData);
                 tasksAddNewTaskpropCount++;
             }
 
             if (tasksAddNewTaskprocessStage != null)
             {
-                tasksAddNewTask["ProcessStage"] = ExpressionConverter.ConvertO(tasksAddNewTaskprocessStage);
+                tasksAddNewTask["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskprocessStage);
                 tasksAddNewTaskpropCount++;
             }
 
@@ -4143,7 +4143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewTaskpriority != null)
                 {
-                    tasksAddNewTask["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskpriority);
+                    tasksAddNewTask["Priority"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskpriority);
                     tasksAddNewTaskpropCount++;
                 }
 
@@ -4157,7 +4157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTasksLA != null)
             {
-                tasksAddNewTask["SLA"] = ExpressionConverter.ConvertO(tasksAddNewTasksLA);
+                tasksAddNewTask["SLA"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTasksLA);
                 tasksAddNewTaskpropCount++;
             }
 
@@ -4165,7 +4165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewTasktaskOnHold != null)
                 {
-                    tasksAddNewTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewTasktaskOnHold);
+                    tasksAddNewTask["TaskOnHold"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTasktaskOnHold);
                     tasksAddNewTaskpropCount++;
                 }
 
@@ -4179,30 +4179,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTaskorganisation != null)
             {
-                tasksAddNewTask["Organisation"] = ExpressionConverter.ConvertO(tasksAddNewTaskorganisation);
+                tasksAddNewTask["Organisation"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskorganisation);
                 tasksAddNewTaskpropCount++;
             }
 
             if (tasksAddNewTaskdepartment != null)
             {
-                tasksAddNewTask["Department"] = ExpressionConverter.ConvertO(tasksAddNewTaskdepartment);
+                tasksAddNewTask["Department"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskdepartment);
                 tasksAddNewTaskpropCount++;
             }
 
             if (tasksAddNewTaskdescription != null)
             {
-                tasksAddNewTask["Description"] = ExpressionConverter.ConvertO(tasksAddNewTaskdescription);
+                tasksAddNewTask["Description"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskdescription);
                 tasksAddNewTaskpropCount++;
             }
 
             if (tasksAddNewTasktags != null)
             {
-                tasksAddNewTask["Tags"] = ExpressionConverter.ConvertO(tasksAddNewTasktags);
+                tasksAddNewTask["Tags"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTasktags);
                 tasksAddNewTaskpropCount++;
             }
 
             tasksAddNewTaskpropCount++;
-            tasksAddNewTask["Workflow"] = ExpressionConverter.ConvertO(tasksAddNewTaskworkflow);
+            tasksAddNewTask["Workflow"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskworkflow);
             if (tasksAddNewTaskpropCount > 0)
             {
                 callPayload.Body = tasksAddNewTask;
@@ -4223,7 +4223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewDeferralsetAutomationName != null)
                 {
-                    tasksAddNewDeferral["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewDeferralsetAutomationName);
+                    tasksAddNewDeferral["SetAutomationName"] = CSharpExpressionConverter.Convert(tasksAddNewDeferralsetAutomationName);
                     tasksAddNewDeferralpropCount++;
                 }
 
@@ -4237,31 +4237,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewDeferralautomationName != null)
             {
-                tasksAddNewDeferral["AutomationName"] = ExpressionConverter.ConvertO(tasksAddNewDeferralautomationName);
+                tasksAddNewDeferral["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralautomationName);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraldeferralTimeInMinutes != null)
             {
-                tasksAddNewDeferral["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(tasksAddNewDeferraldeferralTimeInMinutes);
+                tasksAddNewDeferral["DeferralTimeInMinutes"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraldeferralTimeInMinutes);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraltaskInputData != null)
             {
-                tasksAddNewDeferral["TaskInputData"] = ExpressionConverter.ConvertO(tasksAddNewDeferraltaskInputData);
+                tasksAddNewDeferral["TaskInputData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraltaskInputData);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraldeferralStoredData != null)
             {
-                tasksAddNewDeferral["DeferralStoredData"] = ExpressionConverter.ConvertO(tasksAddNewDeferraldeferralStoredData);
+                tasksAddNewDeferral["DeferralStoredData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraldeferralStoredData);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferralprocessStage != null)
             {
-                tasksAddNewDeferral["ProcessStage"] = ExpressionConverter.ConvertO(tasksAddNewDeferralprocessStage);
+                tasksAddNewDeferral["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralprocessStage);
                 tasksAddNewDeferralpropCount++;
             }
 
@@ -4269,7 +4269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewDeferralpriority != null)
                 {
-                    tasksAddNewDeferral["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralpriority);
+                    tasksAddNewDeferral["Priority"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralpriority);
                     tasksAddNewDeferralpropCount++;
                 }
 
@@ -4285,7 +4285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewDeferraltaskOnHold != null)
                 {
-                    tasksAddNewDeferral["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewDeferraltaskOnHold);
+                    tasksAddNewDeferral["TaskOnHold"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraltaskOnHold);
                     tasksAddNewDeferralpropCount++;
                 }
 
@@ -4299,30 +4299,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewDeferralorganisation != null)
             {
-                tasksAddNewDeferral["Organisation"] = ExpressionConverter.ConvertO(tasksAddNewDeferralorganisation);
+                tasksAddNewDeferral["Organisation"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralorganisation);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraldepartment != null)
             {
-                tasksAddNewDeferral["Department"] = ExpressionConverter.ConvertO(tasksAddNewDeferraldepartment);
+                tasksAddNewDeferral["Department"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraldepartment);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraldescription != null)
             {
-                tasksAddNewDeferral["Description"] = ExpressionConverter.ConvertO(tasksAddNewDeferraldescription);
+                tasksAddNewDeferral["Description"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraldescription);
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraltags != null)
             {
-                tasksAddNewDeferral["Tags"] = ExpressionConverter.ConvertO(tasksAddNewDeferraltags);
+                tasksAddNewDeferral["Tags"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferraltags);
                 tasksAddNewDeferralpropCount++;
             }
 
             tasksAddNewDeferralpropCount++;
-            tasksAddNewDeferral["Workflow"] = ExpressionConverter.ConvertO(tasksAddNewDeferralworkflow);
+            tasksAddNewDeferral["Workflow"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralworkflow);
             if (tasksAddNewDeferralpropCount > 0)
             {
                 callPayload.Body = tasksAddNewDeferral;
@@ -4340,22 +4340,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksDeferExistingTask = new JObject();
             var tasksDeferExistingTaskpropCount = 0;
             tasksDeferExistingTaskpropCount++;
-            tasksDeferExistingTask["TaskId"] = ExpressionConverter.ConvertO(tasksDeferExistingTasktaskId);
+            tasksDeferExistingTask["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTasktaskId);
             if (tasksDeferExistingTaskdeferralTimeInMinutes != null)
             {
-                tasksDeferExistingTask["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskdeferralTimeInMinutes);
+                tasksDeferExistingTask["DeferralTimeInMinutes"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskdeferralTimeInMinutes);
                 tasksDeferExistingTaskpropCount++;
             }
 
             if (tasksDeferExistingTaskdeferralStoredData != null)
             {
-                tasksDeferExistingTask["DeferralStoredData"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskdeferralStoredData);
+                tasksDeferExistingTask["DeferralStoredData"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskdeferralStoredData);
                 tasksDeferExistingTaskpropCount++;
             }
 
             if (tasksDeferExistingTaskprocessStage != null)
             {
-                tasksDeferExistingTask["ProcessStage"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskprocessStage);
+                tasksDeferExistingTask["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskprocessStage);
                 tasksDeferExistingTaskpropCount++;
             }
 
@@ -4363,7 +4363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksDeferExistingTaskpriority != null)
                 {
-                    tasksDeferExistingTask["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskpriority);
+                    tasksDeferExistingTask["Priority"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskpriority);
                     tasksDeferExistingTaskpropCount++;
                 }
 
@@ -4379,7 +4379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksDeferExistingTasktaskOnHold != null)
                 {
-                    tasksDeferExistingTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksDeferExistingTasktaskOnHold);
+                    tasksDeferExistingTask["TaskOnHold"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTasktaskOnHold);
                     tasksDeferExistingTaskpropCount++;
                 }
 
@@ -4408,22 +4408,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksDeferExistingTaskOperation = new JObject();
             var tasksDeferExistingTaskOperationpropCount = 0;
             tasksDeferExistingTaskOperationpropCount++;
-            tasksDeferExistingTaskOperation["OperationId"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationoperationId);
+            tasksDeferExistingTaskOperation["OperationId"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskOperationoperationId);
             if (tasksDeferExistingTaskOperationdeferralTimeInMinutes != null)
             {
-                tasksDeferExistingTaskOperation["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationdeferralTimeInMinutes);
+                tasksDeferExistingTaskOperation["DeferralTimeInMinutes"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskOperationdeferralTimeInMinutes);
                 tasksDeferExistingTaskOperationpropCount++;
             }
 
             if (tasksDeferExistingTaskOperationdeferralStoredData != null)
             {
-                tasksDeferExistingTaskOperation["DeferralStoredData"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationdeferralStoredData);
+                tasksDeferExistingTaskOperation["DeferralStoredData"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskOperationdeferralStoredData);
                 tasksDeferExistingTaskOperationpropCount++;
             }
 
             if (tasksDeferExistingTaskOperationprocessStage != null)
             {
-                tasksDeferExistingTaskOperation["ProcessStage"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationprocessStage);
+                tasksDeferExistingTaskOperation["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskOperationprocessStage);
                 tasksDeferExistingTaskOperationpropCount++;
             }
 
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksDeferExistingTaskOperationpriority != null)
                 {
-                    tasksDeferExistingTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationpriority);
+                    tasksDeferExistingTaskOperation["Priority"] = CSharpExpressionConverter.ConvertToken(tasksDeferExistingTaskOperationpriority);
                     tasksDeferExistingTaskOperationpropCount++;
                 }
 
@@ -4460,12 +4460,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksDeleteTask = new JObject();
             var tasksDeleteTaskpropCount = 0;
             tasksDeleteTaskpropCount++;
-            tasksDeleteTask["TaskId"] = ExpressionConverter.ConvertO(tasksDeleteTasktaskId);
+            tasksDeleteTask["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksDeleteTasktaskId);
             if (tasksDeleteTaskupdateSourceSystem != null)
             {
                 if (tasksDeleteTaskupdateSourceSystem != null)
                 {
-                    tasksDeleteTask["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskupdateSourceSystem);
+                    tasksDeleteTask["UpdateSourceSystem"] = CSharpExpressionConverter.ConvertToken(tasksDeleteTaskupdateSourceSystem);
                     tasksDeleteTaskpropCount++;
                 }
 
@@ -4494,12 +4494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksDeleteTaskOperation = new JObject();
             var tasksDeleteTaskOperationpropCount = 0;
             tasksDeleteTaskOperationpropCount++;
-            tasksDeleteTaskOperation["OperationId"] = ExpressionConverter.ConvertO(tasksDeleteTaskOperationoperationId);
+            tasksDeleteTaskOperation["OperationId"] = CSharpExpressionConverter.ConvertToken(tasksDeleteTaskOperationoperationId);
             if (tasksDeleteTaskOperationupdateSourceSystem != null)
             {
                 if (tasksDeleteTaskOperationupdateSourceSystem != null)
                 {
-                    tasksDeleteTaskOperation["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskOperationupdateSourceSystem);
+                    tasksDeleteTaskOperation["UpdateSourceSystem"] = CSharpExpressionConverter.ConvertToken(tasksDeleteTaskOperationupdateSourceSystem);
                     tasksDeleteTaskOperationpropCount++;
                 }
 
@@ -4529,31 +4529,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksGetAllTaskspropCount = 0;
             if (tasksGetAllTasksautomationName != null)
             {
-                tasksGetAllTasks["AutomationName"] = ExpressionConverter.ConvertO(tasksGetAllTasksautomationName);
+                tasksGetAllTasks["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksautomationName);
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksautomationTaskStatus != null)
             {
-                tasksGetAllTasks["AutomationTaskStatus"] = ExpressionConverter.ConvertO(tasksGetAllTasksautomationTaskStatus);
+                tasksGetAllTasks["AutomationTaskStatus"] = CSharpExpressionConverter.Convert(tasksGetAllTasksautomationTaskStatus);
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksfilterByPropertyQuery != null)
             {
-                tasksGetAllTasks["FilterByPropertyQuery"] = ExpressionConverter.ConvertO(tasksGetAllTasksfilterByPropertyQuery);
+                tasksGetAllTasks["FilterByPropertyQuery"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksfilterByPropertyQuery);
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksminutesUntilDeferralDate != null)
             {
-                tasksGetAllTasks["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(tasksGetAllTasksminutesUntilDeferralDate);
+                tasksGetAllTasks["MinutesUntilDeferralDate"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksminutesUntilDeferralDate);
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksminimumPriorityLevel != null)
             {
-                tasksGetAllTasks["MinimumPriorityLevel"] = ExpressionConverter.ConvertO(tasksGetAllTasksminimumPriorityLevel);
+                tasksGetAllTasks["MinimumPriorityLevel"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksminimumPriorityLevel);
                 tasksGetAllTaskspropCount++;
             }
 
@@ -4561,7 +4561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetAllTaskssortByDeferralDate != null)
                 {
-                    tasksGetAllTasks["SortByDeferralDate"] = ExpressionConverter.ConvertO(tasksGetAllTaskssortByDeferralDate);
+                    tasksGetAllTasks["SortByDeferralDate"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTaskssortByDeferralDate);
                     tasksGetAllTaskspropCount++;
                 }
 
@@ -4577,7 +4577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetAllTasksretrieveOnHoldTasks != null)
                 {
-                    tasksGetAllTasks["RetrieveOnHoldTasks"] = ExpressionConverter.ConvertO(tasksGetAllTasksretrieveOnHoldTasks);
+                    tasksGetAllTasks["RetrieveOnHoldTasks"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksretrieveOnHoldTasks);
                     tasksGetAllTaskspropCount++;
                 }
 
@@ -4593,7 +4593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetAllTasksskip != null)
                 {
-                    tasksGetAllTasks["Skip"] = ExpressionConverter.ConvertO(tasksGetAllTasksskip);
+                    tasksGetAllTasks["Skip"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksskip);
                     tasksGetAllTaskspropCount++;
                 }
 
@@ -4609,7 +4609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetAllTasksmaxResults != null)
                 {
-                    tasksGetAllTasks["MaxResults"] = ExpressionConverter.ConvertO(tasksGetAllTasksmaxResults);
+                    tasksGetAllTasks["MaxResults"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksmaxResults);
                     tasksGetAllTaskspropCount++;
                 }
 
@@ -4625,7 +4625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetAllTasksexcludeTaskData != null)
                 {
-                    tasksGetAllTasks["ExcludeTaskData"] = ExpressionConverter.ConvertO(tasksGetAllTasksexcludeTaskData);
+                    tasksGetAllTasks["ExcludeTaskData"] = CSharpExpressionConverter.ConvertToken(tasksGetAllTasksexcludeTaskData);
                     tasksGetAllTaskspropCount++;
                 }
 
@@ -4654,12 +4654,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksGetTask = new JObject();
             var tasksGetTaskpropCount = 0;
             tasksGetTaskpropCount++;
-            tasksGetTask["TaskId"] = ExpressionConverter.ConvertO(tasksGetTasktaskId);
+            tasksGetTask["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksGetTasktaskId);
             if (tasksGetTaskstatusChange != null)
             {
                 if (tasksGetTaskstatusChange != null)
                 {
-                    tasksGetTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetTaskstatusChange);
+                    tasksGetTask["StatusChange"] = CSharpExpressionConverter.Convert(tasksGetTaskstatusChange);
                     tasksGetTaskpropCount++;
                 }
 
@@ -4689,19 +4689,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksGetNextTaskpropCount = 0;
             if (tasksGetNextTaskautomationName != null)
             {
-                tasksGetNextTask["AutomationName"] = ExpressionConverter.ConvertO(tasksGetNextTaskautomationName);
+                tasksGetNextTask["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskautomationName);
                 tasksGetNextTaskpropCount++;
             }
 
             if (tasksGetNextTaskautomationNames != null)
             {
-                tasksGetNextTask["AutomationNames"] = ExpressionConverter.ConvertO(tasksGetNextTaskautomationNames);
+                tasksGetNextTask["AutomationNames"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskautomationNames);
                 tasksGetNextTaskpropCount++;
             }
 
             if (tasksGetNextTaskminimumPriorityLevel != null)
             {
-                tasksGetNextTask["MinimumPriorityLevel"] = ExpressionConverter.ConvertO(tasksGetNextTaskminimumPriorityLevel);
+                tasksGetNextTask["MinimumPriorityLevel"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskminimumPriorityLevel);
                 tasksGetNextTaskpropCount++;
             }
 
@@ -4709,7 +4709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetNextTaskstatusChange != null)
                 {
-                    tasksGetNextTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetNextTaskstatusChange);
+                    tasksGetNextTask["StatusChange"] = CSharpExpressionConverter.Convert(tasksGetNextTaskstatusChange);
                     tasksGetNextTaskpropCount++;
                 }
 
@@ -4725,7 +4725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetNextTaskminutesUntilDeferralDate != null)
                 {
-                    tasksGetNextTask["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(tasksGetNextTaskminutesUntilDeferralDate);
+                    tasksGetNextTask["MinutesUntilDeferralDate"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskminutesUntilDeferralDate);
                     tasksGetNextTaskpropCount++;
                 }
 
@@ -4741,7 +4741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksGetNextTaskignoreSLA != null)
                 {
-                    tasksGetNextTask["IgnoreSLA"] = ExpressionConverter.ConvertO(tasksGetNextTaskignoreSLA);
+                    tasksGetNextTask["IgnoreSLA"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskignoreSLA);
                     tasksGetNextTaskpropCount++;
                 }
 
@@ -4755,7 +4755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksGetNextTaskexcludeTaskIds != null)
             {
-                tasksGetNextTask["ExcludeTaskIds"] = ExpressionConverter.ConvertO(tasksGetNextTaskexcludeTaskIds);
+                tasksGetNextTask["ExcludeTaskIds"] = CSharpExpressionConverter.ConvertToken(tasksGetNextTaskexcludeTaskIds);
                 tasksGetNextTaskpropCount++;
             }
 
@@ -4776,10 +4776,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksChangeTaskStatus = new JObject();
             var tasksChangeTaskStatuspropCount = 0;
             tasksChangeTaskStatuspropCount++;
-            tasksChangeTaskStatus["TaskId"] = ExpressionConverter.ConvertO(tasksChangeTaskStatustaskId);
+            tasksChangeTaskStatus["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatustaskId);
             if (tasksChangeTaskStatusautomationTaskStatus != null)
             {
-                tasksChangeTaskStatus["AutomationTaskStatus"] = ExpressionConverter.ConvertO(tasksChangeTaskStatusautomationTaskStatus);
+                tasksChangeTaskStatus["AutomationTaskStatus"] = CSharpExpressionConverter.Convert(tasksChangeTaskStatusautomationTaskStatus);
                 tasksChangeTaskStatuspropCount++;
             }
 
@@ -4787,7 +4787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksChangeTaskStatustaskOnHold != null)
                 {
-                    tasksChangeTaskStatus["TaskOnHold"] = ExpressionConverter.ConvertO(tasksChangeTaskStatustaskOnHold);
+                    tasksChangeTaskStatus["TaskOnHold"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatustaskOnHold);
                     tasksChangeTaskStatuspropCount++;
                 }
 
@@ -4803,7 +4803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksChangeTaskStatuseraseTaskInputData != null)
                 {
-                    tasksChangeTaskStatus["EraseTaskInputData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseTaskInputData);
+                    tasksChangeTaskStatus["EraseTaskInputData"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatuseraseTaskInputData);
                     tasksChangeTaskStatuspropCount++;
                 }
 
@@ -4819,7 +4819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksChangeTaskStatuseraseDeferralStoredData != null)
                 {
-                    tasksChangeTaskStatus["EraseDeferralStoredData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseDeferralStoredData);
+                    tasksChangeTaskStatus["EraseDeferralStoredData"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatuseraseDeferralStoredData);
                     tasksChangeTaskStatuspropCount++;
                 }
 
@@ -4835,7 +4835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksChangeTaskStatusupdateSourceSystem != null)
                 {
-                    tasksChangeTaskStatus["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksChangeTaskStatusupdateSourceSystem);
+                    tasksChangeTaskStatus["UpdateSourceSystem"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatusupdateSourceSystem);
                     tasksChangeTaskStatuspropCount++;
                 }
 
@@ -4849,7 +4849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksChangeTaskStatustaskClosureReason != null)
             {
-                tasksChangeTaskStatus["TaskClosureReason"] = ExpressionConverter.ConvertO(tasksChangeTaskStatustaskClosureReason);
+                tasksChangeTaskStatus["TaskClosureReason"] = CSharpExpressionConverter.ConvertToken(tasksChangeTaskStatustaskClosureReason);
                 tasksChangeTaskStatuspropCount++;
             }
 
@@ -4870,14 +4870,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAddNote = new JObject();
             var tasksAddNotepropCount = 0;
             tasksAddNotepropCount++;
-            tasksAddNote["TaskId"] = ExpressionConverter.ConvertO(tasksAddNotetaskId);
+            tasksAddNote["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksAddNotetaskId);
             tasksAddNotepropCount++;
-            tasksAddNote["NoteText"] = ExpressionConverter.ConvertO(tasksAddNotenoteText);
+            tasksAddNote["NoteText"] = CSharpExpressionConverter.ConvertToken(tasksAddNotenoteText);
             if (tasksAddNotenoteType != null)
             {
                 if (tasksAddNotenoteType != null)
                 {
-                    tasksAddNote["NoteType"] = ExpressionConverter.ConvertO(tasksAddNotenoteType);
+                    tasksAddNote["NoteType"] = CSharpExpressionConverter.Convert(tasksAddNotenoteType);
                     tasksAddNotepropCount++;
                 }
 
@@ -4891,7 +4891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNotenoteTypeOther != null)
             {
-                tasksAddNote["NoteTypeOther"] = ExpressionConverter.ConvertO(tasksAddNotenoteTypeOther);
+                tasksAddNote["NoteTypeOther"] = CSharpExpressionConverter.ConvertToken(tasksAddNotenoteTypeOther);
                 tasksAddNotepropCount++;
             }
 
@@ -4912,28 +4912,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAssignTask = new JObject();
             var tasksAssignTaskpropCount = 0;
             tasksAssignTaskpropCount++;
-            tasksAssignTask["TaskId"] = ExpressionConverter.ConvertO(tasksAssignTasktaskId);
+            tasksAssignTask["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksAssignTasktaskId);
             if (tasksAssignTaskassignToUserId != null)
             {
-                tasksAssignTask["AssignToUserId"] = ExpressionConverter.ConvertO(tasksAssignTaskassignToUserId);
+                tasksAssignTask["AssignToUserId"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskassignToUserId);
                 tasksAssignTaskpropCount++;
             }
 
             if (tasksAssignTaskassignToUserName != null)
             {
-                tasksAssignTask["AssignToUserName"] = ExpressionConverter.ConvertO(tasksAssignTaskassignToUserName);
+                tasksAssignTask["AssignToUserName"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskassignToUserName);
                 tasksAssignTaskpropCount++;
             }
 
             if (tasksAssignTaskassignToGroupId != null)
             {
-                tasksAssignTask["AssignToGroupId"] = ExpressionConverter.ConvertO(tasksAssignTaskassignToGroupId);
+                tasksAssignTask["AssignToGroupId"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskassignToGroupId);
                 tasksAssignTaskpropCount++;
             }
 
             if (tasksAssignTaskassignToGroupName != null)
             {
-                tasksAssignTask["AssignToGroupName"] = ExpressionConverter.ConvertO(tasksAssignTaskassignToGroupName);
+                tasksAssignTask["AssignToGroupName"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskassignToGroupName);
                 tasksAssignTaskpropCount++;
             }
 
@@ -4941,7 +4941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAssignTaskremoveUserAssignmentIfBlank != null)
                 {
-                    tasksAssignTask["RemoveUserAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveUserAssignmentIfBlank);
+                    tasksAssignTask["RemoveUserAssignmentIfBlank"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskremoveUserAssignmentIfBlank);
                     tasksAssignTaskpropCount++;
                 }
 
@@ -4957,7 +4957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAssignTaskremoveGroupAssignmentIfBlank != null)
                 {
-                    tasksAssignTask["RemoveGroupAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveGroupAssignmentIfBlank);
+                    tasksAssignTask["RemoveGroupAssignmentIfBlank"] = CSharpExpressionConverter.ConvertToken(tasksAssignTaskremoveGroupAssignmentIfBlank);
                     tasksAssignTaskpropCount++;
                 }
 
@@ -4986,10 +4986,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksSetOutputData = new JObject();
             var tasksSetOutputDatapropCount = 0;
             tasksSetOutputDatapropCount++;
-            tasksSetOutputData["TaskId"] = ExpressionConverter.ConvertO(tasksSetOutputDatataskId);
+            tasksSetOutputData["TaskId"] = CSharpExpressionConverter.ConvertToken(tasksSetOutputDatataskId);
             if (tasksSetOutputDatataskOutputData != null)
             {
-                tasksSetOutputData["TaskOutputData"] = ExpressionConverter.ConvertO(tasksSetOutputDatataskOutputData);
+                tasksSetOutputData["TaskOutputData"] = CSharpExpressionConverter.ConvertToken(tasksSetOutputDatataskOutputData);
                 tasksSetOutputDatapropCount++;
             }
 
@@ -5011,19 +5011,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAddNewTaskOperationpropCount = 0;
             if (tasksAddNewTaskOperationautomationName != null)
             {
-                tasksAddNewTaskOperation["AutomationName"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationautomationName);
+                tasksAddNewTaskOperation["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationautomationName);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationtaskInputData != null)
             {
-                tasksAddNewTaskOperation["TaskInputData"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationtaskInputData);
+                tasksAddNewTaskOperation["TaskInputData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationtaskInputData);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationprocessStage != null)
             {
-                tasksAddNewTaskOperation["ProcessStage"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationprocessStage);
+                tasksAddNewTaskOperation["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationprocessStage);
                 tasksAddNewTaskOperationpropCount++;
             }
 
@@ -5031,7 +5031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewTaskOperationpriority != null)
                 {
-                    tasksAddNewTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationpriority);
+                    tasksAddNewTaskOperation["Priority"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationpriority);
                     tasksAddNewTaskOperationpropCount++;
                 }
 
@@ -5045,31 +5045,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTaskOperationsLA != null)
             {
-                tasksAddNewTaskOperation["SLA"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationsLA);
+                tasksAddNewTaskOperation["SLA"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationsLA);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationorganisation != null)
             {
-                tasksAddNewTaskOperation["Organisation"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationorganisation);
+                tasksAddNewTaskOperation["Organisation"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationorganisation);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationdepartment != null)
             {
-                tasksAddNewTaskOperation["Department"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationdepartment);
+                tasksAddNewTaskOperation["Department"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationdepartment);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationdescription != null)
             {
-                tasksAddNewTaskOperation["Description"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationdescription);
+                tasksAddNewTaskOperation["Description"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationdescription);
                 tasksAddNewTaskOperationpropCount++;
             }
 
             if (tasksAddNewTaskOperationtags != null)
             {
-                tasksAddNewTaskOperation["Tags"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationtags);
+                tasksAddNewTaskOperation["Tags"] = CSharpExpressionConverter.ConvertToken(tasksAddNewTaskOperationtags);
                 tasksAddNewTaskOperationpropCount++;
             }
 
@@ -5091,31 +5091,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAddNewDeferralOperationpropCount = 0;
             if (tasksAddNewDeferralOperationautomationName != null)
             {
-                tasksAddNewDeferralOperation["AutomationName"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationautomationName);
+                tasksAddNewDeferralOperation["AutomationName"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationautomationName);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationdeferralTimeInMinutes != null)
             {
-                tasksAddNewDeferralOperation["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationdeferralTimeInMinutes);
+                tasksAddNewDeferralOperation["DeferralTimeInMinutes"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationdeferralTimeInMinutes);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationtaskInputData != null)
             {
-                tasksAddNewDeferralOperation["TaskInputData"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationtaskInputData);
+                tasksAddNewDeferralOperation["TaskInputData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationtaskInputData);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationdeferralStoredData != null)
             {
-                tasksAddNewDeferralOperation["DeferralStoredData"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationdeferralStoredData);
+                tasksAddNewDeferralOperation["DeferralStoredData"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationdeferralStoredData);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationprocessStage != null)
             {
-                tasksAddNewDeferralOperation["ProcessStage"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationprocessStage);
+                tasksAddNewDeferralOperation["ProcessStage"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationprocessStage);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
@@ -5123,7 +5123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (tasksAddNewDeferralOperationpriority != null)
                 {
-                    tasksAddNewDeferralOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationpriority);
+                    tasksAddNewDeferralOperation["Priority"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationpriority);
                     tasksAddNewDeferralOperationpropCount++;
                 }
 
@@ -5137,25 +5137,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewDeferralOperationorganisation != null)
             {
-                tasksAddNewDeferralOperation["Organisation"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationorganisation);
+                tasksAddNewDeferralOperation["Organisation"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationorganisation);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationdepartment != null)
             {
-                tasksAddNewDeferralOperation["Department"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationdepartment);
+                tasksAddNewDeferralOperation["Department"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationdepartment);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationdescription != null)
             {
-                tasksAddNewDeferralOperation["Description"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationdescription);
+                tasksAddNewDeferralOperation["Description"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationdescription);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
             if (tasksAddNewDeferralOperationtags != null)
             {
-                tasksAddNewDeferralOperation["Tags"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationtags);
+                tasksAddNewDeferralOperation["Tags"] = CSharpExpressionConverter.ConvertToken(tasksAddNewDeferralOperationtags);
                 tasksAddNewDeferralOperationpropCount++;
             }
 
@@ -5176,7 +5176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksGetTaskOperation = new JObject();
             var tasksGetTaskOperationpropCount = 0;
             tasksGetTaskOperationpropCount++;
-            tasksGetTaskOperation["OperationId"] = ExpressionConverter.ConvertO(tasksGetTaskOperationoperationId);
+            tasksGetTaskOperation["OperationId"] = CSharpExpressionConverter.ConvertToken(tasksGetTaskOperationoperationId);
             if (tasksGetTaskOperationpropCount > 0)
             {
                 callPayload.Body = tasksGetTaskOperation;
@@ -5194,9 +5194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setRemoteLoggingLevel = new JObject();
             var setRemoteLoggingLevelpropCount = 0;
             setRemoteLoggingLevelpropCount++;
-            setRemoteLoggingLevel["LoggingLevel"] = ExpressionConverter.ConvertO(setRemoteLoggingLevelloggingLevel);
+            setRemoteLoggingLevel["LoggingLevel"] = CSharpExpressionConverter.ConvertToken(setRemoteLoggingLevelloggingLevel);
             setRemoteLoggingLevelpropCount++;
-            setRemoteLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(setRemoteLoggingLevelworkflow);
+            setRemoteLoggingLevel["Workflow"] = CSharpExpressionConverter.ConvertToken(setRemoteLoggingLevelworkflow);
             if (setRemoteLoggingLevelpropCount > 0)
             {
                 callPayload.Body = setRemoteLoggingLevel;
@@ -5214,7 +5214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getRemoteLoggingLevel = new JObject();
             var getRemoteLoggingLevelpropCount = 0;
             getRemoteLoggingLevelpropCount++;
-            getRemoteLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(getRemoteLoggingLevelworkflow);
+            getRemoteLoggingLevel["Workflow"] = CSharpExpressionConverter.ConvertToken(getRemoteLoggingLevelworkflow);
             if (getRemoteLoggingLevelpropCount > 0)
             {
                 callPayload.Body = getRemoteLoggingLevel;
@@ -5232,20 +5232,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setLicenseCode = new JObject();
             var setLicenseCodepropCount = 0;
             setLicenseCodepropCount++;
-            setLicenseCode["CustomerNETBIOSDomainName"] = ExpressionConverter.ConvertO(setLicenseCodecustomerNETBIOSDomainName);
+            setLicenseCode["CustomerNETBIOSDomainName"] = CSharpExpressionConverter.ConvertToken(setLicenseCodecustomerNETBIOSDomainName);
             setLicenseCodepropCount++;
-            setLicenseCode["CustomerDisplayName"] = ExpressionConverter.ConvertO(setLicenseCodecustomerDisplayName);
+            setLicenseCode["CustomerDisplayName"] = CSharpExpressionConverter.ConvertToken(setLicenseCodecustomerDisplayName);
             setLicenseCodepropCount++;
-            setLicenseCode["VendorName"] = ExpressionConverter.ConvertO(setLicenseCodevendorName);
+            setLicenseCode["VendorName"] = CSharpExpressionConverter.ConvertToken(setLicenseCodevendorName);
             setLicenseCodepropCount++;
-            setLicenseCode["LicenseExpiryDate"] = ExpressionConverter.ConvertO(setLicenseCodelicenseExpiryDate);
+            setLicenseCode["LicenseExpiryDate"] = CSharpExpressionConverter.ConvertToken(setLicenseCodelicenseExpiryDate);
             setLicenseCodepropCount++;
-            setLicenseCode["ActivationCode"] = ExpressionConverter.ConvertO(setLicenseCodeactivationCode);
+            setLicenseCode["ActivationCode"] = CSharpExpressionConverter.ConvertToken(setLicenseCodeactivationCode);
             if (setLicenseCodestoreInRegistry != null)
             {
                 if (setLicenseCodestoreInRegistry != null)
                 {
-                    setLicenseCode["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseCodestoreInRegistry);
+                    setLicenseCode["StoreInRegistry"] = CSharpExpressionConverter.ConvertToken(setLicenseCodestoreInRegistry);
                     setLicenseCodepropCount++;
                 }
 
@@ -5258,7 +5258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setLicenseCodepropCount++;
-            setLicenseCode["Workflow"] = ExpressionConverter.ConvertO(setLicenseCodeworkflow);
+            setLicenseCode["Workflow"] = CSharpExpressionConverter.ConvertToken(setLicenseCodeworkflow);
             if (setLicenseCodepropCount > 0)
             {
                 callPayload.Body = setLicenseCode;
@@ -5276,12 +5276,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setLicenseString = new JObject();
             var setLicenseStringpropCount = 0;
             setLicenseStringpropCount++;
-            setLicenseString["LicenseString"] = ExpressionConverter.ConvertO(setLicenseStringlicenseString);
+            setLicenseString["LicenseString"] = CSharpExpressionConverter.ConvertToken(setLicenseStringlicenseString);
             if (setLicenseStringstoreInRegistry != null)
             {
                 if (setLicenseStringstoreInRegistry != null)
                 {
-                    setLicenseString["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseStringstoreInRegistry);
+                    setLicenseString["StoreInRegistry"] = CSharpExpressionConverter.ConvertToken(setLicenseStringstoreInRegistry);
                     setLicenseStringpropCount++;
                 }
 
@@ -5294,7 +5294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setLicenseStringpropCount++;
-            setLicenseString["Workflow"] = ExpressionConverter.ConvertO(setLicenseStringworkflow);
+            setLicenseString["Workflow"] = CSharpExpressionConverter.ConvertToken(setLicenseStringworkflow);
             if (setLicenseStringpropCount > 0)
             {
                 callPayload.Body = setLicenseString;
@@ -5312,7 +5312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getLicenseState = new JObject();
             var getLicenseStatepropCount = 0;
             getLicenseStatepropCount++;
-            getLicenseState["Workflow"] = ExpressionConverter.ConvertO(getLicenseStateworkflow);
+            getLicenseState["Workflow"] = CSharpExpressionConverter.ConvertToken(getLicenseStateworkflow);
             if (getLicenseStatepropCount > 0)
             {
                 callPayload.Body = getLicenseState;
@@ -5333,7 +5333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setRSAGUITopmosttopMost != null)
                 {
-                    setRSAGUITopmost["TopMost"] = ExpressionConverter.ConvertO(setRSAGUITopmosttopMost);
+                    setRSAGUITopmost["TopMost"] = CSharpExpressionConverter.ConvertToken(setRSAGUITopmosttopMost);
                     setRSAGUITopmostpropCount++;
                 }
 
@@ -5346,7 +5346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setRSAGUITopmostpropCount++;
-            setRSAGUITopmost["Workflow"] = ExpressionConverter.ConvertO(setRSAGUITopmostworkflow);
+            setRSAGUITopmost["Workflow"] = CSharpExpressionConverter.ConvertToken(setRSAGUITopmostworkflow);
             if (setRSAGUITopmostpropCount > 0)
             {
                 callPayload.Body = setRSAGUITopmost;
@@ -5364,9 +5364,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setRSAGUIOpacity = new JObject();
             var setRSAGUIOpacitypropCount = 0;
             setRSAGUIOpacitypropCount++;
-            setRSAGUIOpacity["Opacity"] = ExpressionConverter.ConvertO(setRSAGUIOpacityopacity);
+            setRSAGUIOpacity["Opacity"] = CSharpExpressionConverter.ConvertToken(setRSAGUIOpacityopacity);
             setRSAGUIOpacitypropCount++;
-            setRSAGUIOpacity["Workflow"] = ExpressionConverter.ConvertO(setRSAGUIOpacityworkflow);
+            setRSAGUIOpacity["Workflow"] = CSharpExpressionConverter.ConvertToken(setRSAGUIOpacityworkflow);
             if (setRSAGUIOpacitypropCount > 0)
             {
                 callPayload.Body = setRSAGUIOpacity;
@@ -5384,11 +5384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setRSAGUIPosition = new JObject();
             var setRSAGUIPositionpropCount = 0;
             setRSAGUIPositionpropCount++;
-            setRSAGUIPosition["X"] = ExpressionConverter.ConvertO(setRSAGUIPositionx);
+            setRSAGUIPosition["X"] = CSharpExpressionConverter.ConvertToken(setRSAGUIPositionx);
             setRSAGUIPositionpropCount++;
-            setRSAGUIPosition["Y"] = ExpressionConverter.ConvertO(setRSAGUIPositiony);
+            setRSAGUIPosition["Y"] = CSharpExpressionConverter.ConvertToken(setRSAGUIPositiony);
             setRSAGUIPositionpropCount++;
-            setRSAGUIPosition["Workflow"] = ExpressionConverter.ConvertO(setRSAGUIPositionworkflow);
+            setRSAGUIPosition["Workflow"] = CSharpExpressionConverter.ConvertToken(setRSAGUIPositionworkflow);
             if (setRSAGUIPositionpropCount > 0)
             {
                 callPayload.Body = setRSAGUIPosition;
@@ -5409,7 +5409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (bringRSAGUIToFrontfocus != null)
                 {
-                    bringRSAGUIToFront["Focus"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontfocus);
+                    bringRSAGUIToFront["Focus"] = CSharpExpressionConverter.ConvertToken(bringRSAGUIToFrontfocus);
                     bringRSAGUIToFrontpropCount++;
                 }
 
@@ -5425,7 +5425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (bringRSAGUIToFrontglobalLeftMouseClick != null)
                 {
-                    bringRSAGUIToFront["GlobalLeftMouseClick"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontglobalLeftMouseClick);
+                    bringRSAGUIToFront["GlobalLeftMouseClick"] = CSharpExpressionConverter.ConvertToken(bringRSAGUIToFrontglobalLeftMouseClick);
                     bringRSAGUIToFrontpropCount++;
                 }
 
@@ -5438,7 +5438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             bringRSAGUIToFrontpropCount++;
-            bringRSAGUIToFront["Workflow"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontworkflow);
+            bringRSAGUIToFront["Workflow"] = CSharpExpressionConverter.ConvertToken(bringRSAGUIToFrontworkflow);
             if (bringRSAGUIToFrontpropCount > 0)
             {
                 callPayload.Body = bringRSAGUIToFront;
@@ -5459,7 +5459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (disconnectSessionsecondsToWait != null)
                 {
-                    disconnectSession["SecondsToWait"] = ExpressionConverter.ConvertO(disconnectSessionsecondsToWait);
+                    disconnectSession["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(disconnectSessionsecondsToWait);
                     disconnectSessionpropCount++;
                 }
 
@@ -5475,7 +5475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (disconnectSessiondoNotDisconnectIfLocalAgent != null)
                 {
-                    disconnectSession["DoNotDisconnectIfLocalAgent"] = ExpressionConverter.ConvertO(disconnectSessiondoNotDisconnectIfLocalAgent);
+                    disconnectSession["DoNotDisconnectIfLocalAgent"] = CSharpExpressionConverter.ConvertToken(disconnectSessiondoNotDisconnectIfLocalAgent);
                     disconnectSessionpropCount++;
                 }
 
@@ -5488,7 +5488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             disconnectSessionpropCount++;
-            disconnectSession["Workflow"] = ExpressionConverter.ConvertO(disconnectSessionworkflow);
+            disconnectSession["Workflow"] = CSharpExpressionConverter.ConvertToken(disconnectSessionworkflow);
             if (disconnectSessionpropCount > 0)
             {
                 callPayload.Body = disconnectSession;
@@ -5509,7 +5509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (logoffSessionsecondsToWait != null)
                 {
-                    logoffSession["SecondsToWait"] = ExpressionConverter.ConvertO(logoffSessionsecondsToWait);
+                    logoffSession["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(logoffSessionsecondsToWait);
                     logoffSessionpropCount++;
                 }
 
@@ -5522,7 +5522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             logoffSessionpropCount++;
-            logoffSession["Workflow"] = ExpressionConverter.ConvertO(logoffSessionworkflow);
+            logoffSession["Workflow"] = CSharpExpressionConverter.ConvertToken(logoffSessionworkflow);
             if (logoffSessionpropCount > 0)
             {
                 callPayload.Body = logoffSession;
@@ -5543,7 +5543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (closeRSAServersecondsToWait != null)
                 {
-                    closeRSAServer["SecondsToWait"] = ExpressionConverter.ConvertO(closeRSAServersecondsToWait);
+                    closeRSAServer["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(closeRSAServersecondsToWait);
                     closeRSAServerpropCount++;
                 }
 
@@ -5556,7 +5556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             closeRSAServerpropCount++;
-            closeRSAServer["Workflow"] = ExpressionConverter.ConvertO(closeRSAServerworkflow);
+            closeRSAServer["Workflow"] = CSharpExpressionConverter.ConvertToken(closeRSAServerworkflow);
             if (closeRSAServerpropCount > 0)
             {
                 callPayload.Body = closeRSAServer;
@@ -5574,12 +5574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setRPACommandTimeout = new JObject();
             var setRPACommandTimeoutpropCount = 0;
             setRPACommandTimeoutpropCount++;
-            setRPACommandTimeout["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(setRPACommandTimeoutcommandTimeoutInSeconds);
+            setRPACommandTimeout["CommandTimeoutInSeconds"] = CSharpExpressionConverter.ConvertToken(setRPACommandTimeoutcommandTimeoutInSeconds);
             if (setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
             {
                 if (setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
                 {
-                    setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = ExpressionConverter.ConvertO(setRPACommandTimeoutterminateTimedoutRPACommandThreads);
+                    setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = CSharpExpressionConverter.ConvertToken(setRPACommandTimeoutterminateTimedoutRPACommandThreads);
                     setRPACommandTimeoutpropCount++;
                 }
 
@@ -5592,7 +5592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setRPACommandTimeoutpropCount++;
-            setRPACommandTimeout["Workflow"] = ExpressionConverter.ConvertO(setRPACommandTimeoutworkflow);
+            setRPACommandTimeout["Workflow"] = CSharpExpressionConverter.ConvertToken(setRPACommandTimeoutworkflow);
             if (setRPACommandTimeoutpropCount > 0)
             {
                 callPayload.Body = setRPACommandTimeout;
@@ -5610,10 +5610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var runAlternativeIAConnect = new JObject();
             var runAlternativeIAConnectpropCount = 0;
             runAlternativeIAConnectpropCount++;
-            runAlternativeIAConnect["Filename"] = ExpressionConverter.ConvertO(runAlternativeIAConnectfilename);
+            runAlternativeIAConnect["Filename"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectfilename);
             if (runAlternativeIAConnectarguments != null)
             {
-                runAlternativeIAConnect["Arguments"] = ExpressionConverter.ConvertO(runAlternativeIAConnectarguments);
+                runAlternativeIAConnect["Arguments"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectarguments);
                 runAlternativeIAConnectpropCount++;
             }
 
@@ -5621,7 +5621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectloadIntoMemory != null)
                 {
-                    runAlternativeIAConnect["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectloadIntoMemory);
+                    runAlternativeIAConnect["LoadIntoMemory"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectloadIntoMemory);
                     runAlternativeIAConnectpropCount++;
                 }
 
@@ -5634,7 +5634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             runAlternativeIAConnectpropCount++;
-            runAlternativeIAConnect["Workflow"] = ExpressionConverter.ConvertO(runAlternativeIAConnectworkflow);
+            runAlternativeIAConnect["Workflow"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectworkflow);
             if (runAlternativeIAConnectpropCount > 0)
             {
                 callPayload.Body = runAlternativeIAConnect;
@@ -5652,10 +5652,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var runAlternativeIAConnectSentFromDirector = new JObject();
             var runAlternativeIAConnectSentFromDirectorpropCount = 0;
             runAlternativeIAConnectSentFromDirectorpropCount++;
-            runAlternativeIAConnectSentFromDirector["LocalFilename"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorlocalFilename);
+            runAlternativeIAConnectSentFromDirector["LocalFilename"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorlocalFilename);
             if (runAlternativeIAConnectSentFromDirectorremoteFilename != null)
             {
-                runAlternativeIAConnectSentFromDirector["RemoteFilename"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorremoteFilename);
+                runAlternativeIAConnectSentFromDirector["RemoteFilename"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorremoteFilename);
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
@@ -5663,7 +5663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectSentFromDirectorcompress != null)
                 {
-                    runAlternativeIAConnectSentFromDirector["Compress"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorcompress);
+                    runAlternativeIAConnectSentFromDirector["Compress"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorcompress);
                     runAlternativeIAConnectSentFromDirectorpropCount++;
                 }
 
@@ -5677,7 +5677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runAlternativeIAConnectSentFromDirectorarguments != null)
             {
-                runAlternativeIAConnectSentFromDirector["Arguments"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorarguments);
+                runAlternativeIAConnectSentFromDirector["Arguments"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorarguments);
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
@@ -5685,7 +5685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectSentFromDirectorpermitDowngrade != null)
                 {
-                    runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorpermitDowngrade);
+                    runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorpermitDowngrade);
                     runAlternativeIAConnectSentFromDirectorpropCount++;
                 }
 
@@ -5701,7 +5701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectSentFromDirectorskipVersionCheck != null)
                 {
-                    runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorskipVersionCheck);
+                    runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorskipVersionCheck);
                     runAlternativeIAConnectSentFromDirectorpropCount++;
                 }
 
@@ -5717,7 +5717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectSentFromDirectorloadIntoMemory != null)
                 {
-                    runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorloadIntoMemory);
+                    runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorloadIntoMemory);
                     runAlternativeIAConnectSentFromDirectorpropCount++;
                 }
 
@@ -5733,7 +5733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory != null)
                 {
-                    runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
+                    runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
                     runAlternativeIAConnectSentFromDirectorpropCount++;
                 }
 
@@ -5746,7 +5746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             runAlternativeIAConnectSentFromDirectorpropCount++;
-            runAlternativeIAConnectSentFromDirector["Workflow"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorworkflow);
+            runAlternativeIAConnectSentFromDirector["Workflow"] = CSharpExpressionConverter.ConvertToken(runAlternativeIAConnectSentFromDirectorworkflow);
             if (runAlternativeIAConnectSentFromDirectorpropCount > 0)
             {
                 callPayload.Body = runAlternativeIAConnectSentFromDirector;
@@ -5764,7 +5764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getIAConnectAgentInfo = new JObject();
             var getIAConnectAgentInfopropCount = 0;
             getIAConnectAgentInfopropCount++;
-            getIAConnectAgentInfo["Workflow"] = ExpressionConverter.ConvertO(getIAConnectAgentInfoworkflow);
+            getIAConnectAgentInfo["Workflow"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentInfoworkflow);
             if (getIAConnectAgentInfopropCount > 0)
             {
                 callPayload.Body = getIAConnectAgentInfo;
@@ -5785,7 +5785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLogcompress != null)
                 {
-                    getIAConnectAgentLog["Compress"] = ExpressionConverter.ConvertO(getIAConnectAgentLogcompress);
+                    getIAConnectAgentLog["Compress"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogcompress);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5801,7 +5801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLogreturnLastCommandOnly != null)
                 {
-                    getIAConnectAgentLog["ReturnLastCommandOnly"] = ExpressionConverter.ConvertO(getIAConnectAgentLogreturnLastCommandOnly);
+                    getIAConnectAgentLog["ReturnLastCommandOnly"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogreturnLastCommandOnly);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5817,7 +5817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLogsaveLogToFile != null)
                 {
-                    getIAConnectAgentLog["SaveLogToFile"] = ExpressionConverter.ConvertO(getIAConnectAgentLogsaveLogToFile);
+                    getIAConnectAgentLog["SaveLogToFile"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogsaveLogToFile);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5833,7 +5833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLogplaceLogContentInDataItem != null)
                 {
-                    getIAConnectAgentLog["PlaceLogContentInDataItem"] = ExpressionConverter.ConvertO(getIAConnectAgentLogplaceLogContentInDataItem);
+                    getIAConnectAgentLog["PlaceLogContentInDataItem"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogplaceLogContentInDataItem);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5847,7 +5847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getIAConnectAgentLoglocalSaveFolder != null)
             {
-                getIAConnectAgentLog["LocalSaveFolder"] = ExpressionConverter.ConvertO(getIAConnectAgentLoglocalSaveFolder);
+                getIAConnectAgentLog["LocalSaveFolder"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLoglocalSaveFolder);
                 getIAConnectAgentLogpropCount++;
             }
 
@@ -5855,7 +5855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLoguseAgentLogFilename != null)
                 {
-                    getIAConnectAgentLog["UseAgentLogFilename"] = ExpressionConverter.ConvertO(getIAConnectAgentLoguseAgentLogFilename);
+                    getIAConnectAgentLog["UseAgentLogFilename"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLoguseAgentLogFilename);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5869,7 +5869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getIAConnectAgentLoglocalSaveFilename != null)
             {
-                getIAConnectAgentLog["LocalSaveFilename"] = ExpressionConverter.ConvertO(getIAConnectAgentLoglocalSaveFilename);
+                getIAConnectAgentLog["LocalSaveFilename"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLoglocalSaveFilename);
                 getIAConnectAgentLogpropCount++;
             }
 
@@ -5877,7 +5877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getIAConnectAgentLogmaxBytesToRead != null)
                 {
-                    getIAConnectAgentLog["MaxBytesToRead"] = ExpressionConverter.ConvertO(getIAConnectAgentLogmaxBytesToRead);
+                    getIAConnectAgentLog["MaxBytesToRead"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogmaxBytesToRead);
                     getIAConnectAgentLogpropCount++;
                 }
 
@@ -5890,7 +5890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getIAConnectAgentLogpropCount++;
-            getIAConnectAgentLog["Workflow"] = ExpressionConverter.ConvertO(getIAConnectAgentLogworkflow);
+            getIAConnectAgentLog["Workflow"] = CSharpExpressionConverter.ConvertToken(getIAConnectAgentLogworkflow);
             if (getIAConnectAgentLogpropCount > 0)
             {
                 callPayload.Body = getIAConnectAgentLog;
@@ -5908,7 +5908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var resetCommandStats = new JObject();
             var resetCommandStatspropCount = 0;
             resetCommandStatspropCount++;
-            resetCommandStats["Workflow"] = ExpressionConverter.ConvertO(resetCommandStatsworkflow);
+            resetCommandStats["Workflow"] = CSharpExpressionConverter.ConvertToken(resetCommandStatsworkflow);
             if (resetCommandStatspropCount > 0)
             {
                 callPayload.Body = resetCommandStats;
@@ -5926,7 +5926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAllCommandStats = new JObject();
             var getAllCommandStatspropCount = 0;
             getAllCommandStatspropCount++;
-            getAllCommandStats["Workflow"] = ExpressionConverter.ConvertO(getAllCommandStatsworkflow);
+            getAllCommandStats["Workflow"] = CSharpExpressionConverter.ConvertToken(getAllCommandStatsworkflow);
             if (getAllCommandStatspropCount > 0)
             {
                 callPayload.Body = getAllCommandStats;
@@ -5945,7 +5945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var enableNextHoppropCount = 0;
             if (enableNextHopnextHopDirectorAddress != null)
             {
-                enableNextHop["NextHopDirectorAddress"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddress);
+                enableNextHop["NextHopDirectorAddress"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorAddress);
                 enableNextHoppropCount++;
             }
 
@@ -5953,7 +5953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorTCPPort != null)
                 {
-                    enableNextHop["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorTCPPort);
+                    enableNextHop["NextHopDirectorTCPPort"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorTCPPort);
                     enableNextHoppropCount++;
                 }
 
@@ -5969,7 +5969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorUsesHTTPS != null)
                 {
-                    enableNextHop["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorUsesHTTPS);
+                    enableNextHop["NextHopDirectorUsesHTTPS"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorUsesHTTPS);
                     enableNextHoppropCount++;
                 }
 
@@ -5985,7 +5985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorAddressIsLocalhostname != null)
                 {
-                    enableNextHop["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsLocalhostname);
+                    enableNextHop["NextHopDirectorAddressIsLocalhostname"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorAddressIsLocalhostname);
                     enableNextHoppropCount++;
                 }
 
@@ -6001,7 +6001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorAddressIsHostname != null)
                 {
-                    enableNextHop["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsHostname);
+                    enableNextHop["NextHopDirectorAddressIsHostname"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorAddressIsHostname);
                     enableNextHoppropCount++;
                 }
 
@@ -6017,7 +6017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorAddressIsFQDN != null)
                 {
-                    enableNextHop["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsFQDN);
+                    enableNextHop["NextHopDirectorAddressIsFQDN"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorAddressIsFQDN);
                     enableNextHoppropCount++;
                 }
 
@@ -6033,7 +6033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopincrementNextHopDirectorTCPPortBySessionId != null)
                 {
-                    enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(enableNextHopincrementNextHopDirectorTCPPortBySessionId);
+                    enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = CSharpExpressionConverter.ConvertToken(enableNextHopincrementNextHopDirectorTCPPortBySessionId);
                     enableNextHoppropCount++;
                 }
 
@@ -6049,7 +6049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopdisableBeforeEnable != null)
                 {
-                    enableNextHop["DisableBeforeEnable"] = ExpressionConverter.ConvertO(enableNextHopdisableBeforeEnable);
+                    enableNextHop["DisableBeforeEnable"] = CSharpExpressionConverter.ConvertToken(enableNextHopdisableBeforeEnable);
                     enableNextHoppropCount++;
                 }
 
@@ -6065,7 +6065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopcheckNextHopDirectorIsRunning != null)
                 {
-                    enableNextHop["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopDirectorIsRunning);
+                    enableNextHop["CheckNextHopDirectorIsRunning"] = CSharpExpressionConverter.ConvertToken(enableNextHopcheckNextHopDirectorIsRunning);
                     enableNextHoppropCount++;
                 }
 
@@ -6081,7 +6081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopcheckNextHopAgentIsRunning != null)
                 {
-                    enableNextHop["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopAgentIsRunning);
+                    enableNextHop["CheckNextHopAgentIsRunning"] = CSharpExpressionConverter.ConvertToken(enableNextHopcheckNextHopAgentIsRunning);
                     enableNextHoppropCount++;
                 }
 
@@ -6097,7 +6097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (enableNextHopnextHopDirectorAddressIsNamedPipe != null)
                 {
-                    enableNextHop["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsNamedPipe);
+                    enableNextHop["NextHopDirectorAddressIsNamedPipe"] = CSharpExpressionConverter.ConvertToken(enableNextHopnextHopDirectorAddressIsNamedPipe);
                     enableNextHoppropCount++;
                 }
 
@@ -6110,7 +6110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             enableNextHoppropCount++;
-            enableNextHop["Workflow"] = ExpressionConverter.ConvertO(enableNextHopworkflow);
+            enableNextHop["Workflow"] = CSharpExpressionConverter.ConvertToken(enableNextHopworkflow);
             if (enableNextHoppropCount > 0)
             {
                 callPayload.Body = enableNextHop;
@@ -6128,7 +6128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var disableNextHop = new JObject();
             var disableNextHoppropCount = 0;
             disableNextHoppropCount++;
-            disableNextHop["Workflow"] = ExpressionConverter.ConvertO(disableNextHopworkflow);
+            disableNextHop["Workflow"] = CSharpExpressionConverter.ConvertToken(disableNextHopworkflow);
             if (disableNextHoppropCount > 0)
             {
                 callPayload.Body = disableNextHop;
@@ -6149,7 +6149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getNextHopStatuscheckNextHopDirectorIsRunning != null)
                 {
-                    getNextHopStatus["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopDirectorIsRunning);
+                    getNextHopStatus["CheckNextHopDirectorIsRunning"] = CSharpExpressionConverter.ConvertToken(getNextHopStatuscheckNextHopDirectorIsRunning);
                     getNextHopStatuspropCount++;
                 }
 
@@ -6165,7 +6165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getNextHopStatuscheckNextHopAgentIsRunning != null)
                 {
-                    getNextHopStatus["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopAgentIsRunning);
+                    getNextHopStatus["CheckNextHopAgentIsRunning"] = CSharpExpressionConverter.ConvertToken(getNextHopStatuscheckNextHopAgentIsRunning);
                     getNextHopStatuspropCount++;
                 }
 
@@ -6178,7 +6178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getNextHopStatuspropCount++;
-            getNextHopStatus["Workflow"] = ExpressionConverter.ConvertO(getNextHopStatusworkflow);
+            getNextHopStatus["Workflow"] = CSharpExpressionConverter.ConvertToken(getNextHopStatusworkflow);
             if (getNextHopStatuspropCount > 0)
             {
                 callPayload.Body = getNextHopStatus;
@@ -6197,7 +6197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var waitForNextHopSessionToConnectpropCount = 0;
             if (waitForNextHopSessionToConnectnextHopDirectorAddress != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorAddress"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddress);
+                waitForNextHopSessionToConnect["NextHopDirectorAddress"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorAddress);
                 waitForNextHopSessionToConnectpropCount++;
             }
 
@@ -6205,7 +6205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorTCPPort != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorTCPPort);
+                    waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorTCPPort);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6221,7 +6221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
+                    waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6237,7 +6237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6253,7 +6253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6269,7 +6269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6285,7 +6285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId != null)
                 {
-                    waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
+                    waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6301,7 +6301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectsecondsToWait != null)
                 {
-                    waitForNextHopSessionToConnect["SecondsToWait"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectsecondsToWait);
+                    waitForNextHopSessionToConnect["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectsecondsToWait);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6317,7 +6317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe != null)
                 {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6333,7 +6333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForNextHopSessionToConnectdisableExistingNextHop != null)
                 {
-                    waitForNextHopSessionToConnect["DisableExistingNextHop"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectdisableExistingNextHop);
+                    waitForNextHopSessionToConnect["DisableExistingNextHop"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectdisableExistingNextHop);
                     waitForNextHopSessionToConnectpropCount++;
                 }
 
@@ -6346,7 +6346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             waitForNextHopSessionToConnectpropCount++;
-            waitForNextHopSessionToConnect["Workflow"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectworkflow);
+            waitForNextHopSessionToConnect["Workflow"] = CSharpExpressionConverter.ConvertToken(waitForNextHopSessionToConnectworkflow);
             if (waitForNextHopSessionToConnectpropCount > 0)
             {
                 callPayload.Body = waitForNextHopSessionToConnect;
@@ -6367,7 +6367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorsOAPEnabled != null)
                 {
-                    configureNextHopDirector["SOAPEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPEnabled);
+                    configureNextHopDirector["SOAPEnabled"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorsOAPEnabled);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6383,7 +6383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorrESTEnabled != null)
                 {
-                    configureNextHopDirector["RESTEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTEnabled);
+                    configureNextHopDirector["RESTEnabled"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorrESTEnabled);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6399,7 +6399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorwebServerEnabled != null)
                 {
-                    configureNextHopDirector["WebServerEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorwebServerEnabled);
+                    configureNextHopDirector["WebServerEnabled"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorwebServerEnabled);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6415,7 +6415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectordirectorIsLocalhostOnly != null)
                 {
-                    configureNextHopDirector["DirectorIsLocalhostOnly"] = ExpressionConverter.ConvertO(configureNextHopDirectordirectorIsLocalhostOnly);
+                    configureNextHopDirector["DirectorIsLocalhostOnly"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectordirectorIsLocalhostOnly);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6431,7 +6431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorsOAPTCPPort != null)
                 {
-                    configureNextHopDirector["SOAPTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPTCPPort);
+                    configureNextHopDirector["SOAPTCPPort"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorsOAPTCPPort);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6447,7 +6447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorrESTTCPPort != null)
                 {
-                    configureNextHopDirector["RESTTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTTCPPort);
+                    configureNextHopDirector["RESTTCPPort"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorrESTTCPPort);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6463,7 +6463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorsOAPUsesHTTPS != null)
                 {
-                    configureNextHopDirector["SOAPUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesHTTPS);
+                    configureNextHopDirector["SOAPUsesHTTPS"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorsOAPUsesHTTPS);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6479,7 +6479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorrESTUsesHTTPS != null)
                 {
-                    configureNextHopDirector["RESTUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesHTTPS);
+                    configureNextHopDirector["RESTUsesHTTPS"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorrESTUsesHTTPS);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6495,7 +6495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorincrementDirectorTCPPortBySessionId != null)
                 {
-                    configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(configureNextHopDirectorincrementDirectorTCPPortBySessionId);
+                    configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorincrementDirectorTCPPortBySessionId);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6511,7 +6511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorsOAPUsesUserAuthentication != null)
                 {
-                    configureNextHopDirector["SOAPUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesUserAuthentication);
+                    configureNextHopDirector["SOAPUsesUserAuthentication"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorsOAPUsesUserAuthentication);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6527,7 +6527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorrESTUsesUserAuthentication != null)
                 {
-                    configureNextHopDirector["RESTUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesUserAuthentication);
+                    configureNextHopDirector["RESTUsesUserAuthentication"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorrESTUsesUserAuthentication);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6543,7 +6543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (configureNextHopDirectorcommandNamedPipeEnabled != null)
                 {
-                    configureNextHopDirector["CommandNamedPipeEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorcommandNamedPipeEnabled);
+                    configureNextHopDirector["CommandNamedPipeEnabled"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorcommandNamedPipeEnabled);
                     configureNextHopDirectorpropCount++;
                 }
 
@@ -6556,7 +6556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             configureNextHopDirectorpropCount++;
-            configureNextHopDirector["Workflow"] = ExpressionConverter.ConvertO(configureNextHopDirectorworkflow);
+            configureNextHopDirector["Workflow"] = CSharpExpressionConverter.ConvertToken(configureNextHopDirectorworkflow);
             if (configureNextHopDirectorpropCount > 0)
             {
                 callPayload.Body = configureNextHopDirector;
@@ -6574,7 +6574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var resetNextHopDirectorSettings = new JObject();
             var resetNextHopDirectorSettingspropCount = 0;
             resetNextHopDirectorSettingspropCount++;
-            resetNextHopDirectorSettings["Workflow"] = ExpressionConverter.ConvertO(resetNextHopDirectorSettingsworkflow);
+            resetNextHopDirectorSettings["Workflow"] = CSharpExpressionConverter.ConvertToken(resetNextHopDirectorSettingsworkflow);
             if (resetNextHopDirectorSettingspropCount > 0)
             {
                 callPayload.Body = resetNextHopDirectorSettings;
@@ -6592,7 +6592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var workflowCompleted = new JObject();
             var workflowCompletedpropCount = 0;
             workflowCompletedpropCount++;
-            workflowCompleted["Workflow"] = ExpressionConverter.ConvertO(workflowCompletedworkflow);
+            workflowCompleted["Workflow"] = CSharpExpressionConverter.ConvertToken(workflowCompletedworkflow);
             if (workflowCompletedpropCount > 0)
             {
                 callPayload.Body = workflowCompleted;
@@ -6611,13 +6611,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var raiseExceptionpropCount = 0;
             if (raiseExceptioninputException != null)
             {
-                raiseException["InputException"] = ExpressionConverter.ConvertO(raiseExceptioninputException);
+                raiseException["InputException"] = CSharpExpressionConverter.ConvertToken(raiseExceptioninputException);
                 raiseExceptionpropCount++;
             }
 
             if (raiseExceptionexceptionMessage != null)
             {
-                raiseException["ExceptionMessage"] = ExpressionConverter.ConvertO(raiseExceptionexceptionMessage);
+                raiseException["ExceptionMessage"] = CSharpExpressionConverter.ConvertToken(raiseExceptionexceptionMessage);
                 raiseExceptionpropCount++;
             }
 
@@ -6639,24 +6639,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var updateOrchestratorFlowStatsResultpropCount = 0;
             if (updateOrchestratorFlowStatsResultflowLastActionSuccess != null)
             {
-                updateOrchestratorFlowStatsResult["FlowLastActionSuccess"] = ExpressionConverter.ConvertO(updateOrchestratorFlowStatsResultflowLastActionSuccess);
+                updateOrchestratorFlowStatsResult["FlowLastActionSuccess"] = CSharpExpressionConverter.ConvertToken(updateOrchestratorFlowStatsResultflowLastActionSuccess);
                 updateOrchestratorFlowStatsResultpropCount++;
             }
 
             if (updateOrchestratorFlowStatsResultflowLastActionErrorMessage != null)
             {
-                updateOrchestratorFlowStatsResult["FlowLastActionErrorMessage"] = ExpressionConverter.ConvertO(updateOrchestratorFlowStatsResultflowLastActionErrorMessage);
+                updateOrchestratorFlowStatsResult["FlowLastActionErrorMessage"] = CSharpExpressionConverter.ConvertToken(updateOrchestratorFlowStatsResultflowLastActionErrorMessage);
                 updateOrchestratorFlowStatsResultpropCount++;
             }
 
             if (updateOrchestratorFlowStatsResultflowLastActionCode != null)
             {
-                updateOrchestratorFlowStatsResult["FlowLastActionCode"] = ExpressionConverter.ConvertO(updateOrchestratorFlowStatsResultflowLastActionCode);
+                updateOrchestratorFlowStatsResult["FlowLastActionCode"] = CSharpExpressionConverter.ConvertToken(updateOrchestratorFlowStatsResultflowLastActionCode);
                 updateOrchestratorFlowStatsResultpropCount++;
             }
 
             updateOrchestratorFlowStatsResultpropCount++;
-            updateOrchestratorFlowStatsResult["Workflow"] = ExpressionConverter.ConvertO(updateOrchestratorFlowStatsResultworkflow);
+            updateOrchestratorFlowStatsResult["Workflow"] = CSharpExpressionConverter.ConvertToken(updateOrchestratorFlowStatsResultworkflow);
             if (updateOrchestratorFlowStatsResultpropCount > 0)
             {
                 callPayload.Body = updateOrchestratorFlowStatsResult;
@@ -6674,7 +6674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getLastFailedActionFromOrchestratorFlowStats = new JObject();
             var getLastFailedActionFromOrchestratorFlowStatspropCount = 0;
             getLastFailedActionFromOrchestratorFlowStatspropCount++;
-            getLastFailedActionFromOrchestratorFlowStats["Workflow"] = ExpressionConverter.ConvertO(getLastFailedActionFromOrchestratorFlowStatsworkflow);
+            getLastFailedActionFromOrchestratorFlowStats["Workflow"] = CSharpExpressionConverter.ConvertToken(getLastFailedActionFromOrchestratorFlowStatsworkflow);
             if (getLastFailedActionFromOrchestratorFlowStatspropCount > 0)
             {
                 callPayload.Body = getLastFailedActionFromOrchestratorFlowStats;
@@ -6693,31 +6693,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getOrchestratorFlowStatspropCount = 0;
             if (getOrchestratorFlowStatswithinLastNumberOfDays != null)
             {
-                getOrchestratorFlowStats["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(getOrchestratorFlowStatswithinLastNumberOfDays);
+                getOrchestratorFlowStats["WithinLastNumberOfDays"] = CSharpExpressionConverter.ConvertToken(getOrchestratorFlowStatswithinLastNumberOfDays);
                 getOrchestratorFlowStatspropCount++;
             }
 
             if (getOrchestratorFlowStatssearchFlowName != null)
             {
-                getOrchestratorFlowStats["SearchFlowName"] = ExpressionConverter.ConvertO(getOrchestratorFlowStatssearchFlowName);
+                getOrchestratorFlowStats["SearchFlowName"] = CSharpExpressionConverter.ConvertToken(getOrchestratorFlowStatssearchFlowName);
                 getOrchestratorFlowStatspropCount++;
             }
 
             if (getOrchestratorFlowStatssearchFlowLastActionResult != null)
             {
-                getOrchestratorFlowStats["SearchFlowLastActionResult"] = ExpressionConverter.ConvertO(getOrchestratorFlowStatssearchFlowLastActionResult);
+                getOrchestratorFlowStats["SearchFlowLastActionResult"] = CSharpExpressionConverter.ConvertToken(getOrchestratorFlowStatssearchFlowLastActionResult);
                 getOrchestratorFlowStatspropCount++;
             }
 
             if (getOrchestratorFlowStatssearchFlowStartTimeStartWindow != null)
             {
-                getOrchestratorFlowStats["SearchFlowStartTimeStartWindow"] = ExpressionConverter.ConvertO(getOrchestratorFlowStatssearchFlowStartTimeStartWindow);
+                getOrchestratorFlowStats["SearchFlowStartTimeStartWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorFlowStatssearchFlowStartTimeStartWindow);
                 getOrchestratorFlowStatspropCount++;
             }
 
             if (getOrchestratorFlowStatssearchFlowStartTimeEndWindow != null)
             {
-                getOrchestratorFlowStats["SearchFlowStartTimeEndWindow"] = ExpressionConverter.ConvertO(getOrchestratorFlowStatssearchFlowStartTimeEndWindow);
+                getOrchestratorFlowStats["SearchFlowStartTimeEndWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorFlowStatssearchFlowStartTimeEndWindow);
                 getOrchestratorFlowStatspropCount++;
             }
 
@@ -6739,19 +6739,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getOrchestratorWorkerAvailabilityStatspropCount = 0;
             if (getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays != null)
             {
-                getOrchestratorWorkerAvailabilityStats["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays);
+                getOrchestratorWorkerAvailabilityStats["WithinLastNumberOfDays"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays);
                 getOrchestratorWorkerAvailabilityStatspropCount++;
             }
 
             if (getOrchestratorWorkerAvailabilityStatssearchFlowName != null)
             {
-                getOrchestratorWorkerAvailabilityStats["SearchFlowName"] = ExpressionConverter.ConvertO(getOrchestratorWorkerAvailabilityStatssearchFlowName);
+                getOrchestratorWorkerAvailabilityStats["SearchFlowName"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerAvailabilityStatssearchFlowName);
                 getOrchestratorWorkerAvailabilityStatspropCount++;
             }
 
             if (getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow != null)
             {
-                getOrchestratorWorkerAvailabilityStats["SearchFlowStartTimeStartWindow"] = ExpressionConverter.ConvertO(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow);
+                getOrchestratorWorkerAvailabilityStats["SearchFlowStartTimeStartWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow);
                 getOrchestratorWorkerAvailabilityStatspropCount++;
             }
 
@@ -6772,14 +6772,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getOrchestratorWorkerFlowUsageHeatmap = new JObject();
             var getOrchestratorWorkerFlowUsageHeatmappropCount = 0;
             getOrchestratorWorkerFlowUsageHeatmappropCount++;
-            getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateStartWindow"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow);
+            getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateStartWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow);
             getOrchestratorWorkerFlowUsageHeatmappropCount++;
-            getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateEndWindow"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow);
+            getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateEndWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow);
             if (getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
             {
                 if (getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
                 {
-                    getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
+                    getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
                     getOrchestratorWorkerFlowUsageHeatmappropCount++;
                 }
 
@@ -6793,7 +6793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getOrchestratorWorkerFlowUsageHeatmapworkerNames != null)
             {
-                getOrchestratorWorkerFlowUsageHeatmap["WorkerNames"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmapworkerNames);
+                getOrchestratorWorkerFlowUsageHeatmap["WorkerNames"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkerFlowUsageHeatmapworkerNames);
                 getOrchestratorWorkerFlowUsageHeatmappropCount++;
             }
 
@@ -6815,25 +6815,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getOrchestratorLoginHistorypropCount = 0;
             if (getOrchestratorLoginHistorywithinLastNumberOfDays != null)
             {
-                getOrchestratorLoginHistory["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(getOrchestratorLoginHistorywithinLastNumberOfDays);
+                getOrchestratorLoginHistory["WithinLastNumberOfDays"] = CSharpExpressionConverter.ConvertToken(getOrchestratorLoginHistorywithinLastNumberOfDays);
                 getOrchestratorLoginHistorypropCount++;
             }
 
             if (getOrchestratorLoginHistorysearchByEmail != null)
             {
-                getOrchestratorLoginHistory["SearchByEmail"] = ExpressionConverter.ConvertO(getOrchestratorLoginHistorysearchByEmail);
+                getOrchestratorLoginHistory["SearchByEmail"] = CSharpExpressionConverter.ConvertToken(getOrchestratorLoginHistorysearchByEmail);
                 getOrchestratorLoginHistorypropCount++;
             }
 
             if (getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow != null)
             {
-                getOrchestratorLoginHistory["SearchLoginHistoryTimeStartWindow"] = ExpressionConverter.ConvertO(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow);
+                getOrchestratorLoginHistory["SearchLoginHistoryTimeStartWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow);
                 getOrchestratorLoginHistorypropCount++;
             }
 
             if (getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow != null)
             {
-                getOrchestratorLoginHistory["SearchLoginHistoryTimeEndWindow"] = ExpressionConverter.ConvertO(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow);
+                getOrchestratorLoginHistory["SearchLoginHistoryTimeEndWindow"] = CSharpExpressionConverter.ConvertToken(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow);
                 getOrchestratorLoginHistorypropCount++;
             }
 
@@ -6854,9 +6854,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setLocalLoggingLevel = new JObject();
             var setLocalLoggingLevelpropCount = 0;
             setLocalLoggingLevelpropCount++;
-            setLocalLoggingLevel["LoggingLevel"] = ExpressionConverter.ConvertO(setLocalLoggingLevelloggingLevel);
+            setLocalLoggingLevel["LoggingLevel"] = CSharpExpressionConverter.ConvertToken(setLocalLoggingLevelloggingLevel);
             setLocalLoggingLevelpropCount++;
-            setLocalLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(setLocalLoggingLevelworkflow);
+            setLocalLoggingLevel["Workflow"] = CSharpExpressionConverter.ConvertToken(setLocalLoggingLevelworkflow);
             if (setLocalLoggingLevelpropCount > 0)
             {
                 callPayload.Body = setLocalLoggingLevel;
@@ -6874,15 +6874,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var runCommand = new JObject();
             var runCommandpropCount = 0;
             runCommandpropCount++;
-            runCommand["CommandName"] = ExpressionConverter.ConvertO(runCommandcommandName);
+            runCommand["CommandName"] = CSharpExpressionConverter.ConvertToken(runCommandcommandName);
             if (runCommandinputJSON != null)
             {
-                runCommand["InputJSON"] = ExpressionConverter.ConvertO(runCommandinputJSON);
+                runCommand["InputJSON"] = CSharpExpressionConverter.ConvertToken(runCommandinputJSON);
                 runCommandpropCount++;
             }
 
             runCommandpropCount++;
-            runCommand["Workflow"] = ExpressionConverter.ConvertO(runCommandworkflow);
+            runCommand["Workflow"] = CSharpExpressionConverter.ConvertToken(runCommandworkflow);
             if (runCommandpropCount > 0)
             {
                 callPayload.Body = runCommand;
@@ -6900,7 +6900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getLocalLoggingLevel = new JObject();
             var getLocalLoggingLevelpropCount = 0;
             getLocalLoggingLevelpropCount++;
-            getLocalLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(getLocalLoggingLevelworkflow);
+            getLocalLoggingLevel["Workflow"] = CSharpExpressionConverter.ConvertToken(getLocalLoggingLevelworkflow);
             if (getLocalLoggingLevelpropCount > 0)
             {
                 callPayload.Body = getLocalLoggingLevel;
@@ -6918,7 +6918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getRemoteClientType = new JObject();
             var getRemoteClientTypepropCount = 0;
             getRemoteClientTypepropCount++;
-            getRemoteClientType["Workflow"] = ExpressionConverter.ConvertO(getRemoteClientTypeworkflow);
+            getRemoteClientType["Workflow"] = CSharpExpressionConverter.ConvertToken(getRemoteClientTypeworkflow);
             if (getRemoteClientTypepropCount > 0)
             {
                 callPayload.Body = getRemoteClientType;
@@ -6936,7 +6936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getIAConnectDirectorInfo = new JObject();
             var getIAConnectDirectorInfopropCount = 0;
             getIAConnectDirectorInfopropCount++;
-            getIAConnectDirectorInfo["Workflow"] = ExpressionConverter.ConvertO(getIAConnectDirectorInfoworkflow);
+            getIAConnectDirectorInfo["Workflow"] = CSharpExpressionConverter.ConvertToken(getIAConnectDirectorInfoworkflow);
             if (getIAConnectDirectorInfopropCount > 0)
             {
                 callPayload.Body = getIAConnectDirectorInfo;
@@ -6954,7 +6954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAvailableIAConnectSessions = new JObject();
             var getAvailableIAConnectSessionspropCount = 0;
             getAvailableIAConnectSessionspropCount++;
-            getAvailableIAConnectSessions["Workflow"] = ExpressionConverter.ConvertO(getAvailableIAConnectSessionsworkflow);
+            getAvailableIAConnectSessions["Workflow"] = CSharpExpressionConverter.ConvertToken(getAvailableIAConnectSessionsworkflow);
             if (getAvailableIAConnectSessionspropCount > 0)
             {
                 callPayload.Body = getAvailableIAConnectSessions;
@@ -6972,12 +6972,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var attachToIAConnectSessionByName = new JObject();
             var attachToIAConnectSessionByNamepropCount = 0;
             attachToIAConnectSessionByNamepropCount++;
-            attachToIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNameiAConnectSessionName);
+            attachToIAConnectSessionByName["IAConnectSessionName"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByNameiAConnectSessionName);
             if (attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
             {
                 if (attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
                 {
-                    attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
+                    attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
                     attachToIAConnectSessionByNamepropCount++;
                 }
 
@@ -6990,7 +6990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             attachToIAConnectSessionByNamepropCount++;
-            attachToIAConnectSessionByName["Workflow"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNameworkflow);
+            attachToIAConnectSessionByName["Workflow"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByNameworkflow);
             if (attachToIAConnectSessionByNamepropCount > 0)
             {
                 callPayload.Body = attachToIAConnectSessionByName;
@@ -7011,7 +7011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToTier1IAConnectSessionvirtualChannelMustBeConnected != null)
                 {
-                    attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
+                    attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = CSharpExpressionConverter.ConvertToken(attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
                     attachToTier1IAConnectSessionpropCount++;
                 }
 
@@ -7024,7 +7024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             attachToTier1IAConnectSessionpropCount++;
-            attachToTier1IAConnectSession["Workflow"] = ExpressionConverter.ConvertO(attachToTier1IAConnectSessionworkflow);
+            attachToTier1IAConnectSession["Workflow"] = CSharpExpressionConverter.ConvertToken(attachToTier1IAConnectSessionworkflow);
             if (attachToTier1IAConnectSessionpropCount > 0)
             {
                 callPayload.Body = attachToTier1IAConnectSession;
@@ -7043,19 +7043,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var attachToIAConnectSessionByIndexpropCount = 0;
             if (attachToIAConnectSessionByIndexsearchIAConnectSessionType != null)
             {
-                attachToIAConnectSessionByIndex["SearchIAConnectSessionType"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexsearchIAConnectSessionType);
+                attachToIAConnectSessionByIndex["SearchIAConnectSessionType"] = CSharpExpressionConverter.Convert(attachToIAConnectSessionByIndexsearchIAConnectSessionType);
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
             if (attachToIAConnectSessionByIndexsearchIAConnectSessionIndex != null)
             {
-                attachToIAConnectSessionByIndex["SearchIAConnectSessionIndex"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex);
+                attachToIAConnectSessionByIndex["SearchIAConnectSessionIndex"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex);
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
             if (attachToIAConnectSessionByIndextimeToWaitInSeconds != null)
             {
-                attachToIAConnectSessionByIndex["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndextimeToWaitInSeconds);
+                attachToIAConnectSessionByIndex["TimeToWaitInSeconds"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndextimeToWaitInSeconds);
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
@@ -7063,7 +7063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToIAConnectSessionByIndexraiseExceptionIfTimedout != null)
                 {
-                    attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
+                    attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
                     attachToIAConnectSessionByIndexpropCount++;
                 }
 
@@ -7079,7 +7079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToIAConnectSessionByIndexvirtualChannelMustBeConnected != null)
                 {
-                    attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
+                    attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
                     attachToIAConnectSessionByIndexpropCount++;
                 }
 
@@ -7095,7 +7095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore != null)
                 {
-                    attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
+                    attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
                     attachToIAConnectSessionByIndexpropCount++;
                 }
 
@@ -7108,7 +7108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             attachToIAConnectSessionByIndexpropCount++;
-            attachToIAConnectSessionByIndex["Workflow"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexworkflow);
+            attachToIAConnectSessionByIndex["Workflow"] = CSharpExpressionConverter.ConvertToken(attachToIAConnectSessionByIndexworkflow);
             if (attachToIAConnectSessionByIndexpropCount > 0)
             {
                 callPayload.Body = attachToIAConnectSessionByIndex;
@@ -7127,13 +7127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var attachToMostRecentIAConnectSessionpropCount = 0;
             if (attachToMostRecentIAConnectSessionsearchIAConnectSessionType != null)
             {
-                attachToMostRecentIAConnectSession["SearchIAConnectSessionType"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionsearchIAConnectSessionType);
+                attachToMostRecentIAConnectSession["SearchIAConnectSessionType"] = CSharpExpressionConverter.Convert(attachToMostRecentIAConnectSessionsearchIAConnectSessionType);
                 attachToMostRecentIAConnectSessionpropCount++;
             }
 
             if (attachToMostRecentIAConnectSessiontimeToWaitInSeconds != null)
             {
-                attachToMostRecentIAConnectSession["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessiontimeToWaitInSeconds);
+                attachToMostRecentIAConnectSession["TimeToWaitInSeconds"] = CSharpExpressionConverter.ConvertToken(attachToMostRecentIAConnectSessiontimeToWaitInSeconds);
                 attachToMostRecentIAConnectSessionpropCount++;
             }
 
@@ -7141,7 +7141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToMostRecentIAConnectSessionraiseExceptionIfTimedout != null)
                 {
-                    attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
+                    attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = CSharpExpressionConverter.ConvertToken(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
                     attachToMostRecentIAConnectSessionpropCount++;
                 }
 
@@ -7157,7 +7157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected != null)
                 {
-                    attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
+                    attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = CSharpExpressionConverter.ConvertToken(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
                     attachToMostRecentIAConnectSessionpropCount++;
                 }
 
@@ -7173,7 +7173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore != null)
                 {
-                    attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
+                    attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = CSharpExpressionConverter.ConvertToken(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
                     attachToMostRecentIAConnectSessionpropCount++;
                 }
 
@@ -7186,7 +7186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             attachToMostRecentIAConnectSessionpropCount++;
-            attachToMostRecentIAConnectSession["Workflow"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionworkflow);
+            attachToMostRecentIAConnectSession["Workflow"] = CSharpExpressionConverter.ConvertToken(attachToMostRecentIAConnectSessionworkflow);
             if (attachToMostRecentIAConnectSessionpropCount > 0)
             {
                 callPayload.Body = attachToMostRecentIAConnectSession;
@@ -7204,7 +7204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getDirectorUpTime = new JObject();
             var getDirectorUpTimepropCount = 0;
             getDirectorUpTimepropCount++;
-            getDirectorUpTime["Workflow"] = ExpressionConverter.ConvertO(getDirectorUpTimeworkflow);
+            getDirectorUpTime["Workflow"] = CSharpExpressionConverter.ConvertToken(getDirectorUpTimeworkflow);
             if (getDirectorUpTimepropCount > 0)
             {
                 callPayload.Body = getDirectorUpTime;
@@ -7222,9 +7222,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var doesIAConnectSessionExistByName = new JObject();
             var doesIAConnectSessionExistByNamepropCount = 0;
             doesIAConnectSessionExistByNamepropCount++;
-            doesIAConnectSessionExistByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(doesIAConnectSessionExistByNameiAConnectSessionName);
+            doesIAConnectSessionExistByName["IAConnectSessionName"] = CSharpExpressionConverter.ConvertToken(doesIAConnectSessionExistByNameiAConnectSessionName);
             doesIAConnectSessionExistByNamepropCount++;
-            doesIAConnectSessionExistByName["Workflow"] = ExpressionConverter.ConvertO(doesIAConnectSessionExistByNameworkflow);
+            doesIAConnectSessionExistByName["Workflow"] = CSharpExpressionConverter.ConvertToken(doesIAConnectSessionExistByNameworkflow);
             if (doesIAConnectSessionExistByNamepropCount > 0)
             {
                 callPayload.Body = doesIAConnectSessionExistByName;
@@ -7242,10 +7242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var waitForIAConnectSessionToCloseByName = new JObject();
             var waitForIAConnectSessionToCloseByNamepropCount = 0;
             waitForIAConnectSessionToCloseByNamepropCount++;
-            waitForIAConnectSessionToCloseByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameiAConnectSessionName);
+            waitForIAConnectSessionToCloseByName["IAConnectSessionName"] = CSharpExpressionConverter.ConvertToken(waitForIAConnectSessionToCloseByNameiAConnectSessionName);
             if (waitForIAConnectSessionToCloseByNametimeToWaitInSeconds != null)
             {
-                waitForIAConnectSessionToCloseByName["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds);
+                waitForIAConnectSessionToCloseByName["TimeToWaitInSeconds"] = CSharpExpressionConverter.ConvertToken(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds);
                 waitForIAConnectSessionToCloseByNamepropCount++;
             }
 
@@ -7253,7 +7253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout != null)
                 {
-                    waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
+                    waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = CSharpExpressionConverter.ConvertToken(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
                     waitForIAConnectSessionToCloseByNamepropCount++;
                 }
 
@@ -7269,7 +7269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess != null)
                 {
-                    waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
+                    waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = CSharpExpressionConverter.ConvertToken(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
                     waitForIAConnectSessionToCloseByNamepropCount++;
                 }
 
@@ -7282,7 +7282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             waitForIAConnectSessionToCloseByNamepropCount++;
-            waitForIAConnectSessionToCloseByName["Workflow"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameworkflow);
+            waitForIAConnectSessionToCloseByName["Workflow"] = CSharpExpressionConverter.ConvertToken(waitForIAConnectSessionToCloseByNameworkflow);
             if (waitForIAConnectSessionToCloseByNamepropCount > 0)
             {
                 callPayload.Body = waitForIAConnectSessionToCloseByName;
@@ -7300,12 +7300,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var killIAConnectSessionByName = new JObject();
             var killIAConnectSessionByNamepropCount = 0;
             killIAConnectSessionByNamepropCount++;
-            killIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameiAConnectSessionName);
+            killIAConnectSessionByName["IAConnectSessionName"] = CSharpExpressionConverter.ConvertToken(killIAConnectSessionByNameiAConnectSessionName);
             if (killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
             {
                 if (killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
                 {
-                    killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
+                    killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = CSharpExpressionConverter.ConvertToken(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
                     killIAConnectSessionByNamepropCount++;
                 }
 
@@ -7318,7 +7318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             killIAConnectSessionByNamepropCount++;
-            killIAConnectSessionByName["Workflow"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameworkflow);
+            killIAConnectSessionByName["Workflow"] = CSharpExpressionConverter.ConvertToken(killIAConnectSessionByNameworkflow);
             if (killIAConnectSessionByNamepropCount > 0)
             {
                 callPayload.Body = killIAConnectSessionByName;
@@ -7339,7 +7339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
+                    setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = CSharpExpressionConverter.Convert(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7355,7 +7355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
+                    setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = CSharpExpressionConverter.Convert(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7371,7 +7371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
+                    setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = CSharpExpressionConverter.Convert(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7387,7 +7387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
+                    setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7403,7 +7403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
+                    setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7419,7 +7419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7435,7 +7435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7451,7 +7451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7467,7 +7467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7483,7 +7483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7499,7 +7499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationjavaCoordinateSystem != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
+                    setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = CSharpExpressionConverter.Convert(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7515,7 +7515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem != null)
                 {
-                    setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
+                    setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = CSharpExpressionConverter.Convert(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
                     setAgentGlobalCoordinateConfigurationpropCount++;
                 }
 
@@ -7528,7 +7528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             setAgentGlobalCoordinateConfigurationpropCount++;
-            setAgentGlobalCoordinateConfiguration["Workflow"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationworkflow);
+            setAgentGlobalCoordinateConfiguration["Workflow"] = CSharpExpressionConverter.ConvertToken(setAgentGlobalCoordinateConfigurationworkflow);
             if (setAgentGlobalCoordinateConfigurationpropCount > 0)
             {
                 callPayload.Body = setAgentGlobalCoordinateConfiguration;
@@ -7546,7 +7546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAgentGlobalCoordinateConfiguration = new JObject();
             var getAgentGlobalCoordinateConfigurationpropCount = 0;
             getAgentGlobalCoordinateConfigurationpropCount++;
-            getAgentGlobalCoordinateConfiguration["Workflow"] = ExpressionConverter.ConvertO(getAgentGlobalCoordinateConfigurationworkflow);
+            getAgentGlobalCoordinateConfiguration["Workflow"] = CSharpExpressionConverter.ConvertToken(getAgentGlobalCoordinateConfigurationworkflow);
             if (getAgentGlobalCoordinateConfigurationpropCount > 0)
             {
                 callPayload.Body = getAgentGlobalCoordinateConfiguration;
@@ -7564,12 +7564,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAgentThreadStatus = new JObject();
             var getAgentThreadStatuspropCount = 0;
             getAgentThreadStatuspropCount++;
-            getAgentThreadStatus["ThreadId"] = ExpressionConverter.ConvertO(getAgentThreadStatusthreadId);
+            getAgentThreadStatus["ThreadId"] = CSharpExpressionConverter.ConvertToken(getAgentThreadStatusthreadId);
             if (getAgentThreadStatusretrieveThreadOutputData != null)
             {
                 if (getAgentThreadStatusretrieveThreadOutputData != null)
                 {
-                    getAgentThreadStatus["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(getAgentThreadStatusretrieveThreadOutputData);
+                    getAgentThreadStatus["RetrieveThreadOutputData"] = CSharpExpressionConverter.ConvertToken(getAgentThreadStatusretrieveThreadOutputData);
                     getAgentThreadStatuspropCount++;
                 }
 
@@ -7585,7 +7585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getAgentThreadStatusclearOutputDataFromMemoryOnceRead != null)
                 {
-                    getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
+                    getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = CSharpExpressionConverter.ConvertToken(getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
                     getAgentThreadStatuspropCount++;
                 }
 
@@ -7598,7 +7598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getAgentThreadStatuspropCount++;
-            getAgentThreadStatus["Workflow"] = ExpressionConverter.ConvertO(getAgentThreadStatusworkflow);
+            getAgentThreadStatus["Workflow"] = CSharpExpressionConverter.ConvertToken(getAgentThreadStatusworkflow);
             if (getAgentThreadStatuspropCount > 0)
             {
                 callPayload.Body = getAgentThreadStatus;
@@ -7616,14 +7616,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var waitForAgentThreadToCompleteSuccessfully = new JObject();
             var waitForAgentThreadToCompleteSuccessfullypropCount = 0;
             waitForAgentThreadToCompleteSuccessfullypropCount++;
-            waitForAgentThreadToCompleteSuccessfully["ThreadId"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullythreadId);
+            waitForAgentThreadToCompleteSuccessfully["ThreadId"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullythreadId);
             waitForAgentThreadToCompleteSuccessfullypropCount++;
-            waitForAgentThreadToCompleteSuccessfully["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread);
+            waitForAgentThreadToCompleteSuccessfully["SecondsToWaitForThread"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread);
             if (waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
             {
                 if (waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
                 {
-                    waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
+                    waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
                     waitForAgentThreadToCompleteSuccessfullypropCount++;
                 }
 
@@ -7639,7 +7639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead != null)
                 {
-                    waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
+                    waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
                     waitForAgentThreadToCompleteSuccessfullypropCount++;
                 }
 
@@ -7655,7 +7655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted != null)
                 {
-                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
+                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
                     waitForAgentThreadToCompleteSuccessfullypropCount++;
                 }
 
@@ -7671,7 +7671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError != null)
                 {
-                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
+                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
                     waitForAgentThreadToCompleteSuccessfullypropCount++;
                 }
 
@@ -7687,7 +7687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall != null)
                 {
-                    waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
+                    waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
                     waitForAgentThreadToCompleteSuccessfullypropCount++;
                 }
 
@@ -7700,7 +7700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             waitForAgentThreadToCompleteSuccessfullypropCount++;
-            waitForAgentThreadToCompleteSuccessfully["Workflow"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyworkflow);
+            waitForAgentThreadToCompleteSuccessfully["Workflow"] = CSharpExpressionConverter.ConvertToken(waitForAgentThreadToCompleteSuccessfullyworkflow);
             if (waitForAgentThreadToCompleteSuccessfullypropCount > 0)
             {
                 callPayload.Body = waitForAgentThreadToCompleteSuccessfully;
@@ -7719,12 +7719,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getAgentThreadspropCount = 0;
             if (getAgentThreadssortOrder != null)
             {
-                getAgentThreads["SortOrder"] = ExpressionConverter.ConvertO(getAgentThreadssortOrder);
+                getAgentThreads["SortOrder"] = CSharpExpressionConverter.Convert(getAgentThreadssortOrder);
                 getAgentThreadspropCount++;
             }
 
             getAgentThreadspropCount++;
-            getAgentThreads["Workflow"] = ExpressionConverter.ConvertO(getAgentThreadsworkflow);
+            getAgentThreads["Workflow"] = CSharpExpressionConverter.ConvertToken(getAgentThreadsworkflow);
             if (getAgentThreadspropCount > 0)
             {
                 callPayload.Body = getAgentThreads;
@@ -7742,9 +7742,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var killAgentThread = new JObject();
             var killAgentThreadpropCount = 0;
             killAgentThreadpropCount++;
-            killAgentThread["ThreadId"] = ExpressionConverter.ConvertO(killAgentThreadthreadId);
+            killAgentThread["ThreadId"] = CSharpExpressionConverter.ConvertToken(killAgentThreadthreadId);
             killAgentThreadpropCount++;
-            killAgentThread["Workflow"] = ExpressionConverter.ConvertO(killAgentThreadworkflow);
+            killAgentThread["Workflow"] = CSharpExpressionConverter.ConvertToken(killAgentThreadworkflow);
             if (killAgentThreadpropCount > 0)
             {
                 callPayload.Body = killAgentThread;
@@ -7763,7 +7763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var deleteAgentThreadpropCount = 0;
             if (deleteAgentThreadthreadId != null)
             {
-                deleteAgentThread["ThreadId"] = ExpressionConverter.ConvertO(deleteAgentThreadthreadId);
+                deleteAgentThread["ThreadId"] = CSharpExpressionConverter.ConvertToken(deleteAgentThreadthreadId);
                 deleteAgentThreadpropCount++;
             }
 
@@ -7771,7 +7771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (deleteAgentThreaddeleteAllAgentThreads != null)
                 {
-                    deleteAgentThread["DeleteAllAgentThreads"] = ExpressionConverter.ConvertO(deleteAgentThreaddeleteAllAgentThreads);
+                    deleteAgentThread["DeleteAllAgentThreads"] = CSharpExpressionConverter.ConvertToken(deleteAgentThreaddeleteAllAgentThreads);
                     deleteAgentThreadpropCount++;
                 }
 
@@ -7787,7 +7787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete != null)
                 {
-                    deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = ExpressionConverter.ConvertO(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
+                    deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = CSharpExpressionConverter.ConvertToken(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
                     deleteAgentThreadpropCount++;
                 }
 
@@ -7800,7 +7800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             deleteAgentThreadpropCount++;
-            deleteAgentThread["Workflow"] = ExpressionConverter.ConvertO(deleteAgentThreadworkflow);
+            deleteAgentThread["Workflow"] = CSharpExpressionConverter.ConvertToken(deleteAgentThreadworkflow);
             if (deleteAgentThreadpropCount > 0)
             {
                 callPayload.Body = deleteAgentThread;
@@ -7819,13 +7819,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var allocateWorkerFromOrchestratorpropCount = 0;
             if (allocateWorkerFromOrchestratorworkerTag != null)
             {
-                allocateWorkerFromOrchestrator["WorkerTag"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorworkerTag);
+                allocateWorkerFromOrchestrator["WorkerTag"] = CSharpExpressionConverter.ConvertToken(allocateWorkerFromOrchestratorworkerTag);
                 allocateWorkerFromOrchestratorpropCount++;
             }
 
             if (allocateWorkerFromOrchestratorworkerName != null)
             {
-                allocateWorkerFromOrchestrator["WorkerName"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorworkerName);
+                allocateWorkerFromOrchestrator["WorkerName"] = CSharpExpressionConverter.ConvertToken(allocateWorkerFromOrchestratorworkerName);
                 allocateWorkerFromOrchestratorpropCount++;
             }
 
@@ -7833,7 +7833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable != null)
                 {
-                    allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
+                    allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = CSharpExpressionConverter.ConvertToken(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
                     allocateWorkerFromOrchestratorpropCount++;
                 }
 
@@ -7846,7 +7846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             allocateWorkerFromOrchestratorpropCount++;
-            allocateWorkerFromOrchestrator["Workflow"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorworkflow);
+            allocateWorkerFromOrchestrator["Workflow"] = CSharpExpressionConverter.ConvertToken(allocateWorkerFromOrchestratorworkflow);
             if (allocateWorkerFromOrchestratorpropCount > 0)
             {
                 callPayload.Body = allocateWorkerFromOrchestrator;
@@ -7867,7 +7867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setOrchestratorWorkerMaintenanceModeworkerId != null)
                 {
-                    setOrchestratorWorkerMaintenanceMode["WorkerId"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModeworkerId);
+                    setOrchestratorWorkerMaintenanceMode["WorkerId"] = CSharpExpressionConverter.ConvertToken(setOrchestratorWorkerMaintenanceModeworkerId);
                     setOrchestratorWorkerMaintenanceModepropCount++;
                 }
 
@@ -7881,7 +7881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (setOrchestratorWorkerMaintenanceModeworkerName != null)
             {
-                setOrchestratorWorkerMaintenanceMode["WorkerName"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModeworkerName);
+                setOrchestratorWorkerMaintenanceMode["WorkerName"] = CSharpExpressionConverter.ConvertToken(setOrchestratorWorkerMaintenanceModeworkerName);
                 setOrchestratorWorkerMaintenanceModepropCount++;
             }
 
@@ -7889,7 +7889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (setOrchestratorWorkerMaintenanceModemaintenanceMode != null)
                 {
-                    setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModemaintenanceMode);
+                    setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = CSharpExpressionConverter.ConvertToken(setOrchestratorWorkerMaintenanceModemaintenanceMode);
                     setOrchestratorWorkerMaintenanceModepropCount++;
                 }
 
@@ -7918,22 +7918,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var createOrchestratorOneTimeSecret = new JObject();
             var createOrchestratorOneTimeSecretpropCount = 0;
             createOrchestratorOneTimeSecretpropCount++;
-            createOrchestratorOneTimeSecret["FriendlyName"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretfriendlyName);
+            createOrchestratorOneTimeSecret["FriendlyName"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretfriendlyName);
             if (createOrchestratorOneTimeSecretsecretValue != null)
             {
-                createOrchestratorOneTimeSecret["SecretValue"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretValue);
+                createOrchestratorOneTimeSecret["SecretValue"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretsecretValue);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
             if (createOrchestratorOneTimeSecretretrievalPhrase1 != null)
             {
-                createOrchestratorOneTimeSecret["RetrievalPhrase1"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretretrievalPhrase1);
+                createOrchestratorOneTimeSecret["RetrievalPhrase1"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretretrievalPhrase1);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
             if (createOrchestratorOneTimeSecretretrievalPhrase2 != null)
             {
-                createOrchestratorOneTimeSecret["RetrievalPhrase2"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretretrievalPhrase2);
+                createOrchestratorOneTimeSecret["RetrievalPhrase2"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretretrievalPhrase2);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
@@ -7941,7 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion != null)
                 {
-                    createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
+                    createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
                     createOrchestratorOneTimeSecretpropCount++;
                 }
 
@@ -7957,7 +7957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (createOrchestratorOneTimeSecretsecretHasAStartDate != null)
                 {
-                    createOrchestratorOneTimeSecret["SecretHasAStartDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAStartDate);
+                    createOrchestratorOneTimeSecret["SecretHasAStartDate"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretsecretHasAStartDate);
                     createOrchestratorOneTimeSecretpropCount++;
                 }
 
@@ -7971,13 +7971,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (createOrchestratorOneTimeSecretsecretStartDateTime != null)
             {
-                createOrchestratorOneTimeSecret["SecretStartDateTime"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretStartDateTime);
+                createOrchestratorOneTimeSecret["SecretStartDateTime"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretsecretStartDateTime);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
             if (createOrchestratorOneTimeSecrethoursUntilSecretStartTime != null)
             {
-                createOrchestratorOneTimeSecret["HoursUntilSecretStartTime"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecrethoursUntilSecretStartTime);
+                createOrchestratorOneTimeSecret["HoursUntilSecretStartTime"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecrethoursUntilSecretStartTime);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
@@ -7985,7 +7985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (createOrchestratorOneTimeSecretsecretHasAnExpiryDate != null)
                 {
-                    createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
+                    createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
                     createOrchestratorOneTimeSecretpropCount++;
                 }
 
@@ -7999,13 +7999,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (createOrchestratorOneTimeSecretsecretExpiryDateTime != null)
             {
-                createOrchestratorOneTimeSecret["SecretExpiryDateTime"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretExpiryDateTime);
+                createOrchestratorOneTimeSecret["SecretExpiryDateTime"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecretsecretExpiryDateTime);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
             if (createOrchestratorOneTimeSecrethoursUntilSecretExpiry != null)
             {
-                createOrchestratorOneTimeSecret["HoursUntilSecretExpiry"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecrethoursUntilSecretExpiry);
+                createOrchestratorOneTimeSecret["HoursUntilSecretExpiry"] = CSharpExpressionConverter.ConvertToken(createOrchestratorOneTimeSecrethoursUntilSecretExpiry);
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
@@ -8029,7 +8029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getListOfOrchestratorWorkersonlyReturnLiveWorkers != null)
                 {
-                    getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = ExpressionConverter.ConvertO(getListOfOrchestratorWorkersonlyReturnLiveWorkers);
+                    getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = CSharpExpressionConverter.ConvertToken(getListOfOrchestratorWorkersonlyReturnLiveWorkers);
                     getListOfOrchestratorWorkerspropCount++;
                 }
 
@@ -8059,13 +8059,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getOrchestratorWorkerpropCount = 0;
             if (getOrchestratorWorkersearchWorkerId != null)
             {
-                getOrchestratorWorker["SearchWorkerId"] = ExpressionConverter.ConvertO(getOrchestratorWorkersearchWorkerId);
+                getOrchestratorWorker["SearchWorkerId"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkersearchWorkerId);
                 getOrchestratorWorkerpropCount++;
             }
 
             if (getOrchestratorWorkersearchWorkerName != null)
             {
-                getOrchestratorWorker["SearchWorkerName"] = ExpressionConverter.ConvertO(getOrchestratorWorkersearchWorkerName);
+                getOrchestratorWorker["SearchWorkerName"] = CSharpExpressionConverter.ConvertToken(getOrchestratorWorkersearchWorkerName);
                 getOrchestratorWorkerpropCount++;
             }
 
@@ -8104,9 +8104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var fileExists = new JObject();
             var fileExistspropCount = 0;
             fileExistspropCount++;
-            fileExists["Filename"] = ExpressionConverter.ConvertO(fileExistsfilename);
+            fileExists["Filename"] = CSharpExpressionConverter.ConvertToken(fileExistsfilename);
             fileExistspropCount++;
-            fileExists["Workflow"] = ExpressionConverter.ConvertO(fileExistsworkflow);
+            fileExists["Workflow"] = CSharpExpressionConverter.ConvertToken(fileExistsworkflow);
             if (fileExistspropCount > 0)
             {
                 callPayload.Body = fileExists;
@@ -8124,9 +8124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var directoryExists = new JObject();
             var directoryExistspropCount = 0;
             directoryExistspropCount++;
-            directoryExists["DirectoryPath"] = ExpressionConverter.ConvertO(directoryExistsdirectoryPath);
+            directoryExists["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(directoryExistsdirectoryPath);
             directoryExistspropCount++;
-            directoryExists["Workflow"] = ExpressionConverter.ConvertO(directoryExistsworkflow);
+            directoryExists["Workflow"] = CSharpExpressionConverter.ConvertToken(directoryExistsworkflow);
             if (directoryExistspropCount > 0)
             {
                 callPayload.Body = directoryExists;
@@ -8144,9 +8144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var deleteFile = new JObject();
             var deleteFilepropCount = 0;
             deleteFilepropCount++;
-            deleteFile["Filename"] = ExpressionConverter.ConvertO(deleteFilefilename);
+            deleteFile["Filename"] = CSharpExpressionConverter.ConvertToken(deleteFilefilename);
             deleteFilepropCount++;
-            deleteFile["Workflow"] = ExpressionConverter.ConvertO(deleteFileworkflow);
+            deleteFile["Workflow"] = CSharpExpressionConverter.ConvertToken(deleteFileworkflow);
             if (deleteFilepropCount > 0)
             {
                 callPayload.Body = deleteFile;
@@ -8164,12 +8164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var deleteDirectory = new JObject();
             var deleteDirectorypropCount = 0;
             deleteDirectorypropCount++;
-            deleteDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(deleteDirectorydirectoryPath);
+            deleteDirectory["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(deleteDirectorydirectoryPath);
             if (deleteDirectoryrecursive != null)
             {
                 if (deleteDirectoryrecursive != null)
                 {
-                    deleteDirectory["Recursive"] = ExpressionConverter.ConvertO(deleteDirectoryrecursive);
+                    deleteDirectory["Recursive"] = CSharpExpressionConverter.ConvertToken(deleteDirectoryrecursive);
                     deleteDirectorypropCount++;
                 }
 
@@ -8182,7 +8182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             deleteDirectorypropCount++;
-            deleteDirectory["Workflow"] = ExpressionConverter.ConvertO(deleteDirectoryworkflow);
+            deleteDirectory["Workflow"] = CSharpExpressionConverter.ConvertToken(deleteDirectoryworkflow);
             if (deleteDirectorypropCount > 0)
             {
                 callPayload.Body = deleteDirectory;
@@ -8200,12 +8200,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var purgeDirectory = new JObject();
             var purgeDirectorypropCount = 0;
             purgeDirectorypropCount++;
-            purgeDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(purgeDirectorydirectoryPath);
+            purgeDirectory["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(purgeDirectorydirectoryPath);
             if (purgeDirectoryrecursive != null)
             {
                 if (purgeDirectoryrecursive != null)
                 {
-                    purgeDirectory["Recursive"] = ExpressionConverter.ConvertO(purgeDirectoryrecursive);
+                    purgeDirectory["Recursive"] = CSharpExpressionConverter.ConvertToken(purgeDirectoryrecursive);
                     purgeDirectorypropCount++;
                 }
 
@@ -8221,7 +8221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (purgeDirectorydeleteTopLevel != null)
                 {
-                    purgeDirectory["DeleteTopLevel"] = ExpressionConverter.ConvertO(purgeDirectorydeleteTopLevel);
+                    purgeDirectory["DeleteTopLevel"] = CSharpExpressionConverter.ConvertToken(purgeDirectorydeleteTopLevel);
                     purgeDirectorypropCount++;
                 }
 
@@ -8234,7 +8234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             purgeDirectorypropCount++;
-            purgeDirectory["Workflow"] = ExpressionConverter.ConvertO(purgeDirectoryworkflow);
+            purgeDirectory["Workflow"] = CSharpExpressionConverter.ConvertToken(purgeDirectoryworkflow);
             if (purgeDirectorypropCount > 0)
             {
                 callPayload.Body = purgeDirectory;
@@ -8252,11 +8252,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var copyFile = new JObject();
             var copyFilepropCount = 0;
             copyFilepropCount++;
-            copyFile["SourceFilePath"] = ExpressionConverter.ConvertO(copyFilesourceFilePath);
+            copyFile["SourceFilePath"] = CSharpExpressionConverter.ConvertToken(copyFilesourceFilePath);
             copyFilepropCount++;
-            copyFile["DestFilePath"] = ExpressionConverter.ConvertO(copyFiledestFilePath);
+            copyFile["DestFilePath"] = CSharpExpressionConverter.ConvertToken(copyFiledestFilePath);
             copyFilepropCount++;
-            copyFile["Workflow"] = ExpressionConverter.ConvertO(copyFileworkflow);
+            copyFile["Workflow"] = CSharpExpressionConverter.ConvertToken(copyFileworkflow);
             if (copyFilepropCount > 0)
             {
                 callPayload.Body = copyFile;
@@ -8274,11 +8274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var moveFile = new JObject();
             var moveFilepropCount = 0;
             moveFilepropCount++;
-            moveFile["SourceFilePath"] = ExpressionConverter.ConvertO(moveFilesourceFilePath);
+            moveFile["SourceFilePath"] = CSharpExpressionConverter.ConvertToken(moveFilesourceFilePath);
             moveFilepropCount++;
-            moveFile["DestFilePath"] = ExpressionConverter.ConvertO(moveFiledestFilePath);
+            moveFile["DestFilePath"] = CSharpExpressionConverter.ConvertToken(moveFiledestFilePath);
             moveFilepropCount++;
-            moveFile["Workflow"] = ExpressionConverter.ConvertO(moveFileworkflow);
+            moveFile["Workflow"] = CSharpExpressionConverter.ConvertToken(moveFileworkflow);
             if (moveFilepropCount > 0)
             {
                 callPayload.Body = moveFile;
@@ -8296,12 +8296,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var createDirectory = new JObject();
             var createDirectorypropCount = 0;
             createDirectorypropCount++;
-            createDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(createDirectorydirectoryPath);
+            createDirectory["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(createDirectorydirectoryPath);
             if (createDirectoryerrorIfAlreadyExists != null)
             {
                 if (createDirectoryerrorIfAlreadyExists != null)
                 {
-                    createDirectory["ErrorIfAlreadyExists"] = ExpressionConverter.ConvertO(createDirectoryerrorIfAlreadyExists);
+                    createDirectory["ErrorIfAlreadyExists"] = CSharpExpressionConverter.ConvertToken(createDirectoryerrorIfAlreadyExists);
                     createDirectorypropCount++;
                 }
 
@@ -8314,7 +8314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             createDirectorypropCount++;
-            createDirectory["Workflow"] = ExpressionConverter.ConvertO(createDirectoryworkflow);
+            createDirectory["Workflow"] = CSharpExpressionConverter.ConvertToken(createDirectoryworkflow);
             if (createDirectorypropCount > 0)
             {
                 callPayload.Body = createDirectory;
@@ -8332,9 +8332,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFileSize = new JObject();
             var getFileSizepropCount = 0;
             getFileSizepropCount++;
-            getFileSize["Filename"] = ExpressionConverter.ConvertO(getFileSizefilename);
+            getFileSize["Filename"] = CSharpExpressionConverter.ConvertToken(getFileSizefilename);
             getFileSizepropCount++;
-            getFileSize["Workflow"] = ExpressionConverter.ConvertO(getFileSizeworkflow);
+            getFileSize["Workflow"] = CSharpExpressionConverter.ConvertToken(getFileSizeworkflow);
             if (getFileSizepropCount > 0)
             {
                 callPayload.Body = getFileSize;
@@ -8352,10 +8352,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var writeTextFile = new JObject();
             var writeTextFilepropCount = 0;
             writeTextFilepropCount++;
-            writeTextFile["Filename"] = ExpressionConverter.ConvertO(writeTextFilefilename);
+            writeTextFile["Filename"] = CSharpExpressionConverter.ConvertToken(writeTextFilefilename);
             if (writeTextFiletextToWrite != null)
             {
-                writeTextFile["TextToWrite"] = ExpressionConverter.ConvertO(writeTextFiletextToWrite);
+                writeTextFile["TextToWrite"] = CSharpExpressionConverter.ConvertToken(writeTextFiletextToWrite);
                 writeTextFilepropCount++;
             }
 
@@ -8363,7 +8363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (writeTextFileappendExistingFile != null)
                 {
-                    writeTextFile["AppendExistingFile"] = ExpressionConverter.ConvertO(writeTextFileappendExistingFile);
+                    writeTextFile["AppendExistingFile"] = CSharpExpressionConverter.ConvertToken(writeTextFileappendExistingFile);
                     writeTextFilepropCount++;
                 }
 
@@ -8377,7 +8377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (writeTextFileencoding != null)
             {
-                writeTextFile["Encoding"] = ExpressionConverter.ConvertO(writeTextFileencoding);
+                writeTextFile["Encoding"] = CSharpExpressionConverter.Convert(writeTextFileencoding);
                 writeTextFilepropCount++;
             }
 
@@ -8385,7 +8385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (writeTextFilecreateFolderIfRequired != null)
                 {
-                    writeTextFile["CreateFolderIfRequired"] = ExpressionConverter.ConvertO(writeTextFilecreateFolderIfRequired);
+                    writeTextFile["CreateFolderIfRequired"] = CSharpExpressionConverter.ConvertToken(writeTextFilecreateFolderIfRequired);
                     writeTextFilepropCount++;
                 }
 
@@ -8398,7 +8398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             writeTextFilepropCount++;
-            writeTextFile["Workflow"] = ExpressionConverter.ConvertO(writeTextFileworkflow);
+            writeTextFile["Workflow"] = CSharpExpressionConverter.ConvertToken(writeTextFileworkflow);
             if (writeTextFilepropCount > 0)
             {
                 callPayload.Body = writeTextFile;
@@ -8416,9 +8416,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var readAllTextFromFile = new JObject();
             var readAllTextFromFilepropCount = 0;
             readAllTextFromFilepropCount++;
-            readAllTextFromFile["Filename"] = ExpressionConverter.ConvertO(readAllTextFromFilefilename);
+            readAllTextFromFile["Filename"] = CSharpExpressionConverter.ConvertToken(readAllTextFromFilefilename);
             readAllTextFromFilepropCount++;
-            readAllTextFromFile["Workflow"] = ExpressionConverter.ConvertO(readAllTextFromFileworkflow);
+            readAllTextFromFile["Workflow"] = CSharpExpressionConverter.ConvertToken(readAllTextFromFileworkflow);
             if (readAllTextFromFilepropCount > 0)
             {
                 callPayload.Body = readAllTextFromFile;
@@ -8436,11 +8436,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFiles = new JObject();
             var getFilespropCount = 0;
             getFilespropCount++;
-            getFiles["DirectoryPath"] = ExpressionConverter.ConvertO(getFilesdirectoryPath);
+            getFiles["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(getFilesdirectoryPath);
             getFilespropCount++;
-            getFiles["PatternsCSV"] = ExpressionConverter.ConvertO(getFilespatternsCSV);
+            getFiles["PatternsCSV"] = CSharpExpressionConverter.ConvertToken(getFilespatternsCSV);
             getFilespropCount++;
-            getFiles["Workflow"] = ExpressionConverter.ConvertO(getFilesworkflow);
+            getFiles["Workflow"] = CSharpExpressionConverter.ConvertToken(getFilesworkflow);
             if (getFilespropCount > 0)
             {
                 callPayload.Body = getFiles;
@@ -8458,9 +8458,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFolders = new JObject();
             var getFolderspropCount = 0;
             getFolderspropCount++;
-            getFolders["DirectoryPath"] = ExpressionConverter.ConvertO(getFoldersdirectoryPath);
+            getFolders["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(getFoldersdirectoryPath);
             getFolderspropCount++;
-            getFolders["Workflow"] = ExpressionConverter.ConvertO(getFoldersworkflow);
+            getFolders["Workflow"] = CSharpExpressionConverter.ConvertToken(getFoldersworkflow);
             if (getFolderspropCount > 0)
             {
                 callPayload.Body = getFolders;
@@ -8478,15 +8478,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var deleteFiles = new JObject();
             var deleteFilespropCount = 0;
             deleteFilespropCount++;
-            deleteFiles["DirectoryPath"] = ExpressionConverter.ConvertO(deleteFilesdirectoryPath);
+            deleteFiles["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(deleteFilesdirectoryPath);
             if (deleteFilespattern != null)
             {
-                deleteFiles["Pattern"] = ExpressionConverter.ConvertO(deleteFilespattern);
+                deleteFiles["Pattern"] = CSharpExpressionConverter.ConvertToken(deleteFilespattern);
                 deleteFilespropCount++;
             }
 
             deleteFilespropCount++;
-            deleteFiles["Workflow"] = ExpressionConverter.ConvertO(deleteFilesworkflow);
+            deleteFiles["Workflow"] = CSharpExpressionConverter.ConvertToken(deleteFilesworkflow);
             if (deleteFilespropCount > 0)
             {
                 callPayload.Body = deleteFiles;
@@ -8504,9 +8504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getDiskFreeSpace = new JObject();
             var getDiskFreeSpacepropCount = 0;
             getDiskFreeSpacepropCount++;
-            getDiskFreeSpace["DriveLetter"] = ExpressionConverter.ConvertO(getDiskFreeSpacedriveLetter);
+            getDiskFreeSpace["DriveLetter"] = CSharpExpressionConverter.ConvertToken(getDiskFreeSpacedriveLetter);
             getDiskFreeSpacepropCount++;
-            getDiskFreeSpace["Workflow"] = ExpressionConverter.ConvertO(getDiskFreeSpaceworkflow);
+            getDiskFreeSpace["Workflow"] = CSharpExpressionConverter.ConvertToken(getDiskFreeSpaceworkflow);
             if (getDiskFreeSpacepropCount > 0)
             {
                 callPayload.Body = getDiskFreeSpace;
@@ -8524,7 +8524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getListOfDrives = new JObject();
             var getListOfDrivespropCount = 0;
             getListOfDrivespropCount++;
-            getListOfDrives["Workflow"] = ExpressionConverter.ConvertO(getListOfDrivesworkflow);
+            getListOfDrives["Workflow"] = CSharpExpressionConverter.ConvertToken(getListOfDrivesworkflow);
             if (getListOfDrivespropCount > 0)
             {
                 callPayload.Body = getListOfDrives;
@@ -8542,9 +8542,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var directoryIsAccessible = new JObject();
             var directoryIsAccessiblepropCount = 0;
             directoryIsAccessiblepropCount++;
-            directoryIsAccessible["DirectoryPath"] = ExpressionConverter.ConvertO(directoryIsAccessibledirectoryPath);
+            directoryIsAccessible["DirectoryPath"] = CSharpExpressionConverter.ConvertToken(directoryIsAccessibledirectoryPath);
             directoryIsAccessiblepropCount++;
-            directoryIsAccessible["Workflow"] = ExpressionConverter.ConvertO(directoryIsAccessibleworkflow);
+            directoryIsAccessible["Workflow"] = CSharpExpressionConverter.ConvertToken(directoryIsAccessibleworkflow);
             if (directoryIsAccessiblepropCount > 0)
             {
                 callPayload.Body = directoryIsAccessible;
@@ -8562,12 +8562,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getCSVTextAsCollection = new JObject();
             var getCSVTextAsCollectionpropCount = 0;
             getCSVTextAsCollectionpropCount++;
-            getCSVTextAsCollection["CSVFilePath"] = ExpressionConverter.ConvertO(getCSVTextAsCollectioncSVFilePath);
+            getCSVTextAsCollection["CSVFilePath"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectioncSVFilePath);
             if (getCSVTextAsCollectionfirstLineIsHeader != null)
             {
                 if (getCSVTextAsCollectionfirstLineIsHeader != null)
                 {
-                    getCSVTextAsCollection["FirstLineIsHeader"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionfirstLineIsHeader);
+                    getCSVTextAsCollection["FirstLineIsHeader"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectionfirstLineIsHeader);
                     getCSVTextAsCollectionpropCount++;
                 }
 
@@ -8583,7 +8583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getCSVTextAsCollectiontrimHeaders != null)
                 {
-                    getCSVTextAsCollection["TrimHeaders"] = ExpressionConverter.ConvertO(getCSVTextAsCollectiontrimHeaders);
+                    getCSVTextAsCollection["TrimHeaders"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectiontrimHeaders);
                     getCSVTextAsCollectionpropCount++;
                 }
 
@@ -8599,7 +8599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getCSVTextAsCollectionallowBlankRows != null)
                 {
-                    getCSVTextAsCollection["AllowBlankRows"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionallowBlankRows);
+                    getCSVTextAsCollection["AllowBlankRows"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectionallowBlankRows);
                     getCSVTextAsCollectionpropCount++;
                 }
 
@@ -8615,7 +8615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getCSVTextAsCollectionextendColumnsIfRequired != null)
                 {
-                    getCSVTextAsCollection["ExtendColumnsIfRequired"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionextendColumnsIfRequired);
+                    getCSVTextAsCollection["ExtendColumnsIfRequired"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectionextendColumnsIfRequired);
                     getCSVTextAsCollectionpropCount++;
                 }
 
@@ -8628,7 +8628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getCSVTextAsCollectionpropCount++;
-            getCSVTextAsCollection["Workflow"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionworkflow);
+            getCSVTextAsCollection["Workflow"] = CSharpExpressionConverter.ConvertToken(getCSVTextAsCollectionworkflow);
             if (getCSVTextAsCollectionpropCount > 0)
             {
                 callPayload.Body = getCSVTextAsCollection;
@@ -8647,23 +8647,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var writeCollectionToCSVFilepropCount = 0;
             if (writeCollectionToCSVFileinputTable != null)
             {
-                writeCollectionToCSVFile["InputTable"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileinputTable);
+                writeCollectionToCSVFile["InputTable"] = CSharpExpressionConverter.ConvertToken(writeCollectionToCSVFileinputTable);
                 writeCollectionToCSVFilepropCount++;
             }
 
             if (writeCollectionToCSVFileinputTableJSON != null)
             {
-                writeCollectionToCSVFile["InputTableJSON"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileinputTableJSON);
+                writeCollectionToCSVFile["InputTableJSON"] = CSharpExpressionConverter.ConvertToken(writeCollectionToCSVFileinputTableJSON);
                 writeCollectionToCSVFilepropCount++;
             }
 
             writeCollectionToCSVFilepropCount++;
-            writeCollectionToCSVFile["CSVFilePath"] = ExpressionConverter.ConvertO(writeCollectionToCSVFilecSVFilePath);
+            writeCollectionToCSVFile["CSVFilePath"] = CSharpExpressionConverter.ConvertToken(writeCollectionToCSVFilecSVFilePath);
             if (writeCollectionToCSVFileoutputEncoding != null)
             {
                 if (writeCollectionToCSVFileoutputEncoding != null)
                 {
-                    writeCollectionToCSVFile["OutputEncoding"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileoutputEncoding);
+                    writeCollectionToCSVFile["OutputEncoding"] = CSharpExpressionConverter.Convert(writeCollectionToCSVFileoutputEncoding);
                     writeCollectionToCSVFilepropCount++;
                 }
 
@@ -8676,7 +8676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             writeCollectionToCSVFilepropCount++;
-            writeCollectionToCSVFile["Workflow"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileworkflow);
+            writeCollectionToCSVFile["Workflow"] = CSharpExpressionConverter.ConvertToken(writeCollectionToCSVFileworkflow);
             if (writeCollectionToCSVFilepropCount > 0)
             {
                 callPayload.Body = writeCollectionToCSVFile;
@@ -8694,11 +8694,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setOwnerOnFolder = new JObject();
             var setOwnerOnFolderpropCount = 0;
             setOwnerOnFolderpropCount++;
-            setOwnerOnFolder["FolderPath"] = ExpressionConverter.ConvertO(setOwnerOnFolderfolderPath);
+            setOwnerOnFolder["FolderPath"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFolderfolderPath);
             setOwnerOnFolderpropCount++;
-            setOwnerOnFolder["UserIdentity"] = ExpressionConverter.ConvertO(setOwnerOnFolderuserIdentity);
+            setOwnerOnFolder["UserIdentity"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFolderuserIdentity);
             setOwnerOnFolderpropCount++;
-            setOwnerOnFolder["Workflow"] = ExpressionConverter.ConvertO(setOwnerOnFolderworkflow);
+            setOwnerOnFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFolderworkflow);
             if (setOwnerOnFolderpropCount > 0)
             {
                 callPayload.Body = setOwnerOnFolder;
@@ -8716,11 +8716,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setOwnerOnFile = new JObject();
             var setOwnerOnFilepropCount = 0;
             setOwnerOnFilepropCount++;
-            setOwnerOnFile["FilePath"] = ExpressionConverter.ConvertO(setOwnerOnFilefilePath);
+            setOwnerOnFile["FilePath"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFilefilePath);
             setOwnerOnFilepropCount++;
-            setOwnerOnFile["UserIdentity"] = ExpressionConverter.ConvertO(setOwnerOnFileuserIdentity);
+            setOwnerOnFile["UserIdentity"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFileuserIdentity);
             setOwnerOnFilepropCount++;
-            setOwnerOnFile["Workflow"] = ExpressionConverter.ConvertO(setOwnerOnFileworkflow);
+            setOwnerOnFile["Workflow"] = CSharpExpressionConverter.ConvertToken(setOwnerOnFileworkflow);
             if (setOwnerOnFilepropCount > 0)
             {
                 callPayload.Body = setOwnerOnFile;
@@ -8738,16 +8738,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var addPermissionToFolder = new JObject();
             var addPermissionToFolderpropCount = 0;
             addPermissionToFolderpropCount++;
-            addPermissionToFolder["FolderPath"] = ExpressionConverter.ConvertO(addPermissionToFolderfolderPath);
+            addPermissionToFolder["FolderPath"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderfolderPath);
             addPermissionToFolderpropCount++;
-            addPermissionToFolder["Identity"] = ExpressionConverter.ConvertO(addPermissionToFolderidentity);
+            addPermissionToFolder["Identity"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderidentity);
             addPermissionToFolderpropCount++;
-            addPermissionToFolder["Permission"] = ExpressionConverter.ConvertO(addPermissionToFolderpermission);
+            addPermissionToFolder["Permission"] = CSharpExpressionConverter.Convert(addPermissionToFolderpermission);
             if (addPermissionToFolderapplyToFolder != null)
             {
                 if (addPermissionToFolderapplyToFolder != null)
                 {
-                    addPermissionToFolder["ApplyToFolder"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFolder);
+                    addPermissionToFolder["ApplyToFolder"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderapplyToFolder);
                     addPermissionToFolderpropCount++;
                 }
 
@@ -8763,7 +8763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addPermissionToFolderapplyToSubFolders != null)
                 {
-                    addPermissionToFolder["ApplyToSubFolders"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToSubFolders);
+                    addPermissionToFolder["ApplyToSubFolders"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderapplyToSubFolders);
                     addPermissionToFolderpropCount++;
                 }
 
@@ -8779,7 +8779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addPermissionToFolderapplyToFiles != null)
                 {
-                    addPermissionToFolder["ApplyToFiles"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFiles);
+                    addPermissionToFolder["ApplyToFiles"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderapplyToFiles);
                     addPermissionToFolderpropCount++;
                 }
 
@@ -8795,7 +8795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addPermissionToFolderdeny != null)
                 {
-                    addPermissionToFolder["Deny"] = ExpressionConverter.ConvertO(addPermissionToFolderdeny);
+                    addPermissionToFolder["Deny"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderdeny);
                     addPermissionToFolderpropCount++;
                 }
 
@@ -8808,7 +8808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             addPermissionToFolderpropCount++;
-            addPermissionToFolder["Workflow"] = ExpressionConverter.ConvertO(addPermissionToFolderworkflow);
+            addPermissionToFolder["Workflow"] = CSharpExpressionConverter.ConvertToken(addPermissionToFolderworkflow);
             if (addPermissionToFolderpropCount > 0)
             {
                 callPayload.Body = addPermissionToFolder;
@@ -8826,16 +8826,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var addPermissionToFile = new JObject();
             var addPermissionToFilepropCount = 0;
             addPermissionToFilepropCount++;
-            addPermissionToFile["FilePath"] = ExpressionConverter.ConvertO(addPermissionToFilefilePath);
+            addPermissionToFile["FilePath"] = CSharpExpressionConverter.ConvertToken(addPermissionToFilefilePath);
             addPermissionToFilepropCount++;
-            addPermissionToFile["Identity"] = ExpressionConverter.ConvertO(addPermissionToFileidentity);
+            addPermissionToFile["Identity"] = CSharpExpressionConverter.ConvertToken(addPermissionToFileidentity);
             addPermissionToFilepropCount++;
-            addPermissionToFile["Permission"] = ExpressionConverter.ConvertO(addPermissionToFilepermission);
+            addPermissionToFile["Permission"] = CSharpExpressionConverter.Convert(addPermissionToFilepermission);
             if (addPermissionToFiledeny != null)
             {
                 if (addPermissionToFiledeny != null)
                 {
-                    addPermissionToFile["Deny"] = ExpressionConverter.ConvertO(addPermissionToFiledeny);
+                    addPermissionToFile["Deny"] = CSharpExpressionConverter.ConvertToken(addPermissionToFiledeny);
                     addPermissionToFilepropCount++;
                 }
 
@@ -8848,7 +8848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             addPermissionToFilepropCount++;
-            addPermissionToFile["Workflow"] = ExpressionConverter.ConvertO(addPermissionToFileworkflow);
+            addPermissionToFile["Workflow"] = CSharpExpressionConverter.ConvertToken(addPermissionToFileworkflow);
             if (addPermissionToFilepropCount > 0)
             {
                 callPayload.Body = addPermissionToFile;
@@ -8866,12 +8866,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var breakFolderSecurityInheritance = new JObject();
             var breakFolderSecurityInheritancepropCount = 0;
             breakFolderSecurityInheritancepropCount++;
-            breakFolderSecurityInheritance["FolderPath"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritancefolderPath);
+            breakFolderSecurityInheritance["FolderPath"] = CSharpExpressionConverter.ConvertToken(breakFolderSecurityInheritancefolderPath);
             if (breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
             {
                 if (breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
                 {
-                    breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritanceconvertInheritedToExplicit);
+                    breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = CSharpExpressionConverter.ConvertToken(breakFolderSecurityInheritanceconvertInheritedToExplicit);
                     breakFolderSecurityInheritancepropCount++;
                 }
 
@@ -8884,7 +8884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             breakFolderSecurityInheritancepropCount++;
-            breakFolderSecurityInheritance["Workflow"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritanceworkflow);
+            breakFolderSecurityInheritance["Workflow"] = CSharpExpressionConverter.ConvertToken(breakFolderSecurityInheritanceworkflow);
             if (breakFolderSecurityInheritancepropCount > 0)
             {
                 callPayload.Body = breakFolderSecurityInheritance;
@@ -8902,9 +8902,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var enableFolderSecurityInheritance = new JObject();
             var enableFolderSecurityInheritancepropCount = 0;
             enableFolderSecurityInheritancepropCount++;
-            enableFolderSecurityInheritance["FolderPath"] = ExpressionConverter.ConvertO(enableFolderSecurityInheritancefolderPath);
+            enableFolderSecurityInheritance["FolderPath"] = CSharpExpressionConverter.ConvertToken(enableFolderSecurityInheritancefolderPath);
             enableFolderSecurityInheritancepropCount++;
-            enableFolderSecurityInheritance["Workflow"] = ExpressionConverter.ConvertO(enableFolderSecurityInheritanceworkflow);
+            enableFolderSecurityInheritance["Workflow"] = CSharpExpressionConverter.ConvertToken(enableFolderSecurityInheritanceworkflow);
             if (enableFolderSecurityInheritancepropCount > 0)
             {
                 callPayload.Body = enableFolderSecurityInheritance;
@@ -8922,9 +8922,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFolderSecurityPermissions = new JObject();
             var getFolderSecurityPermissionspropCount = 0;
             getFolderSecurityPermissionspropCount++;
-            getFolderSecurityPermissions["FolderPath"] = ExpressionConverter.ConvertO(getFolderSecurityPermissionsfolderPath);
+            getFolderSecurityPermissions["FolderPath"] = CSharpExpressionConverter.ConvertToken(getFolderSecurityPermissionsfolderPath);
             getFolderSecurityPermissionspropCount++;
-            getFolderSecurityPermissions["Workflow"] = ExpressionConverter.ConvertO(getFolderSecurityPermissionsworkflow);
+            getFolderSecurityPermissions["Workflow"] = CSharpExpressionConverter.ConvertToken(getFolderSecurityPermissionsworkflow);
             if (getFolderSecurityPermissionspropCount > 0)
             {
                 callPayload.Body = getFolderSecurityPermissions;
@@ -8942,9 +8942,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFileSecurityPermissions = new JObject();
             var getFileSecurityPermissionspropCount = 0;
             getFileSecurityPermissionspropCount++;
-            getFileSecurityPermissions["FilePath"] = ExpressionConverter.ConvertO(getFileSecurityPermissionsfilePath);
+            getFileSecurityPermissions["FilePath"] = CSharpExpressionConverter.ConvertToken(getFileSecurityPermissionsfilePath);
             getFileSecurityPermissionspropCount++;
-            getFileSecurityPermissions["Workflow"] = ExpressionConverter.ConvertO(getFileSecurityPermissionsworkflow);
+            getFileSecurityPermissions["Workflow"] = CSharpExpressionConverter.ConvertToken(getFileSecurityPermissionsworkflow);
             if (getFileSecurityPermissionspropCount > 0)
             {
                 callPayload.Body = getFileSecurityPermissions;
@@ -8962,11 +8962,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var removeIdentityFromFolderSecurity = new JObject();
             var removeIdentityFromFolderSecuritypropCount = 0;
             removeIdentityFromFolderSecuritypropCount++;
-            removeIdentityFromFolderSecurity["FolderPath"] = ExpressionConverter.ConvertO(removeIdentityFromFolderSecurityfolderPath);
+            removeIdentityFromFolderSecurity["FolderPath"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFolderSecurityfolderPath);
             removeIdentityFromFolderSecuritypropCount++;
-            removeIdentityFromFolderSecurity["IdentityToRemove"] = ExpressionConverter.ConvertO(removeIdentityFromFolderSecurityidentityToRemove);
+            removeIdentityFromFolderSecurity["IdentityToRemove"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFolderSecurityidentityToRemove);
             removeIdentityFromFolderSecuritypropCount++;
-            removeIdentityFromFolderSecurity["Workflow"] = ExpressionConverter.ConvertO(removeIdentityFromFolderSecurityworkflow);
+            removeIdentityFromFolderSecurity["Workflow"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFolderSecurityworkflow);
             if (removeIdentityFromFolderSecuritypropCount > 0)
             {
                 callPayload.Body = removeIdentityFromFolderSecurity;
@@ -8984,11 +8984,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var removeIdentityFromFileSecurity = new JObject();
             var removeIdentityFromFileSecuritypropCount = 0;
             removeIdentityFromFileSecuritypropCount++;
-            removeIdentityFromFileSecurity["FilePath"] = ExpressionConverter.ConvertO(removeIdentityFromFileSecurityfilePath);
+            removeIdentityFromFileSecurity["FilePath"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFileSecurityfilePath);
             removeIdentityFromFileSecuritypropCount++;
-            removeIdentityFromFileSecurity["IdentityToRemove"] = ExpressionConverter.ConvertO(removeIdentityFromFileSecurityidentityToRemove);
+            removeIdentityFromFileSecurity["IdentityToRemove"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFileSecurityidentityToRemove);
             removeIdentityFromFileSecuritypropCount++;
-            removeIdentityFromFileSecurity["Workflow"] = ExpressionConverter.ConvertO(removeIdentityFromFileSecurityworkflow);
+            removeIdentityFromFileSecurity["Workflow"] = CSharpExpressionConverter.ConvertToken(removeIdentityFromFileSecurityworkflow);
             if (removeIdentityFromFileSecuritypropCount > 0)
             {
                 callPayload.Body = removeIdentityFromFileSecurity;
@@ -9006,14 +9006,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var copyFileFromClientToServer = new JObject();
             var copyFileFromClientToServerpropCount = 0;
             copyFileFromClientToServerpropCount++;
-            copyFileFromClientToServer["ClientFilePath"] = ExpressionConverter.ConvertO(copyFileFromClientToServerclientFilePath);
+            copyFileFromClientToServer["ClientFilePath"] = CSharpExpressionConverter.ConvertToken(copyFileFromClientToServerclientFilePath);
             copyFileFromClientToServerpropCount++;
-            copyFileFromClientToServer["ServerFilePath"] = ExpressionConverter.ConvertO(copyFileFromClientToServerserverFilePath);
+            copyFileFromClientToServer["ServerFilePath"] = CSharpExpressionConverter.ConvertToken(copyFileFromClientToServerserverFilePath);
             if (copyFileFromClientToServercompress != null)
             {
                 if (copyFileFromClientToServercompress != null)
                 {
-                    copyFileFromClientToServer["Compress"] = ExpressionConverter.ConvertO(copyFileFromClientToServercompress);
+                    copyFileFromClientToServer["Compress"] = CSharpExpressionConverter.ConvertToken(copyFileFromClientToServercompress);
                     copyFileFromClientToServerpropCount++;
                 }
 
@@ -9026,7 +9026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             copyFileFromClientToServerpropCount++;
-            copyFileFromClientToServer["Workflow"] = ExpressionConverter.ConvertO(copyFileFromClientToServerworkflow);
+            copyFileFromClientToServer["Workflow"] = CSharpExpressionConverter.ConvertToken(copyFileFromClientToServerworkflow);
             if (copyFileFromClientToServerpropCount > 0)
             {
                 callPayload.Body = copyFileFromClientToServer;
@@ -9044,34 +9044,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var replaceVariableDataInINIFile = new JObject();
             var replaceVariableDataInINIFilepropCount = 0;
             replaceVariableDataInINIFilepropCount++;
-            replaceVariableDataInINIFile["InputFilename"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFileinputFilename);
+            replaceVariableDataInINIFile["InputFilename"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFileinputFilename);
             if (replaceVariableDataInINIFileoutputFilename != null)
             {
-                replaceVariableDataInINIFile["OutputFilename"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFileoutputFilename);
+                replaceVariableDataInINIFile["OutputFilename"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFileoutputFilename);
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFilesearchSection != null)
             {
-                replaceVariableDataInINIFile["SearchSection"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilesearchSection);
+                replaceVariableDataInINIFile["SearchSection"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilesearchSection);
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFilesearchVariable != null)
             {
-                replaceVariableDataInINIFile["SearchVariable"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilesearchVariable);
+                replaceVariableDataInINIFile["SearchVariable"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilesearchVariable);
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFilereplaceData != null)
             {
-                replaceVariableDataInINIFile["ReplaceData"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilereplaceData);
+                replaceVariableDataInINIFile["ReplaceData"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilereplaceData);
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFileinputFilenameEncoding != null)
             {
-                replaceVariableDataInINIFile["InputFilenameEncoding"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFileinputFilenameEncoding);
+                replaceVariableDataInINIFile["InputFilenameEncoding"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFileinputFilenameEncoding);
                 replaceVariableDataInINIFilepropCount++;
             }
 
@@ -9079,7 +9079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (replaceVariableDataInINIFilecreateNewFileIfNotExists != null)
                 {
-                    replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilecreateNewFileIfNotExists);
+                    replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilecreateNewFileIfNotExists);
                     replaceVariableDataInINIFilepropCount++;
                 }
 
@@ -9095,7 +9095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (replaceVariableDataInINIFilewriteSpaceBeforeEquals != null)
                 {
-                    replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceBeforeEquals);
+                    replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilewriteSpaceBeforeEquals);
                     replaceVariableDataInINIFilepropCount++;
                 }
 
@@ -9111,7 +9111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (replaceVariableDataInINIFilewriteSpaceAfterEquals != null)
                 {
-                    replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceAfterEquals);
+                    replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFilewriteSpaceAfterEquals);
                     replaceVariableDataInINIFilepropCount++;
                 }
 
@@ -9124,7 +9124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             replaceVariableDataInINIFilepropCount++;
-            replaceVariableDataInINIFile["Workflow"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFileworkflow);
+            replaceVariableDataInINIFile["Workflow"] = CSharpExpressionConverter.ConvertToken(replaceVariableDataInINIFileworkflow);
             if (replaceVariableDataInINIFilepropCount > 0)
             {
                 callPayload.Body = replaceVariableDataInINIFile;
@@ -9142,10 +9142,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var downloadHTTPFile = new JObject();
             var downloadHTTPFilepropCount = 0;
             downloadHTTPFilepropCount++;
-            downloadHTTPFile["DownloadURL"] = ExpressionConverter.ConvertO(downloadHTTPFiledownloadURL);
+            downloadHTTPFile["DownloadURL"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFiledownloadURL);
             if (downloadHTTPFilesaveFilename != null)
             {
-                downloadHTTPFile["SaveFilename"] = ExpressionConverter.ConvertO(downloadHTTPFilesaveFilename);
+                downloadHTTPFile["SaveFilename"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilesaveFilename);
                 downloadHTTPFilepropCount++;
             }
 
@@ -9153,7 +9153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFileoverwriteExistingFile != null)
                 {
-                    downloadHTTPFile["OverwriteExistingFile"] = ExpressionConverter.ConvertO(downloadHTTPFileoverwriteExistingFile);
+                    downloadHTTPFile["OverwriteExistingFile"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileoverwriteExistingFile);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9169,7 +9169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilepassthroughAuthentication != null)
                 {
-                    downloadHTTPFile["PassthroughAuthentication"] = ExpressionConverter.ConvertO(downloadHTTPFilepassthroughAuthentication);
+                    downloadHTTPFile["PassthroughAuthentication"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilepassthroughAuthentication);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9185,7 +9185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFileuserAgent != null)
                 {
-                    downloadHTTPFile["UserAgent"] = ExpressionConverter.ConvertO(downloadHTTPFileuserAgent);
+                    downloadHTTPFile["UserAgent"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileuserAgent);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9201,7 +9201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFileaccept != null)
                 {
-                    downloadHTTPFile["Accept"] = ExpressionConverter.ConvertO(downloadHTTPFileaccept);
+                    downloadHTTPFile["Accept"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileaccept);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9217,7 +9217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilesupportTLS10 != null)
                 {
-                    downloadHTTPFile["SupportTLS10"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS10);
+                    downloadHTTPFile["SupportTLS10"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilesupportTLS10);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9233,7 +9233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilesupportTLS11 != null)
                 {
-                    downloadHTTPFile["SupportTLS11"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS11);
+                    downloadHTTPFile["SupportTLS11"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilesupportTLS11);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9249,7 +9249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilesupportTLS12 != null)
                 {
-                    downloadHTTPFile["SupportTLS12"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS12);
+                    downloadHTTPFile["SupportTLS12"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilesupportTLS12);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9265,7 +9265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFileautoDecompressDeflate != null)
                 {
-                    downloadHTTPFile["AutoDecompressDeflate"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressDeflate);
+                    downloadHTTPFile["AutoDecompressDeflate"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileautoDecompressDeflate);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9281,7 +9281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFileautoDecompressGZIP != null)
                 {
-                    downloadHTTPFile["AutoDecompressGZIP"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressGZIP);
+                    downloadHTTPFile["AutoDecompressGZIP"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileautoDecompressGZIP);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9297,7 +9297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilereturnContentsAsString != null)
                 {
-                    downloadHTTPFile["ReturnContentsAsString"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentsAsString);
+                    downloadHTTPFile["ReturnContentsAsString"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFilereturnContentsAsString);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9313,7 +9313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (downloadHTTPFilereturnContentEncoding != null)
                 {
-                    downloadHTTPFile["ReturnContentEncoding"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentEncoding);
+                    downloadHTTPFile["ReturnContentEncoding"] = CSharpExpressionConverter.Convert(downloadHTTPFilereturnContentEncoding);
                     downloadHTTPFilepropCount++;
                 }
 
@@ -9326,7 +9326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             downloadHTTPFilepropCount++;
-            downloadHTTPFile["Workflow"] = ExpressionConverter.ConvertO(downloadHTTPFileworkflow);
+            downloadHTTPFile["Workflow"] = CSharpExpressionConverter.ConvertToken(downloadHTTPFileworkflow);
             if (downloadHTTPFilepropCount > 0)
             {
                 callPayload.Body = downloadHTTPFile;
@@ -9344,10 +9344,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var unZIPFile = new JObject();
             var unZIPFilepropCount = 0;
             unZIPFilepropCount++;
-            unZIPFile["ZIPFilename"] = ExpressionConverter.ConvertO(unZIPFilezIPFilename);
+            unZIPFile["ZIPFilename"] = CSharpExpressionConverter.ConvertToken(unZIPFilezIPFilename);
             if (unZIPFileextractFolder != null)
             {
-                unZIPFile["ExtractFolder"] = ExpressionConverter.ConvertO(unZIPFileextractFolder);
+                unZIPFile["ExtractFolder"] = CSharpExpressionConverter.ConvertToken(unZIPFileextractFolder);
                 unZIPFilepropCount++;
             }
 
@@ -9355,7 +9355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (unZIPFileextractAllFilesToSingleFolder != null)
                 {
-                    unZIPFile["ExtractAllFilesToSingleFolder"] = ExpressionConverter.ConvertO(unZIPFileextractAllFilesToSingleFolder);
+                    unZIPFile["ExtractAllFilesToSingleFolder"] = CSharpExpressionConverter.ConvertToken(unZIPFileextractAllFilesToSingleFolder);
                     unZIPFilepropCount++;
                 }
 
@@ -9369,18 +9369,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (unZIPFileincludeFilesRegEx != null)
             {
-                unZIPFile["IncludeFilesRegEx"] = ExpressionConverter.ConvertO(unZIPFileincludeFilesRegEx);
+                unZIPFile["IncludeFilesRegEx"] = CSharpExpressionConverter.ConvertToken(unZIPFileincludeFilesRegEx);
                 unZIPFilepropCount++;
             }
 
             if (unZIPFileexcludeFilesRegEx != null)
             {
-                unZIPFile["ExcludeFilesRegEx"] = ExpressionConverter.ConvertO(unZIPFileexcludeFilesRegEx);
+                unZIPFile["ExcludeFilesRegEx"] = CSharpExpressionConverter.ConvertToken(unZIPFileexcludeFilesRegEx);
                 unZIPFilepropCount++;
             }
 
             unZIPFilepropCount++;
-            unZIPFile["Workflow"] = ExpressionConverter.ConvertO(unZIPFileworkflow);
+            unZIPFile["Workflow"] = CSharpExpressionConverter.ConvertToken(unZIPFileworkflow);
             if (unZIPFilepropCount > 0)
             {
                 callPayload.Body = unZIPFile;
@@ -9398,18 +9398,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var addFileToZIP = new JObject();
             var addFileToZIPpropCount = 0;
             addFileToZIPpropCount++;
-            addFileToZIP["SourceFilenameToAddToZIP"] = ExpressionConverter.ConvertO(addFileToZIPsourceFilenameToAddToZIP);
+            addFileToZIP["SourceFilenameToAddToZIP"] = CSharpExpressionConverter.ConvertToken(addFileToZIPsourceFilenameToAddToZIP);
             addFileToZIPpropCount++;
-            addFileToZIP["OutputZIPFilename"] = ExpressionConverter.ConvertO(addFileToZIPoutputZIPFilename);
+            addFileToZIP["OutputZIPFilename"] = CSharpExpressionConverter.ConvertToken(addFileToZIPoutputZIPFilename);
             if (addFileToZIPaddFilenameToFolderInZIP != null)
             {
-                addFileToZIP["AddFilenameToFolderInZIP"] = ExpressionConverter.ConvertO(addFileToZIPaddFilenameToFolderInZIP);
+                addFileToZIP["AddFilenameToFolderInZIP"] = CSharpExpressionConverter.ConvertToken(addFileToZIPaddFilenameToFolderInZIP);
                 addFileToZIPpropCount++;
             }
 
             if (addFileToZIPsourceFilenameToAddToZIPComment != null)
             {
-                addFileToZIP["SourceFilenameToAddToZIPComment"] = ExpressionConverter.ConvertO(addFileToZIPsourceFilenameToAddToZIPComment);
+                addFileToZIP["SourceFilenameToAddToZIPComment"] = CSharpExpressionConverter.ConvertToken(addFileToZIPsourceFilenameToAddToZIPComment);
                 addFileToZIPpropCount++;
             }
 
@@ -9417,7 +9417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addFileToZIPcompress != null)
                 {
-                    addFileToZIP["Compress"] = ExpressionConverter.ConvertO(addFileToZIPcompress);
+                    addFileToZIP["Compress"] = CSharpExpressionConverter.ConvertToken(addFileToZIPcompress);
                     addFileToZIPpropCount++;
                 }
 
@@ -9433,7 +9433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addFileToZIPaddToExistingZIPFile != null)
                 {
-                    addFileToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFileToZIPaddToExistingZIPFile);
+                    addFileToZIP["AddToExistingZIPFile"] = CSharpExpressionConverter.ConvertToken(addFileToZIPaddToExistingZIPFile);
                     addFileToZIPpropCount++;
                 }
 
@@ -9446,7 +9446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             addFileToZIPpropCount++;
-            addFileToZIP["Workflow"] = ExpressionConverter.ConvertO(addFileToZIPworkflow);
+            addFileToZIP["Workflow"] = CSharpExpressionConverter.ConvertToken(addFileToZIPworkflow);
             if (addFileToZIPpropCount > 0)
             {
                 callPayload.Body = addFileToZIP;
@@ -9464,12 +9464,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var addFolderToZIP = new JObject();
             var addFolderToZIPpropCount = 0;
             addFolderToZIPpropCount++;
-            addFolderToZIP["SourceFolderToAddToZIP"] = ExpressionConverter.ConvertO(addFolderToZIPsourceFolderToAddToZIP);
+            addFolderToZIP["SourceFolderToAddToZIP"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPsourceFolderToAddToZIP);
             addFolderToZIPpropCount++;
-            addFolderToZIP["OutputZIPFilename"] = ExpressionConverter.ConvertO(addFolderToZIPoutputZIPFilename);
+            addFolderToZIP["OutputZIPFilename"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPoutputZIPFilename);
             if (addFolderToZIPaddFilesToFolderInZIP != null)
             {
-                addFolderToZIP["AddFilesToFolderInZIP"] = ExpressionConverter.ConvertO(addFolderToZIPaddFilesToFolderInZIP);
+                addFolderToZIP["AddFilesToFolderInZIP"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPaddFilesToFolderInZIP);
                 addFolderToZIPpropCount++;
             }
 
@@ -9477,7 +9477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addFolderToZIPcompress != null)
                 {
-                    addFolderToZIP["Compress"] = ExpressionConverter.ConvertO(addFolderToZIPcompress);
+                    addFolderToZIP["Compress"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPcompress);
                     addFolderToZIPpropCount++;
                 }
 
@@ -9493,7 +9493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addFolderToZIPaddToExistingZIPFile != null)
                 {
-                    addFolderToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFolderToZIPaddToExistingZIPFile);
+                    addFolderToZIP["AddToExistingZIPFile"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPaddToExistingZIPFile);
                     addFolderToZIPpropCount++;
                 }
 
@@ -9509,7 +9509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (addFolderToZIPincludeSubfolders != null)
                 {
-                    addFolderToZIP["IncludeSubfolders"] = ExpressionConverter.ConvertO(addFolderToZIPincludeSubfolders);
+                    addFolderToZIP["IncludeSubfolders"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPincludeSubfolders);
                     addFolderToZIPpropCount++;
                 }
 
@@ -9523,18 +9523,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (addFolderToZIPincludeFilesRegEx != null)
             {
-                addFolderToZIP["IncludeFilesRegEx"] = ExpressionConverter.ConvertO(addFolderToZIPincludeFilesRegEx);
+                addFolderToZIP["IncludeFilesRegEx"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPincludeFilesRegEx);
                 addFolderToZIPpropCount++;
             }
 
             if (addFolderToZIPexcludeFilesRegEx != null)
             {
-                addFolderToZIP["ExcludeFilesRegEx"] = ExpressionConverter.ConvertO(addFolderToZIPexcludeFilesRegEx);
+                addFolderToZIP["ExcludeFilesRegEx"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPexcludeFilesRegEx);
                 addFolderToZIPpropCount++;
             }
 
             addFolderToZIPpropCount++;
-            addFolderToZIP["Workflow"] = ExpressionConverter.ConvertO(addFolderToZIPworkflow);
+            addFolderToZIP["Workflow"] = CSharpExpressionConverter.ConvertToken(addFolderToZIPworkflow);
             if (addFolderToZIPpropCount > 0)
             {
                 callPayload.Body = addFolderToZIP;
@@ -9552,12 +9552,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getFileContentsAsBase64 = new JObject();
             var getFileContentsAsBase64propCount = 0;
             getFileContentsAsBase64propCount++;
-            getFileContentsAsBase64["FilePath"] = ExpressionConverter.ConvertO(getFileContentsAsBase64filePath);
+            getFileContentsAsBase64["FilePath"] = CSharpExpressionConverter.ConvertToken(getFileContentsAsBase64filePath);
             if (getFileContentsAsBase64compress != null)
             {
                 if (getFileContentsAsBase64compress != null)
                 {
-                    getFileContentsAsBase64["Compress"] = ExpressionConverter.ConvertO(getFileContentsAsBase64compress);
+                    getFileContentsAsBase64["Compress"] = CSharpExpressionConverter.ConvertToken(getFileContentsAsBase64compress);
                     getFileContentsAsBase64propCount++;
                 }
 
@@ -9573,7 +9573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             {
                 if (getFileContentsAsBase64maxFileSize != null)
                 {
-                    getFileContentsAsBase64["MaxFileSize"] = ExpressionConverter.ConvertO(getFileContentsAsBase64maxFileSize);
+                    getFileContentsAsBase64["MaxFileSize"] = CSharpExpressionConverter.ConvertToken(getFileContentsAsBase64maxFileSize);
                     getFileContentsAsBase64propCount++;
                 }
 
@@ -9586,7 +9586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             }
 
             getFileContentsAsBase64propCount++;
-            getFileContentsAsBase64["Workflow"] = ExpressionConverter.ConvertO(getFileContentsAsBase64workflow);
+            getFileContentsAsBase64["Workflow"] = CSharpExpressionConverter.ConvertToken(getFileContentsAsBase64workflow);
             if (getFileContentsAsBase64propCount > 0)
             {
                 callPayload.Body = getFileContentsAsBase64;

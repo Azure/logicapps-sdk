@@ -19,22 +19,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["rows"] = Convert.ToString(200);
             if (rows != null)
-                callPayload.Queries["rows"] = ExpressionConverter.Convert(rows);
+                callPayload.Queries["rows"] = CSharpExpressionConverter.ConvertO(rows);
             callPayload.Queries["output"] = Convert.ToString("json");
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
         {
-            var apiCallPath = String.Format("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(schoolyear, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(schoolyear, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["output"] = Convert.ToString("json");
             if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
             return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
         }
     }

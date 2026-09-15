@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["chart"] = ExpressionConverter.ConvertO(bodychart);
+            body["chart"] = CSharpExpressionConverter.ConvertToken(bodychart);
             if (bodywidth != null)
             {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
             }
 
             if (bodyheight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
                 bodypropCount++;
             }
 
             if (bodydevicePixelRatio != null)
             {
-                body["devicePixelRatio"] = ExpressionConverter.ConvertO(bodydevicePixelRatio);
+                body["devicePixelRatio"] = CSharpExpressionConverter.ConvertToken(bodydevicePixelRatio);
                 bodypropCount++;
             }
 
             if (bodybackgroundColor != null)
             {
-                body["backgroundColor"] = ExpressionConverter.ConvertO(bodybackgroundColor);
+                body["backgroundColor"] = CSharpExpressionConverter.ConvertToken(bodybackgroundColor);
                 bodypropCount++;
             }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             {
                 if (bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                     bodypropCount++;
                 }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             {
                 if (bodyencoding != null)
                 {
-                    body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                    body["encoding"] = CSharpExpressionConverter.Convert(bodyencoding);
                     bodypropCount++;
                 }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
             if (bodyversion != null)
             {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
                 bodypropCount++;
             }
 
@@ -100,28 +100,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["chart"] = ExpressionConverter.ConvertO(bodychart);
+            body["chart"] = CSharpExpressionConverter.ConvertToken(bodychart);
             if (bodywidth != null)
             {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
             }
 
             if (bodyheight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
                 bodypropCount++;
             }
 
             if (bodydevicePixelRatio != null)
             {
-                body["devicePixelRatio"] = ExpressionConverter.ConvertO(bodydevicePixelRatio);
+                body["devicePixelRatio"] = CSharpExpressionConverter.ConvertToken(bodydevicePixelRatio);
                 bodypropCount++;
             }
 
             if (bodybackgroundColor != null)
             {
-                body["backgroundColor"] = ExpressionConverter.ConvertO(bodybackgroundColor);
+                body["backgroundColor"] = CSharpExpressionConverter.ConvertToken(bodybackgroundColor);
                 bodypropCount++;
             }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             {
                 if (bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                     bodypropCount++;
                 }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             {
                 if (bodyencoding != null)
                 {
-                    body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                    body["encoding"] = CSharpExpressionConverter.Convert(bodyencoding);
                     bodypropCount++;
                 }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
             if (bodyversion != null)
             {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                body["version"] = CSharpExpressionConverter.ConvertToken(bodyversion);
                 bodypropCount++;
             }
 
@@ -174,17 +174,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartTemplateResponse> ChartTemplate(Expression<Func<string>> chartId, Expression<Func<string>> title = null, Expression<Func<string>> labels = null, Expression<Func<string>> data1 = null, Expression<Func<string>> data2 = null)
         {
-            var apiCallPath = String.Format("/chart/render/{0}", ExpressionConverter.ConvertWithUrlEncoding(chartId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/chart/render/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(chartId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             if (labels != null)
-                callPayload.Queries["labels"] = ExpressionConverter.Convert(labels);
+                callPayload.Queries["labels"] = CSharpExpressionConverter.ConvertO(labels);
             if (data1 != null)
-                callPayload.Queries["data1"] = ExpressionConverter.Convert(data1);
+                callPayload.Queries["data1"] = CSharpExpressionConverter.ConvertO(data1);
             if (data2 != null)
-                callPayload.Queries["data2"] = ExpressionConverter.Convert(data2);
+                callPayload.Queries["data2"] = CSharpExpressionConverter.ConvertO(data2);
             return new ApiConnectionAction<ChartTemplateResponse>(callPayload);
         }
 
@@ -195,33 +195,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             callPayload.Queries["margin"] = Convert.ToString(4);
             if (margin != null)
-                callPayload.Queries["margin"] = ExpressionConverter.Convert(margin);
+                callPayload.Queries["margin"] = CSharpExpressionConverter.ConvertO(margin);
             callPayload.Queries["size"] = Convert.ToString(150);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             if (dark != null)
-                callPayload.Queries["dark"] = ExpressionConverter.Convert(dark);
+                callPayload.Queries["dark"] = CSharpExpressionConverter.ConvertO(dark);
             callPayload.Queries["light"] = Convert.ToString("ffffff");
             if (light != null)
-                callPayload.Queries["light"] = ExpressionConverter.Convert(light);
+                callPayload.Queries["light"] = CSharpExpressionConverter.ConvertO(light);
             callPayload.Queries["ecLevel"] = Convert.ToString("M");
             if (ecLevel != null)
-                callPayload.Queries["ecLevel"] = ExpressionConverter.Convert(ecLevel);
+                callPayload.Queries["ecLevel"] = CSharpExpressionConverter.Convert(ecLevel);
             callPayload.Queries["format"] = Convert.ToString("png");
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             if (centerImageUrl != null)
-                callPayload.Queries["centerImageUrl"] = ExpressionConverter.Convert(centerImageUrl);
+                callPayload.Queries["centerImageUrl"] = CSharpExpressionConverter.ConvertO(centerImageUrl);
             callPayload.Queries["centerImageSizeRatio"] = Convert.ToString(0.3);
             if (centerImageSizeRatio != null)
-                callPayload.Queries["centerImageSizeRatio"] = ExpressionConverter.Convert(centerImageSizeRatio);
+                callPayload.Queries["centerImageSizeRatio"] = CSharpExpressionConverter.ConvertO(centerImageSizeRatio);
             if (centerImageWidth != null)
-                callPayload.Queries["centerImageWidth"] = ExpressionConverter.Convert(centerImageWidth);
+                callPayload.Queries["centerImageWidth"] = CSharpExpressionConverter.ConvertO(centerImageWidth);
             if (centerImageHeight != null)
-                callPayload.Queries["centerImageHeight"] = ExpressionConverter.Convert(centerImageHeight);
+                callPayload.Queries["centerImageHeight"] = CSharpExpressionConverter.ConvertO(centerImageHeight);
             return new ApiConnectionAction<QRCodeResponse>(callPayload);
         }
 
@@ -234,12 +234,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["graph"] = ExpressionConverter.ConvertO(bodygraph);
+            body["graph"] = CSharpExpressionConverter.ConvertToken(bodygraph);
             if (bodylayout != null)
             {
                 if (bodylayout != null)
                 {
-                    body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                    body["layout"] = CSharpExpressionConverter.Convert(bodylayout);
                     bodypropCount++;
                 }
 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             {
                 if (bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = CSharpExpressionConverter.Convert(bodyformat);
                     bodypropCount++;
                 }
 
@@ -269,13 +269,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
             if (bodywidth != null)
             {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
             }
 
             if (bodyheight != null)
             {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
                 bodypropCount++;
             }
 
@@ -294,54 +294,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
             if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
+                callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
             if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
             if (backgroundColor != null)
-                callPayload.Queries["backgroundColor"] = ExpressionConverter.Convert(backgroundColor);
+                callPayload.Queries["backgroundColor"] = CSharpExpressionConverter.ConvertO(backgroundColor);
             callPayload.Queries["format"] = Convert.ToString("svg");
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             callPayload.Queries["fontFamily"] = Convert.ToString("serif");
             if (fontFamily != null)
-                callPayload.Queries["fontFamily"] = ExpressionConverter.Convert(fontFamily);
+                callPayload.Queries["fontFamily"] = CSharpExpressionConverter.ConvertO(fontFamily);
             if (loadGoogleFonts != null)
-                callPayload.Queries["loadGoogleFonts"] = ExpressionConverter.Convert(loadGoogleFonts);
+                callPayload.Queries["loadGoogleFonts"] = CSharpExpressionConverter.ConvertO(loadGoogleFonts);
             callPayload.Queries["fontScale"] = Convert.ToString(25);
             if (fontScale != null)
-                callPayload.Queries["fontScale"] = ExpressionConverter.Convert(fontScale);
+                callPayload.Queries["fontScale"] = CSharpExpressionConverter.ConvertO(fontScale);
             callPayload.Queries["scale"] = Convert.ToString("linear");
             if (scale != null)
-                callPayload.Queries["scale"] = ExpressionConverter.Convert(scale);
+                callPayload.Queries["scale"] = CSharpExpressionConverter.Convert(scale);
             callPayload.Queries["padding"] = Convert.ToString(1);
             if (padding != null)
-                callPayload.Queries["padding"] = ExpressionConverter.Convert(padding);
+                callPayload.Queries["padding"] = CSharpExpressionConverter.ConvertO(padding);
             callPayload.Queries["rotation"] = Convert.ToString(20);
             if (rotation != null)
-                callPayload.Queries["rotation"] = ExpressionConverter.Convert(rotation);
+                callPayload.Queries["rotation"] = CSharpExpressionConverter.ConvertO(rotation);
             callPayload.Queries["maxNumWords"] = Convert.ToString(200);
             if (maxNumWords != null)
-                callPayload.Queries["maxNumWords"] = ExpressionConverter.Convert(maxNumWords);
+                callPayload.Queries["maxNumWords"] = CSharpExpressionConverter.ConvertO(maxNumWords);
             callPayload.Queries["minWordLength"] = Convert.ToString(1);
             if (minWordLength != null)
-                callPayload.Queries["minWordLength"] = ExpressionConverter.Convert(minWordLength);
+                callPayload.Queries["minWordLength"] = CSharpExpressionConverter.ConvertO(minWordLength);
             callPayload.Queries["case"] = Convert.ToString("lower");
             if (@case != null)
-                callPayload.Queries["case"] = ExpressionConverter.Convert(@case);
+                callPayload.Queries["case"] = CSharpExpressionConverter.Convert(@case);
             callPayload.Queries["colors"] = Convert.ToString("random");
             if (colors != null)
-                callPayload.Queries["colors"] = ExpressionConverter.Convert(colors);
+                callPayload.Queries["colors"] = CSharpExpressionConverter.ConvertO(colors);
             callPayload.Queries["removeStopwords"] = Convert.ToString(false);
             if (removeStopwords != null)
-                callPayload.Queries["removeStopwords"] = ExpressionConverter.Convert(removeStopwords);
+                callPayload.Queries["removeStopwords"] = CSharpExpressionConverter.ConvertO(removeStopwords);
             callPayload.Queries["language"] = Convert.ToString("en");
             if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
             callPayload.Queries["useWordList"] = Convert.ToString(false);
             if (useWordList != null)
-                callPayload.Queries["useWordList"] = ExpressionConverter.Convert(useWordList);
+                callPayload.Queries["useWordList"] = CSharpExpressionConverter.ConvertO(useWordList);
             return new ApiConnectionAction<WordCloudResponse>(callPayload);
         }
     }

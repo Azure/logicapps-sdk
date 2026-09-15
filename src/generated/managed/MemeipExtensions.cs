@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
         public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
         {
-            var apiCallPath = String.Format("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(subreddit, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gimme/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subreddit, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MemeSubredditResponse>(callPayload);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/controlnumbers";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(controlNumberContents);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(controlNumberContents);
             return new ApiConnectionAction<UpdateControlNumberResult[]>(callPayload);
         }
 
@@ -29,33 +29,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["componentSeparator"] = Convert.ToString(58);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             callPayload.Queries["dataElementSeparator"] = Convert.ToString(43);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             callPayload.Queries["releaseIndicator"] = Convert.ToString(63);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             callPayload.Queries["repetitionSeparator"] = Convert.ToString(42);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             callPayload.Queries["segmentTerminator"] = Convert.ToString(39);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             callPayload.Queries["segmentTerminatorSuffix"] = Convert.ToString("None");
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             callPayload.Queries["decimalIndicator"] = Convert.ToString("Comma");
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
             callPayload.Queries["payloadCharacterSet"] = Convert.ToString("Legacy");
             if (payloadCharacterSet != null)
-                callPayload.Queries["payloadCharacterSet"] = ExpressionConverter.Convert(payloadCharacterSet);
+                callPayload.Queries["payloadCharacterSet"] = CSharpExpressionConverter.Convert(payloadCharacterSet);
             if (preserveInterchange != null)
-                callPayload.Queries["preserveInterchange"] = ExpressionConverter.Convert(preserveInterchange);
+                callPayload.Queries["preserveInterchange"] = CSharpExpressionConverter.ConvertO(preserveInterchange);
             if (suspendInterchangeOnError != null)
-                callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(suspendInterchangeOnError);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["suspendInterchangeOnError"] = CSharpExpressionConverter.ConvertO(suspendInterchangeOnError);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement>(callPayload);
         }
 
@@ -67,26 +67,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["componentSeparator"] = Convert.ToString(58);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             callPayload.Queries["dataElementSeparator"] = Convert.ToString(43);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             callPayload.Queries["releaseIndicator"] = Convert.ToString(63);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             callPayload.Queries["repetitionSeparator"] = Convert.ToString(42);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             callPayload.Queries["segmentTerminator"] = Convert.ToString(39);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             callPayload.Queries["segmentTerminatorSuffix"] = Convert.ToString("None");
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             callPayload.Queries["decimalIndicator"] = Convert.ToString("Comma");
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdiAgreementProperties>(callPayload);
         }
 
@@ -96,22 +96,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/encode/resolvebyname";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+            callPayload.Queries["agreementName"] = CSharpExpressionConverter.ConvertO(agreementName);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
         }
 
@@ -121,22 +121,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/EncodeV2/ResolveByName";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+            callPayload.Queries["agreementName"] = CSharpExpressionConverter.ConvertO(agreementName);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
         }
 
@@ -146,38 +146,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/Encode/Batch/ResolveByName";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+            callPayload.Queries["agreementName"] = CSharpExpressionConverter.ConvertO(agreementName);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
             var messagesToBatch = new JObject();
             var messagesToBatchpropCount = 0;
             if (messagesToBatchbatchName != null)
             {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                messagesToBatch["BatchName"] = CSharpExpressionConverter.ConvertToken(messagesToBatchbatchName);
                 messagesToBatchpropCount++;
             }
 
             if (messagesToBatchpartitionName != null)
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                messagesToBatch["PartitionName"] = CSharpExpressionConverter.ConvertToken(messagesToBatchpartitionName);
                 messagesToBatchpropCount++;
             }
 
             if (messagesToBatchitems != null)
             {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                messagesToBatch["Items"] = CSharpExpressionConverter.ConvertToken(messagesToBatchitems);
                 messagesToBatchpropCount++;
             }
 
@@ -195,41 +195,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/Encode/Batch/ResolveByIdentities";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-            callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+            callPayload.Queries["senderIdentifier"] = CSharpExpressionConverter.ConvertO(senderIdentifier);
+            callPayload.Queries["senderQualifier"] = CSharpExpressionConverter.ConvertO(senderQualifier);
+            callPayload.Queries["receiverIdentifier"] = CSharpExpressionConverter.ConvertO(receiverIdentifier);
+            callPayload.Queries["receiverQualifier"] = CSharpExpressionConverter.ConvertO(receiverQualifier);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
             var messagesToBatch = new JObject();
             var messagesToBatchpropCount = 0;
             if (messagesToBatchbatchName != null)
             {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                messagesToBatch["BatchName"] = CSharpExpressionConverter.ConvertToken(messagesToBatchbatchName);
                 messagesToBatchpropCount++;
             }
 
             if (messagesToBatchpartitionName != null)
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                messagesToBatch["PartitionName"] = CSharpExpressionConverter.ConvertToken(messagesToBatchpartitionName);
                 messagesToBatchpropCount++;
             }
 
             if (messagesToBatchitems != null)
             {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                messagesToBatch["Items"] = CSharpExpressionConverter.ConvertToken(messagesToBatchitems);
                 messagesToBatchpropCount++;
             }
 
@@ -247,27 +247,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/encode/resolvebyidentities";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
+            callPayload.Queries["senderIdentifier"] = CSharpExpressionConverter.ConvertO(senderIdentifier);
+            callPayload.Queries["receiverIdentifier"] = CSharpExpressionConverter.ConvertO(receiverIdentifier);
             if (senderQualifier != null)
-                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
+                callPayload.Queries["senderQualifier"] = CSharpExpressionConverter.ConvertO(senderQualifier);
             if (receiverQualifier != null)
-                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+                callPayload.Queries["receiverQualifier"] = CSharpExpressionConverter.ConvertO(receiverQualifier);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
         }
 
@@ -277,27 +277,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallPath = "/EncodeV2/ResolveByIdentities";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
+            callPayload.Queries["senderIdentifier"] = CSharpExpressionConverter.ConvertO(senderIdentifier);
+            callPayload.Queries["receiverIdentifier"] = CSharpExpressionConverter.ConvertO(receiverIdentifier);
             if (senderQualifier != null)
-                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
+                callPayload.Queries["senderQualifier"] = CSharpExpressionConverter.ConvertO(senderQualifier);
             if (receiverQualifier != null)
-                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+                callPayload.Queries["receiverQualifier"] = CSharpExpressionConverter.ConvertO(receiverQualifier);
             if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                callPayload.Queries["dataElementSeparator"] = CSharpExpressionConverter.ConvertO(dataElementSeparator);
             if (releaseIndicator != null)
-                callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                callPayload.Queries["releaseIndicator"] = CSharpExpressionConverter.ConvertO(releaseIndicator);
             if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                callPayload.Queries["componentSeparator"] = CSharpExpressionConverter.ConvertO(componentSeparator);
             if (repetitionSeparator != null)
-                callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                callPayload.Queries["repetitionSeparator"] = CSharpExpressionConverter.ConvertO(repetitionSeparator);
             if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                callPayload.Queries["segmentTerminator"] = CSharpExpressionConverter.ConvertO(segmentTerminator);
             if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                callPayload.Queries["segmentTerminatorSuffix"] = CSharpExpressionConverter.Convert(segmentTerminatorSuffix);
             if (decimalIndicator != null)
-                callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["decimalIndicator"] = CSharpExpressionConverter.Convert(decimalIndicator);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
         }
     }
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (startSyncTime != null)
-                callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
+                callPayload.Queries["startSyncTime"] = CSharpExpressionConverter.ConvertO(startSyncTime);
             return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, triggerName, recurrence);
         }
     }

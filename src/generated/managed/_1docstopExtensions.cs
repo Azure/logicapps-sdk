@@ -18,26 +18,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             var library = new JObject();
             var librarypropCount = 0;
             if (librarylibraryId != null)
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                library["libraryId"] = CSharpExpressionConverter.ConvertToken(librarylibraryId);
                 librarypropCount++;
             }
 
             if (libraryrepositoryId != null)
             {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                library["repositoryId"] = CSharpExpressionConverter.ConvertToken(libraryrepositoryId);
                 librarypropCount++;
             }
 
             if (librarydocumentTypeId != null)
             {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                library["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypeId);
                 librarypropCount++;
             }
 
@@ -45,19 +45,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var documentTypeObjectpropCount = 0;
             if (librarydocumentTypedocumentTypeId != null)
             {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                documentTypeObject["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypename != null)
             {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                documentTypeObject["name"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypename);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypedescription != null)
             {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                documentTypeObject["description"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedescription);
                 documentTypeObjectpropCount++;
             }
 
@@ -69,19 +69,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
             if (libraryname != null)
             {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
+                library["name"] = CSharpExpressionConverter.ConvertToken(libraryname);
                 librarypropCount++;
             }
 
             if (librarydescription != null)
             {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                library["description"] = CSharpExpressionConverter.ConvertToken(librarydescription);
                 librarypropCount++;
             }
 
             if (libraryocr != null)
             {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                library["ocr"] = CSharpExpressionConverter.ConvertToken(libraryocr);
                 librarypropCount++;
             }
 
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/pasolutions/get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+            callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             return new ApiConnectionAction<Solution>(callPayload);
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             return new ApiConnectionAction<Solution[]>(callPayload);
         }
 
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/pasolutions/department/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["departmentkey"] = ExpressionConverter.Convert(departmentkey);
+            callPayload.Queries["departmentkey"] = CSharpExpressionConverter.ConvertO(departmentkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             return new ApiConnectionAction<Solution[]>(callPayload);
         }
 
@@ -135,24 +135,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             var solution = new JObject();
             var solutionpropCount = 0;
             if (solutionsolutionId != null)
             {
-                solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
+                solution["solutionId"] = CSharpExpressionConverter.ConvertToken(solutionsolutionId);
                 solutionpropCount++;
             }
 
             if (solutionsolutionKey != null)
             {
-                solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
+                solution["solutionKey"] = CSharpExpressionConverter.ConvertToken(solutionsolutionKey);
                 solutionpropCount++;
             }
 
             if (solutionname != null)
             {
-                solution["name"] = ExpressionConverter.ConvertO(solutionname);
+                solution["name"] = CSharpExpressionConverter.ConvertToken(solutionname);
                 solutionpropCount++;
             }
 
@@ -171,26 +171,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (functionsolutionid != null)
-                callPayload.Queries["functionsolutionid"] = ExpressionConverter.Convert(functionsolutionid);
+                callPayload.Queries["functionsolutionid"] = CSharpExpressionConverter.ConvertO(functionsolutionid);
             var solution = new JObject();
             var solutionpropCount = 0;
             if (solutionsolutionId != null)
             {
-                solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
+                solution["solutionId"] = CSharpExpressionConverter.ConvertToken(solutionsolutionId);
                 solutionpropCount++;
             }
 
             if (solutionsolutionKey != null)
             {
-                solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
+                solution["solutionKey"] = CSharpExpressionConverter.ConvertToken(solutionsolutionKey);
                 solutionpropCount++;
             }
 
             if (solutionname != null)
             {
-                solution["name"] = ExpressionConverter.ConvertO(solutionname);
+                solution["name"] = CSharpExpressionConverter.ConvertToken(solutionname);
                 solutionpropCount++;
             }
 
@@ -208,46 +208,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocuments/add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
+            callPayload.Queries["libraryid"] = CSharpExpressionConverter.ConvertO(libraryid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             var document = new JObject();
             var documentpropCount = 0;
             if (documentdocumentKey != null)
             {
-                document["documentKey"] = ExpressionConverter.ConvertO(documentdocumentKey);
+                document["documentKey"] = CSharpExpressionConverter.ConvertToken(documentdocumentKey);
                 documentpropCount++;
             }
 
             if (documentname != null)
             {
-                document["name"] = ExpressionConverter.ConvertO(documentname);
+                document["name"] = CSharpExpressionConverter.ConvertToken(documentname);
                 documentpropCount++;
             }
 
             if (documentfileSizeBytes != null)
             {
-                document["fileSizeBytes"] = ExpressionConverter.ConvertO(documentfileSizeBytes);
+                document["fileSizeBytes"] = CSharpExpressionConverter.ConvertToken(documentfileSizeBytes);
                 documentpropCount++;
             }
 
             if (documentstatus != null)
             {
-                document["status"] = ExpressionConverter.ConvertO(documentstatus);
+                document["status"] = CSharpExpressionConverter.ConvertToken(documentstatus);
                 documentpropCount++;
             }
 
             if (documentpropertyValues != null)
             {
-                document["propertyValues"] = ExpressionConverter.ConvertO(documentpropertyValues);
+                document["propertyValues"] = CSharpExpressionConverter.ConvertToken(documentpropertyValues);
                 documentpropCount++;
             }
 
             if (documenturl != null)
             {
-                document["url"] = ExpressionConverter.ConvertO(documenturl);
+                document["url"] = CSharpExpressionConverter.ConvertToken(documenturl);
                 documentpropCount++;
             }
 
@@ -265,11 +265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocumenttypes/get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
+            callPayload.Queries["documenttypeid"] = CSharpExpressionConverter.ConvertO(documenttypeid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<DocumentType>(callPayload);
         }
 
@@ -279,9 +279,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocumenttypes/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+            callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             return new ApiConnectionAction<DocumentType[]>(callPayload);
         }
 
@@ -291,26 +291,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocumenttypes/add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+            callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             var library = new JObject();
             var librarypropCount = 0;
             if (librarylibraryId != null)
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                library["libraryId"] = CSharpExpressionConverter.ConvertToken(librarylibraryId);
                 librarypropCount++;
             }
 
             if (libraryrepositoryId != null)
             {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                library["repositoryId"] = CSharpExpressionConverter.ConvertToken(libraryrepositoryId);
                 librarypropCount++;
             }
 
             if (librarydocumentTypeId != null)
             {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                library["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypeId);
                 librarypropCount++;
             }
 
@@ -318,19 +318,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var documentTypeObjectpropCount = 0;
             if (librarydocumentTypedocumentTypeId != null)
             {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                documentTypeObject["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypename != null)
             {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                documentTypeObject["name"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypename);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypedescription != null)
             {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                documentTypeObject["description"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedescription);
                 documentTypeObjectpropCount++;
             }
 
@@ -342,19 +342,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
             if (libraryname != null)
             {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
+                library["name"] = CSharpExpressionConverter.ConvertToken(libraryname);
                 librarypropCount++;
             }
 
             if (librarydescription != null)
             {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                library["description"] = CSharpExpressionConverter.ConvertToken(librarydescription);
                 librarypropCount++;
             }
 
             if (libraryocr != null)
             {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                library["ocr"] = CSharpExpressionConverter.ConvertToken(libraryocr);
                 librarypropCount++;
             }
 
@@ -372,28 +372,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocumenttypes/update";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
+            callPayload.Queries["documenttypeid"] = CSharpExpressionConverter.ConvertO(documenttypeid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             var documentType = new JObject();
             var documentTypepropCount = 0;
             if (documentTypedocumentTypeId != null)
             {
-                documentType["documentTypeId"] = ExpressionConverter.ConvertO(documentTypedocumentTypeId);
+                documentType["documentTypeId"] = CSharpExpressionConverter.ConvertToken(documentTypedocumentTypeId);
                 documentTypepropCount++;
             }
 
             if (documentTypename != null)
             {
-                documentType["name"] = ExpressionConverter.ConvertO(documentTypename);
+                documentType["name"] = CSharpExpressionConverter.ConvertToken(documentTypename);
                 documentTypepropCount++;
             }
 
             if (documentTypedescription != null)
             {
-                documentType["description"] = ExpressionConverter.ConvertO(documentTypedescription);
+                documentType["description"] = CSharpExpressionConverter.ConvertToken(documentTypedescription);
                 documentTypepropCount++;
             }
 
@@ -411,11 +411,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/palibraries/get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
+            callPayload.Queries["libraryid"] = CSharpExpressionConverter.ConvertO(libraryid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<Library>(callPayload);
         }
 
@@ -426,9 +426,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<Library[]>(callPayload);
         }
 
@@ -438,11 +438,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/palibraries/documenttype/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
+            callPayload.Queries["documenttypeid"] = CSharpExpressionConverter.ConvertO(documenttypeid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<Library[]>(callPayload);
         }
 
@@ -452,28 +452,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/palibraries/update";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
+            callPayload.Queries["libraryid"] = CSharpExpressionConverter.ConvertO(libraryid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             var library = new JObject();
             var librarypropCount = 0;
             if (librarylibraryId != null)
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                library["libraryId"] = CSharpExpressionConverter.ConvertToken(librarylibraryId);
                 librarypropCount++;
             }
 
             if (libraryrepositoryId != null)
             {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                library["repositoryId"] = CSharpExpressionConverter.ConvertToken(libraryrepositoryId);
                 librarypropCount++;
             }
 
             if (librarydocumentTypeId != null)
             {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                library["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypeId);
                 librarypropCount++;
             }
 
@@ -481,19 +481,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var documentTypeObjectpropCount = 0;
             if (librarydocumentTypedocumentTypeId != null)
             {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                documentTypeObject["documentTypeId"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypename != null)
             {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                documentTypeObject["name"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypename);
                 documentTypeObjectpropCount++;
             }
 
             if (librarydocumentTypedescription != null)
             {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                documentTypeObject["description"] = CSharpExpressionConverter.ConvertToken(librarydocumentTypedescription);
                 documentTypeObjectpropCount++;
             }
 
@@ -505,19 +505,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
             if (libraryname != null)
             {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
+                library["name"] = CSharpExpressionConverter.ConvertToken(libraryname);
                 librarypropCount++;
             }
 
             if (librarydescription != null)
             {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                library["description"] = CSharpExpressionConverter.ConvertToken(librarydescription);
                 librarypropCount++;
             }
 
             if (libraryocr != null)
             {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                library["ocr"] = CSharpExpressionConverter.ConvertToken(libraryocr);
                 librarypropCount++;
             }
 
@@ -536,9 +536,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<DataType[]>(callPayload);
         }
 
@@ -548,11 +548,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocuments/loadfile";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
+            callPayload.Queries["documentkey"] = CSharpExpressionConverter.ConvertO(documentkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<string>(callPayload);
         }
 
@@ -562,11 +562,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/papropertyvalues/get";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
+            callPayload.Queries["documentkey"] = CSharpExpressionConverter.ConvertO(documentkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<PropertyValue[]>(callPayload);
         }
 
@@ -576,12 +576,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/papropertyvalues/update";
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
+            callPayload.Queries["documentkey"] = CSharpExpressionConverter.ConvertO(documentkey);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            callPayload.Body = ExpressionConverter.ConvertO(propertyValueArray);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(propertyValueArray);
             return new ApiConnectionAction<PropertyValue[]>(callPayload);
         }
 
@@ -591,11 +591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var apiCallPath = "/padocumentproperties-list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
+            callPayload.Queries["documenttypeid"] = CSharpExpressionConverter.ConvertO(documenttypeid);
             if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionid"] = CSharpExpressionConverter.ConvertO(solutionid);
             if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["solutionkey"] = CSharpExpressionConverter.ConvertO(solutionkey);
             return new ApiConnectionAction<DocumentProperty[]>(callPayload);
         }
     }

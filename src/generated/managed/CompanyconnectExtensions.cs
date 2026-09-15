@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             request["callbackUri"] = "@listCallbackUrl()";
             requestpropCount++;
             requestpropCount++;
-            request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
+            request["prompt"] = CSharpExpressionConverter.ConvertToken(requestprompt);
             if (requestchoices != null)
             {
-                request["choices"] = ExpressionConverter.ConvertO(requestchoices);
+                request["choices"] = CSharpExpressionConverter.ConvertToken(requestchoices);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+            request["conversationReference"] = CSharpExpressionConverter.ConvertToken(requestconversationReference);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             request["callbackUri"] = "@listCallbackUrl()";
             requestpropCount++;
             requestpropCount++;
-            request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
+            request["prompt"] = CSharpExpressionConverter.ConvertToken(requestprompt);
             if (requestyesText != null)
             {
                 if (requestyesText != null)
                 {
-                    request["yesText"] = ExpressionConverter.ConvertO(requestyesText);
+                    request["yesText"] = CSharpExpressionConverter.ConvertToken(requestyesText);
                     requestpropCount++;
                 }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             {
                 if (requestnoText != null)
                 {
-                    request["noText"] = ExpressionConverter.ConvertO(requestnoText);
+                    request["noText"] = CSharpExpressionConverter.ConvertToken(requestnoText);
                     requestpropCount++;
                 }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             }
 
             requestpropCount++;
-            request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+            request["conversationReference"] = CSharpExpressionConverter.ConvertToken(requestconversationReference);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<string>> bodyupn)
         {
-            var apiCallPath = String.Format("/proactiveDialogs/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/proactiveDialogs/{0}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["upn"] = ExpressionConverter.ConvertO(bodyupn);
+            body["upn"] = CSharpExpressionConverter.ConvertToken(bodyupn);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -120,10 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             var messageActivity = new JObject();
             var messageActivitypropCount = 0;
             messageActivitypropCount++;
-            messageActivity["text"] = ExpressionConverter.ConvertO(messageActivitytext);
+            messageActivity["text"] = CSharpExpressionConverter.ConvertToken(messageActivitytext);
             if (messageActivityconversationReference != null)
             {
-                messageActivity["conversationReference"] = ExpressionConverter.ConvertO(messageActivityconversationReference);
+                messageActivity["conversationReference"] = CSharpExpressionConverter.ConvertToken(messageActivityconversationReference);
                 messageActivitypropCount++;
             }
 
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             request["callbackUri"] = "@listCallbackUrl()";
             requestpropCount++;
             requestpropCount++;
-            request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
+            request["prompt"] = CSharpExpressionConverter.ConvertToken(requestprompt);
             requestpropCount++;
-            request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+            request["conversationReference"] = CSharpExpressionConverter.ConvertToken(requestconversationReference);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -187,11 +187,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["appId"] = ExpressionConverter.ConvertO(bodyappId);
+            body["appId"] = CSharpExpressionConverter.ConvertToken(bodyappId);
             bodypropCount++;
-            body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+            body["intent"] = CSharpExpressionConverter.ConvertToken(bodyintent);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -212,12 +212,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             body["callbackUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
             bodypropCount++;
-            body["category"] = ExpressionConverter.ConvertO(bodycategory);
+            body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
             if (bodyicon != null)
             {
-                body["icon"] = ExpressionConverter.ConvertO(bodyicon);
+                body["icon"] = CSharpExpressionConverter.ConvertToken(bodyicon);
                 bodypropCount++;
             }
 

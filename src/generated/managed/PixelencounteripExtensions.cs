@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetMonsterJson(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/basic/monsters/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MonsterResponse>(callPayload);
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (startRange != null)
-                callPayload.Queries["startRange"] = ExpressionConverter.Convert(startRange);
+                callPayload.Queries["startRange"] = CSharpExpressionConverter.ConvertO(startRange);
             if (endRange != null)
-                callPayload.Queries["endRange"] = ExpressionConverter.Convert(endRange);
+                callPayload.Queries["endRange"] = CSharpExpressionConverter.ConvertO(endRange);
             return new ApiConnectionAction<ListMonstersResponse>(callPayload);
         }
 
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (primaryColor != null)
-                callPayload.Queries["primaryColor"] = ExpressionConverter.Convert(primaryColor);
+                callPayload.Queries["primaryColor"] = CSharpExpressionConverter.ConvertO(primaryColor);
             if (fillType != null)
-                callPayload.Queries["fillType"] = ExpressionConverter.Convert(fillType);
+                callPayload.Queries["fillType"] = CSharpExpressionConverter.Convert(fillType);
             if (backgroundColor != null)
-                callPayload.Queries["backgroundColor"] = ExpressionConverter.Convert(backgroundColor);
+                callPayload.Queries["backgroundColor"] = CSharpExpressionConverter.ConvertO(backgroundColor);
             if (secondaryColor != null)
-                callPayload.Queries["secondaryColor"] = ExpressionConverter.Convert(secondaryColor);
+                callPayload.Queries["secondaryColor"] = CSharpExpressionConverter.ConvertO(secondaryColor);
             return new ApiConnectionAction<MonsterResponse>(callPayload);
         }
     }

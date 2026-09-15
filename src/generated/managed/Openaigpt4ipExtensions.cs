@@ -20,54 +20,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
                 bodypropCount++;
             }
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
                 bodypropCount++;
             }
 
             if (bodyn != null)
             {
-                body["n"] = ExpressionConverter.ConvertO(bodyn);
+                body["n"] = CSharpExpressionConverter.ConvertToken(bodyn);
                 bodypropCount++;
             }
 
             if (bodystop != null)
             {
-                body["stop"] = ExpressionConverter.ConvertO(bodystop);
+                body["stop"] = CSharpExpressionConverter.ConvertToken(bodystop);
                 bodypropCount++;
             }
 
             if (bodypresencePenalty != null)
             {
-                body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                body["presence_penalty"] = CSharpExpressionConverter.ConvertToken(bodypresencePenalty);
                 bodypropCount++;
             }
 
             if (bodyfrequencyPenalty != null)
             {
-                body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                body["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(bodyfrequencyPenalty);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
@@ -97,20 +97,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["training_file"] = ExpressionConverter.ConvertO(bodytrainingFile);
+            body["training_file"] = CSharpExpressionConverter.ConvertToken(bodytrainingFile);
             if (bodyvalidationFile != null)
             {
-                body["validation_file"] = ExpressionConverter.ConvertO(bodyvalidationFile);
+                body["validation_file"] = CSharpExpressionConverter.ConvertToken(bodyvalidationFile);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
             var hyperparametersObject = new JObject();
             var hyperparametersObjectpropCount = 0;
             if (bodyhyperparametersnEpochs != null)
             {
-                hyperparametersObject["n_epochs"] = ExpressionConverter.ConvertO(bodyhyperparametersnEpochs);
+                hyperparametersObject["n_epochs"] = CSharpExpressionConverter.ConvertToken(bodyhyperparametersnEpochs);
                 hyperparametersObjectpropCount++;
             }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
             if (bodysuffix != null)
             {
-                body["suffix"] = ExpressionConverter.ConvertO(bodysuffix);
+                body["suffix"] = CSharpExpressionConverter.ConvertToken(bodysuffix);
                 bodypropCount++;
             }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet(Expression<Func<string>> fineTuningJobId)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FineTuningGetResponse>(callPayload);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel(Expression<Func<string>> fineTuningJobId)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<FineTuningCancelPostResponse>(callPayload);
@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet(Expression<Func<string>> fineTuningJobId, Expression<Func<string>> after = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<FineTuningEventsGetResponse>(callPayload);
         }
 
@@ -174,12 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
+            body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
             if (bodymodel != null)
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.Convert(bodymodel);
                     bodypropCount++;
                 }
 
@@ -208,12 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
+            body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
             if (bodymodel != null)
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
                     bodypropCount++;
                 }
 
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             {
                 if (bodyencodingFormat != null)
                 {
-                    body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                    body["encoding_format"] = CSharpExpressionConverter.Convert(bodyencodingFormat);
                     bodypropCount++;
                 }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 
@@ -264,16 +264,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
+            body["model"] = CSharpExpressionConverter.Convert(bodymodel);
             bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
+            body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
             bodypropCount++;
-            body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
+            body["voice"] = CSharpExpressionConverter.Convert(bodyvoice);
             if (bodyresponseFormat != null)
             {
                 if (bodyresponseFormat != null)
                 {
-                    body["response_format"] = ExpressionConverter.ConvertO(bodyresponseFormat);
+                    body["response_format"] = CSharpExpressionConverter.Convert(bodyresponseFormat);
                     bodypropCount++;
                 }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             {
                 if (bodyspeed != null)
                 {
-                    body["speed"] = ExpressionConverter.ConvertO(bodyspeed);
+                    body["speed"] = CSharpExpressionConverter.ConvertToken(bodyspeed);
                     bodypropCount++;
                 }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             {
                 if (bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = CSharpExpressionConverter.Convert(bodymodel);
                     bodypropCount++;
                 }
 
@@ -352,10 +352,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             }
 
             bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+            body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
             if (bodyn != null)
             {
-                body["n"] = ExpressionConverter.ConvertO(bodyn);
+                body["n"] = CSharpExpressionConverter.ConvertToken(bodyn);
                 bodypropCount++;
             }
 
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             {
                 if (bodyquality != null)
                 {
-                    body["quality"] = ExpressionConverter.ConvertO(bodyquality);
+                    body["quality"] = CSharpExpressionConverter.Convert(bodyquality);
                     bodypropCount++;
                 }
 
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             {
                 if (bodysize != null)
                 {
-                    body["size"] = ExpressionConverter.ConvertO(bodysize);
+                    body["size"] = CSharpExpressionConverter.Convert(bodysize);
                     bodypropCount++;
                 }
 
@@ -395,13 +395,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
             if (bodystyle != null)
             {
-                body["style"] = ExpressionConverter.ConvertO(bodystyle);
+                body["style"] = CSharpExpressionConverter.Convert(bodystyle);
                 bodypropCount++;
             }
 
             if (bodyuser != null)
             {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
                 bodypropCount++;
             }
 

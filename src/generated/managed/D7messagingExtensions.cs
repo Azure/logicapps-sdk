@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["recipient"] = ExpressionConverter.ConvertO(bodyrecipient);
+            body["recipient"] = CSharpExpressionConverter.ConvertToken(bodyrecipient);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -47,52 +47,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["originator"] = ExpressionConverter.ConvertO(bodyoriginator);
+            body["originator"] = CSharpExpressionConverter.ConvertToken(bodyoriginator);
             bodypropCount++;
-            body["recipient"] = ExpressionConverter.ConvertO(bodyrecipient);
+            body["recipient"] = CSharpExpressionConverter.ConvertToken(bodyrecipient);
             bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
+            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
             bodypropCount++;
-            body["data_coding"] = ExpressionConverter.ConvertO(bodydataCoding);
+            body["data_coding"] = CSharpExpressionConverter.Convert(bodydataCoding);
             if (bodyexpiry != null)
             {
-                body["expiry"] = ExpressionConverter.ConvertO(bodyexpiry);
+                body["expiry"] = CSharpExpressionConverter.ConvertToken(bodyexpiry);
                 bodypropCount++;
             }
 
             if (bodyretryDelay != null)
             {
-                body["retry_delay"] = ExpressionConverter.ConvertO(bodyretryDelay);
+                body["retry_delay"] = CSharpExpressionConverter.ConvertToken(bodyretryDelay);
                 bodypropCount++;
             }
 
             if (bodyretryCount != null)
             {
-                body["retry_count"] = ExpressionConverter.ConvertO(bodyretryCount);
+                body["retry_count"] = CSharpExpressionConverter.ConvertToken(bodyretryCount);
                 bodypropCount++;
             }
 
             if (bodyotpCodeLength != null)
             {
-                body["otp_code_length"] = ExpressionConverter.ConvertO(bodyotpCodeLength);
+                body["otp_code_length"] = CSharpExpressionConverter.ConvertToken(bodyotpCodeLength);
                 bodypropCount++;
             }
 
             if (bodyotpType != null)
             {
-                body["otp_type"] = ExpressionConverter.ConvertO(bodyotpType);
+                body["otp_type"] = CSharpExpressionConverter.Convert(bodyotpType);
                 bodypropCount++;
             }
 
             if (bodysuccessUrl != null)
             {
-                body["success_url"] = ExpressionConverter.ConvertO(bodysuccessUrl);
+                body["success_url"] = CSharpExpressionConverter.ConvertToken(bodysuccessUrl);
                 bodypropCount++;
             }
 
             if (bodyfailureUrl != null)
             {
-                body["failure_url"] = ExpressionConverter.ConvertO(bodyfailureUrl);
+                body["failure_url"] = CSharpExpressionConverter.ConvertToken(bodyfailureUrl);
                 bodypropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["otp_id"] = ExpressionConverter.ConvertO(bodyotpId);
+            body["otp_id"] = CSharpExpressionConverter.ConvertToken(bodyotpId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             var bodypropCount = 0;
             if (bodyotpId != null)
             {
-                body["otp_id"] = ExpressionConverter.ConvertO(bodyotpId);
+                body["otp_id"] = CSharpExpressionConverter.ConvertToken(bodyotpId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["otp_code"] = ExpressionConverter.ConvertO(bodyotpCode);
+            body["otp_code"] = CSharpExpressionConverter.ConvertToken(bodyotpCode);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

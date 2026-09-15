@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             }
 
             bodypropCount++;
-            body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
+            body["imageType"] = CSharpExpressionConverter.Convert(bodyimageType);
             if (bodycompressionLevel != null)
             {
-                body["compressionLevel"] = ExpressionConverter.ConvertO(bodycompressionLevel);
+                body["compressionLevel"] = CSharpExpressionConverter.Convert(bodycompressionLevel);
                 bodypropCount++;
             }
 
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             }
 
             bodypropCount++;
-            body["currentImageFormat"] = ExpressionConverter.ConvertO(bodycurrentImageFormat);
+            body["currentImageFormat"] = CSharpExpressionConverter.Convert(bodycurrentImageFormat);
             bodypropCount++;
-            body["newImageFormat"] = ExpressionConverter.ConvertO(bodynewImageFormat);
+            body["newImageFormat"] = CSharpExpressionConverter.Convert(bodynewImageFormat);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -95,19 +95,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["schemaVal"] = Convert.ToString("Border");
             if (schemaVal != null)
-                callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-            callPayload.Body = ExpressionConverter.ConvertO(operation);
+                callPayload.Queries["schemaVal"] = CSharpExpressionConverter.Convert(schemaVal);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(operation);
             return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             }
 
             bodypropCount++;
-            body["orientationType"] = ExpressionConverter.ConvertO(bodyorientationType);
+            body["orientationType"] = CSharpExpressionConverter.Convert(bodyorientationType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -154,12 +154,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             }
 
             bodypropCount++;
-            body["imageTypeExtract"] = ExpressionConverter.ConvertO(bodyimageTypeExtract);
+            body["imageTypeExtract"] = CSharpExpressionConverter.Convert(bodyimageTypeExtract);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -188,12 +188,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+            body["docContent"] = CSharpExpressionConverter.ConvertToken(bodydocContent);
             var documentObject = new JObject();
             var documentObjectpropCount = 0;
             if (bodydocumentname != null)
             {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                documentObject["Name"] = CSharpExpressionConverter.ConvertToken(bodydocumentname);
                 documentObjectpropCount++;
             }
 
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             }
 
             bodypropCount++;
-            body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
+            body["imageType"] = CSharpExpressionConverter.Convert(bodyimageType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -221,8 +221,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["schemaVal"] = Convert.ToString("Percentage");
             if (schemaVal != null)
-                callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-            callPayload.Body = ExpressionConverter.ConvertO(operation);
+                callPayload.Queries["schemaVal"] = CSharpExpressionConverter.Convert(schemaVal);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(operation);
             return new ApiConnectionAction<string>(callPayload);
         }
     }

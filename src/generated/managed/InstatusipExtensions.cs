@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<PagesGetResponseItem[]>(callPayload);
         }
 
@@ -34,199 +34,199 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodysubdomain != null)
             {
-                body["subdomain"] = ExpressionConverter.ConvertO(bodysubdomain);
+                body["subdomain"] = CSharpExpressionConverter.ConvertToken(bodysubdomain);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodylogoUrl != null)
             {
-                body["logoUrl"] = ExpressionConverter.ConvertO(bodylogoUrl);
+                body["logoUrl"] = CSharpExpressionConverter.ConvertToken(bodylogoUrl);
                 bodypropCount++;
             }
 
             if (bodyfaviconUrl != null)
             {
-                body["faviconUrl"] = ExpressionConverter.ConvertO(bodyfaviconUrl);
+                body["faviconUrl"] = CSharpExpressionConverter.ConvertToken(bodyfaviconUrl);
                 bodypropCount++;
             }
 
             if (bodywebsiteUrl != null)
             {
-                body["websiteUrl"] = ExpressionConverter.ConvertO(bodywebsiteUrl);
+                body["websiteUrl"] = CSharpExpressionConverter.ConvertToken(bodywebsiteUrl);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodyuseLargeHeader != null)
             {
-                body["useLargeHeader"] = ExpressionConverter.ConvertO(bodyuseLargeHeader);
+                body["useLargeHeader"] = CSharpExpressionConverter.ConvertToken(bodyuseLargeHeader);
                 bodypropCount++;
             }
 
             if (bodybrandColor != null)
             {
-                body["brandColor"] = ExpressionConverter.ConvertO(bodybrandColor);
+                body["brandColor"] = CSharpExpressionConverter.ConvertToken(bodybrandColor);
                 bodypropCount++;
             }
 
             if (bodyokColor != null)
             {
-                body["okColor"] = ExpressionConverter.ConvertO(bodyokColor);
+                body["okColor"] = CSharpExpressionConverter.ConvertToken(bodyokColor);
                 bodypropCount++;
             }
 
             if (bodydisruptedColor != null)
             {
-                body["disruptedColor"] = ExpressionConverter.ConvertO(bodydisruptedColor);
+                body["disruptedColor"] = CSharpExpressionConverter.ConvertToken(bodydisruptedColor);
                 bodypropCount++;
             }
 
             if (bodydegradedColor != null)
             {
-                body["degradedColor"] = ExpressionConverter.ConvertO(bodydegradedColor);
+                body["degradedColor"] = CSharpExpressionConverter.ConvertToken(bodydegradedColor);
                 bodypropCount++;
             }
 
             if (bodydownColor != null)
             {
-                body["downColor"] = ExpressionConverter.ConvertO(bodydownColor);
+                body["downColor"] = CSharpExpressionConverter.ConvertToken(bodydownColor);
                 bodypropCount++;
             }
 
             if (bodynoticeColor != null)
             {
-                body["noticeColor"] = ExpressionConverter.ConvertO(bodynoticeColor);
+                body["noticeColor"] = CSharpExpressionConverter.ConvertToken(bodynoticeColor);
                 bodypropCount++;
             }
 
             if (bodyunknownColor != null)
             {
-                body["unknownColor"] = ExpressionConverter.ConvertO(bodyunknownColor);
+                body["unknownColor"] = CSharpExpressionConverter.ConvertToken(bodyunknownColor);
                 bodypropCount++;
             }
 
             if (bodygoogleAnalytics != null)
             {
-                body["googleAnalytics"] = ExpressionConverter.ConvertO(bodygoogleAnalytics);
+                body["googleAnalytics"] = CSharpExpressionConverter.ConvertToken(bodygoogleAnalytics);
                 bodypropCount++;
             }
 
             if (bodysubscribeBySms != null)
             {
-                body["subscribeBySms"] = ExpressionConverter.ConvertO(bodysubscribeBySms);
+                body["subscribeBySms"] = CSharpExpressionConverter.ConvertToken(bodysubscribeBySms);
                 bodypropCount++;
             }
 
             if (bodysmsService != null)
             {
-                body["smsService"] = ExpressionConverter.ConvertO(bodysmsService);
+                body["smsService"] = CSharpExpressionConverter.ConvertToken(bodysmsService);
                 bodypropCount++;
             }
 
             if (bodytwilioSid != null)
             {
-                body["twilioSid"] = ExpressionConverter.ConvertO(bodytwilioSid);
+                body["twilioSid"] = CSharpExpressionConverter.ConvertToken(bodytwilioSid);
                 bodypropCount++;
             }
 
             if (bodytwilioToken != null)
             {
-                body["twilioToken"] = ExpressionConverter.ConvertO(bodytwilioToken);
+                body["twilioToken"] = CSharpExpressionConverter.ConvertToken(bodytwilioToken);
                 bodypropCount++;
             }
 
             if (bodytwilioSender != null)
             {
-                body["twilioSender"] = ExpressionConverter.ConvertO(bodytwilioSender);
+                body["twilioSender"] = CSharpExpressionConverter.ConvertToken(bodytwilioSender);
                 bodypropCount++;
             }
 
             if (bodyhtmlInMeta != null)
             {
-                body["htmlInMeta"] = ExpressionConverter.ConvertO(bodyhtmlInMeta);
+                body["htmlInMeta"] = CSharpExpressionConverter.ConvertToken(bodyhtmlInMeta);
                 bodypropCount++;
             }
 
             if (bodyhtmlAboveHeader != null)
             {
-                body["htmlAboveHeader"] = ExpressionConverter.ConvertO(bodyhtmlAboveHeader);
+                body["htmlAboveHeader"] = CSharpExpressionConverter.ConvertToken(bodyhtmlAboveHeader);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowHeader != null)
             {
-                body["htmlBelowHeader"] = ExpressionConverter.ConvertO(bodyhtmlBelowHeader);
+                body["htmlBelowHeader"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowHeader);
                 bodypropCount++;
             }
 
             if (bodyhtmlAboveFooter != null)
             {
-                body["htmlAboveFooter"] = ExpressionConverter.ConvertO(bodyhtmlAboveFooter);
+                body["htmlAboveFooter"] = CSharpExpressionConverter.ConvertToken(bodyhtmlAboveFooter);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowFooter != null)
             {
-                body["htmlBelowFooter"] = ExpressionConverter.ConvertO(bodyhtmlBelowFooter);
+                body["htmlBelowFooter"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowFooter);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowSummary != null)
             {
-                body["htmlBelowSummary"] = ExpressionConverter.ConvertO(bodyhtmlBelowSummary);
+                body["htmlBelowSummary"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowSummary);
                 bodypropCount++;
             }
 
             if (bodycssGlobal != null)
             {
-                body["cssGlobal"] = ExpressionConverter.ConvertO(bodycssGlobal);
+                body["cssGlobal"] = CSharpExpressionConverter.ConvertToken(bodycssGlobal);
                 bodypropCount++;
             }
 
             if (bodylaunchDate != null)
             {
-                body["launchDate"] = ExpressionConverter.ConvertO(bodylaunchDate);
+                body["launchDate"] = CSharpExpressionConverter.ConvertToken(bodylaunchDate);
                 bodypropCount++;
             }
 
             if (bodydateFormat != null)
             {
-                body["dateFormat"] = ExpressionConverter.ConvertO(bodydateFormat);
+                body["dateFormat"] = CSharpExpressionConverter.ConvertToken(bodydateFormat);
                 bodypropCount++;
             }
 
             if (bodydateFormatShort != null)
             {
-                body["dateFormatShort"] = ExpressionConverter.ConvertO(bodydateFormatShort);
+                body["dateFormatShort"] = CSharpExpressionConverter.ConvertToken(bodydateFormatShort);
                 bodypropCount++;
             }
 
             if (bodytimeFormat != null)
             {
-                body["timeFormat"] = ExpressionConverter.ConvertO(bodytimeFormat);
+                body["timeFormat"] = CSharpExpressionConverter.ConvertToken(bodytimeFormat);
                 bodypropCount++;
             }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageDeleteResponse> PageDelete(Expression<Func<string>> pageId)
         {
-            var apiCallPath = String.Format("/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PageDeleteResponse>(callPayload);
@@ -250,224 +250,224 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagePutResponse> PagePut(Expression<Func<string>> pageId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypublicEmail = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<bool>> bodyuseAllowList = null)
         {
-            var apiCallPath = String.Format("/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodysubdomain != null)
             {
-                body["subdomain"] = ExpressionConverter.ConvertO(bodysubdomain);
+                body["subdomain"] = CSharpExpressionConverter.ConvertToken(bodysubdomain);
                 bodypropCount++;
             }
 
             if (bodylogoUrl != null)
             {
-                body["logoUrl"] = ExpressionConverter.ConvertO(bodylogoUrl);
+                body["logoUrl"] = CSharpExpressionConverter.ConvertToken(bodylogoUrl);
                 bodypropCount++;
             }
 
             if (bodyfaviconUrl != null)
             {
-                body["faviconUrl"] = ExpressionConverter.ConvertO(bodyfaviconUrl);
+                body["faviconUrl"] = CSharpExpressionConverter.ConvertToken(bodyfaviconUrl);
                 bodypropCount++;
             }
 
             if (bodywebsiteUrl != null)
             {
-                body["websiteUrl"] = ExpressionConverter.ConvertO(bodywebsiteUrl);
+                body["websiteUrl"] = CSharpExpressionConverter.ConvertToken(bodywebsiteUrl);
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
                 bodypropCount++;
             }
 
             if (bodypublicEmail != null)
             {
-                body["publicEmail"] = ExpressionConverter.ConvertO(bodypublicEmail);
+                body["publicEmail"] = CSharpExpressionConverter.ConvertToken(bodypublicEmail);
                 bodypropCount++;
             }
 
             if (bodyuseLargeHeader != null)
             {
-                body["useLargeHeader"] = ExpressionConverter.ConvertO(bodyuseLargeHeader);
+                body["useLargeHeader"] = CSharpExpressionConverter.ConvertToken(bodyuseLargeHeader);
                 bodypropCount++;
             }
 
             if (bodybrandColor != null)
             {
-                body["brandColor"] = ExpressionConverter.ConvertO(bodybrandColor);
+                body["brandColor"] = CSharpExpressionConverter.ConvertToken(bodybrandColor);
                 bodypropCount++;
             }
 
             if (bodyokColor != null)
             {
-                body["okColor"] = ExpressionConverter.ConvertO(bodyokColor);
+                body["okColor"] = CSharpExpressionConverter.ConvertToken(bodyokColor);
                 bodypropCount++;
             }
 
             if (bodydisruptedColor != null)
             {
-                body["disruptedColor"] = ExpressionConverter.ConvertO(bodydisruptedColor);
+                body["disruptedColor"] = CSharpExpressionConverter.ConvertToken(bodydisruptedColor);
                 bodypropCount++;
             }
 
             if (bodydegradedColor != null)
             {
-                body["degradedColor"] = ExpressionConverter.ConvertO(bodydegradedColor);
+                body["degradedColor"] = CSharpExpressionConverter.ConvertToken(bodydegradedColor);
                 bodypropCount++;
             }
 
             if (bodydownColor != null)
             {
-                body["downColor"] = ExpressionConverter.ConvertO(bodydownColor);
+                body["downColor"] = CSharpExpressionConverter.ConvertToken(bodydownColor);
                 bodypropCount++;
             }
 
             if (bodynoticeColor != null)
             {
-                body["noticeColor"] = ExpressionConverter.ConvertO(bodynoticeColor);
+                body["noticeColor"] = CSharpExpressionConverter.ConvertToken(bodynoticeColor);
                 bodypropCount++;
             }
 
             if (bodyunknownColor != null)
             {
-                body["unknownColor"] = ExpressionConverter.ConvertO(bodyunknownColor);
+                body["unknownColor"] = CSharpExpressionConverter.ConvertToken(bodyunknownColor);
                 bodypropCount++;
             }
 
             if (bodygoogleAnalytics != null)
             {
-                body["googleAnalytics"] = ExpressionConverter.ConvertO(bodygoogleAnalytics);
+                body["googleAnalytics"] = CSharpExpressionConverter.ConvertToken(bodygoogleAnalytics);
                 bodypropCount++;
             }
 
             if (bodysubscribeBySms != null)
             {
-                body["subscribeBySms"] = ExpressionConverter.ConvertO(bodysubscribeBySms);
+                body["subscribeBySms"] = CSharpExpressionConverter.ConvertToken(bodysubscribeBySms);
                 bodypropCount++;
             }
 
             if (bodysmsService != null)
             {
-                body["smsService"] = ExpressionConverter.ConvertO(bodysmsService);
+                body["smsService"] = CSharpExpressionConverter.ConvertToken(bodysmsService);
                 bodypropCount++;
             }
 
             if (bodytwilioSid != null)
             {
-                body["twilioSid"] = ExpressionConverter.ConvertO(bodytwilioSid);
+                body["twilioSid"] = CSharpExpressionConverter.ConvertToken(bodytwilioSid);
                 bodypropCount++;
             }
 
             if (bodytwilioToken != null)
             {
-                body["twilioToken"] = ExpressionConverter.ConvertO(bodytwilioToken);
+                body["twilioToken"] = CSharpExpressionConverter.ConvertToken(bodytwilioToken);
                 bodypropCount++;
             }
 
             if (bodytwilioSender != null)
             {
-                body["twilioSender"] = ExpressionConverter.ConvertO(bodytwilioSender);
+                body["twilioSender"] = CSharpExpressionConverter.ConvertToken(bodytwilioSender);
                 bodypropCount++;
             }
 
             if (bodyhtmlInMeta != null)
             {
-                body["htmlInMeta"] = ExpressionConverter.ConvertO(bodyhtmlInMeta);
+                body["htmlInMeta"] = CSharpExpressionConverter.ConvertToken(bodyhtmlInMeta);
                 bodypropCount++;
             }
 
             if (bodyhtmlAboveHeader != null)
             {
-                body["htmlAboveHeader"] = ExpressionConverter.ConvertO(bodyhtmlAboveHeader);
+                body["htmlAboveHeader"] = CSharpExpressionConverter.ConvertToken(bodyhtmlAboveHeader);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowHeader != null)
             {
-                body["htmlBelowHeader"] = ExpressionConverter.ConvertO(bodyhtmlBelowHeader);
+                body["htmlBelowHeader"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowHeader);
                 bodypropCount++;
             }
 
             if (bodyhtmlAboveFooter != null)
             {
-                body["htmlAboveFooter"] = ExpressionConverter.ConvertO(bodyhtmlAboveFooter);
+                body["htmlAboveFooter"] = CSharpExpressionConverter.ConvertToken(bodyhtmlAboveFooter);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowFooter != null)
             {
-                body["htmlBelowFooter"] = ExpressionConverter.ConvertO(bodyhtmlBelowFooter);
+                body["htmlBelowFooter"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowFooter);
                 bodypropCount++;
             }
 
             if (bodyhtmlBelowSummary != null)
             {
-                body["htmlBelowSummary"] = ExpressionConverter.ConvertO(bodyhtmlBelowSummary);
+                body["htmlBelowSummary"] = CSharpExpressionConverter.ConvertToken(bodyhtmlBelowSummary);
                 bodypropCount++;
             }
 
             if (bodycssGlobal != null)
             {
-                body["cssGlobal"] = ExpressionConverter.ConvertO(bodycssGlobal);
+                body["cssGlobal"] = CSharpExpressionConverter.ConvertToken(bodycssGlobal);
                 bodypropCount++;
             }
 
             if (bodylaunchDate != null)
             {
-                body["launchDate"] = ExpressionConverter.ConvertO(bodylaunchDate);
+                body["launchDate"] = CSharpExpressionConverter.ConvertToken(bodylaunchDate);
                 bodypropCount++;
             }
 
             if (bodydateFormat != null)
             {
-                body["dateFormat"] = ExpressionConverter.ConvertO(bodydateFormat);
+                body["dateFormat"] = CSharpExpressionConverter.ConvertToken(bodydateFormat);
                 bodypropCount++;
             }
 
             if (bodydateFormatShort != null)
             {
-                body["dateFormatShort"] = ExpressionConverter.ConvertO(bodydateFormatShort);
+                body["dateFormatShort"] = CSharpExpressionConverter.ConvertToken(bodydateFormatShort);
                 bodypropCount++;
             }
 
             if (bodytimeFormat != null)
             {
-                body["timeFormat"] = ExpressionConverter.ConvertO(bodytimeFormat);
+                body["timeFormat"] = CSharpExpressionConverter.ConvertToken(bodytimeFormat);
                 bodypropCount++;
             }
 
             if (bodyprivate != null)
             {
-                body["private"] = ExpressionConverter.ConvertO(bodyprivate);
+                body["private"] = CSharpExpressionConverter.ConvertToken(bodyprivate);
                 bodypropCount++;
             }
 
             if (bodyuseAllowList != null)
             {
-                body["useAllowList"] = ExpressionConverter.ConvertO(bodyuseAllowList);
+                body["useAllowList"] = CSharpExpressionConverter.ConvertToken(bodyuseAllowList);
                 bodypropCount++;
             }
 
@@ -482,57 +482,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentsGetResponseItem[]> ComponentsGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/components", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<ComponentsGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPostResponse> Component(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/components", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyorder != null)
             {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["order"] = CSharpExpressionConverter.ConvertToken(bodyorder);
                 bodypropCount++;
             }
 
             if (bodyshowUptime != null)
             {
-                body["showUptime"] = ExpressionConverter.ConvertO(bodyshowUptime);
+                body["showUptime"] = CSharpExpressionConverter.ConvertToken(bodyshowUptime);
                 bodypropCount++;
             }
 
             if (bodygrouped != null)
             {
-                body["grouped"] = ExpressionConverter.ConvertO(bodygrouped);
+                body["grouped"] = CSharpExpressionConverter.ConvertToken(bodygrouped);
                 bodypropCount++;
             }
 
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentGetResponse> ComponentGet(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
-            var apiCallPath = String.Format("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(componentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ComponentGetResponse>(callPayload);
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentDeleteResponse> ComponentDelete(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
-            var apiCallPath = String.Format("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(componentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ComponentDeleteResponse>(callPayload);
@@ -565,44 +565,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPutResponse> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(componentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodyorder != null)
             {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["order"] = CSharpExpressionConverter.ConvertToken(bodyorder);
                 bodypropCount++;
             }
 
             if (bodyshowUptime != null)
             {
-                body["showUptime"] = ExpressionConverter.ConvertO(bodyshowUptime);
+                body["showUptime"] = CSharpExpressionConverter.ConvertToken(bodyshowUptime);
                 bodypropCount++;
             }
 
             if (bodygrouped != null)
             {
-                body["grouped"] = ExpressionConverter.ConvertO(bodygrouped);
+                body["grouped"] = CSharpExpressionConverter.ConvertToken(bodygrouped);
                 bodypropCount++;
             }
 
@@ -617,65 +617,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentsGetResponseItem[]> IncidentsGet(Expression<Func<string>> pageId, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<IncidentsGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPostResponse> Incident(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentGetResponse> IncidentGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentGetResponse>(callPayload);
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentDeleteResponse> IncidentDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentDeleteResponse>(callPayload);
@@ -708,44 +708,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPutResponse> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
         {
-            var apiCallPath = String.Format("/v2/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(template, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentTemplatePostResponse>(callPayload);
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateGetResponse> IncidentUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentUpdateGetResponse>(callPayload);
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateDeleteResponse> IncidentUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentUpdateDeleteResponse>(callPayload);
@@ -787,44 +787,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePutResponse> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -839,44 +839,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/incidents/{1}/incident-updates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
         {
-            var apiCallPath = String.Format("/v2/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(template, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}/incident-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<IncidentUpdateTemplatePostResponse>(callPayload);
@@ -900,111 +900,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancesGetResponseItem[]> MaintenancesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<MaintenancesGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePostResponse> Maintenance(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
                 bodypropCount++;
             }
 
             if (bodynotifyStart != null)
             {
-                body["notifyStart"] = ExpressionConverter.ConvertO(bodynotifyStart);
+                body["notifyStart"] = CSharpExpressionConverter.ConvertToken(bodynotifyStart);
                 bodypropCount++;
             }
 
             if (bodynotifyEnd != null)
             {
-                body["notifyEnd"] = ExpressionConverter.ConvertO(bodynotifyEnd);
+                body["notifyEnd"] = CSharpExpressionConverter.ConvertToken(bodynotifyEnd);
                 bodypropCount++;
             }
 
             if (bodynotifyEarly != null)
             {
-                body["notifyEarly"] = ExpressionConverter.ConvertO(bodynotifyEarly);
+                body["notifyEarly"] = CSharpExpressionConverter.ConvertToken(bodynotifyEarly);
                 bodypropCount++;
             }
 
             if (bodynotifyMinutes != null)
             {
-                body["notifyMinutes"] = ExpressionConverter.ConvertO(bodynotifyMinutes);
+                body["notifyMinutes"] = CSharpExpressionConverter.ConvertToken(bodynotifyMinutes);
                 bodypropCount++;
             }
 
             if (bodyautoStart != null)
             {
-                body["autoStart"] = ExpressionConverter.ConvertO(bodyautoStart);
+                body["autoStart"] = CSharpExpressionConverter.ConvertToken(bodyautoStart);
                 bodypropCount++;
             }
 
             if (bodyautoEnd != null)
             {
-                body["autoEnd"] = ExpressionConverter.ConvertO(bodyautoEnd);
+                body["autoEnd"] = CSharpExpressionConverter.ConvertToken(bodyautoEnd);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceGetResponse> MaintenanceGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MaintenanceGetResponse>(callPayload);
@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceDeleteResponse> MaintenanceDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MaintenanceDeleteResponse>(callPayload);
@@ -1037,56 +1037,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePutResponse> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -1101,7 +1101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateGetResponse> MaintenanceUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MaintenanceUpdateGetResponse>(callPayload);
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse> MaintenanceUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<MaintenanceUpdateDeleteResponse>(callPayload);
@@ -1119,50 +1119,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePutResponse> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceUpdateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -1177,50 +1177,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/maintenances/{1}/maintenance-updates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
             if (bodystarted != null)
             {
-                body["started"] = ExpressionConverter.ConvertO(bodystarted);
+                body["started"] = CSharpExpressionConverter.ConvertToken(bodystarted);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
@@ -1235,63 +1235,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageTemplatesGetResponseItem[]> PageTemplatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<PageTemplatesGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodysubdomain != null)
             {
-                body["subdomain"] = ExpressionConverter.ConvertO(bodysubdomain);
+                body["subdomain"] = CSharpExpressionConverter.ConvertToken(bodysubdomain);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
@@ -1306,7 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateGetResponse>(callPayload);
@@ -1315,7 +1315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateDeleteResponse> TemplateDelete(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TemplateDeleteResponse>(callPayload);
@@ -1324,44 +1324,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePutResponse> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
             }
 
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodymessage != null)
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
             }
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
                 bodypropCount++;
             }
 
             if (bodynotify != null)
             {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                body["notify"] = CSharpExpressionConverter.ConvertToken(bodynotify);
                 bodypropCount++;
             }
 
             if (bodycomponents != null)
             {
-                body["components"] = ExpressionConverter.ConvertO(bodycomponents);
+                body["components"] = CSharpExpressionConverter.ConvertToken(bodycomponents);
                 bodypropCount++;
             }
 
@@ -1376,27 +1376,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TeammatesGetResponseItem[]> TeammatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/team", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<TeammatesGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMember(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/team", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -1411,7 +1411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMemberDelete(Expression<Func<string>> pageId, Expression<Func<string>> memberId)
         {
-            var apiCallPath = String.Format("/v1/{0}/team/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/team/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -1420,39 +1420,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscribersGetResponseItem[]> SubscribersGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/subscribers", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<SubscribersGetResponseItem[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/subscribers", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
             if (bodyall != null)
             {
-                body["all"] = ExpressionConverter.ConvertO(bodyall);
+                body["all"] = CSharpExpressionConverter.ConvertToken(bodyall);
                 bodypropCount++;
             }
 
             if (bodyautoConfirm != null)
             {
-                body["autoConfirm"] = ExpressionConverter.ConvertO(bodyautoConfirm);
+                body["autoConfirm"] = CSharpExpressionConverter.ConvertToken(bodyautoConfirm);
                 bodypropCount++;
             }
 
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> SubscriberDelete(Expression<Func<string>> pageId, Expression<Func<string>> subscriberId)
         {
-            var apiCallPath = String.Format("/v1/{0}/subscribers/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);

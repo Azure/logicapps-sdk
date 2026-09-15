@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["question"] = ExpressionConverter.ConvertO(requestBodyquestion);
+            requestBody["question"] = CSharpExpressionConverter.ConvertToken(requestBodyquestion);
             if (requestBodyscoreThreshold != null)
             {
-                requestBody["scoreThreshold"] = ExpressionConverter.ConvertO(requestBodyscoreThreshold);
+                requestBody["scoreThreshold"] = CSharpExpressionConverter.ConvertToken(requestBodyscoreThreshold);
                 requestBodypropCount++;
             }
 
             if (requestBodyuserEmail != null)
             {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+                requestBody["userEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyuserEmail);
                 requestBodypropCount++;
             }
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["inputText"] = ExpressionConverter.ConvertO(requestBodyinputText);
+            requestBody["inputText"] = CSharpExpressionConverter.ConvertToken(requestBodyinputText);
             requestBodypropCount++;
-            requestBody["outputFormat"] = ExpressionConverter.ConvertO(requestBodyoutputFormat);
+            requestBody["outputFormat"] = CSharpExpressionConverter.Convert(requestBodyoutputFormat);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["targetLanguageCode"] = ExpressionConverter.ConvertO(requestBodytargetLanguageCode);
+            requestBody["targetLanguageCode"] = CSharpExpressionConverter.ConvertToken(requestBodytargetLanguageCode);
             requestBodypropCount++;
-            requestBody["inputText"] = ExpressionConverter.ConvertO(requestBodyinputText);
+            requestBody["inputText"] = CSharpExpressionConverter.ConvertToken(requestBodyinputText);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filterByExpert != null)
-                callPayload.Queries["filterByExpert"] = ExpressionConverter.Convert(filterByExpert);
+                callPayload.Queries["filterByExpert"] = CSharpExpressionConverter.ConvertO(filterByExpert);
             return new ApiConnectionAction<GetAllTopicsResponse>(callPayload);
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var apiCallPath = "/get-topic";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["topicName"] = ExpressionConverter.Convert(topicName);
+            callPayload.Queries["topicName"] = CSharpExpressionConverter.ConvertO(topicName);
             return new ApiConnectionAction<GetTopicResponse>(callPayload);
         }
 
@@ -118,13 +118,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filterByTopic != null)
-                callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(filterByTopic);
+                callPayload.Queries["filterByTopic"] = CSharpExpressionConverter.ConvertO(filterByTopic);
             if (filterByShortDescription != null)
-                callPayload.Queries["filterByShortDescription"] = ExpressionConverter.Convert(filterByShortDescription);
+                callPayload.Queries["filterByShortDescription"] = CSharpExpressionConverter.ConvertO(filterByShortDescription);
             if (filterByQuestionText != null)
-                callPayload.Queries["filterByQuestionText"] = ExpressionConverter.Convert(filterByQuestionText);
+                callPayload.Queries["filterByQuestionText"] = CSharpExpressionConverter.ConvertO(filterByQuestionText);
             if (filterByAnswerText != null)
-                callPayload.Queries["filterByAnswerText"] = ExpressionConverter.Convert(filterByAnswerText);
+                callPayload.Queries["filterByAnswerText"] = CSharpExpressionConverter.ConvertO(filterByAnswerText);
             return new ApiConnectionAction<GetAllAnswersResponse>(callPayload);
         }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var apiCallPath = "/get-experts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
+            callPayload.Queries["topic"] = CSharpExpressionConverter.ConvertO(topic);
             return new ApiConnectionAction<GetExpertsResponse>(callPayload);
         }
 
@@ -147,9 +147,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+            requestBody["topic"] = CSharpExpressionConverter.ConvertToken(requestBodytopic);
             requestBodypropCount++;
-            requestBody["expertEmail"] = ExpressionConverter.ConvertO(requestBodyexpertEmail);
+            requestBody["expertEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyexpertEmail);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -167,10 +167,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["expertEmail"] = ExpressionConverter.ConvertO(requestBodyexpertEmail);
+            requestBody["expertEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyexpertEmail);
             if (requestBodytopic != null)
             {
-                requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+                requestBody["topic"] = CSharpExpressionConverter.ConvertToken(requestBodytopic);
                 requestBodypropCount++;
             }
 
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["name"] = ExpressionConverter.ConvertO(requestBodyname);
+            requestBody["name"] = CSharpExpressionConverter.ConvertToken(requestBodyname);
             requestBodypropCount++;
-            requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+            requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
             requestBodypropCount++;
-            requestBody["expertEmails"] = ExpressionConverter.ConvertO(requestBodyexpertEmails);
+            requestBody["expertEmails"] = CSharpExpressionConverter.ConvertToken(requestBodyexpertEmails);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -213,9 +213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["name"] = ExpressionConverter.ConvertO(requestBodyname);
+            requestBody["name"] = CSharpExpressionConverter.ConvertToken(requestBodyname);
             requestBodypropCount++;
-            requestBody["newName"] = ExpressionConverter.ConvertO(requestBodynewName);
+            requestBody["newName"] = CSharpExpressionConverter.ConvertToken(requestBodynewName);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -233,16 +233,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+            requestBody["topic"] = CSharpExpressionConverter.ConvertToken(requestBodytopic);
             requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
+            requestBody["shortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodyshortDescription);
             requestBodypropCount++;
-            requestBody["questions"] = ExpressionConverter.ConvertO(requestBodyquestions);
+            requestBody["questions"] = CSharpExpressionConverter.ConvertToken(requestBodyquestions);
             requestBodypropCount++;
-            requestBody["answerText"] = ExpressionConverter.ConvertO(requestBodyanswerText);
+            requestBody["answerText"] = CSharpExpressionConverter.ConvertToken(requestBodyanswerText);
             if (requestBodyuserEmail != null)
             {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+                requestBody["userEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyuserEmail);
                 requestBodypropCount++;
             }
 
@@ -263,34 +263,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
+            requestBody["shortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodyshortDescription);
             if (requestBodynewTopic != null)
             {
-                requestBody["newTopic"] = ExpressionConverter.ConvertO(requestBodynewTopic);
+                requestBody["newTopic"] = CSharpExpressionConverter.ConvertToken(requestBodynewTopic);
                 requestBodypropCount++;
             }
 
             if (requestBodynewShortDescription != null)
             {
-                requestBody["newShortDescription"] = ExpressionConverter.ConvertO(requestBodynewShortDescription);
+                requestBody["newShortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodynewShortDescription);
                 requestBodypropCount++;
             }
 
             if (requestBodynewQuestions != null)
             {
-                requestBody["newQuestions"] = ExpressionConverter.ConvertO(requestBodynewQuestions);
+                requestBody["newQuestions"] = CSharpExpressionConverter.ConvertToken(requestBodynewQuestions);
                 requestBodypropCount++;
             }
 
             if (requestBodynewAnswerText != null)
             {
-                requestBody["newAnswerText"] = ExpressionConverter.ConvertO(requestBodynewAnswerText);
+                requestBody["newAnswerText"] = CSharpExpressionConverter.ConvertToken(requestBodynewAnswerText);
                 requestBodypropCount++;
             }
 
             if (requestBodyuserEmail != null)
             {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+                requestBody["userEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyuserEmail);
                 requestBodypropCount++;
             }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
+            requestBody["shortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodyshortDescription);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -329,13 +329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
+            requestBody["shortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodyshortDescription);
             requestBodypropCount++;
-            requestBody["subShortDescription"] = ExpressionConverter.ConvertO(requestBodysubShortDescription);
+            requestBody["subShortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodysubShortDescription);
             requestBodypropCount++;
-            requestBody["subQuestions"] = ExpressionConverter.ConvertO(requestBodysubQuestions);
+            requestBody["subQuestions"] = CSharpExpressionConverter.ConvertToken(requestBodysubQuestions);
             requestBodypropCount++;
-            requestBody["subAnswerText"] = ExpressionConverter.ConvertO(requestBodysubAnswerText);
+            requestBody["subAnswerText"] = CSharpExpressionConverter.ConvertToken(requestBodysubAnswerText);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -351,13 +351,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filterByHoursSinceOpened != null)
-                callPayload.Queries["filterByHoursSinceOpened"] = ExpressionConverter.Convert(filterByHoursSinceOpened);
+                callPayload.Queries["filterByHoursSinceOpened"] = CSharpExpressionConverter.ConvertO(filterByHoursSinceOpened);
             if (filterByHoursSinceOpenedMax != null)
-                callPayload.Queries["filterByHoursSinceOpenedMax"] = ExpressionConverter.Convert(filterByHoursSinceOpenedMax);
+                callPayload.Queries["filterByHoursSinceOpenedMax"] = CSharpExpressionConverter.ConvertO(filterByHoursSinceOpenedMax);
             if (filterByTopic != null)
-                callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(filterByTopic);
+                callPayload.Queries["filterByTopic"] = CSharpExpressionConverter.ConvertO(filterByTopic);
             if (filterByExpertEmail != null)
-                callPayload.Queries["filterByExpertEmail"] = ExpressionConverter.Convert(filterByExpertEmail);
+                callPayload.Queries["filterByExpertEmail"] = CSharpExpressionConverter.ConvertO(filterByExpertEmail);
             return new ApiConnectionAction<GetOpenTicketsResponse>(callPayload);
         }
 
@@ -370,12 +370,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+            requestBody["userEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyuserEmail);
             requestBodypropCount++;
-            requestBody["queryText"] = ExpressionConverter.ConvertO(requestBodyqueryText);
+            requestBody["queryText"] = CSharpExpressionConverter.ConvertToken(requestBodyqueryText);
             if (requestBodytopic != null)
             {
-                requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+                requestBody["topic"] = CSharpExpressionConverter.ConvertToken(requestBodytopic);
                 requestBodypropCount++;
             }
 
@@ -396,13 +396,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+            requestBody["userEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyuserEmail);
             requestBodypropCount++;
-            requestBody["queryText"] = ExpressionConverter.ConvertO(requestBodyqueryText);
+            requestBody["queryText"] = CSharpExpressionConverter.ConvertToken(requestBodyqueryText);
             requestBodypropCount++;
-            requestBody["answerShortDescription"] = ExpressionConverter.ConvertO(requestBodyanswerShortDescription);
+            requestBody["answerShortDescription"] = CSharpExpressionConverter.ConvertToken(requestBodyanswerShortDescription);
             requestBodypropCount++;
-            requestBody["feedbackText"] = ExpressionConverter.ConvertO(requestBodyfeedbackText);
+            requestBody["feedbackText"] = CSharpExpressionConverter.ConvertToken(requestBodyfeedbackText);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
@@ -420,11 +420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             var requestBody = new JObject();
             var requestBodypropCount = 0;
             requestBodypropCount++;
-            requestBody["ticketId"] = ExpressionConverter.ConvertO(requestBodyticketId);
+            requestBody["ticketId"] = CSharpExpressionConverter.ConvertToken(requestBodyticketId);
             requestBodypropCount++;
-            requestBody["editorEmail"] = ExpressionConverter.ConvertO(requestBodyeditorEmail);
+            requestBody["editorEmail"] = CSharpExpressionConverter.ConvertToken(requestBodyeditorEmail);
             requestBodypropCount++;
-            requestBody["editorComment"] = ExpressionConverter.ConvertO(requestBodyeditorComment);
+            requestBody["editorComment"] = CSharpExpressionConverter.ConvertToken(requestBodyeditorComment);
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;

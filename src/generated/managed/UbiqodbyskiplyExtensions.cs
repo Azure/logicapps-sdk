@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["group_id"] = ExpressionConverter.ConvertO(bodygroupId);
+            body["group_id"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
             body["hookUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

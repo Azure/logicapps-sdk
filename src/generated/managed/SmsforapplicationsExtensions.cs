@@ -17,27 +17,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
             var apiCallPath = "/jobs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobIdsOnly"] = ExpressionConverter.Convert(jobIdsOnly);
+            callPayload.Queries["jobIdsOnly"] = CSharpExpressionConverter.ConvertO(jobIdsOnly);
             if (fromTs != null)
-                callPayload.Queries["fromTs"] = ExpressionConverter.Convert(fromTs);
+                callPayload.Queries["fromTs"] = CSharpExpressionConverter.ConvertO(fromTs);
             if (toTs != null)
-                callPayload.Queries["toTs"] = ExpressionConverter.Convert(toTs);
+                callPayload.Queries["toTs"] = CSharpExpressionConverter.ConvertO(toTs);
             callPayload.Queries["open"] = Convert.ToString(false);
             if (open != null)
-                callPayload.Queries["open"] = ExpressionConverter.Convert(open);
+                callPayload.Queries["open"] = CSharpExpressionConverter.ConvertO(open);
             callPayload.Queries["offset"] = Convert.ToString(0);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             callPayload.Queries["limit"] = Convert.ToString(100);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             return new ApiConnectionAction<JobReport[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JobReport>(callPayload);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
             var apiCallPath = "/sms";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobId"] = ExpressionConverter.Convert(jobId);
+            callPayload.Queries["jobId"] = CSharpExpressionConverter.ConvertO(jobId);
             return new ApiConnectionAction<RecipientReport[]>(callPayload);
         }
 

@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/configs/config/secrets";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Project Name"] = ExpressionConverter.Convert(projectName);
-            callPayload.Queries["Config Name"] = ExpressionConverter.Convert(configName);
+            callPayload.Queries["Project Name"] = CSharpExpressionConverter.ConvertO(projectName);
+            callPayload.Queries["Config Name"] = CSharpExpressionConverter.ConvertO(configName);
             callPayload.Queries["Include Dynamic Secrets"] = Convert.ToString(false);
             if (includeDynamicSecrets != null)
-                callPayload.Queries["Include Dynamic Secrets"] = ExpressionConverter.Convert(includeDynamicSecrets);
+                callPayload.Queries["Include Dynamic Secrets"] = CSharpExpressionConverter.ConvertO(includeDynamicSecrets);
             callPayload.Queries["Include Managed Secrets"] = Convert.ToString(true);
             if (includeManagedSecrets != null)
-                callPayload.Queries["Include Managed Secrets"] = ExpressionConverter.Convert(includeManagedSecrets);
+                callPayload.Queries["Include Managed Secrets"] = CSharpExpressionConverter.ConvertO(includeManagedSecrets);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             var secretsObject = new JObject();
             var secretsObjectpropCount = 0;
             if (secretsObjectpropCount > 0)
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/configs/config/secret";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["config"] = ExpressionConverter.Convert(config);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["config"] = CSharpExpressionConverter.ConvertO(config);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             return new ApiConnectionAction<DopplerSecretsRetrieveSecretResponse>(callPayload);
         }
 
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/configs/config/secret";
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["config"] = ExpressionConverter.Convert(config);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["config"] = CSharpExpressionConverter.ConvertO(config);
+            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             bodypropCount++;
-            body["secret"] = ExpressionConverter.ConvertO(bodysecret);
+            body["secret"] = CSharpExpressionConverter.ConvertToken(bodysecret);
             bodypropCount++;
-            body["note"] = ExpressionConverter.ConvertO(bodynote);
+            body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/configs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
+            callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
+            callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<DopplerConfigListConfigResponse>(callPayload);
         }
 
@@ -125,11 +125,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["environment"] = ExpressionConverter.ConvertO(bodyenvironment);
+            body["environment"] = CSharpExpressionConverter.ConvertToken(bodyenvironment);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -144,9 +144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/configs/config";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             if (config != null)
-                callPayload.Queries["config"] = ExpressionConverter.Convert(config);
+                callPayload.Queries["config"] = CSharpExpressionConverter.ConvertO(config);
             return new ApiConnectionAction<DopplerConfigRetrieveConfigResponse>(callPayload);
         }
 
@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -223,9 +223,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["config"] = ExpressionConverter.ConvertO(bodyconfig);
+            body["config"] = CSharpExpressionConverter.ConvertToken(bodyconfig);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["per_page"] = Convert.ToString(20);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<DopplerProjectsListResponse>(callPayload);
         }
 
@@ -258,9 +258,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/projects/project";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionAction<DopplerProjectsRetrieveResponse>(callPayload);
         }
 
@@ -288,11 +288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["project"] = ExpressionConverter.ConvertO(bodyproject);
+            body["project"] = CSharpExpressionConverter.ConvertToken(bodyproject);
             bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectRolesRetrieveResponse> DopplerProjectRolesRetrieve(Expression<Func<string>> role)
         {
-            var apiCallPath = String.Format("/v3/projects/roles/role/{0}", ExpressionConverter.ConvertWithUrlEncoding(role, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(role, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DopplerProjectRolesRetrieveResponse>(callPayload);
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerProjectRolesDelete(Expression<Func<string>> role)
         {
-            var apiCallPath = String.Format("/v3/projects/roles/role/{0}", ExpressionConverter.ConvertWithUrlEncoding(role, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(role, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -334,13 +334,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/projects/project/members";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             callPayload.Queries["page"] = Convert.ToString(1);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             callPayload.Queries["per_page"] = Convert.ToString(20);
             if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
             return new ApiConnectionAction<DopplerProjectMembersListResponse>(callPayload);
         }
 
@@ -350,22 +350,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var apiCallPath = "/v3/projects/project/members";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            body["type"] = CSharpExpressionConverter.Convert(bodytype);
             bodypropCount++;
-            body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+            body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
             if (bodyrole != null)
             {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
                 bodypropCount++;
             }
 
             if (bodyenvironments != null)
             {
-                body["environments"] = ExpressionConverter.ConvertO(bodyenvironments);
+                body["environments"] = CSharpExpressionConverter.ConvertToken(bodyenvironments);
                 bodypropCount++;
             }
 
@@ -380,41 +380,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse> DopplerProjectMembersRetrieve(Expression<Func<typeInput>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionAction<DopplerProjectMembersRetrieveResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerProjectMembersDelete(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionAction<JToken>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse> DopplerProjectMembersUpdate(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project, Expression<Func<string>> bodyrole = null, Expression<Func<string[]>> bodyenvironments = null)
         {
-            var apiCallPath = String.Format("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyrole != null)
             {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
                 bodypropCount++;
             }
 
             if (bodyenvironments != null)
             {
-                body["environments"] = ExpressionConverter.ConvertO(bodyenvironments);
+                body["environments"] = CSharpExpressionConverter.ConvertToken(bodyenvironments);
                 bodypropCount++;
             }
 

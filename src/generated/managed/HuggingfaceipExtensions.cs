@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<JToken> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+            body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
             var parametersObject = new JObject();
             var parametersObjectpropCount = 0;
             if (parametersObjectpropCount > 0)
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
             if (bodyquery != null)
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
                 bodypropCount++;
             }
 
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -80,18 +80,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+            body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -127,49 +127,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var parametersObjectpropCount = 0;
             if (bodyparametersdoSample != null)
             {
-                parametersObject["do_sample"] = ExpressionConverter.ConvertO(bodyparametersdoSample);
+                parametersObject["do_sample"] = CSharpExpressionConverter.ConvertToken(bodyparametersdoSample);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersminLength != null)
             {
-                parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                parametersObject["min_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersminLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxLength != null)
             {
-                parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                parametersObject["max_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopK != null)
             {
-                parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                parametersObject["top_k"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopK);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopP != null)
             {
-                parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                parametersObject["top_p"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopP);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstemperature != null)
             {
-                parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                parametersObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodyparameterstemperature);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersrepetitionPenalty != null)
             {
-                parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                parametersObject["repetition_penalty"] = CSharpExpressionConverter.ConvertToken(bodyparametersrepetitionPenalty);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxTime != null)
             {
-                parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                parametersObject["max_time"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxTime);
                 parametersObjectpropCount++;
             }
 
@@ -183,13 +183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var inputsObjectpropCount = 0;
             if (bodyinputsquestion != null)
             {
-                inputsObject["question"] = ExpressionConverter.ConvertO(bodyinputsquestion);
+                inputsObject["question"] = CSharpExpressionConverter.ConvertToken(bodyinputsquestion);
                 inputsObjectpropCount++;
             }
 
             if (bodyinputscontext != null)
             {
-                inputsObject["context"] = ExpressionConverter.ConvertO(bodyinputscontext);
+                inputsObject["context"] = CSharpExpressionConverter.ConvertToken(bodyinputscontext);
                 inputsObjectpropCount++;
             }
 
@@ -255,13 +255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var inputsObjectpropCount = 0;
             if (bodyinputssourceSentence != null)
             {
-                inputsObject["source_sentence"] = ExpressionConverter.ConvertO(bodyinputssourceSentence);
+                inputsObject["source_sentence"] = CSharpExpressionConverter.ConvertToken(bodyinputssourceSentence);
                 inputsObjectpropCount++;
             }
 
             if (bodyinputssentences != null)
             {
-                inputsObject["sentences"] = ExpressionConverter.ConvertO(bodyinputssentences);
+                inputsObject["sentences"] = CSharpExpressionConverter.ConvertToken(bodyinputssentences);
                 inputsObjectpropCount++;
             }
 
@@ -275,13 +275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -308,18 +308,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+            body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -355,49 +355,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var parametersObjectpropCount = 0;
             if (bodyparametersdoSample != null)
             {
-                parametersObject["do_sample"] = ExpressionConverter.ConvertO(bodyparametersdoSample);
+                parametersObject["do_sample"] = CSharpExpressionConverter.ConvertToken(bodyparametersdoSample);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersminLength != null)
             {
-                parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                parametersObject["min_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersminLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxLength != null)
             {
-                parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                parametersObject["max_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopK != null)
             {
-                parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                parametersObject["top_k"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopK);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopP != null)
             {
-                parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                parametersObject["top_p"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopP);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstemperature != null)
             {
-                parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                parametersObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodyparameterstemperature);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersrepetitionPenalty != null)
             {
-                parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                parametersObject["repetition_penalty"] = CSharpExpressionConverter.ConvertToken(bodyparametersrepetitionPenalty);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxTime != null)
             {
-                parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                parametersObject["max_time"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxTime);
                 parametersObjectpropCount++;
             }
 
@@ -411,13 +411,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -444,12 +444,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+            body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
             var parametersObject = new JObject();
             var parametersObjectpropCount = 0;
             if (bodyparametersaggregationStrategy != null)
             {
-                parametersObject["aggregation_strategy"] = ExpressionConverter.ConvertO(bodyparametersaggregationStrategy);
+                parametersObject["aggregation_strategy"] = CSharpExpressionConverter.ConvertToken(bodyparametersaggregationStrategy);
                 parametersObjectpropCount++;
             }
 
@@ -463,13 +463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -496,18 +496,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+            body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
             var optionsObject = new JObject();
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var bodypropCount = 0;
             if (bodyinputs != null)
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputs);
                 bodypropCount++;
             }
 
@@ -543,13 +543,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var parametersObjectpropCount = 0;
             if (bodyparameterscandidateLabels != null)
             {
-                parametersObject["candidate_labels"] = ExpressionConverter.ConvertO(bodyparameterscandidateLabels);
+                parametersObject["candidate_labels"] = CSharpExpressionConverter.ConvertToken(bodyparameterscandidateLabels);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmultiLabel != null)
             {
-                parametersObject["multi_label"] = ExpressionConverter.ConvertO(bodyparametersmultiLabel);
+                parametersObject["multi_label"] = CSharpExpressionConverter.ConvertToken(bodyparametersmultiLabel);
                 parametersObjectpropCount++;
             }
 
@@ -563,13 +563,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 
@@ -599,19 +599,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var inputsObjectpropCount = 0;
             if (bodyinputspastUserInputs != null)
             {
-                inputsObject["past_user_inputs"] = ExpressionConverter.ConvertO(bodyinputspastUserInputs);
+                inputsObject["past_user_inputs"] = CSharpExpressionConverter.ConvertToken(bodyinputspastUserInputs);
                 inputsObjectpropCount++;
             }
 
             if (bodyinputsgeneratedResponses != null)
             {
-                inputsObject["generated_responses"] = ExpressionConverter.ConvertO(bodyinputsgeneratedResponses);
+                inputsObject["generated_responses"] = CSharpExpressionConverter.ConvertToken(bodyinputsgeneratedResponses);
                 inputsObjectpropCount++;
             }
 
             if (bodyinputstext != null)
             {
-                inputsObject["text"] = ExpressionConverter.ConvertO(bodyinputstext);
+                inputsObject["text"] = CSharpExpressionConverter.ConvertToken(bodyinputstext);
                 inputsObjectpropCount++;
             }
 
@@ -625,43 +625,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var parametersObjectpropCount = 0;
             if (bodyparametersminLength != null)
             {
-                parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                parametersObject["min_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersminLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxLength != null)
             {
-                parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                parametersObject["max_length"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxLength);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopK != null)
             {
-                parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                parametersObject["top_k"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopK);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstopP != null)
             {
-                parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                parametersObject["top_p"] = CSharpExpressionConverter.ConvertToken(bodyparameterstopP);
                 parametersObjectpropCount++;
             }
 
             if (bodyparameterstemperature != null)
             {
-                parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                parametersObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodyparameterstemperature);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersrepetitionPenalty != null)
             {
-                parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                parametersObject["repetition_penalty"] = CSharpExpressionConverter.ConvertToken(bodyparametersrepetitionPenalty);
                 parametersObjectpropCount++;
             }
 
             if (bodyparametersmaxTime != null)
             {
-                parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                parametersObject["max_time"] = CSharpExpressionConverter.ConvertToken(bodyparametersmaxTime);
                 parametersObjectpropCount++;
             }
 
@@ -675,13 +675,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var optionsObjectpropCount = 0;
             if (bodyoptionsuseCache != null)
             {
-                optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                optionsObject["use_cache"] = CSharpExpressionConverter.ConvertToken(bodyoptionsuseCache);
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionswaitForModel != null)
             {
-                optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                optionsObject["wait_for_model"] = CSharpExpressionConverter.ConvertToken(bodyoptionswaitForModel);
                 optionsObjectpropCount++;
             }
 

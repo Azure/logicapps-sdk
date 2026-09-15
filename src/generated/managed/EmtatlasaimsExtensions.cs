@@ -18,18 +18,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
             return new ApiConnectionAction<ListBaseline[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
         {
-            var apiCallPath = String.Format("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(baselineId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baselineId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
             return new ApiConnectionAction<ListBaseline>(callPayload);
         }
 
@@ -39,24 +39,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var apiCallPath = "/aimsapi/assets/search/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodycontractId != null)
             {
-                body["contract"] = ExpressionConverter.ConvertO(bodycontractId);
+                body["contract"] = CSharpExpressionConverter.ConvertToken(bodycontractId);
                 bodypropCount++;
             }
 
             if (bodypageNumber != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
                 bodypropCount++;
             }
 
             if (bodypageSize != null)
             {
-                body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                body["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypageSize);
                 bodypropCount++;
             }
 
@@ -64,13 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var modifiedDateObjectpropCount = 0;
             if (bodymodifiedDategreaterThan != null)
             {
-                modifiedDateObject["gt"] = ExpressionConverter.ConvertO(bodymodifiedDategreaterThan);
+                modifiedDateObject["gt"] = CSharpExpressionConverter.ConvertToken(bodymodifiedDategreaterThan);
                 modifiedDateObjectpropCount++;
             }
 
             if (bodymodifiedDatelessThan != null)
             {
-                modifiedDateObject["lt"] = ExpressionConverter.ConvertO(bodymodifiedDatelessThan);
+                modifiedDateObject["lt"] = CSharpExpressionConverter.ConvertToken(bodymodifiedDatelessThan);
                 modifiedDateObjectpropCount++;
             }
 
@@ -82,19 +82,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
 
             if (bodysortKey != null)
             {
-                body["sortKey"] = ExpressionConverter.ConvertO(bodysortKey);
+                body["sortKey"] = CSharpExpressionConverter.ConvertToken(bodysortKey);
                 bodypropCount++;
             }
 
             if (bodysortOrder != null)
             {
-                body["sortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                body["sortOrder"] = CSharpExpressionConverter.ConvertToken(bodysortOrder);
                 bodypropCount++;
             }
 
             if (bodyfilteredAssetClassCode != null)
             {
-                body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(bodyfilteredAssetClassCode);
+                body["filteredAssetClassCode"] = CSharpExpressionConverter.ConvertToken(bodyfilteredAssetClassCode);
                 bodypropCount++;
             }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var apiCallPath = "/aimsapi/user/user_data/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
             return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
         }
     }

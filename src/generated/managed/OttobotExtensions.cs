@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
             }
 
             bodypropCount++;
-            body["apiUrl"] = ExpressionConverter.ConvertO(bodyaPIURL);
+            body["apiUrl"] = CSharpExpressionConverter.ConvertToken(bodyaPIURL);
             bodypropCount++;
-            body["attachmentUrl"] = ExpressionConverter.ConvertO(bodyattachmentURL);
+            body["attachmentUrl"] = CSharpExpressionConverter.ConvertToken(bodyattachmentURL);
             bodypropCount++;
-            body["filename"] = ExpressionConverter.ConvertO(bodyattachmentFileName);
+            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyattachmentFileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -55,29 +55,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
             var apiCallPath = "/skills/results";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["returnResultURL"] = ExpressionConverter.Convert(returnResultURL);
+            callPayload.Queries["returnResultURL"] = CSharpExpressionConverter.ConvertO(returnResultURL);
             var body = new JObject();
             var bodypropCount = 0;
             var adaptiveCardObject = new JObject();
             var adaptiveCardObjectpropCount = 0;
             adaptiveCardObjectpropCount++;
-            adaptiveCardObject["$schema"] = ExpressionConverter.ConvertO(bodyadaptiveCardadaptiveCardSchema);
+            adaptiveCardObject["$schema"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardSchema);
             if (bodyadaptiveCardadaptiveCardActions != null)
             {
-                adaptiveCardObject["actions"] = ExpressionConverter.ConvertO(bodyadaptiveCardadaptiveCardActions);
+                adaptiveCardObject["actions"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardActions);
                 adaptiveCardObjectpropCount++;
             }
 
             if (bodyadaptiveCardadaptiveCardBody != null)
             {
-                adaptiveCardObject["body"] = ExpressionConverter.ConvertO(bodyadaptiveCardadaptiveCardBody);
+                adaptiveCardObject["body"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardBody);
                 adaptiveCardObjectpropCount++;
             }
 
             adaptiveCardObjectpropCount++;
-            adaptiveCardObject["type"] = ExpressionConverter.ConvertO(bodyadaptiveCardadaptiveCardType);
+            adaptiveCardObject["type"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardType);
             adaptiveCardObjectpropCount++;
-            adaptiveCardObject["version"] = ExpressionConverter.ConvertO(bodyadaptiveCardadaptiveCardVersion);
+            adaptiveCardObject["version"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardVersion);
             if (adaptiveCardObjectpropCount > 0)
             {
                 body["adaptiveCard"] = adaptiveCardObject;
@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
             if (bodyrenderPreformattedText != null)
             {
-                body["renderPreformattedText"] = ExpressionConverter.ConvertO(bodyrenderPreformattedText);
+                body["renderPreformattedText"] = CSharpExpressionConverter.ConvertToken(bodyrenderPreformattedText);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             bodypropCount++;
-            body["endRequest"] = ExpressionConverter.ConvertO(bodyendRequest);
+            body["endRequest"] = CSharpExpressionConverter.ConvertToken(bodyendRequest);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

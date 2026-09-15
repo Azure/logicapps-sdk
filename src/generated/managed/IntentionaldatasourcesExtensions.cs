@@ -14,52 +14,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["token"] = CSharpExpressionConverter.ConvertO(token);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (oDataQuery != null)
-                callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["oDataQuery"] = CSharpExpressionConverter.ConvertO(oDataQuery);
             return new ApiConnectionAction<SingleEntity>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["token"] = CSharpExpressionConverter.ConvertO(token);
             if (oDataQuery != null)
-                callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["oDataQuery"] = CSharpExpressionConverter.ConvertO(oDataQuery);
             return new ApiConnectionAction<SingleEntity>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["token"] = CSharpExpressionConverter.ConvertO(token);
             if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
             if (oDataQuery != null)
-                callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["oDataQuery"] = CSharpExpressionConverter.ConvertO(oDataQuery);
             return new ApiConnectionAction<ListEntity>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+            callPayload.Queries["token"] = CSharpExpressionConverter.ConvertO(token);
             if (oDataQuery != null)
-                callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["oDataQuery"] = CSharpExpressionConverter.ConvertO(oDataQuery);
             return new ApiConnectionAction<ListEntity>(callPayload);
         }
     }

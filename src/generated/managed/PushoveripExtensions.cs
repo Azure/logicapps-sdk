@@ -20,54 +20,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
+            body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
             if (bodydevice != null)
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                body["device"] = CSharpExpressionConverter.ConvertToken(bodydevice);
                 bodypropCount++;
             }
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = CSharpExpressionConverter.Convert(bodypriority);
                 bodypropCount++;
             }
 
             if (bodytitle != null)
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
             }
 
             if (bodyhtml != null)
             {
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = CSharpExpressionConverter.Convert(bodyhtml);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodysound != null)
             {
-                body["sound"] = ExpressionConverter.ConvertO(bodysound);
+                body["sound"] = CSharpExpressionConverter.ConvertToken(bodysound);
                 bodypropCount++;
             }
 
             if (bodytimestamp != null)
             {
-                body["timestamp"] = ExpressionConverter.ConvertO(bodytimestamp);
+                body["timestamp"] = CSharpExpressionConverter.ConvertToken(bodytimestamp);
                 bodypropCount++;
             }
 
             if (bodyurl != null)
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
             }
 
             if (bodyurlTitle != null)
             {
-                body["url_title"] = ExpressionConverter.ConvertO(bodyurlTitle);
+                body["url_title"] = CSharpExpressionConverter.ConvertToken(bodyurlTitle);
                 bodypropCount++;
             }
 
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
+            body["user"] = CSharpExpressionConverter.ConvertToken(bodyuser);
             if (bodydevice != null)
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                body["device"] = CSharpExpressionConverter.ConvertToken(bodydevice);
                 bodypropCount++;
             }
 

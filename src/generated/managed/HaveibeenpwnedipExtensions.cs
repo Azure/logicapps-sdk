@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
         {
-            var apiCallPath = String.Format("/api/v3/breachedaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/breachedaccount/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["truncateResponse"] = Convert.ToString(false);
             if (truncateResponse != null)
-                callPayload.Queries["truncateResponse"] = ExpressionConverter.Convert(truncateResponse);
+                callPayload.Queries["truncateResponse"] = CSharpExpressionConverter.ConvertO(truncateResponse);
             if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
             callPayload.Queries["includeUnverified"] = Convert.ToString(true);
             if (includeUnverified != null)
-                callPayload.Queries["includeUnverified"] = ExpressionConverter.Convert(includeUnverified);
+                callPayload.Queries["includeUnverified"] = CSharpExpressionConverter.ConvertO(includeUnverified);
             return new ApiConnectionAction<AllBreachesAccountResponseItem[]>(callPayload);
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<PastesResponseItem[]> Pastes(Expression<Func<string>> account)
         {
-            var apiCallPath = String.Format("/api/v3/pasteaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/pasteaccount/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PastesResponseItem[]>(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<BreachSingleResponse> BreachSingle(Expression<Func<string>> name)
         {
-            var apiCallPath = String.Format("/api/v3/breach/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/breach/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<BreachSingleResponse>(callPayload);

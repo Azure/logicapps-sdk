@@ -25,43 +25,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var dataObjectpropCount = 0;
             if (bodydataprompt != null)
             {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                dataObject["prompt"] = CSharpExpressionConverter.ConvertToken(bodydataprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatanegprompt != null)
             {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                dataObject["negprompt"] = CSharpExpressionConverter.ConvertToken(bodydatanegprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatasamples != null)
             {
-                dataObject["samples"] = ExpressionConverter.ConvertO(bodydatasamples);
+                dataObject["samples"] = CSharpExpressionConverter.ConvertToken(bodydatasamples);
                 dataObjectpropCount++;
             }
 
             if (bodydatasteps != null)
             {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                dataObject["steps"] = CSharpExpressionConverter.ConvertToken(bodydatasteps);
                 dataObjectpropCount++;
             }
 
             if (bodydataaspectRatio != null)
             {
-                dataObject["aspect_ratio"] = ExpressionConverter.ConvertO(bodydataaspectRatio);
+                dataObject["aspect_ratio"] = CSharpExpressionConverter.ConvertToken(bodydataaspectRatio);
                 dataObjectpropCount++;
             }
 
             if (bodydataguidanceScale != null)
             {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                dataObject["guidance_scale"] = CSharpExpressionConverter.ConvertToken(bodydataguidanceScale);
                 dataObjectpropCount++;
             }
 
             if (bodydataseed != null)
             {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                dataObject["seed"] = CSharpExpressionConverter.ConvertToken(bodydataseed);
                 dataObjectpropCount++;
             }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+            body["process_id"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -111,43 +111,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var dataObjectpropCount = 0;
             if (bodydataprompt != null)
             {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                dataObject["prompt"] = CSharpExpressionConverter.ConvertToken(bodydataprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatanegprompt != null)
             {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                dataObject["negprompt"] = CSharpExpressionConverter.ConvertToken(bodydatanegprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatasteps != null)
             {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                dataObject["steps"] = CSharpExpressionConverter.ConvertToken(bodydatasteps);
                 dataObjectpropCount++;
             }
 
             if (bodydataguidanceScale != null)
             {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                dataObject["guidance_scale"] = CSharpExpressionConverter.ConvertToken(bodydataguidanceScale);
                 dataObjectpropCount++;
             }
 
             if (bodydatainitImageUrl != null)
             {
-                dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
+                dataObject["init_image_url"] = CSharpExpressionConverter.ConvertToken(bodydatainitImageUrl);
                 dataObjectpropCount++;
             }
 
             if (bodydatastrength != null)
             {
-                dataObject["strength"] = ExpressionConverter.ConvertO(bodydatastrength);
+                dataObject["strength"] = CSharpExpressionConverter.ConvertToken(bodydatastrength);
                 dataObjectpropCount++;
             }
 
             if (bodydataseed != null)
             {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                dataObject["seed"] = CSharpExpressionConverter.ConvertToken(bodydataseed);
                 dataObjectpropCount++;
             }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+            body["process_id"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -197,43 +197,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var dataObjectpropCount = 0;
             if (bodydataprompt != null)
             {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                dataObject["prompt"] = CSharpExpressionConverter.ConvertToken(bodydataprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatanegprompt != null)
             {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                dataObject["negprompt"] = CSharpExpressionConverter.ConvertToken(bodydatanegprompt);
                 dataObjectpropCount++;
             }
 
             if (bodydatasteps != null)
             {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                dataObject["steps"] = CSharpExpressionConverter.ConvertToken(bodydatasteps);
                 dataObjectpropCount++;
             }
 
             if (bodydataguidanceScale != null)
             {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                dataObject["guidance_scale"] = CSharpExpressionConverter.ConvertToken(bodydataguidanceScale);
                 dataObjectpropCount++;
             }
 
             if (bodydatainitImageUrl != null)
             {
-                dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
+                dataObject["init_image_url"] = CSharpExpressionConverter.ConvertToken(bodydatainitImageUrl);
                 dataObjectpropCount++;
             }
 
             if (bodydataimageGuidanceScale != null)
             {
-                dataObject["image_guidance_scale"] = ExpressionConverter.ConvertO(bodydataimageGuidanceScale);
+                dataObject["image_guidance_scale"] = CSharpExpressionConverter.ConvertToken(bodydataimageGuidanceScale);
                 dataObjectpropCount++;
             }
 
             if (bodydataseed != null)
             {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                dataObject["seed"] = CSharpExpressionConverter.ConvertToken(bodydataseed);
                 dataObjectpropCount++;
             }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+            body["process_id"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var dataObjectpropCount = 0;
             if (bodydatafile != null)
             {
-                dataObject["file"] = ExpressionConverter.ConvertO(bodydatafile);
+                dataObject["file"] = CSharpExpressionConverter.ConvertToken(bodydatafile);
                 dataObjectpropCount++;
             }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             {
                 if (bodydatatranscriptionFormat != null)
                 {
-                    dataObject["transcription_format"] = ExpressionConverter.ConvertO(bodydatatranscriptionFormat);
+                    dataObject["transcription_format"] = CSharpExpressionConverter.Convert(bodydatatranscriptionFormat);
                     dataObjectpropCount++;
                 }
 
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+            body["process_id"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

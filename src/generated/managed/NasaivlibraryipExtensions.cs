@@ -18,40 +18,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (center != null)
-                callPayload.Queries["center"] = ExpressionConverter.Convert(center);
+                callPayload.Queries["center"] = CSharpExpressionConverter.ConvertO(center);
             if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
             if (description508 != null)
-                callPayload.Queries["description_508"] = ExpressionConverter.Convert(description508);
+                callPayload.Queries["description_508"] = CSharpExpressionConverter.ConvertO(description508);
             if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
             if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
             if (mediaType != null)
-                callPayload.Queries["media_type"] = ExpressionConverter.Convert(mediaType);
+                callPayload.Queries["media_type"] = CSharpExpressionConverter.ConvertO(mediaType);
             if (nasaId != null)
-                callPayload.Queries["nasa_id"] = ExpressionConverter.Convert(nasaId);
+                callPayload.Queries["nasa_id"] = CSharpExpressionConverter.ConvertO(nasaId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (photographer != null)
-                callPayload.Queries["photographer"] = ExpressionConverter.Convert(photographer);
+                callPayload.Queries["photographer"] = CSharpExpressionConverter.ConvertO(photographer);
             if (secondaryCreator != null)
-                callPayload.Queries["secondary_creator"] = ExpressionConverter.Convert(secondaryCreator);
+                callPayload.Queries["secondary_creator"] = CSharpExpressionConverter.ConvertO(secondaryCreator);
             if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
             if (yearStart != null)
-                callPayload.Queries["year_start"] = ExpressionConverter.Convert(yearStart);
+                callPayload.Queries["year_start"] = CSharpExpressionConverter.ConvertO(yearStart);
             if (yearEnd != null)
-                callPayload.Queries["year_end"] = ExpressionConverter.Convert(yearEnd);
+                callPayload.Queries["year_end"] = CSharpExpressionConverter.ConvertO(yearEnd);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetManifestResponse> GetMediaAssetManifest(Expression<Func<string>> nasaId)
         {
-            var apiCallPath = String.Format("/asset/{0}", ExpressionConverter.ConvertWithUrlEncoding(nasaId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/asset/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetMediaAssetManifestResponse>(callPayload);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse> GetMediaAssetMetadataLocation(Expression<Func<string>> nasaId)
         {
-            var apiCallPath = String.Format("/metadata/{0}", ExpressionConverter.ConvertWithUrlEncoding(nasaId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/metadata/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetMediaAssetMetadataLocationResponse>(callPayload);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse> GetVideoAssetCaptionsLocation(Expression<Func<string>> nasaId)
         {
-            var apiCallPath = String.Format("/captions/{0}", ExpressionConverter.ConvertWithUrlEncoding(nasaId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/captions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetVideoAssetCaptionsLocationResponse>(callPayload);
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAlbumContentsResponse> GetMediaAlbumContents(Expression<Func<string>> albumName, Expression<Func<int>> page = null)
         {
-            var apiCallPath = String.Format("/album/{0}", ExpressionConverter.ConvertWithUrlEncoding(albumName, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/album/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(albumName, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             return new ApiConnectionAction<GetMediaAlbumContentsResponse>(callPayload);
         }
     }

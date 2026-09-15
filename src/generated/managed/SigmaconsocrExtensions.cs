@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var apiCallPath = "/api/job/process";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
+            callPayload.Queries["ApplicationURL"] = CSharpExpressionConverter.ConvertO(applicationURL);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Process"] = ExpressionConverter.ConvertO(bodyprocess);
+            body["Process"] = CSharpExpressionConverter.ConvertToken(bodyprocess);
             bodypropCount++;
-            body["Action"] = ExpressionConverter.ConvertO(bodyaction);
+            body["Action"] = CSharpExpressionConverter.ConvertToken(bodyaction);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            body["CustomerCode"] = CSharpExpressionConverter.ConvertToken(bodycustomerCode);
             if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                body["WaitForResult"] = CSharpExpressionConverter.ConvertToken(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var apiCallPath = "/api/job/consolidation";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
+            callPayload.Queries["ApplicationURL"] = CSharpExpressionConverter.ConvertO(applicationURL);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ConsoCode"] = ExpressionConverter.ConvertO(bodyconsoCode);
+            body["ConsoCode"] = CSharpExpressionConverter.ConvertToken(bodyconsoCode);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            body["CustomerCode"] = CSharpExpressionConverter.ConvertToken(bodycustomerCode);
             if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                body["WaitForResult"] = CSharpExpressionConverter.ConvertToken(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -73,16 +73,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var apiCallPath = "/api/job/scheduledjob";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
+            callPayload.Queries["ApplicationURL"] = CSharpExpressionConverter.ConvertO(applicationURL);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["JobScheduleName"] = ExpressionConverter.ConvertO(bodyjobScheduleName);
+            body["JobScheduleName"] = CSharpExpressionConverter.ConvertToken(bodyjobScheduleName);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            body["CustomerCode"] = CSharpExpressionConverter.ConvertToken(bodycustomerCode);
             if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                body["WaitForResult"] = CSharpExpressionConverter.ConvertToken(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -100,18 +100,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var apiCallPath = "/api/hub/import";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
+            callPayload.Queries["ApplicationURL"] = CSharpExpressionConverter.ConvertO(applicationURL);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ImportStructureCode"] = ExpressionConverter.ConvertO(bodyimportStructureCode);
+            body["ImportStructureCode"] = CSharpExpressionConverter.ConvertToken(bodyimportStructureCode);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            body["CustomerCode"] = CSharpExpressionConverter.ConvertToken(bodycustomerCode);
             bodypropCount++;
-            body["Base64File"] = ExpressionConverter.ConvertO(bodybase64File);
+            body["Base64File"] = CSharpExpressionConverter.ConvertToken(bodybase64File);
             if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                body["WaitForResult"] = CSharpExpressionConverter.ConvertToken(bodywaitForResult);
                 bodypropCount++;
             }
 

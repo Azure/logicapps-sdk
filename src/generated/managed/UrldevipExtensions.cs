@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
+            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
             if (bodyttl != null)
             {
-                body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                body["ttl"] = CSharpExpressionConverter.ConvertToken(bodyttl);
                 bodypropCount++;
             }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
             var bodypropCount = 0;
             if (bodykey != null)
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = CSharpExpressionConverter.ConvertToken(bodykey);
                 bodypropCount++;
             }
 
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodyttl != null)
             {
-                body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                body["ttl"] = CSharpExpressionConverter.ConvertToken(bodyttl);
                 bodypropCount++;
             }
 

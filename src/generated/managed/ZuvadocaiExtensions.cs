@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var apiCallPath = "/files";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(file);
             return new ApiConnectionAction<SubmitFileResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<string> DeleteFile(Expression<Func<string>> fileId)
         {
-            var apiCallPath = String.Format("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var fileIdBodypropCount = 0;
             if (fileIdBodyfileID != null)
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                fileIdBody["file_id"] = CSharpExpressionConverter.ConvertToken(fileIdBodyfileID);
                 fileIdBodypropCount++;
             }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/ocr/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ocr/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetOcrRequestStatusResponse>(callPayload);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/ocr/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ocr/{0}/text", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetOcrRequestTextResponse>(callPayload);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<string> GetOcrRequestImages(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/ocr/{0}/images", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ocr/{0}/images", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<string>(callPayload);
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var bodypropCount = 0;
             if (bodyfileID != null)
             {
-                body["file_id"] = ExpressionConverter.ConvertO(bodyfileID);
+                body["file_id"] = CSharpExpressionConverter.ConvertToken(bodyfileID);
                 bodypropCount++;
             }
 
             if (bodyfieldIDs != null)
             {
-                body["field_ids"] = ExpressionConverter.ConvertO(bodyfieldIDs);
+                body["field_ids"] = CSharpExpressionConverter.ConvertToken(bodyfieldIDs);
                 bodypropCount++;
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/extraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/extraction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetFieldExtractionRequestStatusResponse>(callPayload);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/extraction/{0}/results/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/extraction/{0}/results/text", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetFieldExtractionRequestResultsResponse>(callPayload);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var fileIdBodypropCount = 0;
             if (fileIdBodyfileID != null)
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                fileIdBody["file_id"] = CSharpExpressionConverter.ConvertToken(fileIdBodyfileID);
                 fileIdBodypropCount++;
             }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/classification/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/classification/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetDocumentClassificationRequestStatusResponse>(callPayload);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var fileIdBodypropCount = 0;
             if (fileIdBodyfileID != null)
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                fileIdBody["file_id"] = CSharpExpressionConverter.ConvertToken(fileIdBodyfileID);
                 fileIdBodypropCount++;
             }
 
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/language/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/language/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetLanguageClassificationRequestStatusResponse>(callPayload);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var fileIdBodypropCount = 0;
             if (fileIdBodyfileID != null)
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                fileIdBody["file_id"] = CSharpExpressionConverter.ConvertToken(fileIdBodyfileID);
                 fileIdBodypropCount++;
             }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus(Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/mlc/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/mlc/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetMlcRequestStatusResponse>(callPayload);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
             var textBodypropCount = 0;
             if (textBodytext != null)
             {
-                textBody["text"] = ExpressionConverter.ConvertO(textBodytext);
+                textBody["text"] = CSharpExpressionConverter.ConvertToken(textBodytext);
                 textBodypropCount++;
             }
 

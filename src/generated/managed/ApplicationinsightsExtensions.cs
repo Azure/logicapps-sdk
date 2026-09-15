@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["timerange"] = Convert.ToString("Last hour");
             if (timerange != null)
-                callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
+                callPayload.Queries["timerange"] = CSharpExpressionConverter.Convert(timerange);
             callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Body = ExpressionConverter.ConvertO(query);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
             return new ApiConnectionAction<Table>(callPayload);
         }
 
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["timerange"] = Convert.ToString("Last hour");
             if (timerange != null)
-                callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
+                callPayload.Queries["timerange"] = CSharpExpressionConverter.Convert(timerange);
             callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Queries["chartType"] = ExpressionConverter.Convert(chartType);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
+            callPayload.Queries["chartType"] = CSharpExpressionConverter.Convert(chartType);
+            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
             return new ApiConnectionAction<VisualizeResults>(callPayload);
         }
     }

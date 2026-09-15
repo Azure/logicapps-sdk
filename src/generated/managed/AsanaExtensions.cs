@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<AddCommentResponseV2> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}/stories", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var dataObjectpropCount = 0;
             if (bodydatacomment != null)
             {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatacomment);
+                dataObject["text"] = CSharpExpressionConverter.ConvertToken(bodydatacomment);
                 dataObjectpropCount++;
             }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CompleteTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskResponseV2>(callPayload);
@@ -56,22 +56,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallPath = "/v2/projects";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
             if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                callPayload.Queries["team"] = CSharpExpressionConverter.ConvertO(team);
             var project = new JObject();
             var projectpropCount = 0;
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (projectdataprojectName != null)
             {
-                dataObject["name"] = ExpressionConverter.ConvertO(projectdataprojectName);
+                dataObject["name"] = CSharpExpressionConverter.ConvertToken(projectdataprojectName);
                 dataObjectpropCount++;
             }
 
             if (projectdatadueDate != null)
             {
-                dataObject["due_date"] = ExpressionConverter.ConvertO(projectdatadueDate);
+                dataObject["due_date"] = CSharpExpressionConverter.ConvertToken(projectdatadueDate);
                 dataObjectpropCount++;
             }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             {
                 if (projectdatapublic != null)
                 {
-                    dataObject["public"] = ExpressionConverter.ConvertO(projectdatapublic);
+                    dataObject["public"] = CSharpExpressionConverter.ConvertToken(projectdatapublic);
                     dataObjectpropCount++;
                 }
 
@@ -93,19 +93,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
             if (projectdataprojectColor != null)
             {
-                dataObject["color"] = ExpressionConverter.ConvertO(projectdataprojectColor);
+                dataObject["color"] = CSharpExpressionConverter.Convert(projectdataprojectColor);
                 dataObjectpropCount++;
             }
 
             if (projectdataprojectNotes != null)
             {
-                dataObject["notes"] = ExpressionConverter.ConvertO(projectdataprojectNotes);
+                dataObject["notes"] = CSharpExpressionConverter.ConvertToken(projectdataprojectNotes);
                 dataObjectpropCount++;
             }
 
             if (projectdataowner != null)
             {
-                dataObject["owner"] = ExpressionConverter.ConvertO(projectdataowner);
+                dataObject["owner"] = CSharpExpressionConverter.ConvertToken(projectdataowner);
                 dataObjectpropCount++;
             }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             {
                 if (projectdataarchive != null)
                 {
-                    dataObject["archived"] = ExpressionConverter.ConvertO(projectdataarchive);
+                    dataObject["archived"] = CSharpExpressionConverter.ConvertToken(projectdataarchive);
                     dataObjectpropCount++;
                 }
 
@@ -145,33 +145,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallPath = "/v2/tasks";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["projects"] = ExpressionConverter.Convert(projects);
+            callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
+            callPayload.Queries["projects"] = CSharpExpressionConverter.ConvertO(projects);
             var task = new JObject();
             var taskpropCount = 0;
             var dataObject = new JObject();
             var dataObjectpropCount = 0;
             if (taskdatataskName != null)
             {
-                dataObject["name"] = ExpressionConverter.ConvertO(taskdatataskName);
+                dataObject["name"] = CSharpExpressionConverter.ConvertToken(taskdatataskName);
                 dataObjectpropCount++;
             }
 
             if (taskdataassignee != null)
             {
-                dataObject["assignee"] = ExpressionConverter.ConvertO(taskdataassignee);
+                dataObject["assignee"] = CSharpExpressionConverter.ConvertToken(taskdataassignee);
                 dataObjectpropCount++;
             }
 
             if (taskdatadescription != null)
             {
-                dataObject["notes"] = ExpressionConverter.ConvertO(taskdatadescription);
+                dataObject["notes"] = CSharpExpressionConverter.ConvertToken(taskdatadescription);
                 dataObjectpropCount++;
             }
 
             if (taskdataassigneeStatus != null)
             {
-                dataObject["assignee_status"] = ExpressionConverter.ConvertO(taskdataassigneeStatus);
+                dataObject["assignee_status"] = CSharpExpressionConverter.Convert(taskdataassigneeStatus);
                 dataObjectpropCount++;
             }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             {
                 if (taskdatacompleted != null)
                 {
-                    dataObject["completed"] = ExpressionConverter.ConvertO(taskdatacompleted);
+                    dataObject["completed"] = CSharpExpressionConverter.ConvertToken(taskdatacompleted);
                     dataObjectpropCount++;
                 }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
             if (taskdatadueDate != null)
             {
-                dataObject["due_on"] = ExpressionConverter.ConvertO(taskdatadueDate);
+                dataObject["due_on"] = CSharpExpressionConverter.ConvertToken(taskdatadueDate);
                 dataObjectpropCount++;
             }
 
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectResponseV2>(callPayload);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> GetTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskResponseV2>(callPayload);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<UserResponseV2> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UserResponseV2>(callPayload);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListUsersResponseV2> ListUsers(Expression<Func<string>> workspaceId)
         {
-            var apiCallPath = String.Format("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workspaces/{0}/users", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListUsersResponseV2>(callPayload);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams(Expression<Func<string>> workspace)
         {
-            var apiCallPath = String.Format("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(workspace, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/organizations/{0}/teams", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspace, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallPath = "/v2/new_project_trigger/projects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
             return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, triggerName, recurrence);
         }
 
@@ -273,8 +273,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallPath = "/v2/complete_task_trigger/tasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
         }
 
@@ -283,8 +283,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallPath = "/v2/new_task_trigger/tasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["workspace"] = CSharpExpressionConverter.ConvertO(workspace);
+            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
         }
     }

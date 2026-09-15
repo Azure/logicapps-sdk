@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
             return new ApiConnectionAction<JokeGetResponseItem[]>(callPayload);
         }

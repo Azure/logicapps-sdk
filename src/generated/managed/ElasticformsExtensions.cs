@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             var formAssignBody = new JObject();
             var formAssignBodypropCount = 0;
             formAssignBodypropCount++;
-            formAssignBody["UserName"] = ExpressionConverter.ConvertO(formAssignBodyuser);
+            formAssignBody["UserName"] = CSharpExpressionConverter.ConvertToken(formAssignBodyuser);
             formAssignBodypropCount++;
-            formAssignBody["FormUid"] = ExpressionConverter.ConvertO(formAssignBodyform);
+            formAssignBody["FormUid"] = CSharpExpressionConverter.ConvertToken(formAssignBodyform);
             if (formAssignBodyfields != null)
             {
-                formAssignBody["FormData"] = ExpressionConverter.ConvertO(formAssignBodyfields);
+                formAssignBody["FormData"] = CSharpExpressionConverter.ConvertToken(formAssignBodyfields);
                 formAssignBodypropCount++;
             }
 
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             var formDataBody = new JObject();
             var formDataBodypropCount = 0;
             formDataBodypropCount++;
-            formDataBody["FormUid"] = ExpressionConverter.ConvertO(formDataBodyform);
+            formDataBody["FormUid"] = CSharpExpressionConverter.ConvertToken(formDataBodyform);
             if (formDataBodyfields != null)
             {
-                formDataBody["FormDataObject"] = ExpressionConverter.ConvertO(formDataBodyfields);
+                formDataBody["FormDataObject"] = CSharpExpressionConverter.ConvertToken(formDataBodyfields);
                 formDataBodypropCount++;
             }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             requestBodyOfWebhook["TriggerUrl"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(requestBodyOfWebhookform);
+            requestBodyOfWebhook["FormUid"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookform);
             if (requestBodyOfWebhookpropCount > 0)
             {
                 callPayload.Body = requestBodyOfWebhook;

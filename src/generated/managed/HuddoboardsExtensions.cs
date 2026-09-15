@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<Node[]>(callPayload);
         }
 
@@ -32,19 +32,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
             if (bodytemplateId != null)
             {
-                body["sourceId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["sourceId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Board> Board(Expression<Func<string>> boardId)
         {
-            var apiCallPath = String.Format("/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/board/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Board>(callPayload);
@@ -68,26 +68,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<NodeSummary[]> Cards(Expression<Func<string>> boardId, Expression<Func<typeInput>> type = null, Expression<Func<string>> q = null)
         {
-            var apiCallPath = String.Format("/board/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/board/{0}/cards", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<NodeSummary[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Member[]> BoardMembers(Expression<Func<string>> boardId, Expression<Func<bool>> expand = null, Expression<Func<string>> q = null)
         {
-            var apiCallPath = String.Format("/board/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/board/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<Member[]>(callPayload);
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (template != null)
-                callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+                callPayload.Queries["template"] = CSharpExpressionConverter.ConvertO(template);
             return new ApiConnectionAction<Board[]>(callPayload);
         }
 
@@ -112,31 +112,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyboard != null)
             {
-                body["boardId"] = ExpressionConverter.ConvertO(bodyboard);
+                body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboard);
                 bodypropCount++;
             }
 
             if (bodyparent != null)
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparent);
+                body["parentId"] = CSharpExpressionConverter.ConvertToken(bodyparent);
                 bodypropCount++;
             }
 
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = CSharpExpressionConverter.Convert(bodytype);
                 bodypropCount++;
             }
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node> Node(Expression<Func<string>> nodeId)
         {
-            var apiCallPath = String.Format("/node/{0}", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Node>(callPayload);
@@ -160,14 +160,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction Assign(Expression<Func<string>> nodeId, Expression<Func<string>> bodyuserId = null)
         {
-            var apiCallPath = String.Format("/node/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/assign", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyuserId != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
             }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Children(Expression<Func<string>> nodeId)
         {
-            var apiCallPath = String.Format("/node/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/children", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Node[]>(callPayload);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Comments(Expression<Func<string>> nodeId)
         {
-            var apiCallPath = String.Format("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Node[]>(callPayload);
@@ -200,14 +200,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CreateAComment(Expression<Func<string>> nodeId, Expression<Func<string>> bodydescription = null)
         {
-            var apiCallPath = String.Format("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
             }
 
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction IncompleteTask(Expression<Func<string>> nodeId)
         {
-            var apiCallPath = String.Format("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CompleteTask(Expression<Func<string>> nodeId)
         {
-            var apiCallPath = String.Format("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
@@ -240,26 +240,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction NodeDate(Expression<Func<string>> nodeId, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodydue = null, Expression<Func<string>> bodyend = null)
         {
-            var apiCallPath = String.Format("/node/{0}/dates", ExpressionConverter.ConvertWithUrlEncoding(nodeId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/node/{0}/dates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodystart != null)
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
                 bodypropCount++;
             }
 
             if (bodydue != null)
             {
-                body["due"] = ExpressionConverter.ConvertO(bodydue);
+                body["due"] = CSharpExpressionConverter.ConvertToken(bodydue);
                 bodypropCount++;
             }
 
             if (bodyend != null)
             {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
+                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
                 bodypropCount++;
             }
 
@@ -278,9 +278,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             if (completed != null)
-                callPayload.Queries["completed"] = ExpressionConverter.Convert(completed);
+                callPayload.Queries["completed"] = CSharpExpressionConverter.ConvertO(completed);
             return new ApiConnectionAction<Node[]>(callPayload);
         }
 
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var apiCallPath = "/user";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<User[]>(callPayload);
         }
 
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> BoardTaskCompleted(Expression<Func<string>> boardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhook/board-task-completed/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/board-task-completed/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> CreatedNode(Expression<Func<string>> boardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhook/created-node/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhook/created-node/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();

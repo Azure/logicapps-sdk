@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/exchange/v1/exchanges";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<ExchangeData>(callPayload);
         }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/exchange/fake/exchanges";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<URLExchangeData>(callPayload);
         }
 
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/design/v1/designs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<AECData>(callPayload);
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/design/v2/designs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<AECData>(callPayload);
         }
 
@@ -59,19 +59,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/GetFilteredParameters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["getlatest"] = ExpressionConverter.Convert(getlatest);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
+            callPayload.Queries["getlatest"] = CSharpExpressionConverter.Convert(getlatest);
+            callPayload.Queries["filterBy"] = CSharpExpressionConverter.Convert(filterBy);
             if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
+                callPayload.Queries["filterValue"] = CSharpExpressionConverter.ConvertO(filterValue);
             if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
+                callPayload.Queries["ParameterfilterValue"] = CSharpExpressionConverter.ConvertO(parameterfilterValue);
             callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
             if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
+                callPayload.Queries["selectedUnitType"] = CSharpExpressionConverter.Convert(selectedUnitType);
             if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
+                callPayload.Queries["selectedUnit"] = CSharpExpressionConverter.ConvertO(selectedUnit);
             return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
         }
 
@@ -81,17 +81,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/url/GetFilteredParameters";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
+            callPayload.Queries["filterBy"] = CSharpExpressionConverter.Convert(filterBy);
             if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
+                callPayload.Queries["filterValue"] = CSharpExpressionConverter.ConvertO(filterValue);
             if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
+                callPayload.Queries["ParameterfilterValue"] = CSharpExpressionConverter.ConvertO(parameterfilterValue);
             callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
             if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
+                callPayload.Queries["selectedUnitType"] = CSharpExpressionConverter.Convert(selectedUnitType);
             if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
+                callPayload.Queries["selectedUnit"] = CSharpExpressionConverter.ConvertO(selectedUnit);
             return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
         }
 
@@ -101,18 +101,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
+            callPayload.Queries["filterBy"] = CSharpExpressionConverter.Convert(filterBy);
             if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
+                callPayload.Queries["filterValue"] = CSharpExpressionConverter.ConvertO(filterValue);
             if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
+                callPayload.Queries["ParameterfilterValue"] = CSharpExpressionConverter.ConvertO(parameterfilterValue);
             callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
             if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
+                callPayload.Queries["selectedUnitType"] = CSharpExpressionConverter.Convert(selectedUnitType);
             if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
+                callPayload.Queries["selectedUnit"] = CSharpExpressionConverter.ConvertO(selectedUnit);
             return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
         }
 
@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
+            callPayload.Queries["filterBy"] = CSharpExpressionConverter.Convert(filterBy);
             if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
+                callPayload.Queries["filterValue"] = CSharpExpressionConverter.ConvertO(filterValue);
             if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
+                callPayload.Queries["ParameterfilterValue"] = CSharpExpressionConverter.ConvertO(parameterfilterValue);
             callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
             if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
+                callPayload.Queries["selectedUnitType"] = CSharpExpressionConverter.Convert(selectedUnitType);
             if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
+                callPayload.Queries["selectedUnit"] = CSharpExpressionConverter.ConvertO(selectedUnit);
             return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/url/GetAECProperties";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
         }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/fakeGraphQL/url/GetDXProperties";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
         }
     }
@@ -164,10 +164,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/connector/webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["hubId"] = ExpressionConverter.Convert(hubId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["hubId"] = CSharpExpressionConverter.ConvertO(hubId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/connector/webhookModified";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["hubId"] = ExpressionConverter.Convert(hubId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["region"] = CSharpExpressionConverter.Convert(region);
+            callPayload.Queries["hubId"] = CSharpExpressionConverter.ConvertO(hubId);
+            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
+            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var apiCallPath = "/connector/webhookModifiedByUrl";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
+            callPayload.Queries["fileId"] = CSharpExpressionConverter.ConvertO(fileId);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";

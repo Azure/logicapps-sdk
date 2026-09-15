@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
             if (priceMin != null)
-                callPayload.Queries["price_min"] = ExpressionConverter.Convert(priceMin);
+                callPayload.Queries["price_min"] = CSharpExpressionConverter.ConvertO(priceMin);
             if (priceMax != null)
-                callPayload.Queries["price_max"] = ExpressionConverter.Convert(priceMax);
+                callPayload.Queries["price_max"] = CSharpExpressionConverter.ConvertO(priceMax);
             if (similarToId != null)
-                callPayload.Queries["similar_to_id"] = ExpressionConverter.Convert(similarToId);
+                callPayload.Queries["similar_to_id"] = CSharpExpressionConverter.ConvertO(similarToId);
             if (numResults != null)
-                callPayload.Queries["num_results"] = ExpressionConverter.Convert(numResults);
+                callPayload.Queries["num_results"] = CSharpExpressionConverter.ConvertO(numResults);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
             var apiCallPath = "/openai/details";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
+            callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
             return new ApiConnectionAction<SearchResponse>(callPayload);
         }
     }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IWorkflowAction SendFeedback(Expression<Func<string>> botId)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/feedback", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> botId, Expression<Func<string>> bodymessage)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<JToken> StartEscalation(Expression<Func<string>> botId, Expression<Func<string>> bodyinitialQuestion)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/startescalation", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/startescalation", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["initialQuestion"] = ExpressionConverter.ConvertO(bodyinitialQuestion);
+            body["initialQuestion"] = CSharpExpressionConverter.ConvertToken(bodyinitialQuestion);
             var userProfileObject = new JObject();
             var userProfileObjectpropCount = 0;
             if (userProfileObjectpropCount > 0)
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendAdaptiveResponse> SendAdaptive(Expression<Func<string>> botId, Expression<Func<string>> bodyadaptiveCardJson)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/adaptive", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/adaptive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodyadaptiveCardJson);
+            body["message"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardJson);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputResponse> SendMessageInput(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<bool>> bodyfileWaiting)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/message/input", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+            body["question"] = CSharpExpressionConverter.ConvertToken(bodyquestion);
             bodypropCount++;
-            body["isFileWaiting"] = ExpressionConverter.ConvertO(bodyfileWaiting);
+            body["isFileWaiting"] = CSharpExpressionConverter.ConvertToken(bodyfileWaiting);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputListResponse> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<string>> bodyfirstChoice, Expression<Func<string>> bodysecondChoice, Expression<Func<string>> bodythirdChoice = null, Expression<Func<string>> bodyfourthChoice = null, Expression<Func<string>> bodyfifthChoice = null, Expression<Func<string>> bodysixthChoice = null, Expression<Func<string>> bodyseventhChoice = null, Expression<Func<string>> bodyeigthChoice = null, Expression<Func<string>> bodyninethChoice = null, Expression<Func<string>> bodytenthChoice = null)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/message/input/list", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -182,56 +182,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+            body["question"] = CSharpExpressionConverter.ConvertToken(bodyquestion);
             bodypropCount++;
-            body["choice1"] = ExpressionConverter.ConvertO(bodyfirstChoice);
+            body["choice1"] = CSharpExpressionConverter.ConvertToken(bodyfirstChoice);
             bodypropCount++;
-            body["choice2"] = ExpressionConverter.ConvertO(bodysecondChoice);
+            body["choice2"] = CSharpExpressionConverter.ConvertToken(bodysecondChoice);
             if (bodythirdChoice != null)
             {
-                body["choice3"] = ExpressionConverter.ConvertO(bodythirdChoice);
+                body["choice3"] = CSharpExpressionConverter.ConvertToken(bodythirdChoice);
                 bodypropCount++;
             }
 
             if (bodyfourthChoice != null)
             {
-                body["choice4"] = ExpressionConverter.ConvertO(bodyfourthChoice);
+                body["choice4"] = CSharpExpressionConverter.ConvertToken(bodyfourthChoice);
                 bodypropCount++;
             }
 
             if (bodyfifthChoice != null)
             {
-                body["choice5"] = ExpressionConverter.ConvertO(bodyfifthChoice);
+                body["choice5"] = CSharpExpressionConverter.ConvertToken(bodyfifthChoice);
                 bodypropCount++;
             }
 
             if (bodysixthChoice != null)
             {
-                body["choice6"] = ExpressionConverter.ConvertO(bodysixthChoice);
+                body["choice6"] = CSharpExpressionConverter.ConvertToken(bodysixthChoice);
                 bodypropCount++;
             }
 
             if (bodyseventhChoice != null)
             {
-                body["choice7"] = ExpressionConverter.ConvertO(bodyseventhChoice);
+                body["choice7"] = CSharpExpressionConverter.ConvertToken(bodyseventhChoice);
                 bodypropCount++;
             }
 
             if (bodyeigthChoice != null)
             {
-                body["choice8"] = ExpressionConverter.ConvertO(bodyeigthChoice);
+                body["choice8"] = CSharpExpressionConverter.ConvertToken(bodyeigthChoice);
                 bodypropCount++;
             }
 
             if (bodyninethChoice != null)
             {
-                body["choice9"] = ExpressionConverter.ConvertO(bodyninethChoice);
+                body["choice9"] = CSharpExpressionConverter.ConvertToken(bodyninethChoice);
                 bodypropCount++;
             }
 
             if (bodytenthChoice != null)
             {
-                body["choice10"] = ExpressionConverter.ConvertO(bodytenthChoice);
+                body["choice10"] = CSharpExpressionConverter.ConvertToken(bodytenthChoice);
                 bodypropCount++;
             }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputArrayResponse> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<JToken[]>> bodylistOfChoices, Expression<Func<string>> bodyvalueToSelectInList)
         {
-            var apiCallPath = String.Format("/api/botproxy/{0}/message/input/array", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/array", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
@@ -260,11 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             }
 
             bodypropCount++;
-            body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+            body["question"] = CSharpExpressionConverter.ConvertToken(bodyquestion);
             bodypropCount++;
-            body["listChoice"] = ExpressionConverter.ConvertO(bodylistOfChoices);
+            body["listChoice"] = CSharpExpressionConverter.ConvertToken(bodylistOfChoices);
             bodypropCount++;
-            body["jsonPath"] = ExpressionConverter.ConvertO(bodyvalueToSelectInList);
+            body["jsonPath"] = CSharpExpressionConverter.ConvertToken(bodyvalueToSelectInList);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -278,11 +278,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     {
         public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/conversations/{0}/{1}/questions/{2}/triggers/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(questionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["licenceId"] = ExpressionConverter.Convert(licenceId);
-            callPayload.Queries["profileId"] = ExpressionConverter.Convert(profileId);
+            callPayload.Queries["licenceId"] = CSharpExpressionConverter.ConvertO(licenceId);
+            callPayload.Queries["profileId"] = CSharpExpressionConverter.ConvertO(profileId);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";
@@ -297,11 +297,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
         public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/escalation/{0}/{1}/triggers/{2}/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(escalationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(escalationId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["licenceId"] = ExpressionConverter.Convert(licenceId);
-            callPayload.Queries["profileId"] = ExpressionConverter.Convert(profileId);
+            callPayload.Queries["licenceId"] = CSharpExpressionConverter.ConvertO(licenceId);
+            callPayload.Queries["profileId"] = CSharpExpressionConverter.ConvertO(profileId);
             var body = new JObject();
             var bodypropCount = 0;
             body["callbackUrl"] = "@listCallbackUrl()";

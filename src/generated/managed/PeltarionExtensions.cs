@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
             var apiCallPath = "/api/forwardcall";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
+            callPayload.Headers["peltarionbody"] = CSharpExpressionConverter.ConvertO(peltarionbody);
             return new ApiConnectionAction<CallapiResponse>(callPayload);
         }
     }

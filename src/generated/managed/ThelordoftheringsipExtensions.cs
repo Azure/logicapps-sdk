@@ -18,47 +18,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<BookListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/book/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/book/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<BookGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<BookGetChaptersResponse> BookGetChapters(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/book/{0}/chapter", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/book/{0}/chapter", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<BookGetChaptersResponse>(callPayload);
         }
 
@@ -69,47 +69,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<MovieListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<MovieGetResponse> MovieGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/movie/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/movie/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<MovieGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<MovieGetQuoteResponse> MovieGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/movie/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/movie/{0}/quote", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<MovieGetQuoteResponse>(callPayload);
         }
 
@@ -120,47 +120,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<CharacterListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<CharacterGetResponse> CharacterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/character/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/character/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<CharacterGetResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<CharacterGetQuoteResponse> CharacterGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/character/{0}/quote", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/character/{0}/quote", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<CharacterGetQuoteResponse>(callPayload);
         }
 
@@ -171,30 +171,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<QuoteListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<QuoteGetResponse> QuoteGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/quote/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/quote/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<QuoteGetResponse>(callPayload);
         }
 
@@ -205,30 +205,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<ChapterListResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<ChapterGetResponse> ChapterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
-            var apiCallPath = String.Format("/chapter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/chapter/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
             if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
             if (sorting != null)
-                callPayload.Queries["sorting"] = ExpressionConverter.Convert(sorting);
+                callPayload.Queries["sorting"] = CSharpExpressionConverter.ConvertO(sorting);
             return new ApiConnectionAction<ChapterGetResponse>(callPayload);
         }
     }

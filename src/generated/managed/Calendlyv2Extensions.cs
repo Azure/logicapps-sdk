@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                callPayload.Queries["active"] = CSharpExpressionConverter.ConvertO(active);
             callPayload.Queries["count"] = Convert.ToString(20);
             if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
             if (pageToken != null)
-                callPayload.Queries["page_token"] = ExpressionConverter.Convert(pageToken);
+                callPayload.Queries["page_token"] = CSharpExpressionConverter.ConvertO(pageToken);
             if (adminManaged != null)
-                callPayload.Queries["admin_managed"] = ExpressionConverter.Convert(adminManaged);
+                callPayload.Queries["admin_managed"] = CSharpExpressionConverter.ConvertO(adminManaged);
             return new ApiConnectionAction<GetEventTypesResponse>(callPayload);
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["invitee"] = ExpressionConverter.ConvertO(bodyinvitee);
+            body["invitee"] = CSharpExpressionConverter.ConvertToken(bodyinvitee);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
         {
-            var apiCallPath = String.Format("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/event_types/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetEventTypeResponse>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
         {
-            var apiCallPath = String.Format("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/invitee_no_shows/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<JToken>(callPayload);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
+            body["events"] = CSharpExpressionConverter.ConvertToken(bodyevents);
             body["scope"] = "organization";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
+            body["events"] = CSharpExpressionConverter.ConvertToken(bodyevents);
             body["scope"] = "organization";
             bodypropCount++;
             if (bodypropCount > 0)

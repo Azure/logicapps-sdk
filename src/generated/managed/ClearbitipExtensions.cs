@@ -14,18 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
         public IBodyWorkflowAction<JToken> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["size"] = Convert.ToString(128);
             if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
             callPayload.Queries["format"] = Convert.ToString("png");
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             callPayload.Queries["greyscale"] = Convert.ToString(false);
             if (greyscale != null)
-                callPayload.Queries["greyscale"] = ExpressionConverter.Convert(greyscale);
+                callPayload.Queries["greyscale"] = CSharpExpressionConverter.ConvertO(greyscale);
             return new ApiConnectionAction<JToken>(callPayload);
         }
     }

@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ReferenceKey"] = ExpressionConverter.ConvertO(bodyreferenceKey);
+            body["ReferenceKey"] = CSharpExpressionConverter.ConvertToken(bodyreferenceKey);
             bodypropCount++;
-            body["EmailId"] = ExpressionConverter.ConvertO(bodyemailAddress);
+            body["EmailId"] = CSharpExpressionConverter.ConvertToken(bodyemailAddress);
             bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+            body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Headers["AuthToken"] = CSharpExpressionConverter.ConvertO(authToken);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["TemplateCode"] = ExpressionConverter.ConvertO(bodytemplateCode);
+            body["TemplateCode"] = CSharpExpressionConverter.ConvertToken(bodytemplateCode);
             if (bodyappKey != null)
             {
-                body["AppKey"] = ExpressionConverter.ConvertO(bodyappKey);
+                body["AppKey"] = CSharpExpressionConverter.ConvertToken(bodyappKey);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
+            body["TemplateRoleRecipientMapping"] = CSharpExpressionConverter.ConvertToken(bodytemplateRoleRecipientMapping);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -66,15 +66,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Headers["AuthToken"] = CSharpExpressionConverter.ConvertO(authToken);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["TemplateCode"] = ExpressionConverter.ConvertO(bodyruleCode);
+            body["TemplateCode"] = CSharpExpressionConverter.ConvertToken(bodyruleCode);
             bodypropCount++;
-            body["Documents"] = ExpressionConverter.ConvertO(bodydocuments);
+            body["Documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
             bodypropCount++;
-            body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
+            body["TemplateRoleRecipientMapping"] = CSharpExpressionConverter.ConvertToken(bodytemplateRoleRecipientMapping);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Headers["AuthToken"] = CSharpExpressionConverter.ConvertO(authToken);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["EnvelopeCode"] = ExpressionConverter.ConvertO(bodyenvelopeCode);
+            body["EnvelopeCode"] = CSharpExpressionConverter.ConvertToken(bodyenvelopeCode);
             bodypropCount++;
-            body["DetailOrSummary"] = ExpressionConverter.ConvertO(bodydetailOrSummary);
+            body["DetailOrSummary"] = CSharpExpressionConverter.Convert(bodydetailOrSummary);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -107,20 +107,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo(Expression<Func<string>> templateCode, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/api/V1/Template/GetTemplateInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Headers["AuthToken"] = CSharpExpressionConverter.ConvertO(authToken);
             return new ApiConnectionAction<GetTemplateInfoResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments(Expression<Func<string>> envelopeCode, Expression<Func<string>> authToken)
         {
-            var apiCallPath = String.Format("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeCode, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeCode, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+            callPayload.Headers["AuthToken"] = CSharpExpressionConverter.ConvertO(authToken);
             return new ApiConnectionAction<DownloadEnvelopeDocumentsResponse>(callPayload);
         }
     }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xEmployeeNumber eq 'ENTER EMPLOYEE NUMBER HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetEmployeeResponseItem[]>(callPayload);
         }
 
@@ -33,25 +33,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var bodypropCount = 0;
             if (bodyxAddress1 != null)
             {
-                body["xAddress1"] = ExpressionConverter.ConvertO(bodyxAddress1);
+                body["xAddress1"] = CSharpExpressionConverter.ConvertToken(bodyxAddress1);
                 bodypropCount++;
             }
 
             if (bodyxCity != null)
             {
-                body["xCity"] = ExpressionConverter.ConvertO(bodyxCity);
+                body["xCity"] = CSharpExpressionConverter.ConvertToken(bodyxCity);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["xEmail"] = ExpressionConverter.ConvertO(bodyxEmail);
+            body["xEmail"] = CSharpExpressionConverter.ConvertToken(bodyxEmail);
             bodypropCount++;
-            body["xFirstName"] = ExpressionConverter.ConvertO(bodyxFirstName);
+            body["xFirstName"] = CSharpExpressionConverter.ConvertToken(bodyxFirstName);
             bodypropCount++;
-            body["xLastName"] = ExpressionConverter.ConvertO(bodyxLastName);
+            body["xLastName"] = CSharpExpressionConverter.ConvertToken(bodyxLastName);
             if (bodyxPersonalEmail != null)
             {
-                body["xPersonalEmail"] = ExpressionConverter.ConvertO(bodyxPersonalEmail);
+                body["xPersonalEmail"] = CSharpExpressionConverter.ConvertToken(bodyxPersonalEmail);
                 bodypropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             {
                 if (bodyxRecordStatus != null)
                 {
-                    body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                    body["xRecordStatus"] = CSharpExpressionConverter.ConvertToken(bodyxRecordStatus);
                     bodypropCount++;
                 }
 
@@ -73,55 +73,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
 
             if (bodyxStartDate != null)
             {
-                body["xStartDate"] = ExpressionConverter.ConvertO(bodyxStartDate);
+                body["xStartDate"] = CSharpExpressionConverter.ConvertToken(bodyxStartDate);
                 bodypropCount++;
             }
 
             if (bodyxState != null)
             {
-                body["xState"] = ExpressionConverter.ConvertO(bodyxState);
+                body["xState"] = CSharpExpressionConverter.ConvertToken(bodyxState);
                 bodypropCount++;
             }
 
             if (bodyxZipCode != null)
             {
-                body["xZipCode"] = ExpressionConverter.ConvertO(bodyxZipCode);
+                body["xZipCode"] = CSharpExpressionConverter.ConvertToken(bodyxZipCode);
                 bodypropCount++;
             }
 
             if (bodyxEmployeeNumber != null)
             {
-                body["xEmployeeNumber"] = ExpressionConverter.ConvertO(bodyxEmployeeNumber);
+                body["xEmployeeNumber"] = CSharpExpressionConverter.ConvertToken(bodyxEmployeeNumber);
                 bodypropCount++;
             }
 
             if (bodyxEmploymentStatusLookup != null)
             {
-                body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(bodyxEmploymentStatusLookup);
+                body["xEmploymentStatusLookup"] = CSharpExpressionConverter.ConvertToken(bodyxEmploymentStatusLookup);
                 bodypropCount++;
             }
 
             if (bodyxLocationLookup != null)
             {
-                body["xLocationLookup"] = ExpressionConverter.ConvertO(bodyxLocationLookup);
+                body["xLocationLookup"] = CSharpExpressionConverter.ConvertToken(bodyxLocationLookup);
                 bodypropCount++;
             }
 
             if (bodyxPositionLookup != null)
             {
-                body["xPositionLookup"] = ExpressionConverter.ConvertO(bodyxPositionLookup);
+                body["xPositionLookup"] = CSharpExpressionConverter.ConvertToken(bodyxPositionLookup);
                 bodypropCount++;
             }
 
             if (bodyxDivisionLookup != null)
             {
-                body["xDivisionLookup"] = ExpressionConverter.ConvertO(bodyxDivisionLookup);
+                body["xDivisionLookup"] = CSharpExpressionConverter.ConvertToken(bodyxDivisionLookup);
                 bodypropCount++;
             }
 
             if (bodyxDepartmentLookup != null)
             {
-                body["xDepartmentLookup"] = ExpressionConverter.ConvertO(bodyxDepartmentLookup);
+                body["xDepartmentLookup"] = CSharpExpressionConverter.ConvertToken(bodyxDepartmentLookup);
                 bodypropCount++;
             }
 
@@ -142,100 +142,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Id"] = ExpressionConverter.ConvertO(bodyid);
+            body["Id"] = CSharpExpressionConverter.ConvertToken(bodyid);
             if (bodyxAddress1 != null)
             {
-                body["xAddress1"] = ExpressionConverter.ConvertO(bodyxAddress1);
+                body["xAddress1"] = CSharpExpressionConverter.ConvertToken(bodyxAddress1);
                 bodypropCount++;
             }
 
             if (bodyxCity != null)
             {
-                body["xCity"] = ExpressionConverter.ConvertO(bodyxCity);
+                body["xCity"] = CSharpExpressionConverter.ConvertToken(bodyxCity);
                 bodypropCount++;
             }
 
             if (bodyxEmail != null)
             {
-                body["xEmail"] = ExpressionConverter.ConvertO(bodyxEmail);
+                body["xEmail"] = CSharpExpressionConverter.ConvertToken(bodyxEmail);
                 bodypropCount++;
             }
 
             if (bodyxFirstName != null)
             {
-                body["xFirstName"] = ExpressionConverter.ConvertO(bodyxFirstName);
+                body["xFirstName"] = CSharpExpressionConverter.ConvertToken(bodyxFirstName);
                 bodypropCount++;
             }
 
             if (bodyxLastName != null)
             {
-                body["xLastName"] = ExpressionConverter.ConvertO(bodyxLastName);
+                body["xLastName"] = CSharpExpressionConverter.ConvertToken(bodyxLastName);
                 bodypropCount++;
             }
 
             if (bodyxPersonalEmail != null)
             {
-                body["xPersonalEmail"] = ExpressionConverter.ConvertO(bodyxPersonalEmail);
+                body["xPersonalEmail"] = CSharpExpressionConverter.ConvertToken(bodyxPersonalEmail);
                 bodypropCount++;
             }
 
             if (bodyxRecordStatus != null)
             {
-                body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                body["xRecordStatus"] = CSharpExpressionConverter.ConvertToken(bodyxRecordStatus);
                 bodypropCount++;
             }
 
             if (bodyxStartDate != null)
             {
-                body["xStartDate"] = ExpressionConverter.ConvertO(bodyxStartDate);
+                body["xStartDate"] = CSharpExpressionConverter.ConvertToken(bodyxStartDate);
                 bodypropCount++;
             }
 
             if (bodyxState != null)
             {
-                body["xState"] = ExpressionConverter.ConvertO(bodyxState);
+                body["xState"] = CSharpExpressionConverter.ConvertToken(bodyxState);
                 bodypropCount++;
             }
 
             if (bodyxZipCode != null)
             {
-                body["xZipCode"] = ExpressionConverter.ConvertO(bodyxZipCode);
+                body["xZipCode"] = CSharpExpressionConverter.ConvertToken(bodyxZipCode);
                 bodypropCount++;
             }
 
             if (bodyxEmployeeNumber != null)
             {
-                body["xEmployeeNumber"] = ExpressionConverter.ConvertO(bodyxEmployeeNumber);
+                body["xEmployeeNumber"] = CSharpExpressionConverter.ConvertToken(bodyxEmployeeNumber);
                 bodypropCount++;
             }
 
             if (bodyxEmploymentStatusLookup != null)
             {
-                body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(bodyxEmploymentStatusLookup);
+                body["xEmploymentStatusLookup"] = CSharpExpressionConverter.ConvertToken(bodyxEmploymentStatusLookup);
                 bodypropCount++;
             }
 
             if (bodyxLocationLookup != null)
             {
-                body["xLocationLookup"] = ExpressionConverter.ConvertO(bodyxLocationLookup);
+                body["xLocationLookup"] = CSharpExpressionConverter.ConvertToken(bodyxLocationLookup);
                 bodypropCount++;
             }
 
             if (bodyxPositionLookup != null)
             {
-                body["xPositionLookup"] = ExpressionConverter.ConvertO(bodyxPositionLookup);
+                body["xPositionLookup"] = CSharpExpressionConverter.ConvertToken(bodyxPositionLookup);
                 bodypropCount++;
             }
 
             if (bodyxDivisionLookup != null)
             {
-                body["xDivisionLookup"] = ExpressionConverter.ConvertO(bodyxDivisionLookup);
+                body["xDivisionLookup"] = CSharpExpressionConverter.ConvertToken(bodyxDivisionLookup);
                 bodypropCount++;
             }
 
             if (bodyxDepartmentLookup != null)
             {
-                body["xDepartmentLookup"] = ExpressionConverter.ConvertO(bodyxDepartmentLookup);
+                body["xDepartmentLookup"] = CSharpExpressionConverter.ConvertToken(bodyxDepartmentLookup);
                 bodypropCount++;
             }
 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xDepartmentName eq 'ENTER DEPARTMENT NAME HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetDepartmentResponseItem[]>(callPayload);
         }
 
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xLocationName eq 'ENTER LOCATION NAME HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetLocationResponseItem[]>(callPayload);
         }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xPositionTitle eq 'ENTER POSITION TITLE HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetPositionResponseItem[]>(callPayload);
         }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xDivisionName eq 'ENTER DIVISION NAME HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetDivisionResponseItem[]>(callPayload);
         }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["filter"] = Convert.ToString("xType eq 'ENTER EMPLOYMENT STATUS TYPE HERE'");
             if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
             return new ApiConnectionAction<GetEmploymentStatusResponseItem[]>(callPayload);
         }
     }

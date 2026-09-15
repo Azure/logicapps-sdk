@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
             var apiCallPath = "/language/translate/v2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
+            callPayload.Queries["target"] = CSharpExpressionConverter.ConvertO(target);
             callPayload.Queries["format"] = Convert.ToString("text");
             if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
             if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
             callPayload.Queries["model"] = Convert.ToString("base");
             if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
             return new ApiConnectionAction<TextTranslateResponse>(callPayload);
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
             var apiCallPath = "/language/translate/v2/detect";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
             return new ApiConnectionAction<LanguageDetectResponse>(callPayload);
         }
 
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (target != null)
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+                callPayload.Queries["target"] = CSharpExpressionConverter.ConvertO(target);
             callPayload.Queries["model"] = Convert.ToString("nmt");
             if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
             return new ApiConnectionAction<LanguageGetResponse>(callPayload);
         }
     }

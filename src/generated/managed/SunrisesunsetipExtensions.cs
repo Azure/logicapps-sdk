@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
             var apiCallPath = "/json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
+            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
             callPayload.Queries["date"] = Convert.ToString("");
             if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
             if (formatted != null)
-                callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
+                callPayload.Queries["formatted"] = CSharpExpressionConverter.Convert(formatted);
             return new ApiConnectionAction<GetDataResponse>(callPayload);
         }
     }

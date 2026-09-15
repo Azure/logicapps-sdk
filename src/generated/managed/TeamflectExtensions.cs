@@ -20,17 +20,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackSubject);
+            body["feedbackAboutUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackSubject);
             bodypropCount++;
-            body["feedbackRequestReceiverUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackProvider);
+            body["feedbackRequestReceiverUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackProvider);
             bodypropCount++;
-            body["feedbackNote"] = ExpressionConverter.ConvertO(bodyrequestNote);
+            body["feedbackNote"] = CSharpExpressionConverter.ConvertToken(bodyrequestNote);
             bodypropCount++;
-            body["templateTitle"] = ExpressionConverter.ConvertO(bodytemplateTitle);
+            body["templateTitle"] = CSharpExpressionConverter.ConvertToken(bodytemplateTitle);
             bodypropCount++;
-            body["dueDateInDays"] = ExpressionConverter.ConvertO(bodydueDays);
+            body["dueDateInDays"] = CSharpExpressionConverter.ConvertToken(bodydueDays);
             bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -48,21 +48,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackSubject);
+            body["feedbackAboutUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackSubject);
             bodypropCount++;
-            body["externalEmail"] = ExpressionConverter.ConvertO(bodyexternalEmail);
+            body["externalEmail"] = CSharpExpressionConverter.ConvertToken(bodyexternalEmail);
             bodypropCount++;
-            body["onBehalfName"] = ExpressionConverter.ConvertO(bodyproviderName);
+            body["onBehalfName"] = CSharpExpressionConverter.ConvertToken(bodyproviderName);
             bodypropCount++;
-            body["feedbackNote"] = ExpressionConverter.ConvertO(bodyrequestNote);
+            body["feedbackNote"] = CSharpExpressionConverter.ConvertToken(bodyrequestNote);
             bodypropCount++;
-            body["templateTitle"] = ExpressionConverter.ConvertO(bodytemplateTitle);
+            body["templateTitle"] = CSharpExpressionConverter.ConvertToken(bodytemplateTitle);
             bodypropCount++;
-            body["dueDateInDays"] = ExpressionConverter.ConvertO(bodydueDays);
+            body["dueDateInDays"] = CSharpExpressionConverter.ConvertToken(bodydueDays);
             bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
             bodypropCount++;
-            body["isAnonymous"] = ExpressionConverter.ConvertO(bodyisAnonymous);
+            body["isAnonymous"] = CSharpExpressionConverter.ConvertToken(bodyisAnonymous);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var apiCallPath = "/goal/getGoal";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["goalId"] = ExpressionConverter.Convert(goalId);
+            callPayload.Queries["goalId"] = CSharpExpressionConverter.ConvertO(goalId);
             return new ApiConnectionAction<Goal>(callPayload);
         }
 
@@ -88,21 +88,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userOID != null)
-                callPayload.Queries["userOID"] = ExpressionConverter.Convert(userOID);
+                callPayload.Queries["userOID"] = CSharpExpressionConverter.ConvertO(userOID);
             if (userUPN != null)
-                callPayload.Queries["userUPN"] = ExpressionConverter.Convert(userUPN);
+                callPayload.Queries["userUPN"] = CSharpExpressionConverter.ConvertO(userUPN);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (selectedLabels != null)
-                callPayload.Queries["selectedLabels"] = ExpressionConverter.Convert(selectedLabels);
+                callPayload.Queries["selectedLabels"] = CSharpExpressionConverter.ConvertO(selectedLabels);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<Goal[]>(callPayload);
         }
 
@@ -115,25 +115,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["goalId"] = ExpressionConverter.ConvertO(bodygoalID);
+            body["goalId"] = CSharpExpressionConverter.ConvertToken(bodygoalID);
             bodypropCount++;
-            body["newValue"] = ExpressionConverter.ConvertO(bodynewProgressValue);
+            body["newValue"] = CSharpExpressionConverter.ConvertToken(bodynewProgressValue);
             if (bodyupdateComment != null)
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodyupdateComment);
+                body["comment"] = CSharpExpressionConverter.ConvertToken(bodyupdateComment);
                 bodypropCount++;
             }
 
             if (bodynewStatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodynewStatus);
+                body["status"] = CSharpExpressionConverter.ConvertToken(bodynewStatus);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["goalUpdater"] = ExpressionConverter.ConvertO(bodyupdaterType);
+            body["goalUpdater"] = CSharpExpressionConverter.Convert(bodyupdaterType);
             bodypropCount++;
-            body["goalUpdaterSystemName"] = ExpressionConverter.ConvertO(bodysystemName);
+            body["goalUpdaterSystemName"] = CSharpExpressionConverter.ConvertToken(bodysystemName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -151,33 +151,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodygoalTitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodygoalTitle);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
             bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+            body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
             bodypropCount++;
-            body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+            body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
             bodypropCount++;
-            body["goalType"] = ExpressionConverter.ConvertO(bodygoalType);
+            body["goalType"] = CSharpExpressionConverter.ConvertToken(bodygoalType);
             bodypropCount++;
-            body["goalOwnerUPNorId"] = ExpressionConverter.ConvertO(bodygoalOwner);
+            body["goalOwnerUPNorId"] = CSharpExpressionConverter.ConvertToken(bodygoalOwner);
             bodypropCount++;
-            body["goalCreatorUPNorId"] = ExpressionConverter.ConvertO(bodygoalCreator);
+            body["goalCreatorUPNorId"] = CSharpExpressionConverter.ConvertToken(bodygoalCreator);
             bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
             bodypropCount++;
-            body["progressFormatType"] = ExpressionConverter.ConvertO(bodyprogressFormat);
+            body["progressFormatType"] = CSharpExpressionConverter.ConvertToken(bodyprogressFormat);
             bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+            body["currencyCode"] = CSharpExpressionConverter.ConvertToken(bodycurrencyCode);
             bodypropCount++;
-            body["initialValue"] = ExpressionConverter.ConvertO(bodyinitialValue);
+            body["initialValue"] = CSharpExpressionConverter.ConvertToken(bodyinitialValue);
             bodypropCount++;
-            body["targetValue"] = ExpressionConverter.ConvertO(bodytargetValue);
+            body["targetValue"] = CSharpExpressionConverter.ConvertToken(bodytargetValue);
             bodypropCount++;
-            body["parentGoalId"] = ExpressionConverter.ConvertO(bodyparentGoalID);
+            body["parentGoalId"] = CSharpExpressionConverter.ConvertToken(bodyparentGoalID);
             bodypropCount++;
-            body["sendNotificationToOwner"] = ExpressionConverter.ConvertO(bodynotifyOwner);
+            body["sendNotificationToOwner"] = CSharpExpressionConverter.ConvertToken(bodynotifyOwner);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -195,11 +195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var comment = new JObject();
             var commentpropCount = 0;
             commentpropCount++;
-            comment["goalId"] = ExpressionConverter.ConvertO(commentidOfTheGoal);
+            comment["goalId"] = CSharpExpressionConverter.ConvertToken(commentidOfTheGoal);
             commentpropCount++;
-            comment["commenterIdOrUPN"] = ExpressionConverter.ConvertO(commentobjectIdOrUserPrincipalNameOfTheCommenter);
+            comment["commenterIdOrUPN"] = CSharpExpressionConverter.ConvertToken(commentobjectIdOrUserPrincipalNameOfTheCommenter);
             commentpropCount++;
-            comment["commentText"] = ExpressionConverter.ConvertO(commentcommentItself);
+            comment["commentText"] = CSharpExpressionConverter.ConvertToken(commentcommentItself);
             if (commentpropCount > 0)
             {
                 callPayload.Body = comment;
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<RecognitionResponse> GetRecognition(Expression<Func<string>> recognitionId)
         {
-            var apiCallPath = String.Format("/recognition/{0}", ExpressionConverter.ConvertWithUrlEncoding(recognitionId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recognition/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recognitionId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<RecognitionResponse>(callPayload);
@@ -226,13 +226,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(bodyrecipientsToSearch);
+            body["recipientsIdsOrUPNS"] = CSharpExpressionConverter.ConvertToken(bodyrecipientsToSearch);
             bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodyrecognitionTitle);
+            body["title"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionTitle);
             bodypropCount++;
-            body["updated"] = ExpressionConverter.ConvertO(bodyupdateDate);
+            body["updated"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
             bodypropCount++;
-            body["created"] = ExpressionConverter.ConvertO(bodycreationDate);
+            body["created"] = CSharpExpressionConverter.ConvertToken(bodycreationDate);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -250,15 +250,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["senderIdOrUPN"] = ExpressionConverter.ConvertO(bodyrecognitionSender);
+            body["senderIdOrUPN"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionSender);
             bodypropCount++;
-            body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(bodyrecognitionRecipients);
+            body["recipientsIdsOrUPNS"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionRecipients);
             bodypropCount++;
-            body["badgeTitle"] = ExpressionConverter.ConvertO(bodybadgeTitle);
+            body["badgeTitle"] = CSharpExpressionConverter.ConvertToken(bodybadgeTitle);
             bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
             bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodyrecognitionMessage);
+            body["description"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMessage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<TaskObject> GetTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/task/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskObject>(callPayload);
@@ -283,19 +283,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (userOID != null)
-                callPayload.Queries["userOID"] = ExpressionConverter.Convert(userOID);
+                callPayload.Queries["userOID"] = CSharpExpressionConverter.ConvertO(userOID);
             if (userUPN != null)
-                callPayload.Queries["userUPN"] = ExpressionConverter.Convert(userUPN);
+                callPayload.Queries["userUPN"] = CSharpExpressionConverter.ConvertO(userUPN);
             if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
             if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
             if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
             if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
             if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
             return new ApiConnectionAction<TaskObject[]>(callPayload);
         }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var apiCallPath = "/user/getUser";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userMail"] = ExpressionConverter.Convert(userMail);
+            callPayload.Queries["userMail"] = CSharpExpressionConverter.ConvertO(userMail);
             return new ApiConnectionAction<User>(callPayload);
         }
 
@@ -319,13 +319,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var bodypropCount = 0;
             if (bodyuserEmail != null)
             {
-                body["userMail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+                body["userMail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
                 bodypropCount++;
             }
 
             if (bodyuserAttributes != null)
             {
-                body["userAttributes"] = ExpressionConverter.ConvertO(bodyuserAttributes);
+                body["userAttributes"] = CSharpExpressionConverter.ConvertToken(bodyuserAttributes);
                 bodypropCount++;
             }
 

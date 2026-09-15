@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fabricdataagent
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fabricdataagent")]
         public IBodyWorkflowAction<QueryResponse> InvokeMCP(Expression<Func<string>> workspaceId, Expression<Func<string>> artifactId, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/dataagents/{1}/__private/modelcontextprotocol/invoke", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(artifactId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/dataagents/{1}/__private/modelcontextprotocol/invoke", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(artifactId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["sessionId"] = CSharpExpressionConverter.ConvertO(sessionId);
             var queryRequest = new JObject();
             var queryRequestpropCount = 0;
             if (queryRequestjsonrpc != null)
             {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                queryRequest["jsonrpc"] = CSharpExpressionConverter.ConvertToken(queryRequestjsonrpc);
                 queryRequestpropCount++;
             }
 
             if (queryRequestid != null)
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                queryRequest["id"] = CSharpExpressionConverter.ConvertToken(queryRequestid);
                 queryRequestpropCount++;
             }
 
             if (queryRequestmethod != null)
             {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                queryRequest["method"] = CSharpExpressionConverter.ConvertToken(queryRequestmethod);
                 queryRequestpropCount++;
             }
 

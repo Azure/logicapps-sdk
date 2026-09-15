@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var apiCallPath = "/dts/translate/download";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["downloadType"] = ExpressionConverter.Convert(downloadType);
-            callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+            callPayload.Queries["downloadType"] = CSharpExpressionConverter.Convert(downloadType);
+            callPayload.Queries["translationId"] = CSharpExpressionConverter.ConvertO(translationId);
             return new ApiConnectionAction<object>(callPayload);
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var apiCallPath = "/dts/translate/regenerate";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+            callPayload.Queries["translationId"] = CSharpExpressionConverter.ConvertO(translationId);
             return new ApiConnectionAction<RegenerateResponse>(callPayload);
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var apiCallPath = "/dts/translate/retrieve";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+            callPayload.Queries["translationId"] = CSharpExpressionConverter.ConvertO(translationId);
             return new ApiConnectionAction<RetrieveResponse>(callPayload);
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var apiCallPath = "/dts/align/download";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+            callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
             return new ApiConnectionAction<object>(callPayload);
         }
     }

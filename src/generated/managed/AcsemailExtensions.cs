@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             var emailMessage = new JObject();
             var emailMessagepropCount = 0;
             emailMessagepropCount++;
-            emailMessage["senderAddress"] = ExpressionConverter.ConvertO(emailMessagesenderAddress);
+            emailMessage["senderAddress"] = CSharpExpressionConverter.ConvertToken(emailMessagesenderAddress);
             if (emailMessageimportance != null)
             {
                 if (emailMessageimportance != null)
                 {
-                    emailMessage["importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                    emailMessage["importance"] = CSharpExpressionConverter.Convert(emailMessageimportance);
                     emailMessagepropCount++;
                 }
 
@@ -42,19 +42,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             var recipientsObjectpropCount = 0;
             if (emailMessagerecipientsto != null)
             {
-                recipientsObject["to"] = ExpressionConverter.ConvertO(emailMessagerecipientsto);
+                recipientsObject["to"] = CSharpExpressionConverter.ConvertToken(emailMessagerecipientsto);
                 recipientsObjectpropCount++;
             }
 
             if (emailMessagerecipientscC != null)
             {
-                recipientsObject["CC"] = ExpressionConverter.ConvertO(emailMessagerecipientscC);
+                recipientsObject["CC"] = CSharpExpressionConverter.ConvertToken(emailMessagerecipientscC);
                 recipientsObjectpropCount++;
             }
 
             if (emailMessagerecipientsbCC != null)
             {
-                recipientsObject["bCC"] = ExpressionConverter.ConvertO(emailMessagerecipientsbCC);
+                recipientsObject["bCC"] = CSharpExpressionConverter.ConvertToken(emailMessagerecipientsbCC);
                 recipientsObjectpropCount++;
             }
 
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             var contentObject = new JObject();
             var contentObjectpropCount = 0;
             contentObjectpropCount++;
-            contentObject["subject"] = ExpressionConverter.ConvertO(emailMessagecontentsubject);
+            contentObject["subject"] = CSharpExpressionConverter.ConvertToken(emailMessagecontentsubject);
             if (emailMessagecontenthtml != null)
             {
-                contentObject["html"] = ExpressionConverter.ConvertO(emailMessagecontenthtml);
+                contentObject["html"] = CSharpExpressionConverter.ConvertToken(emailMessagecontenthtml);
                 contentObjectpropCount++;
             }
 
@@ -82,25 +82,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
             if (emailMessagereplyTo != null)
             {
-                emailMessage["replyTo"] = ExpressionConverter.ConvertO(emailMessagereplyTo);
+                emailMessage["replyTo"] = CSharpExpressionConverter.ConvertToken(emailMessagereplyTo);
                 emailMessagepropCount++;
             }
 
             if (emailMessageattachments != null)
             {
-                emailMessage["attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                emailMessage["attachments"] = CSharpExpressionConverter.ConvertToken(emailMessageattachments);
                 emailMessagepropCount++;
             }
 
             if (emailMessageheaders != null)
             {
-                emailMessage["headers"] = ExpressionConverter.ConvertO(emailMessageheaders);
+                emailMessage["headers"] = CSharpExpressionConverter.ConvertToken(emailMessageheaders);
                 emailMessagepropCount++;
             }
 
             if (emailMessageuserEngagementTrackingDisabled != null)
             {
-                emailMessage["userEngagementTrackingDisabled"] = ExpressionConverter.ConvertO(emailMessageuserEngagementTrackingDisabled);
+                emailMessage["userEngagementTrackingDisabled"] = CSharpExpressionConverter.ConvertToken(emailMessageuserEngagementTrackingDisabled);
                 emailMessagepropCount++;
             }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion(Expression<Func<string>> operationId)
         {
-            var apiCallPath = String.Format("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");

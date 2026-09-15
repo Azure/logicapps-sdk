@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["resolve_ids"] = Convert.ToString(1);
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyprojectId != null)
             {
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
                 bodypropCount++;
             }
 
@@ -45,19 +45,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             bodypropCount++;
             if (bodydueAt != null)
             {
-                body["due_at"] = ExpressionConverter.ConvertO(bodydueAt);
+                body["due_at"] = CSharpExpressionConverter.ConvertToken(bodydueAt);
                 bodypropCount++;
             }
 
             if (bodyisAllDay != null)
             {
-                body["is_all_day"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                body["is_all_day"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
                 bodypropCount++;
             }
 
             if (bodyisFollowed != null)
             {
-                body["is_followed"] = ExpressionConverter.ConvertO(bodyisFollowed);
+                body["is_followed"] = CSharpExpressionConverter.ConvertToken(bodyisFollowed);
                 bodypropCount++;
             }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             bodypropCount++;
             if (bodyresponsibleId != null)
             {
-                body["responsible_id"] = ExpressionConverter.ConvertO(bodyresponsibleId);
+                body["responsible_id"] = CSharpExpressionConverter.ConvertToken(bodyresponsibleId);
                 bodypropCount++;
             }
 
@@ -87,18 +87,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var bodypropCount = 0;
             if (bodybody != null)
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
             }
 
             if (bodyisPinned != null)
             {
-                body["is_pinned"] = ExpressionConverter.ConvertO(bodyisPinned);
+                body["is_pinned"] = CSharpExpressionConverter.ConvertToken(bodyisPinned);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             callPayload.Queries["ended_at"] = Convert.ToString("null");
             callPayload.Queries["sortBy"] = Convert.ToString("-created_at");
             if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
             return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
         }
 
@@ -139,13 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
             bodypropCount++;
-            body["remind_at"] = ExpressionConverter.ConvertO(bodyremindAt);
+            body["remind_at"] = CSharpExpressionConverter.ConvertToken(bodyremindAt);
             bodypropCount++;
-            body["is_relative"] = ExpressionConverter.ConvertO(bodyisRelative);
+            body["is_relative"] = CSharpExpressionConverter.ConvertToken(bodyisRelative);
             bodypropCount++;
-            body["is_all_day"] = ExpressionConverter.ConvertO(bodyisAllDay);
+            body["is_all_day"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -164,9 +164,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["resolve_ids"] = Convert.ToString(1);
             if (projectId != null)
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             if (responsibleId != null)
-                callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
+                callPayload.Queries["responsible_id"] = CSharpExpressionConverter.ConvertO(responsibleId);
             return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["resolve_ids"] = Convert.ToString(1);
             if (projectId != null)
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
             if (responsibleId != null)
-                callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
+                callPayload.Queries["responsible_id"] = CSharpExpressionConverter.ConvertO(responsibleId);
             return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, triggerName, recurrence);
         }
     }

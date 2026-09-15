@@ -14,38 +14,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAFolderResponse> CreateAFolder(Expression<Func<string>> spaceId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyfolderName = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodyoverrideStatuses = null, Expression<Func<bool>> bodyhiddenFolder = null, Expression<Func<string>> bodytaskCount = null, Expression<Func<bool>> bodyarchived = null, Expression<Func<JToken[]>> bodystatuses = null, Expression<Func<string>> bodypermissionLevel = null)
         {
-            var apiCallPath = String.Format("/api/v2/space/{0}/folder", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyid != null)
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
             }
 
             if (bodyfolderName != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyfolderName);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyfolderName);
                 bodypropCount++;
             }
 
             if (bodyorderIndex != null)
             {
-                body["orderindex"] = ExpressionConverter.ConvertO(bodyorderIndex);
+                body["orderindex"] = CSharpExpressionConverter.ConvertToken(bodyorderIndex);
                 bodypropCount++;
             }
 
             if (bodyoverrideStatuses != null)
             {
-                body["override_statuses"] = ExpressionConverter.ConvertO(bodyoverrideStatuses);
+                body["override_statuses"] = CSharpExpressionConverter.ConvertToken(bodyoverrideStatuses);
                 bodypropCount++;
             }
 
             if (bodyhiddenFolder != null)
             {
-                body["hidden"] = ExpressionConverter.ConvertO(bodyhiddenFolder);
+                body["hidden"] = CSharpExpressionConverter.ConvertToken(bodyhiddenFolder);
                 bodypropCount++;
             }
 
@@ -59,25 +59,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 
             if (bodytaskCount != null)
             {
-                body["task_count"] = ExpressionConverter.ConvertO(bodytaskCount);
+                body["task_count"] = CSharpExpressionConverter.ConvertToken(bodytaskCount);
                 bodypropCount++;
             }
 
             if (bodyarchived != null)
             {
-                body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
+                body["archived"] = CSharpExpressionConverter.ConvertToken(bodyarchived);
                 bodypropCount++;
             }
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 
             if (bodypermissionLevel != null)
             {
-                body["permission_level"] = ExpressionConverter.ConvertO(bodypermissionLevel);
+                body["permission_level"] = CSharpExpressionConverter.ConvertToken(bodypermissionLevel);
                 bodypropCount++;
             }
 
@@ -101,20 +101,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> teamId, Expression<Func<string>> bodyspaceName = null, Expression<Func<bool>> bodymultipleAssignees = null, Expression<Func<bool>> bodyfeaturesdueDatesdueDates = null, Expression<Func<bool>> bodyfeaturesdueDatesstartDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapDueDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapClosedDueDate = null, Expression<Func<bool>> bodyfeaturestimeTrackingtimeTracking = null, Expression<Func<bool>> bodyfeaturestagstags = null, Expression<Func<bool>> bodyfeaturestimeEstimatestimeEstimates = null, Expression<Func<bool>> bodyfeatureschecklistschecklist = null, Expression<Func<bool>> bodyfeaturescustomFieldscustomFields = null, Expression<Func<bool>> bodyfeaturesremapDependenciesremapDependencies = null, Expression<Func<bool>> bodyfeaturesdependencyWarningdependencyWarning = null, Expression<Func<bool>> bodyfeaturesportfoliosportfolios = null)
         {
-            var apiCallPath = String.Format("/api/v2/team/{0}/space", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyspaceName != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyspaceName);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyspaceName);
                 bodypropCount++;
             }
 
             if (bodymultipleAssignees != null)
             {
-                body["multiple_assignees"] = ExpressionConverter.ConvertO(bodymultipleAssignees);
+                body["multiple_assignees"] = CSharpExpressionConverter.ConvertToken(bodymultipleAssignees);
                 bodypropCount++;
             }
 
@@ -124,25 +124,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var dueDatesObjectpropCount = 0;
             if (bodyfeaturesdueDatesdueDates != null)
             {
-                dueDatesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesdueDates);
+                dueDatesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesdueDates);
                 dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesstartDate != null)
             {
-                dueDatesObject["start_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesstartDate);
+                dueDatesObject["start_date"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesstartDate);
                 dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesremapDueDate != null)
             {
-                dueDatesObject["remap_due_dates"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapDueDate);
+                dueDatesObject["remap_due_dates"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapDueDate);
                 dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesremapClosedDueDate != null)
             {
-                dueDatesObject["remap_closed_due_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapClosedDueDate);
+                dueDatesObject["remap_closed_due_date"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapClosedDueDate);
                 dueDatesObjectpropCount++;
             }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var timeTrackingObjectpropCount = 0;
             if (bodyfeaturestimeTrackingtimeTracking != null)
             {
-                timeTrackingObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeTrackingtimeTracking);
+                timeTrackingObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestimeTrackingtimeTracking);
                 timeTrackingObjectpropCount++;
             }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var tagsObjectpropCount = 0;
             if (bodyfeaturestagstags != null)
             {
-                tagsObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestagstags);
+                tagsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestagstags);
                 tagsObjectpropCount++;
             }
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var timeEstimatesObjectpropCount = 0;
             if (bodyfeaturestimeEstimatestimeEstimates != null)
             {
-                timeEstimatesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeEstimatestimeEstimates);
+                timeEstimatesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestimeEstimatestimeEstimates);
                 timeEstimatesObjectpropCount++;
             }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var checklistsObjectpropCount = 0;
             if (bodyfeatureschecklistschecklist != null)
             {
-                checklistsObject["enabled"] = ExpressionConverter.ConvertO(bodyfeatureschecklistschecklist);
+                checklistsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeatureschecklistschecklist);
                 checklistsObjectpropCount++;
             }
 
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var customFieldsObjectpropCount = 0;
             if (bodyfeaturescustomFieldscustomFields != null)
             {
-                customFieldsObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturescustomFieldscustomFields);
+                customFieldsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturescustomFieldscustomFields);
                 customFieldsObjectpropCount++;
             }
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var remapDependenciesObjectpropCount = 0;
             if (bodyfeaturesremapDependenciesremapDependencies != null)
             {
-                remapDependenciesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesremapDependenciesremapDependencies);
+                remapDependenciesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesremapDependenciesremapDependencies);
                 remapDependenciesObjectpropCount++;
             }
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var dependencyWarningObjectpropCount = 0;
             if (bodyfeaturesdependencyWarningdependencyWarning != null)
             {
-                dependencyWarningObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdependencyWarningdependencyWarning);
+                dependencyWarningObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdependencyWarningdependencyWarning);
                 dependencyWarningObjectpropCount++;
             }
 
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var portfoliosObjectpropCount = 0;
             if (bodyfeaturesportfoliosportfolios != null)
             {
-                portfoliosObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesportfoliosportfolios);
+                portfoliosObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesportfoliosportfolios);
                 portfoliosObjectpropCount++;
             }
 
@@ -281,20 +281,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAListResponse> CreateAList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodydueDate2 = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var apiCallPath = String.Format("/api/v2/folder/{0}/list", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyorderIndex != null)
             {
-                body["orderindex"] = ExpressionConverter.ConvertO(bodyorderIndex);
+                body["orderindex"] = CSharpExpressionConverter.ConvertToken(bodyorderIndex);
                 bodypropCount++;
             }
 
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 
             if (bodydueDate2 != null)
             {
-                body["due_date_time"] = ExpressionConverter.ConvertO(bodydueDate2);
+                body["due_date_time"] = CSharpExpressionConverter.ConvertToken(bodydueDate2);
                 bodypropCount++;
             }
 
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 
             if (bodystatuses != null)
             {
-                body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
                 bodypropCount++;
             }
 

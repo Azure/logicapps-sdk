@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
             if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
             if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
             callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
             return new ApiConnectionAction<FindExpirationResponse>(callPayload);
         }
@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodyemail != null)
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
             }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodydetails = null)
         {
-            var apiCallPath = String.Format("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(expirationItemId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(expirationItemId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             var bodypropCount = 0;
             if (bodyexpirationDate != null)
             {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                body["expiration_date"] = CSharpExpressionConverter.ConvertToken(bodyexpirationDate);
                 bodypropCount++;
             }
 
             if (bodydetails != null)
             {
-                body["details"] = ExpressionConverter.ConvertO(bodydetails);
+                body["details"] = CSharpExpressionConverter.ConvertToken(bodydetails);
                 bodypropCount++;
             }
 
@@ -96,19 +96,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             var bodypropCount = 0;
             if (bodyname != null)
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
             }
 
             if (bodycategoryName != null)
             {
-                body["category_name"] = ExpressionConverter.ConvertO(bodycategoryName);
+                body["category_name"] = CSharpExpressionConverter.ConvertToken(bodycategoryName);
                 bodypropCount++;
             }
 
             if (bodyexpirationDate != null)
             {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                body["expiration_date"] = CSharpExpressionConverter.ConvertToken(bodyexpirationDate);
                 bodypropCount++;
             }
 

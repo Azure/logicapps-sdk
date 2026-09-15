@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
             var apiCallPath = "/v1/sessions";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+            callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
+            callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
             return new ApiConnectionAction<GetSessionsResponse>(callPayload);
         }
     }

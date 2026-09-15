@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
         public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = String.Format("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
+            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
+            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
